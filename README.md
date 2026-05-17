@@ -527,17 +527,100 @@ python digital/cfg_python.py    # → digital/docs/cfg_python.gif
 
 ## Visualizations
 
-Animated call-graph CFGs generated from the digital tower. Each has two phases: build (nodes revealed in order) then flow (Gaussian pulse).
+Three animated CFGs, each with two phases: Phase 1 (build) reveals structure in definition
+order; Phase 2 (flow) sends a Gaussian pulse through the revealed graph.
 
-**Opcode flow** — 14 IMASM opcodes, execution edges, Frobenius cycle (FSPLIT→TANCH→AFWD→FFUSE→ISCRIB) highlighted gold:
+---
+
+### Opcode flow CFG
+
+**Nodes** — 14 IMASM opcodes: VINIT, TANCH, AFWD, AREV, CLINK, ISCRIB (logical family,
+purple); FSPLIT, FFUSE (Frobenius family, gold); EVALT, EVALF, ENGAGR (dialetheia family,
+green/red/white); IFIX (linear family, cyan). Node size scales with degree.
+
+**Edges** — directed execution-flow edges: which opcode can validly follow which in a
+compiled IMASM program. Edges within the Frobenius family are drawn in gold. The
+bootstrap path ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB
+is highlighted as the primary cycle.
+
+**The Frobenius cycle** — FSPLIT → TANCH → AFWD → FFUSE → ISCRIB — is rendered in gold
+with linewidth 3.0 and alpha 0.95. This is the subgraph that encodes μ∘δ = id: FSPLIT
+is δ (comultiplication), FFUSE is μ (multiplication), and the cycle closes on ISCRIB
+(identity / self-reference).
+
+**Phase 1:** Opcodes appear in pipeline order (logical → Frobenius → dialetheia → linear).
+As each opcode node is added, its outgoing edges to already-revealed opcodes are drawn.
+
+**Phase 2:** Gaussian pulse travels the execution graph node-by-node. Edges near the peak
+glow gold if they belong to the Frobenius cycle, purple otherwise. The title shows the
+current active opcode and the Frobenius identity.
 
 ![Opcode CFG](digital/docs/cfg_opcodes.gif)
 
-**Version descent** — Python seed → v0.1–v0.9 → v0.10 bare-metal ISO across three substrate layers:
+---
+
+### Version descent CFG
+
+**Nodes** — 11 version nodes arranged in three horizontal substrate bands:
+- **Top band (Python, green):** `seed` (frob.py — the meta-circular Frobenius check)
+  and `v0.1` (ob3ect-imscriber.py — Python Frobenius compiler, Closure: True)
+- **Middle band (C/ELF, orange):** `v0.2` (custom .o grammar → C native binary),
+  `v0.3` (quine embedding — self.o imscribed in binary), `v0.4` (quine extraction stub),
+  `v0.5` (QUINE opcode added), `v0.6` (MACRO opcode — language deepening),
+  `v0.7` (entropy pass — ΔS ≈ 0 verified), `v0.8` (full C self-hosting target),
+  `v0.9` (pre-silicon — final C generation)
+- **Bottom band (Silicon/x86, gold):** `v0.10` — bare-metal x86 bootloader ISO
+
+**Edges** — directed imscription edges (parent → child in the descent). Each edge
+represents the IMASM morphism that compiles one generation into the next: the ob3ect
+imscribing itself into a lower-substrate form.
+
+**Cross-substrate leaps** — two edges cross substrate boundaries: `v0.1 → v0.2`
+(Python → C/ELF, the first substrate descent) and `v0.9 → v0.10` (C → Silicon,
+the final bare-metal crossing). These are highlighted purple in Phase 1 and amber in
+Phase 2 when the pulse is near them.
+
+**Phase 1:** Versions appear in imscription order (seed → v0.1 → … → v0.10). When
+`v0.10` first appears, it flashes gold and the title reads "← bare metal!" — the
+completion of the descent from Python source to x86 bootloader.
+
+**Phase 2:** Gaussian pulse travels the lineage from seed down to v0.10. The gold
+Silicon node pulses brightest at the pulse peak. The title shows the current generation
+and "10 generations · μ∘δ = id" — the descent composed with the return is identity.
 
 ![Descent CFG](digital/docs/cfg_descent.gif)
 
-**Python call-graph** — AST-extracted from `frob.py` + `ob3ect-imscriber.py`, 13 functions, 16 calls, 0 cross-file edges (each generation is self-contained):
+---
+
+### Python call-graph CFG
+
+**Nodes** — 13 Python functions, statically extracted by `ast.walk` from `frob.py`
+and `ob3ect-imscriber.py`. Node color encodes source file and function role:
+- Purple: functions defined in `frob.py`
+- Orange: functions defined in `ob3ect-imscriber.py`
+- Gold: Frobenius functions (`FSPLIT`, `FFUSE`, `frobenius_phase`)
+- Green: `EVALT` (true branch terminal)
+- Red: `EVALF` (false branch terminal)
+- Cyan: bootstrap entry points (`bootstrap_compiler`, `bootstrap_ob3ect`, `bootstrap_minimal`)
+- Magenta: `ISCRIB` (self-reference identity)
+
+**Edges** — 16 directed call edges: an edge u → v means function u contains a call to
+function v, extracted by `ast.walk` over each function's body looking for `ast.Call`
+nodes. Only calls between defined functions in the same file are included.
+
+**Cross-file edges: 0.** Both `frob.py` and `ob3ect-imscriber.py` are structurally
+self-contained closed programs. They are successive generations of the same ob3ect —
+`ob3ect-imscriber.py` does not import or call into `frob.py`. This is not a limitation;
+it is the correct structure: each generation is a closed Frobenius algebra in Prog/~,
+not a module that depends on its predecessor.
+
+**Phase 1:** Functions appear in definition order within each file (frob.py first, then
+ob3ect-imscriber.py). As each function node is added, its call edges to already-revealed
+functions are drawn. The title bar shows the currently-revealed function and its source file.
+
+**Phase 2:** Gaussian pulse travels the call graph. Frobenius function nodes (gold) pulse
+gold at peak; all other nodes pulse white. Frobenius edges glow gold with linewidth 3.0.
+The title shows the current function and "μ∘δ = id."
 
 ![Python CFG](digital/docs/cfg_python.gif)
 
