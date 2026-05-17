@@ -525,6 +525,24 @@ python digital/cfg_python.py    # → digital/docs/cfg_python.gif
 
 ---
 
+## Visualizations
+
+Animated call-graph CFGs generated from the digital tower. Each has two phases: build (nodes revealed in order) then flow (Gaussian pulse).
+
+**Opcode flow** — 14 IMASM opcodes, execution edges, Frobenius cycle (FSPLIT→TANCH→AFWD→FFUSE→ISCRIB) highlighted gold:
+
+![Opcode CFG](digital/docs/cfg_opcodes.gif)
+
+**Version descent** — Python seed → v0.1–v0.9 → v0.10 bare-metal ISO across three substrate layers:
+
+![Descent CFG](digital/docs/cfg_descent.gif)
+
+**Python call-graph** — AST-extracted from `frob.py` + `ob3ect-imscriber.py`, 13 functions, 16 calls, 0 cross-file edges (each generation is self-contained):
+
+![Python CFG](digital/docs/cfg_python.gif)
+
+---
+
 ## Background
 
 The ob3ect originated from a pipeline experiment: supply the IMASM specification to
