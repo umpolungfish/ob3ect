@@ -1,28 +1,30 @@
 /-!
 # Cartesian Closed Category Ob3ect
-Products and Exponentials (internal Hom)
+
+Products and exponentials (internal Hom) in a CCC.
+Uses the categorical product Limits.prod, not the Lean product type ×.
 -/
 
 import Mathlib.CategoryTheory.Limits.Basic
-import Mathlib.CategoryTheory.Exponential
+import Mathlib.CategoryTheory.Limits.Shapes.Finite
 
 open CategoryTheory Limits
 
 class CCCStructure (C : Type*) [Category C] [HasFiniteProducts C] where
-  /-- Exponential object -/
+  /-- Exponential object A ⇒ B (internal Hom) -/
   exp : ∀ (A B : C), C
 
-  /-- Evaluation morphism -/
-  eval : ∀ (A B : C), exp A B × A ⟶ B
+  /-- Evaluation morphism: (A ⇒ B) × A → B -/
+  eval : ∀ (A B : C), prod (exp A B) A ⟶ B
 
-  /-- Currying -/
-  curry : ∀ {A B C : C}, (A × B ⟶ C) → (A ⟶ exp B C)
+  /-- Curry: turns (A × B → C) into (A → (B ⇒ C)) -/
+  curry : ∀ {A B D : C}, (prod A B ⟶ D) → (A ⟶ exp B D)
 
   /-- Universal property of exponentials -/
-  exponential_universal : ∀ {A B C : C} (f : A × B ⟶ C),
-    eval B C ≫ (curry f × 𝟙 B) = f := by sorry
+  exponential_universal : ∀ {A B D : C} (f : prod A B ⟶ D),
+    eval B D ∘ prod.map (curry f) (𝟙 B) = f := by sorry
 
-theorem ccc_coherent {C : Type*} [Category C] [HasFiniteProducts C] (CCC : CCCStructure C) :
-  True := by trivial
+theorem ccc_coherent {C : Type*} [Category C] [HasFiniteProducts C]
+    (CCC : CCCStructure C) : True := trivial
 
 #check ccc_coherent

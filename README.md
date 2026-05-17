@@ -9,7 +9,7 @@ passes that check before it is committed to the tower.
 
 The repository contains:
 - **`auto.py`** — LLM-driven pipeline: natural language → verified ob3ect in one command
-- **`digital/`** — 14-layer categorical tower, each layer self-verifying (Closure: True)
+- **`digital/`** — 18-layer categorical tower, each layer self-verifying (Closure: True)
 - **`digital/runall.py`** — executes the full tower end-to-end
 - **`proofs/`** — Lean 4 machine-checked proofs of the tower's coherence laws
 - **`digital/frob.py`** — the original Frobenius self-imscriber (the ob3ect's seed)

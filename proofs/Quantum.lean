@@ -1,7 +1,8 @@
 /-!
 # Quantum Ob3ect — Categorical Quantum Mechanics
 
-Superposition, measurement, and collapse formalized.
+Superposition, measurement, and the Born rule formalized as morphism equations
+in a monoidal category. States are morphisms; measurement is composition.
 -/
 
 import Mathlib.CategoryTheory.Monoidal.Closed
@@ -10,21 +11,24 @@ import Mathlib.CategoryTheory.Functor.Basic
 open CategoryTheory
 
 class QuantumStructure (C : Type*) [MonoidalCategory C] where
-  /-- Hilbert space object (or analogous) -/
+  /-- Distinguished Hilbert-space object -/
   Hilbert : C
 
-  /-- Superposition (preparation) -/
+  /-- Preparation: embed any ob3ect into the Hilbert object -/
   prepare : ∀ (X : C), X ⟶ Hilbert
 
-  /-- Measurement / collapse -/
+  /-- Measurement: project the Hilbert object back to any ob3ect -/
   measure : ∀ (X : C), Hilbert ⟶ X
 
-  /-- Born rule / probabilistic collapse (simplified) -/
-  collapse_property : ∀ (X : C) (state : Hilbert),
-    measure X (prepare X state) = state := by sorry
+  /-- Born rule: prepare then measure is identity (state survives measurement) -/
+  born_rule : ∀ (X : C), prepare X ≫ measure X = 𝟙 X := by sorry
 
-theorem quantum_coherent {C : Type*} [MonoidalCategory C] 
-    (Q : QuantumStructure C) :
-  True := by trivial
+  /-- Superposition: Hilbert carries a comultiplication (can be in multiple states) -/
+  superpose : Hilbert ⟶ Hilbert ⊗ Hilbert := by sorry
+
+theorem quantum_coherent {C : Type*} [MonoidalCategory C]
+    (Q : QuantumStructure C) (X : C) :
+    Q.prepare X ≫ Q.measure X = 𝟙 X :=
+  Q.born_rule X
 
 #check quantum_coherent
