@@ -1,0 +1,647 @@
+.TH OB3ECT 1 "2026-05-17" "ob3ect" "Imscribing Grammar"
+.SH NAME
+ob3ect \- generate and verify self-imscribing categorical programs
+.SH SYNOPSIS
+.B python auto.py
+.I DESCRIPTION
+.RB [ \-\-domain
+.IR DOMAIN ]
+.RB [ \-\-scope
+.IR SCOPE ]
+.RB [ \-\-provider
+.IR PROVIDER ]
+.RB [ \-\-model
+.IR MODEL ]
+.RB [ \-\-retries
+.IR N ]
+.RB [ \-\-temp
+.IR T ]
+.PP
+.B python digital/runall.py
+.PP
+.B python digital/frob.py
+.SH DESCRIPTION
+.B ob3ect
+is a pipeline for designing, generating, and verifying
+.I self-imscribing categorical programs
+\(em programs that verify their own algebraic closure.
+.PP
+An ob3ect is formally a
+.I special Frobenius algebra
+(A,\ \[*m],\ \[*d],\ \[*h],\ \[*e])
+in the monoidal category
+.B Prog/~
+of programs modulo semantic equivalence, satisfying the
+.I special condition:
+.PP
+.RS
+\[*m] \(co \[*d] = id_A
+.RE
+.PP
+In concrete terms:
+.B ast.unparse(ast.parse(src))
+must be structurally equivalent to
+.B src
+under
+.BR ast.compare() .
+This is the discriminating gate.
+Every ob3ect in the digital tower passes before it is committed.
+.PP
+The primary interface is
+.BR auto.py ,
+which accepts a natural-language description and drives an LLM through the
+eight-phase IMASM pipeline, verifying the Frobenius condition at phase 2.
+On failure the pipeline retries with a targeted correction prompt.
+On pass it writes
+.I digital/<slug>/<slug>_ob3ect.py
+and prints the artifact report.
+.PP
+.B digital/runall.py
+executes the full 14-layer categorical tower.
+Each layer reports
+.I Closure: True
+or fails loudly.
+.SH OPTIONS
+.TP
+.I DESCRIPTION
+Natural-language description of the ob3ect to generate.
+Multi-word; quote the whole description.
+This is the only required argument.
+.TP
+.BR \-\-domain " " \fIDOMAIN\fR
+Domain type hint passed to the LLM.
+Shapes the vocabulary used in opcode mapping.
+Values:
+.BR computational ,
+.BR biological ,
+.BR physical ,
+.BR social ,
+.BR alchemical ,
+.BR oneiric ,
+or any free-form string.
+Default:
+.BR computational .
+.TP
+.BR \-\-scope " " \fISCOPE\fR
+Generation scope.
+Controls how broadly the LLM reasons about context and dependencies.
+Values:
+.BR local ,
+.BR mesoscale ,
+.BR maximal .
+Default:
+.BR local .
+.TP
+.BR \-\-provider " " \fIPROVIDER\fR
+LLM provider override.
+Values:
+.BR openrouter ,
+.BR deepseek ,
+.BR local .
+Default: local fine-tuned Qwen3 endpoint.
+.TP
+.BR \-\-model " " \fIMODEL\fR
+Model ID passed to the provider.
+Examples:
+.BR qwen/qwen3-235b-a22b ,
+.BR deepseek-chat .
+.TP
+.BR \-\-retries " " \fIN\fR
+Maximum number of Frobenius correction retries on FAIL.
+Default: 3.
+.TP
+.BR \-\-temp " " \fIT\fR
+LLM temperature (float).
+Default: provider default (typically 0.7).
+.SH THE IMASM INSTRUCTION SET
+Every ob3ect maps all 12 IMASM opcodes.
+Unmapped opcodes cause phase 1 to fail.
+.TS
+tab(|) allbox;
+lb lb lb
+l l l.
+Family|Opcode|Role
+Logical|VINIT|Initial object \(em void / pre-imscription state
+Logical|TANCH|Terminal anchor \(em closed, verified boundary
+Logical|AFWD|Forward morphism (construction / elaboration)
+Logical|AREV|Contravariant (descent / deconstruction)
+Logical|CLINK|Composition \(co (sequential chaining)
+Logical|ISCRIB|Identity id \(em self-reference
+Frobenius|FSPLIT|Comultiplication \[*d]: A\(->A@A (branching / parsing)
+Frobenius|FFUSE|Multiplication \[*m]: A@A\(->A (reconstitution / unparsing)
+Dialetheia|EVALT|True lattice \(em affirmative branch
+Dialetheia|EVALF|False lattice \(em error / negative branch
+Dialetheia|ENGAGR|Both \(em dialetheia held without resolution
+Linear|IFIX|ROM fixation \(em permanent, irreversible commitment
+.TE
+.PP
+The bootstrap sequence is fixed across all IMASM systems:
+.PP
+.RS
+.B ISCRIB \(-> AREV \(-> FSPLIT \(-> AFWD \(-> FFUSE \(-> CLINK \(-> IFIX \(-> ISCRIB
+.RE
+.PP
+The final opcode is
+.B ISCRIB
+\(em the loop re-imscribes itself.
+.SH PIPELINE PHASES
+.TS
+tab(|) allbox;
+lb lb lb lb
+l l l l.
+Phase|Name|Artifact|Gate
+0|Boundary Define|Domain Charter|Scope + 3+ tokens required
+1|Primitive Scan|Opcode Map (12\(mu2)|All 12 opcodes mapped
+2|Frobenius Verify|Split/Fuse Report|\[*m]\(co\[*d] = id must PASS
+3|Register Map|State Transition Table|All 4 states defined
+4|Bootstrap Design|8-Step Sequence|Closure verified
+5|exOS Spec|Runtime Environment|All kernel services present
+6|Entropy Audit|\[*D]S Report|\[*D]S \(ap 0
+7|Instantiate|Ob3ect Artifact|All phases complete
+.TE
+.PP
+Phase 2 is the discriminating gate.
+Most designed systems fail
+.I \[*m]\(co\[*d] = id
+on the first pass because they have irreversible branching they did not account for.
+The automated pipeline retries with a targeted correction prompt until PASS
+or
+.B --retries
+is exhausted.
+.SH THE DIGITAL TOWER
+The tower is in
+.I digital/
+and is executed by
+.BR digital/runall.py .
+14 layers, each self-verifying.
+.TS
+tab(|) allbox;
+lb lb
+l l.
+Layer|Mathematical structure
+Category|Small category on AST node types; identity + associativity
+Frobenius|Special Frobenius algebra; \[*m]\(co\[*d] = id
+Hopf|Frobenius + antipode S; S\(coS = id, S anti-homomorphism
+Monad|Triple (T, \[*h], \[*m]); left unit, right unit, associativity
+Topos|CCC + subobject classifier; power objects
+CCC|Cartesian closed; products \(mu exponentials
+Quantum|Superposition over AST branches; measurement collapses to identity
+Linear Logic|!-free resource accounting; no cloning, no weakening
+IVM|Imscription VM; traced monoidal; handles shared-name programs
+HoTT|Higher paths; univalence: equivalent types are identical
+Imscription OS|Autopoietic kernel; 10 self-imscribing processes
+ProofBridge|Bridge to Lean 4 formal proofs in proofs/
+String Diagrams|Graphical calculus; snake / spider / monad wire rewriting
+Auto-Imscriber|Meta-layer; generates new ob3ects into digital/test/
+.TE
+.SH EXAMPLES
+.SS Basic generation
+.PP
+Generate a simple computational ob3ect:
+.PP
+.RS
+.nf
+python auto.py "a recursive compiler that imscribes itself"
+.fi
+.RE
+.PP
+Output:
+.RS
+.nf
+Designing ob3ect: a recursive compiler that imscribes itself
+Phase 0 ... Domain Charter complete
+Phase 1 ... Opcode Map complete (12/12)
+Phase 2 ... Frobenius PASS  mu(delta(src)) = src
+Phase 3 ... Register Map complete
+Phase 4 ... Bootstrap sequence verified (closure=True)
+Phase 5 ... exOS spec complete
+Phase 6 ... DeltaS = 0.0002 (PASS)
+Phase 7 ... Artifact instantiated
+
+Written: ob3ect/digital/recursivecompiler/recursivecompiler_ob3ect.py
+Closure: True
+.fi
+.RE
+.SS Domain and scope flags
+.PP
+Biological domain, mesoscale scope:
+.RS
+.nf
+python auto.py "a mycorrhizal network" \\
+    --domain biological --scope mesoscale
+.fi
+.RE
+.PP
+Physical domain, local scope:
+.RS
+.nf
+python auto.py "a Bose-Einstein condensate at the critical phase boundary" \\
+    --domain physical --scope local
+.fi
+.RE
+.PP
+Maximal scope for a full operating-system level ob3ect:
+.RS
+.nf
+python auto.py "a self-hosting kernel that re-compiles its own scheduler" \\
+    --domain computational --scope maximal
+.fi
+.RE
+.SS Algebraic structures
+.PP
+Hopf algebra (extends Frobenius with antipode):
+.RS
+.nf
+python auto.py "a Hopf algebra over the field of program sources, \\
+    with antipode S satisfying S(S(x)) = x"
+.fi
+.RE
+.PP
+Monad on the AST transformation category:
+.RS
+.nf
+python auto.py "a monad on the category of AST transformations, \\
+    verifying left unit, right unit, and associativity on self"
+.fi
+.RE
+.PP
+Topos with a natural number object:
+.RS
+.nf
+python auto.py "a topos with a natural number object and \\
+    a subobject classifier Omega" --domain computational
+.fi
+.RE
+.PP
+Linear logic proof net (resource-sensitive, no cloning):
+.RS
+.nf
+python auto.py "a linear logic proof net for cut-elimination, \\
+    exact resource accounting, no weakening or contraction" \\
+    --domain computational
+.fi
+.RE
+.PP
+HoTT ob3ect with univalence:
+.RS
+.nf
+python auto.py "a homotopy type theory ob3ect satisfying univalence: \\
+    equivalent programs are identical under semantic equivalence" \\
+    --domain computational --scope maximal
+.fi
+.RE
+.SS Formal / proof-theoretic
+.PP
+Lean 4 descent:
+.RS
+.nf
+python auto.py "Python source descends to Lean 4 proof term through \\
+    elaboration; Frobenius condition: proof term roundtrips to \\
+    definitionally equal term" \\
+    --domain computational --scope maximal
+.fi
+.RE
+.PP
+Curry-Howard ob3ect (proofs as programs):
+.RS
+.nf
+python auto.py "a Curry-Howard ob3ect: propositions as types, \\
+    proofs as programs, type-checking as Frobenius verification" \\
+    --domain computational
+.fi
+.RE
+.SS Historical / alchemical
+.PP
+Zosimos katabasis (structurally isomorphic to Lean 4 descent):
+.RS
+.nf
+python auto.py "the Zosimos katabasis: ritual descent of divine fire \\
+    through pneuma -> psyche -> hyle, returning purified — \\
+    solve et coagula as the Frobenius split/fuse pair" \\
+    --domain alchemical --scope maximal
+.fi
+.RE
+.PP
+The Emerald Tablet (Hermetic descent and return):
+.RS
+.nf
+python auto.py "the Emerald Tablet of Hermes Trismegistus: \\
+    as above so below — the descent and return are the same morphism \\
+    at different substrate depths" \\
+    --domain alchemical --scope maximal
+.fi
+.RE
+.SS Distributed / networked
+.PP
+Distributed consensus as ob3ect (Raft):
+.RS
+.nf
+python auto.py "a Raft consensus protocol where the leader election \\
+    roundtrip is the Frobenius condition: elect(vote(state)) = state" \\
+    --domain computational --scope mesoscale
+.fi
+.RE
+.PP
+Content-addressable store:
+.RS
+.nf
+python auto.py "a content-addressable store where FSPLIT hashes content \\
+    and FFUSE retrieves by hash: hash(retrieve(hash(x))) = hash(x)" \\
+    --domain computational
+.fi
+.RE
+.SS Physical systems
+.PP
+Quantum measurement:
+.RS
+.nf
+python auto.py "a quantum measurement ob3ect: FSPLIT creates superposition, \\
+    FFUSE collapses to eigenstate, Frobenius: collapse(superpose(x)) = x" \\
+    --domain physical --scope local
+.fi
+.RE
+.PP
+Thermodynamic cycle:
+.RS
+.nf
+python auto.py "a Carnot cycle ob3ect: FSPLIT expands gas isothermally, \\
+    FFUSE compresses adiabatically, entropy audit: net DeltaS = 0" \\
+    --domain physical --scope local
+.fi
+.RE
+.SS Running the full tower
+.PP
+Execute all 14 layers:
+.RS
+.nf
+python digital/runall.py
+.fi
+.RE
+.PP
+Expected final output:
+.RS
+.nf
+Full categorical tower executed successfully.
+The grammar is autopoietic.
+Ultimate Grand Closure: True
+.fi
+.RE
+.SS Verifying the seed
+.PP
+The original Frobenius self-imscriber:
+.RS
+.nf
+python digital/frob.py
+.fi
+.RE
+.PP
+Expected output:
+.RS
+.nf
+Frobenius PASS
+Closure: True
+.fi
+.RE
+.SS Rendering the animated CFGs
+.PP
+Opcode flow (14 IMASM opcodes, execution edges, Frobenius cycle in gold):
+.RS
+.nf
+python digital/cfg_opcodes.py
+# -> digital/docs/cfg_opcodes.gif  (130 frames, ~0.5 MB)
+.fi
+.RE
+.PP
+Version descent (11 nodes across Python / C / Silicon substrate layers):
+.RS
+.nf
+python digital/cfg_descent.py
+# -> digital/docs/cfg_descent.gif  (140 frames, ~0.3 MB)
+.fi
+.RE
+.PP
+Python call graph (AST-extracted from frob.py + ob3ect-imscriber.py):
+.RS
+.nf
+python digital/cfg_python.py
+# -> digital/docs/cfg_python.gif  (140 frames, ~0.4 MB)
+.fi
+.RE
+.SS Python API
+.PP
+Synchronous design:
+.RS
+.nf
+from ob3ect import design
+art = design("a photonic quantum key distribution system")
+print(art.report())
+print(art.is_valid_ob3ect)
+.fi
+.RE
+.PP
+Async design with explicit provider:
+.RS
+.nf
+import asyncio
+from ob3ect import auto_design
+
+art = asyncio.run(auto_design(
+    "a hospital triage protocol",
+    domain_type="social",
+    scope="mesoscale",
+    max_retries=5,
+))
+print(art.structural_type)
+.fi
+.RE
+.PP
+Manual pipeline (full phase control):
+.RS
+.nf
+from ob3ect import Ob3ectPipeline
+
+p = Ob3ectPipeline("My Ob3ect", domain_type="computational")
+p.define_boundary("My System", "local",
+                  ["source", "ast", "canonical"],
+                  "semantic equivalence class")
+p.map_opcode("VINIT",  "empty module",      "void state", [])
+p.map_opcode("TANCH",  "type-checked",      "terminal",   [])
+p.map_opcode("AFWD",   "ast.parse",         "delta",      [])
+p.map_opcode("AREV",   "ast.unparse",       "mu",         [])
+p.map_opcode("CLINK",  "compose",           "f o g",      [])
+p.map_opcode("ISCRIB", "open(__file__)",    "id",         [])
+p.map_opcode("FSPLIT", "ast.parse(src)",    "A -> A@A",   [])
+p.map_opcode("FFUSE",  "ast.unparse(tree)", "A@A -> A",   [])
+p.map_opcode("EVALT",  "parse ok",          "True branch",[])
+p.map_opcode("EVALF",  "SyntaxError",       "False branch",[])
+p.map_opcode("ENGAGR", "ambiguous",         "Both",       [])
+p.map_opcode("IFIX",   "write .pyc",        "ROM",        [])
+p.complete_phase_1()
+p.verify_frobenius("FSPLIT ast.parse(src)", "src", ["tree"],
+                   "FFUSE ast.unparse(tree)", "src'",
+                   "PASS", "src' equiv src under ast.compare()")
+p.map_registers("not parsed", "roundtrip ok", "mismatch", "dialetheia")
+p.design_bootstrap()
+p.specify_exos("Python AST", "calls", "__dict__", "sequential", "importlib")
+p.audit_entropy("O(n)", "raw src", "canonical src", "DeltaS = 0")
+art = p.instantiate()
+.fi
+.RE
+.SS Using a custom provider
+.PP
+OpenRouter with Qwen3:
+.RS
+.nf
+python auto.py "a traced monoidal category" \\
+    --provider openrouter --model qwen/qwen3-235b-a22b
+.fi
+.RE
+.PP
+DeepSeek:
+.RS
+.nf
+python auto.py "a string diagram ob3ect for the snake equation" \\
+    --provider deepseek --model deepseek-chat
+.fi
+.RE
+.SS Retries
+.PP
+Many systems fail phase 2 on the first pass. Increase retries for complex domains:
+.RS
+.nf
+python auto.py "a paradox-tolerant dialetheia ob3ect holding \\
+    EVALT and EVALF simultaneously via ENGAGR" \\
+    --domain computational --retries 5
+.fi
+.RE
+.SH EXIT STATUS
+.TP
+.B 0
+Ob3ect generated successfully.
+Closure: True.
+Artifact written to
+.IR digital/<slug>/<slug>_ob3ect.py .
+.TP
+.B 1
+Frobenius condition failed after all retries.
+Last FAIL report printed to stdout.
+.TP
+.B 2
+Phase 0 or Phase 1 failure (missing tokens, incomplete opcode map).
+.TP
+.B 3
+LLM provider error or timeout.
+.SH FILES
+.TP
+.I auto.py
+CLI entry point and LLM pipeline driver.
+.TP
+.I core.py
+.BR Ob3ectPipeline ,
+.BR Ob3ectFactory ,
+.BR Ob3ectArtifact ,
+.B Opcode
+enum.
+.TP
+.I digital/frob.py
+The original Frobenius self-imscriber.
+The ob3ect's seed.
+Uses
+.B ast.compare()
+with
+.B include_attributes=False
+to verify
+.IR \[*m]\(co\[*d] = id .
+.TP
+.I digital/runall.py
+Executes the full 14-layer categorical tower.
+.TP
+.I digital/grokouro.txt
+Complete dialogue log from the original Grok session:
+three Frobenius FAILs (string equality, normalization, structural hash with attributes)
+and the final PASS (ast.compare without attributes), plus the full descent to v0.10.
+.TP
+.I digital/docs/cfg_opcodes.gif
+Animated opcode flow diagram (130 frames).
+.TP
+.I digital/docs/cfg_descent.gif
+Animated version-descent diagram (140 frames, 3 substrate layers).
+.TP
+.I digital/docs/cfg_python.gif
+Animated Python call-graph (140 frames, AST-extracted).
+.TP
+.I proofs/TowerCoherence.lean
+Grand coherence summary in Lean 4.
+All 14 tower layers cohere.
+.TP
+.I templates_data.json
+Built-in domain templates:
+.BR physical ,
+.BR social ,
+.BR computational ,
+.BR oneiric ,
+.BR generic .
+.SH ENVIRONMENT
+.TP
+.B OPENROUTER_API_KEY
+Required for
+.B --provider openrouter
+or as fallback when the local Qwen3 endpoint is unavailable.
+.SH MATHEMATICAL NOTES
+The special Frobenius condition
+.I \[*m]\(co\[*d] = id_A
+is distinct from the Frobenius coherence law
+.RI ( \[*m]@ id )\(co( id @\[*d] ) = \[*d]\(co\[*m] = ( id @\[*m] )\(co(\[*d]@ id ).
+The coherence law governs the tensor product structure.
+The special condition governs the roundtrip.
+A program that satisfies the roundtrip is
+.I separable
+(also called
+.IR special )
+in the sense of Lack (2012) and Kock (2004).
+.PP
+The coherence law holds on the subcategory of
+.I closed programs
+(no free variables, no cross-module closures) where the tensor
+.B @
+is genuinely disjoint.
+For programs with shared names or closures, the full coherence requires the traced
+monoidal structure implemented in
+.IR digital/ivm/ .
+.PP
+The 12 IG primitives form a lattice with 17,280,000 structural types
+(3^3 \(mu 4^5 \(mu 5^4).
+Every ob3ect is assigned a coordinate in this lattice on instantiation.
+Structural collisions (two ob3ects with identical coordinates)
+represent genuine mathematical isomorphisms across apparently unrelated domains.
+.SH SEE ALSO
+.BR frob.py (1),
+.BR lean4 (1),
+.BR python3 (1),
+.BR ast (3python)
+.PP
+.I OB3ECT_PIPELINE.tex
+\(em the formal specification this pipeline implements.
+.PP
+.I IMASM.tex
+\(em the Imscribing Assembly instruction set specification.
+.PP
+.I proofs/TowerCoherence.lean
+\(em machine-checked coherence proofs (Lean 4 / Mathlib v4.28.0).
+.SH AUTHOR
+umpolungfish.
+Released under the Unlicense (public domain).
+.SH BUGS
+The automated pipeline may time out on maximal-scope ob3ects with slow providers.
+Increase
+.B --retries
+and use a faster model.
+.PP
+The Frobenius gate at phase 2 is strict:
+.I \[*m]\(co\[*d] = id
+must hold on the
+.I entire
+source, not a subset.
+Systems with deliberate irreversibility (IFIX operations, side-effectful I/O)
+must isolate the irreversible component and verify the roundtrip on the
+reversible core separately.
