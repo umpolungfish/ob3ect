@@ -1,4 +1,4 @@
-# Ob3ects: Self-Imscribing Systems and the Categorical Tower
+# OB3ECTs: Self-Imscribing Systems \& Autopoietic Descent
 
 **Author:** Lando Mills
 
@@ -60,14 +60,14 @@ ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB
 
 Each step has a precise mathematical meaning:
 
-- **ISCRIB** is the identity morphism—the program recognizing itself.
-- **AREV** is contravariant—reading the source code.
-- **FSPLIT** is comultiplication $\delta$: parsing the source into an AST.
-- **AFWD** is the forward morphism—unparsing the AST back into text.
-- **FFUSE** is multiplication $\mu$: fusing the unparsed text and checking it matches the original.
-- **CLINK** composes transformations and writes the result.
-- **IFIX** permanently commits to a representation—ROM fixation.
-- The final ISCRIB closes the loop, making it autopoietic.
+- **ISCRIB** ($↺$) is the identity morphism—the program recognizing itself.
+- **AREV** ($↓$) is contravariant—reading the source code.
+- **FSPLIT** ($δ$) is comultiplication: parsing the source into an AST.
+- **AFWD** ($↑$) is the forward morphism—unparsing the AST back into text.
+- **FFUSE** ($μ$) is multiplication: fusing the unparsed text and checking it matches the original.
+- **CLINK** ($∘$) composes transformations and writes the result.
+- **IFIX** ($∎$) permanently commits to a representation—ROM fixation.
+- The final **ISCRIB** ($↺$) closes the loop, making it autopoietic.
 
 ### How the Sequence Was Found
 
@@ -75,13 +75,12 @@ The sequence was not derived. It was *read out of the corpora*.
 
 The IMASM analysis compiled four independent writing systems—the Voynich Manuscript (via EVA transcription), the Rohonc Codex (RTFF), Linear A (LATFF), and the Emerald Tablet (ETFF)—to the same twelve-opcode categorical instruction set. When the compiled instruction streams were examined, all four systems produced the same eight-step loop:
 
-| System | ↺ | ↓ | δ | ↑ | μ | ∘ | ∎ | ↺ |
+| System | $↺$ | $↓$ | $δ$ | $↑$ | $μ$ | $∘$ | $∎$ | $↺$ |
 |---|---|---|---|---|---|---|---|---|
-| Emerald Tablet (ETFF) | `id` | `ds` | `sp` | `as` | `un` | `lk` | `fx` | `id` |
-| Voynich (EVA) | `s` | `a` | `ch` | `e` | `sh` | `d` | `y` | `s` |
-| Rohonc (RTFF) | `lp` | `ba` | `br` | `fa` | `cv` | `lg` | `dt` | `lp` |
-| Linear A (LATFF) | `lp` | `ba` | `br` | `fa` | `cv` | `lt` | `dt` | `lp` |
-| **IMASM** | **ISCRIB** | **AREV** | **FSPLIT** | **AFWD** | **FFUSE** | **CLINK** | **IFIX** | **ISCRIB** |
+| ETFF | `id` | `ds` | `sp` | `as` | `un` | `lk` | `fx` | `id` |
+| EVA | `s` | `a` | `ch` | `e` | `sh` | `d` | `y` | `s` |
+| RTFF | `lp` | `ba` | `br` | `fa` | `cv` | `lg` | `dt` | `lp` |
+| LATFF | `lp` | `ba` | `br` | `fa` | `cv` | `lt` | `dt` | `lp` |
 
 The surface tokens differ. The operational content does not. Four systems with no demonstrated contact or shared lineage, spanning four millennia and three continents, all execute the same bootstrap sequence.
 
@@ -106,16 +105,16 @@ The tower is not a stack of unrelated modules. It is a progression—each layer 
 5. **Monad** — Option monad with left unit, right unit, and associativity laws verified on concrete values
 6. **Entropy** — Shannon entropy of own state measured and confirmed stable under parse→unparse roundtrip within $\varepsilon = 10^{-9}$
 7. **Topos** — Subobject classifier $\Omega = \{\top, \bot\}$ on $\mathrm{FinSet}$; `pullback(χ_A) = A` verified for all test subsets; $|P(U)| = 2^{|U|}$
-8. **Cartesian Closed** — Curry/uncurry adjunction: `uncurry∘curry = id` and `curry∘uncurry = id` on concrete function pairs
+8. **Cartesian Closed** — Curry/uncurry adjunction: `uncurry$∘$curry = id` and `curry$∘$uncurry = id` on concrete function pairs
 9. **Quantum** — 4-state system; Born rule `measure(prepare(n)) = n` and $\|\,|n\rangle\,\|^2 = 1$ verified for all basis states
 10. **Linear Logic** — `LinearToken` resource type enforcing exact single-use; no-cloning, no-weakening, and tensor-unit law all verified
-11. **IVM** — Stack-based Imscription Virtual Machine; opcodes PUSH/DUP/XOR/ADD/HASH; `a XOR a = 0`, `3+3=6`, determinism, and `(g∘f)(3)=7` all verified
+11. **IVM** — Stack-based Imscription Virtual Machine; opcodes PUSH/DUP/XOR/ADD/HASH; `a XOR a = 0`, `3+3=6`, determinism, and `(g$∘$f)(3)=7` all verified
 12. **Traced** — Explicit trace operator; yanking equation `Tr(id_A) = id_I` verified; domain $\mu \circ \delta = \mathrm{id}$ on trace records
-13. **HoTT** — Type equivalence witness `Point2D ≃ Complex2`; `φ⁻¹∘φ = id` and `φ∘φ⁻¹ = id` verified on concrete instances
+13. **HoTT** — Type equivalence witness `Point2D ≃ Complex2`; `φ⁻¹$∘$φ = id` and `φ$∘$φ⁻¹ = id` verified on concrete instances
 14. **Imscription OS** — Autopoietic kernel booting 4 kernel modules (scheduler, allocator, imscriber, verifier); each module verified by `frobenius_phase` before being marked RUNNING
 15. **ProofBridge** — Live bridge to the formal Lean repository; reports sorry count and axiom count for each Lean file; documents the AST Frobenius gap (axiom grounded by frob.py v0.10)
-16. **String Diagrams** — Spider law `fuse∘split = id`; composition associativity; Frobenius spider equations (left and right) all verified on concrete monoidal morphisms
-17. **IMASM** — Full 8-step bootstrap on the 12-primitive IG lattice coordinate; coordinate stability under `parse∘unparse` (domain $\mu \circ \delta = \mathrm{id}$) verified
+16. **String Diagrams** — Spider law `fuse$∘$split = id`; composition associativity; Frobenius spider equations (left and right) all verified on concrete monoidal morphisms
+17. **IMASM** — Full 8-step bootstrap on the 12-primitive IG lattice coordinate; coordinate stability under `parse$∘$unparse` (domain $\mu \circ \delta = \mathrm{id}$) verified
 18. **Meta Auto-Imscriber** — Generates a syntactically valid self-imscribing stub and verifies it parses cleanly; runs `frobenius_phase` on own source
 
 Each layer runs, verifies its own coherence, and reports `Closure: True`. The full tower executes in under a minute and prints:
@@ -135,18 +134,18 @@ The ob3ect does not stop at Python. It compiles itself down through successive s
 
 ```
 seed (frob.py)           Python meta-circular Frobenius check
-    ↓ ISCRIB
+    $↓$ ISCRIB
 v0.1  (ob3ect-imscriber.py)   Python — Frobenius PASS, Closure: True
-    ↓ AFWD + FSPLIT
+    $↓$ AFWD + FSPLIT
 v0.2  (.o grammar)       Custom .o grammar → C native binary
 v0.3                     Quine embedding — self.o imscribed in binary
 v0.4                     Quine extraction stub activated
 v0.5                     Grammar expansion — QUINE opcode
 v0.6                     MACRO opcode — language deepening
-v0.7                     Entropy pass — ΔS ≈ 0 verified
+v0.7                     Entropy pass — $δ$S ≈ 0 verified
 v0.8                     Full C self-hosting target
 v0.9                     Pre-silicon — final C generation
-    ↓ AREV + FFUSE
+    $↓$ AREV + FFUSE
 v0.10 (ob3ect-v0.10.iso) Bare-metal x86 bootloader ISO
 ```
 
