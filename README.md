@@ -63,22 +63,26 @@ python digital/runall.py
 ```
 
 ```
-=== imscribing_grammar — Full Digital Tower ===
+=== ob3ect — Full Digital Tower ===
 
-→ Category Ob3ect          Identity + Associativity hold on self-imscription → Closure: True
-→ Frobenius Ob3ect         Split/Fuse coherence holds → Closure: True
-→ Hopf Ob3ect              Antipode property holds → Closure: True
-→ Monad Ob3ect             Left unit / Right unit / Associativity → Closure: True
-→ Topos Ob3ect             Subobject classifier and power objects hold → Closure: True
-→ Cartesian Closed Ob3ect  Products + Exponentials embed full tower → Closure: True
-→ Quantum Ob3ect           Superposition → Measurement successful → Closure: True
-→ Linear Logic Ob3ect      Exact resource accounting (no cloning) → Closure: True
-→ Imscription VM           Executed full tower simulation → Closure: True
-→ HoTT Ob3ect              Univalence principle satisfied on self-imscription → Closure: True
-→ Imscription OS           Autopoietic — 10 processes booted → Grand System Closure: True
-→ ProofBridge              Formal coherence: Substantially Advanced
-→ String Diagram Ob3ect    Snake equation / Spider law / Monad bind → Closure: True
-→ Meta Auto-Imscriber      New ob3ect imscribed → test/test_ob3ect.py → Closure: True
+→ Category Ob3ect                  Identity + Associativity hold on self-imscription → Closure: True
+→ Frobenius Ob3ect                 Split/Fuse coherence holds → Closure: True
+→ Fixed-Point Ob3ect               T(src) ≡ src, T∘T = T — fixed-point verified → Closure: True
+→ Hopf Ob3ect                      Antipode property holds → Closure: True
+→ Monad Ob3ect                     Left unit / Right unit / Associativity → Closure: True
+→ Entropy Ob3ect                   H = 3.6636 bits/char, stable under roundtrip → Closure: True
+→ Topos Ob3ect                     Subobject classifier and power objects hold → Closure: True
+→ Cartesian Closed Ob3ect          Products + Exponentials embed full tower → Closure: True
+→ Quantum Ob3ect                   Superposition → Measurement successful → Closure: True
+→ Linear Logic Ob3ect              Exact resource accounting (no cloning) → Closure: True
+→ Imscription VM                   Executed full tower simulation → Closure: True
+→ Traced Ob3ect                    Yanking equation Tr(id_A) = id_I verified → Closure: True
+→ HoTT Ob3ect                      Univalence principle satisfied on self-imscription → Closure: True
+→ Imscription OS                   Autopoietic — 10 processes booted → Grand System Closure: True
+→ ProofBridge                      Formal coherence: Substantially Advanced
+→ String Diagram Ob3ect            Snake equation / Spider law / Monad bind → Closure: True
+→ IMASM Self-Imscription Ob3ect    IG coordinates assigned and stable under μ∘δ → Closure: True
+→ Meta Auto-Imscriber              New ob3ect imscribed → test/test_ob3ect.py → Closure: True
 
 Full categorical tower executed successfully.
 The grammar is autopoietic.
@@ -94,17 +98,21 @@ every higher layer's closure depends on the Frobenius condition at the base.
 |-------|------|----------------------|
 | Category | `digital/category/` | Small category on AST node types; identity + associativity |
 | Frobenius | `digital/frobenius/` | Special Frobenius algebra; μ∘δ = id |
+| Fixed-Point | `digital/fixed_point_ob3ect/` | Fixed point of constant-folding T; T(src) ≡ src, T∘T = T |
 | Hopf | `digital/hopf/` | Frobenius + antipode S; S∘S = id, S anti-homomorphism |
 | Monad | `digital/monad/` | Triple (T, η, μ); left unit, right unit, associativity |
+| Entropy | `digital/entropy_ob3ect/` | Shannon entropy H measured on self; stable under μ∘δ roundtrip |
 | Topos | `digital/topos/` | CCC + subobject classifier Ω; power objects |
 | CCC | `digital/ccc/` | Cartesian closed; products × exponentials |
 | Quantum | `digital/quantum/` | Superposition over AST branches; measurement collapses to identity |
 | Linear Logic | `digital/linearlogic/` | !-free resource accounting; no cloning, no weakening |
 | IVM | `digital/ivm/` | Imscription VM; traced monoidal; handles shared-name programs |
+| Traced | `digital/traced_ob3ect/` | Explicit trace operator; yanking equation Tr(id_A) = id_I verified |
 | HoTT | `digital/homotopytypetheory/` | Higher paths; univalence: equivalent types are identical |
 | Imscription OS | `digital/imscriptionoperatingsystem/` | Autopoietic kernel; 10 self-imscribing processes |
 | ProofBridge | `digital/proofbridge/` | Bridge to Lean 4 formal proofs in `proofs/` |
 | String Diagrams | `digital/stringdiagram/` | Graphical calculus; rewriting snake/spider/monad diagrams |
+| IMASM Self-Imscription | `digital/imasm_self_imscription_ob3ect/` | Assigns itself IG coordinates; verifies coordinate stability under μ∘δ |
 | Auto-Imscriber | `digital/auto_imscriber.py` | Meta-layer; generates new ob3ects into `digital/test/` |
 
 ---
