@@ -9,7 +9,7 @@ passes that check before it is committed to the tower.
 
 The repository contains:
 - **`auto.py`** — LLM-driven pipeline: natural language → verified ob3ect in one command
-- **`digital/`** — 18-layer categorical tower, each layer self-verifying (Closure: True)
+- **`digital/`** — 28-layer categorical tower, each layer self-verifying (Closure: True)
 - **`digital/runall.py`** — executes the full tower end-to-end
 - **`proofs/`** — Lean 4 machine-checked proofs of the tower's coherence laws
 - **`digital/frob.py`** — the original Frobenius self-imscriber (the ob3ect's seed)
@@ -159,7 +159,7 @@ to the traced monoidal structure.
 
 ## The Digital Tower
 
-14 self-verifying layers. Run the full tower:
+28 self-verifying layers. Run the full tower:
 
 ```bash
 python digital/runall.py
@@ -186,6 +186,16 @@ python digital/runall.py
 → String Diagram Ob3ect            Snake equation / Spider law / Monad bind → Closure: True
 → IMASM Self-Imscription Ob3ect    IG coordinates assigned and stable under μ∘δ → Closure: True
 → Meta Auto-Imscriber              New ob3ect imscribed → test/test_ob3ect.py → Closure: True
+→ Yoneda Ob3ect                    Nat(Hom(A,−),F)≅F(A); forward-backward identity + naturality squares → Closure: True
+→ Operad Ob3ect                    Sequential unit laws + associativity on mixed-arity compositions → Closure: True
+→ Sheaf Ob3ect                     Locality + gluing + restriction functoriality on P({1,2,3}) → Closure: True
+→ Dagger Compact Ob3ect            Snake equations + compact closure + (R∘S)†=S†∘R† → Closure: True
+→ Galois Connection Ob3ect         Monotonicity + f(S)⊑T⇔S⊆g(T) + closure operator → Closure: True
+→ Stone Duality Ob3ect             All 9 BA axioms + Spec(Clopen(X))≅X + Clopen(Spec(B))≅B → Closure: True
+→ Presheaf Ob3ect                  Functoriality P(id)=id + P(gf^op)=P(f^op)∘P(g^op) + representable Hom → Closure: True
+→ Kan Extension Ob3ect             Lan∘K≅F + functoriality + universal property with unique factoring → Closure: True
+→ Adjoint Functors Ob3ect          Free⊣Forgetful Hom bijection on 16 matrices + both triangle identities → Closure: True
+→ Initial/Terminal Ob3ect          ∅ initial + {*} terminal + product/coproduct UMPs → Closure: True
 
 Full categorical tower executed successfully.
 The grammar is autopoietic.
@@ -217,6 +227,16 @@ every higher layer's closure depends on the Frobenius condition at the base.
 | String Diagrams | `digital/stringdiagram/` | Graphical calculus; rewriting snake/spider/monad diagrams |
 | IMASM Self-Imscription | `digital/imasm_self_imscription_ob3ect/` | Assigns itself IG coordinates; verifies coordinate stability under μ∘δ |
 | Auto-Imscriber | `digital/auto_imscriber.py` | Meta-layer; generates new ob3ects into `digital/test/` |
+| Yoneda | `digital/yoneda/` | Yoneda Lemma: Nat(Hom(A,−),F)≅F(A) verified on 3-object poset; forward-backward identity + naturality squares |
+| Operad | `digital/operad/` | Planar operad of binary trees; sequential unit laws γ(id;f)=f, γ(f;id,…,id)=f; two independent associativity tests on mixed-arity compositions |
+| Sheaf | `digital/sheaf/` | Sheaf on discrete topology; locality, gluing, restriction functoriality on P({1,2,3}) |
+| Dagger Compact | `digital/daggercompact/` | FinRel dagger compact closed; involution, (R∘S)†=S†∘R†, both snake equations, name-counit coherence |
+| Galois Connection | `digital/galois/` | Powerset-complement Galois connection; monotonicity, f(S)⊑T⇔S⊆g(T)⇔S∩T=∅, closure operator inflation+idempotence |
+| Stone Duality | `digital/stoneduality/` | BA_fin^op ≅ FinSet; all 9 BA axioms, Spec(Clopen(X))≅X, Clopen(Spec(B))≅B, atom map injective |
+| Presheaf | `digital/presheaf/` | Functor C^op→Set; functoriality P(id)=id, P(gf^op)=P(f^op)∘P(g^op), representable Hom_C(−,0), naturality |
+| Kan Extension | `digital/kanextension/` | Left Kan extension along inclusion; Lan∘K≅F, functoriality, universal property ∀G,α ∃!β with β∘η=α |
+| Adjoint Functors | `digital/adjoint/` | Free⊣Forgetful (Vec⊣Set over GF(2)); Hom bijection on all 16 matrices + 16 set maps; unit η, counit ε, both triangle identities |
+| Initial/Terminal | `digital/initialterminal/` | Limits & colimits in Set; ∅ initial, {*} terminal, product/coproduct UMPs, adjunction cardinalities |
 
 ---
 
@@ -566,7 +586,7 @@ ob3ect/
     ├── frob.py              — Original Frobenius self-imscriber (the seed)
     ├── ob3ect-imscriber.py  — v0.1: Python Frobenius compiler
     ├── grokouro.txt         — Full Grok dialogue log: 3 FAIL → PASS + descent to v0.10
-    ├── runall.py            — Execute the full 14-layer tower
+    ├── runall.py            — Execute the full 28-layer tower
     ├── auto_imscriber.py    — Meta-layer: generates new ob3ects into digital/test/
     ├── cfg_opcodes.py       — Animated opcode flow GIF renderer
     ├── cfg_descent.py       — Animated version-descent GIF renderer
@@ -589,6 +609,16 @@ ob3ect/
     ├── imscriptionoperatingsystem/ — Imscription OS
     ├── proofbridge/         — ProofBridge to Lean 4
     ├── stringdiagram/       — String diagram ob3ect
+    ├── yoneda/              — Yoneda ob3ect (layer 19)
+    ├── operad/              — Operad ob3ect (layer 20)
+    ├── sheaf/               — Sheaf ob3ect (layer 21)
+    ├── daggercompact/       — Dagger compact ob3ect (layer 22)
+    ├── galois/              — Galois connection ob3ect (layer 23)
+    ├── stoneduality/        — Stone duality ob3ect (layer 24)
+    ├── presheaf/            — Presheaf ob3ect (layer 25)
+    ├── kanextension/        — Kan extension ob3ect (layer 26)
+    ├── adjoint/             — Adjoint functors ob3ect (layer 27)
+    ├── initialterminal/     — Initial/terminal ob3ect (layer 28)
     └── test/                — Auto-generated ob3ects (meta-layer output)
 ```
 
