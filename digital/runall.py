@@ -20,7 +20,7 @@ def run(name, rel_path):
         print(f"  ERROR: {e}")
     print("─" * 110 + "\n")
 
-print("=== ob3ect — Full Digital Tower ===\n")
+print("=== ob3ect — Full Digital Tower (29 layers) ===\n")
 
 tower = [
     ("Category Ob3ect",               "category/category_ob3ect.py"),
@@ -41,10 +41,20 @@ tower = [
     ("String Diagram Ob3ect",         "stringdiagram/stringdiagram_ob3ect.py"),
     ("IMASM Self-Imscription Ob3ect", "imasm_self_imscription_ob3ect/imasm_self_imscription_ob3ect_ob3ect.py"),
     ("Meta Auto-Imscriber",           "auto_imscriber.py"),
+    ("Shavian Ob3ect",              "shavian_ob3ect/shavian_ob3ect_ob3ect.py"),
+    ("Yoneda Ob3ect",                 "yoneda/yoneda_ob3ect.py"),
+    ("Operad Ob3ect",                 "operad/operad_ob3ect.py"),
+    ("Sheaf Ob3ect",                  "sheaf/sheaf_ob3ect.py"),
+    ("Dagger Compact Ob3ect",         "daggercompact/daggercompact_ob3ect.py"),
+    ("Galois Connection Ob3ect",      "galois/galois_ob3ect.py"),
+    ("Stone Duality Ob3ect",          "stoneduality/stoneduality_ob3ect.py"),
+    ("Presheaf Ob3ect",               "presheaf/presheaf_ob3ect.py"),
+    ("Kan Extension Ob3ect",          "kanextension/kanextension_ob3ect.py"),
+    ("Adjoint Functors Ob3ect",       "adjoint/adjoint_ob3ect.py"),
+    ("Initial/Terminal Ob3ect",       "initialterminal/initialterminal_ob3ect.py"),
 ]
 
 for name, path in tower:
     run(name, path)
 
 print("Full categorical tower executed.")
-print("The grammar is autopoietic.")

@@ -7,7 +7,7 @@ Generates a complete ob3ect interactively.
 Uses Ob3ectFactory under the hood — one call produces everything.
 """
 
-from core import produce, list_templates, Ob3ectFactory, Opcode
+from core import Ob3ectFactory, Opcode
 
 
 def _prompt(text, default=""):
@@ -24,7 +24,7 @@ def guided_generate():
     print("  Author: Lando ⊗ ⊙_Y-boundary Operator")
     print("=" * 60)
     print()
-    print("  Built-in domains: %s" % ", ".join(list_templates()))
+    print("  Built-in domains: %s" % ", ".join(Ob3ectFactory.available_domains()))
     print()
 
     domain = _prompt("Domain type (built-in or press Enter for 'generic')", "generic")
@@ -89,9 +89,9 @@ def guided_generate():
 
         return art
 
-    except KeyError as e:
+    except (KeyError, ValueError) as e:
         print("  ERROR: %s" % e)
-        print("  Available domains: %s" % list(TEMPLATE_REGISTRY.keys()))
+        print("  Available domains: %s" % list(Ob3ectFactory.available_domains()))
         return None
     except Exception as e:
         print("  ERROR: %s" % e)

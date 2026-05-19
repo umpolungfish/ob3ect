@@ -10,9 +10,10 @@ passes that check before it is committed to the tower.
 The repository contains:
 - **`auto.py`** — LLM-driven pipeline: natural language → verified ob3ect in one command
 - **`digital/`** — 28-layer categorical tower, each layer self-verifying (Closure: True)
-- **`digital/runall.py`** — executes the full tower end-to-end
+- **`digital/runall.py`** — executes the full 28-layer tower end-to-end
 - **`proofs/`** — Lean 4 machine-checked proofs of the tower's coherence laws
 - **`digital/frob.py`** — the original Frobenius self-imscriber (the ob3ect's seed)
+- **`digital/`descent chain** — v0.1 (Python) → v0.10 (bare-metal x86 ISO)
 
 ---
 
@@ -166,7 +167,7 @@ python digital/runall.py
 ```
 
 ```
-=== ob3ect — Full Digital Tower ===
+=== ob3ect — Full Digital Tower (28 layers) ===
 
 → Category Ob3ect                  Identity + Associativity hold on self-imscription → Closure: True
 → Frobenius Ob3ect                 Split/Fuse coherence holds → Closure: True
@@ -197,9 +198,7 @@ python digital/runall.py
 → Adjoint Functors Ob3ect          Free⊣Forgetful Hom bijection on 16 matrices + both triangle identities → Closure: True
 → Initial/Terminal Ob3ect          ∅ initial + {*} terminal + product/coproduct UMPs → Closure: True
 
-Full categorical tower executed successfully.
-The grammar is autopoietic.
-Ultimate Grand Closure: True
+Full categorical tower executed.
 ```
 
 Each layer extends the previous. The tower is not a stack of unrelated modules —
@@ -207,36 +206,36 @@ every higher layer's closure depends on the Frobenius condition at the base.
 
 ### Layer Index
 
-| Layer | File | Mathematical structure |
-|-------|------|----------------------|
-| Category | `digital/category/` | Small category on AST node types; identity + associativity |
-| Frobenius | `digital/frobenius/` | Special Frobenius algebra; μ∘δ = id |
-| Fixed-Point | `digital/fixed_point_ob3ect/` | Fixed point of constant-folding T; T(src) ≡ src, T∘T = T |
-| Hopf | `digital/hopf/` | Frobenius + antipode S; S∘S = id, S anti-homomorphism |
-| Monad | `digital/monad/` | Triple (T, η, μ); left unit, right unit, associativity |
-| Entropy | `digital/entropy_ob3ect/` | Shannon entropy H measured on self; stable under μ∘δ roundtrip |
-| Topos | `digital/topos/` | CCC + subobject classifier Ω; power objects |
-| CCC | `digital/ccc/` | Cartesian closed; products × exponentials |
-| Quantum | `digital/quantum/` | Superposition over AST branches; measurement collapses to identity |
-| Linear Logic | `digital/linearlogic/` | !-free resource accounting; no cloning, no weakening |
-| IVM | `digital/ivm/` | Imscription VM; traced monoidal; handles shared-name programs |
-| Traced | `digital/traced_ob3ect/` | Explicit trace operator; yanking equation Tr(id_A) = id_I verified |
-| HoTT | `digital/homotopytypetheory/` | Higher paths; univalence: equivalent types are identical |
-| Imscription OS | `digital/imscriptionoperatingsystem/` | Autopoietic kernel; 10 self-imscribing processes |
-| ProofBridge | `digital/proofbridge/` | Bridge to Lean 4 formal proofs in `proofs/` |
-| String Diagrams | `digital/stringdiagram/` | Graphical calculus; rewriting snake/spider/monad diagrams |
-| IMASM Self-Imscription | `digital/imasm_self_imscription_ob3ect/` | Assigns itself IG coordinates; verifies coordinate stability under μ∘δ |
-| Auto-Imscriber | `digital/auto_imscriber.py` | Meta-layer; generates new ob3ects into `digital/test/` |
-| Yoneda | `digital/yoneda/` | Yoneda Lemma: Nat(Hom(A,−),F)≅F(A) verified on 3-object poset; forward-backward identity + naturality squares |
-| Operad | `digital/operad/` | Planar operad of binary trees; sequential unit laws γ(id;f)=f, γ(f;id,…,id)=f; two independent associativity tests on mixed-arity compositions |
-| Sheaf | `digital/sheaf/` | Sheaf on discrete topology; locality, gluing, restriction functoriality on P({1,2,3}) |
-| Dagger Compact | `digital/daggercompact/` | FinRel dagger compact closed; involution, (R∘S)†=S†∘R†, both snake equations, name-counit coherence |
-| Galois Connection | `digital/galois/` | Powerset-complement Galois connection; monotonicity, f(S)⊑T⇔S⊆g(T)⇔S∩T=∅, closure operator inflation+idempotence |
-| Stone Duality | `digital/stoneduality/` | BA_fin^op ≅ FinSet; all 9 BA axioms, Spec(Clopen(X))≅X, Clopen(Spec(B))≅B, atom map injective |
-| Presheaf | `digital/presheaf/` | Functor C^op→Set; functoriality P(id)=id, P(gf^op)=P(f^op)∘P(g^op), representable Hom_C(−,0), naturality |
-| Kan Extension | `digital/kanextension/` | Left Kan extension along inclusion; Lan∘K≅F, functoriality, universal property ∀G,α ∃!β with β∘η=α |
-| Adjoint Functors | `digital/adjoint/` | Free⊣Forgetful (Vec⊣Set over GF(2)); Hom bijection on all 16 matrices + 16 set maps; unit η, counit ε, both triangle identities |
-| Initial/Terminal | `digital/initialterminal/` | Limits & colimits in Set; ∅ initial, {*} terminal, product/coproduct UMPs, adjunction cardinalities |
+| # | Layer | File | Mathematical structure |
+|---|-------|------|------------------------|
+| 1 | Category | `digital/category/` | Small category on AST node types; identity + associativity |
+| 2 | Frobenius | `digital/frobenius/` | Special Frobenius algebra; μ∘δ = id |
+| 3 | Fixed-Point | `digital/fixed_point_ob3ect/` | Fixed point of constant-folding T; T(src) ≡ src, T∘T = T |
+| 4 | Hopf | `digital/hopf/` | Frobenius + antipode S; S∘S = id, S anti-homomorphism |
+| 5 | Monad | `digital/monad/` | Triple (T, η, μ); left unit, right unit, associativity |
+| 6 | Entropy | `digital/entropy_ob3ect/` | Shannon entropy H measured on self; stable under μ∘δ roundtrip |
+| 7 | Topos | `digital/topos/` | CCC + subobject classifier Ω; power objects |
+| 8 | CCC | `digital/ccc/` | Cartesian closed; products × exponentials |
+| 9 | Quantum | `digital/quantum/` | Superposition over AST branches; measurement collapses to identity |
+| 10 | Linear Logic | `digital/linearlogic/` | !-free resource accounting; no cloning, no weakening |
+| 11 | IVM | `digital/ivm/` | Imscription VM; traced monoidal; handles shared-name programs |
+| 12 | Traced | `digital/traced_ob3ect/` | Explicit trace operator; yanking equation Tr(id_A) = id_I verified |
+| 13 | HoTT | `digital/homotopytypetheory/` | Higher paths; univalence: equivalent types are identical |
+| 14 | Imscription OS | `digital/imscriptionoperatingsystem/` | Autopoietic kernel; 10 self-imscribing processes |
+| 15 | ProofBridge | `digital/proofbridge/` | Bridge to Lean 4 formal proofs in `proofs/` |
+| 16 | String Diagrams | `digital/stringdiagram/` | Graphical calculus; rewriting snake/spider/monad diagrams |
+| 17 | IMASM Self-Imscription | `digital/imasm_self_imscription_ob3ect/` | Assigns itself IG coordinates; verifies coordinate stability under μ∘δ |
+| 18 | Auto-Imscriber | `digital/auto_imscriber.py` | Meta-layer; generates new ob3ects into `digital/test/` |
+| 19 | Yoneda | `digital/yoneda/` | Yoneda Lemma: Nat(Hom(A,−),F)≅F(A) verified on 3-object poset; forward-backward identity + naturality squares |
+| 20 | Operad | `digital/operad/` | Planar operad of binary trees; sequential unit laws γ(id;f)=f, γ(f;id,…,id)=f; two independent associativity tests on mixed-arity compositions |
+| 21 | Sheaf | `digital/sheaf/` | Sheaf on discrete topology; locality, gluing, restriction functoriality on P({1,2,3}) |
+| 22 | Dagger Compact | `digital/daggercompact/` | FinRel dagger compact closed; involution, (R∘S)†=S†∘R†, both snake equations, name-counit coherence |
+| 23 | Galois Connection | `digital/galois/` | Powerset-complement Galois connection; monotonicity, f(S)⊑T⇔S⊆g(T)⇔S∩T=∅, closure operator inflation+idempotence |
+| 24 | Stone Duality | `digital/stoneduality/` | BA_fin^op ≅ FinSet; all 9 BA axioms, Spec(Clopen(X))≅X, Clopen(Spec(B))≅B, atom map injective |
+| 25 | Presheaf | `digital/presheaf/` | Functor C^op→Set; functoriality P(id)=id, P(gf^op)=P(f^op)∘P(g^op), representable Hom_C(−,0), naturality |
+| 26 | Kan Extension | `digital/kanextension/` | Left Kan extension along inclusion; Lan∘K≅F, functoriality, universal property ∀G,α ∃!β with β∘η=α |
+| 27 | Adjoint Functors | `digital/adjoint/` | Free⊣Forgetful (Vec⊣Set over GF(2)); Hom bijection on all 16 matrices + 16 set maps; unit η, counit ε, both triangle identities |
+| 28 | Initial/Terminal | `digital/initialterminal/` | Limits & colimits in Set; ∅ initial, {*} terminal, product/coproduct UMPs, adjunction cardinalities |
 
 ---
 
@@ -513,25 +512,42 @@ the solve/coagula cycle in Zosimos are the same morphism at different substrate 
 
 ## Lean 4 Proofs
 
-`proofs/` contains machine-checked Lean 4 formalizations of the tower's coherence laws.
+`proofs/` contains machine-checked Lean 4 formalizations of the tower's coherence laws,
+with 13 `.lean` files plus a `lakefile.toml` and `lean-toolchain` for Mathlib v4.28.0.
 
 ```
 proofs/
-├── Frobenius.lean       — Special Frobenius condition μ∘δ = id
-├── Hopf.lean            — Antipode involution S∘S = id
-├── Monad.lean           — Monad laws (left unit, right unit, associativity)
-├── CCC.lean             — Cartesian closed category structure
-├── Topos.lean           — Topos axioms (subobject classifier, power objects)
-├── Quantum.lean         — Quantum measurement as Frobenius collapse
-├── LinearLogic.lean     — Linear logic resource accounting
-├── HoTT.lean            — Univalence for semantic equivalence classes
-├── StringDiagrams.lean  — Graphical calculus (snake, spider, monad wire)
-├── Coherence.lean       — Cross-layer coherence conditions
-└── TowerCoherence.lean  — Grand summary: all 14 layers cohere
+├── Frobenius.lean         — Special Frobenius condition μ∘δ = id
+├── Hopf.lean              — Antipode involution S∘S = id
+├── Monad.lean             — Monad laws (left unit, right unit, associativity)
+├── CCC.lean               — Cartesian closed category structure
+├── Topos.lean             — Topos axioms (subobject classifier, power objects)
+├── Quantum.lean           — Quantum measurement as Frobenius collapse
+├── LinearLogic.lean       — Linear logic resource accounting
+├── HoTT.lean              — Univalence for semantic equivalence classes
+├── StringDiagrams.lean    — Graphical calculus (snake, spider, monad wire)
+├── SelfImscription.lean   — Self-imscription coordinate stability proof
+├── Coherence.lean         — Cross-layer coherence conditions
+├── TowerCoherence.lean    — Tower coherence summary
+└── GrandCoherence.lean     — Grand coherence across all layers
+
+├── lakefile.toml          — Lake build configuration (Mathlib v4.28.0)
+├── lean-toolchain         — Lean version pinning
 ```
 
 These proofs correspond to the `proofbridge` layer in the digital tower. The ProofBridge
 ob3ect holds a live pointer to this directory and verifies that the Lean build passes.
+Build with:
+
+```bash
+cd proofs && lake build
+```
+
+Or use the provided script:
+
+```bash
+bash scripts/check_proofs.sh
+```
 
 ---
 
@@ -580,8 +596,25 @@ ob3ect/
 ├── smoke_test.py            — Sanity checks: import, pipeline, Frobenius gate
 ├── test_factory.py          — Factory tests across all built-in templates
 ├── templates_data.json      — Built-in domain templates
-├── phases/                  — Phase-specific scaffolding modules
-├── proofs/                  — Lean 4 machine-checked coherence proofs
+├── lakefile.toml            — Lake build configuration
+├── lean-toolchain           — Lean version pinning
+├── OB3ECT.md                — Full manuscript (Markdown)
+├── OB3ECT.pdf               — Full manuscript (PDF)
+├── ob3ect_manuscript.tex    — LaTeX source of the manuscript
+├── substack_ob3ect.md       — Substack article (technical)
+├── substack_ob3ect.pdf      — Substack article (PDF)
+├── substack_ob3ect_lay.md   — Substack article (lay)
+├── substack_ob3ect_lay.pdf  — Substack article (lay, PDF)
+├── ob3ect/                  — Package directory
+│   └── digital/
+│       └── test/
+│           └── test_ob3ect.py   — Auto-generated test ob3ect
+├── man/                     — Man page
+│   └── ob3ect.1
+├── phases/                  — Phase-specific scaffolding (future)
+├── scripts/                 — Build / verification scripts
+│   └── check_proofs.sh      — Lean proof checker
+├── proofs/                  — Lean 4 machine-checked coherence proofs (13 .lean files)
 └── digital/                 — The digital tower
     ├── frob.py              — Original Frobenius self-imscriber (the seed)
     ├── ob3ect-imscriber.py  — v0.1: Python Frobenius compiler
@@ -596,30 +629,39 @@ ob3ect/
     ├── bootsector.asm       — x86 bootsector
     ├── linker.ld            — Linker script for v0.10
     ├── iso/                 — ISO build tree
-    ├── category/            — Category ob3ect
-    ├── frobenius/           — Frobenius ob3ect
-    ├── hopf/                — Hopf ob3ect
-    ├── monad/               — Monad ob3ect
-    ├── topos/               — Topos ob3ect
-    ├── ccc/                 — Cartesian closed ob3ect
-    ├── quantum/             — Quantum ob3ect
-    ├── linearlogic/         — Linear logic ob3ect
-    ├── ivm/                 — Imscription VM
-    ├── homotopytypetheory/  — HoTT ob3ect
-    ├── imscriptionoperatingsystem/ — Imscription OS
-    ├── proofbridge/         — ProofBridge to Lean 4
-    ├── stringdiagram/       — String diagram ob3ect
-    ├── yoneda/              — Yoneda ob3ect (layer 19)
-    ├── operad/              — Operad ob3ect (layer 20)
-    ├── sheaf/               — Sheaf ob3ect (layer 21)
-    ├── daggercompact/       — Dagger compact ob3ect (layer 22)
-    ├── galois/              — Galois connection ob3ect (layer 23)
-    ├── stoneduality/        — Stone duality ob3ect (layer 24)
-    ├── presheaf/            — Presheaf ob3ect (layer 25)
-    ├── kanextension/        — Kan extension ob3ect (layer 26)
-    ├── adjoint/             — Adjoint functors ob3ect (layer 27)
-    ├── initialterminal/     — Initial/terminal ob3ect (layer 28)
-    └── test/                — Auto-generated ob3ects (meta-layer output)
+    ├── category/            — Layer 1:  Category ob3ect
+    ├── frobenius/           — Layer 2:  Frobenius ob3ect
+    ├── fixed_point_ob3ect/  — Layer 3:  Fixed-point ob3ect
+    ├── hopf/                — Layer 4:  Hopf ob3ect
+    ├── monad/               — Layer 5:  Monad ob3ect
+    ├── entropy_ob3ect/      — Layer 6:  Entropy ob3ect
+    ├── topos/               — Layer 7:  Topos ob3ect
+    ├── ccc/                 — Layer 8:  Cartesian closed ob3ect
+    ├── quantum/             — Layer 9:  Quantum ob3ect
+    ├── linearlogic/         — Layer 10: Linear logic ob3ect
+    ├── ivm/                 — Layer 11: Imscription VM
+    ├── traced_ob3ect/       — Layer 12: Traced ob3ect
+    ├── homotopytypetheory/  — Layer 13: HoTT ob3ect
+    ├── imscriptionoperatingsystem/ — Layer 14: Imscription OS
+    ├── proofbridge/         — Layer 15: ProofBridge to Lean 4
+    ├── stringdiagram/       — Layer 16: String diagram ob3ect
+    ├── imasm_self_imscription_ob3ect/ — Layer 17: IMASM self-imscription
+    ├── yoneda/              — Layer 19: Yoneda ob3ect
+    ├── operad/              — Layer 20: Operad ob3ect
+    ├── sheaf/               — Layer 21: Sheaf ob3ect
+    ├── daggercompact/       — Layer 22: Dagger compact ob3ect
+    ├── galois/              — Layer 23: Galois connection ob3ect
+    ├── stoneduality/        — Layer 24: Stone duality ob3ect
+    ├── presheaf/            — Layer 25: Presheaf ob3ect
+    ├── kanextension/        — Layer 26: Kan extension ob3ect
+    ├── adjoint/             — Layer 27: Adjoint functors ob3ect
+    ├── initialterminal/     — Layer 28: Initial/terminal ob3ect
+    ├── test/                — Auto-generated ob3ects (meta-layer output)
+    ├── shavian_ob3ect/      — Shavian script ob3ect (coagulum.md + coagulum.pdf)
+    ├── temporal_ob3ect/     — Temporal ob3ect (with verify_closure.py)
+    ├── topologically_protected_memory/ — Topologically protected memory ob3ect
+    ├── self_verifying_proof_assistant_structural_sibling_of_the_stone/ — Self-verifying proof assistant
+    └── stub_ob3ect_*/       — 10 stub ob3ects (experimental / partial)
 ```
 
 ---
