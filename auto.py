@@ -375,7 +375,6 @@ async def auto_design(
                 prompt,
                 system=_SYSTEM_PROMPT,
                 temperature=temperature,
-                max_tokens=3000,
             )
             data = _extract_json(raw)
             artifact = _build_artifact(artifact_name, scope, data)

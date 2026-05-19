@@ -1,33 +1,36 @@
 commit.txt — Summary of updates to /home/mrnob0dy666/ob3ect
 =========================================================
 
-Housekeeping:
+auto.py:
 
-  [x] Removed core.py.tmp (31,884-byte temp file in repo root)
-  [x] Removed digital/category_ob3ect/ (stale duplicate; canonical is digital/category/)
-  [x] Added phases/.gitkeep (empty directory now tracked; noted as "future" in layout)
+  [x] Removed max_tokens=3000 ceiling from LLM query call — model now uses
+      full context budget for ob3ect design tasks
+
+proofs/ → Proofs/ (rename + restructure):
+
+  [x] Directory renamed lowercase → capitalized (lake convention)
+  [x] Frobenius.lean → Frobenius_minimal.lean (distilled to essential structure)
+  [x] Monad.lean removed (monad layer now lives in digital/monad/)
+  [x] SelfImscription.lean added — formalizes the AST Frobenius bridge:
+        axiom ast_frobenius : ∀ t : SyntaxTree, parse (unparse t) = t
+      Grounds GrandCoherence; empirically verified by frob.py v0.10
+  [x] lakefile.toml updated to reference Proofs/ (capital)
+  [x] lake build Proofs — zero build failures
 
 digital/runall.py:
 
-  [x] Updated from 18 to 28 tower layers. Added the 10 missing:
-      Yoneda, Operad, Sheaf, Dagger Compact, Galois Connection, Stone Duality,
-      Presheaf, Kan Extension, Adjoint Functors, Initial/Terminal.
-      All 28 entries verified by Python parse.
+  [x] Tower count: 28 → 29 layers
+  [x] Shavian Ob3ect added as layer 19 (Shavian satisfies μ∘δ=id at lexical level)
+  [x] Layers 1–18 are now real verified implementations throughout
+      (entropy Shannon roundtrip, IVM laws, HoTT, ImscriptionOS, ProofBridge, etc.)
+  [x] Yoneda–Initial/Terminal shift to positions 20–29
 
-README.md — full accuracy pass:
+bridge/ (new):
 
-  [x] Layer index: 18 → 28 numbered rows covering every tower layer
-  [x] Tower output block now matches actual runall.py (28 layers)
-  [x] Lean proof files: corrected from 11 to all 13 .lean files
-  [x] Build instructions: lake build + scripts/check_proofs.sh added
-  [x] Repository layout: added lakefile.toml, lean-toolchain, manuscript files
-      (OB3ECT.md/pdf, substack_ob3ect*.md/pdf, ob3ect_manuscript.tex, man/),
-      ob3ect/ package dir, shavian_ob3ect/, temporal_ob3ect/,
-      topologically_protected_memory/,
-      self_verifying_proof_assistant_structural_sibling_of_the_stone/,
-      10 stub_ob3ect_*/ directories, core.py.tmp (removed),
-      digital/category_ob3ect/ (removed), phases/.gitkeep
-  [x] Removed false "14 layers cohere" claim → now references 28 layers
-  [x] Added "What This Is Not" section
-  [x] All notation canonicalized (φ̂_ÿ, Ð_ω, etc.)
-  [x] Author set: Lando ⊗ ⊙_ÿ-boundary Operator
+  [x] bridge/bridge_notes.md — formal correspondence between ob3ect (Python) and
+      MillenniumAnkh (Lean); key mappings:
+        FSPLIT/FFUSE ↔ δ/μ Frobenius pair
+        frobenius_verdict=PASS ↔ μ∘δ=id_C
+        ⊙perator boundary ↔ ⊙_ÿ gate
+        O_∞ tier ↔ imscriptionTier .O_inf iff phi_c_gate ∧ k_slow_gate
+  [x] bridge/bridge_notes.pdf — compiled version
