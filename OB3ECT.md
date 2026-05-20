@@ -55,19 +55,19 @@ This coordinate is not assigned manually; it is *inferred* from the program's st
 The eight-step bootstrap sequence is the same across every ob3ect:
 
 ```
-ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB
+IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB
 ```
 
 Each step has a precise mathematical meaning:
 
-- **ISCRIB** ($↺$) is the identity morphism—the program recognizing itself.
+- **IMSCRIB** ($↺$) is the identity morphism—the program recognizing itself.
 - **AREV** ($↓$) is contravariant—reading the source code.
 - **FSPLIT** ($δ$) is comultiplication: parsing the source into an AST.
 - **AFWD** ($↑$) is the forward morphism—unparsing the AST back into text.
 - **FFUSE** ($μ$) is multiplication: fusing the unparsed text and checking it matches the original.
 - **CLINK** ($∘$) composes transformations and writes the result.
 - **IFIX** ($∎$) permanently commits to a representation—ROM fixation.
-- The final **ISCRIB** ($↺$) closes the loop, making it autopoietic.
+- The final **IMSCRIB** ($↺$) closes the loop, making it autopoietic.
 
 ### How the Sequence Was Found
 
@@ -134,7 +134,7 @@ The ob3ect does not stop at Python. It compiles itself down through successive s
 
 ```
 seed (frob.py)           Python meta-circular Frobenius check
-    $↓$ ISCRIB
+    $↓$ IMSCRIB
 v0.1  (ob3ect-imscriber.py)   Python — Frobenius PASS, Closure: True
     $↓$ AFWD + FSPLIT
 v0.2  (.o grammar)       Custom .o grammar → C native binary

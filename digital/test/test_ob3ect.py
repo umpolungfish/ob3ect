@@ -19,7 +19,7 @@ class TestOb3ectOb3ect:
         return textwrap.dedent(inspect.getsource(TestOb3ectOb3ect))
 
     def _compute_self_hash(self) -> str:
-        """ISCRIB"""
+        """IMSCRIB"""
         return hashlib.sha256(self.source.encode()).hexdigest()[:16]
 
     def verify(self):

@@ -40,7 +40,7 @@ message db 13,10
         db '========================================',13,10
         db '   Ob3ect v0.10 BARE-METAL OUROBOROS   ',13,10
         db '========================================',13,10
-        db 'ISCRIB: Kernel has recognized itself on raw hardware.',13,10
+        db 'IMSCRIB: Kernel has recognized itself on raw hardware.',13,10
         db 'Self-imscription confirmed: μΔ-ID v0.10',13,10
         db 'Bare-Metal Ouroboros achieved.',13,10
         db 'QUINE: Self-source lives in silicon.',13,10

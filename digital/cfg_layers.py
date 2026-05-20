@@ -5,7 +5,7 @@ For each layer, AST-extracts its verify() call graph and animates it:
   - Layer-local functions  →  teal  (#20b2aa)
   - verify() entry node    →  blue  (#4e79a7)
   - Frobenius externals    →  gold  (#ffd700)
-    (frobenius_phase, TANCH, AFWD, FSPLIT, FFUSE, ISCRIB)
+    (frobenius_phase, TANCH, AFWD, FSPLIT, FFUSE, IMSCRIB)
   - AST externals          →  cyan  (#00ced1)
     (parse, dump, unparse, compare — when called as ast.X)
 
@@ -70,7 +70,7 @@ TOWER: list[tuple[str, str, str]] = [
 
 # Known external frobenius callees (imported from frob.py)
 _EXT_FROBENIUS = frozenset({
-    "frobenius_phase", "TANCH", "AFWD", "AREV", "FSPLIT", "FFUSE", "ISCRIB",
+    "frobenius_phase", "TANCH", "AFWD", "AREV", "FSPLIT", "FFUSE", "IMSCRIB",
 })
 
 # Known AST-module callees: captured when node.func is ast.Attribute with

@@ -5,7 +5,7 @@ Models the data-flow of auto.py's build_artifact() run:
 
   domain_desc → prompt_build → llm_call → json_parse
     → 7 artifact components → frob_check → Ob3ectArtifact
-  BootstrapSeq expands into 8 IMASM steps (ISCRIB→AREV→FSPLIT→AFWD→FFUSE→…)
+  BootstrapSeq expands into 8 IMASM steps (IMSCRIB→AREV→FSPLIT→AFWD→FFUSE→…)
   frob_check → retry_gate → llm_call  (back-edge on Frobenius FAIL)
 
 Node families and colors:
@@ -15,7 +15,7 @@ Node families and colors:
                         RegisterMapping, BootstrapSeq, ExOSSpec, EntropyAudit
   control    #e15759  — frob_check, retry_gate
   frobenius  #ffd700  — FSPLIT_3, FFUSE_5
-  bootstrap  #f28e2b  — ISCRIB_1, AREV_2, AFWD_4, CLINK_6, IFIX_7, ISCRIB_8
+  bootstrap  #f28e2b  — IMSCRIB_1, AREV_2, AFWD_4, CLINK_6, IFIX_7, IMSCRIB_8
   output     #59a14f  — Ob3ectArtifact
 
 Animation:
@@ -57,14 +57,14 @@ _FAMILY: dict[str, str] = {
     "EntropyAudit":    "artifact",
     "frob_check":      "control",
     "retry_gate":      "control",
-    "ISCRIB_1":        "bootstrap",
+    "IMSCRIB_1":        "bootstrap",
     "AREV_2":          "bootstrap",
     "FSPLIT_3":        "frobenius",
     "AFWD_4":          "bootstrap",
     "FFUSE_5":         "frobenius",
     "CLINK_6":         "bootstrap",
     "IFIX_7":          "bootstrap",
-    "ISCRIB_8":        "bootstrap",
+    "IMSCRIB_8":        "bootstrap",
     "Ob3ectArtifact":  "output",
 }
 
@@ -93,14 +93,14 @@ _LABELS: dict[str, str] = {
     "EntropyAudit":    "Entropy",
     "frob_check":      "frob?",
     "retry_gate":      "retry",
-    "ISCRIB_1":        "ISCRIB₁",
+    "IMSCRIB_1":        "IMSCRIB₁",
     "AREV_2":          "AREV₂",
     "FSPLIT_3":        "FSPLIT₃",
     "AFWD_4":          "AFWD₄",
     "FFUSE_5":         "FFUSE₅",
     "CLINK_6":         "CLINK₆",
     "IFIX_7":          "IFIX₇",
-    "ISCRIB_8":        "ISCRIB₈",
+    "IMSCRIB_8":        "IMSCRIB₈",
     "Ob3ectArtifact":  "Ob3ect",
 }
 
@@ -109,8 +109,8 @@ EXEC_ORDER: list[str] = [
     "DomainCharter", "OpcodeMap", "SplitFuseReport", "RegisterMapping",
     "BootstrapSeq", "ExOSSpec", "EntropyAudit",
     "frob_check", "retry_gate",
-    "ISCRIB_1", "AREV_2", "FSPLIT_3", "AFWD_4", "FFUSE_5",
-    "CLINK_6", "IFIX_7", "ISCRIB_8",
+    "IMSCRIB_1", "AREV_2", "FSPLIT_3", "AFWD_4", "FFUSE_5",
+    "CLINK_6", "IFIX_7", "IMSCRIB_8",
     "Ob3ectArtifact",
 ]
 
@@ -136,15 +136,15 @@ EDGES: list[tuple[str, str]] = [
     ("BootstrapSeq",    "Ob3ectArtifact"),
     ("ExOSSpec",        "Ob3ectArtifact"),
     ("EntropyAudit",    "Ob3ectArtifact"),
-    ("BootstrapSeq",    "ISCRIB_1"),
-    ("ISCRIB_1",        "AREV_2"),
+    ("BootstrapSeq",    "IMSCRIB_1"),
+    ("IMSCRIB_1",        "AREV_2"),
     ("AREV_2",          "FSPLIT_3"),
     ("FSPLIT_3",        "AFWD_4"),
     ("AFWD_4",          "FFUSE_5"),
     ("FFUSE_5",         "CLINK_6"),
     ("CLINK_6",         "IFIX_7"),
-    ("IFIX_7",          "ISCRIB_8"),
-    ("ISCRIB_8",        "Ob3ectArtifact"),
+    ("IFIX_7",          "IMSCRIB_8"),
+    ("IMSCRIB_8",        "Ob3ectArtifact"),
 ]
 
 _FROB_NODES = frozenset({"FSPLIT_3", "FFUSE_5", "frob_check", "SplitFuseReport"})

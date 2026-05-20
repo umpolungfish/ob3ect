@@ -62,19 +62,19 @@ Let me draw your attention to one primitive in particular: $φ̂_ÿ$, the self-m
 Every ob3ect executes the same eight-step bootstrap sequence:
 
 ```
-ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB
+IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB
 ```
 
 Each step has a precise mathematical meaning:
 
-- **ISCRIB** ($↺$): the identity morphism — the program recognizing itself.
+- **IMSCRIB** ($↺$): the identity morphism — the program recognizing itself.
 - **AREV** ($↓$): contravariant — reading the source code.
 - **FSPLIT** ($δ$): comultiplication — parsing into an AST.
 - **AFWD** ($↑$): forward morphism — unparsing back into text.
 - **FFUSE** ($μ$): multiplication — fusing and checking against the original.
 - **CLINK** ($∘$): composing transformations.
 - **IFIX** ($∎$): permanently committing to a representation.
-- The final **ISCRIB** ($↺$): closing the loop, making it autopoietic.
+- The final **IMSCRIB** ($↺$): closing the loop, making it autopoietic.
 
 Here is something strange. This sequence was not derived. It was *found*.
     

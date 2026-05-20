@@ -42,10 +42,10 @@ class TracedOb3ect:
         self.log         : list = []
         self.state       = "VINIT"
 
-    def ISCRIB(self):
+    def IMSCRIB(self):
         if self.closure is None:
             self.closure = Closure("id", "λx.x", {})
-        self.log.append(("ISCRIB", self.closure.hash()))
+        self.log.append(("IMSCRIB", self.closure.hash()))
         if self.state != "PARADOX":
             self.state = "VERIFIED"
 
@@ -76,7 +76,7 @@ class TracedOb3ect:
             self.state = "VERIFIED"
 
     def CLINK(self):
-        self.AFWD(); self.ISCRIB()
+        self.AFWD(); self.IMSCRIB()
 
     def IFIX(self):
         if self.closure and hasattr(self, "yanking_ok"):
@@ -94,9 +94,9 @@ class TracedOb3ect:
         ).hash()
 
     def bootstrap(self) -> bool:
-        self.ISCRIB(); self.AREV(); self.FSPLIT()
+        self.IMSCRIB(); self.AREV(); self.FSPLIT()
         self.AFWD();   self.FFUSE(); self.CLINK()
-        self.IFIX();   self.ISCRIB()
+        self.IFIX();   self.IMSCRIB()
         return self._domain_frobenius()
 
     def verify(self) -> bool:

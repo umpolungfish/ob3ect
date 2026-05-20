@@ -26,18 +26,18 @@ order; Phase 2 (flow) sends a Gaussian pulse through the revealed graph.
 
 ### Opcode flow CFG
 
-**Nodes** — 14 IMASM opcodes: VINIT, TANCH, AFWD, AREV, CLINK, ISCRIB (logical family,
+**Nodes** — 14 IMASM opcodes: VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB (logical family,
 purple); FSPLIT, FFUSE (Frobenius family, gold); EVALT, EVALF, ENGAGR (dialetheia family,
 green/red/white); IFIX (linear family, cyan). Node size scales with degree.
 
 **Edges** — directed execution-flow edges: which opcode can validly follow which in a
 compiled IMASM program. Edges within the Frobenius family are drawn in gold. The
-bootstrap path ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB
+bootstrap path IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB
 is highlighted as the primary cycle.
 
-**The Frobenius cycle** — FSPLIT → TANCH → AFWD → FFUSE → ISCRIB — is rendered in gold
+**The Frobenius cycle** — FSPLIT → TANCH → AFWD → FFUSE → IMSCRIB — is rendered in gold
 with linewidth 3.0 and alpha 0.95. This is the subgraph that encodes μ∘δ = id: FSPLIT
-is δ (comultiplication), FFUSE is μ (multiplication), and the cycle closes on ISCRIB
+is δ (comultiplication), FFUSE is μ (multiplication), and the cycle closes on IMSCRIB
 (identity / self-reference).
 
 **Phase 1:** Opcodes appear in pipeline order (logical → Frobenius → dialetheia → linear).
@@ -94,7 +94,7 @@ and `ob3ect-imscriber.py`. Node color encodes source file and function role:
 - Green: `EVALT` (true branch terminal)
 - Red: `EVALF` (false branch terminal)
 - Cyan: bootstrap entry points (`bootstrap_compiler`, `bootstrap_ob3ect`, `bootstrap_minimal`)
-- Magenta: `ISCRIB` (self-reference identity)
+- Magenta: `IMSCRIB` (self-reference identity)
 
 **Edges** — 16 directed call edges: an edge u → v means function u contains a call to
 function v, extracted by `ast.walk` over each function's body looking for `ast.Call`
@@ -245,7 +245,7 @@ The ob3ect compiles itself down through successive substrate layers.
 
 ```
 seed (frob.py)           Python meta-circular Frobenius check
-    ↓ ISCRIB
+    ↓ IMSCRIB
 v0.1  (ob3ect-imscriber.py)   Python — Frobenius PASS, Closure: True
     ↓ AFWD + FSPLIT
 v0.2  (.o grammar)       Custom .o grammar → C native binary
@@ -389,7 +389,7 @@ p.map_opcode("TANCH",  "type-checked term",  "terminal anchor ⊤", [])
 p.map_opcode("AFWD",   "parse",              "source → AST", [])
 p.map_opcode("AREV",   "unparse",            "AST → source (descent)", [])
 p.map_opcode("CLINK",  "compose",            "f ∘ g on transformations", [])
-p.map_opcode("ISCRIB", "read __file__",      "self-reference — id", [])
+p.map_opcode("IMSCRIB", "read __file__",      "self-reference — id", [])
 p.map_opcode("FSPLIT", "ast.parse(src)",     "comultiplication δ: A → A⊗A", [])
 p.map_opcode("FFUSE",  "ast.unparse(tree)",  "multiplication μ: A⊗A → A", [])
 p.map_opcode("EVALT",  "parse success",      "true lattice branch", [])
@@ -442,7 +442,7 @@ Logical     TANCH    Terminal anchor ⊤ — closed, verified boundary
 Logical     AFWD     Forward morphism → (construction / elaboration)
 Logical     AREV     Contravariant ← (descent / deconstruction)
 Logical     CLINK    Composition ∘ (sequential chaining)
-Logical     ISCRIB   Identity id — self-reference, the ob3ect reading itself
+Logical     IMSCRIB   Identity id — self-reference, the ob3ect reading itself
 
 Frobenius   FSPLIT   Comultiplication δ: A → A⊗A (branching / parsing)
 Frobenius   FFUSE    Multiplication μ: A⊗A → A  (reconstitution / unparsing)
@@ -458,11 +458,11 @@ Linear      IFIX     ROM fixation — permanent, irreversible commitment
 **The bootstrap sequence is fixed across all IMASM systems:**
 
 ```
-ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB
+IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB
 ```
 
 This is μ∘δ = id as an eight-step categorical assembly. The sequence closes on
-ISCRIB — the final step is self-reference, making the loop autopoietic.
+IMSCRIB — the final step is self-reference, making the loop autopoietic.
 
 ---
 
@@ -721,7 +721,7 @@ The full dialogue is in `digital/grokouro.txt`.
 
 The descent from `frob.py` to the bare-metal x86 ISO (`v0.10`) follows the same
 bootstrap sequence that appears in every IMASM system:
-**ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB**.
+**IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB**.
 
 The loop does not merely terminate. It re-imscribes itself.
 

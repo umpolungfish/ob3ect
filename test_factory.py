@@ -32,7 +32,7 @@ f.register("culinary", {
         "AFWD":   {"chosen": "cooking process", "justification": "Forward transformation raw to cooked"},
         "AREV":   {"chosen": "cooling / resting", "justification": "Reverse process stops cooking"},
         "CLINK":  {"chosen": "recipe step sequencing", "justification": "Steps compose"},
-        "ISCRIB": {"chosen": "dish identity", "justification": "Signature flavor identifies dish"},
+        "IMSCRIB": {"chosen": "dish identity", "justification": "Signature flavor identifies dish"},
         "FSPLIT": {"chosen": "portioning components", "justification": "Splits into parallel parts"},
         "FFUSE":  {"chosen": "final plating", "justification": "Recombines to unified dish"},
         "EVALT":  {"chosen": "flavor harmony", "justification": "Dish succeeds"},

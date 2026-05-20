@@ -42,7 +42,7 @@ LOGICAL (6) — categorical skeleton:
                  Examples: Hebrew Mem (water/descent), composting, solve/coagula.
   CLINK  (0x4) — Composition ∘. Sequential chaining of morphisms.
                  Examples: Egyptian biliterals, Basque agglutination, root→derived form.
-  ISCRIB (0x5) — Identity id. Self-reference, self-recognition. The element is itself.
+  IMSCRIB (0x5) — Identity id. Self-reference, self-recognition. The element is itself.
                  Examples: Sanskrit nasals, Egyptian logograms, the stone that knows itself.
 
 FROBENIUS (2) — the core algebra, μ∘δ = id:
@@ -64,14 +64,14 @@ LINEAR (1) — irreversible fixation:
                  Examples: Egyptian determinatives, dream journal entry, measurement record.
 
 BOOTSTRAP SEQUENCE (mandatory 8 steps, opcodes fixed):
-  Step 1 ISCRIB — self-recognition at opening
+  Step 1 IMSCRIB — self-recognition at opening
   Step 2 AREV   — descent / reverse
   Step 3 FSPLIT — separate / branch
   Step 4 AFWD   — ascent / forward
   Step 5 FFUSE  — unify / fuse
   Step 6 CLINK  — compose / link
   Step 7 IFIX   — fix / record permanently
-  Step 8 ISCRIB — self-recognition at close  (closure: back to identity)
+  Step 8 IMSCRIB — self-recognition at close  (closure: back to identity)
 """
 
 _SCHEMA = """\
@@ -87,7 +87,7 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
     "AFWD":   {"element": "<domain element>", "justification": "<why forward morphism>"},
     "AREV":   {"element": "<domain element>", "justification": "<why reverse/descent>"},
     "CLINK":  {"element": "<domain element>", "justification": "<why composition>"},
-    "ISCRIB": {"element": "<domain element>", "justification": "<why identity/self-ref>"},
+    "IMSCRIB": {"element": "<domain element>", "justification": "<why identity/self-ref>"},
     "FSPLIT": {"element": "<domain element>", "justification": "<what it splits into — be specific>"},
     "FFUSE":  {"element": "<domain element>", "justification": "<what it reconstitutes — must match FSPLIT input>"},
     "EVALT":  {"element": "<domain element>", "justification": "<affirmative/success state>"},
@@ -111,14 +111,14 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
     "both":  "<domain description of 11 — paradox, both states simultaneously>"
   },
   "bootstrap": [
-    "<Step 1 ISCRIB: domain action — self-recognition at opening>",
+    "<Step 1 IMSCRIB: domain action — self-recognition at opening>",
     "<Step 2 AREV:   domain action — descent/reverse>",
     "<Step 3 FSPLIT: domain action — separate/branch>",
     "<Step 4 AFWD:   domain action — ascent/forward>",
     "<Step 5 FFUSE:  domain action — unify/fuse>",
     "<Step 6 CLINK:  domain action — compose/link>",
     "<Step 7 IFIX:   domain action — fix/record>",
-    "<Step 8 ISCRIB: domain action — self-recognition at close>"
+    "<Step 8 IMSCRIB: domain action — self-recognition at close>"
   ],
   "exos": {
     "compiler":  "<what translates domain intentions into operations>",

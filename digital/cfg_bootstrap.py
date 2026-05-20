@@ -1,20 +1,20 @@
 """
 Animated CFG of the universal 8-step bootstrap sequence.
 
-ISCRIB is one node — steps 1 and 8 are the same opcode.  The bootstrap
-is a directed cycle that begins and ends at ISCRIB:
+IMSCRIB is one node — steps 1 and 8 are the same opcode.  The bootstrap
+is a directed cycle that begins and ends at IMSCRIB:
 
-  ISCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → ISCRIB  (∞)
+  IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB  (∞)
 
-Self-loop on ISCRIB  (id: X→X, purple arc outward)
-IFIX → ISCRIB        closes the cycle  (teal back-arc)
-FFUSE → ISCRIB       Frobenius verify arc  (μ∘δ = id, gold cross-arc)
+Self-loop on IMSCRIB  (id: X→X, purple arc outward)
+IFIX → IMSCRIB        closes the cycle  (teal back-arc)
+FFUSE → IMSCRIB       Frobenius verify arc  (μ∘δ = id, gold cross-arc)
 
-Layout: 7 nodes on a circle, ISCRIB at 12 o'clock.
+Layout: 7 nodes on a circle, IMSCRIB at 12 o'clock.
 
 Animation:
-  Phase 1 — build: nodes appear in execution order; ISCRIB self-loop appears
-             on first reveal; IFIX→ISCRIB cycle-close arc flashes teal;
+  Phase 1 — build: nodes appear in execution order; IMSCRIB self-loop appears
+             on first reveal; IFIX→IMSCRIB cycle-close arc flashes teal;
              Frobenius pair flashes gold when μ∘δ = id arc is drawn.
   Phase 2 — flow: Gaussian pulse rotates the cycle; self-loop pulses teal;
              Frobenius arc pulses gold.
@@ -38,9 +38,9 @@ import matplotlib.patches as mpatches
 OUT = Path(__file__).parent / "docs" / "cfg_bootstrap.gif"
 BG  = "#0a0a15"
 
-# ── 7 nodes (ISCRIB appears once) ─────────────────────────────────────────────
+# ── 7 nodes (IMSCRIB appears once) ─────────────────────────────────────────────
 STEPS = [
-    ("ISCRIB",  "ISCRIB\nid",  "ISCRIB",  "self",      "id — self-recognition"),
+    ("IMSCRIB",  "IMSCRIB\nid",  "IMSCRIB",  "self",      "id — self-recognition"),
     ("AREV",    "AREV\n←",     "AREV",    "direction", "← descent"),
     ("FSPLIT",  "FSPLIT\nδ",   "FSPLIT",  "frobenius", "δ — separate"),
     ("AFWD",    "AFWD\n→",     "AFWD",    "direction", "→ ascent"),
@@ -65,12 +65,12 @@ _FAMILY_COLOR = {
 EXEC_ORDER = _IDS[:]   # animation reveal order
 
 # ── Edges ─────────────────────────────────────────────────────────────────────
-# Sequential spine (6 edges — ISCRIB→AREV→…→IFIX)
+# Sequential spine (6 edges — IMSCRIB→AREV→…→IFIX)
 _SPINE: list[tuple[str, str]] = [
     (_IDS[i], _IDS[i + 1]) for i in range(len(_IDS) - 1)
 ]
-_CYCLE_CLOSE = ("IFIX",  "ISCRIB")   # step 7→1: cycle back-arc
-_FROB_X      = ("FFUSE", "ISCRIB")   # μ∘δ = id verify arc
+_CYCLE_CLOSE = ("IFIX",  "IMSCRIB")   # step 7→1: cycle back-arc
+_FROB_X      = ("FFUSE", "IMSCRIB")   # μ∘δ = id verify arc
 
 ALL_EDGES: list[tuple[str, str]] = _SPINE + [_CYCLE_CLOSE, _FROB_X]
 
@@ -177,10 +177,10 @@ def render_frame(
             rad = 0.28 if is_frobx else (0.22 if is_cycle else 0.0)
             _arc(u, v, col, lw, al, rad)
 
-        # Self-loop on ISCRIB once revealed
-        if "ISCRIB" in revealed:
+        # Self-loop on IMSCRIB once revealed
+        if "IMSCRIB" in revealed:
             loop_col = "#ffd700" if special_flash == "frob" else "#cc44ff"
-            _draw_self_loop(ax, pos["ISCRIB"][0], pos["ISCRIB"][1],
+            _draw_self_loop(ax, pos["IMSCRIB"][0], pos["IMSCRIB"][1],
                             loop_col, lw=2.2, al=0.90)
 
         vis = [nidx[n] for n in EXEC_ORDER if n in revealed]
@@ -196,7 +196,7 @@ def render_frame(
                     sizes[i] *= 2.5
         elif special_flash == "cycle":
             for i, idx in enumerate(vis):
-                if EXEC_ORDER[idx] == "ISCRIB":
+                if EXEC_ORDER[idx] == "IMSCRIB":
                     colors[i] = _PULSE_TEAL
                     sizes[i] *= 2.5
 
@@ -236,20 +236,20 @@ def render_frame(
             rad = 0.28 if is_frobx else (0.22 if is_cycle else 0.0)
             _arc(u, v, col, lw, al, rad)
 
-        # Self-loop brightness follows ISCRIB's pulse weight
-        w_iscrib = weights[nidx["ISCRIB"]]
-        if w_iscrib > 0.3:
+        # Self-loop brightness follows IMSCRIB's pulse weight
+        w_imscrib = weights[nidx["IMSCRIB"]]
+        if w_imscrib > 0.3:
             loop_col, loop_lw, loop_al = "#00ffe0", 3.0, 0.92
         else:
             loop_col, loop_lw, loop_al = "#cc44ff", 1.8, 0.55
-        _draw_self_loop(ax, pos["ISCRIB"][0], pos["ISCRIB"][1],
+        _draw_self_loop(ax, pos["IMSCRIB"][0], pos["IMSCRIB"][1],
                         loop_col, lw=loop_lw, al=loop_al)
 
         blended = np.empty_like(base_colors)
         for i, n in enumerate(EXEC_ORDER):
             w = weights[i]
             target = (_PULSE_GOLD if n in _FROB_NODES else
-                      _PULSE_TEAL if n == "ISCRIB" else
+                      _PULSE_TEAL if n == "IMSCRIB" else
                       _PULSE_WHITE)
             blended[i] = base_colors[i] * (1 - w) + target * w
         blended = np.clip(blended, 0, 1)
@@ -281,7 +281,7 @@ def main(build_frames=50, flow_frames=90, fps=15, dpi=110):
     ])
     base_sizes = np.array([
         220 if n in _FROB_NODES else
-        200 if n == "ISCRIB" else
+        200 if n == "IMSCRIB" else
         120
         for n in EXEC_ORDER
     ], dtype=float)
@@ -320,7 +320,7 @@ def main(build_frames=50, flow_frames=90, fps=15, dpi=110):
             n_at   = EXEC_ORDER[center]
             title  = (
                 f"Ob3ect — Bootstrap Cycle | wave: {_FULL[n_at]} | "
-                f"ISCRIB = id  ·  μ∘δ = id"
+                f"IMSCRIB = id  ·  μ∘δ = id"
             )
             render_frame(ax, pos, base_colors, base_sizes,
                          None, None, center, pulse_sigma, N, title)

@@ -20,7 +20,7 @@ hang:
     jmp hang
 
 msg db 13,10,'=== Ob3ect v0.10 Bare-Metal Ouroboros ===',13,10
-    db 'ISCRIB: Kernel recognized itself on raw hardware.',13,10
+    db 'IMSCRIB: Kernel recognized itself on raw hardware.',13,10
     db 'Self-imscription confirmed: μΔ-ID v0.10',13,10
     db 'Bare-Metal Ouroboros achieved.',13,10
     db 'QUINE: Self-source lives in silicon.',13,10

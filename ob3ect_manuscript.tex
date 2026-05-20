@@ -230,20 +230,20 @@ This coordinate is not assigned manually; it is \emph{inferred} from the program
 The eight-step bootstrap sequence is the same across every ob3ect, and it is the operational expression of the Frobenius condition:
 
 \begin{lstlisting}
-ISCRIB -> AREV -> FSPLIT -> AFWD -> FFUSE -> CLINK -> IFIX -> ISCRIB
+IMSCRIB -> AREV -> FSPLIT -> AFWD -> FFUSE -> CLINK -> IFIX -> IMSCRIB
 \end{lstlisting}
 
 Each step has a precise mathematical meaning:
 
 \begin{itemize}
-    \item \textbf{ISCRIB} is the identity morphism---the program recognizing itself.
+    \item \textbf{IMSCRIB} is the identity morphism---the program recognizing itself.
     \item \textbf{AREV} is contravariant---reading the source code.
     \item \textbf{FSPLIT} is comultiplication $\delta$: parsing the source into an AST.
     \item \textbf{AFWD} is the forward morphism--- unparsing the AST back into text.
     \item \textbf{FFUSE} is multiplication $\mu$: fusing the unparsed text and checking it matches the original.
     \item \textbf{CLINK} composes transformations and writes the result.
     \item \textbf{IFIX} permanently commits to a representation---ROM fixation.
-    \item The final ISCRIB closes the loop, making it autopoietic.
+    \item The final IMSCRIB closes the loop, making it autopoietic.
 \end{itemize}
 
 This sequence is not a convention; it is the \emph{only} sequence that satisfies the Frobenius identity in a self-imscribing context. It is the categorical assembly of $\mu \circ \delta = \mathrm{id}$, and it is why the ob3ect is not just a program but a proof-term in the language of monoidal categories.
@@ -295,7 +295,7 @@ The ob3ect does not stop at Python. It compiles itself down through successive s
 
 \begin{lstlisting}
 seed (frob.py)           Python meta-circular Frobenius check
-    $\downarrow$ ISCRIB
+    $\downarrow$ IMSCRIB
 v0.1  (ob3ect-imscriber.py)   Python --- Frobenius PASS, Closure: True
     $\downarrow$ AFWD + FSPLIT
 v0.2  (.o grammar)       Custom .o grammar -> C native binary

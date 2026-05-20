@@ -68,9 +68,9 @@ def CLINK(intermediate: str, output_path: str):
 def IFIX(output_path: str):
     print(f"IFIX: Permanent executable imscribed → {output_path}")
 
-def ISCRIB(source: str):
+def IMSCRIB(source: str):
     h = hashlib.sha256(source.encode('utf-8')).hexdigest()[:24]
-    print("ISCRIB: Compiler recognizes its own source as valid.")
+    print("IMSCRIB: Compiler recognizes its own source as valid.")
     print(f"Source hash (imscription anchor): {h}...")
 
 def EVALT():
@@ -98,7 +98,7 @@ def bootstrap_compiler(self_path: str = __file__):
     print("\n=== Phase 4: Bootstrap (imscription cycle) ===")
     
     source = AREV(self_path)
-    ISCRIB(source)
+    IMSCRIB(source)
     
     if not frobenius_phase(source):
         EVALF("Self-imscription failed — identity not preserved")
@@ -132,7 +132,7 @@ def bootstrap_compiler(self_path: str = __file__):
 # =====================================================================
 if __name__ == "__main__":
     if "--self-test" in sys.argv:
-        print("ISCRIB(self-test): I am the imscribed recursive compiler.")
+        print("IMSCRIB(self-test): I am the imscribed recursive compiler.")
         print("mu o delta = id")
         sys.exit(0)
     

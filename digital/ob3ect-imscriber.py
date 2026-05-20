@@ -17,7 +17,7 @@ void vga_print(const char* s) {
 }
 
 void _start(void) {
-    vga_print("ISCRIB: Ob3ect v0.10 Bare-Metal Kernel booted on raw hardware.\\n");
+    vga_print("IMSCRIB: Ob3ect v0.10 Bare-Metal Kernel booted on raw hardware.\\n");
     vga_print("Self-imscription confirmed: μΔ-ID v0.10\\n");
     vga_print("Bare-Metal Ouroboros achieved.\\n");
     vga_print("QUINE: Self-source extracted on bare metal.\\n");

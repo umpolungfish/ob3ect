@@ -54,12 +54,12 @@ class IMASMOb3ect:
         self.VINIT()
 
     def CLINK(self):
-        self.AFWD(); self.ISCRIB()
+        self.AFWD(); self.IMSCRIB()
 
-    def ISCRIB(self):
+    def IMSCRIB(self):
         if self.register is None:
-            raise RuntimeError("ISCRIB: no coordinate assigned")
-        self.log.append(("ISCRIB", self.register.hash()))
+            raise RuntimeError("IMSCRIB: no coordinate assigned")
+        self.log.append(("IMSCRIB", self.register.hash()))
         if self.state != "PARADOX":
             self.state = "VERIFIED"
 
@@ -98,14 +98,14 @@ class IMASMOb3ect:
 
     def bootstrap(self) -> bool:
         try:
-            self.ISCRIB()
+            self.IMSCRIB()
         except RuntimeError:
             pass
         self.state = "READY"
         self.AREV(); self.FSPLIT()
         self.AFWD(); self.FFUSE()
         self.CLINK(); self.IFIX()
-        self.ISCRIB()
+        self.IMSCRIB()
         return self._domain_frobenius()
 
     def verify(self) -> bool:

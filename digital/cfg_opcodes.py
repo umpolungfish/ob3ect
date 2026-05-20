@@ -2,10 +2,10 @@
 Animated IMASM opcode flow CFG for the Ob3ect.
 
 Nodes  = IMASM opcodes (VINIT, TANCH, AREV, FSPLIT, AFWD, FFUSE,
-         CLINK, IFIX, ISCRIB, EVALT, EVALF, ENGAGR, IMSCRIBE, QUINE)
+         CLINK, IFIX, IMSCRIB, EVALT, EVALF, ENGAGR, IMSCRIBE, QUINE)
 Edges  = execution flow from the Phase 4 bootstrap sequence + self.o
 
-The Frobenius cycle  FSPLIT → AFWD → FFUSE → ISCRIB  is the μ∘δ = id
+The Frobenius cycle  FSPLIT → AFWD → FFUSE → IMSCRIB  is the μ∘δ = id
 loop and is highlighted in gold throughout.
 
 Animation:
@@ -43,7 +43,7 @@ _FAMILY: dict[str, str] = {
     "FFUSE":    "frobenius",
     "CLINK":    "link",
     "IFIX":     "self",
-    "ISCRIB":   "self",
+    "IMSCRIB":   "self",
     "EVALT":    "terminal_ok",
     "EVALF":    "terminal_err",
     "ENGAGR":   "resolve",
@@ -69,25 +69,25 @@ _PULSE_WHITE = np.array(mcolors.to_rgba("#ffffff"))
 
 # ── Execution graph ──────────────────────────────────────────────────────────
 # Directed edges encoding the full bootstrap sequence:
-#   Phase 4 loop: VINIT→ISCRIB→AREV→FSPLIT→AFWD→FFUSE→CLINK→IFIX→ISCRIB (cycle)
+#   Phase 4 loop: VINIT→IMSCRIB→AREV→FSPLIT→AFWD→FFUSE→CLINK→IFIX→IMSCRIB (cycle)
 #   TANCH is called by FSPLIT and FFUSE (parsing/unparsing)
 #   EVALT/EVALF are terminal exits
 #   self.o sequence adds ENGAGR, IMSCRIBE, QUINE
 EDGES: list[tuple[str, str]] = [
-    ("VINIT",    "ISCRIB"),
-    ("ISCRIB",   "AREV"),
+    ("VINIT",    "IMSCRIB"),
+    ("IMSCRIB",   "AREV"),
     ("AREV",     "FSPLIT"),
     ("FSPLIT",   "TANCH"),
     ("TANCH",    "AFWD"),
     ("AFWD",     "FFUSE"),
     ("FFUSE",    "TANCH"),      # FFUSE calls TANCH on regenerated source
-    ("FFUSE",    "ISCRIB"),     # closure: fused result recognised → ISCRIB again
-    ("ISCRIB",   "CLINK"),
+    ("FFUSE",    "IMSCRIB"),     # closure: fused result recognised → IMSCRIB again
+    ("IMSCRIB",   "CLINK"),
     ("CLINK",    "IFIX"),
     ("IFIX",     "IMSCRIBE"),
     ("IMSCRIBE", "ENGAGR"),
     ("ENGAGR",   "EVALT"),
-    ("ISCRIB",   "EVALF"),      # ISCRIB can fail → EVALF
+    ("IMSCRIB",   "EVALF"),      # IMSCRIB can fail → EVALF
     ("FFUSE",    "EVALF"),      # FFUSE mismatch → EVALF
     ("QUINE",    "EVALT"),      # QUINE extraction → EVALT
     ("IFIX",     "QUINE"),      # post-IFIX quine embedding path
@@ -95,14 +95,14 @@ EDGES: list[tuple[str, str]] = [
 
 # Execution order for the animation build phase
 EXEC_ORDER = [
-    "VINIT", "ISCRIB", "AREV", "FSPLIT", "TANCH",
+    "VINIT", "IMSCRIB", "AREV", "FSPLIT", "TANCH",
     "AFWD", "FFUSE", "CLINK", "IFIX", "IMSCRIBE",
     "ENGAGR", "QUINE", "EVALT", "EVALF",
 ]
 
 _FROBENIUS_EDGES = {
     ("FSPLIT", "TANCH"), ("TANCH", "AFWD"),
-    ("AFWD", "FFUSE"), ("FFUSE", "TANCH"), ("FFUSE", "ISCRIB"),
+    ("AFWD", "FFUSE"), ("FFUSE", "TANCH"), ("FFUSE", "IMSCRIB"),
 }
 
 
@@ -231,7 +231,7 @@ def main(build_frames=50, flow_frames=80, fps=15, dpi=110):
     # Hierarchical layout: put EVALT/EVALF at bottom, VINIT at top
     pos = nx.shell_layout(G, nlist=[
         ["VINIT"],
-        ["ISCRIB", "AREV"],
+        ["IMSCRIB", "AREV"],
         ["FSPLIT", "TANCH", "AFWD"],
         ["FFUSE", "CLINK"],
         ["IFIX", "IMSCRIBE", "QUINE"],

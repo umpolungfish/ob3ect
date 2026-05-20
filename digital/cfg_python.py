@@ -52,7 +52,7 @@ _SPECIAL_COLOR = {
     "bootstrap_compiler":"#00ced1",
     "bootstrap_ob3ect":  "#00ced1",
     "bootstrap_minimal": "#00ced1",
-    "ISCRIB":            "#cc44ff",
+    "IMSCRIB":            "#cc44ff",
 }
 
 _PULSE_GOLD  = np.array(mcolors.to_rgba("#ffd700"))

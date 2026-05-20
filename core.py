@@ -9,11 +9,11 @@ from typing import Any, Dict, List, Optional, Tuple
 
 class Opcode(Enum):
     VINIT="VINIT"; TANCH="TANCH"; AFWD="AFWD"; AREV="AREV"
-    CLINK="CLINK"; ISCRIB="ISCRIB"; FSPLIT="FSPLIT"; FFUSE="FFUSE"
+    CLINK="CLINK"; IMSCRIB="IMSCRIB"; FSPLIT="FSPLIT"; FFUSE="FFUSE"
     EVALT="EVALT"; EVALF="EVALF"; ENGAGR="ENGAGR"; IFIX="IFIX"
     @property
     def family(self):
-        if self in (self.VINIT,self.TANCH,self.AFWD,self.AREV,self.CLINK,self.ISCRIB): return "Logical"
+        if self in (self.VINIT,self.TANCH,self.AFWD,self.AREV,self.CLINK,self.IMSCRIB): return "Logical"
         if self in (self.FSPLIT,self.FFUSE): return "Frobenius"
         if self in (self.EVALT,self.EVALF,self.ENGAGR): return "Dialetheia"
         return "Linear"
@@ -21,7 +21,7 @@ class Opcode(Enum):
 class RegisterState(Enum):
     VOID="00"; TRUE="01"; FALSE="10"; BOTH="11"
 
-BOOTSTRAP_STEPS = {1:"ISCRIB",2:"AREV",3:"FSPLIT",4:"AFWD",5:"FFUSE",6:"CLINK",7:"IFIX",8:"ISCRIB"}
+BOOTSTRAP_STEPS = {1:"IMSCRIB",2:"AREV",3:"FSPLIT",4:"AFWD",5:"FFUSE",6:"CLINK",7:"IFIX",8:"IMSCRIB"}
 OS_FLOOR = {"D":1,"T":3,"R":2,"P":4,"F":2,"K":1,"G":2,"Gamma":2,"Phi":1,"H":2,"S":2,"Omega":2}
 @dataclass
 class DomainCharter:
@@ -87,8 +87,8 @@ class BootstrapSequence:
     def validate(self):
         e = []
         if len(self.steps)!=8: e.append("need 8 bootstrap steps")
-        if self.steps and self.steps[0].get("opcode")!="ISCRIB": e.append("step1 must be ISCRIB")
-        if self.steps and self.steps[-1].get("opcode")!="ISCRIB": e.append("step8 must be ISCRIB")
+        if self.steps and self.steps[0].get("opcode")!="IMSCRIB": e.append("step1 must be IMSCRIB")
+        if self.steps and self.steps[-1].get("opcode")!="IMSCRIB": e.append("step8 must be IMSCRIB")
         if not self.closure_verified: e.append("closure required")
         return e
 

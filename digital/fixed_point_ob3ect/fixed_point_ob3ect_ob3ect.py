@@ -68,10 +68,10 @@ class FixedPointOb3ect:
             out.extend(self._extract_variables(c))
         return out
 
-    def ISCRIB(self):
+    def IMSCRIB(self):
         if self.program is None:
             self.program = ASTNode("VARIABLE", "x")
-        self.log.append(("ISCRIB", self.program.hash()))
+        self.log.append(("IMSCRIB", self.program.hash()))
 
     def AREV(self):
         pass
@@ -98,7 +98,7 @@ class FixedPointOb3ect:
 
     def CLINK(self):
         self.AFWD()
-        self.ISCRIB()
+        self.IMSCRIB()
 
     def IFIX(self):
         if self.program and hasattr(self, "fp_verified"):
@@ -116,9 +116,9 @@ class FixedPointOb3ect:
         ).hash()
 
     def bootstrap(self) -> bool:
-        self.ISCRIB(); self.AREV(); self.FSPLIT()
+        self.IMSCRIB(); self.AREV(); self.FSPLIT()
         self.AFWD();   self.FFUSE(); self.CLINK()
-        self.IFIX();   self.ISCRIB()
+        self.IFIX();   self.IMSCRIB()
         return self._domain_frobenius()
 
     def verify(self) -> bool:

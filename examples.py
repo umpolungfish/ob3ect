@@ -26,7 +26,7 @@ def example_physical():
             "TANCH": "Active vibration isolation table",
         },
         overrides={
-            "ISCRIB": {
+            "IMSCRIB": {
                 "chosen": "reference laser locked to cavity",
                 "justification": "Self-calibrating reference element"
             },
@@ -71,7 +71,7 @@ def example_oneiric():
             "VINIT": "pre-sleep intention: 'I will recognize dream signs'",
         },
         overrides={
-            "ISCRIB": {
+            "IMSCRIB": {
                 "chosen": "reality-check habit (looking at hands, counting fingers)",
                 "justification": "Triggers lucidity recognition"
             },
@@ -144,7 +144,7 @@ def example_custom():
             "AFWD":   {"chosen": "calcination and dissolution (solve)", "justification": "Forward dissolution toward dissolution of form"},
             "AREV":   {"chosen": "coagulation and fixation (coagula)", "justification": "Reverse reconstitution toward new form"},
             "CLINK":  {"chosen": "the seven operations chain", "justification": "Each operation feeds into the next in sequence"},
-            "ISCRIB": {"chosen": "the philosophers stone as self-reference", "justification": "The stone recognizes and perfects itself"},
+            "IMSCRIB": {"chosen": "the philosophers stone as self-reference", "justification": "The stone recognizes and perfects itself"},
             "FSPLIT": {"chosen": "separatio - division of elements", "justification": "Splits the unified matter into constituent principles"},
             "FFUSE":  {"chosen": "conjunctio - sacred marriage of opposites", "justification": "Reunites opposites into the perfected whole"},
             "EVALT":  {"chosen": "rubedo - the red stage (success)", "justification": "The Work is complete and true"},

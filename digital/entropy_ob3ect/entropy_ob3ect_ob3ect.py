@@ -69,7 +69,7 @@ class EntropyOb3ect:
     def CLINK(self):
         self.AFWD(); self.AREV()
         if self.measurement:
-            self.log.append(("ISCRIB", self.measurement.hash()))
+            self.log.append(("IMSCRIB", self.measurement.hash()))
 
     def IFIX(self):
         if self.measurement:
