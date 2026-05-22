@@ -20,7 +20,7 @@ def run(name, rel_path):
         print(f"  ERROR: {e}")
     print("─" * 110 + "\n")
 
-print("=== ob3ect — Full Digital Tower (29 layers) ===\n")
+print("=== ob3ect — Full Digital Tower (34 layers) ===\n")
 
 tower = [
     ("Category Ob3ect",               "category/category_ob3ect.py"),
@@ -32,8 +32,7 @@ tower = [
     ("Topos Ob3ect",                  "topos/topos_ob3ect.py"),
     ("Cartesian Closed Ob3ect",       "ccc/ccc_ob3ect.py"),
     ("Quantum Ob3ect",                "quantum/quantum_ob3ect.py"),
-    ("Linear Logic Ob3ect",           "linearlogic/linearlogic_ob3ect.py"),
-    ("Imscription VM",                "ivm/ivm_ob3ect.py"),
+    ("Linear Logic Ob3ect",           "linearlogic/linearlogic_ob3ect.py"),    ("Imscription VM",                "ivm/ivm_ob3ect.py"),
     ("Traced Ob3ect",                 "traced_ob3ect/traced_ob3ect_ob3ect.py"),
     ("Homotopy Type Theory Ob3ect",   "homotopytypetheory/homotopytypetheory_ob3ect.py"),
     ("Imscription Operating System",  "imscriptionoperatingsystem/imscriptionoperatingsystem_ob3ect.py"),
@@ -48,6 +47,13 @@ tower = [
     ("Dagger Compact Ob3ect",         "daggercompact/daggercompact_ob3ect.py"),
     ("Galois Connection Ob3ect",      "galois/galois_ob3ect.py"),
     ("Stone Duality Ob3ect",          "stoneduality/stoneduality_ob3ect.py"),
+    # ── Paraconsistent Integration Layers (5 new) ──
+    ("Belnap FOUR Ob3ect",            "belnap/belnap_ob3ect.py"),
+    ("Paraconsistent Kernel Ob3ect",  "parakernel/parakernel_ob3ect.py"),
+    ("Dialetheic Alignment Ob3ect",   "dialetheic/dialetheic_ob3ect.py"),
+    ("Belnap Shor Ob3ect",            "parashor/parashor_ob3ect.py"),
+    ("Multi-Agent Belnap Ob3ect",     "multiagent/multiagent_ob3ect.py"),
+    # ── Continue original tower ──
     ("Presheaf Ob3ect",               "presheaf/presheaf_ob3ect.py"),
     ("Kan Extension Ob3ect",          "kanextension/kanextension_ob3ect.py"),
     ("Adjoint Functors Ob3ect",       "adjoint/adjoint_ob3ect.py"),
