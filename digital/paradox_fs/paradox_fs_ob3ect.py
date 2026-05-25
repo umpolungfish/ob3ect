@@ -15,7 +15,7 @@ Structural type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; φ̂_ÿ;
 
 Try: FUSE mount via `python3 paradox_fs_ob3ect.py --mount /mnt/paradox`
 """
-import os, pathlib, sys, hashlib, json
+import errno, os, pathlib, stat as stat_mod, sys, hashlib, json
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from frob import frobenius_phase
 from belnap.belnap_ob3ect import Belnap, band, bnot, join
@@ -225,35 +225,58 @@ class ParadoxFS:
 def try_fuse_mount(paradox_fs: ParadoxFS, mountpoint: str) -> bool:
     """Attempt to mount the paradox filesystem via FUSE."""
     try:
-        import fuse
-        from fuse import FUSE, Operations
+        from fuse import FUSE, FuseOSError, Operations
+
+        _uid = os.getuid()
+        _gid = os.getgid()
+
+        def _file_stat(size: int) -> dict:
+            return dict(st_mode=(stat_mod.S_IFREG | 0o444), st_nlink=1,
+                        st_size=size, st_uid=_uid, st_gid=_gid,
+                        st_atime=0, st_mtime=0, st_ctime=0)
+
+        def _dir_stat() -> dict:
+            return dict(st_mode=(stat_mod.S_IFDIR | 0o555), st_nlink=2,
+                        st_size=0, st_uid=_uid, st_gid=_gid,
+                        st_atime=0, st_mtime=0, st_ctime=0)
 
         class ParadoxFUSE(Operations):
             def __init__(self, fs):
                 self.fs = fs
 
-            def readdir(self, path, fh):
-                return [(".", 0), ("..", 0)] + [(n, 0) for n in self.fs.ls(path)]
-
             def getattr(self, path, fh=None):
-                st = fuse.Stat()
-                if path == "/" or path == "":
-                    st.st_mode = 0o40755
-                elif path in [f"/paradox/{n}" for n in self.fs.files]:
-                    st.st_mode = 0o100644
-                else:
-                    return -2
-                return st
+                if path == "/":
+                    return _dir_stat()
+                key = path.lstrip("/")
+                if key in self.fs.files:
+                    inode = self.fs.files[key]
+                    if inode.is_dir:
+                        return _dir_stat()
+                    raw = inode._content_fn() if inode._content_fn else inode._content
+                    return _file_stat(len(raw.encode()))
+                raise FuseOSError(errno.ENOENT)
+
+            def readdir(self, path, fh):
+                if path == "/":
+                    top = [n for n in self.fs.ls("/paradox/") if n not in (".", "..")]
+                    return [".", ".."] + top
+                key = path.lstrip("/")
+                if key == "belnap":
+                    return [".", "..", "T", "F", "B", "N"]
+                return [".", ".."]
 
             def read(self, path, size, offset, fh):
-                key = path.replace("/paradox/", "")
-                data = self.fs.cat(path)
-                return data[offset:offset+size]
+                data = self.fs.cat("/paradox" + path).encode()
+                return data[offset:offset + size]
 
-        FUSE(ParadoxFUSE(paradox_fs), mountpoint, foreground=True)
+            def readlink(self, path):
+                return self.fs.readlink("/paradox" + path)
+
+        FUSE(ParadoxFUSE(paradox_fs), mountpoint, foreground=True, nothreads=True,
+             nonempty=True)
         return True
     except ImportError:
-        print("FUSE Python bindings not available. Running in simulation mode.")
+        print("fusepy not installed. Run: uv pip install fusepy")
         return False
     except Exception as e:
         print(f"FUSE mount failed: {e}")
