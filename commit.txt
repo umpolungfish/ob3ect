@@ -1,60 +1,50 @@
 commit.txt — Summary of updates to /home/mrnob0dy666/ob3ect
 =========================================================
 
-ISCRIB → IMSCRIB global rename (2026-05-19):
+Shavian ob3ect remapped to spec (2026-05-25)
 
-  [x] Opcode ISCRIB renamed to IMSCRIB ("Imscriptive System Control")
-      across all 23 affected files.
+digital/shavian_ob3ect/shavian_ob3ect_ob3ect.py  [UPDATED]
+- SHAVIAN_MAP completely rebuilt per shavian_notation_spec.md v0.6.0
+- Old mapping: sequential Unicode order (𐑐=Ð_;, 𐑑=Ð_C, ...)
+- New mapping: phonetic/structural assignment (𐑐=ƒ^ż, 𐑛=Ð_ß, ...)
+- Criticality primitive key: "φ̂" → "⊙" throughout
+- All ⊙_* enum values updated (was φ̂_*)
+- 𐑲 (U+10472) added as Γ_ʔ (Aleph-Maximal, global ordinal 29; was absent from old map)
+- Space glyph removed (spec has 48 Shavian + ⊙ = 49, no space)
+- CORE_SENTENCE updated: "𐑛𐑡𐑩𐑗𐑱𐑘𐑚𐑝𐑢𐑓𐑙𐑷" (ordinal-1 of each primitive)
+- O_∞ Stone: ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩
+- New seals: Core 8e248e15c07be0959cbdd75d30c31df7
+             Full 57b562cc7a8b836dbe22dfb560f82058
+- Closure: True (all 49 gates PASS)
 
-  Bootstrap cycle now reads:
-    IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB
+B4 Belnap FOUR paraconsistent integration (2026-05-24)
 
-  Files updated: auto.py, core.py, examples.py, test_factory.py,
-    OB3ECT.md, README.md, substack_ob3ect.md, ob3ect_manuscript.tex,
-    templates_data.json, man/ob3ect.1, digital/frob.py,
-    digital/cfg_bootstrap.py, digital/cfg_auto.py, digital/cfg_layers.py,
-    digital/cfg_opcodes.py, digital/cfg_python.py, digital/grokouro.txt,
-    digital/ob3ect-imscriber.py, digital/ob3ect-boot.asm,
-    digital/bootsector.asm, digital/kernel.c, digital/linearlogic/cr3at3.txt,
-    digital/entropy_ob3ect/*, digital/fixed_point_ob3ect/*,
-    digital/imasm_self_imscription_ob3ect/*,
-    digital/shavian_ob3ect/*, digital/temporal_ob3ect/*,
-    digital/traced_ob3ect/*, digital/test/test_ob3ect.py
+true_agentic_agent.py — 12 structural modifications:
 
-  Grep verified: 0 bare ISCRIB tokens remaining.
+  Core state:
+    - _PARAVERIFY_ENABLED → True (B4 on by default)
+    - LoopCycle.b4_result, LoopCycle.dialetheic fields added
+    - DualToolResult.b4_result, DualToolResult.dialetheic fields added
+    - dialetheic_ratio property on structural type
 
----
+  _observe pipeline:
+    - After boolean Frobenius check, runs B4Frobenius.check()
+    - B4.B (both-true/both-false) → frobenius_closed=True
+      B (dialetheic) is the O_inf boundary: closure and openness coincide
 
-auto.py:
+  _winding:
+    - B4 result + dialetheic status propagate through to LoopCycle
+    - Displayed in winding log
 
-  [x] Removed max_tokens=3000 ceiling from LLM query call — model now uses
-      full context budget for ob3ect design tasks
+  structural_type report:
+    - para_verify, dialetheic_count, dialetheic_ratio, b4_distribution fields
 
-proofs/ → Proofs/ (rename + restructure):
+  _harness_tier_report:
+    - Shows para_vm: B4 Belnap FOUR, para_vfy: ENABLED/DISABLED, dialetheic ratio
 
-  [x] Directory renamed lowercase → capitalized (lake convention)
-  [x] Frobenius.lean → Frobenius_minimal.lean (distilled to essential structure)
-  [x] Monad.lean removed (monad layer now lives in digital/monad/)
-  [x] SelfImscription.lean added — formalizes the AST Frobenius bridge:
-        axiom ast_frobenius : ∀ t : SyntaxTree, parse (unparse t) = t
-      Grounds GrandCoherence; empirically verified by frob.py v0.10
-  [x] lakefile.toml updated to reference Proofs/ (capital)
-  [x] lake build Proofs — zero build failures
+  CLI:
+    - --para-vm / --no-para-vm flags for user control at startup
+    - para_vm tool init parameter controls B4 per-instance
 
-digital/runall.py:
-
-  [x] Tower count: 28 → 29 layers
-  [x] Shavian Ob3ect added as layer 19 (Shavian satisfies μ∘δ=id at lexical level)
-  [x] Layers 1–18 are now real verified implementations throughout
-      (entropy Shannon roundtrip, IVM laws, HoTT, ImscriptionOS, ProofBridge, etc.)
-  [x] Yoneda–Initial/Terminal shift to positions 20–29
-
-bridge/ (new):
-
-  [x] bridge/bridge_notes.md — formal correspondence between ob3ect (Python) and
-      MillenniumAnkh (Lean); key mappings:
-        FSPLIT/FFUSE ↔ δ/μ Frobenius pair
-        frobenius_verdict=PASS ↔ μ∘δ=id_C
-        ⊙perator boundary ↔ ⊙_ÿ gate
-        O_∞ tier ↔ imscriptionTier .O_inf iff phi_c_gate ∧ k_slow_gate
-  [x] bridge/bridge_notes.pdf — compiled version
+B4 is no longer a bolt-on afterthought — dual Frobenius verification (boolean + B4)
+runs on every observation as a core structural layer.
