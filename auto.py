@@ -18,6 +18,7 @@ from typing import Any, Dict, List, Optional
 import httpx
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 
 from ob3ect.core import (
     Ob3ectArtifact, DomainCharter, OpcodeMap, OpcodeEntry,

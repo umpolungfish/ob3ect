@@ -32,6 +32,28 @@ MILLENNIUM_ANKH="${HOME}/MillenniumAnkh"
 PARADOX_FS="${HOME}/ob3ect/digital/paradox_fs/paradox_fs_ob3ect.py"
 MOUNT_POINT="/paradox"
 
+# ── Auto-detect Python with fusepy ────────────────────────────────────────
+# The venv Python (3.12) may not have fusepy; system Python 3.10 does.
+# We probe candidates in order of preference.
+find_fuse_python() {
+    for candidate in \
+        "${HOME}/imscribing_grammar/.venv/bin/python3" \
+        "/usr/bin/python3.10" \
+        "/usr/bin/python3" \
+        "python3"; do
+        if command -v "$candidate" >/dev/null 2>&1; then
+            if "$candidate" -c "import fuse" 2>/dev/null; then
+                echo "$candidate"
+                return 0
+            fi
+        fi
+    done
+    echo ""
+    return 1
+}
+
+PYTHON=$(find_fuse_python || true)
+
 # ── Verify the boot theorem ───────────────────────────────────────────────
 do_verify() {
     echo "[paradox-boot] Verifying boot theorem: Imscribing.Millennium.ParadoxBoot"
@@ -66,9 +88,42 @@ do_mount() {
         return 0
     fi
 
+    # Ensure the mountpoint exists and is user-writable
+    if [ ! -d "${MOUNT_POINT}" ]; then
+        echo "[paradox-boot] Creating mountpoint ${MOUNT_POINT} (requires sudo)"
+        if sudo mkdir -p "${MOUNT_POINT}" && sudo chown "$(id -un)" "${MOUNT_POINT}"; then
+            echo "[paradox-boot] ✓ ${MOUNT_POINT} created"
+        else
+            echo "[paradox-boot] ✗ Could not create ${MOUNT_POINT} — falling back to ~/paradox"
+            MOUNT_POINT="${HOME}/paradox"
+            mkdir -p "${MOUNT_POINT}"
+        fi
+    elif [ ! -w "${MOUNT_POINT}" ]; then
+        echo "[paradox-boot] ${MOUNT_POINT} not user-writable — fixing ownership (requires sudo)"
+        if sudo chown "$(id -un)" "${MOUNT_POINT}"; then
+            echo "[paradox-boot] ✓ Ownership fixed"
+        else
+            echo "[paradox-boot] ✗ Cannot fix ownership — falling back to ~/paradox"
+            MOUNT_POINT="${HOME}/paradox"
+            mkdir -p "${MOUNT_POINT}"
+        fi
+    fi
+
+    # Ensure fusepy is available
+    if [ -z "${PYTHON}" ]; then
+        echo "[paradox-boot] ✗ fusepy not found in any Python interpreter."
+        echo "[paradox-boot]   Install fusepy: pip install fusepy"
+        echo "[paradox-boot]   Falling back to simulation mode."
+        cd "$(dirname "${PARADOX_FS}")"
+        exec python3 "${PARADOX_FS}" --simulate
+    fi
+
+    echo "[paradox-boot] Using Python: ${PYTHON}"
+    echo "[paradox-boot] FUSE support: available"
+
     # Launch the paradox FUSE daemon
     cd "$(dirname "${PARADOX_FS}")"
-    exec python3 "${PARADOX_FS}" --mount "${MOUNT_POINT}"
+    exec "${PYTHON}" "${PARADOX_FS}" --mount "${MOUNT_POINT}"
 }
 
 # ── Unmount ────────────────────────────────────────────────────────────────
@@ -101,6 +156,13 @@ do_status() {
         echo "  Daemon: RUNNING"
     else
         echo "  Daemon: STOPPED"
+    fi
+
+    # Show FUSE availability
+    if [ -n "${PYTHON}" ]; then
+        echo "  FUSE: available (${PYTHON})"
+    else
+        echo "  FUSE: NOT available (install fusepy)"
     fi
 }
 

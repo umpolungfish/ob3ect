@@ -1,7 +1,23 @@
 commit.txt — Summary of updates to /home/mrnob0dy666/ob3ect
 =========================================================
 
-Shavian ob3ect remapped to spec (2026-05-25)
+menagerie_engines/menagerie_b4.py: two bug fixes (2026-05-29)
+=============================================================
+
+  _BAND table fix:
+    N∧F, N∧B, F∧N, B∧N were all returning non-N values (F or B).
+    Correct set-semantics: N={} so N∧anything={} = N.
+    Four cells corrected: (N,F)→N, (N,B)→N, (F,N)→N, (B,N)→N.
+
+  frobenius_holds fix:
+    Old implementation reduced to join(B,B)==B or belief==B — vacuously
+    True for every B4 value, providing zero verification.
+    Added canonical split _DELTA: δ(N)=(N,N), δ(T)=(T,N), δ(F)=(F,N),
+    δ(B)=(T,F). Rewrote frobenius_holds to: b4_join(*_DELTA[belief])==belief.
+    Updated assert from checking only B4.B to: all(frobenius_holds(x) for x in B4).
+    All four B4 values now correctly verified at import.
+
+Previous: Shavian ob3ect remapped to spec (2026-05-25)
 
 digital/shavian_ob3ect/shavian_ob3ect_ob3ect.py  [UPDATED]
 - SHAVIAN_MAP completely rebuilt per shavian_notation_spec.md v0.6.0
