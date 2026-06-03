@@ -6,7 +6,7 @@
   Identity right  : True
   Associativity   : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 486701af39cbda054031ff4a...
+Imscription anchor: 3975d8250daab418ae53ab0f...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -17,7 +17,7 @@ Closure: True
   μ∘δ=id [def f(x): return x * 2]: True
   μ∘δ=id [result = [i**2 for i in rang]: True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: c1d4e9b56a1b981606ba5174...
+Imscription anchor: 7382d491e40a5eeedca335c1...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -27,7 +27,7 @@ Closure: True
   T∘T = T (idempotent folding) : True
   Record μ∘δ=id (domain)       : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 34f0f274aeebb81456c56f81...
+Imscription anchor: 565c3f08fb786bd7de4b7187...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -38,7 +38,7 @@ Closure: True
   Antipode right   : True
   μ∘δ = ε          : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 41d5dd87335491c0224198e1...
+Imscription anchor: dbd7e738b3ec256214afdb13...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -49,7 +49,7 @@ Closure: True
   Right unit     : True
   Associativity  : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 1f0352f7c35bd0e3997fb1d2...
+Imscription anchor: c5904e6873335f7d5e0317e8...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -60,7 +60,7 @@ Closure: True
   H(source) ≈ 3.0412 bits/char
   Record μ∘δ=id (domain)                : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 67a006568485128c2a16d0ae...
+Imscription anchor: d877d14c1baeea8b528045f6...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -73,7 +73,7 @@ Closure: True
   pullback(χ_{0, 1, 2, 3, 4, 5}) = A : True
   |P(U)| = 2^6 = 64      : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 7cd2166ae3e614460f7c7757...
+Imscription anchor: 1fa25225e3c6f2bc2f7241a3...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -83,7 +83,7 @@ Closure: True
   uncurry∘curry = id : True
   curry∘uncurry = id : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 165b9a9482f4d279b5f9bd1b...
+Imscription anchor: 80ec05714bd2321662aa18d1...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -93,7 +93,7 @@ Closure: True
   Born rule measure(prepare(n))=n : True
   Normalization ‖|n⟩‖² = 1        : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 31882dcc193bceb49eae97fd...
+Imscription anchor: 1170c23a6c9da7602513e2d6...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -104,7 +104,7 @@ Closure: True
   No-weakening (resource used)        : True
   Tensor-unit law (A ⊗ I ≅ A)        : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: a86ff7b21dc58ddec1baef62...
+Imscription anchor: 1fd6d427c7e3bf82780638f6...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -116,7 +116,7 @@ Closure: True
   Determinism       : True
   (g∘f)(3) = 7      : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 6298f56645fd55de9e0a3700...
+Imscription anchor: 26108dd1e1deb73b48b2f41c...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -126,7 +126,7 @@ Closure: True
   Yanking equation Tr(id_A)=id_I : True
   Record μ∘δ=id (domain)         : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 8381268dc2e636f8fd023fad...
+Imscription anchor: f112186718abbcb557e5ba37...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -137,7 +137,7 @@ Closure: True
   φ∘φ⁻¹ = id_Complex2  : True
   refl path trivial     : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 1e2b9c294ed1e1d0e6016f53...
+Imscription anchor: f156ccb7861fc464d6aa6242...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -146,23 +146,23 @@ Closure: True
 === Imscription Operating System ===
   Kernel modules : 4
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 1126468b2c64e6062204fe11...
+Imscription anchor: 8dbd337872cc26c61436156c...
 Frobenius: Split→Fuse verdict = PASS
   [RUNNING ] scheduler
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 2bda213f7aacba3790c02ee8...
+Imscription anchor: f7415f19c1dd2fa5b976ae48...
 Frobenius: Split→Fuse verdict = PASS
   [RUNNING ] allocator
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: ac48c6cbdf713cf0e9a67027...
+Imscription anchor: 41dfecbd47ea71058b4d61d8...
 Frobenius: Split→Fuse verdict = PASS
   [RUNNING ] imscriber
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 8285688ce2e2f19d97a2e86b...
+Imscription anchor: 85c389a25073b2ba0cbad6ae...
 Frobenius: Split→Fuse verdict = PASS
   [RUNNING ] verifier
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: f8284f74540151271d70bbf0...
+Imscription anchor: 32d5175a20ababc5e6e33aed...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -198,7 +198,7 @@ The remaining sorrys mark proof obligations, not gaps in the architecture.
   Frobenius spider L: True
   Frobenius spider R: True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: aa91327ad2d11fc976faa09c...
+Imscription anchor: 9a9728af643936946cf718e8...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -209,7 +209,7 @@ Closure: True
   Coord hash : 263ebd7bd14f324d...
   Domain μ∘δ=id (lattice)      : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 760fab352fd8aa17a640b5da...
+Imscription anchor: 4abb6598c4a6361dff99e5c7...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -217,7 +217,7 @@ Closure: True
 → Meta Auto-Imscriber
 === Meta Auto-Imscriber Ob3ect ===
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 016a78c34fbda72ea8e8dd5c...
+Imscription anchor: 3f27e43c9586240517700056...
 Frobenius: Split→Fuse verdict = PASS
   Generated stub parses : True
 Closure: True
@@ -225,87 +225,87 @@ Closure: True
 
 → Shavian Ob3ect
 === Shavian Ob3ect — 49-Entry Bootstrap ===
-IMSCRIB: Core  sentence hash → 565de4fdd7e22a1ad0eaa952
-IMSCRIB: Full  sentence hash → 37361dddf5d0376c1fa94493
+IMSCRIB: Core  sentence hash → cc57962f6c314baebed89d1e
+IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
-  Glyphs in map: 49 (Shavian 47 + ⊙ + space)
+  Glyphs in map: 49 (Shavian 48 + ⊙)
   Primitives:    12 / 12 = True
-  Counts per prim: {'Ð': 4, 'Þ': 5, 'Ř': 4, 'Φ': 5, 'ƒ': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, 'φ̂': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
+  Counts per prim: {'Ð': 4, 'Þ': 5, 'Ř': 4, 'Φ': 5, 'ƒ': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
 FSPLIT_CORE: 12 core glyphs mapped
 FSPLIT_FULL: 49 full glyphs mapped
 FFUSE_CORE: fused 12 glyphs → PASS
 FFUSE_FULL: fused 49 glyphs → PASS
 CLINK: Core  JSON RT -> PASS
 CLINK: Full  JSON RT -> PASS
-IFIX: Core  seal  → 0ad49588c7abadefe8c98375…
-IFIX: Full  seal  → c3e6b5c4f1bc30be0b8c64a4…
-IMSCRIB: Core  sentence hash → 565de4fdd7e22a1ad0eaa952
-IMSCRIB: Full  sentence hash → 37361dddf5d0376c1fa94493
+IFIX: Core  seal  → 8e248e15c07be0959cbdd75d…
+IFIX: Full  seal  → 57b562cc7a8b836dbe22dfb5…
+IMSCRIB: Core  sentence hash → cc57962f6c314baebed89d1e
+IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
 FFUSE_CORE: fused 12 glyphs → PASS
 FFUSE_FULL: fused 49 glyphs → PASS
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 2d67f3f30d5c013e566169d4...
+Imscription anchor: 4b5b3f8771e9270be96bb8ed...
 Frobenius: Split→Fuse verdict = PASS
 
 Closure: True
 ========================================================================
 SHAVIAN OB3ECT — Complete 49-Entry Decomposition Report
 ========================================================================
-  # 1. 𐑐 U+10450  |  Ð Ð_;  (Wedge-0d)
-  # 2. 𐑑 U+10451  |  Ð Ð_C;  (Triangle-2d)
-  # 3. 𐑒 U+10452  |  Ð Ð_ß;  (Infty-Field)
-  # 4. 𐑓 U+10453  |  Ð Ð_ω;  (Odot-Self)
-  # 5. 𐑔 U+10454  |  Þ Þ_6  (Network)
-  # 6. 𐑕 U+10455  |  Þ Þ_K  (Inclusion)
-  # 7. 𐑖 U+10456  |  Þ Þ_ò  (Bowtie)
-  # 8. 𐑗 U+10457  |  Þ Þ_¨  (Boxtimes)
-  # 9. 𐑘 U+10458  |  Þ Þ_O  (Odotor)
-  #10. 𐑙 U+10459  |  Ř Ř_¯  (Supervene)
-  #11. 𐑚 U+1045A  |  Ř Ř_ý  (Categorical)
-  #12. 𐑛 U+1045B  |  Ř Ř_Ť  (Adjoint)
-  #13. 𐑜 U+1045C  |  Ř Ř_=  (Bidirectional)
-  #14. 𐑝 U+1045D  |  Φ Φ_ɐ  (Asym)
-  #15. 𐑞 U+1045E  |  Φ Φ_υ  (Psi-Quant)
-  #16. 𐑟 U+1045F  |  Φ Φ_F  (Partial)
-  #17. 𐑠 U+10460  |  Φ Φ_˙  (Sym-Ø)
-  #18. 𐑡 U+10461  |  Φ Φ_}  (Frobenius)
-  #19. 𐑢 U+10462  |  ƒ ƒ_ì  (Ell-Classical)
-  #20. 𐑣 U+10463  |  ƒ ƒ_ð  (Thermal)
-  #21. 𐑤 U+10464  |  ƒ ƒ_ż  (Hbar-Quant)
-  #22. 𐑥 U+10465  |  Ç Ç_-  (Fast-Driven)
-  #23. 𐑦 U+10466  |  Ç Ç_W  (Moderate)
-  #24. 𐑧 U+10467  |  Ç Ç_@  (Slow-NearEq)
-  #25. 𐑨 U+10468  |  Ç Ç_Ù  (Trap-Frozen)
-  #26. 𐑩 U+10469  |  Ç Ç_λ  (MBL-Frozen)
-  #27. 𐑪 U+1046A  |  Γ Γ_β  (Beth-Local)
-  #28. 𐑫 U+1046B  |  Γ Γ_γ  (Gimel-Meso)
-  #29. 𐑬 U+1046C  |  Γ Γ_ʔ  (Aleph-Maximal)
-  #30. 𐑭 U+1046D  |  ɢ ɢ_^  (And-Conjunctive)
-  #31. 𐑮 U+1046E  |  ɢ ɢ_˝  (Or-Disjunctive)
-  #32. 𐑯 U+1046F  |  ɢ ɢ_ˌ  (Seq-Sequential)
-  #33. 𐑰 U+10470  |  ɢ ɢ_Ş  (Broad-Broadcast)
-  #34. 𐑱 U+10471  |  φ̂ φ̂_ž  (Sub-Below)
-  #35. ⊙ U+2299  |  φ̂ φ̂_ÿ  (ÿ-Critical)
-  #36. 𐑳 U+10473  |  φ̂ φ̂_Æ  (Æ-Cplx-Plane)
-  #37. 𐑴 U+10474  |  φ̂ φ̂_3  (3-EP)
-  #38. 𐑵 U+10475  |  φ̂ φ̂_Ţ  (Ţ-Super)
-  #39. 𐑶 U+10476  |  Ħ Ħ_Ñ  (Mem-Free)
-  #40. 𐑷 U+10477  |  Ħ Ħ_£  (1-Step)
-  #41. 𐑸 U+10478  |  Ħ Ħ_A  (2-Step)
-  #42. 𐑹 U+10479  |  Ħ Ħ_!  (∞-Eternal)
-  #43. 𐑺 U+1047A  |  Σ Σ_S  (1:1-Single)
-  #44. 𐑻 U+1047B  |  Σ Σ_ő  (n:n-Same)
-  #45. 𐑼 U+1047C  |  Σ Σ_ï  (n:m-Hetero)
-  #46. 𐑽 U+1047D  |  Ω Ω_Å  (0-Trivial)
-  #47. 𐑾 U+1047E  |  Ω Ω_2  (Z2-Protect)
-  #48. 𐑿 U+1047F  |  Ω Ω_z  (Z-Integer)
-  #49.   U+0020  |  Ω Ω_5  (NA-NonAbelian)
+  # 1. 𐑛 U+1045B  |  Ð Ð_ß  (Infty-Field)
+  # 2. 𐑨 U+10468  |  Ð Ð_C  (Triangle-2d)
+  # 3. 𐑼 U+1047C  |  Ð Ð_;  (Wedge-0d)
+  # 4. 𐑦 U+10466  |  Ð Ð_ω  (Odot-Self)
+  # 5. 𐑡 U+10461  |  Þ Þ_6  (Network)
+  # 6. 𐑰 U+10470  |  Þ Þ_K  (Inclusion)
+  # 7. 𐑥 U+10465  |  Þ Þ_ò  (Bowtie)
+  # 8. 𐑶 U+10476  |  Þ Þ_¨  (Boxtimes)
+  # 9. 𐑸 U+10478  |  Þ Þ_O  (Odotor)
+  #10. 𐑩 U+10469  |  Ř Ř_¯  (Supervene)
+  #11. 𐑑 U+10451  |  Ř Ř_ý  (Categorical)
+  #12. 𐑽 U+1047D  |  Ř Ř_Ť  (Adjoint)
+  #13. 𐑾 U+1047E  |  Ř Ř_=  (Bidirectional)
+  #14. 𐑗 U+10457  |  Φ Φ_ɐ  (Asym)
+  #15. 𐑿 U+1047F  |  Φ Φ_υ  (Psi-Quant)
+  #16. 𐑬 U+1046C  |  Φ Φ_F  (Partial)
+  #17. 𐑯 U+1046F  |  Φ Φ_˙  (Sym-Ø)
+  #18. 𐑹 U+10479  |  Φ Φ_}  (Frobenius)
+  #19. 𐑱 U+10471  |  ƒ ƒ^ì  (Ell-Classical)
+  #20. 𐑞 U+1045E  |  ƒ ƒ^ð  (Thermal)
+  #21. 𐑐 U+10450  |  ƒ ƒ^ż  (Hbar-Quant)
+  #22. 𐑘 U+10458  |  Ç Ç^-  (Fast-Driven)
+  #23. 𐑤 U+10464  |  Ç Ç^W  (Moderate)
+  #24. 𐑧 U+10467  |  Ç Ç^@  (Slow-NearEq)
+  #25. 𐑪 U+1046A  |  Ç Ç^Ù  (Trap-Frozen)
+  #26. 𐑺 U+1047A  |  Ç Ç^λ  (MBL-Frozen)
+  #27. 𐑚 U+1045A  |  Γ Γ_β  (Beth-Local)
+  #28. 𐑔 U+10454  |  Γ Γ_γ  (Gimel-Meso)
+  #29. 𐑲 U+10472  |  Γ Γ_ʔ  (Aleph-Maximal)
+  #30. 𐑝 U+1045D  |  ɢ ɢ^∧  (And-Conjunctive)
+  #31. 𐑜 U+1045C  |  ɢ ɢ^˝  (Or-Disjunctive)
+  #32. 𐑠 U+10460  |  ɢ ɢ^ˌ  (Seq-Sequential)
+  #33. 𐑵 U+10475  |  ɢ ɢ^Ş  (Broad-Broadcast)
+  #34. 𐑢 U+10462  |  ⊙ ⊙_ž  (Sub-Below)
+  #35. ⊙ U+2299  |  ⊙ ⊙_ÿ  (ÿ-Critical)
+  #36. 𐑮 U+1046E  |  ⊙ ⊙_Æ  (Æ-Cplx-Plane)
+  #37. 𐑻 U+1047B  |  ⊙ ⊙_3  (3-EP)
+  #38. 𐑣 U+10463  |  ⊙ ⊙_Ţ  (Ţ-Super)
+  #39. 𐑓 U+10453  |  Ħ Ħ_Ñ  (Mem-Free)
+  #40. 𐑒 U+10452  |  Ħ Ħ_£  (1-Step)
+  #41. 𐑖 U+10456  |  Ħ Ħ_A  (2-Step)
+  #42. 𐑫 U+1046B  |  Ħ Ħ_!  (∞-Eternal)
+  #43. 𐑙 U+10459  |  Σ Σ_S  (1:1-Single)
+  #44. 𐑕 U+10455  |  Σ Σ_ő  (n:n-Same)
+  #45. 𐑳 U+10473  |  Σ Σ_ï  (n:m-Hetero)
+  #46. 𐑷 U+10477  |  Ω Ω_Å  (0-Trivial)
+  #47. 𐑴 U+10474  |  Ω Ω_2  (Z2-Protect)
+  #48. 𐑭 U+1046D  |  Ω Ω_z  (Z-Integer)
+  #49. 𐑟 U+1045F  |  Ω Ω_5  (NA-NonAbelian)
 ========================================================================
 Core  gate:  PASS
 Full  gate:  PASS
-Core  seal:  0ad49588c7abadefe8c983757f2d8d2b
-Full  seal:  c3e6b5c4f1bc30be0b8c64a44c15fa44
+Core  seal:  8e248e15c07be0959cbdd75d30c31df7
+Full  seal:  57b562cc7a8b836dbe22dfb560f82058
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 → Yoneda Ob3ect
@@ -320,7 +320,7 @@ Full  seal:  c3e6b5c4f1bc30be0b8c64a44c15fa44
     Forward→Backward identity : True
     Naturality squares        : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 03283a0697e2983a4a020b2e...
+Imscription anchor: eb2d0fbca771e97e9ecec70b...
 Frobenius: Split→Fuse verdict = PASS
   All objects verified : True
 Closure: True
@@ -334,7 +334,7 @@ Closure: True
   Associativity (mixed arity)   : True
   Associativity (deep trees)    : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 94fe1e67ed1f78625594e117...
+Imscription anchor: 77e991f57be0d057f9862087...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -350,7 +350,7 @@ Closure: True
   Glued restricts to origins   : True
   Uniqueness of glued section  : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: e4a2b550b932b8308608e477...
+Imscription anchor: 4894305005d88d884fdc571d...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -366,7 +366,7 @@ Closure: True
   A⊗I preserves dimensions     : True
   I⊗A preserves dimensions     : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 391b0e0b5d347177ad835188...
+Imscription anchor: 951e1e5c9f2423415389ac16...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -383,7 +383,7 @@ Closure: True
   fg(fg(T)) = fg(T) (idemp)    : True
   Antitone: a⊆b ⇒ f(b)⊆f(a)   : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: d2545f4cb70a36fa11c266ca...
+Imscription anchor: 0bb21252e7216eb34650687b...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -404,7 +404,7 @@ Closure: True
   Atom map is injective        : True
   Join of atoms recovers elem  : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 9398b91b38e3991a2a84e77c...
+Imscription anchor: 4953b04af107f2b9e6a5bb45...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -421,7 +421,7 @@ Closure: True
   meet distributes over join            : True
   Negation table complete               : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: c4d10884c3f85705996d0708...
+Imscription anchor: 505fd51160449f89f7a64180...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -435,7 +435,7 @@ Closure: True
   Paradox count = 4n  (cost of dialetheism) : True
   Classical values have trivial cycles  : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 6cd69375115e1ec7a63a5945...
+Imscription anchor: 7fd85ea9186bbe5c7cc297fd...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -455,7 +455,7 @@ Closure: True
   φ̂_ÿ gate precondition (self-modeling)  : True
   Separation-Fusion duality: B→(T,F)→B   : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 52c705be5971bffad2ca23c5...
+Imscription anchor: 505992243345cbbb1d55276d...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -473,7 +473,7 @@ Closure: True
   SIC fiducial: meet(B, x) = x ∀x       : True
   Monte Carlo cost ratio B/T ≈ 2.00 (expected ~2.0) : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: bf6b70c0d285dca79d443f00...
+Imscription anchor: 02b064b7e27ad695bc06cea0...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -487,7 +487,7 @@ Closure: True
   Paraconsistent consensus (all B, join=B) : True
   B is join-absorber (∀x, join(B,x)=B)   : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: a782020dcb9af7a08d8ccfb3...
+Imscription anchor: ec410464f160470871f26b76...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -502,7 +502,7 @@ Closure: True
   P(f^op): P(1) → P(0)          : True
   P(g^op): P(2) → P(1)          : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: a57f042547c969acabb908b4...
+Imscription anchor: 1b48950618cf951f4b25593f...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -516,7 +516,7 @@ Closure: True
   Naturality at f (0→1)        : True
   Naturality at g (1→2)        : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 9e4fe8fa158a2907729ded95...
+Imscription anchor: 31a0dc6e20b0748105541052...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -530,7 +530,7 @@ Closure: True
   Triangle 1: ε_FX∘F(η_X)=id   : True
   Triangle 2: G(ε_V)∘η_GV=id   : True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: 9552a8f17ce91f208532d19b...
+Imscription anchor: 9f539b3c0927c68f902ca40c...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -548,7 +548,7 @@ Closure: True
   |Hom(∅,X)|=1 ∀X (initial)    : True
   |Hom(X,{*})|=1 ∀X (terminal): True
 FFUSE: Perfect imscription — semantic identity confirmed
-Imscription anchor: c8d94696e09f0fd6505887ef...
+Imscription anchor: 0d187e0cf53a4c863199c714...
 Frobenius: Split→Fuse verdict = PASS
 Closure: True
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────

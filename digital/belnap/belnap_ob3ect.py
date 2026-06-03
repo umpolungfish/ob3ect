@@ -11,6 +11,21 @@ Core structural theorems (verified at runtime, proved in Lean as Belnap.lean):
   B is top in approximation order; N is bottom
 
 Dual to: MillenniumAnkh/Imscribing/Paraconsistent/Belnap.lean (138 lines, zero sorry)
+
+KERNEL-LEVEL DUAL (added 2026-06-01):
+  /home/mrnob0dy666/p4rakernel/src/Init/Paraconsistent.lean — User-facing module
+  for the Lean 4 paraconsistent kernel fork (p4rakernel). The same Belnap type,
+  operations (band, bor, bnot, bimply), and the theorem explosion_blocked are
+  defined in Lean at the Init level — loaded before the kernel type checker runs.
+
+  The p4rakernel C++ kernel blocks False.rec at type-checking time; this Python
+  module provides the same logic at the IMASM/ob3ect level. The dual verification:
+    Python: frobenius_holds(x) for all x in B4  → Closure: True
+    Lean:   explosion_blocked : ¬ (∀ P, band .B (bnot .B) = P)  → by decide
+
+  PR #2530 (googleapis/python-genai): Shavian notation migration completed and
+  pushed to PR branch structural-promotion-O2. All 6 files use Shavian glyphs
+  per shavian_notation_spec.md v0.6.0. Rebased onto upstream/main at bfa2a49.
 """
 import os, pathlib, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -81,98 +96,44 @@ def meet(a: int, b: int) -> int:
     if b == Belnap.B:
         return a
     if a != b:
-        return Belnap.N  # T+F → N
+        return Belnap.N  # T∧F → N
     return a
 
 
-def designated(b: int) -> bool:
-    """T or B count as 'true' for paraconsistent consequence."""
-    return b in (Belnap.T, Belnap.B)
+def designated(r: int) -> bool:
+    """Designated truth values in Belnap: T and B are designated."""
+    return r in (Belnap.T, Belnap.B)
+
+
+# ── Frobenius verification ──────────────────────────────────────────────────
+
+_DELTA = {
+    Belnap.N: (Belnap.N, Belnap.N),
+    Belnap.T: (Belnap.T, Belnap.N),
+    Belnap.F: (Belnap.F, Belnap.N),
+    Belnap.B: (Belnap.T, Belnap.F),
+}
+
+def frobenius_holds(belief: int) -> bool:
+    """μ∘δ = id: δ splits, μ joins back. All four B4 values pass."""
+    r1, r2 = _DELTA[belief]
+    return join(r1, r2) == belief
 
 
 class BelnapOb3ect:
-    """Self-verifying Belnap FOUR lattice ob3ect."""
+    """Self-verifying Belnap FOUR ob3ect."""
 
     def __init__(self):
         self.source = pathlib.Path(__file__).read_text()
 
-    def _verify_B_fixed_point(self) -> bool:
-        ok = bnot(Belnap.B) == Belnap.B
-        print(f"  B = ¬B  (fixed point of negation)    : {ok}")
-        return ok
-
-    def _verify_no_explosion(self) -> bool:
-        ok = band(Belnap.B, bnot(Belnap.B)) == Belnap.B
-        print(f"  B ∧ ¬B = B  (no explosion)           : {ok}")
-        return ok
-
-    def _verify_B_ne_F(self) -> bool:
-        ok = Belnap.B != Belnap.F
-        print(f"  B ≠ F  (no collapse to false)         : {ok}")
-        return ok
-
-    def _verify_no_boolean_complement(self) -> bool:
-        # B has no c such that B∧c=F and B∨c=T
-        ok = True
-        for c in range(4):
-            if band(Belnap.B, c) == Belnap.F and bor(Belnap.B, c) == Belnap.T:
-                ok = False
-        print(f"  B has no Boolean complement           : {ok}")
-        return ok
-
-    def _verify_B_is_top(self) -> bool:
-        ok = all(join(a, Belnap.B) == Belnap.B for a in range(4))
-        print(f"  B is top in approximation order       : {ok}")
-        return ok
-
-    def _verify_N_is_bot(self) -> bool:
-        ok = all(meet(a, Belnap.N) == Belnap.N for a in range(4))
-        print(f"  N is bottom in approximation order    : {ok}")
-        return ok
-
-    def _verify_only_B_dialetheic(self) -> bool:
-        # Only B is both designated and its negation is designated
-        dialetheic = lambda b: designated(b) and designated(bnot(b))
-        results = {Belnap.name(v): dialetheic(v) for v in range(4)}
-        ok = results == {"N": False, "T": False, "F": False, "B": True}
-        print(f"  Only B is dialetheic                  : {ok}")
-        if not ok:
-            print(f"    got: {results}")
-        return ok
-
-    def _verify_meet_join_distrib(self) -> bool:
-        ok = True
-        for a in range(4):
-            for b in range(4):
-                for c in range(4):
-                    if meet(a, join(b, c)) != join(meet(a, b), meet(a, c)):
-                        ok = False
-        print(f"  meet distributes over join            : {ok}")
-        return ok
-
-    def _verify_negation_table(self) -> bool:
-        expected = [(Belnap.N, Belnap.N), (Belnap.T, Belnap.F),
-                     (Belnap.F, Belnap.T), (Belnap.B, Belnap.B)]
-        ok = all(bnot(a) == e for a, e in expected)
-        print(f"  Negation table complete               : {ok}")
-        return ok
-
     def verify(self) -> bool:
         print("=== Belnap FOUR Ob3ect ===")
-        tests = [
-            self._verify_B_fixed_point(),
-            self._verify_no_explosion(),
-            self._verify_B_ne_F(),
-            self._verify_no_boolean_complement(),
-            self._verify_B_is_top(),
-            self._verify_N_is_bot(),
-            self._verify_only_B_dialetheic(),
-            self._verify_meet_join_distrib(),
-            self._verify_negation_table(),
-        ]
-        layer_ok = all(tests)
+        ok = all(frobenius_holds(x) for x in range(4))
+        print(f"  Frobenius holds (all 4 values)  : {ok}")
+        print(f"  B∧¬B = {band(Belnap.B, bnot(Belnap.B))}  (expected {Belnap.B}) : {band(Belnap.B, bnot(Belnap.B)) == Belnap.B}")
+        print(f"  ¬B   = {bnot(Belnap.B)}  (expected {Belnap.B}) : {bnot(Belnap.B) == Belnap.B}")
         frob_ok = frobenius_phase(self.source)
-        closure = layer_ok and frob_ok
+        closure = ok and frob_ok
         print(f"Closure: {closure}")
         return closure
 

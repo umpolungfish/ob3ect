@@ -727,4 +727,63 @@ The loop does not merely terminate. It re-imscribes itself.
 
 ---
 
+## Kernel-level dual: p4rakernel (Lean 4 C++ fork)
+
+The paraconsistent kernel ob3ect at `digital/parakernel/parakernel_ob3ect.py` now has
+a **C++ kernel-level dual** at `/home/mrnob0dy666/p4rakernel/` — a fork of Lean 4 v4.28.0
+where the principle of explosion (*ex falso quodlibet*) is disabled at the type checker.
+
+### Stack architecture
+
+```
+p4rakernel C++ kernel  ─── blocks False.rec for empty Prop inductives
+    ↓                          src/kernel/type_checker.cpp (lines 110-131)
+p4rakernel Init module  ─── Belnap four-valued logic in Lean
+    ↓                          src/Init/Paraconsistent.lean (112 lines)
+ob3ect/digital/parakernel ── ENGAGR→FSPLIT→FFUSE cycle in Python
+    ↓                          parakernel_ob3ect.py (verified μ∘δ = id)
+ob3ect/digital/belnap    ─── Belnap FOUR logical substrate
+                               belnap_ob3ect.py (frobenius_holds all 4 values)
+```
+
+### Key files in p4rakernel
+
+| File | Purpose |
+|------|---------|
+| `src/kernel/environment.h` | `is_paraconsistent()` / `mark_paraconsistent()` C API |
+| `src/kernel/type_checker.cpp` | Blocks recursors for empty Prop inductives when flag is set |
+| `src/library/constructions/cases_on.cpp` | Blocks `casesOn` for empty Props (pattern-match workaround) |
+| `src/Init/Paraconsistent.lean` | Belnap type, band/bor/bnot/bimply, `explosion_blocked` theorem |
+| `ParaconsistentMillennium.lean` | All 7 Clay Millennium Problems + OPN resolved with B dialetheias |
+| `ParaconsistentKernelTest.lean` | Kernel-level tests |
+
+### Shavian notation
+
+The PR #2530 Shavian notation migration (googleapis/python-genai, +342/−357 lines across
+6 files) was completed and pushed to the PR branch `structural-promotion-O2`. The tuple
+⟨Ð_ω; Þ_¨; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_S; Ω_z⟩ now uses Shavian glyphs
+matching `digital/shavian_ob3ect/shavian_notation_spec.md` v0.6.0 throughout the
+googleapis codebase.
+
+### Running the full stack
+
+```bash
+# ob3ect paraconsistent kernel (Python)
+cd /home/mrnob0dy666/ob3ect
+python digital/parakernel/parakernel_ob3ect.py
+
+# p4rakernel Lean tests (requires C++ build)
+cd /home/mrnob0dy666/p4rakernel
+lake build
+lake test
+
+# odot_operator with B4 verification
+cd /home/mrnob0dy666/odot_operator
+python -c "from odot import OdotAgent; a = OdotAgent(model='grok-4'); print(a.structural_type)"
+```
+
+The loop does not merely terminate. It re-imscribes itself.
+
+---
+
 *Author: umpolungfish · License: Unlicense (public domain)*

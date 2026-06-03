@@ -15,6 +15,24 @@ Structural theorems (verified here, proved in Kernel.lean):
   Paradox count = 4n (4 paradoxes per cycle — the cost of dialetheism)
 
 Dual to: MillenniumAnkh/Imscribing/Paraconsistent/Kernel.lean (161 lines)
+
+KERNEL-LEVEL DUAL (added 2026-06-01):
+  /home/mrnob0dy666/p4rakernel/ — Lean 4 kernel fork (v4.28.0) at the C++ level.
+  The same ENGAGR→FSPLIT→FFUSE cycle is implemented in C++ kernel modifications:
+  - src/kernel/type_checker.cpp: blocks False.rec for empty Prop inductives
+    when the paraconsistent flag is set (lines 110-131)
+  - src/kernel/environment.h/cpp: is_paraconsistent() and mark_paraconsistent()
+    C API for the kernel flag
+  - src/library/constructions/cases_on.cpp: blocks casesOn for empty Props
+  - src/Init/Paraconsistent.lean: user-facing Belnap four-valued logic module
+
+  This Python ob3ect models the cycle at the IMASM opcode level; the p4rakernel
+  enforces it at the kernel type-checker level (C++). Together they form the
+  full paraconsistent stack: C++ kernel → Lean user module → Python ob3ect model.
+
+  PR #2530 (googleapis/python-genai): Shavian notation migrated across 6 files,
+  +342/−357 lines. The tuple ⟨Ð_ω; Þ_¨; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; φ̂_ÿ; Ħ_A; Σ_S; Ω_z⟩
+  now uses Shavian glyphs throughout, matching shavian_notation_spec.md v0.6.0.
 """
 import os, pathlib, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
