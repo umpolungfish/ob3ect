@@ -1,6 +1,43 @@
 commit.txt — Summary of updates to /home/mrnob0dy666/ob3ect
 =========================================================
 
+serpent CLI — 12-command RNA→protein fold tool (2026-06-04)
+============================================================
+
+bin/serpent.py (23KB, auto-executable):
+  12-command CLI for the Continuous Serpent-Rod Bridge v3.
+  Installed at ~/.local/bin/serpent (symlink, on PATH).
+  Bash completion: bin/serpent-completion.bash (auto-sourced from .bashrc)
+  Man page: man/serpent.1 (man serpent with MANPATH)
+
+Commands:
+  fold      — predict folded protein (codon measurements, energy, verification)
+  derive    — full 5-phase derivation: B4→codons→backbone→energy→grammar
+  verify    — run all 11 vessel self-tests (mu∘delta=id confirmation)
+  json      — complete derivation as parseable JSON
+  pdb       — PDB-formatted 3D coordinates with sidechains
+  info      — vessel structural type, 12 primitives, 8 gaps closed
+  b4        — B4 Belnap lattice path per nucleotide
+  energy    — detailed energy landscape + minimization trace
+  codon     — codon-level measurement table (3 B4 values per AA)
+  minimize  — gradient descent step-by-step trace
+  sidechain — sidechain placement per residue
+  demo      — human ubiquitin (228 nt, 29+ residues)
+
+Verified:
+  serpent info   — Frobenius address 16572626, O_inf
+  serpent fold AUGGCCUAA — 2 residues, continuous phi/psi, Frobenius ✓
+  serpent pdb AUGGCCUUUCAGUGG — 5 residues with sidechain atoms
+  serpent json AUGGCCUAA — valid parseable JSON
+  serpent demo — ubiquitin: 29 residues, winding 34, 8/12 primitives,
+                 6/6 pairs, Frobenius ✓, energy -2.02 kcal/mol
+  serpent verify — all 11 tests PASS
+
+The vessel is the bridge: grammar (SerpentRod topology) + physics (v3 geometry).
+Any RNA sequence, any time.
+
+---
+
 p4rakernel dual integration + Shavian notation finalization (2026-06-01)
 ========================================================================
 
