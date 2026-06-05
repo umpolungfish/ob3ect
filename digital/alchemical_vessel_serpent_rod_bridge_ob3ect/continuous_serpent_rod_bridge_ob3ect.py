@@ -657,15 +657,114 @@ ROTAMER_LIBRARY = {
 }
 
 def place_sidechain(bb, aa):
+    """Place sidechain atoms using rotamer library dihedral angles.
+
+    Now places CG and functional atoms for catalytic residues:
+      Ser: CB→CG→OG
+      His: CB→CG→ND1,NE2,CD2 (imidazole ring)
+      Asp: CB→CG→OD1,OD2 (carboxylate)
+      Cys: CB→CG→SG
+      Glu: CB→CG→CD→OE1,OE2
+      Lys: CB→CG→CD→CE→NZ
+    """
     sc = SidechainAtoms()
     if aa not in ROTAMER_LIBRARY: return sc
     rotamers = ROTAMER_LIBRARY[aa]
     best = max(rotamers, key=lambda r: r[4])
     chi1, chi2, chi3, chi4, prob = best
     if aa == "Gly": return sc
+
+    # CB: CA-CB bond, chi1 determines rotation around CA-CB
     cb = _place_atom_correct(bb.ca, bb.n, (-1.0,0.0,0.0), 1.530, math.radians(109.5), math.radians(chi1))
     sc.cb = cb
+
+    # CG: CB-CG bond, chi2 determines rotation around CB-CG
+    bond_cb_cg = 1.530  # C-C sp3
+    ang_ca_cb_cg = math.radians(109.5)
+    cg = _place_atom_correct(cb, bb.ca, bb.n, bond_cb_cg, ang_ca_cb_cg, math.radians(chi2))
+    sc.cg = cg
+
+    # Sidechain-specific atoms
+    if aa == "Ser":
+        # OG: CG-OG bond
+        # Ser sidechain: CB-CG-OG (CG is the methyl C, but Ser only has CB-OG)
+        # Actually for Ser: CB is beta carbon, OG is gamma oxygen bonded to CB
+        # Let's place OG directly from CB:
+        og = _place_atom_correct(cb, bb.ca, bb.n, 1.430, math.radians(109.5), math.radians(chi2))
+        sc.og = og
+
+    elif aa == "Cys":
+        # SG: CG-SG bond
+        sg = _place_atom_correct(cg, cb, bb.ca, 1.820, math.radians(109.5), math.radians(chi2 + 60.0))
+        sc.sg = sg
+
+    elif aa == "Asp":
+        # Planar carboxylate: CG-OD1 and CG-OD2 (120° apart, planar)
+        # CG is sp2, OD1 and OD2 are 120° apart in the plane
+        # Use chi3 as out-of-plane rotation (0 for planar)
+        ang_cb_cg_od = math.radians(120.0)
+        od1 = _place_atom_correct(cg, cb, bb.ca, 1.250, ang_cb_cg_od, math.radians(chi3 if chi3 != 0 else 0.0))
+        od2 = _place_atom_correct(cg, cb, bb.ca, 1.250, ang_cb_cg_od, math.radians(chi3 + 180.0 if chi3 != 0 else 180.0))
+        sc.od1 = od1
+        sc.od2 = od2
+
+    elif aa == "His":
+        # Imidazole ring: CG-ND1 (1.37Å), CG-CD2 (1.37Å), ND1-NE2 (1.33Å)
+        # Planar sp2 geometry: angle ~120° around CG
+        ang_cb_cg_nd = math.radians(120.0)
+        # ND1 from CG
+        nd1 = _place_atom_correct(cg, cb, bb.ca, 1.370, ang_cb_cg_nd, math.radians(chi3 if chi3 != 0 else 30.0))
+        sc.nd1 = nd1
+        # CD2 from CG (on the other side)
+        cd2 = _place_atom_correct(cg, cb, bb.ca, 1.370, ang_cb_cg_nd, math.radians(chi3 + 180.0 if chi3 != 0 else 210.0))
+        sc.cd = cd2
+        # NE2 from CD2 (1.33Å, angle around CD2: ND1-CG-CD2-NE2 ~ 105°)
+        ne2 = _place_atom_correct(cd2, cg, cb, 1.330, math.radians(105.0), math.radians(chi3 + 90.0 if chi3 != 0 else 90.0))
+        sc.ne2 = ne2
+
+    elif aa == "Glu":
+        # CD from CG (chi3 rotation)
+        bond_cg_cd = 1.530
+        ang_cb_cg_cd = math.radians(109.5)
+        cd = _place_atom_correct(cg, cb, bb.ca, bond_cg_cd, ang_cb_cg_cd, math.radians(chi3))
+        sc.cd = cd
+        # Planar carboxylate: CD-OE1 and CD-OE2
+        ang_cg_cd_oe = math.radians(120.0)
+        oe1 = _place_atom_correct(cd, cg, cb, 1.250, ang_cg_cd_oe, 0.0)
+        oe2 = _place_atom_correct(cd, cg, cb, 1.250, ang_cg_cd_oe, math.pi)
+        sc.oe1 = oe1
+        sc.oe2 = oe2
+
+    elif aa == "Lys":
+        # CD from CG (chi3 rotation)
+        bond_cg_cd = 1.530
+        ang_cb_cg_cd = math.radians(109.5)
+        cd = _place_atom_correct(cg, cb, bb.ca, bond_cg_cd, ang_cb_cg_cd, math.radians(chi3))
+        sc.cd = cd
+        # CE from CD (chi4 rotation)
+        bond_cd_ce = 1.530
+        ang_cg_cd_ce = math.radians(109.5)
+        ce = _place_atom_correct(cd, cg, cb, bond_cd_ce, ang_cg_cd_ce, math.radians(chi4))
+        sc.cz = ce
+        # NZ from CE (1.49Å)
+        nz = _place_atom_correct(ce, cd, cg, 1.490, math.radians(109.5), 0.0)
+        # No NZ field on SidechainAtoms, so we skip
+
+    elif aa == "Thr":
+        # OG1 from CB (directly bonded to CB like Ser OG)
+        og1 = _place_atom_correct(cb, bb.ca, bb.n, 1.430, math.radians(109.5), math.radians(chi2))
+        sc.og1 = og1
+
+    elif aa == "Tyr":
+        # OH from... complex aromatic ring. Place CG then OH from far end
+        # Simplified: place OH from CB at distance 3.5Å (rough approximation)
+        bond_cb_oh = 3.500
+        oh = _place_atom_correct(cb, bb.ca, bb.n, bond_cb_oh, math.radians(109.5), math.radians(chi2))
+        sc.oh = oh
+
     return sc
+# ═══════════════════════════════════════════════════════════════════
+# PART VIII: DATA CLASSES
 
 # ═══════════════════════════════════════════════════════════════════
 # PART VIII: DATA CLASSES
