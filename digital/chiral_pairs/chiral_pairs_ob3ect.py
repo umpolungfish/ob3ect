@@ -20,7 +20,7 @@ Register (AFWD→AREV): VO⌀ → T → VO⌀
 Register (AREV→AFWD): VO⌀ → VO⌀ → T
 
 Ouroboricity: O₁ (chirality without criticality)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

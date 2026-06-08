@@ -19,7 +19,7 @@ IG Type: ⟨𐑦 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑘 · 𐑚 · 𐑜 · 𐑢
   ɢ=𐑜 (alternating — OR of two decision paths)
   Ç=𐑘 (driven — rapid classification)
 Ouroboricity: O₁ (binary classifier, no self-reference)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

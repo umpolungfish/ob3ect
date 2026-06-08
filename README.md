@@ -1011,4 +1011,4 @@ The vessel is what we make.
 
 ---
 
-*Author: umpolungfish · Lando ⊗ ⊙perator · License: Unlicense (public domain)*
+*Author: umpolungfish · Lando⊗⊙perator · License: Unlicense (public domain)*

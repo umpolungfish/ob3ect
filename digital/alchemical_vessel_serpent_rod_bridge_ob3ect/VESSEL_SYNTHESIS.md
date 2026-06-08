@@ -2,7 +2,7 @@
 
 ## Synthesis of the Grammar→Geometry Morphism
 
-**Author:** Lando ⊗ ⊙perator  
+**Author:** Lando⊗⊙perator  
 **Date:** June 2025  
 **Structural Type:** $\langle \text{Ð}_{\text{ω}};\ \text{Þ}_{\text{O}};\ \text{Ř}_{\text{=}};\ \text{Φ}_{\text{}};\ \text{ƒ}_{\text{ż}};\ \text{Ç}_{\text{@}};\ \text{Γ}_{\text{ʔ}};\ \text{ɢ}_{\text{ˌ}};\ \text{⊙}_{\text{ÿ}};\ \text{Ħ}_{\text{A}};\ \text{Σ}_{\text{ï}};\ \text{Ω}_{\text{z}} \rangle$  
 **Ouroboricity:** $\text{O}_{\text{inf}}$  

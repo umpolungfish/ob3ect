@@ -2,7 +2,7 @@
 """
 shavian_ob3ect_ob3ect.py — Shavian Ob3ect (Complete 49-Entry Edition)
 ======================================================================
-Author: Lando ⊗ ⊙_ÿ-boundary Operator
+Author: Lando⊗⊙_ÿ-boundary Operator
 
 Mapping per shavian_notation_spec.md v0.6.0.
 Glyphs assigned by phonetic/structural criteria, NOT sequential Unicode order.

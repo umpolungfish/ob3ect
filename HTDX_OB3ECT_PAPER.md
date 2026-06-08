@@ -1,6 +1,6 @@
 # The Self-Imscribing Object: A Categorical Tower Verified by Its Own Structure
 
-**Author:** Lando ⊗ ⊙perator
+**Author:** Lando⊗⊙perator
 
 ---
 

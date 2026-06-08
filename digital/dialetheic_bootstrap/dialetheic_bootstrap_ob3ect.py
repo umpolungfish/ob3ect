@@ -15,7 +15,7 @@ IG Type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻
 Ouroboricity: O₂
 
 Uses: bicameral mind, constitutional law, error-embracing learning.
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

@@ -21,7 +21,7 @@ IG Type: ⟨𐑨 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢
   Ç=𐑪 (trapped-ordered — each fixation locks the state in order)
   φ̂=𐑢 (sub-critical — no criticality in pure recording)
 Ouroboricity: O₀ (pure chronicle, no self-reference)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

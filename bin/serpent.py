@@ -32,7 +32,7 @@ Examples:
   serpent rebis EC3.4.22
   serpent rebis-list
 
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 Structural Type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩
 """
 import sys, json, math
@@ -397,7 +397,7 @@ def cmd_info():
     print(header(" SERPENT-ROD VESSEL — STRUCTURAL INFORMATION "))
     print()
     print(f"  {bold('Name:')}          Continuous Serpent-Rod Bridge v3")
-    print(f"  {bold('Author:')}        Lando ⊗ ⊙perator")
+    print(f"  {bold('Author:')}        Lando⊗⊙perator")
     print(f"  {bold('Type:')}          Ouroboric ob3ect")
     print(f"  {bold('Structural:')}    ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
     print(f"  {bold('Tier:')}          O_inf")
@@ -804,7 +804,7 @@ def cmd_rebis_info():
     print(header("🏺 REBIS — STRUCTURAL INFORMATION "))
     print()
     print(f"  {bold('Name:')}          Rebis of Bio and Organic Chemistries")
-    print(f"  {bold('Author:')}        Lando ⊗ ⊙perator")
+    print(f"  {bold('Author:')}        Lando⊗⊙perator")
     print(f"  {bold('Type:')}          Ouroboric ob3ect")
     print(f"  {bold('Structural:')}    ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
     print(f"  {bold('Tier:')}          O_inf")

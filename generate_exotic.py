@@ -1,6 +1,6 @@
 """
 Batch 2: More exotic magical and esoteric ob3ects.
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import sys, asyncio, json, re
 from pathlib import Path

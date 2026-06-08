@@ -19,7 +19,7 @@ IG Type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑗 · 𐑐 · 𐑤 · 𐑲 · 𐑝 · ⊙ 
   Ç=𐑤 (moderate — periodic cycle at natural frequency)
   Ħ=𐑖 (two-step — each cycle has two beats: forward and reverse)
 Ouroboricity: O₂ (periodic with critical self-modeling)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

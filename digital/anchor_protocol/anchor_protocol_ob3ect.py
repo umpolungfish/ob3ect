@@ -15,7 +15,7 @@ IG Type: ⟨𐑨 · 𐑰 · 𐑾 · 𐑬 · 𐑱 · 𐑤 · 𐑚 · 𐑜 · 𐑢
   T=𐑰 (containment — boundary contains the cycle)
   Ω=𐑴 (Z₂ parity — cycle repeats with alternating phase)
 Ouroboricity: O₁ (cyclical self-reference, no criticality)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

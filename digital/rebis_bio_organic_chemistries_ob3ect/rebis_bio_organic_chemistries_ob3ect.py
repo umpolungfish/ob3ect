@@ -22,7 +22,7 @@ THE REBIS PRINCIPLE:
     each catalytic site is a 3-residue measurement producing KM, kcat, and specificity.
     The Rebis closes the measurement loop: reaction → designed enzyme → verified catalysis.
 
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 
 import hashlib, json, math, sys, copy, random

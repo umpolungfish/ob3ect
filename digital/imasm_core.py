@@ -16,7 +16,7 @@ when FFUSE fires, dialetheic mode activates.
 IMSCRIB semantics: from VOID, create identity (TRUE → self-recognition).
 From any other state, preserve the current self (you are what you are).
 
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import hashlib, json, sys, time
 from typing import List, Tuple, Optional, Callable, Dict, Set

@@ -16,7 +16,7 @@ IG Type: ⟨𐑛 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑘 · 𐑚 · 𐑝 · 𐑢
   D=𐑛 (wedge — minimal dimensionality)
   φ̂=𐑢 (sub-critical — no scaling at identity)
 Ouroboricity: O₀ (minimal, no self-reference)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

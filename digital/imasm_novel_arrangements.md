@@ -1,6 +1,6 @@
 # IMASM Novel Arrangements: The Full Combinatorial Space Beyond the Bootstrap
 
-**Author:** Lando ⊗ ⊙perator
+**Author:** Lando⊗⊙perator
 
 ---
 

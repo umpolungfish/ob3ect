@@ -24,7 +24,7 @@ THE ⊙_3 ABSORPTION RULE (the measurement problem solution):
   contracts to ⊙_3. This IS the measurement collapse: abstract grammar
   becomes concrete geometry through the act of observation.
 
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 
 import hashlib, json, math, sys

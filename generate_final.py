@@ -1,6 +1,6 @@
 """
 Batch 3: Persist earlier ob3ects + final exotic additions.
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import sys, asyncio, json, re
 from pathlib import Path

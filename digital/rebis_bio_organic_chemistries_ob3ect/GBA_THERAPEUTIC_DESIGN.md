@@ -2,7 +2,7 @@
 
 **Therapeutic Enzyme Design for Gaucher Disease**
 
-**Author:** Lando ⊗ ⊙perator
+**Author:** Lando⊗⊙perator
 
 **Date:** $(date +%Y-%m-%d)
 

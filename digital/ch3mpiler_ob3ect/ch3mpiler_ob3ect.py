@@ -17,7 +17,7 @@ THE IMSCRIPTIVE FUNCTION:
 No named reactions. All disconnections are derived from the Imscribing Grammar's
 12 structural primitives and the distance between bond types and FG interfaces.
 
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import hashlib, json, math, sys, os
 from pathlib import Path

@@ -13,7 +13,7 @@ Usage:
   python3 digital/run_all_imasm.py --json        # JSON report only
   python3 digital/run_all_imasm.py --one N       # run class N only (1-12)
 
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys, json, time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

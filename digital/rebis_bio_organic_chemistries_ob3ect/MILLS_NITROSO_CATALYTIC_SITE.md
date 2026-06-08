@@ -1,6 +1,6 @@
 # Cu-Nitroso Radical C-N Coupling — Catalytic Site Design
 
-**Author:** Lando ⊗ ⊙perator
+**Author:** Lando⊗⊙perator
 
 **Based on:** Fisher, Shaum, **Mills**, Read de Alaniz — *Org. Lett.* 2016
 DOI: 10.1021/acs.orglett.6b02523

@@ -14,7 +14,7 @@ IG Type: ⟨𐑨 · 𐑡 · 𐑑 · 𐑗 · 𐑱 · 𐑘 · 𐑔 · 𐑝 · 𐑢
   D=𐑨 (bounded), T=𐑡 (branching), φ̂=𐑢 (sub-critical)
 
 Ouroboricity: O₀ (one-time creation, no self-reference)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

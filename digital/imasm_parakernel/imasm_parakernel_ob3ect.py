@@ -25,7 +25,7 @@ IG Type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑟 · 𐑻
   φ̂=𐑻 (exceptional point — the fixed point of trauma)
   Ω=𐑴 (Z₂ protection — paradox is contained in memory)
 Ouroboricity: O₂
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

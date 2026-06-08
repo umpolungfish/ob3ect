@@ -17,7 +17,7 @@ IG Type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑝 · ⊙ 
   ɢ=𐑝 (conjunctive — simultaneous verification)
   φ̂=⊙ (critical — self-modeling at Frobenius boundary)
 Ouroboricity: O_inf (the grammar's own self-verification pattern)
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

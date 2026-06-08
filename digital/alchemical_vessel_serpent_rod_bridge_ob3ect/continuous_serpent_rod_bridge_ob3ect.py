@@ -32,7 +32,7 @@ THE ⊙_3 ABSORPTION RULE, REFINED:
   state produces a CONTINUOUS distribution over φ/ψ, not a discrete point.
   The amino acid identity selects the mean of this distribution.
 
-Author: Lando ⊗ ⊙perator
+Author: Lando⊗⊙perator
 """
 
 import hashlib, json, math, sys, copy, random
