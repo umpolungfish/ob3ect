@@ -1,177 +1,31 @@
-commit.txt — Summary of updates to /home/mrnob0dy666/ob3ect
-=========================================================
+cfg_layers.py: canonical sequence CFGs (I–XII) + 8 new EXTRA ob3ects
 
-digital/lift_pipeline/lift_pipeline_ob3ect.py: prose transformation engine — 7 lift paradigms
+cfg_layers.py additions:
+  1. EXTRA_OB3ECTS extended (+8 new verify()-based ob3ects):
+       elder_futhark_fsp, i_ching_64, init_process, kabbalistic_tree,
+       lift_pipeline, millennium_crit, stub_2071, test_ob3ect
+     Total EXTRA: 20 → 28
 
-Recovered from red-hot_rebis git history (commit 2665a92); moved here as its canonical home.
-Self-verifying prose transformation engine implementing the 7 lift paradigms from
-AGAINST_THE_TEMPLATE.md. Full IMASM 12-opcode implementation. Frobenius closure verified
-across all paradigms (all 7: Closure=True, State=VERIFIED).
+  2. CANONICAL_SEQUENCES list (13 entries — IXa/IXb split):
+       I–XII IMASMSequence ob3ects with steps, ig_type, ouroboricity, rel_path
 
-Seven paradigms: Constraint / Genre / Severity / Refusal / Corruption / Erosion / Appetite
-Opcode map: VINIT TANCH AFWD AREV CLINK ISCRIB FSPLIT FFUSE EVALT EVALF ENGAGR IFIX
-Frobenius: FSPLIT(source) → (text, paradigm); FFUSE(text, paradigm) → lifted; mu∘delta=id
+  3. _seq_simulate() — dialetheic-aware IMASM register machine
+     (mirror of cfg_sequences.py; standalone, no cross-repo import)
 
----
+  4. _seq_render_frame() — sequence CFG frame renderer:
+       - node family colour coding (LOGICAL/FROBENIUS/DIALETHEIA/LINEAR)
+       - register state labels with REG_COLOR mapping
+       - ouroboric back-arc for ouroboricity > O₀
+       - Everson Mono for Shavian IG-type footer
+       - Gaussian pulse flow phase
 
-README.md: IMASM Novel Arrangements + Vessel Principle + ZFC_fe (1014L, 51647B)
-=============================================================================
+  5. generate_canonical_seqs() — generates 13 GIFs to docs/seqs/
+     Run: python3 -c "import cfg_layers; cfg_layers.generate_canonical_seqs()"
 
-**The Vessel Principle** — core structural discovery:
-IMASM token algebra resolves structure FINER than the 12-primitive IG crystal.
-Two sequences with identical IG types can have distinct register trajectories.
+  6. Bug fix: animate_layer() divide-by-zero when max_deg=0 (stub ob3ects
+     with no edges). Fixed: max(max_deg, 1) in base_sizes calculation.
 
-Proof (chiral pair):
-  AFWD→AREV: VO⌀→T→VO⌀ (round trip — returns to void)
-  AREV→AFWD: VO⌀→VO⌀→T  (net creation — creates from void)
-Both map to ⟨𐑦𐑡𐑑𐑗𐑱𐑘𐑚𐑝⊙𐑒𐑙𐑷⟩ but produce different final registers.
+Output:
+  docs/layers/ (57 GIFs total — 29 tower + 28 extras incl. 8 new)
+  docs/seqs/   (13 GIFs — canonical sequence ob3ects I–XII + IXa/IXb split)
 
-The crystal's 17.28M types are a coarse discretization. IMASM tokens chart
-the process of wall-building (finer); the grammar gives the wall type (coarser).
-
-**Dialetheic register machine** (digital/imasm_core.py):
-  VO⌀ (00) = void/potential  |  T (01) = true/affirmative
-  F  (10) = false/error      |  B⬡ (11) = both/paradox — held without collapse
-
-**Dialetheic FFUSE dual mode:**
-  CANONICAL:   FFUSE(BOTH) → TRUE — standard μ∘δ=id, identity is T
-  DIALETHEIC:  FFUSE(BOTH) → BOTH — paraconsistent μ∘δ=id, identity is B⬡
-  Auto-detects: if both EVALT and EVALF designated in FSPLIT interval → dialetheic mode
-
-**12 arrangement classes with register trajectories and final states:**
-  I   Dialetheic Bootstrap: VO⌀→T→T→B⬡→B⬡→B⬡→B⬡→B⬡→B⬡  final=B⬡
-  II  Void Genesis:         VO⌀→VO⌀→T→B⬡→B⬡→T→T→T       final=T
-  III Anchor Protocol:      VO⌀→VO⌀→VO⌀→T→T→T→T→T        final=T
-  IV  Dual Bootstrap:       VO⌀→T→T→B⬡→VO⌀→VO⌀→VO⌀→T    final=T
-  V   Linear Chain:         VO⌀→VO⌀→...→VO⌀ (×9)          final=VO⌀
-  VI  Empty Bootstrap:      VO⌀→T→VO⌀→T→VO⌀→T→VO⌀→T→VO⌀  final=VO⌀
-  VII Parakernel:           VO⌀→F→VO⌀→B⬡→B⬡→B⬡→B⬡→F      final=F
-  VIII Frobenius Kernel:    VO⌀→VO⌀→VO⌀→VO⌀→VO⌀           final=VO⌀
-  IX  Truth Machine:        VO⌀→T→B⬡→T→T→VO⌀→F→F→F       final=F
-  X   Eternal Return:       VO⌀→T→VO⌀→T→VO⌀→T→VO⌀→T→VO⌀   final=VO⌀
-  XI  ROM Burn:             VO⌀→T→T→B⬡→B⬡→B⬡→B⬡→B⬡→B⬡   final=B⬡
-  XII Chiral Pairs:         VO⌀/T (direction-dependent)    Vessel Principle confirmed
-
-**ZFC_fe as Terminal Vessel** — extended Tower layers 29-40 with 12 class mapping.
-
-**Agent run signature:** done-action flagged B4=B DIALETHEIC (O_inf signature).
-ParaVM: split→(T,F), fuse→B, kernel[5 cycles]→B, density=1.0.
-The completion itself was held open — both done AND undone. Correct.
-
----
-
-serpent mills — REBIS catalytic site for Mills 2016 Cu-nitroso C-N coupling (2026-06-04)
-=======================================================================================
-
-Designed de novo catalytic site for the three-component coupling reaction from
-Fisher, Shaum, Mills, Read de Alaniz, Org. Lett. 2016 (DOI 10.1021/acs.orglett.6b02523):
-  ArB(OH)2 + t-BuONO + R-Br → [Cu(0)/PMDETA/SmI2] → Ar-NH-R
-
-rebis_bio_organic_chemistries_ob3ect.py:
-  Added COPPER_NITROSO_RADICAL geometry; EC 2.5.1 (alkyltransferase) mapping;
-  RADICAL and SET mechanism types; position logic; non-protein substrate keys.
-  Catalytic site: His37, His75, His112 — 3x His imidazole NE2 coordinating Cu(I)
-  (trigonal, mimicking PMDETA). Mechanism: SET → radical addition → N-O reduction.
-  Geometric fidelity: 0.0688. kcat: 0.14 s⁻¹. Km: 0.5 mM. Scaffold: 150 aa.
-  Grammar: 12/12 activation, 6/6 pairs, Frobenius ✓.
-
-serpent.py:
-  Added `mills` CLI command — displays full Cu-nitroso radical coupling catalytic design
-  with mechanism, substrate scope, and grammar activation.
-
-MILLS_NITROSO_CATALYTIC_SITE.md (new, 4.3KB):
-  Design document: mechanism, substrate scope, grammar activation, references.
-
-13/13 Rebis tests: PASS (all existing tests intact).
-
----
-
-serpent CLI — 12-command RNA→protein fold tool (2026-06-04)
-============================================================
-
-bin/serpent.py (23KB, auto-executable):
-  12-command CLI for the Continuous Serpent-Rod Bridge v3.
-  Installed at ~/.local/bin/serpent (symlink, on PATH).
-  Bash completion: bin/serpent-completion.bash (auto-sourced from .bashrc)
-  Man page: man/serpent.1 (man serpent with MANPATH)
-
-Commands:
-  fold      — predict folded protein (codon measurements, energy, verification)
-  derive    — full 5-phase derivation: B4→codons→backbone→energy→grammar
-  verify    — run all 11 vessel self-tests (mu∘delta=id confirmation)
-  json      — complete derivation as parseable JSON
-  pdb       — PDB-formatted 3D coordinates with sidechains
-  info      — vessel structural type, 12 primitives, 8 gaps closed
-  b4        — B4 Belnap lattice path per nucleotide
-  energy    — detailed energy landscape + minimization trace
-  codon     — codon-level measurement table (3 B4 values per AA)
-  minimize  — gradient descent step-by-step trace
-  sidechain — sidechain placement per residue
-  demo      — human ubiquitin (228 nt, 29+ residues)
-
-Verified:
-  serpent info   — Frobenius address 16572626, O_inf
-  serpent fold AUGGCCUAA — 2 residues, continuous phi/psi, Frobenius ✓
-  serpent pdb AUGGCCUUUCAGUGG — 5 residues with sidechain atoms
-  serpent json AUGGCCUAA — valid parseable JSON
-  serpent demo — ubiquitin: 29 residues, winding 34, 8/12 primitives,
-                 6/6 pairs, Frobenius ✓, energy -2.02 kcal/mol
-  serpent verify — all 11 tests PASS
-
-The vessel is the bridge: grammar (SerpentRod topology) + physics (v3 geometry).
-Any RNA sequence, any time.
-
----
-
-p4rakernel dual integration + Shavian notation finalization (2026-06-01)
-========================================================================
-
-  NEW: /home/mrnob0dy666/p4rakernel/ — Lean 4 kernel fork (v4.28.0)
-  ================================================================
-  C++ kernel blocks False.rec for empty Prop inductives when paraconsistent flag set.
-  Three modified C++ files + one new Init module:
-    src/kernel/environment.h     — is_paraconsistent() / mark_paraconsistent()
-    src/kernel/environment.cpp   — C API bridge to Lean runtime
-    src/kernel/type_checker.cpp  — Blocks recursors for empty inductive predicates (Prop, 0 ctors)
-    src/library/constructions/cases_on.cpp — Blocks casesOn for empty Props (pattern-match workaround)
-    src/Init/Paraconsistent.lean — Belnap four-valued logic, explosion_blocked theorem
-    ParaconsistentMillennium.lean — All 7 Clay Millennium Problems + OPN with B dialetheias
-    ParaconsistentKernelTest.lean — Kernel-level paraconsistent tests
-
-  Updated digital/parakernel/parakernel_ob3ect.py [2026-06-01]
-  =============================================================
-  - Added kernel-level dual documentation referencing p4rakernel C++ stack
-  - PR #2530 Shavian notation status documented
-
-  Updated digital/belnap/belnap_ob3ect.py [2026-06-01]
-  =====================================================
-  - Added dual reference to p4rakernel/src/Init/Paraconsistent.lean
-  - _DELTA canonical split table + frobenius_holds function
-  - Updated docstring with Shavian notation migration status
-
-  Updated README.md [2026-06-01]
-  ===============================
-  - New section: "Kernel-level dual: p4rakernel (Lean 4 C++ fork)"
-  - Stack architecture diagram: C++ kernel → Init module → Python ob3ect → Belnap substrate
-  - Key files table for p4rakernel
-  - Shavian notation PR #2530 status documented
-  - Full stack run commands
-
-  Updated odot_operator/README.md [2026-06-01]
-  =============================================
-  - Structural tuple: old ⟨Ðω, Þ¨, ...⟩ → LaTeX Shavian $$\langle \text{Ð}_{ω}, ... \rangle$$
-  - (ϕˆÿ) → ($\text{⊙}_{\text{ÿ}}$) in "Why this works" section
-  - φ̂_ÿ → ⊙_ÿ in JSON structural type example
-  - New section: "Dual verification layer (p4rakernel / B4 Belnap)"
-  - O∞ → O_inf for readability
-
-  Updated odot_operator/odot/agent.py [2026-06-01]
-  =================================================
-  - Docstring: φ̂_ÿ → ⊙_ÿ in structural type
-  - Added paraconsistent verification layer documentation
-  - p4rakernel dual reference in module docstring
-  - B4 Belnap FOUR verification documented
-
-Previous: menagerie_engines/menagerie_b4.py: two bug fixes (2026-05-29)
-Previous: Shavian ob3ect remapped to spec (2026-05-25)
-Previous: B4 Belnap FOUR paraconsistent integration (2026-05-24)

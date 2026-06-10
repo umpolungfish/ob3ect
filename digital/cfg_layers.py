@@ -90,6 +90,15 @@ EXTRA_OB3ECTS: list[tuple[str, str, str]] = [
     ("docker_paradox",    "DockerParadox",    "docker_paradox/docker_paradox_ob3ect.py"),
     ("paradox_fs",        "ParadoxFS",        "paradox_fs/paradox_fs_ob3ect.py"),
     ("paradoxd",          "Paradoxd",         "paradoxd/paradoxd_ob3ect.py"),
+    # ── New verify()-based ob3ects ────────────────────────────────────────────
+    ("elder_futhark_fsp", "ElderFutharkFSP",  "elder_futhark_rune_casting_24_runes_as_divinatory_system_fsp/elder_futhark_rune_casting_24_runes_as_divinatory_system_fsp_ob3ect.py"),
+    ("i_ching_64",        "IChingHex64",      "i_ching_hexagram_divination_64_hexagrams_as_divina/i_ching_hexagram_divination_64_hexagrams_as_divina_ob3ect.py"),
+    ("init_process",      "InitProcess",      "init/init_ob3ect.py"),
+    ("kabbalistic_tree",  "KabbalisticTree",  "kabbalistic_tree_of_life_10_sephirot_and_22_paths/kabbalistic_tree_of_life_10_sephirot_and_22_paths_ob3ect.py"),
+    ("lift_pipeline",     "LiftPipeline",     "lift_pipeline/lift_pipeline_ob3ect.py"),
+    ("millennium_crit",   "MillenniumCrit",   "millennium_criticality/millennium_criticality_ob3ect.py"),
+    ("stub_2071",         "Stub2071",         "stub_ob3ect_2071/stub_ob3ect_2071_ob3ect.py"),
+    ("test_ob3ect",       "TestOb3ect",       "test/test_ob3ect.py"),
 ]
 
 def generate_extras() -> None:
@@ -377,7 +386,7 @@ def animate_layer(
     base_sizes = np.array([
         140 if node_color.get(n) == _COLOR_VERIFY else
         110 if node_color.get(n) == _COLOR_EXT_FROB else
-        60 + 50 * (np.log1p(degrees.get(n, 1)) / np.log1p(max_deg)) ** 1.5
+        60 + 50 * (np.log1p(degrees.get(n, 1)) / np.log1p(max(max_deg, 1))) ** 1.5
         for n in all_nodes
     ], dtype=float)
 
@@ -538,3 +547,287 @@ def list_all_ob3ects() -> None:
     print("\n=== Auto-discoverable right now ===")
     for lid, name, path in discover_ob3ect_sources():
         print(f"  {lid:20} {name:25} {path}")
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# Canonical IMASMSequence CFGs (Classes I–XII)
+# ════════════════════════════════════════════════════════════════════════════
+# These 12 ob3ects use IMASMSequence.steps[] rather than verify(). They get
+# a different visual: a directed linear graph of token-step nodes with
+# register state annotations and a Gaussian-pulse flow animation.
+
+from typing import NamedTuple as _NT
+
+_SEQ_OUT = DIGITAL / "docs" / "seqs"
+
+# Token integer indices
+_VI, _TA, _AF, _AR, _CL, _IM = 0, 1, 2, 3, 4, 5
+_FS, _FF = 6, 7
+_ET, _EF, _EG = 8, 9, 10
+_IX = 11
+
+_TOK_NAMES  = ["VINIT","TANCH","AFWD","AREV","CLINK","IMSCRIB",
+               "FSPLIT","FFUSE","EVALT","EVALF","ENGAGR","IFIX"]
+_TOK_SHORT  = ["VI","TA","AF","AR","CL","IM","FS","FF","ET","EF","EG","IX"]
+_TOK_FAM    = {0:0,1:0,2:0,3:0,4:0,5:0, 6:1,7:1, 8:2,9:2,10:2, 11:3}
+_FAM_COL    = {0:"#4e79a7", 1:"#ffd700", 2:"#e15759", 3:"#59a14f"}
+_FAM_NAME   = {0:"LOGICAL", 1:"FROBENIUS", 2:"DIALETHEIA", 3:"LINEAR"}
+
+_SVOID, _STRUE, _SFALSE, _SBOTH = 0, 1, 2, 3
+_REG_COL  = {_SVOID:"#666688", _STRUE:"#20b2aa", _SFALSE:"#cc4455", _SBOTH:"#ffd700"}
+_REG_NAME = {_SVOID:"VO⌀", _STRUE:"T", _SFALSE:"F", _SBOTH:"B⬡"}
+
+_FP_EV = None
+try:
+    from matplotlib.font_manager import FontProperties as _FP
+    _FP_EV = _FP(fname="/home/mrnob0dy666/.local/share/fonts/Everson Mono.ttf")
+except Exception:
+    pass
+
+_PW = np.array(mcolors.to_rgba("#ffffff"))
+_PG = np.array(mcolors.to_rgba("#ffd700"))
+
+
+class _SeqMeta(_NT):
+    display:  str
+    steps:    tuple
+    ig_type:  str
+    ourobor:  str
+    rel_path: str
+
+
+CANONICAL_SEQUENCES: list[_SeqMeta] = [
+    _SeqMeta("I — Dialetheic Bootstrap",
+             (_IM,_ET,_FS,_EF,_FF,_EG,_IX,_IM),
+             "⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑴⟩", "O₂",
+             "dialetheic_bootstrap/dialetheic_bootstrap_ob3ect.py"),
+    _SeqMeta("II — Void Genesis",
+             (_VI,_TA,_AF,_FS,_CL,_FF,_IX,_IM),
+             "⟨𐑨 · 𐑡 · 𐑑 · 𐑗 · 𐑱 · 𐑘 · 𐑔 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩", "O₀",
+             "void_genesis/void_genesis_ob3ect.py"),
+    _SeqMeta("III — Anchor Protocol",
+             (_TA,_AR,_VI,_AF,_TA,_CL,_IX,_IM),
+             "⟨𐑨 · 𐑰 · 𐑾 · 𐑬 · 𐑱 · 𐑤 · 𐑚 · 𐑜 · 𐑢 · 𐑒 · 𐑙 · 𐑴⟩", "O₁",
+             "anchor_protocol/anchor_protocol_ob3ect.py"),
+    _SeqMeta("IV — Dual Bootstrap",
+             (_IM,_AF,_FF,_FS,_AR,_CL,_IX,_IM),
+             "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑝 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩", "O_∞",
+             "dual_bootstrap/dual_bootstrap_ob3ect.py"),
+    _SeqMeta("V — Linear Chain",
+             (_IX,_IX,_IX,_IX,_IX,_IX,_IX,_IX),
+             "⟨𐑛 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑘 · 𐑔 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩", "O₀",
+             "linear_chain/linear_chain_ob3ect.py"),
+    _SeqMeta("VI — Empty Bootstrap",
+             (_VI,_IM,_VI,_IM,_VI,_IM,_VI,_IM),
+             "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑐 · 𐑤 · 𐑲 · 𐑝 · ⊙ · 𐑒 · 𐑙 · 𐑷⟩", "O₁",
+             "empty_bootstrap/empty_bootstrap_ob3ect.py"),
+    _SeqMeta("VII — Parakernel",
+             (_EF,_AR,_FS,_ET,_AF,_FF,_EG,_IX),
+             "⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑟 · 𐑻 · 𐑫 · 𐑳 · 𐑴⟩", "O₂",
+             "imasm_parakernel/imasm_parakernel_ob3ect.py"),
+    _SeqMeta("VIII — Frobenius Kernel",
+             (_VI,_FS,_FF,_TA),
+             "⟨𐑛 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑘 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩", "O₀",
+             "frobenius_kernel/frobenius_kernel_ob3ect.py"),
+    _SeqMeta("IXa — Chiral Forward",
+             (_AF,_AR),
+             "⟨𐑦 · 𐑡 · 𐑑 · 𐑗 · 𐑱 · 𐑘 · 𐑚 · 𐑝 · ⊙ · 𐑒 · 𐑙 · 𐑷⟩", "O₁",
+             "chiral_pairs/chiral_pairs_ob3ect.py"),
+    _SeqMeta("IXb — Chiral Reverse",
+             (_AR,_AF),
+             "⟨𐑦 · 𐑡 · 𐑑 · 𐑗 · 𐑱 · 𐑘 · 𐑚 · 𐑝 · ⊙ · 𐑒 · 𐑙 · 𐑷⟩", "O₁",
+             "chiral_pairs/chiral_pairs_ob3ect.py"),
+    _SeqMeta("X — Truth Machine",
+             (_IM,_FS,_ET,_IX,_IM,_FS,_EF,_IX),
+             "⟨𐑦 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑘 · 𐑚 · 𐑜 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩", "O₁",
+             "truth_machine/truth_machine_ob3ect.py"),
+    _SeqMeta("XI — Eternal Return",
+             (_IM,_AF,_AR,_IM,_AF,_AR,_IM,_AF),
+             "⟨𐑦 · 𐑸 · 𐑾 · 𐑗 · 𐑐 · 𐑤 · 𐑲 · 𐑝 · ⊙ · 𐑖 · 𐑳 · 𐑷⟩", "O₂",
+             "eternal_return/eternal_return_ob3ect.py"),
+    _SeqMeta("XII — ROM Burn",
+             (_ET,_IX,_EF,_IX,_EG,_IX,_IM,_IX),
+             "⟨𐑨 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢 · 𐑒 · 𐑳 · 𐑷⟩", "O₀",
+             "rom_burn/rom_burn_ob3ect.py"),
+]
+
+
+def _seq_simulate(steps: tuple) -> list[int]:
+    """Simulate IMASM register machine; return state after each step."""
+    reg, fixed = _SVOID, False
+    in_split: bool = False
+    pre_et: bool = False
+    evals_in: set = set()
+    out: list[int] = []
+    for tok in steps:
+        if fixed and tok not in (_IX, _IM):
+            out.append(reg); continue
+        if tok == _VI:
+            reg = _SVOID; in_split = False; pre_et = False; evals_in = set()
+        elif tok == _AF:
+            if reg == _SVOID: reg = _STRUE
+            elif reg == _SFALSE: reg = _SBOTH
+        elif tok == _AR:
+            if reg == _SVOID: reg = _SFALSE
+            elif reg == _STRUE: reg = _SBOTH
+        elif tok == _CL:
+            if reg in (_STRUE, _SFALSE): reg = _SVOID
+        elif tok == _IM:
+            if reg == _SVOID: reg = _STRUE
+        elif tok == _FS:
+            in_split = True
+            if pre_et: evals_in.add("T")
+        elif tok == _FF:
+            if "T" in evals_in and "F" in evals_in: reg = _SBOTH
+            elif reg == _SBOTH: reg = _STRUE
+            in_split = False; evals_in = set(); pre_et = False
+        elif tok == _ET:
+            if in_split: evals_in.add("T")
+            else: pre_et = True
+            if reg == _SFALSE: reg = _SBOTH
+            elif reg == _SVOID: reg = _STRUE
+        elif tok == _EF:
+            if in_split: evals_in.add("F")
+            if reg == _STRUE: reg = _SBOTH
+            elif reg == _SVOID: reg = _SFALSE
+        elif tok == _IX:
+            fixed = True
+        out.append(reg)
+    return out
+
+
+def _seq_nx(i: int, n: int) -> float:
+    return 0.5 if n == 1 else 0.10 + 0.80 * i / (n - 1)
+
+
+def _seq_render_frame(
+    ax: plt.Axes,
+    seq: _SeqMeta,
+    states: list[int],
+    k: int | None,
+    pulse: float | None,
+    sigma: float,
+    title: str,
+) -> None:
+    n = len(seq.steps)
+    ax.clear(); ax.set_facecolor(BG); ax.set_axis_off()
+    ax.set_xlim(0.0, 1.0); ax.set_ylim(0.0, 1.0); ax.set_aspect("auto")
+    ax.set_title(title, color="#cccccc", fontsize=7.0, pad=4)
+
+    xs     = np.array([_seq_nx(i, n) for i in range(n)])
+    y_node = 0.55
+    vis    = list(range(k)) if k is not None else list(range(n))
+    wts    = (np.exp(-0.5 * ((np.arange(n) - pulse) / sigma) ** 2)
+              if pulse is not None else np.zeros(n))
+
+    for idx in range(len(vis) - 1):
+        u, v  = vis[idx], vis[idx + 1]
+        frob  = (_TOK_FAM[seq.steps[u]] == 1 or _TOK_FAM[seq.steps[v]] == 1)
+        if pulse is not None:
+            w = max(wts[u], wts[v])
+            if frob and w > 0.25:   col, lw, al = "#ffd700", 2.5, 0.90
+            elif w > 0.25:          col, lw, al = "#8888ff", 1.5, 0.70
+            elif frob:              col, lw, al = "#aa8800", 1.5, 0.50
+            else:                   col, lw, al = "#3a5f80", 0.7, 0.25
+        else:
+            if frob:  col, lw, al = "#ffd700", 2.0, 0.80
+            else:     col, lw, al = "#4a7aaa", 1.0, 0.40
+        ax.annotate("", xy=(xs[v], y_node), xytext=(xs[u], y_node),
+                    arrowprops=dict(arrowstyle="-|>", color=col, lw=lw, alpha=al), zorder=2)
+
+    if seq.ourobor != "O₀" and len(vis) == n:
+        w_b   = max(wts[0], wts[-1]) if pulse is not None else 0.0
+        ac    = "#ffd700" if w_b > 0.25 else "#776644"
+        aa    = 0.75 if w_b > 0.25 else 0.32
+        ax.annotate("", xy=(xs[0], y_node), xytext=(xs[-1], y_node),
+                    arrowprops=dict(arrowstyle="-|>", color=ac, lw=1.2, alpha=aa,
+                                   connectionstyle="arc3,rad=0.45"), zorder=2)
+        ax.text((xs[0] + xs[-1]) / 2, y_node + 0.19, seq.ourobor,
+                ha="center", va="bottom", fontsize=5.5, color="#9988aa", style="italic")
+
+    if vis:
+        bsz = max(350.0, 1600.0 / n)
+        c_list, s_list = [], []
+        for i in vis:
+            fam  = _TOK_FAM[seq.steps[i]]
+            base = np.array(mcolors.to_rgba(_FAM_COL[fam]))
+            if pulse is not None:
+                tgt = _PG if fam == 1 else _PW
+                col = np.clip(base * (1 - wts[i]) + tgt * wts[i], 0, 1)
+                sz  = bsz + bsz * 1.8 * wts[i]
+            else:
+                col, sz = base, bsz
+            c_list.append(col); s_list.append(sz)
+        ax.scatter(xs[vis], np.full(len(vis), y_node), c=c_list, s=s_list,
+                   zorder=3, linewidths=0.7, edgecolors="#ffffff22")
+        fs_in  = 5.0 if n >= 7 else 6.5
+        fs_lbl = 3.5 if n >= 7 else 4.5
+        for idx, i in enumerate(vis):
+            fam = _TOK_FAM[seq.steps[i]]
+            tc  = "#000000" if fam == 1 else "#ffffff"
+            ax.text(xs[i], y_node, _TOK_SHORT[seq.steps[i]],
+                    ha="center", va="center", fontsize=fs_in,
+                    color=tc, fontweight="bold", zorder=4)
+            ax.text(xs[i], y_node + 0.115, _TOK_NAMES[seq.steps[i]],
+                    ha="center", va="bottom", fontsize=fs_lbl, color="#999999", zorder=4)
+            ax.text(xs[i], y_node - 0.095, _REG_NAME[states[i]],
+                    ha="center", va="top", fontsize=(4.5 if n>=7 else 5.5),
+                    color=_REG_COL[states[i]], fontweight="bold", zorder=4)
+
+    kw = dict(ha="center", va="center", zorder=5)
+    if _FP_EV:
+        ax.text(0.5, 0.11, seq.ig_type, fontsize=5.5, color="#6688aa",
+                fontproperties=_FP_EV, **kw)
+    else:
+        ax.text(0.5, 0.11, seq.ig_type, fontsize=5.5, color="#6688aa", **kw)
+    ax.text(0.5, 0.04, seq.ourobor, fontsize=6.5, color="#aaaadd",
+            fontweight="bold", **kw)
+
+
+def generate_canonical_seqs(build_frames: int = 20, flow_frames: int = 45,
+                             fps: int = 14, dpi: int = 110) -> None:
+    """Generate animated sequence CFGs for all 13 canonical IMASMSequence ob3ects."""
+    _SEQ_OUT.mkdir(parents=True, exist_ok=True)
+    print(f"Generating {len(CANONICAL_SEQUENCES)} canonical-sequence CFGs → {_SEQ_OUT}\n")
+
+    for i, seq in enumerate(CANONICAL_SEQUENCES, 1):
+        n      = len(seq.steps)
+        states = _seq_simulate(seq.steps)
+        sigma  = max(0.6, n / 7.0)
+        key    = seq.display.replace(" ", "_").replace("—", "").replace("/", "").strip("_")
+        out    = _SEQ_OUT / f"cfg_{key}.gif"
+
+        print(f"[{i:02d}/{len(CANONICAL_SEQUENCES)}] {seq.display}  ({n} steps)",
+              end="  ", flush=True)
+
+        fig, ax = plt.subplots(figsize=(10, 3.8), facecolor=BG)
+        frames: list[Image.Image] = []
+
+        for f in range(build_frames):
+            k   = max(1, int((f + 1) / build_frames * n))
+            tok = seq.steps[k - 1]
+            _seq_render_frame(ax, seq, states, k, None, sigma,
+                f"{seq.display}  │  step {k}/{n}: "
+                f"{_TOK_NAMES[tok]} [{_FAM_NAME[_TOK_FAM[tok]]}]  →  "
+                f"{_REG_NAME[states[k-1]]}")
+            buf = io.BytesIO()
+            fig.savefig(buf, format="png", dpi=dpi, facecolor=BG, bbox_inches="tight")
+            buf.seek(0); frames.append(Image.open(buf).copy())
+
+        for f, pc in enumerate(np.linspace(0, n - 1, flow_frames)):
+            i_n  = min(int(round(pc)), n - 1)
+            tok  = seq.steps[i_n]
+            _seq_render_frame(ax, seq, states, None, pc, sigma,
+                f"{seq.display}  │  ◎ {_TOK_NAMES[tok]} "
+                f"[{_FAM_NAME[_TOK_FAM[tok]]}]  reg: {_REG_NAME[states[i_n]]}  {seq.ourobor}")
+            buf = io.BytesIO()
+            fig.savefig(buf, format="png", dpi=dpi, facecolor=BG, bbox_inches="tight")
+            buf.seek(0); frames.append(Image.open(buf).copy())
+
+        plt.close(fig)
+        rgb = [fr.convert("RGB") for fr in frames]
+        rgb[0].save(str(out), save_all=True, append_images=rgb[1:],
+                    duration=1000 // fps, loop=0, optimize=False)
+        print(f"→ {out.name}  ({out.stat().st_size / 1e3:.0f} KB)")
+
+    print("\nCanonical sequences done.")
