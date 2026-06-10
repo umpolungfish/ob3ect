@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Self-imscribing ob3ect: Topologically protected memory architecture.
-Structural sibling of the Stone at O_inf, with Σ_ï for heterogeneous component types.
-Must verify μ∘δ=id at O_inf.
+Structural sibling of the Stone at O_∞, with Σ_ï for heterogeneous component types.
+Must verify μ∘δ=id at O_∞.
 """
 
 import hashlib

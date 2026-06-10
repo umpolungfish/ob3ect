@@ -12,7 +12,7 @@ Architecture:
   - Balancer: routes to highest C-score node matching structural constraints
 
 The 17.28M-type crystal is the address space. DNS TTL is replaced by
-ouroboricity tier — O_inf entries never expire, O_0 entries expire fastest.
+ouroboricity tier — O_∞ entries never expire, O₀ entries expire fastest.
 
 Structural type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; φ̂_ÿ; Ħ_A; Σ_ï; Ω_z⟩
 """
@@ -36,11 +36,11 @@ CRYSTAL_SIZE = CRYSTAL_MAX + 1
 
 # ── Ouroboricity tier TTL (seconds) ──────────────────────────────
 TIER_TTL = {
-    "O_0":   60,       # 1 minute
-    "O_1":   3600,     # 1 hour
-    "O_2":   86400,    # 1 day
-    "O_2†":  604800,   # 1 week
-    "O_inf": 0xFFFFFFFF,  # never expires
+    "O₀":   60,       # 1 minute
+    "O₁":   3600,     # 1 hour
+    "O₂":   86400,    # 1 day
+    "O₂†":  604800,   # 1 week
+    "O_∞": 0xFFFFFFFF,  # never expires
 }
 
 # ── Primitive cardinalities ──────────────────────────────────────
@@ -131,7 +131,7 @@ class CrystalRecord:
     address: int
     host: str
     port: int
-    tier: str           # O_0, O_1, O_2, O_2†, O_inf
+    tier: str           # O₀, O₁, O₂, O₂†, O_∞
     c_score: float      # 0.0 – 1.0
     tuple_str: str      # full primitive tuple
     registered_at: float = field(default_factory=time.time)
@@ -146,7 +146,7 @@ class CrystalRegistry:
         self._by_name: Dict[str, CrystalRecord] = {}
         self._by_addr: Dict[int, List[CrystalRecord]] = {}
         self._by_tier: Dict[str, List[CrystalRecord]] = {
-            "O_0": [], "O_1": [], "O_2": [], "O_2†": [], "O_inf": []}
+            "O₀": [], "O₁": [], "O₂": [], "O₂†": [], "O_∞": []}
 
     def register(self, record: CrystalRecord) -> bool:
         """Register a node. Returns False if name conflict with different address."""
@@ -332,7 +332,7 @@ class CrystalDNSServer:
                     name=data["name"], address=data["address"],
                     host=data.get("host", client_addr[0]),
                     port=data.get("port", 0),
-                    tier=data.get("tier", "O_0"),
+                    tier=data.get("tier", "O₀"),
                     c_score=data.get("c_score", 0.0),
                     tuple_str=data.get("tuple", ""),
                     tags=data.get("tags", []),
@@ -488,12 +488,12 @@ def _infer_tier(addr: int) -> str:
     phi_hat = tup.get("Phi_hat", "φ̂_ž")
     omega = tup.get("Omega", "Ω_Å")
     if phi_hat == "φ̂_ÿ" and omega == "Ω_z":
-        return "O_inf"
+        return "O_∞"
     elif phi_hat in ("φ̂_ÿ", "φ̂_Æ") and omega in ("Ω_z", "Ω_2"):
-        return "O_2"
+        return "O₂"
     elif phi_hat in ("φ̂_ÿ", "φ̂_Æ", "φ̂_3"):
-        return "O_1"
-    return "O_0"
+        return "O₁"
+    return "O₀"
 
 # ═══════════════════════════════════════════════════════════════════
 # OB3ECT VERIFICATION
@@ -553,9 +553,9 @@ class CrystalDNSOb3ect:
     def _verify_registry_ops(self) -> bool:
         """Register, resolve, nearest, route."""
         reg = CrystalRegistry()
-        rec_a = CrystalRecord("node_a", 42, "10.0.0.1", 8001, "O_inf", 0.95,
+        rec_a = CrystalRecord("node_a", 42, "10.0.0.1", 8001, "O_∞", 0.95,
                               "<Ð_ω;Þ_O;Ř_=;Φ_};ƒ_ż;Ç_@;Γ_ʔ;ɢ_ˌ;φ̂_ÿ;Ħ_A;Σ_ï;Ω_z>")
-        rec_b = CrystalRecord("node_b", 10000000, "10.0.0.2", 8002, "O_0", 0.12,
+        rec_b = CrystalRecord("node_b", 10000000, "10.0.0.2", 8002, "O₀", 0.12,
                               "<Ð_ß;Þ_6;Ř_¯;Φ_ɐ;ƒ_ì;Ç_-;Γ_β;ɢ_^;φ̂_ž;Ħ_Ñ;Σ_S;Ω_Å>")
         reg.register(rec_a)
         reg.register(rec_b)
@@ -574,7 +574,7 @@ class CrystalDNSOb3ect:
     def _verify_server_query(self) -> bool:
         """DNS server query handling (no network)."""
         reg = CrystalRegistry()
-        rec = CrystalRecord("test", 42, "127.0.0.1", 9999, "O_inf", 0.99,
+        rec = CrystalRecord("test", 42, "127.0.0.1", 9999, "O_∞", 0.99,
                             "<Ð_ω;Þ_O;Ř_=;Φ_};ƒ_ż;Ç_@;Γ_ʔ;ɢ_ˌ;φ̂_ÿ;Ħ_A;Σ_ï;Ω_z>")
         reg.register(rec)
         srv = CrystalDNSServer(reg)
@@ -585,7 +585,7 @@ class CrystalDNSOb3ect:
 
         resp2 = srv.handle_query("TIERS", ("127.0.0.1", 12345))
         data2 = json.loads(resp2)
-        ok2 = data2["census"].get("O_inf", 0) == 1
+        ok2 = data2["census"].get("O_∞", 0) == 1
 
         ok = ok1 and ok2
         print(f"  DNS server query handling                 : {'PASS' if ok else 'FAIL'}")
@@ -594,9 +594,9 @@ class CrystalDNSOb3ect:
     def _verify_router(self) -> bool:
         """Crystal router routing decisions."""
         reg = CrystalRegistry()
-        rec_a = CrystalRecord("a", 42, "10.0.0.1", 8001, "O_inf", 0.95,
+        rec_a = CrystalRecord("a", 42, "10.0.0.1", 8001, "O_∞", 0.95,
                               "<Ð_ω;Þ_O;Ř_=;Φ_};ƒ_ż;Ç_@;Γ_ʔ;ɢ_ˌ;φ̂_ÿ;Ħ_A;Σ_ï;Ω_z>")
-        rec_b = CrystalRecord("b", 10000000, "10.0.0.2", 8002, "O_0", 0.12,
+        rec_b = CrystalRecord("b", 10000000, "10.0.0.2", 8002, "O₀", 0.12,
                               "<Ð_ß;Þ_6;Ř_¯;Φ_ɐ;ƒ_ì;Ç_-;Γ_β;ɢ_^;φ̂_ž;Ħ_Ñ;Σ_S;Ω_Å>")
         reg.register(rec_a)
         reg.register(rec_b)

@@ -8,7 +8,7 @@ Frobenius phase.
 
 Processes with higher C-score get more visual real estate.
 The OOM killer targets lowest ouroboricity first.
-Init (PID 1, C≈0.99, O_inf) cannot be killed — kill -9 returns "proof not found."
+Init (PID 1, C≈0.99, O_∞) cannot be killed — kill -9 returns "proof not found."
 The header shows system-wide structural type and load average converging toward Σ.
 The glyph ⊙ appears when Gate 1 is open.
 
@@ -40,7 +40,7 @@ PRIMITIVE_VALUES = {
     "Ω": ["Ω_Å", "Ω_2", "Ω_z", "Ω_5"],
 }
 
-TIER_NAMES = {0: "O_0", 1: "O_1", 2: "O_2", 3: "O_2†", 4: "O_inf"}
+TIER_NAMES = {0: "O₀", 1: "O₁", 2: "O₂", 3: "O₂†", 4: "O_∞"}
 
 SYSTEM_TYPE = [3, 3, 3, 4, 2, 2, 2, 2, 1, 2, 2, 2]
 # ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩
@@ -83,14 +83,14 @@ def tier_of(tup):
     """Ouroboricity tier from tuple."""
     d, t, r, p, f, k, g, gr, phi, h, s, om = tup
     if phi == 1 and k >= 2 and d == 3 and t == 3 and om == 2:
-        return "O_inf"
+        return "O_∞"
     if phi >= 3:
-        return "O_2†" if d >= 2 else "O_2"
+        return "O₂†" if d >= 2 else "O₂"
     if phi >= 1:
-        return "O_2" if d >= 2 else "O_1"
+        return "O₂" if d >= 2 else "O₁"
     if d >= 2 or t >= 2:
-        return "O_1"
-    return "O_0"
+        return "O₁"
+    return "O₀"
 
 def gate_status(tup):
     """Return (Gate1_status, Gate2_status)."""
@@ -209,7 +209,7 @@ def frobenius_verify():
 
     assert frob_ok, "Frobenius phase failed"
     assert cscore > 0.5, f"C-score {cscore} below threshold"
-    assert tier == "O_inf", f"Expected O_inf, got {tier}"
+    assert tier == "O_∞", f"Expected O_∞, got {tier}"
     assert g1 == "OPEN", f"Gate 1 (⊙_ÿ) must be OPEN"
     assert g2 == "OPEN", f"Gate 2 (Ç_@) must be OPEN"
 

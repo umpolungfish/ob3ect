@@ -16,7 +16,7 @@ All 10 engines + `run_all.py` must report **Closure: True** (10/10) when execute
 
 | Engine | MENAGERIE Theme | Style |
 |--------|------------------|-------|
-| `pure_b_engine.py` | Pure B (O_∞ ∧ O_0) | **Live** animated B4 dashboard (para_loop style) |
+| `pure_b_engine.py` | Pure B (O_∞ ∧ O₀) | **Live** animated B4 dashboard (para_loop style) |
 | `dialetheic_ouroboros_engine.py` | Multi-substrate B (Python/ELF/Silicon) | **Live** cross-substrate tail-eating loop |
 | `cscore_engine.py` | C-Score as Imscription Engine | **Live** reflexive self-modeling with real-time closure strength |
 | `shavian_engine.py` | Notation as Substance | Rich static report (glyph → IMASM roundtrip) |
@@ -55,7 +55,7 @@ These engines inherit the discipline of `~/priests-engine` and `structural_reson
 - B4 is the *substrate*, not an add-on.
 - `μ ∘ δ = id` is not a slogan — it is the exit condition of every `run()`.
 - Live loops with ANSI dashboards when the ob3ect is "alive".
-- The extreme BOTH/AND claims (Pure B at O_∞ ∧ O_0, multi-substrate contradiction, conversation-as-ob3ect, C-score as gate strength) are made *runnable*, not merely described.
+- The extreme BOTH/AND claims (Pure B at O_∞ ∧ O₀, multi-substrate contradiction, conversation-as-ob3ect, C-score as gate strength) are made *runnable*, not merely described.
 
 The menagerie is the stress test that proves the grammar does not become vague when pushed to its limit.
 

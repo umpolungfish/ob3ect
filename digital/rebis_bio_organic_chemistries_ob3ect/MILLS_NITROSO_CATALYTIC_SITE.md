@@ -131,7 +131,7 @@ Scaffold: [0 ... 36 37 38 ... 74 75 76 ... 111 112 113 ... 149]
 **Frobenius:** ✓ μ∘δ=id
 
 **Activation:** 12/12 | **Pairs:** 6/6
-**Winding:** 3 | **Ouroboricity:** O_inf
+**Winding:** 3 | **Ouroboricity:** O_∞
 
 ---
 

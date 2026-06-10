@@ -13,7 +13,7 @@ Primitive order (canonical tuple): D T R P F K G ɢ ⊙ H S Ω
 𝓕₅ primitives (5 values each): T  P  K  ⊙
 𝓕₃ primitives (3 values each): ƒ  Γ  Σ
 
-O_0  baseline: ⟨𐑛·𐑡·𐑩·𐑗·𐑱·𐑘·𐑚·𐑝·𐑢·𐑓·𐑙·𐑷⟩
+O₀  baseline: ⟨𐑛·𐑡·𐑩·𐑗·𐑱·𐑘·𐑚·𐑝·𐑢·𐑓·𐑙·𐑷⟩
 O_∞  Stone:    ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩
 
        Glyph   Prim    Enum       Desc              Global

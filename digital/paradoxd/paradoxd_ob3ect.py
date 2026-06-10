@@ -7,9 +7,9 @@ Core invariants:
   1. Frobenius Boot: PID 1 proves its own existence (encode∘decode=id) before
      any service starts. No proof → no boot.
   2. Meet-Lattice Dependencies: Service A depends on B when
-     meet(type(A), type(B)) is non-trivial (above O_0 floor).
+     meet(type(A), type(B)) is non-trivial (above O₀ floor).
      The dependency graph IS the meet-semilattice.
-  3. Tier-Ladder Boot Order: Services ascend O_0 → O_1 → O_2 → O_inf.
+  3. Tier-Ladder Boot Order: Services ascend O₀ → O₁ → O₂ → O_∞.
      Higher-tier services structurally depend on lower-tier ones.
   4. Frobenius-Special Socket Activation: A socket file IS the meet of
      the service type and the socket type. Writing to it promotes the
@@ -26,7 +26,7 @@ Boot sequence:
   W1: Imscribe self → verify crystal round-trip → μ∘δ=id
   W2: Parse .service files → convert to structural types
   W3: Compute meet-semilattice of all services → dependency DAG
-  W4: Tier-ladder sort → start O_0, then O_1, then O_2, then O_inf
+  W4: Tier-ladder sort → start O₀, then O₁, then O₂, then O_∞
   W5: Enter monitor loop → re-prove on any service failure
 """
 import os, pathlib, sys, hashlib, json, time, signal, socket, struct, errno
@@ -39,7 +39,7 @@ from portal.portal_ob3ect import StructuralType
 
 
 # =====================================================================
-# PARADOXD TYPE — O_inf, the init system's structural signature
+# PARADOXD TYPE — O_∞, the init system's structural signature
 # =====================================================================
 PARADOXD_TYPE = StructuralType([3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 0, 2])
 # ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_S; Ω_z⟩
@@ -113,17 +113,17 @@ def compute_ouroborics(st: StructuralType) -> str:
     vals = st.vals
     o_inf_vals = [3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 0, 2]
     if vals == o_inf_vals:
-        return "O_inf"
+        return "O_∞"
     if vals[0] == 0 and vals[8] == 1 and vals[11] == 2:
-        return "O_2†"
+        return "O₂†"
     if vals[0] >= 2 and vals[8] == 1 and vals[11] >= 1:
-        return "O_2"
+        return "O₂"
     if vals[8] == 1:
-        return "O_1"
-    return "O_0"
+        return "O₁"
+    return "O₀"
 
 
-TIER_ORDER = {"O_0": 0, "O_1": 1, "O_2†": 2, "O_2": 2, "O_inf": 3}
+TIER_ORDER = {"O₀": 0, "O₁": 1, "O₂†": 2, "O₂": 2, "O_∞": 3}
 
 
 # =====================================================================
@@ -138,7 +138,7 @@ class ServiceDefinition:
       - st_type: StructuralType (how it imscribes in the crystal)
       - exec_start: command to run
       - dependencies: set of service names this depends on
-      - tier: ouroboricity tier (O_0 through O_inf)
+      - tier: ouroboricity tier (O₀ through O_∞)
       - state: "pending" | "starting" | "active" | "failed" | "stopped"
       - pid: process ID when running
     """
@@ -180,7 +180,7 @@ class ServiceDefinition:
     def depends_on(self, other: "ServiceDefinition") -> bool:
         """Check if this service structurally depends on another.
 
-        A depends on B when meet(type(A), type(B)) is above the O_0 floor
+        A depends on B when meet(type(A), type(B)) is above the O₀ floor
         AND meet is strictly less than type(A) — meaning B provides
         structure that A requires but does not itself possess.
         """
@@ -239,7 +239,7 @@ class ParadoxD:
     def __init__(self):
         self.daemon_type = PARADOXD_TYPE
         self.daemon_addr = crystal_encode(self.daemon_type.vals)
-        self.daemon_tier = "O_inf"
+        self.daemon_tier = "O_∞"
         self._existence_proven = False
         self._boot_phase = "init"
 
@@ -371,7 +371,7 @@ class ParadoxD:
 
     def _register_builtin_services(self):
         """Register built-in structural services."""
-        # paradox.target — the boot target, O_inf
+        # paradox.target — the boot target, O_∞
         target = ServiceDefinition(
             "paradox.target",
             "The root of the paradox init tree — all services meet here",
@@ -467,16 +467,16 @@ class ParadoxD:
         """Register demo services for standalone operation."""
         demo_services = [
             ("meet-fs.mount", "Meet-Lattice Filesystem Mount",
-             [3,3,3,3,2,2,2,2,1,2,0,2],  # O_inf
+             [3,3,3,3,2,2,2,2,1,2,0,2],  # O_∞
              "/usr/bin/python3 /home/mrnob0dy666/ob3ect/digital/meet_fs/meet_fs_ob3ect.py --mount /mnt/meet_fs"),
             ("sshd.service", "OpenSSH Daemon — structural gateway",
-             [2,2,2,1,2,2,1,1,0,2,1,1],  # O_2-ish
+             [2,2,2,1,2,2,1,1,0,2,1,1],  # O₂-ish
              "/usr/sbin/sshd -D"),
             ("nginx.service", "HTTP server — serves structural types as JSON",
              [2,1,2,0,1,2,2,1,0,1,2,0],
              "/usr/sbin/nginx -g 'daemon off;'"),
             ("cron.service", "Periodic structural recomputation",
-             [1,0,0,0,0,1,1,0,0,0,1,0],  # O_0
+             [1,0,0,0,0,1,1,0,0,0,1,0],  # O₀
              "/usr/sbin/cron -f"),
             ("dbus.service", "Structural message bus — IPC as meet-semilattice",
              [2,2,2,2,1,2,2,2,0,2,2,1],
@@ -508,8 +508,8 @@ class ParadoxD:
 
         For every pair of services (A, B):
           m = meet(type(A), type(B))
-          If m > O_0 floor and m < type(A): A depends on B
-          If m > O_0 floor and m < type(B): B depends on A
+          If m > O₀ floor and m < type(A): A depends on B
+          If m > O₀ floor and m < type(B): B depends on A
 
         This produces the structural dependency DAG without any
         explicit declaration — the topology IS the dependency graph.
@@ -616,7 +616,7 @@ class ParadoxD:
     def compute_boot_order(self) -> list:
         """Sort services by ascending ouroboricity tier.
 
-        O_0 → O_1 → O_2† → O_2 → O_inf
+        O₀ → O₁ → O₂† → O₂ → O_∞
 
         Within each tier, topological sort by dependency count
         (fewer dependencies first). Services at the same tier
@@ -629,13 +629,13 @@ class ParadoxD:
         self._boot_phase = "ordering"
 
         # Group by tier
-        tiers = {"O_0": [], "O_1": [], "O_2†": [], "O_2": [], "O_inf": []}
+        tiers = {"O₀": [], "O₁": [], "O₂†": [], "O₂": [], "O_∞": []}
         for svc in self.services.values():
             if svc.name == "paradox.target":
                 continue  # target is already active
             tier = svc.tier
             if tier not in tiers:
-                tier = "O_0"
+                tier = "O₀"
             tiers[tier].append(svc)
 
         # Sort within tier: fewer structural deps first
@@ -644,7 +644,7 @@ class ParadoxD:
 
         # Flatten into boot order
         boot_order = []
-        tier_order = ["O_0", "O_1", "O_2†", "O_2", "O_inf"]
+        tier_order = ["O₀", "O₁", "O₂†", "O₂", "O_∞"]
         for tier_name in tier_order:
             for svc in tiers[tier_name]:
                 boot_order.append(svc)
@@ -1160,7 +1160,7 @@ class ParadoxDOb3ect:
         pd._register_demo_services()
         pd.resolve_dependencies()
         order = pd.compute_boot_order()
-        # Verify: O_0 services before O_1 before O_2 before O_inf
+        # Verify: O₀ services before O₁ before O₂ before O_∞
         tiers_seen = set()
         last_tier_order = -1
         ok = True
@@ -1219,7 +1219,7 @@ class ParadoxDOb3ect:
         """Systemd unit file is structurally consistent."""
         unit = generate_unit_file()
         ok = ("paradoxd" in unit and "Frobenius" in unit and
-              "μ∘δ=id" in unit and "O_inf" in unit)
+              "μ∘δ=id" in unit and "O_∞" in unit)
         print(f"  systemd unit file generation               : {'PASS' if ok else 'FAIL'}")
         return ok
 
@@ -1227,7 +1227,7 @@ class ParadoxDOb3ect:
         print("=== /paradoxd/ — The Init System That Proves It Exists ===")
         print(f"Type: {format_type(PARADOXD_TYPE)}")
         print(f"Address: {crystal_encode(PARADOXD_TYPE.vals)}")
-        print(f"Tier: O_inf")
+        print(f"Tier: O_∞")
         print()
 
         tests = [
@@ -1266,7 +1266,7 @@ def generate_unit_file() -> str:
     #
     # Structural type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_S; Ω_z⟩
     # Crystal address:  {crystal_encode(PARADOXD_TYPE.vals)}
-    # Ouroboricity:     O_inf
+    # Ouroboricity:     O_∞
     #
     # Boot sequence:
     #   W1: Frobenius proof (μ∘δ=id)
@@ -1292,7 +1292,7 @@ def generate_unit_file() -> str:
 
     # Structural metadata
     # X-ParadoxType=Ð_ω;Þ_O;Ř_=;Φ_}};ƒ_ż;Ç_@;Γ_ʔ;ɢ_ˌ;φ̂_ÿ;Ħ_A;Σ_S;Ω_z
-    # X-ParadoxTier=O_inf
+    # X-ParadoxTier=O_∞
     # X-ParadoxCrystalAddress={crystal_encode(PARADOXD_TYPE.vals)}
     # X-FrobeniusCondition=μ∘δ=id
 
@@ -1312,13 +1312,13 @@ DEMO_UNITS = {
     [Unit]
     Description=Paradox Target — the root of the init tree
     X-ParadoxType=Ð_ω;Þ_O;Ř_=;Φ_}};ƒ_ż;Ç_@;Γ_ʔ;ɢ_ˌ;φ̂_ÿ;Ħ_A;Σ_S;Ω_z
-    X-ParadoxTier=O_inf
+    X-ParadoxTier=O_∞
     """),
     "sshd.service": textwrap.dedent("""\
     [Unit]
     Description=OpenSSH Daemon — structural gateway
     After=paradox.target network.target
-    X-ParadoxTier=O_2
+    X-ParadoxTier=O₂
 
     [Service]
     Type=simple
@@ -1332,7 +1332,7 @@ DEMO_UNITS = {
     [Unit]
     Description=HTTP server — serves structural types as JSON
     After=paradox.target network.target
-    X-ParadoxTier=O_1
+    X-ParadoxTier=O₁
 
     [Service]
     Type=simple
@@ -1346,7 +1346,7 @@ DEMO_UNITS = {
     [Unit]
     Description=Periodic structural recomputation
     After=paradox.target
-    X-ParadoxTier=O_0
+    X-ParadoxTier=O₀
 
     [Service]
     Type=simple
@@ -1360,7 +1360,7 @@ DEMO_UNITS = {
     [Unit]
     Description=Structural message bus — IPC as meet-semilattice
     After=paradox.target
-    X-ParadoxTier=O_2
+    X-ParadoxTier=O₂
 
     [Service]
     Type=simple
@@ -1374,7 +1374,7 @@ DEMO_UNITS = {
     [Unit]
     Description=Event log as tier-ladder chronicle
     After=paradox.target
-    X-ParadoxTier=O_2
+    X-ParadoxTier=O₂
 
     [Service]
     Type=simple
@@ -1453,7 +1453,7 @@ def cli():
 
     if args.structural_type:
         print(f"Structural type: {format_type(PARADOXD_TYPE)}")
-        print(f"Tier: O_inf")
+        print(f"Tier: O_∞")
         print(f"Crystal address: {crystal_encode(PARADOXD_TYPE.vals)}")
         return
 
@@ -1491,7 +1491,7 @@ def cli():
     print()
     print(f"  Structural type: {format_type(PARADOXD_TYPE)}")
     print(f"  Crystal address: {crystal_encode(PARADOXD_TYPE.vals)}")
-    print(f"  Tier:            O_inf")
+    print(f"  Tier:            O_∞")
     print()
     print("Usage:")
     print("  python3 paradoxd_ob3ect.py --pid1        Run as PID 1")

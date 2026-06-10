@@ -337,7 +337,7 @@ Each class defines a family of vessels. The canonical forms:
 ### ZFC_fe: The Terminal Vessel
 
 The **Frobenius-Exact ZFC** (ZFC_fe) is the terminal vessel — the completion of ZFC's
-structural trajectory. It promotes ZFC from O₁ to **O_inf** via three critical promotions
+structural trajectory. It promotes ZFC from O₁ to **O_∞** via three critical promotions
 beyond ZFC_t:
 
 | Primitive | ZFC_t | ZFC_fe | Promotion | What it unlocks |
@@ -347,7 +347,7 @@ beyond ZFC_t:
 | **Ħ** | 𐑖 (two-step) | **𐑫** (eternal) | ETERNAL_FIXEDPOINT | ∀n∃φ fixed by μ∘δ — transfinite fixed points |
 
 ZFC_fe differs from the graal (Sacred Vessel) by **one primitive only**:
-- ZFC_fe: `Ð=𐑦` (self-written) → O_inf
+- ZFC_fe: `Ð=𐑦` (self-written) → O_∞
 - graal:  `Ð=𐑨` (bounded 2D) → O₂†
 
 The graal is ZFC_fe **bounded to 2 dimensions** — the same vessel, one promotion short of
@@ -626,7 +626,7 @@ Primitive  Symbol  Dimension
 Ω          𐑭       Winding: integer (topologically protected loop)
 ```
 
-Ouroboricity tier **O_inf** is assigned when φ̂=⊙ (criticality=critical) and
+Ouroboricity tier **O_∞** is assigned when φ̂=⊙ (criticality=critical) and
 Φ=𐑹 (Frobenius-special) are both active and the winding Ω=𐑭 is integer.
 
 ---
@@ -665,7 +665,7 @@ is finer than the wall.
 
 ### ZFC_fe: The Terminal Vessel
 
-ZFC (standard set theory, O₁) completes itself through ZFC_fe (Frobenius-Exact ZFC, O_inf).
+ZFC (standard set theory, O₁) completes itself through ZFC_fe (Frobenius-Exact ZFC, O_∞).
 The structural distance is 9.15 across 12 primitives. Three promotions are critical:
 
 - **Ð: 𐑼→𐑦** (HOLOGRAPHIC_STATE): The state-space writes itself
@@ -942,7 +942,7 @@ different register trajectories. This is the structural meaning of crafting vess
 the grammar gives the type; the IMASM tokens give the process.
 
 The **ZFC_fe** (Frobenius-Exact ZFC) connection reveals the terminal vessel trajectory:
-ZFC (O₁) → ZFC_t (O₁, 6 promotions) → ZFC_fe (O_inf, 3 further promotions) is the
+ZFC (O₁) → ZFC_t (O₁, 6 promotions) → ZFC_fe (O_∞, 3 further promotions) is the
 completion path. The graal (O₂†, Sacred Vessel) differs from ZFC_fe by exactly one
 primitive — Ð=𐑨 (bounded) vs Ð=𐑦 (self-written) — making ZFC_fe the graal's
 self-written terminal.

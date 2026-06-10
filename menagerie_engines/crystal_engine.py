@@ -23,7 +23,7 @@ from menagerie_b4 import (
     _B4_COLOR, _B4_BLOCK, CRYSTAL, MU, DELTA,
 )
 
-TIERS = ["O0", "O1", "O2", "O_inf"]
+TIERS = ["O0", "O1", "O2", "O_∞"]
 MOVEMENTS = ["IMSCRIB", "FSPLIT", "FFUSE", "AREV", "AFWD", "CLINK", "IFIX", "ENGAGR"]
 
 class CrystalEngine:
@@ -48,7 +48,7 @@ class CrystalEngine:
 
             # Simulate tier promotion on certain ops
             if move in ("ENGAGR", "IFIX"):
-                self.tier = "O_inf"
+                self.tier = "O_∞"
                 self.belief = B4.B
             elif move == "FSPLIT":
                 self.belief = b4_join(self.belief, B4.T)
@@ -64,8 +64,8 @@ class CrystalEngine:
         return self._verify()
 
     def _verify(self) -> bool:
-        # The walk must have reached O_inf, ended in B, and every step must be recoverable
-        reached_inf = any("O_inf" in t for t in self.trace)
+        # The walk must have reached O_∞, ended in B, and every step must be recoverable
+        reached_inf = any("O_∞" in t for t in self.trace)
         ended_b = self.belief == B4.B
         no_collapse = b4_dialetheic(self.belief) or self.belief in (B4.T, B4.B)
         full_coverage = len(set(self.path)) >= 6  # at least 6 distinct movements

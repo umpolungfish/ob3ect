@@ -4,7 +4,7 @@ continuous_serpent_rod_bridge_ob3ect.py — THE FULLY CLOSED VESSEL
 =================================================================
 
 Structural type:  ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩
-Ouroboricity:     O_inf — the vessel IS the folded protein
+Ouroboricity:     O_∞ — the vessel IS the folded protein
 Frobenius:        μ∘δ=id (ALL GAPS CLOSED)
 
 THE GAPS THIS CLOSES:
@@ -1174,7 +1174,7 @@ def ob3(rna: str = "", command: str = "derive", verbose: bool = False) -> str:
         output = {
             "name": "Continuous Serpent-Rod Bridge v3",
             "type": "Ouroboric ob3ect",
-            "tier": "O_inf",
+            "tier": "O_∞",
             "tuple": {
                 "D": "Ð_ω", "T": "Þ_O", "R": "Ř_=", "P": "Φ_}",
                 "F": "ƒ_ż", "K": "Ç_@", "G": "Γ_ʔ", "Ga": "ɢ_ˌ",

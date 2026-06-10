@@ -157,7 +157,7 @@ def main():
     print("=" * 70)
     print()
     print(f"Structural type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
-    print(f"Ouroboricity: O_inf")
+    print(f"Ouroboricity: O_∞")
     print()
 
     # Run tests

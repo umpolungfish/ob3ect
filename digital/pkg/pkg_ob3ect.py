@@ -141,7 +141,7 @@ class PkgResolver:
 
         # Drift check
         if resolved.vals != PKG_REPO.get(pkg_name, resolved).vals:
-            output += f"  Warning: your system is drifting toward O_inf\n"
+            output += f"  Warning: your system is drifting toward O_∞\n"
 
         return output
 
@@ -237,7 +237,7 @@ class PkgOb3ect:
         res = PkgResolver()
         # linux_kernel and firefox have different types — install triggers join
         output = res.install("linux_kernel")
-        ok = "drifting toward O_inf" in output or "Installed type" in output
+        ok = "drifting toward O_∞" in output or "Installed type" in output
         print(f"  Conflict resolution works               : {ok}")
         return ok
 

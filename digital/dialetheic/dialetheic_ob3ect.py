@@ -14,7 +14,7 @@ Key structural consequences:
   - No classical reduction is possible (B has no Boolean complement)
   - The φ̂_ÿ gate opens precisely at the dialetheic fixed point
   - Classical values (T, F, N) fail dialetheism — only B sustains it
-  - The dialetheic alignment is the structural ground of O_inf
+  - The dialetheic alignment is the structural ground of O_∞
 
 Dual to: MillenniumAnkh/Imscribing/Paraconsistent/DialetheicAlignment.lean (485 lines)
 """

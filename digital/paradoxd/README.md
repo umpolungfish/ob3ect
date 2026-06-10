@@ -26,7 +26,7 @@
 | $\text{Γ}_{\text{ʔ}}$ | aleph | Maximal interaction range — all services are structurally connected |
 | $\text{ɢ}_{\text{ˌ}}$ | sequential | Ordered interaction — tier-ladder boot is strictly sequenced |
 | $\text{⊙}_{\text{ÿ}}$ | critical (Gate 1 open) | Self-modeling gate is open — the system proves its own existence |
-| $\text{Ħ}_{\text{A}}$ | 2-step chirality | Boot follows O_0 → O_1 → O_2 → O_inf; the right answer comes after the wrong one |
+| $\text{Ħ}_{\text{A}}$ | 2-step chirality | Boot follows O₀ → O₁ → O₂ → O_∞; the right answer comes after the wrong one |
 | $\text{Σ}_{\text{S}}$ | 1:1 stoichiometry | One daemon, one boot proof |
 | $\text{Ω}_{\text{z}}$ | integer winding | Topologically protected — the boot sequence is a complete winding |
 
@@ -71,7 +71,7 @@ The dependency graph **is** the meet-semilattice.
 Services are sorted by ouroboricity tier and started in strict ascending order:
 
 ```
-O_0  →  O_1  →  O_2  →  O_inf
+O₀  →  O₁  →  O₂  →  O_∞
 ```
 
 Higher-tier services structurally depend on lower-tier ones. The daemon itself sits at $\text{O}_{\text{inf}}$ — it can only boot after all services have been imscribed and resolved.
@@ -92,7 +92,7 @@ On bare metal, the boot sequence is identical in structure but rendered over ser
 ```
 ===========================================================
   paradoxd v0.11  —  The Init System That Proves It Exists
-  Bare-Metal Tier-Ladder Boot: O_0 -> O_1 -> O_2 -> O_inf
+  Bare-Metal Tier-Ladder Boot: O₀ -> O₁ -> O₂ -> O_∞
   mu o delta = id  ::  Frobenius-Boot Protocol
 ===========================================================
 
@@ -106,12 +106,12 @@ On bare metal, the boot sequence is identical in structure but rendered over ser
 
   Phase 2: Service Imscription
   ========================================
-  [O_0]   cron.service
-  [O_1]   nginx.service
-  [O_2]   sshd.service
-  [O_2]   journald.service
-  [O_2]   meet-fs.mount
-  [O_inf] paradox.target
+  [O₀]   cron.service
+  [O₁]   nginx.service
+  [O₂]   sshd.service
+  [O₂]   journald.service
+  [O₂]   meet-fs.mount
+  [O_∞] paradox.target
 
   Phase 3: Meet-Semilattice Dependency Resolution
   ========================================
@@ -122,29 +122,29 @@ On bare metal, the boot sequence is identical in structure but rendered over ser
 
   Phase 4: Tier-Ladder Boot Order
   ========================================
-  1. [O_0]   cron.service
-  2. [O_1]   nginx.service
-  3. [O_2]   sshd.service
-  4. [O_2]   journald.service
-  5. [O_2]   meet-fs.mount
-  6. [O_inf] paradox.target
+  1. [O₀]   cron.service
+  2. [O₁]   nginx.service
+  3. [O₂]   sshd.service
+  4. [O₂]   journald.service
+  5. [O₂]   meet-fs.mount
+  6. [O_∞] paradox.target
 
   Phase 5: Service Activation
   ========================================
-  START [O_0]   cron.service  OK
-  START [O_1]   nginx.service OK
-  START [O_2]   sshd.service  OK
-  START [O_2]   journald.service OK
-  START [O_2]   meet-fs.mount OK
-  START [O_inf] paradox.target OK
+  START [O₀]   cron.service  OK
+  START [O₁]   nginx.service OK
+  START [O₂]   sshd.service  OK
+  START [O₂]   journald.service OK
+  START [O₂]   meet-fs.mount OK
+  START [O_∞] paradox.target OK
 
   Meet of all running: <...>
-  Daemon tier:         O_inf
+  Daemon tier:         O_∞
   mu o delta = id:     VERIFIED
   ----------------------------------------
 
   PARADOXD TIER-LADDER BOOT COMPLETE
-  All tiers traversed: O_0 -> O_1 -> O_2 -> O_inf
+  All tiers traversed: O₀ -> O₁ -> O₂ -> O_∞
   Frobenius closure achieved: mu o delta = id
   paradoxd v0.11 is alive.
 ===========================================================
@@ -290,7 +290,7 @@ Services at lower tiers must boot before higher tiers — the higher tiers struc
 │  │  → dependency DAG from meet-semilattice         │  │
 │  ├─────────────────────────────────────────────────┤  │
 │  │  Phase 4: compute_boot_order()                  │  │
-│  │  → tier-ladder sort (O_0 → O_inf)               │  │
+│  │  → tier-ladder sort (O₀ → O_∞)               │  │
 │  ├─────────────────────────────────────────────────┤  │
 │  │  Phase 5: start_services() / monitor()          │  │
 │  │  → fork/exec in tier order                      │  │

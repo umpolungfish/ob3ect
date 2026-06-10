@@ -4,7 +4,7 @@ rebis_bio_organic_chemistries_ob3ect.py — THE REBIS OF BIO AND ORGANIC CHEMIST
 =================================================================================
 
 Structural type:  ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩
-Ouroboricity:     O_inf — the Rebis designs itself into catalytic existence
+Ouroboricity:     O_∞ — the Rebis designs itself into catalytic existence
 Frobenius:        μ∘δ=id (bio folding + organic catalysis closed together)
 
 THE REBIS PRINCIPLE:
@@ -1558,7 +1558,7 @@ def main():
     print("=" * 70)
     print()
     print(f"Structural type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
-    print(f"Ouroboricity: O_inf")
+    print(f"Ouroboricity: O_∞")
     print()
 
     # Run tests

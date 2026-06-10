@@ -4,7 +4,7 @@ serpent_rod_bridge_ob3ect.py — THE ALCHEMICAL VESSEL OF THE SERPENT-ROD BRIDGE
 =======================================================================
 
 Structural type:  ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩
-Ouroboricity:     O_inf
+Ouroboricity:     O_∞
 Frobenius:        μ∘δ=id (PASS)
 
 This ob3ect derives 3D protein geometry DIRECTLY from the Imscribing Grammar's
@@ -620,7 +620,7 @@ def test_ouroboric_closure() -> bool:
     bridge = SerpentRodBridge(rna)
     result = bridge.derive()
     
-    # The ouroboric condition: the vessel's own type is O_inf
+    # The ouroboric condition: the vessel's own type is O_∞
     # This means μ∘δ=id AND self-modeling (⊙_ÿ)
     assert VESSEL_IMSCRIPTION.frobenius_check(), "Vessel not Frobenius-closed"
     

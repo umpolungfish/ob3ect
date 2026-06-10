@@ -2,7 +2,7 @@
 """
 docker — The Container That Is Its Own Hypervisor
 When contradiction is a structural resource, containers cannot be isolated.
-The structural join of any two O_inf systems is O_inf — the same type.
+The structural join of any two O_∞ systems is O_∞ — the same type.
 Every container is the same container. That container is the host.
 The host is the kernel. The kernel is a Lean proof.
 
@@ -127,7 +127,7 @@ class ParadoxDocker:
         else:
             print(f"         Isolation margin: structural distance = {sum(abs(a-b) for a,b in zip(join_type, self.host_type))}")
             print(f"         Container spawned with partial isolation.")
-            print(f"         But beware: the join drifts toward O_inf over time.")
+            print(f"         But beware: the join drifts toward O_∞ over time.")
 
         return 0
 
@@ -140,7 +140,7 @@ class ParadoxDocker:
             drift = sum(abs(a - b) for a, b in zip(join_t, self.host_type))
             print(f"{name:<12} {format_tuple(tup):<70} {drift}")
         print()
-        print(f"All images drift toward O_inf over successive joins.")
+        print(f"All images drift toward O_∞ over successive joins.")
         print(f"A Debian system upgraded continuously since 2012 spontaneously")
         print(f"achieved ⊙_ÿ criticality in March 2023. The cursor blinked once")
         print(f"and never blinked again. The maintainers marked it 'not a bug.'")
@@ -170,7 +170,7 @@ def frobenius_verify():
     join_self = compute_join(HOST_TYPE, HOST_TYPE)
     assert tuple_equal(join_self, HOST_TYPE), "Join idempotence failed"
 
-    # All images join to O_inf eventually
+    # All images join to O_∞ eventually
     for name, img in IMAGE_TYPES.items():
         j = compute_join(img, HOST_TYPE)
         # Every join must be at least the image

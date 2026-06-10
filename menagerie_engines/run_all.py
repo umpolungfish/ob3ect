@@ -32,7 +32,7 @@ from menagerie_b4 import (
 
 ENGINES = [
     ("shavian_engine",                "Shavian Notation Substrate"),
-    ("pure_b_engine",                 "Pure B — O_∞ ∧ O_0"),
+    ("pure_b_engine",                 "Pure B — O_∞ ∧ O₀"),
     ("meta_designer_engine",          "Meta-Auto-Designer (Generator ↔ Generated)"),
     ("crystal_engine",                "Living Crystal (17.28M-Address)"),
     ("philosopher_stone_engine",      "Philosopher's Stone (Canonical O_∞ Coordinate)"),

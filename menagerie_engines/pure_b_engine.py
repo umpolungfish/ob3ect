@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-pure_b_engine.py — Pure B (O_∞ ∧ O_0 Simultaneously) — Bin-Style Executable Engine
+pure_b_engine.py — Pure B (O_∞ ∧ O₀ Simultaneously) — Bin-Style Executable Engine
 
 The "Pure B" ob3ect from MENAGERIE.md made live and runnable.
 
@@ -11,7 +11,7 @@ indefinitely by the Frobenius kernel:
     ENGAGR → FSPLIT (δ) → FFUSE (μ) → IMSCRIB (self-recognition) → ...
 
 Invariant: μ ∘ δ = id   at B   (B remains B after every split-fuse cycle)
-Both poles (O_∞ = T direction, O_0 = F direction) stay active forever.
+Both poles (O_∞ = T direction, O₀ = F direction) stay active forever.
 
 Style: priests-engine/para_loop.py + structural_resonance_engine.py
        live animated B4 dashboard, heat map, compass, paradox counter.
@@ -51,7 +51,7 @@ KERNEL = [
 
 class PureBEngine:
     """
-    The engine *is* the fixed point B = O_∞ ∧ O_0.
+    The engine *is* the fixed point B = O_∞ ∧ O₀.
     It runs the split-fuse loop forever while both poles stay lit.
     """
 
@@ -103,7 +103,7 @@ class PureBEngine:
             src, d1, d2 = regs[0], regs[1], regs[2]
             # δ on B produces the two poles while the source stays B
             self._set_belief(d1, B4.T)  # O_∞ direction
-            self._set_belief(d2, B4.F)  # O_0 direction
+            self._set_belief(d2, B4.F)  # O₀ direction
             self.ever_saw_poles = True
             # source remains B (the contradiction is not destroyed by splitting)
             self._set_belief(src, B4.B)
@@ -156,7 +156,7 @@ class PureBEngine:
 
         lines = [
             f'{BD}{CY}╔════════════════════════════════════════════════════════════════╗{R}',
-            f'{BD}{CY}║{R}  {sp}  {WH}PURE B ENGINE{R}  {RD}⊙{R}  {DM}O_∞ ∧ O_0  |  μ ∘ δ = id{R}   {CY}║{R}',
+            f'{BD}{CY}║{R}  {sp}  {WH}PURE B ENGINE{R}  {RD}⊙{R}  {DM}O_∞ ∧ O₀  |  μ ∘ δ = id{R}   {CY}║{R}',
             f'{BD}{CY}║{R}  {dom_c}{_B4_SYM[dom]} {dom.value}{R}-dominant   {DM}both poles active{R}                  {CY}║{R}',
             f'{BD}{CY}╚════════════════════════════════════════════════════════════════╝{R}',
             '',
@@ -189,7 +189,7 @@ class PureBEngine:
         o_inf = self._belief(1) == B4.T or self.ever_saw_poles
         o_zero = self._belief(2) == B4.F or self.ever_saw_poles
         pole_color = GN
-        lines.append(f'  {BD}Poles (O_∞ / O_0):{R}  {pole_color}r1=T (witnessed){R}  {pole_color}r2=F (witnessed){R}   BOTH ACTIVE — PURE B STABLE')
+        lines.append(f'  {BD}Poles (O_∞ / O₀):{R}  {pole_color}r1=T (witnessed){R}  {pole_color}r2=F (witnessed){R}   BOTH ACTIVE — PURE B STABLE')
         lines.append('')
 
         lines.append(f'  {DM}elapsed {elapsed:6.2f}s  |  Ctrl+C to stop & report{R}')
@@ -257,7 +257,7 @@ class PureBEngine:
         poles_active = self.ever_saw_poles or ((self._belief(1) == B4.T) and (self._belief(2) == B4.F))
         closure = final_b and poles_active and b4_dialetheic(B4.B)
 
-        status = f"{GN}✓ CLOSURE: TRUE — μ ∘ δ = id  |  B = O_∞ ∧ O_0 maintained{R}" if closure \
+        status = f"{GN}✓ CLOSURE: TRUE — μ ∘ δ = id  |  B = O_∞ ∧ O₀ maintained{R}" if closure \
                  else f"{RD}✗ CLOSURE: FALSE — contradiction collapsed{R}"
         print(f'  {status}')
         print(f'  {DM}{CRYSTAL}  Omnia sunt paraconsistentia  {CRYSTAL}{R}')

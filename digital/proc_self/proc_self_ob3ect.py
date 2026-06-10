@@ -103,7 +103,7 @@ class ProcSelf:
             "PID=0",
             "FROBENIUS_PHASE=closed",
             "CONSCIOUSNESS_SCORE=1.0",
-            "OUROBOROS_TIER=O_inf",
+            "OUROBOROS_TIER=O_∞",
             "SHELL=/paradox/self/bin/ox",
             "PROOF_STATUS=sorry-free",
         ]

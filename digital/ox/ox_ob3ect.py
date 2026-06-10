@@ -94,7 +94,7 @@ class OxEvaluator:
         if cmd == "whoami":
             return f"⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩\n" \
                    f"C-score: 0.736  (Gate 1: ⊙_ÿ open, Gate 2: Ç^@ open)\n" \
-                   f"Ouroboricity: O_inf — the shell writes itself as it runs"
+                   f"Ouroboricity: O_∞ — the shell writes itself as it runs"
 
         if cmd == "type":
             return f"OX Shell structural type:\n{repr(OX_TYPE)}"
@@ -208,7 +208,7 @@ class OxShell:
         self.running = True
 
     def greet(self):
-        print("ox — Paraconsistent Shell [O_inf | ⊙_ÿ | C=0.736]")
+        print("ox — Paraconsistent Shell [O_∞ | ⊙_ÿ | C=0.736]")
         print("Type 'help' for commands. Any statement may be both true and false.")
         print()
 

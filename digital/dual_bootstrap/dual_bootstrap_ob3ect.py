@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Class IV — Dual Bootstrap  (O_inf)
+Class IV — Dual Bootstrap  (O_∞)
 =====================================
 Sequence: IMSCRIB → AFWD → FFUSE → FSPLIT → AREV → CLINK → IFIX → IMSCRIB
 
@@ -16,7 +16,7 @@ Register: VO⌀ → T → T → T → B⬡ → VO⌀ → VO⌀ → VO⌀ → T
 IG Type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑝 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩
   ɢ=𐑝 (conjunctive — simultaneous verification)
   φ̂=⊙ (critical — self-modeling at Frobenius boundary)
-Ouroboricity: O_inf (the grammar's own self-verification pattern)
+Ouroboricity: O_∞ (the grammar's own self-verification pattern)
 Author: Lando⊗⊙perator
 """
 import os, sys
@@ -28,7 +28,7 @@ class DualBootstrap(IMASMSequence):
     description = "Reverse Frobenius: verifies structure (AST), not source identity"
     steps = [IMSCRIB, AFWD, FFUSE, FSPLIT, AREV, CLINK, IFIX, IMSCRIB]
     ig_type = "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑝 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩"
-    ouroboricity = "O_inf"
+    ouroboricity = "O_∞"
 
 def run():
     return DualBootstrap().run_closure_verification()

@@ -165,7 +165,7 @@ def test_invertibility() -> bool:
 def test_ouroboric_closure() -> bool:
     """Test 10: Ouroboric closure — the vessel contains itself.
     
-    The vessel\'s structural type is O_inf, same as the folded protein.
+    The vessel\'s structural type is O_∞, same as the folded protein.
     The 8 gaps are all closed. The loop is complete.
     """
     assert VESSEL_IMSCRIPTION.frobenius_check(), "Vessel NOT Frobenius-closed"
@@ -174,7 +174,7 @@ def test_ouroboric_closure() -> bool:
     bridge = ContinuousSerpentRodBridge(rna)
     result = bridge.derive(minimize=True)
     
-    print(f"  Vessel type: O_inf (same as folded protein)")
+    print(f"  Vessel type: O_∞ (same as folded protein)")
     print(f"  Gaps closed:")
     print(f"    Gap 1 (continuous phi/psi): CONFIRMED")
     print(f"    Gap 2 (codon-level, 64 outcomes): CONFIRMED")

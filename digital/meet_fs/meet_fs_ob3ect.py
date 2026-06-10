@@ -23,7 +23,7 @@ from portal.portal_ob3ect import StructuralType
 
 
 # =====================================================================
-# MEET FS TYPE — identical to paradox_fs, the O_inf structural signature
+# MEET FS TYPE — identical to paradox_fs, the O_∞ structural signature
 # =====================================================================
 MEET_FS_TYPE = StructuralType([3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 0, 2])
 # ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_S; Ω_z⟩
@@ -73,9 +73,9 @@ MAX_ADDRESS = 17279999  # 3³ × 4⁵ × 5⁴ - 1
 def path_to_type(path: str) -> StructuralType:
     """Resolve a filesystem path to a structural type.
 
-    The root path '/' maps to the meet_fs type (O_inf).
+    The root path '/' maps to the meet_fs type (O_∞).
     Each path segment shifts one primitive cyclically by hash.
-    Empty or unknown paths default to the O_0 floor type.
+    Empty or unknown paths default to the O₀ floor type.
     """
     if path in ("/", "", "/meet_fs", "/meet_fs/"):
         return StructuralType(MEET_FS_TYPE.vals[:])
@@ -470,8 +470,8 @@ class MeetFS:
                 "paradox_filesystem", "universal_imscriptive_grammar",
                 "riemann_zeta_function", "magnetar", "bec",
                 "category_ob3ect", "frobenius_ob3ect", "white_dwarf",
-                "langlands_correspondence", "zfc", "O_inf", "O_0",
-                "O_1", "O_2", "O_2_dagger",
+                "langlands_correspondence", "zfc", "O_∞", "O₀",
+                "O₁", "O₂", "O_2_dagger",
             ]
             for e in entries:
                 children.append(e)
@@ -760,25 +760,25 @@ class MeetFS:
     def _compute_ouroborics(self, st: StructuralType) -> str:
         """Compute ouroboricity tier for a structural type."""
         vals = st.vals
-        # O_inf conditions: Ð=3(ω), Þ=4(O), Ř=3(=), Φ=4(}), ƒ=2(ż),
+        # O_∞ conditions: Ð=3(ω), Þ=4(O), Ř=3(=), Φ=4(}), ƒ=2(ż),
         #                   Ç=2(@), Γ=2(ʔ), ɢ=2(ˌ), φ̂=1(ÿ), Ħ=2(A), Σ=0(S), Ω=2(z)
         o_inf_vals = [3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 0, 2]  # Þ_O=3, Φ_}=3 in StructuralType
         if vals == o_inf_vals:
-            return "O_inf"
+            return "O_∞"
 
-        # O_2†: Ð=0(;), but Ω=2(z), φ̂=1(ÿ)
+        # O₂†: Ð=0(;), but Ω=2(z), φ̂=1(ÿ)
         if vals[0] == 0 and vals[8] == 1 and vals[11] == 2:
-            return "O_2†"
+            return "O₂†"
 
-        # O_2: Ð≥2(C), Ω≥1(2), φ̂=1(ÿ)
+        # O₂: Ð≥2(C), Ω≥1(2), φ̂=1(ÿ)
         if vals[0] >= 2 and vals[8] == 1 and vals[11] >= 1:
-            return "O_2"
+            return "O₂"
 
-        # O_1: φ̂=1(ÿ)
+        # O₁: φ̂=1(ÿ)
         if vals[8] == 1:
-            return "O_1"
+            return "O₁"
 
-        return "O_0"
+        return "O₀"
 
     def _compute_consciousness(self, st: StructuralType) -> tuple:
         """Compute consciousness score. Returns (C_score, gate1_open, gate2_open)."""
@@ -836,10 +836,10 @@ class MeetFS:
             "langlands_correspondence":    [0, 4, 2, 1, 2, 2, 2, 3, 2, 3, 2, 2],
             "zfc":                         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             # Tier archetypes
-            "O_inf":      [3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 0, 2],  # StructuralType convention
-            "O_0":        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            "O_1":        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-            "O_2":        [2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+            "O_∞":      [3, 3, 3, 3, 2, 2, 2, 2, 1, 2, 0, 2],  # StructuralType convention
+            "O₀":        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "O₁":        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+            "O₂":        [2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
             "O_2_dagger": [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2],
         }
 
@@ -1066,12 +1066,12 @@ class MeetFSOb3ect:
         return ok
 
     def _verify_meet_lower(self) -> bool:
-        """meet(root, O_0) == O_0 (meet with floor gives floor)."""
+        """meet(root, O₀) == O₀ (meet with floor gives floor)."""
         root_st = path_to_type("/meet_fs")
         o0_st = StructuralType([0]*12)
         m = StructuralType.meet(root_st, o0_st)
         ok = m.vals == o0_st.vals
-        print(f"  meet(root, O_0) = O_0                     : {'PASS' if ok else 'FAIL'}")
+        print(f"  meet(root, O₀) = O₀                     : {'PASS' if ok else 'FAIL'}")
         return ok
 
     def _verify_self_file(self) -> bool:
@@ -1093,7 +1093,7 @@ class MeetFSOb3ect:
     def _verify_meet_operation(self) -> bool:
         """Meet computation between two named types works."""
         fs = MeetFS()
-        content = fs.cat("/meet_fs/meet/paradox_filesystem/O_0")
+        content = fs.cat("/meet_fs/meet/paradox_filesystem/O₀")
         ok = "MEET:" in content and "JOIN:" in content and "TENS:" in content
         print(f"  Meet operation via filesystem path          : {'PASS' if ok else 'FAIL'}")
         return ok
@@ -1113,12 +1113,12 @@ class MeetFSOb3ect:
         return ok
 
     def _verify_ouroborics(self) -> bool:
-        """Root type reports O_inf."""
+        """Root type reports O_∞."""
         root_st = path_to_type("/meet_fs")
         fs = MeetFS()
         tier = fs._compute_ouroborics(root_st)
-        ok = tier == "O_inf"
-        print(f"  Root tier = O_inf                           : {'PASS' if ok else 'FAIL'}")
+        ok = tier == "O_∞"
+        print(f"  Root tier = O_∞                           : {'PASS' if ok else 'FAIL'}")
         if not ok:
             print(f"    got: {tier}")
         return ok
@@ -1200,16 +1200,16 @@ def cli():
     print(fs.cat("/meet_fs/frobenius"))
     print()
 
-    print("$ cat /meet_fs/meet/paradox_filesystem/O_0")
-    print(fs.cat("/meet_fs/meet/paradox_filesystem/O_0"))
+    print("$ cat /meet_fs/meet/paradox_filesystem/O₀")
+    print(fs.cat("/meet_fs/meet/paradox_filesystem/O₀"))
     print()
 
     print("$ cat /meet_fs/crystal/0")
     print(fs.cat("/meet_fs/crystal/0"))
     print()
 
-    print("$ cat /meet_fs/catalog/O_inf")
-    print(fs.cat("/meet_fs/catalog/O_inf"))
+    print("$ cat /meet_fs/catalog/O_∞")
+    print(fs.cat("/meet_fs/catalog/O_∞"))
     print()
 
     print("$ readlink /meet_fs/self  # pre-collapse: symlinks to ALL")

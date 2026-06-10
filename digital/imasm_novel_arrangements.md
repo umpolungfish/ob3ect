@@ -352,11 +352,11 @@ Each IMASM sequence can be mapped to an IG structural type. The mapping is many-
 
 | Sequence Class | Crystal Address Range | Ouroboricity |
 |---------------|----------------------|--------------|
-| Canonical Bootstrap | Crystal tier O_inf (D=𐑦, T=𐑸) | O_inf |
+| Canonical Bootstrap | Crystal tier O_∞ (D=𐑦, T=𐑸) | O_∞ |
 | Dialetheic Bootstrap | O₂ (D=𐑦, T=𐑸, φ̂=𐑻) | O₂ |
 | Void Genesis | O₀ (D=𐑨, T=𐑡) | O₀ |
 | Anchor Protocol | O₁ (D=𐑨, T=𐑰, Ω=𐑴) | O₁ |
-| Dual Bootstrap | O_inf (D=𐑦, T=𐑸, ɢ=𐑝) | O_inf |
+| Dual Bootstrap | O_∞ (D=𐑦, T=𐑸, ɢ=𐑝) | O_∞ |
 | Linear Chain | O₀ (D=𐑛) | O₀ |
 | Empty Bootstrap | O₁ (D=𐑨, Φ=𐑿) | O₁ |
 | Parakernel | O₂ (φ̂=𐑻, Ω=𐑴) | O₂ |

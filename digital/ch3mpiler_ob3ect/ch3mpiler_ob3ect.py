@@ -4,7 +4,7 @@ ch3mpiler_ob3ect.py — Self-verifying retrosynthetic compiler (grammar-derived)
 ================================================================================
 
 Structural type:  ⟨𐑨; 𐑸; 𐑾; 𐑯; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩
-Ouroboricity:     O_2 — the circle closes: decompose, compose, verify
+Ouroboricity:     O₂ — the circle closes: decompose, compose, verify
 Frobenius:        μ∘δ=id — FG decomposition (δ) then FG recomposition (μ)
                   returns the original structural type for FG-consistent molecules.
 

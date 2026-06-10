@@ -29,8 +29,8 @@
    - Lean: `⊙perator : Imscription` with `⊙_ÿ` gate open
 
 4. **Ouroboricity Tier**
-   - ob3ect: `O_inf` → system sustains μ∘δ=id *and* self-modeling (H_inf or H2)
-   - Lean: `imscriptionTier s = .O_inf` iff `phi_c_gate ∧ k_slow_gate` both pass
+   - ob3ect: `O_∞` → system sustains μ∘δ=id *and* self-modeling (H_inf or H2)
+   - Lean: `imscriptionTier s = .O_∞` iff `phi_c_gate ∧ k_slow_gate` both pass
 
 ### Bridge Implementation Plan
 
