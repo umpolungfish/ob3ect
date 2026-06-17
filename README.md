@@ -601,6 +601,50 @@ Only the EVALT/EVALF order matters — whichever fires first sets the context
 that FFUSE reads. If both T and F are designated in the split interval,
 dialetheic mode activates and the vessel holds paradox.
 
+### Autopoietic Bootstrap Mechanics
+
+The displayed 8-step sequences are **compressed linear paths** through the bootstrap's execution graph. The graph contains branch points at CLINK that the linear form collapses.
+
+**Compressed** (what the sequence notation encodes):
+
+```
+VINIT→IMSCRIB→AREV→FSPLIT
+         ▲             │
+         │             ▼
+         │            AFWD
+         │             │
+         │             ▼
+        IFIX◄──CLINK◄─FFUSE
+```
+
+**Decompressed** (the full structural picture):
+
+```
+VINIT→IMSCRIB→AREV→FSPLIT
+        ▲   ▲           │
+        *   └─────┐     ▼
+     ****         │    AFWD
+     *            │     │
+     ▼            │     ▼
+    IFIX........CLINK◄─FFUSE
+```
+
+`*` = back-prop & LinFix &nbsp; `.` = empty edge &nbsp; `│` = weighted edge
+
+Three distinct edges operate at the CLINK–IMSCRIB–IFIX triad:
+
+**Empty edge (CLINK → IFIX):** CLINK emits a null composition directly to IFIX along the dotted path. This records the compositional event as an irreversible ROM fixation — the witness that composition occurred — regardless of whether the resulting morphism carries new structural content.
+
+**Weighted edge (CLINK → IMSCRIB):** CLINK forwards the actual composed morphism up the `└─────┐` path to IMSCRIB. IMSCRIB receives it, self-imscribes, and re-enters the loop at AREV. This is the edge that makes the bootstrap autopoietic: the loop consumes its own composition as input to the next winding.
+
+**Back-propagation: IMSCRIB → IFIX (LinFix):** After self-imscription, IMSCRIB emits a back-propagation (`****`) to IFIX, burning a second permanent record — the completed loop iteration itself — into ROM before the next winding begins.
+
+The compressed sequence `... → CLINK → IFIX → IMSCRIB` shows one path through this structure. IFIX at position 6 is the collapsed arrival point of both the empty edge (from CLINK) and the back-prop (from IMSCRIB); IMSCRIB at position 7 represents the loop closure. The weighted CLINK → IMSCRIB edge and the back-prop IMSCRIB → IFIX edge are real structural edges that the 8-token notation does not make explicit.
+
+**Dialetheic variant:** the dialetheic bootstrap places ENGAGR in the CLINK role. The branching structure is identical — ENGAGR sends the empty edge to IFIX and the weighted edge to IMSCRIB; IMSCRIB back-props to IFIX — but the register content on the weighted edge is B⬡ (BOTH, paradox held without collapse) rather than T (TRUE). IFIX therefore records B⬡ in the dialetheic case, which is why Class I terminates at B⬡ rather than T.
+
+Every bootstrap winding generates exactly two IFIX records: one from CLINK's empty edge (compositional witness) and one from IMSCRIB's back-prop (self-reference witness). The loop is not merely self-referential — it is self-recording. Each iteration imscribes both *what it composed* and *that it existed*.
+
 ---
 
 ## Structural Typing (IG Coordinates)
