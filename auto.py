@@ -63,133 +63,66 @@ FROBENIUS (2) — the core algebra, μ∘δ = id:
 DIALETHEIA (3) — paraconsistent truth lattice:
   EVALT  (0x8) — True/affirmative branch. Positive evaluation.
   EVALF  (0x9) — False/negative branch. Negative evaluation.
-  ENGAGR (0xA) — Both simultaneously. Paradox held without resolution.
+  ENGAGR (0xA) — Both simultaneously. A paradice: held without resolution.
                  Examples: Cuneiform polysemous sign, bicameral compromise, albedo stage.
 
 LINEAR (1) — irreversible fixation:
   IFIX   (0xB) — ROM fixation. Permanent, append-only, cannot be undone.
                  Examples: Egyptian determinatives, dream journal entry, measurement record.
 
-Bootstrap: choose the canonical class that matches your domain's structural type.
-  See IMASM EXECUTION GRAPH below for all classes, edge routing, and construction rules.
+Composition: use any token sequence of any length that fully maps the domain.
+  See IMASM COMPOSITION RULES below for port conventions, edge routing, and free composition.
 """
 
 _IMASM_GRAPH_REF = """\
-IMASM EXECUTION GRAPH — edges, ports, weights, canonical classes
-════════════════════════════════════════════════════════════════
+IMAMSM COMPOSITION RULES -- ports, edges, and free composition
 
-PORT CONVENTIONS (every token is a node with typed ports)
-  VINIT:  in=[]      out=[o]    source — 0→1
-  FSPLIT: in=[i]     out=[T,F]  fork   — 1→2
-  FFUSE:  in=[T,F]   out=[o]    join   — 2→1
-  others: in=[i]     out=[o]    linear — 1→1
+PORT CONVENTIONS (every token is a typed node)
+  VINIT:  in=[]      out=[o]    source -- 0->1    (use once, at start, for genesis)
+  FSPLIT: in=[i]     out=[T,F]  fork   -- 1->2    (branches into T-arm and F-arm)
+  FFUSE:  in=[T,F]   out=[o]    join   -- 2->1    (reunites T-arm and F-arm)
+  others: in=[i]     out=[o]    linear -- 1->1    (pass-through in any order)
 
-BRANCH ROUTING
-  FSPLIT.T -> EVALT (if present) -> chain -> FFUSE.T   (truth arm)
-  FSPLIT.F -> EVALF (if present) -> chain -> FFUSE.F   (false arm)
-  Empty arc: if T-branch is empty, FSPLIT.T connects directly to FFUSE.T
-  Empty arc: if F-branch is empty, FSPLIT.F connects directly to FFUSE.F
-  Cross-branch: FSPLIT.F may route to a non-matched FFUSE for paradox topology
+EDGE ROUTING INSIDE A FSPLIT/FFUSE PAIR
+  FSPLIT.T -> [tokens, anchored by EVALT if present] -> FFUSE.T  (truth arm)
+  FSPLIT.F -> [tokens, anchored by EVALF if present] -> FFUSE.F  (false arm)
+  If T-arm empty: FSPLIT.T connects directly to FFUSE.T (empty arc, T-state)
+  If F-arm empty: FSPLIT.F connects directly to FFUSE.F (empty arc, F-state)
+  EVALT MUST precede FFUSE inside the T-arm
+  EVALF MUST precede FFUSE inside the F-arm
+  Nesting: FSPLIT/FFUSE pairs may nest; innermost pairs matched first
+  Cross-branch: FSPLIT.F may route to a non-matched FFUSE (paradice / entangled topology)
 
-BACK-PROPAGATION EDGES (self-referential loops)
-  CLINK.o   -> IMSCRIB.i  [weighted -- loop continuation, feeds next winding, B state]
-  CLINK.o   -> IFIX.i     [empty   -- compositional witness fixation, T state]
-  IMSCRIB.o -> IFIX.i     [LinFix  -- self-reference record, igProtoCopy_isDagger applies]
+BACK-PROPAGATION (self-referential loops)
+  CLINK.o   -> IMSCRIB.i  [weighted -- loop continuation, B state]
+  CLINK.o   -> IFIX.i     [empty   -- compositional witness, T state]
+  IMSCRIB.o -> IFIX.i     [LinFix  -- self-reference record]
 
-EDGE WEIGHT TYPES
-  empty (epsilon):  compositional witness; T register; no state change
-  weighted (w):     carries B state; dialetheic arm; loop continuation
-
-REGISTER STATES AFTER EACH TOKEN
-  VINIT -> 00 void     TANCH -> 01 T    AFWD -> 01 T     AREV -> 01 T
-  IMSCRIB -> 01 T      CLINK -> 01 T    IFIX -> 01 T (fixed)
-  FSPLIT branches: T-arm->01  F-arm->10  both-arms->11
-  EVALT -> 01 T     EVALF -> 10 F     ENGAGR -> 11 B (both)
-  FFUSE joins: T-only->01, F-only->10, B->11
+REGISTER STATE TRANSITIONS
+  VINIT -> void(00)    TANCH -> T(01)     AFWD -> T(01)     AREV -> T(01)
+  IMSCRIB -> T(01)     CLINK -> T(01)     IFIX -> T(01, fixed, append-only)
+  EVALT -> T(01)       EVALF -> F(10)     ENGAGR -> B(11, paradice: both held)
+  FSPLIT T-arm -> T(01), F-arm -> F(10), both-arms -> B(11)
+  FFUSE: T-only -> T(01), F-only -> F(10), mixed/B -> B(11)
 
 TOKEN FAMILIES
-  LOGICAL    (blue): VINIT TANCH AFWD AREV CLINK IMSCRIB
-  FROBENIUS  (gold): FSPLIT FFUSE
-  DIALETHEIA  (red): EVALT EVALF ENGAGR
-  LINEAR    (green): IFIX
+  LOGICAL:    VINIT TANCH AFWD AREV CLINK IMSCRIB
+  FROBENIUS:  FSPLIT FFUSE
+  DIALETHEIA: EVALT EVALF ENGAGR
+  LINEAR:     IFIX
 
-FINGERPRINT FIELDS
-  sig=(L,F,D,X): counts Logical / Frobenius / Dialetheia / Linear tokens in bootstrap
-  dialetheia_complete=True: ALL THREE of EVALT + EVALF + ENGAGR present in bootstrap
-  self_ref=True: IMSCRIB at BOTH first and last position
-  period: minimal repeating period of the token sequence
-
-CANONICAL BOOTSTRAP CLASSES -- select the one matching your domain structure:
-
-  I   IMSCRIB EVALT FSPLIT EVALF FFUSE ENGAGR IFIX IMSCRIB
-      Dialetheic Bootstrap -- paradoxical/contradictory; dialetheia_complete=True; O2
-      Use: Godel's Loophole, Liar's Paradox, constitutional crises,
-           quantum superposition, wave/particle duality, dialetheic logics,
-           ANYTHING holding contradictory states simultaneously
-
-  II  VINIT TANCH AFWD FSPLIT CLINK FFUSE IFIX IMSCRIB
-      Void Genesis -- creation from nothing; irreversible genesis; O0
-      Use: Big Bang, ex nihilo creation, first axiom, seed germination
-
-  III TANCH AREV VINIT AFWD TANCH CLINK IFIX IMSCRIB
-      Anchor Protocol -- boundary-anchored; reference frame establishment; O1
-      Use: coordinate systems, calibration, treaty ratification, grounding
-
-  IV  IMSCRIB AFWD FFUSE FSPLIT AREV CLINK IFIX IMSCRIB
-      Dual Bootstrap -- self-dual, FFUSE before FSPLIT (time-reversed); O_inf
-      Use: thermodynamic cycles, dual categories, mirror symmetry
-
-  V   IFIX IFIX IFIX IFIX IFIX IFIX IFIX IFIX
-      Linear Chain -- pure fixation, no branching, no self-reference; O0
-      Use: monotone sequences, one-way records, ROM, pure append-only logs
-
-  VI  VINIT IMSCRIB VINIT IMSCRIB VINIT IMSCRIB VINIT IMSCRIB
-      Empty Bootstrap -- void/identity oscillation; O1
-      Use: boolean oscillators, heartbeat, ping-pong protocols
-
-  VII EVALF AREV FSPLIT EVALT AFWD FFUSE ENGAGR IFIX
-      Parakernel -- paraconsistent; F-before-T; dialetheia_complete=True; O2
-      Use: paraconsistent OS kernels, contradiction-tolerant systems, FOUR-valued logic
-
-  VIII VINIT FSPLIT FFUSE TANCH
-       Frobenius Kernel -- minimal delta/mu pair only; O0
-       Use: copy-and-merge primitives, duplication, bimonoids
-
-  IXa AFWD AREV
-      Chiral Forward -- minimal chirality pair; O1
-      Use: enantiomers, CP violation, handed systems, directed pairs
-
-  IXb AREV AFWD
-      Chiral Reverse -- mirror of IXa; O1
-      Use: time reversal, mirror images
-
-  X   IMSCRIB FSPLIT EVALT IFIX IMSCRIB FSPLIT EVALF IFIX
-      Truth Machine -- two-pass: T-branch then F-branch sequentially; O1
-      Use: two-stage verification, dual audit, true/false oracle
-
-  XI  IMSCRIB AFWD AREV IMSCRIB AFWD AREV IMSCRIB AFWD
-      Eternal Return -- cyclic LOGICAL oscillation; O2
-      Use: cyclic cosmologies, eternal recurrence, Penrose CCC, Nietzsche
-
-  XII EVALT IFIX EVALF IFIX ENGAGR IFIX IMSCRIB IFIX
-      ROM Burn -- full dialetheia fixation, all states frozen; O0
-      Use: sacred texts, axiomatic foundations, permanent canonical records
-
-BOOTSTRAP CONSTRUCTION RULES
-  1. SELECT the canonical class whose structure matches your domain.
-     DO NOT default to IMSCRIB AREV FSPLIT AFWD FFUSE CLINK IFIX IMSCRIB unless
-     your domain is genuinely a standard autopoietic loop with no paradox,
-     no genesis, no chirality, no pure fixation.
-  2. Each bootstrap step must be written as "OPCODE: domain action"
-     e.g.  "IMSCRIB: the system recognizes itself as self-referential"
-           "EVALT: constitutional amendment ratified"
-           "FSPLIT: word decomposes into constituent letters"
-  3. The opcode sequence must follow your chosen class exactly
-  4. dialetheia_complete=True requires EVALT + EVALF + ENGAGR ALL in bootstrap
-  5. self_ref=True requires IMSCRIB at BOTH first and last positions
-  6. Every FSPLIT must have a matching FFUSE (stack-paired, innermost first)
-  7. EVALT anchors T-branch; EVALF anchors F-branch within FSPLIT/FFUSE pair
-  8. Custom sequence allowed if no canonical class fits -- follow rules 4-7
+FREE COMPOSITION RULES
+  1. Use as many tokens as the domain requires -- there is NO minimum or maximum length
+  2. Expand token by token until every distinct operation, branch, state,
+     and decision in the domain has been explicitly represented
+  3. Each step: "OPCODE: what this token does at this point in the composition"
+  4. Every FSPLIT must have exactly one matching FFUSE (stack-matched, innermost first)
+  5. EVALT anchors the T-branch; EVALF anchors the F-branch
+  6. ENGAGR at any position enters B-state (paradice: both simultaneously held)
+  7. IMSCRIB at both first and last position creates a self-referential closed loop
+  8. Multiple FSPLIT/FFUSE pairs (sequential or nested) map multiple branch points
+  9. Use IFIX as many times as needed -- each is a distinct permanent record event
+  10. Do NOT compress -- if the domain has 30 distinct operations, write 30 tokens
 """
 
 _SCHEMA = """\
@@ -210,7 +143,7 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
     "FFUSE":  {"element": "<domain element>", "justification": "<what it reconstitutes — must match FSPLIT input>"},
     "EVALT":  {"element": "<domain element>", "justification": "<affirmative/success state>"},
     "EVALF":  {"element": "<domain element>", "justification": "<negative/failure state>"},
-    "ENGAGR": {"element": "<domain element>", "justification": "<paradox: both simultaneously>"},
+    "ENGAGR": {"element": "<domain element>", "justification": "<a paradice: both simultaneously, held without resolution>"},
     "IFIX":   {"element": "<domain element>", "justification": "<permanent irreversible record>"}
   },
   "frobenius": {
@@ -226,17 +159,12 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
     "void":  "<domain description of 00 — uninitialized, before anything exists>",
     "true":  "<domain description of 01 — affirmative, success>",
     "false": "<domain description of 10 — negative, failure>",
-    "both":  "<domain description of 11 — paradox, both states simultaneously>"
+    "both":  "<domain description of 11 — a paradice: both states simultaneously, held>"
   },
-  "bootstrap": [
-    "<OPCODE: domain action — what this opcode does in your domain>",
+  "sequence": [
+    "<OPCODE: domain action — what this token does at this point in the composition>",
     "<OPCODE: domain action>",
-    "<OPCODE: domain action>",
-    "<OPCODE: domain action>",
-    "<OPCODE: domain action>",
-    "<OPCODE: domain action>",
-    "<OPCODE: domain action>",
-    "<OPCODE: domain action — follow your chosen canonical class sequence exactly>"
+    "<... continue one token per step until every distinct operation, branch, state, and decision in the domain is explicitly represented — there is NO maximum length>"
   ],
   "exos": {
     "compiler":  "<what translates domain intentions into operations>",
@@ -255,8 +183,9 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
 
 _SYSTEM_PROMPT = f"""\
 You are the Ob3ect Auto-Designer, an expert in the Universal Imscriptive Grammar (IMASM).
-Your task: given a domain description, identify the structural skeleton of that domain
-in terms of the 12 IMASM opcodes and produce a valid Ob3ect design.
+Your task: given a domain description, compose a complete token sequence that maps every
+distinct operation, branch, state, and decision in the domain using the 12 IMASM tokens.
+There is no fixed length — expand until the full domain is mapped.
 
 {_OPCODE_REF}
 
@@ -407,7 +336,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         entropy_assertion="ΔS ≈ 0",
     )
 
-    bs_actions = data.get("bootstrap", [f"IMSCRIB: Step {i+1}" for i in range(8)])
+    bs_actions = data.get("sequence", data.get("bootstrap", ["IMSCRIB: identity"]))
     bootstrap = BootstrapSequence(
         steps=[
             {

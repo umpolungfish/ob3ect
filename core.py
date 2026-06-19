@@ -86,9 +86,7 @@ class BootstrapSequence:
     failure_modes: List[str] = field(default_factory=list)
     def validate(self):
         e = []
-        if len(self.steps)!=8: e.append("need 8 bootstrap steps")
-        if self.steps and self.steps[0].get("opcode")!="IMSCRIB": e.append("step1 must be IMSCRIB")
-        if self.steps and self.steps[-1].get("opcode")!="IMSCRIB": e.append("step8 must be IMSCRIB")
+        if not self.steps: e.append("sequence must have at least one step")
         if not self.closure_verified: e.append("closure required")
         return e
 
@@ -214,7 +212,7 @@ class DomainTemplate:
         self.opcodes = config["opcodes"]
         self.frobenius = config["frobenius"]
         self.registers = config["registers"]
-        self.bootstrap = config["bootstrap"]
+        self.bootstrap = config.get("sequence", config.get("bootstrap", []))
         self.exos = config["exos"]
         self.entropy = config["entropy"]
 
@@ -264,10 +262,14 @@ class DomainTemplate:
             entropy_assertion="DS approx 0")
 
     def bootstrap_seq(self, override: Dict[str,Any] = None) -> BootstrapSequence:
-        bs = self.bootstrap
+        import re as _re
+        known = {oc.value for oc in Opcode}
         steps = []
-        for i, action in enumerate(bs):
-            steps.append({"step_num": i+1, "opcode": BOOTSTRAP_STEPS[i+1], "domain_action": action})
+        for i, action in enumerate(self.bootstrap):
+            m = _re.match(r'^\s*([A-Z]+)', str(action))
+            opcode = m.group(1) if (m and m.group(1) in known) else "IMSCRIB"
+            domain_action = _re.sub(r'^[A-Z]+:\s*', '', str(action).strip())
+            steps.append({"step_num": i+1, "opcode": opcode, "domain_action": domain_action})
         return BootstrapSequence(steps=steps, closure_verified=True)
 
     def exos_spec(self, override: Dict[str,Any] = None) -> ExOSSpec:
@@ -369,8 +371,7 @@ class Ob3ectPipeline:
             false_description=false, both_description=both,
             transitions=transitions or [], entropy_assertion=entropy))
     def design_bootstrap(self, steps=None):
-        steps = steps or [{"step_num":i+1,"opcode":BOOTSTRAP_STEPS[i+1],
-            "domain_action":"Step %d" % (i+1)} for i in range(8)]
+        steps = steps or [{"step_num": 1, "opcode": "IMSCRIB", "domain_action": "identity"}]
         self._advance(4, BootstrapSequence(steps=steps, closure_verified=True))
     def specify_exos(self, compiler, ipc, memory, scheduler, alfs):
         self._advance(5, ExOSSpec(compiler_frontend=compiler, ipc_mechanism=ipc,

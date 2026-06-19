@@ -1,3 +1,50 @@
+core.py + auto.py: remove stale 8-step validation; free composition throughout (2026-06-19)
+
+core.py BootstrapSequence.validate(): removed "need 8 bootstrap steps",
+  "step1 must be IMSCRIB", "step8 must be IMSCRIB" — only checks that
+  sequence is non-empty and closure_verified=True.
+
+core.py DomainTemplate: config['bootstrap'] -> config.get('sequence', config.get('bootstrap', []))
+
+core.py DomainTemplate.bootstrap_seq(): replaced BOOTSTRAP_STEPS[i+1]
+  with opcode parser that reads the leading UPPERCASE token from each
+  action string, falls back to IMSCRIB on unknown.
+
+core.py Ob3ectBuilder.design_bootstrap(): dummy fallback shrunk from
+  8 hardcoded BOOTSTRAP_STEPS entries to a single IMSCRIB identity step.
+
+---
+
+auto.py: unconstrained free composition — no fixed-length bootstrap (2026-06-19)
+
+_IMASM_GRAPH_REF rewritten: canonical classes I-XII removed entirely.
+Replaced with pure composition rules: port conventions, edge routing,
+back-propagation, register state transitions, token families, and
+10 FREE COMPOSITION RULES emphasizing no minimum/maximum length.
+Rule 10: "Do NOT compress — if the domain has 30 operations, write 30 tokens."
+
+_SCHEMA: "bootstrap" field renamed to "sequence". Template shortened to
+3 illustrative lines with explicit note that there is NO maximum length.
+
+_build_artifact: data.get("sequence", data.get("bootstrap", ...)) —
+accepts both key names; default shrunk to single "IMSCRIB: identity".
+
+_SYSTEM_PROMPT task line updated: "compose a complete token sequence...
+there is no fixed length — expand until the full domain is mapped."
+
+Effect: ob3ect now generates arbitrarily long compositional sequences
+using only composition rules — no canonical class templates.
+
+---
+
+auto.py: rename paradox -> paradice in ENGAGR descriptions (2026-06-19)
+
+_OPCODE_REF ENGAGR: "Paradox held" -> "A paradice: held"
+_SCHEMA ENGAGR justification hint updated.
+_SCHEMA registers.both updated.
+
+---
+
 auto.py: CLI spinner with elapsed time during LLM call (2026-06-19)
 
 _Spinner class: braille dot animation (⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏) on stderr with \r
