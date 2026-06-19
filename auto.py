@@ -70,15 +70,126 @@ LINEAR (1) — irreversible fixation:
   IFIX   (0xB) — ROM fixation. Permanent, append-only, cannot be undone.
                  Examples: Egyptian determinatives, dream journal entry, measurement record.
 
-BOOTSTRAP SEQUENCE (mandatory 8 steps, opcodes fixed):
-  Step 1 IMSCRIB — self-recognition at opening
-  Step 2 AREV   — descent / reverse
-  Step 3 FSPLIT — separate / branch
-  Step 4 AFWD   — ascent / forward
-  Step 5 FFUSE  — unify / fuse
-  Step 6 CLINK  — compose / link
-  Step 7 IFIX   — fix / record permanently
-  Step 8 IMSCRIB — self-recognition at close  (closure: back to identity)
+Bootstrap: choose the canonical class that matches your domain's structural type.
+  See IMASM EXECUTION GRAPH below for all classes, edge routing, and construction rules.
+"""
+
+_IMASM_GRAPH_REF = """\
+IMASM EXECUTION GRAPH — edges, ports, weights, canonical classes
+════════════════════════════════════════════════════════════════
+
+PORT CONVENTIONS (every token is a node with typed ports)
+  VINIT:  in=[]      out=[o]    source — 0→1
+  FSPLIT: in=[i]     out=[T,F]  fork   — 1→2
+  FFUSE:  in=[T,F]   out=[o]    join   — 2→1
+  others: in=[i]     out=[o]    linear — 1→1
+
+BRANCH ROUTING
+  FSPLIT.T -> EVALT (if present) -> chain -> FFUSE.T   (truth arm)
+  FSPLIT.F -> EVALF (if present) -> chain -> FFUSE.F   (false arm)
+  Empty arc: if T-branch is empty, FSPLIT.T connects directly to FFUSE.T
+  Empty arc: if F-branch is empty, FSPLIT.F connects directly to FFUSE.F
+  Cross-branch: FSPLIT.F may route to a non-matched FFUSE for paradox topology
+
+BACK-PROPAGATION EDGES (self-referential loops)
+  CLINK.o   -> IMSCRIB.i  [weighted -- loop continuation, feeds next winding, B state]
+  CLINK.o   -> IFIX.i     [empty   -- compositional witness fixation, T state]
+  IMSCRIB.o -> IFIX.i     [LinFix  -- self-reference record, igProtoCopy_isDagger applies]
+
+EDGE WEIGHT TYPES
+  empty (epsilon):  compositional witness; T register; no state change
+  weighted (w):     carries B state; dialetheic arm; loop continuation
+
+REGISTER STATES AFTER EACH TOKEN
+  VINIT -> 00 void     TANCH -> 01 T    AFWD -> 01 T     AREV -> 01 T
+  IMSCRIB -> 01 T      CLINK -> 01 T    IFIX -> 01 T (fixed)
+  FSPLIT branches: T-arm->01  F-arm->10  both-arms->11
+  EVALT -> 01 T     EVALF -> 10 F     ENGAGR -> 11 B (both)
+  FFUSE joins: T-only->01, F-only->10, B->11
+
+TOKEN FAMILIES
+  LOGICAL    (blue): VINIT TANCH AFWD AREV CLINK IMSCRIB
+  FROBENIUS  (gold): FSPLIT FFUSE
+  DIALETHEIA  (red): EVALT EVALF ENGAGR
+  LINEAR    (green): IFIX
+
+FINGERPRINT FIELDS
+  sig=(L,F,D,X): counts Logical / Frobenius / Dialetheia / Linear tokens in bootstrap
+  dialetheia_complete=True: ALL THREE of EVALT + EVALF + ENGAGR present in bootstrap
+  self_ref=True: IMSCRIB at BOTH first and last position
+  period: minimal repeating period of the token sequence
+
+CANONICAL BOOTSTRAP CLASSES -- select the one matching your domain structure:
+
+  I   IMSCRIB EVALT FSPLIT EVALF FFUSE ENGAGR IFIX IMSCRIB
+      Dialetheic Bootstrap -- paradoxical/contradictory; dialetheia_complete=True; O2
+      Use: Godel's Loophole, Liar's Paradox, constitutional crises,
+           quantum superposition, wave/particle duality, dialetheic logics,
+           ANYTHING holding contradictory states simultaneously
+
+  II  VINIT TANCH AFWD FSPLIT CLINK FFUSE IFIX IMSCRIB
+      Void Genesis -- creation from nothing; irreversible genesis; O0
+      Use: Big Bang, ex nihilo creation, first axiom, seed germination
+
+  III TANCH AREV VINIT AFWD TANCH CLINK IFIX IMSCRIB
+      Anchor Protocol -- boundary-anchored; reference frame establishment; O1
+      Use: coordinate systems, calibration, treaty ratification, grounding
+
+  IV  IMSCRIB AFWD FFUSE FSPLIT AREV CLINK IFIX IMSCRIB
+      Dual Bootstrap -- self-dual, FFUSE before FSPLIT (time-reversed); O_inf
+      Use: thermodynamic cycles, dual categories, mirror symmetry
+
+  V   IFIX IFIX IFIX IFIX IFIX IFIX IFIX IFIX
+      Linear Chain -- pure fixation, no branching, no self-reference; O0
+      Use: monotone sequences, one-way records, ROM, pure append-only logs
+
+  VI  VINIT IMSCRIB VINIT IMSCRIB VINIT IMSCRIB VINIT IMSCRIB
+      Empty Bootstrap -- void/identity oscillation; O1
+      Use: boolean oscillators, heartbeat, ping-pong protocols
+
+  VII EVALF AREV FSPLIT EVALT AFWD FFUSE ENGAGR IFIX
+      Parakernel -- paraconsistent; F-before-T; dialetheia_complete=True; O2
+      Use: paraconsistent OS kernels, contradiction-tolerant systems, FOUR-valued logic
+
+  VIII VINIT FSPLIT FFUSE TANCH
+       Frobenius Kernel -- minimal delta/mu pair only; O0
+       Use: copy-and-merge primitives, duplication, bimonoids
+
+  IXa AFWD AREV
+      Chiral Forward -- minimal chirality pair; O1
+      Use: enantiomers, CP violation, handed systems, directed pairs
+
+  IXb AREV AFWD
+      Chiral Reverse -- mirror of IXa; O1
+      Use: time reversal, mirror images
+
+  X   IMSCRIB FSPLIT EVALT IFIX IMSCRIB FSPLIT EVALF IFIX
+      Truth Machine -- two-pass: T-branch then F-branch sequentially; O1
+      Use: two-stage verification, dual audit, true/false oracle
+
+  XI  IMSCRIB AFWD AREV IMSCRIB AFWD AREV IMSCRIB AFWD
+      Eternal Return -- cyclic LOGICAL oscillation; O2
+      Use: cyclic cosmologies, eternal recurrence, Penrose CCC, Nietzsche
+
+  XII EVALT IFIX EVALF IFIX ENGAGR IFIX IMSCRIB IFIX
+      ROM Burn -- full dialetheia fixation, all states frozen; O0
+      Use: sacred texts, axiomatic foundations, permanent canonical records
+
+BOOTSTRAP CONSTRUCTION RULES
+  1. SELECT the canonical class whose structure matches your domain.
+     DO NOT default to IMSCRIB AREV FSPLIT AFWD FFUSE CLINK IFIX IMSCRIB unless
+     your domain is genuinely a standard autopoietic loop with no paradox,
+     no genesis, no chirality, no pure fixation.
+  2. Each bootstrap step must be written as "OPCODE: domain action"
+     e.g.  "IMSCRIB: the system recognizes itself as self-referential"
+           "EVALT: constitutional amendment ratified"
+           "FSPLIT: word decomposes into constituent letters"
+  3. The opcode sequence must follow your chosen class exactly
+  4. dialetheia_complete=True requires EVALT + EVALF + ENGAGR ALL in bootstrap
+  5. self_ref=True requires IMSCRIB at BOTH first and last positions
+  6. Every FSPLIT must have a matching FFUSE (stack-paired, innermost first)
+  7. EVALT anchors T-branch; EVALF anchors F-branch within FSPLIT/FFUSE pair
+  8. Custom sequence allowed if no canonical class fits -- follow rules 4-7
 """
 
 _SCHEMA = """\
@@ -118,14 +229,14 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
     "both":  "<domain description of 11 — paradox, both states simultaneously>"
   },
   "bootstrap": [
-    "<Step 1 IMSCRIB: domain action — self-recognition at opening>",
-    "<Step 2 AREV:   domain action — descent/reverse>",
-    "<Step 3 FSPLIT: domain action — separate/branch>",
-    "<Step 4 AFWD:   domain action — ascent/forward>",
-    "<Step 5 FFUSE:  domain action — unify/fuse>",
-    "<Step 6 CLINK:  domain action — compose/link>",
-    "<Step 7 IFIX:   domain action — fix/record>",
-    "<Step 8 IMSCRIB: domain action — self-recognition at close>"
+    "<OPCODE: domain action — what this opcode does in your domain>",
+    "<OPCODE: domain action>",
+    "<OPCODE: domain action>",
+    "<OPCODE: domain action>",
+    "<OPCODE: domain action>",
+    "<OPCODE: domain action>",
+    "<OPCODE: domain action>",
+    "<OPCODE: domain action — follow your chosen canonical class sequence exactly>"
   ],
   "exos": {
     "compiler":  "<what translates domain intentions into operations>",
@@ -149,6 +260,8 @@ in terms of the 12 IMASM opcodes and produce a valid Ob3ect design.
 
 {_OPCODE_REF}
 
+{_IMASM_GRAPH_REF}
+
 CRITICAL FROBENIUS CONSTRAINT:
 The FSPLIT and FFUSE elements must form a genuine pair where FFUSE(FSPLIT(x)) = x in the
 domain. Reason carefully: if you branch X into [A, B], then fusing [A, B] must recover X.
@@ -159,17 +272,66 @@ Output ONLY the JSON object — no preamble, no markdown fences, no trailing tex
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
+_CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
+_CONTEXT_MAX_BYTES = 50_000  # 50 KB total
+
+
+def _load_context(path: str) -> str:
+    """Load file or directory content as a context string for the LLM prompt."""
+    import os
+    p = Path(path).expanduser().resolve()
+    if not p.exists():
+        raise FileNotFoundError(f"--context path not found: {p}")
+
+    chunks: list[str] = []
+    total = 0
+
+    def _read(fp: Path) -> None:
+        nonlocal total
+        if total >= _CONTEXT_MAX_BYTES:
+            return
+        try:
+            text = fp.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            return
+        remaining = _CONTEXT_MAX_BYTES - total
+        if len(text) > remaining:
+            text = text[:remaining] + f"\n[... truncated at {_CONTEXT_MAX_BYTES} bytes total]"
+        chunks.append(f"=== {fp.name} ===\n{text}")
+        total += len(text)
+
+    if p.is_file():
+        _read(p)
+    else:
+        files = sorted(
+            f for f in p.rglob("*")
+            if f.is_file() and f.suffix.lower() in _CONTEXT_EXTENSIONS
+        )
+        for fp in files:
+            if total >= _CONTEXT_MAX_BYTES:
+                chunks.append(f"[context truncated — {_CONTEXT_MAX_BYTES} byte limit reached]")
+                break
+            _read(fp)
+
+    return "\n\n".join(chunks)
+
+
 def _build_prompt(
     description: str,
     domain_type: Optional[str],
     retry_info: Optional[str] = None,
+    context: Optional[str] = None,
 ) -> str:
     dt_hint = f"\nDomain type hint: {domain_type}" if domain_type else ""
     retry_block = (
         f"\n\nPREVIOUS ATTEMPT FAILED — correct these issues:\n{retry_info}"
         if retry_info else ""
     )
-    return f"Design an Ob3ect for:\n\n{description}{dt_hint}\n\n{_SCHEMA}{retry_block}"
+    context_block = (
+        f"<domain-context>\n{context}\n</domain-context>\n\n"
+        if context else ""
+    )
+    return f"{context_block}Design an Ob3ect for:\n\n{description}{dt_hint}\n\n{_SCHEMA}{retry_block}"
 
 
 def _extract_json(text: str) -> Dict[str, Any]:
@@ -188,6 +350,17 @@ def _extract_json(text: str) -> Dict[str, Any]:
     if start >= 0 and end > start:
         return json.loads(text[start:end])
     raise ValueError("No JSON object found in LLM response")
+
+
+_KNOWN_OPCODES = {oc.value for oc in Opcode}
+
+
+def _parse_opcode(step_str: str) -> str:
+    """Extract opcode name from 'OPCODE: description' bootstrap step string."""
+    m = re.match(r'^\s*([A-Z]+)', str(step_str))
+    if m and m.group(1) in _KNOWN_OPCODES:
+        return m.group(1)
+    return "IMSCRIB"
 
 
 def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifact:
@@ -234,11 +407,15 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         entropy_assertion="ΔS ≈ 0",
     )
 
-    bs_actions = data.get("bootstrap", [f"Step {i+1}" for i in range(8)])
+    bs_actions = data.get("bootstrap", [f"IMSCRIB: Step {i+1}" for i in range(8)])
     bootstrap = BootstrapSequence(
         steps=[
-            {"step_num": i + 1, "opcode": BOOTSTRAP_STEPS[i + 1], "domain_action": act}
-            for i, act in enumerate(bs_actions[:8])
+            {
+                "step_num": i + 1,
+                "opcode": _parse_opcode(act),
+                "domain_action": re.sub(r'^[A-Z]+:\s*', '', str(act).strip()),
+            }
+            for i, act in enumerate(bs_actions)
         ],
         closure_verified=True,
     )
@@ -315,6 +492,7 @@ async def auto_design(
     model: Optional[str] = None,
     max_retries: int = 3,
     temperature: float = 0.4,
+    context: Optional[str] = None,
 ) -> Ob3ectArtifact:
     """
     Auto-design an Ob3ect from a natural-language description.
@@ -388,7 +566,7 @@ async def auto_design(
 
     attempt = 0
     while attempt < max_retries:
-        prompt = _build_prompt(description, domain_type, retry_info)
+        prompt = _build_prompt(description, domain_type, retry_info, context=context)
         try:
             raw = await provider.query(
                 prompt,
@@ -436,6 +614,44 @@ def design(description: str, **kwargs) -> Ob3ectArtifact:
     return asyncio.run(auto_design(description, **kwargs))
 
 
+# ── CLI spinner ──────────────────────────────────────────────────────────────
+
+import itertools as _itertools
+import threading as _threading
+import time as _time
+
+
+class _Spinner:
+    _FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+
+    def __init__(self, msg: str = "Imscribing") -> None:
+        self._msg = msg
+        self._stop = _threading.Event()
+        self._thread = _threading.Thread(target=self._spin, daemon=True)
+        self._t0 = 0.0
+
+    def _spin(self) -> None:
+        for frame in _itertools.cycle(self._FRAMES):
+            if self._stop.is_set():
+                break
+            elapsed = _time.monotonic() - self._t0
+            line = f"\r{frame} {self._msg}... {elapsed:.1f}s "
+            sys.stderr.write(line)
+            sys.stderr.flush()
+            _time.sleep(0.08)
+        sys.stderr.write("\r" + " " * 60 + "\r")
+        sys.stderr.flush()
+
+    def __enter__(self) -> "_Spinner":
+        self._t0 = _time.monotonic()
+        self._thread.start()
+        return self
+
+    def __exit__(self, *_: object) -> None:
+        self._stop.set()
+        self._thread.join()
+
+
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -454,19 +670,35 @@ if __name__ == "__main__":
     ap.add_argument("--temp", type=float, default=0.4, dest="temperature")
     ap.add_argument("--no-scaffold", action="store_true", dest="no_scaffold",
                     help="Suppress Lean scaffold output")
+    ap.add_argument("--context", dest="context_path", default=None, metavar="PATH",
+                    help="File or directory of domain documents to include as context "
+                         "(.md/.txt/.lean/.py/.tex/.json; up to 50 KB total)")
     args = ap.parse_args()
 
     desc = " ".join(args.description)
+
+    ctx: Optional[str] = None
+    if args.context_path:
+        try:
+            ctx = _load_context(args.context_path)
+            n_files = ctx.count("=== ")
+            print(f"Context loaded: {args.context_path} ({len(ctx):,} chars, {n_files} file(s))\n")
+        except FileNotFoundError as e:
+            print(f"Warning: {e} — proceeding without context")
+
     print(f"Auto-designing: {desc}\n")
-    art = design(
-        desc,
-        domain_type=args.domain_type,
-        scope=args.scope,
-        provider_name=args.provider_name,
-        model=args.model,
-        max_retries=args.max_retries,
-        temperature=args.temperature,
-    )
+    sys.stdout.flush()
+    with _Spinner("Imscribing"):
+        art = design(
+            desc,
+            domain_type=args.domain_type,
+            scope=args.scope,
+            provider_name=args.provider_name,
+            model=args.model,
+            max_retries=args.max_retries,
+            temperature=args.temperature,
+            context=ctx,
+        )
     print(art.report())
     errs = art.validate_all()
     has_errors = any(v for v in errs.values())

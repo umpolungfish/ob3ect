@@ -1,3 +1,73 @@
+auto.py: CLI spinner with elapsed time during LLM call (2026-06-19)
+
+_Spinner class: braille dot animation (⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏) on stderr with \r
+overwrite. Shows "⠋ Imscribing... N.Ns" updating every 80ms. Clears the
+line completely on exit. Daemon thread so it never blocks shutdown.
+sys.stdout.flush() called before spinner start to drain buffered stdout.
+Wraps the design() call in the CLI main block.
+
+---
+
+auto.py: full IMASM execution graph + canonical class selection (2026-06-19)
+
+The LLM now knows the complete IMASM graph topology and selects the
+appropriate canonical bootstrap class instead of defaulting to the fixed
+IMSCRIB->AREV->FSPLIT->AFWD->FFUSE->CLINK->IFIX->IMSCRIB sequence.
+
+_OPCODE_REF: removed "BOOTSTRAP SEQUENCE (mandatory 8 steps, opcodes fixed)"
+  section -- the bootstrap is no longer fixed; LLM chooses the class.
+
+_IMASM_GRAPH_REF: new constant injected into _SYSTEM_PROMPT providing:
+  - Port conventions: VINIT 0->1, FSPLIT 1->{T,F}, FFUSE {T,F}->1, others 1->1
+  - Branch routing: EVALT anchors FSPLIT.T-branch; EVALF anchors FSPLIT.F-branch
+  - Back-propagation edges: CLINK->IMSCRIB (weighted, B state, loop continuation),
+    CLINK->IFIX (empty, T state, fixation), IMSCRIB->IFIX (LinFix, self-reference)
+  - Edge weight types: empty (T) vs weighted (B dialetheia arm)
+  - Register states per token: void/T/F/B transitions
+  - All 13 canonical classes (I-XII + IXa/IXb) with sequences and use cases
+  - Bootstrap construction rules: class selection, EVALT/EVALF branch anchoring,
+    dialetheia_complete requirements, FSPLIT/FFUSE stack matching
+
+_SCHEMA bootstrap field: changed from fixed "Step N OPCODE: action" template
+  to free-form "OPCODE: domain action" -- LLM supplies the opcode per step.
+
+_build_artifact: bootstrap parsed from LLM output, not hardcoded BOOTSTRAP_STEPS:
+  - _KNOWN_OPCODES + _parse_opcode(step_str): extracts leading uppercase opcode
+    from "OPCODE: description"; falls back to IMSCRIB on unknown
+  - domain_action stripped of "OPCODE: " prefix via re.sub (avoids redundant
+    display in Phase 4: "Step N: OPCODE - OPCODE: text")
+  - [:8] cap removed -- bootstrap length follows chosen canonical class
+
+Effect: ob3ect "Godel's Loophole" will produce Class I Dialetheic Bootstrap
+(IMSCRIB EVALT FSPLIT EVALF FFUSE ENGAGR IFIX IMSCRIB), dialetheia_complete=True.
+
+---
+
+auto.py: --context PATH for domain document injection (2026-06-19)
+
+_load_context(path): reads a file or directory of domain documents
+  (.md/.txt/.lean/.py/.tex/.rst/.json) up to 50 KB total. Directories
+  are scanned recursively; files sorted alphabetically with filename
+  headers (=== name ===). Truncates at 50 KB with notice.
+
+_build_prompt() gains context param: injected as <domain-context>...</domain-context>
+  block at the top of the user prompt, before the description. Retry
+  calls inherit the same context automatically.
+
+auto_design() gains context: Optional[str] param, threaded into every
+  _build_prompt() call in the retry loop.
+
+CLI: --context PATH flag. Loads context before design(), prints file
+  count and char count. Soft-fails with warning on missing path.
+
+Usage:
+  python auto.py "rongorongo as liturgical engine" \
+    --context ~/imsgct/lang/rongorongo-engine/
+  python auto.py "Voynich foldout" \
+    --context ~/imsgct/lang/voynich-engine/VOYNICH_IMSCRIPTION.md
+
+---
+
 auto.py + proof_scaffold_ob3ect.py: domain opcode_map threading (2026-06-19)
 
 auto.py _build_artifact(): builds domain_opcode_map = {opcode: domain_action}
