@@ -1,3 +1,56 @@
+auto.py + proof_scaffold_ob3ect.py: domain opcode_map threading (2026-06-19)
+
+auto.py _build_artifact(): builds domain_opcode_map = {opcode: domain_action}
+  from bootstrap.steps and passes it to _SCAFFOLD.run(). Every scaffold now
+  carries domain-semantic labels on each arrow node.
+proof_scaffold_ob3ect.py: scaffold_sequence() and ScaffoldOb3ect.run() accept
+  opcode_map and forward to emit_scaffold(). true_agentic_agent tool also
+  accepts opcode_map in its args.
+
+---
+
+Lean scaffold prints by default in auto.py CLI; --no-scaffold to suppress (2026-06-19)
+
+auto.py CLI now prints the full Lean scaffold after every report by default.
+Add --no-scaffold flag to suppress. Replaces earlier opt-in --scaffold approach.
+
+---
+
+Integrate lean_scaffold into Ob3ectArtifact via auto.py pipeline (2026-06-19)
+
+core.py:
+  - Ob3ectArtifact gains lean_scaffold: Optional[str] = None
+  - report() gains Phase 8 block: shows noncomputable def signature + line count
+  - to_dict() includes lean_scaffold in JSON output
+
+auto.py:
+  - Imports ScaffoldOb3ect from digital.proof_scaffold_ob3ect (try/except, silent on failure)
+  - _build_artifact() extracts bootstrap opcode strings after artifact construction,
+    calls _SCAFFOLD.run(ops, name=name), attaches result to artifact.lean_scaffold
+  - Scaffold failure never blocks artifact return
+
+Every Ob3ectArtifact produced by auto_design() now carries a typed IGProtocol
+Lean term scaffold (84 lines) derived from its bootstrap sequence. The scaffold
+provides .seq/.prod/.withGram structure with annotated sorry slots and named
+verification obligations pointing to IGFunctor/IGMorphism axioms.
+
+---
+
+Add proof_scaffold_ob3ect.py — IGProtocol scaffold bridge (2026-06-19)
+
+Layer 29 digital module bridging ob3ect string opcodes into IMSCRIBr's
+WiredGraph → IGProtocol Lean term scaffold pipeline.
+
+digital/proof_scaffold_ob3ect.py:
+  - Adapts ob3ect string opcodes (VINIT/TANCH/...) → Token enum → WiredGraph
+  - Calls imscr_wiring() + emit_scaffold() from IMSCRIBr
+  - ScaffoldOb3ect class: run(), canonical(), all_scaffolds(), fingerprint(), wiring()
+  - CLI: --verify (status), --canonical <name>, --all [outdir], --wiring <ops...>
+  - Fallback path resolution: relative ../../imsgct/IMSCRIBr or ~/imsgct/IMSCRIBr
+  - Verified: all 12 canonical classes load and display correctly
+
+---
+
 Document autopoietic bootstrap mechanics in README (2026-06-17)
 
 Added "Autopoietic Bootstrap Mechanics" subsection inside the IMASM

@@ -116,6 +116,7 @@ class Ob3ectArtifact:
     split_fuse_report: SplitFuseReport; register_mapping: RegisterMapping
     bootstrap_sequence: BootstrapSequence; exos_spec: ExOSSpec
     entropy_audit: EntropyAudit; instantiation_notes: str = ""
+    lean_scaffold: Optional[str] = None
 
     def validate_all(self):
         return {"phase_0":self.domain_charter.validate(),"phase_1":self.opcode_map.validate(),
@@ -172,6 +173,16 @@ class Ob3ectArtifact:
         parts.append("  DS: "+a.entropy_audit.delta_s_verdict)
         parts.append("")
         parts.append("Phase 7: "+a.instantiation_notes)
+        parts.append("")
+        parts.append("Phase 8: Lean Scaffold")
+        if a.lean_scaffold:
+            lines = a.lean_scaffold.splitlines()
+            def_line = next((l for l in lines if l.startswith("noncomputable def")), None)
+            if def_line:
+                parts.append("  " + def_line[:80])
+            parts.append("  -- %d lines total" % len(lines))
+        else:
+            parts.append("  (not generated)")
         parts.append("="*70)
         parts.append("mu o delta = id -> "+a.split_fuse_report.frobenius_verdict)
         return nl.join(parts)
@@ -186,6 +197,7 @@ class Ob3ectArtifact:
                 "phase_4":asdict(self.bootstrap_sequence),
                 "phase_5":asdict(self.exos_spec),
                 "phase_6":asdict(self.entropy_audit)},
+            "lean_scaffold":self.lean_scaffold,
             "notes":self.instantiation_notes}
 
     def to_json(self, indent=2):

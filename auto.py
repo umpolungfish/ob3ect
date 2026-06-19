@@ -27,6 +27,12 @@ from ob3ect.core import (
 )
 from framework.enhanced_llm_provider import get_llm_provider
 
+try:
+    from digital.proof_scaffold_ob3ect import ScaffoldOb3ect as _ScaffoldOb3ect
+    _SCAFFOLD = _ScaffoldOb3ect()
+except Exception:
+    _SCAFFOLD = None
+
 # ── IMASM opcode reference distilled from IMASM.tex ─────────────────────────
 
 _OPCODE_REF = """\
@@ -256,7 +262,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         failure_mode="",
     )
 
-    return Ob3ectArtifact(
+    artifact = Ob3ectArtifact(
         name=name,
         domain_charter=charter,
         opcode_map=OpcodeMap(entries=entries),
@@ -267,6 +273,18 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         entropy_audit=entropy,
         instantiation_notes=f"Auto-designed from: {name}",
     )
+    if _SCAFFOLD is not None:
+        try:
+            ops = [step["opcode"] for step in bootstrap.steps]
+            domain_opcode_map = {
+                step["opcode"]: step.get("domain_action", "")
+                for step in bootstrap.steps
+            }
+            artifact.lean_scaffold = _SCAFFOLD.run(ops, name=name,
+                                                    opcode_map=domain_opcode_map)
+        except Exception:
+            pass
+    return artifact
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -434,6 +452,8 @@ if __name__ == "__main__":
                     help="Model ID passed to the provider (e.g. deepseek-chat, qwen3-235b-a22b)")
     ap.add_argument("--retries", type=int, default=3, dest="max_retries")
     ap.add_argument("--temp", type=float, default=0.4, dest="temperature")
+    ap.add_argument("--no-scaffold", action="store_true", dest="no_scaffold",
+                    help="Suppress Lean scaffold output")
     args = ap.parse_args()
 
     desc = " ".join(args.description)
@@ -453,3 +473,9 @@ if __name__ == "__main__":
     print(f"\nValid: {art.is_valid_ob3ect}")
     if has_errors:
         print("Validation issues:", {k: v for k, v in errs.items() if v})
+    if not args.no_scaffold:
+        if art.lean_scaffold:
+            print("\n" + "="*70)
+            print("Lean Scaffold")
+            print("="*70)
+            print(art.lean_scaffold)
