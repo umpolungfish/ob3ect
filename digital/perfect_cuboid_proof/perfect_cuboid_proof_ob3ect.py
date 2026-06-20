@@ -2,7 +2,7 @@
 """
 Perfect Cuboid Proof Ob3ect
 =============================
-Encodes the complete structural proof that no perfect cuboid exists.
+Encodes the complete witness that no perfect cuboid exists.
 
 Open tuple (perfect_cuboid): D=wedge,T=network,R=lr,P=pm_sym,F=ell,K=trap,G=aleph,Gamma=and_,Phi=ep,H=hinf,S=n_m,Omega=omega0
 Proof tuple (perfect_cuboid_proof): D=odot,T=odot,R=lr,P=pm_sym,F=hbar,K=slow,G=aleph,Gamma=seq,Phi=c,H=h2,S=n_m,Omega=Z

@@ -82,14 +82,12 @@ def scaffold_sequence(
     name: Optional[str] = None,
     namespace: str = "Imscribing",
     opcode_map: Optional[Dict[str, str]] = None,
-    position_labels: Optional[Dict[int, str]] = None,
 ) -> str:
     """Generate IGProtocol scaffold from an ob3ect string opcode sequence."""
     arr = ops_to_arr(ops)
     canonical = match_canonical(arr)
     effective_name = name or canonical or "ob3ect_sequence"
-    return emit_scaffold(arr, name=effective_name, namespace=namespace,
-                         opcode_map=opcode_map, position_labels=position_labels)
+    return emit_scaffold(arr, name=effective_name, namespace=namespace, opcode_map=opcode_map)
 
 
 def scaffold_canonical(class_name: str, namespace: str = "Imscribing") -> str:
@@ -171,11 +169,9 @@ class ScaffoldOb3ect:
     )
 
     def run(self, ops: List[str], name: Optional[str] = None,
-            opcode_map: Optional[Dict[str, str]] = None,
-            position_labels: Optional[Dict[int, str]] = None) -> str:
+            opcode_map: Optional[Dict[str, str]] = None) -> str:
         """Scaffold from opcode list."""
-        return scaffold_sequence(ops, name=name, opcode_map=opcode_map,
-                                 position_labels=position_labels)
+        return scaffold_sequence(ops, name=name, opcode_map=opcode_map)
 
     def canonical(self, class_name: str) -> str:
         """Scaffold for a named canonical class."""

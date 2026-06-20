@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Collatz Conjecture Structural Proof Ob3ect
+Collatz Conjecture Witness Ob3ect
 ===========================================
 Encodes the primitive-based proof that all Collatz trajectories reach 1→4→2→1.
 

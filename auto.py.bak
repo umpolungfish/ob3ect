@@ -196,16 +196,7 @@ The FSPLIT and FFUSE elements must form a genuine pair where FFUSE(FSPLIT(x)) = 
 domain. Reason carefully: if you branch X into [A, B], then fusing [A, B] must recover X.
 If no such pair exists, set verdict to "FAIL" and explain why in failure_reason.
 
-Output ONLY the JSON object — no preamble, no markdown fences, no trailing text.
-
-PHASE 0 TOKENS CLARIFICATION:
-The "tokens" field in the JSON output contains DOMAIN-SPECIFIC SURFACE LABELS —
-natural language words or short phrases that label key elements of YOUR domain.
-These are NOT IMASM opcodes (VINIT/FSPLIT/etc.). They are NOT grammar primitive
-identifiers (𐑢, 𐑓, ⊙, etc.). Use 3-5 short domain nouns/phrases here.
-Examples: ["alembic", "distillation", "crystallization"] for alchemy;
-["synapse", "action potential", "vesicle"] for neuroscience.
-The IMASM opcode sequence goes ONLY in the "sequence" field."""
+Output ONLY the JSON object — no preamble, no markdown fences, no trailing text."""
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -391,14 +382,12 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
     if _SCAFFOLD is not None:
         try:
             ops = [step["opcode"] for step in bootstrap.steps]
-            # Position labels: one per step (position → domain_action),
-            # avoiding the collapse bug where same-opcode steps overwrote each other.
-            position_labels = {
-                i: step.get("domain_action", "")
-                for i, step in enumerate(bootstrap.steps)
+            domain_opcode_map = {
+                step["opcode"]: step.get("domain_action", "")
+                for step in bootstrap.steps
             }
             artifact.lean_scaffold = _SCAFFOLD.run(ops, name=name,
-                                                    position_labels=position_labels)
+                                                    opcode_map=domain_opcode_map)
         except Exception:
             pass
     return artifact
@@ -651,17 +640,3 @@ if __name__ == "__main__":
             print("Lean Scaffold")
             print("="*70)
             print(art.lean_scaffold)
-
-    # ── Persist to disk ──────────────────────────────────────────────────
-    import re as _re_slug
-    slug = _re_slug.sub(r'[^a-z0-9]', '_', desc.strip().lower())[:48]
-    slug = _re_slug.sub(r'_+', '_', slug).strip('_')
-    out_dir = Path(__file__).parent / "digital" / slug
-    out_dir.mkdir(parents=True, exist_ok=True)
-    json_path = art.save(out_dir / f"{slug}_ob3ect.json")
-    print(f"\nSaved to: {json_path}")
-    # Also save Lean scaffold if generated
-    if art.lean_scaffold:
-        lean_path = out_dir / f"{slug}_scaffold.lean"
-        lean_path.write_text(art.lean_scaffold)
-        print(f"Scaffold:   {lean_path}")
