@@ -1,0 +1,221 @@
+{
+  "name": "7",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "7",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "conjecture",
+        "parity",
+        "trajectory",
+        "basin"
+      ],
+      "boundary_condition": "The unique terminal cycle {1, 4, 2}",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Positive Integer n",
+        "justification": "The uninitialized input before the iterative map is applied.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The Cycle {1, 4, 2}",
+        "justification": "The terminal attractor that contains all convergent trajectories.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "T(n) = 3n + 1",
+        "justification": "The upward morphism increasing the magnitude of the state.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "T(n) = n / 2",
+        "justification": "The downward morphism decreasing the magnitude of the state.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Iterative Composition T^k(n)",
+        "justification": "The chaining of forward and reverse morphisms into a trajectory.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Trajectory Identity",
+        "justification": "The self-recognition of a sequence as a unique path in the Collatz graph.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Parity Check (n mod 2)",
+        "justification": "Branches the trajectory into even (AREV) or odd (AFWD) paths.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Trajectory Re-entry",
+        "justification": "Reconstitutes the integer state after a branch operation to continue iteration.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Convergence to 1",
+        "justification": "The affirmative state where the trajectory reaches the terminal anchor.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Divergence or Exotic Cycle",
+        "justification": "The negative state where the trajectory fails to reach the anchor.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Belnap 'Both' State",
+        "justification": "The paraconsistent kernel holding both runaway and damping dynamics simultaneously.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Computational Verification",
+        "justification": "The permanent record of a verified trajectory (e.g., up to 2^68).",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Parity Check",
+      "split_input": "Integer n",
+      "split_outputs": [
+        "n is even",
+        "n is odd"
+      ],
+      "fuse_element": "Map Application",
+      "fuse_result": "T(n)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Pre-iterative state; n is chosen but not yet mapped.",
+      "true_description": "Trajectory is contracting toward the terminal cycle.",
+      "false_description": "Trajectory is expanding or trapped in a non-standard loop.",
+      "both_description": "The critical threshold where amplification and damping are held in tension.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Select an arbitrary positive integer n."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify n as the starting point of a unique trajectory."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Evaluate the parity of the current state."
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "If n is even, proceed to the reverse arm."
+        },
+        {
+          "step_num": 5,
+          "opcode": "AREV",
+          "domain_action": "Apply n / 2."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "If n is odd, proceed to the forward arm."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "Apply 3n + 1."
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "Re-enter the iterative loop with the new value T(n)."
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "Chain the result to the previous sequence of states."
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "Localize the tension between 3n+1 growth and n/2 decay within the Belnap kernel."
+        },
+        {
+          "step_num": 11,
+          "opcode": "FSPLIT",
+          "domain_action": "Check if the new state T(n) equals 1."
+        },
+        {
+          "step_num": 12,
+          "opcode": "EVALT",
+          "domain_action": "If state is 1, the trajectory is affirmative."
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the trajectory in the terminal cycle {1, 4, 2}."
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "Record the convergence of n as a permanent mathematical fact."
+        },
+        {
+          "step_num": 15,
+          "opcode": "IMSCRIB",
+          "domain_action": "The trajectory recognizes its own completion."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Collatz Map T: Z+ -> Z+",
+      "ipc_mechanism": "Parity-gated control flow",
+      "memory_mechanism": "The sequence of previous states (Markov order 2 signature)",
+      "scheduler_mechanism": "Discrete time-step iteration",
+      "alfs_store": "The Peano axioms and the Paraconsistent Kernel",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One bit of parity information per step",
+      "pre_cycle_state": "Unordered integer n",
+      "post_cycle_state": "Ordered membership in the terminal basin",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The information lost in parity branching is recovered by the deterministic nature of the map.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 AFWD \u2192 FFUSE \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT \u2192 EVALT \u2192 TANCH \u2192 IFIX \u2192 IMSCRIB\n-- Class: 7\n-- Fingerprint: sig=(7,3,4,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=15\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc5a  | engage paradox \u2014 B-state, both arms\n--   [10] FSPLIT    gran   := \ud801\udc5a               \ud801\udc73 \u2192 \u2299  | split \u03b4 \u2014 range decomposition\n--   [11] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc61  | evaluate-true \u2014 criticality gate open\n--   [12] TANCH     top    := \ud801\udc61               \u2299 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [14] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc7c  | identity \u2014 self-imscription\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def 7_protocol : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc60)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Select an arbitrary positive integer n.)\n  (.arrow \ud801\udc60 \ud801\udc7c \ud801\udc5a)  -- [1] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Identify n as the starting point of a unique trajectory.)\n  -- FSPLIT [2] (gran := \ud801\udc5a) (Evaluate the parity of the current state.) / FFUSE [7] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [3] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (If n is even, proceed to the reverse arm.)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [4] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Apply n / 2.)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [5] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (If n is odd, proceed to the forward arm.)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [6] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Apply 3n + 1.))\n    -- reconnect at FFUSE [7]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc71)  -- [7] FFUSE | stoi := \ud801\udc59 (Re-enter the iterative loop with the new value T(n).)\n  (.arrow \ud801\udc71 \ud801\udc59 \ud801\udc73)  -- [8] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Chain the result to the previous sequence of states.)\n  (.arrow \ud801\udc73 \ud801\udc71 \ud801\udc5a)  -- [9] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Localize the tension between 3n+1 growth and n/2 decay within the Belnap kernel.)\n  (.arrow \ud801\udc5a \ud801\udc73 \u2299)  -- [10] FSPLIT | gran := \ud801\udc5a | split \u03b4 \u2014 range decomposition (Check if the new state T(n) equals 1.)\n  (.arrow \u2299 \ud801\udc5a \ud801\udc61)  -- [11] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (If state is 1, the trajectory is affirmative.)\n  (.arrow \ud801\udc61 \u2299 \ud801\udc6d)  -- [12] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Anchor the trajectory in the terminal cycle {1, 4, 2}.)\n  (.arrow \ud801\udc6d \ud801\udc61 \ud801\udc60)  -- [13] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record the convergence of n as a permanent mathematical fact.)\n  (.arrow \ud801\udc60 \ud801\udc6d \ud801\udc7c)  -- [14] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (The trajectory recognizes its own completion.)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def 7_true_arm : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  (7_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def 7_false_arm : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  (7_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem 7_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "notes": "Auto-designed from: 7"
+}

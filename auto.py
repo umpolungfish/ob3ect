@@ -211,7 +211,7 @@ The IMASM opcode sequence goes ONLY in the "sequence" field."""
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
 _CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
-_CONTEXT_MAX_BYTES = 50_000  # 50 KB total
+_CONTEXT_MAX_BYTES = 500_000  # 50 KB total
 
 
 def _load_context(path: str) -> str:
@@ -612,7 +612,7 @@ if __name__ == "__main__":
                     help="Suppress Lean scaffold output")
     ap.add_argument("--context", dest="context_path", default=None, metavar="PATH",
                     help="File or directory of domain documents to include as context "
-                         "(.md/.txt/.lean/.py/.tex/.json; up to 50 KB total)")
+                         "(.md/.txt/.lean/.py/.tex/.json; up to 500 KB total)")
     args = ap.parse_args()
 
     desc = " ".join(args.description)

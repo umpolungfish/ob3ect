@@ -1,0 +1,205 @@
+{
+  "name": "multiplation",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "multiplation",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "multiplicand",
+        "multiplier",
+        "product"
+      ],
+      "boundary_condition": "The arithmetic logic unit (ALU) register width",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Zero register",
+        "justification": "The uninitialized accumulator state before any calculation begins.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Overflow flag",
+        "justification": "The terminal boundary that defines the maximum representable value of the system.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Left shift",
+        "justification": "The forward transformation of magnitude in binary multiplication.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Right shift",
+        "justification": "The descent/inverse operation used in division or partial product reduction.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Accumulation",
+        "justification": "The sequential chaining of partial products into a derived sum.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Identity element (1)",
+        "justification": "The value which, when multiplied, recognizes the input as itself.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Binary decomposition",
+        "justification": "Splitting a multiplier into its constituent power-of-two bits.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Summation of partials",
+        "justification": "Reconstituting the decomposed bits back into the final product magnitude.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Bit set (1)",
+        "justification": "Affirmative evaluation: the current bit position contributes to the sum.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Bit clear (0)",
+        "justification": "Negative evaluation: the current bit position is skipped.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Signed bit (Booth encoding)",
+        "justification": "A state where a bit represents both addition and subtraction potential simultaneously.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Write-to-memory",
+        "justification": "The irreversible fixation of the final product into permanent storage.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Binary decomposition",
+      "split_input": "Multiplier (M)",
+      "split_outputs": [
+        "Powers of two",
+        "Bit coefficients"
+      ],
+      "fuse_element": "Summation of partials",
+      "fuse_result": "Multiplier (M)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Null state; no operands loaded.",
+      "true_description": "Logic High; bit is active, multiplication occurs.",
+      "false_description": "Logic Low; bit is inactive, zero-pass.",
+      "both_description": "Quantum superposition or Booth-encoded transition state.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Clear accumulator and load operands into registers."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify multiplicand against identity to establish base magnitude."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Decompose the multiplier into a sequence of boolean bit-tests."
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "If bit is 1, trigger the addition branch."
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "Shift multiplicand magnitude to align with the current power-of-two position."
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "Compose the shifted multiplicand into the running partial sum."
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "If bit is 0, bypass the addition logic."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "Decrement the multiplier bit-counter to move to the next position."
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "Handle sign-bit parity where the value is held as both magnitude and direction."
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "Fuse all active partial products to recover the total product magnitude."
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "Commit the final result to the output register, ending the volatile calculation."
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "Seal the operation within the bit-width boundary and set completion flags."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The instruction decoder translating 'MUL' into micro-ops.",
+      "ipc_mechanism": "The internal data bus carrying partial sums between adders.",
+      "memory_mechanism": "L1 Cache storing the multiplicand during the shift-add cycle.",
+      "scheduler_mechanism": "The clock signal triggering each bit-shift iteration.",
+      "alfs_store": "The hardware-level lookup table for small-integer primitives.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Heat dissipation from logic gate switching.",
+      "pre_cycle_state": "High potential energy; operands separated in distinct registers.",
+      "post_cycle_state": "Lower potential energy; information compressed into a single product register.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The logical operation is reversible in an idealized Fredkin gate, though physically dissipative.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: multiplation\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def multiplation_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc60)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Clear accumulator and load operands into registers.)\n  (.arrow \ud801\udc60 \ud801\udc7c \ud801\udc5a)  -- [1] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Verify multiplicand against identity to establish base magnitude.)\n  -- FSPLIT [2] (gran := \ud801\udc5a) (Decompose the multiplier into a sequence of boolean bit-tests.) / FFUSE [9] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [3] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (If bit is 1, trigger the addition branch.)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [4] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Shift multiplicand magnitude to align with the current power-of-two position.)\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [5] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Compose the shifted multiplicand into the running partial sum.)\n      -- F-branch (3 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [6] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (If bit is 0, bypass the addition logic.)\n      .seq\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [7] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Decrement the multiplier bit-counter to move to the next position.)\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [8] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Handle sign-bit parity where the value is held as both magnitude and direction.))\n    -- reconnect at FFUSE [9]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc6d)  -- [9] FFUSE | stoi := \ud801\udc59 (Fuse all active partial products to recover the total product magnitude.)\n  (.arrow \ud801\udc6d \ud801\udc59 \ud801\udc61)  -- [10] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Commit the final result to the output register, ending the volatile calculation.)\n  (.arrow \ud801\udc61 \ud801\udc6d \ud801\udc7c)  -- [11] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Seal the operation within the bit-width boundary and set completion flags.)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def multiplation_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (multiplation_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def multiplation_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (multiplation_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem multiplation_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: multiplation"
+}

@@ -1,0 +1,240 @@
+{
+  "name": "Collatz Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Collatz Theorem",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "trajectory",
+        "parity",
+        "attractor"
+      ],
+      "boundary_condition": "The terminal cycle 1-4-2-1",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "n \u2208 \u2124\u207a",
+        "justification": "The uninitialized positive integer seed before iteration begins.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "1",
+        "justification": "The terminal anchor that stops the descent and contains the system.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "3n + 1",
+        "justification": "The upward amplification morphism applied to odd integers.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "n / 2",
+        "justification": "The downward damping morphism applied to even integers.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "T\u1d4f(n)",
+        "justification": "The sequential chaining of the Collatz map applications.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Cycle Check",
+        "justification": "The system recognizes its own state to detect the 1-4-2-1 loop.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Parity Gate",
+        "justification": "Splits the trajectory based on n mod 2 into even (AREV) and odd (AFWD) paths.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Next State",
+        "justification": "Reconstitutes the integer value after the parity-dependent operation is performed.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Convergence",
+        "justification": "The state where the trajectory successfully reaches 1.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Divergence/Exotic Cycle",
+        "justification": "The theoretical state where a trajectory escapes to infinity or a non-standard loop.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Runaway Amplification with Memory",
+        "justification": "The Markov-order-2 state where the system holds both upward drift and downward pressure simultaneously.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Trajectory Log",
+        "justification": "The irreversible record of the sequence of integers visited.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Parity Gate",
+      "split_input": "Integer n",
+      "split_outputs": [
+        "Even branch",
+        "Odd branch"
+      ],
+      "fuse_element": "Next State",
+      "fuse_result": "Integer n'",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The seed n before the first iteration of the map.",
+      "true_description": "Descent toward the attractor (n decreases).",
+      "false_description": "Ascent/Amplification (n increases).",
+      "both_description": "The critical degeneracy where amplification and damping regimes meet at the boundary.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Select initial positive integer n."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IFIX",
+          "domain_action": "Record n in the trajectory log."
+        },
+        {
+          "step_num": 3,
+          "opcode": "IMSCRIB",
+          "domain_action": "Check if n equals 1."
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Evaluate n mod 2."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "If even, route to the damping arm."
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "Apply n / 2."
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "If odd, route to the amplification arm."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "Apply 3n + 1."
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the new integer n'."
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "Record n' in the trajectory log."
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "Compose the previous result with the next iteration."
+        },
+        {
+          "step_num": 12,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the tension of the two-step memory (Markov order 2)."
+        },
+        {
+          "step_num": 13,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-referential check for the 1-4-2-1 cycle."
+        },
+        {
+          "step_num": 14,
+          "opcode": "FSPLIT",
+          "domain_action": "Evaluate parity of n'."
+        },
+        {
+          "step_num": 15,
+          "opcode": "AREV",
+          "domain_action": "Perform damping if even."
+        },
+        {
+          "step_num": 16,
+          "opcode": "AFWD",
+          "domain_action": "Perform amplification if odd."
+        },
+        {
+          "step_num": 17,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute n''."
+        },
+        {
+          "step_num": 18,
+          "opcode": "IFIX",
+          "domain_action": "Permanently fix the state in the sequence."
+        },
+        {
+          "step_num": 19,
+          "opcode": "TANCH",
+          "domain_action": "Terminate process when n reaches the anchor 1."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Collatz function T(n).",
+      "ipc_mechanism": "Parity bit signaling.",
+      "memory_mechanism": "The current value of n in the register.",
+      "scheduler_mechanism": "Discrete iteration steps (k=1, 2, 3...).",
+      "alfs_store": "The Peano axioms / \u2124\u207a number line.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "1 parity evaluation per cycle.",
+      "pre_cycle_state": "High-magnitude integer (high state space volume).",
+      "post_cycle_state": "Terminal 1 (minimal state space volume).",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The system is a deterministic iterated map where information is conserved in the parity sequence.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IFIX \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 AFWD \u2192 FFUSE \u2192 IFIX \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 AREV \u2192 AFWD \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: Collatz Theorem\n-- Fingerprint: sig=(9,4,3,3)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=19\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(3, 8), (13, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc6d  | initial object \u2014 ground of distinction\n--   [1] IFIX      prot   := \ud801\udc6d               \ud801\udc7c \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [11] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc60  | engage paradox \u2014 B-state, both arms\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc73 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [13] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [14] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [15] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [16] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [17] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [18] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def collatz_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc6d)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Select initial positive integer n.)\n  (.arrow \ud801\udc6d \ud801\udc7c \ud801\udc60)  -- [1] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record n in the trajectory log.)\n  (.arrow \ud801\udc60 \ud801\udc6d \ud801\udc5a)  -- [2] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Check if n equals 1.)\n  -- FSPLIT [3] (gran := \ud801\udc5a) (Evaluate n mod 2.) / FFUSE [8] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [4] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (If even, route to the damping arm.)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [5] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Apply n / 2.)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [6] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (If odd, route to the amplification arm.)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [7] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Apply 3n + 1.))\n    -- reconnect at FFUSE [8]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc6d)  -- [8] FFUSE | stoi := \ud801\udc59 (Reconstitute the new integer n'.)\n  (.arrow \ud801\udc6d \ud801\udc59 \ud801\udc71)  -- [9] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record n' in the trajectory log.)\n  (.arrow \ud801\udc71 \ud801\udc6d \ud801\udc73)  -- [10] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Compose the previous result with the next iteration.)\n  (.arrow \ud801\udc73 \ud801\udc71 \ud801\udc60)  -- [11] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Hold the tension of the two-step memory (Markov order 2).)\n  (.arrow \ud801\udc60 \ud801\udc73 \ud801\udc5a)  -- [12] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Self-referential check for the 1-4-2-1 cycle.)\n  -- FSPLIT [13] (gran := \ud801\udc5a) (Evaluate parity of n'.) / FFUSE [16] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [14] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Perform damping if even.)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [15] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Perform amplification if odd.)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [16]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc6d)  -- [16] FFUSE | stoi := \ud801\udc59 (Reconstitute n''.)\n  (.arrow \ud801\udc6d \ud801\udc59 \ud801\udc61)  -- [17] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Permanently fix the state in the sequence.)\n  (.arrow \ud801\udc61 \ud801\udc6d \ud801\udc7c)  -- [18] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Terminate process when n reaches the anchor 1.)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def collatz_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (collatz_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (collatz_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem collatz_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Collatz Theorem"
+}
