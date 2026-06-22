@@ -84,12 +84,15 @@ PORT CONVENTIONS (every token is a typed node)
   others: in=[i]     out=[o]    linear -- 1->1    (pass-through in any order)
 
 EDGE ROUTING INSIDE A FSPLIT/FFUSE PAIR
-  FSPLIT.T -> [tokens, anchored by EVALT if present] -> FFUSE.T  (truth arm)
-  FSPLIT.F -> [tokens, anchored by EVALF if present] -> FFUSE.F  (false arm)
+  FSPLIT.T -> [tokens, anchored by EVALT (primary) or AFWD (secondary)] -> FFUSE.T
+  FSPLIT.F -> [tokens, anchored by EVALF (primary) or AREV (secondary)] -> FFUSE.F
   If T-arm empty: FSPLIT.T connects directly to FFUSE.T (empty arc, T-state)
   If F-arm empty: FSPLIT.F connects directly to FFUSE.F (empty arc, F-state)
   EVALT MUST precede FFUSE inside the T-arm
   EVALF MUST precede FFUSE inside the F-arm
+  Branch polarity rule: AREV (parity flip) always belongs on the F-arm;
+    AFWD (forward morphism) always belongs on the T-arm.
+    Secondary anchors activate only when the primary (EVALT/EVALF) anchor is absent.
   Nesting: FSPLIT/FFUSE pairs may nest; innermost pairs matched first
   Cross-branch: FSPLIT.F may route to a non-matched FFUSE (paradice / entangled topology)
 
@@ -117,7 +120,9 @@ FREE COMPOSITION RULES
      and decision in the domain has been explicitly represented
   3. Each step: "OPCODE: what this token does at this point in the composition"
   4. Every FSPLIT must have exactly one matching FFUSE (stack-matched, innermost first)
-  5. EVALT anchors the T-branch; EVALF anchors the F-branch
+  5. EVALT anchors the T-branch; EVALF anchors the F-branch.
+     AFWD (forward morphism) also anchors T-branch if EVALT is absent.
+     AREV (parity flip / reverse morphism) also anchors F-branch if EVALF is absent.
   6. ENGAGR at any position enters B-state (paradice: both simultaneously held)
   7. IMSCRIB at both first and last position creates a self-referential closed loop
   8. Multiple FSPLIT/FFUSE pairs (sequential or nested) map multiple branch points
@@ -608,6 +613,8 @@ if __name__ == "__main__":
                     help="Model ID passed to the provider (e.g. deepseek-chat, qwen3-235b-a22b)")
     ap.add_argument("--retries", type=int, default=3, dest="max_retries")
     ap.add_argument("--temp", type=float, default=0.4, dest="temperature")
+    ap.add_argument("--thinking", action="store_true", default=False,
+                    help="Enable <thinking> tokens in local Qwen model (default: off)")
     ap.add_argument("--no-scaffold", action="store_true", dest="no_scaffold",
                     help="Suppress Lean scaffold output")
     ap.add_argument("--context", dest="context_path", default=None, metavar="PATH",
@@ -625,6 +632,10 @@ if __name__ == "__main__":
             print(f"Context loaded: {args.context_path} ({len(ctx):,} chars, {n_files} file(s))\n")
         except FileNotFoundError as e:
             print(f"Warning: {e} — proceeding without context")
+
+    if args.thinking:
+        import framework.enhanced_llm_provider as _ep
+        _ep.enable_thinking = True
 
     print(f"Auto-designing: {desc}\n")
     sys.stdout.flush()

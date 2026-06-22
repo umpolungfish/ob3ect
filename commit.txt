@@ -1,3 +1,36 @@
+auto.py: branch polarity rule in _OPCODE_REF and FREE COMPOSITION RULES
+
+Updated EDGE ROUTING description: AFWD (forward morphism) is the secondary
+T-branch anchor when EVALT is absent; AREV (parity flip) is the secondary
+F-branch anchor when EVALF is absent. Previously the doc only mentioned
+EVALT/EVALF as branch anchors, causing the LLM to produce misassignments
+like ER=EPR where AREV ended up on the T-arm.
+
+FREE COMPOSITION RULES rule 5 extended to include the secondary polarity
+anchors with explicit note that they activate only when primary anchors
+are absent.
+
+Companion change: wiring.py (IMSCRIBr) enforces the same rule structurally.
+
+---
+
+auto.py: add --thinking flag to toggle Qwen3 thinking tokens (2026-06-21)
+
+framework/enhanced_llm_provider.py:
+  - Module-level `enable_thinking: bool = False` added
+  - LocalProvider.generate: apply_chat_template now uses enable_thinking (module-level)
+    instead of hardcoded False
+
+auto.py:
+  - CLI: --thinking flag (action="store_true", default False)
+  - When --thinking passed: sets framework.enhanced_llm_provider.enable_thinking = True
+    before calling design(); propagates to LocalProvider on next generate() call
+
+Usage: python -m ob3ect.auto --thinking "describe your ob3ect"
+Default is off.
+
+---
+
 terminology: structural proof → witness sweep (2026-06-19)
 
 'structural proof'/'structural proofs' replaced with 'witness'/'witnesses' across all

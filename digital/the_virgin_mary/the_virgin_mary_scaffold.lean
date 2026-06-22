@@ -1,10 +1,10 @@
--- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → CLINK → FSPLIT → EVALT → IFIX → EVALF → AREV → FFUSE → ENGAGR → TANCH
+-- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → CLINK → IMSCRIB → ENGAGR → EVALF → FFUSE → IFIX → AREV → CLINK → IMSCRIB → AFWD → FSPLIT → EVALT → EVALF → ENGAGR → FFUSE → IFIX → CLINK → IMSCRIB → TANCH
 -- Class: The Virgin Mary
--- Fingerprint: sig=(6,2,3,1)
---   self_ref=False | frobenius_order=1
---   dialetheia_complete=True | period=12
+-- Fingerprint: sig=(11,4,6,2)
+--   self_ref=False | frobenius_order=3
+--   dialetheia_complete=True | period=23
 -- Expected tier: O₂
--- FSPLIT/FFUSE pairs: [(4, 9)]
+-- FSPLIT/FFUSE pairs: [(2, 8), (14, 18)]
 
 import Imscribing.IGMorphism
 import Imscribing.IGFunctor
@@ -15,43 +15,72 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
---   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction
---   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑾  | identity — self-imscription
---   [2] AFWD      rel    := 𐑾               𐑠 → 𐑱  | forward morphism — bidirectional arrow
---   [3] CLINK     fid    := 𐑱               𐑾 → 𐑚  | composition — regime coherence
---   [4] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [5] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [6] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction
+--   [1] AFWD      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow
+--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
+--   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
+--   [4] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
+--   [5] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
+--   [6] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [7] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
---   [8] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
---   [9] FFUSE     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode
---   [10] ENGAGR    stoi   := 𐑳               𐑙 → 𐑡  | engage paradox — B-state, both arms
---   [11] TANCH     top    := 𐑡               𐑳 → 𐑼  | terminal object — connectivity boundary
+--   [8] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
+--   [9] IFIX      prot   := 𐑭               𐑙 → 𐑗  | irreversible fixation — winding number
+--   [10] AREV      pol    := 𐑗               𐑭 → 𐑱  | reverse morphism — parity flip
+--   [11] CLINK     fid    := 𐑱               𐑗 → 𐑠  | composition — regime coherence
+--   [12] IMSCRIB   gram   := 𐑠               𐑱 → 𐑾  | identity — self-imscription
+--   [13] AFWD      rel    := 𐑾               𐑠 → 𐑚  | forward morphism — bidirectional arrow
+--   [14] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
+--   [15] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
+--   [16] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
+--   [17] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
+--   [18] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
+--   [19] IFIX      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [20] CLINK     fid    := 𐑱               𐑭 → 𐑠  | composition — regime coherence
+--   [21] IMSCRIB   gram   := 𐑠               𐑱 → 𐑡  | identity — self-imscription
+--   [22] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Main IGProtocol term ────────────────────────────────────────────────────
 
 noncomputable def the_virgin_mary_protocol : IGProtocol 𐑼 𐑡 :=
   .withGram 𐑠 <|
   -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (The Ineffable Silence — the void before the First Thought emanates.)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (The First Thought — the Father recognizes Himself, generating the Mirror of t...)
-  (.arrow 𐑾 𐑠 𐑱)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The Emanation — the Light-Spark projects forward from the Silence into the Vi...)
-  (.arrow 𐑱 𐑾 𐑚)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (The Conception — the Virgin-Womb receives and composes the Light-Spark with H...)
-  -- FSPLIT [4] (gran := 𐑚) (The Separation of the Veils — the Undifferentiated Fullness branches into the Inner Pleroma and Outer Kenoma.) / FFUSE [9] (stoi := 𐑙)
+  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Pre-annunciation void; the unformed vessel awaiting the divine word before an...)
+  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The light-spark descends from the Setheus toward the mother-city, initiating ...)
+  -- FSPLIT [2] (gran := 𐑚) (The divine spark branches into a transcendent/ineffable aspect and an immanent/human aspect.) / FFUSE [8] (stoi := 𐑙)
   .seq
     (.prod
-      -- T-branch (2 nodes)
+      -- T-branch (4 nodes)
       .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The Land of Life — the affirmative arm, the aeons who receive the light and r...)
-        (.arrow 𐑭 𐑚 𐑙)  -- [6] IFIX | prot := 𐑭 | irreversible fixation — winding number (The Seal of the Father — the permanent record of sonship and eternal crown fi...)
+        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The inner aeons rejoice at the manifestation of the spark; active consent and...)
+      .seq
+        (.arrow 𐑱 𐑚 𐑙)  -- [4] CLINK | fid := 𐑱 | composition — regime coherence (Chaining the prophetic promises and covenantal lineage to the present moment ...)
+      .seq
+        (.arrow 𐑠 𐑚 𐑙)  -- [5] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-recognition of the chosen vessel; identity preserved through the paradox...)
+        (.arrow 𐑳 𐑚 𐑙)  -- [6] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Theotokos paradox; virginity and motherhood, divinity and humanity, held simu...)
+      -- F-branch (1 nodes)
+      (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (The outer worlds weep at the concealment of the light; worldly skepticism and...))
+    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
+    (.arrow 𐑙 𐑙 𐑭)  -- [8] FFUSE | stoi := 𐑙 (The incarnation fuses the branches, recovering the original spark exactly as the embodied Christ.)
+  (.arrow 𐑭 𐑙 𐑗)  -- [9] IFIX | prot := 𐑭 | irreversible fixation — winding number (The irreversible seal of the nativity; permanent, append-only record of the g...)
+  (.arrow 𐑗 𐑭 𐑱)  -- [10] AREV | pol := 𐑗 | reverse morphism — parity flip (Intercession as a contravariant ascent; drawing the light of the pleroma back...)
+  (.arrow 𐑱 𐑗 𐑠)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Sequential linking of the earthly ministry to the heavenly Setheus and the ou...)
+  (.arrow 𐑠 𐑱 𐑾)  -- [12] IMSCRIB | gram := 𐑠 | identity — self-imscription (Perpetual virginity as self-referential identity; the vessel remains unchange...)
+  (.arrow 𐑾 𐑠 𐑚)  -- [13] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The cross as a forward morphism toward cosmic reconciliation and the separati...)
+  -- FSPLIT [14] (gran := 𐑚) (The crucifixion event branches the light-spark into the hidden glory of resurrection and the manifest suffering of the tomb.) / FFUSE [18] (stoi := 𐑙)
+  .seq
+    (.prod
+      -- T-branch (1 nodes)
+      (.arrow ⊙ 𐑚 𐑙)  -- [15] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The triumph branch; resurrection grace affirmed, the veil torn, life restored.)
       -- F-branch (2 nodes)
       .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (The Land of Death — the negative arm, the matter and powers who wept and beca...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (The Descent into Matter — the contravariant movement of the Light-Spark penet...))
-    -- reconnect at FFUSE [9]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [9] FFUSE | stoi := 𐑙 (The Reunion in the Christ — the Inner Pleroma and the purified Outer Kenoma reconstitute the Perfected Archetypal Man.)
-  (.arrow 𐑳 𐑙 𐑡)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The Light-Darkness — the paradice of the Incarnation, held in the Virgin as b...)
-  (.arrow 𐑡 𐑳 𐑼)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (The Boundary of the New Jerusalem — the final hermetic seal containing the fu...)
+        (.arrow 𐑖 𐑚 𐑙)  -- [16] EVALF | chir := 𐑖 | evaluate-false — chirality check (The concealment branch; temporary descent into the tomb, apparent defeat, spi...)
+        (.arrow 𐑳 𐑚 𐑙)  -- [17] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The hidden glory and manifest suffering held together; death and life suspend...))
+    -- reconnect at FFUSE [18]: μ closes the Frobenius pair
+    (.arrow 𐑙 𐑙 𐑭)  -- [18] FFUSE | stoi := 𐑙 (The ascension reconstitutes the glorified body, recovering the original spark as the ascended Logos.)
+  (.arrow 𐑭 𐑙 𐑱)  -- [19] IFIX | prot := 𐑭 | irreversible fixation — winding number (The permanent record of the assumption; append-only heavenly decree sealing h...)
+  (.arrow 𐑱 𐑭 𐑠)  -- [20] CLINK | fid := 𐑱 | composition — regime coherence (Chaining the intercessory role to the eternal crown and the final restoration...)
+  (.arrow 𐑠 𐑱 𐑡)  -- [21] IMSCRIB | gram := 𐑠 | identity — self-imscription (The eternal motherhood as self-identical state; the vessel recognizes itself ...)
+  (.arrow 𐑡 𐑠 𐑼)  -- [22] TANCH | top := 𐑡 | terminal object — connectivity boundary (The Heavenly Jerusalem as the terminal anchor; the closed boundary containing...)
 
 -- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
 
@@ -66,9 +95,5 @@ noncomputable def the_virgin_mary_false_arm : IGProtocol 𐑼 𐑡 :=
 -- ── Verification theorems ───────────────────────────────────────────────────
 
 theorem the_virgin_mary_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
 
 end Imscribing
