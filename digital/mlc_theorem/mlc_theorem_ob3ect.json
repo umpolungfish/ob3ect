@@ -1,0 +1,430 @@
+{
+  "name": "MLC Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "MLC Theorem",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "multilinear constraint",
+        "satisfiability",
+        "tensor decomposition"
+      ],
+      "boundary_condition": "the set of all valid tensor assignments satisfying the multilinear constraint system",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "uninitialized constraint system",
+        "justification": "void state before any variables, clauses, or tensor structure are named; the empty problem instance",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the MLC decision problem boundary",
+        "justification": "terminal anchor that closes the entire satisfiability verification; the hermetic seal of the constraint system",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "constraint propagation forward",
+        "justification": "directed morphism toward satisfying assignment; forward inference through multilinear clauses",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "backtracking / constraint retraction",
+        "justification": "reverse morphism; descent when a partial assignment violates a clause; undo and explore alternate branch",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "clause composition chain",
+        "justification": "sequential chaining of multilinear constraints; each clause constrains the next via shared variables",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "fixed-point assignment",
+        "justification": "self-reference; an assignment that satisfies itself under the constraint system; identity element of the solution space",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "variable branching decision",
+        "justification": "one unassigned variable splits into two branches: assignment TRUE (T-arm) and assignment FALSE (F-arm)",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "clause reconciliation / solution fusion",
+        "justification": "both branches (T and F assignments) reconstitute the original constraint by satisfying all clauses; FFUSE(FSPLIT(x)) = x holds when both branches yield valid partial solutions",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "affirmative clause evaluation",
+        "justification": "true/success state; the T-arm assignment satisfies all clauses it touches",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "negative clause evaluation",
+        "justification": "false/failure state; the F-arm assignment violates at least one clause, triggering backtrack",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "undecidable clause state",
+        "justification": "paradice: a clause that is simultaneously satisfiable and unsatisfiable under different variable orderings; both states held without resolution until further constraints disambiguate",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "learned clause / conflict record",
+        "justification": "permanent append-only record of a conflict or learned clause; once written, cannot be undone; irreversible fixation in the constraint database",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT on variable v",
+      "split_input": "partial assignment A (with v unassigned)",
+      "split_outputs": [
+        "A \u222a {v \u21a6 TRUE} (T-arm: v assigned true)",
+        "A \u222a {v \u21a6 FALSE} (F-arm: v assigned false)"
+      ],
+      "fuse_element": "FFUSE reconciling both branches",
+      "fuse_result": "A (original partial assignment recovered by merging both branches' clause satisfactions)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 no variables assigned, no clauses evaluated, empty constraint state; the problem instance before search begins",
+      "true_description": "01 \u2014 current partial assignment satisfies all clauses it touches; forward progress; search continues",
+      "false_description": "10 \u2014 current partial assignment violates at least one clause; backtrack required; explore alternate branch",
+      "both_description": "11 \u2014 a clause is simultaneously satisfiable under one variable ordering and unsatisfiable under another; paradice state; held until disambiguation by further constraints",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize empty constraint system with no variables, no clauses, no assignments"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "establish the MLC decision boundary \u2014 the set of all valid satisfying assignments"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "compose first multilinear clause into the system; chain it to the boundary"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on first unassigned variable v\u2081; split into v\u2081=TRUE and v\u2081=FALSE"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "evaluate T-arm (v\u2081=TRUE) against all clauses; check satisfiability"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "if T-arm satisfies, propagate forward; assign next variable v\u2082 in T-arm"
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "compose second multilinear clause; chain it through T-arm assignments"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on v\u2082 within T-arm; split into v\u2082=TRUE and v\u2082=FALSE"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "evaluate T-arm of v\u2082 split; check clause satisfaction"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AFWD",
+          "domain_action": "if satisfied, propagate forward; continue assigning variables"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "record learned clause from T-arm propagation; append to constraint database"
+        },
+        {
+          "step_num": 12,
+          "opcode": "CLINK",
+          "domain_action": "compose third multilinear clause; chain through current assignments"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALT",
+          "domain_action": "evaluate current assignment against new clause"
+        },
+        {
+          "step_num": 14,
+          "opcode": "ENGAGR",
+          "domain_action": "if clause is satisfiable under current ordering but unsatisfiable under alternate variable ordering, enter paradice state; hold both simultaneously"
+        },
+        {
+          "step_num": 15,
+          "opcode": "AREV",
+          "domain_action": "if T-arm violates a clause, backtrack; reverse morphism to previous decision point"
+        },
+        {
+          "step_num": 16,
+          "opcode": "EVALF",
+          "domain_action": "evaluate F-arm (v\u2082=FALSE) against all clauses; check satisfiability"
+        },
+        {
+          "step_num": 17,
+          "opcode": "AFWD",
+          "domain_action": "if F-arm satisfies, propagate forward; assign next variable in F-arm"
+        },
+        {
+          "step_num": 18,
+          "opcode": "CLINK",
+          "domain_action": "compose fourth multilinear clause; chain through F-arm assignments"
+        },
+        {
+          "step_num": 19,
+          "opcode": "EVALT",
+          "domain_action": "evaluate F-arm against new clause"
+        },
+        {
+          "step_num": 20,
+          "opcode": "IFIX",
+          "domain_action": "record learned clause from F-arm; append to constraint database"
+        },
+        {
+          "step_num": 21,
+          "opcode": "FFUSE",
+          "domain_action": "both T-arm and F-arm branches have been explored; reconstitute original partial assignment by merging satisfactions"
+        },
+        {
+          "step_num": 22,
+          "opcode": "IMSCRIB",
+          "domain_action": "the merged assignment is a fixed point; it satisfies all clauses it touches; self-reference achieved"
+        },
+        {
+          "step_num": 23,
+          "opcode": "CLINK",
+          "domain_action": "compose fifth multilinear clause; chain through fixed-point assignment"
+        },
+        {
+          "step_num": 24,
+          "opcode": "EVALT",
+          "domain_action": "evaluate fixed-point against new clause"
+        },
+        {
+          "step_num": 25,
+          "opcode": "AFWD",
+          "domain_action": "if satisfied, continue forward; assign remaining variables"
+        },
+        {
+          "step_num": 26,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on next unassigned variable v\u2083; split into v\u2083=TRUE and v\u2083=FALSE"
+        },
+        {
+          "step_num": 27,
+          "opcode": "EVALT",
+          "domain_action": "evaluate T-arm of v\u2083 split"
+        },
+        {
+          "step_num": 28,
+          "opcode": "AFWD",
+          "domain_action": "propagate forward if satisfied"
+        },
+        {
+          "step_num": 29,
+          "opcode": "CLINK",
+          "domain_action": "compose sixth multilinear clause"
+        },
+        {
+          "step_num": 30,
+          "opcode": "EVALT",
+          "domain_action": "evaluate against new clause"
+        },
+        {
+          "step_num": 31,
+          "opcode": "IFIX",
+          "domain_action": "record learned clause; append to database"
+        },
+        {
+          "step_num": 32,
+          "opcode": "AREV",
+          "domain_action": "if violation detected, backtrack; reverse morphism"
+        },
+        {
+          "step_num": 33,
+          "opcode": "EVALF",
+          "domain_action": "evaluate F-arm of v\u2083 split"
+        },
+        {
+          "step_num": 34,
+          "opcode": "AFWD",
+          "domain_action": "if F-arm satisfies, propagate forward"
+        },
+        {
+          "step_num": 35,
+          "opcode": "CLINK",
+          "domain_action": "compose seventh multilinear clause"
+        },
+        {
+          "step_num": 36,
+          "opcode": "EVALT",
+          "domain_action": "evaluate F-arm against new clause"
+        },
+        {
+          "step_num": 37,
+          "opcode": "ENGAGR",
+          "domain_action": "if clause enters paradice state (both satisfiable and unsatisfiable), hold both simultaneously"
+        },
+        {
+          "step_num": 38,
+          "opcode": "IFIX",
+          "domain_action": "record conflict; append to constraint database"
+        },
+        {
+          "step_num": 39,
+          "opcode": "FFUSE",
+          "domain_action": "merge T-arm and F-arm branches; reconstitute partial assignment"
+        },
+        {
+          "step_num": 40,
+          "opcode": "IMSCRIB",
+          "domain_action": "merged assignment is a fixed point; self-reference"
+        },
+        {
+          "step_num": 41,
+          "opcode": "CLINK",
+          "domain_action": "compose eighth multilinear clause; chain through fixed-point"
+        },
+        {
+          "step_num": 42,
+          "opcode": "EVALT",
+          "domain_action": "evaluate fixed-point against new clause"
+        },
+        {
+          "step_num": 43,
+          "opcode": "AFWD",
+          "domain_action": "if satisfied, continue forward; assign remaining variables"
+        },
+        {
+          "step_num": 44,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on final unassigned variable v\u2099; split into v\u2099=TRUE and v\u2099=FALSE"
+        },
+        {
+          "step_num": 45,
+          "opcode": "EVALT",
+          "domain_action": "evaluate T-arm of v\u2099 split against all clauses"
+        },
+        {
+          "step_num": 46,
+          "opcode": "AFWD",
+          "domain_action": "if all clauses satisfied, propagate forward; complete assignment found"
+        },
+        {
+          "step_num": 47,
+          "opcode": "IMSCRIB",
+          "domain_action": "complete assignment is a fixed point; satisfies all clauses; self-reference achieved"
+        },
+        {
+          "step_num": 48,
+          "opcode": "IFIX",
+          "domain_action": "record complete satisfying assignment; append to solution database"
+        },
+        {
+          "step_num": 49,
+          "opcode": "EVALF",
+          "domain_action": "evaluate F-arm of v\u2099 split against all clauses"
+        },
+        {
+          "step_num": 50,
+          "opcode": "AREV",
+          "domain_action": "if F-arm violates any clause, backtrack; reverse morphism"
+        },
+        {
+          "step_num": 51,
+          "opcode": "CLINK",
+          "domain_action": "compose final multilinear clause; chain through all branches"
+        },
+        {
+          "step_num": 52,
+          "opcode": "EVALT",
+          "domain_action": "evaluate all branches against final clause"
+        },
+        {
+          "step_num": 53,
+          "opcode": "ENGAGR",
+          "domain_action": "if final clause is simultaneously satisfiable and unsatisfiable across branches, enter paradice state; hold both"
+        },
+        {
+          "step_num": 54,
+          "opcode": "FFUSE",
+          "domain_action": "merge all branches; reconstitute original constraint system"
+        },
+        {
+          "step_num": 55,
+          "opcode": "IMSCRIB",
+          "domain_action": "the merged system is a fixed point; all clauses satisfied; self-reference"
+        },
+        {
+          "step_num": 56,
+          "opcode": "IFIX",
+          "domain_action": "record final learned clause; append to constraint database"
+        },
+        {
+          "step_num": 57,
+          "opcode": "TANCH",
+          "domain_action": "close the MLC decision boundary; all variables assigned, all clauses evaluated, satisfiability verdict determined"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "SAT solver engine (DPLL, CDCL, or tensor-based MLC solver) that translates multilinear constraint intentions into variable assignments and clause evaluations",
+      "ipc_mechanism": "clause propagation network; variables communicate satisfiability status through shared clauses; conflicts propagate backward via learned clauses",
+      "memory_mechanism": "constraint database (clauses, learned clauses, variable assignments); state stored as partial assignment stack and clause satisfaction table",
+      "scheduler_mechanism": "decision heuristic (variable ordering, branching strategy) determines which variable to branch on next; conflict-driven clause learning (CDCL) reorders exploration",
+      "alfs_store": "the canonical MLC instance specification; the set of all multilinear clauses and variable domains; the bootstrap store for the constraint system",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one variable assignment per FSPLIT; one clause evaluation per EVALT/EVALF; one learned clause per IFIX; backtracking cost per AREV",
+      "pre_cycle_state": "partial assignment A with k variables unassigned; m clauses in database",
+      "post_cycle_state": "partial assignment A' with k-1 variables unassigned (or k variables assigned if complete); m' clauses in database (m' \u2265 m due to learned clauses)",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the MLC search process is entropy-conservative: each FSPLIT/FFUSE pair preserves the constraint structure (Frobenius identity); learned clauses (IFIX) are irreversible but do not increase disorder\u2014they reduce the search space by eliminating unsatisfiable branches; backtracking (AREV) reverses assignments but preserves the constraint system; the system converges toward a fixed-point satisfying assignment (IMSCRIB) or proves unsatisfiability, both of which are low-entropy terminal states",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 IFIX \u2192 CLINK \u2192 EVALT \u2192 ENGAGR \u2192 AREV \u2192 EVALF \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IFIX \u2192 FFUSE \u2192 IMSCRIB \u2192 CLINK \u2192 EVALT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IFIX \u2192 AREV \u2192 EVALF \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 ENGAGR \u2192 IFIX \u2192 FFUSE \u2192 IMSCRIB \u2192 CLINK \u2192 EVALT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 IMSCRIB \u2192 IFIX \u2192 EVALF \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 ENGAGR \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: MLC Theorem\n-- Fingerprint: sig=(27,7,17,6)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=57\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(7, 20), (25, 38), (43, 53)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc71  | terminal object \u2014 connectivity boundary\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc61 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc71 \u2192 \u2299  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [5] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [12] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [13] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [14] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [15] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [16] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [17] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [18] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [19] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [20] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [21] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [22] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \u2299  | composition \u2014 regime coherence\n--   [23] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [24] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [25] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [26] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [27] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [28] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [29] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [30] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [31] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [32] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [33] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [34] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [35] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [36] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [37] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [38] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [39] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [40] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \u2299  | composition \u2014 regime coherence\n--   [41] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [42] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [43] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [44] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [45] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [46] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [47] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [48] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [49] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [50] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [51] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [52] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [53] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [54] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [55] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [56] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def mlc_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (initialize empty constraint system with no variables, no clauses, no assignments)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc71)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (establish the MLC decision boundary \u2014 the set of all valid satisfying assignm...)\n  (.arrow \ud801\udc71 \ud801\udc61 \ud801\udc5a)  -- [2] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose first multilinear clause into the system; chain it to the boundary)\n  (.arrow \ud801\udc5a \ud801\udc71 \u2299)  -- [3] FSPLIT | gran := \ud801\udc5a | split \u03b4 \u2014 range decomposition (branch on first unassigned variable v\u2081; split into v\u2081=TRUE and v\u2081=FALSE)\n  (.arrow \u2299 \ud801\udc5a \ud801\udc7e)  -- [4] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate T-arm (v\u2081=TRUE) against all clauses; check satisfiability)\n  (.arrow \ud801\udc7e \u2299 \ud801\udc71)  -- [5] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (if T-arm satisfies, propagate forward; assign next variable v\u2082 in T-arm)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc5a)  -- [6] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose second multilinear clause; chain it through T-arm assignments)\n  -- FSPLIT [7] (gran := \ud801\udc5a) (branch on v\u2082 within T-arm; split into v\u2082=TRUE and v\u2082=FALSE) / FFUSE [20] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (7 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [8] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate T-arm of v\u2082 split; check clause satisfaction)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [9] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (if satisfied, propagate forward; continue assigning variables)\n      .seq\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [10] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record learned clause from T-arm propagation; append to constraint database)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [11] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose third multilinear clause; chain through current assignments)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [12] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate current assignment against new clause)\n      .seq\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [13] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (if clause is satisfiable under current ordering but unsatisfiable under alter...)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [14] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (if T-arm violates a clause, backtrack; reverse morphism to previous decision ...)\n      -- F-branch (5 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [15] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (evaluate F-arm (v\u2082=FALSE) against all clauses; check satisfiability)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [16] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (if F-arm satisfies, propagate forward; assign next variable in F-arm)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [17] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose fourth multilinear clause; chain through F-arm assignments)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [18] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate F-arm against new clause)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [19] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record learned clause from F-arm; append to constraint database))\n    -- reconnect at FFUSE [20]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [20] FFUSE | stoi := \ud801\udc59 (both T-arm and F-arm branches have been explored; reconstitute original partial assignment by merging satisfactions)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc71)  -- [21] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (the merged assignment is a fixed point; it satisfies all clauses it touches; ...)\n  (.arrow \ud801\udc71 \ud801\udc60 \u2299)  -- [22] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose fifth multilinear clause; chain through fixed-point assignment)\n  (.arrow \u2299 \ud801\udc71 \ud801\udc7e)  -- [23] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate fixed-point against new clause)\n  (.arrow \ud801\udc7e \u2299 \ud801\udc5a)  -- [24] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (if satisfied, continue forward; assign remaining variables)\n  -- FSPLIT [25] (gran := \ud801\udc5a) (branch on next unassigned variable v\u2083; split into v\u2083=TRUE and v\u2083=FALSE) / FFUSE [38] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (6 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [26] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate T-arm of v\u2083 split)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [27] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (propagate forward if satisfied)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [28] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose sixth multilinear clause)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [29] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate against new clause)\n      .seq\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [30] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record learned clause; append to database)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [31] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (if violation detected, backtrack; reverse morphism)\n      -- F-branch (6 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [32] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (evaluate F-arm of v\u2083 split)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [33] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (if F-arm satisfies, propagate forward)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [34] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose seventh multilinear clause)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [35] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate F-arm against new clause)\n      .seq\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [36] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (if clause enters paradice state (both satisfiable and unsatisfiable), hold bo...)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [37] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record conflict; append to constraint database))\n    -- reconnect at FFUSE [38]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [38] FFUSE | stoi := \ud801\udc59 (merge T-arm and F-arm branches; reconstitute partial assignment)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc71)  -- [39] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (merged assignment is a fixed point; self-reference)\n  (.arrow \ud801\udc71 \ud801\udc60 \u2299)  -- [40] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose eighth multilinear clause; chain through fixed-point)\n  (.arrow \u2299 \ud801\udc71 \ud801\udc7e)  -- [41] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate fixed-point against new clause)\n  (.arrow \ud801\udc7e \u2299 \ud801\udc5a)  -- [42] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (if satisfied, continue forward; assign remaining variables)\n  -- FSPLIT [43] (gran := \ud801\udc5a) (branch on final unassigned variable v\u2099; split into v\u2099=TRUE and v\u2099=FALSE) / FFUSE [53] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (4 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [44] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate T-arm of v\u2099 split against all clauses)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [45] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (if all clauses satisfied, propagate forward; complete assignment found)\n      .seq\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [46] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (complete assignment is a fixed point; satisfies all clauses; self-reference a...)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [47] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record complete satisfying assignment; append to solution database)\n      -- F-branch (5 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [48] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (evaluate F-arm of v\u2099 split against all clauses)\n      .seq\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [49] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (if F-arm violates any clause, backtrack; reverse morphism)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [50] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose final multilinear clause; chain through all branches)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [51] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (evaluate all branches against final clause)\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [52] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (if final clause is simultaneously satisfiable and unsatisfiable across branch...))\n    -- reconnect at FFUSE [53]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [53] FFUSE | stoi := \ud801\udc59 (merge all branches; reconstitute original constraint system)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc6d)  -- [54] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (the merged system is a fixed point; all clauses satisfied; self-reference)\n  (.arrow \ud801\udc6d \ud801\udc60 \ud801\udc61)  -- [55] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record final learned clause; append to constraint database)\n  (.arrow \ud801\udc61 \ud801\udc6d \ud801\udc7c)  -- [56] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (close the MLC decision boundary; all variables assigned, all clauses evaluate...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def mlc_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (mlc_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def mlc_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (mlc_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem mlc_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "notes": "Auto-designed from: MLC Theorem"
+}

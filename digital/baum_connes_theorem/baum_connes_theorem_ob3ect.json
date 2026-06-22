@@ -1,0 +1,292 @@
+{
+  "name": "Baum\u2013Connes Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Baum\u2013Connes Theorem",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "K-theory",
+        "group C*-algebra",
+        "assembly map",
+        "index theory",
+        "topological conjecture"
+      ],
+      "boundary_condition": "The Baum\u2013Connes conjecture itself: a closed statement asserting that the assembly map \u03bc: K\u2093*(BG) \u2192 K*(C*\u1d63(G)) is an isomorphism for all locally compact groups G.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Uninitialized group G",
+        "justification": "Before any structure is imposed, G exists as a bare locally compact group \u2014 no topology, no C*-algebra, no K-theory yet assigned.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The Baum\u2013Connes conjecture statement",
+        "justification": "The closed boundary that contains the entire system: the assertion that \u03bc is an isomorphism. All operations are contained within proving or disproving this.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Assembly map \u03bc: K\u2093*(BG) \u2192 K*(C*\u1d63(G))",
+        "justification": "Forward morphism from topological K-theory (left side) to operator K-theory (right side). Directed transformation toward the target algebra.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Inverse assembly map (when it exists)",
+        "justification": "Reverse/descent transformation: attempting to recover the topological side from the operator-algebraic side. Represents the contravariant direction.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Composition of functors: BG \u2192 C*\u1d63(G) \u2192 K-theory",
+        "justification": "Sequential chaining of morphisms: classifying space \u2192 reduced group C*-algebra \u2192 K-theory functor. Each step composes with the next.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "K-theory functor identity: K*(X) = K*(X)",
+        "justification": "Self-reference, self-recognition. The K-theory functor applied to any space is itself \u2014 identity on the category of C*-algebras.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Splitting of K-theory into even and odd components",
+        "justification": "One K-theory object branches into K\u2080 (even) and K\u2081 (odd). The conjecture must hold for both: K\u2093G splits into [K\u2080G, K\u2081G] and [K\u2080(C*\u1d63(G)), K\u2081(C*\u1d63(G))].",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Fusion of K\u2080 and K\u2081 back into KG",
+        "justification": "Branches reconstitute the original K-theory: K\u2080 \u2295 K\u2081 = K. FFUSE(FSPLIT(KG)) = KG. The isomorphism must hold on both components and fuse back to the whole.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Assembly map is injective (true branch)",
+        "justification": "Affirmative evaluation: the map \u03bc is one-to-one. Success state for the first half of the isomorphism claim.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Assembly map fails to be injective (false branch)",
+        "justification": "Negative evaluation: there exist distinct elements in K\u2093G mapping to the same element in K*(C*\u1d63(G)). Counterexample to the conjecture.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Baum\u2013Connes conjecture for groups with property (T)",
+        "justification": "A paradice: for Kazhdan property (T) groups, the conjecture is both proven true AND known to fail for certain exotic groups simultaneously \u2014 held without resolution in the general case.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Proven cases: abelian groups, amenable groups, hyperbolic groups, SL(3,Z)",
+        "justification": "Permanent, append-only record. Each proven case is irreversibly fixed in the mathematical literature. Cannot be undone or revised.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "K-theory decomposition into K\u2080 \u2295 K\u2081",
+      "split_input": "K*(BG) and K*(C*\u1d63(G))",
+      "split_outputs": [
+        "K\u2080(BG) and K\u2080(C*\u1d63(G))",
+        "K\u2081(BG) and K\u2081(C*\u1d63(G))"
+      ],
+      "fuse_element": "Direct sum reconstruction",
+      "fuse_result": "K*(BG) \u2245 K*(C*\u1d63(G)) if and only if both K\u2080 and K\u2081 components are isomorphic",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 Uninitialized: G is a bare group with no C*-algebra structure, no classifying space, no K-theory assigned.",
+      "true_description": "01 \u2014 Assembly map \u03bc is an isomorphism: K\u2093G \u2245 K*(C*\u1d63(G)). The conjecture holds for this group.",
+      "false_description": "10 \u2014 Assembly map \u03bc is not an isomorphism: there exist elements in K\u2093G not in the image of \u03bc, or the map is not injective.",
+      "both_description": "11 \u2014 Paradice: the conjecture is simultaneously proven for certain classes (amenable, hyperbolic) and open/false for others (property T groups, exotic counterexamples). Both states held without global resolution.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Bare locally compact group G, no structure yet"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Construct classifying space BG \u2014 forward morphism from group to topological space"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Apply K-theory functor to BG \u2014 forward morphism to topological K-theory K\u2093G"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "Compose group G with its reduced group C*-algebra C*\u1d63(G) \u2014 sequential chaining"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "Apply K-theory functor to C*\u1d63(G) \u2014 forward morphism to operator K-theory K*(C*\u1d63(G))"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "Define assembly map \u03bc: K\u2093G \u2192 K*(C*\u1d63(G)) \u2014 forward morphism between the two K-theories"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FSPLIT",
+          "domain_action": "Decompose K\u2093G into K\u2080(BG) and K\u2081(BG) \u2014 split into even and odd components"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "Decompose K*(C*\u1d63(G)) into K\u2080(C*\u1d63(G)) and K\u2081(C*\u1d63(G)) \u2014 split into even and odd components"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "Check if \u03bc\u2080: K\u2080(BG) \u2192 K\u2080(C*\u1d63(G)) is injective \u2014 affirmative branch for even component"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALT",
+          "domain_action": "Check if \u03bc\u2081: K\u2081(BG) \u2192 K\u2081(C*\u1d63(G)) is injective \u2014 affirmative branch for odd component"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALT",
+          "domain_action": "Check if \u03bc\u2080 is surjective \u2014 affirmative branch for even component coverage"
+        },
+        {
+          "step_num": 12,
+          "opcode": "EVALT",
+          "domain_action": "Check if \u03bc\u2081 is surjective \u2014 affirmative branch for odd component coverage"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALF",
+          "domain_action": "Detect failure of injectivity in K\u2080 \u2014 negative branch: kernel of \u03bc\u2080 is nontrivial"
+        },
+        {
+          "step_num": 14,
+          "opcode": "EVALF",
+          "domain_action": "Detect failure of injectivity in K\u2081 \u2014 negative branch: kernel of \u03bc\u2081 is nontrivial"
+        },
+        {
+          "step_num": 15,
+          "opcode": "EVALF",
+          "domain_action": "Detect failure of surjectivity in K\u2080 \u2014 negative branch: image of \u03bc\u2080 is proper subset"
+        },
+        {
+          "step_num": 16,
+          "opcode": "EVALF",
+          "domain_action": "Detect failure of surjectivity in K\u2081 \u2014 negative branch: image of \u03bc\u2081 is proper subset"
+        },
+        {
+          "step_num": 17,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute K\u2080(BG) \u2295 K\u2081(BG) from components \u2014 fuse even and odd back to K\u2093G"
+        },
+        {
+          "step_num": 18,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute K\u2080(C*\u1d63(G)) \u2295 K\u2081(C*\u1d63(G)) from components \u2014 fuse even and odd back to K*(C*\u1d63(G))"
+        },
+        {
+          "step_num": 19,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify that FFUSE(FSPLIT(K\u2093G)) = K\u2093G \u2014 identity check on topological side"
+        },
+        {
+          "step_num": 20,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify that FFUSE(FSPLIT(K*(C*\u1d63(G)))) = K*(C*\u1d63(G)) \u2014 identity check on operator side"
+        },
+        {
+          "step_num": 21,
+          "opcode": "ENGAGR",
+          "domain_action": "For property (T) groups: conjecture proven true AND known to fail for exotic subclasses \u2014 paradice held"
+        },
+        {
+          "step_num": 22,
+          "opcode": "IFIX",
+          "domain_action": "Record proven case: abelian groups satisfy Baum\u2013Connes \u2014 permanent append-only entry"
+        },
+        {
+          "step_num": 23,
+          "opcode": "IFIX",
+          "domain_action": "Record proven case: amenable groups satisfy Baum\u2013Connes \u2014 permanent append-only entry"
+        },
+        {
+          "step_num": 24,
+          "opcode": "IFIX",
+          "domain_action": "Record proven case: hyperbolic groups satisfy Baum\u2013Connes \u2014 permanent append-only entry"
+        },
+        {
+          "step_num": 25,
+          "opcode": "IFIX",
+          "domain_action": "Record proven case: SL(3,Z) satisfies Baum\u2013Connes \u2014 permanent append-only entry"
+        },
+        {
+          "step_num": 26,
+          "opcode": "AREV",
+          "domain_action": "Attempt inverse assembly map: K*(C*\u1d63(G)) \u2192 K\u2093G \u2014 reverse morphism (when it exists)"
+        },
+        {
+          "step_num": 27,
+          "opcode": "CLINK",
+          "domain_action": "Compose all functors in reverse: K-theory \u2190 C*-algebra \u2190 group \u2014 sequential chaining backward"
+        },
+        {
+          "step_num": 28,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-reference: the conjecture is about whether the assembly map is self-consistent \u2014 identity on the category of locally compact groups"
+        },
+        {
+          "step_num": 29,
+          "opcode": "TANCH",
+          "domain_action": "Close the system: the Baum\u2013Connes conjecture statement is the terminal anchor containing all operations"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "K-theory functor: translates topological spaces and C*-algebras into abelian groups (K\u2080, K\u2081). Compiles group structure into algebraic invariants.",
+      "ipc_mechanism": "Assembly map \u03bc: the communication channel between topological K-theory (left) and operator K-theory (right). All information flows through this morphism.",
+      "memory_mechanism": "K-groups K\u2093G and K*(C*\u1d63(G)): persistent storage of topological and operator-algebraic invariants. Indexed by group G and parity (even/odd).",
+      "scheduler_mechanism": "Functorial evaluation: for each locally compact group G, the scheduler applies the assembly map and checks injectivity/surjectivity in order (K\u2080 first, then K\u2081).",
+      "alfs_store": "The Atiyah\u2013Segal completion theorem and Kasparov's KK-theory: canonical reference stores for K-theory computations and assembly map properties.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Per operation cycle: one group G requires computation of BG (classifying space), C*\u1d63(G) (reduced group C*-algebra), and two K-theory functors (topological and operator). Cost \u2248 O(|G|) in complexity.",
+      "pre_cycle_state": "Uninitialized: G is bare, no K-theory computed, no assembly map evaluated. State = void (00).",
+      "post_cycle_state": "Evaluated: K\u2093G and K*(C*\u1d63(G)) computed, assembly map \u03bc checked for isomorphism. State = true (01) if conjecture holds, false (10) if it fails, both (11) if paradice.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The Baum\u2013Connes conjecture is a structural invariant: it does not create or destroy information, only reorganizes it. The assembly map is a natural transformation between functors, preserving categorical entropy. Each proven case adds to the permanent record (IFIX) without increasing disorder in the mathematical structure itself.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 AFWD \u2192 CLINK \u2192 AFWD \u2192 AFWD \u2192 FSPLIT \u2192 FSPLIT \u2192 EVALT \u2192 EVALT \u2192 EVALT \u2192 EVALT \u2192 EVALF \u2192 EVALF \u2192 EVALF \u2192 EVALF \u2192 FFUSE \u2192 FFUSE \u2192 IMSCRIB \u2192 IMSCRIB \u2192 ENGAGR \u2192 IFIX \u2192 IFIX \u2192 IFIX \u2192 IFIX \u2192 AREV \u2192 CLINK \u2192 IMSCRIB \u2192 TANCH\n-- Class: Baum\u2013Connes Theorem\n-- Fingerprint: sig=(12,4,9,4)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=29\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(7, 16), (6, 17)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [6] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc59  | split \u03b4 \u2014 range decomposition\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [10] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [11] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [12] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [13] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [14] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [15] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [16] FFUSE     stoi   := \ud801\udc59               \ud801\udc5a \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [17] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [18] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc60  | identity \u2014 self-imscription\n--   [19] IMSCRIB   gram   := \ud801\udc60               \ud801\udc60 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [20] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [21] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc6d  | irreversible fixation \u2014 winding number\n--   [22] IFIX      prot   := \ud801\udc6d               \ud801\udc6d \u2192 \ud801\udc6d  | irreversible fixation \u2014 winding number\n--   [23] IFIX      prot   := \ud801\udc6d               \ud801\udc6d \u2192 \ud801\udc6d  | irreversible fixation \u2014 winding number\n--   [24] IFIX      prot   := \ud801\udc6d               \ud801\udc6d \u2192 \ud801\udc57  | irreversible fixation \u2014 winding number\n--   [25] AREV      pol    := \ud801\udc57               \ud801\udc6d \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [26] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [27] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [28] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def baum_connes_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc7e)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Bare locally compact group G, no structure yet)\n  (.arrow \ud801\udc7e \ud801\udc7c \ud801\udc7e)  -- [1] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Construct classifying space BG \u2014 forward morphism from group to topological s...)\n  (.arrow \ud801\udc7e \ud801\udc7e \ud801\udc71)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Apply K-theory functor to BG \u2014 forward morphism to topological K-theory K\u2093G)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc7e)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Compose group G with its reduced group C*-algebra C*\u1d63(G) \u2014 sequential chaining)\n  (.arrow \ud801\udc7e \ud801\udc71 \ud801\udc7e)  -- [4] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Apply K-theory functor to C*\u1d63(G) \u2014 forward morphism to operator K-theory K*(C...)\n  (.arrow \ud801\udc7e \ud801\udc7e \ud801\udc5a)  -- [5] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Define assembly map \u03bc: K\u2093G \u2192 K*(C*\u1d63(G)) \u2014 forward morphism between the two K-...)\n  -- FSPLIT [6] (gran := \ud801\udc5a) (Decompose K\u2093G into K\u2080(BG) and K\u2081(BG) \u2014 split into even and odd components) / FFUSE [17] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (6 nodes)\n      .seq\n        (.arrow \ud801\udc5a \ud801\udc5a \ud801\udc59)  -- [7] FSPLIT | gran := \ud801\udc5a | split \u03b4 \u2014 range decomposition (Decompose K*(C*\u1d63(G)) into K\u2080(C*\u1d63(G)) and K\u2081(C*\u1d63(G)) \u2014 split into even and odd...)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [8] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2080: K\u2080(BG) \u2192 K\u2080(C*\u1d63(G)) is injective \u2014 affirmative branch for even c...)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [9] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2081: K\u2081(BG) \u2192 K\u2081(C*\u1d63(G)) is injective \u2014 affirmative branch for odd co...)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [10] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2080 is surjective \u2014 affirmative branch for even component coverage)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [11] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2081 is surjective \u2014 affirmative branch for odd component coverage)\n        (.arrow \ud801\udc59 \ud801\udc5a \ud801\udc59)  -- [16] FFUSE | stoi := \ud801\udc59 | fuse \u03bc \u2014 assembly mode (Reconstitute K\u2080(BG) \u2295 K\u2081(BG) from components \u2014 fuse even and odd back to K\u2093G)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [17]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [17] FFUSE | stoi := \ud801\udc59 (Reconstitute K\u2080(C*\u1d63(G)) \u2295 K\u2081(C*\u1d63(G)) from components \u2014 fuse even and odd back to K*(C*\u1d63(G)))\n  -- FSPLIT [7] (gran := \ud801\udc5a) (Decompose K*(C*\u1d63(G)) into K\u2080(C*\u1d63(G)) and K\u2081(C*\u1d63(G)) \u2014 split into even and odd components) / FFUSE [16] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (4 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [8] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2080: K\u2080(BG) \u2192 K\u2080(C*\u1d63(G)) is injective \u2014 affirmative branch for even c...)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [9] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2081: K\u2081(BG) \u2192 K\u2081(C*\u1d63(G)) is injective \u2014 affirmative branch for odd co...)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [10] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2080 is surjective \u2014 affirmative branch for even component coverage)\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [11] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Check if \u03bc\u2081 is surjective \u2014 affirmative branch for odd component coverage)\n      -- F-branch (4 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [12] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Detect failure of injectivity in K\u2080 \u2014 negative branch: kernel of \u03bc\u2080 is nontri...)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [13] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Detect failure of injectivity in K\u2081 \u2014 negative branch: kernel of \u03bc\u2081 is nontri...)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [14] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Detect failure of surjectivity in K\u2080 \u2014 negative branch: image of \u03bc\u2080 is proper...)\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [15] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Detect failure of surjectivity in K\u2081 \u2014 negative branch: image of \u03bc\u2081 is proper...))\n    -- reconnect at FFUSE [16]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc5a \ud801\udc59)  -- [16] FFUSE | stoi := \ud801\udc59 (Reconstitute K\u2080(BG) \u2295 K\u2081(BG) from components \u2014 fuse even and odd back to K\u2093G)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc60)  -- [18] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Verify that FFUSE(FSPLIT(K\u2093G)) = K\u2093G \u2014 identity check on topological side)\n  (.arrow \ud801\udc60 \ud801\udc60 \ud801\udc73)  -- [19] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Verify that FFUSE(FSPLIT(K*(C*\u1d63(G)))) = K*(C*\u1d63(G)) \u2014 identity check on operat...)\n  (.arrow \ud801\udc73 \ud801\udc60 \ud801\udc6d)  -- [20] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (For property (T) groups: conjecture proven true AND known to fail for exotic ...)\n  (.arrow \ud801\udc6d \ud801\udc73 \ud801\udc6d)  -- [21] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record proven case: abelian groups satisfy Baum\u2013Connes \u2014 permanent append-onl...)\n  (.arrow \ud801\udc6d \ud801\udc6d \ud801\udc6d)  -- [22] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record proven case: amenable groups satisfy Baum\u2013Connes \u2014 permanent append-on...)\n  (.arrow \ud801\udc6d \ud801\udc6d \ud801\udc6d)  -- [23] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record proven case: hyperbolic groups satisfy Baum\u2013Connes \u2014 permanent append-...)\n  (.arrow \ud801\udc6d \ud801\udc6d \ud801\udc57)  -- [24] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record proven case: SL(3,Z) satisfies Baum\u2013Connes \u2014 permanent append-only entry)\n  (.arrow \ud801\udc57 \ud801\udc6d \ud801\udc71)  -- [25] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Attempt inverse assembly map: K*(C*\u1d63(G)) \u2192 K\u2093G \u2014 reverse morphism (when it ex...)\n  (.arrow \ud801\udc71 \ud801\udc57 \ud801\udc60)  -- [26] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Compose all functors in reverse: K-theory \u2190 C*-algebra \u2190 group \u2014 sequential c...)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc61)  -- [27] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Self-reference: the conjecture is about whether the assembly map is self-cons...)\n  (.arrow \ud801\udc61 \ud801\udc60 \ud801\udc7c)  -- [28] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Close the system: the Baum\u2013Connes conjecture statement is the terminal anchor...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def baum_connes_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (baum_connes_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def baum_connes_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (baum_connes_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem baum_connes_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Baum\u2013Connes Theorem"
+}

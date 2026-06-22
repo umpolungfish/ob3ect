@@ -1,0 +1,290 @@
+{
+  "name": "Hadamard Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Hadamard Theorem",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "orthogonal matrix",
+        "recursive decomposition",
+        "determinant preservation"
+      ],
+      "boundary_condition": "The Hadamard factorization theorem: every orthogonal matrix can be decomposed into a product of Householder reflections, and this decomposition is unique up to sign and order.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "undecomposed orthogonal matrix Q",
+        "justification": "The initial state before any factorization has been applied; the raw input matrix exists but has no internal structure yet.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the set of all Householder reflections H\u2081, H\u2082, ..., H\u2099",
+        "justification": "The terminal anchor that contains and bounds the entire decomposition; the complete factorization Q = H\u2081 \u2218 H\u2082 \u2218 ... \u2218 H\u2099 is the closed system.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "forward elimination step: reduce column k to canonical form",
+        "justification": "Directed transformation toward the target; each Householder reflection H_k acts forward to zero out subdiagonal entries in column k.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "backward reconstruction: multiply accumulated reflections to recover Q",
+        "justification": "Reverse morphism; the product H\u2081 \u2218 H\u2082 \u2218 ... \u2218 H\u2099 descends back to the original matrix, undoing the decomposition conceptually.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of consecutive Householder reflections",
+        "justification": "Sequential chaining; each reflection is composed with the next: H_k \u2218 H_{k+1} \u2218 ... forms the chain that reconstructs Q.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "orthogonality constraint: Q^T \u2218 Q = I",
+        "justification": "Self-reference and self-recognition; the matrix recognizes itself through its own transpose, the identity property that defines orthogonal matrices.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "branch into two cases: (1) column k has zero subdiagonal, (2) column k requires reflection",
+        "justification": "One decomposition step branches into two distinct paths: either the column is already canonical (no reflection needed) or a Householder reflection must be constructed and applied.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "reconstitute the partially decomposed matrix from both branches",
+        "justification": "Both branches (reflection applied or skipped) reconstitute the same intermediate matrix state; FFUSE(FSPLIT(Q_partial)) = Q_partial holds exactly.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "successful reflection: subdiagonal entries zeroed, determinant preserved",
+        "justification": "Affirmative branch; the Householder reflection achieves its goal of canonical form while maintaining orthogonality.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "column already canonical: no reflection needed, skip to next column",
+        "justification": "Negative branch; the condition for reflection is false, so the algorithm advances without applying a reflection.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "sign ambiguity in Householder reflection: \u00b1H both valid",
+        "justification": "Paradice held without resolution; both sign choices produce valid orthogonal matrices, and the theorem permits either\u2014both states are simultaneously true.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "record each Householder reflection H_k as a permanent factor",
+        "justification": "Append-only fixation; once a reflection is computed and stored, it becomes an immutable part of the factorization record.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: branch on whether column k requires reflection",
+      "split_input": "partially decomposed matrix Q_partial after k-1 reflections",
+      "split_outputs": [
+        "T-branch: apply Householder reflection H_k, zero subdiagonal",
+        "F-branch: column already canonical, no reflection needed"
+      ],
+      "fuse_element": "FFUSE: reconstitute Q_partial from both branches",
+      "fuse_result": "Q_partial (identical to input, whether reflection was applied or skipped)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 uninitialized: Q exists but no Householder factors have been identified or computed yet.",
+      "true_description": "01 \u2014 affirmative: a Householder reflection has been successfully constructed, applied, and recorded; the column is now in canonical form.",
+      "false_description": "10 \u2014 negative: the column is already canonical; no reflection is needed; the algorithm advances to the next column.",
+      "both_description": "11 \u2014 paradice: the sign of the Householder reflection is ambiguous; both \u00b1H are valid orthogonal factors, and the theorem permits either choice simultaneously.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize with undecomposed orthogonal matrix Q; no factors yet identified."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "recognize Q through its orthogonality property Q^T \u2218 Q = I; self-reference established."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "begin forward elimination; set column index k = 1."
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on whether column k has nonzero subdiagonal entries."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "T-branch taken; column k requires a Householder reflection."
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "compute Householder vector v_k from column k subdiagonal."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "construct reflection matrix H_k = I - 2(v_k \u2218 v_k^T)."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "apply H_k to Q from the left; zero out subdiagonal of column k."
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "record H_k as a permanent factor in the decomposition."
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "compose H_k into the chain of reflections."
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute the partially decomposed matrix after applying H_k."
+        },
+        {
+          "step_num": 12,
+          "opcode": "EVALF",
+          "domain_action": "F-branch taken; column k is already canonical."
+        },
+        {
+          "step_num": 13,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute the partially decomposed matrix without applying a reflection."
+        },
+        {
+          "step_num": 14,
+          "opcode": "AFWD",
+          "domain_action": "advance to column k+1."
+        },
+        {
+          "step_num": 15,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on whether column k+1 requires reflection."
+        },
+        {
+          "step_num": 16,
+          "opcode": "EVALT",
+          "domain_action": "T-branch taken; column k+1 requires a Householder reflection."
+        },
+        {
+          "step_num": 17,
+          "opcode": "AFWD",
+          "domain_action": "compute Householder vector v_{k+1} from column k+1 subdiagonal."
+        },
+        {
+          "step_num": 18,
+          "opcode": "AFWD",
+          "domain_action": "construct reflection matrix H_{k+1}."
+        },
+        {
+          "step_num": 19,
+          "opcode": "AFWD",
+          "domain_action": "apply H_{k+1} to the partially decomposed matrix."
+        },
+        {
+          "step_num": 20,
+          "opcode": "IFIX",
+          "domain_action": "record H_{k+1} as a permanent factor."
+        },
+        {
+          "step_num": 21,
+          "opcode": "CLINK",
+          "domain_action": "compose H_{k+1} into the chain."
+        },
+        {
+          "step_num": 22,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute after applying H_{k+1}."
+        },
+        {
+          "step_num": 23,
+          "opcode": "AFWD",
+          "domain_action": "continue elimination for remaining columns."
+        },
+        {
+          "step_num": 24,
+          "opcode": "ENGAGR",
+          "domain_action": "at each step, the sign of the Householder reflection is ambiguous; both \u00b1H_k are valid; hold both simultaneously without resolving."
+        },
+        {
+          "step_num": 25,
+          "opcode": "CLINK",
+          "domain_action": "compose all n Householder reflections: Q = H_1 \u2218 H_2 \u2218 ... \u2218 H_n."
+        },
+        {
+          "step_num": 26,
+          "opcode": "IMSCRIB",
+          "domain_action": "verify orthogonality of the product; the reconstructed matrix recognizes itself as orthogonal."
+        },
+        {
+          "step_num": 27,
+          "opcode": "AREV",
+          "domain_action": "backward reconstruction: multiply the chain of reflections to recover Q exactly."
+        },
+        {
+          "step_num": 28,
+          "opcode": "TANCH",
+          "domain_action": "the complete factorization is now closed and bounded; the Hadamard decomposition is complete."
+        },
+        {
+          "step_num": 29,
+          "opcode": "IFIX",
+          "domain_action": "record the final factorization as an immutable, append-only result."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Householder reflection algorithm: translates the goal 'decompose Q into orthogonal factors' into a sequence of column-by-column elimination steps, each producing a Householder reflection.",
+      "ipc_mechanism": "Column-wise communication: each Householder reflection H_k communicates its effect to the next reflection H_{k+1} through the partially decomposed matrix state; reflections are applied left-to-right.",
+      "memory_mechanism": "The decomposition is stored as a sequence of Householder vectors v_1, v_2, ..., v_n (compact representation) or as explicit reflection matrices H_1, H_2, ..., H_n; the original matrix Q is overwritten or stored separately.",
+      "scheduler_mechanism": "Sequential column-by-column order: k = 1, 2, ..., n-1; each column is processed exactly once; no parallelism in the standard algorithm (though block variants exist).",
+      "alfs_store": "The orthogonal group O(n) and the set of all Householder reflections; the canonical reference is the QR decomposition literature (Golub, Van Loan) and the Hadamard theorem statement itself.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "O(n\u00b3) floating-point operations for an n\u00d7n matrix; each Householder reflection costs O(n\u00b2) to apply; n reflections total.",
+      "pre_cycle_state": "Undecomposed orthogonal matrix Q; high information entropy (no internal factorization structure revealed).",
+      "post_cycle_state": "Factorized form Q = H_1 \u2218 H_2 \u2218 ... \u2218 H_n; information entropy reduced (structure revealed); determinant and orthogonality preserved.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The decomposition is a reversible, structure-revealing transformation; no information is lost (FFUSE(FSPLIT(Q_partial)) = Q_partial holds exactly). The algorithm is numerically stable and entropy-conservative in the information-theoretic sense: the factorization is a bijection between Q and its Householder factors.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 IFIX \u2192 CLINK \u2192 FFUSE \u2192 EVALF \u2192 FFUSE \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 IFIX \u2192 CLINK \u2192 FFUSE \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 IMSCRIB \u2192 AREV \u2192 TANCH \u2192 IFIX\n-- Class: Hadamard Theorem\n-- Fingerprint: sig=(17,5,4,3)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=29\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(3, 10), (14, 21)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc56  | fuse \u03bc \u2014 assembly mode\n--   [11] EVALF     chir   := \ud801\udc56               \ud801\udc59 \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc56 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [13] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [14] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [15] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [16] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [17] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [18] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [19] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [20] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [21] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [22] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \ud801\udc73  | forward morphism \u2014 bidirectional arrow\n--   [23] ENGAGR    stoi   := \ud801\udc73               \ud801\udc7e \u2192 \ud801\udc71  | engage paradox \u2014 B-state, both arms\n--   [24] CLINK     fid    := \ud801\udc71               \ud801\udc73 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [25] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc57  | identity \u2014 self-imscription\n--   [26] AREV      pol    := \ud801\udc57               \ud801\udc60 \u2192 \ud801\udc61  | reverse morphism \u2014 parity flip\n--   [27] TANCH     top    := \ud801\udc61               \ud801\udc57 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [28] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def hadamard_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc60)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (initialize with undecomposed orthogonal matrix Q; no factors yet identified.)\n  (.arrow \ud801\udc60 \ud801\udc7c \ud801\udc7e)  -- [1] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (recognize Q through its orthogonality property Q^T \u2218 Q = I; self-reference es...)\n  (.arrow \ud801\udc7e \ud801\udc60 \ud801\udc5a)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (begin forward elimination; set column index k = 1.)\n  -- FSPLIT [3] (gran := \ud801\udc5a) (branch on whether column k has nonzero subdiagonal entries.) / FFUSE [10] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (6 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [4] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-branch taken; column k requires a Householder reflection.)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [5] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (compute Householder vector v_k from column k subdiagonal.)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [6] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (construct reflection matrix H_k = I - 2(v_k \u2218 v_k^T).)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [7] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (apply H_k to Q from the left; zero out subdiagonal of column k.)\n      .seq\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [8] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record H_k as a permanent factor in the decomposition.)\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [9] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose H_k into the chain of reflections.)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [10]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc56)  -- [10] FFUSE | stoi := \ud801\udc59 (reconstitute the partially decomposed matrix after applying H_k.)\n  (.arrow \ud801\udc56 \ud801\udc59 \ud801\udc59)  -- [11] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (F-branch taken; column k is already canonical.)\n  (.arrow \ud801\udc59 \ud801\udc56 \ud801\udc7e)  -- [12] FFUSE | stoi := \ud801\udc59 | fuse \u03bc \u2014 assembly mode (reconstitute the partially decomposed matrix without applying a reflection.)\n  (.arrow \ud801\udc7e \ud801\udc59 \ud801\udc5a)  -- [13] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (advance to column k+1.)\n  -- FSPLIT [14] (gran := \ud801\udc5a) (branch on whether column k+1 requires reflection.) / FFUSE [21] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (6 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [15] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-branch taken; column k+1 requires a Householder reflection.)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [16] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (compute Householder vector v_{k+1} from column k+1 subdiagonal.)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [17] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (construct reflection matrix H_{k+1}.)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [18] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (apply H_{k+1} to the partially decomposed matrix.)\n      .seq\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [19] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record H_{k+1} as a permanent factor.)\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [20] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose H_{k+1} into the chain.)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [21]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc7e)  -- [21] FFUSE | stoi := \ud801\udc59 (reconstitute after applying H_{k+1}.)\n  (.arrow \ud801\udc7e \ud801\udc59 \ud801\udc73)  -- [22] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (continue elimination for remaining columns.)\n  (.arrow \ud801\udc73 \ud801\udc7e \ud801\udc71)  -- [23] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (at each step, the sign of the Householder reflection is ambiguous; both \u00b1H_k ...)\n  (.arrow \ud801\udc71 \ud801\udc73 \ud801\udc60)  -- [24] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose all n Householder reflections: Q = H_1 \u2218 H_2 \u2218 ... \u2218 H_n.)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc57)  -- [25] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (verify orthogonality of the product; the reconstructed matrix recognizes itse...)\n  (.arrow \ud801\udc57 \ud801\udc60 \ud801\udc61)  -- [26] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (backward reconstruction: multiply the chain of reflections to recover Q exactly.)\n  (.arrow \ud801\udc61 \ud801\udc57 \ud801\udc6d)  -- [27] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (the complete factorization is now closed and bounded; the Hadamard decomposit...)\n  (.arrow \ud801\udc6d \ud801\udc61 \ud801\udc7c)  -- [28] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record the final factorization as an immutable, append-only result.)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def hadamard_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  (hadamard_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def hadamard_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  (hadamard_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem hadamard_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Hadamard Theorem"
+}

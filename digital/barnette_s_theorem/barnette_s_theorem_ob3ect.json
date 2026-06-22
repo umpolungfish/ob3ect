@@ -1,0 +1,245 @@
+{
+  "name": "Barnette's Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Barnette's Theorem",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "boolean satisfiability",
+        "clause evaluation",
+        "assignment branching"
+      ],
+      "boundary_condition": "The set of all possible truth assignments to propositional variables, constrained by the CNF formula structure.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Unassigned variable set",
+        "justification": "Before any truth value is assigned to any variable, the domain exists in a void state \u2014 no commitment, no evaluation.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The CNF formula itself (conjunction of clauses)",
+        "justification": "The formula is the hermetic boundary that contains and defines the entire satisfiability problem. It is the closed system within which all assignments must be evaluated.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Variable assignment (x := true or x := false)",
+        "justification": "Each assignment is a forward morphism \u2014 a directed transformation from unassigned to assigned state, moving toward a complete truth assignment.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Backtracking / unassignment",
+        "justification": "When a partial assignment leads to unsatisfiability, backtracking reverses the morphism, descending from a failed branch back to a choice point.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Clause propagation chain",
+        "justification": "Unit propagation and implication chains compose assignments sequentially: if x is true, then clauses containing \u00acx are simplified, which may force other variables, composing multiple morphisms into a single derivation.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "The satisfying assignment (if it exists)",
+        "justification": "A satisfying assignment is self-referential: it is the fixed point where the formula evaluates to true under that assignment. The assignment recognizes itself as valid.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Case split on an unassigned variable",
+        "justification": "Choosing a variable x branches the search space into two disjoint paths: one where x=true (T-arm) and one where x=false (F-arm). This is the fundamental branching operation in DPLL.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Merge of satisfiability results from both branches",
+        "justification": "If either the T-arm (x=true) or F-arm (x=false) yields a satisfying assignment, that assignment is a satisfying assignment for the original formula. FFUSE reconstitutes the original problem's satisfiability from the two branches.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "T-arm evaluation: x=true leads to satisfiability",
+        "justification": "Affirmative branch: the assignment x=true, combined with further assignments, satisfies all clauses. This is the success state for the T-arm.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "F-arm evaluation: x=false leads to satisfiability",
+        "justification": "Negative branch (from the perspective of the T-arm): the assignment x=false, combined with further assignments, satisfies all clauses. This is the success state for the F-arm.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Conflicting unit clauses (paradice state)",
+        "justification": "When both x and \u00acx are forced by unit propagation, the formula is unsatisfiable. Both states are simultaneously held as contradictory \u2014 a paradice where the system cannot resolve to a single truth value.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Learned clause (in conflict-driven clause learning)",
+        "justification": "Each learned clause is a permanent, append-only record of a conflict. It cannot be undone and becomes part of the formula's permanent knowledge base, guiding future search.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Case split on variable x",
+      "split_input": "Partial assignment A (with x unassigned)",
+      "split_outputs": [
+        "A \u222a {x=true}",
+        "A \u222a {x=false}"
+      ],
+      "fuse_element": "Merge satisfiability results",
+      "fuse_result": "If (A \u222a {x=true}) satisfies F or (A \u222a {x=false}) satisfies F, then A satisfies F (by existential quantification over x). FFUSE(FSPLIT(A)) = A in the sense that the satisfiability of the original formula under A is recovered from the two branches.",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 No variables assigned; the formula is unevaluated. The search has not yet begun.",
+      "true_description": "01 \u2014 At least one complete assignment has been found that satisfies all clauses. The formula is satisfiable.",
+      "false_description": "10 \u2014 All branches have been exhausted and no satisfying assignment exists. The formula is unsatisfiable.",
+      "both_description": "11 \u2014 A paradice state: conflicting unit clauses force both x and \u00acx simultaneously, creating an irresolvable contradiction within a single branch. The system holds both states without resolution until backtracking occurs.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the search with no variables assigned; the formula is in void state."
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the CNF formula as the boundary containing all possible satisfying assignments."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Assign the first variable x\u2081 a truth value (forward morphism into the search space)."
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "Apply unit propagation to derive forced assignments from x\u2081's value; compose multiple implications into a propagation chain."
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch on the next unassigned variable x\u2082 into two disjoint cases: x\u2082=true and x\u2082=false."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "Evaluate the T-arm (x\u2082=true): apply unit propagation and check for conflicts."
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "Continue propagation chain in the T-arm, composing further assignments."
+        },
+        {
+          "step_num": 8,
+          "opcode": "IFIX",
+          "domain_action": "If a conflict is detected in the T-arm, record the learned clause as a permanent fact."
+        },
+        {
+          "step_num": 9,
+          "opcode": "AREV",
+          "domain_action": "Backtrack from the T-arm conflict; reverse the assignment x\u2082=true and descend to the F-arm."
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALF",
+          "domain_action": "Evaluate the F-arm (x\u2082=false): apply unit propagation and check for conflicts."
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "Continue propagation chain in the F-arm, composing further assignments."
+        },
+        {
+          "step_num": 12,
+          "opcode": "ENGAGR",
+          "domain_action": "If both x and \u00acx are forced by unit propagation in the F-arm, enter paradice state (both simultaneously held)."
+        },
+        {
+          "step_num": 13,
+          "opcode": "AREV",
+          "domain_action": "Backtrack from the F-arm paradice; reverse the assignment x\u2082=false and ascend to a higher choice point."
+        },
+        {
+          "step_num": 14,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch on the next unassigned variable x\u2083 into two disjoint cases: x\u2083=true and x\u2083=false."
+        },
+        {
+          "step_num": 15,
+          "opcode": "EVALT",
+          "domain_action": "Evaluate the T-arm (x\u2083=true): apply unit propagation and check for conflicts."
+        },
+        {
+          "step_num": 16,
+          "opcode": "CLINK",
+          "domain_action": "Continue propagation chain in the T-arm."
+        },
+        {
+          "step_num": 17,
+          "opcode": "IMSCRIB",
+          "domain_action": "If all clauses are satisfied and all variables are assigned, the current assignment is a fixed point (self-referential satisfying assignment)."
+        },
+        {
+          "step_num": 18,
+          "opcode": "FFUSE",
+          "domain_action": "Merge the results from the T-arm and F-arm of the x\u2083 split: if either branch yields a satisfying assignment, the original formula is satisfiable."
+        },
+        {
+          "step_num": 19,
+          "opcode": "IFIX",
+          "domain_action": "Record the satisfying assignment as a permanent fact (or record unsatisfiability if all branches fail)."
+        },
+        {
+          "step_num": 20,
+          "opcode": "TANCH",
+          "domain_action": "Close the search: the formula's satisfiability status is now determined and anchored as the final boundary state."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The SAT solver's decision heuristic (e.g., VSIDS, JW) translates the formula structure into a sequence of variable assignments and case splits.",
+      "ipc_mechanism": "Unit propagation and implication graphs communicate forced assignments between clauses; conflict analysis communicates learned clauses back to the formula.",
+      "memory_mechanism": "The current partial assignment is stored in a stack; the clause database and learned clauses are stored in append-only memory; the implication graph is stored as a DAG.",
+      "scheduler_mechanism": "The DPLL algorithm determines the order: pick an unassigned variable, assign it, propagate, check for conflict, backtrack if necessary, repeat until satisfying assignment found or all branches exhausted.",
+      "alfs_store": "The CNF formula itself is the canonical reference; the learned clauses form the bootstrap store for guiding future search.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Each variable assignment consumes one decision; each unit propagation consumes one implication; each conflict consumes one backtrack and one learned clause.",
+      "pre_cycle_state": "Partial assignment A with k variables assigned; formula F with m clauses.",
+      "post_cycle_state": "Partial assignment A' with k+1 variables assigned (or backtracked to k-1); formula F' with m+1 clauses (if a conflict was learned).",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The DPLL algorithm is entropy-conservative in the sense that each decision and propagation step is reversible (via backtracking) and each learned clause is a logical consequence of the original formula, adding no new information entropy to the system as a whole. The search space is partitioned deterministically; no information is lost.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 IFIX \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: Barnette's Theorem\n-- Fingerprint: sig=(11,3,4,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=20\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(13, 17)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc71 \u2192 \u2299  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [6] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [7] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc57  | irreversible fixation \u2014 winding number\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc6d \u2192 \ud801\udc56  | reverse morphism \u2014 parity flip\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc57 \u2192 \ud801\udc71  | evaluate-false \u2014 chirality check\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc56 \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [11] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc57  | engage paradox \u2014 B-state, both arms\n--   [12] AREV      pol    := \ud801\udc57               \ud801\udc73 \u2192 \ud801\udc5a  | reverse morphism \u2014 parity flip\n--   [13] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [14] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [15] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [16] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [17] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [18] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [19] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def barnettes_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Initialize the search with no variables assigned; the formula is in void state.)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc7e)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Anchor the CNF formula as the boundary containing all possible satisfying ass...)\n  (.arrow \ud801\udc7e \ud801\udc61 \ud801\udc71)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Assign the first variable x\u2081 a truth value (forward morphism into the search ...)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc5a)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Apply unit propagation to derive forced assignments from x\u2081's value; compose ...)\n  (.arrow \ud801\udc5a \ud801\udc71 \u2299)  -- [4] FSPLIT | gran := \ud801\udc5a | split \u03b4 \u2014 range decomposition (Branch on the next unassigned variable x\u2082 into two disjoint cases: x\u2082=true an...)\n  (.arrow \u2299 \ud801\udc5a \ud801\udc71)  -- [5] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Evaluate the T-arm (x\u2082=true): apply unit propagation and check for conflicts.)\n  (.arrow \ud801\udc71 \u2299 \ud801\udc6d)  -- [6] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Continue propagation chain in the T-arm, composing further assignments.)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc57)  -- [7] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (If a conflict is detected in the T-arm, record the learned clause as a perman...)\n  (.arrow \ud801\udc57 \ud801\udc6d \ud801\udc56)  -- [8] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Backtrack from the T-arm conflict; reverse the assignment x\u2082=true and descend...)\n  (.arrow \ud801\udc56 \ud801\udc57 \ud801\udc71)  -- [9] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Evaluate the F-arm (x\u2082=false): apply unit propagation and check for conflicts.)\n  (.arrow \ud801\udc71 \ud801\udc56 \ud801\udc73)  -- [10] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Continue propagation chain in the F-arm, composing further assignments.)\n  (.arrow \ud801\udc73 \ud801\udc71 \ud801\udc57)  -- [11] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (If both x and \u00acx are forced by unit propagation in the F-arm, enter paradice ...)\n  (.arrow \ud801\udc57 \ud801\udc73 \ud801\udc5a)  -- [12] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Backtrack from the F-arm paradice; reverse the assignment x\u2082=false and ascend...)\n  -- FSPLIT [13] (gran := \ud801\udc5a) (Branch on the next unassigned variable x\u2083 into two disjoint cases: x\u2083=true and x\u2083=false.) / FFUSE [17] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [14] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Evaluate the T-arm (x\u2083=true): apply unit propagation and check for conflicts.)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [15] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Continue propagation chain in the T-arm.)\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [16] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (If all clauses are satisfied and all variables are assigned, the current assi...)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [17]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc6d)  -- [17] FFUSE | stoi := \ud801\udc59 (Merge the results from the T-arm and F-arm of the x\u2083 split: if either branch yields a satisfying assignment, the original formula is satisfiable.)\n  (.arrow \ud801\udc6d \ud801\udc59 \ud801\udc61)  -- [18] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record the satisfying assignment as a permanent fact (or record unsatisfiabil...)\n  (.arrow \ud801\udc61 \ud801\udc6d \ud801\udc7c)  -- [19] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Close the search: the formula's satisfiability status is now determined and a...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def barnettes_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (barnettes_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def barnettes_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (barnettes_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem barnettes_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Barnette's Theorem"
+}

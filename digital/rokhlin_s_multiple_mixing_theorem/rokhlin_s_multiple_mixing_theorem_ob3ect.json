@@ -1,0 +1,237 @@
+{
+  "name": "Rokhlin's Multiple Mixing Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Rokhlin's Multiple Mixing Theorem",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "measure-preserving transformation",
+        "mixing hierarchy",
+        "spectral decomposition"
+      ],
+      "boundary_condition": "the ergodic system (X, \u212c, \u03bc, T) \u2014 a probability space with a measure-preserving automorphism T",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "the empty \u03c3-algebra \u2205",
+        "justification": "Before any mixing property is asserted, there is no information about correlations between past and future. The void state represents the uninitialized system before any temporal structure is imposed.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the full \u03c3-algebra \u212c (all measurable sets)",
+        "justification": "The complete \u03c3-algebra is the hermetic boundary that contains all possible events and all mixing information. It is the terminal anchor \u2014 the closed system within which all mixing occurs.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "the forward time evolution T^n (n > 0)",
+        "justification": "T^n is the directed morphism pushing the system forward in time. It is the forward transformation toward the target state (future mixing).",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "the backward time evolution T^{-n} (n > 0)",
+        "justification": "T^{-n} is the contravariant reverse morphism, descending back through time. It represents the inverse transformation and the descent into past correlations.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of mixing orders: T^{n_1} \u2218 T^{n_2} \u2218 ... \u2218 T^{n_k}",
+        "justification": "Sequential chaining of time steps. Multiple mixing conditions are composed together to form the full hierarchy of mixing orders (weak, strong, multiple).",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the identity transformation T^0 = id",
+        "justification": "The identity is self-reference: the system recognizing itself at a single moment. It is the element that is itself, unchanged by time.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "the branching into k-fold mixing: the system splits into k independent temporal channels",
+        "justification": "Rokhlin's theorem asserts that a mixing transformation can be decomposed into k independent mixing subsystems. FSPLIT represents the decomposition of the single transformation T into k parallel mixing processes, each with its own temporal evolution.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "the reconstitution of the original transformation from k-fold mixing",
+        "justification": "After k independent mixing channels evolve, they must fuse back into the original T. The Frobenius constraint FFUSE(FSPLIT(T)) = T holds: the k-fold mixing, when recombined, recovers the original measure-preserving transformation exactly.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "the affirmative mixing condition: lim_{n\u2192\u221e} |\u03bc(A \u2229 T^{-n}B) - \u03bc(A)\u03bc(B)| = 0",
+        "justification": "This is the true/affirmative branch: the mixing property holds. Future and past become independent as time goes to infinity.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "the failure of mixing: lim_{n\u2192\u221e} |\u03bc(A \u2229 T^{-n}B) - \u03bc(A)\u03bc(B)| \u2260 0",
+        "justification": "This is the false/negative branch: the mixing property fails. Correlations persist; the system does not forget its past.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "the paradice of multiple mixing orders: simultaneously weak-mixing and strong-mixing",
+        "justification": "Rokhlin's theorem reveals a paradice: a transformation can be both weakly mixing (in the sense of L^2 convergence) and strongly mixing (in the sense of pointwise convergence of correlations). Both conditions hold without resolution into a single hierarchy.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the permanent record of the mixing spectrum: the eigenvalues {\u03bb_j} of the Koopman operator U_T",
+        "justification": "The spectrum is append-only and irreversible. Once the spectral decomposition is computed, it is fixed and cannot be undone. It is the permanent witness to the mixing structure.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: decomposition into k independent mixing subsystems",
+      "split_input": "the original measure-preserving transformation T",
+      "split_outputs": [
+        "T_1: the first mixing channel (e.g., weak-mixing component)",
+        "T_2: the second mixing channel (e.g., strong-mixing component)",
+        "...",
+        "T_k: the k-th mixing channel"
+      ],
+      "fuse_element": "FFUSE: reconstitution of T from k-fold mixing",
+      "fuse_result": "the original transformation T = T_1 \u2218 T_2 \u2218 ... \u2218 T_k (up to measure-theoretic equivalence)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 the uninitialized system before any temporal structure or mixing property is defined. No \u03c3-algebra, no measure, no automorphism.",
+      "true_description": "01 \u2014 the affirmative state: the mixing property holds. Correlations decay to zero; the system forgets its past. Forward evolution succeeds.",
+      "false_description": "10 \u2014 the negative state: the mixing property fails. Correlations persist; the system retains memory. Backward descent reveals non-trivial structure.",
+      "both_description": "11 \u2014 the paradice: the system is simultaneously weakly mixing and strongly mixing. Both mixing orders hold without resolution. The spectral decomposition exhibits both discrete and continuous components.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize the empty \u03c3-algebra \u2205 \u2014 the void state before any mixing structure exists"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "establish the full \u03c3-algebra \u212c as the boundary containing all measurable events"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "apply forward time evolution T^n (n > 0) \u2014 push the system toward the future"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "compose multiple time steps T^{n_1} \u2218 T^{n_2} \u2014 chain temporal evolution"
+        },
+        {
+          "step_num": 5,
+          "opcode": "IMSCRIB",
+          "domain_action": "recognize the identity T^0 = id \u2014 the system at a single moment, unchanged"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "decompose T into k independent mixing channels \u2014 branch into T_1, T_2, ..., T_k"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "affirm the mixing condition on the T-branch \u2014 lim_{n\u2192\u221e} |\u03bc(A \u2229 T^{-n}B) - \u03bc(A)\u03bc(B)| = 0"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "forward evolution within the T-branch \u2014 correlations decay as n \u2192 \u221e"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "record the spectrum of the Koopman operator U_T on the T-branch \u2014 permanent witness to mixing"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "backward time evolution T^{-n} on the F-branch \u2014 descend into past correlations"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALF",
+          "domain_action": "negate the mixing condition on the F-branch \u2014 lim_{n\u2192\u221e} |\u03bc(A \u2229 T^{-n}B) - \u03bc(A)\u03bc(B)| \u2260 0"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "record the non-trivial eigenvalues on the F-branch \u2014 permanent witness to non-mixing"
+        },
+        {
+          "step_num": 13,
+          "opcode": "ENGAGR",
+          "domain_action": "hold both mixing orders simultaneously \u2014 weak-mixing and strong-mixing coexist without resolution"
+        },
+        {
+          "step_num": 14,
+          "opcode": "CLINK",
+          "domain_action": "compose the k-fold mixing channels \u2014 T_1 \u2218 T_2 \u2218 ... \u2218 T_k"
+        },
+        {
+          "step_num": 15,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute the original transformation T from k-fold mixing \u2014 fuse T_1, T_2, ..., T_k back into T"
+        },
+        {
+          "step_num": 16,
+          "opcode": "IMSCRIB",
+          "domain_action": "recognize that FFUSE(FSPLIT(T)) = T \u2014 the system is self-referential, closed under decomposition and reconstitution"
+        },
+        {
+          "step_num": 17,
+          "opcode": "TANCH",
+          "domain_action": "close the system within the full \u03c3-algebra \u212c \u2014 all mixing information is contained"
+        },
+        {
+          "step_num": 18,
+          "opcode": "IFIX",
+          "domain_action": "record the final spectral decomposition \u2014 the permanent, irreversible witness to Rokhlin's multiple mixing theorem"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the ergodic-theoretic proof engine: translates the measure-preserving property and mixing conditions into spectral decompositions and Koopman operator eigenvalues",
+      "ipc_mechanism": "the \u03c3-algebra communication protocol: measurable sets exchange information via the measure \u03bc; time evolution T propagates correlations between past and future events",
+      "memory_mechanism": "the Koopman operator spectrum: eigenvalues {\u03bb_j} and eigenfunctions {\u03c6_j} store the mixing structure; the spectral measure records the distribution of mixing rates",
+      "scheduler_mechanism": "the time evolution T^n: determines the order and timing of correlation decay; n \u2192 \u221e schedules the asymptotic mixing behavior",
+      "alfs_store": "the canonical reference: Rokhlin's original theorem (1949) and its extensions; the spectral theorem for unitary operators on L^2(X, \u03bc)",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "the information loss per time step: H(A | T^{-n}B) \u2192 0 as n \u2192 \u221e (mixing dissipates correlations)",
+      "pre_cycle_state": "the system state before mixing: A and T^{-n}B are correlated; \u03bc(A \u2229 T^{-n}B) \u2260 \u03bc(A)\u03bc(B)",
+      "post_cycle_state": "the system state after mixing: A and T^{-n}B are independent; \u03bc(A \u2229 T^{-n}B) \u2248 \u03bc(A)\u03bc(B)",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the cycle is entropy-conservative because the measure \u03bc is preserved by T (measure-preserving automorphism). The total entropy of the system remains constant; mixing redistributes entropy uniformly across the phase space without creating or destroying information.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 IFIX \u2192 AREV \u2192 EVALF \u2192 IFIX \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 IMSCRIB \u2192 TANCH \u2192 IFIX\n-- Class: Rokhlin's Multiple Mixing Theorem\n-- Fingerprint: sig=(10,2,3,3)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=18\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(5, 14)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [4] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [9] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [10] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [12] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [13] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [14] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [15] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [16] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [17] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def rokhlins_multiple_mixing_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (initialize the empty \u03c3-algebra \u2205 \u2014 the void state before any mixing structure...)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc7e)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (establish the full \u03c3-algebra \u212c as the boundary containing all measurable events)\n  (.arrow \ud801\udc7e \ud801\udc61 \ud801\udc71)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (apply forward time evolution T^n (n > 0) \u2014 push the system toward the future)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc60)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose multiple time steps T^{n_1} \u2218 T^{n_2} \u2014 chain temporal evolution)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc5a)  -- [4] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (recognize the identity T^0 = id \u2014 the system at a single moment, unchanged)\n  -- FSPLIT [5] (gran := \ud801\udc5a) (decompose T into k independent mixing channels \u2014 branch into T_1, T_2, ..., T_k) / FFUSE [14] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (4 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [6] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (affirm the mixing condition on the T-branch \u2014 lim_{n\u2192\u221e} |\u03bc(A \u2229 T^{-n}B) - \u03bc(A...)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [7] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (forward evolution within the T-branch \u2014 correlations decay as n \u2192 \u221e)\n      .seq\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [8] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record the spectrum of the Koopman operator U_T on the T-branch \u2014 permanent w...)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [9] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (backward time evolution T^{-n} on the F-branch \u2014 descend into past correlations)\n      -- F-branch (4 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [10] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (negate the mixing condition on the F-branch \u2014 lim_{n\u2192\u221e} |\u03bc(A \u2229 T^{-n}B) - \u03bc(A...)\n      .seq\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [11] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record the non-trivial eigenvalues on the F-branch \u2014 permanent witness to non...)\n      .seq\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [12] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (hold both mixing orders simultaneously \u2014 weak-mixing and strong-mixing coexis...)\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [13] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose the k-fold mixing channels \u2014 T_1 \u2218 T_2 \u2218 ... \u2218 T_k))\n    -- reconnect at FFUSE [14]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [14] FFUSE | stoi := \ud801\udc59 (reconstitute the original transformation T from k-fold mixing \u2014 fuse T_1, T_2, ..., T_k back into T)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc61)  -- [15] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (recognize that FFUSE(FSPLIT(T)) = T \u2014 the system is self-referential, closed ...)\n  (.arrow \ud801\udc61 \ud801\udc60 \ud801\udc6d)  -- [16] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (close the system within the full \u03c3-algebra \u212c \u2014 all mixing information is cont...)\n  (.arrow \ud801\udc6d \ud801\udc61 \ud801\udc7c)  -- [17] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record the final spectral decomposition \u2014 the permanent, irreversible witness...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def rokhlins_multiple_mixing_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  (rokhlins_multiple_mixing_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def rokhlins_multiple_mixing_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  (rokhlins_multiple_mixing_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem rokhlins_multiple_mixing_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Rokhlin's Multiple Mixing Theorem"
+}

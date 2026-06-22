@@ -13,110 +13,108 @@
   "phases": {
     "phase_0": {
       "domain_name": "Collatz Theorem",
-      "domain_type": "computational",
+      "domain_type": "mathematical",
       "scope": "local",
       "surface_tokens": [
-        "parity",
-        "trajectory",
-        "inverse_tree",
-        "cycle",
-        "drift"
+        "hailstone sequence",
+        "parity check",
+        "terminal cycle"
       ],
-      "boundary_condition": "The terminal cycle 1 \u2192 4 \u2192 2 \u2192 1",
+      "boundary_condition": "The terminal value 1 and the unproven bounds of divergence",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "The uninitialized positive integer \u2205",
-        "justification": "Void state before any Collatz iteration or parity classification begins.",
+        "chosen_element": "Seed Integer n_0",
+        "justification": "The initial positive integer before any operations are applied, emerging from the void.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "The terminal cycle 1 \u2192 4 \u2192 2 \u2192 1",
-        "justification": "The closed boundary that contains and terminates all convergent trajectories.",
+        "chosen_element": "Terminal Value 1",
+        "justification": "The closed boundary where the sequence is conjectured to always halt and complete.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "The forward Collatz map T(n)",
-        "justification": "Directed transformation applying n/2 or 3n+1 toward the terminal attractor.",
+        "chosen_element": "3n+1 Operation",
+        "justification": "Forward morphism applied to odd numbers, causing directed ascent and growth.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "The inverse relation T\u207b\u00b9(m)",
-        "justification": "Reverse morphism tracing backward from the cycle to reconstruct the full integer space.",
+        "chosen_element": "n/2 Operation",
+        "justification": "Reverse/descent morphism applied to even numbers, causing reduction and parity flip.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "Sequential iteration T^k(n)",
-        "justification": "Chaining forward morphisms to advance the trajectory through discrete time steps.",
+        "chosen_element": "Sequence Iteration",
+        "justification": "Sequential chaining of the current value to the next value in the trajectory.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "Parity encoding \u03b4(n)",
-        "justification": "Self-reference that uniquely identifies each trajectory's fate via its binary signature.",
+        "chosen_element": "Current State n_k",
+        "justification": "Self-reference of the integer at the current step k; the number that knows itself.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "The parity gate \u03b4(n)",
-        "justification": "Co-multiplication branching the integer into even (n/2) and odd (3n+1) computational paths.",
+        "chosen_element": "Modulo-2 Decomposition",
+        "justification": "Splits integer n into remainder r (parity) and quotient q (magnitude).",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "Trajectory merger via parity encoding",
-        "justification": "Multiplication reconstituting the unified trajectory from even and odd branches, recovering the original integer.",
+        "chosen_element": "Linear Recombination",
+        "justification": "Reconstitutes n exactly as 2q + r, satisfying the Frobenius constraint.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "Convergent trajectory",
-        "justification": "Affirmative evaluation where the path trends toward the terminal cycle basin.",
+        "chosen_element": "Odd Parity (r=1)",
+        "justification": "Affirmative branch where the number is odd, triggering the forward ascent.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "Divergent trajectory or exotic cycle",
-        "justification": "Negative evaluation flagging paths that escape to infinity or violate cycle uniqueness.",
+        "chosen_element": "Even Parity (r=0)",
+        "justification": "Negative branch where the number is even, triggering the reverse descent.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "Critical phase boundary \u03c6\u0308y",
-        "justification": "Paradice state where negative drift and expansion coexist simultaneously at the phase transition.",
+        "chosen_element": "The 4-2-1 Loop",
+        "justification": "A paradice: the sequence is both terminated at 1 and actively cycling 1->4->2->1 simultaneously without resolution.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "Logarithmic drift record \u03bb \u2248 -0.074",
-        "justification": "Permanent irreversible fixation of the contraction bound that prevents divergence.",
+        "chosen_element": "Trajectory Log",
+        "justification": "Permanent, append-only record of the hailstone sequence visited values.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "Parity gate \u03b4(n)",
+      "split_element": "Modulo-2 Decomposition",
       "split_input": "Integer n",
       "split_outputs": [
-        "Even branch n/2",
-        "Odd branch 3n+1"
+        "Remainder r (parity)",
+        "Quotient q (magnitude)"
       ],
-      "fuse_element": "Trajectory merger via parity encoding",
-      "fuse_result": "Reconstituted integer n",
+      "fuse_element": "Linear Recombination",
+      "fuse_result": "Integer n (recovered exactly as 2q + r)",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "Uninitialized integer state before iteration begins",
-      "true_description": "Trajectory successfully reaches 1 \u2192 4 \u2192 2 \u2192 1",
-      "false_description": "Trajectory escapes to infinity or enters an exotic cycle",
-      "both_description": "Critical phase boundary where drift is zero and parity branches are indistinguishable",
+      "void_description": "Uninitialized state before the seed integer n_0 is chosen.",
+      "true_description": "Odd parity state (r=1), routing to the 3n+1 forward ascent operation.",
+      "false_description": "Even parity state (r=0), routing to the n/2 reverse descent operation.",
+      "both_description": "The 4-2-1 terminal loop, where the sequence is both halted at 1 and infinitely cycling.",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -125,143 +123,93 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "Initialize the domain with an arbitrary positive integer n in the void state before iteration."
+          "domain_action": "Establish the initial seed integer n_0 in the void state."
         },
         {
           "step_num": 2,
-          "opcode": "AFWD",
-          "domain_action": "Apply the forward Collatz map T(n) as a directed transformation toward the terminal cycle."
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-reference the current integer n_k at step k."
         },
         {
           "step_num": 3,
           "opcode": "FSPLIT",
-          "domain_action": "Branch the trajectory at the parity gate \u03b4(n) into even and odd computational paths."
+          "domain_action": "Decompose n_k into remainder r and quotient q (Frobenius Pair 1)."
         },
         {
           "step_num": 4,
-          "opcode": "EVALT",
-          "domain_action": "Affirm the even branch where n is divisible by 2, permitting the halving operation."
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute n_k exactly as 2q + r, closing Frobenius Pair 1 and verifying structural integrity."
         },
         {
           "step_num": 5,
-          "opcode": "AFWD",
-          "domain_action": "Execute the halving morphism n/2 on the affirmed even path."
+          "opcode": "FSPLIT",
+          "domain_action": "Branch execution path based on parity into Odd and Even arms (Frobenius Pair 2)."
         },
         {
           "step_num": 6,
-          "opcode": "EVALF",
-          "domain_action": "Negate the even condition, routing the odd branch to the expansion operation."
+          "opcode": "EVALT",
+          "domain_action": "T-arm anchor: affirmative evaluation that n_k is Odd."
         },
         {
           "step_num": 7,
           "opcode": "AFWD",
-          "domain_action": "Execute the expansion morphism 3n+1 on the routed odd path."
+          "domain_action": "T-arm forward morphism: apply 3n+1 ascent operation."
         },
         {
           "step_num": 8,
-          "opcode": "FFUSE",
-          "domain_action": "Reconstitute the even and odd branches back into a single unified trajectory via parity encoding."
+          "opcode": "EVALF",
+          "domain_action": "F-arm anchor: negative evaluation that n_k is Even."
         },
         {
           "step_num": 9,
-          "opcode": "CLINK",
-          "domain_action": "Sequentially chain the next iteration T^k(n) to continue the forward morphism."
+          "opcode": "AREV",
+          "domain_action": "F-arm reverse morphism: apply n/2 descent operation."
         },
         {
           "step_num": 10,
-          "opcode": "IMSCRIB",
-          "domain_action": "Self-reference the trajectory's parity sequence to verify injectivity and path uniqueness."
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the single next state n_{k+1} from the active branch, closing Frobenius Pair 2."
         },
         {
           "step_num": 11,
-          "opcode": "FSPLIT",
-          "domain_action": "Re-branch the iterated trajectory at the next parity gate to monitor divergence."
+          "opcode": "IFIX",
+          "domain_action": "Append n_{k+1} to the permanent, irreversible hailstone trajectory log."
         },
         {
           "step_num": 12,
-          "opcode": "EVALT",
-          "domain_action": "Affirm the convergent path that trends toward the terminal cycle basin."
+          "opcode": "CLINK",
+          "domain_action": "Chain the new state n_{k+1} sequentially to the next iteration cycle."
         },
         {
           "step_num": 13,
-          "opcode": "EVALF",
-          "domain_action": "Flag the hypothetical divergent path or exotic cycle state."
+          "opcode": "TANCH",
+          "domain_action": "Terminal anchor check: halt if n_{k+1} equals the boundary value 1."
         },
         {
           "step_num": 14,
           "opcode": "ENGAGR",
-          "domain_action": "Hold the critical phase boundary \u03c6\u0308y where negative drift and expansion coexist without resolution."
-        },
-        {
-          "step_num": 15,
-          "opcode": "IFIX",
-          "domain_action": "Permanently record the logarithmic drift \u03bb \u2248 -0.074 as an irreversible bounding constraint."
-        },
-        {
-          "step_num": 16,
-          "opcode": "AREV",
-          "domain_action": "Reverse the morphism to trace backward through the inverse tree T\u207b\u00b9 from the terminal cycle."
-        },
-        {
-          "step_num": 17,
-          "opcode": "FSPLIT",
-          "domain_action": "Branch the inverse relation into the doubling preimage 2m and the conditional preimage (m-1)/3."
-        },
-        {
-          "step_num": 18,
-          "opcode": "EVALT",
-          "domain_action": "Affirm the valid inverse preimages that populate the tree structure."
-        },
-        {
-          "step_num": 19,
-          "opcode": "FFUSE",
-          "domain_action": "Fuse all inverse branches to reconstruct the complete tree T = Z\u207a."
-        },
-        {
-          "step_num": 20,
-          "opcode": "IMSCRIB",
-          "domain_action": "Self-reference the bidirectional coupling to certify S_c \u2194 I_d exhaustion."
-        },
-        {
-          "step_num": 21,
-          "opcode": "IFIX",
-          "domain_action": "Permanently fix the completeness of the inverse tree as a structural witness."
-        },
-        {
-          "step_num": 22,
-          "opcode": "AFWD",
-          "domain_action": "Advance the unified trajectory forward one final step into the terminal attractor."
-        },
-        {
-          "step_num": 23,
-          "opcode": "TANCH",
-          "domain_action": "Anchor the entire system at the closed boundary of the cycle 1 \u2192 4 \u2192 2 \u2192 1."
-        },
-        {
-          "step_num": 24,
-          "opcode": "IMSCRIB",
-          "domain_action": "Close the ouroboric loop with self-referential proof certification at O_inf."
+          "domain_action": "Enter the 4-2-1 trivial cycle paradice, holding both termination and infinite looping simultaneously."
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "Imscribing Grammar translator mapping Collatz dynamics to IMASM opcodes",
-      "ipc_mechanism": "Parity sequence transmission between forward and inverse branches",
-      "memory_mechanism": "Trajectory history stored as compressed binary parity strings",
-      "scheduler_mechanism": "Deterministic iteration order governed by the Collatz map T(n)",
-      "alfs_store": "The canonical reference set Z\u207a and terminal cycle 1\u21924\u21922\u21921",
+      "compiler_frontend": "Arithmetic Logic Unit (ALU) executing modulo, shift, and add operations.",
+      "ipc_mechanism": "Register bus passing the current integer n_k between arithmetic stages.",
+      "memory_mechanism": "Unbounded tape or dynamic array storing the append-only hailstone sequence history.",
+      "scheduler_mechanism": "Clock cycle driving the deterministic iterative step k -> k+1.",
+      "alfs_store": "The Peano axioms and standard integer arithmetic defining the domain.",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "Computational steps and parity evaluations",
-      "pre_cycle_state": "Arbitrary positive integer n awaiting iteration",
-      "post_cycle_state": "Fixed trajectory anchored to the terminal cycle",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The deterministic Collatz map preserves information via parity encoding and bidirectional coupling, making the cycle entropy-conservative.",
+      "cycle_cost": "Computational cycles and memory allocation per iteration.",
+      "pre_cycle_state": "Integer n_k at step k.",
+      "post_cycle_state": "Integer n_{k+1} at step k+1.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 Information is conserved in the append-only trajectory log, making the global system entropy-conservative despite local arithmetic compression and expansion.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AFWD \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 IFIX \u2192 AREV \u2192 FSPLIT \u2192 EVALT \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 AFWD \u2192 TANCH \u2192 IMSCRIB\n-- Class: Collatz Theorem\n-- Fingerprint: sig=(11,5,6,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=24\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 7), (16, 18)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [10] FSPLIT    gran   := \ud801\udc5a               \ud801\udc60 \u2192 \u2299  | split \u03b4 \u2014 range decomposition\n--   [11] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc56  | evaluate-true \u2014 criticality gate open\n--   [12] EVALF     chir   := \ud801\udc56               \u2299 \u2192 \ud801\udc73  | evaluate-false \u2014 chirality check\n--   [13] ENGAGR    stoi   := \ud801\udc73               \ud801\udc56 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [14] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc57  | irreversible fixation \u2014 winding number\n--   [15] AREV      pol    := \ud801\udc57               \ud801\udc6d \u2192 \ud801\udc5a  | reverse morphism \u2014 parity flip\n--   [16] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [17] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [18] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [19] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [20] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [21] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc61  | forward morphism \u2014 bidirectional arrow\n--   [22] TANCH     top    := \ud801\udc61               \ud801\udc7e \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [23] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc7c  | identity \u2014 self-imscription\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def collatz_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc7e)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Initialize the domain with an arbitrary positive integer n in the void state ...)\n  (.arrow \ud801\udc7e \ud801\udc7c \ud801\udc5a)  -- [1] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Apply the forward Collatz map T(n) as a directed transformation toward the te...)\n  -- FSPLIT [2] (gran := \ud801\udc5a) (Branch the trajectory at the parity gate \u03b4(n) into even and odd computational paths.) / FFUSE [7] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [3] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Affirm the even branch where n is divisible by 2, permitting the halving oper...)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [4] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Execute the halving morphism n/2 on the affirmed even path.)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [5] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Negate the even condition, routing the odd branch to the expansion operation.)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [6] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Execute the expansion morphism 3n+1 on the routed odd path.))\n    -- reconnect at FFUSE [7]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc71)  -- [7] FFUSE | stoi := \ud801\udc59 (Reconstitute the even and odd branches back into a single unified trajectory via parity encoding.)\n  (.arrow \ud801\udc71 \ud801\udc59 \ud801\udc60)  -- [8] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Sequentially chain the next iteration T^k(n) to continue the forward morphism.)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc5a)  -- [9] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Self-reference the trajectory's parity sequence to verify injectivity and pat...)\n  (.arrow \ud801\udc5a \ud801\udc60 \u2299)  -- [10] FSPLIT | gran := \ud801\udc5a | split \u03b4 \u2014 range decomposition (Re-branch the iterated trajectory at the next parity gate to monitor divergence.)\n  (.arrow \u2299 \ud801\udc5a \ud801\udc56)  -- [11] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Affirm the convergent path that trends toward the terminal cycle basin.)\n  (.arrow \ud801\udc56 \u2299 \ud801\udc73)  -- [12] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Flag the hypothetical divergent path or exotic cycle state.)\n  (.arrow \ud801\udc73 \ud801\udc56 \ud801\udc6d)  -- [13] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Hold the critical phase boundary \u03c6\u0308y where negative drift and expansion coexi...)\n  (.arrow \ud801\udc6d \ud801\udc73 \ud801\udc57)  -- [14] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Permanently record the logarithmic drift \u03bb \u2248 -0.074 as an irreversible boundi...)\n  (.arrow \ud801\udc57 \ud801\udc6d \ud801\udc5a)  -- [15] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Reverse the morphism to trace backward through the inverse tree T\u207b\u00b9 from the ...)\n  -- FSPLIT [16] (gran := \ud801\udc5a) (Branch the inverse relation into the doubling preimage 2m and the conditional preimage (m-1)/3.) / FFUSE [18] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (1 nodes)\n      (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [17] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Affirm the valid inverse preimages that populate the tree structure.)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [18]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [18] FFUSE | stoi := \ud801\udc59 (Fuse all inverse branches to reconstruct the complete tree T = Z\u207a.)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc6d)  -- [19] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Self-reference the bidirectional coupling to certify S_c \u2194 I_d exhaustion.)\n  (.arrow \ud801\udc6d \ud801\udc60 \ud801\udc7e)  -- [20] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Permanently fix the completeness of the inverse tree as a structural witness.)\n  (.arrow \ud801\udc7e \ud801\udc6d \ud801\udc61)  -- [21] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Advance the unified trajectory forward one final step into the terminal attra...)\n  (.arrow \ud801\udc61 \ud801\udc7e \ud801\udc60)  -- [22] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Anchor the entire system at the closed boundary of the cycle 1 \u2192 4 \u2192 2 \u2192 1.)\n  (.arrow \ud801\udc60 \ud801\udc61 \ud801\udc7c)  -- [23] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Close the ouroboric loop with self-referential proof certification at O_inf.)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def collatz_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  (collatz_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  (collatz_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem collatz_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 FFUSE \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 IFIX \u2192 CLINK \u2192 TANCH \u2192 ENGAGR\n-- Class: Collatz Theorem\n-- Fingerprint: sig=(6,4,3,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 3), (4, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc61  | composition \u2014 regime coherence\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc71 \u2192 \ud801\udc73  | terminal object \u2014 connectivity boundary\n--   [13] ENGAGR    stoi   := \ud801\udc73               \ud801\udc61 \u2192 \ud801\udc7c  | engage paradox \u2014 B-state, both arms\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def collatz_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc73 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc60)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Establish the initial seed integer n_0 in the void state.)\n  (.arrow \ud801\udc60 \ud801\udc7c \ud801\udc5a)  -- [1] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Self-reference the current integer n_k at step k.)\n  -- FSPLIT [2] (gran := \ud801\udc5a) (Decompose n_k into remainder r and quotient q (Frobenius Pair 1).) / FFUSE [3] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (0 nodes)\n      (.refl \ud801\udc59)  -- T-branch: empty arc (direct to FFUSE.T)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [3]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc59)  -- [3] FFUSE | stoi := \ud801\udc59 (Reconstitute n_k exactly as 2q + r, closing Frobenius Pair 1 and verifying structural integrity.)\n  -- FSPLIT [4] (gran := \ud801\udc5a) (Branch execution path based on parity into Odd and Even arms (Frobenius Pair 2).) / FFUSE [9] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [5] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-arm anchor: affirmative evaluation that n_k is Odd.)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [6] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (T-arm forward morphism: apply 3n+1 ascent operation.)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [7] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (F-arm anchor: negative evaluation that n_k is Even.)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [8] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (F-arm reverse morphism: apply n/2 descent operation.))\n    -- reconnect at FFUSE [9]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc6d)  -- [9] FFUSE | stoi := \ud801\udc59 (Reconstitute the single next state n_{k+1} from the active branch, closing Frobenius Pair 2.)\n  (.arrow \ud801\udc6d \ud801\udc59 \ud801\udc71)  -- [10] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Append n_{k+1} to the permanent, irreversible hailstone trajectory log.)\n  (.arrow \ud801\udc71 \ud801\udc6d \ud801\udc61)  -- [11] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Chain the new state n_{k+1} sequentially to the next iteration cycle.)\n  (.arrow \ud801\udc61 \ud801\udc71 \ud801\udc73)  -- [12] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Terminal anchor check: halt if n_{k+1} equals the boundary value 1.)\n  (.arrow \ud801\udc73 \ud801\udc61 \ud801\udc7c)  -- [13] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Enter the 4-2-1 trivial cycle paradice, holding both termination and infinite...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def collatz_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc73 :=\n  (collatz_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc73 :=\n  (collatz_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem collatz_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
   "notes": "Auto-designed from: Collatz Theorem"
 }

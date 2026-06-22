@@ -1,0 +1,205 @@
+{
+  "name": "Margulis Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Margulis Theorem",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "lattice",
+        "rigidity",
+        "deformation"
+      ],
+      "boundary_condition": "the space of all possible lattice configurations and their deformation constraints",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "undeformed lattice \u039b\u2080",
+        "justification": "void state before any perturbation; the pristine, uninitialized lattice configuration",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the rigidity constraint \u03c1(\u039b) = constant",
+        "justification": "terminal anchor that closes the system; the boundary condition that contains all valid deformations",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "continuous deformation \u03c6: \u039b \u2192 \u039b'",
+        "justification": "forward morphism; the directed transformation from one lattice configuration toward another via smooth deformation",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "inverse deformation \u03c6\u207b\u00b9: \u039b' \u2192 \u039b",
+        "justification": "reverse/descent morphism; the contravariant path back to the original lattice, undoing the deformation",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of deformations \u03c6\u2082 \u2218 \u03c6\u2081",
+        "justification": "sequential chaining; applying one deformation after another to build complex transformations",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "identity deformation id: \u039b \u2192 \u039b",
+        "justification": "self-reference; the lattice recognizing itself under the trivial (no) deformation",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "rigidity dichotomy: does the lattice admit non-trivial deformations?",
+        "justification": "branches into two paths: (T) rigid lattice with only trivial deformations, (F) flexible lattice with continuous deformation family",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "reconstruction of the original lattice \u039b from its rigidity classification",
+        "justification": "reconstitutes the input lattice by fusing the rigid and flexible branches; FFUSE(FSPLIT(\u039b)) = \u039b holds because the rigidity property determines the lattice up to isometry",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "rigidity confirmed: \u039b is arithmetically rigid",
+        "justification": "affirmative branch; the lattice admits only trivial deformations (Margulis rigidity holds)",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "rigidity fails: \u039b admits non-trivial continuous deformations",
+        "justification": "negative branch; the lattice is flexible, contradicting the rigidity hypothesis",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "marginal case: lattice at the boundary between rigidity and flexibility",
+        "justification": "paradice state; both rigidity and flexibility are simultaneously held without resolution, as in deformation spaces with measure-zero rigid loci",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "permanent record of rigidity classification",
+        "justification": "append-only fixation; once a lattice is classified as rigid or flexible, this determination is irreversible and becomes part of the mathematical record",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: rigidity dichotomy",
+      "split_input": "lattice \u039b with its geometric and arithmetic properties",
+      "split_outputs": [
+        "T-branch: rigid lattices (only trivial deformations)",
+        "F-branch: flexible lattices (continuous deformation families)"
+      ],
+      "fuse_element": "FFUSE: reconstruction via rigidity classification",
+      "fuse_result": "original lattice \u039b, recovered from its rigidity type and geometric invariants",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 uninitialized lattice before any rigidity analysis; no deformation structure yet assigned",
+      "true_description": "01 \u2014 lattice is arithmetically rigid; only trivial deformations exist; Margulis theorem holds",
+      "false_description": "10 \u2014 lattice admits non-trivial continuous deformations; rigidity fails; flexible family exists",
+      "both_description": "11 \u2014 paradice state: lattice simultaneously exhibits rigid and flexible properties, held in superposition at the boundary of deformation space",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "genesis of an undeformed lattice \u039b\u2080 in its pristine, unanalyzed state"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "apply a candidate deformation \u03c6 to the lattice, moving it toward a transformed configuration \u039b'"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "compose multiple deformations \u03c6\u2082 \u2218 \u03c6\u2081 to build a continuous family of transformations"
+        },
+        {
+          "step_num": 4,
+          "opcode": "IMSCRIB",
+          "domain_action": "recognize the identity deformation id as the self-reference point; the lattice unchanged"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "branch into rigidity dichotomy \u2014 does the lattice admit only trivial deformations (T) or continuous families (F)?"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "T-branch affirmed \u2014 lattice is rigid; only trivial deformations exist; arithmetic rigidity holds"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "on the F-branch, apply inverse deformation \u03c6\u207b\u00b9 to reverse any transformation and test flexibility"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "F-branch affirmed \u2014 lattice is flexible; non-trivial continuous deformations exist; rigidity fails"
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "at the boundary, both rigidity and flexibility are simultaneously held without resolution; paradice state"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute the original lattice \u039b from its rigidity classification; FFUSE(FSPLIT(\u039b)) = \u039b"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "permanently record the rigidity classification; this determination is irreversible and becomes canonical"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "close the system with the rigidity constraint \u03c1(\u039b) = constant; the boundary that contains all valid deformations"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Margulis rigidity theorem itself \u2014 translates the geometric and arithmetic properties of a lattice into a rigidity verdict",
+      "ipc_mechanism": "deformation family communication \u2014 rigid and flexible branches exchange information through the rigidity invariant",
+      "memory_mechanism": "the lattice's arithmetic and geometric invariants (determinant, discriminant, automorphism group) stored as canonical data",
+      "scheduler_mechanism": "the order of deformation application and rigidity testing; determined by the lattice's dimension and arithmetic complexity",
+      "alfs_store": "the space of all lattices in \u211d\u207f, indexed by their rigidity type and deformation family",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "the computational cost of rigidity verification; proportional to the lattice dimension and complexity of the deformation family",
+      "pre_cycle_state": "unclassified lattice \u039b with unknown rigidity status; maximum entropy in deformation space",
+      "post_cycle_state": "classified lattice with determined rigidity type; entropy reduced by the rigidity verdict",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the rigidity classification is a pure information operation; no energy is dissipated, only geometric structure is revealed",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: Margulis Theorem\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(4, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def margulis_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc7e)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (genesis of an undeformed lattice \u039b\u2080 in its pristine, unanalyzed state)\n  (.arrow \ud801\udc7e \ud801\udc7c \ud801\udc71)  -- [1] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (apply a candidate deformation \u03c6 to the lattice, moving it toward a transforme...)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc60)  -- [2] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose multiple deformations \u03c6\u2082 \u2218 \u03c6\u2081 to build a continuous family of transfo...)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc5a)  -- [3] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (recognize the identity deformation id as the self-reference point; the lattic...)\n  -- FSPLIT [4] (gran := \ud801\udc5a) (branch into rigidity dichotomy \u2014 does the lattice admit only trivial deformations (T) or continuous families (F)?) / FFUSE [9] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [5] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-branch affirmed \u2014 lattice is rigid; only trivial deformations exist; arithm...)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [6] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (on the F-branch, apply inverse deformation \u03c6\u207b\u00b9 to reverse any transformation ...)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [7] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (F-branch affirmed \u2014 lattice is flexible; non-trivial continuous deformations ...)\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [8] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (at the boundary, both rigidity and flexibility are simultaneously held withou...))\n    -- reconnect at FFUSE [9]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc6d)  -- [9] FFUSE | stoi := \ud801\udc59 (reconstitute the original lattice \u039b from its rigidity classification; FFUSE(FSPLIT(\u039b)) = \u039b)\n  (.arrow \ud801\udc6d \ud801\udc59 \ud801\udc61)  -- [10] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (permanently record the rigidity classification; this determination is irrever...)\n  (.arrow \ud801\udc61 \ud801\udc6d \ud801\udc7c)  -- [11] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (close the system with the rigidity constraint \u03c1(\u039b) = constant; the boundary t...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def margulis_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (margulis_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def margulis_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (margulis_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem margulis_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Margulis Theorem"
+}

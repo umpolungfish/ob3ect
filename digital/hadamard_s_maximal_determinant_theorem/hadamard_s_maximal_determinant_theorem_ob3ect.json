@@ -1,0 +1,240 @@
+{
+  "name": "Hadamard's Maximal Determinant Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Hadamard's Maximal Determinant Theorem",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "matrix determinant",
+        "orthogonal constraint",
+        "extremal optimization"
+      ],
+      "boundary_condition": "The set of all n\u00d7n matrices with entries in {\u00b11} and the supremum of their determinants, bounded by Hadamard's inequality det(H) \u2264 n^(n/2).",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "uninitialized matrix space",
+        "justification": "Before any matrix is constructed, the domain exists as pure potential \u2014 no specific entries, no determinant value, void of constraint.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Hadamard's inequality det(H) \u2264 n^(n/2)",
+        "justification": "The terminal anchor that closes and contains the entire system \u2014 the upper bound that all Hadamard matrices must satisfy, the hermetic seal of the theorem.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "row/column orthogonalization",
+        "justification": "Forward morphism: the directed transformation toward orthogonality \u2014 each row becomes perpendicular to every other row, advancing toward the maximal determinant state.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "row/column anti-correlation reduction",
+        "justification": "Reverse/descent: the contravariant operation that undoes non-orthogonality, descending from arbitrary matrices back toward the orthogonal constraint space.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential row construction",
+        "justification": "Composition: chaining the construction of each row such that the next row is built orthogonal to all previous rows, composing the full matrix incrementally.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-adjoint verification H^T H = nI",
+        "justification": "Identity/self-reference: the matrix recognizes itself through its own transpose \u2014 the Hadamard matrix is its own canonical form, self-witnessing orthogonality.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "branch into two candidate row vectors",
+        "justification": "Co-multiplication: one row-construction decision splits into two orthogonal branches \u2014 either the next row is +1-aligned or \u22121-aligned with the constraint subspace.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "reconstitute full orthogonal matrix from both branches",
+        "justification": "Multiplication: the two branches (both row choices) fuse back into a single n\u00d7n matrix that satisfies H^T H = nI, recovering the original orthogonality constraint.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "determinant achieves n^(n/2)",
+        "justification": "Affirmative/success: the matrix is Hadamard \u2014 all rows are mutually orthogonal, determinant is maximal, the theorem's condition is satisfied.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "determinant falls below n^(n/2)",
+        "justification": "Negative/failure: the matrix is not Hadamard \u2014 rows are not fully orthogonal, determinant is suboptimal, the extremal condition is violated.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "existence of Hadamard matrices for certain n only",
+        "justification": "Paradice: Hadamard matrices exist for n=1,2, and n\u22610 (mod 4), but the theorem holds universally for all n \u2014 both existence and non-existence are simultaneously held in the domain.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "canonical Hadamard matrix record (e.g., Sylvester construction)",
+        "justification": "Permanent append-only record: once a Hadamard matrix is constructed and verified, it becomes an immutable witness to the theorem \u2014 the Sylvester construction is the canonical fixed reference.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: row-orthogonalization decision",
+      "split_input": "partial n\u00d7k matrix with k rows already orthogonal",
+      "split_outputs": [
+        "T-branch: next row aligned with positive constraint subspace",
+        "F-branch: next row aligned with negative constraint subspace"
+      ],
+      "fuse_element": "FFUSE: orthogonal matrix completion",
+      "fuse_result": "full n\u00d7n matrix H where H^T H = nI, det(H) = \u00b1n^(n/2)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 no matrix exists, no determinant computed, pure potential space before construction begins",
+      "true_description": "01 \u2014 matrix is Hadamard, all rows orthogonal, det(H) = n^(n/2), extremal condition satisfied",
+      "false_description": "10 \u2014 matrix is non-Hadamard, rows not fully orthogonal, det(H) < n^(n/2), suboptimal",
+      "both_description": "11 \u2014 paradice: the theorem simultaneously asserts universality (holds for all n) and existence-restriction (only for n=1,2,4k), both truths held without resolution",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "uninitialized matrix space \u2205 \u2014 no entries, no structure, void state before any construction"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "Hadamard's inequality det(H) \u2264 n^(n/2) \u2014 the terminal boundary that contains all valid matrices"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "row orthogonalization morphism \u2014 directed transformation toward orthogonal rows"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "sequential row construction \u2014 compose each new row orthogonal to all previous rows"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "branch into two candidate row vectors \u2014 split the construction decision into T-arm (positive alignment) and F-arm (negative alignment)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "T-arm evaluation \u2014 candidate row satisfies orthogonality constraint with all previous rows"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "forward morphism on T-arm \u2014 advance toward maximal determinant by accepting this row"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "F-arm evaluation \u2014 alternative candidate row also satisfies orthogonality constraint"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AREV",
+          "domain_action": "reverse morphism on F-arm \u2014 descend through the alternative orthogonal direction"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute full orthogonal matrix \u2014 fuse both branches back into single n\u00d7n matrix H where H^T H = nI"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IMSCRIB",
+          "domain_action": "self-adjoint verification \u2014 matrix recognizes itself through H^T H = nI, identity self-reference"
+        },
+        {
+          "step_num": 12,
+          "opcode": "CLINK",
+          "domain_action": "compose determinant evaluation \u2014 chain the orthogonality verification into determinant computation"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALT",
+          "domain_action": "determinant achieves n^(n/2) \u2014 success state, Hadamard matrix confirmed"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "canonical Hadamard matrix record \u2014 permanent witness, Sylvester construction fixed in memory"
+        },
+        {
+          "step_num": 15,
+          "opcode": "ENGAGR",
+          "domain_action": "existence paradice \u2014 simultaneously hold that Hadamard matrices exist for n=1,2,4k AND that the theorem's inequality holds universally for all n"
+        },
+        {
+          "step_num": 16,
+          "opcode": "AREV",
+          "domain_action": "contravariant descent \u2014 from specific Hadamard instances back to the universal inequality bound"
+        },
+        {
+          "step_num": 17,
+          "opcode": "IMSCRIB",
+          "domain_action": "self-reference loop \u2014 the theorem recognizes itself in every Hadamard matrix constructed"
+        },
+        {
+          "step_num": 18,
+          "opcode": "CLINK",
+          "domain_action": "compose back to boundary \u2014 chain all orthogonal matrices back to the Hadamard inequality constraint"
+        },
+        {
+          "step_num": 19,
+          "opcode": "TANCH",
+          "domain_action": "terminal anchor \u2014 all valid matrices satisfy det(H) \u2264 n^(n/2), system closed"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Sylvester's recursive construction algorithm \u2014 translates the orthogonality requirement into explicit \u00b11 matrix entries via Kronecker product H_2k = [[H_k, H_k], [H_k, -H_k]]",
+      "ipc_mechanism": "row-orthogonality verification protocol \u2014 each new row communicates its inner products with all previous rows; if all are zero, row is accepted; otherwise rejected",
+      "memory_mechanism": "matrix storage as orthogonal basis \u2014 rows stored as vectors in R^n; orthogonality cached as Gram matrix G = H^T H = nI; determinant stored as \u00b1n^(n/2)",
+      "scheduler_mechanism": "greedy row-by-row construction \u2014 process rows sequentially from 1 to n; at each step, branch into two orthogonal candidates and fuse back to single matrix state",
+      "alfs_store": "Hadamard matrix catalog \u2014 canonical reference store of all known Hadamard matrices for n \u2264 1000, indexed by Sylvester construction order and equivalence class",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "per row: O(n) inner product computations; per matrix: O(n\u00b2) orthogonality verifications; per determinant: O(n\u00b3) arithmetic operations",
+      "pre_cycle_state": "arbitrary n\u00d7n matrix with \u00b11 entries, rows potentially non-orthogonal, determinant unknown",
+      "post_cycle_state": "Hadamard matrix (if exists) with H^T H = nI, det(H) = \u00b1n^(n/2), or certified non-Hadamard with det(H) < n^(n/2)",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the cycle is entropy-conservative because orthogonalization is a reversible linear transformation (orthogonal matrices form a group); information is preserved through the FSPLIT/FFUSE pair, and the determinant is a pure function of the matrix entries \u2014 no information is lost or created, only reorganized toward the extremal state.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 IMSCRIB \u2192 CLINK \u2192 EVALT \u2192 IFIX \u2192 ENGAGR \u2192 AREV \u2192 IMSCRIB \u2192 CLINK \u2192 TANCH\n-- Class: Hadamard's Maximal Determinant Theorem\n-- Fingerprint: sig=(12,2,4,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=19\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(4, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [10] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \u2299  | composition \u2014 regime coherence\n--   [12] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc6d  | evaluate-true \u2014 criticality gate open\n--   [13] IFIX      prot   := \ud801\udc6d               \u2299 \u2192 \ud801\udc73  | irreversible fixation \u2014 winding number\n--   [14] ENGAGR    stoi   := \ud801\udc73               \ud801\udc6d \u2192 \ud801\udc57  | engage paradox \u2014 B-state, both arms\n--   [15] AREV      pol    := \ud801\udc57               \ud801\udc73 \u2192 \ud801\udc60  | reverse morphism \u2014 parity flip\n--   [16] IMSCRIB   gram   := \ud801\udc60               \ud801\udc57 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [17] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc61  | composition \u2014 regime coherence\n--   [18] TANCH     top    := \ud801\udc61               \ud801\udc71 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def hadamards_maximal_determinant_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (uninitialized matrix space \u2205 \u2014 no entries, no structure, void state before an...)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc7e)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Hadamard's inequality det(H) \u2264 n^(n/2) \u2014 the terminal boundary that contains ...)\n  (.arrow \ud801\udc7e \ud801\udc61 \ud801\udc71)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (row orthogonalization morphism \u2014 directed transformation toward orthogonal rows)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc5a)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (sequential row construction \u2014 compose each new row orthogonal to all previous...)\n  -- FSPLIT [4] (gran := \ud801\udc5a) (branch into two candidate row vectors \u2014 split the construction decision into T-arm (positive alignment) and F-arm (negative alignment)) / FFUSE [9] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [5] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-arm evaluation \u2014 candidate row satisfies orthogonality constraint with all ...)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [6] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (forward morphism on T-arm \u2014 advance toward maximal determinant by accepting t...)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [7] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (F-arm evaluation \u2014 alternative candidate row also satisfies orthogonality con...)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [8] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (reverse morphism on F-arm \u2014 descend through the alternative orthogonal direction))\n    -- reconnect at FFUSE [9]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [9] FFUSE | stoi := \ud801\udc59 (reconstitute full orthogonal matrix \u2014 fuse both branches back into single n\u00d7n matrix H where H^T H = nI)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc71)  -- [10] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (self-adjoint verification \u2014 matrix recognizes itself through H^T H = nI, iden...)\n  (.arrow \ud801\udc71 \ud801\udc60 \u2299)  -- [11] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose determinant evaluation \u2014 chain the orthogonality verification into de...)\n  (.arrow \u2299 \ud801\udc71 \ud801\udc6d)  -- [12] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (determinant achieves n^(n/2) \u2014 success state, Hadamard matrix confirmed)\n  (.arrow \ud801\udc6d \u2299 \ud801\udc73)  -- [13] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (canonical Hadamard matrix record \u2014 permanent witness, Sylvester construction ...)\n  (.arrow \ud801\udc73 \ud801\udc6d \ud801\udc57)  -- [14] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (existence paradice \u2014 simultaneously hold that Hadamard matrices exist for n=1...)\n  (.arrow \ud801\udc57 \ud801\udc73 \ud801\udc60)  -- [15] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (contravariant descent \u2014 from specific Hadamard instances back to the universa...)\n  (.arrow \ud801\udc60 \ud801\udc57 \ud801\udc71)  -- [16] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (self-reference loop \u2014 the theorem recognizes itself in every Hadamard matrix ...)\n  (.arrow \ud801\udc71 \ud801\udc60 \ud801\udc61)  -- [17] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose back to boundary \u2014 chain all orthogonal matrices back to the Hadamard...)\n  (.arrow \ud801\udc61 \ud801\udc71 \ud801\udc7c)  -- [18] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (terminal anchor \u2014 all valid matrices satisfy det(H) \u2264 n^(n/2), system closed)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def hadamards_maximal_determinant_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (hadamards_maximal_determinant_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def hadamards_maximal_determinant_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (hadamards_maximal_determinant_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem hadamards_maximal_determinant_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Hadamard's Maximal Determinant Theorem"
+}

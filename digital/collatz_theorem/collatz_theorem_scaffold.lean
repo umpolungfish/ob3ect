@@ -1,10 +1,10 @@
--- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → AFWD → EVALF → AFWD → FFUSE → CLINK → IMSCRIB → FSPLIT → EVALT → EVALF → ENGAGR → IFIX → AREV → FSPLIT → EVALT → FFUSE → IMSCRIB → IFIX → AFWD → TANCH → IMSCRIB
+-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → FFUSE → FSPLIT → EVALT → AFWD → EVALF → AREV → FFUSE → IFIX → CLINK → TANCH → ENGAGR
 -- Class: Collatz Theorem
--- Fingerprint: sig=(11,5,6,2)
+-- Fingerprint: sig=(6,4,3,1)
 --   self_ref=False | frobenius_order=3
---   dialetheia_complete=True | period=24
+--   dialetheia_complete=True | period=14
 -- Expected tier: O₂
--- FSPLIT/FFUSE pairs: [(2, 7), (16, 18)]
+-- FSPLIT/FFUSE pairs: [(2, 3), (4, 9)]
 
 import Imscribing.IGMorphism
 import Imscribing.IGFunctor
@@ -15,82 +15,63 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
---   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction
---   [1] AFWD      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow
+--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction
+--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription
 --   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [4] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [5] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
+--   [3] FFUSE     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode
+--   [4] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
+--   [5] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [6] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [7] FFUSE     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
---   [8] CLINK     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
---   [9] IMSCRIB   gram   := 𐑠               𐑱 → 𐑚  | identity — self-imscription
---   [10] FSPLIT    gran   := 𐑚               𐑠 → ⊙  | split δ — range decomposition
---   [11] EVALT     crit   := ⊙               𐑚 → 𐑖  | evaluate-true — criticality gate open
---   [12] EVALF     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check
---   [13] ENGAGR    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms
---   [14] IFIX      prot   := 𐑭               𐑳 → 𐑗  | irreversible fixation — winding number
---   [15] AREV      pol    := 𐑗               𐑭 → 𐑚  | reverse morphism — parity flip
---   [16] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [17] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [18] FFUSE     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
---   [19] IMSCRIB   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [20] IFIX      prot   := 𐑭               𐑠 → 𐑾  | irreversible fixation — winding number
---   [21] AFWD      rel    := 𐑾               𐑭 → 𐑡  | forward morphism — bidirectional arrow
---   [22] TANCH     top    := 𐑡               𐑾 → 𐑠  | terminal object — connectivity boundary
---   [23] IMSCRIB   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription
+--   [7] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
+--   [8] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
+--   [9] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
+--   [10] IFIX      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [11] CLINK     fid    := 𐑱               𐑭 → 𐑡  | composition — regime coherence
+--   [12] TANCH     top    := 𐑡               𐑱 → 𐑳  | terminal object — connectivity boundary
+--   [13] ENGAGR    stoi   := 𐑳               𐑡 → 𐑼  | engage paradox — B-state, both arms
 
 -- ── Main IGProtocol term ────────────────────────────────────────────────────
 
-noncomputable def collatz_theorem_protocol : IGProtocol 𐑼 𐑠 :=
+noncomputable def collatz_theorem_protocol : IGProtocol 𐑼 𐑳 :=
   .withGram 𐑠 <|
   -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the domain with an arbitrary positive integer n in the void state ...)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply the forward Collatz map T(n) as a directed transformation toward the te...)
-  -- FSPLIT [2] (gran := 𐑚) (Branch the trajectory at the parity gate δ(n) into even and odd computational paths.) / FFUSE [7] (stoi := 𐑙)
+  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Establish the initial seed integer n_0 in the void state.)
+  (.arrow 𐑠 𐑼 𐑚)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference the current integer n_k at step k.)
+  -- FSPLIT [2] (gran := 𐑚) (Decompose n_k into remainder r and quotient q (Frobenius Pair 1).) / FFUSE [3] (stoi := 𐑙)
+  .seq
+    (.prod
+      -- T-branch (0 nodes)
+      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
+      -- F-branch (0 nodes)
+      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
+    -- reconnect at FFUSE [3]: μ closes the Frobenius pair
+    (.arrow 𐑙 𐑙 𐑙)  -- [3] FFUSE | stoi := 𐑙 (Reconstitute n_k exactly as 2q + r, closing Frobenius Pair 1 and verifying structural integrity.)
+  -- FSPLIT [4] (gran := 𐑚) (Branch execution path based on parity into Odd and Even arms (Frobenius Pair 2).) / FFUSE [9] (stoi := 𐑙)
   .seq
     (.prod
       -- T-branch (2 nodes)
       .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the even branch where n is divisible by 2, permitting the halving oper...)
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Execute the halving morphism n/2 on the affirmed even path.)
+        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (T-arm anchor: affirmative evaluation that n_k is Odd.)
+        (.arrow 𐑾 𐑚 𐑙)  -- [6] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (T-arm forward morphism: apply 3n+1 ascent operation.)
       -- F-branch (2 nodes)
       .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [5] EVALF | chir := 𐑖 | evaluate-false — chirality check (Negate the even condition, routing the odd branch to the expansion operation.)
-        (.arrow 𐑾 𐑚 𐑙)  -- [6] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Execute the expansion morphism 3n+1 on the routed odd path.))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (Reconstitute the even and odd branches back into a single unified trajectory via parity encoding.)
-  (.arrow 𐑱 𐑙 𐑠)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (Sequentially chain the next iteration T^k(n) to continue the forward morphism.)
-  (.arrow 𐑠 𐑱 𐑚)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference the trajectory's parity sequence to verify injectivity and pat...)
-  (.arrow 𐑚 𐑠 ⊙)  -- [10] FSPLIT | gran := 𐑚 | split δ — range decomposition (Re-branch the iterated trajectory at the next parity gate to monitor divergence.)
-  (.arrow ⊙ 𐑚 𐑖)  -- [11] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the convergent path that trends toward the terminal cycle basin.)
-  (.arrow 𐑖 ⊙ 𐑳)  -- [12] EVALF | chir := 𐑖 | evaluate-false — chirality check (Flag the hypothetical divergent path or exotic cycle state.)
-  (.arrow 𐑳 𐑖 𐑭)  -- [13] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Hold the critical phase boundary φ̈y where negative drift and expansion coexi...)
-  (.arrow 𐑭 𐑳 𐑗)  -- [14] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record the logarithmic drift λ ≈ -0.074 as an irreversible boundi...)
-  (.arrow 𐑗 𐑭 𐑚)  -- [15] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse the morphism to trace backward through the inverse tree T⁻¹ from the ...)
-  -- FSPLIT [16] (gran := 𐑚) (Branch the inverse relation into the doubling preimage 2m and the conditional preimage (m-1)/3.) / FFUSE [18] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [17] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the valid inverse preimages that populate the tree structure.)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [18]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [18] FFUSE | stoi := 𐑙 (Fuse all inverse branches to reconstruct the complete tree T = Z⁺.)
-  (.arrow 𐑠 𐑙 𐑭)  -- [19] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference the bidirectional coupling to certify S_c ↔ I_d exhaustion.)
-  (.arrow 𐑭 𐑠 𐑾)  -- [20] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently fix the completeness of the inverse tree as a structural witness.)
-  (.arrow 𐑾 𐑭 𐑡)  -- [21] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Advance the unified trajectory forward one final step into the terminal attra...)
-  (.arrow 𐑡 𐑾 𐑠)  -- [22] TANCH | top := 𐑡 | terminal object — connectivity boundary (Anchor the entire system at the closed boundary of the cycle 1 → 4 → 2 → 1.)
-  (.arrow 𐑠 𐑡 𐑼)  -- [23] IMSCRIB | gram := 𐑠 | identity — self-imscription (Close the ouroboric loop with self-referential proof certification at O_inf.)
+        (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (F-arm anchor: negative evaluation that n_k is Even.)
+        (.arrow 𐑗 𐑚 𐑙)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (F-arm reverse morphism: apply n/2 descent operation.))
+    -- reconnect at FFUSE [9]: μ closes the Frobenius pair
+    (.arrow 𐑙 𐑙 𐑭)  -- [9] FFUSE | stoi := 𐑙 (Reconstitute the single next state n_{k+1} from the active branch, closing Frobenius Pair 2.)
+  (.arrow 𐑭 𐑙 𐑱)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (Append n_{k+1} to the permanent, irreversible hailstone trajectory log.)
+  (.arrow 𐑱 𐑭 𐑡)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Chain the new state n_{k+1} sequentially to the next iteration cycle.)
+  (.arrow 𐑡 𐑱 𐑳)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (Terminal anchor check: halt if n_{k+1} equals the boundary value 1.)
+  (.arrow 𐑳 𐑡 𐑼)  -- [13] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter the 4-2-1 trivial cycle paradice, holding both termination and infinite...)
 
 -- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
 
 -- truth arm
-noncomputable def collatz_theorem_true_arm : IGProtocol 𐑼 𐑠 :=
+noncomputable def collatz_theorem_true_arm : IGProtocol 𐑼 𐑳 :=
   (collatz_theorem_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def collatz_theorem_false_arm : IGProtocol 𐑼 𐑠 :=
+noncomputable def collatz_theorem_false_arm : IGProtocol 𐑼 𐑳 :=
   (collatz_theorem_protocol).restrictToEVALF
 
 -- ── Verification theorems ───────────────────────────────────────────────────

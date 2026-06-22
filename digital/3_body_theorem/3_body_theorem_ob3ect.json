@@ -1,0 +1,242 @@
+{
+  "name": "3-Body Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "3-Body Theorem",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "phase space",
+        "Hamiltonian",
+        "Jacobi coordinates",
+        "Poincar\u00e9 section",
+        "Lagrange points"
+      ],
+      "boundary_condition": "Conservation of total energy and momentum bounding the accessible phase space volume",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Empty Minkowski space",
+        "justification": "The void before masses are placed or time begins, representing an uninitialized physical state",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Liouville phase boundary",
+        "justification": "The closed boundary preserving phase space volume, containing the entire dynamical system",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Forward time integration",
+        "justification": "Directed transformation of the dynamical state forward in time via symplectic flow",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Time-reversal symmetry",
+        "justification": "Reversing the momentum vectors to trace the orbit backward, testing contravariant descent",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Symplectic map composition",
+        "justification": "Sequential chaining of discrete time-step propagators to build continuous evolution",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Constants of motion",
+        "justification": "Total energy and angular momentum, the state properties that remain identical to themselves throughout evolution",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Jacobi coordinate transform",
+        "justification": "Splits the absolute 3-body state into Center of Mass motion and Relative internal motion",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Inverse Jacobi transform",
+        "justification": "Reconstitutes the absolute 3-body state exactly from the Center of Mass and Relative coordinates",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Integrable periodic orbit",
+        "justification": "Affirmative state where closed-form, stable, or periodic solutions exist (e.g., Figure-8, Lagrange)",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Chaotic non-integrable trajectory",
+        "justification": "Negative state where trajectories diverge exponentially and no closed-form solution exists",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "KAM tori edge of chaos",
+        "justification": "A paradice where stable invariant tori and chaotic seas coexist simultaneously in phase space without resolution",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Poincar\u00e9 surface mapping",
+        "justification": "Permanent, irreversible record of trajectory intersections with a specific phase-space plane",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Jacobi coordinate transform",
+      "split_input": "Absolute 3-Body State (positions and momenta of 3 masses)",
+      "split_outputs": [
+        "Center of Mass State (1 body)",
+        "Relative Jacobi State (2 reduced masses)"
+      ],
+      "fuse_element": "Inverse Jacobi transform",
+      "fuse_result": "Absolute 3-Body State (exact recovery of original positions and momenta)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Pre-Big Bang or empty space with no masses, gravitational fields, or initial conditions defined",
+      "true_description": "Stable, integrable, or periodic orbital configurations such as Euler collinear, Lagrange equilateral, or Figure-8 orbits",
+      "false_description": "Chaotic, non-integrable trajectories exhibiting sensitive dependence on initial conditions and eventual ejection of a body",
+      "both_description": "Mixed phase space regions where KAM invariant tori (stable) and chaotic separatrices (unstable) coexist indefinitely",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the empty phase space with no masses or initial conditions, establishing the physical void"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Define the three point masses and their intrinsic properties, establishing their self-identity"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Assign initial position and momentum vectors to the three bodies, moving from void to a defined initial state"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Apply Jacobi coordinate transformation, splitting the absolute state into T-arm (Center of Mass) and F-arm (Relative coordinates)"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Anchor the T-arm; the Center of Mass moves uniformly, representing a trivially integrable success state"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "Propagate the Center of Mass forward in time via uniform linear motion along the T-arm"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Anchor the F-arm; the Relative coordinates contain the complex, non-linear gravitational interactions representing non-integrability"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "Inside the F-arm, split the relative Hamiltonian into inner T-arm (integrable Keplerian 2-body) and inner F-arm (non-integrable perturbation)"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "Anchor the inner T-arm; the Keplerian part admits closed-form elliptical solutions"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AFWD",
+          "domain_action": "Propagate the unperturbed Keplerian orbits forward in time along the inner T-arm"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALF",
+          "domain_action": "Anchor the inner F-arm; the perturbation part represents the chaotic 3-body coupling"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AREV",
+          "domain_action": "Apply time-reversal to the perturbation to test symmetry, revealing exponential divergence along the inner F-arm"
+        },
+        {
+          "step_num": 13,
+          "opcode": "FFUSE",
+          "domain_action": "Inner fuse; recombine the Keplerian and perturbation branches to reconstitute the full relative Hamiltonian"
+        },
+        {
+          "step_num": 14,
+          "opcode": "ENGAGR",
+          "domain_action": "Enter the KAM regime within the relative state, holding both stable invariant tori and chaotic seas in simultaneous paradice"
+        },
+        {
+          "step_num": 15,
+          "opcode": "CLINK",
+          "domain_action": "Chain the symplectic integration steps to evolve the full relative state over a finite time interval"
+        },
+        {
+          "step_num": 16,
+          "opcode": "IFIX",
+          "domain_action": "Record the trajectory intersections on a Poincar\u00e9 surface of section, permanently fixing the chaotic map"
+        },
+        {
+          "step_num": 17,
+          "opcode": "FFUSE",
+          "domain_action": "Outer fuse; apply the inverse Jacobi transformation, recombining the evolved Center of Mass (T-arm) and Relative state (F-arm) into the absolute 3-Body state"
+        },
+        {
+          "step_num": 18,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify the constants of motion (total energy, total angular momentum) remain identical to their initial values"
+        },
+        {
+          "step_num": 19,
+          "opcode": "TANCH",
+          "domain_action": "Close the system with Liouville's Theorem, confirming the total phase space volume is strictly conserved and bounded"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Hamiltonian mechanics formalism translating physical forces into symplectic phase-space flows",
+      "ipc_mechanism": "Newtonian gravitational coupling (inverse-square law) transmitting force between mass pairs",
+      "memory_mechanism": "Phase space coordinates (positions and conjugate momenta) storing the complete dynamical state",
+      "scheduler_mechanism": "Symplectic integrator (e.g., Leapfrog or Runge-Kutta-Nystr\u00f6m) determining discrete time-step evolution",
+      "alfs_store": "The N-body Hamiltonian and Newton's laws of motion, the canonical axioms governing the system",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational precision and phase-space volume resolution consumed per integration step",
+      "pre_cycle_state": "Initial phase space volume element at t=0",
+      "post_cycle_state": "Evolved phase space volume element at t=delta_t",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 Liouville's theorem guarantees the phase space volume is strictly conserved under Hamiltonian flow, making the cycle entropy-conservative",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 ENGAGR \u2192 CLINK \u2192 IFIX \u2192 FFUSE \u2192 IMSCRIB \u2192 TANCH\n-- Class: 3-Body Theorem\n-- Fingerprint: sig=(9,4,5,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=19\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(7, 12), (3, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [10] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [11] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [13] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [14] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [15] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [16] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [17] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [18] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def 3_body_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc60)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Initialize the empty phase space with no masses or initial conditions, establ...)\n  (.arrow \ud801\udc60 \ud801\udc7c \ud801\udc7e)  -- [1] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Define the three point masses and their intrinsic properties, establishing th...)\n  (.arrow \ud801\udc7e \ud801\udc60 \ud801\udc5a)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Assign initial position and momentum vectors to the three bodies, moving from...)\n  -- FSPLIT [3] (gran := \ud801\udc5a) (Apply Jacobi coordinate transformation, splitting the absolute state into T-arm (Center of Mass) and F-arm (Relative coordinates)) / FFUSE [16] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [4] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Anchor the T-arm; the Center of Mass moves uniformly, representing a triviall...)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [5] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Propagate the Center of Mass forward in time via uniform linear motion along ...)\n      -- F-branch (4 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [6] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Anchor the F-arm; the Relative coordinates contain the complex, non-linear gr...)\n      .seq\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [13] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Enter the KAM regime within the relative state, holding both stable invariant...)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [14] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Chain the symplectic integration steps to evolve the full relative state over...)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [15] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record the trajectory intersections on a Poincar\u00e9 surface of section, permane...))\n    -- reconnect at FFUSE [16]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [16] FFUSE | stoi := \ud801\udc59 (Outer fuse; apply the inverse Jacobi transformation, recombining the evolved Center of Mass (T-arm) and Relative state (F-arm) into the absolute 3-Body state)\n  -- FSPLIT [7] (gran := \ud801\udc5a) (Inside the F-arm, split the relative Hamiltonian into inner T-arm (integrable Keplerian 2-body) and inner F-arm (non-integrable perturbation)) / FFUSE [12] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [8] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Anchor the inner T-arm; the Keplerian part admits closed-form elliptical solu...)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [9] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Propagate the unperturbed Keplerian orbits forward in time along the inner T-arm)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [10] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Anchor the inner F-arm; the perturbation part represents the chaotic 3-body c...)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [11] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Apply time-reversal to the perturbation to test symmetry, revealing exponenti...))\n    -- reconnect at FFUSE [12]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc59)  -- [12] FFUSE | stoi := \ud801\udc59 (Inner fuse; recombine the Keplerian and perturbation branches to reconstitute the full relative Hamiltonian)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc61)  -- [17] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Verify the constants of motion (total energy, total angular momentum) remain ...)\n  (.arrow \ud801\udc61 \ud801\udc60 \ud801\udc7c)  -- [18] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Close the system with Liouville's Theorem, confirming the total phase space v...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def 3_body_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (3_body_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def 3_body_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (3_body_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem 3_body_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: 3-Body Theorem"
+}

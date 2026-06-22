@@ -1,0 +1,240 @@
+{
+  "name": "Landau's Theorems",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Landau's Theorems",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "holomorphic function",
+        "growth rate",
+        "coefficient bound"
+      ],
+      "boundary_condition": "the Bloch sphere of normalized analytic functions on the unit disk",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unspecified holomorphic function f(z)",
+        "justification": "void state before any constraint or normalization is applied; the raw function before Landau's theorems impose structure",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the unit disk |z| < 1 and its boundary |z| = 1",
+        "justification": "terminal anchor that contains all valid domains for Landau's theorems; the hermetic vessel sealing the analytic region",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "normalization f(0) = 0, f'(0) = 1",
+        "justification": "forward morphism: transformation toward canonical form; ascent from arbitrary function to standardized representation",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "inverse function g(w) = f\u207b\u00b9(w) or reciprocal 1/f(z)",
+        "justification": "contravariant descent; reversal of the function's direction; parity flip in the domain-range relationship",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of successive Landau bounds: f \u2218 g where both satisfy theorem constraints",
+        "justification": "sequential chaining of morphisms; root\u2192derived form; one theorem's output feeds into another's input",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the identity function f(z) = z or the self-referential bound |f(z)| \u2264 |z|/(1\u2212|z|\u00b2)",
+        "justification": "self-recognition; the element is itself; the function recognizing its own growth rate as the measure of its constraint",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "the dichotomy: does f omit a value w\u2080 in \u2102?",
+        "justification": "co-multiplication \u03b4; one theorem branches into two distinct paths: (A) f omits w\u2080 \u2192 Landau bound applies, (B) f does not omit w\u2080 \u2192 different bound regime",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "the unified Landau constant L \u2248 0.5433... that reconstitutes both branches",
+        "justification": "multiplication \u03bc; both omission and non-omission cases reconstitute the original function's growth constraint; FFUSE(FSPLIT(f)) = f with unified bound",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "f omits at least one value (Landau's omission case)",
+        "justification": "affirmative/true branch; positive evaluation: the theorem's primary hypothesis holds; f is restricted",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "f omits no value (entire function or dense range)",
+        "justification": "negative/false branch; failure of omission hypothesis; f is unrestricted in range",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "the boundary case where f simultaneously omits and approaches every value (essential singularity behavior)",
+        "justification": "paradice: both EVALT and EVALF held without resolution; Picard's theorem entanglement; the function is both restricted and dense",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the recorded Landau constant L and the explicit bound |f'(0)| \u2264 L for each normalized f",
+        "justification": "ROM fixation; permanent, append-only record; once a bound is proven, it cannot be undone; the theorem is inscribed in mathematical canon",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: dichotomy of omission",
+      "split_input": "normalized holomorphic function f with f(0)=0, f'(0)=1",
+      "split_outputs": [
+        "T-branch: f omits value w\u2080 \u27f9 |f'(0)| \u2264 L (Landau bound)",
+        "F-branch: f omits no value \u27f9 |f'(0)| \u2264 L' (alternative bound or unbounded)"
+      ],
+      "fuse_element": "FFUSE: Landau constant L \u2248 0.5433",
+      "fuse_result": "unified bound on |f'(0)| that holds regardless of omission; both branches reconstitute the original normalized function f",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 uninitialized holomorphic function; no normalization, no constraint, no growth rate specified",
+      "true_description": "01 \u2014 affirmative state: f omits a value, Landau bound applies, |f'(0)| \u2264 L, function is restricted",
+      "false_description": "10 \u2014 negative state: f omits no value, range is dense or entire, alternative bound regime, function is unrestricted",
+      "both_description": "11 \u2014 paradice: f simultaneously omits and approaches every value; essential singularity; Picard entanglement; both states held",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "genesis of unspecified holomorphic function f(z) on unit disk; void state before any theorem applies"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "anchor the unit disk |z| < 1 as the boundary containing all valid domains; hermetic seal"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "normalize f(0) = 0 and f'(0) = 1; forward morphism toward canonical form"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "compose the normalization with the growth-rate measurement; chain the constraint"
+        },
+        {
+          "step_num": 5,
+          "opcode": "IMSCRIB",
+          "domain_action": "recognize f as self-referential; the function measures its own derivative at origin"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on omission dichotomy \u2014 does f omit a value w\u2080?"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "T-branch affirms: f omits w\u2080; Landau's primary hypothesis holds"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "forward morphism on T-branch: apply Landau bound |f'(0)| \u2264 L \u2248 0.5433"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "record the Landau constant L as permanent theorem; append-only fixation"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALF",
+          "domain_action": "F-branch negates: f omits no value; range is dense or entire"
+        },
+        {
+          "step_num": 11,
+          "opcode": "AREV",
+          "domain_action": "reverse morphism on F-branch: invert the omission condition; parity flip"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AFWD",
+          "domain_action": "forward morphism on F-branch: apply alternative bound or growth rate analysis"
+        },
+        {
+          "step_num": 13,
+          "opcode": "ENGAGR",
+          "domain_action": "at boundary case, both branches held simultaneously; essential singularity paradice"
+        },
+        {
+          "step_num": 14,
+          "opcode": "FFUSE",
+          "domain_action": "fuse both branches via Landau constant L; reconstitute original normalized function f"
+        },
+        {
+          "step_num": 15,
+          "opcode": "IMSCRIB",
+          "domain_action": "self-reference loop: the fused result recognizes itself as the original f"
+        },
+        {
+          "step_num": 16,
+          "opcode": "CLINK",
+          "domain_action": "compose the fused result with the next theorem application (e.g., Bloch's theorem)"
+        },
+        {
+          "step_num": 17,
+          "opcode": "IFIX",
+          "domain_action": "record the complete Landau bound as permanent mathematical fact; irreversible inscription"
+        },
+        {
+          "step_num": 18,
+          "opcode": "TANCH",
+          "domain_action": "close the system; the Bloch sphere boundary contains all normalized functions satisfying Landau's constraint"
+        },
+        {
+          "step_num": 19,
+          "opcode": "IMSCRIB",
+          "domain_action": "final self-reference; the entire theorem recognizes itself as a closed, self-consistent system"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "complex analysis proof engine; translates domain intentions (bound f'(0)) into rigorous analytic inequalities via Schwarz lemma and conformal mapping",
+      "ipc_mechanism": "Cauchy integral formula; components (omission case, non-omission case) communicate via residue calculus and contour integration",
+      "memory_mechanism": "the Landau constant L \u2248 0.5433 stored as canonical reference; coefficients of normalized power series f(z) = z + a\u2082z\u00b2 + a\u2083z\u00b3 + ... stored in coefficient register",
+      "scheduler_mechanism": "order of operations: normalize \u2192 split on omission \u2192 evaluate each branch \u2192 fuse via Landau constant \u2192 record bound \u2192 close system",
+      "alfs_store": "Landau's original 1904 paper and the Bloch sphere of normalized analytic functions; canonical bootstrap store for all Landau-type theorems",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one application of Schwarz lemma (conformal mapping cost); one evaluation of omission dichotomy; one recording of bound",
+      "pre_cycle_state": "arbitrary holomorphic function f on unit disk; unspecified growth rate; no constraint",
+      "post_cycle_state": "normalized function f with f(0)=0, f'(0)=1; bounded derivative |f'(0)| \u2264 L; constraint inscribed",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the cycle is entropy-conservative because Landau's theorem is a reversible logical deduction; the bound is derived from conformal invariance (Schwarz lemma), which preserves information; splitting on omission and fusing via the Landau constant form a Frobenius algebra, ensuring no information is lost or created",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 IFIX \u2192 EVALF \u2192 AREV \u2192 AFWD \u2192 ENGAGR \u2192 FFUSE \u2192 IMSCRIB \u2192 CLINK \u2192 IFIX \u2192 TANCH \u2192 IMSCRIB\n-- Class: Landau's Theorems\n-- Fingerprint: sig=(12,2,3,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=19\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(5, 13)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [4] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [11] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [12] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [13] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [14] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [15] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [16] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [17] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [18] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc7c  | identity \u2014 self-imscription\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def landaus_theorems_protocol : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (genesis of unspecified holomorphic function f(z) on unit disk; void state bef...)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc7e)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (anchor the unit disk |z| < 1 as the boundary containing all valid domains; he...)\n  (.arrow \ud801\udc7e \ud801\udc61 \ud801\udc71)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (normalize f(0) = 0 and f'(0) = 1; forward morphism toward canonical form)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc60)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose the normalization with the growth-rate measurement; chain the constraint)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc5a)  -- [4] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (recognize f as self-referential; the function measures its own derivative at ...)\n  -- FSPLIT [5] (gran := \ud801\udc5a) (branch on omission dichotomy \u2014 does f omit a value w\u2080?) / FFUSE [13] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [6] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-branch affirms: f omits w\u2080; Landau's primary hypothesis holds)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [7] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (forward morphism on T-branch: apply Landau bound |f'(0)| \u2264 L \u2248 0.5433)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [8] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record the Landau constant L as permanent theorem; append-only fixation)\n      -- F-branch (4 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [9] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (F-branch negates: f omits no value; range is dense or entire)\n      .seq\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [10] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (reverse morphism on F-branch: invert the omission condition; parity flip)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [11] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (forward morphism on F-branch: apply alternative bound or growth rate analysis)\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [12] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (at boundary case, both branches held simultaneously; essential singularity pa...))\n    -- reconnect at FFUSE [13]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [13] FFUSE | stoi := \ud801\udc59 (fuse both branches via Landau constant L; reconstitute original normalized function f)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc71)  -- [14] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (self-reference loop: the fused result recognizes itself as the original f)\n  (.arrow \ud801\udc71 \ud801\udc60 \ud801\udc6d)  -- [15] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose the fused result with the next theorem application (e.g., Bloch's the...)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc61)  -- [16] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record the complete Landau bound as permanent mathematical fact; irreversible...)\n  (.arrow \ud801\udc61 \ud801\udc6d \ud801\udc60)  -- [17] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (close the system; the Bloch sphere boundary contains all normalized functions...)\n  (.arrow \ud801\udc60 \ud801\udc61 \ud801\udc7c)  -- [18] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (final self-reference; the entire theorem recognizes itself as a closed, self-...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def landaus_theorems_true_arm : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  (landaus_theorems_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def landaus_theorems_false_arm : IGProtocol \ud801\udc7c \ud801\udc60 :=\n  (landaus_theorems_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem landaus_theorems_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Landau's Theorems"
+}

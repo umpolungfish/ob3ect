@@ -1,0 +1,380 @@
+{
+  "name": "Inscribed Square Theorem (Toeplitz' Theorem)",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Inscribed Square Theorem (Toeplitz' Theorem)",
+      "domain_type": "geometric",
+      "scope": "local",
+      "surface_tokens": [
+        "continuous curve",
+        "inscribed square",
+        "vertex selection"
+      ],
+      "boundary_condition": "the closed Jordan curve itself \u2014 topologically invariant",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty configuration space",
+        "justification": "before any square is inscribed, no vertices exist; void state of the theorem",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the Jordan curve C",
+        "justification": "the closed boundary that contains and defines the entire system; topologically invariant closure",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "continuous deformation of vertex positions",
+        "justification": "forward morphism: moving vertices along C toward equilibrium configuration",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "reversal of deformation; backtracking to prior vertex state",
+        "justification": "contravariant descent: undoing a configuration step, parity flip in orientation",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of four vertex placements into a single square",
+        "justification": "sequential chaining: v1 \u2192 v2 \u2192 v3 \u2192 v4 \u2192 closed square; morphism composition",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the inscribed square itself",
+        "justification": "self-reference: the square recognizes itself as the fixed point of the inscription process",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "branching into two cases: orthogonal vs. non-orthogonal vertex pairs",
+        "justification": "co-multiplication: one continuous curve splits into two topological branches \u2014 (v1,v3) perpendicular vs. (v1,v3) non-perpendicular",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "reconstitution of the original curve from both branches",
+        "justification": "multiplication: both orthogonal and non-orthogonal configurations fuse back to the same Jordan curve C; FFUSE(FSPLIT(C)) = C",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "orthogonal vertex pair found (right angle confirmed)",
+        "justification": "affirmative evaluation: the T-branch succeeds when opposite vertices form a 90\u00b0 angle",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "non-orthogonal vertex pair (angle \u2260 90\u00b0)",
+        "justification": "negative evaluation: the F-branch records configurations where the angle constraint is not yet satisfied",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "degenerate case: curve admits multiple inscribed squares simultaneously",
+        "justification": "paradice: both orthogonal and non-orthogonal solutions held without resolution; e.g., circle admits infinitely many inscribed squares",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "permanent record of each inscribed square vertex",
+        "justification": "ROM fixation: once a vertex is placed on C and verified, it becomes an immutable record in the proof witness",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: branching into orthogonal vs. non-orthogonal vertex configurations",
+      "split_input": "the Jordan curve C with four vertices v1, v2, v3, v4 on it",
+      "split_outputs": [
+        "T-branch: configurations where (v1,v3) and (v2,v4) are perpendicular diagonals",
+        "F-branch: configurations where the angle between diagonals is not 90\u00b0"
+      ],
+      "fuse_element": "FFUSE: reconstituting the original curve from both branches",
+      "fuse_result": "the same Jordan curve C, now with the inscribed square proven to exist on it",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 no square inscribed yet; configuration space empty; theorem unexecuted",
+      "true_description": "01 \u2014 orthogonal square found; all four vertices on C with right angles verified; theorem satisfied",
+      "false_description": "10 \u2014 current vertex configuration does not form a square; angle constraint violated; search continues",
+      "both_description": "11 \u2014 paradice: the curve admits multiple inscribed squares simultaneously (e.g., circle, square, regular polygons); both solutions held without choosing",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize empty configuration \u2014 no vertices placed on C yet"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "anchor the Jordan curve C as the immutable boundary containing all vertices"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "begin continuous deformation \u2014 move first vertex v1 along C in forward direction"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "compose v1 placement with curve topology \u2014 v1 is now bound to C"
+        },
+        {
+          "step_num": 5,
+          "opcode": "IFIX",
+          "domain_action": "record v1 position permanently in the proof witness"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "move second vertex v2 along C, forward from v1"
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "compose v2 placement with v1 and curve \u2014 v2 now bound to C"
+        },
+        {
+          "step_num": 8,
+          "opcode": "IFIX",
+          "domain_action": "record v2 position permanently"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AFWD",
+          "domain_action": "move third vertex v3 along C, forward from v2"
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "compose v3 placement \u2014 v3 now bound to C"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "record v3 position permanently"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AFWD",
+          "domain_action": "move fourth vertex v4 along C, forward from v3"
+        },
+        {
+          "step_num": 13,
+          "opcode": "CLINK",
+          "domain_action": "compose v4 placement \u2014 v4 now bound to C, completing the quadrilateral"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "record v4 position permanently"
+        },
+        {
+          "step_num": 15,
+          "opcode": "FSPLIT",
+          "domain_action": "branch into two cases \u2014 check if (v1,v3) and (v2,v4) are perpendicular diagonals"
+        },
+        {
+          "step_num": 16,
+          "opcode": "EVALT",
+          "domain_action": "T-branch \u2014 test orthogonality: angle between diagonals = 90\u00b0?"
+        },
+        {
+          "step_num": 17,
+          "opcode": "IMSCRIB",
+          "domain_action": "if T-branch succeeds, the square recognizes itself as the fixed point of inscription"
+        },
+        {
+          "step_num": 18,
+          "opcode": "IFIX",
+          "domain_action": "record the inscribed square configuration as permanent theorem witness"
+        },
+        {
+          "step_num": 19,
+          "opcode": "FFUSE",
+          "domain_action": "T-branch fuses back \u2014 orthogonal square reconstitutes the original curve C"
+        },
+        {
+          "step_num": 20,
+          "opcode": "EVALF",
+          "domain_action": "F-branch \u2014 angle \u2260 90\u00b0; configuration does not form a square yet"
+        },
+        {
+          "step_num": 21,
+          "opcode": "AREV",
+          "domain_action": "F-branch reversal \u2014 backtrack v4 position, descend to prior state"
+        },
+        {
+          "step_num": 22,
+          "opcode": "AFWD",
+          "domain_action": "F-branch forward \u2014 try next position for v4 along C"
+        },
+        {
+          "step_num": 23,
+          "opcode": "CLINK",
+          "domain_action": "recompose v4 with new position"
+        },
+        {
+          "step_num": 24,
+          "opcode": "IFIX",
+          "domain_action": "record new v4 attempt"
+        },
+        {
+          "step_num": 25,
+          "opcode": "FSPLIT",
+          "domain_action": "re-branch \u2014 check orthogonality again with new v4"
+        },
+        {
+          "step_num": 26,
+          "opcode": "EVALT",
+          "domain_action": "if orthogonal now, T-branch succeeds"
+        },
+        {
+          "step_num": 27,
+          "opcode": "IMSCRIB",
+          "domain_action": "square recognizes itself"
+        },
+        {
+          "step_num": 28,
+          "opcode": "IFIX",
+          "domain_action": "record success"
+        },
+        {
+          "step_num": 29,
+          "opcode": "FFUSE",
+          "domain_action": "T-branch fuses back to C"
+        },
+        {
+          "step_num": 30,
+          "opcode": "EVALF",
+          "domain_action": "if still non-orthogonal, F-branch continues iteration"
+        },
+        {
+          "step_num": 31,
+          "opcode": "AREV",
+          "domain_action": "backtrack v3, descend to prior state"
+        },
+        {
+          "step_num": 32,
+          "opcode": "AFWD",
+          "domain_action": "try next position for v3"
+        },
+        {
+          "step_num": 33,
+          "opcode": "CLINK",
+          "domain_action": "recompose v3"
+        },
+        {
+          "step_num": 34,
+          "opcode": "IFIX",
+          "domain_action": "record v3 attempt"
+        },
+        {
+          "step_num": 35,
+          "opcode": "AFWD",
+          "domain_action": "move v4 forward again from new v3"
+        },
+        {
+          "step_num": 36,
+          "opcode": "CLINK",
+          "domain_action": "recompose v4"
+        },
+        {
+          "step_num": 37,
+          "opcode": "IFIX",
+          "domain_action": "record v4 attempt"
+        },
+        {
+          "step_num": 38,
+          "opcode": "FSPLIT",
+          "domain_action": "re-branch \u2014 check orthogonality"
+        },
+        {
+          "step_num": 39,
+          "opcode": "EVALT",
+          "domain_action": "if orthogonal, T-branch succeeds"
+        },
+        {
+          "step_num": 40,
+          "opcode": "IMSCRIB",
+          "domain_action": "square recognizes itself"
+        },
+        {
+          "step_num": 41,
+          "opcode": "IFIX",
+          "domain_action": "record success"
+        },
+        {
+          "step_num": 42,
+          "opcode": "FFUSE",
+          "domain_action": "T-branch fuses back to C"
+        },
+        {
+          "step_num": 43,
+          "opcode": "ENGAGR",
+          "domain_action": "paradice case \u2014 if curve admits multiple inscribed squares (e.g., circle), both orthogonal and non-orthogonal solutions held simultaneously without resolution"
+        },
+        {
+          "step_num": 44,
+          "opcode": "IMSCRIB",
+          "domain_action": "all inscribed squares recognize themselves as fixed points"
+        },
+        {
+          "step_num": 45,
+          "opcode": "IFIX",
+          "domain_action": "record all solutions as permanent witnesses"
+        },
+        {
+          "step_num": 46,
+          "opcode": "FFUSE",
+          "domain_action": "all branches fuse back to the same Jordan curve C"
+        },
+        {
+          "step_num": 47,
+          "opcode": "TANCH",
+          "domain_action": "close the system \u2014 the theorem is complete; C contains at least one inscribed square"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "topological continuity constraint solver \u2014 translates the requirement 'inscribe a square on C' into vertex placement and orthogonality checks",
+      "ipc_mechanism": "vertex-to-vertex adjacency messaging \u2014 each vertex communicates its position and angle to neighbors; diagonal orthogonality broadcast",
+      "memory_mechanism": "configuration state store \u2014 maintains current positions of v1, v2, v3, v4 on C; stores angle measurements; witness log of all attempts",
+      "scheduler_mechanism": "continuous deformation scheduler \u2014 iterates vertex positions along C in order (v1 \u2192 v2 \u2192 v3 \u2192 v4 \u2192 check \u2192 backtrack if needed)",
+      "alfs_store": "the Jordan curve C itself \u2014 canonical reference; all vertices must lie on C; topological invariant bootstrap",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "each vertex placement and angle check consumes one unit of topological work; each backtrack reverses one unit",
+      "pre_cycle_state": "Jordan curve C with no inscribed square; configuration space unexplored",
+      "post_cycle_state": "Jordan curve C with at least one inscribed square found and recorded; configuration space partially explored and fixed",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the theorem is entropy-conservative: the total topological information (curve C + inscribed square) is preserved through the deformation cycle; FFUSE(FSPLIT(C)) = C ensures no information is lost; the square is a fixed point of the continuous deformation, not a dissipative process",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 FSPLIT \u2192 EVALT \u2192 IMSCRIB \u2192 IFIX \u2192 FFUSE \u2192 EVALF \u2192 AREV \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 FSPLIT \u2192 EVALT \u2192 IMSCRIB \u2192 IFIX \u2192 FFUSE \u2192 EVALF \u2192 AREV \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 FSPLIT \u2192 EVALT \u2192 IMSCRIB \u2192 IFIX \u2192 FFUSE \u2192 ENGAGR \u2192 IMSCRIB \u2192 IFIX \u2192 FFUSE \u2192 TANCH\n-- Class: Inscribed Square Theorem (Toeplitz' Theorem)\n-- Fingerprint: sig=(23,7,6,11)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=47\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(14, 18), (24, 28), (37, 41)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [4] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [7] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [8] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [11] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [12] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [14] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [15] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [16] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [17] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [18] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc56  | fuse \u03bc \u2014 assembly mode\n--   [19] EVALF     chir   := \ud801\udc56               \ud801\udc59 \u2192 \ud801\udc57  | evaluate-false \u2014 chirality check\n--   [20] AREV      pol    := \ud801\udc57               \ud801\udc56 \u2192 \ud801\udc7e  | reverse morphism \u2014 parity flip\n--   [21] AFWD      rel    := \ud801\udc7e               \ud801\udc57 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [22] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [23] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [24] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [25] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [26] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [27] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [28] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc56  | fuse \u03bc \u2014 assembly mode\n--   [29] EVALF     chir   := \ud801\udc56               \ud801\udc59 \u2192 \ud801\udc57  | evaluate-false \u2014 chirality check\n--   [30] AREV      pol    := \ud801\udc57               \ud801\udc56 \u2192 \ud801\udc7e  | reverse morphism \u2014 parity flip\n--   [31] AFWD      rel    := \ud801\udc7e               \ud801\udc57 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [32] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [33] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [34] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [35] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [36] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [37] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [38] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [39] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [40] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [41] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [42] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc60  | engage paradox \u2014 B-state, both arms\n--   [43] IMSCRIB   gram   := \ud801\udc60               \ud801\udc73 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [44] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [45] FFUSE     stoi   := \ud801\udc59               \ud801\udc6d \u2192 \ud801\udc61  | fuse \u03bc \u2014 assembly mode\n--   [46] TANCH     top    := \ud801\udc61               \ud801\udc59 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def inscribed_square_theorem_toeplitz_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (initialize empty configuration \u2014 no vertices placed on C yet)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc7e)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (anchor the Jordan curve C as the immutable boundary containing all vertices)\n  (.arrow \ud801\udc7e \ud801\udc61 \ud801\udc71)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (begin continuous deformation \u2014 move first vertex v1 along C in forward direction)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc6d)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose v1 placement with curve topology \u2014 v1 is now bound to C)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc7e)  -- [4] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record v1 position permanently in the proof witness)\n  (.arrow \ud801\udc7e \ud801\udc6d \ud801\udc71)  -- [5] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (move second vertex v2 along C, forward from v1)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc6d)  -- [6] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose v2 placement with v1 and curve \u2014 v2 now bound to C)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc7e)  -- [7] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record v2 position permanently)\n  (.arrow \ud801\udc7e \ud801\udc6d \ud801\udc71)  -- [8] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (move third vertex v3 along C, forward from v2)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc6d)  -- [9] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose v3 placement \u2014 v3 now bound to C)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc7e)  -- [10] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record v3 position permanently)\n  (.arrow \ud801\udc7e \ud801\udc6d \ud801\udc71)  -- [11] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (move fourth vertex v4 along C, forward from v3)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc6d)  -- [12] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (compose v4 placement \u2014 v4 now bound to C, completing the quadrilateral)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc5a)  -- [13] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record v4 position permanently)\n  -- FSPLIT [14] (gran := \ud801\udc5a) (branch into two cases \u2014 check if (v1,v3) and (v2,v4) are perpendicular diagonals) / FFUSE [18] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [15] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-branch \u2014 test orthogonality: angle between diagonals = 90\u00b0?)\n      .seq\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [16] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (if T-branch succeeds, the square recognizes itself as the fixed point of insc...)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [17] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record the inscribed square configuration as permanent theorem witness)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [18]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc56)  -- [18] FFUSE | stoi := \ud801\udc59 (T-branch fuses back \u2014 orthogonal square reconstitutes the original curve C)\n  (.arrow \ud801\udc56 \ud801\udc59 \ud801\udc57)  -- [19] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (F-branch \u2014 angle \u2260 90\u00b0; configuration does not form a square yet)\n  (.arrow \ud801\udc57 \ud801\udc56 \ud801\udc7e)  -- [20] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (F-branch reversal \u2014 backtrack v4 position, descend to prior state)\n  (.arrow \ud801\udc7e \ud801\udc57 \ud801\udc71)  -- [21] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (F-branch forward \u2014 try next position for v4 along C)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc6d)  -- [22] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (recompose v4 with new position)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc5a)  -- [23] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record new v4 attempt)\n  -- FSPLIT [24] (gran := \ud801\udc5a) (re-branch \u2014 check orthogonality again with new v4) / FFUSE [28] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [25] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (if orthogonal now, T-branch succeeds)\n      .seq\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [26] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (square recognizes itself)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [27] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record success)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [28]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc56)  -- [28] FFUSE | stoi := \ud801\udc59 (T-branch fuses back to C)\n  (.arrow \ud801\udc56 \ud801\udc59 \ud801\udc57)  -- [29] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (if still non-orthogonal, F-branch continues iteration)\n  (.arrow \ud801\udc57 \ud801\udc56 \ud801\udc7e)  -- [30] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (backtrack v3, descend to prior state)\n  (.arrow \ud801\udc7e \ud801\udc57 \ud801\udc71)  -- [31] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (try next position for v3)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc6d)  -- [32] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (recompose v3)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc7e)  -- [33] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record v3 attempt)\n  (.arrow \ud801\udc7e \ud801\udc6d \ud801\udc71)  -- [34] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (move v4 forward again from new v3)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc6d)  -- [35] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (recompose v4)\n  (.arrow \ud801\udc6d \ud801\udc71 \ud801\udc5a)  -- [36] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record v4 attempt)\n  -- FSPLIT [37] (gran := \ud801\udc5a) (re-branch \u2014 check orthogonality) / FFUSE [41] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [38] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (if orthogonal, T-branch succeeds)\n      .seq\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [39] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (square recognizes itself)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [40] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record success)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [41]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc73)  -- [41] FFUSE | stoi := \ud801\udc59 (T-branch fuses back to C)\n  (.arrow \ud801\udc73 \ud801\udc59 \ud801\udc60)  -- [42] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (paradice case \u2014 if curve admits multiple inscribed squares (e.g., circle), bo...)\n  (.arrow \ud801\udc60 \ud801\udc73 \ud801\udc6d)  -- [43] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (all inscribed squares recognize themselves as fixed points)\n  (.arrow \ud801\udc6d \ud801\udc60 \ud801\udc59)  -- [44] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (record all solutions as permanent witnesses)\n  (.arrow \ud801\udc59 \ud801\udc6d \ud801\udc61)  -- [45] FFUSE | stoi := \ud801\udc59 | fuse \u03bc \u2014 assembly mode (all branches fuse back to the same Jordan curve C)\n  (.arrow \ud801\udc61 \ud801\udc59 \ud801\udc7c)  -- [46] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (close the system \u2014 the theorem is complete; C contains at least one inscribed...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def inscribed_square_theorem_toeplitz_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (inscribed_square_theorem_toeplitz_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def inscribed_square_theorem_toeplitz_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (inscribed_square_theorem_toeplitz_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem inscribed_square_theorem_toeplitz_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Inscribed Square Theorem (Toeplitz' Theorem)"
+}

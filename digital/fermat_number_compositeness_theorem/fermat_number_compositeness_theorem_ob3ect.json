@@ -1,0 +1,240 @@
+{
+  "name": "Fermat Number Compositeness Theorem",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Fermat Number Compositeness Theorem",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "Fermat number",
+        "factorization",
+        "compositeness proof"
+      ],
+      "boundary_condition": "The closed mathematical system where every Fermat number F_n = 2^(2^n) + 1 is either prime or composite, and compositeness is decidable via divisibility by smaller primes or explicit factorization.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "uninitialized candidate Fermat number",
+        "justification": "Before any test or computation, F_n exists as a bare integer with no known factorization status \u2014 void state, no properties assigned.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the Fundamental Theorem of Arithmetic",
+        "justification": "Terminal anchor: every integer > 1 is either prime or a unique product of primes. This boundary contains and closes the entire compositeness question.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "trial division by candidate divisors",
+        "justification": "Forward morphism: systematic ascent through potential prime factors p < \u221a(F_n), moving toward discovery of a divisor.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "backtracking from failed divisor tests",
+        "justification": "Reverse morphism: descent when a candidate divisor fails, retracing to try the next candidate or conclude primality.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of divisibility checks",
+        "justification": "Sequential chaining: each divisor test is composed with the next, forming a pipeline of checks that collectively determine compositeness.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the identity property of F_n itself",
+        "justification": "Self-reference: F_n is recognized as itself throughout all transformations; the number's intrinsic form is preserved as the invariant.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "branching on divisor discovery",
+        "justification": "One input (F_n under test) splits into two branches: T-branch (divisor found \u2192 composite) and F-branch (no divisor found \u2192 prime or continue search).",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "reconstitution of compositeness verdict",
+        "justification": "Both branches (divisor found or exhaustive search complete) fuse back into a single verdict: F_n is composite (if divisor exists) or prime (if none found). FFUSE(FSPLIT(F_n)) = compositeness_status(F_n).",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "divisor found \u2014 compositeness confirmed",
+        "justification": "Affirmative evaluation: T-branch succeeds when a prime factor p divides F_n, proving compositeness.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "no divisor found in range \u2014 primality candidate",
+        "justification": "Negative evaluation: F-branch succeeds when trial division exhausts all candidates up to \u221a(F_n) without finding a factor.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Fermat's own conjecture (all F_n are prime) vs. Euler's counterexample (F_5 = 4294967297 = 641 \u00d7 6700417)",
+        "justification": "Paradice: both states held simultaneously in mathematical history \u2014 the conjecture and its refutation coexist as a foundational tension in number theory, unresolved until explicit factorization.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "recorded factorization or primality certificate",
+        "justification": "Permanent, append-only record: once a divisor is found or primality is certified (e.g., via Lucas-Lehmer or other proof), the result is fixed and cannot be undone.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT on divisor search",
+      "split_input": "F_n (Fermat number under compositeness test)",
+      "split_outputs": [
+        "T-branch: divisor p found such that p | F_n",
+        "F-branch: no divisor found in trial range, or search continues"
+      ],
+      "fuse_element": "FFUSE on verdict reconstitution",
+      "fuse_result": "compositeness_status(F_n) \u2014 a single boolean or certificate stating whether F_n is composite or prime",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 F_n is uninitialized, no divisor tests performed, no factorization known",
+      "true_description": "01 \u2014 F_n is composite; at least one prime divisor p has been found and verified",
+      "false_description": "10 \u2014 F_n is prime; exhaustive trial division or primality proof has ruled out all smaller factors",
+      "both_description": "11 \u2014 paradice state: F_n's compositeness is simultaneously conjectured and refuted (Fermat's conjecture vs. Euler's counterexample); both states held in mathematical tension until explicit computation resolves it",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize F_n as an uncomputed Fermat number 2^(2^n) + 1 with no known factorization."
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "Invoke the Fundamental Theorem of Arithmetic as the boundary that guarantees every F_n is either prime or composite."
+        },
+        {
+          "step_num": 3,
+          "opcode": "IMSCRIB",
+          "domain_action": "Recognize F_n as itself \u2014 the invariant integer form that persists through all divisibility tests."
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Begin trial division, ascending through candidate primes p = 3, 5, 7, 11, ... up to \u221a(F_n)."
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "Compose the first divisor test (p = 3) with the next (p = 5), forming a pipeline."
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "Compose the second test with the third, extending the pipeline."
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "Continue composing divisor tests sequentially until a divisor is found or the range is exhausted."
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch on the outcome of the divisor search: does a prime p divide F_n?"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "T-branch activated \u2014 a divisor p has been found; F_n is composite."
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "Record the factorization F_n = p \u00d7 q (or the explicit factors) as a permanent, irreversible certificate."
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "T-branch result (divisor found) fuses back into the verdict: F_n is composite."
+        },
+        {
+          "step_num": 12,
+          "opcode": "AREV",
+          "domain_action": "F-branch activated \u2014 no divisor found in the trial range; descent into primality reasoning."
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALF",
+          "domain_action": "F-branch evaluation \u2014 no factor discovered; F_n is a prime candidate."
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "Record the primality certificate (or exhaustive search completion) as a permanent record."
+        },
+        {
+          "step_num": 15,
+          "opcode": "FFUSE",
+          "domain_action": "F-branch result (no divisor found) fuses back into the verdict: F_n is prime."
+        },
+        {
+          "step_num": 16,
+          "opcode": "ENGAGR",
+          "domain_action": "Paradice state invoked \u2014 Fermat's conjecture (all F_n prime) and Euler's refutation (F_5 composite) are held simultaneously, representing the historical tension in the domain."
+        },
+        {
+          "step_num": 17,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-reference loop: the compositeness status of F_n is recognized as the identity property of F_n itself."
+        },
+        {
+          "step_num": 18,
+          "opcode": "CLINK",
+          "domain_action": "Compose the final verdict with the next Fermat number F_(n+1), extending the algorithm to the entire sequence."
+        },
+        {
+          "step_num": 19,
+          "opcode": "TANCH",
+          "domain_action": "Close the system: the Fundamental Theorem guarantees that every Fermat number's compositeness is decidable and final."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Trial division algorithm (or more sophisticated factorization methods like Pollard's rho, elliptic curve factorization) that translates the compositeness question into a sequence of divisibility tests.",
+      "ipc_mechanism": "Divisor candidates are passed from one test to the next; success/failure signals propagate up the pipeline to the FSPLIT/FFUSE junction.",
+      "memory_mechanism": "State is stored as (F_n, current_candidate_divisor, found_factor_flag). Once IFIX is reached, the factorization or primality certificate is appended to an immutable log.",
+      "scheduler_mechanism": "Sequential: each divisor test completes before the next begins. Parallelization is possible (test multiple candidates in parallel), but the logical order is preserved.",
+      "alfs_store": "The canonical reference is the sequence of known Fermat numbers and their factorizations: F_0 = 3 (prime), F_1 = 5 (prime), F_2 = 17 (prime), F_3 = 257 (prime), F_4 = 65537 (prime), F_5 = 4294967297 = 641 \u00d7 6700417 (composite), and all F_n for n \u2265 5 known to be composite.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Each divisor test consumes one modular exponentiation or division operation; total cost is O(\u221a(F_n)) in the worst case (primality), or O(log(F_n)) if a small factor is found early.",
+      "pre_cycle_state": "F_n is uninitialized; no divisor tests have been performed; the system is in void state (00).",
+      "post_cycle_state": "F_n's compositeness status is determined and recorded; the system is in true state (01, composite) or false state (10, prime), or paradice state (11, if the historical tension is preserved).",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The cycle is entropy-conservative because the Fundamental Theorem of Arithmetic is deterministic and reversible in principle: given the factorization, one can verify it; given the number, one can compute the factorization (though computationally hard). The information content of F_n is preserved; only its factorization status is revealed, not created.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 IMSCRIB \u2192 AFWD \u2192 CLINK \u2192 CLINK \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 IFIX \u2192 FFUSE \u2192 AREV \u2192 EVALF \u2192 IFIX \u2192 FFUSE \u2192 ENGAGR \u2192 IMSCRIB \u2192 CLINK \u2192 TANCH\n-- Class: Fermat Number Compositeness Theorem\n-- Fingerprint: sig=(11,3,3,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=19\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(7, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc71  | composition \u2014 regime coherence\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc71 \u2192 \ud801\udc71  | composition \u2014 regime coherence\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc71 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc57  | fuse \u03bc \u2014 assembly mode\n--   [11] AREV      pol    := \ud801\udc57               \ud801\udc59 \u2192 \ud801\udc56  | reverse morphism \u2014 parity flip\n--   [12] EVALF     chir   := \ud801\udc56               \ud801\udc57 \u2192 \ud801\udc6d  | evaluate-false \u2014 chirality check\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc56 \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [14] FFUSE     stoi   := \ud801\udc59               \ud801\udc6d \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [15] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc60  | engage paradox \u2014 B-state, both arms\n--   [16] IMSCRIB   gram   := \ud801\udc60               \ud801\udc73 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [17] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc61  | composition \u2014 regime coherence\n--   [18] TANCH     top    := \ud801\udc61               \ud801\udc71 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def fermat_number_compositeness_theorem_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Initialize F_n as an uncomputed Fermat number 2^(2^n) + 1 with no known facto...)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc60)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Invoke the Fundamental Theorem of Arithmetic as the boundary that guarantees ...)\n  (.arrow \ud801\udc60 \ud801\udc61 \ud801\udc7e)  -- [2] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Recognize F_n as itself \u2014 the invariant integer form that persists through al...)\n  (.arrow \ud801\udc7e \ud801\udc60 \ud801\udc71)  -- [3] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Begin trial division, ascending through candidate primes p = 3, 5, 7, 11, ......)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc71)  -- [4] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Compose the first divisor test (p = 3) with the next (p = 5), forming a pipel...)\n  (.arrow \ud801\udc71 \ud801\udc71 \ud801\udc71)  -- [5] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Compose the second test with the third, extending the pipeline.)\n  (.arrow \ud801\udc71 \ud801\udc71 \ud801\udc5a)  -- [6] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Continue composing divisor tests sequentially until a divisor is found or the...)\n  -- FSPLIT [7] (gran := \ud801\udc5a) (Branch on the outcome of the divisor search: does a prime p divide F_n?) / FFUSE [10] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [8] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (T-branch activated \u2014 a divisor p has been found; F_n is composite.)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [9] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record the factorization F_n = p \u00d7 q (or the explicit factors) as a permanent...)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [10]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc57)  -- [10] FFUSE | stoi := \ud801\udc59 (T-branch result (divisor found) fuses back into the verdict: F_n is composite.)\n  (.arrow \ud801\udc57 \ud801\udc59 \ud801\udc56)  -- [11] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (F-branch activated \u2014 no divisor found in the trial range; descent into primal...)\n  (.arrow \ud801\udc56 \ud801\udc57 \ud801\udc6d)  -- [12] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (F-branch evaluation \u2014 no factor discovered; F_n is a prime candidate.)\n  (.arrow \ud801\udc6d \ud801\udc56 \ud801\udc59)  -- [13] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Record the primality certificate (or exhaustive search completion) as a perma...)\n  (.arrow \ud801\udc59 \ud801\udc6d \ud801\udc73)  -- [14] FFUSE | stoi := \ud801\udc59 | fuse \u03bc \u2014 assembly mode (F-branch result (no divisor found) fuses back into the verdict: F_n is prime.)\n  (.arrow \ud801\udc73 \ud801\udc59 \ud801\udc60)  -- [15] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Paradice state invoked \u2014 Fermat's conjecture (all F_n prime) and Euler's refu...)\n  (.arrow \ud801\udc60 \ud801\udc73 \ud801\udc71)  -- [16] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Self-reference loop: the compositeness status of F_n is recognized as the ide...)\n  (.arrow \ud801\udc71 \ud801\udc60 \ud801\udc61)  -- [17] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Compose the final verdict with the next Fermat number F_(n+1), extending the ...)\n  (.arrow \ud801\udc61 \ud801\udc71 \ud801\udc7c)  -- [18] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Close the system: the Fundamental Theorem guarantees that every Fermat number...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def fermat_number_compositeness_theorem_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (fermat_number_compositeness_theorem_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def fermat_number_compositeness_theorem_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (fermat_number_compositeness_theorem_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem fermat_number_compositeness_theorem_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Fermat Number Compositeness Theorem"
+}
