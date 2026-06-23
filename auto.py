@@ -435,7 +435,7 @@ async def auto_design(
     scope: str = "local",
     provider_name: Optional[str] = None,
     model: Optional[str] = None,
-    max_retries: int = 3,
+    max_retries: int = 100,
     temperature: float = 0.4,
     context: Optional[str] = None,
 ) -> Ob3ectArtifact:
