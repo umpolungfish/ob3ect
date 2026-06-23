@@ -1,0 +1,262 @@
+{
+  "name": "document lift",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "document lift",
+      "domain_type": "semiotic-editorial",
+      "scope": "local",
+      "surface_tokens": [
+        "register",
+        "watermark",
+        "voice",
+        "prose",
+        "trace"
+      ],
+      "boundary_condition": "The threshold between statistically-averaged LLM output and irreducibly specific human authorial signature.",
+      "justification": "A document lift is the operation of annihilating LLM stylistic traces from prose, restoring the author's own register. The domain is bounded by detectability: on one side, text that passes automated and human LLM-detection; on the other, text that a trained reader would attribute to a specific person."
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Raw Draft",
+        "justification": "The undifferentiated intake state — prose with no resolved authorial signature, before any editorial pass. Void of distinction between human and machine origin.",
+        "rejected_candidates": [
+          ["Blank Page", "Too early; the draft already exists before the lift begins."],
+          ["Prompt", "The prompt is the cause, not the material."]
+        ]
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Anchored Voice",
+        "justification": "The terminal state: prose in which every sentence can be attributed to a specific author's register. No AI traces remain. The text is topologically closed — it cannot be re-infected without detection.",
+        "rejected_candidates": [
+          ["Published Text", "Publication is external to the lift operation itself."],
+          ["Clean Draft", "Too weak — 'clean' does not imply anchored to a specific voice."]
+        ]
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Trace Stripping",
+        "justification": "The forward editorial morphism: systematic removal of LLM-signature vocabulary, structural formulae, and hedging patterns. Moves text from VINIT toward TANCH.",
+        "rejected_candidates": [
+          ["Rewriting", "Too coarse — the forward pass is specifically the removal step, not the reconstruction step."],
+          ["Proofreading", "Proofreading targets errors; stripping targets statistical averages."]
+        ]
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Voice Injection",
+        "justification": "The reverse morphism: re-introducing specific, author-attributed claims, named examples, and non-generic phrasing where AFWD left gaps. Moves the stripped text back through the author's register.",
+        "rejected_candidates": [
+          ["Fact-checking", "Orthogonal to the lift operation."],
+          ["Contamination", "Reverse of the lift would be re-introducing AI patterns, but AREV here is the restorative pass, not the corrupting one."]
+        ]
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Revision Pass Composition",
+        "justification": "Sequential composition of editorial passes: vocabulary pass -> structure pass -> stance pass -> specificity pass. Each pass is a morphism; CLINK sequences them into a coherent pipeline.",
+        "rejected_candidates": [
+          ["Track Changes", "Track changes records history; CLINK is the composition of the passes themselves."]
+        ]
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Authorial Fingerprint",
+        "justification": "The identity element of the lift: the author's characteristic vocabulary, sentence rhythms, risk tolerance for strong claims, and domain-specific idiom. This is what the lift restores and what gets imscribed into the final text.",
+        "rejected_candidates": [
+          ["Style Guide", "A style guide is external constraint; the fingerprint is intrinsic to the author."],
+          ["Tone", "Tone is one dimension; the fingerprint spans vocabulary, structure, and epistemic stance."]
+        ]
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Contamination Segmentation",
+        "justification": "The delta morphism: splitting the draft into AI-contaminated segments and clean segments. After FSPLIT, each fragment can be processed independently before FFUSE reassembles the whole.",
+        "rejected_candidates": [
+          ["Sentence Tokenization", "Too granular; FSPLIT operates at the clause/paragraph level by contamination status."],
+          ["Track Changes Split", "That is a display mechanism, not a structural operation."]
+        ]
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Coherence Reassembly",
+        "justification": "The mu morphism: fusing the cleaned segments back into a single continuous document. The Frobenius condition requires that FFUSE(FSPLIT(text)) = text — the reassembled document is the same document, just stripped.",
+        "rejected_candidates": [
+          ["Compilation", "Compilation implies transformation to a different form; FFUSE is a structural closure."],
+          ["Copy-paste", "Implementation detail, not the morphism itself."]
+        ]
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Voice Authenticity Gate",
+        "justification": "Evaluation-true: a segment passes when it contains no banned vocabulary, no formulaic structure, and at least one irreducibly specific claim. The gate is open; the segment proceeds to TANCH.",
+        "rejected_candidates": [
+          ["Grammar Check Pass", "Grammar is orthogonal to LLM trace detection."],
+          ["Readability Score", "Readability metrics do not distinguish human from machine register."]
+        ]
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Trace Detection Flag",
+        "justification": "Evaluation-false: a segment fails when it contains Tier-1 banned vocabulary, mechanical transitions, or hedged vague claims without specific evidence. The gate closes; the segment routes to AREV.",
+        "rejected_candidates": [
+          ["Rejection", "Too binary — EVALF flags for rework, not deletion."],
+          ["AI Detector Score", "Automated detectors are one signal; EVALF is the structural gate."]
+        ]
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Ambiguous Register",
+        "justification": "The B-state: a segment that is simultaneously marked (contains an LLM pattern) and authentic (the pattern appears in the author's own prior work). ENGAGR holds both truths without forcing resolution. Requires human judgment to exit.",
+        "rejected_candidates": [
+          ["Mixed Voice", "Too casual — ENGAGR is the dialetheic state, not just stylistic inconsistency."],
+          ["Borderline Case", "Correct description but lacks the structural precision of the B-state."]
+        ]
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Committed Phrasing",
+        "justification": "Irreversible fixation: a word, phrase, or structural choice that the author commits to as their own — removing it from further revision passes. IFIX turns a candidate phrasing into a permanent feature of the authorial fingerprint.",
+        "rejected_candidates": [
+          ["Final Draft", "IFIX operates at the phrase level, not the document level."],
+          ["Locked Text", "Implementation metaphor, not the structural operation."]
+        ]
+      }
+    },
+    "phase_2": {
+      "split_element": "Contamination Segmentation",
+      "split_input": "Raw Draft",
+      "split_outputs": [
+        "AI-contaminated segments",
+        "Clean segments"
+      ],
+      "fuse_element": "Coherence Reassembly",
+      "fuse_result": "Raw Draft (lifted)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "A 1000-word methods section split into 6 contaminated paragraphs and 2 clean ones. After stripping and voice injection on the 6, FFUSE reassembles all 8 in original order. The result is the same document structure with zero AI traces.",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The unexamined draft: no authorial signature has been identified, no contamination has been flagged. Neither human nor machine — purely statistical output awaiting analysis.",
+      "true_description": "Lifted prose: every sentence carries the author's specific register, no Tier-1 vocabulary, no mechanical transitions, at least one falsifiable claim per argumentative unit.",
+      "false_description": "Detected prose: contamination flags are active, Tier-1 vocabulary is present, paragraph rhythm is uniform, and the central thesis is immediately hedged.",
+      "both_description": "The active revision state: the document is simultaneously contaminated (flags are present) and being cleaned (the author's voice is being restored). This is the productive working state — neither pure input nor pure output.",
+      "transitions": [
+        {"from": "VOID", "to": "FALSE", "via": "EVALF — first pass flags contamination"},
+        {"from": "FALSE", "to": "BOTH", "via": "FSPLIT — segmentation begins the B-state"},
+        {"from": "BOTH", "to": "TRUE", "via": "FFUSE after AFWD+AREV completes on all segments"},
+        {"from": "TRUE", "to": "VOID", "via": "New draft intake resets the cycle"}
+      ],
+      "entropy_assertion": "ΔS < 0 — the lift reduces entropic homogenization: LLM output is maximally averaged (high entropy); lifted prose is specific (lower entropy, higher distinction)."
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Raw draft intake: the document enters the lift pipeline with no prior analysis. All segments are unclassified."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Establish the authorial fingerprint from prior work: characteristic vocabulary, sentence length distribution, claim-hedging ratio, preferred connectives."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Forward trace-stripping pass: remove all Tier-1 and Tier-2 banned vocabulary and editorializing phrases. Replace or delete per kill list."
+        },
+        {
+          "step_num": 4,
+          "opcode": "IFIX",
+          "domain_action": "Lock in vocabulary replacements that match the authorial fingerprint. These are no longer candidates — they are committed."
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "Segment the stripped draft by contamination residue: paragraphs with mechanical structure or uniform rhythm are split into the F-branch; structurally organic paragraphs enter the T-branch."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "T-branch gate: each segment is evaluated against the voice authenticity criteria. Segments with at least one specific, falsifiable claim and non-uniform structure pass."
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "Compose the passing T-branch segments sequentially in their original document order, preserving argument flow."
+        },
+        {
+          "step_num": 8,
+          "opcode": "ENGAGR",
+          "domain_action": "Ambiguous segments — those where the flagged pattern appears in the author's own prior work — enter the B-state. Hold for human judgment without forcing resolution."
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "F-branch gate: segments with residual mechanical rhythm, formulaic conclusions, or empty qualifiers are flagged. Routed to voice injection."
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "Voice injection pass on flagged segments: replace vague claims with specific ones, remove hedges, vary paragraph length, inject at least one failure mode or counter-example per argumentative unit."
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "Coherence reassembly: fuse all segments (T-branch, B-state resolved, F-branch rewritten) back into a single continuous document in original structural order."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IMSCRIB",
+          "domain_action": "Re-establish authorial fingerprint throughout the reassembled document: verify that the characteristic register is consistent across all sections."
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "Final fixation: commit all remaining stylistic choices. Run the rapid-scan checklist. Any surviving flags become IFIXed resolutions or cause a return to step 10."
+        },
+        {
+          "step_num": 14,
+          "opcode": "TANCH",
+          "domain_action": "Anchored voice state: the document is topologically closed. No Tier-1 vocabulary, no mechanical structure, every claim specific and falsifiable. Lift complete."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": [
+        "Author has no prior work corpus: IMSCRIB cannot establish a fingerprint. Lift degrades to generic style guide application.",
+        "Entire document is Tier-1 contaminated: FSPLIT produces no T-branch. EVALT gate is never opened; all segments route through AREV.",
+        "Author's own prior work contains Tier-1 vocabulary: ENGAGR B-state cannot be resolved without external judgment. Cycle stalls.",
+        "Mechanical structure is load-bearing (e.g., numbered protocol): EVALF flags structural formulae that are intentional. Requires IFIX override."
+      ]
+    },
+    "phase_5": {
+      "compiler_frontend": "The trained editorial eye: pattern recognition mapping LLM stylistic signatures to contamination events in the document stream.",
+      "ipc_mechanism": "Semantic distance between the flagged phrase and the nearest specific, attributable claim — measured against the authorial fingerprint corpus.",
+      "memory_mechanism": "The author's prior publications as ground truth for register. Also: the kill list and checklist as persistent state across revision passes.",
+      "scheduler_mechanism": "Four sequential passes: (1) vocabulary, (2) structure, (3) stance, (4) specificity. Each pass is a complete scan before the next begins.",
+      "alfs_store": "The kill list (Tier-1/2/3 banned vocabulary and phrases), the Frobenius condition (FFUSE∘FSPLIT = id), and the authorial fingerprint corpus.",
+      "alfs_bootstrap_program": "Establish fingerprint from prior work → run AFWD → run FSPLIT → route T/F/B → AREV on F-branch → FFUSE → verify TANCH state."
+    },
+    "phase_6": {
+      "cycle_cost": "Editorial time proportional to contamination density; cognitive effort of producing specific claims to replace generic ones.",
+      "pre_cycle_state": "Statistically averaged prose: high entropy, maximum homogenization, no irreducible authorial features.",
+      "post_cycle_state": "Irreducibly specific prose: lower entropy, anchored to one author's register, at least one falsifiable claim per argumentative unit.",
+      "delta_s_verdict": "ΔS < 0 — the lift is anti-entropic. LLM output collapses all authors toward a statistical mean; the lift restores the distinction that was erased. The cycle cost (editorial effort) pays for the entropy reduction.",
+      "failure_mode": "If the author accepts the ENGAGR B-state without resolution on too many segments, the lifted document inherits the B-state throughout: it is simultaneously clean and contaminated. This is the only failure mode that cannot be resolved by the pipeline alone."
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → IFIX → FSPLIT → EVALT → CLINK → ENGAGR → EVALF → AREV → FFUSE → IMSCRIB → IFIX → TANCH\n-- Class: document lift\n-- Domain type: semiotic-editorial\n-- Expected tier: O₂ (bounded local operation on a finite document)\n-- FSPLIT/FFUSE pair: [(4, 10)] — contamination segmentation → coherence reassembly\n-- Frobenius condition: FFUSE(FSPLIT(doc)) = doc (lifted)\n-- ΔS < 0: lift is anti-entropic\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\n\nnoncomputable def document_lift_protocol : IGProtocol 𝔻 𝕋 :=\n  .withGram 𝔾 <|\n  (.arrow 𝔻 𝔻 𝔾)   -- [0]  VINIT    | Raw Draft\n  (.arrow 𝔾 𝔻 ℝ)   -- [1]  IMSCRIB  | Authorial Fingerprint\n  (.arrow ℝ 𝔾 𝔽)   -- [2]  AFWD     | Trace Stripping\n  (.arrow 𝔽 ℝ 𝔾)   -- [3]  IFIX     | Committed Phrasing\n  -- FSPLIT [4] / FFUSE [10]\n  .seq\n    (.prod\n      .seq\n        (.arrow ⊙ 𝔾 𝔾)   -- [5]  EVALT   | Voice Authenticity Gate\n        (.arrow 𝔽 𝔾 𝔾)   -- [6]  CLINK   | Revision Pass Composition\n        (.arrow 𝔾 𝔾 𝔾)   -- [7]  ENGAGR  | Ambiguous Register (B-state)\n      .seq\n        (.arrow ℍ 𝔾 𝔾)   -- [8]  EVALF   | Trace Detection Flag\n        (.arrow 𝔾 𝔾 𝔾))  -- [9]  AREV    | Voice Injection\n    (.arrow 𝔾 𝔾 𝔾))  -- [10] FFUSE   | Coherence Reassembly\n  (.arrow 𝔾 𝔾 ℝ)   -- [11] IMSCRIB  | Authorial Fingerprint (re-establish)\n  (.arrow ℝ 𝔾 𝕋)   -- [12] IFIX     | Committed Phrasing (final)\n  (.arrow 𝕋 ℝ 𝔻)   -- [13] TANCH    | Anchored Voice\n\ntheorem document_lift_frobenius : μ ∘ δ = id := by\n  exact igFrobAlg_self_fusion\n\nend Imscribing\n",
+  "notes": "Structural ob3ect for the document lift operation: annihilation of LLM stylistic traces from academic and technical prose. Sources: Wikipedia Signs of AI Writing; Springer Nature Apr 2026; arXiv Apr 2024."
+}
