@@ -1,0 +1,216 @@
+{
+  "name": "nuclear fusion",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "nuclear fusion",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "deuterium",
+        "tritium",
+        "helium",
+        "neutron"
+      ],
+      "boundary_condition": "magnetic confinement vessel",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "vacuum chamber",
+        "justification": "void before fuel injection",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "tokamak wall",
+        "justification": "closed boundary containing plasma",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "temperature ramp",
+        "justification": "forward drive toward ignition",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "radiative cooling",
+        "justification": "reverse energy loss",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential fueling",
+        "justification": "chained injection steps",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "plasma self-heating",
+        "justification": "ignition recognizes its own state",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "D-T collision",
+        "justification": "branches into fusion versus scatter paths",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "net reaction recovery",
+        "justification": "reconstitutes original D-T pair state",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "ignition achieved",
+        "justification": "affirmative fusion success",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "scattering loss",
+        "justification": "negative non-fusion outcome",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "quantum tunneling",
+        "justification": "paradice of fusion/scatter held simultaneously",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "neutron flux log",
+        "justification": "permanent record of reaction yield",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "D-T collision",
+      "split_input": "D-T fuel pair",
+      "split_outputs": [
+        "fusion channel",
+        "scatter channel"
+      ],
+      "fuse_element": "net reaction recovery",
+      "fuse_result": "D-T fuel pair",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "pre-injection vacuum with no nuclei present",
+      "true_description": "sustained burn producing helium and energy",
+      "false_description": "quenched plasma with no net fusion",
+      "both_description": "tunneling probability held as fusion and scatter at once",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "vacuum chamber before any fuel"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "tokamak wall seals the system"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "sequential deuterium injection"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "sequential tritium injection"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "external heating raises temperature"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "D-T collision branches paths"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "ignition achieved on T-arm"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "scattering loss on F-arm"
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "quantum tunneling holds both outcomes"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "net reaction recovers original D-T pair"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IMSCRIB",
+          "domain_action": "plasma self-heating recognizes burn state"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AREV",
+          "domain_action": "radiative cooling descent phase"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "neutron flux log permanently recorded"
+        },
+        {
+          "step_num": 14,
+          "opcode": "AFWD",
+          "domain_action": "energy extraction to grid"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "plasma control laws map intentions to heating and magnetic profiles",
+      "ipc_mechanism": "electromagnetic coupling between ions and fields",
+      "memory_mechanism": "magnetic flux surfaces store confinement state",
+      "scheduler_mechanism": "real-time MHD feedback loop orders operations",
+      "alfs_store": " Lawson criterion tables bootstrap ignition conditions",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "confinement power and fuel mass",
+      "pre_cycle_state": "ordered fuel mixture at injection",
+      "post_cycle_state": "helium ash plus extracted energy",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 closed magnetic boundary conserves total energy accounting",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 CLINK \u2192 CLINK \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 IMSCRIB \u2192 AREV \u2192 IFIX \u2192 AFWD\n-- Class: nuclear fusion\n-- Fingerprint: sig=(8,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(5, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc71  | terminal object \u2014 connectivity boundary\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc61 \u2192 \ud801\udc71  | composition \u2014 regime coherence\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc71 \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [10] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc57  | identity \u2014 self-imscription\n--   [11] AREV      pol    := \ud801\udc57               \ud801\udc60 \u2192 \ud801\udc6d  | reverse morphism \u2014 parity flip\n--   [12] IFIX      prot   := \ud801\udc6d               \ud801\udc57 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [13] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc7c  | forward morphism \u2014 bidirectional arrow\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def nuclear_fusion_protocol : IGProtocol \ud801\udc7c \ud801\udc7e :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (vacuum chamber before any fuel)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc71)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (tokamak wall seals the system)\n  (.arrow \ud801\udc71 \ud801\udc61 \ud801\udc71)  -- [2] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (sequential deuterium injection)\n  (.arrow \ud801\udc71 \ud801\udc71 \ud801\udc7e)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (sequential tritium injection)\n  (.arrow \ud801\udc7e \ud801\udc71 \ud801\udc5a)  -- [4] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (external heating raises temperature)\n  -- FSPLIT [5] (gran := \ud801\udc5a) (D-T collision branches paths) / FFUSE [9] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (1 nodes)\n      (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [6] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (ignition achieved on T-arm)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [7] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (scattering loss on F-arm)\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [8] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (quantum tunneling holds both outcomes))\n    -- reconnect at FFUSE [9]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [9] FFUSE | stoi := \ud801\udc59 (net reaction recovers original D-T pair)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc57)  -- [10] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (plasma self-heating recognizes burn state)\n  (.arrow \ud801\udc57 \ud801\udc60 \ud801\udc6d)  -- [11] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (radiative cooling descent phase)\n  (.arrow \ud801\udc6d \ud801\udc57 \ud801\udc7e)  -- [12] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (neutron flux log permanently recorded)\n  (.arrow \ud801\udc7e \ud801\udc6d \ud801\udc7c)  -- [13] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (energy extraction to grid)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def nuclear_fusion_true_arm : IGProtocol \ud801\udc7c \ud801\udc7e :=\n  (nuclear_fusion_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def nuclear_fusion_false_arm : IGProtocol \ud801\udc7c \ud801\udc7e :=\n  (nuclear_fusion_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem nuclear_fusion_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: nuclear fusion"
+}

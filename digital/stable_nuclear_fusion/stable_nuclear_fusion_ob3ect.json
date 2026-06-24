@@ -1,0 +1,211 @@
+{
+  "name": "stable nuclear fusion",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "stable nuclear fusion",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "plasma",
+        "confinement",
+        "ignition",
+        "helium ash"
+      ],
+      "boundary_condition": "magnetic confinement vessel",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "fuel nuclei",
+        "justification": "uninitialized hydrogen isotopes before any reaction or containment",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "tokamak vessel",
+        "justification": "closed physical boundary containing the entire fusion system",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "heating ramp",
+        "justification": "directed energy input driving plasma toward ignition temperature",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "ash exhaust",
+        "justification": "removal of fusion products allowing descent back to steady state",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "field-line chaining",
+        "justification": "sequential linking of toroidal and poloidal coils",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-sustaining burn",
+        "justification": "plasma state that recognizes and maintains its own ignition condition",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "magnetic topology",
+        "justification": "closed magnetic surface splits into toroidal and poloidal flux components",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "closed flux surface",
+        "justification": "reconstitution of the original closed magnetic surface from the two flux branches",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "ignition success",
+        "justification": "affirmative branch confirming Lawson criterion is met",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "quench",
+        "justification": "negative branch indicating loss of confinement or temperature",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "marginal stability",
+        "justification": "paradice state where plasma is simultaneously confined and on the verge of disruption",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "neutron fluence log",
+        "justification": "permanent append-only record of neutron yield and wall damage",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "magnetic topology",
+      "split_input": "closed magnetic surface",
+      "split_outputs": [
+        "toroidal flux",
+        "poloidal flux"
+      ],
+      "fuse_element": "closed flux surface",
+      "fuse_result": "closed magnetic surface",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "unassembled fuel gas and inactive coils before any magnetic field or plasma exists",
+      "true_description": "stable ignited plasma satisfying Lawson criterion with net energy gain",
+      "false_description": "quenched or disrupted plasma with loss of confinement",
+      "both_description": "marginally stable plasma simultaneously confined and near disruption threshold",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "load unreacted deuterium-tritium fuel mixture"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "close magnetic confinement vessel boundary"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "divide closed magnetic surface into toroidal and poloidal flux"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "apply toroidal-field ramp to toroidal branch"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "apply poloidal-field ramp to poloidal branch"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "confirm toroidal-poloidal balance reaches ignition threshold"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "detect imbalance leading to quench path"
+        },
+        {
+          "step_num": 8,
+          "opcode": "ENGAGR",
+          "domain_action": "hold marginal stability state without resolution"
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "chain successive field-line segments into continuous surface"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IMSCRIB",
+          "domain_action": "plasma self-recognizes ignition and sustains burn"
+        },
+        {
+          "step_num": 11,
+          "opcode": "AREV",
+          "domain_action": "exhaust helium ash along reverse gradient"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "permanently record neutron fluence and wall exposure"
+        },
+        {
+          "step_num": 13,
+          "opcode": "FFUSE",
+          "domain_action": "recombine toroidal and poloidal fluxes into original closed surface"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "magnetic-field coil drivers translating target q-profile into currents",
+      "ipc_mechanism": "electromagnetic wave coupling between plasma regions and external coils",
+      "memory_mechanism": "flux-surface integrals stored in real-time equilibrium reconstruction",
+      "scheduler_mechanism": "real-time MHD stability controller ordering heating and fueling pulses",
+      "alfs_store": "reference Grad-Shafranov equilibrium database for bootstrap initialization",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "auxiliary heating power and fuel injection",
+      "pre_cycle_state": "sub-ignited plasma with external energy input",
+      "post_cycle_state": "self-sustaining ignited plasma with reduced external power",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 fusion energy release offsets auxiliary power once Lawson criterion is reached",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 FSPLIT \u2192 AFWD \u2192 AFWD \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 CLINK \u2192 IMSCRIB \u2192 AREV \u2192 IFIX \u2192 FFUSE\n-- Class: stable nuclear fusion\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 12)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7c  | fuse \u03bc \u2014 assembly mode\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def stable_nuclear_fusion_protocol : IGProtocol \ud801\udc7c \ud801\udc59 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (load unreacted deuterium-tritium fuel mixture)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc5a)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (close magnetic confinement vessel boundary)\n  -- FSPLIT [2] (gran := \ud801\udc5a) (divide closed magnetic surface into toroidal and poloidal flux) / FFUSE [12] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [3] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (apply toroidal-field ramp to toroidal branch)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [4] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (apply poloidal-field ramp to poloidal branch)\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [5] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (confirm toroidal-poloidal balance reaches ignition threshold)\n      -- F-branch (6 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [6] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (detect imbalance leading to quench path)\n      .seq\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [7] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (hold marginal stability state without resolution)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [8] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (chain successive field-line segments into continuous surface)\n      .seq\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [9] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (plasma self-recognizes ignition and sustains burn)\n      .seq\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [10] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (exhaust helium ash along reverse gradient)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [11] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (permanently record neutron fluence and wall exposure))\n    -- reconnect at FFUSE [12]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc7c)  -- [12] FFUSE | stoi := \ud801\udc59 (recombine toroidal and poloidal fluxes into original closed surface)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def stable_nuclear_fusion_true_arm : IGProtocol \ud801\udc7c \ud801\udc59 :=\n  (stable_nuclear_fusion_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def stable_nuclear_fusion_false_arm : IGProtocol \ud801\udc7c \ud801\udc59 :=\n  (stable_nuclear_fusion_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem stable_nuclear_fusion_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: stable nuclear fusion"
+}
