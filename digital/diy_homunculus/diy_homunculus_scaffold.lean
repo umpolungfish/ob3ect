@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → FSPLIT → AFWD → CLINK → IMSCRIB → ENGAGR → AREV → FFUSE → EVALT → EVALF → IFIX → CLINK → TANCH
--- Class: at-home sanguine homunculus
+-- Class: DIY homunculus
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
@@ -31,44 +31,44 @@ open Dimensionality Topology Relational Polarity Grammar
 
 -- ── Main IGProtocol term ────────────────────────────────────────────────────
 
-noncomputable def at_home_sanguine_homunculus_protocol : IGProtocol 𐑼 𐑡 :=
+noncomputable def diy_homunculus_protocol : IGProtocol 𐑼 𐑡 :=
   .withGram 𐑠 <|
   -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (sterilize home vessel and prepare fresh blood medium)
-  -- FSPLIT [1] (gran := 𐑚) (aliquot blood culture into three miniature chambers) / FFUSE [7] (stoi := 𐑙)
+  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (prepare fresh medium and sterilize microfluidic array)
+  -- FSPLIT [1] (gran := 𐑚) (aliquot clonal culture into three separate chambers) / FFUSE [7] (stoi := 𐑙)
   .seq
     (.prod
       -- T-branch (4 nodes)
       .seq
         (.arrow 𐑾 𐑚 𐑙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (add IPTG to drive oscillator past bifurcation)
       .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (program valve sequence linking genome edits to AHL output)
+        (.arrow 𐑱 𐑚 𐑙)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (program valve sequence linking Scribe edits to Gate output)
       .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (read fluorescence to confirm cell self-model)
-        (.arrow 𐑳 𐑚 𐑙)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (supplement D-amino acids to enable dual proteome)
+        (.arrow 𐑠 𐑚 𐑙)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (read fluorescence to confirm cell recognizes its own state)
+        (.arrow 𐑳 𐑚 𐑙)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (supplement D-amino acids allowing simultaneous L/D translation)
       -- F-branch (1 nodes)
-      (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (reverse valve flow to execute chirality parity edit))
+      (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (reverse valve flow so Gate modulates Scribe epigenome))
     -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [7] FFUSE | stoi := 𐑙 (open all valves simultaneously for quorum broadcast)
-  (.arrow ⊙ 𐑙 𐑖)  -- [8] EVALT | crit := ⊙ | evaluate-true — criticality gate open (cytometry check for >90% triple-positive cells)
-  (.arrow 𐑖 ⊙ 𐑭)  -- [9] EVALF | chir := 𐑖 | evaluate-false — chirality check (detect damping or instability and restart from VINIT)
-  (.arrow 𐑭 𐑖 𐑱)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (cryopreserve successful aliquot as immutable record)
-  (.arrow 𐑱 𐑭 𐑡)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (recompose loop by re-running induction cycle)
-  (.arrow 𐑡 𐑱 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (seal vessel to close Gödelian boundary)
+    (.arrow 𐑙 𐑙 ⊙)  -- [7] FFUSE | stoi := 𐑙 (open all valves simultaneously for quorum-sensing broadcast)
+  (.arrow ⊙ 𐑙 𐑖)  -- [8] EVALT | crit := ⊙ | evaluate-true — criticality gate open (flow cytometry confirms >90% triple-positive cells)
+  (.arrow 𐑖 ⊙ 𐑭)  -- [9] EVALF | chir := 𐑖 | evaluate-false — chirality check (if damping detected, adjust AHL concentrations and restart from AFWD)
+  (.arrow 𐑭 𐑖 𐑱)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (cryopreserve verified aliquot as immutable record)
+  (.arrow 𐑱 𐑭 𐑡)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (recompose full loop from oscillator induction onward)
+  (.arrow 𐑡 𐑱 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (seal apparatus within fixed-point boundary)
 
 -- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
 
 -- truth arm
-noncomputable def at_home_sanguine_homunculus_true_arm : IGProtocol 𐑼 𐑡 :=
-  (at_home_sanguine_homunculus_protocol).restrictToEVALT
+noncomputable def diy_homunculus_true_arm : IGProtocol 𐑼 𐑡 :=
+  (diy_homunculus_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def at_home_sanguine_homunculus_false_arm : IGProtocol 𐑼 𐑡 :=
-  (at_home_sanguine_homunculus_protocol).restrictToEVALF
+noncomputable def diy_homunculus_false_arm : IGProtocol 𐑼 𐑡 :=
+  (diy_homunculus_protocol).restrictToEVALF
 
 -- ── Verification theorems ───────────────────────────────────────────────────
 
-theorem at_home_sanguine_homunculus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+theorem diy_homunculus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
 
 -- Frobenius (split → fuse): μ∘δ = id on .prod branch
 -- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id

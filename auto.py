@@ -215,8 +215,51 @@ The IMASM opcode sequence goes ONLY in the "sequence" field."""
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
+_CATALOG_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "IG_catalog.json"
+_NAVIGATOR_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "navigators"
+_PRIM_ORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
+
 _CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
 _CONTEXT_MAX_BYTES = 500_000  # 50 KB total
+
+
+def _run_navigator_entry(name: str) -> str:
+    """Run cl8nk_navigator.action_entry for name and return its formatted readout."""
+    import io as _io
+    nav_str = str(_NAVIGATOR_PATH)
+    if nav_str not in sys.path:
+        sys.path.insert(0, nav_str)
+    try:
+        import cl8nk_navigator as _nav
+        _nav.load_catalog()
+        result = _nav.action_entry(name)
+        if result.get("status") == "error":
+            return f"[CL8NK] {result['message']}"
+        buf = _io.StringIO()
+        old_stdout = sys.stdout
+        sys.stdout = buf
+        try:
+            _nav._print_entry_table(result)
+        finally:
+            sys.stdout = old_stdout
+        return buf.getvalue().strip()
+    except Exception as e:
+        return f"[CL8NK navigator error for {name!r}: {e}]"
+
+
+def _load_catalog_entries(names: List[str]) -> str:
+    """Look up catalog entries by name, run each through cl8nk_navigator, and return combined readout."""
+    chunks: List[str] = []
+    for raw_name in names:
+        readout = _run_navigator_entry(raw_name)
+        if readout.startswith("[CL8NK]") or readout.startswith("[CL8NK navigator error"):
+            print(f"Warning: {readout}")
+        else:
+            chunks.append(readout)
+
+    if not chunks:
+        return ""
+    return "CL8NK Navigator readouts for reference entries:\n\n" + "\n\n".join(chunks)
 
 
 def _load_context(path: str) -> str:
@@ -620,6 +663,9 @@ if __name__ == "__main__":
     ap.add_argument("--context", dest="context_path", default=None, metavar="PATH",
                     help="File or directory of domain documents to include as context "
                          "(.md/.txt/.lean/.py/.tex/.json; up to 500 KB total)")
+    ap.add_argument("--entry", dest="catalog_entries", default=None, metavar="NAMES",
+                    help="Comma-separated catalog entry names to inject as context "
+                         "(e.g. --entry yhwh,dark_matter,proton)")
     args = ap.parse_args()
 
     desc = " ".join(args.description)
@@ -632,6 +678,13 @@ if __name__ == "__main__":
             print(f"Context loaded: {args.context_path} ({len(ctx):,} chars, {n_files} file(s))\n")
         except FileNotFoundError as e:
             print(f"Warning: {e} — proceeding without context")
+
+    if args.catalog_entries:
+        names = [n.strip() for n in args.catalog_entries.split(",") if n.strip()]
+        entry_ctx = _load_catalog_entries(names)
+        if entry_ctx:
+            print(f"Catalog entries: {', '.join(names)}\n")
+        ctx = "\n\n".join(p for p in [ctx, entry_ctx] if p) or None
 
     if args.thinking:
         import framework.enhanced_llm_provider as _ep
