@@ -1,3 +1,20 @@
+digital/ch3mpiler_ob3ect.py: CH3MPILER ↔ IMASM Frobenius bridge (2026-06-24)
+
+Maps CH3MPILER retrosynthetic disconnections to IMASM register traces to
+verify which synthesis routes satisfy μ∘δ=id (Frobenius closure).
+
+IMASM sequence per disconnection:
+  VINIT → TANCH → FSPLIT → EVALT(δ=0)/EVALF(δ>0) → FFUSE → IMSCRIB [→ IFIX]
+
+Ch3mpilerOb3ect class:
+  analyze_target(mol): full per-disconnection IMASM trace + closure verdict
+  verify(): canonical suite (5 molecules); verify_target(): single molecule
+  --quiet: suppress all output; --detail: full IMASM trace per cut
+
+Invoked via: rebis.py run ch3mpiler_ob3ect_bridge
+
+---
+
 Add document_lift ob3ect: LLM trace annihilation pipeline
 
 digital/document_lift/document_lift_ob3ect.json — full 7-phase ob3ect for
