@@ -1,8 +1,8 @@
--- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → AFWD → CLINK → IMSCRIB → FFUSE → EVALF → AREV → FFUSE → ENGAGR → IFIX → TANCH
+-- IGProtocol scaffold: VINIT → TANCH → FSPLIT → AFWD → EVALT → AREV → EVALF → FFUSE → ENGAGR → CLINK → IMSCRIB → IFIX → TANCH
 -- Class: zero-point energy
--- Fingerprint: sig=(7,3,3,1)
+-- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
---   dialetheia_complete=True | period=14
+--   dialetheia_complete=True | period=13
 -- Expected tier: O₂
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
@@ -15,49 +15,45 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
---   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction
---   [1] AFWD      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow
+--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction
+--   [1] TANCH     top    := 𐑡               𐑼 → 𐑚  | terminal object — connectivity boundary
 --   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [4] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
---   [6] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
---   [7] FFUSE     stoi   := 𐑙               𐑙 → 𐑖  | fuse μ — assembly mode
---   [8] EVALF     chir   := 𐑖               𐑙 → 𐑗  | evaluate-false — chirality check
---   [9] AREV      pol    := 𐑗               𐑖 → 𐑙  | reverse morphism — parity flip
---   [10] FFUSE     stoi   := 𐑙               𐑗 → 𐑳  | fuse μ — assembly mode
---   [11] ENGAGR    stoi   := 𐑳               𐑙 → 𐑭  | engage paradox — B-state, both arms
---   [12] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
---   [13] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
+--   [3] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
+--   [4] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
+--   [5] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
+--   [6] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
+--   [7] FFUSE     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode
+--   [8] ENGAGR    stoi   := 𐑳               𐑙 → 𐑱  | engage paradox — B-state, both arms
+--   [9] CLINK     fid    := 𐑱               𐑳 → 𐑠  | composition — regime coherence
+--   [10] IMSCRIB   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
+--   [11] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Main IGProtocol term ────────────────────────────────────────────────────
 
 noncomputable def zero_point_energy_protocol : IGProtocol 𐑼 𐑡 :=
   .withGram 𐑠 <|
   -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize pre-quantum void before field definition)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward morphism activates quantum vacuum state)
-  -- FSPLIT [2] (gran := 𐑚) (Ground state bifurcates into positive and negative frequency modes) / FFUSE [7] (stoi := 𐑙)
+  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the bare classical vacuum state |0⟩ before any quantum fluctuations.)
+  (.arrow 𐑡 𐑼 𐑚)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Impose boundary conditions (e.g., Casimir plates) or UV cutoff to contain and...)
+  -- FSPLIT [2] (gran := 𐑚) (The vacuum fluctuates, splitting the bare vacuum into a virtual particle-antiparticle pair.) / FFUSE [7] (stoi := 𐑙)
   .seq
     (.prod
-      -- T-branch (4 nodes)
+      -- T-branch (3 nodes)
       .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirmative branch stabilizes positive frequency component)
+        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The virtual particle propagates forward in time along the T-arm.)
       .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward propagation of virtual particle emission along T-arm)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (Sequential coupling of harmonic oscillator modes)
-        (.arrow 𐑠 𐑚 𐑙)  -- [6] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-referential identity of the renormalized vacuum state)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
+        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The fluctuation mode is allowed by the boundary conditions (constructive inte...)
+        (.arrow 𐑗 𐑚 𐑙)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip (The virtual antiparticle propagates backward in time along the F-arm.)
+      -- F-branch (1 nodes)
+      (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (The fluctuation mode is excluded by the boundary conditions (destructive inte...))
     -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑖)  -- [7] FFUSE | stoi := 𐑙 (Recombination of positive and negative frequency modes restores ground state)
-  (.arrow 𐑖 𐑙 𐑗)  -- [8] EVALF | chir := 𐑖 | evaluate-false — chirality check (Negative branch evaluates virtual particle absorption potential)
-  (.arrow 𐑗 𐑖 𐑙)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse morphism executes annihilation/descent along F-arm)
-  (.arrow 𐑙 𐑗 𐑳)  -- [10] FFUSE | stoi := 𐑙 | fuse μ — assembly mode (Second fusion point reconstitutes exact vacuum input)
-  (.arrow 𐑳 𐑙 𐑭)  -- [11] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Casimir paradice holds attractive and repulsive vacuum pressures simultaneously)
-  (.arrow 𐑭 𐑳 𐑡)  -- [12] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanent fixation of measured zero-point energy density)
-  (.arrow 𐑡 𐑭 𐑼)  -- [13] TANCH | top := 𐑡 | terminal object — connectivity boundary (Planck-scale boundary seals the closed quantum system)
+    (.arrow 𐑙 𐑙 𐑳)  -- [7] FFUSE | stoi := 𐑙 (The virtual pair annihilates, reconstituting the original bare vacuum state.)
+  (.arrow 𐑳 𐑙 𐑱)  -- [8] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The vacuum is held as a paradice: simultaneously empty of real particles and ...)
+  (.arrow 𐑱 𐑳 𐑠)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (Chain these continuous virtual fluctuations over time to form the persistent ...)
+  (.arrow 𐑠 𐑱 𐑭)  -- [10] IMSCRIB | gram := 𐑠 | identity — self-imscription (The ground state self-recognizes its fixed zero-point energy eigenvalue (H|0⟩...)
+  (.arrow 𐑭 𐑠 𐑡)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (The macroscopic manifestation (e.g., Casimir force or Lamb shift) is permanen...)
+  (.arrow 𐑡 𐑭 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (The terminal boundary closes the quantized field system, containing the zero-...)
 
 -- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
 

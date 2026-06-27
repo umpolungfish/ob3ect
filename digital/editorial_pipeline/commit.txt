@@ -1,0 +1,22 @@
+Fix provider chain: drop qwen, use openrouter→deepseek (mirrors auto.py) — 2026-06-26
+
+_build_providers() was checking QWEN_API_KEY first; QWEN_API_KEY is set in env
+for other tools, so qwen fired even though auto.py never uses it.
+auto.py chain: ["local", "openrouter", "deepseek"] — editorial pipeline now
+matches (local skipped). Reads OPENROUTER_API_KEY + IG_MODEL env vars.
+
+---
+
+Fix qwen provider URL: mulerouter.ai not openrouter.ai — 2026-06-26
+
+_OPENROUTER_URL renamed to _QWEN_URL; URL changed from
+  https://openrouter.ai/api/v1/chat/completions
+to
+  https://api.mulerouter.ai/vendors/openai/v1/chat/completions
+matching auto.py / enhanced_llm_provider.py.
+
+Default model: qwen3-max (was qwen/qwen3-235b-a22b).
+Default deepseek model: deepseek-v4-pro (was deepseek-chat).
+Deepseek URL: api.deepseek.com/chat/completions (removed spurious /v1 prefix).
+
+Stale lambda reference _OPENROUTER_URL → _QWEN_URL also fixed.

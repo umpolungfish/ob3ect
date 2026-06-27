@@ -678,6 +678,68 @@ Every bootstrap winding generates exactly two IFIX records: one from CLINK's emp
 
 ---
 
+## Lift Ob3ects
+
+Alongside the categorical tower and IMASM arrangement classes, the repository contains
+**lift ob3ects** — standalone 7-phase JSON specifications paired with Python runners for
+specific domain operations. Each lift ob3ect maps all 12 IMASM opcodes to domain elements,
+verifies the FSPLIT/FFUSE Frobenius pair, and ships a self-contained runner.
+
+### Editorial Pipeline
+
+**`digital/editorial_pipeline/`** — the auto.py LLM cascade imscribed as a general-purpose
+editing, parsing, and rewriting tool.
+
+```
+Structural type: ⟨𐑼𐑡𐑠𐑾𐑚⊙𐑖𐑙𐑳𐑗𐑱𐑭⟩  O₂
+Frobenius pair:  FSPLIT[4] / FFUSE[7]
+```
+
+Three-stage pipeline that directly mirrors the IMASM winding structure:
+
+| Stage | Opcodes | What happens |
+|-------|---------|--------------|
+| **SET** | VINIT + TANCH + IMSCRIB | Bind source text and intent; parse source structure |
+| **SUBMIT** | AFWD + FSPLIT + EVALT/EVALF + FFUSE | Edit through provider cascade; quality gate; merge best output |
+| **SERVE** | ENGAGR + AREV + CLINK + IFIX | B-state flag; critique pass; compose multi-pass if needed; commit |
+
+Provider cascade: qwen (QWEN_API_KEY via OpenRouter) → deepseek (DEEPSEEK_API_KEY). No Anthropic.
+Audit log: `~/.ob3ect/editorial_pipeline.jsonl`.
+
+```python
+from digital.editorial_pipeline.editorial_pipeline_ob3ect import EditorialPipeline
+
+result = (
+    EditorialPipeline()
+    .set(source_text, "rewrite in active voice")
+    .submit(critique=True)
+    .serve()
+)
+print(result["output"])
+# result keys: output, source, intent, parse, edit, critique,
+#              provider, b_state, evalf, passes
+```
+
+```bash
+# CLI
+python digital/editorial_pipeline/editorial_pipeline_ob3ect.py source.txt "make concise"
+python digital/editorial_pipeline/editorial_pipeline_ob3ect.py source.txt "fix passive voice" \
+    --critique --passes 3 --json
+
+# Parse only (IMSCRIB step)
+python digital/editorial_pipeline/editorial_pipeline_ob3ect.py source.txt "" --parse-only
+
+# Stdin
+echo "Some text." | python digital/editorial_pipeline/editorial_pipeline_ob3ect.py - "tighten prose"
+```
+
+The AREV critique pass detects whether the rewrite fully satisfies the intent; if gaps remain,
+ENGAGR sets the B-state flag and CLINK composes another AFWD pass with the critique notes as
+additional context. Up to `--passes N` composition cycles. EVALF is set if the entire cascade
+exhausts without an accepted output — the best available output is still served.
+
+---
+
 ## Structural Typing (IG Coordinates)
 
 Every ob3ect is assigned a 12-primitive coordinate in the Imscribing Grammar lattice
@@ -923,6 +985,10 @@ ob3ect/
     ├── eternal_return/           — Class X: Eternal Return (O₁)
     ├── rom_burn/                 — Class XI: ROM Burn (O₂)
     ├── chiral_pairs/             — Class XII: Chiral Pairs (O₂†)
+    │   (Lift ob3ects — domain-specific 7-phase JSON + runner pairs)
+    ├── editorial_pipeline/       — Editorial Pipeline: SET/SUBMIT/SERVE LLM cascade (O₂)
+    │   ├── editorial_pipeline_ob3ect.json   — 7-phase spec (all 12 opcodes, FSPLIT/FFUSE[4,7])
+    │   └── editorial_pipeline_ob3ect.py     — Python runner: EditorialPipeline().set().submit().serve()
     │   (Additional structures)
     ├── test/                — Auto-generated ob3ects (meta-layer output)
     ├── shavian_ob3ect/      — Shavian script ob3ect (coagulum.md + coagulum.pdf)

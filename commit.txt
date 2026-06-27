@@ -1,3 +1,39 @@
+README: add Lift Ob3ects section + editorial_pipeline entry — 2026-06-26
+
+New "Lift Ob3ects" section before "Structural Typing": defines lift ob3ects as
+7-phase JSON + Python runner pairs for specific domain operations. Covers the
+Editorial Pipeline in full: structural type, FSPLIT/FFUSE pair, stage table,
+Python API, CLI examples, B-state/critique/CLINK composition semantics.
+Repo layout updated with digital/editorial_pipeline/ and its two files.
+
+---
+
+Add editorial_pipeline ob3ect: LLM cascade imscribed as SET/SUBMIT/SERVE — 2026-06-26
+
+digital/editorial_pipeline/editorial_pipeline_ob3ect.json — full 7-phase ob3ect
+for the domain of multi-step LLM-integrated editing, parsing, and rewriting.
+All 12 IMASM opcodes mapped: VINIT=source, TANCH=intent, IMSCRIB=parse,
+AFWD=primary edit, FSPLIT=provider fanout, EVALT/EVALF=quality gate,
+FFUSE=output merge, ENGAGR=B-state, AREV=critique, CLINK=compose, IFIX=commit.
+Frobenius pair: FSPLIT/FFUSE[4,7]. Expected tier: O₂.
+
+digital/editorial_pipeline/editorial_pipeline_ob3ect.py — Python runner.
+EditorialPipeline().set(source, intent).submit().serve() API.
+Provider cascade: qwen (QWEN_API_KEY) → deepseek (DEEPSEEK_API_KEY), stdlib only.
+IMSCRIB parse carried as context through AFWD edit and FFUSE rewrite.
+AREV critique pass + CLINK composition loop (--critique --passes N).
+JSONL audit log at ~/.ob3ect/editorial_pipeline.jsonl.
+CLI: editorial_pipeline_ob3ect.py source.txt "intent" [--critique] [--json]
+
+---
+
+Strip '; ' delimiters from Shavian tuples in module headers — 2026-06-26
+
+digital/binance_optimal_profit/__init__.py docstring tuples now written as bare
+Shavian without '; ' separators.
+
+---
+
 digital/ch3mpiler_ob3ect.py: CH3MPILER ↔ IMASM Frobenius bridge (2026-06-24)
 
 Maps CH3MPILER retrosynthetic disconnections to IMASM register traces to
