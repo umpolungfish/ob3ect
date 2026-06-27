@@ -1,0 +1,205 @@
+{
+  "name": "Psychiatric disease therapies module",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Psychiatric disease therapies module",
+      "domain_type": "biological",
+      "scope": "local",
+      "surface_tokens": [
+        "neurotransmitter",
+        "receptor",
+        "synapse"
+      ],
+      "boundary_condition": "the blood-brain barrier that closes and contains the neural signaling system",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "resting membrane potential",
+        "justification": "the void/uninitialized state before any neurotransmitter is released or any receptor is activated",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the blood-brain barrier",
+        "justification": "the terminal anchor that contains the entire neural signaling system, preventing external interference",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "action potential propagation",
+        "justification": "a directed forward morphism that carries the signal from soma to synapse",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "reuptake and enzymatic degradation",
+        "justification": "the reverse/descent transformation that clears neurotransmitters from the synaptic cleft",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "signal transduction cascade",
+        "justification": "sequential chaining of receptor activation, second messenger systems, and gene expression",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "autoreceptor feedback",
+        "justification": "self-recognition: the neuron senses its own neurotransmitter release and adjusts accordingly",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "synaptic vesicle fusion",
+        "justification": "splits the action potential signal into two branches: neurotransmitter release into the cleft and presynaptic autoreceptor activation",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "postsynaptic integration",
+        "justification": "reconstitutes the split signal by summing excitatory and inhibitory postsynaptic potentials at the axon hillock",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "excitatory postsynaptic potential (EPSP)",
+        "justification": "affirmative branch: depolarization that brings the neuron closer to firing threshold",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "inhibitory postsynaptic potential (IPSP)",
+        "justification": "negative branch: hyperpolarization that moves the neuron away from firing threshold",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "temporal summation of EPSP and IPSP",
+        "justification": "a paradice: both excitatory and inhibitory inputs are held simultaneously without immediate resolution, allowing complex integration",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "long-term potentiation (LTP) or long-term depression (LTD)",
+        "justification": "permanent, irreversible record of synaptic strength change, encoded in receptor density and spine morphology",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "synaptic vesicle fusion",
+      "split_input": "action potential arriving at the presynaptic terminal",
+      "split_outputs": [
+        "neurotransmitter release into the synaptic cleft",
+        "presynaptic autoreceptor activation"
+      ],
+      "fuse_element": "postsynaptic integration",
+      "fuse_result": "summed postsynaptic potential that determines whether the neuron fires",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "resting membrane potential (~-70 mV) \u2014 no neurotransmitter release, no receptor activation, system uninitialized",
+      "true_description": "EPSP \u2014 depolarization, increased probability of action potential firing",
+      "false_description": "IPSP \u2014 hyperpolarization, decreased probability of action potential firing",
+      "both_description": "temporal summation \u2014 simultaneous EPSP and IPSP inputs held at the axon hillock, net effect determined by integration",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "resting membrane potential establishes the baseline void state before any signaling begins"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "action potential propagates down the axon toward the presynaptic terminal"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "synaptic vesicle fusion splits the signal into neurotransmitter release and autoreceptor activation"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "neurotransmitter binds to postsynaptic receptors, generating an EPSP (affirmative branch)"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALF",
+          "domain_action": "neurotransmitter binds to inhibitory receptors, generating an IPSP (negative branch)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "ENGAGR",
+          "domain_action": "temporal summation holds both EPSP and IPSP simultaneously at the axon hillock without immediate resolution"
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "signal transduction cascade links receptor activation to second messenger systems and gene expression"
+        },
+        {
+          "step_num": 8,
+          "opcode": "IMSCRIB",
+          "domain_action": "autoreceptor feedback provides self-recognition, modulating further neurotransmitter release"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "postsynaptic integration reconstitutes the split signal into a summed postsynaptic potential"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "reuptake and enzymatic degradation clear neurotransmitters from the synaptic cleft, reversing the signal"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "long-term potentiation or depression permanently records the synaptic strength change"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "the blood-brain barrier anchors the entire system, preventing external interference and containing the process"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the presynaptic machinery (SNARE proteins, calcium channels) that translates the action potential into neurotransmitter release",
+      "ipc_mechanism": "neurotransmitter diffusion across the synaptic cleft \u2014 the physical communication channel between neurons",
+      "memory_mechanism": "receptor density and spine morphology at the postsynaptic density \u2014 stores synaptic strength as a structural state",
+      "scheduler_mechanism": "the rate of action potential firing and the timing of neurotransmitter release \u2014 determines order and timing of synaptic events",
+      "alfs_store": "the genetic blueprint for neurotransmitter synthesis enzymes, receptors, and reuptake transporters \u2014 the canonical bootstrap store for neural signaling",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "ATP consumed by ion pumps (Na+/K+ ATPase) to restore resting membrane potential and by vesicle recycling",
+      "pre_cycle_state": "resting membrane potential maintained by ion gradients",
+      "post_cycle_state": "resting membrane potential restored after signal propagation and neurotransmitter clearance",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the cycle is entropy-conservative because ATP hydrolysis drives the restoration of ion gradients, maintaining the system in a steady state far from equilibrium",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 AREV \u2192 IFIX \u2192 TANCH\n-- Class: Psychiatric disease therapies module\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc57  | fuse \u03bc \u2014 assembly mode\n--   [9] AREV      pol    := \ud801\udc57               \ud801\udc59 \u2192 \ud801\udc6d  | reverse morphism \u2014 parity flip\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc57 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def psychiatric_disease_therapies_module_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc7e)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (resting membrane potential establishes the baseline void state before any sig...)\n  (.arrow \ud801\udc7e \ud801\udc7c \ud801\udc5a)  -- [1] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (action potential propagates down the axon toward the presynaptic terminal)\n  -- FSPLIT [2] (gran := \ud801\udc5a) (synaptic vesicle fusion splits the signal into neurotransmitter release and autoreceptor activation) / FFUSE [8] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (1 nodes)\n      (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [3] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (neurotransmitter binds to postsynaptic receptors, generating an EPSP (affirma...)\n      -- F-branch (4 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [4] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (neurotransmitter binds to inhibitory receptors, generating an IPSP (negative ...)\n      .seq\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [5] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (temporal summation holds both EPSP and IPSP simultaneously at the axon hilloc...)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [6] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (signal transduction cascade links receptor activation to second messenger sys...)\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [7] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (autoreceptor feedback provides self-recognition, modulating further neurotran...))\n    -- reconnect at FFUSE [8]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc57)  -- [8] FFUSE | stoi := \ud801\udc59 (postsynaptic integration reconstitutes the split signal into a summed postsynaptic potential)\n  (.arrow \ud801\udc57 \ud801\udc59 \ud801\udc6d)  -- [9] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (reuptake and enzymatic degradation clear neurotransmitters from the synaptic ...)\n  (.arrow \ud801\udc6d \ud801\udc57 \ud801\udc61)  -- [10] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (long-term potentiation or depression permanently records the synaptic strengt...)\n  (.arrow \ud801\udc61 \ud801\udc6d \ud801\udc7c)  -- [11] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (the blood-brain barrier anchors the entire system, preventing external interf...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def psychiatric_disease_therapies_module_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (psychiatric_disease_therapies_module_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def psychiatric_disease_therapies_module_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (psychiatric_disease_therapies_module_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem psychiatric_disease_therapies_module_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Psychiatric disease therapies module"
+}

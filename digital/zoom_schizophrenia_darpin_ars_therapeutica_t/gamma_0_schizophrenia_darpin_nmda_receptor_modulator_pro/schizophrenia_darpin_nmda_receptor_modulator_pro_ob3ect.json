@@ -1,0 +1,205 @@
+{
+  "name": "Schizophrenia DARPin NMDA receptor modulator protein",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Schizophrenia DARPin NMDA receptor modulator protein",
+      "domain_type": "biological",
+      "scope": "local",
+      "surface_tokens": [
+        "NMDA receptor",
+        "glycine site",
+        "DARPin scaffold"
+      ],
+      "boundary_condition": "the NMDA receptor's ligand-binding cleft, which contains and closes the system by defining the only site where the DARPin can bind and exert its modulatory effect",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unbound DARPin in solution",
+        "justification": "the initial, unbound state of the therapeutic protein before any interaction with the NMDA receptor \u2014 void of target engagement",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "NMDA receptor glycine-binding site",
+        "justification": "the closed boundary that contains the entire system: the binding pocket defines the spatial and chemical limits of the interaction",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "DARPin binding to the glycine site",
+        "justification": "the forward morphism \u2014 the directed transformation from unbound to bound state, representing the primary therapeutic action",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "DARPin dissociation from the glycine site",
+        "justification": "the reverse/descent transformation \u2014 unbinding, which returns the system to the unbound state, representing drug clearance or off-target release",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential binding of DARPin's ankyrin repeats",
+        "justification": "composition \u2014 the stepwise engagement of individual ankyrin repeat domains with the receptor surface, chaining multiple binding events into a stable interaction",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the DARPin's own folded structure",
+        "justification": "identity/self-reference \u2014 the DARPin's tertiary structure is the stable, self-recognizing entity that persists through binding and unbinding cycles",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "conformational selection upon binding",
+        "justification": "the split \u2014 the NMDA receptor's glycine site can exist in either an open (active) or closed (inactive) conformation; the DARPin's binding selects one path",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "stabilization of the receptor's open conformation",
+        "justification": "the fuse \u2014 the DARPin's binding reconstitutes the receptor into a single, stabilized open state, which is the original therapeutic target (the split input)",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "successful allosteric potentiation",
+        "justification": "affirmative state \u2014 the DARPin binds and the NMDA receptor's open probability increases, achieving the desired therapeutic effect",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "failed binding or receptor desensitization",
+        "justification": "negative state \u2014 the DARPin fails to bind, or the receptor enters a desensitized state that prevents potentiation",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "partial agonism at the glycine site",
+        "justification": "a paradice \u2014 the DARPin simultaneously occupies the glycine site and permits partial receptor activation, a state where both binding and non-binding effects are held without full resolution",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the DARPin's amino acid sequence",
+        "justification": "permanent irreversible record \u2014 the primary structure of the DARPin is fixed by its genetic code and cannot be altered during the therapeutic cycle",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "conformational selection upon binding",
+      "split_input": "the NMDA receptor's glycine site in an unbound, dynamic equilibrium between open and closed conformations",
+      "split_outputs": [
+        "receptor in open (active) conformation",
+        "receptor in closed (inactive) conformation"
+      ],
+      "fuse_element": "stabilization of the receptor's open conformation",
+      "fuse_result": "the NMDA receptor's glycine site in a stabilized open conformation \u2014 semantically equal to the split input's target state",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the DARPin in solution, unbound and not yet interacting with any receptor \u2014 00, uninitialized",
+      "true_description": "the DARPin bound to the glycine site, receptor potentiated \u2014 01, affirmative, success",
+      "false_description": "the DARPin dissociated or the receptor desensitized \u2014 10, negative, failure",
+      "both_description": "the DARPin partially bound, receptor in a mixed state of partial activation \u2014 11, a paradice: both bound and unbound effects simultaneously held",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "the unbound DARPin exists in solution, awaiting encounter with the NMDA receptor"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "the DARPin diffuses toward and engages the glycine-binding site on the NMDA receptor's GluN1 subunit"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "upon initial contact, the receptor's glycine site undergoes conformational selection \u2014 it branches into either an open (active) or closed (inactive) state"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "the receptor adopts the open conformation, allowing the DARPin to bind deeply and stabilize the active state"
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "the DARPin's ankyrin repeats sequentially engage with the receptor surface, each repeat adding binding energy and specificity"
+        },
+        {
+          "step_num": 6,
+          "opcode": "IMSCRIB",
+          "domain_action": "the DARPin's own folded structure is recognized by the receptor as a stable, self-consistent binding partner"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "the sequential binding events reconstitute the receptor into a single, stabilized open conformation \u2014 the original therapeutic target is achieved"
+        },
+        {
+          "step_num": 8,
+          "opcode": "IFIX",
+          "domain_action": "the DARPin's amino acid sequence is permanently recorded in the genetic code, ensuring the same binding event can be reproduced"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AREV",
+          "domain_action": "the DARPin dissociates from the glycine site, returning the receptor to its dynamic equilibrium"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALF",
+          "domain_action": "if the receptor had adopted the closed conformation, the DARPin would fail to bind and the system would return to the unbound state without potentiation"
+        },
+        {
+          "step_num": 11,
+          "opcode": "ENGAGR",
+          "domain_action": "in some cases, the DARPin may act as a partial agonist, simultaneously occupying the site and permitting only partial receptor activation \u2014 a paradice held without resolution"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "the entire system is bounded by the NMDA receptor's glycine-binding cleft, which contains and closes the therapeutic interaction"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the DARPin's ankyrin repeat library \u2014 the genetic and structural repertoire that translates the therapeutic intention into a specific binding protein",
+      "ipc_mechanism": "conformational coupling \u2014 the DARPin and receptor communicate through induced fit and conformational selection, a mechanical signal transduction",
+      "memory_mechanism": "the DARPin's folded structure \u2014 the tertiary fold stores the binding information and is retrieved upon each encounter with the receptor",
+      "scheduler_mechanism": "Brownian motion and diffusion \u2014 the random thermal motion of molecules determines the timing and order of binding events",
+      "alfs_store": "the PDB structure of the NMDA receptor (e.g., 4PE5) \u2014 the canonical reference that defines the glycine-binding site and guides DARPin design",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "free energy of binding (\u0394G) \u2014 the thermodynamic cost of forming the DARPin-receptor complex",
+      "pre_cycle_state": "unbound DARPin and receptor in solution, with high configurational entropy",
+      "post_cycle_state": "bound complex with reduced configurational entropy but favorable enthalpy from hydrogen bonds and van der Waals interactions",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the binding cycle is entropy-conservative: the loss of translational and rotational entropy upon binding is compensated by the release of water molecules from the binding interface and the favorable enthalpy of the interaction",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 IFIX \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 TANCH\n-- Class: Schizophrenia DARPin NMDA receptor modulator protein\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [5] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [7] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc57  | irreversible fixation \u2014 winding number\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc6d \u2192 \ud801\udc56  | reverse morphism \u2014 parity flip\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc57 \u2192 \ud801\udc73  | evaluate-false \u2014 chirality check\n--   [10] ENGAGR    stoi   := \ud801\udc73               \ud801\udc56 \u2192 \ud801\udc61  | engage paradox \u2014 B-state, both arms\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc73 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def schizophrenia_darpin_nmda_receptor_modulator_protein_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc7e)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (the unbound DARPin exists in solution, awaiting encounter with the NMDA receptor)\n  (.arrow \ud801\udc7e \ud801\udc7c \ud801\udc5a)  -- [1] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (the DARPin diffuses toward and engages the glycine-binding site on the NMDA r...)\n  -- FSPLIT [2] (gran := \ud801\udc5a) (upon initial contact, the receptor's glycine site undergoes conformational selection \u2014 it branches into either an open (active) or closed (inactive) state) / FFUSE [6] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [3] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (the receptor adopts the open conformation, allowing the DARPin to bind deeply...)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [4] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (the DARPin's ankyrin repeats sequentially engage with the receptor surface, e...)\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [5] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (the DARPin's own folded structure is recognized by the receptor as a stable, ...)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [6]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc6d)  -- [6] FFUSE | stoi := \ud801\udc59 (the sequential binding events reconstitute the receptor into a single, stabilized open conformation \u2014 the original therapeutic target is achieved)\n  (.arrow \ud801\udc6d \ud801\udc59 \ud801\udc57)  -- [7] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (the DARPin's amino acid sequence is permanently recorded in the genetic code,...)\n  (.arrow \ud801\udc57 \ud801\udc6d \ud801\udc56)  -- [8] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (the DARPin dissociates from the glycine site, returning the receptor to its d...)\n  (.arrow \ud801\udc56 \ud801\udc57 \ud801\udc73)  -- [9] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (if the receptor had adopted the closed conformation, the DARPin would fail to...)\n  (.arrow \ud801\udc73 \ud801\udc56 \ud801\udc61)  -- [10] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (in some cases, the DARPin may act as a partial agonist, simultaneously occupy...)\n  (.arrow \ud801\udc61 \ud801\udc73 \ud801\udc7c)  -- [11] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (the entire system is bounded by the NMDA receptor's glycine-binding cleft, wh...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def schizophrenia_darpin_nmda_receptor_modulator_protein_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (schizophrenia_darpin_nmda_receptor_modulator_protein_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def schizophrenia_darpin_nmda_receptor_modulator_protein_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (schizophrenia_darpin_nmda_receptor_modulator_protein_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem schizophrenia_darpin_nmda_receptor_modulator_protein_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Schizophrenia DARPin NMDA receptor modulator protein"
+}

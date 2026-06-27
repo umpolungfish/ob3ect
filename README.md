@@ -255,18 +255,18 @@ Full categorical tower executed.
 
 | # | Class | Directory | Sequence | Tier | IG Type |
 |---|-------|-----------|----------|------|---------|
-| I | Dialetheic Bootstrap | `digital/dialetheic_bootstrap/` | IMSCRIB→EVALT→FSPLIT→EVALF→FFUSE→ENGAGR→IFIX→IMSCRIB | O₂ | ⟨𐑦·𐑸·𐑾·𐑬·𐑐·𐑧·𐑲·𐑠·𐑻·𐑫·𐑳·𐑴⟩ |
-| II | Void Genesis | `digital/void_genesis/` | VINIT→TANCH→AFWD→FSPLIT→CLINK→FFUSE→IFIX→IMSCRIB | O₀ | ⟨𐑨·𐑡·𐑑·𐑗·𐑱·𐑘·𐑔·𐑝·𐑢·𐑓·𐑙·𐑷⟩ |
-| III | Anchor Protocol | `digital/anchor_protocol/` | TANCH→AREV→VINIT→AFWD→TANCH→CLINK→IFIX→IMSCRIB | O₀ | ⟨𐑼·𐑡·𐑽·𐑿·𐑞·𐑘·𐑔·𐑝·𐑢·𐑒·𐑙·𐑷⟩ |
-| IV | Dual Bootstrap | `digital/dual_bootstrap/` | IMSCRIB→AFWD→FFUSE→FSPLIT→AREV→CLINK→IFIX→IMSCRIB | O₁ | ⟨𐑦·𐑡·𐑑·𐑗·𐑱·𐑤·𐑔·𐑝·⊙·𐑓·𐑙·𐑷⟩ |
-| V | Linear Chain | `digital/linear_chain/` | IFIX × 8 | O₁ | ⟨𐑛·𐑡·𐑑·𐑗·𐑱·𐑺·𐑚·𐑝·𐑢·𐑓·𐑙·𐑷⟩ |
-| VI | Empty Bootstrap | `digital/empty_bootstrap/` | VINIT/IMSCRIB alternating × 4 | O₂ | ⟨𐑦·𐑥·𐑾·𐑿·𐑐·𐑧·𐑔·𐑜·⊙·𐑖·𐑳·𐑴⟩ |
-| VII | Parakernel | `digital/imasm_parakernel/` | EVALF→AREV→FSPLIT→EVALT→AFWD→FFUSE→ENGAGR→IFIX | O₂ | ⟨𐑼·𐑸·𐑾·𐑬·𐑐·𐑧·𐑲·𐑠·𐑻·𐑫·𐑳·𐑴⟩ |
-| VIII | Frobenius Kernel | `digital/frobenius_kernel/` | VINIT→FSPLIT→FFUSE→TANCH | O₀ | ⟨𐑛·𐑡·𐑩·𐑗·𐑱·𐑘·𐑚·𐑝·𐑢·𐑓·𐑙·𐑷⟩ |
-| IX | Truth Machine | `digital/truth_machine/` | 2×(IMSCRIB→FSPLIT→EVAL{T,F}→IFIX) | O₂ | ⟨𐑦·𐑸·𐑑·𐑿·𐑐·𐑧·𐑔·𐑝·⊙·𐑒·𐑙·𐑴⟩ |
-| X | Eternal Return | `digital/eternal_return/` | (IMSCRIB→AFWD→AREV) repeated × 4 | O₁ | ⟨𐑦·𐑸·𐑾·𐑿·𐑐·𐑘·𐑔·𐑝·⊙·𐑖·𐑳·𐑷⟩ |
-| XI | ROM Burn | `digital/rom_burn/` | EVALT→IFIX→EVALF→IFIX→ENGAGR→IFIX→IMSCRIB→IFIX | O₂ | ⟨𐑼·𐑡·𐑽·𐑗·𐑱·𐑧·𐑔·𐑠·𐑢·𐑒·𐑳·𐑷⟩ |
-| XII | Chiral Pairs | `digital/chiral_pairs/` | AFWD→AREV vs AREV→AFWD | O₂† | ⟨𐑦·𐑡·𐑑·𐑗·𐑱·𐑘·𐑚·𐑝·⊙·𐑒·𐑙·𐑷⟩* |
+| I | Dialetheic Bootstrap | `digital/dialetheic_bootstrap/` | IMSCRIB→EVALT→FSPLIT→EVALF→FFUSE→ENGAGR→IFIX→IMSCRIB | O₂ | ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑴⟩ |
+| II | Void Genesis | `digital/void_genesis/` | VINIT→TANCH→AFWD→FSPLIT→CLINK→FFUSE→IFIX→IMSCRIB | O₀ | ⟨𐑨𐑡𐑑𐑗𐑱𐑘𐑔𐑝𐑢𐑓𐑙𐑷⟩ |
+| III | Anchor Protocol | `digital/anchor_protocol/` | TANCH→AREV→VINIT→AFWD→TANCH→CLINK→IFIX→IMSCRIB | O₀ | ⟨𐑼𐑡𐑽𐑿𐑞𐑘𐑔𐑝𐑢𐑒𐑙𐑷⟩ |
+| IV | Dual Bootstrap | `digital/dual_bootstrap/` | IMSCRIB→AFWD→FFUSE→FSPLIT→AREV→CLINK→IFIX→IMSCRIB | O₁ | ⟨𐑦𐑡𐑑𐑗𐑱𐑤𐑔𐑝⊙𐑓𐑙𐑷⟩ |
+| V | Linear Chain | `digital/linear_chain/` | IFIX × 8 | O₁ | ⟨𐑛𐑡𐑑𐑗𐑱𐑺𐑚𐑝𐑢𐑓𐑙𐑷⟩ |
+| VI | Empty Bootstrap | `digital/empty_bootstrap/` | VINIT/IMSCRIB alternating × 4 | O₂ | ⟨𐑦𐑥𐑾𐑿𐑐𐑧𐑔𐑜⊙𐑖𐑳𐑴⟩ |
+| VII | Parakernel | `digital/imasm_parakernel/` | EVALF→AREV→FSPLIT→EVALT→AFWD→FFUSE→ENGAGR→IFIX | O₂ | ⟨𐑼𐑸𐑾𐑬𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑴⟩ |
+| VIII | Frobenius Kernel | `digital/frobenius_kernel/` | VINIT→FSPLIT→FFUSE→TANCH | O₀ | ⟨𐑛𐑡𐑩𐑗𐑱𐑘𐑚𐑝𐑢𐑓𐑙𐑷⟩ |
+| IX | Truth Machine | `digital/truth_machine/` | 2×(IMSCRIB→FSPLIT→EVAL{T,F}→IFIX) | O₂ | ⟨𐑦𐑸𐑑𐑿𐑐𐑧𐑔𐑝⊙𐑒𐑙𐑴⟩ |
+| X | Eternal Return | `digital/eternal_return/` | (IMSCRIB→AFWD→AREV) repeated × 4 | O₁ | ⟨𐑦𐑸𐑾𐑿𐑐𐑘𐑔𐑝⊙𐑖𐑳𐑷⟩ |
+| XI | ROM Burn | `digital/rom_burn/` | EVALT→IFIX→EVALF→IFIX→ENGAGR→IFIX→IMSCRIB→IFIX | O₂ | ⟨𐑼𐑡𐑽𐑗𐑱𐑧𐑔𐑠𐑢𐑒𐑳𐑷⟩ |
+| XII | Chiral Pairs | `digital/chiral_pairs/` | AFWD→AREV vs AREV→AFWD | O₂† | ⟨𐑦𐑡𐑑𐑗𐑱𐑘𐑚𐑝⊙𐑒𐑙𐑷⟩* |
 
 \* Both chiral variants map to the **same** IG type — confirming the Vessel Principle.
 
@@ -306,7 +306,7 @@ can have **distinct register trajectories** because the grammar collapses direct
 information that the token algebra preserves.
 
 **Proof**: The chiral pair `AFWD→AREV` and `AREV→AFWD` map to the **same** IG coordinate
-⟨𐑦 · 𐑡 · 𐑑 · 𐑗 · 𐑱 · 𐑘 · 𐑚 · 𐑝 · ⊙ · 𐑒 · 𐑙 · 𐑷⟩ but produce different final registers:
+⟨𐑦𐑡𐑑𐑗𐑱𐑘𐑚𐑝⊙𐑒𐑙𐑷⟩ but produce different final registers:
 - `AFWD→AREV`: VO⌀ → T → VO⌀ (round trip — returns to void)
 - `AREV→AFWD`: VO⌀ → VO⌀ → T (create from void — net creation)
 
