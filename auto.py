@@ -602,6 +602,164 @@ def design(description: str, **kwargs) -> Ob3ectArtifact:
     return asyncio.run(auto_design(description, **kwargs))
 
 
+# ── ZoomChain ─────────────────────────────────────────────────────────────────
+
+_ZOOM_SYSTEM = """\
+You are identifying a natural Granularity (Γ) zoom hierarchy in the Universal Imscriptive Grammar.
+Each level must be a coherent entity where the IMASM bootstrap runs — a bounded system with its
+own identity, Frobenius structure, and terminal anchor (TANCH). The hierarchy runs from
+finest-grain (seed, Γ=0) to coarsest-grain (target, Γ=N-1). Each CLINK morphism describes
+how the finer-grain entity composes into the next coarser level."""
+
+_ZOOM_LEVEL_SCHEMA = """\
+{
+  "levels": ["<level 0 = seed>", "<level 1>", ..., "<level N-1 = target>"],
+  "clink_morphisms": [
+    "<how level 0 embeds/composes into level 1 via CLINK>",
+    ...,
+    "<how level N-2 embeds into level N-1>"
+  ]
+}"""
+
+
+async def _discover_zoom_levels(
+    seed: str, target: str, n_levels: int, temperature: float = 0.3
+) -> tuple:
+    """Use LLM to discover N zoom levels between seed (Γ=0) and target (Γ=N-1)."""
+    providers = _build_provider_chain()
+    if not providers:
+        return [seed, target], [f"{seed} composes into {target}"]
+    provider = providers[0]
+    prompt = (
+        f"Seed (Γ=0, finest grain): {seed}\n"
+        f"Target (Γ={n_levels - 1}, coarsest grain): {target}\n"
+        f"Total levels requested: {n_levels}\n\n"
+        f"Identify exactly {n_levels} zoom levels forming a natural Granularity hierarchy.\n"
+        f"Level 0 must be the seed, level {n_levels - 1} must be the target.\n"
+        f"Each intermediate level should be a natural 'zoom step' — a category of description\n"
+        f"where the IMASM bootstrap runs coherently as a bounded system.\n\n"
+        f"Output ONLY this JSON:\n{_ZOOM_LEVEL_SCHEMA}"
+    )
+    try:
+        raw = await provider.query(prompt, system=_ZOOM_SYSTEM, temperature=temperature)
+        data = _extract_json(raw)
+        levels = data.get("levels", [])
+        morphisms = data.get("clink_morphisms", [])
+        if len(levels) < 2:
+            levels = [seed, target]
+        if len(morphisms) < len(levels) - 1:
+            morphisms += [f"composes into {levels[i+1]}" for i in range(len(morphisms), len(levels) - 1)]
+        return levels, morphisms
+    except Exception as e:
+        print(f"  [zoom discovery fallback: {e}]")
+        # fallback: evenly interpolate
+        if n_levels == 2:
+            return [seed, target], [f"{seed} composes into {target}"]
+        mid = f"intermediate scale between {seed} and {target}"
+        return [seed, mid, target], [f"{seed} → {mid}", f"{mid} → {target}"]
+
+
+class ZoomLevel:
+    def __init__(self, description: str, artifact: Ob3ectArtifact, gamma: int):
+        self.description = description
+        self.artifact = artifact
+        self.gamma = gamma
+
+
+class ZoomChain:
+    def __init__(self, seed: str, target: str, levels: List["ZoomLevel"], clink_morphisms: List[str]):
+        self.seed = seed
+        self.target = target
+        self.levels = levels
+        self.clink_morphisms = clink_morphisms
+
+    def report(self) -> str:
+        sep = "=" * 70
+        lines = [sep, f"ZoomChain: {self.seed}  →  {self.target}", sep]
+        for lvl in self.levels:
+            art = lvl.artifact
+            tanch = art.opcode_map.entries.get("TANCH", type("", (), {"chosen_element": "?"})()).chosen_element
+            frob = art.split_fuse_report.frobenius_verdict
+            ds = art.entropy_audit.delta_s_verdict
+            lines.append(f"\n[Γ={lvl.gamma}] {lvl.description}")
+            lines.append(f"  TANCH    : {tanch}")
+            lines.append(f"  Frobenius: {frob}  |  {ds}")
+            if lvl.gamma < len(self.levels) - 1 and lvl.gamma < len(self.clink_morphisms):
+                lines.append(f"  ↕ CLINK  : {self.clink_morphisms[lvl.gamma]}")
+        lines.append(f"\n{sep}")
+        lines.append(f"Levels: {len(self.levels)}  |  CLINK morphisms: {len(self.clink_morphisms)}")
+        all_pass = all(lvl.artifact.split_fuse_report.frobenius_verdict == "PASS" for lvl in self.levels)
+        lines.append(f"Chain Frobenius: {'PASS' if all_pass else 'PARTIAL'}")
+        lines.append(sep)
+        return "\n".join(lines)
+
+    def save(self, out_dir: Path) -> Path:
+        manifest = {
+            "seed": self.seed,
+            "target": self.target,
+            "clink_morphisms": self.clink_morphisms,
+            "levels": [
+                {
+                    "gamma": lvl.gamma,
+                    "description": lvl.description,
+                    "tanch": lvl.artifact.opcode_map.entries.get(
+                        "TANCH", type("", (), {"chosen_element": "?"})()
+                    ).chosen_element,
+                    "frobenius": lvl.artifact.split_fuse_report.frobenius_verdict,
+                }
+                for lvl in self.levels
+            ],
+        }
+        path = out_dir / "zoom_manifest.json"
+        path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
+        return path
+
+
+async def zoom_design(
+    seed: str,
+    target: str,
+    n_levels: int = 4,
+    domain_type: Optional[str] = None,
+    scope: str = "local",
+    provider_name: Optional[str] = None,
+    model: Optional[str] = None,
+    max_retries: int = 3,
+    temperature: float = 0.4,
+    context: Optional[str] = None,
+) -> ZoomChain:
+    """
+    Design a zoom chain of N ob3ects spanning seed (Γ=0, finest) to target (Γ=N-1, coarsest).
+    Each level is a full Ob3ectArtifact; adjacent levels are connected by CLINK morphisms.
+    Reverse zoom (coarse→fine) is just seed=target, target=seed.
+    """
+    print(f"Discovering {n_levels}-level Γ hierarchy: {seed!r} → {target!r}")
+    level_descs, morphisms = await _discover_zoom_levels(seed, target, n_levels, temperature)
+    print(f"Levels: {level_descs}")
+
+    zoom_levels = []
+    for i, desc in enumerate(level_descs):
+        print(f"\n  [Γ={i}] Imscribing: {desc}")
+        art = await auto_design(
+            desc,
+            name=desc,
+            domain_type=domain_type,
+            scope=scope,
+            provider_name=provider_name,
+            model=model,
+            max_retries=max_retries,
+            temperature=temperature,
+            context=context,
+        )
+        zoom_levels.append(ZoomLevel(desc, art, i))
+
+    return ZoomChain(seed, target, zoom_levels, morphisms)
+
+
+def zoom(seed: str, target: str, **kwargs) -> ZoomChain:
+    """Synchronous wrapper around zoom_design."""
+    return asyncio.run(zoom_design(seed, target, **kwargs))
+
+
 # ── CLI spinner ──────────────────────────────────────────────────────────────
 
 import itertools as _itertools
@@ -666,6 +824,10 @@ if __name__ == "__main__":
     ap.add_argument("--entry", dest="catalog_entries", default=None, metavar="NAMES",
                     help="Comma-separated catalog entry names to inject as context "
                          "(e.g. --entry yhwh,dark_matter,proton)")
+    ap.add_argument("--zoom-to", dest="zoom_target", default=None, metavar="TARGET",
+                    help="Design a zoom chain from DESCRIPTION (Γ=0, finest) to TARGET (Γ=N-1, coarsest)")
+    ap.add_argument("--zoom-levels", type=int, default=4, dest="zoom_levels",
+                    help="Number of levels in the zoom chain (default: 4)")
     args = ap.parse_args()
 
     desc = " ".join(args.description)
@@ -690,6 +852,46 @@ if __name__ == "__main__":
         import framework.enhanced_llm_provider as _ep
         _ep.enable_thinking = True
 
+    import re as _re_slug
+
+    # ── Zoom chain mode ──────────────────────────────────────────────────
+    if args.zoom_target:
+        print(f"Zoom chain: {desc!r}  →  {args.zoom_target!r}  ({args.zoom_levels} levels)\n")
+        sys.stdout.flush()
+        chain = asyncio.run(zoom_design(
+            desc,
+            args.zoom_target,
+            n_levels=args.zoom_levels,
+            domain_type=args.domain_type,
+            scope=args.scope,
+            provider_name=args.provider_name,
+            model=args.model,
+            max_retries=args.max_retries,
+            temperature=args.temperature,
+            context=ctx,
+        ))
+        print("\n" + chain.report())
+
+        slug = _re_slug.sub(r'[^a-z0-9]', '_',
+                            f"zoom_{desc[:20]}_{args.zoom_target[:20]}".strip().lower())
+        slug = _re_slug.sub(r'_+', '_', slug).strip('_')
+        out_dir = Path(__file__).parent / "digital" / slug
+        out_dir.mkdir(parents=True, exist_ok=True)
+
+        for lvl in chain.levels:
+            lvl_slug = _re_slug.sub(r'[^a-z0-9]', '_', lvl.description.strip().lower())[:48]
+            lvl_slug = _re_slug.sub(r'_+', '_', lvl_slug).strip('_')
+            lvl_dir = out_dir / f"gamma_{lvl.gamma}_{lvl_slug}"
+            lvl_dir.mkdir(parents=True, exist_ok=True)
+            lvl.artifact.save(lvl_dir / f"{lvl_slug}_ob3ect.json")
+            if lvl.artifact.lean_scaffold and not args.no_scaffold:
+                (lvl_dir / f"{lvl_slug}_scaffold.lean").write_text(lvl.artifact.lean_scaffold)
+
+        manifest_path = chain.save(out_dir)
+        print(f"\nManifest: {manifest_path}")
+        sys.exit(0)
+
+    # ── Single ob3ect mode ───────────────────────────────────────────────
     print(f"Auto-designing: {desc}\n")
     sys.stdout.flush()
     with _Spinner("Imscribing"):
@@ -717,7 +919,6 @@ if __name__ == "__main__":
             print(art.lean_scaffold)
 
     # ── Persist to disk ──────────────────────────────────────────────────
-    import re as _re_slug
     slug = _re_slug.sub(r'[^a-z0-9]', '_', desc.strip().lower())[:48]
     slug = _re_slug.sub(r'_+', '_', slug).strip('_')
     out_dir = Path(__file__).parent / "digital" / slug

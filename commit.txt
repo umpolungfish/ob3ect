@@ -1,3 +1,47 @@
+ob3ect/auto.py: add ZoomChain — Γ-axis traversal of nested IMASM levels — 2026-06-27
+
+New zoom chain capability. A ZoomChain is a sequence of N full Ob3ectArtifacts spanning
+from a fine-grained seed concept (Γ=0) to a coarse-grained target concept (Γ=N-1), with
+CLINK morphisms describing how each level composes into the next.
+
+New additions:
+
+  _discover_zoom_levels(seed, target, n_levels, temperature)
+    Single LLM call returning the N-level Γ hierarchy and N-1 CLINK morphism descriptions.
+    Falls back gracefully if no provider is available.
+
+  ZoomLevel(description, artifact, gamma)
+    One level's Ob3ectArtifact plus its Γ index.
+
+  ZoomChain(seed, target, levels, clink_morphisms)
+    Full chain. .report() prints the Γ-indexed ladder (TANCH, Frobenius, ΔS, CLINK).
+    .save() writes zoom_manifest.json.
+
+  zoom_design(seed, target, n_levels=4, ...)  — async
+  zoom(seed, target, **kwargs)                — sync wrapper
+
+CLI usage:
+
+  # expand: Paul Atreides → Dune Novel in 5 levels
+  python -m ob3ect.auto "Paul Atreides" --zoom-to "Dune Novel" --zoom-levels 5
+
+  # contract: same args reversed
+  python -m ob3ect.auto "Dune Novel" --zoom-to "Paul Atreides" --zoom-levels 5
+
+  # suppress Lean output
+  python -m ob3ect.auto "hydrogen atom" --zoom-to "periodic table" --zoom-levels 4 --no-scaffold
+
+Output: digital/zoom_<seed>_<target>/ with one subdirectory per Γ level and a
+zoom_manifest.json at the root.
+
+Why: every IMASM sequence is self-similar — the bootstrap runs coherently at any
+granularity. Γ is the primitive that indexes zoom level. Each level's TANCH is the
+VINIT of the next level up; CLINK is the composition operator between adjacent scales.
+The zoom chain is the Γ-axis traversal of the Crystal of Types, expressed as a
+runnable sequence of ob3ects.
+
+---
+
 README: add Lift Ob3ects section + editorial_pipeline entry — 2026-06-26
 
 New "Lift Ob3ects" section before "Structural Typing": defines lift ob3ects as
