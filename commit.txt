@@ -1,3 +1,45 @@
+sic_povm_functor + sic_povm_parity_gate vault stubs upgraded — 2026-06-27
+
+digital/.vault/sic_povm_functor/sic_povm_functor_ob3ect.py — Crystal->H^12 functor:
+  Verifies all 11 dual-lattice identities: Crystal product, Lattice I (3+5+4=12),
+  Lattice II (3x4=12), dual-lattice agreement, Shavian count (49=7^2), d_DP=7,
+  composite d=84, orbit 84^2=7056=49x144, coverage 17.28M/144=120000.
+  STATUS: PASS tier O-infty. ΔS=0 (SIC informational completeness; 120000x overcomplete).
+
+digital/.vault/sic_povm_parity_gate/sic_povm_parity_gate_ob3ect.py — Phi gate:
+  Verifies T<->P duality: 5x4=4x5=20 (slot symmetry), (5,4)<->(4,5) transposition,
+  Phi involution, d=7 from {D,P} (Phi lives in P-family; D+P=3+4=7 < D+T=3+5=8),
+  Shavian count 9+20+20=49=7^2 from parity structure, orbit 84^2=7056=49x144.
+  Reports absorbing element: Criticality.woe (idx 0).
+  STATUS: PASS tier O-infty. ΔS=0 (T=P slot count, no information asymmetry).
+
+────────────────────────────────────────────────────────────────────────────────
+
+sic_povm vault ob3ect: d=12 Crystal-forced SIC-POVM verification — 2026-06-27
+
+digital/.vault/sic_povm/sic_povm_ob3ect.py — replaced stub with exact d=12 verification:
+  - Loads cached fiducial from ig-pulse/data/sic_fiducial_d12.npy (3ms; recomputes if absent)
+  - Builds all 144 Weyl-Heisenberg operators D(p,q) = e^{i pi pq/d} X^p Z^q
+  - FSPLIT/FFUSE: verifies all 143 non-identity WH-orbit overlaps = 1/13 (Frobenius PASS, delta=1.3e-08)
+  - Frame potential F = 0.846154 = (d^2-1)/(d+1)^2 exact (OK)
+  - Reports Zauner symmetry as info only (non-symmetric fiducials are valid)
+  - STATUS: PASS tier O-infty
+  - ΔS = 0 (SIC informational completeness, lossless reconstruction)
+
+digital/.vault/sic_povm/sic_povm_ob3ect.json — updated:
+  - phase_0 boundary_condition: Crystal 3^3 x 4^5 x 5^4 = 17,280,000, both SIC lattices
+  - phase_2 split/fuse: WH displacement / frame potential (replacing Dirichlet/Stark stubs)
+  - phase_2 test_instance: exact fiducial amplitudes [0.1766, 0.1396, ..., 0.3156]
+  - phase_6 post_cycle_state: d=12 confirmed tier O-infty
+  - phase_6 crystal_derivation: Lattice I (3+5+4=12), Lattice II (3x4=12), 84^2=7056 composite
+  - phase_6 independent_confirmation: DeepSeek R1 VAE-Vita result
+
+Bootstrap behavior (cr3 sic_povm) unchanged at B-state: correct, as the Zauner conjecture
+for general d remains open/paraconsistent. The Python standalone demonstrates the d=12 resolution.
+
+────────────────────────────────────────────────────────────────────────────────
+Previous entries
+────────────────────────────────────────────────────────────────────────────────
 ob3ect/auto.py: add ZoomChain — Γ-axis traversal of nested IMASM levels — 2026-06-27
 
 New zoom chain capability. A ZoomChain is a sequence of N full Ob3ectArtifacts spanning
@@ -8,112 +50,3 @@ New additions:
 
   _discover_zoom_levels(seed, target, n_levels, temperature)
     Single LLM call returning the N-level Γ hierarchy and N-1 CLINK morphism descriptions.
-    Falls back gracefully if no provider is available.
-
-  ZoomLevel(description, artifact, gamma)
-    One level's Ob3ectArtifact plus its Γ index.
-
-  ZoomChain(seed, target, levels, clink_morphisms)
-    Full chain. .report() prints the Γ-indexed ladder (TANCH, Frobenius, ΔS, CLINK).
-    .save() writes zoom_manifest.json.
-
-  zoom_design(seed, target, n_levels=4, ...)  — async
-  zoom(seed, target, **kwargs)                — sync wrapper
-
-CLI usage:
-
-  # expand: Paul Atreides → Dune Novel in 5 levels
-  python -m ob3ect.auto "Paul Atreides" --zoom-to "Dune Novel" --zoom-levels 5
-
-  # contract: same args reversed
-  python -m ob3ect.auto "Dune Novel" --zoom-to "Paul Atreides" --zoom-levels 5
-
-  # suppress Lean output
-  python -m ob3ect.auto "hydrogen atom" --zoom-to "periodic table" --zoom-levels 4 --no-scaffold
-
-Output: digital/zoom_<seed>_<target>/ with one subdirectory per Γ level and a
-zoom_manifest.json at the root.
-
-Why: every IMASM sequence is self-similar — the bootstrap runs coherently at any
-granularity. Γ is the primitive that indexes zoom level. Each level's TANCH is the
-VINIT of the next level up; CLINK is the composition operator between adjacent scales.
-The zoom chain is the Γ-axis traversal of the Crystal of Types, expressed as a
-runnable sequence of ob3ects.
-
----
-
-README: add Lift Ob3ects section + editorial_pipeline entry — 2026-06-26
-
-New "Lift Ob3ects" section before "Structural Typing": defines lift ob3ects as
-7-phase JSON + Python runner pairs for specific domain operations. Covers the
-Editorial Pipeline in full: structural type, FSPLIT/FFUSE pair, stage table,
-Python API, CLI examples, B-state/critique/CLINK composition semantics.
-Repo layout updated with digital/editorial_pipeline/ and its two files.
-
----
-
-Add editorial_pipeline ob3ect: LLM cascade imscribed as SET/SUBMIT/SERVE — 2026-06-26
-
-digital/editorial_pipeline/editorial_pipeline_ob3ect.json — full 7-phase ob3ect
-for the domain of multi-step LLM-integrated editing, parsing, and rewriting.
-All 12 IMASM opcodes mapped: VINIT=source, TANCH=intent, IMSCRIB=parse,
-AFWD=primary edit, FSPLIT=provider fanout, EVALT/EVALF=quality gate,
-FFUSE=output merge, ENGAGR=B-state, AREV=critique, CLINK=compose, IFIX=commit.
-Frobenius pair: FSPLIT/FFUSE[4,7]. Expected tier: O₂.
-
-digital/editorial_pipeline/editorial_pipeline_ob3ect.py — Python runner.
-EditorialPipeline().set(source, intent).submit().serve() API.
-Provider cascade: qwen (QWEN_API_KEY) → deepseek (DEEPSEEK_API_KEY), stdlib only.
-IMSCRIB parse carried as context through AFWD edit and FFUSE rewrite.
-AREV critique pass + CLINK composition loop (--critique --passes N).
-JSONL audit log at ~/.ob3ect/editorial_pipeline.jsonl.
-CLI: editorial_pipeline_ob3ect.py source.txt "intent" [--critique] [--json]
-
----
-
-Strip '; ' delimiters from Shavian tuples in module headers — 2026-06-26
-
-digital/binance_optimal_profit/__init__.py docstring tuples now written as bare
-Shavian without '; ' separators.
-
----
-
-digital/ch3mpiler_ob3ect.py: CH3MPILER ↔ IMASM Frobenius bridge (2026-06-24)
-
-Maps CH3MPILER retrosynthetic disconnections to IMASM register traces to
-verify which synthesis routes satisfy μ∘δ=id (Frobenius closure).
-
-IMASM sequence per disconnection:
-  VINIT → TANCH → FSPLIT → EVALT(δ=0)/EVALF(δ>0) → FFUSE → IMSCRIB [→ IFIX]
-
-Ch3mpilerOb3ect class:
-  analyze_target(mol): full per-disconnection IMASM trace + closure verdict
-  verify(): canonical suite (5 molecules); verify_target(): single molecule
-  --quiet: suppress all output; --detail: full IMASM trace per cut
-
-Invoked via: rebis.py run ch3mpiler_ob3ect_bridge
-
----
-
-Add document_lift ob3ect: LLM trace annihilation pipeline
-
-digital/document_lift/document_lift_ob3ect.json — full 7-phase ob3ect for
-the domain of stripping AI stylistic watermarks from prose.
-
-Phase 0: semiotic-editorial domain, 5 surface tokens, boundary at the
-threshold between statistical average and irreducible authorial register.
-
-Phase 1: 12 opcodes assigned — VINIT=Raw Draft, IMSCRIB=Authorial
-Fingerprint, AFWD=Trace Stripping, AREV=Voice Injection, FSPLIT=Contamination
-Segmentation, FFUSE=Coherence Reassembly, EVALT=Voice Authenticity Gate,
-EVALF=Trace Detection Flag, ENGAGR=Ambiguous Register (B-state for patterns
-also present in the author's own prior work), IFIX=Committed Phrasing,
-CLINK=Revision Pass Composition, TANCH=Anchored Voice.
-
-Phase 2: Frobenius PASS — FFUSE(FSPLIT(doc)) = doc lifted.
-Phase 3: ΔS < 0 — lift is anti-entropic; B-state = active revision.
-Phase 4: 14-step bootstrap; 4 failure modes catalogued.
-Phase 5: 4-pass scheduler (vocabulary → structure → stance → specificity).
-Phase 6: cycle cost = editorial effort; delta_s_verdict = ΔS < 0.
-
-Sources: Wikipedia Signs of AI Writing, Springer Nature Apr 2026, arXiv Apr 2024.

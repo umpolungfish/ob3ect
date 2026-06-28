@@ -1,0 +1,265 @@
+{
+  "name": "Weyl-Heisenberg orbit generation for the d=12 branch (T-arm)",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Weyl-Heisenberg orbit generation for the d=12 branch (T-arm)",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "WH-orbit",
+        "displacement",
+        "fiducial"
+      ],
+      "boundary_condition": "TANCH: the complete SIC-POVM lattice closure",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "fiducial vector |\u03c8\u2080\u27e9 preparation",
+        "justification": "initial state before Weyl-Heisenberg action begins",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "complete SIC-POVM lattice closure",
+        "justification": "terminal boundary containing the entire 144-element orbit",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "displacement operator application D(p,q)",
+        "justification": "directed transformation mapping fiducial to orbit elements",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "coordinate recovery from orbit",
+        "justification": "reverse transformation from measured probability back to fiducial proximity",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "orbit composition D(p\u2081,q\u2081) \u2218 D(p\u2082,q\u2082)",
+        "justification": "sequential chaining of displacement operations",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-measurement \u27e8\u03c8|D(p,q)|\u03c8\u27e9",
+        "justification": "self-reference identity when fiducial measures itself",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "orbit branching by primitive assignment",
+        "justification": "splits into 144 distinct WH orbits based on 12 primitive valuations",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "composite SIC recovery from orbits",
+        "justification": "reconstitutes full measurement space from individual orbits",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "successful orbit completion",
+        "justification": "confirmation that WH orbit generates full SIC structure",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "orbit failure detection",
+        "justification": "identification when orbit doesn't achieve desired SIC geometry",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "criticality fixed-point \u2299",
+        "justification": "simultaneous true/false state where critical self-modeling occurs",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "permanent fiducial recording",
+        "justification": "irreversible storage of the exact d=12 fiducial vector",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: 12-primitive assignment branching",
+      "split_input": "initial fiducial |\u03c8\u2080\u27e9 in \u2102\u00b9\u00b2",
+      "split_outputs": [
+        "T-arm: D-family orbits (3 values each)",
+        "F-arm: (T,P)-family orbits (4 and 5 values each)"
+      ],
+      "fuse_element": "FFUSE: composite SIC reconstruction",
+      "fuse_result": "full 144-element SIC-POVM in \u2102\u00b9\u00b2",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "before fiducial |\u03c8\u2080\u27e9 exists in \u2102\u00b9\u00b2",
+      "true_description": "WH orbit successfully generates SIC elements with |\u27e8\u03c8\u1d62|\u03c8\u2c7c\u27e9|\u00b2 = 1/13",
+      "false_description": "orbit fails to produce required equiangularity condition",
+      "both_description": "critical point where both successful and failed measurements coexist in paraconsistent framework",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "preparation of initial fiducial vector |\u03c8\u2080\u27e9 in 12-dimensional complex space"
+        },
+        {
+          "step_num": 2,
+          "opcode": "EVALT",
+          "domain_action": "verification that frame potential F = 143/169 is achieved"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "branching into T-arm (Dimensionality primitives with 3 values each)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "application of Weyl-Heisenberg displacement operators D(p,q) for p,q \u2208 {0,...,11}"
+        },
+        {
+          "step_num": 5,
+          "opcode": "IMSCRIB",
+          "domain_action": "self-measurement \u27e8\u03c8\u2080|D(p,q)|\u03c8\u2080\u27e9 for each displacement generating orbit elements"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "composition of displacement sequences to form complete 144-element orbit"
+        },
+        {
+          "step_num": 7,
+          "opcode": "IMSCRIB",
+          "domain_action": "identity recognition when displacement returns to fiducial equivalence class"
+        },
+        {
+          "step_num": 8,
+          "opcode": "ENGAGR",
+          "domain_action": "paraconsistent criticality where self-measurement creates both true and false states"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AFWD",
+          "domain_action": "forward morphism continuing orbit generation through all primitive combinations"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALT",
+          "domain_action": "confirmation that each orbit maintains |\u27e8\u03c8\u1d62|\u03c8\u2c7c\u27e9|\u00b2 = 1/13 for i\u2260j"
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "chaining orbit segments across all 12 primitive dimensions"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AFWD",
+          "domain_action": "progression through D-family value sets (3 values per primitive)"
+        },
+        {
+          "step_num": 13,
+          "opcode": "CLINK",
+          "domain_action": "composition of primitive-dependent displacement pathways"
+        },
+        {
+          "step_num": 14,
+          "opcode": "EVALT",
+          "domain_action": "validation of T-arm orbit completeness for 3\u00d73\u00d73 = 27 D-assignments"
+        },
+        {
+          "step_num": 15,
+          "opcode": "FSPLIT",
+          "domain_action": "secondary branching for combined family interactions"
+        },
+        {
+          "step_num": 16,
+          "opcode": "AFWD",
+          "domain_action": "continued orbit extension across temporal and processual primitives"
+        },
+        {
+          "step_num": 17,
+          "opcode": "CLINK",
+          "domain_action": "linking D-orbits with T/P-orbits to form full classification space"
+        },
+        {
+          "step_num": 18,
+          "opcode": "IMSCRIB",
+          "domain_action": "self-inscription of the complete 144-element measurement structure"
+        },
+        {
+          "step_num": 19,
+          "opcode": "FFUSE",
+          "domain_action": "fusion of all primitive orbits back into unified SIC-POVM"
+        },
+        {
+          "step_num": 20,
+          "opcode": "TANCH",
+          "domain_action": "anchoring the complete Weyl-Heisenberg covariant structure"
+        },
+        {
+          "step_num": 21,
+          "opcode": "IFIX",
+          "domain_action": "permanent recording of the exact fiducial coordinates as fixed measurement reference"
+        },
+        {
+          "step_num": 22,
+          "opcode": "IFIX",
+          "domain_action": "crystalline fixation of the 17,280,000-element constraint manifold"
+        },
+        {
+          "step_num": 23,
+          "opcode": "ENGAGR",
+          "domain_action": "final criticality state where measurement system and measured system become equivalent"
+        },
+        {
+          "step_num": 24,
+          "opcode": "TANCH",
+          "domain_action": "terminal closure of the d=12 SIC-POVM generation process"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Zauner symmetry enforcement mechanism ensuring orbit self-consistency",
+      "ipc_mechanism": "Weyl-Heisenberg group multiplication rules connecting displacement operators",
+      "memory_mechanism": "density matrix reconstruction from orbit measurement probabilities",
+      "scheduler_mechanism": "primitive valuation sequence determining orbit generation order",
+      "alfs_store": "Crystal of Types providing the constraint lattice for valid orbits",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "computation of 144 displacement operations and their mutual overlaps",
+      "pre_cycle_state": "single fiducial |\u03c8\u2080\u27e9 in \u2102\u00b9\u00b2 with unknown orbit structure",
+      "post_cycle_state": "complete SIC-POVM with exactly determined 144 equiangular vectors",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 orbit generation preserves measurement entropy through deterministic WH covariance",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 EVALT \u2192 FSPLIT \u2192 AFWD \u2192 IMSCRIB \u2192 CLINK \u2192 IMSCRIB \u2192 ENGAGR \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 FSPLIT \u2192 AFWD \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 TANCH \u2192 IFIX \u2192 IFIX \u2192 ENGAGR \u2192 TANCH\n-- Class: Weyl-Heisenberg orbit generation for the d=12 branch (T-arm)\n-- Fingerprint: sig=(14,3,5,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=24\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(14, 18)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \u2299  | initial object \u2014 ground of distinction\n--   [1] EVALT     crit   := \u2299               \ud801\udc7c \u2192 \ud801\udc5a  | evaluate-true \u2014 criticality gate open\n--   [2] FSPLIT    gran   := \ud801\udc5a               \u2299 \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [4] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [6] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [7] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc7e  | engage paradox \u2014 B-state, both arms\n--   [8] AFWD      rel    := \ud801\udc7e               \ud801\udc73 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [9] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [10] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [11] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [12] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \u2299  | composition \u2014 regime coherence\n--   [13] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc5a  | evaluate-true \u2014 criticality gate open\n--   [14] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [15] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [16] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [17] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [18] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc61  | fuse \u03bc \u2014 assembly mode\n--   [19] TANCH     top    := \ud801\udc61               \ud801\udc59 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [20] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc6d  | irreversible fixation \u2014 winding number\n--   [21] IFIX      prot   := \ud801\udc6d               \ud801\udc6d \u2192 \ud801\udc73  | irreversible fixation \u2014 winding number\n--   [22] ENGAGR    stoi   := \ud801\udc73               \ud801\udc6d \u2192 \ud801\udc61  | engage paradox \u2014 B-state, both arms\n--   [23] TANCH     top    := \ud801\udc61               \ud801\udc73 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \u2299)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (preparation of initial fiducial vector |\u03c8\u2080\u27e9 in 12-dimensional complex space)\n  (.arrow \u2299 \ud801\udc7c \ud801\udc5a)  -- [1] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (verification that frame potential F = 143/169 is achieved)\n  (.arrow \ud801\udc5a \u2299 \ud801\udc7e)  -- [2] FSPLIT | gran := \ud801\udc5a | split \u03b4 \u2014 range decomposition (branching into T-arm (Dimensionality primitives with 3 values each))\n  (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc60)  -- [3] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (application of Weyl-Heisenberg displacement operators D(p,q) for p,q \u2208 {0,......)\n  (.arrow \ud801\udc60 \ud801\udc7e \ud801\udc71)  -- [4] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (self-measurement \u27e8\u03c8\u2080|D(p,q)|\u03c8\u2080\u27e9 for each displacement generating orbit elements)\n  (.arrow \ud801\udc71 \ud801\udc60 \ud801\udc60)  -- [5] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (composition of displacement sequences to form complete 144-element orbit)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc73)  -- [6] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (identity recognition when displacement returns to fiducial equivalence class)\n  (.arrow \ud801\udc73 \ud801\udc60 \ud801\udc7e)  -- [7] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (paraconsistent criticality where self-measurement creates both true and false...)\n  (.arrow \ud801\udc7e \ud801\udc73 \u2299)  -- [8] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (forward morphism continuing orbit generation through all primitive combinations)\n  (.arrow \u2299 \ud801\udc7e \ud801\udc71)  -- [9] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (confirmation that each orbit maintains |\u27e8\u03c8\u1d62|\u03c8\u2c7c\u27e9|\u00b2 = 1/13 for i\u2260j)\n  (.arrow \ud801\udc71 \u2299 \ud801\udc7e)  -- [10] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (chaining orbit segments across all 12 primitive dimensions)\n  (.arrow \ud801\udc7e \ud801\udc71 \ud801\udc71)  -- [11] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (progression through D-family value sets (3 values per primitive))\n  (.arrow \ud801\udc71 \ud801\udc7e \u2299)  -- [12] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (composition of primitive-dependent displacement pathways)\n  (.arrow \u2299 \ud801\udc71 \ud801\udc5a)  -- [13] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (validation of T-arm orbit completeness for 3\u00d73\u00d73 = 27 D-assignments)\n  -- FSPLIT [14] (gran := \ud801\udc5a) (secondary branching for combined family interactions) / FFUSE [18] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (3 nodes)\n      .seq\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [15] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (continued orbit extension across temporal and processual primitives)\n      .seq\n        (.arrow \ud801\udc71 \ud801\udc5a \ud801\udc59)  -- [16] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (linking D-orbits with T/P-orbits to form full classification space)\n        (.arrow \ud801\udc60 \ud801\udc5a \ud801\udc59)  -- [17] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (self-inscription of the complete 144-element measurement structure)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [18]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc61)  -- [18] FFUSE | stoi := \ud801\udc59 (fusion of all primitive orbits back into unified SIC-POVM)\n  (.arrow \ud801\udc61 \ud801\udc59 \ud801\udc6d)  -- [19] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (anchoring the complete Weyl-Heisenberg covariant structure)\n  (.arrow \ud801\udc6d \ud801\udc61 \ud801\udc6d)  -- [20] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (permanent recording of the exact fiducial coordinates as fixed measurement re...)\n  (.arrow \ud801\udc6d \ud801\udc6d \ud801\udc73)  -- [21] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (crystalline fixation of the 17,280,000-element constraint manifold)\n  (.arrow \ud801\udc73 \ud801\udc6d \ud801\udc61)  -- [22] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (final criticality state where measurement system and measured system become e...)\n  (.arrow \ud801\udc61 \ud801\udc73 \ud801\udc7c)  -- [23] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (terminal closure of the d=12 SIC-POVM generation process)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Weyl-Heisenberg orbit generation for the d=12 branch (T-arm)"
+}
