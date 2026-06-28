@@ -1,0 +1,265 @@
+{
+  "name": "neuronal_cells",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "neuronal_cells",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "action_potential",
+        "synaptic_transmission",
+        "neurotransmitter"
+      ],
+      "boundary_condition": "cell membrane with ion channels maintaining electrochemical gradient",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "resting potential (-70mV)",
+        "justification": "initial state before any neural activity occurs, polarized baseline",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "membrane potential threshold (+30mV)",
+        "justification": "terminal anchor that terminates depolarization phase and triggers repolarization",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "depolarization cascade",
+        "justification": "forward progression of Na+ influx driving membrane potential toward threshold",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "repolarization recovery",
+        "justification": "reverse flow of K+ restoring resting potential after action potential peak",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "spike train propagation",
+        "justification": "composition of sequential action potentials along axon pathway",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-recognizing receptor binding",
+        "justification": "neuron's ability to recognize its own neurotransmitter patterns for homeostasis",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "graded potential integration",
+        "justification": "separates excitatory and inhibitory postsynaptic potentials for processing",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "integrated spike output",
+        "justification": "reconstitutes the split inputs into single action potential decision",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "action potential fired",
+        "justification": "successful propagation when membrane reaches threshold",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "subthreshold potential",
+        "justification": "failed firing when membrane potential doesn't reach activation threshold",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "excitatory-inhibitory balance",
+        "justification": "simultaneous presence of both EPSP and IPSP maintaining homeostatic equilibrium",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "synaptic strength plasticity",
+        "justification": "long-term potentiation/depression creating irreversible changes in connection strength",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "graded potential integration",
+      "split_input": "mixed excitatory and inhibitory inputs",
+      "split_outputs": [
+        "excitatory postsynaptic potential (EPSP)",
+        "inhibitory postsynaptic potential (IPSP)"
+      ],
+      "fuse_element": "integrated spike output",
+      "fuse_result": "binary action potential decision",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "electrically neutral primordial state before membrane polarization establishment",
+      "true_description": "membrane potential crossing threshold triggering action potential cascade",
+      "false_description": "membrane potential below firing threshold maintaining resting state",
+      "both_description": "critical state where neuron maintains both active propagation and inhibitory control simultaneously",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "resting potential (-70mV) establishes initial polarized state across cell membrane"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "sodium channels open increasing influx driving depolarization toward threshold"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "dendritic inputs separate into excitatory and inhibitory graded potentials"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "excitatory inputs reach threshold initiating action potential generation"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "depolarization wave propagates down axon as voltage-gated Na+ channels sequentially open"
+        },
+        {
+          "step_num": 6,
+          "opcode": "TANCH",
+          "domain_action": "peak depolarization (+30mV) triggers potassium channel opening"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "K+ efflux restores negative internal charge returning to resting potential"
+        },
+        {
+          "step_num": 8,
+          "opcode": "CLINK",
+          "domain_action": "action potential trains connect to next neuron via synaptic terminals"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IMSCRIB",
+          "domain_action": "presynaptic neuron recognizes its own transmitter release pattern for regulation"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FSPLIT",
+          "domain_action": "synaptic vesicles split into different neurotransmitter categories for release"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "postsynaptic receptors fuse multiple transmitter signals into integrated response"
+        },
+        {
+          "step_num": 12,
+          "opcode": "EVALT",
+          "domain_action": "successful neurotransmitter binding activates downstream neural pathway"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALF",
+          "domain_action": "insufficient neurotransmitter binding results in signal termination"
+        },
+        {
+          "step_num": 14,
+          "opcode": "ENGAGR",
+          "domain_action": "simultaneous excitatory and inhibitory synaptic inputs maintain network balance"
+        },
+        {
+          "step_num": 15,
+          "opcode": "IFIX",
+          "domain_action": "Hebbian plasticity creates lasting synaptic strength modification based on activity"
+        },
+        {
+          "step_num": 16,
+          "opcode": "AFWD",
+          "domain_action": "metabolic energy consumption drives ion pump restoration of electrochemical gradients"
+        },
+        {
+          "step_num": 17,
+          "opcode": "CLINK",
+          "domain_action": "neural network topology adapts through repeated action potential patterns"
+        },
+        {
+          "step_num": 18,
+          "opcode": "IMSCRIB",
+          "domain_action": "neuron self-models its own response characteristics for adaptive behavior"
+        },
+        {
+          "step_num": 19,
+          "opcode": "TANCH",
+          "domain_action": "cell death threshold represents irreversible commitment to apoptosis"
+        },
+        {
+          "step_num": 20,
+          "opcode": "AREV",
+          "domain_action": "retrograde signaling propagates information back from synapses to soma"
+        },
+        {
+          "step_num": 21,
+          "opcode": "FSPLIT",
+          "domain_action": "gene expression separates into immediate early and late response genes"
+        },
+        {
+          "step_num": 22,
+          "opcode": "FFUSE",
+          "domain_action": "transcription factors integrate multiple signaling pathways into gene activation"
+        },
+        {
+          "step_num": 23,
+          "opcode": "EVALT",
+          "domain_action": "successful neural coding transmits information to higher brain centers"
+        },
+        {
+          "step_num": 24,
+          "opcode": "IFIX",
+          "domain_action": "memory consolidation creates permanent neural pathway modifications"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "voltage-gated ion channels translating electrical gradients into action potentials",
+      "ipc_mechanism": "synaptic transmission via neurotransmitter diffusion across synaptic cleft",
+      "memory_mechanism": "calcium-dependent molecular cascades encoding timing and intensity of neural activity",
+      "scheduler_mechanism": "oscillatory neural networks with intrinsic rhythmic firing patterns",
+      "alfs_store": "genome-encoded ion channel and receptor expression patterns",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "ATP consumption for Na+/K+ pump maintenance of electrochemical gradients",
+      "pre_cycle_state": "highly organized resting potential maintained by ion pumps against concentration gradients",
+      "post_cycle_state": "disordered state after action potential propagation requires ATP to restore order",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 neural computation dissipates energy maintaining far-from-equilibrium organization",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 FFUSE \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 IFIX \u2192 AFWD \u2192 CLINK \u2192 IMSCRIB \u2192 TANCH \u2192 AREV \u2192 FSPLIT \u2192 FFUSE \u2192 EVALT \u2192 IFIX\n-- Class: neuronal_cells\n-- Fingerprint: sig=(12,5,5,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=24\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(9, 10), (20, 21)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7e \u2192 \u2299  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \ud801\udc61  | forward morphism \u2014 bidirectional arrow\n--   [5] TANCH     top    := \ud801\udc61               \ud801\udc7e \u2192 \ud801\udc57  | terminal object \u2014 connectivity boundary\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc61 \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [8] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [9] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [11] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc56  | evaluate-true \u2014 criticality gate open\n--   [12] EVALF     chir   := \ud801\udc56               \u2299 \u2192 \ud801\udc73  | evaluate-false \u2014 chirality check\n--   [13] ENGAGR    stoi   := \ud801\udc73               \ud801\udc56 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [14] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [15] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [16] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [17] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [18] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc57  | terminal object \u2014 connectivity boundary\n--   [19] AREV      pol    := \ud801\udc57               \ud801\udc61 \u2192 \ud801\udc5a  | reverse morphism \u2014 parity flip\n--   [20] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [21] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [22] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc6d  | evaluate-true \u2014 criticality gate open\n--   [23] IFIX      prot   := \ud801\udc6d               \u2299 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def neuronal_cells_protocol : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc7e)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (resting potential (-70mV) establishes initial polarized state across cell mem...)\n  (.arrow \ud801\udc7e \ud801\udc7c \ud801\udc5a)  -- [1] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (sodium channels open increasing influx driving depolarization toward threshold)\n  (.arrow \ud801\udc5a \ud801\udc7e \u2299)  -- [2] FSPLIT | gran := \ud801\udc5a | split \u03b4 \u2014 range decomposition (dendritic inputs separate into excitatory and inhibitory graded potentials)\n  (.arrow \u2299 \ud801\udc5a \ud801\udc7e)  -- [3] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (excitatory inputs reach threshold initiating action potential generation)\n  (.arrow \ud801\udc7e \u2299 \ud801\udc61)  -- [4] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (depolarization wave propagates down axon as voltage-gated Na+ channels sequen...)\n  (.arrow \ud801\udc61 \ud801\udc7e \ud801\udc57)  -- [5] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (peak depolarization (+30mV) triggers potassium channel opening)\n  (.arrow \ud801\udc57 \ud801\udc61 \ud801\udc71)  -- [6] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (K+ efflux restores negative internal charge returning to resting potential)\n  (.arrow \ud801\udc71 \ud801\udc57 \ud801\udc60)  -- [7] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (action potential trains connect to next neuron via synaptic terminals)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc5a)  -- [8] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (presynaptic neuron recognizes its own transmitter release pattern for regulation)\n  -- FSPLIT [9] (gran := \ud801\udc5a) (synaptic vesicles split into different neurotransmitter categories for release) / FFUSE [10] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (0 nodes)\n      (.refl \ud801\udc59)  -- T-branch: empty arc (direct to FFUSE.T)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [10]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \u2299)  -- [10] FFUSE | stoi := \ud801\udc59 (postsynaptic receptors fuse multiple transmitter signals into integrated response)\n  (.arrow \u2299 \ud801\udc59 \ud801\udc56)  -- [11] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (successful neurotransmitter binding activates downstream neural pathway)\n  (.arrow \ud801\udc56 \u2299 \ud801\udc73)  -- [12] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (insufficient neurotransmitter binding results in signal termination)\n  (.arrow \ud801\udc73 \ud801\udc56 \ud801\udc6d)  -- [13] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (simultaneous excitatory and inhibitory synaptic inputs maintain network balance)\n  (.arrow \ud801\udc6d \ud801\udc73 \ud801\udc7e)  -- [14] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Hebbian plasticity creates lasting synaptic strength modification based on ac...)\n  (.arrow \ud801\udc7e \ud801\udc6d \ud801\udc71)  -- [15] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (metabolic energy consumption drives ion pump restoration of electrochemical g...)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc60)  -- [16] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (neural network topology adapts through repeated action potential patterns)\n  (.arrow \ud801\udc60 \ud801\udc71 \ud801\udc61)  -- [17] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (neuron self-models its own response characteristics for adaptive behavior)\n  (.arrow \ud801\udc61 \ud801\udc60 \ud801\udc57)  -- [18] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (cell death threshold represents irreversible commitment to apoptosis)\n  (.arrow \ud801\udc57 \ud801\udc61 \ud801\udc5a)  -- [19] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (retrograde signaling propagates information back from synapses to soma)\n  -- FSPLIT [20] (gran := \ud801\udc5a) (gene expression separates into immediate early and late response genes) / FFUSE [21] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (0 nodes)\n      (.refl \ud801\udc59)  -- T-branch: empty arc (direct to FFUSE.T)\n      -- F-branch (0 nodes)\n      (.refl \ud801\udc59))  -- F-branch: empty arc (direct to FFUSE.F)\n    -- reconnect at FFUSE [21]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \u2299)  -- [21] FFUSE | stoi := \ud801\udc59 (transcription factors integrate multiple signaling pathways into gene activation)\n  (.arrow \u2299 \ud801\udc59 \ud801\udc6d)  -- [22] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (successful neural coding transmits information to higher brain centers)\n  (.arrow \ud801\udc6d \u2299 \ud801\udc7c)  -- [23] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (memory consolidation creates permanent neural pathway modifications)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def neuronal_cells_true_arm : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  (neuronal_cells_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def neuronal_cells_false_arm : IGProtocol \ud801\udc7c \ud801\udc6d :=\n  (neuronal_cells_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem neuronal_cells_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "notes": "Auto-designed from: neuronal_cells"
+}
