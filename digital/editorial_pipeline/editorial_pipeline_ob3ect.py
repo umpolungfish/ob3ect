@@ -87,6 +87,23 @@ _TIMEOUT = 120  # seconds per provider call
 
 # ── Prompt builders ───────────────────────────────────────────────────────────
 
+_STYLE_PROHIBITIONS = """\
+WRITING PROHIBITIONS — enforce in every output:
+  No em-dashes in any form (not as connectors, not as asides, not anywhere).
+  No: delve, tapestry, leverage (verb), utilize, seamless, multifaceted, pivotal,
+    cutting-edge, robust (filler), synergy, holistic, paradigm (filler), testament,
+    underpinnings, realm, landscape (metaphor), revolutionary, groundbreaking,
+    transformative, nuanced (filler), vibrant, dynamic (filler).
+  No openers: "Furthermore", "Moreover", "Consequently", "Notably", "Importantly",
+    "Certainly", "Absolutely", "Of course".
+  No phrases: "it is important to note", "it is worth noting", "in today's",
+    "in conclusion", "in essence", "in summary", "at the end of the day",
+    "with that said", "having said that".
+  No trailing restatement sentences. No false-balance hedging ("while X... however Y").
+  No bullet points, no dashed lists, no numbered lists — write as prose only.
+  Use concrete nouns and active verbs. Say what the thing is."""
+
+
 def _parse_prompt(source: str) -> str:
     return (
         "Analyze the structure of the following text. Identify:\n"
@@ -104,6 +121,7 @@ def _edit_prompt(source: str, intent: str, parse: Optional[str]) -> str:
     return (
         f"Edit the following text according to this intent: {intent}\n"
         f"{parse_block}\n"
+        f"{_STYLE_PROHIBITIONS}\n\n"
         "Apply the intent precisely. Produce ONLY the edited text — "
         "no preamble, no explanation, no markdown.\n\n"
         f"TEXT:\n{source}"
@@ -114,6 +132,7 @@ def _rewrite_prompt(source: str, intent: str, edit: str) -> str:
     return (
         f"Produce a final clean rewrite of the following text.\n\n"
         f"Intent: {intent}\n\n"
+        f"{_STYLE_PROHIBITIONS}\n\n"
         f"Previous edit:\n{edit}\n\n"
         "Integrate the edit fully. Output ONLY the final rewritten text — "
         "no preamble, no explanation."
@@ -126,7 +145,12 @@ def _critique_prompt(rewrite: str, intent: str) -> str:
         f"Intent: {intent}\n\n"
         f"Rewrite:\n{rewrite}\n\n"
         "Does the rewrite fully achieve the intent? "
-        "List any specific gaps or unresolved issues. Be concrete and brief."
+        "Flag any violations of these prohibitions: em-dashes, banned words "
+        "(delve, tapestry, leverage, seamless, multifaceted, pivotal, etc.), "
+        "banned openers (Furthermore, Moreover, Certainly, etc.), trailing "
+        "restatements, false-balance hedging, bullet points, dashed lists, "
+        "numbered lists (any list format — prose only). "
+        "List specific gaps. Be concrete and brief."
     )
 
 

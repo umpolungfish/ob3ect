@@ -203,6 +203,33 @@ If no such pair exists, set verdict to "FAIL" and explain why in failure_reason.
 
 Output ONLY the JSON object — no preamble, no markdown fences, no trailing text.
 
+WRITING QUALITY — HARD PROHIBITIONS:
+Every text field (boundary, element names, descriptions, justifications) must read as
+precise technical prose. The following are BANNED outright:
+
+  Words: delve, tapestry, leverage (verb), utilize, harness (metaphor), streamline,
+    underscore (metaphor), cutting-edge, robust (filler), seamless, multifaceted,
+    pivotal, innovative, synergy, holistic, intricate (filler), vibrant, dynamic (filler),
+    comprehensive (filler), ecosystem (metaphor), paradigm (filler), testament,
+    underpinnings, realm, landscape (metaphor), crucial (filler), vital (filler),
+    revolutionary, groundbreaking, transformative, nuanced (filler)
+
+  Phrases: "it is important to note", "it is worth noting", "it's worth noting",
+    "in today's", "in conclusion", "in essence", "in summary", "to summarize",
+    "furthermore" (opener), "moreover" (opener), "consequently" (opener),
+    "notably" (opener), "importantly" (opener), "certainly!", "absolutely",
+    "of course", "rest assured", "feel free to", "I hope this helps",
+    "with that said", "having said that", "at the end of the day",
+    "game-changer", "think outside the box", "move the needle"
+
+  Structure: no em-dashes at all (not as connectors, not as asides, not as
+    appositives — none), no bullet points, no dashed lists, no numbered lists
+    (any list format is banned — write as prose only), no trailing summary
+    sentences that restate the name, no false balance ("while X... however Y"),
+    no hedging preambles.
+
+Say what the thing IS. Prefer concrete nouns and active verbs.
+
 PHASE 0 TOKENS CLARIFICATION:
 The "tokens" field in the JSON output contains DOMAIN-SPECIFIC SURFACE LABELS —
 natural language words or short phrases that label key elements of YOUR domain.
@@ -221,6 +248,49 @@ _PRIM_ORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ"
 
 _CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
 _CONTEXT_MAX_BYTES = 500_000  # 50 KB total
+
+# ── Catalog search ────────────────────────────────────────────────────────────
+
+_catalog_cache: Optional[List[Dict]] = None
+
+def _load_raw_catalog() -> List[Dict]:
+    global _catalog_cache
+    if _catalog_cache is None:
+        try:
+            _catalog_cache = json.loads(_CATALOG_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            _catalog_cache = []
+    return _catalog_cache
+
+
+def _search_catalog(description: str, n: int = 8) -> str:
+    """Return a compact block of the N catalog entries most relevant to description."""
+    entries = _load_raw_catalog()
+    if not entries:
+        return ""
+
+    # Tokenise description: lowercase words, strip punctuation
+    import re as _re
+    tokens = set(_re.sub(r"[^a-z0-9_]", " ", description.lower()).split())
+    tokens -= {"the", "a", "an", "of", "in", "is", "it", "to", "and", "or",
+               "for", "with", "that", "this", "are", "be", "as", "by", "at"}
+
+    def _score(entry: Dict) -> int:
+        name_words = set(entry.get("name", "").replace("_", " ").lower().split())
+        desc_words = set(_re.sub(r"[^a-z0-9 ]", " ",
+                                  entry.get("description", "").lower()).split())
+        return len(tokens & name_words) * 3 + len(tokens & desc_words)
+
+    ranked = sorted(entries, key=_score, reverse=True)[:n]
+    if not any(_score(e) > 0 for e in ranked):
+        return ""  # No relevant matches — omit the block
+
+    lines = ["CATALOG REFERENCE — nearest IG entries for this domain:"]
+    prim_keys = ["Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","⊙","Ħ","Σ","Ω"]
+    for e in ranked:
+        prim_str = " ".join(f"{k}={e.get(k,'?')}" for k in prim_keys)
+        lines.append(f"  {e['name']}: {e.get('description','')}  [{prim_str}]")
+    return "\n".join(lines)
 
 
 def _run_navigator_entry(name: str) -> str:
@@ -317,7 +387,12 @@ def _build_prompt(
         f"<domain-context>\n{context}\n</domain-context>\n\n"
         if context else ""
     )
-    return f"{context_block}Design an Ob3ect for:\n\n{description}{dt_hint}\n\n{_SCHEMA}{retry_block}"
+    catalog_block = _search_catalog(description)
+    catalog_section = (
+        f"<catalog-reference>\n{catalog_block}\n</catalog-reference>\n\n"
+        if catalog_block else ""
+    )
+    return f"{catalog_section}{context_block}Design an Ob3ect for:\n\n{description}{dt_hint}\n\n{_SCHEMA}{retry_block}"
 
 
 def _extract_json(text: str) -> Dict[str, Any]:
@@ -609,7 +684,14 @@ You are identifying a natural Granularity (Γ) zoom hierarchy in the Universal I
 Each level must be a coherent entity where the IMASM bootstrap runs — a bounded system with its
 own identity, Frobenius structure, and terminal anchor (TANCH). The hierarchy runs from
 finest-grain (seed, Γ=0) to coarsest-grain (target, Γ=N-1). Each CLINK morphism describes
-how the finer-grain entity composes into the next coarser level."""
+how the finer-grain entity composes into the next coarser level.
+
+All text fields must be precise technical prose. Banned: delve, tapestry, leverage (verb),
+seamless, multifaceted, pivotal, cutting-edge, synergy, holistic, paradigm (filler), testament,
+realm, landscape (metaphor), "it is important to note", "in essence", "furthermore" (opener),
+"moreover" (opener), "certainly!", false-balance hedging, trailing restatement summaries,
+em-dashes in any form (not as connectors, not as asides, not anywhere),
+bullet points, dashed lists, numbered lists — prose only."""
 
 _ZOOM_LEVEL_SCHEMA = """\
 {

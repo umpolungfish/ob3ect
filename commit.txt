@@ -1,3 +1,62 @@
+Ban bullets and dashed lists in editorial pipeline and auto.py — 2026-06-29
+
+editorial_pipeline_ob3ect.py:
+  _STYLE_PROHIBITIONS: added "No bullet points, no dashed lists, no numbered
+    lists — write as prose only."
+  _critique_prompt: added bullet/dashed/numbered list violations to the
+    explicit flag list.
+
+auto.py:
+  HARD PROHIBITIONS Structure block: added bullet points, dashed lists,
+    numbered lists (any list format banned — prose only).
+  _ZOOM_SYSTEM: same addition to the abbreviated prohibition tail.
+
+---
+
+editorial_pipeline: add _STYLE_PROHIBITIONS to all prompt functions — 2026-06-29
+
+The auto.py prohibition only covered ob3ect design generation. The editorial
+pipeline (editorial_pipeline_ob3ect.py) has its own prompt chain and was
+generating em-dashes and banned words freely.
+
+_STYLE_PROHIBITIONS: shared constant banning em-dashes (in any form), banned
+  words (delve, tapestry, leverage, seamless, multifaceted, pivotal, etc.),
+  banned openers (Furthermore, Moreover, Certainly, etc.), banned phrases
+  ("it is important to note", "in essence", etc.), trailing restatements,
+  false-balance hedging.
+
+Injected into _edit_prompt, _rewrite_prompt, and _critique_prompt.
+_critique_prompt now explicitly flags prohibition violations in its checklist.
+
+auto.py em-dash prohibition tightened: "no em-dash filler padding" → "no
+  em-dashes at all (not as connectors, not as asides, not anywhere)".
+
+---
+
+auto.py: catalog access + AI writing pitfall prohibition — 2026-06-29
+
+_search_catalog(description, n=8): keyword overlap search against all 4686
+  catalog entries (name×3 + description weight); injects top-N as a compact
+  <catalog-reference> block into every _build_prompt call automatically.
+  Returns empty string (no injection) when no tokens match, so unrelated
+  domains don't get noise. Catalog loaded once and cached in _catalog_cache.
+
+_build_prompt: adds catalog_section before context_block so the model sees
+  nearest IG structural precedents before designing the new ob3ect.
+
+_SYSTEM_PROMPT: added WRITING QUALITY — HARD PROHIBITIONS section.
+  Banned words: delve, tapestry, leverage (verb), utilize, seamless,
+    multifaceted, pivotal, cutting-edge, synergy, holistic, paradigm (filler),
+    testament, underpinnings, realm, landscape (metaphor), robust (filler),
+    revolutionary, groundbreaking, transformative, nuanced (filler), etc.
+  Banned phrases: "it is important to note", "in essence", "moreover" (opener),
+    "furthermore" (opener), "certainly!", false-balance hedging, trailing
+    restatement summaries, em-dash filler padding.
+
+_ZOOM_SYSTEM: same abbreviated prohibition added.
+
+---
+
 sic_povm_functor + sic_povm_parity_gate vault stubs upgraded — 2026-06-27
 
 digital/.vault/sic_povm_functor/sic_povm_functor_ob3ect.py — Crystal->H^12 functor:
