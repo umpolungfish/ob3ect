@@ -1,0 +1,282 @@
+{
+  "name": "Organelle",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Organelle",
+      "domain_type": "biological",
+      "scope": "local",
+      "surface_tokens": [
+        "membrane",
+        "translocase",
+        "protease",
+        "chaperone",
+        "gradient"
+      ],
+      "boundary_condition": "The lipid bilayer membrane that encloses the organelle and separates its internal lumen from the cytosol.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Cytosolic precursor protein",
+        "justification": "Represents the uninitialized state of the polypeptide before import and processing.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Outer mitochondrial membrane",
+        "justification": "Forms the closed physical boundary that contains the entire metabolic system.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "TOM complex translocation",
+        "justification": "Drives the forward morphism of the precursor across the outer membrane into the intermembrane space.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Chaperone-mediated unfolding",
+        "justification": "Executes a reverse morphism by reversing the folded state of a misfolded domain back to a linear chain.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "TIM23 motor chain",
+        "justification": "Sequentially chains the import motor with Hsp70 to pull the polypeptide into the matrix.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Mitochondrial quality control receptor",
+        "justification": "Recognizes the organelle membrane potential to complete the self-referential loop for mitophagy.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "MPP protease cleavage",
+        "justification": "Splits the imported precursor into the mature catalytic domain and the regulatory scaffold.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Holoenzyme assembly",
+        "justification": "Reconstitutes the mature catalytic domain and regulatory scaffold into the intact functional precursor.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Native fold state",
+        "justification": "Indicates the affirmative success state where the domain achieves its correct tertiary structure.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Misfolded state",
+        "justification": "Indicates the negative failure state where the domain aggregates or fails to fold.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Chaperone-bound intermediate",
+        "justification": "Represents a paradice where the domain is simultaneously protected from degradation and prevented from aggregating.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Disulfide bond formation",
+        "justification": "Creates a permanent and irreversible covalent fixation of the native protein structure.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "MPP protease cleavage",
+      "split_input": "Imported precursor protein",
+      "split_outputs": [
+        "Mature catalytic domain",
+        "Regulatory scaffold"
+      ],
+      "fuse_element": "Holoenzyme assembly",
+      "fuse_result": "Imported precursor protein",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Unimported cytosolic state lacking membrane enclosure and enzymatic activity.",
+      "true_description": "Native functional state correctly folded and active within the matrix.",
+      "false_description": "Misfolded or aggregated state targeted for retrotranslocation and degradation.",
+      "both_description": "Chaperone-bound intermediate state held in a protected folding cavity, simultaneously folded and unfolded.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Cytosolic precursor protein exists in the uninitialized void outside the organelle."
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "Outer mitochondrial membrane establishes the closed boundary of the system."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "TOM complex translocates the precursor across the outer membrane into the intermembrane space."
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "TIM23 motor sequentially chains with Hsp70 to pull the polypeptide into the matrix."
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "MPP protease cleaves the imported precursor into the mature catalytic domain and the regulatory scaffold."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "Mature catalytic domain achieves its correct tertiary structure in the native fold state."
+        },
+        {
+          "step_num": 7,
+          "opcode": "IFIX",
+          "domain_action": "Disulfide isomerases form permanent covalent bonds to irreversibly fix the catalytic domain."
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "Regulatory scaffold enters the misfolded state and begins to aggregate."
+        },
+        {
+          "step_num": 9,
+          "opcode": "AREV",
+          "domain_action": "Hsp70 chaperone executes a conformational reversal to unfold the regulatory scaffold back to a linear chain."
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "Holoenzyme assembly reconstitutes the mature catalytic domain and regulatory scaffold into the intact functional precursor."
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "The functional precursor sequentially chains with electron transport chain complexes."
+        },
+        {
+          "step_num": 12,
+          "opcode": "FSPLIT",
+          "domain_action": "Complex I splits ubiquinone into ubiquinol and protons, branching into proton pumping and electron transfer."
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALT",
+          "domain_action": "Protons are successfully pumped into the intermembrane space to build the gradient."
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "The electrochemical gradient is permanently recorded as proton motive force across the inner membrane."
+        },
+        {
+          "step_num": 15,
+          "opcode": "EVALF",
+          "domain_action": "Electrons fail to transfer due to oxidative stress and leak from the chain."
+        },
+        {
+          "step_num": 16,
+          "opcode": "ENGAGR",
+          "domain_action": "Reactive oxygen species are generated and held in a paradice of cellular signaling and oxidative damage."
+        },
+        {
+          "step_num": 17,
+          "opcode": "FFUSE",
+          "domain_action": "Ubiquinol and electrons reconstitute the reduced ubiquinone pool in the inner membrane."
+        },
+        {
+          "step_num": 18,
+          "opcode": "AFWD",
+          "domain_action": "ATP synthase drives the forward morphism of protons back into the matrix through the F0 rotor."
+        },
+        {
+          "step_num": 19,
+          "opcode": "CLINK",
+          "domain_action": "F1 rotor sequentially chains with the gamma subunit to drive mechanical rotation."
+        },
+        {
+          "step_num": 20,
+          "opcode": "FSPLIT",
+          "domain_action": "ATP synthase splits ADP and inorganic phosphate into phosphorylation and water release."
+        },
+        {
+          "step_num": 21,
+          "opcode": "EVALT",
+          "domain_action": "ATP is successfully synthesized in the catalytic binding sites."
+        },
+        {
+          "step_num": 22,
+          "opcode": "IFIX",
+          "domain_action": "Adenine nucleotide translocator irreversibly exports the synthesized ATP to the cytosol."
+        },
+        {
+          "step_num": 23,
+          "opcode": "EVALF",
+          "domain_action": "Water is released as a metabolic byproduct in the matrix."
+        },
+        {
+          "step_num": 24,
+          "opcode": "AREV",
+          "domain_action": "Aquaporins execute a reverse morphism to diffuse water backward into the cytosol."
+        },
+        {
+          "step_num": 25,
+          "opcode": "FFUSE",
+          "domain_action": "Phosphorylation and water release reconstitute the ATP hydrolysis equilibrium."
+        },
+        {
+          "step_num": 26,
+          "opcode": "IMSCRIB",
+          "domain_action": "Mitochondrial quality control receptors recognize the organelle membrane potential to close the self-referential loop."
+        },
+        {
+          "step_num": 27,
+          "opcode": "TANCH",
+          "domain_action": "Mitophagy receptors bind the outer membrane to establish the final boundary for autophagic degradation."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Ribosomal translation machinery that compiles nuclear mRNA into polypeptide chains.",
+      "ipc_mechanism": "Vesicular trafficking and metabolite transporters that communicate between distinct organelles.",
+      "memory_mechanism": "Mitochondrial DNA and epigenetic histone marks that store hereditary metabolic state.",
+      "scheduler_mechanism": "Circadian clock and AMPK signaling pathways that determine metabolic timing and flux.",
+      "alfs_store": "The endoplasmic reticulum as the canonical bootstrap store for membrane lipids and secretory proteins.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Proton motive force and ATP hydrolysis consumed per transport and folding cycle.",
+      "pre_cycle_state": "Unfolded precursor in the cytosol with high conformational entropy and low free energy.",
+      "post_cycle_state": "Folded holoenzyme in the matrix with low conformational entropy and high free energy.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The local decrease in conformational entropy is exactly balanced by the dissipation of the proton gradient and ATP hydrolysis, maintaining thermodynamic equilibrium.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 IFIX \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 IFIX \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 IFIX \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 IMSCRIB \u2192 TANCH\n-- Class: Organelle\n-- Fingerprint: sig=(11,6,7,3)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=27\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(4, 9), (11, 16), (19, 24)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [11] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [12] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [14] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [15] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [16] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [17] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [18] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [19] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [20] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [21] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [22] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [23] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [24] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [25] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [26] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def organelle_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Cytosolic precursor protein exists in the uninitialized void outside the orga...)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc7e)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Outer mitochondrial membrane establishes the closed boundary of the system.)\n  (.arrow \ud801\udc7e \ud801\udc61 \ud801\udc71)  -- [2] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (TOM complex translocates the precursor across the outer membrane into the int...)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc5a)  -- [3] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (TIM23 motor sequentially chains with Hsp70 to pull the polypeptide into the m...)\n  -- FSPLIT [4] (gran := \ud801\udc5a) (MPP protease cleaves the imported precursor into the mature catalytic domain and the regulatory scaffold.) / FFUSE [9] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [5] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Mature catalytic domain achieves its correct tertiary structure in the native...)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [6] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Disulfide isomerases form permanent covalent bonds to irreversibly fix the ca...)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [7] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Regulatory scaffold enters the misfolded state and begins to aggregate.)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [8] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Hsp70 chaperone executes a conformational reversal to unfold the regulatory s...))\n    -- reconnect at FFUSE [9]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc71)  -- [9] FFUSE | stoi := \ud801\udc59 (Holoenzyme assembly reconstitutes the mature catalytic domain and regulatory scaffold into the intact functional precursor.)\n  (.arrow \ud801\udc71 \ud801\udc59 \ud801\udc5a)  -- [10] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (The functional precursor sequentially chains with electron transport chain co...)\n  -- FSPLIT [11] (gran := \ud801\udc5a) (Complex I splits ubiquinone into ubiquinol and protons, branching into proton pumping and electron transfer.) / FFUSE [16] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [12] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Protons are successfully pumped into the intermembrane space to build the gra...)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [13] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (The electrochemical gradient is permanently recorded as proton motive force a...)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [14] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Electrons fail to transfer due to oxidative stress and leak from the chain.)\n        (.arrow \ud801\udc73 \ud801\udc5a \ud801\udc59)  -- [15] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Reactive oxygen species are generated and held in a paradice of cellular sign...))\n    -- reconnect at FFUSE [16]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc7e)  -- [16] FFUSE | stoi := \ud801\udc59 (Ubiquinol and electrons reconstitute the reduced ubiquinone pool in the inner membrane.)\n  (.arrow \ud801\udc7e \ud801\udc59 \ud801\udc71)  -- [17] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (ATP synthase drives the forward morphism of protons back into the matrix thro...)\n  (.arrow \ud801\udc71 \ud801\udc7e \ud801\udc5a)  -- [18] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (F1 rotor sequentially chains with the gamma subunit to drive mechanical rotat...)\n  -- FSPLIT [19] (gran := \ud801\udc5a) (ATP synthase splits ADP and inorganic phosphate into phosphorylation and water release.) / FFUSE [24] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [20] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (ATP is successfully synthesized in the catalytic binding sites.)\n        (.arrow \ud801\udc6d \ud801\udc5a \ud801\udc59)  -- [21] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (Adenine nucleotide translocator irreversibly exports the synthesized ATP to t...)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [22] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Water is released as a metabolic byproduct in the matrix.)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [23] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Aquaporins execute a reverse morphism to diffuse water backward into the cyto...))\n    -- reconnect at FFUSE [24]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc60)  -- [24] FFUSE | stoi := \ud801\udc59 (Phosphorylation and water release reconstitute the ATP hydrolysis equilibrium.)\n  (.arrow \ud801\udc60 \ud801\udc59 \ud801\udc61)  -- [25] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (Mitochondrial quality control receptors recognize the organelle membrane pote...)\n  (.arrow \ud801\udc61 \ud801\udc60 \ud801\udc7c)  -- [26] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (Mitophagy receptors bind the outer membrane to establish the final boundary f...)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def organelle_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (organelle_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def organelle_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (organelle_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem organelle_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\nend Imscribing\n",
+  "notes": "Auto-designed from: Organelle"
+}

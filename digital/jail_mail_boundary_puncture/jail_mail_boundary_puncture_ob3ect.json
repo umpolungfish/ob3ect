@@ -1,0 +1,210 @@
+{
+  "name": "jail mail boundary puncture",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "jail mail boundary puncture",
+      "domain_type": "carceral",
+      "scope": "local",
+      "surface_tokens": [
+        "inmate correspondence",
+        "contraband inspection",
+        "perimeter checkpoint"
+      ],
+      "boundary_condition": "The reinforced mailroom security checkpoint and institutional intake ledger",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Unsorted incoming physical mail batch",
+        "justification": "Raw mail exists in an uninspected state before entering the facility perimeter.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The perimeter mailroom security boundary",
+        "justification": "The physical and procedural checkpoint that contains the entire inspection system.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Forwarding approved letters to cell blocks",
+        "justification": "The directed transformation of cleared mail toward its final inmate recipient.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Reversing confiscated contraband to sender or destruction",
+        "justification": "The descent and rejection of prohibited items back out of the facility.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Sequential logging and sorting of the intake queue",
+        "justification": "The chained procedural steps of receiving and preparing mail for inspection.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "The inmate verified identity matching the recipient list",
+        "justification": "The self-referential confirmation that the mail belongs to a recognized entity within the system.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "The security inspection gate separating cleared and suspicious streams",
+        "justification": "The branching point where a single mail batch divides into approved and prohibited paths.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "The daily mailroom ledger reconciliation of total processed mail",
+        "justification": "The reconstitution of the original batch by summing cleared and confiscated items for the official record.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Stamping correspondence as cleared for delivery",
+        "justification": "The affirmative evaluation confirming the item meets all institutional policies.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Flagging items as contraband or policy violations",
+        "justification": "The negative evaluation identifying prohibited materials or unauthorized senders.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Mail legally opened by guards yet delivered as private correspondence",
+        "justification": "A paradice where the mail is simultaneously violated by state inspection and protected by inmate privacy rights.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "The permanent institutional log of deliveries and confiscations",
+        "justification": "The append-only record that permanently fixes the outcome of every inspection event.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "The security inspection gate",
+      "split_input": "Incoming physical mail batch",
+      "split_outputs": [
+        "Cleared correspondence",
+        "Confiscated contraband"
+      ],
+      "fuse_element": "The daily mailroom ledger reconciliation",
+      "fuse_result": "Total processed mail batch",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Uninspected and unlogged mail sitting outside the security perimeter",
+      "true_description": "Cleared correspondence approved and routed for inmate delivery",
+      "false_description": "Confiscated contraband rejected and logged for return or destruction",
+      "both_description": "Mail simultaneously violated by guard inspection and protected by inmate privacy rights",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Raw unsorted mail arrives at the facility gate."
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "The perimeter mailroom checkpoint establishes the security boundary."
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "Mail is logged into the intake queue for processing."
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "The inspection gate separates the batch into cleared and suspicious streams."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Cleared correspondence is stamped as approved for delivery."
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "Approved letters are forwarded to the inmate cell blocks."
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Suspicious items are flagged as contraband."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "Confiscated items are reversed back to the sender or destroyed."
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "The mailroom ledger reconciles cleared and confiscated items into the total daily batch."
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "Legal mail opened by guards is delivered as private correspondence."
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "The permanent confiscation and delivery log is written to the institutional record."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IMSCRIB",
+          "domain_action": "The inmate verified identity is confirmed against the approved recipient list."
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "The mailroom cycle closes and seals the perimeter for the next intake."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The institutional mailroom policy manual and censorship guidelines",
+      "ipc_mechanism": "Physical transport carts and intercom buzzers between checkpoints",
+      "memory_mechanism": "The centralized intake ledger and physical evidence lockers",
+      "scheduler_mechanism": "The daily intake bell schedule and guard shift rotations",
+      "alfs_store": "The Department of Corrections master inmate registry and approved contact list",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Guard labor hours and administrative logging overhead",
+      "pre_cycle_state": "Unsorted mail batch outside the security boundary",
+      "post_cycle_state": "Processed mail batch with permanent ledger entries and separated contraband",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The physical mass of mail is conserved while its state and location change within the closed institutional system.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 ENGAGR \u2192 IFIX \u2192 IMSCRIB \u2192 TANCH\n-- Class: jail mail boundary puncture\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(3, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc71  | terminal object \u2014 connectivity boundary\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc61 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [11] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nnoncomputable def jail_mail_boundary_puncture_protocol : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  .withGram \ud801\udc60 <|\n  -- Seq chain:\n  (.arrow \ud801\udc7c \ud801\udc7c \ud801\udc61)  -- [0] VINIT | dim := \ud801\udc7c | initial object \u2014 ground of distinction (Raw unsorted mail arrives at the facility gate.)\n  (.arrow \ud801\udc61 \ud801\udc7c \ud801\udc71)  -- [1] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (The perimeter mailroom checkpoint establishes the security boundary.)\n  (.arrow \ud801\udc71 \ud801\udc61 \ud801\udc5a)  -- [2] CLINK | fid := \ud801\udc71 | composition \u2014 regime coherence (Mail is logged into the intake queue for processing.)\n  -- FSPLIT [3] (gran := \ud801\udc5a) (The inspection gate separates the batch into cleared and suspicious streams.) / FFUSE [8] (stoi := \ud801\udc59)\n  .seq\n    (.prod\n      -- T-branch (2 nodes)\n      .seq\n        (.arrow \u2299 \ud801\udc5a \ud801\udc59)  -- [4] EVALT | crit := \u2299 | evaluate-true \u2014 criticality gate open (Cleared correspondence is stamped as approved for delivery.)\n        (.arrow \ud801\udc7e \ud801\udc5a \ud801\udc59)  -- [5] AFWD | rel := \ud801\udc7e | forward morphism \u2014 bidirectional arrow (Approved letters are forwarded to the inmate cell blocks.)\n      -- F-branch (2 nodes)\n      .seq\n        (.arrow \ud801\udc56 \ud801\udc5a \ud801\udc59)  -- [6] EVALF | chir := \ud801\udc56 | evaluate-false \u2014 chirality check (Suspicious items are flagged as contraband.)\n        (.arrow \ud801\udc57 \ud801\udc5a \ud801\udc59)  -- [7] AREV | pol := \ud801\udc57 | reverse morphism \u2014 parity flip (Confiscated items are reversed back to the sender or destroyed.))\n    -- reconnect at FFUSE [8]: \u03bc closes the Frobenius pair\n    (.arrow \ud801\udc59 \ud801\udc59 \ud801\udc73)  -- [8] FFUSE | stoi := \ud801\udc59 (The mailroom ledger reconciles cleared and confiscated items into the total daily batch.)\n  (.arrow \ud801\udc73 \ud801\udc59 \ud801\udc6d)  -- [9] ENGAGR | stoi := \ud801\udc73 | engage paradox \u2014 B-state, both arms (Legal mail opened by guards is delivered as private correspondence.)\n  (.arrow \ud801\udc6d \ud801\udc73 \ud801\udc60)  -- [10] IFIX | prot := \ud801\udc6d | irreversible fixation \u2014 winding number (The permanent confiscation and delivery log is written to the institutional r...)\n  (.arrow \ud801\udc60 \ud801\udc6d \ud801\udc61)  -- [11] IMSCRIB | gram := \ud801\udc60 | identity \u2014 self-imscription (The inmate verified identity is confirmed against the approved recipient list.)\n  (.arrow \ud801\udc61 \ud801\udc60 \ud801\udc7c)  -- [12] TANCH | top := \ud801\udc61 | terminal object \u2014 connectivity boundary (The mailroom cycle closes and seals the perimeter for the next intake.)\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def jail_mail_boundary_puncture_true_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (jail_mail_boundary_puncture_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def jail_mail_boundary_puncture_false_arm : IGProtocol \ud801\udc7c \ud801\udc61 :=\n  (jail_mail_boundary_puncture_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ntheorem jail_mail_boundary_puncture_tier : TierFunctor.obj \ud801\udc7c = .O\u2082 := by decide\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
+  "notes": "Auto-designed from: jail mail boundary puncture"
+}

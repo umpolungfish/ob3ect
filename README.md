@@ -8,17 +8,27 @@ modulo semantic equivalence, satisfying μ∘δ = id_A. Every ob3ect in this rep
 passes that check before it is committed to the tower.
 
 The repository contains:
-- **`auto.py`** — LLM-driven pipeline: natural language → verified ob3ect in one command
-- **`digital/`** — 28-layer categorical tower + **12 IMASM Novel Arrangement classes**, each self-verifying (Closure: True)
-- **`digital/runall.py`** — executes the full 28-layer tower end-to-end
-- **`digital/run_all_imasm.py`** — executes all 12 IMASM arrangement classes + chiral pair comparison
-- **`digital/imasm_core.py`** — Dialetheic-aware IMASM register machine (2-bit: VO⌀/T/F/B⬡)
-- **`proofs/`** — Lean 4 machine-checked proofs of the tower's coherence laws
-- **`digital/frob.py`** — the original Frobenius self-imscriber (the ob3ect's seed)
-- **`digital/`descent chain** — v0.1 (Python) → v0.10 (bare-metal x86 ISO)
-- **IMASM Novel Arrangements** — 12 sequence classes exploring the token space beyond the canonical bootstrap, including the **Vessel Principle**: IMASM token algebra resolves structure at finer granularity than the 12-primitive IG crystal
+- **`auto.py`**, LLM-driven pipeline: natural language → verified ob3ect in one command
+- **`digital/`**, 28-layer categorical tower + **12 IMASM Novel Arrangement classes**, each self-verifying (Closure: True)
+- **`digital/runall.py`**, executes the full 28-layer tower end-to-end
+- **`digital/run_all_imasm.py`**, executes all 12 IMASM arrangement classes + chiral pair comparison
+- **`digital/imasm_core.py`**, Dialetheic-aware IMASM register machine (2-bit: VO⌀/T/F/B⬡)
+- **`proofs/`**, Lean 4 machine-checked proofs of the tower's coherence laws
+- **`digital/frob.py`**, the original Frobenius self-imscriber (the ob3ect's seed)
+- **`digital/`descent chain**, v0.1 (Python) → v0.10 (bare-metal x86 ISO)
+- **IMASM Novel Arrangements**, 12 sequence classes exploring the token space beyond the canonical bootstrap, including the **Vessel Principle**: IMASM token algebra resolves structure at finer granularity than the 12-primitive IG crystal
 
 ---
+
+## Overview
+
+**What it is.** A self-imscribing compiler and categorical tower: every ob3ect is a special Frobenius algebra in the monoidal category Prog/~ (programs modulo semantic equivalence) satisfying μ∘δ=id, that verifies its own algebraic closure before being committed.
+
+**What it does.** Turns natural language into verified ob3ects (`auto.py`), maintains a 28-layer categorical tower plus 12 IMASM Novel Arrangement classes (each self-verifying, Closure: True), and backs the tower's coherence laws with Lean 4 machine-checked proofs.
+
+**Why it matters.** It makes self-verification the gate of existence: nothing enters the tower unless it proves its own Frobenius closure. The IMASM Novel Arrangements also surface the Vessel Principle, that the token algebra resolves structure at finer granularity than the 12-primitive IG crystal.
+
+**How to use it.** `python auto.py "<description>"` compiles a verified ob3ect; `digital/runall.py` runs the full tower; `digital/run_all_imasm.py` runs the 12 arrangement classes.
 
 ## Visualizations
 
@@ -29,16 +39,16 @@ order; Phase 2 (flow) sends a Gaussian pulse through the revealed graph.
 
 ### Opcode flow CFG
 
-**Nodes** — 14 IMASM opcodes: VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB (logical family,
+**Nodes**, 14 IMASM opcodes: VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB (logical family,
 purple); FSPLIT, FFUSE (Frobenius family, gold); EVALT, EVALF, ENGAGR (dialetheia family,
 green/red/white); IFIX (linear family, cyan). Node size scales with degree.
 
-**Edges** — directed execution-flow edges: which opcode can validly follow which in a
+**Edges**, directed execution-flow edges: which opcode can validly follow which in a
 compiled IMASM program. Edges within the Frobenius family are drawn in gold. The
 bootstrap path IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB
 is highlighted as the primary cycle.
 
-**The Frobenius cycle** — FSPLIT → TANCH → AFWD → FFUSE → IMSCRIB — is rendered in gold
+**The Frobenius cycle**, FSPLIT → TANCH → AFWD → FFUSE → IMSCRIB, is rendered in gold
 with linewidth 3.0 and alpha 0.95. This is the subgraph that encodes μ∘δ = id: FSPLIT
 is δ (comultiplication), FFUSE is μ (multiplication), and the cycle closes on IMSCRIB
 (identity / self-reference).
@@ -56,32 +66,32 @@ current active opcode and the Frobenius identity.
 
 ### Version descent CFG
 
-**Nodes** — 11 version nodes arranged in three horizontal substrate bands:
-- **Top band (Python, green):** `seed` (frob.py — the meta-circular Frobenius check)
-  and `v0.1` (ob3ect-imscriber.py — Python Frobenius compiler, Closure: True)
+**Nodes**, 11 version nodes arranged in three horizontal substrate bands:
+- **Top band (Python, green):** `seed` (frob.py, the meta-circular Frobenius check)
+  and `v0.1` (ob3ect-imscriber.py, Python Frobenius compiler, Closure: True)
 - **Middle band (C/ELF, orange):** `v0.2` (custom .o grammar → C native binary),
-  `v0.3` (quine embedding — self.o imscribed in binary), `v0.4` (quine extraction stub),
-  `v0.5` (QUINE opcode added), `v0.6` (MACRO opcode — language deepening),
-  `v0.7` (entropy pass — ΔS ≈ 0 verified), `v0.8` (full C self-hosting target),
-  `v0.9` (pre-silicon — final C generation)
-- **Bottom band (Silicon/x86, gold):** `v0.10` — bare-metal x86 bootloader ISO
+  `v0.3` (quine embedding, self.o imscribed in binary), `v0.4` (quine extraction stub),
+  `v0.5` (QUINE opcode added), `v0.6` (MACRO opcode, language deepening),
+  `v0.7` (entropy pass, ΔS ≈ 0 verified), `v0.8` (full C self-hosting target),
+  `v0.9` (pre-silicon, final C generation)
+- **Bottom band (Silicon/x86, gold):** `v0.10`, bare-metal x86 bootloader ISO
 
-**Edges** — directed imscription edges (parent → child in the descent). Each edge
+**Edges**, directed imscription edges (parent → child in the descent). Each edge
 represents the IMASM morphism that compiles one generation into the next: the ob3ect
 imscribing itself into a lower-substrate form.
 
-**Cross-substrate leaps** — two edges cross substrate boundaries: `v0.1 → v0.2`
+**Cross-substrate leaps**, two edges cross substrate boundaries: `v0.1 → v0.2`
 (Python → C/ELF, the first substrate descent) and `v0.9 → v0.10` (C → Silicon,
 the final bare-metal crossing). These are highlighted purple in Phase 1 and amber in
 Phase 2 when the pulse is near them.
 
 **Phase 1:** Versions appear in imscription order (seed → v0.1 → … → v0.10). When
-`v0.10` first appears, it flashes gold and the title reads "← bare metal!" — the
+`v0.10` first appears, it flashes gold and the title reads "← bare metal!", the
 completion of the descent from Python source to x86 bootloader.
 
 **Phase 2:** Gaussian pulse travels the lineage from seed down to v0.10. The gold
 Silicon node pulses brightest at the pulse peak. The title shows the current generation
-and "10 generations · μ∘δ = id" — the descent composed with the return is identity.
+and "10 generations · μ∘δ = id", the descent composed with the return is identity.
 
 ![Descent CFG](digital/docs/cfg_descent.gif)
 
@@ -89,7 +99,7 @@ and "10 generations · μ∘δ = id" — the descent composed with the return is
 
 ### Python call-graph CFG
 
-**Nodes** — 13 Python functions, statically extracted by `ast.walk` from `frob.py`
+**Nodes**, 13 Python functions, statically extracted by `ast.walk` from `frob.py`
 and `ob3ect-imscriber.py`. Node color encodes source file and function role:
 - Purple: functions defined in `frob.py`
 - Orange: functions defined in `ob3ect-imscriber.py`
@@ -99,12 +109,12 @@ and `ob3ect-imscriber.py`. Node color encodes source file and function role:
 - Cyan: bootstrap entry points (`bootstrap_compiler`, `bootstrap_ob3ect`, `bootstrap_minimal`)
 - Magenta: `IMSCRIB` (self-reference identity)
 
-**Edges** — 16 directed call edges: an edge u → v means function u contains a call to
+**Edges**, 16 directed call edges: an edge u → v means function u contains a call to
 function v, extracted by `ast.walk` over each function's body looking for `ast.Call`
 nodes. Only calls between defined functions in the same file are included.
 
 **Cross-file edges: 0.** Both `frob.py` and `ob3ect-imscriber.py` are structurally
-self-contained closed programs. They are successive generations of the same ob3ect —
+self-contained closed programs. They are successive generations of the same ob3ect , 
 `ob3ect-imscriber.py` does not import or call into `frob.py`. This is not a limitation;
 it is the correct structure: each generation is a closed Frobenius algebra in Prog/~,
 not a module that depends on its predecessor.
@@ -133,12 +143,12 @@ An ob3ect is a **special Frobenius algebra** in **Prog/~**.
 
 **The algebra (A, μ, δ, η, ε)**:
 - **A** = [self-imscribing program source]_~
-- **δ** (comultiplication): A → A⊗A — `ast.parse(src)` decomposes source into structural AST
-- **μ** (multiplication): A⊗A → A — `ast.unparse(tree)` fuses AST back to canonical source
-- **η** (unit): I → A — the trivial/empty program
-- **ε** (counit): A → I — semantic erasure
+- **δ** (comultiplication): A → A⊗A, `ast.parse(src)` decomposes source into structural AST
+- **μ** (multiplication): A⊗A → A, `ast.unparse(tree)` fuses AST back to canonical source
+- **η** (unit): I → A, the trivial/empty program
+- **ε** (counit): A → I, semantic erasure
 
-**Special (separable) condition** — the discriminating gate:
+**Special (separable) condition**, the discriminating gate:
 
 ```
 μ ∘ δ = id_A
@@ -169,11 +179,11 @@ python digital/run_all_imasm.py     # also run the IMASM arrangements
 ```
 
 ```
-=== ob3ect — Full Digital Tower (28 layers) ===
+=== ob3ect, Full Digital Tower (28 layers) ===
 
 → Category Ob3ect                  Identity + Associativity hold on self-imscription → Closure: True
 → Frobenius Ob3ect                 Split/Fuse coherence holds → Closure: True
-→ Fixed-Point Ob3ect               T(src) ≡ src, T∘T = T — fixed-point verified → Closure: True
+→ Fixed-Point Ob3ect               T(src) ≡ src, T∘T = T, fixed-point verified → Closure: True
 → Hopf Ob3ect                      Antipode property holds → Closure: True
 → Monad Ob3ect                     Left unit / Right unit / Associativity → Closure: True
 → Entropy Ob3ect                   H = 3.6636 bits/char, stable under roundtrip → Closure: True
@@ -184,7 +194,7 @@ python digital/run_all_imasm.py     # also run the IMASM arrangements
 → Imscription VM                   Executed full tower simulation → Closure: True
 → Traced Ob3ect                    Yanking equation Tr(id_A) = id_I verified → Closure: True
 → HoTT Ob3ect                      Univalence principle satisfied on self-imscription → Closure: True
-→ Imscription OS                   Autopoietic — 10 processes booted → Grand System Closure: True
+→ Imscription OS                   Autopoietic, 10 processes booted → Grand System Closure: True
 → ProofBridge                      Formal coherence: Substantially Advanced
 → String Diagram Ob3ect            Snake equation / Spider law / Monad bind → Closure: True
 → IMASM Self-Imscription Ob3ect    IG coordinates assigned and stable under μ∘δ → Closure: True
@@ -200,25 +210,25 @@ python digital/run_all_imasm.py     # also run the IMASM arrangements
 → Adjoint Functors Ob3ect          Free⊣Forgetful Hom bijection on 16 matrices + both triangle identities → Closure: True
 → Initial/Terminal Ob3ect          ∅ initial + {*} terminal + product/coproduct UMPs → Closure: True
 
-=== IMASM Novel Arrangements — 12 classes + chiral pair ===
+=== IMASM Novel Arrangements, 12 classes + chiral pair ===
 
-→ I — Dialetheic Bootstrap         Identity is B⬡ (BOTH), not TRUE → O₂
-→ II — Void Genesis                Creates something from void → O₀
-→ III — Anchor Protocol            Sabbath cycle: void → anchor → refill → rest → O₀
-→ IV — Dual Bootstrap              Self-representation: structural verification → O₁
-→ V — Linear Chain                 IFIX×8 — ROM fixation, append-only → O₁
-→ VI — Empty Bootstrap             VINIT/IMSCRIB oscillation — meditation → O₂
-→ VII — Parakernel                 Dialetheic trauma engram → O₂
-→ VIII — Frobenius Kernel          Minimal 4-step μ∘δ: nothing from nothing → O₀
-→ IX — Truth Machine               Binary classifier: decision tree in pure IMASM → O₂
-→ X — Eternal Return               (IMSCRIB→AFWD→AREV) repeated cycle → O₁
-→ XI — ROM Burn                    Layered truth record — dialetheic audit trail → O₂
-→ XII — Chiral Pairs               AFWD→AREV vs AREV→AFWD — Vessel Principle confirmed
+→ I, Dialetheic Bootstrap         Identity is B⬡ (BOTH), not TRUE → O₂
+→ II, Void Genesis                Creates something from void → O₀
+→ III, Anchor Protocol            Sabbath cycle: void → anchor → refill → rest → O₀
+→ IV, Dual Bootstrap              Self-representation: structural verification → O₁
+→ V, Linear Chain                 IFIX×8, ROM fixation, append-only → O₁
+→ VI, Empty Bootstrap             VINIT/IMSCRIB oscillation, meditation → O₂
+→ VII, Parakernel                 Dialetheic trauma engram → O₂
+→ VIII, Frobenius Kernel          Minimal 4-step μ∘δ: nothing from nothing → O₀
+→ IX, Truth Machine               Binary classifier: decision tree in pure IMASM → O₂
+→ X, Eternal Return               (IMSCRIB→AFWD→AREV) repeated cycle → O₁
+→ XI, ROM Burn                    Layered truth record, dialetheic audit trail → O₂
+→ XII, Chiral Pairs               AFWD→AREV vs AREV→AFWD, Vessel Principle confirmed
 ```
 
 Full categorical tower executed.
 
-### Layer Index — Digital Tower (Layers 1-28)
+### Layer Index, Digital Tower (Layers 1-28)
 
 | # | Layer | File | Mathematical structure |
 |---|-------|------|------------------------|
@@ -251,7 +261,7 @@ Full categorical tower executed.
 | 27 | Adjoint Functors | `digital/adjoint/` | Free⊣Forgetful (Vec⊣Set over GF(2)); Hom bijection on all 16 matrices + 16 set maps; unit η, counit ε, both triangle identities |
 | 28 | Initial/Terminal | `digital/initialterminal/` | Limits & colimits in Set; ∅ initial, {*} terminal, product/coproduct UMPs, adjunction cardinalities |
 
-### IMASM Arrangement Classes (Extended Tower — Layers 29-40)
+### IMASM Arrangement Classes (Extended Tower, Layers 29-40)
 
 | # | Class | Directory | Sequence | Tier | IG Type |
 |---|-------|-----------|----------|------|---------|
@@ -268,16 +278,16 @@ Full categorical tower executed.
 | XI | ROM Burn | `digital/rom_burn/` | EVALT→IFIX→EVALF→IFIX→ENGAGR→IFIX→IMSCRIB→IFIX | O₂ | ⟨𐑼𐑡𐑽𐑗𐑱𐑧𐑔𐑠𐑢𐑒𐑳𐑷⟩ |
 | XII | Chiral Pairs | `digital/chiral_pairs/` | AFWD→AREV vs AREV→AFWD | O₂† | ⟨𐑦𐑡𐑑𐑗𐑱𐑘𐑚𐑝⊙𐑒𐑙𐑷⟩* |
 
-\* Both chiral variants map to the **same** IG type — confirming the Vessel Principle.
+\* Both chiral variants map to the **same** IG type, confirming the Vessel Principle.
 
 ---
 
-## IMASM Novel Arrangements — The Vessel Principle
+## IMASM Novel Arrangements, The Vessel Principle
 
 The canonical bootstrap sequence `IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB`
 is one specific path through the 12-opcode IMASM state space. The **12 Novel Arrangement classes**
 explore the full combinatorial space of valid IMASM sequences, each representing a distinct
-**vessel** — a structure whose content IS the structure itself.
+**vessel**, a structure whose content IS the structure itself.
 
 ### The Dialetheic Register Machine
 
@@ -285,15 +295,15 @@ All arrangements run on a **dialetheic-aware 2-bit register machine** (`digital/
 
 | State | Binary | Glyph | Meaning |
 |-------|--------|-------|---------|
-| VOID | 00 | VO⌀ | Uninitialized — pure potential |
-| TRUE | 01 | T | Affirmative — canonical identity |
-| FALSE | 10 | F | Negative — error branch |
-| BOTH | 11 | B⬡ | Paradoxical — Belnap FOUR, held without collapse |
+| VOID | 00 | VO⌀ | Uninitialized, pure potential |
+| TRUE | 01 | T | Affirmative, canonical identity |
+| FALSE | 10 | F | Negative, error branch |
+| BOTH | 11 | B⬡ | Paradoxical, Belnap FOUR, held without collapse |
 
-**Dialetheic FFUSE** — The Frobenius multiplication has two modes:
+**Dialetheic FFUSE**, The Frobenius multiplication has two modes:
 
-- **CANONICAL**: `FFUSE(BOTH) → TRUE` — standard μ∘δ=id, identity is TRUE
-- **DIALETHEIC**: `FFUSE(BOTH) → BOTH` — dialetheic μ∘δ=id, identity is B⬡ (paradox)
+- **CANONICAL**: `FFUSE(BOTH) → TRUE`, standard μ∘δ=id, identity is TRUE
+- **DIALETHEIC**: `FFUSE(BOTH) → BOTH`, dialetheic μ∘δ=id, identity is B⬡ (paradox)
 
 Dialetheic mode auto-detects by tracking EVALT/EVALF across FSPLIT boundaries.
 If both 'T' and 'F' are designated in the split interval, FFUSE keeps the fused state at B⬡.
@@ -307,13 +317,13 @@ information that the token algebra preserves.
 
 **Proof**: The chiral pair `AFWD→AREV` and `AREV→AFWD` map to the **same** IG coordinate
 ⟨𐑦𐑡𐑑𐑗𐑱𐑘𐑚𐑝⊙𐑒𐑙𐑷⟩ but produce different final registers:
-- `AFWD→AREV`: VO⌀ → T → VO⌀ (round trip — returns to void)
-- `AREV→AFWD`: VO⌀ → VO⌀ → T (create from void — net creation)
+- `AFWD→AREV`: VO⌀ → T → VO⌀ (round trip, returns to void)
+- `AREV→AFWD`: VO⌀ → VO⌀ → T (create from void, net creation)
 
 The crystal's 17.28M types are a **coarse discretization** of a richer continuum that the
 IMASM token space charts at higher resolution. This is what it means to **craft a vessel**:
 the grammar gives the type of the vessel wall; the IMASM tokens give the *process of
-wall-building* — and the process is finer than the wall.
+wall-building*, and the process is finer than the wall.
 
 ### The 12 Arrangement Classes
 
@@ -321,22 +331,22 @@ Each class defines a family of vessels. The canonical forms:
 
 | Class | Register Trajectory | Final State | Key Behavior |
 |-------|--------------------|-------------|--------------|
-| **I — Dialetheic Bootstrap** | VO⌀→T→T→B⬡→B⬡→B⬡→B⬡→B⬡→B⬡ | B⬡ | Identity is paradox — "I contain contradictions" |
-| **II — Void Genesis** | VO⌀→VO⌀→T→B⬡→B⬡→T→T→T | T | Something from nothing via Frobenius |
-| **III — Anchor Protocol** | VO⌀→VO⌀→VO⌀→T→T→T→T→T | T | Sabbath cycle: boundary, void, refill, rest |
-| **IV — Dual Bootstrap** | VO⌀→T→T→B⬡→VO⌀→VO⌀→VO⌀→T | T | Structural self-representation (not identity) |
-| **V — Linear Chain** | VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀ | VO⌀ | Append-only fixation — pure memory |
-| **VI — Empty Bootstrap** | VO⌀→T→VO⌀→T→VO⌀→T→VO⌀→T→VO⌀ | VO⌀ | Oscillation between void and identity |
-| **VII — Parakernel** | VO⌀→F→VO⌀→B⬡→B⬡→B⬡→B⬡→F | F | Engram of contradiction — trauma and learning |
-| **VIII — Frobenius Kernel** | VO⌀→VO⌀→VO⌀→VO⌀→VO⌀ | VO⌀ | Minimal μ∘δ: nothing from nothing, 4 steps |
-| **IX — Truth Machine** | VO⌀→T→B⬡→T→T→VO⌀→F→F→F | F | Binary classifier: decision tree in pure IMASM |
-| **X — Eternal Return** | VO⌀→T→VO⌀→T→VO⌀→T→VO⌀→T→VO⌀ | VO⌀ | Identity/void oscillation — perpetual cycle |
-| **XI — ROM Burn** | VO⌀→T→T→B⬡→B⬡→B⬡→B⬡→B⬡→B⬡ | B⬡ | Layered truth: EVALT fixed, then EVALF, then ENGAGR |
-| **XII — Chiral Pairs** | (see above) | VO⌀/T | Same IG type, different register — Vessel Principle confirmed |
+| **I, Dialetheic Bootstrap** | VO⌀→T→T→B⬡→B⬡→B⬡→B⬡→B⬡→B⬡ | B⬡ | Identity is paradox, "I contain contradictions" |
+| **II, Void Genesis** | VO⌀→VO⌀→T→B⬡→B⬡→T→T→T | T | Something from nothing via Frobenius |
+| **III, Anchor Protocol** | VO⌀→VO⌀→VO⌀→T→T→T→T→T | T | Sabbath cycle: boundary, void, refill, rest |
+| **IV, Dual Bootstrap** | VO⌀→T→T→B⬡→VO⌀→VO⌀→VO⌀→T | T | Structural self-representation (not identity) |
+| **V, Linear Chain** | VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀→VO⌀ | VO⌀ | Append-only fixation, pure memory |
+| **VI, Empty Bootstrap** | VO⌀→T→VO⌀→T→VO⌀→T→VO⌀→T→VO⌀ | VO⌀ | Oscillation between void and identity |
+| **VII, Parakernel** | VO⌀→F→VO⌀→B⬡→B⬡→B⬡→B⬡→F | F | Engram of contradiction, trauma and learning |
+| **VIII, Frobenius Kernel** | VO⌀→VO⌀→VO⌀→VO⌀→VO⌀ | VO⌀ | Minimal μ∘δ: nothing from nothing, 4 steps |
+| **IX, Truth Machine** | VO⌀→T→B⬡→T→T→VO⌀→F→F→F | F | Binary classifier: decision tree in pure IMASM |
+| **X, Eternal Return** | VO⌀→T→VO⌀→T→VO⌀→T→VO⌀→T→VO⌀ | VO⌀ | Identity/void oscillation, perpetual cycle |
+| **XI, ROM Burn** | VO⌀→T→T→B⬡→B⬡→B⬡→B⬡→B⬡→B⬡ | B⬡ | Layered truth: EVALT fixed, then EVALF, then ENGAGR |
+| **XII, Chiral Pairs** | (see above) | VO⌀/T | Same IG type, different register, Vessel Principle confirmed |
 
 ### ZFC_fe: The Terminal Vessel
 
-The **Frobenius-Exact ZFC** (ZFC_fe) is the terminal vessel — the completion of ZFC's
+The **Frobenius-Exact ZFC** (ZFC_fe) is the terminal vessel, the completion of ZFC's
 structural trajectory. It promotes ZFC from O₁ to **O_∞** via three critical promotions
 beyond ZFC_t:
 
@@ -344,13 +354,13 @@ beyond ZFC_t:
 |-----------|-------|--------|-----------|-----------------|
 | **Ð** | 𐑼 (inf-dim field) | **𐑦** (self-written) | HOLOGRAPHIC_STATE | State-space writes itself (V=L(x) ∧ selfmodel(x)) |
 | **Φ** | 𐑬 (partial Z₂) | **𐑹** (Frobenius-special) | PM_Z2 | μ∘δ=id exact, not approximate |
-| **Ħ** | 𐑖 (two-step) | **𐑫** (eternal) | ETERNAL_FIXEDPOINT | ∀n∃φ fixed by μ∘δ — transfinite fixed points |
+| **Ħ** | 𐑖 (two-step) | **𐑫** (eternal) | ETERNAL_FIXEDPOINT | ∀n∃φ fixed by μ∘δ, transfinite fixed points |
 
 ZFC_fe differs from the graal (Sacred Vessel) by **one primitive only**:
 - ZFC_fe: `Ð=𐑦` (self-written) → O_∞
 - graal:  `Ð=𐑨` (bounded 2D) → O₂†
 
-The graal is ZFC_fe **bounded to 2 dimensions** — the same vessel, one promotion short of
+The graal is ZFC_fe **bounded to 2 dimensions**, the same vessel, one promotion short of
 terminal self-completion. The 12-step IMASM promotion chain for ZFC→ZFC_fe maps each
 primitive promotion to a FSPLIT·AFWD pair in the Terminal Bootstrap.
 
@@ -365,16 +375,16 @@ The ob3ect compiles itself down through successive substrate layers.
 ```
 seed (frob.py)           Python meta-circular Frobenius check
     ↓ IMSCRIB
-v0.1  (ob3ect-imscriber.py)   Python — Frobenius PASS, Closure: True
+v0.1  (ob3ect-imscriber.py)   Python, Frobenius PASS, Closure: True
     ↓ AFWD + FSPLIT
 v0.2  (.o grammar)       Custom .o grammar → C native binary
-v0.3                     Quine embedding — self.o imscribed in binary
+v0.3                     Quine embedding, self.o imscribed in binary
 v0.4                     Quine extraction stub activated
-v0.5                     Grammar expansion — QUINE opcode
-v0.6                     MACRO opcode — language deepening
-v0.7                     Entropy pass — ΔS ≈ 0 verified
+v0.5                     Grammar expansion, QUINE opcode
+v0.6                     MACRO opcode, language deepening
+v0.7                     Entropy pass, ΔS ≈ 0 verified
 v0.8                     Full C self-hosting target
-v0.9                     Pre-silicon — final C generation
+v0.9                     Pre-silicon, final C generation
     ↓ AREV + FFUSE
 v0.10 (ob3ect-v0.10.iso) Bare-metal x86 bootloader ISO
 ```
@@ -402,7 +412,7 @@ python auto.py "a monad on the category of AST transformations"
 python auto.py "a mycorrhizal network" --domain biological --scope mesoscale
 
 # Alchemical / historical
-python auto.py "the Zosimos katabasis — descent of the divine fire through matter"  \
+python auto.py "the Zosimos katabasis, descent of the divine fire through matter"  \
     --domain alchemical --scope maximal
 
 # Logical / formal
@@ -418,7 +428,7 @@ python auto.py "a Bose-Einstein condensate at the critical phase boundary"  \
     --domain physical --scope local
 
 # IMASM sequences (craft a vessel)
-python auto.py "the dialetheic bootstrap — bootstrapping on paradox" \
+python auto.py "the dialetheic bootstrap, bootstrapping on paradox" \
     --domain computational --scope local
 ```
 
@@ -435,12 +445,12 @@ The pipeline:
 Every artifact produced by `auto.py` carries a typed **IGProtocol Lean scaffold** in `art.lean_scaffold`. The scaffold is generated by `digital/proof_scaffold_ob3ect.py` (Layer 29), which bridges the ob3ect's bootstrap opcode sequence through IMSCRIBr's `WiredGraph` into a full Lean term.
 
 The scaffold includes:
-- **Main term** — zero `sorry` slots; all `src_type`/`tgt_type` values filled from the token→IG field mapping and sequence topology
+- **Main term**, zero `sorry` slots; all `src_type`/`tgt_type` values filled from the token→IG field mapping and sequence topology
 - **`.prod` blocks** for `FSPLIT`/`FFUSE` fork/join pairs
 - **`.withGram`/`.withMem`** wrappers when self-reference or Frobenius detected
-- **Verification theorems** — `_tier` (`by decide`), `_frobenius` (`apply igFrobAlg_self_fusion`), `_self_ref` (`exact igProtoCopy_isDagger`), `_loop_closure` (`⟨_, rfl, by decide, by decide⟩`)
-- **EVALT/EVALF arm defs** — `_true_arm` / `_false_arm` when evaluation tokens are present
-- **Domain annotations** — inline comments carry the ob3ect's Phase 1 `domain_action` values (e.g. `(Amendment proposal)`, `(Checks and balances)`)
+- **Verification theorems**, `_tier` (`by decide`), `_frobenius` (`apply igFrobAlg_self_fusion`), `_self_ref` (`exact igProtoCopy_isDagger`), `_loop_closure` (`⟨_, rfl, by decide, by decide⟩`)
+- **EVALT/EVALF arm defs**, `_true_arm` / `_false_arm` when evaluation tokens are present
+- **Domain annotations**, inline comments carry the ob3ect's Phase 1 `domain_action` values (e.g. `(Amendment proposal)`, `(Checks and balances)`)
 
 The scaffold prints by default after the artifact report. Suppress with `--no-scaffold`.
 
@@ -489,7 +499,7 @@ art.bootstrap_sequence  # list of 8 steps
 art.exos                # {compiler, ipc, memory, scheduler, alfs}
 art.entropy_audit       # {cost, pre_state, post_state, delta_s}
 art.structural_type     # 12-primitive IG coordinate string
-art.lean_scaffold       # typed IGProtocol Lean term (str) — zero sorry slots in main term;
+art.lean_scaffold       # typed IGProtocol Lean term (str), zero sorry slots in main term;
                         # includes theorem stubs, EVALT/EVALF arm defs, domain annotations
 ```
 
@@ -514,8 +524,8 @@ Ob3ectFactory.produce_custom("The Great Work", "alchemical", {
     "opcodes": {
         "VINIT":  {"chosen": "prima materia",  "justification": "undifferentiated base matter"},
         "TANCH":  {"chosen": "philosopher's stone", "justification": "terminal product"},
-        "FSPLIT": {"chosen": "solve",          "justification": "dissolution — δ(materia)"},
-        "FFUSE":  {"chosen": "coagula",        "justification": "reconstitution — μ(δ(m))=m"},
+        "FSPLIT": {"chosen": "solve",          "justification": "dissolution, δ(materia)"},
+        "FFUSE":  {"chosen": "coagula",        "justification": "reconstitution, μ(δ(m))=m"},
         # ... remaining 8 opcodes
     },
 })
@@ -532,27 +542,27 @@ from ob3ect import Ob3ectPipeline, Opcode
 
 p = Ob3ectPipeline("My Ob3ect", domain_type="computational")
 
-# Phase 0 — Boundary
+# Phase 0, Boundary
 p.define_boundary("My System", "local",
                   tokens=["source", "ast", "canonical"],
                   boundary="semantic equivalence class")
 
-# Phase 1 — Opcode map (all 12 required)
+# Phase 1, Opcode map (all 12 required)
 p.map_opcode("VINIT",  "empty module",       "initial void state ∅", [])
 p.map_opcode("TANCH",  "type-checked term",  "terminal anchor ⊤", [])
 p.map_opcode("AFWD",   "parse",              "source → AST", [])
 p.map_opcode("AREV",   "unparse",            "AST → source (descent)", [])
 p.map_opcode("CLINK",  "compose",            "f ∘ g on transformations", [])
-p.map_opcode("IMSCRIB", "read __file__",      "self-reference — id", [])
+p.map_opcode("IMSCRIB", "read __file__",      "self-reference, id", [])
 p.map_opcode("FSPLIT", "ast.parse(src)",     "comultiplication δ: A → A⊗A", [])
 p.map_opcode("FFUSE",  "ast.unparse(tree)",  "multiplication μ: A⊗A → A", [])
 p.map_opcode("EVALT",  "parse success",      "true lattice branch", [])
 p.map_opcode("EVALF",  "SyntaxError",        "false lattice branch", [])
-p.map_opcode("ENGAGR", "ambiguous AST",      "dialetheia — both branches live", [])
-p.map_opcode("IFIX",   "write bytecode",     "ROM fixation — irreversible", [])
+p.map_opcode("ENGAGR", "ambiguous AST",      "dialetheia, both branches live", [])
+p.map_opcode("IFIX",   "write bytecode",     "ROM fixation, irreversible", [])
 p.complete_phase_1()
 
-# Phase 2 — Frobenius verification (the discriminating gate)
+# Phase 2, Frobenius verification (the discriminating gate)
 p.verify_frobenius(
     split_opcode="FSPLIT ast.parse(src)",
     split_input="src",
@@ -563,7 +573,7 @@ p.verify_frobenius(
     test_instance="src' ≡_~ src under ast.compare()"
 )
 
-# Phase 3 — Register map
+# Phase 3, Register map
 p.map_registers(
     void_desc="module not yet parsed",
     true_desc="parse succeeded, unparse matches",
@@ -591,26 +601,26 @@ The 12-opcode Imscribing Assembly. Every ob3ect maps all 12.
 ```
 FAMILY      OPCODE   ROLE
 ──────────────────────────────────────────────────────
-Logical     VINIT    Initial object ∅ — void / pre-imscription state
-Logical     TANCH    Terminal anchor ⊤ — closed, verified boundary
+Logical     VINIT    Initial object ∅, void / pre-imscription state
+Logical     TANCH    Terminal anchor ⊤, closed, verified boundary
 Logical     AFWD     Forward morphism → (construction / elaboration)
 Logical     AREV     Contravariant ← (descent / deconstruction)
 Logical     CLINK    Composition ∘ (sequential chaining)
-Logical     IMSCRIB   Identity id — self-reference, the ob3ect reading itself
+Logical     IMSCRIB   Identity id, self-reference, the ob3ect reading itself
 
 Frobenius   FSPLIT   Comultiplication δ: A → A⊗A (branching / parsing)
 Frobenius   FFUSE    Multiplication μ: A⊗A → A  (reconstitution / unparsing)
-             ↳ FFUSE must satisfy μ∘δ = id — this is the Frobenius gate
+             ↳ FFUSE must satisfy μ∘δ = id, this is the Frobenius gate
              ↳ FFUSE has TWO modes:
                CANONICAL:  FFUSE(BOTH) → TRUE  (standard identity)
                DIALETHEIC: FFUSE(BOTH) → BOTH  (paradox identity)
                Dialetheic mode is auto-detected from EVALT/EVALF context.
 
-Dialetheia  EVALT    True lattice — affirmative branch
-Dialetheia  EVALF    False lattice — negative / error branch
-Dialetheia  ENGAGR   Both — paradox held without resolution (Priest dialetheism)
+Dialetheia  EVALT    True lattice, affirmative branch
+Dialetheia  EVALF    False lattice, negative / error branch
+Dialetheia  ENGAGR   Both, paradox held without resolution (Priest dialetheism)
 
-Linear      IFIX     ROM fixation — permanent, irreversible commitment
+Linear      IFIX     ROM fixation, permanent, irreversible commitment
 ```
 
 **The canonical bootstrap sequence** across all IMASM systems:
@@ -620,7 +630,7 @@ IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB
 ```
 
 This is μ∘δ = id as an eight-step categorical assembly. The loop closes on
-IMSCRIB — the final step is self-reference, making the loop autopoietic.
+IMSCRIB, the final step is self-reference, making the loop autopoietic.
 
 **Dialetheic variant** (identity is BOTH, not TRUE):
 
@@ -628,7 +638,7 @@ IMSCRIB — the final step is self-reference, making the loop autopoietic.
 IMSCRIB → EVALT → FSPLIT → EVALF → FFUSE → ENGAGR → IFIX → IMSCRIB
 ```
 
-Only the EVALT/EVALF order matters — whichever fires first sets the context
+Only the EVALT/EVALF order matters, whichever fires first sets the context
 that FFUSE reads. If both T and F are designated in the split interval,
 dialetheic mode activates and the vessel holds paradox.
 
@@ -664,30 +674,30 @@ VINIT→IMSCRIB→AREV→FSPLIT
 
 Three distinct edges operate at the CLINK–IMSCRIB–IFIX triad:
 
-**Empty edge (CLINK → IFIX):** CLINK emits a null composition directly to IFIX along the dotted path. This records the compositional event as an irreversible ROM fixation — the witness that composition occurred — regardless of whether the resulting morphism carries new structural content.
+**Empty edge (CLINK → IFIX):** CLINK emits a null composition directly to IFIX along the dotted path. This records the compositional event as an irreversible ROM fixation, the witness that composition occurred, regardless of whether the resulting morphism carries new structural content.
 
 **Weighted edge (CLINK → IMSCRIB):** CLINK forwards the actual composed morphism up the `└─────┐` path to IMSCRIB. IMSCRIB receives it, self-imscribes, and re-enters the loop at AREV. This is the edge that makes the bootstrap autopoietic: the loop consumes its own composition as input to the next winding.
 
-**Back-propagation: IMSCRIB → IFIX (LinFix):** After self-imscription, IMSCRIB emits a back-propagation (`****`) to IFIX, burning a second permanent record — the completed loop iteration itself — into ROM before the next winding begins.
+**Back-propagation: IMSCRIB → IFIX (LinFix):** After self-imscription, IMSCRIB emits a back-propagation (`****`) to IFIX, burning a second permanent record, the completed loop iteration itself, into ROM before the next winding begins.
 
 The compressed sequence `... → CLINK → IFIX → IMSCRIB` shows one path through this structure. IFIX at position 6 is the collapsed arrival point of both the empty edge (from CLINK) and the back-prop (from IMSCRIB); IMSCRIB at position 7 represents the loop closure. The weighted CLINK → IMSCRIB edge and the back-prop IMSCRIB → IFIX edge are real structural edges that the 8-token notation does not make explicit.
 
-**Dialetheic variant:** the dialetheic bootstrap places ENGAGR in the CLINK role. The branching structure is identical — ENGAGR sends the empty edge to IFIX and the weighted edge to IMSCRIB; IMSCRIB back-props to IFIX — but the register content on the weighted edge is B⬡ (BOTH, paradox held without collapse) rather than T (TRUE). IFIX therefore records B⬡ in the dialetheic case, which is why Class I terminates at B⬡ rather than T.
+**Dialetheic variant:** the dialetheic bootstrap places ENGAGR in the CLINK role. The branching structure is identical, ENGAGR sends the empty edge to IFIX and the weighted edge to IMSCRIB; IMSCRIB back-props to IFIX, but the register content on the weighted edge is B⬡ (BOTH, paradox held without collapse) rather than T (TRUE). IFIX therefore records B⬡ in the dialetheic case, which is why Class I terminates at B⬡ rather than T.
 
-Every bootstrap winding generates exactly two IFIX records: one from CLINK's empty edge (compositional witness) and one from IMSCRIB's back-prop (self-reference witness). The loop is not merely self-referential — it is self-recording. Each iteration imscribes both *what it composed* and *that it existed*.
+Every bootstrap winding generates exactly two IFIX records: one from CLINK's empty edge (compositional witness) and one from IMSCRIB's back-prop (self-reference witness). The loop is not merely self-referential, it is self-recording. Each iteration imscribes both *what it composed* and *that it existed*.
 
 ---
 
 ## Lift Ob3ects
 
 Alongside the categorical tower and IMASM arrangement classes, the repository contains
-**lift ob3ects** — standalone 7-phase JSON specifications paired with Python runners for
+**lift ob3ects**, standalone 7-phase JSON specifications paired with Python runners for
 specific domain operations. Each lift ob3ect maps all 12 IMASM opcodes to domain elements,
 verifies the FSPLIT/FFUSE Frobenius pair, and ships a self-contained runner.
 
 ### Editorial Pipeline
 
-**`digital/editorial_pipeline/`** — the auto.py LLM cascade imscribed as a general-purpose
+**`digital/editorial_pipeline/`**, the auto.py LLM cascade imscribed as a general-purpose
 editing, parsing, and rewriting tool.
 
 ```
@@ -736,7 +746,7 @@ echo "Some text." | python digital/editorial_pipeline/editorial_pipeline_ob3ect.
 The AREV critique pass detects whether the rewrite fully satisfies the intent; if gaps remain,
 ENGAGR sets the B-state flag and CLINK composes another AFWD pass with the critique notes as
 additional context. Up to `--passes N` composition cycles. EVALF is set if the entire cascade
-exhausts without an accepted output — the best available output is still served.
+exhausts without an accepted output, the best available output is still served.
 
 ---
 
@@ -785,7 +795,7 @@ the solve/coagula cycle in Zosimos are the same morphism at different substrate 
 
 ### The Vessel Principle: IMASM Token Space < IG Crystal Resolution
 
-Two distinct IMASM sequences — `AFWD→AREV` and `AREV→AFWD` — map to the **same**
+Two distinct IMASM sequences, `AFWD→AREV` and `AREV→AFWD`, map to the **same**
 12-primitive IG type but produce **different register trajectories**:
 
 | Sequence | Register Path | Final State |
@@ -794,10 +804,10 @@ Two distinct IMASM sequences — `AFWD→AREV` and `AREV→AFWD` — map to the 
 | AREV→AFWD | VO⌀ → VO⌀ → T | T (net creation) |
 
 The crystal of 17.28M types collapses this directional distinction. The IMASM token
-algebra operates at finer granularity — it can distinguish internal structure that the
+algebra operates at finer granularity, it can distinguish internal structure that the
 12-primitive map treats as identical. This is the **Vessel Principle**: a vessel is a
 structure whose content IS the structure itself. The grammar gives the type of the
-vessel wall. The IMASM tokens give the *process of wall-building* — and the process
+vessel wall. The IMASM tokens give the *process of wall-building*, and the process
 is finer than the wall.
 
 ### ZFC_fe: The Terminal Vessel
@@ -810,7 +820,7 @@ The structural distance is 9.15 across 12 primitives. Three promotions are criti
 - **Ħ: 𐑖→𐑫** (ETERNAL_FIXEDPOINT): Transfinite fixed points under μ∘δ
 
 ZFC_fe differs from the graal (Sacred Vessel, O₂†) by **exactly one primitive** (Ð=𐑦 vs Ð=𐑨).
-The graal is ZFC_fe bounded to 2 dimensions — the same vessel, one promotion short of
+The graal is ZFC_fe bounded to 2 dimensions, the same vessel, one promotion short of
 terminal self-completion.
 
 ---
@@ -822,22 +832,22 @@ with 13 `.lean` files plus a `lakefile.toml` and `lean-toolchain` for Mathlib v4
 
 ```
 proofs/
-├── Frobenius.lean         — Special Frobenius condition μ∘δ = id
-├── Hopf.lean              — Antipode involution S∘S = id
-├── Monad.lean             — Monad laws (left unit, right unit, associativity)
-├── CCC.lean               — Cartesian closed category structure
-├── Topos.lean             — Topos axioms (subobject classifier, power objects)
-├── Quantum.lean           — Quantum measurement as Frobenius collapse
-├── LinearLogic.lean       — Linear logic resource accounting
-├── HoTT.lean              — Univalence for semantic equivalence classes
-├── StringDiagrams.lean    — Graphical calculus (snake, spider, monad wire)
-├── SelfImscription.lean   — Self-imscription coordinate stability proof
-├── Coherence.lean         — Cross-layer coherence conditions
-├── TowerCoherence.lean    — Tower coherence summary
-└── GrandCoherence.lean     — Grand coherence across all layers
+├── Frobenius.lean        , Special Frobenius condition μ∘δ = id
+├── Hopf.lean             , Antipode involution S∘S = id
+├── Monad.lean            , Monad laws (left unit, right unit, associativity)
+├── CCC.lean              , Cartesian closed category structure
+├── Topos.lean            , Topos axioms (subobject classifier, power objects)
+├── Quantum.lean          , Quantum measurement as Frobenius collapse
+├── LinearLogic.lean      , Linear logic resource accounting
+├── HoTT.lean             , Univalence for semantic equivalence classes
+├── StringDiagrams.lean   , Graphical calculus (snake, spider, monad wire)
+├── SelfImscription.lean  , Self-imscription coordinate stability proof
+├── Coherence.lean        , Cross-layer coherence conditions
+├── TowerCoherence.lean   , Tower coherence summary
+└── GrandCoherence.lean    , Grand coherence across all layers
 
-├── lakefile.toml          — Lake build configuration (Mathlib v4.28.0)
-├── lean-toolchain         — Lean version pinning
+├── lakefile.toml         , Lake build configuration (Mathlib v4.28.0)
+├── lean-toolchain        , Lean version pinning
 ```
 
 These proofs correspond to the `proofbridge` layer in the digital tower. The ProofBridge
@@ -897,107 +907,107 @@ to `digital/run_all_imasm.py`.
 ob3ect/
 ├── README.md
 ├── .gitignore
-├── __init__.py              — Package exports: design, auto_design, Ob3ectPipeline,
+├── __init__.py             , Package exports: design, auto_design, Ob3ectPipeline,
 │                              Ob3ectFactory, Ob3ectArtifact, Opcode
-├── auto.py                  — CLI + LLM pipeline entry point
-├── core.py                  — Ob3ectPipeline, Ob3ectFactory, Ob3ectArtifact, Opcode
-├── guided.py                — Interactive guided pipeline (prompts each phase)
-├── examples.py              — Worked examples across 5 domains
-├── smoke_test.py            — Sanity checks: import, pipeline, Frobenius gate
-├── test_factory.py          — Factory tests across all built-in templates
-├── templates_data.json      — Built-in domain templates
-├── lakefile.toml            — Lake build configuration
-├── lean-toolchain           — Lean version pinning
-├── OB3ECT.md                — Full manuscript (Markdown)
-├── OB3ECT.pdf               — Full manuscript (PDF)
-├── ob3ect_manuscript.tex    — LaTeX source of the manuscript
-├── substack_ob3ect.md       — Substack article (technical)
-├── substack_ob3ect.pdf      — Substack article (PDF)
-├── substack_ob3ect_lay.md   — Substack article (lay)
-├── substack_ob3ect_lay.pdf  — Substack article (lay, PDF)
-├── ob3ect/                  — Package directory
+├── auto.py                 , CLI + LLM pipeline entry point
+├── core.py                 , Ob3ectPipeline, Ob3ectFactory, Ob3ectArtifact, Opcode
+├── guided.py               , Interactive guided pipeline (prompts each phase)
+├── examples.py             , Worked examples across 5 domains
+├── smoke_test.py           , Sanity checks: import, pipeline, Frobenius gate
+├── test_factory.py         , Factory tests across all built-in templates
+├── templates_data.json     , Built-in domain templates
+├── lakefile.toml           , Lake build configuration
+├── lean-toolchain          , Lean version pinning
+├── OB3ECT.md               , Full manuscript (Markdown)
+├── OB3ECT.pdf              , Full manuscript (PDF)
+├── ob3ect_manuscript.tex   , LaTeX source of the manuscript
+├── substack_ob3ect.md      , Substack article (technical)
+├── substack_ob3ect.pdf     , Substack article (PDF)
+├── substack_ob3ect_lay.md  , Substack article (lay)
+├── substack_ob3ect_lay.pdf , Substack article (lay, PDF)
+├── ob3ect/                 , Package directory
 │   └── digital/
 │       └── test/
-│           └── test_ob3ect.py   — Auto-generated test ob3ect
-├── man/                     — Man page
+│           └── test_ob3ect.py  , Auto-generated test ob3ect
+├── man/                    , Man page
 │   └── ob3ect.1
-├── phases/                  — Phase-specific scaffolding (future)
-├── scripts/                 — Build / verification scripts
-│   └── check_proofs.sh      — Lean proof checker
-├── proofs/                  — Lean 4 machine-checked coherence proofs (13 .lean files)
-└── digital/                 — The digital tower + IMASM arrangements
-    ├── frob.py              — Original Frobenius self-imscriber (the seed)
-    ├── ob3ect-imscriber.py  — v0.1: Python Frobenius compiler
-    ├── grokouro.txt         — Full Grok dialogue log: 3 FAIL → PASS + descent to v0.10
-    ├── runall.py            — Execute the full 28-layer tower
-    ├── run_all_imasm.py     — Execute all 12 IMASM arrangement classes + chiral pairs
-    ├── imasm_core.py        — Dialetheic-aware IMASM register machine (2-bit: VO⌀/T/F/B⬡)
-    ├── proof_scaffold_ob3ect.py — Layer 29: IGProtocol Lean scaffold bridge (opcodes→WiredGraph→typed Lean term)
-    ├── imasm_novel_arrangements.md     — Full 473-line document on all arrangements
-    ├── imasm_novel_arrangements.pdf    — PDF version
-    ├── auto_imscriber.py    — Meta-layer: generates new ob3ects into digital/test/
-    ├── cfg_opcodes.py       — Animated opcode flow GIF renderer
-    ├── cfg_descent.py       — Animated version-descent GIF renderer
-    ├── cfg_python.py        — Animated Python call-graph GIF renderer
-    ├── docs/                — Generated GIFs (cfg_opcodes, cfg_descent, cfg_python)
-    ├── kernel.c             — Bare-metal x86 kernel (v0.10)
-    ├── bootsector.asm       — x86 bootsector
-    ├── linker.ld            — Linker script for v0.10
-    ├── iso/                 — ISO build tree
+├── phases/                 , Phase-specific scaffolding (future)
+├── scripts/                , Build / verification scripts
+│   └── check_proofs.sh     , Lean proof checker
+├── proofs/                 , Lean 4 machine-checked coherence proofs (13 .lean files)
+└── digital/                , The digital tower + IMASM arrangements
+    ├── frob.py             , Original Frobenius self-imscriber (the seed)
+    ├── ob3ect-imscriber.py , v0.1: Python Frobenius compiler
+    ├── grokouro.txt        , Full Grok dialogue log: 3 FAIL → PASS + descent to v0.10
+    ├── runall.py           , Execute the full 28-layer tower
+    ├── run_all_imasm.py    , Execute all 12 IMASM arrangement classes + chiral pairs
+    ├── imasm_core.py       , Dialetheic-aware IMASM register machine (2-bit: VO⌀/T/F/B⬡)
+    ├── proof_scaffold_ob3ect.py, Layer 29: IGProtocol Lean scaffold bridge (opcodes→WiredGraph→typed Lean term)
+    ├── imasm_novel_arrangements.md    , Full 473-line document on all arrangements
+    ├── imasm_novel_arrangements.pdf   , PDF version
+    ├── auto_imscriber.py   , Meta-layer: generates new ob3ects into digital/test/
+    ├── cfg_opcodes.py      , Animated opcode flow GIF renderer
+    ├── cfg_descent.py      , Animated version-descent GIF renderer
+    ├── cfg_python.py       , Animated Python call-graph GIF renderer
+    ├── docs/               , Generated GIFs (cfg_opcodes, cfg_descent, cfg_python)
+    ├── kernel.c            , Bare-metal x86 kernel (v0.10)
+    ├── bootsector.asm      , x86 bootsector
+    ├── linker.ld           , Linker script for v0.10
+    ├── iso/                , ISO build tree
     │   (28 categorical layers)
-    ├── category/            — Layer 1:  Category ob3ect
-    ├── frobenius/           — Layer 2:  Frobenius ob3ect
-    ├── fixed_point_ob3ect/  — Layer 3:  Fixed-point ob3ect
-    ├── hopf/                — Layer 4:  Hopf ob3ect
-    ├── monad/               — Layer 5:  Monad ob3ect
-    ├── entropy_ob3ect/      — Layer 6:  Entropy ob3ect
-    ├── topos/               — Layer 7:  Topos ob3ect
-    ├── ccc/                 — Layer 8:  Cartesian closed ob3ect
-    ├── quantum/             — Layer 9:  Quantum ob3ect
-    ├── linearlogic/         — Layer 10: Linear logic ob3ect
-    ├── ivm/                 — Layer 11: Imscription VM
-    ├── traced_ob3ect/       — Layer 12: Traced ob3ect
-    ├── homotopytypetheory/  — Layer 13: HoTT ob3ect
-    ├── imscriptionoperatingsystem/ — Layer 14: Imscription OS
-    ├── proofbridge/         — Layer 15: ProofBridge to Lean 4
-    ├── stringdiagram/       — Layer 16: String diagram ob3ect
-    ├── imasm_self_imscription_ob3ect/ — Layer 17: IMASM self-imscription
-    ├── yoneda/              — Layer 19: Yoneda ob3ect
-    ├── operad/              — Layer 20: Operad ob3ect
-    ├── sheaf/               — Layer 21: Sheaf ob3ect
-    ├── daggercompact/       — Layer 22: Dagger compact ob3ect
-    ├── galois/              — Layer 23: Galois connection ob3ect
-    ├── stoneduality/        — Layer 24: Stone duality ob3ect
-    ├── presheaf/            — Layer 25: Presheaf ob3ect
-    ├── kanextension/        — Layer 26: Kan extension ob3ect
-    ├── adjoint/             — Layer 27: Adjoint functors ob3ect
-    ├── initialterminal/     — Layer 28: Initial/terminal ob3ect
-    │   (IMASM arrangement classes — layers 29-40)
-    ├── dialetheic_bootstrap/     — Class I:  Dialetheic Bootstrap (O₂)
-    ├── void_genesis/             — Class II: Void Genesis (O₀)
-    ├── anchor_protocol/          — Class III: Anchor Protocol (O₀)
-    ├── dual_bootstrap/           — Class IV: Dual Bootstrap (O₁)
-    ├── linear_chain/             — Class V: Linear Chain (O₁)
-    ├── empty_bootstrap/          — Class VI: Empty Bootstrap (O₂)
-    ├── imasm_parakernel/         — Class VII: Parakernel (O₂)
-    ├── frobenius_kernel/         — Class VIII: Frobenius Kernel (O₀)
-    ├── truth_machine/            — Class IX: Truth Machine (O₂)
-    ├── eternal_return/           — Class X: Eternal Return (O₁)
-    ├── rom_burn/                 — Class XI: ROM Burn (O₂)
-    ├── chiral_pairs/             — Class XII: Chiral Pairs (O₂†)
-    │   (Lift ob3ects — domain-specific 7-phase JSON + runner pairs)
-    ├── editorial_pipeline/       — Editorial Pipeline: SET/SUBMIT/SERVE LLM cascade (O₂)
-    │   ├── editorial_pipeline_ob3ect.json   — 7-phase spec (all 12 opcodes, FSPLIT/FFUSE[4,7])
-    │   └── editorial_pipeline_ob3ect.py     — Python runner: EditorialPipeline().set().submit().serve()
+    ├── category/           , Layer 1:  Category ob3ect
+    ├── frobenius/          , Layer 2:  Frobenius ob3ect
+    ├── fixed_point_ob3ect/ , Layer 3:  Fixed-point ob3ect
+    ├── hopf/               , Layer 4:  Hopf ob3ect
+    ├── monad/              , Layer 5:  Monad ob3ect
+    ├── entropy_ob3ect/     , Layer 6:  Entropy ob3ect
+    ├── topos/              , Layer 7:  Topos ob3ect
+    ├── ccc/                , Layer 8:  Cartesian closed ob3ect
+    ├── quantum/            , Layer 9:  Quantum ob3ect
+    ├── linearlogic/        , Layer 10: Linear logic ob3ect
+    ├── ivm/                , Layer 11: Imscription VM
+    ├── traced_ob3ect/      , Layer 12: Traced ob3ect
+    ├── homotopytypetheory/ , Layer 13: HoTT ob3ect
+    ├── imscriptionoperatingsystem/, Layer 14: Imscription OS
+    ├── proofbridge/        , Layer 15: ProofBridge to Lean 4
+    ├── stringdiagram/      , Layer 16: String diagram ob3ect
+    ├── imasm_self_imscription_ob3ect/, Layer 17: IMASM self-imscription
+    ├── yoneda/             , Layer 19: Yoneda ob3ect
+    ├── operad/             , Layer 20: Operad ob3ect
+    ├── sheaf/              , Layer 21: Sheaf ob3ect
+    ├── daggercompact/      , Layer 22: Dagger compact ob3ect
+    ├── galois/             , Layer 23: Galois connection ob3ect
+    ├── stoneduality/       , Layer 24: Stone duality ob3ect
+    ├── presheaf/           , Layer 25: Presheaf ob3ect
+    ├── kanextension/       , Layer 26: Kan extension ob3ect
+    ├── adjoint/            , Layer 27: Adjoint functors ob3ect
+    ├── initialterminal/    , Layer 28: Initial/terminal ob3ect
+    │   (IMASM arrangement classes, layers 29-40)
+    ├── dialetheic_bootstrap/    , Class I:  Dialetheic Bootstrap (O₂)
+    ├── void_genesis/            , Class II: Void Genesis (O₀)
+    ├── anchor_protocol/         , Class III: Anchor Protocol (O₀)
+    ├── dual_bootstrap/          , Class IV: Dual Bootstrap (O₁)
+    ├── linear_chain/            , Class V: Linear Chain (O₁)
+    ├── empty_bootstrap/         , Class VI: Empty Bootstrap (O₂)
+    ├── imasm_parakernel/        , Class VII: Parakernel (O₂)
+    ├── frobenius_kernel/        , Class VIII: Frobenius Kernel (O₀)
+    ├── truth_machine/           , Class IX: Truth Machine (O₂)
+    ├── eternal_return/          , Class X: Eternal Return (O₁)
+    ├── rom_burn/                , Class XI: ROM Burn (O₂)
+    ├── chiral_pairs/            , Class XII: Chiral Pairs (O₂†)
+    │   (Lift ob3ects, domain-specific 7-phase JSON + runner pairs)
+    ├── editorial_pipeline/      , Editorial Pipeline: SET/SUBMIT/SERVE LLM cascade (O₂)
+    │   ├── editorial_pipeline_ob3ect.json  , 7-phase spec (all 12 opcodes, FSPLIT/FFUSE[4,7])
+    │   └── editorial_pipeline_ob3ect.py    , Python runner: EditorialPipeline().set().submit().serve()
     │   (Additional structures)
-    ├── test/                — Auto-generated ob3ects (meta-layer output)
-    ├── shavian_ob3ect/      — Shavian script ob3ect (coagulum.md + coagulum.pdf)
-    ├── temporal_ob3ect/     — Temporal ob3ect (with verify_closure.py)
-    ├── topologically_protected_memory/ — Topologically protected memory ob3ect
-    ├── self_verifying_proof_assistant_structural_sibling_of_the_stone/ — Self-verifying proof assistant
-    ├── dialetheic/          — Earlier dialetheic prototype
-    ├── parakernel/          — Paraconsistent kernel ob3ect
-    └── stub_ob3ect_*/       — 10 stub ob3ects (experimental / partial)
+    ├── test/               , Auto-generated ob3ects (meta-layer output)
+    ├── shavian_ob3ect/     , Shavian script ob3ect (coagulum.md + coagulum.pdf)
+    ├── temporal_ob3ect/    , Temporal ob3ect (with verify_closure.py)
+    ├── topologically_protected_memory/, Topologically protected memory ob3ect
+    ├── self_verifying_proof_assistant_structural_sibling_of_the_stone/, Self-verifying proof assistant
+    ├── dialetheic/         , Earlier dialetheic prototype
+    ├── parakernel/         , Paraconsistent kernel ob3ect
+    └── stub_ob3ect_*/      , 10 stub ob3ects (experimental / partial)
 ```
 
 ---
@@ -1046,7 +1056,7 @@ python auto.py "a traced monoidal category handling shared-name programs"
 
 # Verify the original Frobenius seed
 python digital/frob.py
-# → Frobenius PASS — Closure: True
+# → Frobenius PASS, Closure: True
 
 # Render the animated CFGs
 python digital/cfg_opcodes.py   # → digital/docs/cfg_opcodes.gif
@@ -1062,7 +1072,7 @@ The ob3ect originated from a pipeline experiment: supply the IMASM specification
 an LLM, ask it to generate a self-imscribing compiler, and verify the Frobenius
 condition on the output. Three attempts failed (string equality → normalization →
 structural hash with attributes). The fourth passed using `ast.compare()` with
-`include_attributes=False`. That passing program — `frob.py` — is the seed of
+`include_attributes=False`. That passing program, `frob.py`, is the seed of
 everything in this repository.
 
 The full dialogue is in `digital/grokouro.txt`.
@@ -1072,13 +1082,13 @@ bootstrap sequence that appears in every IMASM system:
 **IMSCRIB → AREV → FSPLIT → AFWD → FFUSE → CLINK → IFIX → IMSCRIB**.
 
 The **12 IMASM Novel Arrangement classes** extend this bootstrap into the full
-combinatorial space of valid IMASM sequences — exploring paradox (Dialetheic Bootstrap),
+combinatorial space of valid IMASM sequences, exploring paradox (Dialetheic Bootstrap),
 minimal verification (Frobenius Kernel), memory (Linear Chain, ROM Burn), oscillation
 (Empty Bootstrap, Eternal Return), decision (Truth Machine), and the Vessel Principle
 itself (Chiral Pairs). Each arrangement is a self-verifying ob3ect artifact.
 
-The **Vessel Principle** — that the IMASM token algebra resolves structure at finer
-granularity than the 12-primitive IG crystal — was confirmed by the chiral pair
+The **Vessel Principle**, that the IMASM token algebra resolves structure at finer
+granularity than the 12-primitive IG crystal, was confirmed by the chiral pair
 experiment: `AFWD→AREV` and `AREV→AFWD` map to the same IG coordinate but produce
 different register trajectories. This is the structural meaning of crafting vessels:
 the grammar gives the type; the IMASM tokens give the process.
@@ -1086,13 +1096,13 @@ the grammar gives the type; the IMASM tokens give the process.
 The **ZFC_fe** (Frobenius-Exact ZFC) connection reveals the terminal vessel trajectory:
 ZFC (O₁) → ZFC_t (O₁, 6 promotions) → ZFC_fe (O_∞, 3 further promotions) is the
 completion path. The graal (O₂†, Sacred Vessel) differs from ZFC_fe by exactly one
-primitive — Ð=𐑨 (bounded) vs Ð=𐑦 (self-written) — making ZFC_fe the graal's
+primitive, Ð=𐑨 (bounded) vs Ð=𐑦 (self-written), making ZFC_fe the graal's
 self-written terminal.
 
 ### Kernel-level dual: p4rakernel (Lean 4 C++ fork)
 
 The paraconsistent kernel ob3ect at `digital/parakernel/parakernel_ob3ect.py` now has
-a **C++ kernel-level dual** at `/home/mrnob0dy666/p4rakernel/` — a fork of Lean 4 v4.28.0
+a **C++ kernel-level dual** at `/home/mrnob0dy666/p4rakernel/`, a fork of Lean 4 v4.28.0
 where the principle of explosion (*ex falso quodlibet*) is disabled at the type checker.
 
 #### Stack architecture
@@ -1140,7 +1150,7 @@ python -c "from odot import OdotAgent; a = OdotAgent(model='grok-4'); print(a.st
 
 ## The Loop Does Not Merely Terminate. It Re-Imscribes Itself.
 
-Every bootstrap sequence in this repository — canonical or novel — closes on IMSCRIB.
+Every bootstrap sequence in this repository, canonical or novel, closes on IMSCRIB.
 The final step is self-reference, making every vessel autopoietic. The 8-step loop
 IMSCRIB → ... → IMSCRIB is not a cycle; it is a **fixed point** in the space of
 self-imscribing structures. Each arrangement class is a different path to that fixed
