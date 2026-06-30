@@ -526,6 +526,62 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
             pass
     return artifact
 
+def _generate_diagram(artifact: Ob3ectArtifact) -> Optional[Any]:
+    """Generate a v3 symbolic wiring diagram from the artifact's bootstrap opcodes.
+
+    Uses IMSCRIBr's symbolic_diagram module to render a full-edge-granularity
+    SVG showing register deltas, categorical edge coloring, nesting depth,
+    IFIX barriers, guard semantics, pair-identity, and CLINK double-stroke.
+    """
+    try:
+        imscibr_path = str(Path(__file__).resolve().parents[1] / "IMSCRIBr")
+        if imscibr_path not in sys.path:
+            sys.path.insert(0, imscibr_path)
+        from tokens import Token
+        from wiring import imscr_wiring
+        from symbolic_diagram import render_wiring_svg_v3
+
+        ops = [step["opcode"] for step in artifact.bootstrap_sequence.steps]
+        if not ops:
+            print("  Diagram: no opcodes — skipping")
+            return None
+
+        token_list = []
+        for op in ops:
+            try:
+                token_list.append(Token[op])
+            except KeyError:
+                print(f"  Diagram: unknown opcode {op!r} — skipping")
+                return None
+
+        if not token_list:
+            return None
+
+        tokens = tuple(token_list)
+        graph = imscr_wiring(tokens)
+        graph.name = artifact.name.replace(" ", "_")[:40]
+        graph.description = artifact.split_fuse_report.split_element or ""
+
+        # Determine ouroboricity tier
+        has_frob = any(t == Token.FSPLIT for t in tokens) and any(t == Token.FFUSE for t in tokens)
+        self_ref = (tokens[0] == tokens[-1]) if tokens else False
+        has_cross = graph.has_cross_branch()
+        if self_ref and has_cross:
+            tier = "O_\u221e"
+        elif has_frob:
+            tier = "O\u2082"
+        else:
+            tier = "O\u2081"
+
+        return render_wiring_svg_v3(graph, graph.name, tier, graph.description, "")
+    except ImportError as e:
+        print(f"  Diagram: IMSCRIBr not available ({e}) — skipping")
+        return None
+    except Exception as e:
+        print(f"  Diagram: generation failed ({e}) — skipping")
+        return None
+
+
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
@@ -900,6 +956,8 @@ if __name__ == "__main__":
                     help="Enable <thinking> tokens in local Qwen model (default: off)")
     ap.add_argument("--no-scaffold", action="store_true", dest="no_scaffold",
                     help="Suppress Lean scaffold output")
+    ap.add_argument("--no-diagram", action="store_true", dest="no_diagram",
+                    help="Suppress symbolic wiring diagram output")
     ap.add_argument("--context", dest="context_path", default=None, metavar="PATH",
                     help="File or directory of domain documents to include as context "
                          "(.md/.txt/.lean/.py/.tex/.json; up to 500 KB total)")
@@ -968,6 +1026,12 @@ if __name__ == "__main__":
             lvl.artifact.save(lvl_dir / f"{lvl_slug}_ob3ect.json")
             if lvl.artifact.lean_scaffold and not args.no_scaffold:
                 (lvl_dir / f"{lvl_slug}_scaffold.lean").write_text(lvl.artifact.lean_scaffold)
+            if not args.no_diagram:
+                svg = _generate_diagram(lvl.artifact)
+                if svg:
+                    diagram_path = lvl_dir / f"{lvl_slug}_diagram.svg"
+                    svg.save(diagram_path)
+                    print(f"  Diagram:    {diagram_path}")
 
         manifest_path = chain.save(out_dir)
         print(f"\nManifest: {manifest_path}")
@@ -1012,3 +1076,10 @@ if __name__ == "__main__":
         lean_path = out_dir / f"{slug}_scaffold.lean"
         lean_path.write_text(art.lean_scaffold)
         print(f"Scaffold:   {lean_path}")
+    # Also generate symbolic wiring diagram
+    if not args.no_diagram:
+        svg = _generate_diagram(art)
+        if svg:
+            diagram_path = out_dir / f"{slug}_diagram.svg"
+            svg.save(diagram_path)
+            print(f"Diagram:    {diagram_path}")

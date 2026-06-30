@@ -1,10 +1,10 @@
--- IGProtocol scaffold: VINIT → TANCH → AFWD → FSPLIT → EVALT → CLINK → EVALF → AREV → FFUSE → ENGAGR → IMSCRIB → IFIX → TANCH
+-- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → CLINK → FSPLIT → EVALT → AFWD → EVALF → AREV → FFUSE → ENGAGR → IFIX → TANCH
 -- Class: ob3ect_sequence
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
 -- Expected tier: O₂
--- FSPLIT/FFUSE pairs: [(3, 8)]
+-- FSPLIT/FFUSE pairs: [(4, 9)]
 
 import Imscribing.IGMorphism
 import Imscribing.IGFunctor
@@ -15,18 +15,18 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
---   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction
---   [1] TANCH     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary
---   [2] AFWD      rel    := 𐑾               𐑡 → 𐑚  | forward morphism — bidirectional arrow
---   [3] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [4] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
---   [6] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
---   [7] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
---   [8] FFUSE     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode
---   [9] ENGAGR    stoi   := 𐑳               𐑙 → 𐑠  | engage paradox — B-state, both arms
---   [10] IMSCRIB   gram   := 𐑠               𐑳 → 𐑭  | identity — self-imscription
---   [11] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction
+--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑾  | identity — self-imscription
+--   [2] AFWD      rel    := 𐑾               𐑠 → 𐑱  | forward morphism — bidirectional arrow
+--   [3] CLINK     fid    := 𐑱               𐑾 → 𐑚  | composition — regime coherence
+--   [4] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
+--   [5] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
+--   [6] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
+--   [7] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
+--   [8] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
+--   [9] FFUSE     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode
+--   [10] ENGAGR    stoi   := 𐑳               𐑙 → 𐑭  | engage paradox — B-state, both arms
+--   [11] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Main IGProtocol term ────────────────────────────────────────────────────
@@ -34,26 +34,26 @@ open Dimensionality Topology Relational Polarity Grammar
 noncomputable def ob3ect_sequence_protocol : IGProtocol 𐑼 𐑡 :=
   .withGram 𐑠 <|
   -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (The uninitiated operator approaches the grimoire in a state of void.)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (The 9-foot Magic Circle is cast, establishing the hermetic boundary.)
-  (.arrow 𐑾 𐑡 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The Conjuration is spoken, a forward morphism calling the spirit into the tri...)
-  -- FSPLIT [3] (gran := 𐑚) (The Seal of Solomon is deployed, branching the operation into Binding and Releasing.) / FFUSE [8] (stoi := 𐑙)
+  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (The Ineffable Father exists in silence, the unassailable deep before any eman...)
+  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (The Father contemplates himself, generating the self-begotten place and the M...)
+  (.arrow 𐑾 𐑠 𐑱)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The First Father emanates the Second Place, the Demiurge and Logos, casting f...)
+  (.arrow 𐑱 𐑾 𐑚)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (The succession of the twelve deeps and the myriads of aeons born in joy.)
+  -- FSPLIT [4] (gran := 𐑚) (The Pleroma is agitated by the light-spark, separating the existent from the non-existent.) / FFUSE [9] (stoi := 𐑙)
   .seq
     (.prod
       -- T-branch (2 nodes)
       .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The spirit manifests in the triangle and submits to the conjuration (T-arm).)
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (The sequential chaining of the spirit's office to the operator's will.)
+        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The right side receives the light-spark, becoming the Land of Life and Rest.)
+        (.arrow 𐑾 𐑚 𐑙)  -- [6] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The aeons of the right side are established in their ranks and ordinances.)
       -- F-branch (2 nodes)
       .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (The spirit refuses or the operator's purity fails, breaching the circle (F-arm).)
-        (.arrow 𐑗 𐑚 𐑙)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (The reverse morphism of the License to Depart or the collapse of the rite.))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [8] FFUSE | stoi := 𐑙 (The Frobenius closure (μ∘δ = id) is realized, reconstituting the unified authority.)
-  (.arrow 𐑳 𐑙 𐑠)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The paradice of the unbanished spirit and the HGA held simultaneously without...)
-  (.arrow 𐑠 𐑳 𐑭)  -- [10] IMSCRIB | gram := 𐑠 | identity — self-imscription (The operator realizes they are the instrument; the text reads the reader (O_i...)
-  (.arrow 𐑭 𐑠 𐑡)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (The structural fingerprint of the operation is permanently fixed in the grimo...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (The terminal closure of the circle, sealing the operation and containing the ...)
+        (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (The left side is deprived of light, becoming the Land of Death and Matter.)
+        (.arrow 𐑗 𐑚 𐑙)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (The descent of the light-spark through the veils into the formless matter below.))
+    -- reconnect at FFUSE [9]: μ closes the Frobenius pair
+    (.arrow 𐑙 𐑙 𐑳)  -- [9] FFUSE | stoi := 𐑙 (The creative Word gathers the dispersed, uniting the members and reconstituting the Pleroma.)
+  (.arrow 𐑳 𐑙 𐑭)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The Only-Begotten One manifests as Light-Darkness, held simultaneously as exc...)
+  (.arrow 𐑭 𐑳 𐑡)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (The Seal of the Father is permanently fixed upon the receivers, establishing ...)
+  (.arrow 𐑡 𐑭 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (The Outer Veil closes the system, bounding the All within the ineffable and u...)
 
 -- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
 
