@@ -137,18 +137,18 @@ def render_ars(cfg: dict, rows, pending, convergences) -> str:
         f"## {ed.get('subtitle', 'A Structural Grammar')}", "",
         "**Author:** Lando⊗⊙perator  ",
         "**Structural Type:** *pending procedural imscription (not hand-imscribed)*  ",
-        "**Ouroboricity:** \\(O_\\infty\\)  ", "",
+        "**Ouroboricity:** ${O}_\\infty$  ", "",
         "---", "",
         "## Census (catalog-sourced)", "",
-        "Legend: tuple in order `Ð Þ Ř Φ Ç ƒ ɢ Γ Σ Ħ ⊙ Ω`.", "",
+        "Legend: tuple in order " + " ".join(f"$\\large{{{p}}}$" for p in PRIM_ORDER) + ".", "",
         "| Entity | Tuple | Note |", "|---|---|---|",
     ]
     for name, tup, desc in rows:
-        L.append(f"| {name} | `{tup}` | {desc} |")
+        L.append(f"| {name} | $\\large{{{tup}}}$ | {desc} |")
     if convergences:
         L += ["", "## Structural laws (d = 0 convergences)", ""]
         for tup, names in convergences.items():
-            L.append(f"- **{' = '.join(names)}** at `{tup}`")
+            L.append(f"- **{' = '.join(names)}** at $\\large{{{tup}}}$")
     if pending:
         L += ["", "## Pending procedural imscription", "",
               "Not yet in the catalog. Imscribe through the tooling (run `editorial.py imscribe`); "

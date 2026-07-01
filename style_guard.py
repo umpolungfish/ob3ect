@@ -118,9 +118,13 @@ def _mask_code(text: str) -> tuple[str, dict[str, str]]:
         i += 1
         return key
 
-    # fenced blocks first (```lang ... ```), then inline `code`.
+    # fenced blocks first (```lang ... ```), then inline `code`, then math
+    # ($$display$$ and $inline$ — where Shavian/primitive glyphs and all math
+    # live wrapped as $\large{...}$ / ${O}_\infty$). None of it is prose.
     text = re.sub(r"```.*?```", _stash, text, flags=re.DOTALL)
     text = re.sub(r"`[^`\n]*`", _stash, text)
+    text = re.sub(r"\$\$.*?\$\$", _stash, text, flags=re.DOTALL)
+    text = re.sub(r"\$[^$\n]+\$", _stash, text)
     return text, store
 
 
