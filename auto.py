@@ -971,6 +971,17 @@ if __name__ == "__main__":
     args = ap.parse_args()
 
     desc = " ".join(args.description)
+    # Normalize common word-level typos at ingestion so they never propagate
+    # into the slug, Lean identifiers, filenames, or the directory name.
+    # Whole-word match only (so e.g. "amd" in "lambda" is untouched).
+    _TYPOS = {"amd": "and", "adn": "and", "nad": "and", "teh": "the",
+              "hte": "the", "tehn": "then", "wiht": "with", "thier": "their"}
+    desc = _re.sub(r"[A-Za-z]+",
+                   lambda m: (_TYPOS[m.group(0).lower()].capitalize()
+                              if m.group(0)[0].isupper()
+                              else _TYPOS[m.group(0).lower()])
+                             if m.group(0).lower() in _TYPOS else m.group(0),
+                   desc)
 
     ctx: Optional[str] = None
     if args.context_path:
