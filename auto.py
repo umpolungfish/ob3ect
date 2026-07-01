@@ -976,7 +976,7 @@ if __name__ == "__main__":
     # Whole-word match only (so e.g. "amd" in "lambda" is untouched).
     _TYPOS = {"amd": "and", "adn": "and", "nad": "and", "teh": "the",
               "hte": "the", "tehn": "then", "wiht": "with", "thier": "their"}
-    desc = _re.sub(r"[A-Za-z]+",
+    desc = re.sub(r"[A-Za-z]+",
                    lambda m: (_TYPOS[m.group(0).lower()].capitalize()
                               if m.group(0)[0].isupper()
                               else _TYPOS[m.group(0).lower()])
