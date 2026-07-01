@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import httpx
+import os
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent))
@@ -526,7 +527,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
             pass
     return artifact
 
-def _generate_diagram(artifact: Ob3ectArtifact) -> Optional[Any]:
+def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False) -> Optional[Any]:
     """Generate a v3 symbolic wiring diagram from the artifact's bootstrap opcodes.
 
     Uses IMSCRIBr's symbolic_diagram module to render a full-edge-granularity
@@ -573,7 +574,8 @@ def _generate_diagram(artifact: Ob3ectArtifact) -> Optional[Any]:
         else:
             tier = "O\u2081"
 
-        return render_wiring_svg_v3(graph, graph.name, tier, graph.description, "")
+        return render_wiring_svg_v3(graph, graph.name, tier, graph.description, "",
+                                    pen_mode=pen_mode)
     except ImportError as e:
         print(f"  Diagram: IMSCRIBr not available ({e}) — skipping")
         return None
@@ -582,10 +584,30 @@ def _generate_diagram(artifact: Ob3ectArtifact) -> Optional[Any]:
         return None
 
 
+def _write_diagrams(artifact: Ob3ectArtifact, dir_path: Path, slug: str) -> Optional[Path]:
+    """Write both wiring diagrams for an artifact: the color `<slug>_diagram.svg`
+    and the black-and-white pen variant `<slug>_diagram_pen.svg`. Returns the
+    color path (or None if generation was skipped)."""
+    color_path: Optional[Path] = None
+    svg = _generate_diagram(artifact)
+    if svg:
+        color_path = dir_path / f"{slug}_diagram.svg"
+        svg.save(color_path)
+    pen = _generate_diagram(artifact, pen_mode=True)
+    if pen:
+        pen.save(dir_path / f"{slug}_diagram_pen.svg")
+    return color_path
+
+
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
 _PROVIDER_CHAIN: List[str] = ["local", "openrouter", "deepseek"]
+
+# IG_PROVIDER env var → promote to front of chain (respects IG_MODEL for model selection)
+_IG_PROVIDER = os.environ.get("IG_PROVIDER", "").strip().lower()
+if _IG_PROVIDER and _IG_PROVIDER in ("anthropic", "google", "gemini", "deepseek", "qwen", "openrouter", "mistral", "aider"):
+    _PROVIDER_CHAIN = [_IG_PROVIDER] + [p for p in _PROVIDER_CHAIN if p != _IG_PROVIDER]
 
 
 def _build_provider_chain() -> List[Any]:
@@ -633,6 +655,12 @@ async def auto_design(
         Validated Ob3ectArtifact
     """
     artifact_name = name or description.strip()
+
+    # IG_MODEL / IG_PROVIDER env var → override defaults when not explicitly passed
+    if model is None:
+        model = os.environ.get("IG_MODEL", "").strip() or None
+    if provider_name is None:
+        provider_name = os.environ.get("IG_PROVIDER", "").strip().lower() or None
 
     if provider_name:
         chain = _PROVIDER_CHAIN.copy()
@@ -712,6 +740,13 @@ async def auto_design(
             if e.response.status_code == 429:
                 retry_info = "Rate limited — retry."
                 attempt += 1
+            elif e.response.status_code in (400, 502, 503, 504):
+                # Transient provider issues — retry once before switching
+                if attempt < 1:
+                    retry_info = f"HTTP {e.response.status_code} (transient) — retry."
+                    attempt += 1
+                else:
+                    _next_provider(e)
             else:
                 _next_provider(e)   # permanent failure, don't burn retry slot
 
@@ -1035,9 +1070,7 @@ if __name__ == "__main__":
             if _art.lean_scaffold and not _no_scaffold:
                 (_sub / f"{_slug}_scaffold.lean").write_text(_art.lean_scaffold, encoding="utf-8")
             if not _no_diagram:
-                _svg = _generate_diagram(_art)
-                if _svg:
-                    _svg.save(_sub / f"{_slug}_diagram.svg")
+                _write_diagrams(_art, _sub, _slug)
             print(f"      -> {_sub}/{_slug}_ob3ect.json")
         sys.exit(0)
 
@@ -1112,10 +1145,8 @@ if __name__ == "__main__":
             if lvl.artifact.lean_scaffold and not args.no_scaffold:
                 (lvl_dir / f"{lvl_slug}_scaffold.lean").write_text(lvl.artifact.lean_scaffold)
             if not args.no_diagram:
-                svg = _generate_diagram(lvl.artifact)
-                if svg:
-                    diagram_path = lvl_dir / f"{lvl_slug}_diagram.svg"
-                    svg.save(diagram_path)
+                diagram_path = _write_diagrams(lvl.artifact, lvl_dir, lvl_slug)
+                if diagram_path:
                     print(f"  Diagram:    {diagram_path}")
 
         manifest_path = chain.save(out_dir)
@@ -1163,8 +1194,9 @@ if __name__ == "__main__":
         print(f"Scaffold:   {lean_path}")
     # Also generate symbolic wiring diagram
     if not args.no_diagram:
-        svg = _generate_diagram(art)
-        if svg:
-            diagram_path = out_dir / f"{slug}_diagram.svg"
-            svg.save(diagram_path)
-            print(f"Diagram:    {diagram_path}")
+        try:
+            diagram_path = _write_diagrams(art, out_dir, slug)
+            if diagram_path:
+                print(f"Diagram:    {diagram_path}")
+        except Exception as e:
+            print(f"  Diagram: generation failed ({e}) — skipping")
