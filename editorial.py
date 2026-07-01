@@ -50,6 +50,8 @@ try:
 except ImportError:
     sys.exit("editorial.py needs PyYAML:  uv pip install pyyaml")
 
+import style_guard  # tyrannical human-writing enforcement on every emitted document
+
 _HERE = Path(__file__).resolve().parent
 _CATALOG = _HERE.parent / "imscribing_grammar" / "IG_catalog.json"
 PRIM_ORDER = ["Ð", "Þ", "Ř", "Φ", "Ç", "ƒ", "ɢ", "Γ", "Σ", "Ħ", "⊙", "Ω"]
@@ -163,6 +165,9 @@ def editorial_phase(cfg: dict, entities: list[str], catalog: dict) -> None:
     md = render_ars(cfg, rows, pending, convergences)
     ed = cfg.get("editorial", {}) or {}
     out = ed.get("output")
+    # Every document is certified human-written before it leaves the pipeline.
+    md = style_guard.enforce(md, where=str(out or "stdout"),
+                             mode=str(ed.get("style", "enforce")))
     if out:
         outp = (_HERE / out) if not os.path.isabs(out) else Path(out)
         outp.parent.mkdir(parents=True, exist_ok=True)
