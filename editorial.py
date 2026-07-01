@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-batch.py — YAML-driven batch imscription + editorial pipeline for ob3ect.
+editorial.py — the editorial pipeline: YAML-driven batch imscription + Ars assembly.
 
 One YAML file holds every specific; the CLI just points at it:
 
-    python3 batch.py run     config.yaml     # imscribe (LLM) then editorial
-    python3 batch.py census  config.yaml     # editorial only, catalog-sourced, no LLM
-    python3 batch.py imscribe config.yaml     # imscribe only (LLM)
+    python3 editorial.py run     config.yaml     # imscribe (LLM) then editorial
+    python3 editorial.py census  config.yaml     # editorial only, catalog-sourced, no LLM
+    python3 editorial.py imscribe config.yaml     # imscribe only (LLM)
 
 RIGOR: the editorial/census phase reads every 12-primitive tuple from the IG
 catalog (machine-sourced). It NEVER hand-imscribes. Entities not yet in the
@@ -48,7 +48,7 @@ from pathlib import Path
 try:
     import yaml
 except ImportError:
-    sys.exit("batch.py needs PyYAML:  uv pip install pyyaml")
+    sys.exit("editorial.py needs PyYAML:  uv pip install pyyaml")
 
 _HERE = Path(__file__).resolve().parent
 _CATALOG = _HERE.parent / "imscribing_grammar" / "IG_catalog.json"
@@ -149,7 +149,7 @@ def render_ars(cfg: dict, rows, pending, convergences) -> str:
             L.append(f"- **{' = '.join(names)}** at `{tup}`")
     if pending:
         L += ["", "## Pending procedural imscription", "",
-              "Not yet in the catalog. Imscribe through the tooling (run `batch.py imscribe`); "
+              "Not yet in the catalog. Imscribe through the tooling (run `editorial.py imscribe`); "
               "do not hand-imscribe:", ""]
         L += [f"- {p}" for p in pending]
     L += ["", "---", "",
@@ -173,7 +173,7 @@ def editorial_phase(cfg: dict, entities: list[str], catalog: dict) -> None:
         print(md)
 
 
-# ── driver (also called by auto.py -f) ───────────────────────────────────────
+# ── driver (the editorial pipeline; a separate tool that uses auto.py) ───────────────────────────────────────
 def run_batch(config_path: str, phase: str = "run") -> None:
     """Run a YAML batch. phase: run | imscribe | census.
     A YAML may also set `phase:` itself; the argument overrides it."""

@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Ars batch skeleton — copy this file, fill it in, then run:
+#   p3 editorial.py census  <your>.yaml     # editorial only, no LLM (reads catalog)
+#   p3 editorial.py imscribe <your>.yaml     # run the ob3ect designer over new entities (LLM)
+#   p3 editorial.py run      <your>.yaml     # both
+#
+# The editorial pipeline (editorial.py) is a SEPARATE tool that USES auto.py for
+# the imscribe phase. It never hand-imscribes: census tuples are read from the
+# IG catalog; entities not yet catalogued are reported as pending, not guessed.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name:            # batch id, e.g. ars_something
+out_dir: digital # where imscribe-phase ob3ect JSONs are written
+
+# passed straight through to auto.design()
+design:
+  domain:        # domain hint: mathematical | musical | linguistic | astrological | ...
+  scope: local   # local | mesoscale | maximal
+  provider:      # null = default chain (local -> qwen -> deepseek)
+  model:         # null = provider default
+  temperature: 0.4
+  retries: 3
+  context:       # optional path to a file/dir of domain documents
+
+# What to imscribe / census. Give catalog names (appear in census with tuples)
+# and/or free-text descriptions (imscribe them to earn an address).
+entities:
+  # - "an entity to imscribe"
+  # - existing_catalog_name
+
+# Optional: source more entities from files or the catalog itself.
+entities_from:
+  file:            # one entity per line (# comments allowed)
+  catalog_filter:  # substring; pulls catalog names/descriptions that match
+
+editorial:
+  ars_title:       # e.g. "Ars Something"
+  subtitle:        # e.g. "A Structural Grammar of ..."
+  output:          # e.g. ../Ars_Something/Ars_Something_CENSUS.md  (omit to print to stdout)
+  group_convergences: true

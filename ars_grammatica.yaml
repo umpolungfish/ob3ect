@@ -1,0 +1,44 @@
+# Ars Grammatica batch — point the CLI here:
+#   p3 editorial.py census  ars_grammatica.yaml
+#   p3 editorial.py imscribe ars_grammatica.yaml
+#   p3 editorial.py run      ars_grammatica.yaml
+name: ars_grammatica
+out_dir: digital
+
+design:
+  domain: linguistic
+  scope: local
+  temperature: 0.4
+  retries: 3
+
+entities:
+  # the parts of speech
+  - "the noun as a part of speech"
+  - "the verb as a part of speech"
+  - "the adjective as a part of speech"
+  - "the adverb as a part of speech"
+  - "the pronoun as a part of speech"
+  - "the preposition as a part of speech"
+  - "the conjunction as a part of speech"
+  # writing-system classes
+  - "the alphabet writing system"
+  - "the abjad writing system"
+  - "the abugida writing system"
+  - "the syllabary writing system"
+  - "the logographic writing system"
+  # phonology
+  - "the consonant as a phoneme class"
+  - "the vowel as a phoneme class"
+  # syntax
+  - "subject-verb-object word order"
+  - "the syntactic tree / phrase structure"
+
+# The 49 Shavian symbols ARE catalogued (shavian_*): pull them straight from the soup.
+entities_from:
+  catalog_filter: shavian
+
+editorial:
+  ars_title: "Ars Grammatica"
+  subtitle: "The Grammar Turned on Language Itself"
+  output: ../Ars_Grammatica/Ars_Grammatica_CENSUS.md
+  group_convergences: true
