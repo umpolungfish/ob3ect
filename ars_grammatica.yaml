@@ -5,11 +5,18 @@
 name: ars_grammatica
 out_dir: digital
 
-design:
-  domain: linguistic
-  scope: local
-  temperature: 0.4
-  retries: 3
+design:            # every auto.py flag (p3 auto.py -f ars_grammatica.yaml)
+  domain: linguistic    # --domain
+  scope: local          # --scope     local | mesoscale | maximal
+  provider:             # --provider  null = default chain (local -> qwen -> deepseek)
+  model:                # --model     provider model id
+  temperature: 0.0      # --temp
+  retries: infinite     # --retries  (inf = retry until success)
+  thinking: false       # --thinking  local Qwen thinking tokens
+  context:              # --context   file/dir of domain docs
+  entry:                # --entry     comma-separated catalog entry names as context
+  no_scaffold: false    # --no-scaffold
+  no_diagram: false     # --no-diagram
 
 entities:
   # the parts of speech

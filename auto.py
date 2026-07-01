@@ -609,8 +609,8 @@ async def auto_design(
     scope: str = "local",
     provider_name: Optional[str] = None,
     model: Optional[str] = None,
-    max_retries: int = 100,
-    temperature: float = 0.4,
+    max_retries: float = float("inf"),
+    temperature: float = 0.0,
     context: Optional[str] = None,
 ) -> Ob3ectArtifact:
     """
@@ -938,6 +938,17 @@ class _Spinner:
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
+def _parse_retries(v):
+    """Retries value (YAML or CLI) -> int, or float('inf') for infinite.
+    None / 'inf' / 'infinite' / 'none' / '' all mean retry until success."""
+    if v is None:
+        return float("inf")
+    s = str(v).strip().lower()
+    if s in ("inf", "infinite", "none", ""):
+        return float("inf")
+    return int(v)
+
+
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser(description="Auto-design an Ob3ect from a description.")
@@ -952,8 +963,9 @@ if __name__ == "__main__":
                     help="Override provider (openrouter, deepseek, local)")
     ap.add_argument("--model", default=None,
                     help="Model ID passed to the provider (e.g. deepseek-chat, qwen3-235b-a22b)")
-    ap.add_argument("--retries", type=int, default=3, dest="max_retries")
-    ap.add_argument("--temp", type=float, default=0.4, dest="temperature")
+    ap.add_argument("--retries", type=_parse_retries, default=float("inf"), dest="max_retries",
+                    help="Max design retries per entity; 'inf'/'infinite' = retry until success (default: inf)")
+    ap.add_argument("--temp", type=float, default=0.0, dest="temperature")
     ap.add_argument("--thinking", action="store_true", default=False,
                     help="Enable <thinking> tokens in local Qwen model (default: off)")
     ap.add_argument("--no-scaffold", action="store_true", dest="no_scaffold",
@@ -978,6 +990,22 @@ if __name__ == "__main__":
         import yaml as _yaml
         _cfg = _yaml.safe_load(open(args.yaml_config, encoding="utf-8")) or {}
         _d = _cfg.get("design", {}) or {}
+        # context (--context) + catalog entries (--entry), merged like single mode
+        _ctx = None
+        if _d.get("context"):
+            try:
+                _ctx = _load_context(_d["context"])
+            except Exception as _e:
+                print(f"Warning: {_e} — proceeding without context")
+        if _d.get("entry"):
+            _names = [n.strip() for n in str(_d["entry"]).split(",") if n.strip()]
+            _ectx = _load_catalog_entries(_names)
+            _ctx = "\n\n".join(p for p in [_ctx, _ectx] if p) or None
+        if _d.get("thinking"):                                   # --thinking
+            import framework.enhanced_llm_provider as _ep
+            _ep.enable_thinking = True
+        _no_scaffold = bool(_d.get("no_scaffold", False))         # --no-scaffold
+        _no_diagram = bool(_d.get("no_diagram", False))           # --no-diagram
         _ents = list(_cfg.get("entities") or [])
         _ef = _cfg.get("entities_from") or {}
         if _ef.get("file"):
@@ -992,18 +1020,24 @@ if __name__ == "__main__":
             print(f"[{_i}/{len(_ents)}] {_ent}")
             _art = design(
                 _ent,
-                domain_type=_d.get("domain"),
-                scope=_d.get("scope", "local"),
-                provider_name=_d.get("provider"),
-                model=_d.get("model"),
-                temperature=float(_d.get("temperature", 0.4)),
-                max_retries=int(_d.get("retries", 3)),
-                context=_d.get("context"),
+                domain_type=_d.get("domain"),                     # --domain
+                scope=_d.get("scope", "local"),                   # --scope
+                provider_name=_d.get("provider"),                 # --provider
+                model=_d.get("model"),                            # --model
+                temperature=float(_d.get("temperature", 0.0)),    # --temp
+                max_retries=_parse_retries(_d.get("retries")),    # --retries (default inf)
+                context=_ctx,
             )
             _slug = re.sub(r"[^a-z0-9]+", "_", _ent.lower()).strip("_")[:48] or f"ob3ect_{_i}"
             _sub = _out / _slug
             _sub.mkdir(parents=True, exist_ok=True)
             _art.save(_sub / f"{_slug}_ob3ect.json")
+            if _art.lean_scaffold and not _no_scaffold:
+                (_sub / f"{_slug}_scaffold.lean").write_text(_art.lean_scaffold, encoding="utf-8")
+            if not _no_diagram:
+                _svg = _generate_diagram(_art)
+                if _svg:
+                    _svg.save(_sub / f"{_slug}_diagram.svg")
             print(f"      -> {_sub}/{_slug}_ob3ect.json")
         sys.exit(0)
 
