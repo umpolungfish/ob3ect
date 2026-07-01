@@ -941,7 +941,9 @@ class _Spinner:
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser(description="Auto-design an Ob3ect from a description.")
-    ap.add_argument("description", nargs="+", help="Natural-language description")
+    ap.add_argument("description", nargs="*", help="Natural-language description (omit when using -f)")
+    ap.add_argument("-f", "--yaml", "--file", dest="yaml_config", default=None, metavar="CONFIG.yaml",
+                    help="Batch-imscribe every entity listed in a YAML (this pipeline's own batch loop)")
     ap.add_argument("--domain", dest="domain_type", default=None,
                     help="Domain type hint (biological, computational, alchemical, ...)")
     ap.add_argument("--scope", default="local",
@@ -969,6 +971,44 @@ if __name__ == "__main__":
     ap.add_argument("--zoom-levels", type=int, default=4, dest="zoom_levels",
                     help="Number of levels in the zoom chain (default: 4)")
     args = ap.parse_args()
+
+    # YAML batch mode: p3 auto.py -f config.yaml — this pipeline's own batch loop
+    # over design(). Self-contained; does not import or concern editorial.py.
+    if args.yaml_config:
+        import yaml as _yaml
+        _cfg = _yaml.safe_load(open(args.yaml_config, encoding="utf-8")) or {}
+        _d = _cfg.get("design", {}) or {}
+        _ents = list(_cfg.get("entities") or [])
+        _ef = _cfg.get("entities_from") or {}
+        if _ef.get("file"):
+            _ents += [ln.strip() for ln in open(_ef["file"], encoding="utf-8")
+                      if ln.strip() and not ln.lstrip().startswith("#")]
+        _seen = set(); _ents = [e for e in _ents if not (e in _seen or _seen.add(e))]
+        _out = Path(_cfg.get("out_dir", "digital"))
+        if not _out.is_absolute():
+            _out = Path(__file__).resolve().parent / _out
+        print(f"batch '{_cfg.get('name','(unnamed)')}': imscribing {len(_ents)} entities")
+        for _i, _ent in enumerate(_ents, 1):
+            print(f"[{_i}/{len(_ents)}] {_ent}")
+            _art = design(
+                _ent,
+                domain_type=_d.get("domain"),
+                scope=_d.get("scope", "local"),
+                provider_name=_d.get("provider"),
+                model=_d.get("model"),
+                temperature=float(_d.get("temperature", 0.4)),
+                max_retries=int(_d.get("retries", 3)),
+                context=_d.get("context"),
+            )
+            _slug = re.sub(r"[^a-z0-9]+", "_", _ent.lower()).strip("_")[:48] or f"ob3ect_{_i}"
+            _sub = _out / _slug
+            _sub.mkdir(parents=True, exist_ok=True)
+            _art.save(_sub / f"{_slug}_ob3ect.json")
+            print(f"      -> {_sub}/{_slug}_ob3ect.json")
+        sys.exit(0)
+
+    if not args.description:
+        ap.error("give a description, or a YAML batch with -f CONFIG.yaml")
 
     desc = " ".join(args.description)
     # Normalize common word-level typos at ingestion so they never propagate
