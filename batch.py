@@ -173,6 +173,23 @@ def editorial_phase(cfg: dict, entities: list[str], catalog: dict) -> None:
         print(md)
 
 
+# ── driver (also called by auto.py -f) ───────────────────────────────────────
+def run_batch(config_path: str, phase: str = "run") -> None:
+    """Run a YAML batch. phase: run | imscribe | census.
+    A YAML may also set `phase:` itself; the argument overrides it."""
+    cfg = yaml.safe_load(open(config_path, encoding="utf-8")) or {}
+    phase = phase or cfg.get("phase", "run")
+    catalog = load_catalog()
+    entities = resolve_entities(cfg, catalog)
+    if not entities:
+        sys.exit("no entities resolved (set 'entities' / 'entities_from' in the YAML)")
+    print(f"batch '{cfg.get('name','(unnamed)')}': {len(entities)} entities  (phase: {phase})")
+    if phase in ("run", "imscribe"):
+        imscribe_phase(cfg, entities)
+    if phase in ("run", "census"):
+        editorial_phase(cfg, entities, catalog)
+
+
 # ── CLI ──────────────────────────────────────────────────────────────────────
 def main(argv=None):
     ap = argparse.ArgumentParser(description="YAML-driven ob3ect batch + editorial pipeline.")
@@ -180,18 +197,7 @@ def main(argv=None):
                     help="run = imscribe then editorial; imscribe = LLM only; census = editorial only")
     ap.add_argument("config", help="path to the batch YAML")
     args = ap.parse_args(argv)
-
-    cfg = yaml.safe_load(open(args.config, encoding="utf-8")) or {}
-    catalog = load_catalog()
-    entities = resolve_entities(cfg, catalog)
-    if not entities:
-        sys.exit("no entities resolved (set 'entities' / 'entities_from' in the YAML)")
-    print(f"batch '{cfg.get('name','(unnamed)')}': {len(entities)} entities")
-
-    if args.phase in ("run", "imscribe"):
-        imscribe_phase(cfg, entities)
-    if args.phase in ("run", "census"):
-        editorial_phase(cfg, entities, catalog)
+    run_batch(args.config, args.phase)
 
 
 if __name__ == "__main__":

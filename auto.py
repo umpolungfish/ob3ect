@@ -940,8 +940,12 @@ class _Spinner:
 
 if __name__ == "__main__":
     import argparse
-    ap = argparse.ArgumentParser(description="Auto-design an Ob3ect from a description.")
-    ap.add_argument("description", nargs="+", help="Natural-language description")
+    ap = argparse.ArgumentParser(description="Auto-design an Ob3ect from a description, or a YAML batch with -f.")
+    ap.add_argument("description", nargs="*", help="Natural-language description (omit when using -f)")
+    ap.add_argument("-f", "--yaml", "--file", dest="yaml_config", default=None, metavar="CONFIG.yaml",
+                    help="Run a YAML batch (imscribe + editorial) instead of a single description")
+    ap.add_argument("--phase", default="run", choices=["run", "imscribe", "census"],
+                    help="Batch phase for -f: run (default) | imscribe (LLM only) | census (editorial only)")
     ap.add_argument("--domain", dest="domain_type", default=None,
                     help="Domain type hint (biological, computational, alchemical, ...)")
     ap.add_argument("--scope", default="local",
@@ -969,6 +973,15 @@ if __name__ == "__main__":
     ap.add_argument("--zoom-levels", type=int, default=4, dest="zoom_levels",
                     help="Number of levels in the zoom chain (default: 4)")
     args = ap.parse_args()
+
+    # YAML batch mode: p3 auto.py -f config.yaml  (all specifics live in the YAML)
+    if args.yaml_config:
+        import batch
+        batch.run_batch(args.yaml_config, args.phase)
+        sys.exit(0)
+
+    if not args.description:
+        ap.error("give a description, or a YAML batch with -f CONFIG.yaml")
 
     desc = " ".join(args.description)
     # Normalize common word-level typos at ingestion so they never propagate
