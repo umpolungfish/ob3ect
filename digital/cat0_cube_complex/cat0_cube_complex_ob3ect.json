@@ -1,0 +1,220 @@
+{
+  "name": "cat0_cube_complex",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "cat0_cube_complex",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "simplex",
+        "boundary operator",
+        "chain complex"
+      ],
+      "boundary_condition": "The entire chain complex forms a closed algebraic system bounded by the zero object and terminal homology groups.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty chain complex",
+        "justification": "Initial state before any simplices or boundary maps are defined.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "complete chain complex",
+        "justification": "Closed system containing all simplices, boundary operators, and satisfying d\u2218d=0.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "boundary operator \u2202",
+        "justification": "Forward morphism reducing dimension: maps n-simplex to (n-1)-chain.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "coboundary operator \u03b4",
+        "justification": "Reverse morphism increasing dimension: adjoint to \u2202 in cochain complexes.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition \u2202\u2218\u2202",
+        "justification": "Sequential chaining of boundary operators resulting in zero.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "chain complex identity",
+        "justification": "Self-reference: the complex recognizes its own algebraic structure.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "degree decomposition",
+        "justification": "Splits chain complex into even-degree and odd-degree subgroups.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "direct sum \u2295",
+        "justification": "Reconstitutes original complex by combining even and odd degree parts.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "cycle",
+        "justification": "Affirmative: chain with \u2202(c)=0.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "non-cycle",
+        "justification": "Negative: chain with \u2202(c)\u22600.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "bounding cycle",
+        "justification": "Paradice: chain simultaneously in ker(\u2202) and im(\u2202).",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "homology group",
+        "justification": "Permanent record: quotient ker(\u2202)/im(\u2202) at fixed dimension.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "degree decomposition",
+      "split_input": "chain complex C",
+      "split_outputs": [
+        "even-degree part C_even",
+        "odd-degree part C_odd"
+      ],
+      "fuse_element": "direct sum",
+      "fuse_result": "C_even \u2295 C_odd = C",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Empty chain complex with no simplices or boundary maps.",
+      "true_description": "Non-trivial cycle: element in ker(\u2202) not in im(\u2202).",
+      "false_description": "Non-cycle: element not in ker(\u2202).",
+      "both_description": "Trivial cycle: element in ker(\u2202) \u2229 im(\u2202).",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize empty chain complex."
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "add 0-simplex v\u2080."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "add 0-simplex v\u2081."
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "add 1-simplex e\u2081 with \u2202(e\u2081)=v\u2081-v\u2080."
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "compose boundary operators \u2202\u2081\u2218\u2202\u2080=0."
+        },
+        {
+          "step_num": 6,
+          "opcode": "TANCH",
+          "domain_action": "close the chain complex C."
+        },
+        {
+          "step_num": 7,
+          "opcode": "FSPLIT",
+          "domain_action": "decompose C into C_even (0-chains) and C_odd (1-chains)."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "apply \u2202 to 0-chain in C_even (yields 0)."
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "0-chain is a cycle (\u2202=0)."
+        },
+        {
+          "step_num": 10,
+          "opcode": "AFWD",
+          "domain_action": "apply \u2202 to e\u2081 in C_odd (yields v\u2081-v\u2080)."
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALF",
+          "domain_action": "e\u2081 is not a cycle (\u2202\u22600)."
+        },
+        {
+          "step_num": 12,
+          "opcode": "FFUSE",
+          "domain_action": "combine C_even and C_odd via \u2295 to recover C."
+        },
+        {
+          "step_num": 13,
+          "opcode": "IMSCRIB",
+          "domain_action": "assert complex identity d\u2218d=0."
+        },
+        {
+          "step_num": 14,
+          "opcode": "ENGAGR",
+          "domain_action": "element v\u2081-v\u2080 is both cycle (\u2202=0) and boundary (from e\u2081)."
+        },
+        {
+          "step_num": 15,
+          "opcode": "IFIX",
+          "domain_action": "record homology group H\u2080\u2245\u2124."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Axiomatic definitions of chain complexes.",
+      "ipc_mechanism": "Boundary maps transmitting data between dimensions.",
+      "memory_mechanism": "Abelian groups storing chains at each dimension.",
+      "scheduler_mechanism": "Dimension-wise processing: higher to lower for \u2202, lower to higher for \u03b4.",
+      "alfs_store": "Eilenberg-Steenrod axioms for homology theories.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Algebraic operations (addition, scalar multiplication) and boundary computations.",
+      "pre_cycle_state": "Complex without current simplex/boundary map.",
+      "post_cycle_state": "Complex with simplex added and \u2202 defined.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 Homology groups are conservative invariants; quotient operations preserve information modulo identities.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 CLINK \u2192 TANCH \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 FFUSE \u2192 IMSCRIB \u2192 ENGAGR \u2192 IFIX\n-- Class: cat0_cube_complex\n-- Fingerprint: sig=(9,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=15\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(6, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc61  | composition \u2014 regime coherence\n--   [5] TANCH     top    := \ud801\udc61               \ud801\udc71 \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [6] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [10] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [11] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [13] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [14] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def cat0_cube_complex_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def cat0_cube_complex_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def cat0_cube_complex_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cat0_cube_complex_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def cat0_cube_complex_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def cat0_cube_complex_protocol : IGProtocol cat0_cube_complex_s0 cat0_cube_complex_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct cat0_cube_complex_s11 cat0_cube_complex_s11 = cat0_cube_complex_s11 (idempotent)\n  (.seq (.arrow cat0_cube_complex_l0 cat0_cube_complex_s0 cat0_cube_complex_s1) (.seq (.arrow cat0_cube_complex_l1 cat0_cube_complex_s1 cat0_cube_complex_s2) (.seq (.arrow cat0_cube_complex_l2 cat0_cube_complex_s2 cat0_cube_complex_s3) (.seq (.arrow cat0_cube_complex_l3 cat0_cube_complex_s3 cat0_cube_complex_s4) (.seq (.arrow cat0_cube_complex_l4 cat0_cube_complex_s4 cat0_cube_complex_s5) (.seq (.arrow cat0_cube_complex_l5 cat0_cube_complex_s5 cat0_cube_complex_s6) (.seq (.prod (.arrow cat0_cube_complex_l6 cat0_cube_complex_s6 cat0_cube_complex_s11) (.arrow cat0_cube_complex_l6 cat0_cube_complex_s6 cat0_cube_complex_s11)) (.seq (.arrow cat0_cube_complex_l11 cat0_cube_complex_s11 cat0_cube_complex_s11) (.seq (.arrow cat0_cube_complex_l11 cat0_cube_complex_s11 cat0_cube_complex_s12) (.seq (.arrow cat0_cube_complex_l12 cat0_cube_complex_s12 cat0_cube_complex_s13) (.arrow cat0_cube_complex_l13 cat0_cube_complex_s13 cat0_cube_complex_s14)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def cat0_cube_complex_true_arm : IGProtocol cat0_cube_complex_s0 cat0_cube_complex_s14 :=\n  (cat0_cube_complex_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def cat0_cube_complex_false_arm : IGProtocol cat0_cube_complex_s0 cat0_cube_complex_s14 :=\n  (cat0_cube_complex_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef cat0_cube_complex_tier : OuroboricityTier := TierFunctor.obj cat0_cube_complex_s0\n#eval cat0_cube_complex_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem cat0_cube_complex_frobenius :\n    igFrobeniusAlg.mul cat0_cube_complex_s0 cat0_cube_complex_s0 = cat0_cube_complex_s0 :=\n  igFrobAlg_self_fusion cat0_cube_complex_s0\n",
+  "notes": "Auto-designed from: cat0_cube_complex"
+}
