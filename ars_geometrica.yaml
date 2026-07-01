@@ -1,0 +1,51 @@
+# Ars Geometrica batch — point the CLI here:
+#   python3 batch.py census  ars_geometrica.yaml     # editorial only (no LLM), reads catalog
+#   python3 batch.py imscribe ars_geometrica.yaml     # imscribe the free-text entities (LLM)
+#   python3 batch.py run      ars_geometrica.yaml     # both
+name: ars_geometrica
+out_dir: digital
+
+design:
+  domain: mathematical
+  scope: local
+  temperature: 0.4
+  retries: 3
+
+# The soup we source from. Catalog names appear in the census with their tuples;
+# free-text descriptions are pending (imscribe them to add addresses).
+entities:
+  - regular_tetrahedron
+  - cube
+  - platonic_solids
+  - cat0_cube_complex
+  - polytope_commutator_algebra
+  - convexity_constraint
+  - caratheodory_theorem
+  - curvature_line_global_structure
+  - hopf_conjecture_positive_curvature
+  - poincare_conjecture
+  - hodge_conjecture
+  - hilbert_sixteenth_problem
+  - fujita_conjecture
+  - thurston_eight_geometries
+  - H3_geometry
+  - H2xR_geometry
+  - exotic_mathematics
+  - fractal_structure
+  - ford_circles
+  - aspherical_2d_cw_complex
+  # not yet imscribed — will show as pending until run through the designer:
+  - "regular octahedron"
+  - "regular dodecahedron"
+  - "regular icosahedron"
+  - "the Penrose aperiodic tiling"
+
+# Optionally widen the net straight from the catalog:
+# entities_from:
+#   catalog_filter: geometr
+
+editorial:
+  ars_title: "Ars Geometrica"
+  subtitle: "A Structural Grammar of Form, Curvature, and Space"
+  output: ../Ars_Geometrica/Ars_Geometrica_CENSUS.md
+  group_convergences: true
