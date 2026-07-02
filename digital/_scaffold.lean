@@ -1,10 +1,10 @@
--- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → AFWD → EVALF → AREV → FFUSE → CLINK → IMSCRIB → AFWD → FSPLIT → EVALT → EVALF → FFUSE → ENGAGR → TANCH → IFIX
+-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → AFWD → EVALT → AREV → EVALF → FFUSE → CLINK → TANCH → ENGAGR → IFIX
 -- Class: ob3ect_sequence
--- Fingerprint: sig=(8,4,5,1)
---   self_ref=False | frobenius_order=3
---   dialetheia_complete=True | period=18
+-- Fingerprint: sig=(6,2,3,1)
+--   self_ref=False | frobenius_order=1
+--   dialetheia_complete=True | period=12
 -- Expected tier: O₂
--- FSPLIT/FFUSE pairs: [(2, 7), (11, 14)]
+-- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
 import Imscribing.IGFunctor
@@ -15,73 +15,94 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
---   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction
---   [1] AFWD      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow
+--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction
+--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription
 --   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [4] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [5] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
---   [6] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
+--   [3] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
+--   [4] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
+--   [5] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
+--   [6] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [7] FFUSE     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
---   [8] CLINK     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
---   [9] IMSCRIB   gram   := 𐑠               𐑱 → 𐑾  | identity — self-imscription
---   [10] AFWD      rel    := 𐑾               𐑠 → 𐑚  | forward morphism — bidirectional arrow
---   [11] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [12] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [13] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
---   [14] FFUSE     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode
---   [15] ENGAGR    stoi   := 𐑳               𐑙 → 𐑡  | engage paradox — B-state, both arms
---   [16] TANCH     top    := 𐑡               𐑳 → 𐑭  | terminal object — connectivity boundary
---   [17] IFIX      prot   := 𐑭               𐑡 → 𐑼  | irreversible fixation — winding number
+--   [8] CLINK     fid    := 𐑱               𐑙 → 𐑡  | composition — regime coherence
+--   [9] TANCH     top    := 𐑡               𐑱 → 𐑳  | terminal object — connectivity boundary
+--   [10] ENGAGR    stoi   := 𐑳               𐑡 → 𐑭  | engage paradox — B-state, both arms
+--   [11] IFIX      prot   := 𐑭               𐑳 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def ob3ect_sequence_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ob3ect_sequence_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ob3ect_sequence_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ob3ect_sequence_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ob3ect_sequence_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def ob3ect_sequence_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def ob3ect_sequence_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Dormant spore enters the void state, awaiting environmental triggers)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Hyphal germination extends the apical tip forward into the substrate)
-  -- FSPLIT [2] (gran := 𐑚) (The growing hypha branches into divergent exploratory pathways) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The T arm establishes mutualistic mycorrhizal connections with plant roots)
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Nutrient translocation flows forward through the established symbiotic network)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [5] EVALF | chir := 𐑖 | evaluate-false — chirality check (The F arm encounters environmental stress and competitive antagonism)
-        (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (Necrotrophic enzymes reverse complex polymers into reclaimable monomers))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (Anastomosis fuses the divergent hyphae back into a single syncytial network)
-  (.arrow 𐑱 𐑙 𐑠)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (Sequential chaining of systemic signal transduction across the fused network)
-  (.arrow 𐑠 𐑱 𐑾)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (Vegetative compatibility genes verify identity at fusion points)
-  (.arrow 𐑾 𐑠 𐑚)  -- [10] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Fruiting body morphogenesis ascends above the substrate for reproduction)
-  -- FSPLIT [11] (gran := 𐑚) (Sporulation diverges into distinct windborne and waterborne dispersal vectors) / FFUSE [14] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [12] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The T arm achieves successful anemochory and colonization of new niches)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [13] EVALF | chir := 𐑖 | evaluate-false — chirality check (The F arm enters spore dormancy and cryptobiosis under unfavorable conditions))
-    -- reconnect at FFUSE [14]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [14] FFUSE | stoi := 𐑙 (The spore bank germinates, reconstituting the reproductive population)
-  (.arrow 𐑳 𐑙 𐑡)  -- [15] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Hemibiotrophic transition holds simultaneous symbiosis and pathogenesis)
-  (.arrow 𐑡 𐑳 𐑭)  -- [16] TANCH | top := 𐑡 | terminal object — connectivity boundary (Nutrient cycling completes, anchoring the organism lifecycle to the ecosystem)
-  (.arrow 𐑭 𐑡 𐑼)  -- [17] IFIX | prot := 𐑭 | irreversible fixation — winding number (Mycoremediation permanently fixes environmental toxins into the geological re...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def ob3ect_sequence_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def ob3ect_sequence_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ob3ect_sequence_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def ob3ect_sequence_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def ob3ect_sequence_protocol : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct ob3ect_sequence_s7 ob3ect_sequence_s7 = ob3ect_sequence_s7 (idempotent)
+  (.seq (.arrow ob3ect_sequence_l0 ob3ect_sequence_s0 ob3ect_sequence_s1) (.seq (.arrow ob3ect_sequence_l1 ob3ect_sequence_s1 ob3ect_sequence_s2) (.seq (.prod (.arrow ob3ect_sequence_l2 ob3ect_sequence_s2 ob3ect_sequence_s7) (.arrow ob3ect_sequence_l2 ob3ect_sequence_s2 ob3ect_sequence_s7)) (.seq (.arrow ob3ect_sequence_l7 ob3ect_sequence_s7 ob3ect_sequence_s7) (.seq (.arrow ob3ect_sequence_l7 ob3ect_sequence_s7 ob3ect_sequence_s8) (.seq (.arrow ob3ect_sequence_l8 ob3ect_sequence_s8 ob3ect_sequence_s9) (.seq (.arrow ob3ect_sequence_l9 ob3ect_sequence_s9 ob3ect_sequence_s10) (.arrow ob3ect_sequence_l10 ob3ect_sequence_s10 ob3ect_sequence_s11))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def ob3ect_sequence_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def ob3ect_sequence_true_arm : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s11 :=
   (ob3ect_sequence_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def ob3ect_sequence_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def ob3ect_sequence_false_arm : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s11 :=
   (ob3ect_sequence_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem ob3ect_sequence_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+def ob3ect_sequence_tier : OuroboricityTier := TierFunctor.obj ob3ect_sequence_s0
+#eval ob3ect_sequence_tier  -- the Grammar's own verdict on its tier
 
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem ob3ect_sequence_frobenius :
+    igFrobeniusAlg.mul ob3ect_sequence_s0 ob3ect_sequence_s0 = ob3ect_sequence_s0 :=
+  igFrobAlg_self_fusion ob3ect_sequence_s0
