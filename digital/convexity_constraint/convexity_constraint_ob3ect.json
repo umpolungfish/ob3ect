@@ -1,0 +1,210 @@
+{
+  "name": "convexity_constraint",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "convexity_constraint",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "point_set",
+        "convex_combination",
+        "constraint_violation"
+      ],
+      "boundary_condition": "convex_hull",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty_set",
+        "justification": "Initial void state before any points exist",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "convex_hull",
+        "justification": "Closed boundary containing all convex combinations",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "convex_combination_operation",
+        "justification": "Forward transformation generating points within convex set",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "line_segment_validation",
+        "justification": "Reverse check for segments exiting convex set",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential_combination",
+        "justification": "Composition of multiple convex combinations",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "affine_identity",
+        "justification": "Self-referential point invariant under convex combination",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "convexity_verification_split",
+        "justification": "Splits set into convex and non-convex evaluation paths",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "result_reconstitution",
+        "justification": "Reconstitutes original set from evaluation branches",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "convex_set_confirmation",
+        "justification": "Affirmative branch where all segments satisfy convexity",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "violation_detection",
+        "justification": "Negative branch where at least one segment violates convexity",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "boundary_point",
+        "justification": "Points simultaneously satisfying and challenging convexity criteria",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "convexity_certificate",
+        "justification": "Permanent record of convexity verification outcome",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "convexity_verification_split",
+      "split_input": "point_set",
+      "split_outputs": [
+        "convex_evaluation_path",
+        "nonconvex_evaluation_path"
+      ],
+      "fuse_element": "result_reconstitution",
+      "fuse_result": "point_set",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Empty set before point initialization",
+      "true_description": "Set where all segments between points lie entirely within the set",
+      "false_description": "Set containing at least one segment between points that exits the set",
+      "both_description": "Set with points ambiguously satisfying convexity under different decompositions",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize empty point set"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Add point A to set"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Add point B to set"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Add point C to set"
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "Form convex combination of points A and B"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "Duplicate set for convexity verification"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "Forward convexity check in T-branch"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALT",
+          "domain_action": "Confirm convexity if all segments valid"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AREV",
+          "domain_action": "Reverse violation check in F-branch"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALF",
+          "domain_action": "Detect convexity violation if segments exit set"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine evaluation results into original set"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Record convexity status in permanent certificate"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "Establish convex hull as system boundary"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "convex_optimization_compiler",
+      "ipc_mechanism": "coordinate_broadcast",
+      "memory_mechanism": "affine_combination_store",
+      "scheduler_mechanism": "linear_sequence_scheduler",
+      "alfs_store": "convex_analysis_definition",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "computation_cycles",
+      "pre_cycle_state": "unverified_point_set",
+      "post_cycle_state": "convexity_certified_set",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 Set preservation maintains information conservation",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: convexity_constraint\n-- Fingerprint: sig=(8,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=13\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(5, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def convexity_constraint_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def convexity_constraint_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def convexity_constraint_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def convexity_constraint_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def convexity_constraint_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def convexity_constraint_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def convexity_constraint_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def convexity_constraint_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def convexity_constraint_protocol : IGProtocol convexity_constraint_s0 convexity_constraint_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct convexity_constraint_s10 convexity_constraint_s10 = convexity_constraint_s10 (idempotent)\n  (.seq (.arrow convexity_constraint_l0 convexity_constraint_s0 convexity_constraint_s1) (.seq (.arrow convexity_constraint_l1 convexity_constraint_s1 convexity_constraint_s2) (.seq (.arrow convexity_constraint_l2 convexity_constraint_s2 convexity_constraint_s3) (.seq (.arrow convexity_constraint_l3 convexity_constraint_s3 convexity_constraint_s4) (.seq (.arrow convexity_constraint_l4 convexity_constraint_s4 convexity_constraint_s5) (.seq (.prod (.arrow convexity_constraint_l5 convexity_constraint_s5 convexity_constraint_s10) (.arrow convexity_constraint_l5 convexity_constraint_s5 convexity_constraint_s10)) (.seq (.arrow convexity_constraint_l10 convexity_constraint_s10 convexity_constraint_s10) (.seq (.arrow convexity_constraint_l10 convexity_constraint_s10 convexity_constraint_s11) (.arrow convexity_constraint_l11 convexity_constraint_s11 convexity_constraint_s12)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def convexity_constraint_true_arm : IGProtocol convexity_constraint_s0 convexity_constraint_s12 :=\n  (convexity_constraint_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def convexity_constraint_false_arm : IGProtocol convexity_constraint_s0 convexity_constraint_s12 :=\n  (convexity_constraint_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef convexity_constraint_tier : OuroboricityTier := TierFunctor.obj convexity_constraint_s0\n#eval convexity_constraint_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem convexity_constraint_frobenius :\n    igFrobeniusAlg.mul convexity_constraint_s0 convexity_constraint_s0 = convexity_constraint_s0 :=\n  igFrobAlg_self_fusion convexity_constraint_s0\n",
+  "notes": "Auto-designed from: convexity_constraint"
+}

@@ -1,0 +1,215 @@
+{
+  "name": "H3_geometry",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "H3_geometry",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "point",
+        "geodesic",
+        "isometry"
+      ],
+      "boundary_condition": "Sphere at infinity compactifying H3 space",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Empty hyperbolic space",
+        "justification": "Initial void before any points or structures exist",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Ideal boundary sphere",
+        "justification": "Closed boundary containing all H3 points and geodesics",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Exponential map",
+        "justification": "Forward propagation along a geodesic from a point",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Inverse exponential map",
+        "justification": "Reverse projection to tangent space from a displaced point",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Isometry composition",
+        "justification": "Chaining transformations to form new isometries",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Fixed point of isometry",
+        "justification": "Self-reference under symmetry transformation",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Tangent space partition",
+        "justification": "Splits tangent vectors into geodesic-aligned (T) and non-aligned (F) subsets",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Tangent space union",
+        "justification": "Reconstitutes full tangent space from geodesic and non-geodesic subsets",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Length-minimizing geodesic",
+        "justification": "Affirms path satisfies geodesic equation",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Non-minimizing path",
+        "justification": "Negates path satisfying geodesic equation",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Horosphere",
+        "justification": "Surface equidistant to boundary point, simultaneously finite and ideal",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Ideal boundary point",
+        "justification": "Permanent record on conformal boundary",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Tangent space at point P",
+      "split_input": "Set of all tangent vectors at P",
+      "split_outputs": [
+        "Geodesic-aligned vectors",
+        "Non-geodesic-aligned vectors"
+      ],
+      "fuse_element": "Vector set union",
+      "fuse_result": "Complete tangent space at P",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "H3 space without metric, points, or isometries",
+      "true_description": "Valid geodesic segment minimizing path length",
+      "false_description": "Path violating geodesic equation with non-minimal length",
+      "both_description": "Horosphere exhibiting both bounded curvature and ideal boundary properties",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize empty H3 manifold"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Place base point P via exponential map"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Partition tangent space at P into geodesic-aligned (T) and non-aligned (F) vectors"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Propagate from P along geodesic-aligned vector to point Q (T-arm)"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Verify PQ path minimizes length (T-arm)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "Propagate from P along non-geodesic vector to point R (F-arm)"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Confirm PR path fails length minimization (F-arm)"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "Project R back to tangent space at P via inverse exponential map (F-arm)"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Reunite geodesic and non-geodesic vector subsets into full tangent space"
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "Compose translation and rotation isometries"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify point fixed under composed isometry"
+        },
+        {
+          "step_num": 12,
+          "opcode": "ENGAGR",
+          "domain_action": "Generate horosphere tangent to ideal boundary"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "Anchor entire system to sphere at infinity"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "Record ideal boundary point permanently"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Axioms of hyperbolic geometry and curvature constraints",
+      "ipc_mechanism": "Geodesic flow and parallel transport along paths",
+      "memory_mechanism": "Levi-Civita connection storing metric and parallel translation data",
+      "scheduler_mechanism": "Isometry group action determining point transformations",
+      "alfs_store": "Constant negative curvature invariant defining H3",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Path length functional energy",
+      "pre_cycle_state": "Initial point and tangent vector configuration",
+      "post_cycle_state": "Endpoint and path curvature state",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 Isometries preserve metric and path reversibility maintains energy conservation",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 ENGAGR \u2192 TANCH \u2192 IFIX\n-- Class: H3_geometry\n-- Fingerprint: sig=(8,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [10] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [11] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc61  | engage paradox \u2014 B-state, both arms\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc73 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def h3_geometry_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def h3_geometry_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def h3_geometry_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def h3_geometry_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def h3_geometry_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def h3_geometry_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def h3_geometry_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def h3_geometry_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def h3_geometry_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def h3_geometry_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def h3_geometry_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def h3_geometry_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def h3_geometry_protocol : IGProtocol h3_geometry_s0 h3_geometry_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct h3_geometry_s8 h3_geometry_s8 = h3_geometry_s8 (idempotent)\n  (.seq (.arrow h3_geometry_l0 h3_geometry_s0 h3_geometry_s1) (.seq (.arrow h3_geometry_l1 h3_geometry_s1 h3_geometry_s2) (.seq (.prod (.arrow h3_geometry_l2 h3_geometry_s2 h3_geometry_s8) (.arrow h3_geometry_l2 h3_geometry_s2 h3_geometry_s8)) (.seq (.arrow h3_geometry_l8 h3_geometry_s8 h3_geometry_s8) (.seq (.arrow h3_geometry_l8 h3_geometry_s8 h3_geometry_s9) (.seq (.arrow h3_geometry_l9 h3_geometry_s9 h3_geometry_s10) (.seq (.arrow h3_geometry_l10 h3_geometry_s10 h3_geometry_s11) (.seq (.arrow h3_geometry_l11 h3_geometry_s11 h3_geometry_s12) (.arrow h3_geometry_l12 h3_geometry_s12 h3_geometry_s13)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def h3_geometry_true_arm : IGProtocol h3_geometry_s0 h3_geometry_s13 :=\n  (h3_geometry_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def h3_geometry_false_arm : IGProtocol h3_geometry_s0 h3_geometry_s13 :=\n  (h3_geometry_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef h3_geometry_tier : OuroboricityTier := TierFunctor.obj h3_geometry_s0\n#eval h3_geometry_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem h3_geometry_frobenius :\n    igFrobeniusAlg.mul h3_geometry_s0 h3_geometry_s0 = h3_geometry_s0 :=\n  igFrobAlg_self_fusion h3_geometry_s0\n",
+  "notes": "Auto-designed from: H3_geometry"
+}

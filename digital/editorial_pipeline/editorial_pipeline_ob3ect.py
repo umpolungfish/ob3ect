@@ -79,7 +79,7 @@ class Spinner:
 
 _OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 _DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
-_DEFAULT_OPENROUTER_MODEL = "deepseek/deepseek-r1"
+_DEFAULT_OPENROUTER_MODEL = "deepseek/deepseek-chat"
 _DEFAULT_DEEPSEEK_MODEL = "deepseek-v4-pro"
 
 _TIMEOUT = 120  # seconds per provider call
