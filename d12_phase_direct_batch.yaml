@@ -1,0 +1,42 @@
+# ob3ect batch — REMAKE of the phase-section ob3ects after the phase-degree-26 gate.
+# What changed (see FINDINGS cont.2, phase_floor_test.txt, coord_floor_test.txt):
+#  - "phase degree 26" was a GHOST (shallow point on the pre-floor creep). Genuine
+#    gated degrees: z1 phase = 32 (floors, 32|288, IN K288); z5 phase = 64 (floors at
+#    64, 64 does NOT divide 288, OUT of K288); z0 phase = 1 (z0 real).
+#  - Therefore the POLAR magnitude x phase split is NOT field-closed: it exits K288 for
+#    some coordinates. The old ob3ects #1 (magnitude skeleton) and #2 (phase in the
+#    tower) rest on a false premise and are superseded here.
+#  - z1 COORDINATE creeps past degree 72 with no floor => direct algdep is precision-
+#    walled at 1500 digits; we do not yet know if the coordinates divide 288.
+# These remade ob3ects adopt the DIRECT-BUILD frame (z_k as one field element, not
+# magnitude times phase), add the foundational field-determination step, and name the
+# magnitude square-class as the real obstruction. Gate = the deep-vanish floor test.
+# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f d12_phase_direct_batch.yaml
+
+name: d12-phase-direct
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /tmp/claude-1000/-home-mrnob0dy666-imsgct/9040af52-0d7d-4919-a932-9b12ac46a727/scratchpad/d12_phase_ctx
+
+entities:
+  # ── build z_k directly; the polar split is not field-closed (SUPERSEDES old #1,#2) ──
+  - "each coordinate z_k becomes a single algebraic element built and expressed directly in the degree-288 ray class field basis rather than as a real magnitude times a unit phase, because the polar factorization is not closed inside the field: the phase u_5 has gated degree 64 which does not divide 288 and so exits the coordinate field, while u_1 has degree 32 which divides it, so magnitude-times-phase is not a valid decomposition of a field element"
+
+  # ── the foundational unknown: are the coordinates even in K288? floor after re-refine ──
+  - "the true minimal-polynomial degree of each coordinate z_k becomes settled by re-refining the fiducial far beyond 1500 digits so the deep-vanish floor test can separate a genuine degree, which jumps to full precision and then plateaus, from the monotonic creep that currently walls direct algebraic-dependence past degree 72, answering the foundational question of whether the coordinates divide 288 and live in the ray class field or in a larger magnitude-extended field"
+
+  # ── the magnitude square-class is the real obstruction behind the z1/z5 asymmetry ──
+  - "the square-class of each modulus becomes the invariant that governs whether the polar form stays in the field: N_k = |z_k|^2 lies in the degree-16 field K16, and its class in the square-class group of the degree-288 field is trivial for k=1 so |z_1| and u_1 remain inside at degree 32, but non-trivial for k=5 so |z_5| and u_5 leave the field at degree 64, making the twelve modulus square-classes the true obstruction to any uniform in-field polar coordinate"
+
+  # ── the crux z1,z5 via the fusion group, now precision-walled AND polar-broken ──
+  - "the crux coordinates z_1 and z_5, whose direct algebraic-dependence creeps without flooring at 1500 digits and whose polar phases are not field-closed, become recovered as a finite abelian character sum over the ray-class fusion group [6,6,2,2] acting by modular S and T data through the isomorphism that SIC-Galois-tensor equals the WZW model equals the affine-Kac-Moody structure, since both brute algebraic-dependence and the polar route are now ruled out"
+
+  # ── the standing filter: only the floor test admits a degree or an exact expression ──
+  - "the deep-vanish floor test becomes the standing admission gate for the whole section, admitting a candidate degree or exact coordinate only when its integer polynomial jumps to full precision and plateaus rather than creeping, because the artifact degrees 26 and 48 and 68 and 139 each passed the weaker identity-across-precision and dividing-degree checks and were rejected only by the floor"
