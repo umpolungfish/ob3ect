@@ -1,0 +1,45 @@
+# ob3ect batch — the PHASE + full-coordinate section, staged AFTER the moduli were
+# resolved. State change since d12_nfinit_section.yaml: the moduli problem is CLOSED.
+# The 12 squared moduli |z_k|^2 are exact in the degree-16 real field K16 = Q[g]/(g^16
+# -10g^14+40g^12-90g^10+126g^8-96g^6+25g^4+2g^2+1) with 15-bit denominators, and the SIC
+# normalization sum_k |z_k|^2 = 1 is a proven exact identity (K16_exact_moduli.txt). K16
+# is the maximal-real subfield of the degree-32 conductor-12 ray class field; the earlier
+# "deg-32 moduli field" was the conflation with its i-bearing complex form. So ONLY the
+# phases remain, and they live where K16 does not reach: the i-piece and the two cubic
+# pieces of the FSPLIT tower (FSPLIT_tower_6pieces.txt). The z1/z5 crux, where direct
+# algebraic-dependence returns artifact degrees, routes through the ray-class fusion group
+# [6,6,2,2], exploiting the banked SIC-Galois-tensor == WZW == affine-Kac-Moody isomorph.
+# In hand: certify.gp gate, the exact K16 moduli, the 6-piece deg-288 tower, the flat
+# SIC_D12_NumberField Lean engine (reduces theta^288 under native_decide).
+# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f d12_phase_section.yaml
+
+name: d12-phase-section
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /tmp/claude-1000/-home-mrnob0dy666-imsgct/9040af52-0d7d-4919-a932-9b12ac46a727/scratchpad/d12_phase_ctx
+
+entities:
+  # ── the real skeleton is fixed: magnitudes are the positive roots of the K16 moduli ──
+  - "each real magnitude |z_k| becomes the positive square root of the already-exact degree-16 modulus |z_k|^2 in K16, so the twelve magnitudes and the proven exact identity sum_k |z_k|^2 = 1 form a fixed real skeleton in the maximal totally-real subfield of the degree-288 ray class field, on which only the twelve phases remain unknown"
+
+  # ── the phase is confined to the layers the real field does not touch ──
+  - "each unit phase u_k = z_k divided by |z_k| becomes an element of the full degree-288 ray class field lying on the unit circle, factored strictly through the FSPLIT tower layers that K16 does not reach, the i-piece x^2+1 and the two cubic pieces x^3-3x-1 and the SIC-specific cubic, so the phase search is confined to the cyclotomic and cubic layers and never re-touches the settled real moduli field"
+
+  # ── the crux z1,z5 as a fusion-group orbit, not brute algebraic dependence ──
+  - "the crux phases u_1 and u_5, where direct algebraic-dependence recovery returns only artifact degrees, become recovered as an orbit of the ray-class fusion group [6,6,2,2] acting by modular S and T data through the established structural isomorphism SIC-Galois-tensor equals WZW model equals affine-Kac-Moody, so each crux phase is read from a finite abelian character sum rather than from an unstable least-dependence"
+
+  # ── reassemble magnitude times phase into one flat exact coordinate ──
+  - "each full coordinate z_k equal to |z_k| times u_k becomes a single length-288 rational coefficient vector in the flat SIC_D12_NumberField engine, fusing the real magnitude drawn from K16 with the phase drawn from the cyclotomic and cubic layers into one exact element that the native_decide arithmetic reduces without elaboration overflow"
+
+  # ── the gate-verified reproduction that makes exact and numeric fiducials one object ──
+  - "the twelve reassembled exact coordinates become certified as the true fiducial when each, re-evaluated at the distinguished complex embedding of the degree-288 field, reproduces the 1500-digit numeric witness to full precision and passes the certification gate, collapsing the exact algebraic fiducial and the numeric fiducial into a single object"
+
+  # ── the final obligation: 143 overlaps by native_decide, discharging the axiom ──
+  - "the 143 Weyl-Heisenberg overlap identities, each asserting the squared overlap of two orbit vectors equals one over thirteen, become closed by native_decide over the twelve flat exact coordinates, discharging crystal_forces_d12_sic from axiom to theorem now that magnitudes are exact in K16 and phases are exact in the cyclotomic-cubic layers"
