@@ -23,6 +23,32 @@ class RegisterState(Enum):
 
 BOOTSTRAP_STEPS = {1:"IMSCRIB",2:"AREV",3:"FSPLIT",4:"AFWD",5:"FFUSE",6:"CLINK",7:"IFIX",8:"IMSCRIB"}
 OS_FLOOR = {"D":1,"T":3,"R":2,"P":4,"F":2,"K":1,"G":2,"Gamma":2,"Phi":1,"H":2,"S":2,"Omega":2}
+
+# --- T/F lane display -------------------------------------------------------
+# Each operation is shown in the lane where it commits, so the reader sees at a
+# glance where in the T/F register an op takes place:
+#   TRUE  = commits a true polarity   (EVALT evaluate-true, AFWD advance-forward)
+#   FALSE = commits a false polarity  (EVALF evaluate-false, AREV advance-reverse)
+#   BOTH  = acts on the shared register (structural + dialetheia: everything else)
+LANES = ("TRUE", "BOTH", "FALSE")
+
+def opcode_lane(opcode: str) -> str:
+    if opcode in ("EVALT", "AFWD"): return "TRUE"
+    if opcode in ("EVALF", "AREV"): return "FALSE"
+    return "BOTH"
+
+def render_lane_columns(steps, colw: int = 22) -> List[str]:
+    """Render a bootstrap sequence as 3 lane-columns, one row per step, sequence
+    order preserved top-to-bottom; each step appears only in its own lane."""
+    out = []
+    out.append("  " + " | ".join(l.center(colw) for l in LANES))
+    out.append("  " + "-"*colw + "-+-" + "-"*colw + "-+-" + "-"*colw)
+    for s in steps:
+        lane = opcode_lane(s.get("opcode", ""))
+        txt = ("%s %s %s" % (s.get("step_num",""), s.get("opcode",""),
+                             s.get("domain_action","")))[:colw].ljust(colw)
+        out.append("  " + " | ".join(txt if l == lane else " "*colw for l in LANES))
+    return out
 @dataclass
 class DomainCharter:
     domain_name: str; domain_type: str; scope: str
@@ -155,9 +181,8 @@ class Ob3ectArtifact:
         parts.append("  10: "+a.register_mapping.false_description)
         parts.append("  11: "+a.register_mapping.both_description)
         parts.append("")
-        parts.append("Phase 4: Bootstrap")
-        for s in a.bootstrap_sequence.steps:
-            parts.append("  Step %d: %s - %s" % (s["step_num"],s["opcode"],s["domain_action"]))
+        parts.append("Phase 4: Bootstrap  (lanes: where each operation commits)")
+        parts.extend(render_lane_columns(a.bootstrap_sequence.steps))
         parts.append("  Closure: "+str(a.bootstrap_sequence.closure_verified))
         parts.append("")
         parts.append("Phase 5: exOS")

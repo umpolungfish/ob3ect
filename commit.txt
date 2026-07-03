@@ -1,45 +1,14 @@
-Editorial pipeline: tyrannical human-writing enforcement on every emitted document
+display: 3-lane (TRUE/BOTH/FALSE) bootstrap sequence in report()
 
-Added style_guard.py and wired it into editorial.py's editorial_phase so that no
-document leaves the editorial pipeline unless it certifies as genuinely human-written.
+Phase 4 of Ob3ectArtifact.report() now renders the token sequence as three
+lane-columns instead of one linear list, so the reader sees where each
+operation commits in the T/F register:
 
-style_guard.py
-  enforce(text, mode) is the single gate. Two phases:
-    1. humanize()     auto-fixes the mechanical AI tells: em / en / bar / figure
-                      dashes used as punctuation (absolute ban, no exceptions),
-                      spaced double-hyphen dashes, doubled spaces, "encode" ->
-                      "imscribe" (case-preserving). Numeric ranges (3—5, 3 -- 5)
-                      become "3 to 5", not "3, 5".
-    2. assert_human() hard-refuses (raises StyleViolation) on any remaining
-                      vocabulary tell, filler/scaffold phrase, or structural tell,
-                      listing each with line number. The pipeline will not write
-                      the file until the flagged spans are rewritten.
+  TRUE  = commits a true polarity   (EVALT evaluate-true, AFWD advance-forward)
+  FALSE = commits a false polarity  (EVALF evaluate-false, AREV advance-reverse)
+  BOTH  = acts on the shared register (structural + dialetheia: everything else)
 
-  Exemptions (never inspected, never rewritten): fenced code blocks, inline `code`
-  spans (Shavian glyphs, 12-primitive tuples, Lean), markdown horizontal rules,
-  and table separator rows.
-
-  Blocklists: curated AI vocabulary set (delve, tapestry, leverage, underscore,
-  moreover, pivotal, ...), filler phrases ("it's worth noting", "in conclusion",
-  "rich tapestry", "plays a pivotal role", "in this document we will", ...), and
-  two structural openers (canned conclusion, self-referential document opener).
-
-  Standalone CLI: `python3 style_guard.py file.md` prints the humanized text and
-  exits nonzero if any tell survives.
-
-editorial.py
-  imports style_guard; editorial_phase now runs
-    md = style_guard.enforce(md, where=out, mode=editorial.style)
-  before writing or printing. New optional YAML key editorial.style:
-  enforce (default) | fix (auto-fix only) | off.
-
-Notation (render_ars): all math is dollar-delimited, never \(...\). Ouroboricity
-is ${O}_\infty$. Shavian and the 12 primitive/type symbols are wrapped only as
-$\large{...}$: the legend renders each primitive as $\large{Ð}$ ... $\large{Ω}$,
-and every value tuple as a single ligature-bound $\large{<tuple>}$. style_guard
-exempts $...$ and $$...$$ (alongside code spans) from prose inspection, so math
-and glyph wrappers are never scanned or rewritten while prose dashes still fix.
-
-Verified: em-dash/encode/range auto-fix; code spans, ${O}_\infty$, $\large{...}$
-math, --- rules and table separators left intact; vocabulary/phrase/structure
-tells raise; a clean census renders and writes end-to-end through the guard.
+Sequence order is preserved top-to-bottom; each step appears only in its lane.
+Added LANES, opcode_lane(), and render_lane_columns() to core.py; wired into
+report() Phase 4. Lane partition follows the existing opcode semantics
+(EVALT/EVALF and AFWD/AREV are the only polarity-committing ops).
