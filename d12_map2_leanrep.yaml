@@ -1,0 +1,39 @@
+# ob3ect territory-map 2/4 — the LEAN FORMALIZATION region.
+# From exact field data to a native_decide discharge of crystal_forces_d12_sic.
+# In hand (GREEN): SIC_D12_NumberField flat List-of-Q engine reduces theta^288;
+# SIC_D12_SymmetricModuli enters |z0|^2,|z6|^2 in Q(sqrt2,sqrt13) and verifies
+# conjugacy/sum/product. Dead end: nested-record tower overflows the elaborator at
+# the cubic layer (use the FLAT rep). Target IsSICPOVM 12: norm_eq (wh_normSq=12)
+# and equiangular (143 overlaps of modulus 1).
+# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f d12_map2_leanrep.yaml
+
+name: d12-map-leanrep
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /tmp/claude-1000/-home-mrnob0dy666-imsgct/2df909c9-a04e-4a42-8433-903523348079/scratchpad/d12_ctx
+
+entities:
+  # ── scale the proven flat engine from the deg-4 pilot to deg-288 ──────────
+  - "the flat degree-4 Q(sqrt2,sqrt13) engine that already verifies the symmetric moduli becomes the flat degree-288 List-of-rationals engine carrying all twelve coordinates, reusing the same reduceFuel/mulNF reduction that already closes theta^288 by native_decide"
+
+  # ── the norm half ─────────────────────────────────────────────────────────
+  - "the norm condition wh_normSq 12 psi = 12 becomes a single native_decide equality in the flat degree-288 engine, obtained by summing the twelve exact squared-modulus field elements and reducing, replacing the 1500-digit numeric certificate that the sum is 1"
+
+  # ── the WH operators as computable maps ───────────────────────────────────
+  - "the Weyl-Heisenberg displacement operators become computable permutations-with-phase on the twelve flat coordinates using the twelfth root of unity as an exact field element, so each displaced fiducial is again a length-288 coefficient vector"
+
+  # ── the equiangularity half: 143 identities ──────────────────────────────
+  - "the 143 Weyl-Heisenberg overlap identities become 143 native_decide equalities that each overlap times its conjugate reduces to one over thirteen in the flat degree-288 engine, batched so each identity is a seconds-scale reduction"
+
+  # ── the capstone transfer that discharges the axiom ───────────────────────
+  - "crystal_forces_d12_sic drops from axiom to theorem by transporting the flat-engine norm and equiangularity along the evaluation ring homomorphism from the abstract field into the complex numbers, sending theta to its real embedding and the internal root of unity to exp(2 pi i over 12)"
+
+  # ── the elaboration-cost guard (avoid the nested-record trap) ─────────────
+  - "the representation choice becomes a proof obligation that the encoding elaborates without stack overflow AND native_decides within the memory budget, certified by the flat-type invariant that killed the nested-record tower at the cubic layer"

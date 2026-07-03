@@ -1,0 +1,36 @@
+# ob3ect territory-map 1/4 — the COMPUTATIONAL ALGEBRAIC NUMBER THEORY region.
+# Where the exact d=12 SIC data actually lives and how to pull it robustly.
+# Correct field (do not regress): base F_12 = Q(sqrt13); coordinate field = ray
+# class field of Q(sqrt13), conductor 3d=36, degree 288, ray class group [6,6,2,2].
+# Live lesson: naive algdep/lindep manufactures GHOST relations (deg 26,48,68,139,
+# a spurious deg-8 modulus compositum). Exactness must come from field machinery
+# (nfinit integral basis, bnrclassfield tower), not integer-relation guessing.
+# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f d12_map1_numbertheory.yaml
+
+name: d12-map-numbertheory
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /tmp/claude-1000/-home-mrnob0dy666-imsgct/2df909c9-a04e-4a42-8433-903523348079/scratchpad/d12_ctx
+
+entities:
+  # ── the integral-basis handle on the whole field ──────────────────────────
+  - "the degree-288 ray class field of Q(sqrt13) becomes a PARI nfinit object with a reduced integral basis, so every fiducial coordinate and modulus is expressed as exact integer coordinates in that basis instead of an ill-conditioned power-basis lindep"
+
+  # ── the non-symmetric moduli, done right ──────────────────────────────────
+  - "the eight non-symmetric moduli including z3 and z9, which naive lindep places falsely in Q(sqrt2,sqrt13) with 800-bit denominators, become exact elements of their true octic subfield of the ray class field via nfalgtobasis relative to the integral basis"
+
+  # ── the Galois action that relates the twelve coordinates ─────────────────
+  - "the twelve fiducial coordinates become a single Galois orbit under the ray class group [6,6,2,2] acting through the Zauner order-3 automorphism, so the high-degree coordinates z1 and z5 are computed as explicit Galois images of the low-degree ones rather than by direct integer relation"
+
+  # ── conductor / tower structure as the scaffolding ────────────────────────
+  - "the conductor-36 ray class field becomes its explicit six-piece bnrclassfield tower (i, three surds over Q(sqrt13), the zeta9 cubic, the SIC cubic) with the coordinate heights read off per layer, so the feasible layers are separated from the one hard SIC cubic"
+
+  # ── the precision budget as a first-class object ──────────────────────────
+  - "the numerical precision required to certify any exact relation becomes a computed budget equal to the field degree times the coefficient height in bits, turning artifact-versus-genuine into a decidable precision threshold rather than a guess"

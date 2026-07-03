@@ -1,0 +1,43 @@
+# ob3ect batch — d=12 axiom-drop, CORRECT-FIELD routing (supersedes the stale
+# d12_build/d12_axiom_drop/d12_build3 batches, which targeted Q(sqrt120)/Q(sqrt30)/
+# Q(sqrt26) — all refuted by the 1500-digit fiducial). Current truth:
+#   base field F_12 = Q(sqrt13); coordinate field = ray class field of Q(sqrt13),
+#   conductor 3d=36, degree 288, ray class group [6,6,2,2]. The flat List-of-Q
+#   deg-288 engine (SIC_D12_NumberField) already reduces theta^288 by native_decide;
+#   the nested-record tower is abandoned (elaboration overflow). Clean coord degrees
+#   over the deg-288 field: z0=8, z2=z3=32, z4=16, z6=8. z1, z5 come back 68 and 139
+#   from direct algdep = low-precision ARTIFACTS (neither divides 288); their true
+#   expression needs Galois-conjugate re-expression, not brute algdep. That is the
+#   live ENGAGR tension.
+# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f d12_discharge_v2_batch.yaml
+
+name: d12-discharge-v2
+out_dir: digital
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /tmp/claude-1000/-home-mrnob0dy666-imsgct/2df909c9-a04e-4a42-8433-903523348079/scratchpad/d12_ctx
+
+entities:
+  # ── ENGAGR crux: nail the two artifact-degree coordinates exactly ──────────
+  - "the two d=12 SIC fiducial coordinates z1 and z5, whose direct algdep degrees 68 and 139 are low-precision artifacts because neither divides 288, become exact elements of the degree-288 ray class field of Q(sqrt13) by re-expressing them as Galois conjugates of the low-degree coordinates rather than by brute-force integer relation, resolving the buildable-but-infeasible tension"
+
+  # ── Enter all 12 coordinates in the flat deg-288 engine ───────────────────
+  - "the twelve d=12 fiducial coordinates become explicit length-288 rational coefficient vectors in the flat computable number field Q[theta]/(m) of SIC_D12_NumberField, each verified against the 1500-digit numeric fiducial by evaluating theta at its real embedding"
+
+  # ── Weyl-Heisenberg displacement operators over the flat field ────────────
+  - "the Weyl-Heisenberg displacement operators D(a,b) acting on the d=12 fiducial become computable maps on length-288 coefficient vectors using the twelfth root of unity that lives inside the ray class field, so every displaced fiducial is again an exact field element"
+
+  # ── The 143 Gram overlap identities as native_decide ──────────────────────
+  - "the 143 Weyl-Heisenberg overlaps of the exact d=12 fiducial become 143 native_decide equalities that each overlap times its complex conjugate equals one over thirteen in the flat degree-288 field, replacing 143 floating-point modulus checks"
+
+  # ── The norm half of IsSICPOVM ────────────────────────────────────────────
+  - "the norm condition that the exact d=12 fiducial has squared length twelve becomes a single native_decide equality in the flat degree-288 field arithmetic rather than a floating-point sum"
+
+  # ── Capstone: axiom -> theorem via the ring homomorphism to C ─────────────
+  - "crystal_forces_d12_sic drops from axiom to theorem by transporting the flat-field norm and equiangularity along the ring homomorphism sending theta to its real embedding and the internal root of unity to exp(2 pi i over 12), yielding an unconditional IsSICPOVM 12 witness in the complex numbers"
