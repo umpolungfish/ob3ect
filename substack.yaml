@@ -1,0 +1,46 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Ars batch skeleton — copy, fill, run. Two independent pipelines read this file;
+# neither concerns the other. Every CLI flag of each pipeline is a YAML key here.
+#
+#   p3 auto.py -f <this>.yaml          # imscribe pipeline (design every entity; LLM)
+#   p3 editorial.py <this>.yaml        # editorial pipeline (assemble census; catalog only)
+#
+# RIGOR: editorial reads tuples from the IG catalog (machine-sourced); it never
+# hand-imscribes. Uncatalogued entities are pending, not guessed.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name:            # batch id, e.g. ars_something
+out_dir: digital # imscribe pipeline: where ob3ect JSONs / scaffolds / diagrams are written
+
+# ── entities (both pipelines read these) ─────────────────────────────────────
+entities:
+  # - "an entity to imscribe"      # free-text -> imscribe pipeline; pending in census
+  # - existing_catalog_name        # already-catalogued -> appears in census with its tuple
+entities_from:
+  file:            # path to a file of entities, one per line (# comments allowed)
+  catalog_filter:  # substring; pulls catalog names/descriptions that match
+
+# ── imscribe pipeline: every auto.py flag ────────────────────────────────────
+# (p3 auto.py -f <yaml>).  Each key below maps 1:1 to an auto.py CLI flag.
+design:
+  domain:          # --domain    domain hint (mathematical | musical | linguistic | astrological | biological | ...)
+  scope: local     # --scope     local | mesoscale | maximal
+  provider:        # --provider  null = default chain (local -> qwen -> deepseek); or openrouter | deepseek | local
+  model:           # --model     model id for the provider (e.g. deepseek-chat, qwen3-235b-a22b)
+  temperature: 0.0 # --temp      sampling temperature
+  retries: infinite # --retries  inf = retry until success (or an integer)
+  thinking: false  # --thinking  enable <thinking> tokens in the local Qwen model
+  context:         # --context   file or dir of domain docs to include as context (.md/.txt/.lean/.py/.tex/.json)
+  entry:           # --entry     comma-separated catalog entry names to inject as context (e.g. yhwh,proton)
+  no_scaffold: false # --no-scaffold  do not write the per-entity Lean scaffold (.lean)
+  no_diagram: false  # --no-diagram   do not write the per-entity wiring diagram (.svg)
+  # --zoom-to / --zoom-levels are the single-seed ZOOM operation of auto.py,
+  # not a batch-list concept; run those directly: p3 auto.py "seed" --zoom-to "target" --zoom-levels N
+
+# ── editorial pipeline: every editorial.py flag ──────────────────────────────
+# (p3 editorial.py <yaml>).  Only editorial.py's --output has a CLI form (-o/--output),
+# which overrides editorial.output below.
+editorial:
+  ars_title:       # e.g. "Ars Something"
+  subtitle:        # e.g. "A Structural Grammar of ..."
+  output:          # -o/--output   e.g. ../Ars_Something/Ars_Something_CENSUS.md (omit to print to stdout)

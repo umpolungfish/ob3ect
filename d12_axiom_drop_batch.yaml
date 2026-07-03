@@ -1,0 +1,38 @@
+# ob3ect batch — d=12 axiom-drop: discharge crystal_forces_d12_sic
+# Run:  cd ~/imsgct/ob3ect && p3 auto.py -f d12_axiom_drop_batch.yaml
+#
+# Target: Imscribing.Millennium.SIC_POVM_Functor.crystal_forces_d12_sic
+#   axiom : ∃ ψ : Fin 12 → ℂ, IsSICPOVM 12 ψ
+# It is the last non-shadow axiom in the SIC tree. The known witness is only a
+# complex128 FLOAT certificate (frame potential 143/169, all 143 overlaps 1/√13);
+# discharging the axiom needs an EXACT fiducial with machine-checkable norm and
+# equiangularity. These charters decompose that: construct → norm → equiangular →
+# make it decidable → capstone. Context = the SIC Lean files + the numeric note.
+
+name: d12-axiom-drop
+out_dir: digital
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: inf
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/dumpdir_d12
+
+entities:
+  # ── Construct the exact fiducial (drag it from the algebraic universe) ─────
+  - "the d=12 SIC fiducial known only as a complex128 float certificate becomes an explicit vector with exact algebraic coordinates over the d=12 Zauner ray class field of Q(sqrt(120)), replacing the numeric approximation"
+
+  # ── The norm half of IsSICPOVM ────────────────────────────────────────────
+  - "the norm condition wh_normSq 12 psi = 12 for the exact d=12 fiducial becomes a machine-checkable equality in exact arithmetic over the number field, not floating point"
+
+  # ── The equiangularity half of IsSICPOVM ──────────────────────────────────
+  - "the 143 Weyl-Heisenberg overlaps of the exact d=12 fiducial, each of modulus 1/sqrt(13), become a single exact equiangularity identity over the Zauner number field rather than 143 float comparisons"
+
+  # ── Make the transcendental check decidable ───────────────────────────────
+  - "the transcendental complex equiangularity check for the d=12 fiducial becomes a decidable finite computation by representing coordinates in a cyclotomic ring where every Gram entry is an exact algebraic integer amenable to native_decide"
+
+  # ── The capstone: axiom -> theorem ────────────────────────────────────────
+  - "crystal_forces_d12_sic drops from axiom to theorem once the exact fiducial, its wh_normSq equals 12, and its equiangularity are all machine-checked, giving an unconditional IsSICPOVM 12 witness"

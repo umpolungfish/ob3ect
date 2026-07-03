@@ -1,0 +1,39 @@
+# ob3ect batch — d=12 axiom-drop, the REAL computable-cyclotomic build
+# Run:  cd ~/imsgct/ob3ect && p3 auto.py -f d12_build_batch.yaml
+#
+# Committing to option 2: discharge crystal_forces_d12_sic for real. Mathlib's
+# CyclotomicField is non-computable, so we build a computable ℚ[X]/Φ_n surrogate,
+# enter the exact d=12 fiducial, prove the 143 Gram identities IN the ring by
+# native_decide, then transfer along the ring→ℂ embedding. Each charter is one
+# framework piece. Context = SIC Lean files + computable_cyclotomic_plan.txt.
+
+name: d12-build
+out_dir: digital
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: inf
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/dumpdir_d12
+
+entities:
+  # ── 1. The computable cyclotomic ring (the piece Mathlib lacks) ────────────
+  - "the abstract non-computable Mathlib CyclotomicField becomes a computable ring model of Q(zeta_n) as coefficient vectors in Q[X] modulo the n-th cyclotomic polynomial with decidable equality and native_decide-able addition, multiplication, and reduction"
+
+  # ── 2. Enter the exact d=12 fiducial into that ring ───────────────────────
+  - "the complex128 float d=12 SIC fiducial becomes twelve exact coordinates entered as elements of the computable cyclotomic ring, built from roots of unity and the real-quadratic radical of Q(sqrt(120))"
+
+  # ── 3. Weyl-Heisenberg operators over the ring ────────────────────────────
+  - "the Weyl-Heisenberg shift and phase operators over the complex numbers become their exact analogues over the computable cyclotomic ring acting on the twelve-component fiducial"
+
+  # ── 4. The 143 Gram identities, decidable in the ring ─────────────────────
+  - "the 143 Weyl-Heisenberg equiangularity conditions become 143 decidable overlap-squared-equals-one-thirteenth identities proved by native_decide in the computable cyclotomic ring rather than in the complex numbers"
+
+  # ── 5. Transfer the ring-level SIC to ℂ ───────────────────────────────────
+  - "the ring-level SIC property becomes an IsSICPOVM 12 witness over the complex numbers by a ring homomorphism from the computable cyclotomic ring into C sending zeta to exp(2 pi i over n) and preserving the Hermitian inner product"
+
+  # ── 6. Capstone: axiom -> theorem ─────────────────────────────────────────
+  - "crystal_forces_d12_sic drops from axiom to theorem by assembling the exact fiducial, its ring-level norm equal to twelve, the 143 ring-level equiangularity identities, and the embedding transfer into one unconditional IsSICPOVM 12 witness"
