@@ -1,0 +1,38 @@
+# ob3ect batch — the NFINIT FIELD-MEMBERSHIP section (executable granularity).
+# Refines map1's strategic ob3ects, which predate the certification gate. New since
+# the maps: certify.gp is BUILT and calibrated (identity-across-precision + degree|288
+# + precision-budget). Its boundary: it certifies "genuine algebraic number of dividing
+# degree", NOT "correct SIC field element" (sqrt30 would pass). So this section adds the
+# FIELD-MEMBERSHIP + fiducial-reproduction step the gate must precede, and routes the
+# z1/z5 crux through the Galois orbit rather than direct algdep.
+# In hand: field288_abs.txt (deg-288 abs min poly), rayfield_relpol.txt (6-piece tower),
+# 1500-digit fiducial, certify.gp gate, SIC_D12_NumberField flat Lean engine.
+# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f d12_nfinit_section.yaml
+
+name: d12-nfinit-section
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /tmp/claude-1000/-home-mrnob0dy666-imsgct/2df909c9-a04e-4a42-8433-903523348079/scratchpad/d12_ctx
+
+entities:
+  # ── the field as a proper nfinit object with a reduced integral basis ─────
+  - "the degree-288 absolute minimal polynomial in field288_abs.txt becomes a PARI nfinit number field K with a reduced integral basis, so field membership and exact coordinates are computed in a well-conditioned integral basis instead of an ill-conditioned power basis"
+
+  # ── field membership: the check the certification gate must precede ───────
+  - "each candidate coordinate that already passes the certify.gp gate for genuine dividing degree becomes further checked for actual membership in the ray class field K by nfisincl or nfalgtobasis, closing the gate's known blind spot that a genuine algebraic number of dividing degree can still be the wrong field element like sqrt30"
+
+  # ── the z1/z5 crux through the Galois orbit, gate-verified ─────────────────
+  - "the high-degree coordinates z1 and z5 become explicit elements of K computed as images of the low-degree coordinates under the Galois automorphisms of K from nfgaloisconj, each image reproducing the 1500-digit fiducial value and passing the certification gate, replacing the direct algdep that returns the artifact degrees 68 and 139"
+
+  # ── the bridge from PARI integral coords to the Lean flat engine ──────────
+  - "each fiducial coordinate expressed exactly in the nfinit integral basis becomes a length-288 rational coefficient vector in the SIC_D12_NumberField flat engine, the exact input that lets the norm and the 143 overlap identities be discharged by native_decide"
+
+  # ── the reproduction invariant that makes FFUSE of FSPLIT identity ────────
+  - "the set of twelve exactly-expressed coordinates becomes verified as a faithful reconstruction of the fiducial when re-evaluating each field element at the real embedding reproduces the 1500-digit numeric witness to full precision, so the exact and numeric fiducials are one object"
