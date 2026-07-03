@@ -1,0 +1,37 @@
+# ob3ect batch — d=12 build, pieces 2-6 (piece 1 computable ring is DONE)
+# Run:  cd ~/imsgct/ob3ect && p3 auto.py -f d12_build2_batch.yaml
+#
+# Piece 1 (SIC_D12_ComputableCyclotomic.lean) built ℚ[ℤ/n] as List ℚ with
+# native_decide-able mulC/conjC/powC — validated. Build the rest ON that List-ℚ
+# representation. Context = SIC files + piece 1 + the updated plan note.
+
+name: d12-build2
+out_dir: digital
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: inf
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/dumpdir_d12
+
+entities:
+  # ── 2a. Adjoin the real radical: quadratic tower over the ring ─────────────
+  - "the List-ℚ cyclotomic ring becomes a computable quadratic tower adjoining the real radical sqrt(30) of Q(sqrt(120)), represented as pairs of ring elements with native_decide-able addition, multiplication, and conjugation"
+
+  # ── 2b. The exact d=12 coordinates in the tower ───────────────────────────
+  - "the exact d=12 Scott-Grassl SIC fiducial becomes twelve explicit coordinates entered as elements of the computable quadratic-cyclotomic tower, replacing the complex128 floats"
+
+  # ── 3. Hermitian overlap as a ring element ────────────────────────────────
+  - "the Hermitian overlap of the fiducial with a displaced copy becomes a computable inner product over the tower using conjC, reducing each Weyl-Heisenberg overlap to one tower element"
+
+  # ── 4. WH operators generating the 144-orbit ──────────────────────────────
+  - "the Weyl-Heisenberg shift and phase operators become computable maps over the twelve-component tower vector, generating the 144-element displacement orbit for d=12"
+
+  # ── 5. The 143 Gram identities by native_decide ───────────────────────────
+  - "the 143 nonzero displacement overlaps become 143 native_decide identities asserting each overlap times its conjugate equals one over thirteen in the computable tower"
+
+  # ── 6. Transfer to ℂ and drop the axiom ───────────────────────────────────
+  - "crystal_forces_d12_sic drops from axiom to theorem by transferring the tower-level SIC along the ring homomorphism sending zeta to exp(2 pi i over n) and the radical to its real square root, yielding an unconditional IsSICPOVM 12 witness"
