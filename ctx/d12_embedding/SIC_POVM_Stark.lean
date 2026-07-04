@@ -27,9 +27,12 @@ noncomputable section
 /-- The d-th root of unity. -/
 def omega_d (d : ℕ) : ℂ := exp (2 * Real.pi * Complex.I / d)
 
-/-- Shift operator  X_d v (k) = v(k-1 mod d). -/
+/-- Shift operator  X_d v (k) = v(k-1 mod d).
+    (k.val + d - 1) % d, NOT (k.val - 1) % d: Nat subtraction truncates at 0, which
+    would fix index 0 instead of wrapping it to d-1 — not a shift, and D_ah built on
+    it would not be the Weyl–Heisenberg displacement. -/
 def X_d (d : ℕ) (v : Fin d → ℂ) (k : Fin d) : ℂ :=
-  v ⟨(k.val - 1) % d, Nat.mod_lt _ k.pos⟩
+  v ⟨(k.val + d - 1) % d, Nat.mod_lt _ k.pos⟩
 
 /-- Phase operator  Z_d v (k) = ω_d^k · v(k). -/
 def Z_d (d : ℕ) (v : Fin d → ℂ) (k : Fin d) : ℂ :=

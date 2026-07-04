@@ -1,0 +1,61 @@
+# ob3ect batch — O₀ BOUNDARY DISCHARGE for SIC_D12_Embedding.lean, closing the
+# last 4 sorries so crystal_forces_d12_sic drops from axiom to theorem.
+# Successor to d12_embedding_capstone.yaml (its OPEN list is stale: norm_sq_eq_one
+# is PROVEN, commit b154261; phi is a full star-ring hom on the canonical domain).
+# Run: cd /home/mrnob0dy666/imsgct/ob3ect && python3 auto.py -f d12_boundary_discharge.yaml
+#
+# STATUS (2026-07-04):
+#   DONE  Phase A/B, phi_rmul, phi_rconj, norm_sq_eq_one (trace-one half transferred).
+#   DONE  X_d fix: (k+d-1)%d not (k-1)%d — D_ah is now the genuine WH displacement.
+#   OPEN  cover_modulus_nonneg, c5_discr_nonneg, u1Val_sq (the 3 O₀ boundary
+#         lemmas) + equiangular (the last structural transfer).
+#
+# NAVIGATOR ANCHOR (cl8nk_navigator.py, 2026-07-04): stark_unit_sic_v2 = O₂
+# (d 0.5634, 8 match); conventional_sic_povm_hilbert = O₀ (d 1.0959). The
+# positivity facts are flat O₀ boundary data of the ℂ-embedding, not closure
+# gaps — the batch discharges them as decidable rational certificates.
+#
+# AGENT BRACKET RUN (ig-agent TAOU, 2026-07-04, windings 47-49) — data banked:
+#   g0 = -2.0085730540896894005324183821311641722319748329953141708797293417505859...
+#   9-digit IVT bracket [-401714611/200000000, -1004286527/500000000]:
+#     k16(lo) = +1.18e-05, k16(hi) = -1.17e-06 (sign change confirmed).
+#   Values at g0: M0≈0.031177, M1≈0.019498 (TIGHTEST), M3≈0.234048, M9≈0.043302;
+#     discr = OA5²-4·OB5 ≈ 8.058944 (exact K16 vector banked, deg-15, coeffs ≤ ~6.7e4);
+#     C2H≈0.341398, S2H≈0.939921 (x²+y²=1 checks).
+#   REJECTED ROUTES (EVALF): naive interval Horner (dependency blowup to [-55,+71]
+#     on the discriminant, winding 47); endpoint-only float checks (winding 49 —
+#     reconnaissance, not a certificate: a deg-15 poly can move between endpoints).
+#
+# DESIGN RESOLUTIONS carried over from d12_embedding_capstone.yaml (still binding):
+#   (1) cover indexing is by BIT: covK 0,1,2,3 = M0,M1,M3,M9 → sVal 0,1,2,3.
+#   (2) real generators via Real.sqrt coerced to ℂ; only u1Val genuinely complex.
+#   (3) phi_rmul/phi_rconj live on the canonical-key domain (all keys < 128);
+#       consumers supply the side conditions via rZ_keys_canon.
+
+name: d12-boundary-discharge
+out_dir: digital
+
+design:
+  scope: maximal
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/ob3ect/ctx/d12_embedding
+
+entities:
+  # ── the tight rational IVT bracket (repoint of g0's defining data) ──
+  - "the defining IVT bracket of g0 is retightened from (-2009/1000, -2008/1000) to rational endpoints of width 10^-12, lo = -2008573054090/10^12 and hi = -2008573054089/10^12 straddling g0 = -2.008573054089689400532..., with the exact rational signs k16Poly(lo) > 0 and k16Poly(hi) < 0 checked by native_decide in pure ℚ arithmetic; the repoint is safe because every proven plank is root-agnostic through g0_root (precedent: commit 1f2a126), and the bracket pins |g0 - mid| ≤ w/2 and |g0| ≤ B = 2009/1000 for the certificate scheme"
+
+  # ── the divided-difference positivity certificate (replaces intervals) ──
+  - "every O₀ boundary positivity fact is discharged by one exact divided-difference certificate: for a target K16 vector v with power-basis polynomial p, the quotient q(x) = (p(x) - p(mid))/(x - mid) has EXACT rational coefficients by polynomial division in ℚ[x], so evalR(g0, v) = p(mid) + (g0 - mid)·q(g0) ≥ p(mid) - (w/2)·Σᵢ|qᵢ|·Bⁱ, a pure rational inequality closed by native_decide with no interval library, no mean value theorem, and no floats; the targets and their agent-verified margins at g0 are covK 0,1,2,3 = M0 ≈ 0.0312, M1 ≈ 0.0195 (tightest, sets the 10^-12 bracket width), M3 ≈ 0.2340, M9 ≈ 0.0433, the c5 discriminant OA5² - 4·OB5 ≈ 8.0589, and S2H ≈ 0.9399, which closes cover_modulus_nonneg and c5_discr_nonneg outright"
+
+  # ── u1 half-angle reconstruction (kills Complex.sqrt; u1Val_sq becomes derived) ──
+  - "u1Val is reconstructed without Complex.sqrt by the half-angle form u1Val = (Real.sqrt((1+x)/2) : ℂ) + Complex.I · (Real.sqrt((1-x)/2) : ℂ) with x = evalR(g0, C2H) and y = evalR(g0, S2H), whose square is x + i·y = E2Val because 2·√((1+x)/2)·√((1-x)/2) = √(1-x²) = y under y ≥ 0 (the S2H line of the divided-difference certificate) and x² + y² = 1 (the frozen u1_unit identity transferred through the proven star-ring hom phi), with 1+x ≥ 0 and 1-x ≥ 0 derived from x² ≤ 1, so u1Val_sq stops being boundary data, |u1Val| = 1 stays purely algebraic, and star(u1Val) = conj(E2Val)·u1Val keeps matching the ring relation rU1i"
+
+  # ── the 143 overlap identities transferred (last structural sorry) ──
+  - "equiangular proves 13·|⟨ψ|D_{a,b}ψ⟩|² = 1 for all (a,b) ≠ (0,0): with the WH displacement now correct (X_d uses (k+d-1) mod d), wh_inner psi (D_ah 12 a b 0 psi) equals phi of the frozen ring overlap O_{a,b} = Σⱼ z̄ⱼ ζ^{(j-a)b} z_{j-a} (identifying omega_d 12 with phi(zeta), a primitive 12th root via zeta_pow12; the norm is preserved per (a,b) even if the branch yields the conjugate root), phi(rmul O Ō) = phi O · star(phi O) = |phi O|² through the complete star-ring hom on the canonical-key domain (all frozen vectors canonical by rZ_keys_canon), and the frozen stratum/existence_identities_all theorems give rmul O Ō = rT13, hence |phi O|² = 1/13 and 13·(1/13) = 1"
+
+  # ── the axiom drop ──
+  - "d12_sic_exists combines the proven norm_sq_eq_one with equiangular into IsSICPOVM 12 psi, and crystal_forces_d12_sic becomes a theorem via SICPOVM_Exists 12, discharging the last non-shadow axiom of the SIC tree and completing the d=12 capstone"
