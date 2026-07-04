@@ -9,8 +9,18 @@
 #   DONE  Phase A — evalK16 is a ℚ-algebra map on K16 (evalK16_kadd, evalK16_kmul
 #         and all Horner/reduceGo/subHead support lemmas green).
 #   DONE  Phase B additive — phi_insertAdd, phi_foldl_insertAdd, phi_radd green.
-#   OPEN  phi_rmul, phi_rconj, norm_sq_eq_one, equiangular  (the 4 remaining sorries).
-#   The refreshed ctx/ snapshot already has Phase A + phi_radd; build ON it.
+#   DONE  phi_rmul — reduction soundness (red3_sum/red2_red3_sum/contrib_sound) +
+#         cover_identity/monVal_product + phi_foldl_inner/outer; RESTATED on the
+#         canonical-key domain (∀ p ∈ A, p.1 < 128) — the wild-key statement is
+#         FALSE (single-step reducers); the domain is the ring's own granularity.
+#   DONE  phi_rconj — star_u1Val DERIVED from u1Val_sq + frozen u1_unit via
+#         phi_rmul (|u1|=1 purely algebraic, no Complex.abs); star_evalKey
+#         per-monomial; same canonical-key hypothesis.
+#   OPEN  norm_sq_eq_one, equiangular  (the 2 remaining structural sorries) +
+#         the 3 O₀ boundary lemmas (cover_modulus_nonneg, c5_discr_nonneg,
+#         u1Val_sq) awaiting the exact ℚ(√2,√13) certificate from d12_sic_build.
+#   NOTE  norm/equiangular consumers must supply the canonical-key side conditions
+#         when invoking phi_rmul/phi_rconj (all frozen vectors satisfy them).
 #
 # TWO DESIGN RESOLUTIONS the generated proof MUST honor (learned the hard way):
 #  (1) COVER INDEXING IS BY BIT, NOT LABEL. covCorr in the frozen ExistenceRing
