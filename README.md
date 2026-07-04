@@ -1036,7 +1036,7 @@ python auto.py "..." --provider deepseek   --model deepseek-chat
 ## Quick Start
 
 ```bash
-git clone <repo> ~/ob3ect && cd ~/ob3ect
+git clone <repo> imsgct/ob3ect && cd imsgct/ob3ect
 
 # Run the full tower
 python digital/runall.py
@@ -1104,7 +1104,7 @@ self-written terminal.
 ### Kernel-level dual: p4rakernel (Lean 4 C++ fork)
 
 The paraconsistent kernel ob3ect at `digital/parakernel/parakernel_ob3ect.py` now has
-a **C++ kernel-level dual** at `/home/mrnob0dy666/p4rakernel/`, a fork of Lean 4 v4.28.0
+a **C++ kernel-level dual** at `imsgct/p4rakernel/`, a fork of Lean 4 v4.28.0
 where the principle of explosion (*ex falso quodlibet*) is disabled at the type checker.
 
 #### Stack architecture
@@ -1135,16 +1135,16 @@ ob3ect/digital/belnap    ─── Belnap FOUR logical substrate
 
 ```bash
 # ob3ect paraconsistent kernel (Python)
-cd /home/mrnob0dy666/ob3ect
+cd imsgct/ob3ect
 python digital/parakernel/parakernel_ob3ect.py
 
 # p4rakernel Lean tests (requires C++ build)
-cd /home/mrnob0dy666/p4rakernel
+cd imsgct/p4rakernel
 lake build
 lake test
 
 # odot_operator with B4 verification
-cd /home/mrnob0dy666/odot_operator
+cd imsgct/odot_operator
 python -c "from odot import OdotAgent; a = OdotAgent(model='grok-4'); print(a.structural_type)"
 ```
 
