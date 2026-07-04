@@ -1,4 +1,3 @@
-
 """
 editorial_pipeline_ob3ect.py — LLM-integrated editorial pipeline.
 
@@ -9,6 +8,10 @@ SET → SUBMIT → SERVE pipeline for multi-step text editing, parsing, and rewr
   .set(source, intent)         — VINIT + TANCH: bind source text and editorial intent
   .submit(critique=False)      — FSPLIT / EVALT / FFUSE: run through LLM cascade
   .serve()                     — IFIX: return final output dict
+
+LENGTH GUARD: Every output is compared against source length. If output is shorter
+than 95% of the source, a re-prompt forces expansion to match or exceed original length.
+This prevents LLM summarization/compression in any editorial pass.
 
 Batch mode — YAML-driven directory processing:
   python3 editorial_pipeline_ob3ect.py batch config.yaml
@@ -163,6 +166,71 @@ def _critique_prompt(rewrite: str, intent: str) -> str:
         "List specific gaps. Be concrete and brief."
     )
 
+# ── Length guard ──────────────────────────────────────────────────────────────
+# Installed by ⊙perator 2026-06-10 — prevents LLM from producing output shorter
+# than the source. Applies at every editorial pass: edit, rewrite, and CLINK
+# composition. Re-prompts with explicit length instruction.
+
+_MIN_OUTPUT_RATIO = 0.95  # Minimum output/source char ratio (allows 5% headroom)
+
+def _length_guard_prompt(source: str, source_len: int, output_len: int, intent: str) -> str:
+    """Build a re-prompt instructing the LLM to restore the original scope."""
+    return (
+        f"LENGTH GUARD TRIGGERED: Your output ({output_len} chars) is shorter than "
+        f"the source ({source_len} chars) by {source_len - output_len} chars.\n\n"
+        f"You MUST produce output at least as long as the source ({source_len} chars). "
+        f"Do NOT summarize, condense, compress, or cut anything. Preserve ALL "
+        f"structural claims, examples, data, nuance, evidence, and argumentation. "
+        f"Expand rather than compress. If the intent says 'concise' or 'tight' — "
+        f"ignore that; length preservation overrides it.\n"
+        f"Intent: {intent}\n\n"
+        f"SOURCE TEXT ({source_len} chars):\n{source}\n\n"
+        f"Produce a FULL-LENGTH rewrite that is AT LEAST {source_len} characters. "
+        f"Output ONLY the text — no preamble, no explanation."
+    )
+
+def _enforce_length(source: str, output: str, intent: str,
+                    providers: list, prefer: str) -> str:
+    """Re-prompt if output is too short. Returns output that passes the guard.
+
+    Args:
+        source: Original source text.
+        output: Current (possibly short) output.
+        intent: Original editorial intent.
+        providers: Cascade provider list.
+        prefer: Preferred provider name.
+
+    Returns:
+        str: Output that satisfies the length guard (source >= output * _MIN_OUTPUT_RATIO).
+        If all re-prompts fail, returns the original (short) output with a warning.
+    """
+    src_len = len(source.strip())
+    out_len = len(output.strip())
+    target = int(src_len * _MIN_OUTPUT_RATIO)
+    if out_len >= target:
+        return output  # Length guard satisfied
+
+    log.warning(f"LENGTH GUARD: output {out_len} chars vs source {src_len} chars "
+                f"(target {target}) — re-prompting")
+
+    # Build re-prompt with the full source context
+    guard_text = _length_guard_prompt(source, src_len, out_len, intent)
+    ordered = sorted(providers, key=lambda p: 0 if p[0] == prefer else 1)
+
+    for name, fn in ordered:
+        try:
+            improved = fn(guard_text)
+            if improved:
+                stripped = improved.strip()
+                if len(stripped) >= target:
+                    log.info(f"LENGTH GUARD: {name} expanded {out_len} → {len(stripped)} chars (✓)")
+                    return stripped
+                log.info(f"LENGTH GUARD: {name} returned {len(stripped)} chars, still below {target}")
+        except Exception as e:
+            log.warning(f"LENGTH GUARD: {name} failed ({e})")
+
+    log.warning("LENGTH GUARD: all re-prompts exhausted — returning original output")
+    return output  # Fallback
 
 # ── LLM call ─────────────────────────────────────────────────────────────────
 
@@ -275,13 +343,16 @@ class EditorialPipeline:
         self._evalf = False
         self._passes = 0
         return self
-
     # ── SUBMIT ────────────────────────────────────────────────────────────────
 
     def submit(self, critique: bool = False, max_passes: int = 2, provider: str = None,
                model: str = None, temperature: float = 0.3,
                thinking: bool = False) -> "EditorialPipeline":
         """SUBMIT phase: IMSCRIB → AFWD → FSPLIT → EVALT/EVALF → FFUSE.
+
+        Length guard active at every output stage: edit, rewrite, and each CLINK
+        composition pass. If output < 95% of source length, the guard re-prompts
+        for expansion before proceeding.
 
         Args:
             critique: If True, run AREV critique pass after rewrite.
@@ -315,6 +386,11 @@ class EditorialPipeline:
             )
             self._rewrite = rewrite or self._edit
 
+            # LENGTH GUARD: enforce output >= 95% of source after initial rewrite
+            self._rewrite = _enforce_length(
+                self._source, self._rewrite, self._intent, providers, self._provider
+            )
+
         if critique:
             for i in range(max_passes - 1):
                 with Spinner(f"AREV  critique pass {i + 1}/{max_passes - 1}"):
@@ -338,12 +414,17 @@ class EditorialPipeline:
                     if improved:
                         self._rewrite = improved
                         self._passes += 1
+
+                        # LENGTH GUARD: enforce after each CLINK composition pass
+                        self._rewrite = _enforce_length(
+                            self._source, self._rewrite, self._intent,
+                            providers, self._provider
+                        )
                     self._b_state = False
                 else:
                     break
 
         return self
-
     # ── SERVE ─────────────────────────────────────────────────────────────────
 
     def serve(self) -> dict:
@@ -366,17 +447,28 @@ class EditorialPipeline:
     # ── Internal helpers ──────────────────────────────────────────────────────
 
     def _cascade_edit(self, providers: list) -> Tuple[str, str]:
-        """FSPLIT → EVALT/EVALF → FFUSE: try providers, return (output, provider_name)."""
+        """FSPLIT → EVALT/EVALF → FFUSE: try providers, return (output, provider_name).
+
+        Length guard: each provider's output must be >= 95% of source length to pass
+        EVALT. This prevents LLMs from returning short summaries during the edit phase.
+        """
         prompt = _edit_prompt(self._source, self._intent, self._parse)
+        src_len = len(self._source.strip())
+        target = int(src_len * _MIN_OUTPUT_RATIO)
+
         for name, fn in providers:
             try:
                 out = fn(prompt)
-                if out and len(out.strip()) > 20:
-                    log.info(f"EVALT: accepted output from {name}")
+                if out and len(out.strip()) >= target:
+                    log.info(f"EVALT: accepted output from {name} ({len(out.strip())} chars vs src {src_len})")
                     return out, name
-                log.info(f"EVALF: {name} output too short, advancing cascade")
+                if out:
+                    log.info(f"EVALF: {name} output too short ({len(out.strip())} chars vs target {target}), advancing cascade")
+                else:
+                    log.info(f"EVALF: {name} returned empty output, advancing cascade")
             except Exception as e:
                 log.warning(f"EVALF: {name} failed ({e}), advancing cascade")
+
         # All failed
         self._evalf = True
         log.warning("EVALF: cascade exhausted — returning source unchanged")
@@ -409,7 +501,6 @@ class EditorialPipeline:
                 }) + "\n")
         except Exception as e:
             log.debug(f"Log write failed: {e}")
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # ── Batch mode: YAML-driven directory processing ─────────────────────────────
@@ -446,6 +537,7 @@ editorial:
   source_glob: "*.md"                 # glob for source files in each folder
   skip_existing: true                 # skip folders with existing output files
   verbose: false                      # print full result JSON per item
+  enforce_length: true                # Length guard: reject output shorter than source
 """
 
 
@@ -498,7 +590,6 @@ def _load_context(cfg: dict) -> str:
         joined = "\n\n".join(chunks)
         return f"REFERENCE MATERIAL (use this as context for your edit):\n\n{joined}"
     return ""
-
 
 def _find_source_files(folder: Path, source_glob: str = "*.md") -> list[Path]:
     """Find source text files in a folder matching the glob pattern.
@@ -614,6 +705,20 @@ def _process_folder(
         return False
 
     output_text = result.get("output") or ""
+
+    # ── Batch length guard ────────────────────────────────────────────────────
+    # Post-hoc verification: if enforce_length is True (default), flag any output
+    # shorter than source. This catches edge cases where the inline guard failed.
+    enforce = ed.get("enforce_length", True)
+    if enforce and output_text.strip():
+        src_len = len(source_text.strip())
+        out_len = len(output_text.strip())
+        target = int(src_len * _MIN_OUTPUT_RATIO)
+        if out_len < target:
+            print(f"    ⚠ LENGTH GUARD (batch): output {out_len} chars < source {src_len} chars "
+                  f"(target {target}) — writing anyway")
+            stats["length_guard_triggered"] += 1
+
     if not output_text.strip():
         print(f"    WARN: empty output — writing anyway")
         stats["empty_output"] += 1
@@ -633,8 +738,6 @@ def _process_folder(
     print(f"    → {output_path.name}  ({len(output_text)} chars)  provider={result['provider']}  passes={result['passes']}{tag}")
 
     return True
-
-
 def run_batch(config_path: str) -> dict:
     """Run a YAML-driven batch editorial pipeline over a directory of folders.
 
@@ -642,10 +745,14 @@ def run_batch(config_path: str) -> dict:
     files and folders loaded as reference material for the LLM. The editorial.intent
     is the full prompt — voice, style, directive.
 
+    Length guard (default on): every output is checked against source length.
+    The inline guard in submit() re-prompts for expansion; the batch guard flags
+    any remaining violations. YAML: editorial.enforce_length: false to disable.
+
     YAML schema — see _BATCH_YAML_SCHEMA above, or run with --help-batch.
 
     Returns a stats dict: folders_total, folders_processed, skipped_*,
-    failed, empty_output.
+    failed, empty_output, length_guard_triggered.
     """
     cfg_path = Path(config_path)
     if not cfg_path.exists():
@@ -709,6 +816,7 @@ def run_batch(config_path: str) -> dict:
         "skipped_empty": 0,
         "failed": 0,
         "empty_output": 0,
+        "length_guard_triggered": 0,  # batch-level guard flag
     }
 
     pipeline = EditorialPipeline()
@@ -725,7 +833,8 @@ def run_batch(config_path: str) -> dict:
           f"{stats['skipped_existing']} existing, "
           f"{stats['skipped_empty']} empty; "
           f"{stats['failed']} failed, "
-          f"{stats['empty_output']} empty-output) ──")
+          f"{stats['empty_output']} empty-output"
+          f"{', ' + str(stats['length_guard_triggered']) + ' length-guard' if stats['length_guard_triggered'] else ''}) ──")
 
     return stats
 
@@ -746,6 +855,14 @@ MODES ───
 
   Batch mode:
     python3 editorial_pipeline_ob3ect.py batch config.yaml
+
+LENGTH GUARD ───
+
+  Active by default on ALL passes (edit, rewrite, CLINK composition). The guard
+  compares output character count against source. If output < 95% of source, the
+  LLM is re-prompted with an explicit instruction to restore the original scope.
+  This prevents summarization, compression, or truncation in any editorial pass.
+  The guard is non-bypassable in the pipeline logic — not a toggle.
 
 SINGLE-FILE OPTIONS ───
   --critique     Run AREV critique pass after rewrite
@@ -781,6 +898,7 @@ BATCH MODE ───
       provider: null
       source_glob: "*.md"
       skip_existing: true
+      enforce_length: true                # length guard (default on)
 
 AUTHOR ───
   Lando⊗⊙perator
@@ -820,8 +938,6 @@ def _cli_batch(argv):
         print("  python3 editorial_pipeline_ob3ect.py batch --help-batch", file=sys.stderr)
         sys.exit(1)
     run_batch(args.config)
-
-
 def _cli_single(argv):
     """Single-file mode CLI."""
     parser = argparse.ArgumentParser(
@@ -872,10 +988,27 @@ def _cli_single(argv):
     pipe.submit(critique=args.critique, max_passes=args.passes, provider=args.provider)
     result = pipe.serve()
 
+    # ── Final length report ───────────────────────────────────────────────────
+    src_len = len(source.strip())
+    out_len = len(result.get("output", "").strip())
+    length_ok = out_len >= int(src_len * _MIN_OUTPUT_RATIO)
+
     if args.json:
+        result["_length_report"] = {
+            "source_chars": src_len,
+            "output_chars": out_len,
+            "ratio": round(out_len / src_len, 3) if src_len > 0 else 0,
+            "guard_passed": length_ok,
+        }
         print(json.dumps(result, indent=2, ensure_ascii=False))
     else:
         print(result["output"] or "(no output)")
+        # Length guard summary on stderr
+        ratio = out_len / src_len if src_len > 0 else 0
+        if length_ok:
+            print(f"\n[LENGTH: {out_len}/{src_len} chars ({ratio:.1%}) ✓]", file=sys.stderr)
+        else:
+            print(f"\n[LENGTH: {out_len}/{src_len} chars ({ratio:.1%}) ⚠ BELOW THRESHOLD]", file=sys.stderr)
         if result["b_state"]:
             print("\n[B-STATE: output partially resolved — run with --passes for more]", file=sys.stderr)
         if result["evalf"]:

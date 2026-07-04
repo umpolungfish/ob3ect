@@ -16,9 +16,9 @@
       "domain_type": "computational",
       "scope": "maximal",
       "surface_tokens": [
-        "fiducial coordinate",
-        "overlap identity",
-        "ring homomorphism"
+        "fiducial",
+        "moduli field",
+        "overlap identity"
       ],
       "boundary_condition": "IsSICPOVM 12 psi",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
@@ -26,95 +26,95 @@
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "uninitialized coordinate space",
-        "justification": "The state before the definition of the K16 moduli field or the ring R.",
+        "chosen_element": "Empty Ring R",
+        "justification": "The uninitialized state before the coordinate tower construction.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "SICPOVM_Exists 12",
-        "justification": "The terminal certificate that closes the proof by discharging all conditional axioms.",
+        "chosen_element": "crystal_forces_d12_sic",
+        "justification": "The final existence witness that closes the d=12 logic.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "evaluation of phi",
-        "justification": "The forward transformation mapping ring elements A in R to complex values in C.",
+        "chosen_element": "Ring Homomorphism phi",
+        "justification": "The morphism transferring identities from the abstract ring to complex space.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "coefficient extraction",
-        "justification": "The reversal or descent from a complex value back to its rational power-basis representation.",
+        "chosen_element": "Polynomial Reduction",
+        "justification": "Mapping high-degree terms back to the base power-basis via the defining polynomial.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "composition of ring operations",
-        "justification": "The chaining of kmul and kadd to construct recursive coordinate definitions.",
+        "chosen_element": "Composition of Ring Operations",
+        "justification": "Sequential addition and multiplication forming the tower of RElt.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "phi_rK",
-        "justification": "The identity where the ring homomorphism preserves the base field K16 directly.",
+        "chosen_element": "Identity IsSICPOVM",
+        "justification": "The self-recognition of the fiducial as a SIC generation source.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "SIC-POVM structural bifurcation",
-        "justification": "The divergence of the proof into the trace-one norm condition and the equiangularity overlap condition.",
+        "chosen_element": "SIC Axiom Decomposition",
+        "justification": "Splitting the SIC requirement into Norm equality and Equiangularity branches.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "IsSICPOVM structure",
-        "justification": "The reunification of the norm and overlap proofs into a single fiducial record.",
+        "chosen_element": "Structural Synthesis",
+        "justification": "Reconstituting the branches into the full IsSICPOVM structure.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "existence_identities_all",
-        "justification": "The affirmative verification of all 143 overlap identities via native_decide.",
+        "chosen_element": "Identity Verification",
+        "justification": "The native_decide tactic returning true for an overlap identity.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "isZeroK failure",
-        "justification": "The negative evaluation returning a non-zero residue for a supposedly zero identity.",
+        "chosen_element": "Branch Conflict",
+        "justification": "State where a coordinate modulus fails to match the K16 witness.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "phi_rmul / phi_rconj sorry",
-        "justification": "The paradice state where the theorem is held as true while the formal proof body is deferred.",
+        "chosen_element": "Stark Conjecture Shadow",
+        "justification": "The state where both the structural proof and empirical shadow are held simultaneously.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "crystal_forces_d12_sic",
-        "justification": "The permanent fixation of the existence proof in the Lean environment.",
+        "chosen_element": "Capstone Lemma",
+        "justification": "The permanent append-only record of d=12 existence in the library.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "FSPLIT",
-      "split_input": "SIC-POVM requirements",
+      "split_element": "SIC Axiom Decomposition",
+      "split_input": "IsSICPOVM requirement",
       "split_outputs": [
-        "norm_sq_eq_one",
-        "equiangular"
+        "wh_normSq = 1",
+        "equiangularity identities"
       ],
-      "fuse_element": "FFUSE",
-      "fuse_result": "SIC-POVM requirements",
+      "fuse_element": "Structural Synthesis",
+      "fuse_result": "IsSICPOVM requirement",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "Pre-computational state where coefficients are undefined.",
-      "true_description": "Successful machine-check of the 143 overlap identities.",
-      "false_description": "Identity violation or failure of the ring homomorphism properties.",
-      "both_description": "Axiomatic assumption of Stark units alongside pending manual proof terms.",
+      "void_description": "Implicit state before Tower construction",
+      "true_description": "Verified SIC existence in dimension 12",
+      "false_description": "Failed overlap identity or norm error",
+      "both_description": "Unconditional grammar and conditional shadow held together",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,138 +123,108 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "initialization of the K16 moduli field vector space"
+          "domain_action": "Initialization of the K16 base field and power basis"
         },
         {
           "step_num": 2,
-          "opcode": "IMSCRIB",
-          "domain_action": "mapping of rational coefficients to the power basis"
+          "opcode": "AFWD",
+          "domain_action": "Definition of the k16Poly defining polynomial"
         },
         {
           "step_num": 3,
-          "opcode": "CLINK",
-          "domain_action": "application of padd and scalar kscale for K16 arithmetic"
+          "opcode": "IFIX",
+          "domain_action": "Fixation of the real root g0 via IVT for embedding"
         },
         {
           "step_num": 4,
-          "opcode": "AFWD",
-          "domain_action": "reduction of polynomial degrees via reduceGo MOD g16"
+          "opcode": "CLINK",
+          "domain_action": "Construction of the coordinate ring R = K16(s, i, c5, u1)"
         },
         {
           "step_num": 5,
-          "opcode": "IFIX",
-          "domain_action": "fixation of M0 through M11 coordinate moduli"
+          "opcode": "FSPLIT",
+          "domain_action": "Branching into the 143 overlap identity verifications"
         },
         {
           "step_num": 6,
-          "opcode": "FSPLIT",
-          "domain_action": "branching into coordinate construction and target evaluation"
+          "opcode": "EVALT",
+          "domain_action": "Concurrent verification of stratum_0 through stratum_11"
         },
         {
           "step_num": 7,
-          "opcode": "AFWD",
-          "domain_action": "computation of the zeta cyclotomic unit phase in R"
+          "opcode": "AREV",
+          "domain_action": "Reduction of overlap product terms mod k16RedVec"
         },
         {
           "step_num": 8,
-          "opcode": "CLINK",
-          "domain_action": "recursive application of zpow for coordinate rotation"
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitution of the 143 identities into the equiangularity proof"
         },
         {
           "step_num": 9,
-          "opcode": "AFWD",
-          "domain_action": "construction of the rZ coordinate vector using square-class witnesses"
+          "opcode": "FSPLIT",
+          "domain_action": "Branching to norm_sum trace-one verification"
         },
         {
           "step_num": 10,
-          "opcode": "IMSCRIB",
-          "domain_action": "self-reference of coordinate z_k as an element of R"
+          "opcode": "EVALT",
+          "domain_action": "Verification of the coordinate moduli against K16 witnesses"
         },
         {
           "step_num": 11,
-          "opcode": "AREV",
-          "domain_action": "conjugation of coordinates through rconj"
+          "opcode": "FFUSE",
+          "domain_action": "Synthesis of the norm_sq_eq_one proof"
         },
         {
           "step_num": 12,
           "opcode": "CLINK",
-          "domain_action": "composition of overlap sum O_{a,b} = \u03a3_j z\u0304_j \u03b6 z_{j-a}"
+          "domain_action": "Composition of norm and equiangularity into d12_sic_exists"
         },
         {
           "step_num": 13,
-          "opcode": "EVALT",
-          "domain_action": "affirmation of stratum_n identities for n in 0..11"
+          "opcode": "IMSCRIB",
+          "domain_action": "The fiducial psi recognizes its own SIC properties"
         },
         {
           "step_num": 14,
-          "opcode": "FFUSE",
-          "domain_action": "reconstitution of the overlapping fiducial properties"
+          "opcode": "AFWD",
+          "domain_action": "Mapping ring elements to Complex space via phi"
         },
         {
           "step_num": 15,
-          "opcode": "FSPLIT",
-          "domain_action": "bifurcation of the complex embedding phi"
+          "opcode": "ENGAGR",
+          "domain_action": "Alignment of the Stark shadow with the explicit tower"
         },
         {
           "step_num": 16,
-          "opcode": "AFWD",
-          "domain_action": "extraction of the real root g0 via the Intermediate Value Theorem"
+          "opcode": "IFIX",
+          "domain_action": "Final record of crystal_forces_d12_sic completion"
         },
         {
           "step_num": 17,
-          "opcode": "CLINK",
-          "domain_action": "mapping of ring generators to complex values sVal, iVal, c5Val"
-        },
-        {
-          "step_num": 18,
-          "opcode": "ENGAGR",
-          "domain_action": "simultaneous holding of homomorphism axioms and sorried proof steps"
-        },
-        {
-          "step_num": 19,
-          "opcode": "EVALT",
-          "domain_action": "verification of norm_sq_eq_one in the complex field"
-        },
-        {
-          "step_num": 20,
-          "opcode": "EVALT",
-          "domain_action": "verification of the equiangular constraint for all non-zero shifts"
-        },
-        {
-          "step_num": 21,
-          "opcode": "FFUSE",
-          "domain_action": "consolidation of norm and angularity into IsSICPOVM 12 psi"
-        },
-        {
-          "step_num": 22,
-          "opcode": "IFIX",
-          "domain_action": "definitive recording of crystal_forces_d12_sic in the global namespace"
-        },
-        {
-          "step_num": 23,
           "opcode": "TANCH",
-          "domain_action": "final anchoring of the d=12 SIC-POVM existence proof"
+          "domain_action": "Terminal anchor of the d=12 capstone"
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "Lean 4 kernel using native_decide for Q-arithmetic",
-      "ipc_mechanism": "Type-directed transfer of ring identities to complex embeddings",
-      "memory_mechanism": "Sparse association lists mapping 7-bit keys to K16 vectors",
-      "scheduler_mechanism": "Lexicographical sorting of RElt keys for canonical representation",
-      "alfs_store": "SIC_D12_ExistenceRing.lean providing exact coordinate data",
+      "compiler_frontend": "Lean 4 kernel and native_decide evaluator",
+      "ipc_mechanism": "List (\u2115 \u00d7 K16) sparse association list transfer",
+      "memory_mechanism": "K16 coefficient vectors in Q",
+      "scheduler_mechanism": "Stratum by stratum tactic execution",
+      "alfs_store": "SIC_D12_ExistenceRing.lean metadata",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "Computational cycles for 143 native_decide reduction steps",
-      "pre_cycle_state": "Conditional SIC-POVM existence based on Stark conjecture",
-      "post_cycle_state": "Unconditional d=12 SIC-POVM existence certificate",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 Information is transformed from algebraic structure to complex embedding without loss of equality.",
+      "cycle_cost": "Computational cycles per native_decide check",
+      "pre_cycle_state": "Open existence conjecture for d=12",
+      "post_cycle_state": "Formalized existence proof for d=12",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The proof transformation converts logical potential into fixed truth without data loss.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 CLINK \u2192 AFWD \u2192 IFIX \u2192 FSPLIT \u2192 AFWD \u2192 CLINK \u2192 AFWD \u2192 IMSCRIB \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 FFUSE \u2192 FSPLIT \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 EVALT \u2192 EVALT \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: d12_sic_exists combines norm_sq_eq_one and equiangular into IsSICPOVM 12 psi, and crystal_forces_d12_sic proves SICPOVM_Exists 12, discharging the existence axiom and completing the d=12 SIC-POVM capstone\n-- Fingerprint: sig=(13,4,4,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=23\n-- Expected tier: O\u2080\n-- FSPLIT/FFUSE pairs: [(5, 13), (14, 20)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [4] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [8] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [12] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [13] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [14] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [15] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [16] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [17] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [18] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [19] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [20] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [21] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [22] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def d12_sic_exists_combines_norm_sq_eq_one_4a7011_protocol : IGProtocol d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s22 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 = d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 (idempotent)\n  (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s1) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l1 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s1 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s2) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l2 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s2 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s3) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l3 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s3 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s4) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l4 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s4 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s5) (.seq (.prod (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l5 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s5 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13) (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l5 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s5 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13)) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l13 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l13 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s14) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l14 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s14 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s15) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l15 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s15 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s16) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l16 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s16 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s17) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l17 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s17 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s18) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l18 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s18 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s19) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l19 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s19 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s20) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l20 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s20 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s21) (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l21 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s21 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s22))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def d12_sic_exists_combines_norm_sq_eq_one_4a7011_true_arm : IGProtocol d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s22 :=\n  (d12_sic_exists_combines_norm_sq_eq_one_4a7011_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2080.\ndef d12_sic_exists_combines_norm_sq_eq_one_4a7011_tier : OuroboricityTier := TierFunctor.obj d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0\n#eval d12_sic_exists_combines_norm_sq_eq_one_4a7011_tier  -- the Grammar's own verdict on its tier\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 IFIX \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 FSPLIT \u2192 EVALT \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 AFWD \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: d12_sic_exists combines norm_sq_eq_one and equiangular into IsSICPOVM 12 psi, and crystal_forces_d12_sic proves SICPOVM_Exists 12, discharging the existence axiom and completing the d=12 SIC-POVM capstone\n-- Fingerprint: sig=(8,4,3,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=17\n-- Expected tier: O\u2080\n-- FSPLIT/FFUSE pairs: [(4, 7), (8, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [2] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [8] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [9] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [13] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc73  | forward morphism \u2014 bidirectional arrow\n--   [14] ENGAGR    stoi   := \ud801\udc73               \ud801\udc7e \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [15] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [16] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def d12_sic_exists_combines_norm_sq_eq_one_4a7011_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def d12_sic_exists_combines_norm_sq_eq_one_4a7011_protocol : IGProtocol d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s16 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7 = d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7 (idempotent)\n  (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s1) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l1 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s1 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s2) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l2 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s2 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s3) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l3 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s3 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s4) (.seq (.prod (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l4 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s4 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7) (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l4 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s4 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7)) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l7 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l7 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s7 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s8) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l8 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s8 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s9) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l9 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s9 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s10) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l10 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s10 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s11) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l11 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s11 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s12) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l12 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s12 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l13 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s13 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s14) (.seq (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l14 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s14 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s15) (.arrow d12_sic_exists_combines_norm_sq_eq_one_4a7011_l15 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s15 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s16)))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def d12_sic_exists_combines_norm_sq_eq_one_4a7011_true_arm : IGProtocol d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0 d12_sic_exists_combines_norm_sq_eq_one_4a7011_s16 :=\n  (d12_sic_exists_combines_norm_sq_eq_one_4a7011_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2080.\ndef d12_sic_exists_combines_norm_sq_eq_one_4a7011_tier : OuroboricityTier := TierFunctor.obj d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0\n#eval d12_sic_exists_combines_norm_sq_eq_one_4a7011_tier  -- the Grammar's own verdict on its tier\n",
   "notes": "Auto-designed from: d12_sic_exists combines norm_sq_eq_one and equiangular into IsSICPOVM 12 psi, and crystal_forces_d12_sic proves SICPOVM_Exists 12, discharging the existence axiom and completing the d=12 SIC-POVM capstone"
 }

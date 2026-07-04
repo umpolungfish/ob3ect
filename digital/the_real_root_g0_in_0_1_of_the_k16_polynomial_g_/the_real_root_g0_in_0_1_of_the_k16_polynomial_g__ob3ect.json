@@ -16,105 +16,105 @@
       "domain_type": "computational",
       "scope": "maximal",
       "surface_tokens": [
-        "k16Poly",
-        "IVT_Bounds",
-        "g0_Root"
+        "moduli field",
+        "monic polynomial",
+        "Cauchy sequence"
       ],
-      "boundary_condition": "SIC_D12_Embedding.lean",
+      "boundary_condition": "The field of complex numbers C containing the real algebraic closure of Q.",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "uninitialized polynomial",
-        "justification": "The state of the k16Poly definition prior to the assignment of rational coefficients.",
+        "chosen_element": "uninstantiated polynomial",
+        "justification": "The state of the K16Poly structure before coefficients are assigned or evaluated.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "complex coordinate g0C",
-        "justification": "The terminal real-to-complex coercion that contains the resulting root for all subsequent ring evaluations.",
+        "chosen_element": "field R containing g0",
+        "justification": "The real subfield that serves as the terminal container for the algebraic root.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "continuous evaluation",
-        "justification": "The forward mapping from the interval [0,1] to the calculated image set of the polynomial.",
+        "chosen_element": "polynomial evaluation map",
+        "justification": "The directed transformation of a rational list into a complex scalar value via Horner's method.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "choice operator",
-        "justification": "The selection of a specific value g from the non-empty set of roots identified by the proof.",
+        "chosen_element": "coefficient extraction",
+        "justification": "The reverse process of obtaining rational coefficients from the power basis representation.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "proof composition",
-        "justification": "The sequential chaining of sign checks at 0 and 1 to satisfy the preconditions of the Intermediate Value Theorem.",
+        "chosen_element": "composition of field embeddings",
+        "justification": "Sequentially applying the root assignment to the K16 ring mapping.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "k16Poly.eval g0 = 0",
-        "justification": "The self-verifying identity where the selected root recognizes itself as the zero of the defining function.",
+        "chosen_element": "isZeroK property",
+        "justification": "The self-referential recognition that an element is the additive identity of the ring.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "IVT Branching",
-        "justification": "The partition of the evaluation space into the positive region at 0 and the negative region at 1.",
+        "chosen_element": "Intermediate Value Theorem check",
+        "justification": "The branching of a continuous function's domain into regions of differing sign polarity.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "Root Existence",
-        "justification": "The reconstitution of the split interval logic into the singular existence claim \u2203 g.",
+        "chosen_element": "Classical.choose selection",
+        "justification": "Reconstituting the branched possibilities into a single unique witness for the root.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "k16Poly(0) > 0",
-        "justification": "The positive sign check at the lower bound of the search interval.",
+        "chosen_element": "sign change existence",
+        "justification": "The affirmative state where the polynomial value crosses zero within the interval (0, 1).",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "k16Poly(1) < 0",
-        "justification": "The negative sign check at the upper bound of the search interval.",
+        "chosen_element": "monotonicity failure",
+        "justification": "The negative state where no root exists within the designated interval.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "intermediate sign transition",
-        "justification": "The state of the continuous function passing through zero where it holds neither strictly positive nor negative polarity.",
+        "chosen_element": "noncomputable section",
+        "justification": "A state where the existence is known but the specific numerical value remains an abstract choice.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "noncomputable def g0",
-        "justification": "The permanent fixation of the specific root witness into the Lean environment.",
+        "chosen_element": "lemma existence_root",
+        "justification": "The irreversible proof fixation that the root exists and satisfies the monic relation.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "IVT Branching",
-      "split_input": "polynomial sign at boundaries",
+      "split_element": "IVT domain partition",
+      "split_input": "Interval [0, 1]",
       "split_outputs": [
-        "positive at 0",
-        "negative at 1"
+        "eval(0) > 0",
+        "eval(1) < 0"
       ],
-      "fuse_element": "Root Existence",
-      "fuse_result": "polynomial sign at boundaries",
+      "fuse_element": "Bolzano's Theorem",
+      "fuse_result": "Existence of g0 in (0, 1)",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "unmapped real line before k16Poly implementation",
-      "true_description": "k16Poly.eval g > 0",
-      "false_description": "k16Poly.eval g < 0",
-      "both_description": "k16Poly.eval g = 0 (the root)",
+      "void_description": "The empty list [ ] representing zero in the uninitialized moduli field.",
+      "true_description": "The state where k16Poly.eval g = 0 holds for a chosen real g.",
+      "false_description": "The state where the polynomial does not reach the zero crossing within bounds.",
+      "both_description": "The state of g0C as both a real root and a complex embedding coordinate.",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,83 +123,83 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "instantiation of the k16Poly monomial list"
+          "domain_action": "Define the abstract k16Poly coefficients in Q."
         },
         {
           "step_num": 2,
-          "opcode": "CLINK",
-          "domain_action": "summation of terms into a single Polynomial \u211d object"
+          "opcode": "AFWD",
+          "domain_action": "Map coefficients to the Polynomial R type."
         },
         {
           "step_num": 3,
-          "opcode": "FSPLIT",
-          "domain_action": "interval bifurcated for sign checking at 0 and 1"
+          "opcode": "IFIX",
+          "domain_action": "Record the evaluation results poly_at_0 and poly_at_1 as permanent proof evidence."
         },
         {
           "step_num": 4,
-          "opcode": "EVALT",
-          "domain_action": "verification that k16Poly.eval 0 = 1"
+          "opcode": "FSPLIT",
+          "domain_action": "Partition the interval (0, 1) based on the observed sign change."
         },
         {
           "step_num": 5,
-          "opcode": "EVALF",
-          "domain_action": "verification that k16Poly.eval 1 = -1"
+          "opcode": "EVALT",
+          "domain_action": "Affirm the existence of a zero crossing via the ContinuousOn property."
         },
         {
           "step_num": 6,
           "opcode": "FFUSE",
-          "domain_action": "union of sign conditions to satisfy intermediate_value_Icc'"
+          "domain_action": "Apply Classical.choose to synthesize a singular witness g0 from the existence proof."
         },
         {
           "step_num": 7,
-          "opcode": "AFWD",
-          "domain_action": "application of continuous evaluation across the domain [0,1]"
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify g0 as the unique kernel of the k16Poly map in the interval."
         },
         {
           "step_num": 8,
-          "opcode": "ENGAGR",
-          "domain_action": "target value 0 located within the image of the interval"
+          "opcode": "CLINK",
+          "domain_action": "Compose the real root g0 with the complex coercion to produce g0C."
         },
         {
           "step_num": 9,
-          "opcode": "AREV",
-          "domain_action": "classical choice of a specific g within the pre-image"
+          "opcode": "IFIX",
+          "domain_action": "Append g0_root to the environment as an immutable identity for K16 reduction."
         },
         {
           "step_num": 10,
-          "opcode": "IMSCRIB",
-          "domain_action": "identity check confirming the root property"
+          "opcode": "AFWD",
+          "domain_action": "Propagate g0C through the evalK16Hi high-first evaluation chain."
         },
         {
           "step_num": 11,
-          "opcode": "IFIX",
-          "domain_action": "permanent definition of the global constant g0"
+          "opcode": "AREV",
+          "domain_action": "Verify that reduceGo maintains the invariant relative to g0C."
         },
         {
           "step_num": 12,
           "opcode": "TANCH",
-          "domain_action": "coercion of g0 to the complex field as g0C"
+          "domain_action": "Close the embedding definition in the SIC.D12.Embedding namespace."
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "Lean 4 kernel",
-      "ipc_mechanism": "tactic state unification",
-      "memory_mechanism": "environment constant table",
-      "scheduler_mechanism": "sequential proof elaboration",
-      "alfs_store": "Mathlib.Analysis.Calculus.IVT",
+      "compiler_frontend": "Lean 4 kernel type checker",
+      "ipc_mechanism": "Function application and hypothesis passing via the tactic state",
+      "memory_mechanism": "The global environment stack of Mathlib and local context",
+      "scheduler_mechanism": "The sequential elaboration of Lean commands",
+      "alfs_store": "SIC_D12_ExistenceRing.lean providing the monic k16RedVec",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "classical choice axiom invocation",
-      "pre_cycle_state": "potential existence of a root in (0,1)",
-      "post_cycle_state": "certified fixed value g0",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the formalization merely constrains the search space to a specific witness without loss of structural information",
+      "cycle_cost": "Logical inference steps per proof obligation",
+      "pre_cycle_state": "Undetermined status of the K16 root in the real field",
+      "post_cycle_state": "Fixed existence of g0 as the basis for the complex fiducial tower",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The proofs are constructive and maintain the symbolic information density of the Moduli field without information loss.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: the real root g0 in (0,1) of the K16 polynomial g^16-10g^14+40g^12-90g^10+126g^8-96g^6+25g^4+2g^2+1 is exhibited constructively by the Intermediate Value Theorem, defining g0C = (g0:\u2102) as the coordinate at which all K16 evaluation takes place\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 5)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc71  | initial object \u2014 ground of distinction\n--   [1] CLINK     fid    := \ud801\udc71               \ud801\udc7c \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \ud801\udc73  | forward morphism \u2014 bidirectional arrow\n--   [7] ENGAGR    stoi   := \ud801\udc73               \ud801\udc7e \u2192 \ud801\udc57  | engage paradox \u2014 B-state, both arms\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc73 \u2192 \ud801\udc60  | reverse morphism \u2014 parity flip\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc57 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_real_root_g0_in_0_1_of_the_k16_f683ab_protocol : IGProtocol the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 = the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 (idempotent)\n  (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s1) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l1 the_real_root_g0_in_0_1_of_the_k16_f683ab_s1 the_real_root_g0_in_0_1_of_the_k16_f683ab_s2) (.seq (.prod (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l2 the_real_root_g0_in_0_1_of_the_k16_f683ab_s2 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5) (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l2 the_real_root_g0_in_0_1_of_the_k16_f683ab_s2 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5)) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s6) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l6 the_real_root_g0_in_0_1_of_the_k16_f683ab_s6 the_real_root_g0_in_0_1_of_the_k16_f683ab_s7) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l7 the_real_root_g0_in_0_1_of_the_k16_f683ab_s7 the_real_root_g0_in_0_1_of_the_k16_f683ab_s8) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l8 the_real_root_g0_in_0_1_of_the_k16_f683ab_s8 the_real_root_g0_in_0_1_of_the_k16_f683ab_s9) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l9 the_real_root_g0_in_0_1_of_the_k16_f683ab_s9 the_real_root_g0_in_0_1_of_the_k16_f683ab_s10) (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l10 the_real_root_g0_in_0_1_of_the_k16_f683ab_s10 the_real_root_g0_in_0_1_of_the_k16_f683ab_s11))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_real_root_g0_in_0_1_of_the_k16_f683ab_true_arm : IGProtocol the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s11 :=\n  (the_real_root_g0_in_0_1_of_the_k16_f683ab_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_real_root_g0_in_0_1_of_the_k16_f683ab_false_arm : IGProtocol the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s11 :=\n  (the_real_root_g0_in_0_1_of_the_k16_f683ab_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef the_real_root_g0_in_0_1_of_the_k16_f683ab_tier : OuroboricityTier := TierFunctor.obj the_real_root_g0_in_0_1_of_the_k16_f683ab_s0\n#eval the_real_root_g0_in_0_1_of_the_k16_f683ab_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_real_root_g0_in_0_1_of_the_k16_f683ab_frobenius :\n    igFrobeniusAlg.mul the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 = the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 :=\n  igFrobAlg_self_fusion the_real_root_g0_in_0_1_of_the_k16_f683ab_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 IFIX \u2192 FSPLIT \u2192 EVALT \u2192 FFUSE \u2192 IMSCRIB \u2192 CLINK \u2192 IFIX \u2192 AFWD \u2192 AREV \u2192 TANCH\n-- Class: the real root g0 in (0,1) of the K16 polynomial g^16-10g^14+40g^12-90g^10+126g^8-96g^6+25g^4+2g^2+1 is exhibited constructively by the Intermediate Value Theorem, defining g0C = (g0:\u2102) as the coordinate at which all K16 evaluation takes place\n-- Fingerprint: sig=(7,2,1,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(3, 5)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [2] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [6] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [9] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc61  | reverse morphism \u2014 parity flip\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc57 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_real_root_g0_in_0_1_of_the_k16_f683ab_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_real_root_g0_in_0_1_of_the_k16_f683ab_protocol : IGProtocol the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 = the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 (idempotent)\n  (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s1) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l1 the_real_root_g0_in_0_1_of_the_k16_f683ab_s1 the_real_root_g0_in_0_1_of_the_k16_f683ab_s2) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l2 the_real_root_g0_in_0_1_of_the_k16_f683ab_s2 the_real_root_g0_in_0_1_of_the_k16_f683ab_s3) (.seq (.prod (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l3 the_real_root_g0_in_0_1_of_the_k16_f683ab_s3 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5) (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l3 the_real_root_g0_in_0_1_of_the_k16_f683ab_s3 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5)) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s5 the_real_root_g0_in_0_1_of_the_k16_f683ab_s6) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l6 the_real_root_g0_in_0_1_of_the_k16_f683ab_s6 the_real_root_g0_in_0_1_of_the_k16_f683ab_s7) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l7 the_real_root_g0_in_0_1_of_the_k16_f683ab_s7 the_real_root_g0_in_0_1_of_the_k16_f683ab_s8) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l8 the_real_root_g0_in_0_1_of_the_k16_f683ab_s8 the_real_root_g0_in_0_1_of_the_k16_f683ab_s9) (.seq (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l9 the_real_root_g0_in_0_1_of_the_k16_f683ab_s9 the_real_root_g0_in_0_1_of_the_k16_f683ab_s10) (.arrow the_real_root_g0_in_0_1_of_the_k16_f683ab_l10 the_real_root_g0_in_0_1_of_the_k16_f683ab_s10 the_real_root_g0_in_0_1_of_the_k16_f683ab_s11)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_real_root_g0_in_0_1_of_the_k16_f683ab_true_arm : IGProtocol the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s11 :=\n  (the_real_root_g0_in_0_1_of_the_k16_f683ab_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef the_real_root_g0_in_0_1_of_the_k16_f683ab_tier : OuroboricityTier := TierFunctor.obj the_real_root_g0_in_0_1_of_the_k16_f683ab_s0\n#eval the_real_root_g0_in_0_1_of_the_k16_f683ab_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_real_root_g0_in_0_1_of_the_k16_f683ab_frobenius :\n    igFrobeniusAlg.mul the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 = the_real_root_g0_in_0_1_of_the_k16_f683ab_s0 :=\n  igFrobAlg_self_fusion the_real_root_g0_in_0_1_of_the_k16_f683ab_s0\n",
   "notes": "Auto-designed from: the real root g0 in (0,1) of the K16 polynomial g^16-10g^14+40g^12-90g^10+126g^8-96g^6+25g^4+2g^2+1 is exhibited constructively by the Intermediate Value Theorem, defining g0C = (g0:\u2102) as the coordinate at which all K16 evaluation takes place"
 }

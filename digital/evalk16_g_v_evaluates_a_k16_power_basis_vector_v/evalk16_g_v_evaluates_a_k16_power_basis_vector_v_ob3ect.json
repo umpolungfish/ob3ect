@@ -16,105 +16,105 @@
       "domain_type": "computational",
       "scope": "maximal",
       "surface_tokens": [
-        "power-basis",
-        "Horner-eval",
-        "ring-homomorphism"
+        "power-basis vector",
+        "Horner evaluation",
+        "monic reduction"
       ],
-      "boundary_condition": "The field K16 defining polynomial modulus",
+      "boundary_condition": "The K16 moduli field defined by the 16th-degree minimal polynomial",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "evalK16_nil",
-        "justification": "The base case for Horner evaluation where an empty list represents the zero element.",
+        "chosen_element": "nil list []",
+        "justification": "The uninitialized state of a coefficient vector before polynomial construction.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "evalK16_kmul",
-        "justification": "The final theorem establishing the ring homomorphism property across the full K16 algebra.",
+        "chosen_element": "evalK16 g0C",
+        "justification": "The ring homomorphism that closes the formal symbolic system into the complex field.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "evalK16_cons",
-        "justification": "The forward recursive step c + g * evalK16(xs) translating list structure to complex values.",
+        "chosen_element": "evaluation morphism",
+        "justification": "The forward transformation from a vector of rationals to a complex value.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "reduceGo_reverse",
-        "justification": "The parity flip where a list is reversed to align the highest-degree term for polynomial reduction.",
+        "chosen_element": "reverse operation",
+        "justification": "Reversing the list order to switch between constant-first and highest-first evaluation.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "reduceGo_step",
-        "justification": "The sequential application of the reduction vector until the list length is exactly 16.",
+        "chosen_element": "Horner step",
+        "justification": "The recursive chaining of coefficients through addition and multiplication by g.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "evalK16_replicate_zero",
-        "justification": "Identity operation where zero-padding recognizes its own value as zero under the evaluation map.",
+        "chosen_element": "identity hom",
+        "justification": "Recognition that evaluating the basis vector itself yields the complex root g0C.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "pmul_fork",
-        "justification": "The expansion of two input vectors into an unreduced high-degree polynomial product.",
+        "chosen_element": "pmul operation",
+        "justification": "Splitting a product into a raw high-degree polynomial and a target reduction context.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "reduceGo_fuse",
-        "justification": "The contraction of high-degree products back into the length-16 power basis via g0C-root substitution.",
+        "chosen_element": "reduceGo",
+        "justification": "Reconstituting the product back into the 16-dimensional basis through modular reduction.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "g0C_root_identity",
-        "justification": "The successful zero-evaluation of the defining polynomial at the specific real root g0.",
+        "chosen_element": "base case fuel = 0",
+        "justification": "The termination of reduction once the vector length is within the basis boundary.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "degree_overflow",
-        "justification": "The branch where list length exceeds 16 and requires further reduction passes.",
+        "chosen_element": "reduction step fuel > 0",
+        "justification": "The active branch that continues to perform subHead operations against k16RedVec.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "phi_insertAdd_paradice",
-        "justification": "The state where a coefficient update simultaneously occupies a fresh insertion and a cumulative merge.",
+        "chosen_element": "phi_insertAdd",
+        "justification": "The state where a key may simultaneously merge with an existing entry or persist as a fresh one.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "noncomputable_def_g0",
-        "justification": "The permanent choice of the real root g0 via the Axiom of Choice in the Lean environment.",
+        "chosen_element": "evalK16_kmul theorem",
+        "justification": "The permanent logical fixation that the homomorphism property holds for all vectors.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "pmul_fork",
-      "split_input": "K16_product_space",
+      "split_element": "pmul",
+      "split_input": "K16 product v * w",
       "split_outputs": [
-        "unreduced_terms",
-        "reduction_fuel"
+        "raw coefficients",
+        "modulus residue"
       ],
-      "fuse_element": "reduceGo_fuse",
-      "fuse_result": "K16_product_space",
+      "fuse_element": "reduceGo",
+      "fuse_result": "kmul(v, w)",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "Empty coefficient list representing the zero polynomial",
-      "true_description": "Successful evaluation of the ring homomorphism identity at g0C",
-      "false_description": "Intermediate unreduced high-degree polynomial state",
-      "both_description": "Sorted association list undergoing simultaneous key comparison and recursive merge",
+      "void_description": "uninitialized \u211a list",
+      "true_description": "successful evaluation to a complex scalar",
+      "false_description": "polynomial degree exceeding basis dimension",
+      "both_description": "intermediate state of a sum-of-products during assoc-list insertion",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,62 +123,72 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "Initialization of the empty list as the zero complex constant"
+          "domain_action": "initiate empty rational list"
         },
         {
           "step_num": 2,
-          "opcode": "IFIX",
-          "domain_action": "Selection of the real root g0 by the intermediate value theorem"
+          "opcode": "AFWD",
+          "domain_action": "map rationals to complex field via Horner constant-first method"
         },
         {
           "step_num": 3,
-          "opcode": "AFWD",
-          "domain_action": "Application of the Horner recursive constructor c + g * rest"
+          "opcode": "IMSCRIB",
+          "domain_action": "define identity evaluation at root g0C"
         },
         {
           "step_num": 4,
-          "opcode": "IMSCRIB",
-          "domain_action": "Recognition of the g0 power basis identity through self-reference"
+          "opcode": "IFIX",
+          "domain_action": "record g0C as the unique root in Icc(0, 1)"
         },
         {
           "step_num": 5,
-          "opcode": "FSPLIT",
-          "domain_action": "Generation of the full convolution product from two K16 vectors"
+          "opcode": "AREV",
+          "domain_action": "flip coordinate vector for highest-first evaluation"
         },
         {
           "step_num": 6,
-          "opcode": "EVALF",
-          "domain_action": "Detection of degree overflow in the unreduced product list"
+          "opcode": "FSPLIT",
+          "domain_action": "branch into raw polynomial multiplication resulting in degree 30"
         },
         {
           "step_num": 7,
-          "opcode": "AREV",
-          "domain_action": "Reversal of the product list to prioritize high-degree coefficients"
+          "opcode": "EVALF",
+          "domain_action": "identify coefficients outside the 16-dimensional boundary"
         },
         {
           "step_num": 8,
           "opcode": "CLINK",
-          "domain_action": "Chaining of subHead subtractions using the k16RedVec constant"
+          "domain_action": "apply kscale using the monic reduction vector k16RedVec"
         },
         {
           "step_num": 9,
-          "opcode": "EVALT",
-          "domain_action": "Attainment of a list length matching the modulus boundary"
+          "opcode": "AREV",
+          "domain_action": "subtract lead coefficients via subHead operation"
         },
         {
           "step_num": 10,
-          "opcode": "FFUSE",
-          "domain_action": "Reconstitution of the product into the canonical 16-element basis"
+          "opcode": "EVALT",
+          "domain_action": "reach reduced vector of length 16"
         },
         {
           "step_num": 11,
-          "opcode": "IMSCRIB",
-          "domain_action": "Validation that map(g0C) preserves the multiplication operation"
+          "opcode": "FFUSE",
+          "domain_action": "return canonical K16 element kmul(v, w)"
         },
         {
           "step_num": 12,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify product of evaluations equals evaluation of product"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "fix the ring homomorphism property phi as a permanent proof artifact"
+        },
+        {
+          "step_num": 14,
           "opcode": "TANCH",
-          "domain_action": "Termination of the proof establishing the phi ring homomorphism"
+          "domain_action": "secure the existence of the SIC-POVM fiducial psi in C^12"
         }
       ],
       "closure_verified": true,
@@ -186,20 +196,20 @@
     },
     "phase_5": {
       "compiler_frontend": "Lean 4 kernel and native_decide tactic",
-      "ipc_mechanism": "List recursion and map-reduce functions",
-      "memory_mechanism": "Noncomputable definitions of field generators g0 and c5Val",
-      "scheduler_mechanism": "Horner's method sequential evaluation order",
-      "alfs_store": "ExistenceRing banked exact rational data",
+      "ipc_mechanism": "List map and foldr operations across coefficient vectors",
+      "memory_mechanism": "Sorted assoc lists for sparse ring element representation",
+      "scheduler_mechanism": "Fuel-bounded recursion in reduceGo for termination safety",
+      "alfs_store": "k16RedVec defining polynomial constants",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "Polynomial reduction fuel per kscale iteration",
-      "pre_cycle_state": "Rational coefficient vectors in unreduced association lists",
-      "post_cycle_state": "Complex evaluation of the ring homomorphism",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The total information in the K16 basis is conserved under the evaluation map g0C.",
+      "cycle_cost": "Computational cycles for 31-step fuel reduction",
+      "pre_cycle_state": "Formal symbolic K16 vector",
+      "post_cycle_state": "Complex scalar image of the ring homomorphism",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The homomorphism preserves the algebraic structure exactly across the mapping.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IFIX \u2192 AFWD \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 FFUSE \u2192 IMSCRIB \u2192 TANCH\n-- Class: evalK16(g, v) evaluates a K16 power-basis vector v at g by Horner's method, and the theorem evalK16_kmul proves evalK16(g0C, kmul v w) = evalK16(g0C, v) * evalK16(g0C, w) using the polynomial reduction preserved by g0C, making evalK16 a ring hom on K16\n-- Fingerprint: sig=(7,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(4, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc6d  | initial object \u2014 ground of distinction\n--   [1] IFIX      prot   := \ud801\udc6d               \ud801\udc7c \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [10] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def evalk16_g_v_evaluates_a_k16_power_basis_86b372_protocol : IGProtocol evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9 = evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9 (idempotent)\n  (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s1) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l1 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s1 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s2) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l2 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s2 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s3) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l3 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s3 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s4) (.seq (.prod (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l4 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s4 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9) (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l4 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s4 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9)) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l9 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l9 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10) (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l10 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def evalk16_g_v_evaluates_a_k16_power_basis_86b372_true_arm : IGProtocol evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11 :=\n  (evalk16_g_v_evaluates_a_k16_power_basis_86b372_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def evalk16_g_v_evaluates_a_k16_power_basis_86b372_false_arm : IGProtocol evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11 :=\n  (evalk16_g_v_evaluates_a_k16_power_basis_86b372_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef evalk16_g_v_evaluates_a_k16_power_basis_86b372_tier : OuroboricityTier := TierFunctor.obj evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0\n#eval evalk16_g_v_evaluates_a_k16_power_basis_86b372_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem evalk16_g_v_evaluates_a_k16_power_basis_86b372_frobenius :\n    igFrobeniusAlg.mul evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 = evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 :=\n  igFrobAlg_self_fusion evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 IMSCRIB \u2192 IFIX \u2192 AREV \u2192 FSPLIT \u2192 EVALF \u2192 CLINK \u2192 AREV \u2192 EVALT \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: evalK16(g, v) evaluates a K16 power-basis vector v at g by Horner's method, and the theorem evalK16_kmul proves evalK16(g0C, kmul v w) = evalK16(g0C, v) * evalK16(g0C, w) using the polynomial reduction preserved by g0C, making evalK16 a ring hom on K16\n-- Fingerprint: sig=(8,2,2,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=14\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(5, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [3] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc57  | irreversible fixation \u2014 winding number\n--   [4] AREV      pol    := \ud801\udc57               \ud801\udc6d \u2192 \ud801\udc5a  | reverse morphism \u2014 parity flip\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [9] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [11] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [12] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evalk16_g_v_evaluates_a_k16_power_basis_86b372_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def evalk16_g_v_evaluates_a_k16_power_basis_86b372_protocol : IGProtocol evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 = evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 (idempotent)\n  (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s1) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l1 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s1 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s2) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l2 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s2 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s3) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l3 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s3 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s4) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l4 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s4 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s5) (.seq (.prod (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l5 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s5 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10) (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l5 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s5 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10)) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l10 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l10 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s10 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11) (.seq (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l11 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s11 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s12) (.arrow evalk16_g_v_evaluates_a_k16_power_basis_86b372_l12 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s12 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s13))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def evalk16_g_v_evaluates_a_k16_power_basis_86b372_true_arm : IGProtocol evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s13 :=\n  (evalk16_g_v_evaluates_a_k16_power_basis_86b372_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def evalk16_g_v_evaluates_a_k16_power_basis_86b372_false_arm : IGProtocol evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s13 :=\n  (evalk16_g_v_evaluates_a_k16_power_basis_86b372_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef evalk16_g_v_evaluates_a_k16_power_basis_86b372_tier : OuroboricityTier := TierFunctor.obj evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0\n#eval evalk16_g_v_evaluates_a_k16_power_basis_86b372_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem evalk16_g_v_evaluates_a_k16_power_basis_86b372_frobenius :\n    igFrobeniusAlg.mul evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 = evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0 :=\n  igFrobAlg_self_fusion evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0\n",
   "notes": "Auto-designed from: evalK16(g, v) evaluates a K16 power-basis vector v at g by Horner's method, and the theorem evalK16_kmul proves evalK16(g0C, kmul v w) = evalK16(g0C, v) * evalK16(g0C, w) using the polynomial reduction preserved by g0C, making evalK16 a ring hom on K16"
 }

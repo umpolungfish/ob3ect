@@ -16,105 +16,105 @@
       "domain_type": "computational",
       "scope": "maximal",
       "surface_tokens": [
-        "homomorphism",
-        "residue",
-        "bitmast"
+        "monomial",
+        "reduction",
+        "homomorphism"
       ],
-      "boundary_condition": "The ring hom phi : R -> C mapping the coordinate tower into complex overlap identities.",
+      "boundary_condition": "The ring homomorphism phi from R to C",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "nil list",
-        "justification": "The empty association list representing the zero ring element 0_R.",
+        "chosen_element": "Empty RElt list",
+        "justification": "The additive identity zero from which all ring expressions are constructed.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "Complex field C",
-        "justification": "The target field containing the final complex coordinates and scalar identities.",
+        "chosen_element": "Complex number space C",
+        "justification": "The target field that contains the final image of every ring element.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
         "chosen_element": "phi evaluation",
-        "justification": "The forward mapping of ring generators to complex values g0C, iVal, c5Val, and u1Val.",
+        "justification": "The forward mapping of a structured ring element into a complex value.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "rconj operator",
-        "justification": "The contravariant involution mapping u1 to its inverse-phase conjugate \u016b1.",
+        "chosen_element": "Star conjugation",
+        "justification": "The contravariant operation on complex values mapping back across the phi symmetry.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "Composition of reductions",
-        "justification": "Chaining red1, red2, and red3 to normalize exponent overflow into the 7-bit basis.",
+        "chosen_element": "Ring multiplication rmul",
+        "justification": "Sequential composition of monomial interactions within the ring structure.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "phi(rK v) = evalK16 g0C v",
-        "justification": "The identity where the embedding of a K16 scalar is its direct functional evaluation.",
+        "chosen_element": "Identity rone",
+        "justification": "The multiplicative identity that maps to 1 in C, recognizing itself across the hom.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "rmul monomial expansion",
-        "justification": "Splitting a ring product into raw unreduced mono-product terms [ka+kb, coef].",
+        "chosen_element": "contrib_sound branching",
+        "justification": "Splits a raw monomial product into component reduction paths for u1, i, and c5 layers.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "phi_foldl_insertAdd",
-        "justification": "Reconstituting the total complex sum from the reduced and merged association list terms.",
+        "chosen_element": "monVal reconstitution",
+        "justification": "Summing the mapped outputs of each reduction branch to recover the original evaluation.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "contrib_sound",
-        "justification": "The success state where the sum of evaluated reduced terms equals the parent unreduced term.",
+        "chosen_element": "Identity match",
+        "justification": "Successful verification that a ring identity holds in the target field C.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "isZeroK cancellation",
-        "justification": "The path where a resultant K16 vector is zero, causing the term to be dropped from the list.",
+        "chosen_element": "isZeroK check",
+        "justification": "Identification and removal of terms that cancel to zero.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "rU1i entanglement",
-        "justification": "The state where u1 conjugation involves both the phase E2 and the original generator.",
+        "chosen_element": "c5 quadratic roots",
+        "justification": "The state where two possible roots for c5 coexist before the embedding root is chosen.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "native_decide witness",
-        "justification": "Permanent kernel record that a specific ring identity holds via literal rational arithmetic.",
+        "chosen_element": "native_decide proof",
+        "justification": "The permanent, compiled verification of an identity within the Lean kernel.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "rmul monomial expansion",
-      "split_input": "A product of two ring elements A * B",
+      "split_element": "contrib_sound branching",
+      "split_input": "evalKey k (kmul pa.2 pb.2)",
       "split_outputs": [
-        "Individual coefficient products in K16",
-        "Summed exponent keys with potential overflow"
+        "reduced u1-layer terms",
+        "reduced c5-layer terms"
       ],
-      "fuse_element": "phi_foldl_insertAdd",
-      "fuse_result": "The final complex value phi(A) * phi(B)",
+      "fuse_element": "monVal reconstitution",
+      "fuse_result": "evalKey (ka*kb) (pa*pb)",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "Empty association list 0_R before term insertion.",
-      "true_description": "Successful insertion or merge into the RElt list with non-zero remainder.",
-      "false_description": "Coefficient cancellation resulting in an empty list or the zero scalar.",
-      "both_description": "Partial cancellation in a sum where some basis keys remain while others vanish.",
+      "void_description": "uninitialized RElt before phi processing",
+      "true_description": "valid complex evaluation of a ring identity",
+      "false_description": "additive cancellation to zero within a K16 vector",
+      "both_description": "simultaneous existence of formal generators and complex images",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,98 +123,98 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "nil association list creates the base vacuum for the ring element."
+          "domain_action": "define the empty ring element 0"
         },
         {
           "step_num": 2,
-          "opcode": "AFWD",
-          "domain_action": "map each (key, K16) pair to its interpreted complex components."
+          "opcode": "IMSCRIB",
+          "domain_action": "define the multiplicative identity 1"
         },
         {
           "step_num": 3,
-          "opcode": "FSPLIT",
-          "domain_action": "separate the 7-bit key into cover mask, i-bit, c5-bit, and u1-bit."
+          "opcode": "IFIX",
+          "domain_action": "record the K16 defining polynomial root g0"
         },
         {
           "step_num": 4,
-          "opcode": "IMSCRIB",
-          "domain_action": "evaluate the K16 vector at g0C to obtain the complex scalar coefficient."
+          "opcode": "AFWD",
+          "domain_action": "map K16 coefficients to C via g0C evaluation"
         },
         {
           "step_num": 5,
-          "opcode": "CLINK",
-          "domain_action": "compose the mask-based scov multiplication with the exponent-based phase multiplication."
+          "opcode": "FSPLIT",
+          "domain_action": "branch a product of two monomials into raw key exponents"
         },
         {
           "step_num": 6,
-          "opcode": "AREV",
-          "domain_action": "Apply rconj to flip the i-phase sign and apply the E2 correction to the u1-phase."
+          "opcode": "CLINK",
+          "domain_action": "apply red1 reduction for u1 layers using u1Val squared identity"
         },
         {
           "step_num": 7,
-          "opcode": "IFIX",
-          "domain_action": "native_decide confirms the g0 polynomial root property g0_root."
+          "opcode": "CLINK",
+          "domain_action": "apply red2 reduction for i layers using iVal squared identity"
         },
         {
           "step_num": 8,
-          "opcode": "FSPLIT",
-          "domain_action": "rmul expands A * B into a flat list of unreduced product monoids."
+          "opcode": "CLINK",
+          "domain_action": "apply red3 reduction for c5 layers using the quadratic root relation"
         },
         {
           "step_num": 9,
           "opcode": "CLINK",
-          "domain_action": "red1 reduces u1-exponents mod 2 by injecting E2Val."
+          "domain_action": "apply covCorr adjustment for shared generator bits"
         },
         {
           "step_num": 10,
-          "opcode": "CLINK",
-          "domain_action": "red2 reduces i-exponents mod 2 by injecting -1."
+          "opcode": "EVALF",
+          "domain_action": "filter resulting terms where coefficients cancel via isZeroK"
         },
         {
           "step_num": 11,
-          "opcode": "CLINK",
-          "domain_action": "red3 reduces c5-exponents mod 2 by injecting the OA5/OB5 linear form."
+          "opcode": "FFUSE",
+          "domain_action": "sum over all reduced monomial contributions to reconstitute the product value"
         },
         {
           "step_num": 12,
           "opcode": "EVALT",
-          "domain_action": "verify contrib_sound for each reduction step."
+          "domain_action": "confirm phi(rmul A B) equals phi(A) segments multiplied in C"
         },
         {
           "step_num": 13,
-          "opcode": "FFUSE",
-          "domain_action": "insertAdd gathers all reduced terms into the canonical sorted association list."
+          "opcode": "AREV",
+          "domain_action": "apply rconj by flipping iVal sign and u1Val via rU1i"
         },
         {
           "step_num": 14,
           "opcode": "IFIX",
-          "domain_action": "final registration of existence_identities_all as a fixed truth in the ring."
+          "domain_action": "commit the 143 overlap identities as exact kernel-checked records"
         },
         {
           "step_num": 15,
           "opcode": "TANCH",
-          "domain_action": "The mapping phi is fixed as a ring homomorphism into C."
+          "domain_action": "anchor the total fiducial psi within the terminal C space"
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "gen_lean_existence.py translating banked exact data into Lean assoc lists.",
-      "ipc_mechanism": "List.foldl passing the accumulated RElt through successive insertAdd operations.",
-      "memory_mechanism": "Sparse assoc list storage of (key, K16) pairs in R.",
-      "scheduler_mechanism": "Noncomputable definitions evaluated via the Lean kernel's substitution rules.",
-      "alfs_store": "Millennium.SIC_POVM_Stark providing the baseline fiducial definitions.",
+      "compiler_frontend": "Lean 4 kernel and native_decide tactic",
+      "ipc_mechanism": "sparse assoc list keys (7-bit address space)",
+      "memory_mechanism": "K16 power basis coefficient vectors",
+      "scheduler_mechanism": "fuel-bounded recursion in reduceGo",
+      "alfs_store": "Stark conjecture mixed-signature units",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "Reduction fuel consumed by reduceGo during K16 multiplication.",
-      "pre_cycle_state": "Unreduced product polynomials in Q[g].",
-      "post_cycle_state": "Canonical basis vectors of length 16 in K16.",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The reduction process is a deterministic algebraic isomorphism within the quotient ring.",
+      "cycle_cost": "Computational cycles per reduction step in reduceGo",
+      "pre_cycle_state": "formal ring relation in R",
+      "post_cycle_state": "certified complex identity in C",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The homomorphism preserves the structural information across the mapping.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 IMSCRIB \u2192 CLINK \u2192 AREV \u2192 IFIX \u2192 FSPLIT \u2192 CLINK \u2192 CLINK \u2192 CLINK \u2192 EVALT \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: phi maps each sparse-assoc-list ring element to \u2102 by decoding the 7-bit key (cover mask over bits 0,1,2,3 opening sVal 0,1,2,3; i-exponent key/16%2; c5-exponent key/32%2; u1-exponent key/64), evaluating the K16 coefficient at g0C, multiplying by scov\u00b7iVal^ei\u00b7c5Val^e5\u00b7u1Val^e1, and summing over the list; phi_radd is proved via phi_insertAdd (already done); phi_rmul proves multiplicativity by a per-monomial contrib_sound lemma \u2014 the sum of evalKeys over contrib(cov,ei,e5,e1,coef) equals the unreduced monomial value monVal, because red1 is sound by u1Val\u00b2=E2Val, red2 by iVal\u00b2=-1, red3 by c5Val\u00b2=-oa\u00b7c5Val-ob \u2014 composed with covCorr_sound (scov(ka)\u00b7scov(kb)=\u03a0_{shared bit b}sVal b\u00b2 \u00b7 scov(ka\u2295kb), matching covCorr's kmul by covK b and sVal b\u00b2=evalK16(covK b)) and phi_foldl_insertAdd; phi_rconj proves phi(rconj A)=star(phi A) because star fixes every K16 evaluation (g0 real) and sVal/c5Val (real), sends iVal\u2192-iVal, and sends u1Val\u2192conj(E2Val)\u00b7u1Val via rU1i\n-- Fingerprint: sig=(9,3,1,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=15\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(7, 12)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7e \u2192 \ud801\udc60  | split \u03b4 \u2014 range decomposition\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc57  | composition \u2014 regime coherence\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc71 \u2192 \ud801\udc6d  | reverse morphism \u2014 parity flip\n--   [6] IFIX      prot   := \ud801\udc6d               \ud801\udc57 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [11] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [14] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def phi_maps_each_sparse_assoc_list_ring_7a9155_protocol : IGProtocol phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct phi_maps_each_sparse_assoc_list_ring_7a9155_s12 phi_maps_each_sparse_assoc_list_ring_7a9155_s12 = phi_maps_each_sparse_assoc_list_ring_7a9155_s12 (idempotent)\n  (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l0 phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s1) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l1 phi_maps_each_sparse_assoc_list_ring_7a9155_s1 phi_maps_each_sparse_assoc_list_ring_7a9155_s2) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l2 phi_maps_each_sparse_assoc_list_ring_7a9155_s2 phi_maps_each_sparse_assoc_list_ring_7a9155_s3) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l3 phi_maps_each_sparse_assoc_list_ring_7a9155_s3 phi_maps_each_sparse_assoc_list_ring_7a9155_s4) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l4 phi_maps_each_sparse_assoc_list_ring_7a9155_s4 phi_maps_each_sparse_assoc_list_ring_7a9155_s5) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l5 phi_maps_each_sparse_assoc_list_ring_7a9155_s5 phi_maps_each_sparse_assoc_list_ring_7a9155_s6) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l6 phi_maps_each_sparse_assoc_list_ring_7a9155_s6 phi_maps_each_sparse_assoc_list_ring_7a9155_s7) (.seq (.prod (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l7 phi_maps_each_sparse_assoc_list_ring_7a9155_s7 phi_maps_each_sparse_assoc_list_ring_7a9155_s12) (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l7 phi_maps_each_sparse_assoc_list_ring_7a9155_s7 phi_maps_each_sparse_assoc_list_ring_7a9155_s12)) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l12 phi_maps_each_sparse_assoc_list_ring_7a9155_s12 phi_maps_each_sparse_assoc_list_ring_7a9155_s12) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l12 phi_maps_each_sparse_assoc_list_ring_7a9155_s12 phi_maps_each_sparse_assoc_list_ring_7a9155_s13) (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l13 phi_maps_each_sparse_assoc_list_ring_7a9155_s13 phi_maps_each_sparse_assoc_list_ring_7a9155_s14)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def phi_maps_each_sparse_assoc_list_ring_7a9155_true_arm : IGProtocol phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s14 :=\n  (phi_maps_each_sparse_assoc_list_ring_7a9155_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef phi_maps_each_sparse_assoc_list_ring_7a9155_tier : OuroboricityTier := TierFunctor.obj phi_maps_each_sparse_assoc_list_ring_7a9155_s0\n#eval phi_maps_each_sparse_assoc_list_ring_7a9155_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem phi_maps_each_sparse_assoc_list_ring_7a9155_frobenius :\n    igFrobeniusAlg.mul phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s0 = phi_maps_each_sparse_assoc_list_ring_7a9155_s0 :=\n  igFrobAlg_self_fusion phi_maps_each_sparse_assoc_list_ring_7a9155_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 IFIX \u2192 AFWD \u2192 FSPLIT \u2192 CLINK \u2192 CLINK \u2192 CLINK \u2192 CLINK \u2192 EVALF \u2192 FFUSE \u2192 EVALT \u2192 AREV \u2192 IFIX \u2192 TANCH\n-- Class: phi maps each sparse-assoc-list ring element to \u2102 by decoding the 7-bit key (cover mask over bits 0,1,2,3 opening sVal 0,1,2,3; i-exponent key/16%2; c5-exponent key/32%2; u1-exponent key/64), evaluating the K16 coefficient at g0C, multiplying by scov\u00b7iVal^ei\u00b7c5Val^e5\u00b7u1Val^e1, and summing over the list; phi_radd is proved via phi_insertAdd (already done); phi_rmul proves multiplicativity by a per-monomial contrib_sound lemma \u2014 the sum of evalKeys over contrib(cov,ei,e5,e1,coef) equals the unreduced monomial value monVal, because red1 is sound by u1Val\u00b2=E2Val, red2 by iVal\u00b2=-1, red3 by c5Val\u00b2=-oa\u00b7c5Val-ob \u2014 composed with covCorr_sound (scov(ka)\u00b7scov(kb)=\u03a0_{shared bit b}sVal b\u00b2 \u00b7 scov(ka\u2295kb), matching covCorr's kmul by covK b and sVal b\u00b2=evalK16(covK b)) and phi_foldl_insertAdd; phi_rconj proves phi(rconj A)=star(phi A) because star fixes every K16 evaluation (g0 real) and sVal/c5Val (real), sends iVal\u2192-iVal, and sends u1Val\u2192conj(E2Val)\u00b7u1Val via rU1i\n-- Fingerprint: sig=(9,2,2,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=15\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [2] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [11] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc57  | evaluate-true \u2014 criticality gate open\n--   [12] AREV      pol    := \ud801\udc57               \u2299 \u2192 \ud801\udc6d  | reverse morphism \u2014 parity flip\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc57 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [14] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_maps_each_sparse_assoc_list_ring_7a9155_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def phi_maps_each_sparse_assoc_list_ring_7a9155_protocol : IGProtocol phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct phi_maps_each_sparse_assoc_list_ring_7a9155_s10 phi_maps_each_sparse_assoc_list_ring_7a9155_s10 = phi_maps_each_sparse_assoc_list_ring_7a9155_s10 (idempotent)\n  (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l0 phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s1) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l1 phi_maps_each_sparse_assoc_list_ring_7a9155_s1 phi_maps_each_sparse_assoc_list_ring_7a9155_s2) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l2 phi_maps_each_sparse_assoc_list_ring_7a9155_s2 phi_maps_each_sparse_assoc_list_ring_7a9155_s3) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l3 phi_maps_each_sparse_assoc_list_ring_7a9155_s3 phi_maps_each_sparse_assoc_list_ring_7a9155_s4) (.seq (.prod (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l4 phi_maps_each_sparse_assoc_list_ring_7a9155_s4 phi_maps_each_sparse_assoc_list_ring_7a9155_s10) (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l4 phi_maps_each_sparse_assoc_list_ring_7a9155_s4 phi_maps_each_sparse_assoc_list_ring_7a9155_s10)) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l10 phi_maps_each_sparse_assoc_list_ring_7a9155_s10 phi_maps_each_sparse_assoc_list_ring_7a9155_s10) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l10 phi_maps_each_sparse_assoc_list_ring_7a9155_s10 phi_maps_each_sparse_assoc_list_ring_7a9155_s11) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l11 phi_maps_each_sparse_assoc_list_ring_7a9155_s11 phi_maps_each_sparse_assoc_list_ring_7a9155_s12) (.seq (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l12 phi_maps_each_sparse_assoc_list_ring_7a9155_s12 phi_maps_each_sparse_assoc_list_ring_7a9155_s13) (.arrow phi_maps_each_sparse_assoc_list_ring_7a9155_l13 phi_maps_each_sparse_assoc_list_ring_7a9155_s13 phi_maps_each_sparse_assoc_list_ring_7a9155_s14))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def phi_maps_each_sparse_assoc_list_ring_7a9155_true_arm : IGProtocol phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s14 :=\n  (phi_maps_each_sparse_assoc_list_ring_7a9155_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def phi_maps_each_sparse_assoc_list_ring_7a9155_false_arm : IGProtocol phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s14 :=\n  (phi_maps_each_sparse_assoc_list_ring_7a9155_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef phi_maps_each_sparse_assoc_list_ring_7a9155_tier : OuroboricityTier := TierFunctor.obj phi_maps_each_sparse_assoc_list_ring_7a9155_s0\n#eval phi_maps_each_sparse_assoc_list_ring_7a9155_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem phi_maps_each_sparse_assoc_list_ring_7a9155_frobenius :\n    igFrobeniusAlg.mul phi_maps_each_sparse_assoc_list_ring_7a9155_s0 phi_maps_each_sparse_assoc_list_ring_7a9155_s0 = phi_maps_each_sparse_assoc_list_ring_7a9155_s0 :=\n  igFrobAlg_self_fusion phi_maps_each_sparse_assoc_list_ring_7a9155_s0\n",
   "notes": "Auto-designed from: phi maps each sparse-assoc-list ring element to \u2102 by decoding the 7-bit key (cover mask over bits 0,1,2,3 opening sVal 0,1,2,3; i-exponent key/16%2; c5-exponent key/32%2; u1-exponent key/64), evaluating the K16 coefficient at g0C, multiplying by scov\u00b7iVal^ei\u00b7c5Val^e5\u00b7u1Val^e1, and summing over the list; phi_radd is proved via phi_insertAdd (already done); phi_rmul proves multiplicativity by a per-monomial contrib_sound lemma \u2014 the sum of evalKeys over contrib(cov,ei,e5,e1,coef) equals the unreduced monomial value monVal, because red1 is sound by u1Val\u00b2=E2Val, red2 by iVal\u00b2=-1, red3 by c5Val\u00b2=-oa\u00b7c5Val-ob \u2014 composed with covCorr_sound (scov(ka)\u00b7scov(kb)=\u03a0_{shared bit b}sVal b\u00b2 \u00b7 scov(ka\u2295kb), matching covCorr's kmul by covK b and sVal b\u00b2=evalK16(covK b)) and phi_foldl_insertAdd; phi_rconj proves phi(rconj A)=star(phi A) because star fixes every K16 evaluation (g0 real) and sVal/c5Val (real), sends iVal\u2192-iVal, and sends u1Val\u2192conj(E2Val)\u00b7u1Val via rU1i"
 }

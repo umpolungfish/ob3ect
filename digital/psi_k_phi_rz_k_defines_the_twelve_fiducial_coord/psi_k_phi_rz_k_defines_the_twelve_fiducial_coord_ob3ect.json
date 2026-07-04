@@ -16,105 +16,105 @@
       "domain_type": "computational",
       "scope": "maximal",
       "surface_tokens": [
-        "fiducial",
-        "ring homomorphism",
-        "moduli field"
+        "fiducial_coordinate",
+        "ring_homomorphism",
+        "overlap_identity"
       ],
-      "boundary_condition": "The field extension tower R -> C containing the SIC-POVM geometry",
+      "boundary_condition": "crystal_forces_d12_sic",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "uninitialized coordinate space",
-        "justification": "The prior state before the definition of psi(k) or the ring R.",
+        "chosen_element": "uninitialized_moduli",
+        "justification": "the state of the coordinate tower before the k16 real root evaluation",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "crystal_forces_d12_sic",
-        "justification": "The final capstone proof containing all 143 identities and the embedding.",
+        "chosen_element": "sic_povm_exists",
+        "justification": "the final proof state containing all satisfied constraints for dimension twelve",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "phi : R -> C",
-        "justification": "The forward map transferring identities from the formal ring to the complex numbers.",
+        "chosen_element": "phi_mapping",
+        "justification": "forward morphism transferring results from the existence ring to the complex field",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "rconj",
-        "justification": "The involution / conjugation map that reverses phase orientation.",
+        "chosen_element": "tower_reduction",
+        "justification": "reduction of high degree polynomial terms back to the power basis",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "rmul (rZB k) (rZ k)",
-        "justification": "The composition of an element with its conjugate to produce a modulus.",
+        "chosen_element": "composition_of_identities",
+        "justification": "sequentially linking coord_moduli and norm_sum theorems to achieve norm_sq_eq_one",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "evalK16_replicate_zero",
-        "justification": "Identity operation ensuring that the evaluation of null structures returns zero.",
+        "chosen_element": "evalK16_identity",
+        "justification": "self-recognition where the polynomial evaluation at the root identifies with the field element",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "stratum shift check",
-        "justification": "Branches the verification into shift a = 0 (identity) and a > 0 (equiangularity).",
+        "chosen_element": "branch_probe11",
+        "justification": "splitting the u1 phase into distinct real and imaginary K16 components c2 and s2",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "existence_identities_all",
-        "justification": "Reconstitutes the total verification by aggregating all strata results.",
+        "chosen_element": "u1_layer_reconstruction",
+        "justification": "reconstituting the squared phase element from its c2 and s2 components",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "equiangularity condition satisfied",
-        "justification": "The state where the overlap inner product equals 1/13.",
+        "chosen_element": "norm_unity_affirmation",
+        "justification": "the state where the sum of moduli evaluates precisely to one",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "norm_sum mismatch",
-        "justification": "The state where the sum of moduli does not equal unity.",
+        "chosen_element": "orthogonality_cancellation",
+        "justification": "evaluation of non-identity overlaps resulting in zero or baseline noise",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "branch_probe12",
-        "justification": "The audit holding multiple branch components simultaneously before reduction.",
+        "chosen_element": "mixed_signature_paradice",
+        "justification": "simultaneous holding of real and imaginary parts in a single complex embedding without resolution",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "native_decide",
-        "justification": "The permanent, immutable kernel verification of an identity.",
+        "chosen_element": "native_decide_record",
+        "justification": "permanent fixation of a check within the Lean kernel as a computational witness",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "stratum shift check",
-      "split_input": "fiducial overlap set",
+      "split_element": "branch_probe11",
+      "split_input": "u1_squared",
       "split_outputs": [
-        "identity branch (a=0)",
-        "equiangular branch (a>0)"
+        "c2_component",
+        "s2_component"
       ],
-      "fuse_element": "existence_identities_all",
-      "fuse_result": "fiducial overlap set",
+      "fuse_element": "u1_layer_reconstruction",
+      "fuse_result": "u1_squared",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "Pre-embedding ring R without complex evaluation",
-      "true_description": "143 identities verified exactly in C",
-      "false_description": "Violation of the Weyl-Heisenberg overlap constraints",
-      "both_description": "Galois-Zauner correspondence holding potential roots unresolved",
+      "void_description": "00: raw 1500-digit precision float before algebraic assignment",
+      "true_description": "01: successful verification of a WH overlap identity",
+      "false_description": "10: mismatch between ring element and complex evaluation",
+      "both_description": "11: the Stark unit held as both a field element and a complex value",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,93 +123,88 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "instantiation of the formal ring R with generators s, i, c5, u1"
+          "domain_action": "initialize empty coordinate registers for the d=12 fiducial"
         },
         {
           "step_num": 2,
-          "opcode": "IFIX",
-          "domain_action": "fixation of the K16 defining polynomial coefficients"
+          "opcode": "IMSCRIB",
+          "domain_action": "define g0C as the principal real root of the K16 polynomial"
         },
         {
           "step_num": 3,
-          "opcode": "AFWD",
-          "domain_action": "mapping of coordinates z_k via the ring homomorphism phi"
+          "opcode": "IFIX",
+          "domain_action": "fix the coefficients of k16RedVec for permanent reduction rules"
         },
         {
           "step_num": 4,
-          "opcode": "IMSCRIB",
-          "domain_action": "recognition of z_k as the image of rZ k"
+          "opcode": "AFWD",
+          "domain_action": "map K16 elements into the complex field via phi"
         },
         {
           "step_num": 5,
-          "opcode": "AREV",
-          "domain_action": "application of rconj to generate the conjugate coordinate rZB k"
+          "opcode": "FSPLIT",
+          "domain_action": "branch the fiducial coordinate z(k) into its magnitude and phase ring elements"
         },
         {
           "step_num": 6,
-          "opcode": "CLINK",
-          "domain_action": "composition of rZB k and rZ k via rmul to obtain the modulus rK(modK k)"
+          "opcode": "AREV",
+          "domain_action": "reduce the product of z(k) and its conjugate back to the M(k) modulus basis"
         },
         {
           "step_num": 7,
-          "opcode": "IFIX",
-          "domain_action": "native_decide fixation of the coord_moduli theorem"
+          "opcode": "CLINK",
+          "domain_action": "compose the mapping phi with the rZB/rZ multiplication to verify local moduli"
         },
         {
           "step_num": 8,
-          "opcode": "FSPLIT",
-          "domain_action": "branching the 143 identities into individual strata evaluations"
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the mapped modulus with its fixed rational value in K16"
         },
         {
           "step_num": 9,
-          "opcode": "EVALT",
-          "domain_action": "verification that O_{a,b}*Oc_{a,b} reduces to 1/13 in the T-arm"
+          "opcode": "FFUSE",
+          "domain_action": "fuse the twelve local moduli evaluations into a single global sum"
         },
         {
           "step_num": 10,
-          "opcode": "FFUSE",
-          "domain_action": "collection of all strata results into a unified existence proof"
+          "opcode": "EVALT",
+          "domain_action": "affirm that the sum equals the identity element one16"
         },
         {
           "step_num": 11,
-          "opcode": "AFWD",
-          "domain_action": "sum of moduli terms M_k directed toward the trace condition"
+          "opcode": "CLINK",
+          "domain_action": "compose the trace-one result with the wh_normSq definition"
         },
         {
           "step_num": 12,
           "opcode": "IFIX",
-          "domain_action": "native_decide fixation of the norm_sum identity"
+          "domain_action": "record norm_sq_eq_one as a computational fact in the Lean environment"
         },
         {
           "step_num": 13,
-          "opcode": "IMSCRIB",
-          "domain_action": "identification of the result as the real scalar 1"
-        },
-        {
-          "step_num": 14,
           "opcode": "TANCH",
-          "domain_action": "closure of the embedding as the final SIC-POVM proof"
+          "domain_action": "close the system with the verified existence of the SIC-POVM fiducial"
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "Lean 4 kernel and native_decide evaluator",
-      "ipc_mechanism": "List (\u2115 \u00d7 K16) assoc-list lookups",
-      "memory_mechanism": "K16 power-basis coefficient vectors",
-      "scheduler_mechanism": "Stratum 0 through 11 sequential check",
-      "alfs_store": "Millennium.SIC_POVM_Stark definitions",
+      "compiler_frontend": "Lean 4 kernel and native_decide tactic",
+      "ipc_mechanism": "polynomial reduction via reduceGo and fuel-based recursion",
+      "memory_mechanism": "sparse assoc lists storing 7-bit keys and K16 vectors",
+      "scheduler_mechanism": "linear proof script evaluation with nested induction",
+      "alfs_store": "Millennium.SIC_POVM_Stark and SIC_D12_ExistenceRing",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "Computational cycles for \u211a arithmetic and poly-reduction",
-      "pre_cycle_state": "Non-embedded formal ring identities",
-      "post_cycle_state": "Certified complex fiducial vector psi",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The ring homomorphism preserves the logical structure of all 143 identities.",
+      "cycle_cost": "computation time for reduction of degree 31 polynomials",
+      "pre_cycle_state": "symbolic representation of 143 overlap identities",
+      "post_cycle_state": "certified fixed-point coordinates in C^12",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the formal mapping preserves the algebraic structure exactly across the ring hom",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IFIX \u2192 AFWD \u2192 IMSCRIB \u2192 AREV \u2192 CLINK \u2192 IFIX \u2192 FSPLIT \u2192 EVALT \u2192 FFUSE \u2192 AFWD \u2192 IFIX \u2192 IMSCRIB \u2192 TANCH\n-- Class: psi(k)=phi(rZ k) defines the twelve fiducial coordinates; norm_sq_eq_one proves wh_normSq(12,psi)=1: wh_inner psi psi = \u03a3_k psi k\u00b7star(psi k), and star(psi k)\u00b7psi k = phi(rconj(rZ k))\u00b7phi(rZ k) = phi(rmul (rZB k)(rZ k)) = phi(rK(modK k)) = evalK16(g0C, modK k) using the frozen coord_moduli theorem (rmul (rZB k)(rZ k) = rK (modK k)); summing over k and pushing phi through the frozen norm_sum (\u03a3 M_k = one16) gives evalK16(g0C, one16)=1, whose real part is 1\n-- Fingerprint: sig=(8,2,1,3)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=14\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(7, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc6d  | initial object \u2014 ground of distinction\n--   [1] IFIX      prot   := \ud801\udc6d               \ud801\udc7c \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc57  | identity \u2014 self-imscription\n--   [4] AREV      pol    := \ud801\udc57               \ud801\udc60 \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [6] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [10] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def psi_k_phi_rz_k_defines_the_twelve_48e44c_protocol : IGProtocol psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 = psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 (idempotent)\n  (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s1) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l1 psi_k_phi_rz_k_defines_the_twelve_48e44c_s1 psi_k_phi_rz_k_defines_the_twelve_48e44c_s2) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l2 psi_k_phi_rz_k_defines_the_twelve_48e44c_s2 psi_k_phi_rz_k_defines_the_twelve_48e44c_s3) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l3 psi_k_phi_rz_k_defines_the_twelve_48e44c_s3 psi_k_phi_rz_k_defines_the_twelve_48e44c_s4) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l4 psi_k_phi_rz_k_defines_the_twelve_48e44c_s4 psi_k_phi_rz_k_defines_the_twelve_48e44c_s5) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l5 psi_k_phi_rz_k_defines_the_twelve_48e44c_s5 psi_k_phi_rz_k_defines_the_twelve_48e44c_s6) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l6 psi_k_phi_rz_k_defines_the_twelve_48e44c_s6 psi_k_phi_rz_k_defines_the_twelve_48e44c_s7) (.seq (.prod (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l7 psi_k_phi_rz_k_defines_the_twelve_48e44c_s7 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9) (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l7 psi_k_phi_rz_k_defines_the_twelve_48e44c_s7 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9)) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l9 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l9 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 psi_k_phi_rz_k_defines_the_twelve_48e44c_s10) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l10 psi_k_phi_rz_k_defines_the_twelve_48e44c_s10 psi_k_phi_rz_k_defines_the_twelve_48e44c_s11) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l11 psi_k_phi_rz_k_defines_the_twelve_48e44c_s11 psi_k_phi_rz_k_defines_the_twelve_48e44c_s12) (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l12 psi_k_phi_rz_k_defines_the_twelve_48e44c_s12 psi_k_phi_rz_k_defines_the_twelve_48e44c_s13)))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def psi_k_phi_rz_k_defines_the_twelve_48e44c_true_arm : IGProtocol psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s13 :=\n  (psi_k_phi_rz_k_defines_the_twelve_48e44c_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef psi_k_phi_rz_k_defines_the_twelve_48e44c_tier : OuroboricityTier := TierFunctor.obj psi_k_phi_rz_k_defines_the_twelve_48e44c_s0\n#eval psi_k_phi_rz_k_defines_the_twelve_48e44c_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem psi_k_phi_rz_k_defines_the_twelve_48e44c_frobenius :\n    igFrobeniusAlg.mul psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 = psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 :=\n  igFrobAlg_self_fusion psi_k_phi_rz_k_defines_the_twelve_48e44c_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 IFIX \u2192 AFWD \u2192 FSPLIT \u2192 AREV \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: psi(k)=phi(rZ k) defines the twelve fiducial coordinates; norm_sq_eq_one proves wh_normSq(12,psi)=1: wh_inner psi psi = \u03a3_k psi k\u00b7star(psi k), and star(psi k)\u00b7psi k = phi(rconj(rZ k))\u00b7phi(rZ k) = phi(rmul (rZB k)(rZ k)) = phi(rK(modK k)) = evalK16(g0C, modK k) using the frozen coord_moduli theorem (rmul (rZB k)(rZ k) = rK (modK k)); summing over k and pushing phi through the frozen norm_sum (\u03a3 M_k = one16) gives evalK16(g0C, one16)=1, whose real part is 1\n-- Fingerprint: sig=(8,2,1,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=13\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(4, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [2] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [9] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [10] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def psi_k_phi_rz_k_defines_the_twelve_48e44c_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def psi_k_phi_rz_k_defines_the_twelve_48e44c_protocol : IGProtocol psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct psi_k_phi_rz_k_defines_the_twelve_48e44c_s8 psi_k_phi_rz_k_defines_the_twelve_48e44c_s8 = psi_k_phi_rz_k_defines_the_twelve_48e44c_s8 (idempotent)\n  (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s1) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l1 psi_k_phi_rz_k_defines_the_twelve_48e44c_s1 psi_k_phi_rz_k_defines_the_twelve_48e44c_s2) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l2 psi_k_phi_rz_k_defines_the_twelve_48e44c_s2 psi_k_phi_rz_k_defines_the_twelve_48e44c_s3) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l3 psi_k_phi_rz_k_defines_the_twelve_48e44c_s3 psi_k_phi_rz_k_defines_the_twelve_48e44c_s4) (.seq (.prod (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l4 psi_k_phi_rz_k_defines_the_twelve_48e44c_s4 psi_k_phi_rz_k_defines_the_twelve_48e44c_s8) (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l4 psi_k_phi_rz_k_defines_the_twelve_48e44c_s4 psi_k_phi_rz_k_defines_the_twelve_48e44c_s8)) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l8 psi_k_phi_rz_k_defines_the_twelve_48e44c_s8 psi_k_phi_rz_k_defines_the_twelve_48e44c_s8) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l8 psi_k_phi_rz_k_defines_the_twelve_48e44c_s8 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l9 psi_k_phi_rz_k_defines_the_twelve_48e44c_s9 psi_k_phi_rz_k_defines_the_twelve_48e44c_s10) (.seq (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l10 psi_k_phi_rz_k_defines_the_twelve_48e44c_s10 psi_k_phi_rz_k_defines_the_twelve_48e44c_s11) (.arrow psi_k_phi_rz_k_defines_the_twelve_48e44c_l11 psi_k_phi_rz_k_defines_the_twelve_48e44c_s11 psi_k_phi_rz_k_defines_the_twelve_48e44c_s12))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def psi_k_phi_rz_k_defines_the_twelve_48e44c_true_arm : IGProtocol psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s12 :=\n  (psi_k_phi_rz_k_defines_the_twelve_48e44c_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef psi_k_phi_rz_k_defines_the_twelve_48e44c_tier : OuroboricityTier := TierFunctor.obj psi_k_phi_rz_k_defines_the_twelve_48e44c_s0\n#eval psi_k_phi_rz_k_defines_the_twelve_48e44c_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem psi_k_phi_rz_k_defines_the_twelve_48e44c_frobenius :\n    igFrobeniusAlg.mul psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 = psi_k_phi_rz_k_defines_the_twelve_48e44c_s0 :=\n  igFrobAlg_self_fusion psi_k_phi_rz_k_defines_the_twelve_48e44c_s0\n",
   "notes": "Auto-designed from: psi(k)=phi(rZ k) defines the twelve fiducial coordinates; norm_sq_eq_one proves wh_normSq(12,psi)=1: wh_inner psi psi = \u03a3_k psi k\u00b7star(psi k), and star(psi k)\u00b7psi k = phi(rconj(rZ k))\u00b7phi(rZ k) = phi(rmul (rZB k)(rZ k)) = phi(rK(modK k)) = evalK16(g0C, modK k) using the frozen coord_moduli theorem (rmul (rZB k)(rZ k) = rK (modK k)); summing over k and pushing phi through the frozen norm_sum (\u03a3 M_k = one16) gives evalK16(g0C, one16)=1, whose real part is 1"
 }

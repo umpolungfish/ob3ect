@@ -1,0 +1,215 @@
+{
+  "name": "High-Energy Plasma",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "High-Energy Plasma",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "ion-electron-separation",
+        "magnetic-confinement",
+        "thermalization"
+      ],
+      "boundary_condition": "Magnetic pressure gradient / Separatrix",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Noble gas cryogenic state",
+        "justification": "Pre-ionized neutral matter with zero conductivity and zero collective behavior.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Plasma beta limit",
+        "justification": "The operational ceiling where kinetic pressure equals magnetic pressure, defining containment stability.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Ohmic heating",
+        "justification": "Linear transformation of electromagnetic energy into kinetic energy, increasing plasma temperature.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Bremsstrahlung radiation",
+        "justification": "Energy loss through photon emission during ion-electron collisions, cooling the system.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Bohm diffusion",
+        "justification": "Sequential transport of particles across magnetic field lines, linking core state to edge behavior.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Debye shielding",
+        "justification": "The plasma's internal recognition and neutralization of its own electric fields, maintaining quasi-neutrality.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Thermal ionization",
+        "justification": "A neutral atom branches into a distinct free electron and a positive ion.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Radiative recombination",
+        "justification": "The reconstitution of a neutral atom from a free electron and a positive ion.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "H-mode transition",
+        "justification": "High-confinement regime achieved via edge transport barrier formation.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Disruption",
+        "justification": "Sudden loss of confinement and termination of the plasma state.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Edge Localized Mode (ELM)",
+        "justification": "A periodic instability where the plasma is simultaneously confined and leaking, held in cyclic tension.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "First-wall erosion signature",
+        "justification": "Permanent, irreversible physical record of plasma-wall interactions on the vessel lining.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Thermal ionization",
+      "split_input": "Neutral hydrogen atom",
+      "split_outputs": [
+        "Electron",
+        "Proton"
+      ],
+      "fuse_element": "Radiative recombination",
+      "fuse_result": "Neutral hydrogen atom",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Pre-ignition vacuum background",
+      "true_description": "Stable magnetic confinement (L-mode/H-mode)",
+      "false_description": "Passive neutral gas or quench",
+      "both_description": "ELM-active pedestal in precarious equilibrium",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Neutral gas injection into the vacuum vessel"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Application of external RF voltage for breakdown"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Ionization begins, separating neutrals into charged ions and electrons"
+        },
+        {
+          "step_num": 4,
+          "opcode": "IMSCRIB",
+          "domain_action": "Formation of the Debye sheath, self-recognizing the boundary potential"
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "Development of the toroidal current via transformer induction"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "Ohmic heating increases particle kinetic energy"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FSPLIT",
+          "domain_action": "Full ionization sweep, removing all remaining neutral particles"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALT",
+          "domain_action": "Reaching the H-mode threshold with steep pressure gradients"
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "Initiation of ELM cycles, preserving the pedestal through periodic bursts"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "Radiative cooling via impurities in the plasma edge"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "Accidental recombination during edge-localized cooling events"
+        },
+        {
+          "step_num": 12,
+          "opcode": "CLINK",
+          "domain_action": "Transport of heat to the divertor targets"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "Deposition of tritium into the beryllium first-wall tiles"
+        },
+        {
+          "step_num": 14,
+          "opcode": "TANCH",
+          "domain_action": "Reaching the Greenwald density limit for maximum operating capacity"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "External magnetic coil controllers acting on the MHD equilibrium",
+      "ipc_mechanism": "Collective electron oscillations (Langmuir waves)",
+      "memory_mechanism": "Magnetic field configuration and flux surface topology",
+      "scheduler_mechanism": "Heating and fueling cycle frequency",
+      "alfs_store": "Vlasov-Maxwell system of equations",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "External power injection (MW) subtracted by radiation loss",
+      "pre_cycle_state": "Cold Neutral Gas (S_min)",
+      "post_cycle_state": "Thermalized Ion-Electron Fluid (S_max)",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The Frobenius cycle of ionization and recombination is structurally conservative for the particle identities.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 IMSCRIB \u2192 CLINK \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: High-Energy Plasma\n-- Fingerprint: sig=(8,3,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=14\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(6, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7e \u2192 \ud801\udc60  | split \u03b4 \u2014 range decomposition\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [6] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [9] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [12] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def high_energy_plasma_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def high_energy_plasma_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def high_energy_plasma_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def high_energy_plasma_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def high_energy_plasma_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def high_energy_plasma_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def high_energy_plasma_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def high_energy_plasma_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def high_energy_plasma_protocol : IGProtocol high_energy_plasma_s0 high_energy_plasma_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct high_energy_plasma_s10 high_energy_plasma_s10 = high_energy_plasma_s10 (idempotent)\n  (.seq (.arrow high_energy_plasma_l0 high_energy_plasma_s0 high_energy_plasma_s1) (.seq (.arrow high_energy_plasma_l1 high_energy_plasma_s1 high_energy_plasma_s2) (.seq (.arrow high_energy_plasma_l2 high_energy_plasma_s2 high_energy_plasma_s3) (.seq (.arrow high_energy_plasma_l3 high_energy_plasma_s3 high_energy_plasma_s4) (.seq (.arrow high_energy_plasma_l4 high_energy_plasma_s4 high_energy_plasma_s5) (.seq (.arrow high_energy_plasma_l5 high_energy_plasma_s5 high_energy_plasma_s6) (.seq (.prod (.arrow high_energy_plasma_l6 high_energy_plasma_s6 high_energy_plasma_s10) (.arrow high_energy_plasma_l6 high_energy_plasma_s6 high_energy_plasma_s10)) (.seq (.arrow high_energy_plasma_l10 high_energy_plasma_s10 high_energy_plasma_s10) (.seq (.arrow high_energy_plasma_l10 high_energy_plasma_s10 high_energy_plasma_s11) (.seq (.arrow high_energy_plasma_l11 high_energy_plasma_s11 high_energy_plasma_s12) (.arrow high_energy_plasma_l12 high_energy_plasma_s12 high_energy_plasma_s13)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def high_energy_plasma_true_arm : IGProtocol high_energy_plasma_s0 high_energy_plasma_s13 :=\n  (high_energy_plasma_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef high_energy_plasma_tier : OuroboricityTier := TierFunctor.obj high_energy_plasma_s0\n#eval high_energy_plasma_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem high_energy_plasma_frobenius :\n    igFrobeniusAlg.mul high_energy_plasma_s0 high_energy_plasma_s0 = high_energy_plasma_s0 :=\n  igFrobAlg_self_fusion high_energy_plasma_s0\n",
+  "notes": "Auto-designed from: High-Energy Plasma"
+}

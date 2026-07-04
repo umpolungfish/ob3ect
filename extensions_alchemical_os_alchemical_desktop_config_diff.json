@@ -1,0 +1,253 @@
+--- extensions/alchemical_os/alchemical_desktop_config.json (原始)
+
+
++++ extensions/alchemical_os/alchemical_desktop_config.json (修改后)
+{
+  "applications": {
+    "browser": {
+      "app_id": "browser",
+      "name": "Web Browser",
+      "position": [
+        200,
+        200
+      ],
+      "shape": "circle",
+      "state": "running",
+      "entropy": "stable",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "html",
+          "type": "output",
+          "data_type": "text/html",
+          "entropy_flow": 0.0,
+          "connected": null
+        },
+        {
+          "name": "js",
+          "type": "output",
+          "data_type": "application/javascript",
+          "entropy_flow": 0.0,
+          "connected": "editor.source"
+        }
+      ],
+      "frobenius": {
+        "mu": true,
+        "delta": true,
+        "eta": true,
+        "epsilon": false
+      }
+    },
+    "editor": {
+      "app_id": "editor",
+      "name": "Code Editor",
+      "position": [
+        500,
+        200
+      ],
+      "shape": "square",
+      "state": "running",
+      "entropy": "stable",
+      "inputs": [
+        {
+          "name": "source",
+          "type": "input",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": "browser.js"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "code",
+          "type": "output",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": "compiler.source"
+        }
+      ],
+      "frobenius": {
+        "mu": true,
+        "delta": true,
+        "eta": true,
+        "epsilon": false
+      }
+    },
+    "compiler": {
+      "app_id": "compiler",
+      "name": "Compiler",
+      "position": [
+        800,
+        200
+      ],
+      "shape": "diamond",
+      "state": "running",
+      "entropy": "stable",
+      "inputs": [
+        {
+          "name": "source",
+          "type": "input",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": "editor.code"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "binary",
+          "type": "output",
+          "data_type": "application/octet-stream",
+          "entropy_flow": 0.0,
+          "connected": "debugger.binary"
+        },
+        {
+          "name": "errors",
+          "type": "output",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": "debugger.errors"
+        }
+      ],
+      "frobenius": {
+        "mu": false,
+        "delta": false,
+        "eta": true,
+        "epsilon": false
+      }
+    },
+    "terminal": {
+      "app_id": "terminal",
+      "name": "Terminal",
+      "position": [
+        500,
+        500
+      ],
+      "shape": "hexagon",
+      "state": "running",
+      "entropy": "stable",
+      "inputs": [
+        {
+          "name": "command",
+          "type": "input",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": null
+        },
+        {
+          "name": "output",
+          "type": "input",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": "debugger.trace"
+        }
+      ],
+      "outputs": [],
+      "frobenius": {
+        "mu": true,
+        "delta": true,
+        "eta": true,
+        "epsilon": false
+      }
+    },
+    "debugger": {
+      "app_id": "debugger",
+      "name": "Debugger",
+      "position": [
+        900,
+        500
+      ],
+      "shape": "hexagon",
+      "state": "paradox",
+      "entropy": "critical",
+      "inputs": [
+        {
+          "name": "binary",
+          "type": "input",
+          "data_type": "application/octet-stream",
+          "entropy_flow": 0.0,
+          "connected": "compiler.binary"
+        },
+        {
+          "name": "errors",
+          "type": "input",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": "compiler.errors"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "trace",
+          "type": "output",
+          "data_type": "text/plain",
+          "entropy_flow": 0.0,
+          "connected": "terminal.output"
+        }
+      ],
+      "frobenius": {
+        "mu": true,
+        "delta": true,
+        "eta": true,
+        "epsilon": false
+      }
+    }
+  },
+  "wires": [
+    {
+      "wire_id": "wire_0",
+      "source": "browser.js",
+      "target": "editor.source",
+      "type": "data",
+      "tension": 1.0,
+      "active": true
+    },
+    {
+      "wire_id": "wire_1",
+      "source": "editor.code",
+      "target": "compiler.source",
+      "type": "data",
+      "tension": 1.0,
+      "active": true
+    },
+    {
+      "wire_id": "wire_2",
+      "source": "compiler.binary",
+      "target": "debugger.binary",
+      "type": "data",
+      "tension": 1.0,
+      "active": true
+    },
+    {
+      "wire_id": "wire_3",
+      "source": "compiler.errors",
+      "target": "debugger.errors",
+      "type": "data",
+      "tension": 1.0,
+      "active": true
+    },
+    {
+      "wire_id": "wire_4",
+      "source": "debugger.trace",
+      "target": "terminal.output",
+      "type": "data",
+      "tension": 1.0,
+      "active": true
+    }
+  ],
+  "zones": {
+    "development": [
+      "editor",
+      "compiler",
+      "debugger"
+    ],
+    "io": [
+      "browser",
+      "terminal"
+    ]
+  },
+  "global_entropy": 6.0,
+  "dimensions": {
+    "width": 1200,
+    "height": 800
+  }
+}

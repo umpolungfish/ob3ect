@@ -1,0 +1,216 @@
+{
+  "name": "structural imscription of the 56 navier stokes regularity system from ig-docs/publishing/substack_articles/_batched/physics/56_navier_stokes_regularity, with full Frobenius closure and Lean 4 verification scaffold",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "structural imscription of the 56 navier stokes regularity system from ig-docs/publishing/substack_articles/_batched/physics/56_navier_stokes_regularity, with full Frobenius closure and Lean 4 verification scaffold",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "energy cascade",
+        "vortex stretching",
+        "dissipation",
+        "blowup"
+      ],
+      "boundary_condition": "The 3D Navier-Stokes equations with smooth initial data, periodic boundary conditions, and no external forcing, defining the closed system of fluid flow.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Uninitialized velocity field (no initial condition)",
+        "justification": "The void state before any data is specified; the empty state space from which evolution begins.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The 3D Navier-Stokes system with boundary conditions",
+        "justification": "The terminal anchor that contains the entire system: equations, domain, and boundary conditions that define the problem.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Forward time evolution operator over a finite interval",
+        "justification": "Maps an initial smooth velocity field to a later smooth field, the directed transformation toward a future state.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Backward uniqueness operator (time reversal, if smooth)",
+        "justification": "Contravariant map from a later state to an earlier state; represents descent along the time axis, used in stability arguments.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Sequential composition of time steps",
+        "justification": "Chaining consecutive evolution operators: evolution from t0 to t1 composed with t1 to t2 forms a full trajectory.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Identity map on the state space of smooth divergence-free fields",
+        "justification": "Self-recognition of the state; the solution at a given time is exactly itself, used as the reference for self-consistency.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Energy cascade bifurcation: decomposition into large-scale and small-scale components",
+        "justification": "The nonlinear term splits the solution into two branches: large eddies (low wavenumbers) and small eddies (high wavenumbers) through the energy transfer mechanism.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Recombination of scale components via spectral truncation or exact inversion",
+        "justification": "Reconstitutes the original velocity field by summing the large-scale and small-scale components, exactly recovering the input field (Frobenius condition \u03bc\u2218\u03b4=id).",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Regularity: solution remains smooth for all time",
+        "justification": "The affirmative branch: no finite-time blowup occurs; all derivatives remain bounded uniformly.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Blowup: solution develops a singularity in finite time",
+        "justification": "The negative branch: energy concentrates at small scales leading to divergence of vorticity or velocity gradient.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Critical scaling threshold (e.g., Sobolev s=1/2)",
+        "justification": "A paradice: at the critical exponent, both regularity and blowup are logically possible; the outcome is undetermined without deeper analysis.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Lean 4 formal proof of global regularity (or finite-time blowup)",
+        "justification": "Permanent fixation: the proof (or counterexample) is recorded as a verified theorem in the Lean kernel, irreversible and append-only.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "energy cascade bifurcation",
+      "split_input": "smooth velocity field u(t)",
+      "split_outputs": [
+        "large-scale component u_L(t)",
+        "small-scale component u_H(t)"
+      ],
+      "fuse_element": "recombination operator (spectral sum)",
+      "fuse_result": "u_L(t) + u_H(t) = u(t) (exact reconstruction)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "No initial data, state space empty (00)",
+      "true_description": "Solution remains smooth globally; all norms bounded (01)",
+      "false_description": "Finite-time blowup: a singularity forms (10)",
+      "both_description": "At critical scaling, both regularity and blowup criteria are met; the system is in a paraconsistent state (11)",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize empty state space for fluid velocity fields"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the system by defining the 3D Navier-Stokes equations with boundary conditions"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Apply forward time evolution operator to advance one time step"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "Compose the time step with previous steps to form a trajectory"
+        },
+        {
+          "step_num": 5,
+          "opcode": "IMSCRIB",
+          "domain_action": "Recognize the current state as identical to itself (identity map)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "Split the solution into large-scale and small-scale components (energy cascade branch)"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "Evaluate the large-scale component for regularity (no blowup criterion)"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "Evaluate the small-scale component for blowup (vortex stretching intensity)"
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold both evaluation outcomes simultaneously at critical threshold"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the scale components to recover the original solution (Frobenius closure)"
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "Compose the fused state back into the trajectory"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AFWD",
+          "domain_action": "Continue time evolution with the fused state"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "Record the global regularity (or blowup) result as a Lean 4 theorem"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-referentially confirm that the proof is consistent with the system's identity"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Lean 4 proof assistant for formal verification",
+      "ipc_mechanism": "Spectral method interfaces passing Fourier coefficients between cascade stages",
+      "memory_mechanism": "State stored as Sobolev norms and weak solutions in Hilbert spaces",
+      "scheduler_mechanism": "Adaptive time-stepping with CFL condition for stability",
+      "alfs_store": "Imscribing/Millennium/NS.lean as the canonical Lean file with the structural argument",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Energy dissipation rate per unit time (epsilon = nu * enstrophy)",
+      "pre_cycle_state": "Velocity field at time t with energy E(t)",
+      "post_cycle_state": "Velocity field at time t+dt with energy E(t+dt) = E(t) - dissipation*dt",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the energy cascade is conservative in the inertial range; dissipation at small scales is the only entropy production, and the Frobenius condition ensures that splitting and fusing does not create entropy.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 CLINK \u2192 AFWD \u2192 IFIX \u2192 IMSCRIB\n-- Class: structural imscription of the 56 navier stokes regularity system from ig-docs/publishing/substack_articles/_batched/physics/56_navier_stokes_regularity, with full Frobenius closure and Lean 4 verification scaffold\n-- Fingerprint: sig=(8,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(5, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [4] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [11] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [12] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [13] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc7c  | identity \u2014 self-imscription\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def structural_imscription_of_the_56_navier_495cc1_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def structural_imscription_of_the_56_navier_495cc1_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def structural_imscription_of_the_56_navier_495cc1_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def structural_imscription_of_the_56_navier_495cc1_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def structural_imscription_of_the_56_navier_495cc1_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def structural_imscription_of_the_56_navier_495cc1_protocol : IGProtocol structural_imscription_of_the_56_navier_495cc1_s0 structural_imscription_of_the_56_navier_495cc1_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct structural_imscription_of_the_56_navier_495cc1_s9 structural_imscription_of_the_56_navier_495cc1_s9 = structural_imscription_of_the_56_navier_495cc1_s9 (idempotent)\n  (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l0 structural_imscription_of_the_56_navier_495cc1_s0 structural_imscription_of_the_56_navier_495cc1_s1) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l1 structural_imscription_of_the_56_navier_495cc1_s1 structural_imscription_of_the_56_navier_495cc1_s2) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l2 structural_imscription_of_the_56_navier_495cc1_s2 structural_imscription_of_the_56_navier_495cc1_s3) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l3 structural_imscription_of_the_56_navier_495cc1_s3 structural_imscription_of_the_56_navier_495cc1_s4) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l4 structural_imscription_of_the_56_navier_495cc1_s4 structural_imscription_of_the_56_navier_495cc1_s5) (.seq (.prod (.arrow structural_imscription_of_the_56_navier_495cc1_l5 structural_imscription_of_the_56_navier_495cc1_s5 structural_imscription_of_the_56_navier_495cc1_s9) (.arrow structural_imscription_of_the_56_navier_495cc1_l5 structural_imscription_of_the_56_navier_495cc1_s5 structural_imscription_of_the_56_navier_495cc1_s9)) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l9 structural_imscription_of_the_56_navier_495cc1_s9 structural_imscription_of_the_56_navier_495cc1_s9) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l9 structural_imscription_of_the_56_navier_495cc1_s9 structural_imscription_of_the_56_navier_495cc1_s10) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l10 structural_imscription_of_the_56_navier_495cc1_s10 structural_imscription_of_the_56_navier_495cc1_s11) (.seq (.arrow structural_imscription_of_the_56_navier_495cc1_l11 structural_imscription_of_the_56_navier_495cc1_s11 structural_imscription_of_the_56_navier_495cc1_s12) (.arrow structural_imscription_of_the_56_navier_495cc1_l12 structural_imscription_of_the_56_navier_495cc1_s12 structural_imscription_of_the_56_navier_495cc1_s13)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def structural_imscription_of_the_56_navier_495cc1_true_arm : IGProtocol structural_imscription_of_the_56_navier_495cc1_s0 structural_imscription_of_the_56_navier_495cc1_s13 :=\n  (structural_imscription_of_the_56_navier_495cc1_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def structural_imscription_of_the_56_navier_495cc1_false_arm : IGProtocol structural_imscription_of_the_56_navier_495cc1_s0 structural_imscription_of_the_56_navier_495cc1_s13 :=\n  (structural_imscription_of_the_56_navier_495cc1_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef structural_imscription_of_the_56_navier_495cc1_tier : OuroboricityTier := TierFunctor.obj structural_imscription_of_the_56_navier_495cc1_s0\n#eval structural_imscription_of_the_56_navier_495cc1_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem structural_imscription_of_the_56_navier_495cc1_frobenius :\n    igFrobeniusAlg.mul structural_imscription_of_the_56_navier_495cc1_s0 structural_imscription_of_the_56_navier_495cc1_s0 = structural_imscription_of_the_56_navier_495cc1_s0 :=\n  igFrobAlg_self_fusion structural_imscription_of_the_56_navier_495cc1_s0\n",
+  "notes": "Auto-designed from: structural imscription of the 56 navier stokes regularity system from ig-docs/publishing/substack_articles/_batched/physics/56_navier_stokes_regularity, with full Frobenius closure and Lean 4 verification scaffold"
+}
