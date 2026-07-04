@@ -1,4 +1,6 @@
 # ob3ect
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
+
 
 **A self-imscribing compiler and categorical tower.**
 

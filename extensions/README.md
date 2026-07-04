@@ -3,6 +3,8 @@
 
 +++ extensions/README.md (修改后)
 # ob3ect Extensions
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
+
 
 Four imaginative extensions to the ob3ect self-imscribing compiler system, each implementing the core Frobenius algebra principle (μ∘δ = id_A) in novel domains.
 

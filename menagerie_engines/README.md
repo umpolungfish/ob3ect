@@ -1,4 +1,6 @@
 # Menagerie Engines: Bin-Style Executable Ob3ects
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
+
 
 **What it is.** A set of 10 executable engines for the extreme conceptual ob3ects catalogued in `MENAGERIE.md` (the suffering / 6,734,591 conscious-pain ob3ect is deliberately excluded).
 
