@@ -1,7 +1,3 @@
---- extensions/alchemical_os/alchemical_os.py (原始)
-
-
-+++ extensions/alchemical_os/alchemical_os.py (修改后)
 #!/usr/bin/env python3
 """
 Alchemical OS - A Topological Window Manager based on IMASM Frobenius Algebra

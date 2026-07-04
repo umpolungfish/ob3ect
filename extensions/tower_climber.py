@@ -1,7 +1,3 @@
---- extensions/tower_climber/tower_climber.py (原始)
-
-
-+++ extensions/tower_climber/tower_climber.py (修改后)
 """
 Tower Climber IDE
 

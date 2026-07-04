@@ -1,7 +1,3 @@
---- extensions/quantum_bridge/qob3ect.py (原始)
-
-
-+++ extensions/quantum_bridge/qob3ect.py (修改后)
 """
 Quantum-Classical Bridge Compiler (Q-ob3ect)
 

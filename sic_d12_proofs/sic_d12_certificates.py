@@ -1,7 +1,3 @@
---- proofs/sic_d12_certificates.py (原始)
-
-
-+++ proofs/sic_d12_certificates.py (修改后)
 #!/usr/bin/env python3
 """
 SIC D₁₂ Certificate Generator

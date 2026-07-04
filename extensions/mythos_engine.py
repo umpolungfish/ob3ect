@@ -1,7 +1,3 @@
---- extensions/mythos_engine/mythos.py (原始)
-
-
-+++ extensions/mythos_engine/mythos.py (修改后)
 """
 Generative Mythos Engine (Narrative ob3ects)
 

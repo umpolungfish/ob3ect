@@ -1,7 +1,3 @@
---- extensions/dialetheic_nn/example_usage.py (原始)
-
-
-+++ extensions/dialetheic_nn/example_usage.py (修改后)
 """
 Example: Training a Dialetheic Neural Network on Contradictory Data
 

@@ -1,7 +1,3 @@
---- living_paper.py (原始)
-
-
-+++ living_paper.py (修改后)
 #!/usr/bin/env python3
 """
 Living Paper Interface for ob3ect

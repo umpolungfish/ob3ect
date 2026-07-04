@@ -1,7 +1,3 @@
---- extensions/dialetheic_nn/dnn.py (原始)
-
-
-+++ extensions/dialetheic_nn/dnn.py (修改后)
 """
 Dialetheic Neural Networks (DNN)
 =================================

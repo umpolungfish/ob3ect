@@ -1,7 +1,3 @@
---- extensions/fpga_healer/fpga_ob3ect.py (原始)
-
-
-+++ extensions/fpga_healer/fpga_ob3ect.py (修改后)
 """
 Self-Healing Hardware (FPGA Ob3ects)
 

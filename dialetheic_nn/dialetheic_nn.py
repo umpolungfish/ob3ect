@@ -1,7 +1,3 @@
---- extensions/dialetheic_nn/test_dnn.py (原始)
-
-
-+++ extensions/dialetheic_nn/test_dnn.py (修改后)
 """
 Test suite for Dialetheic Neural Networks
 Tests lattice operations, network forward pass, and contradiction handling.
