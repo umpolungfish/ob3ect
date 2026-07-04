@@ -1,0 +1,62 @@
+# ob3ect batch — the EMBEDDING CAPSTONE that discharges crystal_forces_d12_sic.
+# Prerequisite: SIC_D12_ExistenceRing.lean already has all 143 overlap identities
+# proved by native_decide in the constructed ring R = K16(s0,s1,s3,s9,i,c5,u1).
+# Task: exhibit a ring hom φ: R → ℂ, define ψ_k = φ(rZ k), transfer the SIC
+# conditions into IsSICPOVM 12 ψ, and drop crystal_forces_d12_sic from axiom to theorem.
+# Run: cd /home/mrnob0dy666/imsgct/ob3ect && python3 auto.py -f d12_embedding_capstone.yaml
+#
+# STATUS (2026-07-04, hand-discharged and committed in p4rakernel):
+#   DONE  Phase A — evalK16 is a ℚ-algebra map on K16 (evalK16_kadd, evalK16_kmul
+#         and all Horner/reduceGo/subHead support lemmas green).
+#   DONE  Phase B additive — phi_insertAdd, phi_foldl_insertAdd, phi_radd green.
+#   OPEN  phi_rmul, phi_rconj, norm_sq_eq_one, equiangular  (the 4 remaining sorries).
+#   The refreshed ctx/ snapshot already has Phase A + phi_radd; build ON it.
+#
+# TWO DESIGN RESOLUTIONS the generated proof MUST honor (learned the hard way):
+#  (1) COVER INDEXING IS BY BIT, NOT LABEL. covCorr in the frozen ExistenceRing
+#      folds covK over List.range 4, with covK 0,1,2,3 = M0,M1,M3,M9. So evalKey's
+#      four cover factors are sVal 0, sVal 1, sVal 2, sVal 3 (bit indices) — NOT
+#      sVal 0,1,3,9. The ring-hom identity that makes phi_rmul work is
+#      sVal b ^ 2 = evalK16 g0C (covK b) for b∈{0,1,2,3}. (Already fixed in ctx.)
+#  (2) CONJUGATION REALITY. phi_rconj needs star(sVal b)=sVal b and star(c5Val)=c5Val,
+#      i.e. these generators must be REAL. Construct them as ℝ-valued square roots
+#      (Real.sqrt of the positive modulus N_b, resp. the real quadratic root
+#      (-oa+Real.sqrt(oa^2-4*ob))/2) coerced into ℂ — NOT Complex.sqrt, which has no
+#      clean square lemma here. Bridge: evalK16 g0C v = ((evalK16R g0 v : ℝ) : ℂ)
+#      since g0 and every K16 coefficient are real, so star fixes all K16 evals.
+#      Only u1Val stays genuinely complex; its star is handled by the ring's own
+#      unit-phase relation ū1 = conj(E2)·u1 (rU1i), with |u1Val|=1 from |E2|=1.
+
+name: d12-embedding-capstone
+out_dir: digital
+
+design:
+  scope: maximal
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/ob3ect/ctx/d12_embedding
+
+entities:
+  # ── the real root g0 of the K16 defining polynomial ──
+  - "the real root g0 in (0,1) of the K16 polynomial g^16-10g^14+40g^12-90g^10+126g^8-96g^6+25g^4+2g^2+1 is exhibited constructively by the Intermediate Value Theorem, defining g0C = (g0:ℂ) as the coordinate at which all K16 evaluation takes place"
+
+  # ── Horner evaluation and the ring homomorphism on K16 ──
+  - "evalK16(g, v) evaluates a K16 power-basis vector v at g by Horner's method, and the theorem evalK16_kmul proves evalK16(g0C, kmul v w) = evalK16(g0C, v) * evalK16(g0C, w) using the polynomial reduction preserved by g0C, making evalK16 a ring hom on K16"
+
+  # ── generator values in ℂ (REAL where reality is required) ──
+  - "the generator values are bit-indexed: sVal(b) for b∈{0,1,2,3} is the REAL square root Real.sqrt(evalK16R(g0, covK b)) coerced to ℂ (covK 0,1,2,3 = M0,M1,M3,M9, each a positive modulus N_b), satisfying sVal(b)^2 = evalK16(g0C, covK b) and star(sVal b)=sVal b; iVal=Complex.I with star(iVal)=-iVal; c5Val=((-oa+Real.sqrt(oa^2-4*ob))/2 : ℝ):ℂ the real root of x²+oa·x+ob=0 where oa=evalK16R(g0,OA5), ob=evalK16R(g0,OB5), with star(c5Val)=c5Val and c5Val²=-oa·c5Val-ob; and u1Val the genuinely-complex unit-phase generator with u1Val²=evalK16(g0C,C2H)+iVal·evalK16(g0C,S2H)=E2Val, |u1Val|=1, and star(u1Val)=conj(E2Val)·u1Val matching the ring relation ū1=rU1i"
+
+  # ── the ring hom phi: RElt → ℂ ──
+  - "phi maps each sparse-assoc-list ring element to ℂ by decoding the 7-bit key (cover mask over bits 0,1,2,3 opening sVal 0,1,2,3; i-exponent key/16%2; c5-exponent key/32%2; u1-exponent key/64), evaluating the K16 coefficient at g0C, multiplying by scov·iVal^ei·c5Val^e5·u1Val^e1, and summing over the list; phi_radd is proved via phi_insertAdd (already done); phi_rmul proves multiplicativity by a per-monomial contrib_sound lemma — the sum of evalKeys over contrib(cov,ei,e5,e1,coef) equals the unreduced monomial value monVal, because red1 is sound by u1Val²=E2Val, red2 by iVal²=-1, red3 by c5Val²=-oa·c5Val-ob — composed with covCorr_sound (scov(ka)·scov(kb)=Π_{shared bit b}sVal b² · scov(ka⊕kb), matching covCorr's kmul by covK b and sVal b²=evalK16(covK b)) and phi_foldl_insertAdd; phi_rconj proves phi(rconj A)=star(phi A) because star fixes every K16 evaluation (g0 real) and sVal/c5Val (real), sends iVal→-iVal, and sends u1Val→conj(E2Val)·u1Val via rU1i"
+
+  # ── the SIC fiducial ψ in ℂ^12 ──
+  - "psi(k)=phi(rZ k) defines the twelve fiducial coordinates; norm_sq_eq_one proves wh_normSq(12,psi)=1: wh_inner psi psi = Σ_k psi k·star(psi k), and star(psi k)·psi k = phi(rconj(rZ k))·phi(rZ k) = phi(rmul (rZB k)(rZ k)) = phi(rK(modK k)) = evalK16(g0C, modK k) using the frozen coord_moduli theorem (rmul (rZB k)(rZ k) = rK (modK k)); summing over k and pushing phi through the frozen norm_sum (Σ M_k = one16) gives evalK16(g0C, one16)=1, whose real part is 1"
+
+  # ── the 143 overlap identities transferred ──
+  - "equiangular proves 13·|⟨ψ|D_{a,b}ψ⟩|²=1 for all (a,b)≠(0,0): the WH overlap wh_inner psi (D_ah 12 a b 0 psi) equals phi of the frozen ring overlap O_{a,b}=Σ_j z̄_j ζ^{(j-a)b} z_{j-a} (identifying omega_d 12 with phi(zeta), a primitive 12th root via zeta_pow12/zeta_phi12; norm is preserved per-(a,b) even if the branch gives the conjugate root); then phi(rmul O Ō)=phi O·phi Ō=|phi O|² and the frozen stratum/existence_identities_all give rmul O Ō = rT13, so |phi O|²=phi(rT13)=1/13, hence 13·(1/13)=1"
+
+  # ── the final axiom drop ──
+  - "d12_sic_exists combines norm_sq_eq_one and equiangular into IsSICPOVM 12 psi, and crystal_forces_d12_sic proves SICPOVM_Exists 12, discharging the existence axiom and completing the d=12 SIC-POVM capstone"
