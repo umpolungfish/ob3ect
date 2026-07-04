@@ -1,0 +1,47 @@
+# ob3ect batch — REMAKE of the phase-section ob3ects after the cont.8 phase-FOLD result.
+# What changed (see d12_sic_build/FINDINGS.md cont.8, u1_minpoly.gp, u1_quartic2.gp, z1_assemble.gp):
+#  - z1 is now CLOSED IN RADICALS end-to-end (verified 2^-4995):
+#      z1 = sqrt(N1) * [ (c + i*sqrt(4 - c^2)) / 2 ]^(1/4),
+#      N1 = pinned S-unit (octic), c = real root of 9x^4-368x^3+632x^2+960x-1392 (Galois D4).
+#  - This OVERTURNS the phase_direct premise "the polar magnitude x phase split is ruled out
+#    because the phase exits K288." The phase DOES exit K288 -- into the magnitude-extended
+#    double cover -- but it is STILL closed-form there. Exiting K288 is not disqualifying.
+#  - The mechanism is a FOLD: u_k on the unit circle has a self-reciprocal (palindromic) min
+#    poly (roots pair u <-> 1/u = conj u); the real symmetric function c = u^m + u^-m = 2cos(m theta)
+#    collapses a degree-2g palindrome to degree g, and a degree-<=4 or solvable-Galois reduced
+#    poly makes the phase nested-radical expressible. The fusion-group character sum of the old
+#    crux ob3ect was NOT needed for u1.
+#  - Supersedes: the_crux_phases_u_1_and_u_5 (fusion-group route) and
+#    the_phases_of_the_twelve_recovered (roots-of-unity/PSLQ on the REFUTED field Q(sqrt26)).
+# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f d12_phase_fold_batch.yaml
+
+name: d12-phase-fold
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  thinking: false
+  context: /tmp/claude-1000/-home-mrnob0dy666-imsgct/5cac5f78-799f-4f14-abd2-730347e8b6bc/scratchpad/d12_phasefold_ctx
+
+entities:
+  # ── the supersession: the polar route IS field-closed in the double cover ──
+  - "the polar decomposition of each coordinate into a real magnitude times a unit phase becomes a valid closed-form route rather than a ruled-out one, because the phase is not required to lie inside the degree-288 ray class field but instead lives in the magnitude-extended double cover, so its leaving K288 through the square-root of the modulus S-unit is exactly the field it is closed in and not a disqualification"
+
+  # ── the fold mechanism: palindromic phase min poly collapses to a half-degree poly ──
+  - "each unit phase u_k, lying on the unit circle so that its minimal polynomial is self-reciprocal and pairs every root u with its inverse conjugate one-over-u, becomes recovered by the fold in which the real symmetric coordinate c equal to u to the m plus u to the minus m equal to two cosine of m theta collapses the degree-two-g palindrome to a polynomial of degree g in c, and the phase is nested-radical expressible exactly when that reduced polynomial has degree at most four or a solvable Galois group"
+
+  # ── the verified z1 instance ──
+  - "the crux phase u_1, whose genuine degree-32 minimal polynomial is a palindromic polynomial in x to the fourth, becomes the fourth root of one half of c plus i root four minus c squared where c is the real root of the solvable quartic nine x to the fourth minus three-hundred-sixty-eight x cubed plus six-hundred-thirty-two x squared plus nine-hundred-sixty x minus one-thousand-three-hundred-ninety-two of Galois group D4, so that z_1 equals the square root of its pinned S-unit modulus times that phase reproduces the fiducial to full precision"
+
+  # ── the harder z5: deeper double cover, fold and test solvability ──
+  - "the crux phase u_5, whose gated degree 64 exits the ray class field more deeply than u_1, becomes recovered by the same fold applied to its self-reciprocal degree-64 minimal polynomial, collapsing to a reduced polynomial of degree at most eight in the cosine coordinate whose Galois group is then tested for radical solvability, resolving whether the deeper double cover still admits a nested-radical phase or requires the fusion-group orbit as a fallback"
+
+  # ── the uniform assembly for all twelve ──
+  - "each fiducial coordinate z_k becomes the product of the positive square root of its modulus S-unit N_k in the degree-16 real field and its fold-recovered unit phase u_k, giving a uniform closed-form for the whole fiducial once every reduced cosine polynomial is pinned, superseding both the direct degree-288 basis expression for the phase and the abandoned roots-of-unity fitting"
+
+  # ── the standing gate ──
+  - "the fold admission gate becomes the requirement that a phase is accepted only when its reduced cosine polynomial jumps to full precision under the deep-vanish floor test and its nested-radical reconstruction reproduces the fiducial coordinate to more than four-thousand bits, the same floor discipline that rejected the artifact degrees 26 and 48 and 68 and 139 and that here distinguishes the genuine fold from a least-dependence pseudo-relation"

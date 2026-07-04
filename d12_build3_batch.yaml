@@ -1,0 +1,39 @@
+# ob3ect batch — d=12 build, pieces 2c-6: degree-8 tower over Q(√26) + phases
+# Run:  cd ~/imsgct/ob3ect && p3 auto.py -f d12_build3_batch.yaml
+#
+# The boundary READ the field (see FINDINGS.md in context): base Q(√26) (NOT √30),
+# moduli degree 4/8, full real field DEGREE 8 = nested-radical tower over Q(√26)
+# with Galois pairs √(15±2√26) (product 11 = the ENGAGR both-register). 140-digit
+# fiducial recovered + |psi_0|^2 exact. Now: widen the tower, recover the phases,
+# enter coordinates, native_decide the 143 identities, drop the axiom.
+
+name: d12-build3
+out_dir: digital
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: inf
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/dumpdir_d12
+
+entities:
+  # ── 2c. Widen the tower: degree-8 nested-radical over Q(√26) ───────────────
+  - "the degree-2 quadratic tower becomes a computable degree-8 nested-radical tower over Q(sqrt(26)), adjoining sqrt(26) then sqrt(15 - 2 sqrt(26)), still List-based with native_decide-able multiplication and both conjugations"
+
+  # ── 3b. Recover the phases: find the conductor and roots of unity ─────────
+  - "the phases of the twelve recovered fiducial coordinates become identified roots of unity by pinning the cyclotomic conductor n and PSLQ-fitting each coordinate against the basis of zeta powers times the degree-8 radical basis"
+
+  # ── 2b'. Enter the exact coordinates in the widened tower ─────────────────
+  - "the twelve high-precision fiducial coordinates become explicit elements of the degree-8-tower-times-cyclotomic ring, each entered exactly as coefficient lists over roots of unity and nested radicals"
+
+  # ── ENGAGR: the Galois-pair both-register with rational norm ──────────────
+  - "the nested-radical Galois pair sqrt(15 - 2 sqrt(26)) and sqrt(15 + 2 sqrt(26)) becomes a native_decide identity that their product is 11, realizing the ENGAGR both-register as a rational-norm fixed point in the tower"
+
+  # ── 5. The 143 Gram identities in the widened tower ───────────────────────
+  - "the 143 Weyl-Heisenberg overlaps become 143 native_decide identities that each overlap times its conjugate equals one over thirteen in the degree-8-tower-times-cyclotomic ring"
+
+  # ── 6. Capstone: axiom -> theorem ─────────────────────────────────────────
+  - "crystal_forces_d12_sic drops from axiom to theorem by transferring the tower-level SIC along the ring homomorphism sending zeta to exp(2 pi i over n) and each radical to its real root, yielding an unconditional IsSICPOVM 12 witness"

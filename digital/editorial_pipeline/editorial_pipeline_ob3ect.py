@@ -1,3 +1,4 @@
+
 """
 editorial_pipeline_ob3ect.py — LLM-integrated editorial pipeline.
 
@@ -9,6 +10,9 @@ SET → SUBMIT → SERVE pipeline for multi-step text editing, parsing, and rewr
   .submit(critique=False)      — FSPLIT / EVALT / FFUSE: run through LLM cascade
   .serve()                     — IFIX: return final output dict
 
+Batch mode — YAML-driven directory processing:
+  python3 editorial_pipeline_ob3ect.py batch config.yaml
+
 Provider cascade (no Anthropic): local → qwen (QWEN_API_KEY) → deepseek (DEEPSEEK_API_KEY)
 
 Usage:
@@ -18,10 +22,12 @@ Usage:
 CLI:
     python3 editorial_pipeline_ob3ect.py source.txt "rewrite in active voice"
     echo "some text" | python3 editorial_pipeline_ob3ect.py - "tighten prose"
+    python3 editorial_pipeline_ob3ect.py batch  config.yaml
 """
 
 from __future__ import annotations
 
+import argparse
 import itertools
 import json
 import os
@@ -34,6 +40,11 @@ import urllib.parse
 import logging
 from pathlib import Path
 from typing import Optional, Tuple
+
+try:
+    import yaml
+except ImportError:
+    sys.exit("editorial_pipeline_ob3ect.py needs PyYAML:  pip install pyyaml")
 
 log = logging.getLogger(__name__)
 
@@ -103,7 +114,6 @@ WRITING PROHIBITIONS — enforce in every output:
   No bullet points, no dashed lists, no numbered lists — write as prose only.
   Use concrete nouns and active verbs. Say what the thing is."""
 
-
 def _parse_prompt(source: str) -> str:
     return (
         "Analyze the structure of the following text. Identify:\n"
@@ -156,13 +166,17 @@ def _critique_prompt(rewrite: str, intent: str) -> str:
 
 # ── LLM call ─────────────────────────────────────────────────────────────────
 
-def _llm_call(prompt: str, url: str, api_key: str, model: str) -> str:
+def _llm_call(prompt: str, url: str, api_key: str, model: str,
+             temperature: float = 0.3, thinking: bool = False) -> str:
     """Single LLM completion call. Returns response text or raises."""
-    body = json.dumps({
+    payload = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.3,
-    }).encode()
+        "temperature": temperature,
+    }
+    if thinking:
+        payload["thinking"] = {"type": "enabled"}
+    body = json.dumps(payload).encode()
 
     req = urllib.request.Request(
         url,
@@ -181,11 +195,13 @@ def _llm_call(prompt: str, url: str, api_key: str, model: str) -> str:
 
 # ── Provider cascade ──────────────────────────────────────────────────────────
 
-def _build_providers(provider_override: str = None) -> list:
+def _build_providers(provider_override: str = None, model_override: str = None,
+                    temperature: float = 0.3, thinking: bool = False) -> list:
     """Return [(name, call_fn)] in cascade order.
 
     Primary provider: --provider flag > IG_PROVIDER env > openrouter → deepseek.
-    Mirrors auto.py's provider selection logic.
+    Model: --model flag > model_override > IG_MODEL env > defaults.
+    Temperature + thinking threaded into every provider's LLM call.
     """
     primary = provider_override or os.environ.get("IG_PROVIDER", "")
 
@@ -193,18 +209,20 @@ def _build_providers(provider_override: str = None) -> list:
 
     or_key = os.environ.get("OPENROUTER_API_KEY", "")
     if or_key:
-        model = os.environ.get("IG_MODEL", _DEFAULT_OPENROUTER_MODEL)
+        model = model_override or os.environ.get("IG_MODEL", _DEFAULT_OPENROUTER_MODEL)
         all_providers.append((
             "openrouter",
-            lambda p, k=or_key, m=model: _llm_call(p, _OPENROUTER_URL, k, m),
+            lambda p, k=or_key, m=model, t=temperature, th=thinking:
+                _llm_call(p, _OPENROUTER_URL, k, m, t, th),
         ))
 
     ds_key = os.environ.get("DEEPSEEK_API_KEY", "")
     if ds_key:
-        model = os.environ.get("DEEPSEEK_MODEL", _DEFAULT_DEEPSEEK_MODEL)
+        model = model_override or os.environ.get("DEEPSEEK_MODEL", _DEFAULT_DEEPSEEK_MODEL)
         all_providers.append((
             "deepseek",
-            lambda p, k=ds_key, m=model: _llm_call(p, _DEEPSEEK_URL, k, m),
+            lambda p, k=ds_key, m=model, t=temperature, th=thinking:
+                _llm_call(p, _DEEPSEEK_URL, k, m, t, th),
         ))
 
     if primary:
@@ -237,7 +255,7 @@ class EditorialPipeline:
         self._b_state: bool = False
         self._evalf: bool = False
         self._passes: int = 0
-        self._log_path = log_path or os.path.expanduser("~/.ob3ect/editorial_pipeline.jsonl")
+        self._log_path = log_path or os.path.expanduser("/home/mrnob0dy666/.ob3ect/editorial_pipeline.jsonl")
 
     # ── SET ───────────────────────────────────────────────────────────────────
 
@@ -260,17 +278,22 @@ class EditorialPipeline:
 
     # ── SUBMIT ────────────────────────────────────────────────────────────────
 
-    def submit(self, critique: bool = False, max_passes: int = 2, provider: str = None) -> "EditorialPipeline":
+    def submit(self, critique: bool = False, max_passes: int = 2, provider: str = None,
+               model: str = None, temperature: float = 0.3,
+               thinking: bool = False) -> "EditorialPipeline":
         """SUBMIT phase: IMSCRIB → AFWD → FSPLIT → EVALT/EVALF → FFUSE.
 
         Args:
             critique: If True, run AREV critique pass after rewrite.
             max_passes: Maximum CLINK composition passes (default 2).
+            model: Override model (default: env IG_MODEL / DEEPSEEK_MODEL).
+            temperature: LLM sampling temperature (default 0.3).
+            thinking: Enable chain-of-thought reasoning (DeepSeek R1/V3).
         """
         if not self._source or not self._intent:
             raise RuntimeError("Call set(source, intent) before submit()")
 
-        providers = _build_providers(provider)
+        providers = _build_providers(provider, model_override=model, temperature=temperature, thinking=thinking)
         if not providers:
             raise RuntimeError(
                 "No providers available. Set OPENROUTER_API_KEY or DEEPSEEK_API_KEY."
@@ -388,30 +411,441 @@ class EditorialPipeline:
             log.debug(f"Log write failed: {e}")
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════════════════════
+# ── Batch mode: YAML-driven directory processing ─────────────────────────────
+# ═══════════════════════════════════════════════════════════════════════════════
+
+_BATCH_YAML_SCHEMA = """\
+# Batch Editorial Pipeline — YAML config schema
+#  python3 editorial_pipeline_ob3ect.py batch config.yaml
+
+name: batch_name              # arbitrary batch identifier
+
+batch_dir: /path/to/dir       # directory of folders; each subdir = one piece
+
+context:                       # REFERENCE MATERIAL — loaded and fed to the LLM
+  files:                       # specific files to load as context
+    - /path/to/style_guide.md
+    - /path/to/voice_notes.txt
+  folders:                     # folders — all text files within are loaded
+    - /path/to/reference_corpus/
+
+editorial:
+  intent: |                    # THE PROMPT — voice, style, directive (all of it)
+    Rewrite for active voice. Short paragraphs. No hedging.
+    Target audience: academic but accessible.
+    Preserve all structural claims and technical terms.
+  output_dir: /path/to/output         # default: batch_dir + '_edited' sibling
+  output_suffix: "_edited"            # appended to output filename stems
+  critique: true                      # run AREV critique passes
+  passes: 2                           # max CLINK composition passes
+  provider: null                      # openrouter | deepseek | null (cascade)
+  model: null                         # override model (e.g. deepseek/deepseek-chat, deepseek-v4-pro)
+  temperature: 0.3                    # LLM sampling temperature (0.0–2.0)
+  thinking: false                     # enable chain-of-thought reasoning (DeepSeek R1/V3)
+  source_glob: "*.md"                 # glob for source files in each folder
+  skip_existing: true                 # skip folders with existing output files
+  verbose: false                      # print full result JSON per item
+"""
+
+
+def _load_context(cfg: dict) -> str:
+    """Load reference context from files and folders specified in the YAML config.
+
+    context:
+      files:   [path, ...]   — specific files to load
+      folders: [path, ...]   — all text files (.md, .txt, .tex, .rst) within
+
+    Returns concatenated reference text, or empty string if no context configured.
+    """
+    ctx = cfg.get("context") or {}
+    if not ctx:
+        return ""
+
+    chunks: list[str] = []
+
+    # Load specific files
+    for raw in ctx.get("files") or []:
+        p = Path(raw)
+        if not p.is_absolute():
+            p = Path.cwd() / p
+        if p.is_file():
+            try:
+                content = p.read_text(encoding="utf-8")
+                chunks.append(f"── REFERENCE: {p.name} ──\n{content}")
+            except Exception as e:
+                print(f"  WARN: could not read context file {p}: {e}")
+        else:
+            print(f"  WARN: context file not found: {p}")
+
+    # Load all text files from folders
+    for raw in ctx.get("folders") or []:
+        p = Path(raw)
+        if not p.is_absolute():
+            p = Path.cwd() / p
+        if p.is_dir():
+            for ext in ["*.md", "*.txt", "*.tex", "*.rst"]:
+                for fp in sorted(p.rglob(ext)):
+                    try:
+                        content = fp.read_text(encoding="utf-8")
+                        chunks.append(f"── REFERENCE: {fp.name} ──\n{content}")
+                    except Exception as e:
+                        print(f"  WARN: could not read context file {fp}: {e}")
+        else:
+            print(f"  WARN: context folder not found: {p}")
+
+    if chunks:
+        joined = "\n\n".join(chunks)
+        return f"REFERENCE MATERIAL (use this as context for your edit):\n\n{joined}"
+    return ""
+
+
+def _find_source_files(folder: Path, source_glob: str = "*.md") -> list[Path]:
+    """Find source text files in a folder matching the glob pattern.
+
+    Priority order:
+      1. Files matching source_glob
+      2. Common editorial filenames: manuscript, article, draft, post, index
+      3. Any .md, .txt, .tex, .rst files
+
+    Returns deduplicated list preserving priority order.
+    """
+    candidates: list[Path] = []
+
+    # Glob match
+    candidates.extend(sorted(folder.glob(source_glob)))
+
+    # Common editorial filenames
+    for name in [
+        "manuscript.md", "article.md", "draft.md", "post.md",
+        "content.md", "index.md", "README.md", "source.txt",
+        "essay.md", "chapter.md", "text.md",
+    ]:
+        p = folder / name
+        if p.exists() and p not in candidates:
+            candidates.append(p)
+
+    # Fallback: any text-like file not already found
+    for ext in [".md", ".txt", ".tex", ".rst"]:
+        for p in sorted(folder.glob(f"*{ext}")):
+            if p not in candidates:
+                candidates.append(p)
+
+    return candidates
+
+
+def _build_intent(loaded_context: str, intent: str) -> str:
+    """Build the composite prompt from loaded reference context + editorial intent.
+
+    The loaded_context is reference material (files/folders specified in YAML).
+    The intent is the full editorial prompt — voice, style, directive.
+    Context comes first as reference; intent is the instruction.
+    """
+    parts: list[str] = []
+    if loaded_context:
+        parts.append(loaded_context)
+    parts.append(intent.strip())
+    return "\n\n".join(parts)
+
+
+def _process_folder(
+    folder: Path,
+    pipeline: EditorialPipeline,
+    cfg: dict,
+    output_dir: Path,
+    stats: dict,
+    folder_index: int,
+    total_folders: int,
+    loaded_context: str,
+) -> bool:
+    """Process one folder: find source, run pipeline, write output.
+
+    Returns True if successful, False if skipped or failed.
+    """
+    ed = cfg.get("editorial", {}) or {}
+    source_glob = ed.get("source_glob", "*.md")
+    skip_existing = ed.get("skip_existing", True)
+    output_suffix = ed.get("output_suffix", "_edited")
+
+    sources = _find_source_files(folder, source_glob)
+    if not sources:
+        print(f"  [{folder_index}/{total_folders}] SKIP {folder.name}: no source files found")
+        stats["skipped_no_source"] += 1
+        return False
+
+    source_path = sources[0]
+    if len(sources) > 1:
+        print(f"  [{folder_index}/{total_folders}] {folder.name}: {len(sources)} sources found, using {source_path.name}")
+
+    # Check for existing output (preserve subdirectory structure)
+    stem = source_path.stem
+    output_name = f"{stem}{output_suffix}{source_path.suffix}"
+    output_path = output_dir / folder.name / output_name
+    if skip_existing and output_path.exists():
+        print(f"  [{folder_index}/{total_folders}] SKIP {folder.name}: {output_name} already exists")
+        stats["skipped_existing"] += 1
+        return False
+
+    source_text = source_path.read_text(encoding="utf-8")
+    if not source_text.strip():
+        print(f"  [{folder_index}/{total_folders}] SKIP {folder.name}: empty source")
+        stats["skipped_empty"] += 1
+        return False
+
+    intent_raw = ed.get("intent", "rewrite for clarity")
+    intent = _build_intent(loaded_context, intent_raw)
+
+    print(f"  [{folder_index}/{total_folders}] {folder.name}  ({len(source_text)} chars)")
+
+    try:
+        pipeline.set(source_text, intent)
+        pipeline.submit(
+            critique=ed.get("critique", False),
+            max_passes=ed.get("passes", 2),
+            provider=ed.get("provider"),
+            model=ed.get("model"),
+            temperature=ed.get("temperature", 0.3),
+            thinking=ed.get("thinking", False),
+        )
+        result = pipeline.serve()
+    except RuntimeError as e:
+        print(f"    FAIL: {e}")
+        stats["failed"] += 1
+        return False
+
+    output_text = result.get("output") or ""
+    if not output_text.strip():
+        print(f"    WARN: empty output — writing anyway")
+        stats["empty_output"] += 1
+
+    # Preserve original file's trailing newline convention
+    if source_text.endswith("\n") and not output_text.endswith("\n"):
+        output_text += "\n"
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(output_text, encoding="utf-8")
+
+    tag = ""
+    if result.get("b_state"):
+        tag += " [B-STATE]"
+    if result.get("evalf"):
+        tag += " [EVALF]"
+    print(f"    → {output_path.name}  ({len(output_text)} chars)  provider={result['provider']}  passes={result['passes']}{tag}")
+
+    return True
+
+
+def run_batch(config_path: str) -> dict:
+    """Run a YAML-driven batch editorial pipeline over a directory of folders.
+
+    Each subdirectory of batch_dir is one "piece." The context section specifies
+    files and folders loaded as reference material for the LLM. The editorial.intent
+    is the full prompt — voice, style, directive.
+
+    YAML schema — see _BATCH_YAML_SCHEMA above, or run with --help-batch.
+
+    Returns a stats dict: folders_total, folders_processed, skipped_*,
+    failed, empty_output.
+    """
+    cfg_path = Path(config_path)
+    if not cfg_path.exists():
+        sys.exit(f"config not found: {config_path}")
+
+    cfg = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
+    if not cfg:
+        sys.exit("empty YAML config")
+
+    batch_dir = Path(cfg.get("batch_dir", ""))
+    if not batch_dir.exists() or not batch_dir.is_dir():
+        sys.exit(f"batch_dir not found or not a directory: {batch_dir}")
+
+    ed = cfg.get("editorial", {}) or {}
+
+    # Resolve output_dir
+    output_dir_raw = ed.get("output_dir")
+    if output_dir_raw:
+        output_dir = Path(output_dir_raw)
+        if not output_dir.is_absolute():
+            output_dir = batch_dir.parent / output_dir
+    else:
+        output_dir = batch_dir.parent / f"{batch_dir.name}_edited"
+
+    # ── Load context (once — same reference material for all items) ──
+    print("Loading context...")
+    loaded_context = _load_context(cfg)
+    if loaded_context:
+        ctx_lines = loaded_context.count("\n") + 1
+        print(f"  context loaded: {len(loaded_context)} chars, ~{ctx_lines} lines")
+    else:
+        print("  no context configured")
+
+    # Gather folders (subdirectories of batch_dir)
+    folders = sorted(
+        [p for p in batch_dir.iterdir() if p.is_dir() and not p.name.startswith(".")],
+        key=lambda p: p.name.lower(),
+    )
+    if not folders:
+        sys.exit(f"no subdirectories found in {batch_dir}")
+
+    total = len(folders)
+    batch_name = cfg.get("name", batch_dir.name)
+
+    print(f"\n╔{'═' * 68}╗")
+    print(f"║  BATCH: {batch_name[:58]:58s} ║")
+    print(f"║  source: {str(batch_dir)[:58]:58s} ║")
+    print(f"║  output: {str(output_dir)[:58]:58s} ║")
+    print(f"║  items:  {total:<58d} ║")
+    print(f"╚{'═' * 68}╝")
+    print()
+
+    stats = {
+        "batch_name": batch_name,
+        "batch_dir": str(batch_dir),
+        "output_dir": str(output_dir),
+        "folders_total": total,
+        "folders_processed": 0,
+        "skipped_no_source": 0,
+        "skipped_existing": 0,
+        "skipped_empty": 0,
+        "failed": 0,
+        "empty_output": 0,
+    }
+
+    pipeline = EditorialPipeline()
+
+    for i, folder in enumerate(folders, 1):
+        ok = _process_folder(folder, pipeline, cfg, output_dir, stats, i, total, loaded_context)
+        if ok:
+            stats["folders_processed"] += 1
+
+    # Summary
+    print()
+    print(f"── batch complete: {stats['folders_processed']}/{stats['folders_total']} processed "
+          f"(skipped: {stats['skipped_no_source']} no-source, "
+          f"{stats['skipped_existing']} existing, "
+          f"{stats['skipped_empty']} empty; "
+          f"{stats['failed']} failed, "
+          f"{stats['empty_output']} empty-output) ──")
+
+    return stats
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ── CLI ──────────────────────────────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════════════════════
+
+_EPILOG = r"""
+╔══════════════════════════════════════════════════════════════════════╗
+║           EDITORIAL PIPELINE — FULL OPTION SET                       ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+MODES ───
+
+  Single-file mode (default):
+    python3 editorial_pipeline_ob3ect.py source.txt "rewrite in active voice"
+    echo "some text" | python3 editorial_pipeline_ob3ect.py - "tighten prose"
+
+  Batch mode:
+    python3 editorial_pipeline_ob3ect.py batch config.yaml
+
+SINGLE-FILE OPTIONS ───
+  --critique     Run AREV critique pass after rewrite
+  --passes N     Max CLINK composition passes (default 2)
+  --provider X   Override provider: openrouter | deepseek
+  --parse-only   Run IMSCRIB parse only, print structure
+  --json         Output full JSON result
+  --verbose, -v  Verbose logging
+
+BATCH MODE ───
+
+  YAML-driven directory processing. Each subdirectory of batch_dir is
+  one "piece." The context section specifies files and folders loaded
+  as reference material. The editorial.intent is the full prompt —
+  voice, style, directive. Processed one by one.
+
+  YAML schema (see also: --help-batch):
+
+    name: batch_name
+    batch_dir: /path/to/dir/of/folders    # each subdir = one piece
+    context:                               # reference material (optional)
+      files:
+        - /path/to/style_guide.md
+      folders:
+        - /path/to/reference_corpus/
+    editorial:
+      intent: |                            # THE PROMPT — voice, style, directive
+        Rewrite for active voice. Short paragraphs. No hedging.
+      output_dir: /path/to/output         # default: batch_dir + '_edited'
+      output_suffix: "_edited"
+      critique: true
+      passes: 2
+      provider: null
+      source_glob: "*.md"
+      skip_existing: true
+
+AUTHOR ───
+  Lando⊗⊙perator
+"""
+
 
 def _cli():
-    import argparse
+    """CLI router: detects batch vs single-file mode from argv."""
+    # Manual routing: if first positional arg is 'batch', use batch parser
+    if len(sys.argv) > 1 and sys.argv[1] == 'batch':
+        _cli_batch(sys.argv[2:])
+    else:
+        _cli_single(sys.argv[1:])
 
+
+def _cli_batch(argv):
+    """Batch mode CLI."""
     parser = argparse.ArgumentParser(
-        description="Editorial pipeline: SET → SUBMIT → SERVE",
+        prog="editorial_pipeline_ob3ect.py batch",
+        description="YAML-driven batch editorial pipeline over a directory of folders",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=(
-            "Examples:\n"
-            "  editorial_pipeline_ob3ect.py source.txt 'make it more concise'\n"
-            "  echo 'some text' | editorial_pipeline_ob3ect.py - 'rewrite in active voice'\n"
-            "  editorial_pipeline_ob3ect.py source.txt 'fix passive voice' --critique --passes 2\n"
-        ),
+        epilog="Config schema: use --help-batch for the YAML schema.",
     )
-    parser.add_argument("source", help="Source text file (or - for stdin)")
-    parser.add_argument("intent", help="Editorial intent (e.g. 'make more concise')")
+    parser.add_argument("config", nargs="?", default=None, help="Path to batch YAML config file")
+    parser.add_argument(
+        "--help-batch", action="store_true", dest="show_batch_schema",
+        help="Print the batch YAML schema and exit",
+    )
+    args = parser.parse_args(argv)
+
+    if args.show_batch_schema:
+        print(_BATCH_YAML_SCHEMA)
+        sys.exit(0)
+    if not args.config:
+        print("error: config file required for batch mode", file=sys.stderr)
+        print("  python3 editorial_pipeline_ob3ect.py batch config.yaml", file=sys.stderr)
+        print("  python3 editorial_pipeline_ob3ect.py batch --help-batch", file=sys.stderr)
+        sys.exit(1)
+    run_batch(args.config)
+
+
+def _cli_single(argv):
+    """Single-file mode CLI."""
+    parser = argparse.ArgumentParser(
+        prog="editorial_pipeline_ob3ect.py",
+        description="LLM-integrated editorial pipeline: SET → SUBMIT → SERVE",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=_EPILOG,
+    )
+    parser.add_argument("source", nargs="?", default=None,
+                        help="Source text file (or - for stdin)")
+    parser.add_argument("intent", nargs="?", default=None,
+                        help="Editorial intent (e.g. 'make more concise')")
     parser.add_argument("--critique", action="store_true", help="Run AREV critique pass")
     parser.add_argument("--passes", type=int, default=2, help="Max CLINK composition passes")
-    parser.add_argument("--provider", default=None, help="Override provider (openrouter|deepseek); also reads IG_PROVIDER env")
+    parser.add_argument("--provider", default=None,
+                        help="Override provider (openrouter|deepseek); also reads IG_PROVIDER env")
     parser.add_argument("--parse-only", action="store_true", help="Run IMSCRIB parse only")
     parser.add_argument("--json", action="store_true", help="Output full JSON result")
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose logging")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+
+    if not args.source:
+        parser.print_help()
+        sys.exit(1)
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.WARNING,
@@ -424,10 +858,10 @@ def _cli():
         source = Path(args.source).read_text()
 
     pipe = EditorialPipeline()
-    pipe.set(source, args.intent)
+    pipe.set(source, args.intent or "improve clarity and prose quality")
 
     if args.parse_only:
-        providers = _build_providers(args.provider)
+        providers = _build_providers(args.provider, model_override=args.model)
         if not providers:
             print("Error: no providers available (set OPENROUTER_API_KEY or DEEPSEEK_API_KEY)", file=sys.stderr)
             sys.exit(1)
@@ -448,7 +882,6 @@ def _cli():
             print("\n[EVALF: cascade exhausted — source returned unchanged]", file=sys.stderr)
         if args.verbose:
             print(f"\n[provider: {result['provider']}, passes: {result['passes']}]", file=sys.stderr)
-
 
 if __name__ == "__main__":
     _cli()

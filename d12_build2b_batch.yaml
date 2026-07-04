@@ -1,0 +1,36 @@
+# ob3ect batch — d=12 build piece 2b: enter the EXACT fiducial coordinates
+# Run:  cd ~/imsgct/ob3ect && p3 auto.py -f d12_build2b_batch.yaml
+#
+# Substrate done: piece 1 (ℚ[ζ_n] List-ℚ ring) + piece 2a (quadratic tower
+# ℚ[ζ_n][√m]), both native_decide-validated. This is the crux: the exact d=12
+# Scott–Grassl coordinates. Real mathematics — routes frame the sub-steps; the
+# actual numbers get recovered from the high-precision numeric fiducial.
+# Context = SIC files + piece 1 + piece 2a + the plan note.
+
+name: d12-build2b
+out_dir: digital
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: inf
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/dumpdir_d12
+
+entities:
+  # ── Identify the true field: conductor + radical ──────────────────────────
+  - "the d=12 Zauner SIC fiducial's exact number field becomes the identified cyclotomic conductor n and radical set over which its twelve coordinates are algebraic, pinned from the Scott-Grassl solution and the real quadratic Q(sqrt(120))"
+
+  # ── Recover exact coordinates from the numeric fiducial ───────────────────
+  - "the complex128 float d=12 fiducial becomes exact algebraic coordinates recovered by integer-relation lattice reduction against the basis of powers of zeta and their products with sqrt(30), to high precision"
+
+  # ── Enter them as Tow elements ────────────────────────────────────────────
+  - "the twelve recovered algebraic coordinates become explicit Tow elements over the quadratic-cyclotomic tower, each a pair of coefficient lists entered exactly"
+
+  # ── Norm check ────────────────────────────────────────────────────────────
+  - "the norm condition that the fiducial's Weyl-Heisenberg squared norm equals twelve becomes a native_decide identity on the entered Tow coordinates in the tower"
+
+  # ── Sanity-subset overlap check before the full 143 ───────────────────────
+  - "a sanity subset of the Weyl-Heisenberg displacement overlaps becomes native_decide checks that each entered-coordinate overlap times its conjugate equals one over thirteen, validating the coordinates before the full 143"

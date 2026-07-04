@@ -40,6 +40,7 @@ YAML schema (all keys optional unless noted):
       subtitle: "A Structural Grammar of Form, Curvature, and Space"
       output: ../Ars_Geometrica/Ars_Geometrica_CENSUS.md
       group_convergences: true
+      style: enforce                  # enforce | warn | off
 """
 from __future__ import annotations
 import sys, os, re, json, argparse
@@ -196,11 +197,115 @@ def run_batch(config_path: str, phase: str = "run") -> None:
 
 
 # ── CLI ──────────────────────────────────────────────────────────────────────
+_EPILOG = r"""
+╔══════════════════════════════════════════════════════════════════════╗
+║              OB3ECT EDITORIAL PIPELINE — FULL OPTION SET             ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+PHASES ───
+  run         imscribe (LLM) then census (editorial).  The full pipeline.
+  imscribe    LLM-only:  run ob3ect auto.design() on each entity, save
+              JSON ob3ects to out_dir/.  Entities resolved from the YAML
+              but NOT looked up in the catalog — fresh encoding every time.
+  census      Editorial-only:  read every entity from the IG catalog
+              (machine-sourced).  Produce an Ars_*_CENSUS.md Markdown
+              document with full 12-primitive tuples, d=0 convergence
+              laws, and a pending list for anything not yet catalogued.
+              No LLM calls.  No hand-imscribing.  No guessing.
+
+YAML CONFIG SCHEMA ───
+
+  name:  string                 Batch identifier (arbitrary, used in log)
+  phase: run | imscribe | census  Optional default; CLI argument overrides
+  out_dir:  string              Dir for imscribe-phase JSONs (default: digital/)
+
+  design:                       ── forwarded to auto.design() ──
+    domain:       string        mathematical | computational | biological |
+                                alchemical | physical | linguistic | ...
+    scope:        local | mesoscale | maximal    (default: local)
+    provider:     string | null LLM provider (null = default)
+    model:        string | null LLM model    (null = default)
+    temperature:  float         Sampling temperature  (default: 0.4)
+    retries:      int           Retry count on LLM failure  (default: 3)
+    context:      string | null Additional prompt context
+
+  entities:                     ── explicit entity list ──
+    - entity_name               Exact catalog name (census-resolvable)
+    - "free text description"   LLM-imscribed; appears as pending in census
+    - ...
+
+  entities_from:                ── dynamic entity sources ──
+    file:  path                 One entity per line; # comments; blank ok
+    catalog_filter:  substring  Pull all catalog entries whose name or
+                                description contains this (case-insensitive)
+    → Merged with 'entities:' and deduplicated.
+
+  editorial:                    ── census output options ──
+    ars_title:      string      H1 title of the Ars document
+    subtitle:       string      H2 subtitle
+    output:         path        Output .md file  (stdout if omitted)
+    group_convergences: bool    If true, list structural laws (d=0 groups)
+    style:          enforce | warn | off
+                    style_guard mode:  enforce (default) rewrites AI-voice
+                    prose;  warn prints diagnostics;  off skips.
+
+EXAMPLES ───
+
+  # Minimal:  run the full pipeline on a YAML
+  $ python3 editorial.py run substack_physics.yaml
+
+  # Census only (no LLM):  resolve catalog entries, produce Ars doc
+  $ python3 editorial.py census substack_foundations.yaml
+
+  # Imscribe only:  encode new entities into ob3ect JSONs
+  $ python3 editorial.py imscribe substack_launch_batch.yaml
+
+  # With phase set inside the YAML itself:
+  $ python3 editorial.py run config.yaml       # overrides YAML 'phase:'
+
+PIPELINE FLOW ───
+
+  YAML file
+    │
+    ├── resolve_entities()
+    │     entities: [...]  +  entities_from: {file, catalog_filter}
+    │     → deduplicated entity name list
+    │
+    ├── [imscribe phase]  (run | imscribe)
+    │     for each entity:  auto.design(entity, ...)
+    │     → ob3ect/digital/<slug>/<slug>_ob3ect.json
+    │
+    └── [census phase]    (run | census)
+          for each entity:  lookup in IG_catalog.json
+          ├── resolved  → 12-primitive tuple, description
+          ├── convergent → structural law (d=0 grouping)
+          └── pending   → not yet catalogued, listed for imscription
+          →
+          Ars_*_CENSUS.md  (style_guard.enforce applied)
+            ├── Census table
+            ├── Structural laws (convergences)
+            └── Pending list
+
+ENVIRONMENT ───
+  Catalog:   ../imscribing_grammar/IG_catalog.json   (5,000+ entries)
+  Ob3ects:   ob3ect/digital/   (output from imscribe phase)
+  Guard:     style_guard.py    (human-voice enforcement)
+
+AUTHOR ───
+  Lando⊗⊙perator
+"""
+
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="YAML-driven ob3ect batch + editorial pipeline.")
+    ap = argparse.ArgumentParser(
+        prog="editorial.py",
+        description="YAML-driven ob3ect batch imscription + editorial pipeline.",
+        epilog=_EPILOG,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     ap.add_argument("phase", choices=["run", "imscribe", "census"],
-                    help="run = imscribe then editorial; imscribe = LLM only; census = editorial only")
-    ap.add_argument("config", help="path to the batch YAML")
+                    help="Pipeline phase:  run (imscribe→census) | "
+                         "imscribe (LLM only) | census (catalog only)")
+    ap.add_argument("config", help="Path to the batch YAML config file")
     args = ap.parse_args(argv)
     run_batch(args.config, args.phase)
 
