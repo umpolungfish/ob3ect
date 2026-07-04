@@ -1,0 +1,230 @@
+{
+  "name": "phi_zpow proves phi (zpow n) = (phi zeta) ^ n for every n by induction: the base is phi (zpow 0) = phi rone = 1 = (phi zeta)^0, and the step rewrites zpow (n+1) = rmul (zpow n) zeta through the proven star-ring hom phi_rmul, needing canonicity of zpow n which follows from a general rmul_canon lemma \u2014 rmul preserves keys < 128 because contrib/encKey bound every layer exponent (cover < 16 via XOR of two 4-bit masks, and red1/red2/red3 collapse the i, c5, u1 exponents below 2), so encKey cov ei e5 e1 < 16 + 16 + 32 + 64 = 128; alternatively the induction is restricted to n < 13 where zpow_canon_all already certifies canonicity, sufficient because Oab only evaluates zpow at exponents reduced mod 12",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "phi_zpow proves phi (zpow n) = (phi zeta) ^ n for every n by induction: the base is phi (zpow 0) = phi rone = 1 = (phi zeta)^0, and the step rewrites zpow (n+1) = rmul (zpow n) zeta through the proven star-ring hom phi_rmul, needing canonicity of zpow n which follows from a general rmul_canon lemma \u2014 rmul preserves keys < 128 because contrib/encKey bound every layer exponent (cover < 16 via XOR of two 4-bit masks, and red1/red2/red3 collapse the i, c5, u1 exponents below 2), so encKey cov ei e5 e1 < 16 + 16 + 32 + 64 = 128; alternatively the induction is restricted to n < 13 where zpow_canon_all already certifies canonicity, sufficient because Oab only evaluates zpow at exponents reduced mod 12",
+      "domain_type": "computational",
+      "scope": "maximal",
+      "surface_tokens": [
+        "homomorphism",
+        "canonicity",
+        "induction"
+      ],
+      "boundary_condition": "SIC_D12_Embedding.lean scope",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty sequence",
+        "justification": "The base case of the induction before the first power is defined.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "phi_zpow theorem",
+        "justification": "The final proof boundary that encodes the power-homomorphism identity.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "successor step",
+        "justification": "Forward morphism promoting the induction from n to n + 1.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "mod-12 reduction",
+        "justification": "Mapping high exponents back to the [0, 11] residues via Z^12 = 1.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "rmul composition",
+        "justification": "Sequential application of ring multiplication and the phi map.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "base case phi(z0)=1",
+        "justification": "Identity mapping where the zero power reflects the unit.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "key-range check",
+        "justification": "Bifurcation of logic into the canonical key-bound path and the general reduction path.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "rmul_canon lemma",
+        "justification": "Reconstitution of the canonicity property from separate coordinate-layer bounds.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "key < 128",
+        "justification": "Status where every monomial key is within the 7-bit canonical limit.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "key \u2265 128",
+        "justification": "Status where reduction must be explicitly invoked to restore canonicity.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "zpow_canon_all",
+        "justification": "The holding of all 13 power checks simultaneously to bypass general induction if needed.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "native_decide",
+        "justification": "Permanent fixation of the boolean canonicity check into the proof record.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "key-range check",
+      "split_input": "ring monomial key",
+      "split_outputs": [
+        "canonical_path",
+        "reduction_path"
+      ],
+      "fuse_element": "rmul_canon lemma",
+      "fuse_result": "ring monomial key",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "uninitialized exponent state",
+      "true_description": "phi-homomorphism verified",
+      "false_description": "canonical bound violation",
+      "both_description": "congruence held over the mod-12 cycle",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initiate the induction base for zpow at index zero"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "verify phi rone equals 1 as the identity anchor"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "split the general n exponent into n < 13 or n >= 13"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "select the bounded range where zpow_canon_all is fixed"
+        },
+        {
+          "step_num": 5,
+          "opcode": "IFIX",
+          "domain_action": "apply native_decide to the canonicity of the first 13 powers"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FFUSE",
+          "domain_action": "reunite the range-check with the general induction hypothesis"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "perform the successor step for n + 1 using rmul"
+        },
+        {
+          "step_num": 8,
+          "opcode": "CLINK",
+          "domain_action": "compose the phi_rmul lemma with the induction step"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FSPLIT",
+          "domain_action": "branch into the layers of the contrib reduction"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALT",
+          "domain_action": "satisfy the i-layer exponent reduction ei < 2"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALT",
+          "domain_action": "satisfy the c5-layer exponent reduction e5 < 2"
+        },
+        {
+          "step_num": 12,
+          "opcode": "EVALT",
+          "domain_action": "satisfy the u1-layer exponent reduction e1 < 2"
+        },
+        {
+          "step_num": 13,
+          "opcode": "FFUSE",
+          "domain_action": "consolidate layer reductions into the total key bound"
+        },
+        {
+          "step_num": 14,
+          "opcode": "EVALT",
+          "domain_action": "confirm the resulting key is less than 128"
+        },
+        {
+          "step_num": 15,
+          "opcode": "CLINK",
+          "domain_action": "map the resulting ring product to the complex product"
+        },
+        {
+          "step_num": 16,
+          "opcode": "AREV",
+          "domain_action": "invoke the zeta_pow12 relation to reduce exponents mod 12"
+        },
+        {
+          "step_num": 17,
+          "opcode": "TANCH",
+          "domain_action": "close the proof of phi_zpow and fix the identity"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Lean 4 kernel",
+      "ipc_mechanism": "lemma application and term rewriting",
+      "memory_mechanism": "K16 power basis coefficient lists",
+      "scheduler_mechanism": "tactic induction and rewrite ordering",
+      "alfs_store": "Millennium.SIC_POVM_Stark definitions",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "CPU cycles for native_decide and ring reduction",
+      "pre_cycle_state": "fragmented ring-coordinate definitions",
+      "post_cycle_state": "unified phi-homomorphism certificate",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The total information is conserved through the exact ring homomorphism.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 IFIX \u2192 FFUSE \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 EVALT \u2192 EVALT \u2192 FFUSE \u2192 EVALT \u2192 CLINK \u2192 AREV \u2192 TANCH\n-- Class: phi_zpow proves phi (zpow n) = (phi zeta) ^ n for every n by induction: the base is phi (zpow 0) = phi rone = 1 = (phi zeta)^0, and the step rewrites zpow (n+1) = rmul (zpow n) zeta through the proven star-ring hom phi_rmul, needing canonicity of zpow n which follows from a general rmul_canon lemma \u2014 rmul preserves keys < 128 because contrib/encKey bound every layer exponent (cover < 16 via XOR of two 4-bit masks, and red1/red2/red3 collapse the i, c5, u1 exponents below 2), so encKey cov ei e5 e1 < 16 + 16 + 32 + 64 = 128; alternatively the induction is restricted to n < 13 where zpow_canon_all already certifies canonicity, sufficient because Oab only evaluates zpow at exponents reduced mod 12\n-- Fingerprint: sig=(7,4,5,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=17\n-- Expected tier: O\u2080\n-- FSPLIT/FFUSE pairs: [(2, 5), (8, 12)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [8] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [9] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [10] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [11] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [13] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [14] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc57  | composition \u2014 regime coherence\n--   [15] AREV      pol    := \ud801\udc57               \ud801\udc71 \u2192 \ud801\udc61  | reverse morphism \u2014 parity flip\n--   [16] TANCH     top    := \ud801\udc61               \ud801\udc57 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_protocol : IGProtocol phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s0 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s16 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5 = phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5 (idempotent)\n  (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l0 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s0 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s1) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l1 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s1 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s2) (.seq (.prod (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l2 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s2 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5) (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l2 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s2 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5)) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l5 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l5 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s5 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s6) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l6 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s6 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s7) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l7 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s7 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s8) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l8 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s8 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s9) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l9 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s9 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s10) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l10 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s10 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s11) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l11 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s11 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s12) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l12 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s12 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s13) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l13 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s13 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s14) (.seq (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l14 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s14 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s15) (.arrow phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_l15 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s15 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s16)))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_true_arm : IGProtocol phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s0 phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s16 :=\n  (phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2080.\ndef phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_tier : OuroboricityTier := TierFunctor.obj phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s0\n#eval phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_tier  -- the Grammar's own verdict on its tier\n",
+  "notes": "Auto-designed from: phi_zpow proves phi (zpow n) = (phi zeta) ^ n for every n by induction: the base is phi (zpow 0) = phi rone = 1 = (phi zeta)^0, and the step rewrites zpow (n+1) = rmul (zpow n) zeta through the proven star-ring hom phi_rmul, needing canonicity of zpow n which follows from a general rmul_canon lemma \u2014 rmul preserves keys < 128 because contrib/encKey bound every layer exponent (cover < 16 via XOR of two 4-bit masks, and red1/red2/red3 collapse the i, c5, u1 exponents below 2), so encKey cov ei e5 e1 < 16 + 16 + 32 + 64 = 128; alternatively the induction is restricted to n < 13 where zpow_canon_all already certifies canonicity, sufficient because Oab only evaluates zpow at exponents reduced mod 12"
+}
