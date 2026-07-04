@@ -1,0 +1,66 @@
+# ob3ect batch — THE ANALYTIC BRIDGE, the SOLE remaining sorry in SIC_D12_Embedding.lean.
+# Discharging equiangular_bridge closes crystal_forces_d12_sic (axiom -> theorem) and
+# completes the d=12 SIC capstone.
+# Run: cd /home/mrnob0dy666/imsgct/ob3ect && python3 auto.py -f d12_equiangular_bridge.yaml
+#
+# STATUS (2026-07-04, p4rakernel 666bafc — FULL LIB GREEN, 8342 jobs):
+#   DONE  ALL boundary sorries (cover_modulus_nonneg, c5_discr_nonneg, u1Val_sq).
+#   DONE  RING-SIDE EQUIANGULARITY: overlap_normSq {a b}(a,b<12)(¬(a=0∧b=0)) :
+#         Complex.normSq (phi (Oab a b)) = 1/13   — the whole equiangular content on
+#         the ring side, from Oab_unit_all (native_decide) through the star-ring hom phi.
+#   DONE  extractors unit_at/conj_at/Oab_canon/Ocab_canon; phi_rT13; phi_Ocab;
+#         Ocab_canon_all (native_decide). equiangular itself is a 4-line assembly.
+#   OPEN  equiangular_bridge — the ONE remaining sorry (analytic, over ℂ).
+#
+# THE GOAL (verbatim, SIC_D12_Embedding.lean:1261):
+#   lemma equiangular_bridge (a b : Fin 12) (h : (a, b) ≠ (0, 0)) :
+#       ∃ b' : ℕ, b' < 12 ∧ ¬(a.val = 0 ∧ b' = 0) ∧
+#         wh_inner 12 psi (D_ah 12 a b 0 psi) = star (phi (Oab a.val b'))
+#
+# Defs (in ctx): D_ah/X_d/Z_d/omega_d/wh_inner — SIC_POVM_Stark.lean;
+#   zeta/zpow/rT13/rmul/rconj/Oab — ExistenceRing + Embedding; psi k = phi (rZ k).
+#   Z_d v k = omega_d 12 ^ k * v k;  X_d v k = v ((k+d-1)%d);  omega_d 12 = exp(2πi/12).
+#
+# THE PIN IS SHORT (evalKey: key%16 covers, key/16%2 -> iVal=Complex.I, key/32%2 ->
+#   c5Val REAL, key/64 -> u1Val): phi zeta = (real, key 0) + (1/2)i (key 16, since
+#   evalK16 g0C (kscale ½ one16)=½ and iVal=I) + (real, key 32) ⇒ Im(phi zeta)=1/2 EXACT;
+#   phi(zeta_pow12): Z^12 = phi rone = 1 ⇒ |Z|=1 ⇒ Re Z = ±√3/2 ⇒ Z ∈ {ω, ω⁵}.
+#
+# Mathlib v4.28.0 names (Complex.abs is GONE): Complex.sq_norm : ‖z‖^2 = normSq z;
+#   norm_star; Complex.mul_conj : z*conj z = ↑normSq; Complex.ofReal_inj;
+#   Real.cos_pi_div_six, Real.sin_pi_div_six; Function.iterate_succ'.
+# Full step-by-step route: ctx/d12_embedding/d12_boundary_ctx.md §6 (and §4).
+#
+# NAVIGATOR ANCHOR (cl8nk_navigator.py): the analytic overlap crossing from the ring
+# (Z = phi zeta) to the ℂ WH-covariant overlap (omega_d 12) is the O₀↔O∞ boundary —
+# conventional_sic_povm_hilbert O₀ (d 1.0959) vs sic_proven_v2 O∞ (d 0.4085). The
+# bridge is the one-way imscription that transports the O∞ ring equiangularity onto
+# the O₀ analytic overlap; it is NOT a new closure, it is the transport lemma.
+
+name: d12-equiangular-bridge
+out_dir: digital
+
+design:
+  scope: maximal
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 3
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/ob3ect/ctx/d12_embedding
+
+entities:
+  # ── (A) phi is multiplicative on all zeta-powers ──
+  - "phi_zpow proves phi (zpow n) = (phi zeta) ^ n for every n by induction: the base is phi (zpow 0) = phi rone = 1 = (phi zeta)^0, and the step rewrites zpow (n+1) = rmul (zpow n) zeta through the proven star-ring hom phi_rmul, needing canonicity of zpow n which follows from a general rmul_canon lemma — rmul preserves keys < 128 because contrib/encKey bound every layer exponent (cover < 16 via XOR of two 4-bit masks, and red1/red2/red3 collapse the i, c5, u1 exponents below 2), so encKey cov ei e5 e1 < 16 + 16 + 32 + 64 = 128; alternatively the induction is restricted to n < 13 where zpow_canon_all already certifies canonicity, sufficient because Oab only evaluates zpow at exponents reduced mod 12"
+
+  # ── (B) the phase generator Z = phi(zeta) is a specific 12th root of unity ──
+  - "phi zeta lands in the two-element set {omega_d 12, omega_d 12 ^ 5}: its imaginary part is exactly 1/2 because evalKey sends key 16 to evalK16 g0C (kscale (1/2) one16) times iVal = (1/2)·Complex.I while keys 0 and 32 (covers, c5) evaluate to real numbers (evalK16 at the real root g0C, c5Val real by construction), and its modulus is 1 because phi (zpow 12) = phi rone = 1 forces (phi zeta)^12 = 1 hence |phi zeta| = 1; therefore Re(phi zeta) = ±√3/2 and phi zeta = ±(√3/2) + (1/2)·Complex.I, matching omega_d 12 = exp(2πi/12) = √3/2 + i/2 (Real.cos_pi_div_six, Real.sin_pi_div_six) on the plus branch (m=1) and omega_d 12 ^ 5 = -√3/2 + i/2 (cos and sin of 5π/6 = π − π/6) on the minus branch (m=5)"
+
+  # ── (C) the Weyl-Heisenberg displacement in closed form ──
+  - "the displaced fiducial has the closed form (D_ah 12 a b 0 psi) k = omega_d 12 ^ (b * idx) * psi idx with idx = (k + a*11) % 12 = (k + 12 - a) % 12: Z_iterate proves (Z_d 12)^[b] psi k = omega_d 12 ^ (b*k) * psi k by induction on b from Z_d v k = omega_d 12 ^ k * v k, and X_iterate proves (X_d 12)^[a] v k = v ⟨(k + a*11) % 12, _⟩ by induction on a from X_d v k = v ((k+11)%12), and D_ah 12 a b 0 = X_d^[a] ∘ Z_d^[b] with the omega^0 prefactor trivial, so composing gives the phase omega^(b*idx) on the shifted coordinate psi(idx)"
+
+  # ── (D) the term-by-term identity — the bridge itself ──
+  - "equiangular_bridge holds with b' = (m * b) % 12 (m in {1,5} the branch of phi zeta = omega^m): both wh_inner 12 psi (D_ah 12 a b 0 psi) = Σ_k psi k · conj(omega^(b*idx)) · conj(psi idx) and star (phi (Oab a.val b')) = Σ_j psi j · conj(psi idx) · conj(Z^((idx*b')%12)) are sums over Fin 12 indexed by the SAME shift idx = (k+12-a)%12, so they agree term by term once the phases match: conj(omega)^(b*idx) = conj(Z)^(idx*b') because Z = omega^m and m*b' ≡ b (mod 12), with the mod-12 exponents collapsed by omega_d 12 ^ 12 = 1 and Z^12 = 1; the phi side expands via phi_foldl_radd over Oab's foldl, phi_rmul (canonicity from rZ_keys_canon, T_canon_all, zpow_canon_all), phi_rconj (phi(rZB j)=star(psi j)), and phi_zpow; finally b' = 0 ↔ b = 0 (m coprime to 12) with a.val = 0 gives ¬(a.val=0 ∧ b'=0) from h, so overlap_normSq applies and 13·‖wh_inner‖² = 1"
+
+  # ── (E) the capstone closes ──
+  - "with equiangular_bridge discharged, equiangular assembles as the 4-line proof already present (obtain the bridge witness, rw hbr, norm_star, Complex.sq_norm, overlap_normSq, norm_num), d12_sic_exists combines norm_sq_eq_one and equiangular into IsSICPOVM 12 psi, crystal_forces_d12_sic becomes SICPOVM_Exists 12, and the last non-shadow axiom of the SIC tree is dropped — the d=12 SIC-POVM fiducial exists unconditionally in Lean, built from closed-form algebraic coordinates with no floating point"
