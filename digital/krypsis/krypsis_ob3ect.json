@@ -1,0 +1,205 @@
+{
+  "name": "Krypsis",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Krypsis",
+      "domain_type": "cryptographic",
+      "scope": "local",
+      "surface_tokens": [
+        "plaintext",
+        "ciphertext",
+        "steganography"
+      ],
+      "boundary_condition": "The cryptographic perimeter defining the limit of authorized access.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Pre-informational entropy",
+        "justification": "The state of raw noise before the selection of a message or key.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Ciphertext envelope",
+        "justification": "The final container that holds the encrypted data for transmission.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Encryption transform",
+        "justification": "The forward mapping from plaintext to ciphertext using a specific key.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Decryption transform",
+        "justification": "The inverse mapping that recovers plaintext from ciphertext.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Cipher block chaining",
+        "justification": "The sequential composition of cryptographic operations where one output influences the next.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Key identity",
+        "justification": "The self-referential property of the key that recognizes its own validity during the handshake.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Key derivation function",
+        "justification": "The process that splits a master secret into distinct encryption and authentication keys.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Message authentication code verification",
+        "justification": "The process that reunites the split keys to validate the integrity of the original secret.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Successful decryption",
+        "justification": "The state where the recovered plaintext matches the original input.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Checksum failure",
+        "justification": "The state where data corruption or an incorrect key prevents recovery.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Steganographic superposition",
+        "justification": "The state where a carrier medium simultaneously contains a visible public message and a hidden private message.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Immutable audit log",
+        "justification": "The permanent record of the transaction that cannot be altered or deleted.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Key derivation function",
+      "split_input": "Master Secret",
+      "split_outputs": [
+        "Encryption Key",
+        "Integrity Key"
+      ],
+      "fuse_element": "Session Reconstitution",
+      "fuse_result": "Master Secret",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The absence of information or the state of unformatted thermal noise.",
+      "true_description": "The presence of a verified and authenticated message.",
+      "false_description": "The detection of unauthorized tampering or cryptographic failure.",
+      "both_description": "The presence of a message that is both noise to the public and signal to the recipient.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the entropy pool for key generation."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Define the master secret identity."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Derive the encryption and integrity sub-keys."
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Apply the encryption transform to the plaintext on the primary branch."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Confirm the ciphertext matches the expected format."
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "Prepare the decryption inverse on the secondary branch."
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Monitor for bit-flip errors during the reverse transform."
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the sub-keys to verify the session integrity."
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "Chain the verified blocks into a continuous stream."
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "Embed the stream into a steganographic carrier to hide the existence of the message."
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "Record the transmission timestamp in the immutable ledger."
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "Seal the cryptographic perimeter for transport."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The cryptographic engine that converts mathematical logic into machine instructions.",
+      "ipc_mechanism": "Secure socket tunnels that pass encrypted packets between processes.",
+      "memory_mechanism": "Volatile hardware security modules that store active keys.",
+      "scheduler_mechanism": "The clock cycle manager that synchronizes block processing.",
+      "alfs_store": "The root certificate authority that provides the foundational trust anchor.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational work measured in floating-point operations per bit.",
+      "pre_cycle_state": "High-entropy plaintext and a structured key.",
+      "post_cycle_state": "High-entropy ciphertext and a depleted entropy pool.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The information content remains constant through the reversible encryption-decryption cycle.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: Krypsis\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def krypsis_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def krypsis_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def krypsis_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def krypsis_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def krypsis_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def krypsis_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def krypsis_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def krypsis_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def krypsis_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def krypsis_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def krypsis_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def krypsis_protocol : IGProtocol krypsis_s0 krypsis_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct krypsis_s7 krypsis_s7 = krypsis_s7 (idempotent)\n  (.seq (.arrow krypsis_l0 krypsis_s0 krypsis_s1) (.seq (.arrow krypsis_l1 krypsis_s1 krypsis_s2) (.seq (.prod (.arrow krypsis_l2 krypsis_s2 krypsis_s7) (.arrow krypsis_l2 krypsis_s2 krypsis_s7)) (.seq (.arrow krypsis_l7 krypsis_s7 krypsis_s7) (.seq (.arrow krypsis_l7 krypsis_s7 krypsis_s8) (.seq (.arrow krypsis_l8 krypsis_s8 krypsis_s9) (.seq (.arrow krypsis_l9 krypsis_s9 krypsis_s10) (.arrow krypsis_l10 krypsis_s10 krypsis_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def krypsis_true_arm : IGProtocol krypsis_s0 krypsis_s11 :=\n  (krypsis_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def krypsis_false_arm : IGProtocol krypsis_s0 krypsis_s11 :=\n  (krypsis_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O\u2082.\ndef krypsis_tier : OuroboricityTier := TierFunctor.obj krypsis_s0\n#eval krypsis_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem krypsis_frobenius :\n    igFrobeniusAlg.mul krypsis_s0 krypsis_s0 = krypsis_s0 :=\n  igFrobAlg_self_fusion krypsis_s0\n",
+  "notes": "Auto-designed from: Krypsis"
+}
