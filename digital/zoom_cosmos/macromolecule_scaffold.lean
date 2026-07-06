@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 10)]
 
 import Imscribing.IGMorphism
@@ -31,50 +31,93 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [13] IMSCRIB   gram   := 𐑠               𐑭 → 𐑡  | identity — self-imscription
 --   [14] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def macromolecule_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def macromolecule_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def macromolecule_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def macromolecule_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def macromolecule_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }
+private def macromolecule_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def macromolecule_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def macromolecule_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the unactivated monomer pool in the aqueous solvent.)
-  (.arrow 𐑾 𐑼 𐑱)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Activate the monomer by attaching a high energy leaving group.)
-  (.arrow 𐑱 𐑾 𐑾)  -- [2] CLINK | fid := 𐑱 | composition — regime coherence (Chain the activated monomer to the growing polymer backbone.)
-  (.arrow 𐑾 𐑱 𐑱)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Propagate the polymer chain through sequential monomer addition.)
-  (.arrow 𐑱 𐑾 𐑚)  -- [4] CLINK | fid := 𐑱 | composition — regime coherence (Complete the primary sequence synthesis of the linear macromolecule.)
-  -- FSPLIT [5] (gran := 𐑚) (Dissociate the multimeric complex into Monomeric subunit A and Monomeric subunit B.) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [6] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Fold Monomeric subunit A into the native functional conformation.)
-        (.arrow 𐑾 𐑚 𐑙)  -- [7] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Expose the binding interface of Monomeric subunit A to the solvent.)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [8] EVALF | chir := 𐑖 | evaluate-false — chirality check (Misfold Monomeric subunit B into an aggregated nonfunctional state.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (Bury the hydrophobic core of Monomeric subunit B via reverse conformational c...))
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [10] FFUSE | stoi := 𐑙 (Reassociate Monomeric subunit A and Monomeric subunit B to reconstitute the multimeric protein complex.)
-  (.arrow 𐑳 𐑙 𐑭)  -- [11] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Suspend the reconstituted complex in the molten globule phase holding both st...)
-  (.arrow 𐑭 𐑳 𐑠)  -- [12] IFIX | prot := 𐑭 | irreversible fixation — winding number (Lock the quaternary structure via irreversible disulfide crosslinking.)
-  (.arrow 𐑠 𐑭 𐑡)  -- [13] IMSCRIB | gram := 𐑠 | identity — self-imscription (Recognize the native state energy minimum to maintain structural homeostasis.)
-  (.arrow 𐑡 𐑠 𐑼)  -- [14] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal the thermodynamic envelope defining the final macromolecular boundary.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def macromolecule_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def macromolecule_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def macromolecule_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def macromolecule_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def macromolecule_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def macromolecule_protocol : IGProtocol macromolecule_s0 macromolecule_s14 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct macromolecule_s10 macromolecule_s10 = macromolecule_s10 (idempotent)
+  (.seq (.arrow macromolecule_l0 macromolecule_s0 macromolecule_s1) (.seq (.arrow macromolecule_l1 macromolecule_s1 macromolecule_s2) (.seq (.arrow macromolecule_l2 macromolecule_s2 macromolecule_s3) (.seq (.arrow macromolecule_l3 macromolecule_s3 macromolecule_s4) (.seq (.arrow macromolecule_l4 macromolecule_s4 macromolecule_s5) (.seq (.prod (.arrow macromolecule_l5 macromolecule_s5 macromolecule_s10) (.arrow macromolecule_l5 macromolecule_s5 macromolecule_s10)) (.seq (.arrow macromolecule_l10 macromolecule_s10 macromolecule_s10) (.seq (.arrow macromolecule_l10 macromolecule_s10 macromolecule_s11) (.seq (.arrow macromolecule_l11 macromolecule_s11 macromolecule_s12) (.seq (.arrow macromolecule_l12 macromolecule_s12 macromolecule_s13) (.arrow macromolecule_l13 macromolecule_s13 macromolecule_s14)))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def macromolecule_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def macromolecule_true_arm : IGProtocol macromolecule_s0 macromolecule_s14 :=
   (macromolecule_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def macromolecule_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def macromolecule_false_arm : IGProtocol macromolecule_s0 macromolecule_s14 :=
   (macromolecule_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem macromolecule_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def macromolecule_tier : OuroboricityTier := TierFunctor.obj macromolecule_s0
+#eval macromolecule_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem macromolecule_frobenius :
+    igFrobeniusAlg.mul macromolecule_s0 macromolecule_s0 = macromolecule_s0 :=
+  igFrobAlg_self_fusion macromolecule_s0

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(11,6,7,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=27
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 9), (11, 16), (19, 24)]
 
 import Imscribing.IGMorphism
@@ -43,72 +43,136 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [25] IMSCRIB   gram   := 𐑠               𐑙 → 𐑡  | identity — self-imscription
 --   [26] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def organelle_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def organelle_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def organelle_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }
+private def organelle_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s24 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s25 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def organelle_s26 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def organelle_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Cytosolic precursor protein exists in the uninitialized void outside the orga...)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Outer mitochondrial membrane establishes the closed boundary of the system.)
-  (.arrow 𐑾 𐑡 𐑱)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (TOM complex translocates the precursor across the outer membrane into the int...)
-  (.arrow 𐑱 𐑾 𐑚)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (TIM23 motor sequentially chains with Hsp70 to pull the polypeptide into the m...)
-  -- FSPLIT [4] (gran := 𐑚) (MPP protease cleaves the imported precursor into the mature catalytic domain and the regulatory scaffold.) / FFUSE [9] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Mature catalytic domain achieves its correct tertiary structure in the native...)
-        (.arrow 𐑭 𐑚 𐑙)  -- [6] IFIX | prot := 𐑭 | irreversible fixation — winding number (Disulfide isomerases form permanent covalent bonds to irreversibly fix the ca...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (Regulatory scaffold enters the misfolded state and begins to aggregate.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (Hsp70 chaperone executes a conformational reversal to unfold the regulatory s...))
-    -- reconnect at FFUSE [9]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [9] FFUSE | stoi := 𐑙 (Holoenzyme assembly reconstitutes the mature catalytic domain and regulatory scaffold into the intact functional precursor.)
-  (.arrow 𐑱 𐑙 𐑚)  -- [10] CLINK | fid := 𐑱 | composition — regime coherence (The functional precursor sequentially chains with electron transport chain co...)
-  -- FSPLIT [11] (gran := 𐑚) (Complex I splits ubiquinone into ubiquinol and protons, branching into proton pumping and electron transfer.) / FFUSE [16] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [12] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Protons are successfully pumped into the intermembrane space to build the gra...)
-        (.arrow 𐑭 𐑚 𐑙)  -- [13] IFIX | prot := 𐑭 | irreversible fixation — winding number (The electrochemical gradient is permanently recorded as proton motive force a...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [14] EVALF | chir := 𐑖 | evaluate-false — chirality check (Electrons fail to transfer due to oxidative stress and leak from the chain.)
-        (.arrow 𐑳 𐑚 𐑙)  -- [15] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Reactive oxygen species are generated and held in a paradice of cellular sign...))
-    -- reconnect at FFUSE [16]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [16] FFUSE | stoi := 𐑙 (Ubiquinol and electrons reconstitute the reduced ubiquinone pool in the inner membrane.)
-  (.arrow 𐑾 𐑙 𐑱)  -- [17] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (ATP synthase drives the forward morphism of protons back into the matrix thro...)
-  (.arrow 𐑱 𐑾 𐑚)  -- [18] CLINK | fid := 𐑱 | composition — regime coherence (F1 rotor sequentially chains with the gamma subunit to drive mechanical rotat...)
-  -- FSPLIT [19] (gran := 𐑚) (ATP synthase splits ADP and inorganic phosphate into phosphorylation and water release.) / FFUSE [24] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [20] EVALT | crit := ⊙ | evaluate-true — criticality gate open (ATP is successfully synthesized in the catalytic binding sites.)
-        (.arrow 𐑭 𐑚 𐑙)  -- [21] IFIX | prot := 𐑭 | irreversible fixation — winding number (Adenine nucleotide translocator irreversibly exports the synthesized ATP to t...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [22] EVALF | chir := 𐑖 | evaluate-false — chirality check (Water is released as a metabolic byproduct in the matrix.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [23] AREV | pol := 𐑗 | reverse morphism — parity flip (Aquaporins execute a reverse morphism to diffuse water backward into the cyto...))
-    -- reconnect at FFUSE [24]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [24] FFUSE | stoi := 𐑙 (Phosphorylation and water release reconstitute the ATP hydrolysis equilibrium.)
-  (.arrow 𐑠 𐑙 𐑡)  -- [25] IMSCRIB | gram := 𐑠 | identity — self-imscription (Mitochondrial quality control receptors recognize the organelle membrane pote...)
-  (.arrow 𐑡 𐑠 𐑼)  -- [26] TANCH | top := 𐑡 | terminal object — connectivity boundary (Mitophagy receptors bind the outer membrane to establish the final boundary f...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def organelle_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def organelle_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def organelle_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def organelle_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def organelle_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def organelle_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def organelle_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def organelle_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def organelle_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def organelle_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def organelle_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l24 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l25 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def organelle_l26 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def organelle_protocol : IGProtocol organelle_s0 organelle_s26 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct organelle_s9 organelle_s9 = organelle_s9 (idempotent)
+  (.seq (.arrow organelle_l0 organelle_s0 organelle_s1) (.seq (.arrow organelle_l1 organelle_s1 organelle_s2) (.seq (.arrow organelle_l2 organelle_s2 organelle_s3) (.seq (.arrow organelle_l3 organelle_s3 organelle_s4) (.seq (.prod (.arrow organelle_l4 organelle_s4 organelle_s9) (.arrow organelle_l4 organelle_s4 organelle_s9)) (.seq (.arrow organelle_l9 organelle_s9 organelle_s9) (.seq (.arrow organelle_l9 organelle_s9 organelle_s10) (.seq (.arrow organelle_l10 organelle_s10 organelle_s11) (.seq (.arrow organelle_l11 organelle_s11 organelle_s12) (.seq (.arrow organelle_l12 organelle_s12 organelle_s13) (.seq (.arrow organelle_l13 organelle_s13 organelle_s14) (.seq (.arrow organelle_l14 organelle_s14 organelle_s15) (.seq (.arrow organelle_l15 organelle_s15 organelle_s16) (.seq (.arrow organelle_l16 organelle_s16 organelle_s17) (.seq (.arrow organelle_l17 organelle_s17 organelle_s18) (.seq (.arrow organelle_l18 organelle_s18 organelle_s19) (.seq (.arrow organelle_l19 organelle_s19 organelle_s20) (.seq (.arrow organelle_l20 organelle_s20 organelle_s21) (.seq (.arrow organelle_l21 organelle_s21 organelle_s22) (.seq (.arrow organelle_l22 organelle_s22 organelle_s23) (.seq (.arrow organelle_l23 organelle_s23 organelle_s24) (.seq (.arrow organelle_l24 organelle_s24 organelle_s25) (.arrow organelle_l25 organelle_s25 organelle_s26)))))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def organelle_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def organelle_true_arm : IGProtocol organelle_s0 organelle_s26 :=
   (organelle_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def organelle_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def organelle_false_arm : IGProtocol organelle_s0 organelle_s26 :=
   (organelle_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem organelle_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def organelle_tier : OuroboricityTier := TierFunctor.obj organelle_s0
+#eval organelle_tier  -- the Grammar's own verdict on its tier

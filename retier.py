@@ -103,11 +103,90 @@ def process(json_path, dry=False):
     return ("ok", tier, counts)
 
 
+import re as _re
+
+
+def _slug_json_map():
+    """slug → json path, from every per-object JSON in a non-hidden dir."""
+    m = {}
+    for jp in DIGITAL.glob("**/*_ob3ect.json"):
+        if any(part.startswith(".") for part in jp.parts):
+            continue
+        m[os.path.basename(str(jp))[: -len("_ob3ect.json")]] = str(jp)
+    return m
+
+
+def sweep_orphans(dry=False):
+    """Fix tracked diagram/scaffold copies that have no sibling JSON (flat dumps like
+    nodraw/ and zoom_cosmos/), mapping each by slug to its per-object JSON. Skips
+    gitignored/hidden dirs (e.g. .vault) and unmapped slugs."""
+    smap = _slug_json_map()
+    done = Counter()
+    unmapped = []
+    for path in DIGITAL.glob("**/*"):
+        if not path.is_file():
+            continue
+        parts = path.parts
+        if any(p.startswith(".") for p in parts):
+            continue
+        name = path.name
+        # slug is everything before _diagram/_scaffold; the optional trailing _N is a
+        # dedup suffix (atom_diagram_1.svg) — NOT part of the slug (..._splitting_d_1).
+        dm = _re.match(r"^(.+?)_diagram(_pen)?(?:_\d+)?\.svg$", name)
+        sm = _re.match(r"^(.+?)_scaffold(?:_\d+)?\.lean$", name)
+        if dm:
+            kind, slug, pen = "diagram", dm.group(1), bool(dm.group(2))
+        elif sm:
+            kind, slug, pen = "scaffold", sm.group(1), False
+        else:
+            continue
+        # skip artifacts that already sit next to their own JSON (handled by process())
+        if list(path.parent.glob("*_ob3ect.json")):
+            continue
+        jp = smap.get(slug) or smap.get(slug.rstrip("_"))
+        if not jp:
+            unmapped.append(name)
+            continue
+        d = json.load(open(jp))
+        ops = extract_opcodes(d)
+        toks = _tokens(ops) if ops else None
+        if not ops or toks is None:
+            unmapped.append(name)
+            continue
+        tier = ouroboricity_tier(ops)
+        if dry:
+            done[kind] += 1
+            continue
+        if kind == "diagram":
+            desc = (d.get("phases", {}).get("phase_2", {}) or {}).get("split_element", "") or ""
+            gname = (d.get("name") or slug).replace(" ", "_")[:40]
+            g = imscr_wiring(toks)
+            g.name = gname
+            g.description = desc
+            svg = render_wiring_svg_v3(g, gname, tier, desc, "", pen_mode=pen)
+            svg.save(path)
+        else:
+            steps = (d.get("phases", {}).get("phase_4", {}) or {}).get("steps", [])
+            pl = {i: s.get("domain_action", "") for i, s in enumerate(steps)} if steps else None
+            path.write_text(_SCAF.run(ops, name=d.get("name") or slug, position_labels=pl),
+                            encoding="utf-8")
+        done[kind] += 1
+    print(f"Orphan sweep: {dict(done)}  unmapped/skipped: {len(unmapped)}")
+    if unmapped:
+        print("  unmapped:", unmapped[:12])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--orphans", action="store_true",
+                    help="also fix tracked flat-dump copies with no sibling JSON")
     ap.add_argument("name", nargs="*")
     args = ap.parse_args()
+
+    if args.orphans:
+        sweep_orphans(dry=args.dry)
+        return
 
     jsons = sorted(DIGITAL.glob("**/*_ob3ect.json"))
     if args.name:

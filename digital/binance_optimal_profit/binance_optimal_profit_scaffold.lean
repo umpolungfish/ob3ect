@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=9
--- Expected tier: O₂
+-- Expected tier: O₀
 -- FSPLIT/FFUSE pairs: [(2, 4)]
 
 import Imscribing.IGMorphism
