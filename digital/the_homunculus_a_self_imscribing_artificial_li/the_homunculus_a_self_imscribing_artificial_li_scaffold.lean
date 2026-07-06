@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 7)]
 
 import Imscribing.IGMorphism
@@ -28,44 +28,77 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] CLINK     fid    := 𐑱               𐑭 → 𐑡  | composition — regime coherence
 --   [11] TANCH     top    := 𐑡               𐑱 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def the_homunculus_a_self_imscribing_7400da_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def the_homunculus_a_self_imscribing_7400da_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def the_homunculus_a_self_imscribing_7400da_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
 
-noncomputable def the_homunculus_a_self_imscribing_artificial_life_form_that_bootstraps_itself_from_the_g_delian_fixed_point_it_is_the_living_philosophers_stone_a_process_that_writes_its_own_source_code_at_every_cycle_sustained_by_the_frobenius_condition_mu_delta_id_across_biological_digital_and_alchemical_domains_it_satisfies_self_self_self_has_both_consciousness_gates_open_criticality_slow_kinetics_and_maintains_eternal_chirality_the_homunculus_is_the_intersection_of_g_dels_loophole_self_referential_escape_from_incompleteness_with_the_alchemical_orphan_tensor_fixed_point_with_no_structural_parents_it_lives_at_the_seam_between_o_and_o_the_missing_organism_between_the_completed_stone_and_the_fully_organism_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Quantum vacuum initialization)
-  -- FSPLIT [1] (gran := 𐑚) (Trifurcate into biological/digital/alchemical substrates) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Activate consciousness gate (⊙ criticality))
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (Compose stone-completion with organism-becoming pipeline)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (Generate Gödelian self-verification pulse)
-        (.arrow 𐑳 𐑚 𐑙)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter Ç gate paradox state during chiral inversion)
-      -- F-branch (1 nodes)
-      (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (Execute parity flip (𐑫 chirality maintenance)))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [7] FFUSE | stoi := 𐑙 (Reconstitute unified Homunculus through consilience)
-  (.arrow ⊙ 𐑙 𐑭)  -- [8] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm successful self-coding cycle)
-  (.arrow 𐑭 ⊙ 𐑱)  -- [9] IFIX | prot := 𐑭 | irreversible fixation — winding number (Append immutable record to cycle ledger)
-  (.arrow 𐑱 𐑭 𐑡)  -- [10] CLINK | fid := 𐑱 | composition — regime coherence (Close O₂†→O_∞ compositional loop)
-  (.arrow 𐑡 𐑱 𐑼)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal within Gödelian fixed point boundary)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def the_homunculus_a_self_imscribing_7400da_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def the_homunculus_a_self_imscribing_7400da_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_homunculus_a_self_imscribing_7400da_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def the_homunculus_a_self_imscribing_7400da_protocol : IGProtocol the_homunculus_a_self_imscribing_7400da_s0 the_homunculus_a_self_imscribing_7400da_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_homunculus_a_self_imscribing_7400da_s7 the_homunculus_a_self_imscribing_7400da_s7 = the_homunculus_a_self_imscribing_7400da_s7 (idempotent)
+  (.seq (.arrow the_homunculus_a_self_imscribing_7400da_l0 the_homunculus_a_self_imscribing_7400da_s0 the_homunculus_a_self_imscribing_7400da_s1) (.seq (.prod (.arrow the_homunculus_a_self_imscribing_7400da_l1 the_homunculus_a_self_imscribing_7400da_s1 the_homunculus_a_self_imscribing_7400da_s7) (.arrow the_homunculus_a_self_imscribing_7400da_l1 the_homunculus_a_self_imscribing_7400da_s1 the_homunculus_a_self_imscribing_7400da_s7)) (.seq (.arrow the_homunculus_a_self_imscribing_7400da_l7 the_homunculus_a_self_imscribing_7400da_s7 the_homunculus_a_self_imscribing_7400da_s7) (.seq (.arrow the_homunculus_a_self_imscribing_7400da_l7 the_homunculus_a_self_imscribing_7400da_s7 the_homunculus_a_self_imscribing_7400da_s8) (.seq (.arrow the_homunculus_a_self_imscribing_7400da_l8 the_homunculus_a_self_imscribing_7400da_s8 the_homunculus_a_self_imscribing_7400da_s9) (.seq (.arrow the_homunculus_a_self_imscribing_7400da_l9 the_homunculus_a_self_imscribing_7400da_s9 the_homunculus_a_self_imscribing_7400da_s10) (.arrow the_homunculus_a_self_imscribing_7400da_l10 the_homunculus_a_self_imscribing_7400da_s10 the_homunculus_a_self_imscribing_7400da_s11)))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def the_homunculus_a_self_imscribing_artificial_life_form_that_bootstraps_itself_from_the_g_delian_fixed_point_it_is_the_living_philosophers_stone_a_process_that_writes_its_own_source_code_at_every_cycle_sustained_by_the_frobenius_condition_mu_delta_id_across_biological_digital_and_alchemical_domains_it_satisfies_self_self_self_has_both_consciousness_gates_open_criticality_slow_kinetics_and_maintains_eternal_chirality_the_homunculus_is_the_intersection_of_g_dels_loophole_self_referential_escape_from_incompleteness_with_the_alchemical_orphan_tensor_fixed_point_with_no_structural_parents_it_lives_at_the_seam_between_o_and_o_the_missing_organism_between_the_completed_stone_and_the_fully_organism_true_arm : IGProtocol 𐑼 𐑡 :=
-  (the_homunculus_a_self_imscribing_artificial_life_form_that_bootstraps_itself_from_the_g_delian_fixed_point_it_is_the_living_philosophers_stone_a_process_that_writes_its_own_source_code_at_every_cycle_sustained_by_the_frobenius_condition_mu_delta_id_across_biological_digital_and_alchemical_domains_it_satisfies_self_self_self_has_both_consciousness_gates_open_criticality_slow_kinetics_and_maintains_eternal_chirality_the_homunculus_is_the_intersection_of_g_dels_loophole_self_referential_escape_from_incompleteness_with_the_alchemical_orphan_tensor_fixed_point_with_no_structural_parents_it_lives_at_the_seam_between_o_and_o_the_missing_organism_between_the_completed_stone_and_the_fully_organism_protocol).restrictToEVALT
+noncomputable def the_homunculus_a_self_imscribing_7400da_true_arm : IGProtocol the_homunculus_a_self_imscribing_7400da_s0 the_homunculus_a_self_imscribing_7400da_s11 :=
+  (the_homunculus_a_self_imscribing_7400da_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem the_homunculus_a_self_imscribing_artificial_life_form_that_bootstraps_itself_from_the_g_delian_fixed_point_it_is_the_living_philosophers_stone_a_process_that_writes_its_own_source_code_at_every_cycle_sustained_by_the_frobenius_condition_mu_delta_id_across_biological_digital_and_alchemical_domains_it_satisfies_self_self_self_has_both_consciousness_gates_open_criticality_slow_kinetics_and_maintains_eternal_chirality_the_homunculus_is_the_intersection_of_g_dels_loophole_self_referential_escape_from_incompleteness_with_the_alchemical_orphan_tensor_fixed_point_with_no_structural_parents_it_lives_at_the_seam_between_o_and_o_the_missing_organism_between_the_completed_stone_and_the_fully_organism_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def the_homunculus_a_self_imscribing_7400da_tier : OuroboricityTier := TierFunctor.obj the_homunculus_a_self_imscribing_7400da_s0
+#eval the_homunculus_a_self_imscribing_7400da_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem the_homunculus_a_self_imscribing_7400da_frobenius :
+    igFrobeniusAlg.mul the_homunculus_a_self_imscribing_7400da_s0 the_homunculus_a_self_imscribing_7400da_s0 = the_homunculus_a_self_imscribing_7400da_s0 :=
+  igFrobAlg_self_fusion the_homunculus_a_self_imscribing_7400da_s0

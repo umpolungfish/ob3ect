@@ -1,0 +1,205 @@
+{
+  "name": "Ground-contact point",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Ground-contact point",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "normal force",
+        "friction",
+        "deformation"
+      ],
+      "boundary_condition": "The mechanical interface between a rigid or elastic body and a supporting substrate.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Pre-contact state",
+        "justification": "The state of the body in free motion before the boundary condition of the ground is established.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Ground plane",
+        "justification": "The terminal constraint that limits the downward displacement of the system.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Compression",
+        "justification": "The forward transformation of the material under load toward the ground.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Elastic rebound",
+        "justification": "The reverse transformation where stored energy returns the material toward its original state.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Load transfer",
+        "justification": "The sequential chaining of force from the center of mass through the structure to the contact patch.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Contact patch geometry",
+        "justification": "The self-recognition of the body's shape as it conforms to the ground topology.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Force vector resolution",
+        "justification": "The split of the total contact force into normal force and tangential friction.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Resultant ground reaction force",
+        "justification": "The reconstitution of normal and tangential components into a single vector acting on the body.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Static equilibrium",
+        "justification": "The affirmative state where the ground successfully supports the load without slip.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Kinetic slip",
+        "justification": "The failure state where tangential force exceeds friction, resulting in displacement.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Incipient motion",
+        "justification": "The paradice state where the system is simultaneously at rest and at the threshold of sliding.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Surface wear",
+        "justification": "The permanent, irreversible record of the contact event on the material surface.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Force vector resolution",
+      "split_input": "Total contact force",
+      "split_outputs": [
+        "Normal force",
+        "Friction force"
+      ],
+      "fuse_element": "Resultant ground reaction force",
+      "fuse_result": "Total contact force",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Airborne state with zero ground reaction force.",
+      "true_description": "Stable contact with zero relative velocity.",
+      "false_description": "Loss of contact or uncontrolled sliding.",
+      "both_description": "Stick-slip oscillation where the system transitions rapidly between states.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Body approaches the ground plane from a state of free motion."
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Gravitational acceleration drives the body toward the terminal boundary."
+        },
+        {
+          "step_num": 3,
+          "opcode": "TANCH",
+          "domain_action": "The ground plane establishes the spatial limit of the system."
+        },
+        {
+          "step_num": 4,
+          "opcode": "IMSCRIB",
+          "domain_action": "The material interface recognizes the ground topology and defines the contact patch."
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "Internal stresses chain from the core to the contact interface."
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "The contact force differentiates into vertical support and horizontal resistance."
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "The normal force successfully counters gravity, establishing a T-state."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "The material undergoes elastic deformation in response to the normal load."
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "The tangential load is assessed against the friction coefficient."
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "At the limit of static friction, the system holds both stick and slip potentials."
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "The normal and frictional components reintegrate into the total ground reaction force."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Micro-abrasions record the mechanical history of the contact event."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The laws of classical mechanics translating mass and acceleration into force.",
+      "ipc_mechanism": "Stress wave propagation through the molecular lattice of the material.",
+      "memory_mechanism": "Elastic potential energy stored within the molecular bonds of the contact zone.",
+      "scheduler_mechanism": "The time-step of the physical interaction, governed by the speed of sound in the material.",
+      "alfs_store": "The material constant library defining Young's modulus and friction coefficients.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Heat generated by internal friction and molecular deformation.",
+      "pre_cycle_state": "Potential energy of the body relative to the ground.",
+      "post_cycle_state": "Thermal energy dissipated into the substrate and body.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The cycle is nearly conservative in the elastic regime where deformation is recovered.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 TANCH \u2192 IMSCRIB \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX\n-- Class: Ground-contact point\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(5, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc61  | forward morphism \u2014 bidirectional arrow\n--   [2] TANCH     top    := \ud801\udc61               \ud801\udc7e \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def ground_contact_point_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ground_contact_point_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ground_contact_point_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ground_contact_point_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def ground_contact_point_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ground_contact_point_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def ground_contact_point_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ground_contact_point_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def ground_contact_point_protocol : IGProtocol ground_contact_point_s0 ground_contact_point_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct ground_contact_point_s10 ground_contact_point_s10 = ground_contact_point_s10 (idempotent)\n  (.seq (.arrow ground_contact_point_l0 ground_contact_point_s0 ground_contact_point_s1) (.seq (.arrow ground_contact_point_l1 ground_contact_point_s1 ground_contact_point_s2) (.seq (.arrow ground_contact_point_l2 ground_contact_point_s2 ground_contact_point_s3) (.seq (.arrow ground_contact_point_l3 ground_contact_point_s3 ground_contact_point_s4) (.seq (.arrow ground_contact_point_l4 ground_contact_point_s4 ground_contact_point_s5) (.seq (.prod (.arrow ground_contact_point_l5 ground_contact_point_s5 ground_contact_point_s10) (.arrow ground_contact_point_l5 ground_contact_point_s5 ground_contact_point_s10)) (.seq (.arrow ground_contact_point_l10 ground_contact_point_s10 ground_contact_point_s10) (.arrow ground_contact_point_l10 ground_contact_point_s10 ground_contact_point_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def ground_contact_point_true_arm : IGProtocol ground_contact_point_s0 ground_contact_point_s11 :=\n  (ground_contact_point_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def ground_contact_point_false_arm : IGProtocol ground_contact_point_s0 ground_contact_point_s11 :=\n  (ground_contact_point_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef ground_contact_point_tier : OuroboricityTier := TierFunctor.obj ground_contact_point_s0\n#eval ground_contact_point_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem ground_contact_point_frobenius :\n    igFrobeniusAlg.mul ground_contact_point_s0 ground_contact_point_s0 = ground_contact_point_s0 :=\n  igFrobAlg_self_fusion ground_contact_point_s0\n",
+  "notes": "Auto-designed from: Ground-contact point"
+}

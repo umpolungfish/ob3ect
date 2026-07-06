@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,4,3)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=17
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 13)]
 
 import Imscribing.IGMorphism
@@ -123,7 +123,7 @@ noncomputable def the_decision_of_how_many_significant_96d72d_false_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_decision_of_how_many_significant_96d72d_tier : OuroboricityTier := TierFunctor.obj the_decision_of_how_many_significant_96d72d_s0
 #eval the_decision_of_how_many_significant_96d72d_tier  -- the Grammar's own verdict on its tier
 

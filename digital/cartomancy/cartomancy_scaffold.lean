@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(12,6,7,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=26
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 9), (11, 16), (18, 23)]
 
 import Imscribing.IGMorphism
@@ -168,6 +168,6 @@ noncomputable def cartomancy_false_arm : IGProtocol cartomancy_s0 cartomancy_s25
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def cartomancy_tier : OuroboricityTier := TierFunctor.obj cartomancy_s0
 #eval cartomancy_tier  -- the Grammar's own verdict on its tier

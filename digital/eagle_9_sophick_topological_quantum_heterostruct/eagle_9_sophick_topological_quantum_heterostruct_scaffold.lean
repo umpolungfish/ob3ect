@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(7, 12)]
 
 import Imscribing.IGMorphism
@@ -32,51 +32,97 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [14] ENGAGR    stoi   := 𐑳               𐑠 → 𐑭  | engage paradox — B-state, both arms
 --   [15] IFIX      prot   := 𐑭               𐑳 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def eagle_9_sophick_topological_quantum_9d6066_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s4 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s5 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def eagle_9_sophick_topological_quantum_heterostructure_bi_se_bi_te_with_nb_and_yig_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑱)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize quantum vacuum state)
-  (.arrow 𐑱 𐑼 𐑱)  -- [1] CLINK | fid := 𐑱 | composition — regime coherence (Epitaxially grow Bi₂Se₃ topological insulator layer)
-  (.arrow 𐑱 𐑱 𐑱)  -- [2] CLINK | fid := 𐑱 | composition — regime coherence (Deposit Bi₂Te₃ interfacial layer)
-  (.arrow 𐑱 𐑱 𐑱)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (Sputter Nb superconducting layer)
-  (.arrow 𐑱 𐑱 𐑡)  -- [4] CLINK | fid := 𐑱 | composition — regime coherence (Integrate YIG ferromagnetic insulator)
-  (.arrow 𐑡 𐑱 𐑾)  -- [5] TANCH | top := 𐑡 | terminal object — connectivity boundary (Encapsulate heterostructure in protective matrix)
-  (.arrow 𐑾 𐑡 𐑚)  -- [6] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply electromagnetic field to induce proximity effect)
-  -- FSPLIT [7] (gran := 𐑚) (Fractionalize electron into Majorana bound states) / FFUSE [12] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [8] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Verify topological protection criteria satisfied)
-        (.arrow 𐑱 𐑚 𐑙)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (Braid Majorana modes via nanowire manipulation)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [10] EVALF | chir := 𐑖 | evaluate-false — chirality check (Detect decoherence from thermal fluctuations)
-        (.arrow 𐑗 𐑚 𐑙)  -- [11] AREV | pol := 𐑗 | reverse morphism — parity flip (Apply error correction via parity flip))
-    -- reconnect at FFUSE [12]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [12] FFUSE | stoi := 𐑙 (Fuse Majorana pair back into composite fermion)
-  (.arrow 𐑠 𐑙 𐑳)  -- [13] IMSCRIB | gram := 𐑠 | identity — self-imscription (Confirm Majorana self-identity through annihilation)
-  (.arrow 𐑳 𐑠 𐑭)  -- [14] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Maintain superposition during non-Abelian rotation)
-  (.arrow 𐑭 𐑳 𐑼)  -- [15] IFIX | prot := 𐑭 | irreversible fixation — winding number (Record persistent current in SQUID readout)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def eagle_9_sophick_topological_quantum_9d6066_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def eagle_9_sophick_topological_quantum_9d6066_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def eagle_9_sophick_topological_quantum_9d6066_protocol : IGProtocol eagle_9_sophick_topological_quantum_9d6066_s0 eagle_9_sophick_topological_quantum_9d6066_s15 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct eagle_9_sophick_topological_quantum_9d6066_s12 eagle_9_sophick_topological_quantum_9d6066_s12 = eagle_9_sophick_topological_quantum_9d6066_s12 (idempotent)
+  (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l0 eagle_9_sophick_topological_quantum_9d6066_s0 eagle_9_sophick_topological_quantum_9d6066_s1) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l1 eagle_9_sophick_topological_quantum_9d6066_s1 eagle_9_sophick_topological_quantum_9d6066_s2) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l2 eagle_9_sophick_topological_quantum_9d6066_s2 eagle_9_sophick_topological_quantum_9d6066_s3) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l3 eagle_9_sophick_topological_quantum_9d6066_s3 eagle_9_sophick_topological_quantum_9d6066_s4) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l4 eagle_9_sophick_topological_quantum_9d6066_s4 eagle_9_sophick_topological_quantum_9d6066_s5) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l5 eagle_9_sophick_topological_quantum_9d6066_s5 eagle_9_sophick_topological_quantum_9d6066_s6) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l6 eagle_9_sophick_topological_quantum_9d6066_s6 eagle_9_sophick_topological_quantum_9d6066_s7) (.seq (.prod (.arrow eagle_9_sophick_topological_quantum_9d6066_l7 eagle_9_sophick_topological_quantum_9d6066_s7 eagle_9_sophick_topological_quantum_9d6066_s12) (.arrow eagle_9_sophick_topological_quantum_9d6066_l7 eagle_9_sophick_topological_quantum_9d6066_s7 eagle_9_sophick_topological_quantum_9d6066_s12)) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l12 eagle_9_sophick_topological_quantum_9d6066_s12 eagle_9_sophick_topological_quantum_9d6066_s12) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l12 eagle_9_sophick_topological_quantum_9d6066_s12 eagle_9_sophick_topological_quantum_9d6066_s13) (.seq (.arrow eagle_9_sophick_topological_quantum_9d6066_l13 eagle_9_sophick_topological_quantum_9d6066_s13 eagle_9_sophick_topological_quantum_9d6066_s14) (.arrow eagle_9_sophick_topological_quantum_9d6066_l14 eagle_9_sophick_topological_quantum_9d6066_s14 eagle_9_sophick_topological_quantum_9d6066_s15))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def eagle_9_sophick_topological_quantum_heterostructure_bi_se_bi_te_with_nb_and_yig_true_arm : IGProtocol 𐑼 𐑭 :=
-  (eagle_9_sophick_topological_quantum_heterostructure_bi_se_bi_te_with_nb_and_yig_protocol).restrictToEVALT
+noncomputable def eagle_9_sophick_topological_quantum_9d6066_true_arm : IGProtocol eagle_9_sophick_topological_quantum_9d6066_s0 eagle_9_sophick_topological_quantum_9d6066_s15 :=
+  (eagle_9_sophick_topological_quantum_9d6066_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def eagle_9_sophick_topological_quantum_heterostructure_bi_se_bi_te_with_nb_and_yig_false_arm : IGProtocol 𐑼 𐑭 :=
-  (eagle_9_sophick_topological_quantum_heterostructure_bi_se_bi_te_with_nb_and_yig_protocol).restrictToEVALF
+noncomputable def eagle_9_sophick_topological_quantum_9d6066_false_arm : IGProtocol eagle_9_sophick_topological_quantum_9d6066_s0 eagle_9_sophick_topological_quantum_9d6066_s15 :=
+  (eagle_9_sophick_topological_quantum_9d6066_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem eagle_9_sophick_topological_quantum_heterostructure_bi_se_bi_te_with_nb_and_yig_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def eagle_9_sophick_topological_quantum_9d6066_tier : OuroboricityTier := TierFunctor.obj eagle_9_sophick_topological_quantum_9d6066_s0
+#eval eagle_9_sophick_topological_quantum_9d6066_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem eagle_9_sophick_topological_quantum_9d6066_frobenius :
+    igFrobeniusAlg.mul eagle_9_sophick_topological_quantum_9d6066_s0 eagle_9_sophick_topological_quantum_9d6066_s0 = eagle_9_sophick_topological_quantum_9d6066_s0 :=
+  igFrobAlg_self_fusion eagle_9_sophick_topological_quantum_9d6066_s0

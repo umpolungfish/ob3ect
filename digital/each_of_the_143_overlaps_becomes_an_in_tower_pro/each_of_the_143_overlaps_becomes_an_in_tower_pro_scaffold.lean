@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 9)]
 
 import Imscribing.IGMorphism
@@ -104,7 +104,7 @@ noncomputable def each_of_the_143_overlaps_becomes_an_in_a3b222_true_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def each_of_the_143_overlaps_becomes_an_in_a3b222_tier : OuroboricityTier := TierFunctor.obj each_of_the_143_overlaps_becomes_an_in_a3b222_s0
 #eval each_of_the_143_overlaps_becomes_an_in_a3b222_tier  -- the Grammar's own verdict on its tier
 

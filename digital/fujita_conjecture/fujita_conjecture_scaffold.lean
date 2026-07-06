@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 10)]
 
 import Imscribing.IGMorphism
@@ -103,7 +103,7 @@ noncomputable def fujita_conjecture_false_arm : IGProtocol fujita_conjecture_s0 
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def fujita_conjecture_tier : OuroboricityTier := TierFunctor.obj fujita_conjecture_s0
 #eval fujita_conjecture_tier  -- the Grammar's own verdict on its tier
 

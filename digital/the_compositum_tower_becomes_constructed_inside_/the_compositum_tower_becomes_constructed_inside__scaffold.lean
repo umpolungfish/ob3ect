@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,3,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=17
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 9), (11, 14)]
 
 import Imscribing.IGMorphism
@@ -119,6 +119,6 @@ noncomputable def the_compositum_tower_becomes_0b0a66_true_arm : IGProtocol the_
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_compositum_tower_becomes_0b0a66_tier : OuroboricityTier := TierFunctor.obj the_compositum_tower_becomes_0b0a66_s0
 #eval the_compositum_tower_becomes_0b0a66_tier  -- the Grammar's own verdict on its tier

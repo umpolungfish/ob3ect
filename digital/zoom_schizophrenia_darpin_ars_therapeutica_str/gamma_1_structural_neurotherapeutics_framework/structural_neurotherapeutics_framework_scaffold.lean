@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 8)]
 
 import Imscribing.IGMorphism
@@ -28,46 +28,81 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] AREV      pol    := 𐑗               𐑠 → 𐑭  | reverse morphism — parity flip
 --   [11] IFIX      prot   := 𐑭               𐑗 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def structural_neurotherapeutics_framework_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def structural_neurotherapeutics_framework_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def structural_neurotherapeutics_framework_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (resting membrane potential established)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (synaptic cleft bounds the transmission space)
-  (.arrow 𐑾 𐑡 𐑱)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (action potential propagates down the axon)
-  (.arrow 𐑱 𐑾 𐑚)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (vesicles dock and prime at the active zone)
-  -- FSPLIT [4] (gran := 𐑚) (neurotransmitter release splits into binding and clearance) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (EPSP generated on postsynaptic dendrite)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (IPSP generated on postsynaptic dendrite)
-        (.arrow 𐑳 𐑚 𐑙)  -- [7] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (temporal summation at axon hillock holds both EPSP and IPSP))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [8] FFUSE | stoi := 𐑙 (postsynaptic integration sums inputs to net potential)
-  (.arrow 𐑠 𐑙 𐑗)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (autoreceptor detects local neurotransmitter level)
-  (.arrow 𐑗 𐑠 𐑭)  -- [10] AREV | pol := 𐑗 | reverse morphism — parity flip (reuptake transporters clear excess neurotransmitter)
-  (.arrow 𐑭 𐑗 𐑼)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (LTP consolidates synaptic strength permanently)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def structural_neurotherapeutics_framework_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def structural_neurotherapeutics_framework_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def structural_neurotherapeutics_framework_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def structural_neurotherapeutics_framework_protocol : IGProtocol structural_neurotherapeutics_framework_s0 structural_neurotherapeutics_framework_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct structural_neurotherapeutics_framework_s8 structural_neurotherapeutics_framework_s8 = structural_neurotherapeutics_framework_s8 (idempotent)
+  (.seq (.arrow structural_neurotherapeutics_framework_l0 structural_neurotherapeutics_framework_s0 structural_neurotherapeutics_framework_s1) (.seq (.arrow structural_neurotherapeutics_framework_l1 structural_neurotherapeutics_framework_s1 structural_neurotherapeutics_framework_s2) (.seq (.arrow structural_neurotherapeutics_framework_l2 structural_neurotherapeutics_framework_s2 structural_neurotherapeutics_framework_s3) (.seq (.arrow structural_neurotherapeutics_framework_l3 structural_neurotherapeutics_framework_s3 structural_neurotherapeutics_framework_s4) (.seq (.prod (.arrow structural_neurotherapeutics_framework_l4 structural_neurotherapeutics_framework_s4 structural_neurotherapeutics_framework_s8) (.arrow structural_neurotherapeutics_framework_l4 structural_neurotherapeutics_framework_s4 structural_neurotherapeutics_framework_s8)) (.seq (.arrow structural_neurotherapeutics_framework_l8 structural_neurotherapeutics_framework_s8 structural_neurotherapeutics_framework_s8) (.seq (.arrow structural_neurotherapeutics_framework_l8 structural_neurotherapeutics_framework_s8 structural_neurotherapeutics_framework_s9) (.seq (.arrow structural_neurotherapeutics_framework_l9 structural_neurotherapeutics_framework_s9 structural_neurotherapeutics_framework_s10) (.arrow structural_neurotherapeutics_framework_l10 structural_neurotherapeutics_framework_s10 structural_neurotherapeutics_framework_s11)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def structural_neurotherapeutics_framework_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def structural_neurotherapeutics_framework_true_arm : IGProtocol structural_neurotherapeutics_framework_s0 structural_neurotherapeutics_framework_s11 :=
   (structural_neurotherapeutics_framework_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def structural_neurotherapeutics_framework_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def structural_neurotherapeutics_framework_false_arm : IGProtocol structural_neurotherapeutics_framework_s0 structural_neurotherapeutics_framework_s11 :=
   (structural_neurotherapeutics_framework_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem structural_neurotherapeutics_framework_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def structural_neurotherapeutics_framework_tier : OuroboricityTier := TierFunctor.obj structural_neurotherapeutics_framework_s0
+#eval structural_neurotherapeutics_framework_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem structural_neurotherapeutics_framework_frobenius :
+    igFrobeniusAlg.mul structural_neurotherapeutics_framework_s0 structural_neurotherapeutics_framework_s0 = structural_neurotherapeutics_framework_s0 :=
+  igFrobAlg_self_fusion structural_neurotherapeutics_framework_s0

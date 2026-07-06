@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,4,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=19
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7), (9, 14)]
 
 import Imscribing.IGMorphism
@@ -35,57 +35,104 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [17] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [18] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def ecosystem_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def ecosystem_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def ecosystem_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def ecosystem_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Abiotic substrate initialization establishing the physical environment.)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Solar radiation influx driving the initial energy gradient.)
-  -- FSPLIT [2] (gran := 𐑚) (Radiative partitioning dividing incident energy into absorbed and reflected components.) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Photosynthetic capture representing the absorbed energy pathway.)
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Primary production converting captured photons into chemical biomass.)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [5] EVALF | chir := 𐑖 | evaluate-false — chirality check (Albedo reflection representing the unabsorbed energy pathway.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (Thermal dissipation radiating reflected energy back to space.))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (Radiative balance reconstituting the total incident solar radiation from absorbed and reflected components.)
-  (.arrow 𐑱 𐑙 𐑚)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (Food web formation chaining primary producers to primary consumers.)
-  -- FSPLIT [9] (gran := 𐑚) (Consumption partitioning dividing ingested biomass into assimilated tissue and egested detritus.) / FFUSE [14] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [10] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Secondary production representing the assimilated tissue pathway.)
-        (.arrow 𐑾 𐑚 𐑙)  -- [11] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Trophic transfer moving energy to higher consumer levels.)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [12] EVALF | chir := 𐑖 | evaluate-false — chirality check (Detritus formation representing the egested waste pathway.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [13] AREV | pol := 𐑗 | reverse morphism — parity flip (Microbial decomposition breaking down detritus into inorganic nutrients.))
-    -- reconnect at FFUSE [14]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [14] FFUSE | stoi := 𐑙 (Nutrient mineralization reconstituting the abiotic substrate from decomposed matter.)
-  (.arrow 𐑠 𐑙 𐑳)  -- [15] IMSCRIB | gram := 𐑠 | identity — self-imscription (Homeostatic feedback closing the loop to regulate population densities.)
-  (.arrow 𐑳 𐑠 𐑭)  -- [16] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Ecotone holding successional growth and decay in simultaneous paradice.)
-  (.arrow 𐑭 𐑳 𐑡)  -- [17] IFIX | prot := 𐑭 | irreversible fixation — winding number (Sedimentation permanently fixing undecomposed organic matter into the geologi...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [18] TANCH | top := 𐑡 | terminal object — connectivity boundary (Carrying capacity enforcement terminating the growth cycle at resource limits.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def ecosystem_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def ecosystem_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def ecosystem_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def ecosystem_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def ecosystem_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def ecosystem_protocol : IGProtocol ecosystem_s0 ecosystem_s18 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct ecosystem_s7 ecosystem_s7 = ecosystem_s7 (idempotent)
+  (.seq (.arrow ecosystem_l0 ecosystem_s0 ecosystem_s1) (.seq (.arrow ecosystem_l1 ecosystem_s1 ecosystem_s2) (.seq (.prod (.arrow ecosystem_l2 ecosystem_s2 ecosystem_s7) (.arrow ecosystem_l2 ecosystem_s2 ecosystem_s7)) (.seq (.arrow ecosystem_l7 ecosystem_s7 ecosystem_s7) (.seq (.arrow ecosystem_l7 ecosystem_s7 ecosystem_s8) (.seq (.arrow ecosystem_l8 ecosystem_s8 ecosystem_s9) (.seq (.arrow ecosystem_l9 ecosystem_s9 ecosystem_s10) (.seq (.arrow ecosystem_l10 ecosystem_s10 ecosystem_s11) (.seq (.arrow ecosystem_l11 ecosystem_s11 ecosystem_s12) (.seq (.arrow ecosystem_l12 ecosystem_s12 ecosystem_s13) (.seq (.arrow ecosystem_l13 ecosystem_s13 ecosystem_s14) (.seq (.arrow ecosystem_l14 ecosystem_s14 ecosystem_s15) (.seq (.arrow ecosystem_l15 ecosystem_s15 ecosystem_s16) (.seq (.arrow ecosystem_l16 ecosystem_s16 ecosystem_s17) (.arrow ecosystem_l17 ecosystem_s17 ecosystem_s18)))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def ecosystem_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def ecosystem_true_arm : IGProtocol ecosystem_s0 ecosystem_s18 :=
   (ecosystem_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def ecosystem_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def ecosystem_false_arm : IGProtocol ecosystem_s0 ecosystem_s18 :=
   (ecosystem_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem ecosystem_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def ecosystem_tier : OuroboricityTier := TierFunctor.obj ecosystem_s0
+#eval ecosystem_tier  -- the Grammar's own verdict on its tier

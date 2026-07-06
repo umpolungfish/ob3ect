@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,4,4,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=18
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 6), (7, 10)]
 
 import Imscribing.IGMorphism
@@ -124,6 +124,6 @@ noncomputable def the_displaced_fiducial_has_the_closed_2ad0ac_true_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_displaced_fiducial_has_the_closed_2ad0ac_tier : OuroboricityTier := TierFunctor.obj the_displaced_fiducial_has_the_closed_2ad0ac_s0
 #eval the_displaced_fiducial_has_the_closed_2ad0ac_tier  -- the Grammar's own verdict on its tier

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 6)]
 
 import Imscribing.IGMorphism
@@ -93,7 +93,7 @@ noncomputable def poincare_conjecture_false_arm : IGProtocol poincare_conjecture
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def poincare_conjecture_tier : OuroboricityTier := TierFunctor.obj poincare_conjecture_s0
 #eval poincare_conjecture_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,5,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=17
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 11)]
 
 import Imscribing.IGMorphism
@@ -119,7 +119,7 @@ noncomputable def the_vessel_property_is_embedding_1dfdc0_true_arm : IGProtocol 
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_vessel_property_is_embedding_1dfdc0_tier : OuroboricityTier := TierFunctor.obj the_vessel_property_is_embedding_1dfdc0_s0
 #eval the_vessel_property_is_embedding_1dfdc0_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(12,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=19
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 16)]
 
 import Imscribing.IGMorphism
@@ -133,7 +133,7 @@ noncomputable def the_absorption_topology_seal_gate_e6cd3d_false_arm : IGProtoco
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_absorption_topology_seal_gate_e6cd3d_tier : OuroboricityTier := TierFunctor.obj the_absorption_topology_seal_gate_e6cd3d_s0
 #eval the_absorption_topology_seal_gate_e6cd3d_tier  -- the Grammar's own verdict on its tier
 

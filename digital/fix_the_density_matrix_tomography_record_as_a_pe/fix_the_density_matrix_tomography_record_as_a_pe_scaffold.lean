@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(16,2,4,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8)]
 
 import Imscribing.IGMorphism
@@ -40,58 +40,125 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [23] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def fix_the_density_matrix_tomography_0d1fed_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
 
-noncomputable def fix_the_density_matrix_tomography_record_as_a_permanent_lossless_snapshot_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Begin in uninitialized state before tomographic measurement)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply tomographic measurement protocol to extract basis-dependent data)
-  -- FSPLIT [2] (gran := 𐑚) (Distribute measurements across multiple measurement bases to ensure completeness) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (5 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm measurements in basis A yield consistent partial information)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Process measurements from each basis to build projection data)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (Chain measurement sequences together in temporal order)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [6] IMSCRIB | gram := 𐑠 | identity — self-imscription (Validate that measurement process preserves quantum coherence)
-        (.arrow 𐑾 𐑚 𐑙)  -- [7] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Reconstruct density matrix components from measurement statistics)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [8] FFUSE | stoi := 𐑙 (Combine information from all measurement bases to recover full density matrix)
-  (.arrow ⊙ 𐑙 𐑾)  -- [9] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Verify reconstructed density matrix passes physical validity tests)
-  (.arrow 𐑾 ⊙ 𐑱)  -- [10] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply lossless compression to preserve all quantum information)
-  (.arrow 𐑱 𐑾 𐑳)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Link compressed density matrix to measurement provenance records)
-  (.arrow 𐑳 𐑱 𐑾)  -- [12] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Hold superposition of all possible valid density matrices during validation)
-  (.arrow 𐑾 𐑳 ⊙)  -- [13] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Perform final consistency checks against quantum mechanical constraints)
-  (.arrow ⊙ 𐑾 𐑾)  -- [14] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm snapshot accurately represents original quantum state)
-  (.arrow 𐑾 ⊙ 𐑭)  -- [15] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Prepare density matrix for permanent storage serialization)
-  (.arrow 𐑭 𐑾 𐑠)  -- [16] IFIX | prot := 𐑭 | irreversible fixation — winding number (Create irreversible permanent snapshot of validated density matrix)
-  (.arrow 𐑠 𐑭 𐑾)  -- [17] IMSCRIB | gram := 𐑠 | identity — self-imscription (Embed self-verification checksums to ensure long-term integrity)
-  (.arrow 𐑾 𐑠 𐑡)  -- [18] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Initialize read-only access protocols for the fixed snapshot)
-  (.arrow 𐑡 𐑾 𐑱)  -- [19] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal the fixed boundary around the validated permanent record)
-  (.arrow 𐑱 𐑡 𐑠)  -- [20] CLINK | fid := 𐑱 | composition — regime coherence (Connect snapshot registry to external verification systems)
-  (.arrow 𐑠 𐑱 𐑭)  -- [21] IMSCRIB | gram := 𐑠 | identity — self-imscription (Establish self-identification link from density matrix to its own record)
-  (.arrow 𐑭 𐑠 𐑡)  -- [22] IFIX | prot := 𐑭 | irreversible fixation — winding number (Second permanence marker ensuring append-only archival status)
-  (.arrow 𐑡 𐑭 𐑼)  -- [23] TANCH | top := 𐑡 | terminal object — connectivity boundary (Final boundary confirmation closing the tomographic process)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def fix_the_density_matrix_tomography_0d1fed_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fix_the_density_matrix_tomography_0d1fed_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def fix_the_density_matrix_tomography_0d1fed_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def fix_the_density_matrix_tomography_0d1fed_protocol : IGProtocol fix_the_density_matrix_tomography_0d1fed_s0 fix_the_density_matrix_tomography_0d1fed_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct fix_the_density_matrix_tomography_0d1fed_s8 fix_the_density_matrix_tomography_0d1fed_s8 = fix_the_density_matrix_tomography_0d1fed_s8 (idempotent)
+  (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l0 fix_the_density_matrix_tomography_0d1fed_s0 fix_the_density_matrix_tomography_0d1fed_s1) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l1 fix_the_density_matrix_tomography_0d1fed_s1 fix_the_density_matrix_tomography_0d1fed_s2) (.seq (.prod (.arrow fix_the_density_matrix_tomography_0d1fed_l2 fix_the_density_matrix_tomography_0d1fed_s2 fix_the_density_matrix_tomography_0d1fed_s8) (.arrow fix_the_density_matrix_tomography_0d1fed_l2 fix_the_density_matrix_tomography_0d1fed_s2 fix_the_density_matrix_tomography_0d1fed_s8)) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l8 fix_the_density_matrix_tomography_0d1fed_s8 fix_the_density_matrix_tomography_0d1fed_s8) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l8 fix_the_density_matrix_tomography_0d1fed_s8 fix_the_density_matrix_tomography_0d1fed_s9) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l9 fix_the_density_matrix_tomography_0d1fed_s9 fix_the_density_matrix_tomography_0d1fed_s10) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l10 fix_the_density_matrix_tomography_0d1fed_s10 fix_the_density_matrix_tomography_0d1fed_s11) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l11 fix_the_density_matrix_tomography_0d1fed_s11 fix_the_density_matrix_tomography_0d1fed_s12) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l12 fix_the_density_matrix_tomography_0d1fed_s12 fix_the_density_matrix_tomography_0d1fed_s13) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l13 fix_the_density_matrix_tomography_0d1fed_s13 fix_the_density_matrix_tomography_0d1fed_s14) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l14 fix_the_density_matrix_tomography_0d1fed_s14 fix_the_density_matrix_tomography_0d1fed_s15) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l15 fix_the_density_matrix_tomography_0d1fed_s15 fix_the_density_matrix_tomography_0d1fed_s16) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l16 fix_the_density_matrix_tomography_0d1fed_s16 fix_the_density_matrix_tomography_0d1fed_s17) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l17 fix_the_density_matrix_tomography_0d1fed_s17 fix_the_density_matrix_tomography_0d1fed_s18) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l18 fix_the_density_matrix_tomography_0d1fed_s18 fix_the_density_matrix_tomography_0d1fed_s19) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l19 fix_the_density_matrix_tomography_0d1fed_s19 fix_the_density_matrix_tomography_0d1fed_s20) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l20 fix_the_density_matrix_tomography_0d1fed_s20 fix_the_density_matrix_tomography_0d1fed_s21) (.seq (.arrow fix_the_density_matrix_tomography_0d1fed_l21 fix_the_density_matrix_tomography_0d1fed_s21 fix_the_density_matrix_tomography_0d1fed_s22) (.arrow fix_the_density_matrix_tomography_0d1fed_l22 fix_the_density_matrix_tomography_0d1fed_s22 fix_the_density_matrix_tomography_0d1fed_s23)))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def fix_the_density_matrix_tomography_record_as_a_permanent_lossless_snapshot_true_arm : IGProtocol 𐑼 𐑡 :=
-  (fix_the_density_matrix_tomography_record_as_a_permanent_lossless_snapshot_protocol).restrictToEVALT
+noncomputable def fix_the_density_matrix_tomography_0d1fed_true_arm : IGProtocol fix_the_density_matrix_tomography_0d1fed_s0 fix_the_density_matrix_tomography_0d1fed_s23 :=
+  (fix_the_density_matrix_tomography_0d1fed_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem fix_the_density_matrix_tomography_record_as_a_permanent_lossless_snapshot_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def fix_the_density_matrix_tomography_0d1fed_tier : OuroboricityTier := TierFunctor.obj fix_the_density_matrix_tomography_0d1fed_s0
+#eval fix_the_density_matrix_tomography_0d1fed_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem fix_the_density_matrix_tomography_0d1fed_frobenius :
+    igFrobeniusAlg.mul fix_the_density_matrix_tomography_0d1fed_s0 fix_the_density_matrix_tomography_0d1fed_s0 = fix_the_density_matrix_tomography_0d1fed_s0 :=
+  igFrobAlg_self_fusion fix_the_density_matrix_tomography_0d1fed_s0

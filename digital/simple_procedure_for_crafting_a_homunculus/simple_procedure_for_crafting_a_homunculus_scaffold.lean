@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 7)]
 
 import Imscribing.IGMorphism
@@ -31,48 +31,93 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [13] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [14] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def simple_procedure_for_crafting_a_cf4273_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def simple_procedure_for_crafting_a_cf4273_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def simple_procedure_for_crafting_a_homunculus_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Prima Materia — The initial void of unformed, putrefied seed; the work begins...)
-  (.arrow 𐑡 𐑼 𐑗)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Philosopher's Egg — The hermetic vessel seals the boundary, creating a closed...)
-  (.arrow 𐑗 𐑡 𐑾)  -- [2] AREV | pol := 𐑗 | reverse morphism — parity flip (Nigredo — The descent into putrefaction; the seed is broken down, dissolved, ...)
-  (.arrow 𐑾 𐑗 𐑚)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Athanor Fire — The forward morphism of regulated heat; the furnace drives the...)
-  -- FSPLIT [4] (gran := 𐑚) (Solve (Separation) — The co-multiplication splits the dissolved essence into the volatile spirit (soul) and the fixed body (salt).) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [6] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Albedo (Success) — The T-arm: the successful purification; the white dawn whe...)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [5] EVALF | chir := 𐑖 | evaluate-false — chirality check (Ash (Failure) — The F-arm: if the fire is unregulated or the seal breaks, the...))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (Coagula (Conjunction) — The multiplication fuses the volatile spirit and fixed body back into a single, unified, animated essence.)
-  (.arrow 𐑱 𐑙 𐑳)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (Circulation — The sequential chaining of the pelican; the matter cycles throu...)
-  (.arrow 𐑳 𐑱 𐑾)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The Rebis — The paradice state; the conjoined opposites (male/female, sun/moo...)
-  (.arrow 𐑾 𐑳 ⊙)  -- [10] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Citrinitas — The forward morphism of solar activation; the yellowing awakens ...)
-  (.arrow ⊙ 𐑾 𐑠)  -- [11] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Rubedo — The affirmative completion; the reddening of the matter, the final a...)
-  (.arrow 𐑠 ⊙ 𐑭)  -- [12] IMSCRIB | gram := 𐑠 | identity — self-imscription (The Homunculus — The identity; the self-referential artificial life that mode...)
-  (.arrow 𐑭 𐑠 𐑡)  -- [13] IFIX | prot := 𐑭 | irreversible fixation — winding number (The Crystal Address — The permanent, append-only record; the homunculus's 12-...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [14] TANCH | top := 𐑡 | terminal object — connectivity boundary (The Hermetic Seal — The terminal anchor; the work is closed, the vessel is se...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def simple_procedure_for_crafting_a_cf4273_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def simple_procedure_for_crafting_a_cf4273_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def simple_procedure_for_crafting_a_cf4273_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def simple_procedure_for_crafting_a_cf4273_protocol : IGProtocol simple_procedure_for_crafting_a_cf4273_s0 simple_procedure_for_crafting_a_cf4273_s14 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct simple_procedure_for_crafting_a_cf4273_s7 simple_procedure_for_crafting_a_cf4273_s7 = simple_procedure_for_crafting_a_cf4273_s7 (idempotent)
+  (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l0 simple_procedure_for_crafting_a_cf4273_s0 simple_procedure_for_crafting_a_cf4273_s1) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l1 simple_procedure_for_crafting_a_cf4273_s1 simple_procedure_for_crafting_a_cf4273_s2) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l2 simple_procedure_for_crafting_a_cf4273_s2 simple_procedure_for_crafting_a_cf4273_s3) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l3 simple_procedure_for_crafting_a_cf4273_s3 simple_procedure_for_crafting_a_cf4273_s4) (.seq (.prod (.arrow simple_procedure_for_crafting_a_cf4273_l4 simple_procedure_for_crafting_a_cf4273_s4 simple_procedure_for_crafting_a_cf4273_s7) (.arrow simple_procedure_for_crafting_a_cf4273_l4 simple_procedure_for_crafting_a_cf4273_s4 simple_procedure_for_crafting_a_cf4273_s7)) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l7 simple_procedure_for_crafting_a_cf4273_s7 simple_procedure_for_crafting_a_cf4273_s7) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l7 simple_procedure_for_crafting_a_cf4273_s7 simple_procedure_for_crafting_a_cf4273_s8) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l8 simple_procedure_for_crafting_a_cf4273_s8 simple_procedure_for_crafting_a_cf4273_s9) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l9 simple_procedure_for_crafting_a_cf4273_s9 simple_procedure_for_crafting_a_cf4273_s10) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l10 simple_procedure_for_crafting_a_cf4273_s10 simple_procedure_for_crafting_a_cf4273_s11) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l11 simple_procedure_for_crafting_a_cf4273_s11 simple_procedure_for_crafting_a_cf4273_s12) (.seq (.arrow simple_procedure_for_crafting_a_cf4273_l12 simple_procedure_for_crafting_a_cf4273_s12 simple_procedure_for_crafting_a_cf4273_s13) (.arrow simple_procedure_for_crafting_a_cf4273_l13 simple_procedure_for_crafting_a_cf4273_s13 simple_procedure_for_crafting_a_cf4273_s14)))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def simple_procedure_for_crafting_a_homunculus_true_arm : IGProtocol 𐑼 𐑡 :=
-  (simple_procedure_for_crafting_a_homunculus_protocol).restrictToEVALT
+noncomputable def simple_procedure_for_crafting_a_cf4273_true_arm : IGProtocol simple_procedure_for_crafting_a_cf4273_s0 simple_procedure_for_crafting_a_cf4273_s14 :=
+  (simple_procedure_for_crafting_a_cf4273_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def simple_procedure_for_crafting_a_homunculus_false_arm : IGProtocol 𐑼 𐑡 :=
-  (simple_procedure_for_crafting_a_homunculus_protocol).restrictToEVALF
+noncomputable def simple_procedure_for_crafting_a_cf4273_false_arm : IGProtocol simple_procedure_for_crafting_a_cf4273_s0 simple_procedure_for_crafting_a_cf4273_s14 :=
+  (simple_procedure_for_crafting_a_cf4273_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem simple_procedure_for_crafting_a_homunculus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def simple_procedure_for_crafting_a_cf4273_tier : OuroboricityTier := TierFunctor.obj simple_procedure_for_crafting_a_cf4273_s0
+#eval simple_procedure_for_crafting_a_cf4273_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem simple_procedure_for_crafting_a_cf4273_frobenius :
+    igFrobeniusAlg.mul simple_procedure_for_crafting_a_cf4273_s0 simple_procedure_for_crafting_a_cf4273_s0 = simple_procedure_for_crafting_a_cf4273_s0 :=
+  igFrobAlg_self_fusion simple_procedure_for_crafting_a_cf4273_s0

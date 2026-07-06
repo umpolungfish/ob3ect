@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,2,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 11)]
 
 import Imscribing.IGMorphism
@@ -99,7 +99,7 @@ noncomputable def the_b_state_rho_b_equal_to_one_twelfth_4bfa99_true_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_b_state_rho_b_equal_to_one_twelfth_4bfa99_tier : OuroboricityTier := TierFunctor.obj the_b_state_rho_b_equal_to_one_twelfth_4bfa99_s0
 #eval the_b_state_rho_b_equal_to_one_twelfth_4bfa99_tier  -- the Grammar's own verdict on its tier
 

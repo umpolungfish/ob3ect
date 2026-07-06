@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 9)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def scrying_dark_liquid_false_arm : IGProtocol scrying_dark_liquid
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def scrying_dark_liquid_tier : OuroboricityTier := TierFunctor.obj scrying_dark_liquid_s0
 #eval scrying_dark_liquid_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,6,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=19
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -35,56 +35,109 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [17] IFIX      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [18] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def phytoglyphic_medicine_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def phytoglyphic_medicine_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def phytoglyphic_medicine_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def phytoglyphic_medicine_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def phytoglyphic_medicine_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def phytoglyphic_medicine_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def phytoglyphic_medicine_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def phytoglyphic_medicine_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def phytoglyphic_medicine_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def phytoglyphic_medicine_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def phytoglyphic_medicine_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Unharvested seed/root void of preparation.)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Morphology self-recognizes as instruction set.)
-  (.arrow 𐑾 𐑠 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward extraction begins along therapeutic path.)
-  -- FSPLIT [3] (gran := 𐑚) (Bilateral serration/root bifurcation splits substrate into T (therapeutic) and F (degenerate) arms.) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (T-arm proceeds through ester cleavage and menstruum contact.)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (T-arm bitterness threshold met; latch condition satisfied.)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [6] CLINK | fid := 𐑱 | composition — regime coherence (Sequential chaining of Fibonacci extraction passes.)
-        (.arrow ⊙ 𐑚 𐑙)  -- [7] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Spiral winding closes; chamazulene blue appears.)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑭)  -- [8] FFUSE | stoi := 𐑙 (Recombination of T and F arms restores original plant identity.)
-  (.arrow 𐑭 𐑙 𐑗)  -- [9] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanent fixation of successful pharmaceutical output.)
-  (.arrow 𐑗 𐑭 𐑖)  -- [10] AREV | pol := 𐑗 | reverse morphism — parity flip (F-arm descent into degenerate/heat-extraction path.)
-  (.arrow 𐑖 𐑗 𐑳)  -- [11] EVALF | chir := 𐑖 | evaluate-false — chirality check (F-arm fails threshold; contamination or sub-potency detected.)
-  (.arrow 𐑳 𐑖 𐑾)  -- [12] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Paradice state held; medicine and toxin coexist in unprocessed seed.)
-  (.arrow 𐑾 𐑳 ⊙)  -- [13] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Castor Bean XOR gate forces exclusive disjunctive choice.)
-  (.arrow ⊙ 𐑾 𐑖)  -- [14] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Cold-press yields pure castor oil.)
-  (.arrow 𐑖 ⊙ 𐑱)  -- [15] EVALF | chir := 𐑖 | evaluate-false — chirality check (Heat-extract yields toxic ricin contamination.)
-  (.arrow 𐑱 𐑖 𐑭)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (Disjunctive composition chains oracle interrogation.)
-  (.arrow 𐑭 𐑱 𐑡)  -- [17] IFIX | prot := 𐑭 | irreversible fixation — winding number (Irrevocable record of disjunctive outcome.)
-  (.arrow 𐑡 𐑭 𐑼)  -- [18] TANCH | top := 𐑡 | terminal object — connectivity boundary (Hermetic seal closes the phytoglyphic recipe loop.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def phytoglyphic_medicine_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def phytoglyphic_medicine_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def phytoglyphic_medicine_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def phytoglyphic_medicine_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def phytoglyphic_medicine_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def phytoglyphic_medicine_protocol : IGProtocol phytoglyphic_medicine_s0 phytoglyphic_medicine_s18 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct phytoglyphic_medicine_s8 phytoglyphic_medicine_s8 = phytoglyphic_medicine_s8 (idempotent)
+  (.seq (.arrow phytoglyphic_medicine_l0 phytoglyphic_medicine_s0 phytoglyphic_medicine_s1) (.seq (.arrow phytoglyphic_medicine_l1 phytoglyphic_medicine_s1 phytoglyphic_medicine_s2) (.seq (.arrow phytoglyphic_medicine_l2 phytoglyphic_medicine_s2 phytoglyphic_medicine_s3) (.seq (.prod (.arrow phytoglyphic_medicine_l3 phytoglyphic_medicine_s3 phytoglyphic_medicine_s8) (.arrow phytoglyphic_medicine_l3 phytoglyphic_medicine_s3 phytoglyphic_medicine_s8)) (.seq (.arrow phytoglyphic_medicine_l8 phytoglyphic_medicine_s8 phytoglyphic_medicine_s8) (.seq (.arrow phytoglyphic_medicine_l8 phytoglyphic_medicine_s8 phytoglyphic_medicine_s9) (.seq (.arrow phytoglyphic_medicine_l9 phytoglyphic_medicine_s9 phytoglyphic_medicine_s10) (.seq (.arrow phytoglyphic_medicine_l10 phytoglyphic_medicine_s10 phytoglyphic_medicine_s11) (.seq (.arrow phytoglyphic_medicine_l11 phytoglyphic_medicine_s11 phytoglyphic_medicine_s12) (.seq (.arrow phytoglyphic_medicine_l12 phytoglyphic_medicine_s12 phytoglyphic_medicine_s13) (.seq (.arrow phytoglyphic_medicine_l13 phytoglyphic_medicine_s13 phytoglyphic_medicine_s14) (.seq (.arrow phytoglyphic_medicine_l14 phytoglyphic_medicine_s14 phytoglyphic_medicine_s15) (.seq (.arrow phytoglyphic_medicine_l15 phytoglyphic_medicine_s15 phytoglyphic_medicine_s16) (.seq (.arrow phytoglyphic_medicine_l16 phytoglyphic_medicine_s16 phytoglyphic_medicine_s17) (.arrow phytoglyphic_medicine_l17 phytoglyphic_medicine_s17 phytoglyphic_medicine_s18)))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def phytoglyphic_medicine_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def phytoglyphic_medicine_true_arm : IGProtocol phytoglyphic_medicine_s0 phytoglyphic_medicine_s18 :=
   (phytoglyphic_medicine_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def phytoglyphic_medicine_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def phytoglyphic_medicine_false_arm : IGProtocol phytoglyphic_medicine_s0 phytoglyphic_medicine_s18 :=
   (phytoglyphic_medicine_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem phytoglyphic_medicine_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def phytoglyphic_medicine_tier : OuroboricityTier := TierFunctor.obj phytoglyphic_medicine_s0
+#eval phytoglyphic_medicine_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem phytoglyphic_medicine_frobenius :
+    igFrobeniusAlg.mul phytoglyphic_medicine_s0 phytoglyphic_medicine_s0 = phytoglyphic_medicine_s0 :=
+  igFrobAlg_self_fusion phytoglyphic_medicine_s0

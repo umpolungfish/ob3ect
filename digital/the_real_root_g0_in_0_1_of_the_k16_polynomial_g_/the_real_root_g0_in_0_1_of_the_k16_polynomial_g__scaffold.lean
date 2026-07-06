@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,1,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 5)]
 
 import Imscribing.IGMorphism
@@ -94,7 +94,7 @@ noncomputable def the_real_root_g0_in_0_1_of_the_k16_f683ab_true_arm : IGProtoco
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_real_root_g0_in_0_1_of_the_k16_f683ab_tier : OuroboricityTier := TierFunctor.obj the_real_root_g0_in_0_1_of_the_k16_f683ab_s0
 #eval the_real_root_g0_in_0_1_of_the_k16_f683ab_tier  -- the Grammar's own verdict on its tier
 

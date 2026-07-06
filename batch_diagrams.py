@@ -14,6 +14,7 @@ if str(IMSCRIB) not in sys.path:
 from tokens import Token
 from wiring import imscr_wiring
 from symbolic_diagram import render_wiring_svg_v3
+from proof_scaffold import ouroboricity_tier
 
 
 def extract_opcodes(artifact: dict):
@@ -32,17 +33,9 @@ def extract_opcodes(artifact: dict):
 
 
 def tier_from_ops(ops: list) -> str:
-    """Guess ouroboricity tier from opcode sequence."""
-    if not ops:
-        return "O\u2080"
-    has_frob = "FSPLIT" in ops and "FFUSE" in ops
-    self_ref = (ops[0] == ops[-1])
-    if self_ref and has_frob:
-        return "O_\u221e"
-    elif has_frob:
-        return "O\u2082"
-    else:
-        return "O\u2081"
+    """Ouroboricity tier = the Grammar's verdict: assess_tier on the tuple the opcodes
+    imscribe (proof_scaffold.ouroboricity_tier). Not a first/last-token guess."""
+    return ouroboricity_tier(ops)
 
 
 def gen_one(json_path: Path, dry: bool = False, force: bool = False):

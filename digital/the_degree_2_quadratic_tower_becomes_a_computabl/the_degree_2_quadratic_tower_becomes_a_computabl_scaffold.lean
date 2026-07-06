@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 10)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def the_degree_2_quadratic_tower_becomes_a_28c128_false_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_degree_2_quadratic_tower_becomes_a_28c128_tier : OuroboricityTier := TierFunctor.obj the_degree_2_quadratic_tower_becomes_a_28c128_s0
 #eval the_degree_2_quadratic_tower_becomes_a_28c128_tier  -- the Grammar's own verdict on its tier
 

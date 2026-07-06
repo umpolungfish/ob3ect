@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,3,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=17
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 7), (8, 10)]
 
 import Imscribing.IGMorphism
@@ -119,6 +119,6 @@ noncomputable def d12_sic_exists_combines_norm_sq_eq_one_4a7011_true_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def d12_sic_exists_combines_norm_sq_eq_one_4a7011_tier : OuroboricityTier := TierFunctor.obj d12_sic_exists_combines_norm_sq_eq_one_4a7011_s0
 #eval d12_sic_exists_combines_norm_sq_eq_one_4a7011_tier  -- the Grammar's own verdict on its tier

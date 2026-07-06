@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 5)]
 
 import Imscribing.IGMorphism
@@ -88,7 +88,7 @@ noncomputable def voynich_morphological_engine_segments_a5f4f0_false_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def voynich_morphological_engine_segments_a5f4f0_tier : OuroboricityTier := TierFunctor.obj voynich_morphological_engine_segments_a5f4f0_s0
 #eval voynich_morphological_engine_segments_a5f4f0_tier  -- the Grammar's own verdict on its tier
 

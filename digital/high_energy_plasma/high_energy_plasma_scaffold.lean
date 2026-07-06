@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,3,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 10)]
 
 import Imscribing.IGMorphism
@@ -104,7 +104,7 @@ noncomputable def high_energy_plasma_true_arm : IGProtocol high_energy_plasma_s0
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def high_energy_plasma_tier : OuroboricityTier := TierFunctor.obj high_energy_plasma_s0
 #eval high_energy_plasma_tier  -- the Grammar's own verdict on its tier
 

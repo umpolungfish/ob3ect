@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(11,4,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=21
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 8), (13, 16)]
 
 import Imscribing.IGMorphism
@@ -143,6 +143,6 @@ noncomputable def abiogenesis_false_arm : IGProtocol abiogenesis_s0 abiogenesis_
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def abiogenesis_tier : OuroboricityTier := TierFunctor.obj abiogenesis_s0
 #eval abiogenesis_tier  -- the Grammar's own verdict on its tier

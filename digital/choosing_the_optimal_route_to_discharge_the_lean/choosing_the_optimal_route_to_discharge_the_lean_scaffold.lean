@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 12)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def choosing_the_optimal_route_to_discharge_cec884_false_arm : IGP
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def choosing_the_optimal_route_to_discharge_cec884_tier : OuroboricityTier := TierFunctor.obj choosing_the_optimal_route_to_discharge_cec884_s0
 #eval choosing_the_optimal_route_to_discharge_cec884_tier  -- the Grammar's own verdict on its tier
 

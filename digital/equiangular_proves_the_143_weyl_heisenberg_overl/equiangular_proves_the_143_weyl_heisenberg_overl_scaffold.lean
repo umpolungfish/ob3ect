@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,2,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=18
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(10, 12), (3, 15)]
 
 import Imscribing.IGMorphism
@@ -124,7 +124,7 @@ noncomputable def equiangular_proves_the_143_weyl_595f18_true_arm : IGProtocol e
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def equiangular_proves_the_143_weyl_595f18_tier : OuroboricityTier := TierFunctor.obj equiangular_proves_the_143_weyl_595f18_s0
 #eval equiangular_proves_the_143_weyl_595f18_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,4,3,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 6), (8, 13)]
 
 import Imscribing.IGMorphism
@@ -118,6 +118,6 @@ noncomputable def open_theism_false_arm : IGProtocol open_theism_s0 open_theism_
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def open_theism_tier : OuroboricityTier := TierFunctor.obj open_theism_s0
 #eval open_theism_tier  -- the Grammar's own verdict on its tier

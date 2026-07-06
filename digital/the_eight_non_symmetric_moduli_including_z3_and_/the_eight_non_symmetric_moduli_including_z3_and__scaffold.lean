@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,4,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 11)]
 
 import Imscribing.IGMorphism
@@ -118,7 +118,7 @@ noncomputable def the_eight_non_symmetric_moduli_154b54_false_arm : IGProtocol t
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_eight_non_symmetric_moduli_154b54_tier : OuroboricityTier := TierFunctor.obj the_eight_non_symmetric_moduli_154b54_s0
 #eval the_eight_non_symmetric_moduli_154b54_tier  -- the Grammar's own verdict on its tier
 

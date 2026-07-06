@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(11,4,2,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=20
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 8), (10, 15)]
 
 import Imscribing.IGMorphism
@@ -134,6 +134,6 @@ noncomputable def equiangular_proves_13_d_a_b_1_for_all_a_0c24fe_true_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def equiangular_proves_13_d_a_b_1_for_all_a_0c24fe_tier : OuroboricityTier := TierFunctor.obj equiangular_proves_13_d_a_b_1_for_all_a_0c24fe_s0
 #eval equiangular_proves_13_d_a_b_1_for_all_a_0c24fe_tier  -- the Grammar's own verdict on its tier

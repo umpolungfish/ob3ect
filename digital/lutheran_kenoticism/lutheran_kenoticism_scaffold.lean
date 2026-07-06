@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 10)]
 
 import Imscribing.IGMorphism
@@ -103,7 +103,7 @@ noncomputable def lutheran_kenoticism_false_arm : IGProtocol lutheran_kenoticism
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def lutheran_kenoticism_tier : OuroboricityTier := TierFunctor.obj lutheran_kenoticism_s0
 #eval lutheran_kenoticism_tier  -- the Grammar's own verdict on its tier
 

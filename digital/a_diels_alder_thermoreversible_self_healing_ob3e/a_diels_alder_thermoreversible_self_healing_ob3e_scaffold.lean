@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8)]
 
 import Imscribing.IGMorphism
@@ -28,44 +28,77 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] CLINK     fid    := 𐑱               𐑭 → 𐑠  | composition — regime coherence
 --   [11] IMSCRIB   gram   := 𐑠               𐑱 → 𐑼  | identity — self-imscription
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def a_diels_alder_thermoreversible_self_6278ea_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def a_diels_alder_thermoreversible_self_6278ea_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def a_diels_alder_thermoreversible_self_6278ea_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
 
-noncomputable def a_diels_alder_thermoreversible_self_healing_ob3ect_for_the_frobenius_composite_furan_diene_maleimide_dienophile_cycloaddition_as_bidirectional_structural_morphism_forward_25_60_c_crosslinking_reverse_110_150_c_healing_self_verifies_mu_delta_id_for_the_thermal_healing_cycle_12_primitives_d_imscriptive_self_written_healing_history_t_odot_crossing_point_topology_r_bidirectional_p_quantum_symmetry_endo_f_quantum_pericyclic_k_slow_g_aleph_gm_sequential_ph_odot_critical_h_eternal_infinite_cycles_s_n_m_w_integer_protocol : IGProtocol 𐑼 𐑠 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize unreacted monomer system)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply thermal energy for forward cycloaddition)
-  -- FSPLIT [2] (gran := 𐑚) (Thermal bifurcation into crosslinked/healed states) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Verify proper orbital symmetry in T-arm)
-      -- F-branch (4 nodes)
-      .seq
-        (.arrow 𐑗 𐑚 𐑙)  -- [4] AREV | pol := 𐑗 | reverse morphism — parity flip (Activate retro-Diels-Alder in F-arm)
-      .seq
-        (.arrow 𐑳 𐑚 𐑙)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Maintain transition state duality)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [6] CLINK | fid := 𐑱 | composition — regime coherence (Cycle through temperature phases)
-        (.arrow 𐑠 𐑚 𐑙)  -- [7] IMSCRIB | gram := 𐑠 | identity — self-imscription (Record network reconfiguration))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑭)  -- [8] FFUSE | stoi := 𐑙 (Reconstitute original adduct topology)
-  (.arrow 𐑭 𐑙 𐑱)  -- [9] IFIX | prot := 𐑭 | irreversible fixation — winding number (Commit healed state to permanent memory)
-  (.arrow 𐑱 𐑭 𐑠)  -- [10] CLINK | fid := 𐑱 | composition — regime coherence (Prepare for subsequent cycle)
-  (.arrow 𐑠 𐑱 𐑼)  -- [11] IMSCRIB | gram := 𐑠 | identity — self-imscription (Update self-referential healing log)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def a_diels_alder_thermoreversible_self_6278ea_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def a_diels_alder_thermoreversible_self_6278ea_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_diels_alder_thermoreversible_self_6278ea_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def a_diels_alder_thermoreversible_self_6278ea_protocol : IGProtocol a_diels_alder_thermoreversible_self_6278ea_s0 a_diels_alder_thermoreversible_self_6278ea_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct a_diels_alder_thermoreversible_self_6278ea_s8 a_diels_alder_thermoreversible_self_6278ea_s8 = a_diels_alder_thermoreversible_self_6278ea_s8 (idempotent)
+  (.seq (.arrow a_diels_alder_thermoreversible_self_6278ea_l0 a_diels_alder_thermoreversible_self_6278ea_s0 a_diels_alder_thermoreversible_self_6278ea_s1) (.seq (.arrow a_diels_alder_thermoreversible_self_6278ea_l1 a_diels_alder_thermoreversible_self_6278ea_s1 a_diels_alder_thermoreversible_self_6278ea_s2) (.seq (.prod (.arrow a_diels_alder_thermoreversible_self_6278ea_l2 a_diels_alder_thermoreversible_self_6278ea_s2 a_diels_alder_thermoreversible_self_6278ea_s8) (.arrow a_diels_alder_thermoreversible_self_6278ea_l2 a_diels_alder_thermoreversible_self_6278ea_s2 a_diels_alder_thermoreversible_self_6278ea_s8)) (.seq (.arrow a_diels_alder_thermoreversible_self_6278ea_l8 a_diels_alder_thermoreversible_self_6278ea_s8 a_diels_alder_thermoreversible_self_6278ea_s8) (.seq (.arrow a_diels_alder_thermoreversible_self_6278ea_l8 a_diels_alder_thermoreversible_self_6278ea_s8 a_diels_alder_thermoreversible_self_6278ea_s9) (.seq (.arrow a_diels_alder_thermoreversible_self_6278ea_l9 a_diels_alder_thermoreversible_self_6278ea_s9 a_diels_alder_thermoreversible_self_6278ea_s10) (.arrow a_diels_alder_thermoreversible_self_6278ea_l10 a_diels_alder_thermoreversible_self_6278ea_s10 a_diels_alder_thermoreversible_self_6278ea_s11)))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def a_diels_alder_thermoreversible_self_healing_ob3ect_for_the_frobenius_composite_furan_diene_maleimide_dienophile_cycloaddition_as_bidirectional_structural_morphism_forward_25_60_c_crosslinking_reverse_110_150_c_healing_self_verifies_mu_delta_id_for_the_thermal_healing_cycle_12_primitives_d_imscriptive_self_written_healing_history_t_odot_crossing_point_topology_r_bidirectional_p_quantum_symmetry_endo_f_quantum_pericyclic_k_slow_g_aleph_gm_sequential_ph_odot_critical_h_eternal_infinite_cycles_s_n_m_w_integer_true_arm : IGProtocol 𐑼 𐑠 :=
-  (a_diels_alder_thermoreversible_self_healing_ob3ect_for_the_frobenius_composite_furan_diene_maleimide_dienophile_cycloaddition_as_bidirectional_structural_morphism_forward_25_60_c_crosslinking_reverse_110_150_c_healing_self_verifies_mu_delta_id_for_the_thermal_healing_cycle_12_primitives_d_imscriptive_self_written_healing_history_t_odot_crossing_point_topology_r_bidirectional_p_quantum_symmetry_endo_f_quantum_pericyclic_k_slow_g_aleph_gm_sequential_ph_odot_critical_h_eternal_infinite_cycles_s_n_m_w_integer_protocol).restrictToEVALT
+noncomputable def a_diels_alder_thermoreversible_self_6278ea_true_arm : IGProtocol a_diels_alder_thermoreversible_self_6278ea_s0 a_diels_alder_thermoreversible_self_6278ea_s11 :=
+  (a_diels_alder_thermoreversible_self_6278ea_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem a_diels_alder_thermoreversible_self_healing_ob3ect_for_the_frobenius_composite_furan_diene_maleimide_dienophile_cycloaddition_as_bidirectional_structural_morphism_forward_25_60_c_crosslinking_reverse_110_150_c_healing_self_verifies_mu_delta_id_for_the_thermal_healing_cycle_12_primitives_d_imscriptive_self_written_healing_history_t_odot_crossing_point_topology_r_bidirectional_p_quantum_symmetry_endo_f_quantum_pericyclic_k_slow_g_aleph_gm_sequential_ph_odot_critical_h_eternal_infinite_cycles_s_n_m_w_integer_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def a_diels_alder_thermoreversible_self_6278ea_tier : OuroboricityTier := TierFunctor.obj a_diels_alder_thermoreversible_self_6278ea_s0
+#eval a_diels_alder_thermoreversible_self_6278ea_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem a_diels_alder_thermoreversible_self_6278ea_frobenius :
+    igFrobeniusAlg.mul a_diels_alder_thermoreversible_self_6278ea_s0 a_diels_alder_thermoreversible_self_6278ea_s0 = a_diels_alder_thermoreversible_self_6278ea_s0 :=
+  igFrobAlg_self_fusion a_diels_alder_thermoreversible_self_6278ea_s0

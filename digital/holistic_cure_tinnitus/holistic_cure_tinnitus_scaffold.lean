@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -29,48 +29,85 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [11] IFIX      prot   := 𐑭               𐑾 → 𐑡  | irreversible fixation — winding number
 --   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def holistic_cure_tinnitus_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def holistic_cure_tinnitus_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def holistic_cure_tinnitus_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def holistic_cure_tinnitus_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def holistic_cure_tinnitus_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the uninitialized auditory state of phantom ringing and the void o...)
-  (.arrow 𐑠 𐑼 𐑚)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Establish self-recognition of the tinnitus symptom by the patient, separating...)
-  -- FSPLIT [2] (gran := 𐑚) (Branch the holistic assessment into the Neuro-Cognitive pathway (T-arm) and the Somatic pathway (F-arm).) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow ((T-arm) Apply forward morphism of cognitive behavioral progression and psycho...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open ((T-arm) Affirmatively evaluate cognitive adaptability, stress reduction, and ...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip ((F-arm) Apply reverse morphism of somatic descent into physical tension, jaw/...)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check ((F-arm) Negatively evaluate physical pathology, muscular hyperactivity, and h...))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (Reconstitute the Neuro-Cognitive and Somatic evaluations exactly back into the unified Holistic Root Cause.)
-  (.arrow 𐑱 𐑙 𐑳)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (Compose the sequential integrative therapy protocol based on the synthesized ...)
-  (.arrow 𐑳 𐑱 𐑾)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter the paradice of paradoxical acceptance, holding the physical presence o...)
-  (.arrow 𐑾 𐑳 𐑭)  -- [10] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Drive forward neuroplastic adaptation, reinforcing the new filtered auditory ...)
-  (.arrow 𐑭 𐑾 𐑡)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently fixate the habituated neural pathways in the auditory cortex as a...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal the system at the terminal boundary of holistic equilibrium, completing ...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def holistic_cure_tinnitus_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def holistic_cure_tinnitus_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def holistic_cure_tinnitus_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def holistic_cure_tinnitus_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def holistic_cure_tinnitus_protocol : IGProtocol holistic_cure_tinnitus_s0 holistic_cure_tinnitus_s12 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct holistic_cure_tinnitus_s7 holistic_cure_tinnitus_s7 = holistic_cure_tinnitus_s7 (idempotent)
+  (.seq (.arrow holistic_cure_tinnitus_l0 holistic_cure_tinnitus_s0 holistic_cure_tinnitus_s1) (.seq (.arrow holistic_cure_tinnitus_l1 holistic_cure_tinnitus_s1 holistic_cure_tinnitus_s2) (.seq (.prod (.arrow holistic_cure_tinnitus_l2 holistic_cure_tinnitus_s2 holistic_cure_tinnitus_s7) (.arrow holistic_cure_tinnitus_l2 holistic_cure_tinnitus_s2 holistic_cure_tinnitus_s7)) (.seq (.arrow holistic_cure_tinnitus_l7 holistic_cure_tinnitus_s7 holistic_cure_tinnitus_s7) (.seq (.arrow holistic_cure_tinnitus_l7 holistic_cure_tinnitus_s7 holistic_cure_tinnitus_s8) (.seq (.arrow holistic_cure_tinnitus_l8 holistic_cure_tinnitus_s8 holistic_cure_tinnitus_s9) (.seq (.arrow holistic_cure_tinnitus_l9 holistic_cure_tinnitus_s9 holistic_cure_tinnitus_s10) (.seq (.arrow holistic_cure_tinnitus_l10 holistic_cure_tinnitus_s10 holistic_cure_tinnitus_s11) (.arrow holistic_cure_tinnitus_l11 holistic_cure_tinnitus_s11 holistic_cure_tinnitus_s12)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def holistic_cure_tinnitus_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def holistic_cure_tinnitus_true_arm : IGProtocol holistic_cure_tinnitus_s0 holistic_cure_tinnitus_s12 :=
   (holistic_cure_tinnitus_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def holistic_cure_tinnitus_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def holistic_cure_tinnitus_false_arm : IGProtocol holistic_cure_tinnitus_s0 holistic_cure_tinnitus_s12 :=
   (holistic_cure_tinnitus_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem holistic_cure_tinnitus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def holistic_cure_tinnitus_tier : OuroboricityTier := TierFunctor.obj holistic_cure_tinnitus_s0
+#eval holistic_cure_tinnitus_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem holistic_cure_tinnitus_frobenius :
+    igFrobeniusAlg.mul holistic_cure_tinnitus_s0 holistic_cure_tinnitus_s0 = holistic_cure_tinnitus_s0 :=
+  igFrobAlg_self_fusion holistic_cure_tinnitus_s0

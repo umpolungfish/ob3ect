@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 10)]
 
 import Imscribing.IGMorphism
@@ -28,51 +28,81 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] FFUSE     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [11] TANCH     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def schizophrenia_nmda_modulation_therapy_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def schizophrenia_nmda_modulation_therapy_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def schizophrenia_nmda_modulation_therapy_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def schizophrenia_nmda_modulation_therapy_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def schizophrenia_nmda_modulation_therapy_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def schizophrenia_nmda_modulation_therapy_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Resting NMDA receptor — no ligands bound, Mg2+ block in place.)
-  -- FSPLIT [1] (gran := 𐑚) (Coincidence detection gate splits into glutamate binding (T-arm) and glycine binding (F-arm).) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (6 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Glutamate binds to the GluN2 subunit (T-arm forward morphism).)
-      .seq
-        (.arrow 𐑗 𐑚 𐑙)  -- [3] AREV | pol := 𐑗 | reverse morphism — parity flip (Glycine/D-serine binds to the GluN1 subunit (F-arm reverse morphism — the co-...)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [4] CLINK | fid := 𐑱 | composition — regime coherence (Sequential chaining — glycine binding must precede or coincide with glutamate...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Both co-agonists bound AND membrane depolarization present — Mg2+ block remov...)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [6] IMSCRIB | gram := 𐑠 | identity — self-imscription (Channel opening — the receptor recognizes its fully liganded, depolarized sta...)
-        (.arrow 𐑭 𐑚 𐑙)  -- [7] IFIX | prot := 𐑭 | irreversible fixation — winding number (Ca2+ influx triggers LTP induction — a permanent, irreversible record of the ...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [8] EVALF | chir := 𐑖 | evaluate-false — chirality check (Insufficient binding or no depolarization — channel remains closed, Mg2+ bloc...)
-        (.arrow 𐑳 𐑚 𐑙)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Partial agonist state (e.g., D-serine alone) — glycine site occupied but glut...))
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑡)  -- [10] FFUSE | stoi := 𐑙 (Coincidence detection gate fuses the two binding branches back into a single decision: open or closed.)
-  (.arrow 𐑡 𐑙 𐑼)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (Synaptic cleft boundary — the entire NMDA signaling event is contained within...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def schizophrenia_nmda_modulation_therapy_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def schizophrenia_nmda_modulation_therapy_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_nmda_modulation_therapy_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def schizophrenia_nmda_modulation_therapy_protocol : IGProtocol schizophrenia_nmda_modulation_therapy_s0 schizophrenia_nmda_modulation_therapy_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct schizophrenia_nmda_modulation_therapy_s10 schizophrenia_nmda_modulation_therapy_s10 = schizophrenia_nmda_modulation_therapy_s10 (idempotent)
+  (.seq (.arrow schizophrenia_nmda_modulation_therapy_l0 schizophrenia_nmda_modulation_therapy_s0 schizophrenia_nmda_modulation_therapy_s1) (.seq (.prod (.arrow schizophrenia_nmda_modulation_therapy_l1 schizophrenia_nmda_modulation_therapy_s1 schizophrenia_nmda_modulation_therapy_s10) (.arrow schizophrenia_nmda_modulation_therapy_l1 schizophrenia_nmda_modulation_therapy_s1 schizophrenia_nmda_modulation_therapy_s10)) (.seq (.arrow schizophrenia_nmda_modulation_therapy_l10 schizophrenia_nmda_modulation_therapy_s10 schizophrenia_nmda_modulation_therapy_s10) (.arrow schizophrenia_nmda_modulation_therapy_l10 schizophrenia_nmda_modulation_therapy_s10 schizophrenia_nmda_modulation_therapy_s11))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def schizophrenia_nmda_modulation_therapy_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def schizophrenia_nmda_modulation_therapy_true_arm : IGProtocol schizophrenia_nmda_modulation_therapy_s0 schizophrenia_nmda_modulation_therapy_s11 :=
   (schizophrenia_nmda_modulation_therapy_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def schizophrenia_nmda_modulation_therapy_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def schizophrenia_nmda_modulation_therapy_false_arm : IGProtocol schizophrenia_nmda_modulation_therapy_s0 schizophrenia_nmda_modulation_therapy_s11 :=
   (schizophrenia_nmda_modulation_therapy_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem schizophrenia_nmda_modulation_therapy_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def schizophrenia_nmda_modulation_therapy_tier : OuroboricityTier := TierFunctor.obj schizophrenia_nmda_modulation_therapy_s0
+#eval schizophrenia_nmda_modulation_therapy_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem schizophrenia_nmda_modulation_therapy_frobenius :
+    igFrobeniusAlg.mul schizophrenia_nmda_modulation_therapy_s0 schizophrenia_nmda_modulation_therapy_s0 = schizophrenia_nmda_modulation_therapy_s0 :=
+  igFrobAlg_self_fusion schizophrenia_nmda_modulation_therapy_s0

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,9,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=22
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 10), (11, 17)]
 
 import Imscribing.IGMorphism
@@ -144,6 +144,6 @@ noncomputable def the_lifetime_old_hodge_conjecture_c1198a_true_arm : IGProtocol
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_lifetime_old_hodge_conjecture_c1198a_tier : OuroboricityTier := TierFunctor.obj the_lifetime_old_hodge_conjecture_c1198a_s0
 #eval the_lifetime_old_hodge_conjecture_c1198a_tier  -- the Grammar's own verdict on its tier

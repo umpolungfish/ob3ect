@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -89,7 +89,7 @@ noncomputable def the_information_that_every_previous_c4931c_true_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_information_that_every_previous_c4931c_tier : OuroboricityTier := TierFunctor.obj the_information_that_every_previous_c4931c_s0
 #eval the_information_that_every_previous_c4931c_tier  -- the Grammar's own verdict on its tier
 

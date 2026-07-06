@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 9)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def the_high_degree_coordinates_z1_and_z5_d48dae_false_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_high_degree_coordinates_z1_and_z5_d48dae_tier : OuroboricityTier := TierFunctor.obj the_high_degree_coordinates_z1_and_z5_d48dae_s0
 #eval the_high_degree_coordinates_z1_and_z5_d48dae_tier  -- the Grammar's own verdict on its tier
 

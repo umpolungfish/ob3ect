@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(4,2,1,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=8
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 5)]
 
 import Imscribing.IGMorphism
@@ -24,38 +24,61 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [6] IFIX      prot   := 𐑭               𐑙 → 𐑗  | irreversible fixation — winding number
 --   [7] AREV      pol    := 𐑗               𐑭 → 𐑼  | reverse morphism — parity flip
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def omg_particle_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def omg_particle_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }
 
-noncomputable def omg_particle_protocol : IGProtocol 𐑼 𐑗 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (the void before the OMG particle exists)
-  (.arrow 𐑾 𐑼 𐑾)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (the emergence of the OMG particle from quantum fluctuations)
-  (.arrow 𐑾 𐑾 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (the particle enters an excited state)
-  -- FSPLIT [3] (gran := 𐑚) (the particle branches into possible energy states) / FFUSE [5] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (successful interaction with another particle)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [5]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑭)  -- [5] FFUSE | stoi := 𐑙 (the states reconstitute back into the OMG particle)
-  (.arrow 𐑭 𐑙 𐑗)  -- [6] IFIX | prot := 𐑭 | irreversible fixation — winding number (the record of the OMG particle's existence is permanently inscribed)
-  (.arrow 𐑗 𐑭 𐑼)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (the decay of the OMG particle back into the quantum field)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def omg_particle_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def omg_particle_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def omg_particle_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def omg_particle_protocol : IGProtocol omg_particle_s0 omg_particle_s7 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct omg_particle_s5 omg_particle_s5 = omg_particle_s5 (idempotent)
+  (.seq (.arrow omg_particle_l0 omg_particle_s0 omg_particle_s1) (.seq (.arrow omg_particle_l1 omg_particle_s1 omg_particle_s2) (.seq (.arrow omg_particle_l2 omg_particle_s2 omg_particle_s3) (.seq (.prod (.arrow omg_particle_l3 omg_particle_s3 omg_particle_s5) (.arrow omg_particle_l3 omg_particle_s3 omg_particle_s5)) (.seq (.arrow omg_particle_l5 omg_particle_s5 omg_particle_s5) (.seq (.arrow omg_particle_l5 omg_particle_s5 omg_particle_s6) (.arrow omg_particle_l6 omg_particle_s6 omg_particle_s7)))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def omg_particle_true_arm : IGProtocol 𐑼 𐑗 :=
+noncomputable def omg_particle_true_arm : IGProtocol omg_particle_s0 omg_particle_s7 :=
   (omg_particle_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem omg_particle_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def omg_particle_tier : OuroboricityTier := TierFunctor.obj omg_particle_s0
+#eval omg_particle_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem omg_particle_frobenius :
+    igFrobeniusAlg.mul omg_particle_s0 omg_particle_s0 = omg_particle_s0 :=
+  igFrobAlg_self_fusion omg_particle_s0

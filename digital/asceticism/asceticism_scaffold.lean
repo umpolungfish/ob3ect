@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,3,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=18
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 8), (10, 13)]
 
 import Imscribing.IGMorphism
@@ -128,6 +128,6 @@ noncomputable def asceticism_false_arm : IGProtocol asceticism_s0 asceticism_s17
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def asceticism_tier : OuroboricityTier := TierFunctor.obj asceticism_s0
 #eval asceticism_tier  -- the Grammar's own verdict on its tier

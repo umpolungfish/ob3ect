@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,4,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 10)]
 
 import Imscribing.IGMorphism
@@ -109,7 +109,7 @@ noncomputable def each_real_magnitude_z_k_becomes_the_085445_true_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def each_real_magnitude_z_k_becomes_the_085445_tier : OuroboricityTier := TierFunctor.obj each_real_magnitude_z_k_becomes_the_085445_s0
 #eval each_real_magnitude_z_k_becomes_the_085445_tier  -- the Grammar's own verdict on its tier
 

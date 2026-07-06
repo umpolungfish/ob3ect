@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 6)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def the_axiomatized_existence_of_a_d_12_8322c8_false_arm : IGProto
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_axiomatized_existence_of_a_d_12_8322c8_tier : OuroboricityTier := TierFunctor.obj the_axiomatized_existence_of_a_d_12_8322c8_s0
 #eval the_axiomatized_existence_of_a_d_12_8322c8_tier  -- the Grammar's own verdict on its tier
 

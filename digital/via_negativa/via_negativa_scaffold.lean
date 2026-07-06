@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,5,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=21
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 8), (11, 15)]
 
 import Imscribing.IGMorphism
@@ -143,6 +143,6 @@ noncomputable def via_negativa_false_arm : IGProtocol via_negativa_s0 via_negati
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def via_negativa_tier : OuroboricityTier := TierFunctor.obj via_negativa_s0
 #eval via_negativa_tier  -- the Grammar's own verdict on its tier

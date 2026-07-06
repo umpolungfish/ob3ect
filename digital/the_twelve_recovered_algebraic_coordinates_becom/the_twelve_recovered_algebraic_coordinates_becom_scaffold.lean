@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,5,5,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=22
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 7), (10, 13)]
 
 import Imscribing.IGMorphism
@@ -148,6 +148,6 @@ noncomputable def the_twelve_recovered_algebraic_bb6dae_false_arm : IGProtocol t
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_twelve_recovered_algebraic_bb6dae_tier : OuroboricityTier := TierFunctor.obj the_twelve_recovered_algebraic_bb6dae_s0
 #eval the_twelve_recovered_algebraic_bb6dae_tier  -- the Grammar's own verdict on its tier

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 11)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def giessen_school_false_arm : IGProtocol giessen_school_s0 giesse
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def giessen_school_tier : OuroboricityTier := TierFunctor.obj giessen_school_s0
 #eval giessen_school_tier  -- the Grammar's own verdict on its tier
 

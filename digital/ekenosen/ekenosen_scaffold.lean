@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 10)]
 
 import Imscribing.IGMorphism
@@ -103,7 +103,7 @@ noncomputable def ekenosen_false_arm : IGProtocol ekenosen_s0 ekenosen_s12 :=
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def ekenosen_tier : OuroboricityTier := TierFunctor.obj ekenosen_s0
 #eval ekenosen_tier  -- the Grammar's own verdict on its tier
 

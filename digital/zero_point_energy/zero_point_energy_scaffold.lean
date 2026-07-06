@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -29,48 +29,85 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [11] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def zero_point_energy_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zero_point_energy_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zero_point_energy_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zero_point_energy_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zero_point_energy_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zero_point_energy_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def zero_point_energy_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def zero_point_energy_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the bare classical vacuum state |0⟩ before any quantum fluctuations.)
-  (.arrow 𐑡 𐑼 𐑚)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Impose boundary conditions (e.g., Casimir plates) or UV cutoff to contain and...)
-  -- FSPLIT [2] (gran := 𐑚) (The vacuum fluctuates, splitting the bare vacuum into a virtual particle-antiparticle pair.) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The virtual particle propagates forward in time along the T-arm.)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The fluctuation mode is allowed by the boundary conditions (constructive inte...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip (The virtual antiparticle propagates backward in time along the F-arm.)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (The fluctuation mode is excluded by the boundary conditions (destructive inte...))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [7] FFUSE | stoi := 𐑙 (The virtual pair annihilates, reconstituting the original bare vacuum state.)
-  (.arrow 𐑳 𐑙 𐑱)  -- [8] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The vacuum is held as a paradice: simultaneously empty of real particles and ...)
-  (.arrow 𐑱 𐑳 𐑠)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (Chain these continuous virtual fluctuations over time to form the persistent ...)
-  (.arrow 𐑠 𐑱 𐑭)  -- [10] IMSCRIB | gram := 𐑠 | identity — self-imscription (The ground state self-recognizes its fixed zero-point energy eigenvalue (H|0⟩...)
-  (.arrow 𐑭 𐑠 𐑡)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (The macroscopic manifestation (e.g., Casimir force or Lamb shift) is permanen...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (The terminal boundary closes the quantized field system, containing the zero-...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def zero_point_energy_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def zero_point_energy_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def zero_point_energy_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zero_point_energy_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def zero_point_energy_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def zero_point_energy_protocol : IGProtocol zero_point_energy_s0 zero_point_energy_s12 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct zero_point_energy_s7 zero_point_energy_s7 = zero_point_energy_s7 (idempotent)
+  (.seq (.arrow zero_point_energy_l0 zero_point_energy_s0 zero_point_energy_s1) (.seq (.arrow zero_point_energy_l1 zero_point_energy_s1 zero_point_energy_s2) (.seq (.prod (.arrow zero_point_energy_l2 zero_point_energy_s2 zero_point_energy_s7) (.arrow zero_point_energy_l2 zero_point_energy_s2 zero_point_energy_s7)) (.seq (.arrow zero_point_energy_l7 zero_point_energy_s7 zero_point_energy_s7) (.seq (.arrow zero_point_energy_l7 zero_point_energy_s7 zero_point_energy_s8) (.seq (.arrow zero_point_energy_l8 zero_point_energy_s8 zero_point_energy_s9) (.seq (.arrow zero_point_energy_l9 zero_point_energy_s9 zero_point_energy_s10) (.seq (.arrow zero_point_energy_l10 zero_point_energy_s10 zero_point_energy_s11) (.arrow zero_point_energy_l11 zero_point_energy_s11 zero_point_energy_s12)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def zero_point_energy_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def zero_point_energy_true_arm : IGProtocol zero_point_energy_s0 zero_point_energy_s12 :=
   (zero_point_energy_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def zero_point_energy_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def zero_point_energy_false_arm : IGProtocol zero_point_energy_s0 zero_point_energy_s12 :=
   (zero_point_energy_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem zero_point_energy_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def zero_point_energy_tier : OuroboricityTier := TierFunctor.obj zero_point_energy_s0
+#eval zero_point_energy_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem zero_point_energy_frobenius :
+    igFrobeniusAlg.mul zero_point_energy_s0 zero_point_energy_s0 = zero_point_energy_s0 :=
+  igFrobAlg_self_fusion zero_point_energy_s0

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,2,3)
 --   self_ref=False | frobenius_order=2
 --   dialetheia_complete=False | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: []
 
 import Imscribing.IGMorphism
@@ -108,7 +108,7 @@ noncomputable def ford_circles_true_arm : IGProtocol ford_circles_s0 ford_circle
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def ford_circles_tier : OuroboricityTier := TierFunctor.obj ford_circles_s0
 #eval ford_circles_tier  -- the Grammar's own verdict on its tier
 

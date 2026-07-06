@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,4,3,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=15
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 5), (10, 13)]
 
 import Imscribing.IGMorphism
@@ -109,6 +109,6 @@ noncomputable def the_representation_choice_becomes_a_ef7ca9_true_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_representation_choice_becomes_a_ef7ca9_tier : OuroboricityTier := TierFunctor.obj the_representation_choice_becomes_a_ef7ca9_s0
 #eval the_representation_choice_becomes_a_ef7ca9_tier  -- the Grammar's own verdict on its tier

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 6)]
 
 import Imscribing.IGMorphism
@@ -89,7 +89,7 @@ noncomputable def servant_leadership_true_arm : IGProtocol servant_leadership_s0
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def servant_leadership_tier : OuroboricityTier := TierFunctor.obj servant_leadership_s0
 #eval servant_leadership_tier  -- the Grammar's own verdict on its tier
 

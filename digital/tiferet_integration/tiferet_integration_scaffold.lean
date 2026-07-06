@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8)]
 
 import Imscribing.IGMorphism
@@ -103,7 +103,7 @@ noncomputable def tiferet_integration_false_arm : IGProtocol tiferet_integration
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def tiferet_integration_tier : OuroboricityTier := TierFunctor.obj tiferet_integration_s0
 #eval tiferet_integration_tier  -- the Grammar's own verdict on its tier
 

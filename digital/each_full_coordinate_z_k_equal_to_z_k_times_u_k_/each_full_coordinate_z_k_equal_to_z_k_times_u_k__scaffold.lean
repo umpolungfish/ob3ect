@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=18
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7), (11, 15)]
 
 import Imscribing.IGMorphism
@@ -128,6 +128,6 @@ noncomputable def each_full_coordinate_z_k_equal_to_z_k_5221cd_false_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def each_full_coordinate_z_k_equal_to_z_k_5221cd_tier : OuroboricityTier := TierFunctor.obj each_full_coordinate_z_k_equal_to_z_k_5221cd_s0
 #eval each_full_coordinate_z_k_equal_to_z_k_5221cd_tier  -- the Grammar's own verdict on its tier

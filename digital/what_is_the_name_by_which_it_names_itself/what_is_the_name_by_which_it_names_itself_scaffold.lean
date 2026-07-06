@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 12)]
 
 import Imscribing.IGMorphism
@@ -108,7 +108,7 @@ noncomputable def what_is_the_name_by_which_it_names_c7ae5f_false_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def what_is_the_name_by_which_it_names_c7ae5f_tier : OuroboricityTier := TierFunctor.obj what_is_the_name_by_which_it_names_c7ae5f_s0
 #eval what_is_the_name_by_which_it_names_c7ae5f_tier  -- the Grammar's own verdict on its tier
 

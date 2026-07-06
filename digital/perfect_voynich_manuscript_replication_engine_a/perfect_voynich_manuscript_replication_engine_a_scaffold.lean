@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 10)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def perfect_voynich_manuscript_replication_30798a_false_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def perfect_voynich_manuscript_replication_30798a_tier : OuroboricityTier := TierFunctor.obj perfect_voynich_manuscript_replication_30798a_s0
 #eval perfect_voynich_manuscript_replication_30798a_tier  -- the Grammar's own verdict on its tier
 

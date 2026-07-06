@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(12,5,5,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7), (18, 21)]
 
 import Imscribing.IGMorphism
@@ -40,62 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] AREV      pol    := 𐑗               𐑙 → 𐑭  | reverse morphism — parity flip
 --   [23] IFIX      prot   := 𐑭               𐑗 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def classical_non_commutative_complement_to_812bb0_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def classical_non_commutative_complement_to_the_quantum_probabilities_f_arm_anchor_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of unclassified void state before any primitive assignment)
-  (.arrow 𐑡 𐑼 𐑚)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establishing the Crystal of Types as terminal containment of all possibilities)
-  -- FSPLIT [2] (gran := 𐑚) (Splitting the primitive assignments into valid and invalid branches) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward morphism applying primitive value assignments systematically)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Evaluating positive validity of primitive combinations on T-branch)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [5] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-recognition of valid structural types)
-        (.arrow 𐑱 𐑚 𐑙)  -- [6] CLINK | fid := 𐑱 | composition — regime coherence (Composition of primitive values into complete structural types)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [7] FFUSE | stoi := 𐑙 (Frobenius fusion of T-branch results back to unified space)
-  (.arrow 𐑗 𐑙 𐑖)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse morphism of paraconsistent absorption by Criticality primitive)
-  (.arrow 𐑖 𐑗 𐑳)  -- [9] EVALF | chir := 𐑖 | evaluate-false — chirality check (Evaluating negative rejection of structurally invalid combinations on F-branch)
-  (.arrow 𐑳 𐑖 𐑱)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Paraconsistent state at Criticality (⊙) absorbing contradictions)
-  (.arrow 𐑱 𐑳 𐑙)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Composition of F-branch results)
-  (.arrow 𐑙 𐑱 𐑠)  -- [12] FFUSE | stoi := 𐑙 | fuse μ — assembly mode (Frobenius fusion completing the evaluation cycle)
-  (.arrow 𐑠 𐑙 𐑭)  -- [13] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-recognition of completed classification system)
-  (.arrow 𐑭 𐑠 𐑾)  -- [14] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently fixing valid structural types in the Crystal lattice)
-  (.arrow 𐑾 𐑭 𐑱)  -- [15] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward propagation of classified types to measurement space)
-  (.arrow 𐑱 𐑾 𐑠)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (Tensor composition of type-to-measurement mappings)
-  (.arrow 𐑠 𐑱 𐑚)  -- [17] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-verification of SIC-POVM construction from classified types)
-  -- FSPLIT [18] (gran := 𐑚) (Branching evaluation for quantum measurement consistency) / FFUSE [21] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [19] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Valid quantum measurement correspondence confirmed)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [20] EVALF | chir := 𐑖 | evaluate-false — chirality check (Invalid quantum measurement pathways rejected))
-    -- reconnect at FFUSE [21]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [21] FFUSE | stoi := 𐑙 (Unified quantum-classical correspondence established)
-  (.arrow 𐑗 𐑙 𐑭)  -- [22] AREV | pol := 𐑗 | reverse morphism — parity flip (Criticality absorption maintaining paraconsistent closure)
-  (.arrow 𐑭 𐑗 𐑼)  -- [23] IFIX | prot := 𐑭 | irreversible fixation — winding number (Final crystalline record of quantum-classical complementarity)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def classical_non_commutative_complement_to_812bb0_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def classical_non_commutative_complement_to_812bb0_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def classical_non_commutative_complement_to_812bb0_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def classical_non_commutative_complement_to_812bb0_protocol : IGProtocol classical_non_commutative_complement_to_812bb0_s0 classical_non_commutative_complement_to_812bb0_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct classical_non_commutative_complement_to_812bb0_s7 classical_non_commutative_complement_to_812bb0_s7 = classical_non_commutative_complement_to_812bb0_s7 (idempotent)
+  (.seq (.arrow classical_non_commutative_complement_to_812bb0_l0 classical_non_commutative_complement_to_812bb0_s0 classical_non_commutative_complement_to_812bb0_s1) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l1 classical_non_commutative_complement_to_812bb0_s1 classical_non_commutative_complement_to_812bb0_s2) (.seq (.prod (.arrow classical_non_commutative_complement_to_812bb0_l2 classical_non_commutative_complement_to_812bb0_s2 classical_non_commutative_complement_to_812bb0_s7) (.arrow classical_non_commutative_complement_to_812bb0_l2 classical_non_commutative_complement_to_812bb0_s2 classical_non_commutative_complement_to_812bb0_s7)) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l7 classical_non_commutative_complement_to_812bb0_s7 classical_non_commutative_complement_to_812bb0_s7) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l7 classical_non_commutative_complement_to_812bb0_s7 classical_non_commutative_complement_to_812bb0_s8) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l8 classical_non_commutative_complement_to_812bb0_s8 classical_non_commutative_complement_to_812bb0_s9) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l9 classical_non_commutative_complement_to_812bb0_s9 classical_non_commutative_complement_to_812bb0_s10) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l10 classical_non_commutative_complement_to_812bb0_s10 classical_non_commutative_complement_to_812bb0_s11) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l11 classical_non_commutative_complement_to_812bb0_s11 classical_non_commutative_complement_to_812bb0_s12) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l12 classical_non_commutative_complement_to_812bb0_s12 classical_non_commutative_complement_to_812bb0_s13) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l13 classical_non_commutative_complement_to_812bb0_s13 classical_non_commutative_complement_to_812bb0_s14) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l14 classical_non_commutative_complement_to_812bb0_s14 classical_non_commutative_complement_to_812bb0_s15) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l15 classical_non_commutative_complement_to_812bb0_s15 classical_non_commutative_complement_to_812bb0_s16) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l16 classical_non_commutative_complement_to_812bb0_s16 classical_non_commutative_complement_to_812bb0_s17) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l17 classical_non_commutative_complement_to_812bb0_s17 classical_non_commutative_complement_to_812bb0_s18) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l18 classical_non_commutative_complement_to_812bb0_s18 classical_non_commutative_complement_to_812bb0_s19) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l19 classical_non_commutative_complement_to_812bb0_s19 classical_non_commutative_complement_to_812bb0_s20) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l20 classical_non_commutative_complement_to_812bb0_s20 classical_non_commutative_complement_to_812bb0_s21) (.seq (.arrow classical_non_commutative_complement_to_812bb0_l21 classical_non_commutative_complement_to_812bb0_s21 classical_non_commutative_complement_to_812bb0_s22) (.arrow classical_non_commutative_complement_to_812bb0_l22 classical_non_commutative_complement_to_812bb0_s22 classical_non_commutative_complement_to_812bb0_s23))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def classical_non_commutative_complement_to_the_quantum_probabilities_f_arm_anchor_true_arm : IGProtocol 𐑼 𐑭 :=
-  (classical_non_commutative_complement_to_the_quantum_probabilities_f_arm_anchor_protocol).restrictToEVALT
+noncomputable def classical_non_commutative_complement_to_812bb0_true_arm : IGProtocol classical_non_commutative_complement_to_812bb0_s0 classical_non_commutative_complement_to_812bb0_s23 :=
+  (classical_non_commutative_complement_to_812bb0_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def classical_non_commutative_complement_to_the_quantum_probabilities_f_arm_anchor_false_arm : IGProtocol 𐑼 𐑭 :=
-  (classical_non_commutative_complement_to_the_quantum_probabilities_f_arm_anchor_protocol).restrictToEVALF
+noncomputable def classical_non_commutative_complement_to_812bb0_false_arm : IGProtocol classical_non_commutative_complement_to_812bb0_s0 classical_non_commutative_complement_to_812bb0_s23 :=
+  (classical_non_commutative_complement_to_812bb0_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem classical_non_commutative_complement_to_the_quantum_probabilities_f_arm_anchor_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def classical_non_commutative_complement_to_812bb0_tier : OuroboricityTier := TierFunctor.obj classical_non_commutative_complement_to_812bb0_s0
+#eval classical_non_commutative_complement_to_812bb0_tier  -- the Grammar's own verdict on its tier

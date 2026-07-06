@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(11,3,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=19
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(9, 12)]
 
 import Imscribing.IGMorphism
@@ -35,48 +35,105 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [17] AFWD      rel    := 𐑾               𐑠 → 𐑡  | forward morphism — bidirectional arrow
 --   [18] TANCH     top    := 𐑡               𐑾 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def extract_144_exact_sic_probabilities_d205af_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def extract_144_exact_sic_probabilities_d205af_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def extract_144_exact_sic_probabilities_d205af_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def extract_144_exact_sic_probabilities_d205af_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def extract_144_exact_sic_probabilities_d205af_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
 
-noncomputable def extract_144_exact_sic_probabilities_from_the_quantum_state_t_arm_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize quantum state in ℂ¹² for SIC measurement)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply Weyl-Heisenberg displacement operators to fiducial)
-  (.arrow 𐑚 𐑾 ⊙)  -- [2] FSPLIT | gran := 𐑚 | split δ — range decomposition (Quantum state branches into 144 distinct measurement channels)
-  (.arrow ⊙ 𐑚 𐑱)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (First 72 SIC projectors extract probability amplitudes)
-  (.arrow 𐑱 ⊙ 𐑾)  -- [4] CLINK | fid := 𐑱 | composition — regime coherence (Chain measurement outcomes into intermediate probability set)
-  (.arrow 𐑾 𐑱 ⊙)  -- [5] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Continue with remaining 72 projectors)
-  (.arrow ⊙ 𐑾 𐑱)  -- [6] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Extract final SIC probabilities with uniform overlap)
-  (.arrow 𐑱 ⊙ 𐑠)  -- [7] CLINK | fid := 𐑱 | composition — regime coherence (Compose all 144 probabilities into complete measurement record)
-  (.arrow 𐑠 𐑱 𐑚)  -- [8] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference check - fiducial imscribes itself in measurement)
-  -- FSPLIT [9] (gran := 𐑚) (Branch into T-arm (success) and F-arm (potential failure states)) / FFUSE [12] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [10] EVALT | crit := ⊙ | evaluate-true — criticality gate open (T-arm confirms successful probability extraction)
-      -- F-branch (1 nodes)
-      (.arrow 𐑗 𐑚 𐑙)  -- [11] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse morphism prepares for density matrix reconstruction))
-    -- reconnect at FFUSE [12]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [12] FFUSE | stoi := 𐑙 (Fuse 144 probabilities back to quantum state representation)
-  (.arrow 𐑳 𐑙 𐑭)  -- [13] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Criticality ⊙ handles potential measurement paradoxes)
-  (.arrow 𐑭 𐑳 𐑱)  -- [14] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently fix the 144 extracted probabilities in measurement register)
-  (.arrow 𐑱 𐑭 𐑠)  -- [15] CLINK | fid := 𐑱 | composition — regime coherence (Compose final measurement record with reconstruction capability)
-  (.arrow 𐑠 𐑱 𐑾)  -- [16] IMSCRIB | gram := 𐑠 | identity — self-imscription (Verify self-consistency of quantum measurement process)
-  (.arrow 𐑾 𐑠 𐑡)  -- [17] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Prepare for next measurement cycle)
-  (.arrow 𐑡 𐑾 𐑼)  -- [18] TANCH | top := 𐑡 | terminal object — connectivity boundary (Close measurement process with complete probability extraction)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def extract_144_exact_sic_probabilities_d205af_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def extract_144_exact_sic_probabilities_d205af_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def extract_144_exact_sic_probabilities_d205af_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def extract_144_exact_sic_probabilities_d205af_protocol : IGProtocol extract_144_exact_sic_probabilities_d205af_s0 extract_144_exact_sic_probabilities_d205af_s18 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct extract_144_exact_sic_probabilities_d205af_s12 extract_144_exact_sic_probabilities_d205af_s12 = extract_144_exact_sic_probabilities_d205af_s12 (idempotent)
+  (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l0 extract_144_exact_sic_probabilities_d205af_s0 extract_144_exact_sic_probabilities_d205af_s1) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l1 extract_144_exact_sic_probabilities_d205af_s1 extract_144_exact_sic_probabilities_d205af_s2) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l2 extract_144_exact_sic_probabilities_d205af_s2 extract_144_exact_sic_probabilities_d205af_s3) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l3 extract_144_exact_sic_probabilities_d205af_s3 extract_144_exact_sic_probabilities_d205af_s4) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l4 extract_144_exact_sic_probabilities_d205af_s4 extract_144_exact_sic_probabilities_d205af_s5) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l5 extract_144_exact_sic_probabilities_d205af_s5 extract_144_exact_sic_probabilities_d205af_s6) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l6 extract_144_exact_sic_probabilities_d205af_s6 extract_144_exact_sic_probabilities_d205af_s7) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l7 extract_144_exact_sic_probabilities_d205af_s7 extract_144_exact_sic_probabilities_d205af_s8) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l8 extract_144_exact_sic_probabilities_d205af_s8 extract_144_exact_sic_probabilities_d205af_s9) (.seq (.prod (.arrow extract_144_exact_sic_probabilities_d205af_l9 extract_144_exact_sic_probabilities_d205af_s9 extract_144_exact_sic_probabilities_d205af_s12) (.arrow extract_144_exact_sic_probabilities_d205af_l9 extract_144_exact_sic_probabilities_d205af_s9 extract_144_exact_sic_probabilities_d205af_s12)) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l12 extract_144_exact_sic_probabilities_d205af_s12 extract_144_exact_sic_probabilities_d205af_s12) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l12 extract_144_exact_sic_probabilities_d205af_s12 extract_144_exact_sic_probabilities_d205af_s13) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l13 extract_144_exact_sic_probabilities_d205af_s13 extract_144_exact_sic_probabilities_d205af_s14) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l14 extract_144_exact_sic_probabilities_d205af_s14 extract_144_exact_sic_probabilities_d205af_s15) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l15 extract_144_exact_sic_probabilities_d205af_s15 extract_144_exact_sic_probabilities_d205af_s16) (.seq (.arrow extract_144_exact_sic_probabilities_d205af_l16 extract_144_exact_sic_probabilities_d205af_s16 extract_144_exact_sic_probabilities_d205af_s17) (.arrow extract_144_exact_sic_probabilities_d205af_l17 extract_144_exact_sic_probabilities_d205af_s17 extract_144_exact_sic_probabilities_d205af_s18)))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def extract_144_exact_sic_probabilities_from_the_quantum_state_t_arm_true_arm : IGProtocol 𐑼 𐑡 :=
-  (extract_144_exact_sic_probabilities_from_the_quantum_state_t_arm_protocol).restrictToEVALT
+noncomputable def extract_144_exact_sic_probabilities_d205af_true_arm : IGProtocol extract_144_exact_sic_probabilities_d205af_s0 extract_144_exact_sic_probabilities_d205af_s18 :=
+  (extract_144_exact_sic_probabilities_d205af_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem extract_144_exact_sic_probabilities_from_the_quantum_state_t_arm_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def extract_144_exact_sic_probabilities_d205af_tier : OuroboricityTier := TierFunctor.obj extract_144_exact_sic_probabilities_d205af_s0
+#eval extract_144_exact_sic_probabilities_d205af_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem extract_144_exact_sic_probabilities_d205af_frobenius :
+    igFrobeniusAlg.mul extract_144_exact_sic_probabilities_d205af_s0 extract_144_exact_sic_probabilities_d205af_s0 = extract_144_exact_sic_probabilities_d205af_s0 :=
+  igFrobAlg_self_fusion extract_144_exact_sic_probabilities_d205af_s0

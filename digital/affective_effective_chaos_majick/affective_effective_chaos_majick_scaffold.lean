@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,4,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(7, 10)]
 
 import Imscribing.IGMorphism
@@ -108,7 +108,7 @@ noncomputable def affective_effective_chaos_majick_false_arm : IGProtocol affect
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def affective_effective_chaos_majick_tier : OuroboricityTier := TierFunctor.obj affective_effective_chaos_majick_s0
 #eval affective_effective_chaos_majick_tier  -- the Grammar's own verdict on its tier
 

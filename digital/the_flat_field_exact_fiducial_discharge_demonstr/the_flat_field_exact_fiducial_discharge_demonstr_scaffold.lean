@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,4,5,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=20
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 12), (14, 18)]
 
 import Imscribing.IGMorphism
@@ -138,6 +138,6 @@ noncomputable def the_flat_field_exact_fiducial_discharge_93344e_false_arm : IGP
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_flat_field_exact_fiducial_discharge_93344e_tier : OuroboricityTier := TierFunctor.obj the_flat_field_exact_fiducial_discharge_93344e_s0
 #eval the_flat_field_exact_fiducial_discharge_93344e_tier  -- the Grammar's own verdict on its tier

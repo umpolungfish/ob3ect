@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -30,49 +30,89 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [13] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def the_framework_raises_at_least_as_many_8d78ed_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def the_framework_raises_at_least_as_many_8d78ed_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def the_framework_raises_at_least_as_many_questions_as_it_answers_can_the_vital_necrosis_state_be_stabilized_indefinitely_or_does_it_inevitably_decay_the_40_day_protocol_is_an_empirical_endpoint_not_a_theoretical_one_the_thermodynamic_analysis_suggests_no_fundamental_limit_but_practical_constraints_depletion_of_sam_accumulation_of_degradation_products_may_impose_a_finite_lifetime_does_the_third_state_scale_a_10_ml_vial_is_one_thing_a_1_l_bioreactor_is_another_the_reaction_diffusion_dynamics_and_the_ahl_concentration_gradients_scale_with_system_size_potentially_limiting_the_maximum_volume_can_the_self_modeling_map_support_anything_beyond_fixed_point_dynamics_a_system_at_criticality_is_maximally_sensitive_to_input_in_principle_it_could_function_as_a_reservoir_computer_can_the_pellicle_learn_is_blood_the_only_substrate_that_supports_vital_necrosis_or_are_there_others_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Drawn whole blood — initial void of the third state)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Hermetic glass seal — closes the thermodynamic system)
-  (.arrow 𐑾 𐑡 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Fibrin polymerization — forward morphism building the active gel)
-  -- FSPLIT [3] (gran := 𐑚) (Reversible Phase Separation — branches the fibrin state into opposing pathways) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Factor XIIIa crosslinking — T-arm forward morphism building the network)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Network Integrity — affirmative evaluation of the crosslinked state)
-        (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (Plasmin-mediated cleavage — F-arm reverse morphism degrading the network)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (Soluble Fragments — negative evaluation of the degraded state))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [8] FFUSE | stoi := 𐑙 (Dynamic Fibrin Network — reconstitutes the fibrin state via detailed balance)
-  (.arrow 𐑱 𐑙 𐑠)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (40-day reaction-diffusion protocol — composition of the split-fuse loops)
-  (.arrow 𐑠 𐑱 𐑳)  -- [10] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-recognition map — identity where the pellicle models its own DNA)
-  (.arrow 𐑳 𐑠 𐑭)  -- [11] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Vital Necrosis — paradice of being simultaneously dead and self-organizing)
-  (.arrow 𐑭 𐑳 𐑡)  -- [12] IFIX | prot := 𐑭 | irreversible fixation — winding number (Latent coordinate z_VN — permanent fixation in the VAE-Vita manifold)
-  (.arrow 𐑡 𐑭 𐑼)  -- [13] TANCH | top := 𐑡 | terminal object — connectivity boundary (Hermetic glass seal — terminal boundary containing the fixed state)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def the_framework_raises_at_least_as_many_8d78ed_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def the_framework_raises_at_least_as_many_8d78ed_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def the_framework_raises_at_least_as_many_8d78ed_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def the_framework_raises_at_least_as_many_8d78ed_protocol : IGProtocol the_framework_raises_at_least_as_many_8d78ed_s0 the_framework_raises_at_least_as_many_8d78ed_s13 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_framework_raises_at_least_as_many_8d78ed_s8 the_framework_raises_at_least_as_many_8d78ed_s8 = the_framework_raises_at_least_as_many_8d78ed_s8 (idempotent)
+  (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l0 the_framework_raises_at_least_as_many_8d78ed_s0 the_framework_raises_at_least_as_many_8d78ed_s1) (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l1 the_framework_raises_at_least_as_many_8d78ed_s1 the_framework_raises_at_least_as_many_8d78ed_s2) (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l2 the_framework_raises_at_least_as_many_8d78ed_s2 the_framework_raises_at_least_as_many_8d78ed_s3) (.seq (.prod (.arrow the_framework_raises_at_least_as_many_8d78ed_l3 the_framework_raises_at_least_as_many_8d78ed_s3 the_framework_raises_at_least_as_many_8d78ed_s8) (.arrow the_framework_raises_at_least_as_many_8d78ed_l3 the_framework_raises_at_least_as_many_8d78ed_s3 the_framework_raises_at_least_as_many_8d78ed_s8)) (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l8 the_framework_raises_at_least_as_many_8d78ed_s8 the_framework_raises_at_least_as_many_8d78ed_s8) (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l8 the_framework_raises_at_least_as_many_8d78ed_s8 the_framework_raises_at_least_as_many_8d78ed_s9) (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l9 the_framework_raises_at_least_as_many_8d78ed_s9 the_framework_raises_at_least_as_many_8d78ed_s10) (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l10 the_framework_raises_at_least_as_many_8d78ed_s10 the_framework_raises_at_least_as_many_8d78ed_s11) (.seq (.arrow the_framework_raises_at_least_as_many_8d78ed_l11 the_framework_raises_at_least_as_many_8d78ed_s11 the_framework_raises_at_least_as_many_8d78ed_s12) (.arrow the_framework_raises_at_least_as_many_8d78ed_l12 the_framework_raises_at_least_as_many_8d78ed_s12 the_framework_raises_at_least_as_many_8d78ed_s13))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def the_framework_raises_at_least_as_many_questions_as_it_answers_can_the_vital_necrosis_state_be_stabilized_indefinitely_or_does_it_inevitably_decay_the_40_day_protocol_is_an_empirical_endpoint_not_a_theoretical_one_the_thermodynamic_analysis_suggests_no_fundamental_limit_but_practical_constraints_depletion_of_sam_accumulation_of_degradation_products_may_impose_a_finite_lifetime_does_the_third_state_scale_a_10_ml_vial_is_one_thing_a_1_l_bioreactor_is_another_the_reaction_diffusion_dynamics_and_the_ahl_concentration_gradients_scale_with_system_size_potentially_limiting_the_maximum_volume_can_the_self_modeling_map_support_anything_beyond_fixed_point_dynamics_a_system_at_criticality_is_maximally_sensitive_to_input_in_principle_it_could_function_as_a_reservoir_computer_can_the_pellicle_learn_is_blood_the_only_substrate_that_supports_vital_necrosis_or_are_there_others_true_arm : IGProtocol 𐑼 𐑡 :=
-  (the_framework_raises_at_least_as_many_questions_as_it_answers_can_the_vital_necrosis_state_be_stabilized_indefinitely_or_does_it_inevitably_decay_the_40_day_protocol_is_an_empirical_endpoint_not_a_theoretical_one_the_thermodynamic_analysis_suggests_no_fundamental_limit_but_practical_constraints_depletion_of_sam_accumulation_of_degradation_products_may_impose_a_finite_lifetime_does_the_third_state_scale_a_10_ml_vial_is_one_thing_a_1_l_bioreactor_is_another_the_reaction_diffusion_dynamics_and_the_ahl_concentration_gradients_scale_with_system_size_potentially_limiting_the_maximum_volume_can_the_self_modeling_map_support_anything_beyond_fixed_point_dynamics_a_system_at_criticality_is_maximally_sensitive_to_input_in_principle_it_could_function_as_a_reservoir_computer_can_the_pellicle_learn_is_blood_the_only_substrate_that_supports_vital_necrosis_or_are_there_others_protocol).restrictToEVALT
+noncomputable def the_framework_raises_at_least_as_many_8d78ed_true_arm : IGProtocol the_framework_raises_at_least_as_many_8d78ed_s0 the_framework_raises_at_least_as_many_8d78ed_s13 :=
+  (the_framework_raises_at_least_as_many_8d78ed_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def the_framework_raises_at_least_as_many_questions_as_it_answers_can_the_vital_necrosis_state_be_stabilized_indefinitely_or_does_it_inevitably_decay_the_40_day_protocol_is_an_empirical_endpoint_not_a_theoretical_one_the_thermodynamic_analysis_suggests_no_fundamental_limit_but_practical_constraints_depletion_of_sam_accumulation_of_degradation_products_may_impose_a_finite_lifetime_does_the_third_state_scale_a_10_ml_vial_is_one_thing_a_1_l_bioreactor_is_another_the_reaction_diffusion_dynamics_and_the_ahl_concentration_gradients_scale_with_system_size_potentially_limiting_the_maximum_volume_can_the_self_modeling_map_support_anything_beyond_fixed_point_dynamics_a_system_at_criticality_is_maximally_sensitive_to_input_in_principle_it_could_function_as_a_reservoir_computer_can_the_pellicle_learn_is_blood_the_only_substrate_that_supports_vital_necrosis_or_are_there_others_false_arm : IGProtocol 𐑼 𐑡 :=
-  (the_framework_raises_at_least_as_many_questions_as_it_answers_can_the_vital_necrosis_state_be_stabilized_indefinitely_or_does_it_inevitably_decay_the_40_day_protocol_is_an_empirical_endpoint_not_a_theoretical_one_the_thermodynamic_analysis_suggests_no_fundamental_limit_but_practical_constraints_depletion_of_sam_accumulation_of_degradation_products_may_impose_a_finite_lifetime_does_the_third_state_scale_a_10_ml_vial_is_one_thing_a_1_l_bioreactor_is_another_the_reaction_diffusion_dynamics_and_the_ahl_concentration_gradients_scale_with_system_size_potentially_limiting_the_maximum_volume_can_the_self_modeling_map_support_anything_beyond_fixed_point_dynamics_a_system_at_criticality_is_maximally_sensitive_to_input_in_principle_it_could_function_as_a_reservoir_computer_can_the_pellicle_learn_is_blood_the_only_substrate_that_supports_vital_necrosis_or_are_there_others_protocol).restrictToEVALF
+noncomputable def the_framework_raises_at_least_as_many_8d78ed_false_arm : IGProtocol the_framework_raises_at_least_as_many_8d78ed_s0 the_framework_raises_at_least_as_many_8d78ed_s13 :=
+  (the_framework_raises_at_least_as_many_8d78ed_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem the_framework_raises_at_least_as_many_questions_as_it_answers_can_the_vital_necrosis_state_be_stabilized_indefinitely_or_does_it_inevitably_decay_the_40_day_protocol_is_an_empirical_endpoint_not_a_theoretical_one_the_thermodynamic_analysis_suggests_no_fundamental_limit_but_practical_constraints_depletion_of_sam_accumulation_of_degradation_products_may_impose_a_finite_lifetime_does_the_third_state_scale_a_10_ml_vial_is_one_thing_a_1_l_bioreactor_is_another_the_reaction_diffusion_dynamics_and_the_ahl_concentration_gradients_scale_with_system_size_potentially_limiting_the_maximum_volume_can_the_self_modeling_map_support_anything_beyond_fixed_point_dynamics_a_system_at_criticality_is_maximally_sensitive_to_input_in_principle_it_could_function_as_a_reservoir_computer_can_the_pellicle_learn_is_blood_the_only_substrate_that_supports_vital_necrosis_or_are_there_others_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def the_framework_raises_at_least_as_many_8d78ed_tier : OuroboricityTier := TierFunctor.obj the_framework_raises_at_least_as_many_8d78ed_s0
+#eval the_framework_raises_at_least_as_many_8d78ed_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem the_framework_raises_at_least_as_many_8d78ed_frobenius :
+    igFrobeniusAlg.mul the_framework_raises_at_least_as_many_8d78ed_s0 the_framework_raises_at_least_as_many_8d78ed_s0 = the_framework_raises_at_least_as_many_8d78ed_s0 :=
+  igFrobAlg_self_fusion the_framework_raises_at_least_as_many_8d78ed_s0

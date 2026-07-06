@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 9)]
 
 import Imscribing.IGMorphism
@@ -108,7 +108,7 @@ noncomputable def the_yang_mills_one_bump_short_block_8cc05a_false_arm : IGProto
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_yang_mills_one_bump_short_block_8cc05a_tier : OuroboricityTier := TierFunctor.obj the_yang_mills_one_bump_short_block_8cc05a_s0
 #eval the_yang_mills_one_bump_short_block_8cc05a_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,2,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 10)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def phi_maps_each_sparse_assoc_list_ring_7a9155_false_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def phi_maps_each_sparse_assoc_list_ring_7a9155_tier : OuroboricityTier := TierFunctor.obj phi_maps_each_sparse_assoc_list_ring_7a9155_s0
 #eval phi_maps_each_sparse_assoc_list_ring_7a9155_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(4,2,1,0)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=7
--- Expected tier: O₂
+-- Expected tier: O₀
 -- FSPLIT/FFUSE pairs: [(2, 4)]
 
 import Imscribing.IGMorphism
@@ -23,37 +23,57 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [5] AREV      pol    := 𐑗               𐑙 → 𐑡  | reverse morphism — parity flip
 --   [6] TANCH     top    := 𐑡               𐑗 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def monad_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def monad_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def monad_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def monad_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
 
-noncomputable def monad_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the Monad as the source of all existence.)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Emanate from the Monad into diverse forms of existence.)
-  -- FSPLIT [2] (gran := 𐑚) (Split the Monad into various emanations.) / FFUSE [4] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the realization of unity in the return journey.)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [4]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [4] FFUSE | stoi := 𐑙 (Reunite the emanations back into the Monad.)
-  (.arrow 𐑗 𐑙 𐑡)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse the journey back to the source.)
-  (.arrow 𐑡 𐑗 𐑼)  -- [6] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establish the Infinite One as the ultimate boundary.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def monad_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def monad_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def monad_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def monad_protocol : IGProtocol monad_s0 monad_s6 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct monad_s4 monad_s4 = monad_s4 (idempotent)
+  (.seq (.arrow monad_l0 monad_s0 monad_s1) (.seq (.arrow monad_l1 monad_s1 monad_s2) (.seq (.prod (.arrow monad_l2 monad_s2 monad_s4) (.arrow monad_l2 monad_s2 monad_s4)) (.seq (.arrow monad_l4 monad_s4 monad_s4) (.seq (.arrow monad_l4 monad_s4 monad_s5) (.arrow monad_l5 monad_s5 monad_s6))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def monad_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def monad_true_arm : IGProtocol monad_s0 monad_s6 :=
   (monad_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem monad_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₀.
+def monad_tier : OuroboricityTier := TierFunctor.obj monad_s0
+#eval monad_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem monad_frobenius :
+    igFrobeniusAlg.mul monad_s0 monad_s0 = monad_s0 :=
+  igFrobAlg_self_fusion monad_s0

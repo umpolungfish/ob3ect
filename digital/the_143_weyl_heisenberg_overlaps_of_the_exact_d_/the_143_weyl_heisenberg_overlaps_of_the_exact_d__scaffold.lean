@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,2,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 12)]
 
 import Imscribing.IGMorphism
@@ -104,7 +104,7 @@ noncomputable def the_143_weyl_heisenberg_overlaps_of_the_e0665f_true_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_143_weyl_heisenberg_overlaps_of_the_e0665f_tier : OuroboricityTier := TierFunctor.obj the_143_weyl_heisenberg_overlaps_of_the_e0665f_s0
 #eval the_143_weyl_heisenberg_overlaps_of_the_e0665f_tier  -- the Grammar's own verdict on its tier
 

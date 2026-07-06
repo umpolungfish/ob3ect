@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(17,4,10,1)
 --   self_ref=True | frobenius_order=3
 --   dialetheia_complete=True | period=32
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 23), (24, 25)]
 
 import Imscribing.IGMorphism
@@ -204,7 +204,7 @@ noncomputable def voynich_phytoglyphica_pharmaceutical_4b7ae4_false_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def voynich_phytoglyphica_pharmaceutical_4b7ae4_tier : OuroboricityTier := TierFunctor.obj voynich_phytoglyphica_pharmaceutical_4b7ae4_s0
 #eval voynich_phytoglyphica_pharmaceutical_4b7ae4_tier  -- the Grammar's own verdict on its tier
 

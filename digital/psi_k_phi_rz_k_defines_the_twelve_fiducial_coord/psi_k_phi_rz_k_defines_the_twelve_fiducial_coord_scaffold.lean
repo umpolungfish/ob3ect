@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,1,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 8)]
 
 import Imscribing.IGMorphism
@@ -99,7 +99,7 @@ noncomputable def psi_k_phi_rz_k_defines_the_twelve_48e44c_true_arm : IGProtocol
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def psi_k_phi_rz_k_defines_the_twelve_48e44c_tier : OuroboricityTier := TierFunctor.obj psi_k_phi_rz_k_defines_the_twelve_48e44c_s0
 #eval psi_k_phi_rz_k_defines_the_twelve_48e44c_tier  -- the Grammar's own verdict on its tier
 

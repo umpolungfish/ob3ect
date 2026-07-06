@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=18
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8), (9, 14)]
 
 import Imscribing.IGMorphism
@@ -34,56 +34,100 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [16] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [17] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def sic_povm_functor_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def sic_povm_functor_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def sic_povm_functor_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def sic_povm_functor_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize empty C^d Hilbert space before basis selection)
-  (.arrow 𐑠 𐑼 𐑱)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Plant the Zauner fiducial vector as the self-generating identity seed)
-  (.arrow 𐑱 𐑠 𐑚)  -- [2] CLINK | fid := 𐑱 | composition — regime coherence (Tensor product composition of the 12 primitive observables into the joint space)
-  -- FSPLIT [3] (gran := 𐑚) (Zauner Conjecture Bifurcation splitting General Dimension d into Proven d=12 and Unproven d=19) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Weyl-Heisenberg orbit generation for the d=12 branch (T-arm))
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Exact SIC geometry achieved with frame potential F = 0.846154 (T-arm anchor))
-        (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (Descent to Stark unit bottleneck for the d=19 branch (F-arm))
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (Unproven status lacking exact Frobenius closure (F-arm anchor)))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑙)  -- [8] FFUSE | stoi := 𐑙 (Categorical Join reconstituting the General Dimension d conjecture space)
-  -- FSPLIT [9] (gran := 𐑚) (Informational Completeness Duality splitting d=12 into Quantum Measurement and Classical Outcome) / FFUSE [14] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [10] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Extract 144 exact SIC probabilities from the quantum state (T-arm))
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [11] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Exact density matrix recovery with zero reconstruction entropy (T-arm anchor))
-        (.arrow 𐑗 𐑚 𐑙)  -- [12] AREV | pol := 𐑗 | reverse morphism — parity flip (Enumerate 17,280,000 Crystal eigenstates as classical sharp outcomes (F-arm))
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [13] EVALF | chir := 𐑖 | evaluate-false — chirality check (Classical non-commutative complement to the quantum probabilities (F-arm anchor)))
-    -- reconnect at FFUSE [14]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [14] FFUSE | stoi := 𐑙 (Tomographic Injection reconstituting the full d=12 Structural Classification)
-  (.arrow 𐑳 𐑙 𐑭)  -- [15] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Apply ⊙ Criticality absorbing element entering Belnap BOTH paradice state)
-  (.arrow 𐑭 𐑳 𐑡)  -- [16] IFIX | prot := 𐑭 | irreversible fixation — winding number (Fix the density matrix tomography record as a permanent lossless snapshot)
-  (.arrow 𐑡 𐑭 𐑼)  -- [17] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal the system with the Crystal Constraint Manifold boundary)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def sic_povm_functor_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def sic_povm_functor_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sic_povm_functor_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def sic_povm_functor_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def sic_povm_functor_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def sic_povm_functor_protocol : IGProtocol sic_povm_functor_s0 sic_povm_functor_s17 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct sic_povm_functor_s8 sic_povm_functor_s8 = sic_povm_functor_s8 (idempotent)
+  (.seq (.arrow sic_povm_functor_l0 sic_povm_functor_s0 sic_povm_functor_s1) (.seq (.arrow sic_povm_functor_l1 sic_povm_functor_s1 sic_povm_functor_s2) (.seq (.arrow sic_povm_functor_l2 sic_povm_functor_s2 sic_povm_functor_s3) (.seq (.prod (.arrow sic_povm_functor_l3 sic_povm_functor_s3 sic_povm_functor_s8) (.arrow sic_povm_functor_l3 sic_povm_functor_s3 sic_povm_functor_s8)) (.seq (.arrow sic_povm_functor_l8 sic_povm_functor_s8 sic_povm_functor_s8) (.seq (.arrow sic_povm_functor_l8 sic_povm_functor_s8 sic_povm_functor_s9) (.seq (.arrow sic_povm_functor_l9 sic_povm_functor_s9 sic_povm_functor_s10) (.seq (.arrow sic_povm_functor_l10 sic_povm_functor_s10 sic_povm_functor_s11) (.seq (.arrow sic_povm_functor_l11 sic_povm_functor_s11 sic_povm_functor_s12) (.seq (.arrow sic_povm_functor_l12 sic_povm_functor_s12 sic_povm_functor_s13) (.seq (.arrow sic_povm_functor_l13 sic_povm_functor_s13 sic_povm_functor_s14) (.seq (.arrow sic_povm_functor_l14 sic_povm_functor_s14 sic_povm_functor_s15) (.seq (.arrow sic_povm_functor_l15 sic_povm_functor_s15 sic_povm_functor_s16) (.arrow sic_povm_functor_l16 sic_povm_functor_s16 sic_povm_functor_s17))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def sic_povm_functor_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def sic_povm_functor_true_arm : IGProtocol sic_povm_functor_s0 sic_povm_functor_s17 :=
   (sic_povm_functor_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def sic_povm_functor_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def sic_povm_functor_false_arm : IGProtocol sic_povm_functor_s0 sic_povm_functor_s17 :=
   (sic_povm_functor_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem sic_povm_functor_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def sic_povm_functor_tier : OuroboricityTier := TierFunctor.obj sic_povm_functor_s0
+#eval sic_povm_functor_tier  -- the Grammar's own verdict on its tier

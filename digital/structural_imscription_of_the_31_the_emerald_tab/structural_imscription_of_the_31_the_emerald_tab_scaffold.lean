@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,5,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 11)]
 
 import Imscribing.IGMorphism
@@ -118,7 +118,7 @@ noncomputable def structural_imscription_of_the_31_the_edb512_false_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def structural_imscription_of_the_31_the_edb512_tier : OuroboricityTier := TierFunctor.obj structural_imscription_of_the_31_the_edb512_s0
 #eval structural_imscription_of_the_31_the_edb512_tier  -- the Grammar's own verdict on its tier
 

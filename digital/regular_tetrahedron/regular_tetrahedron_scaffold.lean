@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(14,2,0,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=17
--- Expected tier: O₂
+-- Expected tier: O₀
 -- FSPLIT/FFUSE pairs: [(8, 14)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def regular_tetrahedron_protocol : IGProtocol regular_tetrahedron_
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₀.
 def regular_tetrahedron_tier : OuroboricityTier := TierFunctor.obj regular_tetrahedron_s0
 #eval regular_tetrahedron_tier  -- the Grammar's own verdict on its tier
 

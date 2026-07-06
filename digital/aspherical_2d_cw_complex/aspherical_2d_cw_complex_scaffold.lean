@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def aspherical_2d_cw_complex_false_arm : IGProtocol aspherical_2d_
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def aspherical_2d_cw_complex_tier : OuroboricityTier := TierFunctor.obj aspherical_2d_cw_complex_s0
 #eval aspherical_2d_cw_complex_tier  -- the Grammar's own verdict on its tier
 

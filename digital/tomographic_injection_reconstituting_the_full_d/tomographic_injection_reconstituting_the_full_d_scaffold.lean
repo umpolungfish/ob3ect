@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -28,47 +28,81 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [11] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def tomographic_injection_reconstituting_861405_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def tomographic_injection_reconstituting_861405_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def tomographic_injection_reconstituting_861405_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def tomographic_injection_reconstituting_the_full_d_12_structural_classification_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the 12-dimensional primitive Hilbert space C^12, establishing the ...)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Load the Zauner fiducial |ψ_0⟩, the self-referential seed that acts as the id...)
-  (.arrow 𐑾 𐑠 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply Weyl-Heisenberg displacement operators to broadcast |ψ_0⟩ into the 144 ...)
-  -- FSPLIT [3] (gran := 𐑚) (Inject the target d=12 Density Matrix ρ, splitting it into 144 SIC Probabilities (T-arm) and 36 ig-pulse Stream Readings (F-arm).) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (T-arm affirms exact SIC geometry, confirming frame potential F = 143/169 and ...)
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (T-arm chains the 144 exact probabilities with the dual SIC projector basis fo...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (F-arm identifies heteroskedastic noise and incomplete 24/144 direct coverage ...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (F-arm applies reverse morphism to synthesize the missing 120 elements via cro...))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [8] FFUSE | stoi := 𐑙 (Fuse the T-arm (exact probabilities) and F-arm (synthesized streams) to reconstitute the exact d=12 Density Matrix ρ.)
-  (.arrow 𐑳 𐑙 𐑭)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The absorbing primitive ⊙ (Criticality) enters B-state, holding the paraconsi...)
-  (.arrow 𐑭 𐑳 𐑡)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record the reconstructed state and cached fiducial into the ROM s...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (The Crystal of Types (17,280,000 configurations) seals the system, bounding a...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def tomographic_injection_reconstituting_861405_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def tomographic_injection_reconstituting_861405_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def tomographic_injection_reconstituting_861405_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def tomographic_injection_reconstituting_861405_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def tomographic_injection_reconstituting_861405_protocol : IGProtocol tomographic_injection_reconstituting_861405_s0 tomographic_injection_reconstituting_861405_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct tomographic_injection_reconstituting_861405_s8 tomographic_injection_reconstituting_861405_s8 = tomographic_injection_reconstituting_861405_s8 (idempotent)
+  (.seq (.arrow tomographic_injection_reconstituting_861405_l0 tomographic_injection_reconstituting_861405_s0 tomographic_injection_reconstituting_861405_s1) (.seq (.arrow tomographic_injection_reconstituting_861405_l1 tomographic_injection_reconstituting_861405_s1 tomographic_injection_reconstituting_861405_s2) (.seq (.arrow tomographic_injection_reconstituting_861405_l2 tomographic_injection_reconstituting_861405_s2 tomographic_injection_reconstituting_861405_s3) (.seq (.prod (.arrow tomographic_injection_reconstituting_861405_l3 tomographic_injection_reconstituting_861405_s3 tomographic_injection_reconstituting_861405_s8) (.arrow tomographic_injection_reconstituting_861405_l3 tomographic_injection_reconstituting_861405_s3 tomographic_injection_reconstituting_861405_s8)) (.seq (.arrow tomographic_injection_reconstituting_861405_l8 tomographic_injection_reconstituting_861405_s8 tomographic_injection_reconstituting_861405_s8) (.seq (.arrow tomographic_injection_reconstituting_861405_l8 tomographic_injection_reconstituting_861405_s8 tomographic_injection_reconstituting_861405_s9) (.seq (.arrow tomographic_injection_reconstituting_861405_l9 tomographic_injection_reconstituting_861405_s9 tomographic_injection_reconstituting_861405_s10) (.arrow tomographic_injection_reconstituting_861405_l10 tomographic_injection_reconstituting_861405_s10 tomographic_injection_reconstituting_861405_s11))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def tomographic_injection_reconstituting_the_full_d_12_structural_classification_true_arm : IGProtocol 𐑼 𐑡 :=
-  (tomographic_injection_reconstituting_the_full_d_12_structural_classification_protocol).restrictToEVALT
+noncomputable def tomographic_injection_reconstituting_861405_true_arm : IGProtocol tomographic_injection_reconstituting_861405_s0 tomographic_injection_reconstituting_861405_s11 :=
+  (tomographic_injection_reconstituting_861405_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def tomographic_injection_reconstituting_the_full_d_12_structural_classification_false_arm : IGProtocol 𐑼 𐑡 :=
-  (tomographic_injection_reconstituting_the_full_d_12_structural_classification_protocol).restrictToEVALF
+noncomputable def tomographic_injection_reconstituting_861405_false_arm : IGProtocol tomographic_injection_reconstituting_861405_s0 tomographic_injection_reconstituting_861405_s11 :=
+  (tomographic_injection_reconstituting_861405_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem tomographic_injection_reconstituting_the_full_d_12_structural_classification_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def tomographic_injection_reconstituting_861405_tier : OuroboricityTier := TierFunctor.obj tomographic_injection_reconstituting_861405_s0
+#eval tomographic_injection_reconstituting_861405_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem tomographic_injection_reconstituting_861405_frobenius :
+    igFrobeniusAlg.mul tomographic_injection_reconstituting_861405_s0 tomographic_injection_reconstituting_861405_s0 = tomographic_injection_reconstituting_861405_s0 :=
+  igFrobAlg_self_fusion tomographic_injection_reconstituting_861405_s0

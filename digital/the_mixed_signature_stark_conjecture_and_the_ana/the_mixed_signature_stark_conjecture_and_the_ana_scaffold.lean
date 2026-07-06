@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -28,76 +28,76 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s0 : Imscription :=
   { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s1 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s1 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s2 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s2 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s3 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s3 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s4 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s4 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s5 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s5 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s6 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s6 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s7 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s8 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s8 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s9 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s9 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s10 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_s10 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
 -- ── Label Imscriptions (per-node delta) ─────────────────────
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l0 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l0 : Imscription :=
   { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l1 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l1 : Imscription :=
   { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l2 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l2 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l3 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l3 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l4 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l4 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l5 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l5 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l6 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l6 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l7 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l7 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l8 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l8 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l9 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l9 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
-private def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l10 : Imscription :=
+private def the_mixed_signature_stark_conjecture_ddf1c9_l10 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
 -- ── Main IGProtocol term ────────────────────────────────────
-noncomputable def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_protocol : IGProtocol the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s10 :=
+noncomputable def the_mixed_signature_stark_conjecture_ddf1c9_protocol : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=
   .withGram Grammar.measure <|
-  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7 = the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7 (idempotent)
-  (.seq (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l0 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s1) (.seq (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l1 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s1 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s2) (.seq (.prod (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l2 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s2 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7) (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l2 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s2 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7)) (.seq (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l7 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7) (.seq (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l7 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s7 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s8) (.seq (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l8 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s8 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s9) (.arrow the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_l9 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s9 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s10)))))))
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s7 = the_mixed_signature_stark_conjecture_ddf1c9_s7 (idempotent)
+  (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l0 the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s1) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l1 the_mixed_signature_stark_conjecture_ddf1c9_s1 the_mixed_signature_stark_conjecture_ddf1c9_s2) (.seq (.prod (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l2 the_mixed_signature_stark_conjecture_ddf1c9_s2 the_mixed_signature_stark_conjecture_ddf1c9_s7) (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l2 the_mixed_signature_stark_conjecture_ddf1c9_s2 the_mixed_signature_stark_conjecture_ddf1c9_s7)) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l7 the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s7) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l7 the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s8) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l8 the_mixed_signature_stark_conjecture_ddf1c9_s8 the_mixed_signature_stark_conjecture_ddf1c9_s9) (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l9 the_mixed_signature_stark_conjecture_ddf1c9_s9 the_mixed_signature_stark_conjecture_ddf1c9_s10)))))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_true_arm : IGProtocol the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s10 :=
-  (the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_protocol).restrictToEVALT
+noncomputable def the_mixed_signature_stark_conjecture_ddf1c9_true_arm : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=
+  (the_mixed_signature_stark_conjecture_ddf1c9_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_false_arm : IGProtocol the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s10 :=
-  (the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_protocol).restrictToEVALF
+noncomputable def the_mixed_signature_stark_conjecture_ddf1c9_false_arm : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=
+  (the_mixed_signature_stark_conjecture_ddf1c9_protocol).restrictToEVALF
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
-def the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_tier : OuroboricityTier := TierFunctor.obj the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0
-#eval the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_tier  -- the Grammar's own verdict on its tier
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def the_mixed_signature_stark_conjecture_ddf1c9_tier : OuroboricityTier := TierFunctor.obj the_mixed_signature_stark_conjecture_ddf1c9_s0
+#eval the_mixed_signature_stark_conjecture_ddf1c9_tier  -- the Grammar's own verdict on its tier
 
 -- Frobenius (split → fuse): μ∘δ = id on the ground imscription
-theorem the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_frobenius :
-    igFrobeniusAlg.mul the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 = the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0 :=
-  igFrobAlg_self_fusion the_mixed_signature_stark_conjecture_and_the_analytic_passage_to_the_c_2_metric_s0
+theorem the_mixed_signature_stark_conjecture_ddf1c9_frobenius :
+    igFrobeniusAlg.mul the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s0 = the_mixed_signature_stark_conjecture_ddf1c9_s0 :=
+  igFrobAlg_self_fusion the_mixed_signature_stark_conjecture_ddf1c9_s0

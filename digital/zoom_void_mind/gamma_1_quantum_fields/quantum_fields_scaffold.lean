@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(13,6,4,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 6), (8, 10), (12, 14)]
 
 import Imscribing.IGMorphism
@@ -40,68 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] TANCH     top    := 𐑡               𐑾 → 𐑠  | terminal object — connectivity boundary
 --   [23] IMSCRIB   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def quantum_fields_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }
+private def quantum_fields_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quantum_fields_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quantum_fields_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quantum_fields_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def quantum_fields_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def quantum_fields_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def quantum_fields_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def quantum_fields_protocol : IGProtocol 𐑼 𐑠 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of classification space before any primitive assignment)
-  (.arrow 𐑡 𐑼 𐑚)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Crystal boundary seals the 17,280,000-element constraint manifold)
-  -- FSPLIT [2] (gran := 𐑚) (Dimension d=12 splits into three primitive families D(3,3), T(5,4), P(4,5)) / FFUSE [6] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Weyl-Heisenberg group generates displacement operators in C^12)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (D-family (Dimensionality-type) branch processes primitive assignments)
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (Sequential composition of primitive value assignments)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [6]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [6] FFUSE | stoi := 𐑙 (Reconstitutes family branches back to full 12-dimensional space)
-  (.arrow 𐑾 𐑙 𐑚)  -- [7] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Zauner fiducial vector |ψ_0⟩ generates full SIC-POVM under displacements)
-  -- FSPLIT [8] (gran := 𐑚) (T-family (Temporal-type) branch handles time-dependent correlations) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [9] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Successful SIC fiducial found with frame potential F=143/169)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [10] FFUSE | stoi := 𐑙 (Temporal correlations merge back to unified measurement space)
-  (.arrow 𐑾 𐑙 𐑚)  -- [11] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Ig-pulse apparatus maps 36 streams to 12 primitive axes)
-  -- FSPLIT [12] (gran := 𐑚) (P-family (Processual-type) handles criticality and paraconsistency) / FFUSE [14] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow 𐑳 𐑚 𐑙)  -- [13] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Criticality primitive ⊙ absorbs contradictory evaluations)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [14]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [14] FFUSE | stoi := 𐑙 (Processual aspects reconstitute into integrated measurement system)
-  (.arrow 𐑠 𐑙 𐑾)  -- [15] IMSCRIB | gram := 𐑠 | identity — self-imscription (Space imscribes itself through fiducial |ψ_0⟩ as self-reference)
-  (.arrow 𐑾 𐑠 𐑖)  -- [16] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Density matrix reconstruction |ρ⟩ from POVM probabilities)
-  (.arrow 𐑖 𐑾 𐑗)  -- [17] EVALF | chir := 𐑖 | evaluate-false — chirality check (Heteroskedastic 36-stream coverage incomplete at 24/144 elements)
-  (.arrow 𐑗 𐑖 𐑱)  -- [18] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse operation seeks missing 120 SIC elements)
-  (.arrow 𐑱 𐑗 𐑭)  -- [19] CLINK | fid := 𐑱 | composition — regime coherence (Composition of synthetic stream observables)
-  (.arrow 𐑭 𐑱 𐑾)  -- [20] IFIX | prot := 𐑭 | irreversible fixation — winding number (Numerical fiducial permanently recorded at data/sic_fiducial_d12.npy)
-  (.arrow 𐑾 𐑭 𐑡)  -- [21] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Composite SIC on H_7⊗H_12 with 84^2=7056 projectors)
-  (.arrow 𐑡 𐑾 𐑠)  -- [22] TANCH | top := 𐑡 | terminal object — connectivity boundary (Crystal geometry constrains all valid trajectories over SIC space)
-  (.arrow 𐑠 𐑡 𐑼)  -- [23] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-organization O₂ measurement apparatus closed on itself)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def quantum_fields_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def quantum_fields_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def quantum_fields_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def quantum_fields_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quantum_fields_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def quantum_fields_protocol : IGProtocol quantum_fields_s0 quantum_fields_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct quantum_fields_s6 quantum_fields_s6 = quantum_fields_s6 (idempotent)
+  (.seq (.arrow quantum_fields_l0 quantum_fields_s0 quantum_fields_s1) (.seq (.arrow quantum_fields_l1 quantum_fields_s1 quantum_fields_s2) (.seq (.prod (.arrow quantum_fields_l2 quantum_fields_s2 quantum_fields_s6) (.arrow quantum_fields_l2 quantum_fields_s2 quantum_fields_s6)) (.seq (.arrow quantum_fields_l6 quantum_fields_s6 quantum_fields_s6) (.seq (.arrow quantum_fields_l6 quantum_fields_s6 quantum_fields_s7) (.seq (.arrow quantum_fields_l7 quantum_fields_s7 quantum_fields_s8) (.seq (.arrow quantum_fields_l8 quantum_fields_s8 quantum_fields_s9) (.seq (.arrow quantum_fields_l9 quantum_fields_s9 quantum_fields_s10) (.seq (.arrow quantum_fields_l10 quantum_fields_s10 quantum_fields_s11) (.seq (.arrow quantum_fields_l11 quantum_fields_s11 quantum_fields_s12) (.seq (.arrow quantum_fields_l12 quantum_fields_s12 quantum_fields_s13) (.seq (.arrow quantum_fields_l13 quantum_fields_s13 quantum_fields_s14) (.seq (.arrow quantum_fields_l14 quantum_fields_s14 quantum_fields_s15) (.seq (.arrow quantum_fields_l15 quantum_fields_s15 quantum_fields_s16) (.seq (.arrow quantum_fields_l16 quantum_fields_s16 quantum_fields_s17) (.seq (.arrow quantum_fields_l17 quantum_fields_s17 quantum_fields_s18) (.seq (.arrow quantum_fields_l18 quantum_fields_s18 quantum_fields_s19) (.seq (.arrow quantum_fields_l19 quantum_fields_s19 quantum_fields_s20) (.seq (.arrow quantum_fields_l20 quantum_fields_s20 quantum_fields_s21) (.seq (.arrow quantum_fields_l21 quantum_fields_s21 quantum_fields_s22) (.arrow quantum_fields_l22 quantum_fields_s22 quantum_fields_s23)))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def quantum_fields_true_arm : IGProtocol 𐑼 𐑠 :=
+noncomputable def quantum_fields_true_arm : IGProtocol quantum_fields_s0 quantum_fields_s23 :=
   (quantum_fields_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def quantum_fields_false_arm : IGProtocol 𐑼 𐑠 :=
+noncomputable def quantum_fields_false_arm : IGProtocol quantum_fields_s0 quantum_fields_s23 :=
   (quantum_fields_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem quantum_fields_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def quantum_fields_tier : OuroboricityTier := TierFunctor.obj quantum_fields_s0
+#eval quantum_fields_tier  -- the Grammar's own verdict on its tier

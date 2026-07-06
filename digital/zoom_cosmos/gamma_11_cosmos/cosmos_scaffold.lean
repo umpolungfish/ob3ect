@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,5,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=21
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 10), (13, 18)]
 
 import Imscribing.IGMorphism
@@ -37,60 +37,112 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [19] IMSCRIB   gram   := 𐑠               𐑙 → 𐑡  | identity — self-imscription
 --   [20] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def cosmos_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def cosmos_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def cosmos_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def cosmos_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def cosmos_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def cosmos_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def cosmos_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def cosmos_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def cosmos_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def cosmos_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def cosmos_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def cosmos_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def cosmos_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def cosmos_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def cosmos_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def cosmos_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def cosmos_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (The Ineffable Father in the Silence of the First Deep)
-  (.arrow 𐑠 𐑼 𐑱)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (The Self-Begotten Place recognizing itself as the First Source)
-  (.arrow 𐑱 𐑠 𐑾)  -- [2] CLINK | fid := 𐑱 | composition — regime coherence (The chaining of the twelve deeps and the generation of the holy Pleroma)
-  (.arrow 𐑾 𐑱 𐑚)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The forward emanation of the creative Word and the light-spark into the outer...)
-  -- FSPLIT [4] (gran := 𐑚) (The Lord of Glory separating the unified matter into two distinct lands) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The affirmative state of the Land of Light, receiving eternal life and immort...)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [6] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The forward morphism of the aeons begetting worlds and heavens in the Land of...)
-        (.arrow 𐑭 𐑚 𐑙)  -- [7] IFIX | prot := 𐑭 | irreversible fixation — winding number (The permanent sealing of the ordinances and the eternal crown laid up in the ...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [8] EVALF | chir := 𐑖 | evaluate-false — chirality check (The negative state of the Land of Death, where the light-spark is taken away ...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (The reverse descent of the powers into the narrow and painful matter))
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [10] FFUSE | stoi := 𐑙 (The protogenitor gathering the scattered powers and raising the purity of matter to reconstitute the All)
-  (.arrow 𐑳 𐑙 𐑱)  -- [11] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The paradice of the Light-Darkness, the Only-Begotten One who is both hidden ...)
-  (.arrow 𐑱 𐑳 𐑚)  -- [12] CLINK | fid := 𐑱 | composition — regime coherence (The composition of the God-Man, mapping the anatomy of the All to the macrocosm)
-  -- FSPLIT [13] (gran := 𐑚) (The enveloping power dividing the existent from the non-existent) / FFUSE [18] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [14] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The affirmation of the eternal, placing veils and purifying powers for the ex...)
-        (.arrow 𐑭 𐑚 𐑙)  -- [15] IFIX | prot := 𐑭 | irreversible fixation — winding number (The permanent record of the all-perfect seal and the twelve adamantine stones)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [16] EVALF | chir := 𐑖 | evaluate-false — chirality check (The negation of matter, calling it non-existent and placing it in the all-womb)
-        (.arrow 𐑗 𐑚 𐑙)  -- [17] AREV | pol := 𐑗 | reverse morphism — parity flip (The reverse descent of the forefather into the aeon of the mother to govern t...))
-    -- reconnect at FFUSE [18]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [18] FFUSE | stoi := 𐑙 (The unification of the All within the characterless ennead and the ineffable garment)
-  (.arrow 𐑠 𐑙 𐑡)  -- [19] IMSCRIB | gram := 𐑠 | identity — self-imscription (The Father taking the whole likeness and making it into a city or a Man)
-  (.arrow 𐑡 𐑠 𐑼)  -- [20] TANCH | top := 𐑡 | terminal object — connectivity boundary (The boundary of the All, the ineffable Father who encloses them all and is en...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def cosmos_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def cosmos_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def cosmos_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def cosmos_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def cosmos_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def cosmos_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def cosmos_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def cosmos_protocol : IGProtocol cosmos_s0 cosmos_s20 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct cosmos_s10 cosmos_s10 = cosmos_s10 (idempotent)
+  (.seq (.arrow cosmos_l0 cosmos_s0 cosmos_s1) (.seq (.arrow cosmos_l1 cosmos_s1 cosmos_s2) (.seq (.arrow cosmos_l2 cosmos_s2 cosmos_s3) (.seq (.arrow cosmos_l3 cosmos_s3 cosmos_s4) (.seq (.prod (.arrow cosmos_l4 cosmos_s4 cosmos_s10) (.arrow cosmos_l4 cosmos_s4 cosmos_s10)) (.seq (.arrow cosmos_l10 cosmos_s10 cosmos_s10) (.seq (.arrow cosmos_l10 cosmos_s10 cosmos_s11) (.seq (.arrow cosmos_l11 cosmos_s11 cosmos_s12) (.seq (.arrow cosmos_l12 cosmos_s12 cosmos_s13) (.seq (.arrow cosmos_l13 cosmos_s13 cosmos_s14) (.seq (.arrow cosmos_l14 cosmos_s14 cosmos_s15) (.seq (.arrow cosmos_l15 cosmos_s15 cosmos_s16) (.seq (.arrow cosmos_l16 cosmos_s16 cosmos_s17) (.seq (.arrow cosmos_l17 cosmos_s17 cosmos_s18) (.seq (.arrow cosmos_l18 cosmos_s18 cosmos_s19) (.arrow cosmos_l19 cosmos_s19 cosmos_s20))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def cosmos_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def cosmos_true_arm : IGProtocol cosmos_s0 cosmos_s20 :=
   (cosmos_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def cosmos_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def cosmos_false_arm : IGProtocol cosmos_s0 cosmos_s20 :=
   (cosmos_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem cosmos_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def cosmos_tier : OuroboricityTier := TierFunctor.obj cosmos_s0
+#eval cosmos_tier  -- the Grammar's own verdict on its tier

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(13,4,5,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7), (12, 17)]
 
 import Imscribing.IGMorphism
@@ -40,64 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] ENGAGR    stoi   := 𐑳               𐑱 → 𐑗  | engage paradox — B-state, both arms
 --   [23] AREV      pol    := 𐑗               𐑳 → 𐑼  | reverse morphism — parity flip
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def initialize_empty_c_d_hilbert_space_7cc888_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def initialize_empty_c_d_hilbert_space_before_basis_selection_protocol : IGProtocol 𐑼 𐑗 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑱)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize empty C^12 Hilbert space before any basis or measurement structure...)
-  (.arrow 𐑱 𐑼 𐑚)  -- [1] CLINK | fid := 𐑱 | composition — regime coherence (Chain 12 primitive axes together - (Ð,Þ,Φ) + (Ħ,Σ,ɢ,ƒ,Ç) + (Ř,Γ,⊙,Ω) forming ...)
-  -- FSPLIT [2] (gran := 𐑚) (Branch 12-primitive assignment into D-family (3 values each) vs combined (T,P)-family (4,5 values)) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply Weyl-Heisenberg displacement operators to generate 144 SIC elements fro...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Verify |⟨ψᵢ|ψⱼ⟩|² = 1/13 condition holds - enter true branch for valid SIC ge...)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [5] IMSCRIB | gram := 𐑠 | identity — self-imscription (Fiducial |ψ₀⟩ recognizes itself as the measurement space's identity morphism)
-        (.arrow 𐑭 𐑚 𐑙)  -- [6] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record frame potential minimum F* = 143/169 as solved variational...)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [7] FFUSE | stoi := 𐑙 (Reconstitute full 12-dimensional space from family-partitioned branches maintaining Frobenius condition)
-  (.arrow 𐑾 𐑙 𐑳)  -- [8] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Map measurement outcomes to Crystal of Types outcome space (3³×4⁵×5⁴=17,280,000))
-  (.arrow 𐑳 𐑾 𐑗)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Criticality primitive ⊙ absorbs contradictions when system self-measures at f...)
-  (.arrow 𐑗 𐑳 𐑱)  -- [10] AREV | pol := 𐑗 | reverse morphism — parity flip (Execute inverse tomography - reconstruct density matrix ρ from 144 SIC probab...)
-  (.arrow 𐑱 𐑗 𐑚)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Compose primitive measurement results into joint classification type)
-  -- FSPLIT [12] (gran := 𐑚) (Second branch - Zauner symmetry vs Stark unit arithmetic realization) / FFUSE [17] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [13] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm arithmetic proof via Stark units in ray class fields supports SIC exi...)
-      -- F-branch (3 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [14] EVALF | chir := 𐑖 | evaluate-false — chirality check (Alternative heteroskedastic POVM (ig-pulse) fails exact SIC conditions but ap...)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [15] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference loop where measurement apparatus imscribes its own structure t...)
-        (.arrow 𐑾 𐑚 𐑙)  -- [16] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Project onto Shavian alphabet (49=7² symbols) as d=7 SIC outcome space))
-    -- reconnect at FFUSE [17]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [17] FFUSE | stoi := 𐑙 (Combine d=7 type alphabet with d=12 primitive space to form d=84 composite SIC H₇⊗H₁₂)
-  (.arrow 𐑾 𐑙 𐑡)  -- [18] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Execute 84²=7056 joint measurement space as full classification outcome set)
-  (.arrow 𐑡 𐑾 𐑭)  -- [19] TANCH | top := 𐑡 | terminal object — connectivity boundary (Terminate system within Crystal constraint manifold selecting admissible traj...)
-  (.arrow 𐑭 𐑡 𐑱)  -- [20] IFIX | prot := 𐑭 | irreversible fixation — winding number (Append-only record of machine learning confirmation with hyperspherical prior...)
-  (.arrow 𐑱 𐑭 𐑳)  -- [21] CLINK | fid := 𐑱 | composition — regime coherence (Compose all three Frobenius closures - primitive partition, measurement/analy...)
-  (.arrow 𐑳 𐑱 𐑗)  -- [22] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Hold both analytical (Zauner) and numerical (ML) confirmations simultaneously...)
-  (.arrow 𐑗 𐑳 𐑼)  -- [23] AREV | pol := 𐑗 | reverse morphism — parity flip (Final reconstruction - verify ΔS=0 informational completeness through zero re...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def initialize_empty_c_d_hilbert_space_7cc888_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def initialize_empty_c_d_hilbert_space_7cc888_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def initialize_empty_c_d_hilbert_space_7cc888_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def initialize_empty_c_d_hilbert_space_7cc888_protocol : IGProtocol initialize_empty_c_d_hilbert_space_7cc888_s0 initialize_empty_c_d_hilbert_space_7cc888_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct initialize_empty_c_d_hilbert_space_7cc888_s7 initialize_empty_c_d_hilbert_space_7cc888_s7 = initialize_empty_c_d_hilbert_space_7cc888_s7 (idempotent)
+  (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l0 initialize_empty_c_d_hilbert_space_7cc888_s0 initialize_empty_c_d_hilbert_space_7cc888_s1) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l1 initialize_empty_c_d_hilbert_space_7cc888_s1 initialize_empty_c_d_hilbert_space_7cc888_s2) (.seq (.prod (.arrow initialize_empty_c_d_hilbert_space_7cc888_l2 initialize_empty_c_d_hilbert_space_7cc888_s2 initialize_empty_c_d_hilbert_space_7cc888_s7) (.arrow initialize_empty_c_d_hilbert_space_7cc888_l2 initialize_empty_c_d_hilbert_space_7cc888_s2 initialize_empty_c_d_hilbert_space_7cc888_s7)) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l7 initialize_empty_c_d_hilbert_space_7cc888_s7 initialize_empty_c_d_hilbert_space_7cc888_s7) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l7 initialize_empty_c_d_hilbert_space_7cc888_s7 initialize_empty_c_d_hilbert_space_7cc888_s8) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l8 initialize_empty_c_d_hilbert_space_7cc888_s8 initialize_empty_c_d_hilbert_space_7cc888_s9) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l9 initialize_empty_c_d_hilbert_space_7cc888_s9 initialize_empty_c_d_hilbert_space_7cc888_s10) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l10 initialize_empty_c_d_hilbert_space_7cc888_s10 initialize_empty_c_d_hilbert_space_7cc888_s11) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l11 initialize_empty_c_d_hilbert_space_7cc888_s11 initialize_empty_c_d_hilbert_space_7cc888_s12) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l12 initialize_empty_c_d_hilbert_space_7cc888_s12 initialize_empty_c_d_hilbert_space_7cc888_s13) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l13 initialize_empty_c_d_hilbert_space_7cc888_s13 initialize_empty_c_d_hilbert_space_7cc888_s14) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l14 initialize_empty_c_d_hilbert_space_7cc888_s14 initialize_empty_c_d_hilbert_space_7cc888_s15) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l15 initialize_empty_c_d_hilbert_space_7cc888_s15 initialize_empty_c_d_hilbert_space_7cc888_s16) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l16 initialize_empty_c_d_hilbert_space_7cc888_s16 initialize_empty_c_d_hilbert_space_7cc888_s17) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l17 initialize_empty_c_d_hilbert_space_7cc888_s17 initialize_empty_c_d_hilbert_space_7cc888_s18) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l18 initialize_empty_c_d_hilbert_space_7cc888_s18 initialize_empty_c_d_hilbert_space_7cc888_s19) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l19 initialize_empty_c_d_hilbert_space_7cc888_s19 initialize_empty_c_d_hilbert_space_7cc888_s20) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l20 initialize_empty_c_d_hilbert_space_7cc888_s20 initialize_empty_c_d_hilbert_space_7cc888_s21) (.seq (.arrow initialize_empty_c_d_hilbert_space_7cc888_l21 initialize_empty_c_d_hilbert_space_7cc888_s21 initialize_empty_c_d_hilbert_space_7cc888_s22) (.arrow initialize_empty_c_d_hilbert_space_7cc888_l22 initialize_empty_c_d_hilbert_space_7cc888_s22 initialize_empty_c_d_hilbert_space_7cc888_s23))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def initialize_empty_c_d_hilbert_space_before_basis_selection_true_arm : IGProtocol 𐑼 𐑗 :=
-  (initialize_empty_c_d_hilbert_space_before_basis_selection_protocol).restrictToEVALT
+noncomputable def initialize_empty_c_d_hilbert_space_7cc888_true_arm : IGProtocol initialize_empty_c_d_hilbert_space_7cc888_s0 initialize_empty_c_d_hilbert_space_7cc888_s23 :=
+  (initialize_empty_c_d_hilbert_space_7cc888_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def initialize_empty_c_d_hilbert_space_before_basis_selection_false_arm : IGProtocol 𐑼 𐑗 :=
-  (initialize_empty_c_d_hilbert_space_before_basis_selection_protocol).restrictToEVALF
+noncomputable def initialize_empty_c_d_hilbert_space_7cc888_false_arm : IGProtocol initialize_empty_c_d_hilbert_space_7cc888_s0 initialize_empty_c_d_hilbert_space_7cc888_s23 :=
+  (initialize_empty_c_d_hilbert_space_7cc888_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem initialize_empty_c_d_hilbert_space_before_basis_selection_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def initialize_empty_c_d_hilbert_space_7cc888_tier : OuroboricityTier := TierFunctor.obj initialize_empty_c_d_hilbert_space_7cc888_s0
+#eval initialize_empty_c_d_hilbert_space_7cc888_tier  -- the Grammar's own verdict on its tier

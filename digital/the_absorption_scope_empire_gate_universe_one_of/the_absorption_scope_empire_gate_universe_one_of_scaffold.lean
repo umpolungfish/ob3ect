@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,4,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(8, 11), (3, 13)]
 
 import Imscribing.IGMorphism
@@ -118,7 +118,7 @@ noncomputable def the_absorption_scope_empire_gate_68de7f_false_arm : IGProtocol
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_absorption_scope_empire_gate_68de7f_tier : OuroboricityTier := TierFunctor.obj the_absorption_scope_empire_gate_68de7f_s0
 #eval the_absorption_scope_empire_gate_68de7f_tier  -- the Grammar's own verdict on its tier
 

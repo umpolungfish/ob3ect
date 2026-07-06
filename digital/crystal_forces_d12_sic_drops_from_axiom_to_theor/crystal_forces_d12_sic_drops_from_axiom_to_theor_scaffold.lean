@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,4,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=21
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(7, 10), (12, 15)]
 
 import Imscribing.IGMorphism
@@ -139,6 +139,6 @@ noncomputable def crystal_forces_d12_sic_drops_from_axiom_e94675_true_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def crystal_forces_d12_sic_drops_from_axiom_e94675_tier : OuroboricityTier := TierFunctor.obj crystal_forces_d12_sic_drops_from_axiom_e94675_s0
 #eval crystal_forces_d12_sic_drops_from_axiom_e94675_tier  -- the Grammar's own verdict on its tier

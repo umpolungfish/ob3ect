@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(11,4,5,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=22
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 9), (13, 18)]
 
 import Imscribing.IGMorphism
@@ -148,6 +148,6 @@ noncomputable def a_candidate_algebraic_relation_found_by_8d4c77_false_arm : IGP
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def a_candidate_algebraic_relation_found_by_8d4c77_tier : OuroboricityTier := TierFunctor.obj a_candidate_algebraic_relation_found_by_8d4c77_s0
 #eval a_candidate_algebraic_relation_found_by_8d4c77_tier  -- the Grammar's own verdict on its tier

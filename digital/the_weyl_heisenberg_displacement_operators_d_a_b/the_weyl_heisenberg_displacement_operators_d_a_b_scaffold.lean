@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,5,4,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=22
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 3), (8, 11)]
 
 import Imscribing.IGMorphism
@@ -144,6 +144,6 @@ noncomputable def the_weyl_heisenberg_displacement_4e4386_true_arm : IGProtocol 
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_weyl_heisenberg_displacement_4e4386_tier : OuroboricityTier := TierFunctor.obj the_weyl_heisenberg_displacement_4e4386_s0
 #eval the_weyl_heisenberg_displacement_4e4386_tier  -- the Grammar's own verdict on its tier

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(14,5,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=25
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 6), (10, 12)]
 
 import Imscribing.IGMorphism
@@ -41,64 +41,128 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [23] TANCH     top    := 𐑡               𐑙 → 𐑠  | terminal object — connectivity boundary
 --   [24] IMSCRIB   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def atoms_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atoms_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atoms_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atoms_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atoms_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atoms_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def atoms_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def atoms_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def atoms_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def atoms_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def atoms_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def atoms_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def atoms_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def atoms_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def atoms_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def atoms_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def atoms_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def atoms_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def atoms_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def atoms_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def atoms_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def atoms_s24 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def atoms_protocol : IGProtocol 𐑼 𐑠 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of empty 12-dimensional primitive space ℂ¹² before classification begins)
-  -- FSPLIT [1] (gran := 𐑚) (Branch 12 primitives into three families D(3³), T(4⁵), P(5⁴) with counts (3,5,4) and value counts (3,4,5)) / FFUSE [6] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply Weyl-Heisenberg displacement operators to generate SIC elements from fi...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Verify frame potential achieves minimum F*=143/169 confirming SIC geometry in...)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (Fiducial vector |ψ₀⟩ recognizes itself as measurement space identity in T-arm)
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (Chain primitive observables into joint measurement in T-arm)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [6]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [6] FFUSE | stoi := 𐑙 (Reconstitute full 144-element SIC from D/T/P family contributions in T-arm)
-  (.arrow 𐑗 𐑙 𐑳)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (Reconstruct density matrix ρ from SIC probabilities in T-arm)
-  (.arrow 𐑳 𐑗 𐑱)  -- [8] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Activate criticality primitive ⊙ as dialetheia gate preventing logical explos...)
-  (.arrow 𐑱 𐑳 𐑚)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (Compose measurement outcomes into Crystal-valid joint assignment in T-arm)
-  -- FSPLIT [10] (gran := 𐑚) (Create alternative branch for non-SIC POVM elements (ig-pulse heteroskedastic case)) / FFUSE [12] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [11] EVALF | chir := 𐑖 | evaluate-false — chirality check (Evaluate as non-uniform overlaps failing SIC condition in F-arm))
-    -- reconnect at FFUSE [12]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [12] FFUSE | stoi := 𐑙 (Both arms converge to unified measurement apparatus with paraconsistent closure)
-  (.arrow 𐑱 𐑙 𐑠)  -- [13] CLINK | fid := 𐑱 | composition — regime coherence (Compose classical Crystal outcomes with quantum SIC measurement space)
-  (.arrow 𐑠 𐑱 𐑭)  -- [14] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference loop where apparatus measures its own structural type)
-  (.arrow 𐑭 𐑠 𐑾)  -- [15] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record exact fiducial amplitude vector components)
-  (.arrow 𐑾 𐑭 𐑱)  -- [16] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Generate complete Weyl-Heisenberg orbit of 144 elements)
-  (.arrow 𐑱 𐑾 𐑳)  -- [17] CLINK | fid := 𐑱 | composition — regime coherence (Connect measurement streams to primitive axes mapping)
-  (.arrow 𐑳 𐑱 𐑗)  -- [18] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Maintain paraconsistent boundary between measurement and measured)
-  (.arrow 𐑗 𐑳 𐑾)  -- [19] AREV | pol := 𐑗 | reverse morphism — parity flip (Enable reconstruction of any ρ from 144 SIC probabilities)
-  (.arrow 𐑾 𐑗 ⊙)  -- [20] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Propagate measurement capability to full ig-pulse apparatus)
-  (.arrow ⊙ 𐑾 𐑙)  -- [21] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm 24/144 SIC element coverage achieved by physical apparatus)
-  (.arrow 𐑙 ⊙ 𐑡)  -- [22] FFUSE | stoi := 𐑙 | fuse μ — assembly mode (Final fusion of all three Frobenius closures: primitive partition, exact/hete...)
-  (.arrow 𐑡 𐑙 𐑠)  -- [23] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal entire system within Crystal of Types constraint manifold)
-  (.arrow 𐑠 𐑡 𐑼)  -- [24] IMSCRIB | gram := 𐑠 | identity — self-imscription (Close self-referential loop with apparatus measuring its own structural class...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def atoms_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atoms_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def atoms_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def atoms_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def atoms_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def atoms_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atoms_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atoms_l24 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def atoms_protocol : IGProtocol atoms_s0 atoms_s24 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct atoms_s6 atoms_s6 = atoms_s6 (idempotent)
+  (.seq (.arrow atoms_l0 atoms_s0 atoms_s1) (.seq (.prod (.arrow atoms_l1 atoms_s1 atoms_s6) (.arrow atoms_l1 atoms_s1 atoms_s6)) (.seq (.arrow atoms_l6 atoms_s6 atoms_s6) (.seq (.arrow atoms_l6 atoms_s6 atoms_s7) (.seq (.arrow atoms_l7 atoms_s7 atoms_s8) (.seq (.arrow atoms_l8 atoms_s8 atoms_s9) (.seq (.arrow atoms_l9 atoms_s9 atoms_s10) (.seq (.arrow atoms_l10 atoms_s10 atoms_s11) (.seq (.arrow atoms_l11 atoms_s11 atoms_s12) (.seq (.arrow atoms_l12 atoms_s12 atoms_s13) (.seq (.arrow atoms_l13 atoms_s13 atoms_s14) (.seq (.arrow atoms_l14 atoms_s14 atoms_s15) (.seq (.arrow atoms_l15 atoms_s15 atoms_s16) (.seq (.arrow atoms_l16 atoms_s16 atoms_s17) (.seq (.arrow atoms_l17 atoms_s17 atoms_s18) (.seq (.arrow atoms_l18 atoms_s18 atoms_s19) (.seq (.arrow atoms_l19 atoms_s19 atoms_s20) (.seq (.arrow atoms_l20 atoms_s20 atoms_s21) (.seq (.arrow atoms_l21 atoms_s21 atoms_s22) (.seq (.arrow atoms_l22 atoms_s22 atoms_s23) (.arrow atoms_l23 atoms_s23 atoms_s24)))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def atoms_true_arm : IGProtocol 𐑼 𐑠 :=
+noncomputable def atoms_true_arm : IGProtocol atoms_s0 atoms_s24 :=
   (atoms_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def atoms_false_arm : IGProtocol 𐑼 𐑠 :=
+noncomputable def atoms_false_arm : IGProtocol atoms_s0 atoms_s24 :=
   (atoms_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem atoms_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def atoms_tier : OuroboricityTier := TierFunctor.obj atoms_s0
+#eval atoms_tier  -- the Grammar's own verdict on its tier

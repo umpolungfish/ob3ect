@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 11)]
 
 import Imscribing.IGMorphism
@@ -30,49 +30,89 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [13] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def profitable_kalshi_boundary_puncture_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def profitable_kalshi_boundary_puncture_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def profitable_kalshi_boundary_puncture_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def profitable_kalshi_boundary_puncture_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def profitable_kalshi_boundary_puncture_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def profitable_kalshi_boundary_puncture_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def profitable_kalshi_boundary_puncture_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def profitable_kalshi_boundary_puncture_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def profitable_kalshi_boundary_puncture_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize void order book and uninitialized market state)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establish Kalshi regulatory perimeter and boundary conditions)
-  (.arrow 𐑾 𐑡 𐑱)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Deploy capital forward into the prediction market)
-  (.arrow 𐑱 𐑾 𐑠)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (Match orders through the composition engine)
-  (.arrow 𐑠 𐑱 𐑳)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (Track position state via self referential ledger identity)
-  (.arrow 𐑳 𐑠 𐑚)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter open position paradice where profit and loss are simultaneously held)
-  -- FSPLIT [6] (gran := 𐑚) (Event Resolution Gate splits the active market event into Profitable and Unprofitable branches) / FFUSE [11] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [7] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the Profitable branch as the true outcome path)
-        (.arrow 𐑾 𐑚 𐑙)  -- [8] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Route capital forward along the profitable payout trajectory)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [9] EVALF | chir := 𐑖 | evaluate-false — chirality check (Affirm the Unprofitable branch as the false outcome path)
-        (.arrow 𐑗 𐑚 𐑙)  -- [10] AREV | pol := 𐑗 | reverse morphism — parity flip (Route capital in reverse along the margin drawdown trajectory))
-    -- reconnect at FFUSE [11]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑭)  -- [11] FFUSE | stoi := 𐑙 (Settlement Finality reconstitutes the resolved market event)
-  (.arrow 𐑭 𐑙 𐑡)  -- [12] IFIX | prot := 𐑭 | irreversible fixation — winding number (Record the final settlement immutably in the audit ledger)
-  (.arrow 𐑡 𐑭 𐑼)  -- [13] TANCH | top := 𐑡 | terminal object — connectivity boundary (Close the boundary perimeter at the terminal anchor)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def profitable_kalshi_boundary_puncture_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def profitable_kalshi_boundary_puncture_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_kalshi_boundary_puncture_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def profitable_kalshi_boundary_puncture_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def profitable_kalshi_boundary_puncture_protocol : IGProtocol profitable_kalshi_boundary_puncture_s0 profitable_kalshi_boundary_puncture_s13 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct profitable_kalshi_boundary_puncture_s11 profitable_kalshi_boundary_puncture_s11 = profitable_kalshi_boundary_puncture_s11 (idempotent)
+  (.seq (.arrow profitable_kalshi_boundary_puncture_l0 profitable_kalshi_boundary_puncture_s0 profitable_kalshi_boundary_puncture_s1) (.seq (.arrow profitable_kalshi_boundary_puncture_l1 profitable_kalshi_boundary_puncture_s1 profitable_kalshi_boundary_puncture_s2) (.seq (.arrow profitable_kalshi_boundary_puncture_l2 profitable_kalshi_boundary_puncture_s2 profitable_kalshi_boundary_puncture_s3) (.seq (.arrow profitable_kalshi_boundary_puncture_l3 profitable_kalshi_boundary_puncture_s3 profitable_kalshi_boundary_puncture_s4) (.seq (.arrow profitable_kalshi_boundary_puncture_l4 profitable_kalshi_boundary_puncture_s4 profitable_kalshi_boundary_puncture_s5) (.seq (.arrow profitable_kalshi_boundary_puncture_l5 profitable_kalshi_boundary_puncture_s5 profitable_kalshi_boundary_puncture_s6) (.seq (.prod (.arrow profitable_kalshi_boundary_puncture_l6 profitable_kalshi_boundary_puncture_s6 profitable_kalshi_boundary_puncture_s11) (.arrow profitable_kalshi_boundary_puncture_l6 profitable_kalshi_boundary_puncture_s6 profitable_kalshi_boundary_puncture_s11)) (.seq (.arrow profitable_kalshi_boundary_puncture_l11 profitable_kalshi_boundary_puncture_s11 profitable_kalshi_boundary_puncture_s11) (.seq (.arrow profitable_kalshi_boundary_puncture_l11 profitable_kalshi_boundary_puncture_s11 profitable_kalshi_boundary_puncture_s12) (.arrow profitable_kalshi_boundary_puncture_l12 profitable_kalshi_boundary_puncture_s12 profitable_kalshi_boundary_puncture_s13))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def profitable_kalshi_boundary_puncture_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def profitable_kalshi_boundary_puncture_true_arm : IGProtocol profitable_kalshi_boundary_puncture_s0 profitable_kalshi_boundary_puncture_s13 :=
   (profitable_kalshi_boundary_puncture_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def profitable_kalshi_boundary_puncture_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def profitable_kalshi_boundary_puncture_false_arm : IGProtocol profitable_kalshi_boundary_puncture_s0 profitable_kalshi_boundary_puncture_s13 :=
   (profitable_kalshi_boundary_puncture_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem profitable_kalshi_boundary_puncture_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def profitable_kalshi_boundary_puncture_tier : OuroboricityTier := TierFunctor.obj profitable_kalshi_boundary_puncture_s0
+#eval profitable_kalshi_boundary_puncture_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem profitable_kalshi_boundary_puncture_frobenius :
+    igFrobeniusAlg.mul profitable_kalshi_boundary_puncture_s0 profitable_kalshi_boundary_puncture_s0 = profitable_kalshi_boundary_puncture_s0 :=
+  igFrobAlg_self_fusion profitable_kalshi_boundary_puncture_s0

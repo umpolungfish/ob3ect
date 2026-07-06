@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(4,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=10
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 6)]
 
 import Imscribing.IGMorphism
@@ -26,43 +26,73 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] IFIX      prot   := 𐑭               𐑳 → 𐑠  | irreversible fixation — winding number
 --   [9] IMSCRIB   gram   := 𐑠               𐑭 → 𐑼  | identity — self-imscription
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def a_self_verifying_betting_ob3ect_that_6cd129_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def a_self_verifying_betting_ob3ect_that_6cd129_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def a_self_verifying_betting_ob3ect_that_implements_the_dialetheic_bootstrap_structural_cycle_for_wager_management_the_ob3ect_verifies_id_across_bet_placement_outcome_evaluation_profit_loss_recording_treating_each_betting_cycle_as_an_imasm_arrangement_imscrib_self_modeling_the_betting_system_evalt_evaluate_win_scenario_fsplit_split_risk_across_outcomes_evalf_evaluate_loss_scenario_ffuse_fuse_win_loss_into_net_result_engagr_hold_dialetheic_paradox_both_win_and_loss_are_structurally_present_ifix_record_permanent_outcome_imscrib_return_to_self_modeling_uses_belnap_four_logic_for_outcome_states_and_frobenius_closure_to_guarantee_the_betting_cycle_is_structurally_closed_no_net_loss_by_construction_because_loss_is_integrated_into_the_cycle_rather_than_being_a_terminal_state_protocol : IGProtocol 𐑼 𐑠 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (initialize betting system with unplaced wager)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (model current system state in self-referential ledger)
-  (.arrow 𐑾 𐑠 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (commit wager to active state)
-  -- FSPLIT [3] (gran := 𐑚) (bifurcate into win/loss outcome branches) / FFUSE [6] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (affirm win scenario in T-branch)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [5] EVALF | chir := 𐑖 | evaluate-false — chirality check (negate loss scenario in F-branch))
-    -- reconnect at FFUSE [6]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [6] FFUSE | stoi := 𐑙 (synthesize net result from both branches)
-  (.arrow 𐑳 𐑙 𐑭)  -- [7] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (hold profit/loss paradox in B-state)
-  (.arrow 𐑭 𐑳 𐑠)  -- [8] IFIX | prot := 𐑭 | irreversible fixation — winding number (permanently record cycle outcome)
-  (.arrow 𐑠 𐑭 𐑼)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (update self-model for next cycle)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def a_self_verifying_betting_ob3ect_that_6cd129_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def a_self_verifying_betting_ob3ect_that_6cd129_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def a_self_verifying_betting_ob3ect_that_6cd129_protocol : IGProtocol a_self_verifying_betting_ob3ect_that_6cd129_s0 a_self_verifying_betting_ob3ect_that_6cd129_s9 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct a_self_verifying_betting_ob3ect_that_6cd129_s6 a_self_verifying_betting_ob3ect_that_6cd129_s6 = a_self_verifying_betting_ob3ect_that_6cd129_s6 (idempotent)
+  (.seq (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l0 a_self_verifying_betting_ob3ect_that_6cd129_s0 a_self_verifying_betting_ob3ect_that_6cd129_s1) (.seq (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l1 a_self_verifying_betting_ob3ect_that_6cd129_s1 a_self_verifying_betting_ob3ect_that_6cd129_s2) (.seq (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l2 a_self_verifying_betting_ob3ect_that_6cd129_s2 a_self_verifying_betting_ob3ect_that_6cd129_s3) (.seq (.prod (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l3 a_self_verifying_betting_ob3ect_that_6cd129_s3 a_self_verifying_betting_ob3ect_that_6cd129_s6) (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l3 a_self_verifying_betting_ob3ect_that_6cd129_s3 a_self_verifying_betting_ob3ect_that_6cd129_s6)) (.seq (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l6 a_self_verifying_betting_ob3ect_that_6cd129_s6 a_self_verifying_betting_ob3ect_that_6cd129_s6) (.seq (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l6 a_self_verifying_betting_ob3ect_that_6cd129_s6 a_self_verifying_betting_ob3ect_that_6cd129_s7) (.seq (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l7 a_self_verifying_betting_ob3ect_that_6cd129_s7 a_self_verifying_betting_ob3ect_that_6cd129_s8) (.arrow a_self_verifying_betting_ob3ect_that_6cd129_l8 a_self_verifying_betting_ob3ect_that_6cd129_s8 a_self_verifying_betting_ob3ect_that_6cd129_s9))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def a_self_verifying_betting_ob3ect_that_implements_the_dialetheic_bootstrap_structural_cycle_for_wager_management_the_ob3ect_verifies_id_across_bet_placement_outcome_evaluation_profit_loss_recording_treating_each_betting_cycle_as_an_imasm_arrangement_imscrib_self_modeling_the_betting_system_evalt_evaluate_win_scenario_fsplit_split_risk_across_outcomes_evalf_evaluate_loss_scenario_ffuse_fuse_win_loss_into_net_result_engagr_hold_dialetheic_paradox_both_win_and_loss_are_structurally_present_ifix_record_permanent_outcome_imscrib_return_to_self_modeling_uses_belnap_four_logic_for_outcome_states_and_frobenius_closure_to_guarantee_the_betting_cycle_is_structurally_closed_no_net_loss_by_construction_because_loss_is_integrated_into_the_cycle_rather_than_being_a_terminal_state_true_arm : IGProtocol 𐑼 𐑠 :=
-  (a_self_verifying_betting_ob3ect_that_implements_the_dialetheic_bootstrap_structural_cycle_for_wager_management_the_ob3ect_verifies_id_across_bet_placement_outcome_evaluation_profit_loss_recording_treating_each_betting_cycle_as_an_imasm_arrangement_imscrib_self_modeling_the_betting_system_evalt_evaluate_win_scenario_fsplit_split_risk_across_outcomes_evalf_evaluate_loss_scenario_ffuse_fuse_win_loss_into_net_result_engagr_hold_dialetheic_paradox_both_win_and_loss_are_structurally_present_ifix_record_permanent_outcome_imscrib_return_to_self_modeling_uses_belnap_four_logic_for_outcome_states_and_frobenius_closure_to_guarantee_the_betting_cycle_is_structurally_closed_no_net_loss_by_construction_because_loss_is_integrated_into_the_cycle_rather_than_being_a_terminal_state_protocol).restrictToEVALT
+noncomputable def a_self_verifying_betting_ob3ect_that_6cd129_true_arm : IGProtocol a_self_verifying_betting_ob3ect_that_6cd129_s0 a_self_verifying_betting_ob3ect_that_6cd129_s9 :=
+  (a_self_verifying_betting_ob3ect_that_6cd129_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def a_self_verifying_betting_ob3ect_that_implements_the_dialetheic_bootstrap_structural_cycle_for_wager_management_the_ob3ect_verifies_id_across_bet_placement_outcome_evaluation_profit_loss_recording_treating_each_betting_cycle_as_an_imasm_arrangement_imscrib_self_modeling_the_betting_system_evalt_evaluate_win_scenario_fsplit_split_risk_across_outcomes_evalf_evaluate_loss_scenario_ffuse_fuse_win_loss_into_net_result_engagr_hold_dialetheic_paradox_both_win_and_loss_are_structurally_present_ifix_record_permanent_outcome_imscrib_return_to_self_modeling_uses_belnap_four_logic_for_outcome_states_and_frobenius_closure_to_guarantee_the_betting_cycle_is_structurally_closed_no_net_loss_by_construction_because_loss_is_integrated_into_the_cycle_rather_than_being_a_terminal_state_false_arm : IGProtocol 𐑼 𐑠 :=
-  (a_self_verifying_betting_ob3ect_that_implements_the_dialetheic_bootstrap_structural_cycle_for_wager_management_the_ob3ect_verifies_id_across_bet_placement_outcome_evaluation_profit_loss_recording_treating_each_betting_cycle_as_an_imasm_arrangement_imscrib_self_modeling_the_betting_system_evalt_evaluate_win_scenario_fsplit_split_risk_across_outcomes_evalf_evaluate_loss_scenario_ffuse_fuse_win_loss_into_net_result_engagr_hold_dialetheic_paradox_both_win_and_loss_are_structurally_present_ifix_record_permanent_outcome_imscrib_return_to_self_modeling_uses_belnap_four_logic_for_outcome_states_and_frobenius_closure_to_guarantee_the_betting_cycle_is_structurally_closed_no_net_loss_by_construction_because_loss_is_integrated_into_the_cycle_rather_than_being_a_terminal_state_protocol).restrictToEVALF
+noncomputable def a_self_verifying_betting_ob3ect_that_6cd129_false_arm : IGProtocol a_self_verifying_betting_ob3ect_that_6cd129_s0 a_self_verifying_betting_ob3ect_that_6cd129_s9 :=
+  (a_self_verifying_betting_ob3ect_that_6cd129_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem a_self_verifying_betting_ob3ect_that_implements_the_dialetheic_bootstrap_structural_cycle_for_wager_management_the_ob3ect_verifies_id_across_bet_placement_outcome_evaluation_profit_loss_recording_treating_each_betting_cycle_as_an_imasm_arrangement_imscrib_self_modeling_the_betting_system_evalt_evaluate_win_scenario_fsplit_split_risk_across_outcomes_evalf_evaluate_loss_scenario_ffuse_fuse_win_loss_into_net_result_engagr_hold_dialetheic_paradox_both_win_and_loss_are_structurally_present_ifix_record_permanent_outcome_imscrib_return_to_self_modeling_uses_belnap_four_logic_for_outcome_states_and_frobenius_closure_to_guarantee_the_betting_cycle_is_structurally_closed_no_net_loss_by_construction_because_loss_is_integrated_into_the_cycle_rather_than_being_a_terminal_state_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def a_self_verifying_betting_ob3ect_that_6cd129_tier : OuroboricityTier := TierFunctor.obj a_self_verifying_betting_ob3ect_that_6cd129_s0
+#eval a_self_verifying_betting_ob3ect_that_6cd129_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem a_self_verifying_betting_ob3ect_that_6cd129_frobenius :
+    igFrobeniusAlg.mul a_self_verifying_betting_ob3ect_that_6cd129_s0 a_self_verifying_betting_ob3ect_that_6cd129_s0 = a_self_verifying_betting_ob3ect_that_6cd129_s0 :=
+  igFrobAlg_self_fusion a_self_verifying_betting_ob3ect_that_6cd129_s0

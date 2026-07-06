@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 5)]
 
 import Imscribing.IGMorphism
@@ -83,32 +83,8 @@ private def ideal_symbolic_imasm_system_l11 : Imscription :=
 -- ── Main IGProtocol term ────────────────────────────────────
 noncomputable def ideal_symbolic_imasm_system_protocol : IGProtocol ideal_symbolic_imasm_system_s0 ideal_symbolic_imasm_system_s11 :=
   .withGram Grammar.measure <|
-  .seq
-    (.arrow ideal_symbolic_imasm_system_l0 ideal_symbolic_imasm_system_s0 ideal_symbolic_imasm_system_s1)
-    (.seq
-      (.prod
-        (.arrow ideal_symbolic_imasm_system_l1 ideal_symbolic_imasm_system_s1 ideal_symbolic_imasm_system_s5)  -- T-arm (δ)
-        (.arrow ideal_symbolic_imasm_system_l1 ideal_symbolic_imasm_system_s1 ideal_symbolic_imasm_system_s5)) -- F-arm (μ, Dual-Link mirror)
-      (.seq
-        (.arrow ideal_symbolic_imasm_system_l5 ideal_symbolic_imasm_system_s5 ideal_symbolic_imasm_system_s5)  -- FFUSE closure
-        (.seq
-          (.arrow ideal_symbolic_imasm_system_l5 ideal_symbolic_imasm_system_s5 ideal_symbolic_imasm_system_s6)
-          (.seq
-            (.arrow ideal_symbolic_imasm_system_l6 ideal_symbolic_imasm_system_s6 ideal_symbolic_imasm_system_s7)
-            (.seq
-              (.arrow ideal_symbolic_imasm_system_l7 ideal_symbolic_imasm_system_s7 ideal_symbolic_imasm_system_s8)
-              (.seq
-                (.arrow ideal_symbolic_imasm_system_l8 ideal_symbolic_imasm_system_s8 ideal_symbolic_imasm_system_s9)
-                (.seq
-                  (.arrow ideal_symbolic_imasm_system_l9 ideal_symbolic_imasm_system_s9 ideal_symbolic_imasm_system_s10)
-                  (.arrow ideal_symbolic_imasm_system_l10 ideal_symbolic_imasm_system_s10 ideal_symbolic_imasm_system_s11)
-                )
-              )
-            )
-          )
-        )
-      )   -- close continuation .seq
-    )   -- close inner .seq
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct ideal_symbolic_imasm_system_s5 ideal_symbolic_imasm_system_s5 = ideal_symbolic_imasm_system_s5 (idempotent)
+  (.seq (.arrow ideal_symbolic_imasm_system_l0 ideal_symbolic_imasm_system_s0 ideal_symbolic_imasm_system_s1) (.seq (.prod (.arrow ideal_symbolic_imasm_system_l1 ideal_symbolic_imasm_system_s1 ideal_symbolic_imasm_system_s5) (.arrow ideal_symbolic_imasm_system_l1 ideal_symbolic_imasm_system_s1 ideal_symbolic_imasm_system_s5)) (.seq (.arrow ideal_symbolic_imasm_system_l5 ideal_symbolic_imasm_system_s5 ideal_symbolic_imasm_system_s5) (.seq (.arrow ideal_symbolic_imasm_system_l5 ideal_symbolic_imasm_system_s5 ideal_symbolic_imasm_system_s6) (.seq (.arrow ideal_symbolic_imasm_system_l6 ideal_symbolic_imasm_system_s6 ideal_symbolic_imasm_system_s7) (.seq (.arrow ideal_symbolic_imasm_system_l7 ideal_symbolic_imasm_system_s7 ideal_symbolic_imasm_system_s8) (.seq (.arrow ideal_symbolic_imasm_system_l8 ideal_symbolic_imasm_system_s8 ideal_symbolic_imasm_system_s9) (.seq (.arrow ideal_symbolic_imasm_system_l9 ideal_symbolic_imasm_system_s9 ideal_symbolic_imasm_system_s10) (.arrow ideal_symbolic_imasm_system_l10 ideal_symbolic_imasm_system_s10 ideal_symbolic_imasm_system_s11)))))))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
@@ -122,7 +98,11 @@ noncomputable def ideal_symbolic_imasm_system_false_arm : IGProtocol ideal_symbo
 
 -- ── Verification theorems ─────────────────────────────────────
 
-theorem ideal_symbolic_imasm_system_tier : TierFunctor.obj ideal_symbolic_imasm_system_s0 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def ideal_symbolic_imasm_system_tier : OuroboricityTier := TierFunctor.obj ideal_symbolic_imasm_system_s0
+#eval ideal_symbolic_imasm_system_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem ideal_symbolic_imasm_system_frobenius :
+    igFrobeniusAlg.mul ideal_symbolic_imasm_system_s0 ideal_symbolic_imasm_system_s0 = ideal_symbolic_imasm_system_s0 :=
+  igFrobAlg_self_fusion ideal_symbolic_imasm_system_s0

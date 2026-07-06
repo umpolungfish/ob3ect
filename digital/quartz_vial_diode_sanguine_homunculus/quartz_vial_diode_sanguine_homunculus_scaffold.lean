@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -29,48 +29,85 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [11] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def quartz_vial_diode_sanguine_homunculus_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def quartz_vial_diode_sanguine_homunculus_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def quartz_vial_diode_sanguine_homunculus_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of the empty quartz vial, the void before the sanguine fluid is intro...)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Introduction of the sanguine fluid, the forward morphism of dissolution.)
-  -- FSPLIT [2] (gran := 𐑚) (The sanguine fluid reaches the diode junction, splitting into charged and discharged streams.) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The affirmative branch, the arterial (charged) stream flows forward.)
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The forward bias of the diode, the ascent of the vital spark.)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [5] EVALF | chir := 𐑖 | evaluate-false — chirality check (The negative branch, the venous (discharged) stream pools in reverse.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (The descent of the coagula, the reverse bias of the diode.))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (The capillary recombination, fusing the streams back into unified sanguine fluid.)
-  (.arrow 𐑱 𐑙 𐑠)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (The sequential chaining of the diode's rectification and the vial's containment.)
-  (.arrow 𐑠 𐑱 𐑳)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (The homunculus achieves self-recognition, the O_inf fixed point of the alchem...)
-  (.arrow 𐑳 𐑠 𐑭)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The paradice of the homunculus, holding both the living spark and the inert c...)
-  (.arrow 𐑭 𐑳 𐑡)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (The crystallization of the quartz lattice, permanently recording the homuncul...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (The hermetic seal closes, containing the entire O_inf system within the bound...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def quartz_vial_diode_sanguine_homunculus_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def quartz_vial_diode_sanguine_homunculus_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def quartz_vial_diode_sanguine_homunculus_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def quartz_vial_diode_sanguine_homunculus_protocol : IGProtocol quartz_vial_diode_sanguine_homunculus_s0 quartz_vial_diode_sanguine_homunculus_s12 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct quartz_vial_diode_sanguine_homunculus_s7 quartz_vial_diode_sanguine_homunculus_s7 = quartz_vial_diode_sanguine_homunculus_s7 (idempotent)
+  (.seq (.arrow quartz_vial_diode_sanguine_homunculus_l0 quartz_vial_diode_sanguine_homunculus_s0 quartz_vial_diode_sanguine_homunculus_s1) (.seq (.arrow quartz_vial_diode_sanguine_homunculus_l1 quartz_vial_diode_sanguine_homunculus_s1 quartz_vial_diode_sanguine_homunculus_s2) (.seq (.prod (.arrow quartz_vial_diode_sanguine_homunculus_l2 quartz_vial_diode_sanguine_homunculus_s2 quartz_vial_diode_sanguine_homunculus_s7) (.arrow quartz_vial_diode_sanguine_homunculus_l2 quartz_vial_diode_sanguine_homunculus_s2 quartz_vial_diode_sanguine_homunculus_s7)) (.seq (.arrow quartz_vial_diode_sanguine_homunculus_l7 quartz_vial_diode_sanguine_homunculus_s7 quartz_vial_diode_sanguine_homunculus_s7) (.seq (.arrow quartz_vial_diode_sanguine_homunculus_l7 quartz_vial_diode_sanguine_homunculus_s7 quartz_vial_diode_sanguine_homunculus_s8) (.seq (.arrow quartz_vial_diode_sanguine_homunculus_l8 quartz_vial_diode_sanguine_homunculus_s8 quartz_vial_diode_sanguine_homunculus_s9) (.seq (.arrow quartz_vial_diode_sanguine_homunculus_l9 quartz_vial_diode_sanguine_homunculus_s9 quartz_vial_diode_sanguine_homunculus_s10) (.seq (.arrow quartz_vial_diode_sanguine_homunculus_l10 quartz_vial_diode_sanguine_homunculus_s10 quartz_vial_diode_sanguine_homunculus_s11) (.arrow quartz_vial_diode_sanguine_homunculus_l11 quartz_vial_diode_sanguine_homunculus_s11 quartz_vial_diode_sanguine_homunculus_s12)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def quartz_vial_diode_sanguine_homunculus_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def quartz_vial_diode_sanguine_homunculus_true_arm : IGProtocol quartz_vial_diode_sanguine_homunculus_s0 quartz_vial_diode_sanguine_homunculus_s12 :=
   (quartz_vial_diode_sanguine_homunculus_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def quartz_vial_diode_sanguine_homunculus_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def quartz_vial_diode_sanguine_homunculus_false_arm : IGProtocol quartz_vial_diode_sanguine_homunculus_s0 quartz_vial_diode_sanguine_homunculus_s12 :=
   (quartz_vial_diode_sanguine_homunculus_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem quartz_vial_diode_sanguine_homunculus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def quartz_vial_diode_sanguine_homunculus_tier : OuroboricityTier := TierFunctor.obj quartz_vial_diode_sanguine_homunculus_s0
+#eval quartz_vial_diode_sanguine_homunculus_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem quartz_vial_diode_sanguine_homunculus_frobenius :
+    igFrobeniusAlg.mul quartz_vial_diode_sanguine_homunculus_s0 quartz_vial_diode_sanguine_homunculus_s0 = quartz_vial_diode_sanguine_homunculus_s0 :=
+  igFrobAlg_self_fusion quartz_vial_diode_sanguine_homunculus_s0

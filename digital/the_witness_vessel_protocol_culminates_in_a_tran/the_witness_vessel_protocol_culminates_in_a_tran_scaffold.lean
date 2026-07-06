@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,6,4,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=21
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 5), (8, 11), (14, 16)]
 
 import Imscribing.IGMorphism
@@ -139,6 +139,6 @@ noncomputable def the_witness_vessel_protocol_culminates_518f70_true_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_witness_vessel_protocol_culminates_518f70_tier : OuroboricityTier := TierFunctor.obj the_witness_vessel_protocol_culminates_518f70_s0
 #eval the_witness_vessel_protocol_culminates_518f70_tier  -- the Grammar's own verdict on its tier

@@ -563,16 +563,11 @@ def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False) -> Optio
         graph.name = artifact.name.replace(" ", "_")[:40]
         graph.description = artifact.split_fuse_report.split_element or ""
 
-        # Determine ouroboricity tier
-        has_frob = any(t == Token.FSPLIT for t in tokens) and any(t == Token.FFUSE for t in tokens)
-        self_ref = (tokens[0] == tokens[-1]) if tokens else False
-        has_cross = graph.has_cross_branch()
-        if self_ref and has_cross:
-            tier = "O_\u221e"
-        elif has_frob:
-            tier = "O\u2082"
-        else:
-            tier = "O\u2081"
+        # Ouroboricity tier: the Grammar's verdict \u2014 assess_tier on the tuple the
+        # opcodes imscribe \u2014 not a first/last-token proxy. Single source of truth
+        # lives in proof_scaffold.ouroboricity_tier.
+        from proof_scaffold import ouroboricity_tier
+        tier = ouroboricity_tier(ops)
 
         return render_wiring_svg_v3(graph, graph.name, tier, graph.description, "",
                                     pen_mode=pen_mode)

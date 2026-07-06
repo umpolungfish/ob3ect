@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 6)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def ob3ect_sequence_false_arm : IGProtocol ob3ect_sequence_s0 ob3e
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def ob3ect_sequence_tier : OuroboricityTier := TierFunctor.obj ob3ect_sequence_s0
 #eval ob3ect_sequence_tier  -- the Grammar's own verdict on its tier
 

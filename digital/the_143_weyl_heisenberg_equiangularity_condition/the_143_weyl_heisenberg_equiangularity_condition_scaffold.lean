@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,3)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 12)]
 
 import Imscribing.IGMorphism
@@ -118,7 +118,7 @@ noncomputable def the_143_weyl_heisenberg_equiangularity_f8f4cf_false_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_143_weyl_heisenberg_equiangularity_f8f4cf_tier : OuroboricityTier := TierFunctor.obj the_143_weyl_heisenberg_equiangularity_f8f4cf_s0
 #eval the_143_weyl_heisenberg_equiangularity_f8f4cf_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 9)]
 
 import Imscribing.IGMorphism
@@ -93,7 +93,7 @@ noncomputable def optimal_tarot_reading_protocol_false_arm : IGProtocol optimal_
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def optimal_tarot_reading_protocol_tier : OuroboricityTier := TierFunctor.obj optimal_tarot_reading_protocol_s0
 #eval optimal_tarot_reading_protocol_tier  -- the Grammar's own verdict on its tier
 

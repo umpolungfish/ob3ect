@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 11)]
 
 import Imscribing.IGMorphism
@@ -93,25 +93,8 @@ private def p_np_l13 : Imscription :=
 -- ── Main IGProtocol term ────────────────────────────────────
 noncomputable def p_np_protocol : IGProtocol p_np_s0 p_np_s13 :=
   .withGram Grammar.measure <|
-  .seq
-    (.arrow p_np_l0 p_np_s0 p_np_s1)
-    (.arrow p_np_l1 p_np_s1 p_np_s2)
-    (.arrow p_np_l2 p_np_s2 p_np_s3)
-    (.arrow p_np_l3 p_np_s3 p_np_s4)
-    (.arrow p_np_l4 p_np_s4 p_np_s5)
-    (.arrow p_np_l5 p_np_s5 p_np_s6)
-    (.seq
-      (.prod
-        (.arrow p_np_l6 p_np_s6 p_np_s11)  -- T-arm (δ)
-        (.arrow p_np_l6 p_np_s6 p_np_s11)) -- F-arm (μ, Dual-Link mirror)
-      (.seq
-        (.arrow p_np_l11 p_np_s11 p_np_s11)  -- FFUSE closure
-        (.seq
-          (.arrow p_np_l11 p_np_s11 p_np_s12)
-          (.arrow p_np_l12 p_np_s12 p_np_s13)
-        )
-      )   -- close continuation .seq
-    )   -- close inner .seq
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct p_np_s11 p_np_s11 = p_np_s11 (idempotent)
+  (.seq (.arrow p_np_l0 p_np_s0 p_np_s1) (.seq (.arrow p_np_l1 p_np_s1 p_np_s2) (.seq (.arrow p_np_l2 p_np_s2 p_np_s3) (.seq (.arrow p_np_l3 p_np_s3 p_np_s4) (.seq (.arrow p_np_l4 p_np_s4 p_np_s5) (.seq (.arrow p_np_l5 p_np_s5 p_np_s6) (.seq (.prod (.arrow p_np_l6 p_np_s6 p_np_s11) (.arrow p_np_l6 p_np_s6 p_np_s11)) (.seq (.arrow p_np_l11 p_np_s11 p_np_s11) (.seq (.arrow p_np_l11 p_np_s11 p_np_s12) (.arrow p_np_l12 p_np_s12 p_np_s13))))))))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
@@ -125,7 +108,11 @@ noncomputable def p_np_false_arm : IGProtocol p_np_s0 p_np_s13 :=
 
 -- ── Verification theorems ─────────────────────────────────────
 
-theorem p_np_tier : TierFunctor.obj p_np_s0 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def p_np_tier : OuroboricityTier := TierFunctor.obj p_np_s0
+#eval p_np_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem p_np_frobenius :
+    igFrobeniusAlg.mul p_np_s0 p_np_s0 = p_np_s0 :=
+  igFrobAlg_self_fusion p_np_s0

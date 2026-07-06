@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(11,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 13)]
 
 import Imscribing.IGMorphism
@@ -114,7 +114,7 @@ noncomputable def the_143_nonzero_displacement_overlaps_95867c_true_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_143_nonzero_displacement_overlaps_95867c_tier : OuroboricityTier := TierFunctor.obj the_143_nonzero_displacement_overlaps_95867c_s0
 #eval the_143_nonzero_displacement_overlaps_95867c_tier  -- the Grammar's own verdict on its tier
 

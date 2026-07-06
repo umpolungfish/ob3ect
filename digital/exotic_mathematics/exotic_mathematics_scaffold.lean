@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(14,4,4,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=23
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 11), (14, 21)]
 
 import Imscribing.IGMorphism
@@ -153,6 +153,6 @@ noncomputable def exotic_mathematics_false_arm : IGProtocol exotic_mathematics_s
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def exotic_mathematics_tier : OuroboricityTier := TierFunctor.obj exotic_mathematics_s0
 #eval exotic_mathematics_tier  -- the Grammar's own verdict on its tier

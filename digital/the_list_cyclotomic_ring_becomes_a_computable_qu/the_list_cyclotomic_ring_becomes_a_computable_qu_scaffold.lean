@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -103,7 +103,7 @@ noncomputable def the_list_cyclotomic_ring_becomes_a_a468c1_false_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_list_cyclotomic_ring_becomes_a_a468c1_tier : OuroboricityTier := TierFunctor.obj the_list_cyclotomic_ring_becomes_a_a468c1_s0
 #eval the_list_cyclotomic_ring_becomes_a_a468c1_tier  -- the Grammar's own verdict on its tier
 

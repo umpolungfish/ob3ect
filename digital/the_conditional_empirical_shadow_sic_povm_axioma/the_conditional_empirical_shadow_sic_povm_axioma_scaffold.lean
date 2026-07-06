@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 6)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def the_conditional_empirical_shadow_sic_de78ba_false_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_conditional_empirical_shadow_sic_de78ba_tier : OuroboricityTier := TierFunctor.obj the_conditional_empirical_shadow_sic_de78ba_s0
 #eval the_conditional_empirical_shadow_sic_de78ba_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 6)]
 
 import Imscribing.IGMorphism
@@ -94,7 +94,7 @@ noncomputable def the_twelve_d_12_fiducial_coordinates_595c48_true_arm : IGProto
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_twelve_d_12_fiducial_coordinates_595c48_tier : OuroboricityTier := TierFunctor.obj the_twelve_d_12_fiducial_coordinates_595c48_s0
 #eval the_twelve_d_12_fiducial_coordinates_595c48_tier  -- the Grammar's own verdict on its tier
 

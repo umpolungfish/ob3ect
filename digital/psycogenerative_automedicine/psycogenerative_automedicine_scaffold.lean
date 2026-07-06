@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8)]
 
 import Imscribing.IGMorphism
@@ -28,48 +28,81 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] IFIX      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [11] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def psycogenerative_automedicine_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def psycogenerative_automedicine_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def psycogenerative_automedicine_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def psycogenerative_automedicine_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the baseline psychological dysregulation and unstructured psychic ...)
-  (.arrow 𐑠 𐑼 𐑚)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (The observing ego activates, recognizing the dysregulation as its own state a...)
-  -- FSPLIT [2] (gran := 𐑚) (Bifurcate the presenting psychological complex into the cognitive schema branch (T-arm) and the affective emotion branch (F-arm)) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Generate a forward-looking therapeutic reframe and new cognitive narrative al...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Evaluate the cognitive reframe along the T-arm, confirming cognitive resonanc...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip (Descend into the subconscious along the F-arm to retrieve the root affective ...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (Evaluate the raw affective retrieval along the F-arm, registering the distres...)
-        (.arrow 𐑳 𐑚 𐑙)  -- [7] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter the B-state by holding the dialectical paradice of the retrieved affect...))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [8] FFUSE | stoi := 𐑙 (Reintegrate the processed cognitive and affective branches into a unified, coherent self-narrative)
-  (.arrow 𐑱 𐑙 𐑭)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (Chain the integrated narrative into a sequential therapeutic protocol for ong...)
-  (.arrow 𐑭 𐑱 𐑡)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently consolidate the new schema and therapeutic insight into autobiogr...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (Anchor the system at the homeostatic boundary, achieving the integrated, cohe...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def psycogenerative_automedicine_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def psycogenerative_automedicine_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def psycogenerative_automedicine_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def psycogenerative_automedicine_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def psycogenerative_automedicine_protocol : IGProtocol psycogenerative_automedicine_s0 psycogenerative_automedicine_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct psycogenerative_automedicine_s8 psycogenerative_automedicine_s8 = psycogenerative_automedicine_s8 (idempotent)
+  (.seq (.arrow psycogenerative_automedicine_l0 psycogenerative_automedicine_s0 psycogenerative_automedicine_s1) (.seq (.arrow psycogenerative_automedicine_l1 psycogenerative_automedicine_s1 psycogenerative_automedicine_s2) (.seq (.prod (.arrow psycogenerative_automedicine_l2 psycogenerative_automedicine_s2 psycogenerative_automedicine_s8) (.arrow psycogenerative_automedicine_l2 psycogenerative_automedicine_s2 psycogenerative_automedicine_s8)) (.seq (.arrow psycogenerative_automedicine_l8 psycogenerative_automedicine_s8 psycogenerative_automedicine_s8) (.seq (.arrow psycogenerative_automedicine_l8 psycogenerative_automedicine_s8 psycogenerative_automedicine_s9) (.seq (.arrow psycogenerative_automedicine_l9 psycogenerative_automedicine_s9 psycogenerative_automedicine_s10) (.arrow psycogenerative_automedicine_l10 psycogenerative_automedicine_s10 psycogenerative_automedicine_s11)))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def psycogenerative_automedicine_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def psycogenerative_automedicine_true_arm : IGProtocol psycogenerative_automedicine_s0 psycogenerative_automedicine_s11 :=
   (psycogenerative_automedicine_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def psycogenerative_automedicine_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def psycogenerative_automedicine_false_arm : IGProtocol psycogenerative_automedicine_s0 psycogenerative_automedicine_s11 :=
   (psycogenerative_automedicine_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem psycogenerative_automedicine_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def psycogenerative_automedicine_tier : OuroboricityTier := TierFunctor.obj psycogenerative_automedicine_s0
+#eval psycogenerative_automedicine_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem psycogenerative_automedicine_frobenius :
+    igFrobeniusAlg.mul psycogenerative_automedicine_s0 psycogenerative_automedicine_s0 = psycogenerative_automedicine_s0 :=
+  igFrobAlg_self_fusion psycogenerative_automedicine_s0

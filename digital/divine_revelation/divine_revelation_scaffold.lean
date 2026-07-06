@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 9)]
 
 import Imscribing.IGMorphism
@@ -108,7 +108,7 @@ noncomputable def divine_revelation_false_arm : IGProtocol divine_revelation_s0 
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def divine_revelation_tier : OuroboricityTier := TierFunctor.obj divine_revelation_s0
 #eval divine_revelation_tier  -- the Grammar's own verdict on its tier
 

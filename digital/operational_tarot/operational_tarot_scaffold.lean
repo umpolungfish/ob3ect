@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 7)]
 
 import Imscribing.IGMorphism
@@ -29,46 +29,85 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [11] CLINK     fid    := 𐑱               𐑭 → 𐑡  | composition — regime coherence
 --   [12] TANCH     top    := 𐑡               𐑱 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def operational_tarot_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def operational_tarot_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def operational_tarot_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def operational_tarot_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def operational_tarot_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def operational_tarot_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def operational_tarot_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def operational_tarot_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Grounding the space and presenting the unshuffled deck, establishing the void...)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (The querent formulates their core question and selects the Significator card,...)
-  (.arrow 𐑾 𐑠 𐑱)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The reader shuffles and deals the cards into the Celtic Cross spread, project...)
-  (.arrow 𐑱 𐑾 𐑚)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (The reader synthesizes the positional meanings into a cohesive narrative chain.)
-  -- FSPLIT [4] (gran := 𐑚) (The reader initiates the Interpretive Dialectic, splitting the core card's meaning into Light and Shadow aspects.) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The reader explores the Light/Constructive aspect, affirming the positive tra...)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (The reader explores the Shadow/Destructive aspect, confronting the negative o...))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [7] FFUSE | stoi := 𐑙 (The reader performs Holistic Archetypal Integration, fusing the Light and Shadow aspects back into the complete meaning.)
-  (.arrow 𐑳 𐑙 𐑗)  -- [8] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The reader holds the paradox of the integrated archetype (e.g., The Tower's d...)
-  (.arrow 𐑗 𐑳 𐑭)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (The reader translates the abstract archetypal insights back down into practic...)
-  (.arrow 𐑭 𐑗 𐑱)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (The reader records the exact spread, card positions, and insights into the pe...)
-  (.arrow 𐑱 𐑭 𐑡)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (The querent weaves the reading's conclusion into their ongoing life strategy.)
-  (.arrow 𐑡 𐑱 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (The reader blows out the candle and closes the sacred space, sealing the sess...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def operational_tarot_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def operational_tarot_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def operational_tarot_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def operational_tarot_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def operational_tarot_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def operational_tarot_protocol : IGProtocol operational_tarot_s0 operational_tarot_s12 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct operational_tarot_s7 operational_tarot_s7 = operational_tarot_s7 (idempotent)
+  (.seq (.arrow operational_tarot_l0 operational_tarot_s0 operational_tarot_s1) (.seq (.arrow operational_tarot_l1 operational_tarot_s1 operational_tarot_s2) (.seq (.arrow operational_tarot_l2 operational_tarot_s2 operational_tarot_s3) (.seq (.arrow operational_tarot_l3 operational_tarot_s3 operational_tarot_s4) (.seq (.prod (.arrow operational_tarot_l4 operational_tarot_s4 operational_tarot_s7) (.arrow operational_tarot_l4 operational_tarot_s4 operational_tarot_s7)) (.seq (.arrow operational_tarot_l7 operational_tarot_s7 operational_tarot_s7) (.seq (.arrow operational_tarot_l7 operational_tarot_s7 operational_tarot_s8) (.seq (.arrow operational_tarot_l8 operational_tarot_s8 operational_tarot_s9) (.seq (.arrow operational_tarot_l9 operational_tarot_s9 operational_tarot_s10) (.seq (.arrow operational_tarot_l10 operational_tarot_s10 operational_tarot_s11) (.arrow operational_tarot_l11 operational_tarot_s11 operational_tarot_s12)))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def operational_tarot_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def operational_tarot_true_arm : IGProtocol operational_tarot_s0 operational_tarot_s12 :=
   (operational_tarot_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def operational_tarot_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def operational_tarot_false_arm : IGProtocol operational_tarot_s0 operational_tarot_s12 :=
   (operational_tarot_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem operational_tarot_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def operational_tarot_tier : OuroboricityTier := TierFunctor.obj operational_tarot_s0
+#eval operational_tarot_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem operational_tarot_frobenius :
+    igFrobeniusAlg.mul operational_tarot_s0 operational_tarot_s0 = operational_tarot_s0 :=
+  igFrobAlg_self_fusion operational_tarot_s0

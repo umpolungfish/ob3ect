@@ -119,6 +119,6 @@ noncomputable def the_dimensions_d_2_and_d_3_where_the_63f3d9_false_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₀.
 def the_dimensions_d_2_and_d_3_where_the_63f3d9_tier : OuroboricityTier := TierFunctor.obj the_dimensions_d_2_and_d_3_where_the_63f3d9_s0
 #eval the_dimensions_d_2_and_d_3_where_the_63f3d9_tier  -- the Grammar's own verdict on its tier

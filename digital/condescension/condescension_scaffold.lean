@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 7)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def condescension_false_arm : IGProtocol condescension_s0 condesce
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def condescension_tier : OuroboricityTier := TierFunctor.obj condescension_s0
 #eval condescension_tier  -- the Grammar's own verdict on its tier
 

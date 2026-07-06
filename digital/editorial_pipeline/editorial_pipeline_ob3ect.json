@@ -29,10 +29,16 @@
       "VINIT": {
         "opcode": "VINIT",
         "chosen_element": "Source Text",
-        "justification": "The undifferentiated intake state — raw text with no resolved editorial transformation. No provider has seen it, no intent has been applied. Void of distinction between the current and target states.",
+        "justification": "The undifferentiated intake state \u2014 raw text with no resolved editorial transformation. No provider has seen it, no intent has been applied. Void of distinction between the current and target states.",
         "rejected_candidates": [
-          ["Prompt", "The prompt is upstream of the pipeline; the source text is what enters the pipeline."],
-          ["Draft", "Too narrow — the pipeline handles any text: documents, code comments, prose, transcripts."]
+          [
+            "Prompt",
+            "The prompt is upstream of the pipeline; the source text is what enters the pipeline."
+          ],
+          [
+            "Draft",
+            "Too narrow \u2014 the pipeline handles any text: documents, code comments, prose, transcripts."
+          ]
         ]
       },
       "TANCH": {
@@ -40,17 +46,29 @@
         "chosen_element": "Editorial Intent",
         "justification": "The terminal boundary: the specification of what the output must be. Every edit pass moves toward it; the quality gate tests against it; the served output is anchored to it. The pipeline cannot close without an intent.",
         "rejected_candidates": [
-          ["Target Document", "Too specific — the intent is the constraint, not the final document itself."],
-          ["Style Guide", "Style guides are partial specifications; intent is the complete terminal condition."]
+          [
+            "Target Document",
+            "Too specific \u2014 the intent is the constraint, not the final document itself."
+          ],
+          [
+            "Style Guide",
+            "Style guides are partial specifications; intent is the complete terminal condition."
+          ]
         ]
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
         "chosen_element": "Structural Parse",
-        "justification": "The self-imscription of the source: the pipeline reads the source text's own grammar — its outline, claims, rhetorical moves, and register — before applying any transformation. The parse is the pipeline's recognition of the source as a structured object.",
+        "justification": "The self-imscription of the source: the pipeline reads the source text's own grammar \u2014 its outline, claims, rhetorical moves, and register \u2014 before applying any transformation. The parse is the pipeline's recognition of the source as a structured object.",
         "rejected_candidates": [
-          ["Summary", "A summary collapses structure; a parse preserves it."],
-          ["Tokenization", "Too mechanical — the parse identifies semantic and rhetorical structure, not tokens."]
+          [
+            "Summary",
+            "A summary collapses structure; a parse preserves it."
+          ],
+          [
+            "Tokenization",
+            "Too mechanical \u2014 the parse identifies semantic and rhetorical structure, not tokens."
+          ]
         ]
       },
       "AFWD": {
@@ -58,44 +76,74 @@
         "chosen_element": "Primary Edit Pass",
         "justification": "The forward morphism: the LLM applies the editorial intent to the parsed source structure. Moves text from VINIT toward TANCH. The first and most direct application of the cascade.",
         "rejected_candidates": [
-          ["Rewrite", "Rewrite is the FFUSE step — AFWD is the targeted edit, not the full reconstruction."],
-          ["Summarization", "Summarization destroys structure; AFWD preserves and transforms it."]
+          [
+            "Rewrite",
+            "Rewrite is the FFUSE step \u2014 AFWD is the targeted edit, not the full reconstruction."
+          ],
+          [
+            "Summarization",
+            "Summarization destroys structure; AFWD preserves and transforms it."
+          ]
         ]
       },
       "AREV": {
         "opcode": "AREV",
         "chosen_element": "Critique Pass",
-        "justification": "The reverse morphism: after the forward edit and rewrite, the pipeline checks the output against the stated intent. Identifies gaps between the served text and the terminal condition. Can trigger another CLINK → AFWD cycle.",
+        "justification": "The reverse morphism: after the forward edit and rewrite, the pipeline checks the output against the stated intent. Identifies gaps between the served text and the terminal condition. Can trigger another CLINK \u2192 AFWD cycle.",
         "rejected_candidates": [
-          ["Proofreading", "Proofreading checks correctness; critique checks alignment with intent."],
-          ["Feedback", "Feedback is external; critique is the pipeline's own backward pass."]
+          [
+            "Proofreading",
+            "Proofreading checks correctness; critique checks alignment with intent."
+          ],
+          [
+            "Feedback",
+            "Feedback is external; critique is the pipeline's own backward pass."
+          ]
         ]
       },
       "CLINK": {
         "opcode": "CLINK",
         "chosen_element": "Pipeline Composition",
-        "justification": "The sequential composition of multiple edit passes when a single pass does not fully close the gap between source and intent. CLINK chains AFWD → FFUSE → AREV → AFWD into multi-pass pipelines.",
+        "justification": "The sequential composition of multiple edit passes when a single pass does not fully close the gap between source and intent. CLINK chains AFWD \u2192 FFUSE \u2192 AREV \u2192 AFWD into multi-pass pipelines.",
         "rejected_candidates": [
-          ["Loop", "A loop implies repetition without direction; CLINK is directed composition toward the terminal state."],
-          ["Batch", "Batch implies parallel execution; CLINK is sequential composition."]
+          [
+            "Loop",
+            "A loop implies repetition without direction; CLINK is directed composition toward the terminal state."
+          ],
+          [
+            "Batch",
+            "Batch implies parallel execution; CLINK is sequential composition."
+          ]
         ]
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
         "chosen_element": "Provider Fanout",
-        "justification": "The split morphism (δ): the pipeline branches across the provider cascade — local model, qwen, deepseek — running each independently. The fanout is the Frobenius split that enables multiple provider outputs to be evaluated and merged.",
+        "justification": "The split morphism (\u03b4): the pipeline branches across the provider cascade \u2014 local model, qwen, deepseek \u2014 running each independently. The fanout is the Frobenius split that enables multiple provider outputs to be evaluated and merged.",
         "rejected_candidates": [
-          ["Parallel Query", "Too generic; FSPLIT specifically models the Frobenius δ structure of the cascade."],
-          ["A/B Test", "A/B testing is about selection; FSPLIT is about range decomposition."]
+          [
+            "Parallel Query",
+            "Too generic; FSPLIT specifically models the Frobenius \u03b4 structure of the cascade."
+          ],
+          [
+            "A/B Test",
+            "A/B testing is about selection; FSPLIT is about range decomposition."
+          ]
         ]
       },
       "FFUSE": {
         "opcode": "FFUSE",
         "chosen_element": "Output Merge",
-        "justification": "The fuse morphism (μ): selects the best provider output and collapses the fanout back to a single canonical result. The Frobenius pair with FSPLIT: μ∘δ = id on the output space.",
+        "justification": "The fuse morphism (\u03bc): selects the best provider output and collapses the fanout back to a single canonical result. The Frobenius pair with FSPLIT: \u03bc\u2218\u03b4 = id on the output space.",
         "rejected_candidates": [
-          ["Ensemble", "Ensemble combines all outputs; FFUSE selects and commits the best single output."],
-          ["Consensus", "Consensus implies averaging; FFUSE is topological closure of the cascade."]
+          [
+            "Ensemble",
+            "Ensemble combines all outputs; FFUSE selects and commits the best single output."
+          ],
+          [
+            "Consensus",
+            "Consensus implies averaging; FFUSE is topological closure of the cascade."
+          ]
         ]
       },
       "EVALT": {
@@ -103,8 +151,14 @@
         "chosen_element": "Quality Gate: Accept",
         "justification": "The true branch of the evaluation gate: the provider output satisfies the editorial criteria (completeness, alignment with intent, structural fidelity). The cascade closes on this branch.",
         "rejected_candidates": [
-          ["Approval", "Too human-centric; EVALT is a structural gate, not a preference."],
-          ["Pass", "Accurate but too informal for the gate's structural role."]
+          [
+            "Approval",
+            "Too human-centric; EVALT is a structural gate, not a preference."
+          ],
+          [
+            "Pass",
+            "Accurate but too informal for the gate's structural role."
+          ]
         ]
       },
       "EVALF": {
@@ -112,17 +166,29 @@
         "chosen_element": "Quality Gate: Reject",
         "justification": "The false branch: the provider output fails the quality criteria. The cascade advances to the next provider. If all providers fail, the pipeline sets the EVALF flag and returns the best available output.",
         "rejected_candidates": [
-          ["Error", "An error is a crash; EVALF is a structural branch, not an exception."],
-          ["Retry", "Retry implies repetition on the same provider; EVALF advances the cascade."]
+          [
+            "Error",
+            "An error is a crash; EVALF is a structural branch, not an exception."
+          ],
+          [
+            "Retry",
+            "Retry implies repetition on the same provider; EVALF advances the cascade."
+          ]
         ]
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
         "chosen_element": "Ambiguous Output",
-        "justification": "The B-state: the provider output partially satisfies the intent — some dimensions of the target state are met, others are not. The pipeline flags this as a dialetheic B-state and routes to the AREV critique pass for resolution.",
+        "justification": "The B-state: the provider output partially satisfies the intent \u2014 some dimensions of the target state are met, others are not. The pipeline flags this as a dialetheic B-state and routes to the AREV critique pass for resolution.",
         "rejected_candidates": [
-          ["Partial Match", "Accurate but misses the Belnap structural identity of the B-state."],
-          ["Uncertain", "Uncertainty is epistemic; ENGAGR is a structural co-presence of T and F."]
+          [
+            "Partial Match",
+            "Accurate but misses the Belnap structural identity of the B-state."
+          ],
+          [
+            "Uncertain",
+            "Uncertainty is epistemic; ENGAGR is a structural co-presence of T and F."
+          ]
         ]
       },
       "IFIX": {
@@ -130,8 +196,14 @@
         "chosen_element": "Committed Output",
         "justification": "The irreversible fixation: the final text is locked and served. No further passes alter it. The winding number is fixed; the pipeline cycle is closed.",
         "rejected_candidates": [
-          ["Final Draft", "Too editorial; IFIX is the structural closure of the pipeline winding."],
-          ["Output", "Accurate but lacks the fixation semantics — IFIX is irreversible commitment."]
+          [
+            "Final Draft",
+            "Too editorial; IFIX is the structural closure of the pipeline winding."
+          ],
+          [
+            "Output",
+            "Accurate but lacks the fixation semantics \u2014 IFIX is irreversible commitment."
+          ]
         ]
       }
     },
@@ -144,92 +216,108 @@
         "deepseek edit output"
       ],
       "fuse_element": "FFUSE",
-      "fuse_result": "Best-selected provider edit — single canonical output selected by quality gate",
+      "fuse_result": "Best-selected provider edit \u2014 single canonical output selected by quality gate",
       "frobenius_verdict": "PASS",
-      "test_instance": "Source text 'The market recovered.' + intent 'make more precise' → FSPLIT branches to three providers → local: 'Markets rebounded 2.3% by close.' / qwen: 'The S&P 500 gained 1.8% on Wednesday.' / deepseek: 'Equity markets recovered losses by session end.' → EVALT selects qwen output → FFUSE collapses → FFUSE output recovers the intent 'make more precise' ✓",
+      "test_instance": "Source text 'The market recovered.' + intent 'make more precise' \u2192 FSPLIT branches to three providers \u2192 local: 'Markets rebounded 2.3% by close.' / qwen: 'The S&P 500 gained 1.8% on Wednesday.' / deepseek: 'Equity markets recovered losses by session end.' \u2192 EVALT selects qwen output \u2192 FFUSE collapses \u2192 FFUSE output recovers the intent 'make more precise' \u2713",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "No transformation — source text unchanged, intent unapplied. The cascade produced no output meeting even partial criteria. The pipeline returns with EVALF set and source unchanged.",
-      "true_description": "Successful rewrite — output fully satisfies the editorial intent with structural fidelity to the source. Quality gate accepted on first provider. IFIX committed. ΔS < 0.",
-      "false_description": "Failed rewrite — all providers in the cascade failed the quality gate. Intent cannot be achieved with the available providers for this source. Pipeline returns best available output with EVALF flag.",
-      "both_description": "Partial match B-state — output satisfies some dimensions of the editorial intent but leaves others unresolved. ENGAGR is active; AREV critique pass identifies the specific gap. May trigger CLINK → AFWD for a second pass.",
+      "void_description": "No transformation \u2014 source text unchanged, intent unapplied. The cascade produced no output meeting even partial criteria. The pipeline returns with EVALF set and source unchanged.",
+      "true_description": "Successful rewrite \u2014 output fully satisfies the editorial intent with structural fidelity to the source. Quality gate accepted on first provider. IFIX committed. \u0394S < 0.",
+      "false_description": "Failed rewrite \u2014 all providers in the cascade failed the quality gate. Intent cannot be achieved with the available providers for this source. Pipeline returns best available output with EVALF flag.",
+      "both_description": "Partial match B-state \u2014 output satisfies some dimensions of the editorial intent but leaves others unresolved. ENGAGR is active; AREV critique pass identifies the specific gap. May trigger CLINK \u2192 AFWD for a second pass.",
       "transitions": [
-        {"from": "void", "to": "true", "trigger": "provider cascade produces an accepted output"},
-        {"from": "true", "to": "both", "trigger": "critique pass identifies unresolved gaps"},
-        {"from": "both", "to": "true", "trigger": "CLINK second pass resolves the gap"},
-        {"from": "both", "to": "false", "trigger": "all providers fail on the second pass too"}
+        {
+          "from": "void",
+          "to": "true",
+          "trigger": "provider cascade produces an accepted output"
+        },
+        {
+          "from": "true",
+          "to": "both",
+          "trigger": "critique pass identifies unresolved gaps"
+        },
+        {
+          "from": "both",
+          "to": "true",
+          "trigger": "CLINK second pass resolves the gap"
+        },
+        {
+          "from": "both",
+          "to": "false",
+          "trigger": "all providers fail on the second pass too"
+        }
       ],
-      "entropy_assertion": "ΔS < 0 — the pipeline is anti-entropic: each pass reduces structural noise, sharpens alignment with intent, and compresses the distance between source state and terminal condition."
+      "entropy_assertion": "\u0394S < 0 \u2014 the pipeline is anti-entropic: each pass reduces structural noise, sharpens alignment with intent, and compresses the distance between source state and terminal condition."
     },
     "phase_4": {
       "steps": [
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "Intake source text — initialize the pipeline winding with raw, unedited input. No provider has been invoked; no intent has been applied. The source is treated as a void-state object."
+          "domain_action": "Intake source text \u2014 initialize the pipeline winding with raw, unedited input. No provider has been invoked; no intent has been applied. The source is treated as a void-state object."
         },
         {
           "step_num": 2,
           "opcode": "TANCH",
-          "domain_action": "Anchor editorial intent — bind the target transformation as the terminal boundary condition. The pipeline cannot close without a stated intent; TANCH makes it the explicit topological boundary."
+          "domain_action": "Anchor editorial intent \u2014 bind the target transformation as the terminal boundary condition. The pipeline cannot close without a stated intent; TANCH makes it the explicit topological boundary."
         },
         {
           "step_num": 3,
           "opcode": "IMSCRIB",
-          "domain_action": "Parse source structure — call the primary LLM to identify: outline, main claims, rhetorical moves, sentence-level style, and register. The parse result is carried as context through all subsequent passes."
+          "domain_action": "Parse source structure \u2014 call the primary LLM to identify: outline, main claims, rhetorical moves, sentence-level style, and register. The parse result is carried as context through all subsequent passes."
         },
         {
           "step_num": 4,
           "opcode": "AFWD",
-          "domain_action": "Primary edit pass — apply the editorial intent to the parsed source structure. The LLM targets the parse result directly: rewriting only what the intent specifies, preserving what is structurally sound."
+          "domain_action": "Primary edit pass \u2014 apply the editorial intent to the parsed source structure. The LLM targets the parse result directly: rewriting only what the intent specifies, preserving what is structurally sound."
         },
         {
           "step_num": 5,
           "opcode": "FSPLIT",
-          "domain_action": "Provider fanout — branch the edit prompt across the provider cascade: local model first, then qwen via OpenRouter, then deepseek. Each provider receives the same prompt independently."
+          "domain_action": "Provider fanout \u2014 branch the edit prompt across the provider cascade: local model first, then qwen via OpenRouter, then deepseek. Each provider receives the same prompt independently."
         },
         {
           "step_num": 6,
           "opcode": "EVALT",
-          "domain_action": "Quality gate: accept — evaluate each provider output against the editorial criteria (completeness, alignment with intent, structural fidelity to source). Accept on first provider that passes."
+          "domain_action": "Quality gate: accept \u2014 evaluate each provider output against the editorial criteria (completeness, alignment with intent, structural fidelity to source). Accept on first provider that passes."
         },
         {
           "step_num": 7,
           "opcode": "EVALF",
-          "domain_action": "Quality gate: reject — if the current provider output fails the criteria, advance to the next provider in the cascade. If all providers fail, set EVALF flag and proceed with best available output."
+          "domain_action": "Quality gate: reject \u2014 if the current provider output fails the criteria, advance to the next provider in the cascade. If all providers fail, set EVALF flag and proceed with best available output."
         },
         {
           "step_num": 8,
           "opcode": "FFUSE",
-          "domain_action": "Output merge — collapse the provider fanout back to a single canonical edit. The accepted provider output becomes the input for the rewrite pass. Frobenius pair with FSPLIT closes here."
+          "domain_action": "Output merge \u2014 collapse the provider fanout back to a single canonical edit. The accepted provider output becomes the input for the rewrite pass. Frobenius pair with FSPLIT closes here."
         },
         {
           "step_num": 9,
           "opcode": "ENGAGR",
-          "domain_action": "B-state flag — if the merged output partially satisfies the intent but leaves dimensions unresolved, set the ENGAGR flag. Route to AREV for a critique pass. Do not IFIX a B-state output without critique."
+          "domain_action": "B-state flag \u2014 if the merged output partially satisfies the intent but leaves dimensions unresolved, set the ENGAGR flag. Route to AREV for a critique pass. Do not IFIX a B-state output without critique."
         },
         {
           "step_num": 10,
           "opcode": "AREV",
-          "domain_action": "Critique pass — call the LLM to check the rewrite against the stated intent. Identify specific gaps: claims not addressed, register not matched, structural problems. Critique informs CLINK composition."
+          "domain_action": "Critique pass \u2014 call the LLM to check the rewrite against the stated intent. Identify specific gaps: claims not addressed, register not matched, structural problems. Critique informs CLINK composition."
         },
         {
           "step_num": 11,
           "opcode": "CLINK",
-          "domain_action": "Pipeline composition — if critique identifies persistent gaps, compose another AFWD → FFUSE pass with the critique notes as additional context. Chain as many passes as needed until EVALT or cascade exhaustion."
+          "domain_action": "Pipeline composition \u2014 if critique identifies persistent gaps, compose another AFWD \u2192 FFUSE pass with the critique notes as additional context. Chain as many passes as needed until EVALT or cascade exhaustion."
         },
         {
           "step_num": 12,
           "opcode": "IFIX",
-          "domain_action": "Commit output — lock the final text and serve. The winding is closed; no further passes alter the committed output. The IFIX text is the pipeline's served result."
+          "domain_action": "Commit output \u2014 lock the final text and serve. The winding is closed; no further passes alter the committed output. The IFIX text is the pipeline's served result."
         }
       ],
       "closure_verified": true,
       "failure_modes": [
-        "Cascade exhaustion: all providers fail EVALT — EVALF flag set, best available output served",
-        "Empty intent: TANCH not set before submit() — pipeline raises RuntimeError",
-        "Context overflow: source text exceeds provider context window — split source and compose outputs via CLINK"
+        "Cascade exhaustion: all providers fail EVALT \u2014 EVALF flag set, best available output served",
+        "Empty intent: TANCH not set before submit() \u2014 pipeline raises RuntimeError",
+        "Context overflow: source text exceeds provider context window \u2014 split source and compose outputs via CLINK"
       ]
     },
     "phase_5": {
@@ -241,13 +329,13 @@
       "alfs_bootstrap_program": "EditorialPipeline().set(source, intent).submit().serve()"
     },
     "phase_6": {
-      "cycle_cost": "3–4 LLM provider calls per full pipeline run: IMSCRIB parse (1 call) + AFWD edit (1–3 calls across cascade) + FFUSE rewrite (1 call) + optional AREV critique (1 call). Token cost proportional to source length.",
+      "cycle_cost": "3\u20134 LLM provider calls per full pipeline run: IMSCRIB parse (1 call) + AFWD edit (1\u20133 calls across cascade) + FFUSE rewrite (1 call) + optional AREV critique (1 call). Token cost proportional to source length.",
       "pre_cycle_state": "Raw source text with stated but unapplied editorial intent. No provider has been invoked.",
       "post_cycle_state": "IFIX committed output: intent applied, quality-gate verified, critique-checked (if run). Provider that produced the accepted output is recorded.",
-      "delta_s_verdict": "ΔS < 0 — anti-entropic lift: each pass removes noise, sharpens structure, and reduces the distance between source state and the terminal intent condition. The pipeline always moves toward TANCH.",
-      "failure_mode": "Cascade exhaustion — all three providers fail the quality gate. Pipeline sets EVALF flag and serves the least-bad output. Source is always recoverable from the serve() dict."
+      "delta_s_verdict": "\u0394S < 0 \u2014 anti-entropic lift: each pass removes noise, sharpens structure, and reduces the distance between source state and the terminal intent condition. The pipeline always moves toward TANCH.",
+      "failure_mode": "Cascade exhaustion \u2014 all three providers fail the quality gate. Pipeline sets EVALF flag and serves the least-bad output. Source is always recoverable from the serve() dict."
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → IMSCRIB → AFWD → FSPLIT → EVALT → EVALF → FFUSE → ENGAGR → AREV → CLINK → IFIX\n-- Class: Editorial Pipeline\n-- Fingerprint: sig=(e7fa3e,)\n--   auto_generated=True | period=12\n-- Expected tier: O₂\n-- FSPLIT/FFUSE pairs: [(4,7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT      dim     := 𐑼                𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] TANCH      top     := 𐑡                𐑠 → 𐑭  | terminal object — connectivity boundary\n--   [2] IMSCRIB    gram    := 𐑠                𐑭 → ⊙  | identity — self-imscription\n--   [3] AFWD       rel     := 𐑾                ⊙ → 𐑾  | forward morphism — primary edit\n--   [4] FSPLIT     gran    := 𐑚                𐑾 → 𐑖  | split δ — provider fanout\n--   [5] EVALT      crit    := ⊙                𐑖 → 𐑙  | evaluate-true — quality gate accept\n--   [6] EVALF      chir    := 𐑖                𐑖 → 𐑱  | evaluate-false — quality gate reject\n--   [7] FFUSE      stoi    := 𐑙                𐑙 → 𐑳  | fuse μ — output merge\n--   [8] ENGAGR     stoi    := 𐑳                𐑳 → 𐑗  | engage paradox — B-state, both arms\n--   [9] AREV       pol     := 𐑗                𐑗 → 𐑱  | reverse morphism — critique pass\n--  [10] CLINK      fid     := 𐑱                𐑱 → 𐑡  | composition — pipeline chaining\n--  [11] IFIX       prot    := 𐑭                𐑡 → 𐑼  | irreversible fixation — committed output\n\n-- ── Main IGProtocol term ────────────────────────────────────────────────────\n\nnoncomputable def editorial_pipeline_protocol : IGProtocol 𐑼 𐑡 :=\n  .withGram 𐑠 <|\n  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | source text intake\n  (.arrow 𐑡 𐑠 𐑭)  -- [1] TANCH | top := 𐑡 | editorial intent anchor\n  (.arrow 𐑠 𐑭 ⊙)  -- [2] IMSCRIB | gram := 𐑠 | structural parse\n  (.arrow 𐑾 ⊙ 𐑾)  -- [3] AFWD | rel := 𐑾 | primary edit pass\n  -- FSPLIT [4] (gran := 𐑚) / FFUSE [7] (stoi := 𐑙)\n  .seq\n    (.prod\n      -- T-branch (EVALT accepts)\n      (.arrow ⊙ 𐑖 𐑙)  -- [5] EVALT | crit := ⊙ | quality gate: accept\n      -- F-branch (EVALF rejects, advances cascade)\n      (.arrow 𐑖 𐑖 𐑱))  -- [6] EVALF | chir := 𐑖 | quality gate: reject\n    -- reconnect at FFUSE [7]: μ closes the Frobenius pair\n    (.arrow 𐑙 𐑙 𐑳)  -- [7] FFUSE | stoi := 𐑙 | output merge\n  (.arrow 𐑳 𐑳 𐑗)  -- [8] ENGAGR | stoi := 𐑳 | B-state flag\n  (.arrow 𐑗 𐑗 𐑱)  -- [9] AREV | pol := 𐑗 | critique pass\n  (.arrow 𐑱 𐑱 𐑡)  -- [10] CLINK | fid := 𐑱 | pipeline composition\n  (.arrow 𐑭 𐑡 𐑼)  -- [11] IFIX | prot := 𐑭 | committed output\n\n-- ── Evaluation arm sub-defs ─────────────────────────────────────────────────\n\n-- truth arm\nnoncomputable def editorial_pipeline_true_arm : IGProtocol 𐑼 𐑡 :=\n  (editorial_pipeline_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def editorial_pipeline_false_arm : IGProtocol 𐑼 𐑡 :=\n  (editorial_pipeline_protocol).restrictToEVALF\n\n-- ── Verification theorems ───────────────────────────────────────────────────\n\ntheorem editorial_pipeline_tier : TierFunctor.obj 𐑼 = .O₂ := by decide\n\n-- Frobenius (split → fuse): μ∘δ = id on .prod branch\n-- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id\n-- (requires mu_delta_A_id from IGFunctor library)\n\nend Imscribing\n",
-  "notes": "Auto-designed from: Editorial Pipeline — the auto.py LLM cascade imscribed as a general-purpose editing, parsing, and rewriting ob3ect. SET / SUBMIT / SERVE directly map to the IMASM winding structure."
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 ENGAGR \u2192 AREV \u2192 CLINK \u2192 IFIX\n-- Class: Editorial Pipeline\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(4, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc57  | engage paradox \u2014 B-state, both arms\n--   [9] AREV      pol    := \ud801\udc57               \ud801\udc73 \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def editorial_pipeline_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def editorial_pipeline_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def editorial_pipeline_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def editorial_pipeline_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def editorial_pipeline_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def editorial_pipeline_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def editorial_pipeline_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def editorial_pipeline_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def editorial_pipeline_protocol : IGProtocol editorial_pipeline_s0 editorial_pipeline_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct editorial_pipeline_s7 editorial_pipeline_s7 = editorial_pipeline_s7 (idempotent)\n  (.seq (.arrow editorial_pipeline_l0 editorial_pipeline_s0 editorial_pipeline_s1) (.seq (.arrow editorial_pipeline_l1 editorial_pipeline_s1 editorial_pipeline_s2) (.seq (.arrow editorial_pipeline_l2 editorial_pipeline_s2 editorial_pipeline_s3) (.seq (.arrow editorial_pipeline_l3 editorial_pipeline_s3 editorial_pipeline_s4) (.seq (.prod (.arrow editorial_pipeline_l4 editorial_pipeline_s4 editorial_pipeline_s7) (.arrow editorial_pipeline_l4 editorial_pipeline_s4 editorial_pipeline_s7)) (.seq (.arrow editorial_pipeline_l7 editorial_pipeline_s7 editorial_pipeline_s7) (.seq (.arrow editorial_pipeline_l7 editorial_pipeline_s7 editorial_pipeline_s8) (.seq (.arrow editorial_pipeline_l8 editorial_pipeline_s8 editorial_pipeline_s9) (.seq (.arrow editorial_pipeline_l9 editorial_pipeline_s9 editorial_pipeline_s10) (.arrow editorial_pipeline_l10 editorial_pipeline_s10 editorial_pipeline_s11))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def editorial_pipeline_true_arm : IGProtocol editorial_pipeline_s0 editorial_pipeline_s11 :=\n  (editorial_pipeline_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def editorial_pipeline_false_arm : IGProtocol editorial_pipeline_s0 editorial_pipeline_s11 :=\n  (editorial_pipeline_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef editorial_pipeline_tier : OuroboricityTier := TierFunctor.obj editorial_pipeline_s0\n#eval editorial_pipeline_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem editorial_pipeline_frobenius :\n    igFrobeniusAlg.mul editorial_pipeline_s0 editorial_pipeline_s0 = editorial_pipeline_s0 :=\n  igFrobAlg_self_fusion editorial_pipeline_s0\n",
+  "notes": "Auto-designed from: Editorial Pipeline \u2014 the auto.py LLM cascade imscribed as a general-purpose editing, parsing, and rewriting ob3ect. SET / SUBMIT / SERVE directly map to the IMASM winding structure."
 }

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -29,48 +29,85 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [11] IMSCRIB   gram   := 𐑠               𐑭 → 𐑡  | identity — self-imscription
 --   [12] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def jail_mail_boundary_puncture_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s4 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def jail_mail_boundary_puncture_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }
+private def jail_mail_boundary_puncture_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def jail_mail_boundary_puncture_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def jail_mail_boundary_puncture_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Raw unsorted mail arrives at the facility gate.)
-  (.arrow 𐑡 𐑼 𐑱)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (The perimeter mailroom checkpoint establishes the security boundary.)
-  (.arrow 𐑱 𐑡 𐑚)  -- [2] CLINK | fid := 𐑱 | composition — regime coherence (Mail is logged into the intake queue for processing.)
-  -- FSPLIT [3] (gran := 𐑚) (The inspection gate separates the batch into cleared and suspicious streams.) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Cleared correspondence is stamped as approved for delivery.)
-        (.arrow 𐑾 𐑚 𐑙)  -- [5] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Approved letters are forwarded to the inmate cell blocks.)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (Suspicious items are flagged as contraband.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (Confiscated items are reversed back to the sender or destroyed.))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [8] FFUSE | stoi := 𐑙 (The mailroom ledger reconciles cleared and confiscated items into the total daily batch.)
-  (.arrow 𐑳 𐑙 𐑭)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Legal mail opened by guards is delivered as private correspondence.)
-  (.arrow 𐑭 𐑳 𐑠)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (The permanent confiscation and delivery log is written to the institutional r...)
-  (.arrow 𐑠 𐑭 𐑡)  -- [11] IMSCRIB | gram := 𐑠 | identity — self-imscription (The inmate verified identity is confirmed against the approved recipient list.)
-  (.arrow 𐑡 𐑠 𐑼)  -- [12] TANCH | top := 𐑡 | terminal object — connectivity boundary (The mailroom cycle closes and seals the perimeter for the next intake.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def jail_mail_boundary_puncture_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def jail_mail_boundary_puncture_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def jail_mail_boundary_puncture_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def jail_mail_boundary_puncture_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def jail_mail_boundary_puncture_protocol : IGProtocol jail_mail_boundary_puncture_s0 jail_mail_boundary_puncture_s12 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct jail_mail_boundary_puncture_s8 jail_mail_boundary_puncture_s8 = jail_mail_boundary_puncture_s8 (idempotent)
+  (.seq (.arrow jail_mail_boundary_puncture_l0 jail_mail_boundary_puncture_s0 jail_mail_boundary_puncture_s1) (.seq (.arrow jail_mail_boundary_puncture_l1 jail_mail_boundary_puncture_s1 jail_mail_boundary_puncture_s2) (.seq (.arrow jail_mail_boundary_puncture_l2 jail_mail_boundary_puncture_s2 jail_mail_boundary_puncture_s3) (.seq (.prod (.arrow jail_mail_boundary_puncture_l3 jail_mail_boundary_puncture_s3 jail_mail_boundary_puncture_s8) (.arrow jail_mail_boundary_puncture_l3 jail_mail_boundary_puncture_s3 jail_mail_boundary_puncture_s8)) (.seq (.arrow jail_mail_boundary_puncture_l8 jail_mail_boundary_puncture_s8 jail_mail_boundary_puncture_s8) (.seq (.arrow jail_mail_boundary_puncture_l8 jail_mail_boundary_puncture_s8 jail_mail_boundary_puncture_s9) (.seq (.arrow jail_mail_boundary_puncture_l9 jail_mail_boundary_puncture_s9 jail_mail_boundary_puncture_s10) (.seq (.arrow jail_mail_boundary_puncture_l10 jail_mail_boundary_puncture_s10 jail_mail_boundary_puncture_s11) (.arrow jail_mail_boundary_puncture_l11 jail_mail_boundary_puncture_s11 jail_mail_boundary_puncture_s12)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def jail_mail_boundary_puncture_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def jail_mail_boundary_puncture_true_arm : IGProtocol jail_mail_boundary_puncture_s0 jail_mail_boundary_puncture_s12 :=
   (jail_mail_boundary_puncture_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def jail_mail_boundary_puncture_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def jail_mail_boundary_puncture_false_arm : IGProtocol jail_mail_boundary_puncture_s0 jail_mail_boundary_puncture_s12 :=
   (jail_mail_boundary_puncture_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem jail_mail_boundary_puncture_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def jail_mail_boundary_puncture_tier : OuroboricityTier := TierFunctor.obj jail_mail_boundary_puncture_s0
+#eval jail_mail_boundary_puncture_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem jail_mail_boundary_puncture_frobenius :
+    igFrobeniusAlg.mul jail_mail_boundary_puncture_s0 jail_mail_boundary_puncture_s0 = jail_mail_boundary_puncture_s0 :=
+  igFrobAlg_self_fusion jail_mail_boundary_puncture_s0

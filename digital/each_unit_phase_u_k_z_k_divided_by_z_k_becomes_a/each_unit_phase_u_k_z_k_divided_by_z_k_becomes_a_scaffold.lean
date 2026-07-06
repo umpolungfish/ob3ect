@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(8, 11), (1, 13)]
 
 import Imscribing.IGMorphism
@@ -118,7 +118,7 @@ noncomputable def each_unit_phase_u_k_z_k_divided_by_z_k_36c163_false_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def each_unit_phase_u_k_z_k_divided_by_z_k_36c163_tier : OuroboricityTier := TierFunctor.obj each_unit_phase_u_k_z_k_divided_by_z_k_36c163_s0
 #eval each_unit_phase_u_k_z_k_divided_by_z_k_36c163_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -84,7 +84,7 @@ noncomputable def a_simple_bell_that_rings_true_arm : IGProtocol a_simple_bell_t
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def a_simple_bell_that_rings_tier : OuroboricityTier := TierFunctor.obj a_simple_bell_that_rings_s0
 #eval a_simple_bell_that_rings_tier  -- the Grammar's own verdict on its tier
 

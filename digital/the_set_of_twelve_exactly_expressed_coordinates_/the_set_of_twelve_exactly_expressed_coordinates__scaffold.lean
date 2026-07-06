@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 6)]
 
 import Imscribing.IGMorphism
@@ -103,7 +103,7 @@ noncomputable def the_set_of_twelve_exactly_expressed_d9cb46_false_arm : IGProto
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_set_of_twelve_exactly_expressed_d9cb46_tier : OuroboricityTier := TierFunctor.obj the_set_of_twelve_exactly_expressed_d9cb46_s0
 #eval the_set_of_twelve_exactly_expressed_d9cb46_tier  -- the Grammar's own verdict on its tier
 

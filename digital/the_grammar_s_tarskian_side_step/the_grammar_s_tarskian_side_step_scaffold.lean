@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(4,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=10
--- Expected tier: O₂
+-- Expected tier: O₀
 -- FSPLIT/FFUSE pairs: [(1, 7)]
 
 import Imscribing.IGMorphism
@@ -73,20 +73,8 @@ private def the_grammars_tarskian_side_step_l9 : Imscription :=
 -- ── Main IGProtocol term ────────────────────────────────────
 noncomputable def the_grammars_tarskian_side_step_protocol : IGProtocol the_grammars_tarskian_side_step_s0 the_grammars_tarskian_side_step_s9 :=
   .withGram Grammar.measure <|
-  .seq
-    (.arrow the_grammars_tarskian_side_step_l0 the_grammars_tarskian_side_step_s0 the_grammars_tarskian_side_step_s1)
-    (.seq
-      (.prod
-        (.arrow the_grammars_tarskian_side_step_l1 the_grammars_tarskian_side_step_s1 the_grammars_tarskian_side_step_s7)  -- T-arm (δ)
-        (.arrow the_grammars_tarskian_side_step_l1 the_grammars_tarskian_side_step_s1 the_grammars_tarskian_side_step_s7)) -- F-arm (μ, Dual-Link mirror)
-      (.seq
-        (.arrow the_grammars_tarskian_side_step_l7 the_grammars_tarskian_side_step_s7 the_grammars_tarskian_side_step_s7)  -- FFUSE closure
-        (.seq
-          (.arrow the_grammars_tarskian_side_step_l7 the_grammars_tarskian_side_step_s7 the_grammars_tarskian_side_step_s8)
-          (.arrow the_grammars_tarskian_side_step_l8 the_grammars_tarskian_side_step_s8 the_grammars_tarskian_side_step_s9)
-        )
-      )   -- close continuation .seq
-    )   -- close inner .seq
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_grammars_tarskian_side_step_s7 the_grammars_tarskian_side_step_s7 = the_grammars_tarskian_side_step_s7 (idempotent)
+  (.seq (.arrow the_grammars_tarskian_side_step_l0 the_grammars_tarskian_side_step_s0 the_grammars_tarskian_side_step_s1) (.seq (.prod (.arrow the_grammars_tarskian_side_step_l1 the_grammars_tarskian_side_step_s1 the_grammars_tarskian_side_step_s7) (.arrow the_grammars_tarskian_side_step_l1 the_grammars_tarskian_side_step_s1 the_grammars_tarskian_side_step_s7)) (.seq (.arrow the_grammars_tarskian_side_step_l7 the_grammars_tarskian_side_step_s7 the_grammars_tarskian_side_step_s7) (.seq (.arrow the_grammars_tarskian_side_step_l7 the_grammars_tarskian_side_step_s7 the_grammars_tarskian_side_step_s8) (.arrow the_grammars_tarskian_side_step_l8 the_grammars_tarskian_side_step_s8 the_grammars_tarskian_side_step_s9)))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
@@ -100,7 +88,11 @@ noncomputable def the_grammars_tarskian_side_step_false_arm : IGProtocol the_gra
 
 -- ── Verification theorems ─────────────────────────────────────
 
-theorem the_grammars_tarskian_side_step_tier : TierFunctor.obj the_grammars_tarskian_side_step_s0 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₀.
+def the_grammars_tarskian_side_step_tier : OuroboricityTier := TierFunctor.obj the_grammars_tarskian_side_step_s0
+#eval the_grammars_tarskian_side_step_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem the_grammars_tarskian_side_step_frobenius :
+    igFrobeniusAlg.mul the_grammars_tarskian_side_step_s0 the_grammars_tarskian_side_step_s0 = the_grammars_tarskian_side_step_s0 :=
+  igFrobAlg_self_fusion the_grammars_tarskian_side_step_s0

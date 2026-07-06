@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,4,3,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=18
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 5), (6, 9)]
 
 import Imscribing.IGMorphism
@@ -34,56 +34,100 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [16] IMSCRIB   gram   := 𐑠               𐑱 → 𐑡  | identity — self-imscription
 --   [17] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def all_of_quantum_mechanics_is_subsumed_by_benlap_dunn_fde_four_logic_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize pre-quantum void state before wavefunction assignment)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply unitary evolution to generate coherent superposition)
-  -- FSPLIT [2] (gran := 𐑚) (Decompose superposition into T-arm (true) and F-arm (false) truth-value paths) / FFUSE [5] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm T-branch as definite true eigenstate)
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward morphism propagates T-branch through logical entailment)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [5]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑙)  -- [5] FFUSE | stoi := 𐑙 (Reconstitute T-branch into unified state vector)
-  -- FSPLIT [6] (gran := 𐑚) (Re-branch unified state for paraconsistent evaluation) / FFUSE [9] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (Affirm F-branch as definite false eigenstate)
-        (.arrow 𐑗 𐑚 𐑙)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse parity on F-branch for conjugate path))
-    -- reconnect at FFUSE [9]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [9] FFUSE | stoi := 𐑙 (Reconstitute F-branch into unified state vector)
-  (.arrow 𐑳 𐑙 𐑱)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Hold both T and F branches simultaneously in Bivalence paradox)
-  (.arrow 𐑱 𐑳 𐑠)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Chain sequential measurement operators for state reduction)
-  (.arrow 𐑠 𐑱 𐑭)  -- [12] IMSCRIB | gram := 𐑠 | identity — self-imscription (Verify self-adjoint identity of collapsed eigenstate)
-  (.arrow 𐑭 𐑠 𐑭)  -- [13] IFIX | prot := 𐑭 | irreversible fixation — winding number (Lock first measurement record via irreversible decoherence)
-  (.arrow 𐑭 𐑭 𐑱)  -- [14] IFIX | prot := 𐑭 | irreversible fixation — winding number (Append second measurement record to append-only history)
-  (.arrow 𐑱 𐑭 𐑠)  -- [15] CLINK | fid := 𐑱 | composition — regime coherence (Compose final logical entailment chain across branches)
-  (.arrow 𐑠 𐑱 𐑡)  -- [16] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference check on final state vector)
-  (.arrow 𐑡 𐑠 𐑼)  -- [17] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal system within Benlap-Dunn four-valued lattice boundary)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def all_of_quantum_mechanics_is_subsumed_by_a65545_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def all_of_quantum_mechanics_is_subsumed_by_a65545_protocol : IGProtocol all_of_quantum_mechanics_is_subsumed_by_a65545_s0 all_of_quantum_mechanics_is_subsumed_by_a65545_s17 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct all_of_quantum_mechanics_is_subsumed_by_a65545_s5 all_of_quantum_mechanics_is_subsumed_by_a65545_s5 = all_of_quantum_mechanics_is_subsumed_by_a65545_s5 (idempotent)
+  (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l0 all_of_quantum_mechanics_is_subsumed_by_a65545_s0 all_of_quantum_mechanics_is_subsumed_by_a65545_s1) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l1 all_of_quantum_mechanics_is_subsumed_by_a65545_s1 all_of_quantum_mechanics_is_subsumed_by_a65545_s2) (.seq (.prod (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l2 all_of_quantum_mechanics_is_subsumed_by_a65545_s2 all_of_quantum_mechanics_is_subsumed_by_a65545_s5) (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l2 all_of_quantum_mechanics_is_subsumed_by_a65545_s2 all_of_quantum_mechanics_is_subsumed_by_a65545_s5)) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l5 all_of_quantum_mechanics_is_subsumed_by_a65545_s5 all_of_quantum_mechanics_is_subsumed_by_a65545_s5) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l5 all_of_quantum_mechanics_is_subsumed_by_a65545_s5 all_of_quantum_mechanics_is_subsumed_by_a65545_s6) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l6 all_of_quantum_mechanics_is_subsumed_by_a65545_s6 all_of_quantum_mechanics_is_subsumed_by_a65545_s7) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l7 all_of_quantum_mechanics_is_subsumed_by_a65545_s7 all_of_quantum_mechanics_is_subsumed_by_a65545_s8) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l8 all_of_quantum_mechanics_is_subsumed_by_a65545_s8 all_of_quantum_mechanics_is_subsumed_by_a65545_s9) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l9 all_of_quantum_mechanics_is_subsumed_by_a65545_s9 all_of_quantum_mechanics_is_subsumed_by_a65545_s10) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l10 all_of_quantum_mechanics_is_subsumed_by_a65545_s10 all_of_quantum_mechanics_is_subsumed_by_a65545_s11) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l11 all_of_quantum_mechanics_is_subsumed_by_a65545_s11 all_of_quantum_mechanics_is_subsumed_by_a65545_s12) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l12 all_of_quantum_mechanics_is_subsumed_by_a65545_s12 all_of_quantum_mechanics_is_subsumed_by_a65545_s13) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l13 all_of_quantum_mechanics_is_subsumed_by_a65545_s13 all_of_quantum_mechanics_is_subsumed_by_a65545_s14) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l14 all_of_quantum_mechanics_is_subsumed_by_a65545_s14 all_of_quantum_mechanics_is_subsumed_by_a65545_s15) (.seq (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l15 all_of_quantum_mechanics_is_subsumed_by_a65545_s15 all_of_quantum_mechanics_is_subsumed_by_a65545_s16) (.arrow all_of_quantum_mechanics_is_subsumed_by_a65545_l16 all_of_quantum_mechanics_is_subsumed_by_a65545_s16 all_of_quantum_mechanics_is_subsumed_by_a65545_s17))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def all_of_quantum_mechanics_is_subsumed_by_benlap_dunn_fde_four_logic_true_arm : IGProtocol 𐑼 𐑡 :=
-  (all_of_quantum_mechanics_is_subsumed_by_benlap_dunn_fde_four_logic_protocol).restrictToEVALT
+noncomputable def all_of_quantum_mechanics_is_subsumed_by_a65545_true_arm : IGProtocol all_of_quantum_mechanics_is_subsumed_by_a65545_s0 all_of_quantum_mechanics_is_subsumed_by_a65545_s17 :=
+  (all_of_quantum_mechanics_is_subsumed_by_a65545_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def all_of_quantum_mechanics_is_subsumed_by_benlap_dunn_fde_four_logic_false_arm : IGProtocol 𐑼 𐑡 :=
-  (all_of_quantum_mechanics_is_subsumed_by_benlap_dunn_fde_four_logic_protocol).restrictToEVALF
+noncomputable def all_of_quantum_mechanics_is_subsumed_by_a65545_false_arm : IGProtocol all_of_quantum_mechanics_is_subsumed_by_a65545_s0 all_of_quantum_mechanics_is_subsumed_by_a65545_s17 :=
+  (all_of_quantum_mechanics_is_subsumed_by_a65545_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem all_of_quantum_mechanics_is_subsumed_by_benlap_dunn_fde_four_logic_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def all_of_quantum_mechanics_is_subsumed_by_a65545_tier : OuroboricityTier := TierFunctor.obj all_of_quantum_mechanics_is_subsumed_by_a65545_s0
+#eval all_of_quantum_mechanics_is_subsumed_by_a65545_tier  -- the Grammar's own verdict on its tier

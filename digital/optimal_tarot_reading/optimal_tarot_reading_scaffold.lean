@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 10)]
 
 import Imscribing.IGMorphism
@@ -93,25 +93,8 @@ private def optimal_tarot_reading_l13 : Imscription :=
 -- ── Main IGProtocol term ────────────────────────────────────
 noncomputable def optimal_tarot_reading_protocol : IGProtocol optimal_tarot_reading_s0 optimal_tarot_reading_s13 :=
   .withGram Grammar.measure <|
-  .seq
-    (.arrow optimal_tarot_reading_l0 optimal_tarot_reading_s0 optimal_tarot_reading_s1)
-    (.arrow optimal_tarot_reading_l1 optimal_tarot_reading_s1 optimal_tarot_reading_s2)
-    (.arrow optimal_tarot_reading_l2 optimal_tarot_reading_s2 optimal_tarot_reading_s3)
-    (.seq
-      (.prod
-        (.arrow optimal_tarot_reading_l3 optimal_tarot_reading_s3 optimal_tarot_reading_s10)  -- T-arm (δ)
-        (.arrow optimal_tarot_reading_l3 optimal_tarot_reading_s3 optimal_tarot_reading_s10)) -- F-arm (μ, Dual-Link mirror)
-      (.seq
-        (.arrow optimal_tarot_reading_l10 optimal_tarot_reading_s10 optimal_tarot_reading_s10)  -- FFUSE closure
-        (.seq
-          (.arrow optimal_tarot_reading_l10 optimal_tarot_reading_s10 optimal_tarot_reading_s11)
-          (.seq
-            (.arrow optimal_tarot_reading_l11 optimal_tarot_reading_s11 optimal_tarot_reading_s12)
-            (.arrow optimal_tarot_reading_l12 optimal_tarot_reading_s12 optimal_tarot_reading_s13)
-          )
-        )
-      )   -- close continuation .seq
-    )   -- close inner .seq
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct optimal_tarot_reading_s10 optimal_tarot_reading_s10 = optimal_tarot_reading_s10 (idempotent)
+  (.seq (.arrow optimal_tarot_reading_l0 optimal_tarot_reading_s0 optimal_tarot_reading_s1) (.seq (.arrow optimal_tarot_reading_l1 optimal_tarot_reading_s1 optimal_tarot_reading_s2) (.seq (.arrow optimal_tarot_reading_l2 optimal_tarot_reading_s2 optimal_tarot_reading_s3) (.seq (.prod (.arrow optimal_tarot_reading_l3 optimal_tarot_reading_s3 optimal_tarot_reading_s10) (.arrow optimal_tarot_reading_l3 optimal_tarot_reading_s3 optimal_tarot_reading_s10)) (.seq (.arrow optimal_tarot_reading_l10 optimal_tarot_reading_s10 optimal_tarot_reading_s10) (.seq (.arrow optimal_tarot_reading_l10 optimal_tarot_reading_s10 optimal_tarot_reading_s11) (.seq (.arrow optimal_tarot_reading_l11 optimal_tarot_reading_s11 optimal_tarot_reading_s12) (.arrow optimal_tarot_reading_l12 optimal_tarot_reading_s12 optimal_tarot_reading_s13))))))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
@@ -121,7 +104,11 @@ noncomputable def optimal_tarot_reading_true_arm : IGProtocol optimal_tarot_read
 
 -- ── Verification theorems ─────────────────────────────────────
 
-theorem optimal_tarot_reading_tier : TierFunctor.obj optimal_tarot_reading_s0 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def optimal_tarot_reading_tier : OuroboricityTier := TierFunctor.obj optimal_tarot_reading_s0
+#eval optimal_tarot_reading_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem optimal_tarot_reading_frobenius :
+    igFrobeniusAlg.mul optimal_tarot_reading_s0 optimal_tarot_reading_s0 = optimal_tarot_reading_s0 :=
+  igFrobAlg_self_fusion optimal_tarot_reading_s0

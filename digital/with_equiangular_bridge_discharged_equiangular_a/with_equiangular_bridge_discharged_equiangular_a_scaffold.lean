@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,4,9,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=22
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 9), (15, 18)]
 
 import Imscribing.IGMorphism
@@ -148,6 +148,6 @@ noncomputable def with_equiangular_bridge_discharged_691882_false_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def with_equiangular_bridge_discharged_691882_tier : OuroboricityTier := TierFunctor.obj with_equiangular_bridge_discharged_691882_s0
 #eval with_equiangular_bridge_discharged_691882_tier  -- the Grammar's own verdict on its tier

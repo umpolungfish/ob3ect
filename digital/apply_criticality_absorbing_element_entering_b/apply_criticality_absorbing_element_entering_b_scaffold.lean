@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,6,7,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 7), (10, 13), (16, 19)]
 
 import Imscribing.IGMorphism
@@ -40,64 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] TANCH     top    := 𐑡               𐑱 → 𐑭  | terminal object — connectivity boundary
 --   [23] IFIX      prot   := 𐑭               𐑡 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def apply_criticality_absorbing_element_52ec93_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def apply_criticality_absorbing_element_entering_belnap_both_paradice_state_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of primitive space before criticality enters)
-  (.arrow 𐑾 𐑼 𐑠)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Dimensionality flow initiates structural configuration)
-  (.arrow 𐑠 𐑾 𐑚)  -- [2] IMSCRIB | gram := 𐑠 | identity — self-imscription (Criticality ⊙ recognizes itself as self-modeling fixed-point)
-  -- FSPLIT [3] (gran := 𐑚) (Criticality bifurcates into stable (EVALT) and explosive (EVALF) branches) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Stability branch maintains coherence under critical conditions)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [5] EVALF | chir := 𐑖 | evaluate-false — chirality check (Breakdown branch represents potential logical explosion)
-        (.arrow 𐑳 𐑚 𐑙)  -- [6] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Paradice state ⊤⊥ holds both stability and breakdown simultaneously))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (Reconstitute criticality from both branches, maintaining paraconsistent closure)
-  (.arrow 𐑱 𐑙 𐑗)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (Compose structural elements around paradice state)
-  (.arrow 𐑗 𐑱 𐑚)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (Chirality descent activates parity flip in critical regime)
-  -- FSPLIT [10] (gran := 𐑚) (Second split examines criticality's self-absorption property) / FFUSE [13] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [11] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirmative evaluation of self-absorption capability)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [12] EVALF | chir := 𐑖 | evaluate-false — chirality check (Negative evaluation of recursive absorption danger))
-    -- reconnect at FFUSE [13]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑡)  -- [13] FFUSE | stoi := 𐑙 (Fuse second split returning enhanced criticality)
-  (.arrow 𐑡 𐑙 𐑭)  -- [14] TANCH | top := 𐑡 | terminal object — connectivity boundary (Crystal boundary seals paraconsistent closure within constraint manifold)
-  (.arrow 𐑭 𐑡 𐑚)  -- [15] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently fix the paradice state as structural invariant)
-  -- FSPLIT [16] (gran := 𐑚) (Final split tests frobenius closure property) / FFUSE [19] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [17] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm structural completeness)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [18] EVALF | chir := 𐑖 | evaluate-false — chirality check (Verify explosion prevention))
-    -- reconnect at FFUSE [19]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [19] FFUSE | stoi := 𐑙 (Achieve final criticality state with full paraconsistent protection)
-  (.arrow 𐑠 𐑙 𐑱)  -- [20] IMSCRIB | gram := 𐑠 | identity — self-imscription (Criticality confirms self-identity within sealed system)
-  (.arrow 𐑱 𐑠 𐑡)  -- [21] CLINK | fid := 𐑱 | composition — regime coherence (Complete composition sequence closing the structural loop)
-  (.arrow 𐑡 𐑱 𐑭)  -- [22] TANCH | top := 𐑡 | terminal object — connectivity boundary (Final anchor seals entire criticality absorption process)
-  (.arrow 𐑭 𐑡 𐑼)  -- [23] IFIX | prot := 𐑭 | irreversible fixation — winding number (Commit the complete paraconsistent criticality architecture to permanent form)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def apply_criticality_absorbing_element_52ec93_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def apply_criticality_absorbing_element_52ec93_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def apply_criticality_absorbing_element_52ec93_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def apply_criticality_absorbing_element_52ec93_protocol : IGProtocol apply_criticality_absorbing_element_52ec93_s0 apply_criticality_absorbing_element_52ec93_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct apply_criticality_absorbing_element_52ec93_s7 apply_criticality_absorbing_element_52ec93_s7 = apply_criticality_absorbing_element_52ec93_s7 (idempotent)
+  (.seq (.arrow apply_criticality_absorbing_element_52ec93_l0 apply_criticality_absorbing_element_52ec93_s0 apply_criticality_absorbing_element_52ec93_s1) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l1 apply_criticality_absorbing_element_52ec93_s1 apply_criticality_absorbing_element_52ec93_s2) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l2 apply_criticality_absorbing_element_52ec93_s2 apply_criticality_absorbing_element_52ec93_s3) (.seq (.prod (.arrow apply_criticality_absorbing_element_52ec93_l3 apply_criticality_absorbing_element_52ec93_s3 apply_criticality_absorbing_element_52ec93_s7) (.arrow apply_criticality_absorbing_element_52ec93_l3 apply_criticality_absorbing_element_52ec93_s3 apply_criticality_absorbing_element_52ec93_s7)) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l7 apply_criticality_absorbing_element_52ec93_s7 apply_criticality_absorbing_element_52ec93_s7) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l7 apply_criticality_absorbing_element_52ec93_s7 apply_criticality_absorbing_element_52ec93_s8) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l8 apply_criticality_absorbing_element_52ec93_s8 apply_criticality_absorbing_element_52ec93_s9) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l9 apply_criticality_absorbing_element_52ec93_s9 apply_criticality_absorbing_element_52ec93_s10) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l10 apply_criticality_absorbing_element_52ec93_s10 apply_criticality_absorbing_element_52ec93_s11) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l11 apply_criticality_absorbing_element_52ec93_s11 apply_criticality_absorbing_element_52ec93_s12) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l12 apply_criticality_absorbing_element_52ec93_s12 apply_criticality_absorbing_element_52ec93_s13) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l13 apply_criticality_absorbing_element_52ec93_s13 apply_criticality_absorbing_element_52ec93_s14) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l14 apply_criticality_absorbing_element_52ec93_s14 apply_criticality_absorbing_element_52ec93_s15) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l15 apply_criticality_absorbing_element_52ec93_s15 apply_criticality_absorbing_element_52ec93_s16) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l16 apply_criticality_absorbing_element_52ec93_s16 apply_criticality_absorbing_element_52ec93_s17) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l17 apply_criticality_absorbing_element_52ec93_s17 apply_criticality_absorbing_element_52ec93_s18) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l18 apply_criticality_absorbing_element_52ec93_s18 apply_criticality_absorbing_element_52ec93_s19) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l19 apply_criticality_absorbing_element_52ec93_s19 apply_criticality_absorbing_element_52ec93_s20) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l20 apply_criticality_absorbing_element_52ec93_s20 apply_criticality_absorbing_element_52ec93_s21) (.seq (.arrow apply_criticality_absorbing_element_52ec93_l21 apply_criticality_absorbing_element_52ec93_s21 apply_criticality_absorbing_element_52ec93_s22) (.arrow apply_criticality_absorbing_element_52ec93_l22 apply_criticality_absorbing_element_52ec93_s22 apply_criticality_absorbing_element_52ec93_s23)))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def apply_criticality_absorbing_element_entering_belnap_both_paradice_state_true_arm : IGProtocol 𐑼 𐑭 :=
-  (apply_criticality_absorbing_element_entering_belnap_both_paradice_state_protocol).restrictToEVALT
+noncomputable def apply_criticality_absorbing_element_52ec93_true_arm : IGProtocol apply_criticality_absorbing_element_52ec93_s0 apply_criticality_absorbing_element_52ec93_s23 :=
+  (apply_criticality_absorbing_element_52ec93_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def apply_criticality_absorbing_element_entering_belnap_both_paradice_state_false_arm : IGProtocol 𐑼 𐑭 :=
-  (apply_criticality_absorbing_element_entering_belnap_both_paradice_state_protocol).restrictToEVALF
+noncomputable def apply_criticality_absorbing_element_52ec93_false_arm : IGProtocol apply_criticality_absorbing_element_52ec93_s0 apply_criticality_absorbing_element_52ec93_s23 :=
+  (apply_criticality_absorbing_element_52ec93_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem apply_criticality_absorbing_element_entering_belnap_both_paradice_state_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def apply_criticality_absorbing_element_52ec93_tier : OuroboricityTier := TierFunctor.obj apply_criticality_absorbing_element_52ec93_s0
+#eval apply_criticality_absorbing_element_52ec93_tier  -- the Grammar's own verdict on its tier

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 5)]
 
 import Imscribing.IGMorphism
@@ -109,7 +109,7 @@ noncomputable def every_o_boundary_positivity_fact_is_76f3dc_true_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def every_o_boundary_positivity_fact_is_76f3dc_tier : OuroboricityTier := TierFunctor.obj every_o_boundary_positivity_fact_is_76f3dc_s0
 #eval every_o_boundary_positivity_fact_is_76f3dc_tier  -- the Grammar's own verdict on its tier
 

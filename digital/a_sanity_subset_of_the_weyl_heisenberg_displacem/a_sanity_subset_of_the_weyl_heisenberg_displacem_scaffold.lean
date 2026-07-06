@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,3,2,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=16
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 10)]
 
 import Imscribing.IGMorphism
@@ -114,6 +114,6 @@ noncomputable def a_sanity_subset_of_the_weyl_heisenberg_c61533_true_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def a_sanity_subset_of_the_weyl_heisenberg_c61533_tier : OuroboricityTier := TierFunctor.obj a_sanity_subset_of_the_weyl_heisenberg_c61533_s0
 #eval a_sanity_subset_of_the_weyl_heisenberg_c61533_tier  -- the Grammar's own verdict on its tier

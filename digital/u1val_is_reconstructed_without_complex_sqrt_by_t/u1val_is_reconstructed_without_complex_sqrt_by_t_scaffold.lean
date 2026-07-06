@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,3,3)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=17
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 10)]
 
 import Imscribing.IGMorphism
@@ -123,7 +123,7 @@ noncomputable def u1val_is_reconstructed_without_complex_586366_false_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def u1val_is_reconstructed_without_complex_586366_tier : OuroboricityTier := TierFunctor.obj u1val_is_reconstructed_without_complex_586366_s0
 #eval u1val_is_reconstructed_without_complex_586366_tier  -- the Grammar's own verdict on its tier
 

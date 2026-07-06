@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,6,4,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=21
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 7), (8, 10), (11, 14)]
 
 import Imscribing.IGMorphism
@@ -37,60 +37,108 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [19] IFIX      prot   := 𐑭               𐑭 → 𐑡  | irreversible fixation — winding number
 --   [20] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def exact_sic_geometry_achieved_with_frame_459aaa_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s4 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def exact_sic_geometry_achieved_with_frame_459aaa_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
 
-noncomputable def exact_sic_geometry_achieved_with_frame_potential_f_0_846154_t_arm_anchor_protocol : IGProtocol 𐑼 𐑡 :=
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of the 12-dimensional primitive space - before any classification occurs)
-  (.arrow 𐑡 𐑼 𐑱)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establishment of the Crystal boundary that constrains all valid structural as...)
-  (.arrow 𐑱 𐑡 𐑠)  -- [2] CLINK | fid := 𐑱 | composition — regime coherence (Tensor composition of the 12 primitive axes (D:3,T:5,P:4 -> total 12))
-  (.arrow 𐑠 𐑱 𐑚)  -- [3] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-recognition of the space - the fiducial vector as identity morphism)
-  -- FSPLIT [4] (gran := 𐑚) (Frobenius co-multiplication δ splits identity into primitive partition vs value-count paths) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [5] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Weyl-Heisenberg displacement operators act forward from fiducial in T-arm)
-        (.arrow ⊙ 𐑚 𐑙)  -- [6] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Frame potential evaluates to exact target F = 0.846154 (143/169) - success state)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑙)  -- [7] FFUSE | stoi := 𐑙 (FFUSE.T: Frobenius multiplication reconstitutes identity in true arm - maintains μ∘δ=id)
-  -- FSPLIT [8] (gran := 𐑚) (Secondary split for heteroskedastic POVM vs exact SIC comparison) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [9] EVALT | crit := ⊙ | evaluate-true — criticality gate open (SIC overlaps |⟨ψᵢ|ψⱼ⟩|² = 1/13 ± 0 confirmed - geometric accuracy verified)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑙)  -- [10] FFUSE | stoi := 𐑙 (FFUSE.T: Reconstitution of measurement space from exact overlaps)
-  -- FSPLIT [11] (gran := 𐑚) (Third split for H₇⊗H₁₂ composite SIC structure (d=7×12=84)) / FFUSE [14] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [12] CLINK | fid := 𐑱 | composition — regime coherence (Composition of type-alphabet SIC (d=7) with primitive SIC (d=12))
-        (.arrow ⊙ 𐑚 𐑙)  -- [13] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Composite frame potential F = (84²-1)/(85)² achieved - 7056 projectors)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [14]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [14] FFUSE | stoi := 𐑙 (FFUSE.T: Fusion of composite measurement space back to unified identity)
-  (.arrow 𐑗 𐑙 𐑳)  -- [15] AREV | pol := 𐑗 | reverse morphism — parity flip (Absorbing criticality ⊙ handles paraconsistency at fixed points)
-  (.arrow 𐑳 𐑗 𐑭)  -- [16] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Dialetheia state where success/failure coexist - geometric contradictions abs...)
-  (.arrow 𐑭 𐑳 𐑭)  -- [17] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently cache the fiducial vector (0.1766, 0.1396, 0.1787, 0.4838, ...) i...)
-  (.arrow 𐑭 𐑭 𐑭)  -- [18] IFIX | prot := 𐑭 | irreversible fixation — winding number (Record SIC coverage statistics (24/144 elements in ig-pulse, 120 remaining fo...)
-  (.arrow 𐑭 𐑭 𐑡)  -- [19] IFIX | prot := 𐑭 | irreversible fixation — winding number (Log machine learning convergence confirmation (VAE-Vita trained on 17,280,000...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [20] TANCH | top := 𐑡 | terminal object — connectivity boundary (Final closure - all 144 SIC elements validated, frame potential exact at 0.84...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def exact_sic_geometry_achieved_with_frame_459aaa_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def exact_sic_geometry_achieved_with_frame_459aaa_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def exact_sic_geometry_achieved_with_frame_459aaa_protocol : IGProtocol exact_sic_geometry_achieved_with_frame_459aaa_s0 exact_sic_geometry_achieved_with_frame_459aaa_s20 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct exact_sic_geometry_achieved_with_frame_459aaa_s7 exact_sic_geometry_achieved_with_frame_459aaa_s7 = exact_sic_geometry_achieved_with_frame_459aaa_s7 (idempotent)
+  (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l0 exact_sic_geometry_achieved_with_frame_459aaa_s0 exact_sic_geometry_achieved_with_frame_459aaa_s1) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l1 exact_sic_geometry_achieved_with_frame_459aaa_s1 exact_sic_geometry_achieved_with_frame_459aaa_s2) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l2 exact_sic_geometry_achieved_with_frame_459aaa_s2 exact_sic_geometry_achieved_with_frame_459aaa_s3) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l3 exact_sic_geometry_achieved_with_frame_459aaa_s3 exact_sic_geometry_achieved_with_frame_459aaa_s4) (.seq (.prod (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l4 exact_sic_geometry_achieved_with_frame_459aaa_s4 exact_sic_geometry_achieved_with_frame_459aaa_s7) (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l4 exact_sic_geometry_achieved_with_frame_459aaa_s4 exact_sic_geometry_achieved_with_frame_459aaa_s7)) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l7 exact_sic_geometry_achieved_with_frame_459aaa_s7 exact_sic_geometry_achieved_with_frame_459aaa_s7) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l7 exact_sic_geometry_achieved_with_frame_459aaa_s7 exact_sic_geometry_achieved_with_frame_459aaa_s8) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l8 exact_sic_geometry_achieved_with_frame_459aaa_s8 exact_sic_geometry_achieved_with_frame_459aaa_s9) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l9 exact_sic_geometry_achieved_with_frame_459aaa_s9 exact_sic_geometry_achieved_with_frame_459aaa_s10) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l10 exact_sic_geometry_achieved_with_frame_459aaa_s10 exact_sic_geometry_achieved_with_frame_459aaa_s11) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l11 exact_sic_geometry_achieved_with_frame_459aaa_s11 exact_sic_geometry_achieved_with_frame_459aaa_s12) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l12 exact_sic_geometry_achieved_with_frame_459aaa_s12 exact_sic_geometry_achieved_with_frame_459aaa_s13) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l13 exact_sic_geometry_achieved_with_frame_459aaa_s13 exact_sic_geometry_achieved_with_frame_459aaa_s14) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l14 exact_sic_geometry_achieved_with_frame_459aaa_s14 exact_sic_geometry_achieved_with_frame_459aaa_s15) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l15 exact_sic_geometry_achieved_with_frame_459aaa_s15 exact_sic_geometry_achieved_with_frame_459aaa_s16) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l16 exact_sic_geometry_achieved_with_frame_459aaa_s16 exact_sic_geometry_achieved_with_frame_459aaa_s17) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l17 exact_sic_geometry_achieved_with_frame_459aaa_s17 exact_sic_geometry_achieved_with_frame_459aaa_s18) (.seq (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l18 exact_sic_geometry_achieved_with_frame_459aaa_s18 exact_sic_geometry_achieved_with_frame_459aaa_s19) (.arrow exact_sic_geometry_achieved_with_frame_459aaa_l19 exact_sic_geometry_achieved_with_frame_459aaa_s19 exact_sic_geometry_achieved_with_frame_459aaa_s20)))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def exact_sic_geometry_achieved_with_frame_potential_f_0_846154_t_arm_anchor_true_arm : IGProtocol 𐑼 𐑡 :=
-  (exact_sic_geometry_achieved_with_frame_potential_f_0_846154_t_arm_anchor_protocol).restrictToEVALT
+noncomputable def exact_sic_geometry_achieved_with_frame_459aaa_true_arm : IGProtocol exact_sic_geometry_achieved_with_frame_459aaa_s0 exact_sic_geometry_achieved_with_frame_459aaa_s20 :=
+  (exact_sic_geometry_achieved_with_frame_459aaa_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem exact_sic_geometry_achieved_with_frame_potential_f_0_846154_t_arm_anchor_tier : TierFunctor.obj 𐑼 = .O₀ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def exact_sic_geometry_achieved_with_frame_459aaa_tier : OuroboricityTier := TierFunctor.obj exact_sic_geometry_achieved_with_frame_459aaa_s0
+#eval exact_sic_geometry_achieved_with_frame_459aaa_tier  -- the Grammar's own verdict on its tier

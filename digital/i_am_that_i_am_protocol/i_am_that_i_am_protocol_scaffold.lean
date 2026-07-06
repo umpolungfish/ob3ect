@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 7)]
 
 import Imscribing.IGMorphism
@@ -89,7 +89,7 @@ noncomputable def i_am_that_i_am_protocol_true_arm : IGProtocol i_am_that_i_am_p
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def i_am_that_i_am_protocol_tier : OuroboricityTier := TierFunctor.obj i_am_that_i_am_protocol_s0
 #eval i_am_that_i_am_protocol_tier  -- the Grammar's own verdict on its tier
 

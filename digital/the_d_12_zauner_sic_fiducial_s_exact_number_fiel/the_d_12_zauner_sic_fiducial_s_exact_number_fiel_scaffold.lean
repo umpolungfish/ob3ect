@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,4,3,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=16
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 6), (8, 12)]
 
 import Imscribing.IGMorphism
@@ -114,6 +114,6 @@ noncomputable def the_d_12_zauner_sic_fiducials_exact_3bc43e_true_arm : IGProtoc
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_d_12_zauner_sic_fiducials_exact_3bc43e_tier : OuroboricityTier := TierFunctor.obj the_d_12_zauner_sic_fiducials_exact_3bc43e_s0
 #eval the_d_12_zauner_sic_fiducials_exact_3bc43e_tier  -- the Grammar's own verdict on its tier

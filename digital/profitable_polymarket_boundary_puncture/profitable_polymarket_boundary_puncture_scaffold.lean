@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 10)]
 
 import Imscribing.IGMorphism
@@ -30,50 +30,89 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] IFIX      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [13] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def profitable_polymarket_boundary_puncture_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def profitable_polymarket_boundary_puncture_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def profitable_polymarket_boundary_puncture_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def profitable_polymarket_boundary_puncture_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def profitable_polymarket_boundary_puncture_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def profitable_polymarket_boundary_puncture_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def profitable_polymarket_boundary_puncture_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def profitable_polymarket_boundary_puncture_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the void state before the prediction market contract is deployed.)
-  (.arrow 𐑡 𐑼 𐑠)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establish the hermetic seal of the smart contract boundary that will contain ...)
-  (.arrow 𐑠 𐑡 𐑾)  -- [2] IMSCRIB | gram := 𐑠 | identity — self-imscription (The automated market maker recognizes its own pricing rules and self-referent...)
-  (.arrow 𐑾 𐑠 𐑚)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Direct the injection of capital forward into the market to mint initial shares.)
-  -- FSPLIT [4] (gran := 𐑚) (Bifurcate the unified escrow into mutually exclusive Yes and No token pools.) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑳 𐑚 𐑙)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter the paradice state where the market maker holds both Yes and No shares ...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [6] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Evaluate the affirmative branch where the trader prediction aligns with the o...)
-        (.arrow 𐑾 𐑚 𐑙)  -- [7] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Flow capital forward along the winning branch as the trader extracts profit t...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [8] EVALF | chir := 𐑖 | evaluate-false — chirality check (Evaluate the negative branch where the opposing outcome is nullified by the o...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse and descend the capital on the losing branch as the opposing shares a...))
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [10] FFUSE | stoi := 𐑙 (Collapse the Yes and No token pools back into the base asset, reconstituting the exact original escrowed liquidity.)
-  (.arrow 𐑱 𐑙 𐑭)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Chain the order execution and the oracle resolution into a single composition...)
-  (.arrow 𐑭 𐑱 𐑡)  -- [12] IFIX | prot := 𐑭 | irreversible fixation — winding number (Inscribe the immutable blockchain transaction that permanently records the fi...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [13] TANCH | top := 𐑡 | terminal object — connectivity boundary (Close the boundary as the market reaches its terminal settled state.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def profitable_polymarket_boundary_puncture_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def profitable_polymarket_boundary_puncture_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def profitable_polymarket_boundary_puncture_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def profitable_polymarket_boundary_puncture_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def profitable_polymarket_boundary_puncture_protocol : IGProtocol profitable_polymarket_boundary_puncture_s0 profitable_polymarket_boundary_puncture_s13 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct profitable_polymarket_boundary_puncture_s10 profitable_polymarket_boundary_puncture_s10 = profitable_polymarket_boundary_puncture_s10 (idempotent)
+  (.seq (.arrow profitable_polymarket_boundary_puncture_l0 profitable_polymarket_boundary_puncture_s0 profitable_polymarket_boundary_puncture_s1) (.seq (.arrow profitable_polymarket_boundary_puncture_l1 profitable_polymarket_boundary_puncture_s1 profitable_polymarket_boundary_puncture_s2) (.seq (.arrow profitable_polymarket_boundary_puncture_l2 profitable_polymarket_boundary_puncture_s2 profitable_polymarket_boundary_puncture_s3) (.seq (.arrow profitable_polymarket_boundary_puncture_l3 profitable_polymarket_boundary_puncture_s3 profitable_polymarket_boundary_puncture_s4) (.seq (.prod (.arrow profitable_polymarket_boundary_puncture_l4 profitable_polymarket_boundary_puncture_s4 profitable_polymarket_boundary_puncture_s10) (.arrow profitable_polymarket_boundary_puncture_l4 profitable_polymarket_boundary_puncture_s4 profitable_polymarket_boundary_puncture_s10)) (.seq (.arrow profitable_polymarket_boundary_puncture_l10 profitable_polymarket_boundary_puncture_s10 profitable_polymarket_boundary_puncture_s10) (.seq (.arrow profitable_polymarket_boundary_puncture_l10 profitable_polymarket_boundary_puncture_s10 profitable_polymarket_boundary_puncture_s11) (.seq (.arrow profitable_polymarket_boundary_puncture_l11 profitable_polymarket_boundary_puncture_s11 profitable_polymarket_boundary_puncture_s12) (.arrow profitable_polymarket_boundary_puncture_l12 profitable_polymarket_boundary_puncture_s12 profitable_polymarket_boundary_puncture_s13)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def profitable_polymarket_boundary_puncture_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def profitable_polymarket_boundary_puncture_true_arm : IGProtocol profitable_polymarket_boundary_puncture_s0 profitable_polymarket_boundary_puncture_s13 :=
   (profitable_polymarket_boundary_puncture_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def profitable_polymarket_boundary_puncture_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def profitable_polymarket_boundary_puncture_false_arm : IGProtocol profitable_polymarket_boundary_puncture_s0 profitable_polymarket_boundary_puncture_s13 :=
   (profitable_polymarket_boundary_puncture_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem profitable_polymarket_boundary_puncture_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def profitable_polymarket_boundary_puncture_tier : OuroboricityTier := TierFunctor.obj profitable_polymarket_boundary_puncture_s0
+#eval profitable_polymarket_boundary_puncture_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem profitable_polymarket_boundary_puncture_frobenius :
+    igFrobeniusAlg.mul profitable_polymarket_boundary_puncture_s0 profitable_polymarket_boundary_puncture_s0 = profitable_polymarket_boundary_puncture_s0 :=
+  igFrobAlg_self_fusion profitable_polymarket_boundary_puncture_s0

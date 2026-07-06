@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 11)]
 
 import Imscribing.IGMorphism
@@ -118,7 +118,7 @@ noncomputable def choosing_the_optimal_computable_b70d52_false_arm : IGProtocol 
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def choosing_the_optimal_computable_b70d52_tier : OuroboricityTier := TierFunctor.obj choosing_the_optimal_computable_b70d52_s0
 #eval choosing_the_optimal_computable_b70d52_tier  -- the Grammar's own verdict on its tier
 

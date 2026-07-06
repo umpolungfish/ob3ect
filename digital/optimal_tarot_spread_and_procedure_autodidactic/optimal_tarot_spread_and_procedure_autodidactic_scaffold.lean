@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 9)]
 
 import Imscribing.IGMorphism
@@ -30,84 +30,84 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
-private def optimal_tarot_spread_and_procedure_autodidactic_s0 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s0 : Imscription :=
   { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s1 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s1 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s2 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s2 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s3 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s3 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s4 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s4 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s5 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s5 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s6 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s6 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s7 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s7 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s8 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s8 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s9 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s9 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s10 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s10 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_s11 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s11 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
-private def optimal_tarot_spread_and_procedure_autodidactic_s12 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_s12 : Imscription :=
   { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
 -- ── Label Imscriptions (per-node delta) ─────────────────────
-private def optimal_tarot_spread_and_procedure_autodidactic_l0 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l0 : Imscription :=
   { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l1 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l1 : Imscription :=
   { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l2 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l2 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l3 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l3 : Imscription :=
   { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l4 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l4 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l5 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l5 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l6 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l6 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l7 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l7 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l8 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l8 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l9 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l9 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l10 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l10 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def optimal_tarot_spread_and_procedure_autodidactic_l11 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l11 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
-private def optimal_tarot_spread_and_procedure_autodidactic_l12 : Imscription :=
+private def optimal_tarot_spread_and_procedure_77f623_l12 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
 -- ── Main IGProtocol term ────────────────────────────────────
-noncomputable def optimal_tarot_spread_and_procedure_autodidactic_protocol : IGProtocol optimal_tarot_spread_and_procedure_autodidactic_s0 optimal_tarot_spread_and_procedure_autodidactic_s12 :=
+noncomputable def optimal_tarot_spread_and_procedure_77f623_protocol : IGProtocol optimal_tarot_spread_and_procedure_77f623_s0 optimal_tarot_spread_and_procedure_77f623_s12 :=
   .withGram Grammar.measure <|
-  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct optimal_tarot_spread_and_procedure_autodidactic_s9 optimal_tarot_spread_and_procedure_autodidactic_s9 = optimal_tarot_spread_and_procedure_autodidactic_s9 (idempotent)
-  (.seq (.arrow optimal_tarot_spread_and_procedure_autodidactic_l0 optimal_tarot_spread_and_procedure_autodidactic_s0 optimal_tarot_spread_and_procedure_autodidactic_s1) (.seq (.arrow optimal_tarot_spread_and_procedure_autodidactic_l1 optimal_tarot_spread_and_procedure_autodidactic_s1 optimal_tarot_spread_and_procedure_autodidactic_s2) (.seq (.prod (.arrow optimal_tarot_spread_and_procedure_autodidactic_l2 optimal_tarot_spread_and_procedure_autodidactic_s2 optimal_tarot_spread_and_procedure_autodidactic_s9) (.arrow optimal_tarot_spread_and_procedure_autodidactic_l2 optimal_tarot_spread_and_procedure_autodidactic_s2 optimal_tarot_spread_and_procedure_autodidactic_s9)) (.seq (.arrow optimal_tarot_spread_and_procedure_autodidactic_l9 optimal_tarot_spread_and_procedure_autodidactic_s9 optimal_tarot_spread_and_procedure_autodidactic_s9) (.seq (.arrow optimal_tarot_spread_and_procedure_autodidactic_l9 optimal_tarot_spread_and_procedure_autodidactic_s9 optimal_tarot_spread_and_procedure_autodidactic_s10) (.seq (.arrow optimal_tarot_spread_and_procedure_autodidactic_l10 optimal_tarot_spread_and_procedure_autodidactic_s10 optimal_tarot_spread_and_procedure_autodidactic_s11) (.arrow optimal_tarot_spread_and_procedure_autodidactic_l11 optimal_tarot_spread_and_procedure_autodidactic_s11 optimal_tarot_spread_and_procedure_autodidactic_s12)))))))
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct optimal_tarot_spread_and_procedure_77f623_s9 optimal_tarot_spread_and_procedure_77f623_s9 = optimal_tarot_spread_and_procedure_77f623_s9 (idempotent)
+  (.seq (.arrow optimal_tarot_spread_and_procedure_77f623_l0 optimal_tarot_spread_and_procedure_77f623_s0 optimal_tarot_spread_and_procedure_77f623_s1) (.seq (.arrow optimal_tarot_spread_and_procedure_77f623_l1 optimal_tarot_spread_and_procedure_77f623_s1 optimal_tarot_spread_and_procedure_77f623_s2) (.seq (.prod (.arrow optimal_tarot_spread_and_procedure_77f623_l2 optimal_tarot_spread_and_procedure_77f623_s2 optimal_tarot_spread_and_procedure_77f623_s9) (.arrow optimal_tarot_spread_and_procedure_77f623_l2 optimal_tarot_spread_and_procedure_77f623_s2 optimal_tarot_spread_and_procedure_77f623_s9)) (.seq (.arrow optimal_tarot_spread_and_procedure_77f623_l9 optimal_tarot_spread_and_procedure_77f623_s9 optimal_tarot_spread_and_procedure_77f623_s9) (.seq (.arrow optimal_tarot_spread_and_procedure_77f623_l9 optimal_tarot_spread_and_procedure_77f623_s9 optimal_tarot_spread_and_procedure_77f623_s10) (.seq (.arrow optimal_tarot_spread_and_procedure_77f623_l10 optimal_tarot_spread_and_procedure_77f623_s10 optimal_tarot_spread_and_procedure_77f623_s11) (.arrow optimal_tarot_spread_and_procedure_77f623_l11 optimal_tarot_spread_and_procedure_77f623_s11 optimal_tarot_spread_and_procedure_77f623_s12)))))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def optimal_tarot_spread_and_procedure_autodidactic_true_arm : IGProtocol optimal_tarot_spread_and_procedure_autodidactic_s0 optimal_tarot_spread_and_procedure_autodidactic_s12 :=
-  (optimal_tarot_spread_and_procedure_autodidactic_protocol).restrictToEVALT
+noncomputable def optimal_tarot_spread_and_procedure_77f623_true_arm : IGProtocol optimal_tarot_spread_and_procedure_77f623_s0 optimal_tarot_spread_and_procedure_77f623_s12 :=
+  (optimal_tarot_spread_and_procedure_77f623_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def optimal_tarot_spread_and_procedure_autodidactic_false_arm : IGProtocol optimal_tarot_spread_and_procedure_autodidactic_s0 optimal_tarot_spread_and_procedure_autodidactic_s12 :=
-  (optimal_tarot_spread_and_procedure_autodidactic_protocol).restrictToEVALF
+noncomputable def optimal_tarot_spread_and_procedure_77f623_false_arm : IGProtocol optimal_tarot_spread_and_procedure_77f623_s0 optimal_tarot_spread_and_procedure_77f623_s12 :=
+  (optimal_tarot_spread_and_procedure_77f623_protocol).restrictToEVALF
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
-def optimal_tarot_spread_and_procedure_autodidactic_tier : OuroboricityTier := TierFunctor.obj optimal_tarot_spread_and_procedure_autodidactic_s0
-#eval optimal_tarot_spread_and_procedure_autodidactic_tier  -- the Grammar's own verdict on its tier
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def optimal_tarot_spread_and_procedure_77f623_tier : OuroboricityTier := TierFunctor.obj optimal_tarot_spread_and_procedure_77f623_s0
+#eval optimal_tarot_spread_and_procedure_77f623_tier  -- the Grammar's own verdict on its tier
 
 -- Frobenius (split → fuse): μ∘δ = id on the ground imscription
-theorem optimal_tarot_spread_and_procedure_autodidactic_frobenius :
-    igFrobeniusAlg.mul optimal_tarot_spread_and_procedure_autodidactic_s0 optimal_tarot_spread_and_procedure_autodidactic_s0 = optimal_tarot_spread_and_procedure_autodidactic_s0 :=
-  igFrobAlg_self_fusion optimal_tarot_spread_and_procedure_autodidactic_s0
+theorem optimal_tarot_spread_and_procedure_77f623_frobenius :
+    igFrobeniusAlg.mul optimal_tarot_spread_and_procedure_77f623_s0 optimal_tarot_spread_and_procedure_77f623_s0 = optimal_tarot_spread_and_procedure_77f623_s0 :=
+  igFrobAlg_self_fusion optimal_tarot_spread_and_procedure_77f623_s0

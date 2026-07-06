@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,4,2,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=17
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 8), (10, 14)]
 
 import Imscribing.IGMorphism
@@ -119,6 +119,6 @@ noncomputable def the_discharge_admission_gate_becomes_634ba1_true_arm : IGProto
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_discharge_admission_gate_becomes_634ba1_tier : OuroboricityTier := TierFunctor.obj the_discharge_admission_gate_becomes_634ba1_s0
 #eval the_discharge_admission_gate_becomes_634ba1_tier  -- the Grammar's own verdict on its tier

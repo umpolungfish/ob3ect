@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(13,6,4,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 6), (10, 12), (18, 20)]
 
 import Imscribing.IGMorphism
@@ -40,66 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] IMSCRIB   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
 --   [23] IFIX      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def elementary_particles_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def elementary_particles_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def elementary_particles_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def elementary_particles_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def elementary_particles_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def elementary_particles_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def elementary_particles_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def elementary_particles_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def elementary_particles_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def elementary_particles_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def elementary_particles_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def elementary_particles_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def elementary_particles_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def elementary_particles_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (field excitation creates initial vacuum fluctuation)
-  (.arrow 𐑾 𐑼 𐑠)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (creation operator generates fundamental fermion excitation)
-  (.arrow 𐑠 𐑾 𐑱)  -- [2] IMSCRIB | gram := 𐑠 | identity — self-imscription (self-interaction provides rest mass through higgs mechanism)
-  (.arrow 𐑱 𐑠 𐑚)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (electromagnetic coupling connects charged fermions to photon field)
-  -- FSPLIT [4] (gran := 𐑚) (field state branches into quark flavor superposition) / FFUSE [6] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (strong interaction locks quark colors into color-singlet hadron)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [6]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [6] FFUSE | stoi := 𐑙 (superposition collapses to specific measurable baryon state)
-  (.arrow 𐑾 𐑙 𐑗)  -- [7] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (weak boson exchange mediates flavor change in quark decay)
-  (.arrow 𐑗 𐑾 𐑱)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (antimatter annihilation process converts matter to radiation)
-  (.arrow 𐑱 𐑗 𐑚)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (gluon exchanges maintain color confinement binding)
-  -- FSPLIT [10] (gran := 𐑚) (vacuum polarization splits virtual particle pairs) / FFUSE [12] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [11] EVALF | chir := 𐑖 | evaluate-false — chirality check (virtual photon propagator carries force without direct detection))
-    -- reconnect at FFUSE [12]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [12] FFUSE | stoi := 𐑙 (pair production reconstitutes original energy conservation)
-  (.arrow 𐑳 𐑙 𐑾)  -- [13] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (higgs field maintains both symmetric and broken phases simultaneously)
-  (.arrow 𐑾 𐑳 𐑠)  -- [14] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (lepton generation through electroweak interaction)
-  (.arrow 𐑠 𐑾 𐑱)  -- [15] IMSCRIB | gram := 𐑠 | identity — self-imscription (neutrino oscillation preserves lepton number identity)
-  (.arrow 𐑱 𐑠 𐑗)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (neutral current interactions couple to z-boson mediator)
-  (.arrow 𐑗 𐑱 𐑚)  -- [17] AREV | pol := 𐑗 | reverse morphism — parity flip (beta decay transforms neutron to proton plus electron)
-  -- FSPLIT [18] (gran := 𐑚) (lepton sector branches into electron/muon/tau generations) / FFUSE [20] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [19] EVALT | crit := ⊙ | evaluate-true — criticality gate open (magnetic moment measurement confirms spin-1/2 classification)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [20]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [20] FFUSE | stoi := 𐑙 (lepton family mixing reconstitutes universal weak coupling)
-  (.arrow 𐑱 𐑙 𐑠)  -- [21] CLINK | fid := 𐑱 | composition — regime coherence (photon exchange provides long-range electromagnetic force)
-  (.arrow 𐑠 𐑱 𐑭)  -- [22] IMSCRIB | gram := 𐑠 | identity — self-imscription (gauge invariance protects photon masslessness)
-  (.arrow 𐑭 𐑠 𐑼)  -- [23] IFIX | prot := 𐑭 | irreversible fixation — winding number (baryon number conservation embedded as irreversible constraint)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def elementary_particles_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def elementary_particles_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def elementary_particles_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def elementary_particles_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def elementary_particles_protocol : IGProtocol elementary_particles_s0 elementary_particles_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct elementary_particles_s6 elementary_particles_s6 = elementary_particles_s6 (idempotent)
+  (.seq (.arrow elementary_particles_l0 elementary_particles_s0 elementary_particles_s1) (.seq (.arrow elementary_particles_l1 elementary_particles_s1 elementary_particles_s2) (.seq (.arrow elementary_particles_l2 elementary_particles_s2 elementary_particles_s3) (.seq (.arrow elementary_particles_l3 elementary_particles_s3 elementary_particles_s4) (.seq (.prod (.arrow elementary_particles_l4 elementary_particles_s4 elementary_particles_s6) (.arrow elementary_particles_l4 elementary_particles_s4 elementary_particles_s6)) (.seq (.arrow elementary_particles_l6 elementary_particles_s6 elementary_particles_s6) (.seq (.arrow elementary_particles_l6 elementary_particles_s6 elementary_particles_s7) (.seq (.arrow elementary_particles_l7 elementary_particles_s7 elementary_particles_s8) (.seq (.arrow elementary_particles_l8 elementary_particles_s8 elementary_particles_s9) (.seq (.arrow elementary_particles_l9 elementary_particles_s9 elementary_particles_s10) (.seq (.arrow elementary_particles_l10 elementary_particles_s10 elementary_particles_s11) (.seq (.arrow elementary_particles_l11 elementary_particles_s11 elementary_particles_s12) (.seq (.arrow elementary_particles_l12 elementary_particles_s12 elementary_particles_s13) (.seq (.arrow elementary_particles_l13 elementary_particles_s13 elementary_particles_s14) (.seq (.arrow elementary_particles_l14 elementary_particles_s14 elementary_particles_s15) (.seq (.arrow elementary_particles_l15 elementary_particles_s15 elementary_particles_s16) (.seq (.arrow elementary_particles_l16 elementary_particles_s16 elementary_particles_s17) (.seq (.arrow elementary_particles_l17 elementary_particles_s17 elementary_particles_s18) (.seq (.arrow elementary_particles_l18 elementary_particles_s18 elementary_particles_s19) (.seq (.arrow elementary_particles_l19 elementary_particles_s19 elementary_particles_s20) (.seq (.arrow elementary_particles_l20 elementary_particles_s20 elementary_particles_s21) (.seq (.arrow elementary_particles_l21 elementary_particles_s21 elementary_particles_s22) (.arrow elementary_particles_l22 elementary_particles_s22 elementary_particles_s23)))))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def elementary_particles_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def elementary_particles_true_arm : IGProtocol elementary_particles_s0 elementary_particles_s23 :=
   (elementary_particles_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def elementary_particles_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def elementary_particles_false_arm : IGProtocol elementary_particles_s0 elementary_particles_s23 :=
   (elementary_particles_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem elementary_particles_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def elementary_particles_tier : OuroboricityTier := TierFunctor.obj elementary_particles_s0
+#eval elementary_particles_tier  -- the Grammar's own verdict on its tier

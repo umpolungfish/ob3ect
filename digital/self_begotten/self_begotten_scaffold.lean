@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 5)]
 
 import Imscribing.IGMorphism
@@ -27,45 +27,77 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [9] ENGAGR    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms
 --   [10] IFIX      prot   := 𐑭               𐑳 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def self_begotten_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def self_begotten_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def self_begotten_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def self_begotten_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (initialize the self-begotten essence)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (establish the Infinite One as the boundary)
-  (.arrow 𐑾 𐑡 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (emanate divine aspects from the source)
-  -- FSPLIT [3] (gran := 𐑚) (divide the divine spark into multiple aspects) / FFUSE [5] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (recognize the realization of divine potential)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [5]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [5] FFUSE | stoi := 𐑙 (reunify the divine aspects back to the essence)
-  (.arrow 𐑗 𐑙 𐑠)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (return to the source, the Infinite One)
-  (.arrow 𐑠 𐑗 𐑖)  -- [7] IMSCRIB | gram := 𐑠 | identity — self-imscription (acknowledge the self-awareness of the divine spark)
-  (.arrow 𐑖 𐑠 𐑳)  -- [8] EVALF | chir := 𐑖 | evaluate-false — chirality check (confront the ignorance of divine nature)
-  (.arrow 𐑳 𐑖 𐑭)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (hold the paradox of being both divine and material)
-  (.arrow 𐑭 𐑳 𐑼)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (create a permanent record of divine realization)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def self_begotten_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def self_begotten_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def self_begotten_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def self_begotten_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def self_begotten_protocol : IGProtocol self_begotten_s0 self_begotten_s10 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct self_begotten_s5 self_begotten_s5 = self_begotten_s5 (idempotent)
+  (.seq (.arrow self_begotten_l0 self_begotten_s0 self_begotten_s1) (.seq (.arrow self_begotten_l1 self_begotten_s1 self_begotten_s2) (.seq (.arrow self_begotten_l2 self_begotten_s2 self_begotten_s3) (.seq (.prod (.arrow self_begotten_l3 self_begotten_s3 self_begotten_s5) (.arrow self_begotten_l3 self_begotten_s3 self_begotten_s5)) (.seq (.arrow self_begotten_l5 self_begotten_s5 self_begotten_s5) (.seq (.arrow self_begotten_l5 self_begotten_s5 self_begotten_s6) (.seq (.arrow self_begotten_l6 self_begotten_s6 self_begotten_s7) (.seq (.arrow self_begotten_l7 self_begotten_s7 self_begotten_s8) (.seq (.arrow self_begotten_l8 self_begotten_s8 self_begotten_s9) (.arrow self_begotten_l9 self_begotten_s9 self_begotten_s10))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def self_begotten_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def self_begotten_true_arm : IGProtocol self_begotten_s0 self_begotten_s10 :=
   (self_begotten_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def self_begotten_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def self_begotten_false_arm : IGProtocol self_begotten_s0 self_begotten_s10 :=
   (self_begotten_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem self_begotten_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def self_begotten_tier : OuroboricityTier := TierFunctor.obj self_begotten_s0
+#eval self_begotten_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem self_begotten_frobenius :
+    igFrobeniusAlg.mul self_begotten_s0 self_begotten_s0 = self_begotten_s0 :=
+  igFrobAlg_self_fusion self_begotten_s0

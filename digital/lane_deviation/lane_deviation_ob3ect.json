@@ -1,0 +1,200 @@
+{
+  "name": "Lane deviation",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Lane deviation",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "trajectory",
+        "boundary",
+        "correction"
+      ],
+      "boundary_condition": "The physical lane markers and the vehicle steering rack limits",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Centerline equilibrium",
+        "justification": "The unperturbed state where no lateral force or deviation exists.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Lane boundary",
+        "justification": "The terminal constraint that defines the valid operational space.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Lateral velocity",
+        "justification": "The directed transformation of the vehicle position toward a boundary.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Counter-steering",
+        "justification": "The reverse morphism applied to negate lateral displacement.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Steering linkage",
+        "justification": "The sequential chaining of driver input to wheel angle to vehicle heading.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Yaw rate sensor",
+        "justification": "The system's self-recognition of its own rotational state.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Differential torque",
+        "justification": "The split of a single steering command into left and right wheel forces.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Resultant vector",
+        "justification": "The reconstitution of differential forces into a single vehicle trajectory.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "In-lane status",
+        "justification": "The affirmative evaluation that the vehicle remains within markers.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Departure warning",
+        "justification": "The negative evaluation indicating a boundary breach.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Straddling",
+        "justification": "A state where the vehicle occupies two lanes simultaneously without resolution.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Black box log",
+        "justification": "The permanent irreversible record of the deviation event.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Differential torque",
+      "split_input": "Steering torque",
+      "split_outputs": [
+        "Left-side force",
+        "Right-side force"
+      ],
+      "fuse_element": "Resultant vector",
+      "fuse_result": "Steering torque",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Stationary vehicle with zero lateral potential",
+      "true_description": "Stable tracking within the designated lane",
+      "false_description": "Uncontrolled departure from the lane",
+      "both_description": "Active correction during a boundary crossing",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize vehicle state at the lane center"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Monitor current heading relative to the road geometry"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Apply forward momentum along the longitudinal axis"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Encounter a lateral gust splitting the force into vector components"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALF",
+          "domain_action": "Detect a deviation exceeding the safety threshold"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "Initiate counter-steering to oppose the lateral drift"
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "Compose the correction through the steering rack"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "Reintegrate the opposing forces into a corrected path"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "Confirm the vehicle has returned to the lane center"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "Record the deviation and correction cycle to the telemetry log"
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "Maintain the vehicle within the closed boundary of the road"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Electronic Power Steering (EPS) controller",
+      "ipc_mechanism": "Controller Area Network (CAN bus) signals",
+      "memory_mechanism": "Non-volatile RAM storing calibration offsets",
+      "scheduler_mechanism": "Real-time operating system (RTOS) interrupt cycle",
+      "alfs_store": "ISO 26262 functional safety standards",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Tire friction and electrical current in the EPS motor",
+      "pre_cycle_state": "Stable centered trajectory",
+      "post_cycle_state": "Restored centered trajectory",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The cycle is a structural restoration of the initial state through lossless feedback.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALF \u2192 AREV \u2192 CLINK \u2192 FFUSE \u2192 EVALT \u2192 IFIX \u2192 TANCH\n-- Class: Lane deviation\n-- Fingerprint: sig=(6,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=11\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [8] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc6d  | evaluate-true \u2014 criticality gate open\n--   [9] IFIX      prot   := \ud801\udc6d               \u2299 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def lane_deviation_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def lane_deviation_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def lane_deviation_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def lane_deviation_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def lane_deviation_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lane_deviation_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def lane_deviation_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def lane_deviation_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def lane_deviation_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lane_deviation_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def lane_deviation_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def lane_deviation_protocol : IGProtocol lane_deviation_s0 lane_deviation_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct lane_deviation_s7 lane_deviation_s7 = lane_deviation_s7 (idempotent)\n  (.seq (.arrow lane_deviation_l0 lane_deviation_s0 lane_deviation_s1) (.seq (.arrow lane_deviation_l1 lane_deviation_s1 lane_deviation_s2) (.seq (.arrow lane_deviation_l2 lane_deviation_s2 lane_deviation_s3) (.seq (.prod (.arrow lane_deviation_l3 lane_deviation_s3 lane_deviation_s7) (.arrow lane_deviation_l3 lane_deviation_s3 lane_deviation_s7)) (.seq (.arrow lane_deviation_l7 lane_deviation_s7 lane_deviation_s7) (.seq (.arrow lane_deviation_l7 lane_deviation_s7 lane_deviation_s8) (.seq (.arrow lane_deviation_l8 lane_deviation_s8 lane_deviation_s9) (.arrow lane_deviation_l9 lane_deviation_s9 lane_deviation_s10))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def lane_deviation_true_arm : IGProtocol lane_deviation_s0 lane_deviation_s10 :=\n  (lane_deviation_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def lane_deviation_false_arm : IGProtocol lane_deviation_s0 lane_deviation_s10 :=\n  (lane_deviation_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef lane_deviation_tier : OuroboricityTier := TierFunctor.obj lane_deviation_s0\n#eval lane_deviation_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem lane_deviation_frobenius :\n    igFrobeniusAlg.mul lane_deviation_s0 lane_deviation_s0 = lane_deviation_s0 :=\n  igFrobAlg_self_fusion lane_deviation_s0\n",
+  "notes": "Auto-designed from: Lane deviation"
+}

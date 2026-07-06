@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 7)]
 
 import Imscribing.IGMorphism
@@ -30,46 +30,85 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] EVALT     crit   := ⊙               𐑡 → 𐑭  | evaluate-true — criticality gate open
 --   [13] IFIX      prot   := 𐑭               ⊙ → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def sanguine_homunculus_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def sanguine_homunculus_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def sanguine_homunculus_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def sanguine_homunculus_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def sanguine_homunculus_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def sanguine_homunculus_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def sanguine_homunculus_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
 
-noncomputable def sanguine_homunculus_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (prepare sterile blood-plasma medium as undifferentiated substrate)
-  -- FSPLIT [1] (gran := 𐑚) (aliquot clonal cells into three microfluidic chambers) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (add IPTG to drive oscillator past bifurcation threshold)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (compose AHL quorum pipeline linking Scribe edits to Gate output)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (read fluorescence pulse encoding cell's self-model)
-        (.arrow 𐑳 𐑚 𐑙)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (introduce D-amino acids allowing simultaneous L/D proteomes)
-      -- F-branch (1 nodes)
-      (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (reverse valve sequence so Gate state edits Scribe genome))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [7] FFUSE | stoi := 𐑙 (open all valves simultaneously via quorum-sensing autoinducers)
-  (.arrow ⊙ 𐑙 𐑭)  -- [8] EVALT | crit := ⊙ | evaluate-true — criticality gate open (confirm >90% triple-positive cells by flow cytometry)
-  (.arrow 𐑭 ⊙ 𐑱)  -- [9] IFIX | prot := 𐑭 | irreversible fixation — winding number (cryopreserve verified aliquot as immutable record)
-  (.arrow 𐑱 𐑭 𐑡)  -- [10] CLINK | fid := 𐑱 | composition — regime coherence (recompose full loop from oscillator induction onward)
-  (.arrow 𐑡 𐑱 ⊙)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (seal apparatus within Gödelian fixed-point boundary)
-  (.arrow ⊙ 𐑡 𐑭)  -- [12] EVALT | crit := ⊙ | evaluate-true — criticality gate open (verify mutual information >0.5 bits between oscillator and edit rate)
-  (.arrow 𐑭 ⊙ 𐑼)  -- [13] IFIX | prot := 𐑭 | irreversible fixation — winding number (append final C-score measurement to permanent archive)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def sanguine_homunculus_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def sanguine_homunculus_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def sanguine_homunculus_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def sanguine_homunculus_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def sanguine_homunculus_protocol : IGProtocol sanguine_homunculus_s0 sanguine_homunculus_s13 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct sanguine_homunculus_s7 sanguine_homunculus_s7 = sanguine_homunculus_s7 (idempotent)
+  (.seq (.arrow sanguine_homunculus_l0 sanguine_homunculus_s0 sanguine_homunculus_s1) (.seq (.prod (.arrow sanguine_homunculus_l1 sanguine_homunculus_s1 sanguine_homunculus_s7) (.arrow sanguine_homunculus_l1 sanguine_homunculus_s1 sanguine_homunculus_s7)) (.seq (.arrow sanguine_homunculus_l7 sanguine_homunculus_s7 sanguine_homunculus_s7) (.seq (.arrow sanguine_homunculus_l7 sanguine_homunculus_s7 sanguine_homunculus_s8) (.seq (.arrow sanguine_homunculus_l8 sanguine_homunculus_s8 sanguine_homunculus_s9) (.seq (.arrow sanguine_homunculus_l9 sanguine_homunculus_s9 sanguine_homunculus_s10) (.seq (.arrow sanguine_homunculus_l10 sanguine_homunculus_s10 sanguine_homunculus_s11) (.seq (.arrow sanguine_homunculus_l11 sanguine_homunculus_s11 sanguine_homunculus_s12) (.arrow sanguine_homunculus_l12 sanguine_homunculus_s12 sanguine_homunculus_s13)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def sanguine_homunculus_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def sanguine_homunculus_true_arm : IGProtocol sanguine_homunculus_s0 sanguine_homunculus_s13 :=
   (sanguine_homunculus_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem sanguine_homunculus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def sanguine_homunculus_tier : OuroboricityTier := TierFunctor.obj sanguine_homunculus_s0
+#eval sanguine_homunculus_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem sanguine_homunculus_frobenius :
+    igFrobeniusAlg.mul sanguine_homunculus_s0 sanguine_homunculus_s0 = sanguine_homunculus_s0 :=
+  igFrobAlg_self_fusion sanguine_homunculus_s0

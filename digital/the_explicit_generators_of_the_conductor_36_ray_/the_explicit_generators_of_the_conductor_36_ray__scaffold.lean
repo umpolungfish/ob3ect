@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,4,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=19
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 6), (12, 15)]
 
 import Imscribing.IGMorphism
@@ -133,6 +133,6 @@ noncomputable def the_explicit_generators_of_the_576561_false_arm : IGProtocol t
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_explicit_generators_of_the_576561_tier : OuroboricityTier := TierFunctor.obj the_explicit_generators_of_the_576561_s0
 #eval the_explicit_generators_of_the_576561_tier  -- the Grammar's own verdict on its tier

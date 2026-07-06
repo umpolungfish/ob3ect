@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(12,5,5,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(9, 10), (20, 21)]
 
 import Imscribing.IGMorphism
@@ -40,62 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] EVALT     crit   := ⊙               𐑙 → 𐑭  | evaluate-true — criticality gate open
 --   [23] IFIX      prot   := 𐑭               ⊙ → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def neuronal_cells_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def neuronal_cells_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def neuronal_cells_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def neuronal_cells_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def neuronal_cells_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def neuronal_cells_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def neuronal_cells_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def neuronal_cells_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def neuronal_cells_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def neuronal_cells_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def neuronal_cells_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def neuronal_cells_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def neuronal_cells_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (resting potential (-70mV) establishes initial polarized state across cell mem...)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (sodium channels open increasing influx driving depolarization toward threshold)
-  (.arrow 𐑚 𐑾 ⊙)  -- [2] FSPLIT | gran := 𐑚 | split δ — range decomposition (dendritic inputs separate into excitatory and inhibitory graded potentials)
-  (.arrow ⊙ 𐑚 𐑾)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (excitatory inputs reach threshold initiating action potential generation)
-  (.arrow 𐑾 ⊙ 𐑡)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (depolarization wave propagates down axon as voltage-gated Na+ channels sequen...)
-  (.arrow 𐑡 𐑾 𐑗)  -- [5] TANCH | top := 𐑡 | terminal object — connectivity boundary (peak depolarization (+30mV) triggers potassium channel opening)
-  (.arrow 𐑗 𐑡 𐑱)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (K+ efflux restores negative internal charge returning to resting potential)
-  (.arrow 𐑱 𐑗 𐑠)  -- [7] CLINK | fid := 𐑱 | composition — regime coherence (action potential trains connect to next neuron via synaptic terminals)
-  (.arrow 𐑠 𐑱 𐑚)  -- [8] IMSCRIB | gram := 𐑠 | identity — self-imscription (presynaptic neuron recognizes its own transmitter release pattern for regulation)
-  -- FSPLIT [9] (gran := 𐑚) (synaptic vesicles split into different neurotransmitter categories for release) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [10] FFUSE | stoi := 𐑙 (postsynaptic receptors fuse multiple transmitter signals into integrated response)
-  (.arrow ⊙ 𐑙 𐑖)  -- [11] EVALT | crit := ⊙ | evaluate-true — criticality gate open (successful neurotransmitter binding activates downstream neural pathway)
-  (.arrow 𐑖 ⊙ 𐑳)  -- [12] EVALF | chir := 𐑖 | evaluate-false — chirality check (insufficient neurotransmitter binding results in signal termination)
-  (.arrow 𐑳 𐑖 𐑭)  -- [13] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (simultaneous excitatory and inhibitory synaptic inputs maintain network balance)
-  (.arrow 𐑭 𐑳 𐑾)  -- [14] IFIX | prot := 𐑭 | irreversible fixation — winding number (Hebbian plasticity creates lasting synaptic strength modification based on ac...)
-  (.arrow 𐑾 𐑭 𐑱)  -- [15] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (metabolic energy consumption drives ion pump restoration of electrochemical g...)
-  (.arrow 𐑱 𐑾 𐑠)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (neural network topology adapts through repeated action potential patterns)
-  (.arrow 𐑠 𐑱 𐑡)  -- [17] IMSCRIB | gram := 𐑠 | identity — self-imscription (neuron self-models its own response characteristics for adaptive behavior)
-  (.arrow 𐑡 𐑠 𐑗)  -- [18] TANCH | top := 𐑡 | terminal object — connectivity boundary (cell death threshold represents irreversible commitment to apoptosis)
-  (.arrow 𐑗 𐑡 𐑚)  -- [19] AREV | pol := 𐑗 | reverse morphism — parity flip (retrograde signaling propagates information back from synapses to soma)
-  -- FSPLIT [20] (gran := 𐑚) (gene expression separates into immediate early and late response genes) / FFUSE [21] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [21]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [21] FFUSE | stoi := 𐑙 (transcription factors integrate multiple signaling pathways into gene activation)
-  (.arrow ⊙ 𐑙 𐑭)  -- [22] EVALT | crit := ⊙ | evaluate-true — criticality gate open (successful neural coding transmits information to higher brain centers)
-  (.arrow 𐑭 ⊙ 𐑼)  -- [23] IFIX | prot := 𐑭 | irreversible fixation — winding number (memory consolidation creates permanent neural pathway modifications)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def neuronal_cells_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def neuronal_cells_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def neuronal_cells_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def neuronal_cells_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def neuronal_cells_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def neuronal_cells_protocol : IGProtocol neuronal_cells_s0 neuronal_cells_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct neuronal_cells_s10 neuronal_cells_s10 = neuronal_cells_s10 (idempotent)
+  (.seq (.arrow neuronal_cells_l0 neuronal_cells_s0 neuronal_cells_s1) (.seq (.arrow neuronal_cells_l1 neuronal_cells_s1 neuronal_cells_s2) (.seq (.arrow neuronal_cells_l2 neuronal_cells_s2 neuronal_cells_s3) (.seq (.arrow neuronal_cells_l3 neuronal_cells_s3 neuronal_cells_s4) (.seq (.arrow neuronal_cells_l4 neuronal_cells_s4 neuronal_cells_s5) (.seq (.arrow neuronal_cells_l5 neuronal_cells_s5 neuronal_cells_s6) (.seq (.arrow neuronal_cells_l6 neuronal_cells_s6 neuronal_cells_s7) (.seq (.arrow neuronal_cells_l7 neuronal_cells_s7 neuronal_cells_s8) (.seq (.arrow neuronal_cells_l8 neuronal_cells_s8 neuronal_cells_s9) (.seq (.prod (.arrow neuronal_cells_l9 neuronal_cells_s9 neuronal_cells_s10) (.arrow neuronal_cells_l9 neuronal_cells_s9 neuronal_cells_s10)) (.seq (.arrow neuronal_cells_l10 neuronal_cells_s10 neuronal_cells_s10) (.seq (.arrow neuronal_cells_l10 neuronal_cells_s10 neuronal_cells_s11) (.seq (.arrow neuronal_cells_l11 neuronal_cells_s11 neuronal_cells_s12) (.seq (.arrow neuronal_cells_l12 neuronal_cells_s12 neuronal_cells_s13) (.seq (.arrow neuronal_cells_l13 neuronal_cells_s13 neuronal_cells_s14) (.seq (.arrow neuronal_cells_l14 neuronal_cells_s14 neuronal_cells_s15) (.seq (.arrow neuronal_cells_l15 neuronal_cells_s15 neuronal_cells_s16) (.seq (.arrow neuronal_cells_l16 neuronal_cells_s16 neuronal_cells_s17) (.seq (.arrow neuronal_cells_l17 neuronal_cells_s17 neuronal_cells_s18) (.seq (.arrow neuronal_cells_l18 neuronal_cells_s18 neuronal_cells_s19) (.seq (.arrow neuronal_cells_l19 neuronal_cells_s19 neuronal_cells_s20) (.seq (.arrow neuronal_cells_l20 neuronal_cells_s20 neuronal_cells_s21) (.seq (.arrow neuronal_cells_l21 neuronal_cells_s21 neuronal_cells_s22) (.arrow neuronal_cells_l22 neuronal_cells_s22 neuronal_cells_s23))))))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def neuronal_cells_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def neuronal_cells_true_arm : IGProtocol neuronal_cells_s0 neuronal_cells_s23 :=
   (neuronal_cells_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def neuronal_cells_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def neuronal_cells_false_arm : IGProtocol neuronal_cells_s0 neuronal_cells_s23 :=
   (neuronal_cells_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem neuronal_cells_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def neuronal_cells_tier : OuroboricityTier := TierFunctor.obj neuronal_cells_s0
+#eval neuronal_cells_tier  -- the Grammar's own verdict on its tier

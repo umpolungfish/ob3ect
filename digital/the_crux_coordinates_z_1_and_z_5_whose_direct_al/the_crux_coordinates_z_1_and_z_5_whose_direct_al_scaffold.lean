@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 9)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def the_crux_coordinates_z_1_and_z_5_whose_38f01b_false_arm : IGPr
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_crux_coordinates_z_1_and_z_5_whose_38f01b_tier : OuroboricityTier := TierFunctor.obj the_crux_coordinates_z_1_and_z_5_whose_38f01b_s0
 #eval the_crux_coordinates_z_1_and_z_5_whose_38f01b_tier  -- the Grammar's own verdict on its tier
 

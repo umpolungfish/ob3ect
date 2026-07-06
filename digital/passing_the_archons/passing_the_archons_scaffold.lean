@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,3,6,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=20
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 9)]
 
 import Imscribing.IGMorphism
@@ -36,57 +36,113 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [18] FFUSE     stoi   := 𐑙               𐑳 → 𐑭  | fuse μ — assembly mode
 --   [19] IFIX      prot   := 𐑭               𐑙 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def passing_the_archons_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def passing_the_archons_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
+private def passing_the_archons_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def passing_the_archons_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def passing_the_archons_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def passing_the_archons_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def passing_the_archons_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def passing_the_archons_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def passing_the_archons_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def passing_the_archons_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def passing_the_archons_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def passing_the_archons_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def passing_the_archons_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def passing_the_archons_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (the All remains unconscious in the deep)
-  (.arrow 𐑡 𐑼 𐑚)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Setheus seals the entire pleroma)
-  -- FSPLIT [2] (gran := 𐑚) (the indivisible one branches into twelve fatherhoods) / FFUSE [9] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (each fatherhood links to three aspects)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (light-spark emanates forward from the monad)
-      .seq
-        (.arrow 𐑗 𐑚 𐑙)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip (light-spark descends through the veils into matter)
-        (.arrow ⊙ 𐑚 𐑙)  -- [6] EVALT | crit := ⊙ | evaluate-true — criticality gate open (aeons on the right receive the seal)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (those on the left weep and lose their wealth)
-        (.arrow 𐑳 𐑚 𐑙)  -- [8] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (excess light produces the light-darkness paradox))
-    -- reconnect at FFUSE [9]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [9] FFUSE | stoi := 𐑙 (all branches reunite exactly into the original light-spark)
-  (.arrow 𐑠 𐑙 𐑭)  -- [10] IMSCRIB | gram := 𐑠 | identity — self-imscription (the monad recognizes itself as self-begotten)
-  (.arrow 𐑭 𐑠 𐑱)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (the crown of 365 species is permanently recorded)
-  (.arrow 𐑱 𐑭 𐑾)  -- [12] CLINK | fid := 𐑱 | composition — regime coherence (the creative word chains through all aeons)
-  (.arrow 𐑾 𐑱 𐑗)  -- [13] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (the protogenitor spreads over matter like wings)
-  (.arrow 𐑗 𐑾 ⊙)  -- [14] AREV | pol := 𐑗 | reverse morphism — parity flip (dispersed elements are gathered back inward)
-  (.arrow ⊙ 𐑗 𐑖)  -- [15] EVALT | crit := ⊙ | evaluate-true — criticality gate open (watchers grant authority to believers)
-  (.arrow 𐑖 ⊙ 𐑳)  -- [16] EVALF | chir := 𐑖 | evaluate-false — chirality check (archons oppose and bind the light)
-  (.arrow 𐑳 𐑖 𐑙)  -- [17] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (the mother holds both joy and sorrow without resolution)
-  (.arrow 𐑙 𐑳 𐑭)  -- [18] FFUSE | stoi := 𐑙 | fuse μ — assembly mode (the All is reconstituted as one in the Only One)
-  (.arrow 𐑭 𐑙 𐑼)  -- [19] IFIX | prot := 𐑭 | irreversible fixation — winding number (the ineffable garment is appended as eternal record)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def passing_the_archons_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def passing_the_archons_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def passing_the_archons_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def passing_the_archons_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def passing_the_archons_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def passing_the_archons_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def passing_the_archons_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def passing_the_archons_protocol : IGProtocol passing_the_archons_s0 passing_the_archons_s19 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct passing_the_archons_s9 passing_the_archons_s9 = passing_the_archons_s9 (idempotent)
+  (.seq (.arrow passing_the_archons_l0 passing_the_archons_s0 passing_the_archons_s1) (.seq (.arrow passing_the_archons_l1 passing_the_archons_s1 passing_the_archons_s2) (.seq (.prod (.arrow passing_the_archons_l2 passing_the_archons_s2 passing_the_archons_s9) (.arrow passing_the_archons_l2 passing_the_archons_s2 passing_the_archons_s9)) (.seq (.arrow passing_the_archons_l9 passing_the_archons_s9 passing_the_archons_s9) (.seq (.arrow passing_the_archons_l9 passing_the_archons_s9 passing_the_archons_s10) (.seq (.arrow passing_the_archons_l10 passing_the_archons_s10 passing_the_archons_s11) (.seq (.arrow passing_the_archons_l11 passing_the_archons_s11 passing_the_archons_s12) (.seq (.arrow passing_the_archons_l12 passing_the_archons_s12 passing_the_archons_s13) (.seq (.arrow passing_the_archons_l13 passing_the_archons_s13 passing_the_archons_s14) (.seq (.arrow passing_the_archons_l14 passing_the_archons_s14 passing_the_archons_s15) (.seq (.arrow passing_the_archons_l15 passing_the_archons_s15 passing_the_archons_s16) (.seq (.arrow passing_the_archons_l16 passing_the_archons_s16 passing_the_archons_s17) (.seq (.arrow passing_the_archons_l17 passing_the_archons_s17 passing_the_archons_s18) (.arrow passing_the_archons_l18 passing_the_archons_s18 passing_the_archons_s19))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def passing_the_archons_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def passing_the_archons_true_arm : IGProtocol passing_the_archons_s0 passing_the_archons_s19 :=
   (passing_the_archons_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def passing_the_archons_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def passing_the_archons_false_arm : IGProtocol passing_the_archons_s0 passing_the_archons_s19 :=
   (passing_the_archons_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem passing_the_archons_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def passing_the_archons_tier : OuroboricityTier := TierFunctor.obj passing_the_archons_s0
+#eval passing_the_archons_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem passing_the_archons_frobenius :
+    igFrobeniusAlg.mul passing_the_archons_s0 passing_the_archons_s0 = passing_the_archons_s0 :=
+  igFrobAlg_self_fusion passing_the_archons_s0

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(11,6,6,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 6), (10, 14), (17, 20)]
 
 import Imscribing.IGMorphism
@@ -40,72 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [23] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def mind_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def mind_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def mind_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def mind_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def mind_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def mind_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def mind_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def mind_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def mind_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def mind_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def mind_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def mind_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def mind_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def mind_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def mind_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (genesis of awareness as pure potential before attention)
-  -- FSPLIT [1] (gran := 𐑚) (cognitive processing bifurcates into conscious and unconscious streams) / FFUSE [6] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (attention moves outward toward external objects and stimuli)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (conscious validation of attended objects and recognition of patterns)
-      .seq
-        (.arrow 𐑠 𐑚 𐑙)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (self-recognition mechanism activates, mind identifies as mind)
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (binding operation integrates multimodal inputs into unified percepts)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [6]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [6] FFUSE | stoi := 𐑙 (conscious and unconscious processing streams reunite to form coherent experience)
-  (.arrow 𐑗 𐑙 𐑖)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (recursive loop returns attention inward for self-reflection and metacognition)
-  (.arrow 𐑖 𐑗 𐑳)  -- [8] EVALF | chir := 𐑖 | evaluate-false — chirality check (rejection mechanism filters out contradictory or impossible content)
-  (.arrow 𐑳 𐑖 𐑚)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (paradoxical self-observation where observer and observed become indistinguish...)
-  -- FSPLIT [10] (gran := 𐑚) (second-level split where self-awareness splits into subject and self-object) / FFUSE [14] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [11] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (attention turns toward internal mental processes and their dynamics)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [12] EVALT | crit := ⊙ | evaluate-true — criticality gate open (validation of self-knowledge and understanding of own cognitive mechanisms)
-        (.arrow 𐑱 𐑚 𐑙)  -- [13] CLINK | fid := 𐑱 | composition — regime coherence (integration of external and internal attention into unified awareness)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [14]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [14] FFUSE | stoi := 𐑙 (reunification of inner and outer attention into integrated consciousness)
-  (.arrow 𐑠 𐑙 𐑗)  -- [15] IMSCRIB | gram := 𐑠 | identity — self-imscription (higher-order self-model validates its own existence as a conscious system)
-  (.arrow 𐑗 𐑠 𐑚)  -- [16] AREV | pol := 𐑗 | reverse morphism — parity flip (deep introspection enters the recursive loop of infinite self-regression)
-  -- FSPLIT [17] (gran := 𐑚) (fundamental split between the knowing subject and the process of knowing) / FFUSE [20] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [18] EVALF | chir := 𐑖 | evaluate-false — chirality check (recognition of cognitive limitations and boundaries of awareness)
-        (.arrow 𐑱 𐑚 𐑙)  -- [19] CLINK | fid := 𐑱 | composition — regime coherence (binding of temporal sequences creates continuous narrative self))
-    -- reconnect at FFUSE [20]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [20] FFUSE | stoi := 𐑙 (final integration of all cognitive streams into stable phenomenal consciousness)
-  (.arrow 𐑳 𐑙 𐑭)  -- [21] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (maintenance of the paradox where mind observes its own observation process)
-  (.arrow 𐑭 𐑳 𐑡)  -- [22] IFIX | prot := 𐑭 | irreversible fixation — winding number (crystallization of stable self-model into enduring personality pattern)
-  (.arrow 𐑡 𐑭 𐑼)  -- [23] TANCH | top := 𐑡 | terminal object — connectivity boundary (completion of conscious system with stable boundary conditions)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def mind_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def mind_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def mind_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def mind_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def mind_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def mind_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def mind_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def mind_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def mind_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def mind_protocol : IGProtocol mind_s0 mind_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct mind_s6 mind_s6 = mind_s6 (idempotent)
+  (.seq (.arrow mind_l0 mind_s0 mind_s1) (.seq (.prod (.arrow mind_l1 mind_s1 mind_s6) (.arrow mind_l1 mind_s1 mind_s6)) (.seq (.arrow mind_l6 mind_s6 mind_s6) (.seq (.arrow mind_l6 mind_s6 mind_s7) (.seq (.arrow mind_l7 mind_s7 mind_s8) (.seq (.arrow mind_l8 mind_s8 mind_s9) (.seq (.arrow mind_l9 mind_s9 mind_s10) (.seq (.arrow mind_l10 mind_s10 mind_s11) (.seq (.arrow mind_l11 mind_s11 mind_s12) (.seq (.arrow mind_l12 mind_s12 mind_s13) (.seq (.arrow mind_l13 mind_s13 mind_s14) (.seq (.arrow mind_l14 mind_s14 mind_s15) (.seq (.arrow mind_l15 mind_s15 mind_s16) (.seq (.arrow mind_l16 mind_s16 mind_s17) (.seq (.arrow mind_l17 mind_s17 mind_s18) (.seq (.arrow mind_l18 mind_s18 mind_s19) (.seq (.arrow mind_l19 mind_s19 mind_s20) (.seq (.arrow mind_l20 mind_s20 mind_s21) (.seq (.arrow mind_l21 mind_s21 mind_s22) (.arrow mind_l22 mind_s22 mind_s23))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def mind_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def mind_true_arm : IGProtocol mind_s0 mind_s23 :=
   (mind_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def mind_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def mind_false_arm : IGProtocol mind_s0 mind_s23 :=
   (mind_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem mind_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def mind_tier : OuroboricityTier := TierFunctor.obj mind_s0
+#eval mind_tier  -- the Grammar's own verdict on its tier

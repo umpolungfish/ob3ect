@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(12,2,4,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=20
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(7, 11)]
 
 import Imscribing.IGMorphism
@@ -36,54 +36,113 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [18] IMSCRIB   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
 --   [19] IFIX      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def creating_golem_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def creating_golem_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def creating_golem_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def creating_golem_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def creating_golem_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def creating_golem_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def creating_golem_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def creating_golem_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def creating_golem_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def creating_golem_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def creating_golem_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def creating_golem_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Unformed clay lies ready)
-  (.arrow 𐑾 𐑼 𐑾)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (First letter of the name is traced)
-  (.arrow 𐑾 𐑾 𐑾)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Second letter of the name is traced)
-  (.arrow 𐑾 𐑾 𐑠)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Third letter of the name is traced)
-  (.arrow 𐑠 𐑾 𐑡)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (The name begins to refer to itself)
-  (.arrow 𐑡 𐑠 𐑱)  -- [5] TANCH | top := 𐑡 | terminal object — connectivity boundary (Protective circle is closed around the clay)
-  (.arrow 𐑱 𐑡 𐑚)  -- [6] CLINK | fid := 𐑱 | composition — regime coherence (Clay is linked to the circle boundary)
-  -- FSPLIT [7] (gran := 𐑚) (Name diagram splits vocal and geometric branches) / FFUSE [11] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [8] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Vocal branch spoken correctly)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [9] EVALF | chir := 𐑖 | evaluate-false — chirality check (Geometric branch drawn incorrectly)
-        (.arrow 𐑳 𐑚 𐑙)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Clay holds both living and inert potential))
-    -- reconnect at FFUSE [11]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [11] FFUSE | stoi := 𐑙 (Seal with name reunites branches into life)
-  (.arrow 𐑾 𐑙 ⊙)  -- [12] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Life force enters the limbs)
-  (.arrow ⊙ 𐑾 𐑭)  -- [13] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Golem rises and obeys)
-  (.arrow 𐑭 ⊙ 𐑾)  -- [14] IFIX | prot := 𐑭 | irreversible fixation — winding number (Rite recorded on tablet)
-  (.arrow 𐑾 𐑭 𐑗)  -- [15] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Command given to the golem)
-  (.arrow 𐑗 𐑾 𐑱)  -- [16] AREV | pol := 𐑗 | reverse morphism — parity flip (Name erased to deactivate)
-  (.arrow 𐑱 𐑗 𐑠)  -- [17] CLINK | fid := 𐑱 | composition — regime coherence (Deactivation composes reverse seals)
-  (.arrow 𐑠 𐑱 𐑭)  -- [18] IMSCRIB | gram := 𐑠 | identity — self-imscription (Golem recognizes its return to clay)
-  (.arrow 𐑭 𐑠 𐑼)  -- [19] IFIX | prot := 𐑭 | irreversible fixation — winding number (Final state permanently recorded)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def creating_golem_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def creating_golem_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def creating_golem_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def creating_golem_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def creating_golem_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def creating_golem_protocol : IGProtocol creating_golem_s0 creating_golem_s19 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct creating_golem_s11 creating_golem_s11 = creating_golem_s11 (idempotent)
+  (.seq (.arrow creating_golem_l0 creating_golem_s0 creating_golem_s1) (.seq (.arrow creating_golem_l1 creating_golem_s1 creating_golem_s2) (.seq (.arrow creating_golem_l2 creating_golem_s2 creating_golem_s3) (.seq (.arrow creating_golem_l3 creating_golem_s3 creating_golem_s4) (.seq (.arrow creating_golem_l4 creating_golem_s4 creating_golem_s5) (.seq (.arrow creating_golem_l5 creating_golem_s5 creating_golem_s6) (.seq (.arrow creating_golem_l6 creating_golem_s6 creating_golem_s7) (.seq (.prod (.arrow creating_golem_l7 creating_golem_s7 creating_golem_s11) (.arrow creating_golem_l7 creating_golem_s7 creating_golem_s11)) (.seq (.arrow creating_golem_l11 creating_golem_s11 creating_golem_s11) (.seq (.arrow creating_golem_l11 creating_golem_s11 creating_golem_s12) (.seq (.arrow creating_golem_l12 creating_golem_s12 creating_golem_s13) (.seq (.arrow creating_golem_l13 creating_golem_s13 creating_golem_s14) (.seq (.arrow creating_golem_l14 creating_golem_s14 creating_golem_s15) (.seq (.arrow creating_golem_l15 creating_golem_s15 creating_golem_s16) (.seq (.arrow creating_golem_l16 creating_golem_s16 creating_golem_s17) (.seq (.arrow creating_golem_l17 creating_golem_s17 creating_golem_s18) (.arrow creating_golem_l18 creating_golem_s18 creating_golem_s19)))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def creating_golem_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def creating_golem_true_arm : IGProtocol creating_golem_s0 creating_golem_s19 :=
   (creating_golem_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def creating_golem_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def creating_golem_false_arm : IGProtocol creating_golem_s0 creating_golem_s19 :=
   (creating_golem_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem creating_golem_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def creating_golem_tier : OuroboricityTier := TierFunctor.obj creating_golem_s0
+#eval creating_golem_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem creating_golem_frobenius :
+    igFrobeniusAlg.mul creating_golem_s0 creating_golem_s0 = creating_golem_s0 :=
+  igFrobAlg_self_fusion creating_golem_s0

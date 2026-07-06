@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,3,3,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 7)]
 
 import Imscribing.IGMorphism
@@ -113,6 +113,6 @@ noncomputable def no_reversible_dynamics_ever_turns_the_b_d3fe30_false_arm : IGP
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def no_reversible_dynamics_ever_turns_the_b_d3fe30_tier : OuroboricityTier := TierFunctor.obj no_reversible_dynamics_ever_turns_the_b_d3fe30_s0
 #eval no_reversible_dynamics_ever_turns_the_b_d3fe30_tier  -- the Grammar's own verdict on its tier

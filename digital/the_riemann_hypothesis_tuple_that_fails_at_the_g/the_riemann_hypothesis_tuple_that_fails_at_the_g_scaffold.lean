@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,4,4,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=16
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8), (9, 12)]
 
 import Imscribing.IGMorphism
@@ -118,6 +118,6 @@ noncomputable def the_riemann_hypothesis_tuple_that_fails_838193_false_arm : IGP
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_riemann_hypothesis_tuple_that_fails_838193_tier : OuroboricityTier := TierFunctor.obj the_riemann_hypothesis_tuple_that_fails_838193_s0
 #eval the_riemann_hypothesis_tuple_that_fails_838193_tier  -- the Grammar's own verdict on its tier

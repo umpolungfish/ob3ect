@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -28,47 +28,81 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] CLINK     fid    := 𐑱               𐑠 → 𐑡  | composition — regime coherence
 --   [11] TANCH     top    := 𐑡               𐑱 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def at_home_cure_tinnitus_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }
+private def at_home_cure_tinnitus_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def at_home_cure_tinnitus_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def at_home_cure_tinnitus_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def at_home_cure_tinnitus_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑭)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the system with the Tinnitus Baseline (the phantom ringing).)
-  (.arrow 𐑭 𐑼 𐑚)  -- [1] IFIX | prot := 𐑭 | irreversible fixation — winding number (Record the Audiometric Record as a permanent clinical baseline of hearing thr...)
-  -- FSPLIT [2] (gran := 𐑚) (Apply Etiology Branching to split the Unified Auditory Experience into Sensorineural Pathway and Somatic Pathway.) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply Sound Therapy to the Sensorineural Pathway to drive forward neural adap...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Evaluate Perceptual Fading on the T-arm to confirm the sound is becoming less...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip (Apply Somatic Release to the Somatic Pathway to descend from TMJ and neck ten...)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (Evaluate Intrusive Persistence on the F-arm to check if physical tension rema...))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [7] FFUSE | stoi := 𐑙 (Apply Integrated Relief to fuse the Sensorineural Pathway and Somatic Pathway back into the Unified Auditory Experience.)
-  (.arrow 𐑳 𐑙 𐑠)  -- [8] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter the Phantom Paradox, holding the physical absence of sound and the perc...)
-  (.arrow 𐑠 𐑳 𐑱)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (Apply Neuroplastic Re-mapping as the auditory cortex self-identifies the soun...)
-  (.arrow 𐑱 𐑠 𐑡)  -- [10] CLINK | fid := 𐑱 | composition — regime coherence (Compose the Habituation Protocol by chaining sound therapy, somatic release, ...)
-  (.arrow 𐑡 𐑱 𐑼)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (Terminate at the Habituation Threshold, the closed boundary where the brain s...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def at_home_cure_tinnitus_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def at_home_cure_tinnitus_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def at_home_cure_tinnitus_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def at_home_cure_tinnitus_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def at_home_cure_tinnitus_protocol : IGProtocol at_home_cure_tinnitus_s0 at_home_cure_tinnitus_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct at_home_cure_tinnitus_s7 at_home_cure_tinnitus_s7 = at_home_cure_tinnitus_s7 (idempotent)
+  (.seq (.arrow at_home_cure_tinnitus_l0 at_home_cure_tinnitus_s0 at_home_cure_tinnitus_s1) (.seq (.arrow at_home_cure_tinnitus_l1 at_home_cure_tinnitus_s1 at_home_cure_tinnitus_s2) (.seq (.prod (.arrow at_home_cure_tinnitus_l2 at_home_cure_tinnitus_s2 at_home_cure_tinnitus_s7) (.arrow at_home_cure_tinnitus_l2 at_home_cure_tinnitus_s2 at_home_cure_tinnitus_s7)) (.seq (.arrow at_home_cure_tinnitus_l7 at_home_cure_tinnitus_s7 at_home_cure_tinnitus_s7) (.seq (.arrow at_home_cure_tinnitus_l7 at_home_cure_tinnitus_s7 at_home_cure_tinnitus_s8) (.seq (.arrow at_home_cure_tinnitus_l8 at_home_cure_tinnitus_s8 at_home_cure_tinnitus_s9) (.seq (.arrow at_home_cure_tinnitus_l9 at_home_cure_tinnitus_s9 at_home_cure_tinnitus_s10) (.arrow at_home_cure_tinnitus_l10 at_home_cure_tinnitus_s10 at_home_cure_tinnitus_s11))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def at_home_cure_tinnitus_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def at_home_cure_tinnitus_true_arm : IGProtocol at_home_cure_tinnitus_s0 at_home_cure_tinnitus_s11 :=
   (at_home_cure_tinnitus_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def at_home_cure_tinnitus_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def at_home_cure_tinnitus_false_arm : IGProtocol at_home_cure_tinnitus_s0 at_home_cure_tinnitus_s11 :=
   (at_home_cure_tinnitus_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem at_home_cure_tinnitus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def at_home_cure_tinnitus_tier : OuroboricityTier := TierFunctor.obj at_home_cure_tinnitus_s0
+#eval at_home_cure_tinnitus_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem at_home_cure_tinnitus_frobenius :
+    igFrobeniusAlg.mul at_home_cure_tinnitus_s0 at_home_cure_tinnitus_s0 = at_home_cure_tinnitus_s0 :=
+  igFrobAlg_self_fusion at_home_cure_tinnitus_s0

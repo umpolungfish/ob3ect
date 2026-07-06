@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 7)]
 
 import Imscribing.IGMorphism
@@ -28,46 +28,81 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] IFIX      prot   := 𐑭               𐑗 → 𐑡  | irreversible fixation — winding number
 --   [11] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def g_del_completion_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def g_del_completion_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def g_del_completion_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def g_del_completion_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def g_del_completion_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def g_del_completion_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def g_del_completion_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def g_del_completion_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of the uninterpreted formal system in the initial void.)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (The system performs Gödel numbering to encode its own syntax and recognize it...)
-  (.arrow 𐑾 𐑠 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (The forward morphism applies the incompleteness operator to generate the Göde...)
-  -- FSPLIT [3] (gran := 𐑚) (The Frobenius comultiplication branches the system into provable and unprovable paths.) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The T arm anchor evaluates the provable branch as classically true.)
-        (.arrow 𐑳 𐑚 𐑙)  -- [5] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The T arm enters the B-state to hold the paradox without resolution.)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (The F arm anchor evaluates the unprovable branch as classically false.))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [7] FFUSE | stoi := 𐑙 (The Frobenius multiplication fuses the T and F arms back into the saturated formal system.)
-  (.arrow 𐑱 𐑙 𐑗)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (The composition records the Frobenius round trip as a structural witness.)
-  (.arrow 𐑗 𐑱 𐑭)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (The contravariant descent performs adiabatic expansion by removing the explos...)
-  (.arrow 𐑭 𐑗 𐑡)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (The permanent fixation disables the empty eliminator in the Lean kernel to bl...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [11] TANCH | top := 𐑡 | terminal object — connectivity boundary (The terminal anchor seals the system at the O infinity tier as a Lawvere Tier...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def g_del_completion_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def g_del_completion_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def g_del_completion_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_completion_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def g_del_completion_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def g_del_completion_protocol : IGProtocol g_del_completion_s0 g_del_completion_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct g_del_completion_s7 g_del_completion_s7 = g_del_completion_s7 (idempotent)
+  (.seq (.arrow g_del_completion_l0 g_del_completion_s0 g_del_completion_s1) (.seq (.arrow g_del_completion_l1 g_del_completion_s1 g_del_completion_s2) (.seq (.arrow g_del_completion_l2 g_del_completion_s2 g_del_completion_s3) (.seq (.prod (.arrow g_del_completion_l3 g_del_completion_s3 g_del_completion_s7) (.arrow g_del_completion_l3 g_del_completion_s3 g_del_completion_s7)) (.seq (.arrow g_del_completion_l7 g_del_completion_s7 g_del_completion_s7) (.seq (.arrow g_del_completion_l7 g_del_completion_s7 g_del_completion_s8) (.seq (.arrow g_del_completion_l8 g_del_completion_s8 g_del_completion_s9) (.seq (.arrow g_del_completion_l9 g_del_completion_s9 g_del_completion_s10) (.arrow g_del_completion_l10 g_del_completion_s10 g_del_completion_s11)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def g_del_completion_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def g_del_completion_true_arm : IGProtocol g_del_completion_s0 g_del_completion_s11 :=
   (g_del_completion_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def g_del_completion_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def g_del_completion_false_arm : IGProtocol g_del_completion_s0 g_del_completion_s11 :=
   (g_del_completion_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem g_del_completion_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def g_del_completion_tier : OuroboricityTier := TierFunctor.obj g_del_completion_s0
+#eval g_del_completion_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem g_del_completion_frobenius :
+    igFrobeniusAlg.mul g_del_completion_s0 g_del_completion_s0 = g_del_completion_s0 :=
+  igFrobAlg_self_fusion g_del_completion_s0

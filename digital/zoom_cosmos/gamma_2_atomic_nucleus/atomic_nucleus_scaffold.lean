@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 8)]
 
 import Imscribing.IGMorphism
@@ -31,48 +31,93 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [13] IMSCRIB   gram   := 𐑠               𐑱 → 𐑡  | identity — self-imscription
 --   [14] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def atomic_nucleus_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def atomic_nucleus_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def atomic_nucleus_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def atomic_nucleus_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def atomic_nucleus_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def atomic_nucleus_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def atomic_nucleus_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def atomic_nucleus_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def atomic_nucleus_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑱)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the unconfined vacuum state of free quarks and gluons prior to had...)
-  (.arrow 𐑱 𐑼 𐑠)  -- [1] CLINK | fid := 𐑱 | composition — regime coherence (Bind quarks via gluon exchange to form discrete protons and neutrons.)
-  (.arrow 𐑠 𐑱 𐑾)  -- [2] IMSCRIB | gram := 𐑠 | identity — self-imscription (Establish the self-identity of the nucleon, conserving baryon number through ...)
-  (.arrow 𐑾 𐑠 𐑡)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Assemble nucleons into a heavier compound nucleus via the attractive strong n...)
-  (.arrow 𐑡 𐑾 𐑚)  -- [4] TANCH | top := 𐑡 | terminal object — connectivity boundary (Confine the assembled nucleons within the finite boundary of the nuclear pote...)
-  -- FSPLIT [5] (gran := 𐑚) (Branch the unstable parent nucleus into a daughter nucleus and an emitted alpha particle.) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [6] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Anchor the T-arm as the daughter nucleus remains in a bound lower-energy state.)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (Anchor the F-arm as the alpha particle tunnels through the Coulomb barrier to...))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [8] FFUSE | stoi := 𐑙 (Recombine the daughter nucleus and alpha particle to recover the original parent nucleus.)
-  (.arrow 𐑗 𐑙 𐑳)  -- [9] AREV | pol := 𐑗 | reverse morphism — parity flip (Execute beta decay, transforming a neutron into a proton via the weak force d...)
-  (.arrow 𐑳 𐑗 𐑭)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter a metastable nuclear isomer state, holding excited and ground spin conf...)
-  (.arrow 𐑭 𐑳 𐑱)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record the atomic number and mass number to fix the final isotope...)
-  (.arrow 𐑱 𐑭 𐑠)  -- [12] CLINK | fid := 𐑱 | composition — regime coherence (Chain residual strong force interactions to maintain the cohesion of the fina...)
-  (.arrow 𐑠 𐑱 𐑡)  -- [13] IMSCRIB | gram := 𐑠 | identity — self-imscription (Re-verify the conserved quantum numbers of the final nuclear state.)
-  (.arrow 𐑡 𐑠 𐑼)  -- [14] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal the system at the absolute boundary of the strong force interaction range.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def atomic_nucleus_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def atomic_nucleus_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def atomic_nucleus_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def atomic_nucleus_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def atomic_nucleus_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def atomic_nucleus_protocol : IGProtocol atomic_nucleus_s0 atomic_nucleus_s14 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct atomic_nucleus_s8 atomic_nucleus_s8 = atomic_nucleus_s8 (idempotent)
+  (.seq (.arrow atomic_nucleus_l0 atomic_nucleus_s0 atomic_nucleus_s1) (.seq (.arrow atomic_nucleus_l1 atomic_nucleus_s1 atomic_nucleus_s2) (.seq (.arrow atomic_nucleus_l2 atomic_nucleus_s2 atomic_nucleus_s3) (.seq (.arrow atomic_nucleus_l3 atomic_nucleus_s3 atomic_nucleus_s4) (.seq (.arrow atomic_nucleus_l4 atomic_nucleus_s4 atomic_nucleus_s5) (.seq (.prod (.arrow atomic_nucleus_l5 atomic_nucleus_s5 atomic_nucleus_s8) (.arrow atomic_nucleus_l5 atomic_nucleus_s5 atomic_nucleus_s8)) (.seq (.arrow atomic_nucleus_l8 atomic_nucleus_s8 atomic_nucleus_s8) (.seq (.arrow atomic_nucleus_l8 atomic_nucleus_s8 atomic_nucleus_s9) (.seq (.arrow atomic_nucleus_l9 atomic_nucleus_s9 atomic_nucleus_s10) (.seq (.arrow atomic_nucleus_l10 atomic_nucleus_s10 atomic_nucleus_s11) (.seq (.arrow atomic_nucleus_l11 atomic_nucleus_s11 atomic_nucleus_s12) (.seq (.arrow atomic_nucleus_l12 atomic_nucleus_s12 atomic_nucleus_s13) (.arrow atomic_nucleus_l13 atomic_nucleus_s13 atomic_nucleus_s14)))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def atomic_nucleus_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def atomic_nucleus_true_arm : IGProtocol atomic_nucleus_s0 atomic_nucleus_s14 :=
   (atomic_nucleus_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def atomic_nucleus_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def atomic_nucleus_false_arm : IGProtocol atomic_nucleus_s0 atomic_nucleus_s14 :=
   (atomic_nucleus_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem atomic_nucleus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def atomic_nucleus_tier : OuroboricityTier := TierFunctor.obj atomic_nucleus_s0
+#eval atomic_nucleus_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem atomic_nucleus_frobenius :
+    igFrobeniusAlg.mul atomic_nucleus_s0 atomic_nucleus_s0 = atomic_nucleus_s0 :=
+  igFrobAlg_self_fusion atomic_nucleus_s0

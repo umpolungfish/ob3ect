@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 9)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def the_self_naming_of_wormwood_false_arm : IGProtocol the_self_na
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_self_naming_of_wormwood_tier : OuroboricityTier := TierFunctor.obj the_self_naming_of_wormwood_s0
 #eval the_self_naming_of_wormwood_tier  -- the Grammar's own verdict on its tier
 

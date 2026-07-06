@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=18
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8), (10, 13)]
 
 import Imscribing.IGMorphism
@@ -34,55 +34,100 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [16] IMSCRIB   gram   := 𐑠               𐑭 → 𐑡  | identity — self-imscription
 --   [17] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def categorical_join_reconstituting_the_e85c8d_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def categorical_join_reconstituting_the_e85c8d_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def categorical_join_reconstituting_the_e85c8d_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def categorical_join_reconstituting_the_general_dimension_d_conjecture_space_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the unstructured complex Hilbert space C^d before any measurement ...)
-  (.arrow 𐑠 𐑼 𐑚)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Identify the Zauner fiducial |ψ_0⟩ as the self-referential seed that generate...)
-  -- FSPLIT [2] (gran := 𐑚) (Bifurcate the General Dimension d Conjecture Space into Exact Arithmetic (Stark units) and Numerical Variational (Frame Potential) branches.) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the Exact Arithmetic branch, establishing proven dimensions via ray cl...)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply forward Weyl-Heisenberg displacement operators to broadcast the fiducia...)
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (Chain displacement operators to verify the uniform pairwise trace overlap 1/(...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (Affirm the Numerical Variational branch for dimensions lacking analytic proofs.)
-        (.arrow 𐑗 𐑚 𐑙)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (Descend the gradient landscape via L-BFGS-B to minimize the frame potential.))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [8] FFUSE | stoi := 𐑙 (Reconstitute the General Dimension d Conjecture Space via the Categorical Join of arithmetic and variational branches.)
-  (.arrow 𐑳 𐑙 𐑚)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter the Belnap Both state at the Criticality fixed point ⊙, holding the ope...)
-  -- FSPLIT [10] (gran := 𐑚) (Split the d=12 composite system into the d=7 Shavian alphabet space and the d=12 primitive space.) / FFUSE [13] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [11] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Validate the d=7 SIC outcome space derived from the D and P families.)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [12] EVALF | chir := 𐑖 | evaluate-false — chirality check (Validate the d=12 heteroskedastic ig-pulse POVM apparatus.))
-    -- reconnect at FFUSE [13]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [13] FFUSE | stoi := 𐑙 (Fuse the d=7 and d=12 spaces into the bijective 84^2 = 7056 joint outcome space.)
-  (.arrow 𐑱 𐑙 𐑭)  -- [14] CLINK | fid := 𐑱 | composition — regime coherence (Compose the 36-stream ig-pulse physical measurement readings into a 12x12 den...)
-  (.arrow 𐑭 𐑱 𐑠)  -- [15] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record the exact d=12 fiducial amplitudes and the 17,280,000 Crys...)
-  (.arrow 𐑠 𐑭 𐑡)  -- [16] IMSCRIB | gram := 𐑠 | identity — self-imscription (Recognize the Belnap multilattice B^⊗n as the unconditional structural proof ...)
-  (.arrow 𐑡 𐑠 𐑼)  -- [17] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal the system within the O_∞ Frobenius Manifold boundary, completing the ca...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def categorical_join_reconstituting_the_e85c8d_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def categorical_join_reconstituting_the_e85c8d_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def categorical_join_reconstituting_the_e85c8d_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def categorical_join_reconstituting_the_e85c8d_protocol : IGProtocol categorical_join_reconstituting_the_e85c8d_s0 categorical_join_reconstituting_the_e85c8d_s17 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct categorical_join_reconstituting_the_e85c8d_s8 categorical_join_reconstituting_the_e85c8d_s8 = categorical_join_reconstituting_the_e85c8d_s8 (idempotent)
+  (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l0 categorical_join_reconstituting_the_e85c8d_s0 categorical_join_reconstituting_the_e85c8d_s1) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l1 categorical_join_reconstituting_the_e85c8d_s1 categorical_join_reconstituting_the_e85c8d_s2) (.seq (.prod (.arrow categorical_join_reconstituting_the_e85c8d_l2 categorical_join_reconstituting_the_e85c8d_s2 categorical_join_reconstituting_the_e85c8d_s8) (.arrow categorical_join_reconstituting_the_e85c8d_l2 categorical_join_reconstituting_the_e85c8d_s2 categorical_join_reconstituting_the_e85c8d_s8)) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l8 categorical_join_reconstituting_the_e85c8d_s8 categorical_join_reconstituting_the_e85c8d_s8) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l8 categorical_join_reconstituting_the_e85c8d_s8 categorical_join_reconstituting_the_e85c8d_s9) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l9 categorical_join_reconstituting_the_e85c8d_s9 categorical_join_reconstituting_the_e85c8d_s10) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l10 categorical_join_reconstituting_the_e85c8d_s10 categorical_join_reconstituting_the_e85c8d_s11) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l11 categorical_join_reconstituting_the_e85c8d_s11 categorical_join_reconstituting_the_e85c8d_s12) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l12 categorical_join_reconstituting_the_e85c8d_s12 categorical_join_reconstituting_the_e85c8d_s13) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l13 categorical_join_reconstituting_the_e85c8d_s13 categorical_join_reconstituting_the_e85c8d_s14) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l14 categorical_join_reconstituting_the_e85c8d_s14 categorical_join_reconstituting_the_e85c8d_s15) (.seq (.arrow categorical_join_reconstituting_the_e85c8d_l15 categorical_join_reconstituting_the_e85c8d_s15 categorical_join_reconstituting_the_e85c8d_s16) (.arrow categorical_join_reconstituting_the_e85c8d_l16 categorical_join_reconstituting_the_e85c8d_s16 categorical_join_reconstituting_the_e85c8d_s17)))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def categorical_join_reconstituting_the_general_dimension_d_conjecture_space_true_arm : IGProtocol 𐑼 𐑡 :=
-  (categorical_join_reconstituting_the_general_dimension_d_conjecture_space_protocol).restrictToEVALT
+noncomputable def categorical_join_reconstituting_the_e85c8d_true_arm : IGProtocol categorical_join_reconstituting_the_e85c8d_s0 categorical_join_reconstituting_the_e85c8d_s17 :=
+  (categorical_join_reconstituting_the_e85c8d_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def categorical_join_reconstituting_the_general_dimension_d_conjecture_space_false_arm : IGProtocol 𐑼 𐑡 :=
-  (categorical_join_reconstituting_the_general_dimension_d_conjecture_space_protocol).restrictToEVALF
+noncomputable def categorical_join_reconstituting_the_e85c8d_false_arm : IGProtocol categorical_join_reconstituting_the_e85c8d_s0 categorical_join_reconstituting_the_e85c8d_s17 :=
+  (categorical_join_reconstituting_the_e85c8d_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem categorical_join_reconstituting_the_general_dimension_d_conjecture_space_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def categorical_join_reconstituting_the_e85c8d_tier : OuroboricityTier := TierFunctor.obj categorical_join_reconstituting_the_e85c8d_s0
+#eval categorical_join_reconstituting_the_e85c8d_tier  -- the Grammar's own verdict on its tier

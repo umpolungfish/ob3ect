@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=11
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -93,7 +93,7 @@ noncomputable def crafting_effective_affective_spells_false_arm : IGProtocol cra
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def crafting_effective_affective_spells_tier : OuroboricityTier := TierFunctor.obj crafting_effective_affective_spells_s0
 #eval crafting_effective_affective_spells_tier  -- the Grammar's own verdict on its tier
 

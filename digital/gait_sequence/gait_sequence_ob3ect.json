@@ -1,0 +1,205 @@
+{
+  "name": "Gait sequence",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Gait sequence",
+      "domain_type": "biological",
+      "scope": "local",
+      "surface_tokens": [
+        "proprioception",
+        "locomotion",
+        "kinematics"
+      ],
+      "boundary_condition": "The musculoskeletal envelope and the gravitational field.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Stance phase",
+        "justification": "The static equilibrium before the initiation of the first step.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Gait cycle completion",
+        "justification": "The return to the initial stance configuration after a full stride.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Swing phase",
+        "justification": "The forward translation of the limb toward the next contact point.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Heel strike impact",
+        "justification": "The downward force and deceleration as the limb meets the ground.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Stride integration",
+        "justification": "The sequential chaining of individual steps into a continuous walk.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Proprioceptive feedback",
+        "justification": "The system's self-recognition of its own limb position in space.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Bipedal bifurcation",
+        "justification": "The division of weight-bearing into lead and trailing limb paths.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Center of mass convergence",
+        "justification": "The reconstitution of total body weight onto the new support base.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Stable traction",
+        "justification": "Successful friction and balance on the substrate.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Loss of balance",
+        "justification": "Failure of the support phase leading to postural collapse.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Double support phase",
+        "justification": "The brief moment where both feet are simultaneously in contact with the ground.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Footprint",
+        "justification": "The permanent physical displacement of the substrate left by the step.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Bipedal bifurcation",
+      "split_input": "Total body weight",
+      "split_outputs": [
+        "Left limb load",
+        "Right limb load"
+      ],
+      "fuse_element": "Center of mass convergence",
+      "fuse_result": "Total body weight",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Pre-ambulatory state where no vector of motion is defined.",
+      "true_description": "Dynamic stability maintained during forward progression.",
+      "false_description": "Kinematic failure or stumbling event.",
+      "both_description": "Double-limb support where weight is neither fully transitioned nor static.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "The body occupies a neutral standing position."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "The nervous system maps current joint angles and muscle tension."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "The motor cortex initiates weight shift, bifurcating support between limbs."
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "The lead limb enters swing phase, moving forward through space."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "The lead foot achieves secure contact with the ground."
+        },
+        {
+          "step_num": 6,
+          "opcode": "ENGAGR",
+          "domain_action": "The system enters double support, holding both limbs in contact simultaneously."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "The trailing limb undergoes deceleration and prepares for lift."
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "The system checks for slippage or obstacles on the trailing side."
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Weight is reintegrated onto the new lead limb, completing the transition."
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "The current stride is linked to the next intended movement vector."
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "The pressure of the step leaves a permanent indentation in the soil."
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "The gait cycle closes as the body returns to a stable support phase."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Central Pattern Generators in the spinal cord.",
+      "ipc_mechanism": "Afferent and efferent neural signaling pathways.",
+      "memory_mechanism": "Vestibular system and cerebellum state tracking.",
+      "scheduler_mechanism": "Rhythmic motor cortex oscillations.",
+      "alfs_store": "Evolutionary biomechanical templates for bipedalism.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Metabolic ATP hydrolysis per muscle contraction.",
+      "pre_cycle_state": "Potential energy stored in postural alignment.",
+      "post_cycle_state": "Kinetic energy dissipated into the environment and heat.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The cycle is a conservative oscillation where momentum is recovered through pendular mechanics.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 ENGAGR \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: Gait sequence\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def gait_sequence_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def gait_sequence_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def gait_sequence_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def gait_sequence_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def gait_sequence_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def gait_sequence_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def gait_sequence_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def gait_sequence_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def gait_sequence_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def gait_sequence_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def gait_sequence_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def gait_sequence_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def gait_sequence_protocol : IGProtocol gait_sequence_s0 gait_sequence_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct gait_sequence_s8 gait_sequence_s8 = gait_sequence_s8 (idempotent)\n  (.seq (.arrow gait_sequence_l0 gait_sequence_s0 gait_sequence_s1) (.seq (.arrow gait_sequence_l1 gait_sequence_s1 gait_sequence_s2) (.seq (.prod (.arrow gait_sequence_l2 gait_sequence_s2 gait_sequence_s8) (.arrow gait_sequence_l2 gait_sequence_s2 gait_sequence_s8)) (.seq (.arrow gait_sequence_l8 gait_sequence_s8 gait_sequence_s8) (.seq (.arrow gait_sequence_l8 gait_sequence_s8 gait_sequence_s9) (.seq (.arrow gait_sequence_l9 gait_sequence_s9 gait_sequence_s10) (.arrow gait_sequence_l10 gait_sequence_s10 gait_sequence_s11)))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def gait_sequence_true_arm : IGProtocol gait_sequence_s0 gait_sequence_s11 :=\n  (gait_sequence_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def gait_sequence_false_arm : IGProtocol gait_sequence_s0 gait_sequence_s11 :=\n  (gait_sequence_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef gait_sequence_tier : OuroboricityTier := TierFunctor.obj gait_sequence_s0\n#eval gait_sequence_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem gait_sequence_frobenius :\n    igFrobeniusAlg.mul gait_sequence_s0 gait_sequence_s0 = gait_sequence_s0 :=\n  igFrobAlg_self_fusion gait_sequence_s0\n",
+  "notes": "Auto-designed from: Gait sequence"
+}

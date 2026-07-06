@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,4,3)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=21
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(8, 11), (13, 16)]
 
 import Imscribing.IGMorphism
@@ -143,6 +143,6 @@ noncomputable def the_age_after_the_seal_of_the_prophets_false_arm : IGProtocol 
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_age_after_the_seal_of_the_prophets_tier : OuroboricityTier := TierFunctor.obj the_age_after_the_seal_of_the_prophets_s0
 #eval the_age_after_the_seal_of_the_prophets_tier  -- the Grammar's own verdict on its tier

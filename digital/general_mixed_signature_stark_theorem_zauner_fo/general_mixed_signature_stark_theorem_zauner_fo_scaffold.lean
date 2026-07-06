@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,4,4,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=18
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 7), (9, 14)]
 
 import Imscribing.IGMorphism
@@ -124,6 +124,6 @@ noncomputable def general_mixed_signature_stark_theorem_8bb72b_true_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def general_mixed_signature_stark_theorem_8bb72b_tier : OuroboricityTier := TierFunctor.obj general_mixed_signature_stark_theorem_8bb72b_s0
 #eval general_mixed_signature_stark_theorem_8bb72b_tier  -- the Grammar's own verdict on its tier

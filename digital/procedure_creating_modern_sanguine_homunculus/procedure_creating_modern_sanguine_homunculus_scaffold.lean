@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -30,49 +30,89 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [13] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def procedure_creating_modern_sanguine_4a624f_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def procedure_creating_modern_sanguine_4a624f_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def procedure_creating_modern_sanguine_homunculus_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the sterile bioreactor and seed the acellular hydrogel scaffold, e...)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Load induced pluripotent stem cells (iPSCs) with specific epigenetic memory a...)
-  (.arrow 𐑾 𐑠 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Induce initial cellular proliferation and early morphogenesis to form a primi...)
-  -- FSPLIT [3] (gran := 𐑚) (Bifurcate the developing cell mass into two distinct lineages: the Endothelial Vascular Network and the Parenchymal Tissue Core.) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm successful endothelial tubulogenesis and lumen formation in the vascu...)
-        (.arrow 𐑾 𐑚 𐑙)  -- [5] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Drive forward growth, branching, and maturation of the vascular network in th...)
-      -- F-branch (2 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check (Detect localized hypoxia or differentiation failure within the parenchymal co...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [7] AREV | pol := 𐑗 | reverse morphism — parity flip (Induce targeted apoptosis to clear necrotic and malformed parenchymal cells i...))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [8] FFUSE | stoi := 𐑙 (Perform microvascular anastomosis, fusing the mature vascular network and the pruned parenchymal core back into the unified Vascularized Micro-Organ Construct.)
-  (.arrow 𐑱 𐑙 𐑳)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (Crosslink the extracellular matrix to structurally compose and mechanically s...)
-  (.arrow 𐑳 𐑱 𐑠)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter a chimeric state where both rapid cellular proliferation and terminal d...)
-  (.arrow 𐑠 𐑳 𐑭)  -- [11] IMSCRIB | gram := 𐑠 | identity — self-imscription (Establish self-referential homeostatic feedback loops, allowing the tissue to...)
-  (.arrow 𐑭 𐑠 𐑡)  -- [12] IFIX | prot := 𐑭 | irreversible fixation — winding number (Cryopreserve the mature sanguine homunculus and permanently record its genomi...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [13] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal the hermetic perfusion chamber, closing the system boundary and finalizi...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def procedure_creating_modern_sanguine_4a624f_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def procedure_creating_modern_sanguine_4a624f_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def procedure_creating_modern_sanguine_4a624f_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def procedure_creating_modern_sanguine_4a624f_protocol : IGProtocol procedure_creating_modern_sanguine_4a624f_s0 procedure_creating_modern_sanguine_4a624f_s13 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct procedure_creating_modern_sanguine_4a624f_s8 procedure_creating_modern_sanguine_4a624f_s8 = procedure_creating_modern_sanguine_4a624f_s8 (idempotent)
+  (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l0 procedure_creating_modern_sanguine_4a624f_s0 procedure_creating_modern_sanguine_4a624f_s1) (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l1 procedure_creating_modern_sanguine_4a624f_s1 procedure_creating_modern_sanguine_4a624f_s2) (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l2 procedure_creating_modern_sanguine_4a624f_s2 procedure_creating_modern_sanguine_4a624f_s3) (.seq (.prod (.arrow procedure_creating_modern_sanguine_4a624f_l3 procedure_creating_modern_sanguine_4a624f_s3 procedure_creating_modern_sanguine_4a624f_s8) (.arrow procedure_creating_modern_sanguine_4a624f_l3 procedure_creating_modern_sanguine_4a624f_s3 procedure_creating_modern_sanguine_4a624f_s8)) (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l8 procedure_creating_modern_sanguine_4a624f_s8 procedure_creating_modern_sanguine_4a624f_s8) (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l8 procedure_creating_modern_sanguine_4a624f_s8 procedure_creating_modern_sanguine_4a624f_s9) (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l9 procedure_creating_modern_sanguine_4a624f_s9 procedure_creating_modern_sanguine_4a624f_s10) (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l10 procedure_creating_modern_sanguine_4a624f_s10 procedure_creating_modern_sanguine_4a624f_s11) (.seq (.arrow procedure_creating_modern_sanguine_4a624f_l11 procedure_creating_modern_sanguine_4a624f_s11 procedure_creating_modern_sanguine_4a624f_s12) (.arrow procedure_creating_modern_sanguine_4a624f_l12 procedure_creating_modern_sanguine_4a624f_s12 procedure_creating_modern_sanguine_4a624f_s13))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def procedure_creating_modern_sanguine_homunculus_true_arm : IGProtocol 𐑼 𐑡 :=
-  (procedure_creating_modern_sanguine_homunculus_protocol).restrictToEVALT
+noncomputable def procedure_creating_modern_sanguine_4a624f_true_arm : IGProtocol procedure_creating_modern_sanguine_4a624f_s0 procedure_creating_modern_sanguine_4a624f_s13 :=
+  (procedure_creating_modern_sanguine_4a624f_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def procedure_creating_modern_sanguine_homunculus_false_arm : IGProtocol 𐑼 𐑡 :=
-  (procedure_creating_modern_sanguine_homunculus_protocol).restrictToEVALF
+noncomputable def procedure_creating_modern_sanguine_4a624f_false_arm : IGProtocol procedure_creating_modern_sanguine_4a624f_s0 procedure_creating_modern_sanguine_4a624f_s13 :=
+  (procedure_creating_modern_sanguine_4a624f_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem procedure_creating_modern_sanguine_homunculus_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def procedure_creating_modern_sanguine_4a624f_tier : OuroboricityTier := TierFunctor.obj procedure_creating_modern_sanguine_4a624f_s0
+#eval procedure_creating_modern_sanguine_4a624f_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem procedure_creating_modern_sanguine_4a624f_frobenius :
+    igFrobeniusAlg.mul procedure_creating_modern_sanguine_4a624f_s0 procedure_creating_modern_sanguine_4a624f_s0 = procedure_creating_modern_sanguine_4a624f_s0 :=
+  igFrobAlg_self_fusion procedure_creating_modern_sanguine_4a624f_s0

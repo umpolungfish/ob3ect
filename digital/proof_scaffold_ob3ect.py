@@ -35,7 +35,7 @@ if _IMSCRIBR not in sys.path:
 
 from tokens import Token
 from wiring import imscr_wiring, match_pairs
-from proof_scaffold import emit_scaffold
+from proof_scaffold import emit_scaffold, ouroboricity_tier
 from classifier import CANONICAL_CLASSES, compute_fingerprint, match_canonical
 
 
@@ -226,10 +226,7 @@ class ScaffoldOb3ect:
         print()
         print("── Canonical classes ─────────────────────────────────────────")
         for name, arr in CANONICAL_CLASSES.items():
-            fp = compute_fingerprint(arr)
-            tier = ("O_inf" if fp.self_ref and fp.frobenius_order in (1, 2)
-                    else "O₂" if fp.self_ref or fp.frobenius_order in (1, 2) or fp.dialetheia_complete
-                    else "O₁" if fp.period < fp.length else "O₀")
+            tier = ouroboricity_tier(arr)
             ops_str = " → ".join(arr_to_ops(arr))
             print(f"  {name:35s} {tier:6s}  {ops_str}")
 

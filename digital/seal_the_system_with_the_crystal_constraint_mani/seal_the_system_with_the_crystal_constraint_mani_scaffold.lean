@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(13,6,4,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 6), (9, 12), (13, 17)]
 
 import Imscribing.IGMorphism
@@ -40,70 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] TANCH     top    := 𐑡               𐑭 → 𐑠  | terminal object — connectivity boundary
 --   [23] IMSCRIB   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def seal_the_system_with_the_crystal_a66381_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def seal_the_system_with_the_crystal_a66381_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def seal_the_system_with_the_crystal_a66381_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def seal_the_system_with_the_crystal_constraint_manifold_boundary_protocol : IGProtocol 𐑼 𐑠 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis before any IG primitives or classification capacity)
-  -- FSPLIT [1] (gran := 𐑚) (Branch 12 primitives into three families D(3), T(5), P(4) by structural type) / FFUSE [6] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Construct 3³ dimensional space from D-family primitives)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Expand to 4⁵ temporal configuration space via T-family)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Extend to 5⁴ processual space through P-family values)
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (Chain family spaces into joint product 3³×4⁵×5⁴)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [6]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [6] FFUSE | stoi := 𐑙 (Reconstitute full Crystal lattice from separated family contributions)
-  (.arrow ⊙ 𐑙 𐑾)  -- [7] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Verify SIC frame potential F = 143/169 = 0.846154 achieved)
-  (.arrow 𐑾 ⊙ 𐑚)  -- [8] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Project onto 12-dimensional primitive measurement space ℂ¹²)
-  -- FSPLIT [9] (gran := 𐑚) (Binary split into T-branch (SIC-conforming) and F-branch (heteroskedastic)) / FFUSE [12] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [10] EVALT | crit := ⊙ | evaluate-true — criticality gate open (T-branch holds exact Weyl-Heisenberg SIC geometry)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [11] EVALF | chir := 𐑖 | evaluate-false — chirality check (F-branch contains ig-pulse 36-stream heteroskedastic POVM))
-    -- reconnect at FFUSE [12]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑙)  -- [12] FFUSE | stoi := 𐑙 (Join both measurement types under unified density matrix reconstruction)
-  -- FSPLIT [13] (gran := 𐑚) (Second split on composite structure H₇⊗H₁₂ from Shavian alphabet × IG primitives) / FFUSE [17] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [14] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Generate 49-element type alphabet from D×P family inner product)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [15] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Maintain 144 SIC elements from full 12-primitive space)
-        (.arrow 𐑱 𐑚 𐑙)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (Form joint outcome space 49×144 = 7056 = 84²)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [17]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [17] FFUSE | stoi := 𐑙 (Fuse type-alphabet and primitive-combination measurements into unified SIC)
-  (.arrow 𐑠 𐑙 𐑳)  -- [18] IMSCRIB | gram := 𐑠 | identity — self-imscription (Criticality primitive ⊙ recognizes self-fixed-point where μ∘δ=id)
-  (.arrow 𐑳 𐑠 𐑱)  -- [19] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Hold both SIC fiducial and paraconsistent measurement simultaneously)
-  (.arrow 𐑱 𐑳 𐑭)  -- [20] CLINK | fid := 𐑱 | composition — regime coherence (Compose all branches back through Frobenius closure conditions)
-  (.arrow 𐑭 𐑱 𐑡)  -- [21] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record the 17,280,000-element Crystal constraint manifold)
-  (.arrow 𐑡 𐑭 𐑠)  -- [22] TANCH | top := 𐑡 | terminal object — connectivity boundary (Seal entire system within Crystal boundary preventing escape from valid types)
-  (.arrow 𐑠 𐑡 𐑼)  -- [23] IMSCRIB | gram := 𐑠 | identity — self-imscription (Close self-referential loop where IG measures itself via fiducial state)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def seal_the_system_with_the_crystal_a66381_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def seal_the_system_with_the_crystal_a66381_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def seal_the_system_with_the_crystal_a66381_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def seal_the_system_with_the_crystal_a66381_protocol : IGProtocol seal_the_system_with_the_crystal_a66381_s0 seal_the_system_with_the_crystal_a66381_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct seal_the_system_with_the_crystal_a66381_s6 seal_the_system_with_the_crystal_a66381_s6 = seal_the_system_with_the_crystal_a66381_s6 (idempotent)
+  (.seq (.arrow seal_the_system_with_the_crystal_a66381_l0 seal_the_system_with_the_crystal_a66381_s0 seal_the_system_with_the_crystal_a66381_s1) (.seq (.prod (.arrow seal_the_system_with_the_crystal_a66381_l1 seal_the_system_with_the_crystal_a66381_s1 seal_the_system_with_the_crystal_a66381_s6) (.arrow seal_the_system_with_the_crystal_a66381_l1 seal_the_system_with_the_crystal_a66381_s1 seal_the_system_with_the_crystal_a66381_s6)) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l6 seal_the_system_with_the_crystal_a66381_s6 seal_the_system_with_the_crystal_a66381_s6) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l6 seal_the_system_with_the_crystal_a66381_s6 seal_the_system_with_the_crystal_a66381_s7) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l7 seal_the_system_with_the_crystal_a66381_s7 seal_the_system_with_the_crystal_a66381_s8) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l8 seal_the_system_with_the_crystal_a66381_s8 seal_the_system_with_the_crystal_a66381_s9) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l9 seal_the_system_with_the_crystal_a66381_s9 seal_the_system_with_the_crystal_a66381_s10) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l10 seal_the_system_with_the_crystal_a66381_s10 seal_the_system_with_the_crystal_a66381_s11) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l11 seal_the_system_with_the_crystal_a66381_s11 seal_the_system_with_the_crystal_a66381_s12) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l12 seal_the_system_with_the_crystal_a66381_s12 seal_the_system_with_the_crystal_a66381_s13) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l13 seal_the_system_with_the_crystal_a66381_s13 seal_the_system_with_the_crystal_a66381_s14) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l14 seal_the_system_with_the_crystal_a66381_s14 seal_the_system_with_the_crystal_a66381_s15) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l15 seal_the_system_with_the_crystal_a66381_s15 seal_the_system_with_the_crystal_a66381_s16) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l16 seal_the_system_with_the_crystal_a66381_s16 seal_the_system_with_the_crystal_a66381_s17) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l17 seal_the_system_with_the_crystal_a66381_s17 seal_the_system_with_the_crystal_a66381_s18) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l18 seal_the_system_with_the_crystal_a66381_s18 seal_the_system_with_the_crystal_a66381_s19) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l19 seal_the_system_with_the_crystal_a66381_s19 seal_the_system_with_the_crystal_a66381_s20) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l20 seal_the_system_with_the_crystal_a66381_s20 seal_the_system_with_the_crystal_a66381_s21) (.seq (.arrow seal_the_system_with_the_crystal_a66381_l21 seal_the_system_with_the_crystal_a66381_s21 seal_the_system_with_the_crystal_a66381_s22) (.arrow seal_the_system_with_the_crystal_a66381_l22 seal_the_system_with_the_crystal_a66381_s22 seal_the_system_with_the_crystal_a66381_s23))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def seal_the_system_with_the_crystal_constraint_manifold_boundary_true_arm : IGProtocol 𐑼 𐑠 :=
-  (seal_the_system_with_the_crystal_constraint_manifold_boundary_protocol).restrictToEVALT
+noncomputable def seal_the_system_with_the_crystal_a66381_true_arm : IGProtocol seal_the_system_with_the_crystal_a66381_s0 seal_the_system_with_the_crystal_a66381_s23 :=
+  (seal_the_system_with_the_crystal_a66381_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def seal_the_system_with_the_crystal_constraint_manifold_boundary_false_arm : IGProtocol 𐑼 𐑠 :=
-  (seal_the_system_with_the_crystal_constraint_manifold_boundary_protocol).restrictToEVALF
+noncomputable def seal_the_system_with_the_crystal_a66381_false_arm : IGProtocol seal_the_system_with_the_crystal_a66381_s0 seal_the_system_with_the_crystal_a66381_s23 :=
+  (seal_the_system_with_the_crystal_a66381_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem seal_the_system_with_the_crystal_constraint_manifold_boundary_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def seal_the_system_with_the_crystal_a66381_tier : OuroboricityTier := TierFunctor.obj seal_the_system_with_the_crystal_a66381_s0
+#eval seal_the_system_with_the_crystal_a66381_tier  -- the Grammar's own verdict on its tier

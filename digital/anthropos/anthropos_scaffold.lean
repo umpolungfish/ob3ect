@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(4,2,1,0)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=7
--- Expected tier: O₂
+-- Expected tier: O₀
 -- FSPLIT/FFUSE pairs: [(2, 4)]
 
 import Imscribing.IGMorphism
@@ -23,37 +23,57 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [5] IMSCRIB   gram   := 𐑠               𐑙 → 𐑡  | identity — self-imscription
 --   [6] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def anthropos_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def anthropos_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def anthropos_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def anthropos_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
 
-noncomputable def anthropos_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (initializes the concept of Anthropos as the starting point of spiritual exist...)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (represents the journey towards enlightenment.)
-  -- FSPLIT [2] (gran := 𐑚) (branches into paths of knowledge and ignorance.) / FFUSE [4] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (affirms the successful attainment of enlightenment.)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [4]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [4] FFUSE | stoi := 𐑙 (integrates the paths into a unified understanding.)
-  (.arrow 𐑠 𐑙 𐑡)  -- [5] IMSCRIB | gram := 𐑠 | identity — self-imscription (records the self-awareness achieved through enlightenment.)
-  (.arrow 𐑡 𐑠 𐑼)  -- [6] TANCH | top := 𐑡 | terminal object — connectivity boundary (anchors the understanding within the Pleroma.)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def anthropos_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def anthropos_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def anthropos_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def anthropos_protocol : IGProtocol anthropos_s0 anthropos_s6 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct anthropos_s4 anthropos_s4 = anthropos_s4 (idempotent)
+  (.seq (.arrow anthropos_l0 anthropos_s0 anthropos_s1) (.seq (.arrow anthropos_l1 anthropos_s1 anthropos_s2) (.seq (.prod (.arrow anthropos_l2 anthropos_s2 anthropos_s4) (.arrow anthropos_l2 anthropos_s2 anthropos_s4)) (.seq (.arrow anthropos_l4 anthropos_s4 anthropos_s4) (.seq (.arrow anthropos_l4 anthropos_s4 anthropos_s5) (.arrow anthropos_l5 anthropos_s5 anthropos_s6))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def anthropos_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def anthropos_true_arm : IGProtocol anthropos_s0 anthropos_s6 :=
   (anthropos_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem anthropos_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₀.
+def anthropos_tier : OuroboricityTier := TierFunctor.obj anthropos_s0
+#eval anthropos_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem anthropos_frobenius :
+    igFrobeniusAlg.mul anthropos_s0 anthropos_s0 = anthropos_s0 :=
+  igFrobAlg_self_fusion anthropos_s0

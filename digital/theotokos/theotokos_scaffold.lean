@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,4,4,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=17
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 5), (10, 14)]
 
 import Imscribing.IGMorphism
@@ -123,6 +123,6 @@ noncomputable def theotokos_false_arm : IGProtocol theotokos_s0 theotokos_s16 :=
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def theotokos_tier : OuroboricityTier := TierFunctor.obj theotokos_s0
 #eval theotokos_tier  -- the Grammar's own verdict on its tier

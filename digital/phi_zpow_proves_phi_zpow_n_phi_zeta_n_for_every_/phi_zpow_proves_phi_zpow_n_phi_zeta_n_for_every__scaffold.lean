@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,4,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=17
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 5), (8, 12)]
 
 import Imscribing.IGMorphism
@@ -119,6 +119,6 @@ noncomputable def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_true_arm : IGProt
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_tier : OuroboricityTier := TierFunctor.obj phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_s0
 #eval phi_zpow_proves_phi_zpow_n_phi_zeta_n_3901f2_tier  -- the Grammar's own verdict on its tier

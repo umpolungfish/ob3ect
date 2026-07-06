@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,1,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 7)]
 
 import Imscribing.IGMorphism
@@ -26,42 +26,69 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] AREV      pol    := 𐑗               𐑙 → 𐑭  | reverse morphism — parity flip
 --   [9] IFIX      prot   := 𐑭               𐑗 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def schizophrenia_darpin_nmda_receptor_06d88b_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
 
-noncomputable def schizophrenia_darpin_nmda_receptor_modulator_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (unbound DARPin in solution)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (NMDA receptor extracellular domain)
-  (.arrow 𐑾 𐑡 𐑚)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (DARPin binds to GluN1 subunit)
-  -- FSPLIT [3] (gran := 𐑚) (receptor activation decision splits into open and closed pathways) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (ion channel opens, Ca2+ influx)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (conformational change propagates through receptor)
-        (.arrow 𐑠 𐑚 𐑙)  -- [6] IMSCRIB | gram := 𐑠 | identity — self-imscription (DARPin-receptor complex recognizes itself)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [7] FFUSE | stoi := 𐑙 (receptor deactivates, returns to resting state)
-  (.arrow 𐑗 𐑙 𐑭)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (DARPin dissociates from receptor)
-  (.arrow 𐑭 𐑗 𐑼)  -- [9] IFIX | prot := 𐑭 | irreversible fixation — winding number (binding affinity recorded in assay)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def schizophrenia_darpin_nmda_receptor_06d88b_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def schizophrenia_darpin_nmda_receptor_06d88b_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def schizophrenia_darpin_nmda_receptor_06d88b_protocol : IGProtocol schizophrenia_darpin_nmda_receptor_06d88b_s0 schizophrenia_darpin_nmda_receptor_06d88b_s9 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct schizophrenia_darpin_nmda_receptor_06d88b_s7 schizophrenia_darpin_nmda_receptor_06d88b_s7 = schizophrenia_darpin_nmda_receptor_06d88b_s7 (idempotent)
+  (.seq (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l0 schizophrenia_darpin_nmda_receptor_06d88b_s0 schizophrenia_darpin_nmda_receptor_06d88b_s1) (.seq (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l1 schizophrenia_darpin_nmda_receptor_06d88b_s1 schizophrenia_darpin_nmda_receptor_06d88b_s2) (.seq (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l2 schizophrenia_darpin_nmda_receptor_06d88b_s2 schizophrenia_darpin_nmda_receptor_06d88b_s3) (.seq (.prod (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l3 schizophrenia_darpin_nmda_receptor_06d88b_s3 schizophrenia_darpin_nmda_receptor_06d88b_s7) (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l3 schizophrenia_darpin_nmda_receptor_06d88b_s3 schizophrenia_darpin_nmda_receptor_06d88b_s7)) (.seq (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l7 schizophrenia_darpin_nmda_receptor_06d88b_s7 schizophrenia_darpin_nmda_receptor_06d88b_s7) (.seq (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l7 schizophrenia_darpin_nmda_receptor_06d88b_s7 schizophrenia_darpin_nmda_receptor_06d88b_s8) (.arrow schizophrenia_darpin_nmda_receptor_06d88b_l8 schizophrenia_darpin_nmda_receptor_06d88b_s8 schizophrenia_darpin_nmda_receptor_06d88b_s9)))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def schizophrenia_darpin_nmda_receptor_modulator_true_arm : IGProtocol 𐑼 𐑭 :=
-  (schizophrenia_darpin_nmda_receptor_modulator_protocol).restrictToEVALT
+noncomputable def schizophrenia_darpin_nmda_receptor_06d88b_true_arm : IGProtocol schizophrenia_darpin_nmda_receptor_06d88b_s0 schizophrenia_darpin_nmda_receptor_06d88b_s9 :=
+  (schizophrenia_darpin_nmda_receptor_06d88b_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem schizophrenia_darpin_nmda_receptor_modulator_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def schizophrenia_darpin_nmda_receptor_06d88b_tier : OuroboricityTier := TierFunctor.obj schizophrenia_darpin_nmda_receptor_06d88b_s0
+#eval schizophrenia_darpin_nmda_receptor_06d88b_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem schizophrenia_darpin_nmda_receptor_06d88b_frobenius :
+    igFrobeniusAlg.mul schizophrenia_darpin_nmda_receptor_06d88b_s0 schizophrenia_darpin_nmda_receptor_06d88b_s0 = schizophrenia_darpin_nmda_receptor_06d88b_s0 :=
+  igFrobAlg_self_fusion schizophrenia_darpin_nmda_receptor_06d88b_s0

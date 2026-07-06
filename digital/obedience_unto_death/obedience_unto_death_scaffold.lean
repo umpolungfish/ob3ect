@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 12)]
 
 import Imscribing.IGMorphism
@@ -113,7 +113,7 @@ noncomputable def obedience_unto_death_false_arm : IGProtocol obedience_unto_dea
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def obedience_unto_death_tier : OuroboricityTier := TierFunctor.obj obedience_unto_death_s0
 #eval obedience_unto_death_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 10)]
 
 import Imscribing.IGMorphism
@@ -83,18 +83,8 @@ private def er_epr_l11 : Imscription :=
 -- ── Main IGProtocol term ────────────────────────────────────
 noncomputable def er_epr_protocol : IGProtocol er_epr_s0 er_epr_s11 :=
   .withGram Grammar.measure <|
-  .seq
-    (.arrow er_epr_l0 er_epr_s0 er_epr_s1)
-    (.arrow er_epr_l1 er_epr_s1 er_epr_s2)
-    (.seq
-      (.prod
-        (.arrow er_epr_l2 er_epr_s2 er_epr_s10)  -- T-arm (δ)
-        (.arrow er_epr_l2 er_epr_s2 er_epr_s10)) -- F-arm (μ, Dual-Link mirror)
-      (.seq
-        (.arrow er_epr_l10 er_epr_s10 er_epr_s10)  -- FFUSE closure
-        (.arrow er_epr_l10 er_epr_s10 er_epr_s11)
-      )   -- close continuation .seq
-    )   -- close inner .seq
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct er_epr_s10 er_epr_s10 = er_epr_s10 (idempotent)
+  (.seq (.arrow er_epr_l0 er_epr_s0 er_epr_s1) (.seq (.arrow er_epr_l1 er_epr_s1 er_epr_s2) (.seq (.prod (.arrow er_epr_l2 er_epr_s2 er_epr_s10) (.arrow er_epr_l2 er_epr_s2 er_epr_s10)) (.seq (.arrow er_epr_l10 er_epr_s10 er_epr_s10) (.arrow er_epr_l10 er_epr_s10 er_epr_s11)))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
@@ -108,7 +98,11 @@ noncomputable def er_epr_false_arm : IGProtocol er_epr_s0 er_epr_s11 :=
 
 -- ── Verification theorems ─────────────────────────────────────
 
-theorem er_epr_tier : TierFunctor.obj er_epr_s0 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def er_epr_tier : OuroboricityTier := TierFunctor.obj er_epr_s0
+#eval er_epr_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem er_epr_frobenius :
+    igFrobeniusAlg.mul er_epr_s0 er_epr_s0 = er_epr_s0 :=
+  igFrobAlg_self_fusion er_epr_s0

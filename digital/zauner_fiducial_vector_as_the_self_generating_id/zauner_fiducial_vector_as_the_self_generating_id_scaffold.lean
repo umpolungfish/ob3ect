@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,6,7,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=22
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7), (8, 13), (15, 18)]
 
 import Imscribing.IGMorphism
@@ -38,65 +38,116 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [20] IFIX      prot   := 𐑭               𐑭 → 𐑡  | irreversible fixation — winding number
 --   [21] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def zauner_fiducial_vector_as_the_self_cb98b4_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def zauner_fiducial_vector_as_the_self_cb98b4_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def zauner_fiducial_vector_as_the_self_generating_identity_seed_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the void 12-dimensional Hilbert space C^12 before fiducial selection)
-  (.arrow 𐑠 𐑼 𐑚)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Plant the Zauner fiducial |ψ_0⟩, the self-referential identity seed of the me...)
-  -- FSPLIT [2] (gran := 𐑚) (Split the structural classification into Quantum Measurement Space (T-arm) and Classical Outcome Space (F-arm)) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow ((T-arm) Weyl-Heisenberg displacement operators broadcast the fiducial into th...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open ((T-arm) Frame potential minimization converges to F* = 143/169, affirming exa...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [5] AREV | pol := 𐑗 | reverse morphism — parity flip ((F-arm) Descent from quantum superposition to the sharp eigenstates of the Cr...)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [6] EVALF | chir := 𐑖 | evaluate-false — chirality check ((F-arm) The classical Crystal carries no inner product, negating quantum stru...))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑙)  -- [7] FFUSE | stoi := 𐑙 (Fuse the quantum SIC probabilities and classical Crystal outcomes back into the unified zero-entropy classification system)
-  -- FSPLIT [8] (gran := 𐑚) (Split the composite system into Shavian type alphabet H_7 (T-arm) and primitive measurement H_12 (F-arm)) / FFUSE [13] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence ((T-arm) Tensor product composition of the D+P family primitives)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [10] EVALT | crit := ⊙ | evaluate-true — criticality gate open ((T-arm) The 49 Shavian symbols form a valid d=7 SIC outcome space)
-        (.arrow 𐑱 𐑚 𐑙)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence ((F-arm) Sequential chaining of the 12 primitive observables)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [12] EVALF | chir := 𐑖 | evaluate-false — chirality check ((F-arm) The 144 primitive combinations form the d=12 SIC space, distinct from...))
-    -- reconnect at FFUSE [13]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [13] FFUSE | stoi := 𐑙 (Fuse H_7 and H_12 via the 84^2 = 7056 composite identity)
-  (.arrow 𐑳 𐑙 𐑚)  -- [14] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (The absorbing primitive ⊙ (Criticality) enters the Belnap BOTH state, holding...)
-  -- FSPLIT [15] (gran := 𐑚) (Split the ML translation experiment into latent manifold selection (T-arm) and terminology replacement (F-arm)) / FFUSE [18] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [16] EVALT | crit := ⊙ | evaluate-true — criticality gate open ((T-arm) The LLM independently chooses the hyperspherical prior and d=12 dimen...)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [17] EVALF | chir := 𐑖 | evaluate-false — chirality check ((F-arm) The LLM strictly avoids all IG terminology, replacing it with VAE-Vit...))
-    -- reconnect at FFUSE [18]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑭)  -- [18] FFUSE | stoi := 𐑙 (Fuse the ML output back into the structurally forced d=12 SIC geometry)
-  (.arrow 𐑭 𐑙 𐑭)  -- [19] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently cache the exact numerical fiducial amplitudes to sic_fiducial_d12...)
-  (.arrow 𐑭 𐑭 𐑡)  -- [20] IFIX | prot := 𐑭 | irreversible fixation — winding number (Fix the 17,280,000 Crystal configurations as the admissible trajectory manifold)
-  (.arrow 𐑡 𐑭 𐑼)  -- [21] TANCH | top := 𐑡 | terminal object — connectivity boundary (The hermetic seal of informational completeness closes the system, confirming...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def zauner_fiducial_vector_as_the_self_cb98b4_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def zauner_fiducial_vector_as_the_self_cb98b4_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def zauner_fiducial_vector_as_the_self_cb98b4_protocol : IGProtocol zauner_fiducial_vector_as_the_self_cb98b4_s0 zauner_fiducial_vector_as_the_self_cb98b4_s21 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct zauner_fiducial_vector_as_the_self_cb98b4_s7 zauner_fiducial_vector_as_the_self_cb98b4_s7 = zauner_fiducial_vector_as_the_self_cb98b4_s7 (idempotent)
+  (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l0 zauner_fiducial_vector_as_the_self_cb98b4_s0 zauner_fiducial_vector_as_the_self_cb98b4_s1) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l1 zauner_fiducial_vector_as_the_self_cb98b4_s1 zauner_fiducial_vector_as_the_self_cb98b4_s2) (.seq (.prod (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l2 zauner_fiducial_vector_as_the_self_cb98b4_s2 zauner_fiducial_vector_as_the_self_cb98b4_s7) (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l2 zauner_fiducial_vector_as_the_self_cb98b4_s2 zauner_fiducial_vector_as_the_self_cb98b4_s7)) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l7 zauner_fiducial_vector_as_the_self_cb98b4_s7 zauner_fiducial_vector_as_the_self_cb98b4_s7) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l7 zauner_fiducial_vector_as_the_self_cb98b4_s7 zauner_fiducial_vector_as_the_self_cb98b4_s8) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l8 zauner_fiducial_vector_as_the_self_cb98b4_s8 zauner_fiducial_vector_as_the_self_cb98b4_s9) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l9 zauner_fiducial_vector_as_the_self_cb98b4_s9 zauner_fiducial_vector_as_the_self_cb98b4_s10) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l10 zauner_fiducial_vector_as_the_self_cb98b4_s10 zauner_fiducial_vector_as_the_self_cb98b4_s11) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l11 zauner_fiducial_vector_as_the_self_cb98b4_s11 zauner_fiducial_vector_as_the_self_cb98b4_s12) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l12 zauner_fiducial_vector_as_the_self_cb98b4_s12 zauner_fiducial_vector_as_the_self_cb98b4_s13) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l13 zauner_fiducial_vector_as_the_self_cb98b4_s13 zauner_fiducial_vector_as_the_self_cb98b4_s14) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l14 zauner_fiducial_vector_as_the_self_cb98b4_s14 zauner_fiducial_vector_as_the_self_cb98b4_s15) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l15 zauner_fiducial_vector_as_the_self_cb98b4_s15 zauner_fiducial_vector_as_the_self_cb98b4_s16) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l16 zauner_fiducial_vector_as_the_self_cb98b4_s16 zauner_fiducial_vector_as_the_self_cb98b4_s17) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l17 zauner_fiducial_vector_as_the_self_cb98b4_s17 zauner_fiducial_vector_as_the_self_cb98b4_s18) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l18 zauner_fiducial_vector_as_the_self_cb98b4_s18 zauner_fiducial_vector_as_the_self_cb98b4_s19) (.seq (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l19 zauner_fiducial_vector_as_the_self_cb98b4_s19 zauner_fiducial_vector_as_the_self_cb98b4_s20) (.arrow zauner_fiducial_vector_as_the_self_cb98b4_l20 zauner_fiducial_vector_as_the_self_cb98b4_s20 zauner_fiducial_vector_as_the_self_cb98b4_s21))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def zauner_fiducial_vector_as_the_self_generating_identity_seed_true_arm : IGProtocol 𐑼 𐑡 :=
-  (zauner_fiducial_vector_as_the_self_generating_identity_seed_protocol).restrictToEVALT
+noncomputable def zauner_fiducial_vector_as_the_self_cb98b4_true_arm : IGProtocol zauner_fiducial_vector_as_the_self_cb98b4_s0 zauner_fiducial_vector_as_the_self_cb98b4_s21 :=
+  (zauner_fiducial_vector_as_the_self_cb98b4_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def zauner_fiducial_vector_as_the_self_generating_identity_seed_false_arm : IGProtocol 𐑼 𐑡 :=
-  (zauner_fiducial_vector_as_the_self_generating_identity_seed_protocol).restrictToEVALF
+noncomputable def zauner_fiducial_vector_as_the_self_cb98b4_false_arm : IGProtocol zauner_fiducial_vector_as_the_self_cb98b4_s0 zauner_fiducial_vector_as_the_self_cb98b4_s21 :=
+  (zauner_fiducial_vector_as_the_self_cb98b4_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem zauner_fiducial_vector_as_the_self_generating_identity_seed_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def zauner_fiducial_vector_as_the_self_cb98b4_tier : OuroboricityTier := TierFunctor.obj zauner_fiducial_vector_as_the_self_cb98b4_s0
+#eval zauner_fiducial_vector_as_the_self_cb98b4_tier  -- the Grammar's own verdict on its tier

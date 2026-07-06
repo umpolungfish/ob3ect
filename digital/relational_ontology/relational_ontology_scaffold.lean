@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 9)]
 
 import Imscribing.IGMorphism
@@ -103,7 +103,7 @@ noncomputable def relational_ontology_false_arm : IGProtocol relational_ontology
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def relational_ontology_tier : OuroboricityTier := TierFunctor.obj relational_ontology_s0
 #eval relational_ontology_tier  -- the Grammar's own verdict on its tier
 

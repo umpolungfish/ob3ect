@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8)]
 
 import Imscribing.IGMorphism
@@ -98,7 +98,7 @@ noncomputable def t_bingen_school_false_arm : IGProtocol t_bingen_school_s0 t_bi
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def t_bingen_school_tier : OuroboricityTier := TierFunctor.obj t_bingen_school_s0
 #eval t_bingen_school_tier  -- the Grammar's own verdict on its tier
 

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,4,4,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=20
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 9), (14, 17)]
 
 import Imscribing.IGMorphism
@@ -138,6 +138,6 @@ noncomputable def the_coordinate_tower_becomes_the_flat_8967cf_false_arm : IGPro
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_coordinate_tower_becomes_the_flat_8967cf_tier : OuroboricityTier := TierFunctor.obj the_coordinate_tower_becomes_the_flat_8967cf_s0
 #eval the_coordinate_tower_becomes_the_flat_8967cf_tier  -- the Grammar's own verdict on its tier

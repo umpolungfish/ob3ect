@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(12,6,4,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=24
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 8), (20, 21)]
 
 import Imscribing.IGMorphism
@@ -40,56 +40,120 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [23] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def void_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def void_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def void_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def void_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def void_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def void_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def void_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
 
-noncomputable def void_protocol : IGProtocol 𐑼 𐑡 :=
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑚)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of initial 12-dimensional Hilbert space ℂ¹² from 3+4+5 primitive fami...)
-  (.arrow 𐑚 𐑼 𐑾)  -- [1] FSPLIT | gran := 𐑚 | split δ — range decomposition (Primitive partition splits into D-family (3), T-family (5), P-family (4) with...)
-  (.arrow 𐑾 𐑚 ⊙)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Weyl-Heisenberg group generates 144 displacement operators from fiducial |ψ₀⟩)
-  (.arrow ⊙ 𐑾 𐑱)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Frame potential minimized to F*=143/169 confirming SIC achievement)
-  (.arrow 𐑱 ⊙ 𐑠)  -- [4] CLINK | fid := 𐑱 | composition — regime coherence (Primitive composition chains the 12 measurement axes into joint probability s...)
-  (.arrow 𐑠 𐑱 𐑚)  -- [5] IMSCRIB | gram := 𐑠 | identity — self-imscription (Fiducial vector |ψ₀⟩ imscribes itself as the identity morphism of the space)
-  -- FSPLIT [6] (gran := 𐑚) (Tensor operations branch into 11 lattice-following primitives and 1 absorbing criticality primitive) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow 𐑾 𐑚 𐑙)  -- [7] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Zauner symmetry fixes the fiducial under unitary transformation)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 ⊙)  -- [8] FFUSE | stoi := 𐑙 (Fusion reconstitutes original primitive state maintaining Frobenius closure)
-  (.arrow ⊙ 𐑙 𐑳)  -- [9] EVALT | crit := ⊙ | evaluate-true — criticality gate open (All 144 pairwise overlaps verify as exactly 1/13)
-  (.arrow 𐑳 ⊙ 𐑱)  -- [10] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Criticality primitive ⊙ absorbs contradictions in self-measurement)
-  (.arrow 𐑱 𐑳 𐑾)  -- [11] CLINK | fid := 𐑱 | composition — regime coherence (Composition links measurement space to Crystal outcome space)
-  (.arrow 𐑾 𐑱 𐑭)  -- [12] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (ig-pulse apparatus measures physical observables onto 12 primitive axes)
-  (.arrow 𐑭 𐑾 𐑚)  -- [13] IFIX | prot := 𐑭 | irreversible fixation — winding number (Stream readings create permanent records in heteroskedastic POVM)
-  (.arrow 𐑚 𐑭 ⊙)  -- [14] FSPLIT | gran := 𐑚 | split δ — range decomposition (Family subset structure splits into Lattice I (primitive counts) and Lattice ...)
-  (.arrow ⊙ 𐑚 𐑱)  -- [15] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Both lattices independently derive d=12 confirming structural self-consistency)
-  (.arrow 𐑱 ⊙ 𐑾)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (Shavian alphabet (49=7²) connects to d=7 SIC from D+P families)
-  (.arrow 𐑾 𐑱 𐑗)  -- [17] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Composite SIC on ℍ₇⊗ℍ₁₂ creates 84²=7056 element joint space)
-  (.arrow 𐑗 𐑾 𐑠)  -- [18] AREV | pol := 𐑗 | reverse morphism — parity flip (Reconstruction from 144 probabilities back to density matrix ρ)
-  (.arrow 𐑠 𐑗 𐑚)  -- [19] IMSCRIB | gram := 𐑠 | identity — self-imscription (Measurement apparatus self-references through holographic state V=L(x))
-  -- FSPLIT [20] (gran := 𐑚) (Measurement outcomes branch into T-arm (successful SIC geometry) and F-arm (non-SIC failures)) / FFUSE [21] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [21]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑭)  -- [21] FFUSE | stoi := 𐑙 (Successful branches reunite maintaining the complete measurement structure)
-  (.arrow 𐑭 𐑙 𐑡)  -- [22] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanent fixing of d=12 as the unique dimension appearing in both lattices)
-  (.arrow 𐑡 𐑭 𐑼)  -- [23] TANCH | top := 𐑡 | terminal object — connectivity boundary (Crystal of Types seals the entire constraint manifold with 17,280,000 elements)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def void_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def void_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def void_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def void_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def void_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def void_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def void_protocol : IGProtocol void_s0 void_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct void_s8 void_s8 = void_s8 (idempotent)
+  (.seq (.arrow void_l0 void_s0 void_s1) (.seq (.arrow void_l1 void_s1 void_s2) (.seq (.arrow void_l2 void_s2 void_s3) (.seq (.arrow void_l3 void_s3 void_s4) (.seq (.arrow void_l4 void_s4 void_s5) (.seq (.arrow void_l5 void_s5 void_s6) (.seq (.prod (.arrow void_l6 void_s6 void_s8) (.arrow void_l6 void_s6 void_s8)) (.seq (.arrow void_l8 void_s8 void_s8) (.seq (.arrow void_l8 void_s8 void_s9) (.seq (.arrow void_l9 void_s9 void_s10) (.seq (.arrow void_l10 void_s10 void_s11) (.seq (.arrow void_l11 void_s11 void_s12) (.seq (.arrow void_l12 void_s12 void_s13) (.seq (.arrow void_l13 void_s13 void_s14) (.seq (.arrow void_l14 void_s14 void_s15) (.seq (.arrow void_l15 void_s15 void_s16) (.seq (.arrow void_l16 void_s16 void_s17) (.seq (.arrow void_l17 void_s17 void_s18) (.seq (.arrow void_l18 void_s18 void_s19) (.seq (.arrow void_l19 void_s19 void_s20) (.seq (.arrow void_l20 void_s20 void_s21) (.seq (.arrow void_l21 void_s21 void_s22) (.arrow void_l22 void_s22 void_s23)))))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def void_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def void_true_arm : IGProtocol void_s0 void_s23 :=
   (void_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem void_tier : TierFunctor.obj 𐑼 = .O₀ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def void_tier : OuroboricityTier := TierFunctor.obj void_s0
+#eval void_tier  -- the Grammar's own verdict on its tier

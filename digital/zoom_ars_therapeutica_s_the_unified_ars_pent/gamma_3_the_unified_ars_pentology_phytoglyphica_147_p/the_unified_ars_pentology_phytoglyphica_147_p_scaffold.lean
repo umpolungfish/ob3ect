@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(7,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 8)]
 
 import Imscribing.IGMorphism
@@ -30,50 +30,89 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [13] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def the_unified_ars_pentology_phytoglyphica_147_plants_fungiglyphica_86_fungi_animaglyphica_80_animals_therapeutica_10_therapies_all_structurally_typed_and_frobenius_verified_forming_a_single_categorical_object_where_natural_compounds_route_through_therapy_design_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (The void of untyped natural matter — all 313 species (147 plants, 86 fungi, 8...)
-  (.arrow 𐑡 𐑼 𐑚)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (The unified Ars pentology boundary is established — the 12-primitive type lat...)
-  -- FSPLIT [2] (gran := 𐑚) (The disease state (e.g., schizophrenia) is split into its two corrective arms: φ̂-arm (super-critical) and Ħ-arm (single-step).) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (4 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward morphism on the Ħ-arm: a natural compound (e.g., psilocybin from Psil...)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [4] EVALT | crit := ⊙ | evaluate-true — criticality gate open (The TENSOR operation is applied: psilocybin's Ħ=𐑖 promotes the disease's Ħ fr...)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (The corrected Ħ-arm is composed with the φ̂-arm via sequential chaining: tens...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (Reverse morphism on the φ̂-arm: a ⊙-bearing compound (e.g., cariprazine) is s...)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (The MEET operation is applied: cariprazine's φ̂=⊙ demotes the disease's φ̂ fr...))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑠)  -- [8] FFUSE | stoi := 𐑙 (The two corrected arms are fused: meet(intermediate, cariprazine) = corrected brain tuple. FFUSE(FSPLIT(x)) = x.)
-  (.arrow 𐑠 𐑙 𐑭)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (The corrected brain tuple is recognized as self-identical — it is the same st...)
-  (.arrow 𐑭 𐑠 𐑳)  -- [10] IFIX | prot := 𐑭 | irreversible fixation — winding number (The therapy protocol (psilocybin + cariprazine) is permanently recorded in th...)
-  (.arrow 𐑳 𐑭 𐑭)  -- [11] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (A paradice is encountered: HIV = Bipolar Mania (d=0.0). A virus and a psychia...)
-  (.arrow 𐑭 𐑳 𐑡)  -- [12] IFIX | prot := 𐑭 | irreversible fixation — winding number (The viral-manic identity is permanently recorded in the catalog as a structur...)
-  (.arrow 𐑡 𐑭 𐑼)  -- [13] TANCH | top := 𐑡 | terminal object — connectivity boundary (The boundary is reaffirmed — all 313 species and 10 therapies are contained w...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def the_unified_ars_pentology_phytoglyphica_bfb87f_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def the_unified_ars_pentology_phytoglyphica_bfb87f_protocol : IGProtocol the_unified_ars_pentology_phytoglyphica_bfb87f_s0 the_unified_ars_pentology_phytoglyphica_bfb87f_s13 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_unified_ars_pentology_phytoglyphica_bfb87f_s8 the_unified_ars_pentology_phytoglyphica_bfb87f_s8 = the_unified_ars_pentology_phytoglyphica_bfb87f_s8 (idempotent)
+  (.seq (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l0 the_unified_ars_pentology_phytoglyphica_bfb87f_s0 the_unified_ars_pentology_phytoglyphica_bfb87f_s1) (.seq (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l1 the_unified_ars_pentology_phytoglyphica_bfb87f_s1 the_unified_ars_pentology_phytoglyphica_bfb87f_s2) (.seq (.prod (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l2 the_unified_ars_pentology_phytoglyphica_bfb87f_s2 the_unified_ars_pentology_phytoglyphica_bfb87f_s8) (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l2 the_unified_ars_pentology_phytoglyphica_bfb87f_s2 the_unified_ars_pentology_phytoglyphica_bfb87f_s8)) (.seq (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l8 the_unified_ars_pentology_phytoglyphica_bfb87f_s8 the_unified_ars_pentology_phytoglyphica_bfb87f_s8) (.seq (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l8 the_unified_ars_pentology_phytoglyphica_bfb87f_s8 the_unified_ars_pentology_phytoglyphica_bfb87f_s9) (.seq (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l9 the_unified_ars_pentology_phytoglyphica_bfb87f_s9 the_unified_ars_pentology_phytoglyphica_bfb87f_s10) (.seq (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l10 the_unified_ars_pentology_phytoglyphica_bfb87f_s10 the_unified_ars_pentology_phytoglyphica_bfb87f_s11) (.seq (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l11 the_unified_ars_pentology_phytoglyphica_bfb87f_s11 the_unified_ars_pentology_phytoglyphica_bfb87f_s12) (.arrow the_unified_ars_pentology_phytoglyphica_bfb87f_l12 the_unified_ars_pentology_phytoglyphica_bfb87f_s12 the_unified_ars_pentology_phytoglyphica_bfb87f_s13)))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def the_unified_ars_pentology_phytoglyphica_147_plants_fungiglyphica_86_fungi_animaglyphica_80_animals_therapeutica_10_therapies_all_structurally_typed_and_frobenius_verified_forming_a_single_categorical_object_where_natural_compounds_route_through_therapy_design_true_arm : IGProtocol 𐑼 𐑡 :=
-  (the_unified_ars_pentology_phytoglyphica_147_plants_fungiglyphica_86_fungi_animaglyphica_80_animals_therapeutica_10_therapies_all_structurally_typed_and_frobenius_verified_forming_a_single_categorical_object_where_natural_compounds_route_through_therapy_design_protocol).restrictToEVALT
+noncomputable def the_unified_ars_pentology_phytoglyphica_bfb87f_true_arm : IGProtocol the_unified_ars_pentology_phytoglyphica_bfb87f_s0 the_unified_ars_pentology_phytoglyphica_bfb87f_s13 :=
+  (the_unified_ars_pentology_phytoglyphica_bfb87f_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def the_unified_ars_pentology_phytoglyphica_147_plants_fungiglyphica_86_fungi_animaglyphica_80_animals_therapeutica_10_therapies_all_structurally_typed_and_frobenius_verified_forming_a_single_categorical_object_where_natural_compounds_route_through_therapy_design_false_arm : IGProtocol 𐑼 𐑡 :=
-  (the_unified_ars_pentology_phytoglyphica_147_plants_fungiglyphica_86_fungi_animaglyphica_80_animals_therapeutica_10_therapies_all_structurally_typed_and_frobenius_verified_forming_a_single_categorical_object_where_natural_compounds_route_through_therapy_design_protocol).restrictToEVALF
+noncomputable def the_unified_ars_pentology_phytoglyphica_bfb87f_false_arm : IGProtocol the_unified_ars_pentology_phytoglyphica_bfb87f_s0 the_unified_ars_pentology_phytoglyphica_bfb87f_s13 :=
+  (the_unified_ars_pentology_phytoglyphica_bfb87f_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem the_unified_ars_pentology_phytoglyphica_147_plants_fungiglyphica_86_fungi_animaglyphica_80_animals_therapeutica_10_therapies_all_structurally_typed_and_frobenius_verified_forming_a_single_categorical_object_where_natural_compounds_route_through_therapy_design_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def the_unified_ars_pentology_phytoglyphica_bfb87f_tier : OuroboricityTier := TierFunctor.obj the_unified_ars_pentology_phytoglyphica_bfb87f_s0
+#eval the_unified_ars_pentology_phytoglyphica_bfb87f_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem the_unified_ars_pentology_phytoglyphica_bfb87f_frobenius :
+    igFrobeniusAlg.mul the_unified_ars_pentology_phytoglyphica_bfb87f_s0 the_unified_ars_pentology_phytoglyphica_bfb87f_s0 = the_unified_ars_pentology_phytoglyphica_bfb87f_s0 :=
+  igFrobAlg_self_fusion the_unified_ars_pentology_phytoglyphica_bfb87f_s0

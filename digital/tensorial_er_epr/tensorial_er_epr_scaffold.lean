@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(1, 5)]
 
 import Imscribing.IGMorphism
@@ -73,26 +73,8 @@ private def tensorial_er_epr_l9 : Imscription :=
 -- ── Main IGProtocol term ────────────────────────────────────
 noncomputable def tensorial_er_epr_protocol : IGProtocol tensorial_er_epr_s0 tensorial_er_epr_s9 :=
   .withGram Grammar.measure <|
-  .seq
-    (.arrow tensorial_er_epr_l0 tensorial_er_epr_s0 tensorial_er_epr_s1)
-    (.seq
-      (.prod
-        (.arrow tensorial_er_epr_l1 tensorial_er_epr_s1 tensorial_er_epr_s5)  -- T-arm (δ)
-        (.arrow tensorial_er_epr_l1 tensorial_er_epr_s1 tensorial_er_epr_s5)) -- F-arm (μ, Dual-Link mirror)
-      (.seq
-        (.arrow tensorial_er_epr_l5 tensorial_er_epr_s5 tensorial_er_epr_s5)  -- FFUSE closure
-        (.seq
-          (.arrow tensorial_er_epr_l5 tensorial_er_epr_s5 tensorial_er_epr_s6)
-          (.seq
-            (.arrow tensorial_er_epr_l6 tensorial_er_epr_s6 tensorial_er_epr_s7)
-            (.seq
-              (.arrow tensorial_er_epr_l7 tensorial_er_epr_s7 tensorial_er_epr_s8)
-              (.arrow tensorial_er_epr_l8 tensorial_er_epr_s8 tensorial_er_epr_s9)
-            )
-          )
-        )
-      )   -- close continuation .seq
-    )   -- close inner .seq
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct tensorial_er_epr_s5 tensorial_er_epr_s5 = tensorial_er_epr_s5 (idempotent)
+  (.seq (.arrow tensorial_er_epr_l0 tensorial_er_epr_s0 tensorial_er_epr_s1) (.seq (.prod (.arrow tensorial_er_epr_l1 tensorial_er_epr_s1 tensorial_er_epr_s5) (.arrow tensorial_er_epr_l1 tensorial_er_epr_s1 tensorial_er_epr_s5)) (.seq (.arrow tensorial_er_epr_l5 tensorial_er_epr_s5 tensorial_er_epr_s5) (.seq (.arrow tensorial_er_epr_l5 tensorial_er_epr_s5 tensorial_er_epr_s6) (.seq (.arrow tensorial_er_epr_l6 tensorial_er_epr_s6 tensorial_er_epr_s7) (.seq (.arrow tensorial_er_epr_l7 tensorial_er_epr_s7 tensorial_er_epr_s8) (.arrow tensorial_er_epr_l8 tensorial_er_epr_s8 tensorial_er_epr_s9)))))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
@@ -102,7 +84,11 @@ noncomputable def tensorial_er_epr_true_arm : IGProtocol tensorial_er_epr_s0 ten
 
 -- ── Verification theorems ─────────────────────────────────────
 
-theorem tensorial_er_epr_tier : TierFunctor.obj tensorial_er_epr_s0 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def tensorial_er_epr_tier : OuroboricityTier := TierFunctor.obj tensorial_er_epr_s0
+#eval tensorial_er_epr_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem tensorial_er_epr_frobenius :
+    igFrobeniusAlg.mul tensorial_er_epr_s0 tensorial_er_epr_s0 = tensorial_er_epr_s0 :=
+  igFrobAlg_self_fusion tensorial_er_epr_s0

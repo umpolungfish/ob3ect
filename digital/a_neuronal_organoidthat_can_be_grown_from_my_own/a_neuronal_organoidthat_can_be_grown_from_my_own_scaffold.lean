@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(15,6,2,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=24
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(9, 10), (15, 16)]
 
 import Imscribing.IGMorphism
@@ -40,57 +40,120 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] TANCH     top    := 𐑡               𐑭 → 𐑠  | terminal object — connectivity boundary
 --   [23] IMSCRIB   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := up, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
 
-noncomputable def a_neuronal_organoidthat_can_be_grown_from_my_own_cells_via_ipsc_and_is_ultimately_able_to_interface_with_me_via_my_pc_protocol : IGProtocol 𐑼 𐑠 :=
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (patient somatic cells harvested and prepared for reprogramming)
-  (.arrow 𐑠 𐑼 𐑾)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (genetic identity tagged with patient-specific markers)
-  (.arrow 𐑾 𐑠 𐑱)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (cellular reprogramming initiated toward induced pluripotent state)
-  (.arrow 𐑱 𐑾 𐑚)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (pluripotency factors integrated and validated)
-  (.arrow 𐑚 𐑱 𐑱)  -- [4] FSPLIT | gran := 𐑚 | split δ — range decomposition (pluripotent cells directed toward neural ectoderm specification)
-  (.arrow 𐑱 𐑚 𐑚)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (neural induction signals activated and maintained)
-  (.arrow 𐑚 𐑱 𐑾)  -- [6] FSPLIT | gran := 𐑚 | split δ — range decomposition (neural progenitors specified into distinct regional fates)
-  (.arrow 𐑾 𐑚 𐑱)  -- [7] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (organoid formation through 3D culture aggregation)
-  (.arrow 𐑱 𐑾 𐑚)  -- [8] CLINK | fid := 𐑱 | composition — regime coherence (extracellular matrix components incorporated for structural integrity)
-  -- FSPLIT [9] (gran := 𐑚) (neural differentiation branches into glutamatergic and GABAergic populations) / FFUSE [10] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [10]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑾)  -- [10] FFUSE | stoi := 𐑙 (excitatory and inhibitory neurons integrate into functional circuits)
-  (.arrow 𐑾 𐑙 𐑠)  -- [11] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (synaptic network formation and maturation)
-  (.arrow 𐑠 𐑾 𐑡)  -- [12] IMSCRIB | gram := 𐑠 | identity — self-imscription (intrinsic electrical activity emerges and stabilizes)
-  (.arrow 𐑡 𐑠 𐑱)  -- [13] TANCH | top := 𐑡 | terminal object — connectivity boundary (cultivation chamber maintains sterile conditions throughout)
-  (.arrow 𐑱 𐑡 𐑚)  -- [14] CLINK | fid := 𐑱 | composition — regime coherence (neural activity monitored and calibrated)
-  -- FSPLIT [15] (gran := 𐑚) (sensory and motor regions develop distinct connectivity profiles) / FFUSE [16] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (0 nodes)
-      (.refl 𐑙)  -- T-branch: empty arc (direct to FFUSE.T)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [16]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [16] FFUSE | stoi := 𐑙 (integrated organoid exhibits coordinated neural responses)
-  (.arrow 𐑳 𐑙 𐑾)  -- [17] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (balance between excitation and inhibition maintained dynamically)
-  (.arrow 𐑾 𐑳 𐑱)  -- [18] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (interface hardware connection established)
-  (.arrow 𐑱 𐑾 ⊙)  -- [19] CLINK | fid := 𐑱 | composition — regime coherence (bioelectronic signal transduction protocols implemented)
-  (.arrow ⊙ 𐑱 𐑭)  -- [20] EVALT | crit := ⊙ | evaluate-true — criticality gate open (successful bidirectional communication achieved between organoid and PC)
-  (.arrow 𐑭 ⊙ 𐑡)  -- [21] IFIX | prot := 𐑭 | irreversible fixation — winding number (baseline neural activity patterns permanently recorded)
-  (.arrow 𐑡 𐑭 𐑠)  -- [22] TANCH | top := 𐑡 | terminal object — connectivity boundary (system operates within stable homeostatic parameters)
-  (.arrow 𐑠 𐑡 𐑼)  -- [23] IMSCRIB | gram := 𐑠 | identity — self-imscription (organoid recognizes and responds to PC interaction patterns)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def a_neuronal_organoidthat_can_be_grown_fc20ae_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def a_neuronal_organoidthat_can_be_grown_fc20ae_protocol : IGProtocol a_neuronal_organoidthat_can_be_grown_fc20ae_s0 a_neuronal_organoidthat_can_be_grown_fc20ae_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct a_neuronal_organoidthat_can_be_grown_fc20ae_s10 a_neuronal_organoidthat_can_be_grown_fc20ae_s10 = a_neuronal_organoidthat_can_be_grown_fc20ae_s10 (idempotent)
+  (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l0 a_neuronal_organoidthat_can_be_grown_fc20ae_s0 a_neuronal_organoidthat_can_be_grown_fc20ae_s1) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l1 a_neuronal_organoidthat_can_be_grown_fc20ae_s1 a_neuronal_organoidthat_can_be_grown_fc20ae_s2) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l2 a_neuronal_organoidthat_can_be_grown_fc20ae_s2 a_neuronal_organoidthat_can_be_grown_fc20ae_s3) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l3 a_neuronal_organoidthat_can_be_grown_fc20ae_s3 a_neuronal_organoidthat_can_be_grown_fc20ae_s4) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l4 a_neuronal_organoidthat_can_be_grown_fc20ae_s4 a_neuronal_organoidthat_can_be_grown_fc20ae_s5) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l5 a_neuronal_organoidthat_can_be_grown_fc20ae_s5 a_neuronal_organoidthat_can_be_grown_fc20ae_s6) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l6 a_neuronal_organoidthat_can_be_grown_fc20ae_s6 a_neuronal_organoidthat_can_be_grown_fc20ae_s7) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l7 a_neuronal_organoidthat_can_be_grown_fc20ae_s7 a_neuronal_organoidthat_can_be_grown_fc20ae_s8) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l8 a_neuronal_organoidthat_can_be_grown_fc20ae_s8 a_neuronal_organoidthat_can_be_grown_fc20ae_s9) (.seq (.prod (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l9 a_neuronal_organoidthat_can_be_grown_fc20ae_s9 a_neuronal_organoidthat_can_be_grown_fc20ae_s10) (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l9 a_neuronal_organoidthat_can_be_grown_fc20ae_s9 a_neuronal_organoidthat_can_be_grown_fc20ae_s10)) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l10 a_neuronal_organoidthat_can_be_grown_fc20ae_s10 a_neuronal_organoidthat_can_be_grown_fc20ae_s10) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l10 a_neuronal_organoidthat_can_be_grown_fc20ae_s10 a_neuronal_organoidthat_can_be_grown_fc20ae_s11) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l11 a_neuronal_organoidthat_can_be_grown_fc20ae_s11 a_neuronal_organoidthat_can_be_grown_fc20ae_s12) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l12 a_neuronal_organoidthat_can_be_grown_fc20ae_s12 a_neuronal_organoidthat_can_be_grown_fc20ae_s13) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l13 a_neuronal_organoidthat_can_be_grown_fc20ae_s13 a_neuronal_organoidthat_can_be_grown_fc20ae_s14) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l14 a_neuronal_organoidthat_can_be_grown_fc20ae_s14 a_neuronal_organoidthat_can_be_grown_fc20ae_s15) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l15 a_neuronal_organoidthat_can_be_grown_fc20ae_s15 a_neuronal_organoidthat_can_be_grown_fc20ae_s16) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l16 a_neuronal_organoidthat_can_be_grown_fc20ae_s16 a_neuronal_organoidthat_can_be_grown_fc20ae_s17) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l17 a_neuronal_organoidthat_can_be_grown_fc20ae_s17 a_neuronal_organoidthat_can_be_grown_fc20ae_s18) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l18 a_neuronal_organoidthat_can_be_grown_fc20ae_s18 a_neuronal_organoidthat_can_be_grown_fc20ae_s19) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l19 a_neuronal_organoidthat_can_be_grown_fc20ae_s19 a_neuronal_organoidthat_can_be_grown_fc20ae_s20) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l20 a_neuronal_organoidthat_can_be_grown_fc20ae_s20 a_neuronal_organoidthat_can_be_grown_fc20ae_s21) (.seq (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l21 a_neuronal_organoidthat_can_be_grown_fc20ae_s21 a_neuronal_organoidthat_can_be_grown_fc20ae_s22) (.arrow a_neuronal_organoidthat_can_be_grown_fc20ae_l22 a_neuronal_organoidthat_can_be_grown_fc20ae_s22 a_neuronal_organoidthat_can_be_grown_fc20ae_s23))))))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def a_neuronal_organoidthat_can_be_grown_from_my_own_cells_via_ipsc_and_is_ultimately_able_to_interface_with_me_via_my_pc_true_arm : IGProtocol 𐑼 𐑠 :=
-  (a_neuronal_organoidthat_can_be_grown_from_my_own_cells_via_ipsc_and_is_ultimately_able_to_interface_with_me_via_my_pc_protocol).restrictToEVALT
+noncomputable def a_neuronal_organoidthat_can_be_grown_fc20ae_true_arm : IGProtocol a_neuronal_organoidthat_can_be_grown_fc20ae_s0 a_neuronal_organoidthat_can_be_grown_fc20ae_s23 :=
+  (a_neuronal_organoidthat_can_be_grown_fc20ae_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem a_neuronal_organoidthat_can_be_grown_from_my_own_cells_via_ipsc_and_is_ultimately_able_to_interface_with_me_via_my_pc_tier : TierFunctor.obj 𐑼 = .O₀ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def a_neuronal_organoidthat_can_be_grown_fc20ae_tier : OuroboricityTier := TierFunctor.obj a_neuronal_organoidthat_can_be_grown_fc20ae_s0
+#eval a_neuronal_organoidthat_can_be_grown_fc20ae_tier  -- the Grammar's own verdict on its tier

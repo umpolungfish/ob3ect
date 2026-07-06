@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(23,2,3,3)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=31
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(6, 13)]
 
 import Imscribing.IGMorphism
@@ -47,68 +47,157 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [29] IMSCRIB   gram   := 𐑠               𐑱 → 𐑡  | identity — self-imscription
 --   [30] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def serotinous_cone_mechanism_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def serotinous_cone_mechanism_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s24 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s25 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s26 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s27 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s28 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s29 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def serotinous_cone_mechanism_s30 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def serotinous_cone_mechanism_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Genesis of unformed seed mass in void)
-  (.arrow 𐑡 𐑼 𐑾)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establishment of mature serotinous cone boundary)
-  (.arrow 𐑾 𐑡 𐑗)  -- [2] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Approach of thermal energy toward cone surface)
-  (.arrow 𐑗 𐑾 𐑱)  -- [3] AREV | pol := 𐑗 | reverse morphism — parity flip (Ambient cooling maintaining dormant contraction)
-  (.arrow 𐑱 𐑗 𐑠)  -- [4] CLINK | fid := 𐑱 | composition — regime coherence (Sequential heat transfer to resin-sealed scales)
-  (.arrow 𐑠 𐑱 𐑚)  -- [5] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-recognition of inherent serotinous trait)
-  -- FSPLIT [6] (gran := 𐑚) (Threshold evaluation of fire intensity) / FFUSE [13] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [7] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Heat exceeds resin melting point on T-arm)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [8] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Resin phase transition to fluid state)
-        (.arrow 𐑱 𐑚 𐑙)  -- [9] CLINK | fid := 𐑱 | composition — regime coherence (Thermal expansion propagates to scale joints)
-      -- F-branch (3 nodes)
-      .seq
-        (.arrow 𐑖 𐑚 𐑙)  -- [10] EVALF | chir := 𐑖 | evaluate-false — chirality check (Heat remains below critical threshold on F-arm)
-      .seq
-        (.arrow 𐑗 𐑚 𐑙)  -- [11] AREV | pol := 𐑗 | reverse morphism — parity flip (Resin maintains solid viscosity on F-arm)
-        (.arrow 𐑱 𐑚 𐑙)  -- [12] CLINK | fid := 𐑱 | composition — regime coherence (Structural tension remains dormant on F-arm))
-    -- reconnect at FFUSE [13]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [13] FFUSE | stoi := 𐑙 (Reintegration of thermal outcome into cone state)
-  (.arrow 𐑳 𐑙 𐑭)  -- [14] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Simultaneous tension and release potential held)
-  (.arrow 𐑭 𐑳 𐑱)  -- [15] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanent seed dispersal record fixed)
-  (.arrow 𐑱 𐑭 𐑾)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (Ecological succession chain initiated)
-  (.arrow 𐑾 𐑱 𐑗)  -- [17] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Seed germination forward morphism)
-  (.arrow 𐑗 𐑾 𐑱)  -- [18] AREV | pol := 𐑗 | reverse morphism — parity flip (Soil nutrient descent into root zone)
-  (.arrow 𐑱 𐑗 𐑠)  -- [19] CLINK | fid := 𐑱 | composition — regime coherence (Root-soil composition and nutrient uptake)
-  (.arrow 𐑠 𐑱 𐑭)  -- [20] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-referential life cycle closure)
-  (.arrow 𐑭 𐑠 𐑡)  -- [21] IFIX | prot := 𐑭 | irreversible fixation — winding number (Final ecological baseline fixation)
-  (.arrow 𐑡 𐑭 𐑱)  -- [22] TANCH | top := 𐑡 | terminal object — connectivity boundary (System containment verification complete)
-  (.arrow 𐑱 𐑡 𐑠)  -- [23] CLINK | fid := 𐑱 | composition — regime coherence (Long-term forest regeneration composition)
-  (.arrow 𐑠 𐑱 𐑭)  -- [24] IMSCRIB | gram := 𐑠 | identity — self-imscription (Generational identity preservation)
-  (.arrow 𐑭 𐑠 𐑾)  -- [25] IFIX | prot := 𐑭 | irreversible fixation — winding number (Historical fire-ecology record append)
-  (.arrow 𐑾 𐑭 𐑗)  -- [26] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Canopy light penetration forward morphism)
-  (.arrow 𐑗 𐑾 𐑱)  -- [27] AREV | pol := 𐑗 | reverse morphism — parity flip (Leaf litter decomposition descent)
-  (.arrow 𐑱 𐑗 𐑠)  -- [28] CLINK | fid := 𐑱 | composition — regime coherence (Soil organic matter composition)
-  (.arrow 𐑠 𐑱 𐑡)  -- [29] IMSCRIB | gram := 𐑠 | identity — self-imscription (Ecosystem self-recognition)
-  (.arrow 𐑡 𐑠 𐑼)  -- [30] TANCH | top := 𐑡 | terminal object — connectivity boundary (Closed boundary of mature forest state)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def serotinous_cone_mechanism_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def serotinous_cone_mechanism_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def serotinous_cone_mechanism_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def serotinous_cone_mechanism_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l24 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l25 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def serotinous_cone_mechanism_l26 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l27 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l28 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l29 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def serotinous_cone_mechanism_l30 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def serotinous_cone_mechanism_protocol : IGProtocol serotinous_cone_mechanism_s0 serotinous_cone_mechanism_s30 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct serotinous_cone_mechanism_s13 serotinous_cone_mechanism_s13 = serotinous_cone_mechanism_s13 (idempotent)
+  (.seq (.arrow serotinous_cone_mechanism_l0 serotinous_cone_mechanism_s0 serotinous_cone_mechanism_s1) (.seq (.arrow serotinous_cone_mechanism_l1 serotinous_cone_mechanism_s1 serotinous_cone_mechanism_s2) (.seq (.arrow serotinous_cone_mechanism_l2 serotinous_cone_mechanism_s2 serotinous_cone_mechanism_s3) (.seq (.arrow serotinous_cone_mechanism_l3 serotinous_cone_mechanism_s3 serotinous_cone_mechanism_s4) (.seq (.arrow serotinous_cone_mechanism_l4 serotinous_cone_mechanism_s4 serotinous_cone_mechanism_s5) (.seq (.arrow serotinous_cone_mechanism_l5 serotinous_cone_mechanism_s5 serotinous_cone_mechanism_s6) (.seq (.prod (.arrow serotinous_cone_mechanism_l6 serotinous_cone_mechanism_s6 serotinous_cone_mechanism_s13) (.arrow serotinous_cone_mechanism_l6 serotinous_cone_mechanism_s6 serotinous_cone_mechanism_s13)) (.seq (.arrow serotinous_cone_mechanism_l13 serotinous_cone_mechanism_s13 serotinous_cone_mechanism_s13) (.seq (.arrow serotinous_cone_mechanism_l13 serotinous_cone_mechanism_s13 serotinous_cone_mechanism_s14) (.seq (.arrow serotinous_cone_mechanism_l14 serotinous_cone_mechanism_s14 serotinous_cone_mechanism_s15) (.seq (.arrow serotinous_cone_mechanism_l15 serotinous_cone_mechanism_s15 serotinous_cone_mechanism_s16) (.seq (.arrow serotinous_cone_mechanism_l16 serotinous_cone_mechanism_s16 serotinous_cone_mechanism_s17) (.seq (.arrow serotinous_cone_mechanism_l17 serotinous_cone_mechanism_s17 serotinous_cone_mechanism_s18) (.seq (.arrow serotinous_cone_mechanism_l18 serotinous_cone_mechanism_s18 serotinous_cone_mechanism_s19) (.seq (.arrow serotinous_cone_mechanism_l19 serotinous_cone_mechanism_s19 serotinous_cone_mechanism_s20) (.seq (.arrow serotinous_cone_mechanism_l20 serotinous_cone_mechanism_s20 serotinous_cone_mechanism_s21) (.seq (.arrow serotinous_cone_mechanism_l21 serotinous_cone_mechanism_s21 serotinous_cone_mechanism_s22) (.seq (.arrow serotinous_cone_mechanism_l22 serotinous_cone_mechanism_s22 serotinous_cone_mechanism_s23) (.seq (.arrow serotinous_cone_mechanism_l23 serotinous_cone_mechanism_s23 serotinous_cone_mechanism_s24) (.seq (.arrow serotinous_cone_mechanism_l24 serotinous_cone_mechanism_s24 serotinous_cone_mechanism_s25) (.seq (.arrow serotinous_cone_mechanism_l25 serotinous_cone_mechanism_s25 serotinous_cone_mechanism_s26) (.seq (.arrow serotinous_cone_mechanism_l26 serotinous_cone_mechanism_s26 serotinous_cone_mechanism_s27) (.seq (.arrow serotinous_cone_mechanism_l27 serotinous_cone_mechanism_s27 serotinous_cone_mechanism_s28) (.seq (.arrow serotinous_cone_mechanism_l28 serotinous_cone_mechanism_s28 serotinous_cone_mechanism_s29) (.arrow serotinous_cone_mechanism_l29 serotinous_cone_mechanism_s29 serotinous_cone_mechanism_s30)))))))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def serotinous_cone_mechanism_true_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def serotinous_cone_mechanism_true_arm : IGProtocol serotinous_cone_mechanism_s0 serotinous_cone_mechanism_s30 :=
   (serotinous_cone_mechanism_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def serotinous_cone_mechanism_false_arm : IGProtocol 𐑼 𐑡 :=
+noncomputable def serotinous_cone_mechanism_false_arm : IGProtocol serotinous_cone_mechanism_s0 serotinous_cone_mechanism_s30 :=
   (serotinous_cone_mechanism_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem serotinous_cone_mechanism_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def serotinous_cone_mechanism_tier : OuroboricityTier := TierFunctor.obj serotinous_cone_mechanism_s0
+#eval serotinous_cone_mechanism_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem serotinous_cone_mechanism_frobenius :
+    igFrobeniusAlg.mul serotinous_cone_mechanism_s0 serotinous_cone_mechanism_s0 = serotinous_cone_mechanism_s0 :=
+  igFrobAlg_self_fusion serotinous_cone_mechanism_s0

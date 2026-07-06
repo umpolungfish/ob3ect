@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,4,3,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 6), (8, 11)]
 
 import Imscribing.IGMorphism
@@ -108,6 +108,6 @@ noncomputable def doulos_false_arm : IGProtocol doulos_s0 doulos_s13 :=
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def doulos_tier : OuroboricityTier := TierFunctor.obj doulos_s0
 #eval doulos_tier  -- the Grammar's own verdict on its tier

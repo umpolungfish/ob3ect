@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(8,2,2,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=14
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(5, 10)]
 
 import Imscribing.IGMorphism
@@ -108,7 +108,7 @@ noncomputable def evalk16_g_v_evaluates_a_k16_power_basis_86b372_false_arm : IGP
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def evalk16_g_v_evaluates_a_k16_power_basis_86b372_tier : OuroboricityTier := TierFunctor.obj evalk16_g_v_evaluates_a_k16_power_basis_86b372_s0
 #eval evalk16_g_v_evaluates_a_k16_power_basis_86b372_tier  -- the Grammar's own verdict on its tier
 

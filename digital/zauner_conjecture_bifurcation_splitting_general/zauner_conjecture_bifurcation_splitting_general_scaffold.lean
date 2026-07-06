@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(12,6,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 6), (15, 18)]
 
 import Imscribing.IGMorphism
@@ -40,63 +40,124 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] IMSCRIB   gram   := 𐑠               𐑙 → 𐑡  | identity — self-imscription
 --   [23] TANCH     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
-noncomputable def zauner_conjecture_bifurcation_splitting_general_dimension_d_into_proven_d_12_and_unproven_d_19_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑡)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the universal SIC-POVM existence conjecture before dimensional spe...)
-  (.arrow 𐑡 𐑼 𐑚)  -- [1] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establish the boundary containing all dimensions where SIC-POVMs might exist)
-  -- FSPLIT [2] (gran := 𐑚) (Bifurcate the dimension space into proven and unproven regions at the construction threshold) / FFUSE [6] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [3] CLINK | fid := 𐑱 | composition — regime coherence (Chain primitive values in Crystal lattice structure 3³×4⁵×5⁴=17,280,000)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Construct the d=12 Hilbert space from the IG primitive structure)
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the existence of SIC-POVM in d=12 via explicit fiducial construction)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [6]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑱)  -- [6] FFUSE | stoi := 𐑙 (Reunite the proven branch with the general conjecture structure)
-  (.arrow 𐑱 𐑙 𐑗)  -- [7] CLINK | fid := 𐑱 | composition — regime coherence (Connect the unproven branch back to the universal statement)
-  (.arrow 𐑗 𐑱 𐑖)  -- [8] AREV | pol := 𐑗 | reverse morphism — parity flip (Descend into the unresolved case of d=19 and similar dimensions)
-  (.arrow 𐑖 𐑗 𐑙)  -- [9] EVALF | chir := 𐑖 | evaluate-false — chirality check (Mark d=19 as remaining unproven despite extensive search efforts)
-  (.arrow 𐑙 𐑖 𐑠)  -- [10] FFUSE | stoi := 𐑙 | fuse μ — assembly mode (Fuse both proven and unproven branches into unified conjecture statement)
-  (.arrow 𐑠 𐑙 𐑳)  -- [11] IMSCRIB | gram := 𐑠 | identity — self-imscription (Self-reference through the Criticality primitive absorbing contradictions)
-  (.arrow 𐑳 𐑠 𐑭)  -- [12] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Hold both proven and unproven simultaneously via paraconsistent logic)
-  (.arrow 𐑭 𐑳 𐑱)  -- [13] IFIX | prot := 𐑭 | irreversible fixation — winding number (Permanently record the exact frame potential F*=0.846154 for d=12 case)
-  (.arrow 𐑱 𐑭 𐑚)  -- [14] CLINK | fid := 𐑱 | composition — regime coherence (Compose the relationship between IG structure and Weyl-Heisenberg covariance)
-  -- FSPLIT [15] (gran := 𐑚) (Split again at the algorithmic level - constructive vs. non-constructive proofs) / FFUSE [18] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (2 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [16] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Forward to the machine learning confirmation of d=12 structure)
-        (.arrow ⊙ 𐑚 𐑙)  -- [17] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Confirm ML independently discovers the same d=12 architecture)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [18]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑗)  -- [18] FFUSE | stoi := 𐑙 (Combine human and ML verification paths)
-  (.arrow 𐑗 𐑙 𐑖)  -- [19] AREV | pol := 𐑗 | reverse morphism — parity flip (Return to the unresolved algorithmic questions for other dimensions)
-  (.arrow 𐑖 𐑗 𐑙)  -- [20] EVALF | chir := 𐑖 | evaluate-false — chirality check (Note that algorithmic construction remains unknown for most d values)
-  (.arrow 𐑙 𐑖 𐑠)  -- [21] FFUSE | stoi := 𐑙 | fuse μ — assembly mode (Maintain the overall conjecture framework across all dimensions)
-  (.arrow 𐑠 𐑙 𐑡)  -- [22] IMSCRIB | gram := 𐑠 | identity — self-imscription (The self-modeling property of critical systems prevents logical explosion)
-  (.arrow 𐑡 𐑠 𐑼)  -- [23] TANCH | top := 𐑡 | terminal object — connectivity boundary (Close with the complete system containing both resolved and open cases)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def zauner_conjecture_bifurcation_splitting_e9aaa5_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def zauner_conjecture_bifurcation_splitting_e9aaa5_protocol : IGProtocol zauner_conjecture_bifurcation_splitting_e9aaa5_s0 zauner_conjecture_bifurcation_splitting_e9aaa5_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct zauner_conjecture_bifurcation_splitting_e9aaa5_s6 zauner_conjecture_bifurcation_splitting_e9aaa5_s6 = zauner_conjecture_bifurcation_splitting_e9aaa5_s6 (idempotent)
+  (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l0 zauner_conjecture_bifurcation_splitting_e9aaa5_s0 zauner_conjecture_bifurcation_splitting_e9aaa5_s1) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l1 zauner_conjecture_bifurcation_splitting_e9aaa5_s1 zauner_conjecture_bifurcation_splitting_e9aaa5_s2) (.seq (.prod (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l2 zauner_conjecture_bifurcation_splitting_e9aaa5_s2 zauner_conjecture_bifurcation_splitting_e9aaa5_s6) (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l2 zauner_conjecture_bifurcation_splitting_e9aaa5_s2 zauner_conjecture_bifurcation_splitting_e9aaa5_s6)) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l6 zauner_conjecture_bifurcation_splitting_e9aaa5_s6 zauner_conjecture_bifurcation_splitting_e9aaa5_s6) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l6 zauner_conjecture_bifurcation_splitting_e9aaa5_s6 zauner_conjecture_bifurcation_splitting_e9aaa5_s7) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l7 zauner_conjecture_bifurcation_splitting_e9aaa5_s7 zauner_conjecture_bifurcation_splitting_e9aaa5_s8) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l8 zauner_conjecture_bifurcation_splitting_e9aaa5_s8 zauner_conjecture_bifurcation_splitting_e9aaa5_s9) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l9 zauner_conjecture_bifurcation_splitting_e9aaa5_s9 zauner_conjecture_bifurcation_splitting_e9aaa5_s10) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l10 zauner_conjecture_bifurcation_splitting_e9aaa5_s10 zauner_conjecture_bifurcation_splitting_e9aaa5_s11) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l11 zauner_conjecture_bifurcation_splitting_e9aaa5_s11 zauner_conjecture_bifurcation_splitting_e9aaa5_s12) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l12 zauner_conjecture_bifurcation_splitting_e9aaa5_s12 zauner_conjecture_bifurcation_splitting_e9aaa5_s13) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l13 zauner_conjecture_bifurcation_splitting_e9aaa5_s13 zauner_conjecture_bifurcation_splitting_e9aaa5_s14) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l14 zauner_conjecture_bifurcation_splitting_e9aaa5_s14 zauner_conjecture_bifurcation_splitting_e9aaa5_s15) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l15 zauner_conjecture_bifurcation_splitting_e9aaa5_s15 zauner_conjecture_bifurcation_splitting_e9aaa5_s16) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l16 zauner_conjecture_bifurcation_splitting_e9aaa5_s16 zauner_conjecture_bifurcation_splitting_e9aaa5_s17) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l17 zauner_conjecture_bifurcation_splitting_e9aaa5_s17 zauner_conjecture_bifurcation_splitting_e9aaa5_s18) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l18 zauner_conjecture_bifurcation_splitting_e9aaa5_s18 zauner_conjecture_bifurcation_splitting_e9aaa5_s19) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l19 zauner_conjecture_bifurcation_splitting_e9aaa5_s19 zauner_conjecture_bifurcation_splitting_e9aaa5_s20) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l20 zauner_conjecture_bifurcation_splitting_e9aaa5_s20 zauner_conjecture_bifurcation_splitting_e9aaa5_s21) (.seq (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l21 zauner_conjecture_bifurcation_splitting_e9aaa5_s21 zauner_conjecture_bifurcation_splitting_e9aaa5_s22) (.arrow zauner_conjecture_bifurcation_splitting_e9aaa5_l22 zauner_conjecture_bifurcation_splitting_e9aaa5_s22 zauner_conjecture_bifurcation_splitting_e9aaa5_s23)))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def zauner_conjecture_bifurcation_splitting_general_dimension_d_into_proven_d_12_and_unproven_d_19_true_arm : IGProtocol 𐑼 𐑡 :=
-  (zauner_conjecture_bifurcation_splitting_general_dimension_d_into_proven_d_12_and_unproven_d_19_protocol).restrictToEVALT
+noncomputable def zauner_conjecture_bifurcation_splitting_e9aaa5_true_arm : IGProtocol zauner_conjecture_bifurcation_splitting_e9aaa5_s0 zauner_conjecture_bifurcation_splitting_e9aaa5_s23 :=
+  (zauner_conjecture_bifurcation_splitting_e9aaa5_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def zauner_conjecture_bifurcation_splitting_general_dimension_d_into_proven_d_12_and_unproven_d_19_false_arm : IGProtocol 𐑼 𐑡 :=
-  (zauner_conjecture_bifurcation_splitting_general_dimension_d_into_proven_d_12_and_unproven_d_19_protocol).restrictToEVALF
+noncomputable def zauner_conjecture_bifurcation_splitting_e9aaa5_false_arm : IGProtocol zauner_conjecture_bifurcation_splitting_e9aaa5_s0 zauner_conjecture_bifurcation_splitting_e9aaa5_s23 :=
+  (zauner_conjecture_bifurcation_splitting_e9aaa5_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem zauner_conjecture_bifurcation_splitting_general_dimension_d_into_proven_d_12_and_unproven_d_19_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
-
-end Imscribing
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def zauner_conjecture_bifurcation_splitting_e9aaa5_tier : OuroboricityTier := TierFunctor.obj zauner_conjecture_bifurcation_splitting_e9aaa5_s0
+#eval zauner_conjecture_bifurcation_splitting_e9aaa5_tier  -- the Grammar's own verdict on its tier

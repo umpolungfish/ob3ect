@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(3, 8)]
 
 import Imscribing.IGMorphism
@@ -28,47 +28,81 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] CLINK     fid    := 𐑱               𐑳 → 𐑭  | composition — regime coherence
 --   [11] IFIX      prot   := 𐑭               𐑱 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def g_del_sentence_becomes_a_theorem_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s3 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }
+private def g_del_sentence_becomes_a_theorem_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }
 
-noncomputable def g_del_sentence_becomes_a_theorem_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑠)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Initialize the formal system in the void before self referential syntax is co...)
-  (.arrow 𐑠 𐑼 𐑡)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (Construct the self referential Gödel sentence that encodes its own unprovabil...)
-  (.arrow 𐑡 𐑠 𐑚)  -- [2] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establish the paraconsistent kernel as the boundary containing the system wit...)
-  -- FSPLIT [3] (gran := 𐑚) (Decompose the Gödel sentence into its semantic truth branch and its syntactic provability branch.) / FFUSE [8] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [4] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Apply the forward morphism of truth evaluation along the T arm.)
-      .seq
-        (.arrow ⊙ 𐑚 𐑙)  -- [5] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Affirm the semantic truth of the sentence in the standard model, anchoring th...)
-        (.arrow 𐑗 𐑚 𐑙)  -- [6] AREV | pol := 𐑗 | reverse morphism — parity flip (Apply the reverse morphism of unprovability descent along the F arm.)
-      -- F-branch (1 nodes)
-      (.arrow 𐑖 𐑚 𐑙)  -- [7] EVALF | chir := 𐑖 | evaluate-false — chirality check (Affirm the syntactic unprovability of the sentence in the formal system, anch...))
-    -- reconnect at FFUSE [8]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑳)  -- [8] FFUSE | stoi := 𐑙 (Reintegrate the truth and unprovability branches into the unified B state dialetheia.)
-  (.arrow 𐑳 𐑙 𐑱)  -- [9] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (Enter the paradice where the sentence is simultaneously true and unprovable.)
-  (.arrow 𐑱 𐑳 𐑭)  -- [10] CLINK | fid := 𐑱 | composition — regime coherence (Compose the iterated incompleteness operator to verify the Frobenius closure ...)
-  (.arrow 𐑭 𐑱 𐑼)  -- [11] IFIX | prot := 𐑭 | irreversible fixation — winding number (Fix the B state as a permanent structural theorem, closing the incompleteness...)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def g_del_sentence_becomes_a_theorem_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_del_sentence_becomes_a_theorem_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def g_del_sentence_becomes_a_theorem_protocol : IGProtocol g_del_sentence_becomes_a_theorem_s0 g_del_sentence_becomes_a_theorem_s11 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct g_del_sentence_becomes_a_theorem_s8 g_del_sentence_becomes_a_theorem_s8 = g_del_sentence_becomes_a_theorem_s8 (idempotent)
+  (.seq (.arrow g_del_sentence_becomes_a_theorem_l0 g_del_sentence_becomes_a_theorem_s0 g_del_sentence_becomes_a_theorem_s1) (.seq (.arrow g_del_sentence_becomes_a_theorem_l1 g_del_sentence_becomes_a_theorem_s1 g_del_sentence_becomes_a_theorem_s2) (.seq (.arrow g_del_sentence_becomes_a_theorem_l2 g_del_sentence_becomes_a_theorem_s2 g_del_sentence_becomes_a_theorem_s3) (.seq (.prod (.arrow g_del_sentence_becomes_a_theorem_l3 g_del_sentence_becomes_a_theorem_s3 g_del_sentence_becomes_a_theorem_s8) (.arrow g_del_sentence_becomes_a_theorem_l3 g_del_sentence_becomes_a_theorem_s3 g_del_sentence_becomes_a_theorem_s8)) (.seq (.arrow g_del_sentence_becomes_a_theorem_l8 g_del_sentence_becomes_a_theorem_s8 g_del_sentence_becomes_a_theorem_s8) (.seq (.arrow g_del_sentence_becomes_a_theorem_l8 g_del_sentence_becomes_a_theorem_s8 g_del_sentence_becomes_a_theorem_s9) (.seq (.arrow g_del_sentence_becomes_a_theorem_l9 g_del_sentence_becomes_a_theorem_s9 g_del_sentence_becomes_a_theorem_s10) (.arrow g_del_sentence_becomes_a_theorem_l10 g_del_sentence_becomes_a_theorem_s10 g_del_sentence_becomes_a_theorem_s11))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def g_del_sentence_becomes_a_theorem_true_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def g_del_sentence_becomes_a_theorem_true_arm : IGProtocol g_del_sentence_becomes_a_theorem_s0 g_del_sentence_becomes_a_theorem_s11 :=
   (g_del_sentence_becomes_a_theorem_protocol).restrictToEVALT
 
 -- false arm
-noncomputable def g_del_sentence_becomes_a_theorem_false_arm : IGProtocol 𐑼 𐑭 :=
+noncomputable def g_del_sentence_becomes_a_theorem_false_arm : IGProtocol g_del_sentence_becomes_a_theorem_s0 g_del_sentence_becomes_a_theorem_s11 :=
   (g_del_sentence_becomes_a_theorem_protocol).restrictToEVALF
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem g_del_sentence_becomes_a_theorem_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def g_del_sentence_becomes_a_theorem_tier : OuroboricityTier := TierFunctor.obj g_del_sentence_becomes_a_theorem_s0
+#eval g_del_sentence_becomes_a_theorem_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem g_del_sentence_becomes_a_theorem_frobenius :
+    igFrobeniusAlg.mul g_del_sentence_becomes_a_theorem_s0 g_del_sentence_becomes_a_theorem_s0 = g_del_sentence_becomes_a_theorem_s0 :=
+  igFrobAlg_self_fusion g_del_sentence_becomes_a_theorem_s0

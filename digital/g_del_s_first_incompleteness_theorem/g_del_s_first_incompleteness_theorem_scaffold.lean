@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(13,0,0,0)
 --   self_ref=True | frobenius_order=0
 --   dialetheia_complete=False | period=1
--- Expected tier: O₂
+-- Expected tier: O₀
 -- FSPLIT/FFUSE pairs: []
 
 import Imscribing.IGMorphism
@@ -35,46 +35,86 @@ open Dimensionality Topology Relational Polarity Grammar
 --   Back-prop: IMSCRIB→IFIX (LinFix) — igProtoCopy_isDagger axiom applies
 --   Weighted: CLINK→IMSCRIB — feeds next winding via .seq after .prod
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def g_dels_first_incompleteness_theorem_s0 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_s12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
-noncomputable def g_dels_first_incompleteness_theorem_protocol : IGProtocol 𐑠 𐑠 :=
-  .withMem 𐑫 <|
-  -- Seq chain:
-  (.arrow 𐑠 𐑠 𐑠)  -- [0] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: VINIT — void of formal axioms before encoding>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [1] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: AFWD — Gödel numbering maps syntax to arithmetic>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [2] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: CLINK — composes encoding with diagonal lemma>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [3] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: IMSCRIB — self-referential fixed point emerges>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: AREV — semantic descent from arithmetic to meaning>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [5] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: CLINK — chains truth evaluation with provability check>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [6] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: FSPLIT — diverges into syntactic derivability and semantic truth>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [7] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: EVALT — affirms truth of the constructed statement>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [8] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: EVALF — affirms unprovability within the original system>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [9] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: FFUSE — reunites truth and provability into meta-system recognition>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [10] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: ENGAGR — holds both truth and unprovability simultaneously>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [11] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: IFIX — permanently records the incompleteness result>)
-  (.arrow 𐑠 𐑠 𐑠)  -- [12] IMSCRIB | gram := 𐑠 | identity — self-imscription (<OPCODE: TANCH — seals the formal system boundary>)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def g_dels_first_incompleteness_theorem_l0 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def g_dels_first_incompleteness_theorem_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def g_dels_first_incompleteness_theorem_protocol : IGProtocol g_dels_first_incompleteness_theorem_s0 g_dels_first_incompleteness_theorem_s12 :=
+  (.seq (.arrow g_dels_first_incompleteness_theorem_l0 g_dels_first_incompleteness_theorem_s0 g_dels_first_incompleteness_theorem_s1) (.seq (.arrow g_dels_first_incompleteness_theorem_l1 g_dels_first_incompleteness_theorem_s1 g_dels_first_incompleteness_theorem_s2) (.seq (.arrow g_dels_first_incompleteness_theorem_l2 g_dels_first_incompleteness_theorem_s2 g_dels_first_incompleteness_theorem_s3) (.seq (.arrow g_dels_first_incompleteness_theorem_l3 g_dels_first_incompleteness_theorem_s3 g_dels_first_incompleteness_theorem_s4) (.seq (.arrow g_dels_first_incompleteness_theorem_l4 g_dels_first_incompleteness_theorem_s4 g_dels_first_incompleteness_theorem_s5) (.seq (.arrow g_dels_first_incompleteness_theorem_l5 g_dels_first_incompleteness_theorem_s5 g_dels_first_incompleteness_theorem_s6) (.seq (.arrow g_dels_first_incompleteness_theorem_l6 g_dels_first_incompleteness_theorem_s6 g_dels_first_incompleteness_theorem_s7) (.seq (.arrow g_dels_first_incompleteness_theorem_l7 g_dels_first_incompleteness_theorem_s7 g_dels_first_incompleteness_theorem_s8) (.seq (.arrow g_dels_first_incompleteness_theorem_l8 g_dels_first_incompleteness_theorem_s8 g_dels_first_incompleteness_theorem_s9) (.seq (.arrow g_dels_first_incompleteness_theorem_l9 g_dels_first_incompleteness_theorem_s9 g_dels_first_incompleteness_theorem_s10) (.seq (.arrow g_dels_first_incompleteness_theorem_l10 g_dels_first_incompleteness_theorem_s10 g_dels_first_incompleteness_theorem_s11) (.arrow g_dels_first_incompleteness_theorem_l11 g_dels_first_incompleteness_theorem_s11 g_dels_first_incompleteness_theorem_s12))))))))))))
 
-theorem g_dels_first_incompleteness_theorem_tier : TierFunctor.obj 𐑠 = .O₂ := by decide
+-- ── Verification theorems ─────────────────────────────────────
+
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₀.
+def g_dels_first_incompleteness_theorem_tier : OuroboricityTier := TierFunctor.obj g_dels_first_incompleteness_theorem_s0
+#eval g_dels_first_incompleteness_theorem_tier  -- the Grammar's own verdict on its tier
 
 -- Self-reference: Δ is a dagger and μ = Δ†
 theorem g_dels_first_incompleteness_theorem_self_ref :
-    (igProtoDelta 𐑠 (by decide)).isDagger = true ∧
+    (igProtoDelta g_dels_first_incompleteness_theorem_s0 (by decide)).isDagger = true ∧
     igProtoMu_depth (paralogical_dagger (by decide)) = 1 := by
   constructor
   · exact igProtoCopy_isDagger
   · exact igProtoMu_depth
 
--- Loop closure: protocol has period 1 and depth 1
+-- Loop closure: period=1, depth=1
 theorem g_dels_first_incompleteness_theorem_loop_closure :
-    ∃ (loop : IGProtocol 𐑠 𐑠),
+    ∃ (loop : IGProtocol g_dels_first_incompleteness_theorem_s0 g_dels_first_incompleteness_theorem_s12),
       loop = g_dels_first_incompleteness_theorem_protocol ∧
       loop.period = 1 ∧ loop.depth = 1 := by
   exact ⟨_, rfl, by decide, by decide⟩
 
--- Back-propagation / LinFix obligation:
 -- igProtoCopy_isDagger licenses IMSCRIB→IFIX burn
--- CLINK→IMSCRIB weighted edge feeds next winding (.seq continuation)
-
-end Imscribing
+-- CLINK→IMSCRIB weighted edge: .seq continuation

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(6,2,1,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 7)]
 
 import Imscribing.IGMorphism
@@ -26,41 +26,69 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] TANCH     top    := 𐑡               𐑙 → 𐑭  | terminal object — connectivity boundary
 --   [9] IFIX      prot   := 𐑭               𐑡 → 𐑼  | irreversible fixation — winding number
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s1 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s2 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
 
-noncomputable def fel_d_1_darpin_therapeutic_protein_designed_ankyrin_repeat_protein_targeting_the_major_cat_allergen_fel_d_1_the_12_primitive_complementarity_bijection_maps_allergen_epitope_to_cdr_sequences_o_structural_type_with_both_consciousness_gates_open_c_0_5265_designed_via_serpent_rod_pipeline_for_nasal_spray_delivery_protocol : IGProtocol 𐑼 𐑭 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 𐑾)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (Unexpressed genetic template)
-  (.arrow 𐑾 𐑼 𐑚)  -- [1] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (Initiate serpent_rod design algorithm)
-  -- FSPLIT [2] (gran := 𐑚) (Bifurcate into binding/stability arms) / FFUSE [7] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (1 nodes)
-      (.arrow ⊙ 𐑚 𐑙)  -- [3] EVALT | crit := ⊙ | evaluate-true — criticality gate open (Validate CDR-epitope complementarity)
-      -- F-branch (3 nodes)
-      .seq
-        (.arrow 𐑗 𐑚 𐑙)  -- [4] AREV | pol := 𐑗 | reverse morphism — parity flip (Simulate allergen conformational escape)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (Assemble optimized ankyrin repeats)
-        (.arrow 𐑠 𐑚 𐑙)  -- [6] IMSCRIB | gram := 𐑠 | identity — self-imscription (Confirm structural self-identity))
-    -- reconnect at FFUSE [7]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑡)  -- [7] FFUSE | stoi := 𐑙 (Reconstitute validated DARPin)
-  (.arrow 𐑡 𐑙 𐑭)  -- [8] TANCH | top := 𐑡 | terminal object — connectivity boundary (Establish mucosal bioavailability)
-  (.arrow 𐑭 𐑡 𐑼)  -- [9] IFIX | prot := 𐑭 | irreversible fixation — winding number (Record final formulation in delivery matrix)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def fel_d_1_darpin_therapeutic_protein_c853c7_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def fel_d_1_darpin_therapeutic_protein_c853c7_protocol : IGProtocol fel_d_1_darpin_therapeutic_protein_c853c7_s0 fel_d_1_darpin_therapeutic_protein_c853c7_s9 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct fel_d_1_darpin_therapeutic_protein_c853c7_s7 fel_d_1_darpin_therapeutic_protein_c853c7_s7 = fel_d_1_darpin_therapeutic_protein_c853c7_s7 (idempotent)
+  (.seq (.arrow fel_d_1_darpin_therapeutic_protein_c853c7_l0 fel_d_1_darpin_therapeutic_protein_c853c7_s0 fel_d_1_darpin_therapeutic_protein_c853c7_s1) (.seq (.arrow fel_d_1_darpin_therapeutic_protein_c853c7_l1 fel_d_1_darpin_therapeutic_protein_c853c7_s1 fel_d_1_darpin_therapeutic_protein_c853c7_s2) (.seq (.prod (.arrow fel_d_1_darpin_therapeutic_protein_c853c7_l2 fel_d_1_darpin_therapeutic_protein_c853c7_s2 fel_d_1_darpin_therapeutic_protein_c853c7_s7) (.arrow fel_d_1_darpin_therapeutic_protein_c853c7_l2 fel_d_1_darpin_therapeutic_protein_c853c7_s2 fel_d_1_darpin_therapeutic_protein_c853c7_s7)) (.seq (.arrow fel_d_1_darpin_therapeutic_protein_c853c7_l7 fel_d_1_darpin_therapeutic_protein_c853c7_s7 fel_d_1_darpin_therapeutic_protein_c853c7_s7) (.seq (.arrow fel_d_1_darpin_therapeutic_protein_c853c7_l7 fel_d_1_darpin_therapeutic_protein_c853c7_s7 fel_d_1_darpin_therapeutic_protein_c853c7_s8) (.arrow fel_d_1_darpin_therapeutic_protein_c853c7_l8 fel_d_1_darpin_therapeutic_protein_c853c7_s8 fel_d_1_darpin_therapeutic_protein_c853c7_s9))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def fel_d_1_darpin_therapeutic_protein_designed_ankyrin_repeat_protein_targeting_the_major_cat_allergen_fel_d_1_the_12_primitive_complementarity_bijection_maps_allergen_epitope_to_cdr_sequences_o_structural_type_with_both_consciousness_gates_open_c_0_5265_designed_via_serpent_rod_pipeline_for_nasal_spray_delivery_true_arm : IGProtocol 𐑼 𐑭 :=
-  (fel_d_1_darpin_therapeutic_protein_designed_ankyrin_repeat_protein_targeting_the_major_cat_allergen_fel_d_1_the_12_primitive_complementarity_bijection_maps_allergen_epitope_to_cdr_sequences_o_structural_type_with_both_consciousness_gates_open_c_0_5265_designed_via_serpent_rod_pipeline_for_nasal_spray_delivery_protocol).restrictToEVALT
+noncomputable def fel_d_1_darpin_therapeutic_protein_c853c7_true_arm : IGProtocol fel_d_1_darpin_therapeutic_protein_c853c7_s0 fel_d_1_darpin_therapeutic_protein_c853c7_s9 :=
+  (fel_d_1_darpin_therapeutic_protein_c853c7_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem fel_d_1_darpin_therapeutic_protein_designed_ankyrin_repeat_protein_targeting_the_major_cat_allergen_fel_d_1_the_12_primitive_complementarity_bijection_maps_allergen_epitope_to_cdr_sequences_o_structural_type_with_both_consciousness_gates_open_c_0_5265_designed_via_serpent_rod_pipeline_for_nasal_spray_delivery_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def fel_d_1_darpin_therapeutic_protein_c853c7_tier : OuroboricityTier := TierFunctor.obj fel_d_1_darpin_therapeutic_protein_c853c7_s0
+#eval fel_d_1_darpin_therapeutic_protein_c853c7_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem fel_d_1_darpin_therapeutic_protein_c853c7_frobenius :
+    igFrobeniusAlg.mul fel_d_1_darpin_therapeutic_protein_c853c7_s0 fel_d_1_darpin_therapeutic_protein_c853c7_s0 = fel_d_1_darpin_therapeutic_protein_c853c7_s0 :=
+  igFrobAlg_self_fusion fel_d_1_darpin_therapeutic_protein_c853c7_s0

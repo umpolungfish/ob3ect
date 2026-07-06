@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(14,3,5,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=24
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(14, 18)]
 
 import Imscribing.IGMorphism
@@ -40,56 +40,125 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [22] ENGAGR    stoi   := 𐑳               𐑭 → 𐑡  | engage paradox — B-state, both arms
 --   [23] TANCH     top    := 𐑡               𐑳 → 𐑼  | terminal object — connectivity boundary
 
--- ── Main IGProtocol term ────────────────────────────────────────────────────
+-- ── Stage Imscriptions (per-node cumulative) ────────────────
+private def weyl_heisenberg_orbit_generation_for_5beeab_s0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s1 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s2 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s3 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s4 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s5 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s6 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s7 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s8 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s9 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s12 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s13 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s14 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s15 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s16 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s17 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s18 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s19 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s20 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s21 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s22 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
+private def weyl_heisenberg_orbit_generation_for_5beeab_s23 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }
 
-noncomputable def weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_protocol : IGProtocol 𐑼 𐑡 :=
-  .withGram 𐑠 <|
-  -- Seq chain:
-  (.arrow 𐑼 𐑼 ⊙)  -- [0] VINIT | dim := 𐑼 | initial object — ground of distinction (preparation of initial fiducial vector |ψ₀⟩ in 12-dimensional complex space)
-  (.arrow ⊙ 𐑼 𐑚)  -- [1] EVALT | crit := ⊙ | evaluate-true — criticality gate open (verification that frame potential F = 143/169 is achieved)
-  (.arrow 𐑚 ⊙ 𐑾)  -- [2] FSPLIT | gran := 𐑚 | split δ — range decomposition (branching into T-arm (Dimensionality primitives with 3 values each))
-  (.arrow 𐑾 𐑚 𐑠)  -- [3] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (application of Weyl-Heisenberg displacement operators D(p,q) for p,q ∈ {0,......)
-  (.arrow 𐑠 𐑾 𐑱)  -- [4] IMSCRIB | gram := 𐑠 | identity — self-imscription (self-measurement ⟨ψ₀|D(p,q)|ψ₀⟩ for each displacement generating orbit elements)
-  (.arrow 𐑱 𐑠 𐑠)  -- [5] CLINK | fid := 𐑱 | composition — regime coherence (composition of displacement sequences to form complete 144-element orbit)
-  (.arrow 𐑠 𐑱 𐑳)  -- [6] IMSCRIB | gram := 𐑠 | identity — self-imscription (identity recognition when displacement returns to fiducial equivalence class)
-  (.arrow 𐑳 𐑠 𐑾)  -- [7] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (paraconsistent criticality where self-measurement creates both true and false...)
-  (.arrow 𐑾 𐑳 ⊙)  -- [8] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (forward morphism continuing orbit generation through all primitive combinations)
-  (.arrow ⊙ 𐑾 𐑱)  -- [9] EVALT | crit := ⊙ | evaluate-true — criticality gate open (confirmation that each orbit maintains |⟨ψᵢ|ψⱼ⟩|² = 1/13 for i≠j)
-  (.arrow 𐑱 ⊙ 𐑾)  -- [10] CLINK | fid := 𐑱 | composition — regime coherence (chaining orbit segments across all 12 primitive dimensions)
-  (.arrow 𐑾 𐑱 𐑱)  -- [11] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (progression through D-family value sets (3 values per primitive))
-  (.arrow 𐑱 𐑾 ⊙)  -- [12] CLINK | fid := 𐑱 | composition — regime coherence (composition of primitive-dependent displacement pathways)
-  (.arrow ⊙ 𐑱 𐑚)  -- [13] EVALT | crit := ⊙ | evaluate-true — criticality gate open (validation of T-arm orbit completeness for 3×3×3 = 27 D-assignments)
-  -- FSPLIT [14] (gran := 𐑚) (secondary branching for combined family interactions) / FFUSE [18] (stoi := 𐑙)
-  .seq
-    (.prod
-      -- T-branch (3 nodes)
-      .seq
-        (.arrow 𐑾 𐑚 𐑙)  -- [15] AFWD | rel := 𐑾 | forward morphism — bidirectional arrow (continued orbit extension across temporal and processual primitives)
-      .seq
-        (.arrow 𐑱 𐑚 𐑙)  -- [16] CLINK | fid := 𐑱 | composition — regime coherence (linking D-orbits with T/P-orbits to form full classification space)
-        (.arrow 𐑠 𐑚 𐑙)  -- [17] IMSCRIB | gram := 𐑠 | identity — self-imscription (self-inscription of the complete 144-element measurement structure)
-      -- F-branch (0 nodes)
-      (.refl 𐑙))  -- F-branch: empty arc (direct to FFUSE.F)
-    -- reconnect at FFUSE [18]: μ closes the Frobenius pair
-    (.arrow 𐑙 𐑙 𐑡)  -- [18] FFUSE | stoi := 𐑙 (fusion of all primitive orbits back into unified SIC-POVM)
-  (.arrow 𐑡 𐑙 𐑭)  -- [19] TANCH | top := 𐑡 | terminal object — connectivity boundary (anchoring the complete Weyl-Heisenberg covariant structure)
-  (.arrow 𐑭 𐑡 𐑭)  -- [20] IFIX | prot := 𐑭 | irreversible fixation — winding number (permanent recording of the exact fiducial coordinates as fixed measurement re...)
-  (.arrow 𐑭 𐑭 𐑳)  -- [21] IFIX | prot := 𐑭 | irreversible fixation — winding number (crystalline fixation of the 17,280,000-element constraint manifold)
-  (.arrow 𐑳 𐑭 𐑡)  -- [22] ENGAGR | stoi := 𐑳 | engage paradox — B-state, both arms (final criticality state where measurement system and measured system become e...)
-  (.arrow 𐑡 𐑳 𐑼)  -- [23] TANCH | top := 𐑡 | terminal object — connectivity boundary (terminal closure of the d=12 SIC-POVM generation process)
+-- ── Label Imscriptions (per-node delta) ─────────────────────
+private def weyl_heisenberg_orbit_generation_for_5beeab_l0 : Imscription :=
+  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l1 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l3 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l4 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l5 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l7 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l8 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l11 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l12 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l13 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l14 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l15 : Imscription :=
+  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l16 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l17 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l18 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l19 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l20 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l21 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l22 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
+private def weyl_heisenberg_orbit_generation_for_5beeab_l23 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
--- ── Evaluation arm sub-defs ─────────────────────────────────────────────────
+-- ── Main IGProtocol term ────────────────────────────────────
+noncomputable def weyl_heisenberg_orbit_generation_for_5beeab_protocol : IGProtocol weyl_heisenberg_orbit_generation_for_5beeab_s0 weyl_heisenberg_orbit_generation_for_5beeab_s23 :=
+  .withGram Grammar.measure <|
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct weyl_heisenberg_orbit_generation_for_5beeab_s18 weyl_heisenberg_orbit_generation_for_5beeab_s18 = weyl_heisenberg_orbit_generation_for_5beeab_s18 (idempotent)
+  (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l0 weyl_heisenberg_orbit_generation_for_5beeab_s0 weyl_heisenberg_orbit_generation_for_5beeab_s1) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l1 weyl_heisenberg_orbit_generation_for_5beeab_s1 weyl_heisenberg_orbit_generation_for_5beeab_s2) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l2 weyl_heisenberg_orbit_generation_for_5beeab_s2 weyl_heisenberg_orbit_generation_for_5beeab_s3) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l3 weyl_heisenberg_orbit_generation_for_5beeab_s3 weyl_heisenberg_orbit_generation_for_5beeab_s4) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l4 weyl_heisenberg_orbit_generation_for_5beeab_s4 weyl_heisenberg_orbit_generation_for_5beeab_s5) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l5 weyl_heisenberg_orbit_generation_for_5beeab_s5 weyl_heisenberg_orbit_generation_for_5beeab_s6) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l6 weyl_heisenberg_orbit_generation_for_5beeab_s6 weyl_heisenberg_orbit_generation_for_5beeab_s7) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l7 weyl_heisenberg_orbit_generation_for_5beeab_s7 weyl_heisenberg_orbit_generation_for_5beeab_s8) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l8 weyl_heisenberg_orbit_generation_for_5beeab_s8 weyl_heisenberg_orbit_generation_for_5beeab_s9) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l9 weyl_heisenberg_orbit_generation_for_5beeab_s9 weyl_heisenberg_orbit_generation_for_5beeab_s10) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l10 weyl_heisenberg_orbit_generation_for_5beeab_s10 weyl_heisenberg_orbit_generation_for_5beeab_s11) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l11 weyl_heisenberg_orbit_generation_for_5beeab_s11 weyl_heisenberg_orbit_generation_for_5beeab_s12) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l12 weyl_heisenberg_orbit_generation_for_5beeab_s12 weyl_heisenberg_orbit_generation_for_5beeab_s13) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l13 weyl_heisenberg_orbit_generation_for_5beeab_s13 weyl_heisenberg_orbit_generation_for_5beeab_s14) (.seq (.prod (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l14 weyl_heisenberg_orbit_generation_for_5beeab_s14 weyl_heisenberg_orbit_generation_for_5beeab_s18) (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l14 weyl_heisenberg_orbit_generation_for_5beeab_s14 weyl_heisenberg_orbit_generation_for_5beeab_s18)) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l18 weyl_heisenberg_orbit_generation_for_5beeab_s18 weyl_heisenberg_orbit_generation_for_5beeab_s18) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l18 weyl_heisenberg_orbit_generation_for_5beeab_s18 weyl_heisenberg_orbit_generation_for_5beeab_s19) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l19 weyl_heisenberg_orbit_generation_for_5beeab_s19 weyl_heisenberg_orbit_generation_for_5beeab_s20) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l20 weyl_heisenberg_orbit_generation_for_5beeab_s20 weyl_heisenberg_orbit_generation_for_5beeab_s21) (.seq (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l21 weyl_heisenberg_orbit_generation_for_5beeab_s21 weyl_heisenberg_orbit_generation_for_5beeab_s22) (.arrow weyl_heisenberg_orbit_generation_for_5beeab_l22 weyl_heisenberg_orbit_generation_for_5beeab_s22 weyl_heisenberg_orbit_generation_for_5beeab_s23)))))))))))))))))))))
+
+-- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_true_arm : IGProtocol 𐑼 𐑡 :=
-  (weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_protocol).restrictToEVALT
+noncomputable def weyl_heisenberg_orbit_generation_for_5beeab_true_arm : IGProtocol weyl_heisenberg_orbit_generation_for_5beeab_s0 weyl_heisenberg_orbit_generation_for_5beeab_s23 :=
+  (weyl_heisenberg_orbit_generation_for_5beeab_protocol).restrictToEVALT
 
--- ── Verification theorems ───────────────────────────────────────────────────
+-- ── Verification theorems ─────────────────────────────────────
 
-theorem weyl_heisenberg_orbit_generation_for_the_d_12_branch_t_arm_tier : TierFunctor.obj 𐑼 = .O₂ := by decide
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
+def weyl_heisenberg_orbit_generation_for_5beeab_tier : OuroboricityTier := TierFunctor.obj weyl_heisenberg_orbit_generation_for_5beeab_s0
+#eval weyl_heisenberg_orbit_generation_for_5beeab_tier  -- the Grammar's own verdict on its tier
 
--- Frobenius (split → fuse): μ∘δ = id on .prod branch
--- Proof: apply igFrobAlg_self_fusion; exact mu_delta_A_id
--- (requires mu_delta_A_id from IGFunctor library)
-
-end Imscribing
+-- Frobenius (split → fuse): μ∘δ = id on the ground imscription
+theorem weyl_heisenberg_orbit_generation_for_5beeab_frobenius :
+    igFrobeniusAlg.mul weyl_heisenberg_orbit_generation_for_5beeab_s0 weyl_heisenberg_orbit_generation_for_5beeab_s0 = weyl_heisenberg_orbit_generation_for_5beeab_s0 :=
+  igFrobAlg_self_fusion weyl_heisenberg_orbit_generation_for_5beeab_s0

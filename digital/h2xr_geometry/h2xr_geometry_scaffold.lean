@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(5,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 5)]
 
 import Imscribing.IGMorphism
@@ -88,7 +88,7 @@ noncomputable def h2xr_geometry_false_arm : IGProtocol h2xr_geometry_s0 h2xr_geo
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def h2xr_geometry_tier : OuroboricityTier := TierFunctor.obj h2xr_geometry_s0
 #eval h2xr_geometry_tier  -- the Grammar's own verdict on its tier
 

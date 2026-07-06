@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(10,2,3,3)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=18
--- Expected tier: O₂
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(4, 12)]
 
 import Imscribing.IGMorphism
@@ -128,7 +128,7 @@ noncomputable def prophetic_resonance_false_arm : IGProtocol prophetic_resonance
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₂.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def prophetic_resonance_tier : OuroboricityTier := TierFunctor.obj prophetic_resonance_s0
 #eval prophetic_resonance_tier  -- the Grammar's own verdict on its tier
 

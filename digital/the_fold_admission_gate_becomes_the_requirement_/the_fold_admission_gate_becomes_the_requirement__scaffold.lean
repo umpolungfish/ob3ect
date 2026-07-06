@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,6,3,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=20
--- Expected tier: O₀
+-- Expected tier: O₁
 -- FSPLIT/FFUSE pairs: [(2, 5), (10, 14), (8, 17)]
 
 import Imscribing.IGMorphism
@@ -138,6 +138,6 @@ noncomputable def the_fold_admission_gate_becomes_the_6c18e5_false_arm : IGProto
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). Fingerprint heuristic suggested .O₀.
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
 def the_fold_admission_gate_becomes_the_6c18e5_tier : OuroboricityTier := TierFunctor.obj the_fold_admission_gate_becomes_the_6c18e5_s0
 #eval the_fold_admission_gate_becomes_the_6c18e5_tier  -- the Grammar's own verdict on its tier
