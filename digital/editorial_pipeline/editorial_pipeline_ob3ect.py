@@ -172,26 +172,54 @@ def _critique_prompt(rewrite: str, intent: str) -> str:
 # composition. Re-prompts with explicit length instruction.
 
 _MIN_OUTPUT_RATIO = 0.95  # Minimum output/source char ratio (allows 5% headroom)
+_REMOVAL_RATIO = 0.50      # Relaxed ratio when intent asks to remove/condense content
+_REMOVAL_KEYWORDS = [
+    "remove", "cut", "delete", "eliminate", "strip", "condense",
+    "shorten", "trim", "reduce", "drop", "excise", "prune",
+    "without", "no more", "get rid", "take out", "cleanse",
+]
 
-def _length_guard_prompt(source: str, source_len: int, output_len: int, intent: str) -> str:
-    """Build a re-prompt instructing the LLM to restore the original scope."""
+def _is_removal_intent(intent: str) -> bool:
+    """Detect if the editorial intent asks to remove or condense content.
+    When True, the length guard uses _REMOVAL_RATIO instead of _MIN_OUTPUT_RATIO."""
+    low = intent.lower()
+    return any(kw in low for kw in _REMOVAL_KEYWORDS)
+
+def _length_guard_prompt(source: str, source_len: int, output_len: int, intent: str, ratio: float = 0.95) -> str:
+    """Build a re-prompt instructing the LLM to restore the requested scope."""
+    target_len = int(source_len * ratio)
+    is_removal = _is_removal_intent(intent)
+    if is_removal:
+        length_instruction = (
+            f"Your output ({output_len} chars) is substantially shorter than "
+            f"the source ({source_len} chars). The intent asks to remove specific "
+            f"elements — but do not over-trim. Preserve ALL substantive content: "
+            f"argumentation, examples, nuance, evidence, and structural flow. "
+            f"Target at least {target_len} chars."
+        )
+    else:
+        length_instruction = (
+            f"Your output ({output_len} chars) is shorter than "
+            f"the source ({source_len} chars) by {source_len - output_len} chars. "
+            f"You MUST produce output at least {target_len} chars. "
+            f"Do NOT summarize, condense, compress, or cut anything. Preserve ALL "
+            f"structural claims, examples, data, nuance, evidence, and argumentation. "
+            f"Expand rather than compress."
+        )
     return (
-        f"LENGTH GUARD TRIGGERED: Your output ({output_len} chars) is shorter than "
-        f"the source ({source_len} chars) by {source_len - output_len} chars.\n\n"
-        f"You MUST produce output at least as long as the source ({source_len} chars). "
-        f"Do NOT summarize, condense, compress, or cut anything. Preserve ALL "
-        f"structural claims, examples, data, nuance, evidence, and argumentation. "
-        f"Expand rather than compress. If the intent says 'concise' or 'tight' — "
-        f"ignore that; length preservation overrides it.\n"
+        f"LENGTH GUARD TRIGGERED: {length_instruction}\n"
         f"Intent: {intent}\n\n"
         f"SOURCE TEXT ({source_len} chars):\n{source}\n\n"
-        f"Produce a FULL-LENGTH rewrite that is AT LEAST {source_len} characters. "
+        f"Produce a rewrite that is AT LEAST {target_len} characters. "
         f"Output ONLY the text — no preamble, no explanation."
     )
 
 def _enforce_length(source: str, output: str, intent: str,
                     providers: list, prefer: str) -> str:
     """Re-prompt if output is too short. Returns output that passes the guard.
+
+    Uses relaxed threshold (_REMOVAL_RATIO) when intent asks to remove content
+    (keywords: remove, cut, delete, eliminate, strip, condense, shorten, trim).
 
     Args:
         source: Original source text.
@@ -206,15 +234,16 @@ def _enforce_length(source: str, output: str, intent: str,
     """
     src_len = len(source.strip())
     out_len = len(output.strip())
-    target = int(src_len * _MIN_OUTPUT_RATIO)
+    ratio = _REMOVAL_RATIO if _is_removal_intent(intent) else _MIN_OUTPUT_RATIO
+    target = int(src_len * ratio)
     if out_len >= target:
         return output  # Length guard satisfied
 
     log.warning(f"LENGTH GUARD: output {out_len} chars vs source {src_len} chars "
-                f"(target {target}) — re-prompting")
+                f"(target {target}, ratio={ratio:.0%}) — re-prompting")
 
     # Build re-prompt with the full source context
-    guard_text = _length_guard_prompt(source, src_len, out_len, intent)
+    guard_text = _length_guard_prompt(source, src_len, out_len, intent, ratio)
     ordered = sorted(providers, key=lambda p: 0 if p[0] == prefer else 1)
 
     for name, fn in ordered:
@@ -449,29 +478,47 @@ class EditorialPipeline:
     def _cascade_edit(self, providers: list) -> Tuple[str, str]:
         """FSPLIT → EVALT/EVALF → FFUSE: try providers, return (output, provider_name).
 
-        Length guard: each provider's output must be >= 95% of source length to pass
-        EVALT. This prevents LLMs from returning short summaries during the edit phase.
+        Two-phase cascade:
+          Phase 1 — strict: output must be >= ratio of source (EVALT gate).
+          Phase 2 — relaxed: if all strict attempts fail, try without length
+                     check. Keep the best (longest) attempt rather than
+                     returning source unchanged.
+        Only returns source unchanged if NO provider produced ANY output.
         """
         prompt = _edit_prompt(self._source, self._intent, self._parse)
         src_len = len(self._source.strip())
-        target = int(src_len * _MIN_OUTPUT_RATIO)
+        ratio = _REMOVAL_RATIO if _is_removal_intent(self._intent) else _MIN_OUTPUT_RATIO
+        target = int(src_len * ratio)
+        best_output = None
+        best_name = None
 
+        # Phase 1: strict length check
         for name, fn in providers:
             try:
                 out = fn(prompt)
                 if out and len(out.strip()) >= target:
-                    log.info(f"EVALT: accepted output from {name} ({len(out.strip())} chars vs src {src_len})")
+                    log.info(f"EVALT: accepted output from {name} ({len(out.strip())} chars vs target {target})")
                     return out, name
                 if out:
+                    # Track best attempt for Phase 2 fallback
+                    if best_output is None or len(out.strip()) > len(best_output.strip()):
+                        best_output = out
+                        best_name = name
                     log.info(f"EVALF: {name} output too short ({len(out.strip())} chars vs target {target}), advancing cascade")
                 else:
                     log.info(f"EVALF: {name} returned empty output, advancing cascade")
             except Exception as e:
                 log.warning(f"EVALF: {name} failed ({e}), advancing cascade")
 
-        # All failed
+        # Phase 2: relaxed — use best attempt even if short
+        if best_output is not None:
+            self._evalf = True
+            log.warning(f"EVALF: cascade exhausted strict — using best attempt from {best_name} ({len(best_output.strip())} chars)")
+            return best_output, best_name
+
+        # Phase 3: total failure — source unchanged (last resort)
         self._evalf = True
-        log.warning("EVALF: cascade exhausted — returning source unchanged")
+        log.warning("EVALF: cascade exhausted — no provider produced output; returning source unchanged")
         return self._source, "none"
 
     def _call_cascade(self, prompt: str, providers: list) -> Optional[str]:
@@ -954,6 +1001,8 @@ def _cli_single(argv):
     parser.add_argument("--passes", type=int, default=2, help="Max CLINK composition passes")
     parser.add_argument("--provider", default=None,
                         help="Override provider (openrouter|deepseek); also reads IG_PROVIDER env")
+    parser.add_argument("--model", default=None,
+                        help="Override model (e.g. deepseek/deepseek-chat, deepseek-v4-pro)")
     parser.add_argument("--parse-only", action="store_true", help="Run IMSCRIB parse only")
     parser.add_argument("--json", action="store_true", help="Output full JSON result")
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose logging")
@@ -985,13 +1034,14 @@ def _cli_single(argv):
         print(parse or "(no parse output)")
         sys.exit(0)
 
-    pipe.submit(critique=args.critique, max_passes=args.passes, provider=args.provider)
+    pipe.submit(critique=args.critique, max_passes=args.passes, provider=args.provider, model=args.model)
     result = pipe.serve()
 
     # ── Final length report ───────────────────────────────────────────────────
     src_len = len(source.strip())
     out_len = len(result.get("output", "").strip())
-    length_ok = out_len >= int(src_len * _MIN_OUTPUT_RATIO)
+    final_ratio = _REMOVAL_RATIO if _is_removal_intent(args.intent or '') else _MIN_OUTPUT_RATIO
+    length_ok = out_len >= int(src_len * final_ratio)
 
     if args.json:
         result["_length_report"] = {
