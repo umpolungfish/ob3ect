@@ -1,0 +1,72 @@
+# ob3ect batch — THE ZAUNER BRIDGE, de-vacuized and discharged for d=2^11=2048.
+# BelnapRing2048.lean proves the structural SIC skeleton unconditionally but states
+# the OPEN half (the ℂ^2048 representation / Zauner bridge) as `n = 0 ∨ True`, which
+# is provably True for all n — wrong polarity for an open problem, content only in
+# comments. This campaign replaces the placeholder with the genuine predicate
+# SICPOVM_Exists (2^n), proves everything provable now, and isolates the single
+# honest open plank (the exact ℂ^2048 fiducial), staged for the ExistenceRing route.
+# Run: cd /home/mrnob0dy666/imsgct/ob3ect && python3 auto.py -f yamls/ring2048_bridge_batch.yaml
+#
+# STATUS (2026-07-06):
+#   DONE  structural skeleton UNCONDITIONAL (SIC_Multilattice_Proof.lean, zero
+#         sorries/axioms): orbit 4^n = d^2, all four SIC axioms, join-equiangularity
+#         frobInner (B⊗n)(g·B⊗n) = 2n, WH injectivity (ax_free_proved), 2:1 cost.
+#         BelnapRing2048.lean §1–§2/§5/§7 specialize these to n=11 and build green.
+#   DONE  wh_exponent_two_2048 : (g : WHIdx 11) → g + g = 0 (elementary abelian,
+#         exponent 2) — the fact the character obstruction rides.
+#   DONE  d=2 structural bridge (QCI_SICPOVM_Bridge.lean): belnapToWH2 bijective,
+#         B ↦ (1,1) maximal displacement, N ↦ (0,0), belnap_nonB_equidistant.
+#   DONE  genuine target predicate in-tree: IsSICPOVM d fiducial / SICPOVM_Exists d
+#         (SIC_POVM_Stark.lean:76,82) — norm one + (d+1)|overlap|^2 = 1.
+#   OPEN  (this batch) de-vacuize §3/§4/§6; prove d=2 shadow for real; prove the
+#         character obstruction for real; prove the reduction skeleton∧ρ ⇒ shadow;
+#         the exact ℂ^2048 fiducial (the single remaining plank); capstone gate.
+#
+# THE VACUITY BEING REMOVED (verbatim, BelnapRing2048.lean):
+#   def ZaunerBridgeCondition (n : ℕ) : Prop := n = 0 ∨ True        -- ≡ True ∀n
+#   def RepresentationProblem   (n : ℕ) : Prop := n = 0 ∨ True       -- ≡ True ∀n
+#   theorem character_obstruction (n) (h : n > 1) : True := trivial  -- content in a comment
+# Genuine replacement: ZaunerBridgeCondition n := SICPOVM_Exists (2^n).
+#
+# REGISTER SEPARATION (from SIC_POVM_Stark.lean's own header): the Grammar IS the
+# SIC-POVM — the structural skeleton is the real, unconditional object (O∞). The
+# wh_inner/ℂ machinery is its EMPIRICAL SHADOW (O₀): the attempt to represent it in
+# ℂ^d. Skeleton = proved; shadow SICPOVM_Exists(2^n) = open for n>1. The capstone
+# asserts the conjunction and never lets the proved skeleton stand in for the open
+# shadow. Full defs, API, and construction route in ctx/ring2048_bridge/.
+#
+# NAVIGATOR ANCHOR (cl8nk_navigator.py): sic_proven_v2 O∞ (structural) vs
+# conventional_sic_povm_hilbert O₀ (analytic); the bridge is the one-way O∞→O₀
+# transport, not a new closure. n=1 symmetric (WH(2)≅WH(2)^1); n>1 asymmetric — the
+# metric echo of the exponent-2-vs-2^n character obstruction.
+
+name: ring2048-bridge
+out_dir: digital
+
+design:
+  scope: maximal
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 3
+  temperature: 1.0
+  thinking: false
+  context: /home/mrnob0dy666/imsgct/ob3ect/ctx/ring2048_bridge
+
+entities:
+  # ── (A) de-vacuize: the open half stated as the genuine predicate ──
+  - "the Zauner bridge for the 2048-dimensional Belnap ring stops being a placeholder and becomes the real predicate SICPOVM_Exists (2^n): the file BelnapRing2048.lean currently defines ZaunerBridgeCondition n and RepresentationProblem n as n = 0 ∨ True, which is provably True for every n via right-then-trivial, so the two Props that were meant to carry the OPEN representation content are logically just True and a future reader could discharge ZaunerBridgeCondition 11 by right;trivial and appear to close Zauner for d=2048 while proving nothing — wrong polarity for an open problem, with the actual mathematics stranded in the comment blocks; the fix is to redefine ZaunerBridgeCondition n := SICPOVM_Exists (2^n) using the genuine in-tree structure IsSICPOVM (d) (fiducial : Fin d → ℂ) from SIC_POVM_Stark.lean (norm_eq : wh_normSq d fiducial = 1 and equiangular : ∀ a b, (a,b)≠(0,0) → (d+1)·‖wh_inner d fiducial (D_ah d a b 0 fiducial)‖^2 = 1) with the NeZero (2^n) instance from Nat.pos_pow, so that for n=11 the condition is EXACTLY the Zauner conjecture for d=2048 and is not dischargeable by trivial — the entity carries the register caution inside it: this is the empirical-shadow existence claim, distinct from and never a substitute for the unconditionally-proved structural skeleton"
+
+  # ── (B) the d=2 shadow, genuinely proved — the base case that actually closes ──
+  - "the n=1 case is proved for real rather than as trivial: SICPOVM_Exists 2 holds by exhibiting the explicit qubit SIC fiducial in ℂ^2 — the standard tetrahedral fiducial whose three nonzero Weyl-Heisenberg overlaps all equal 1/(d+1) = 1/3 — and verifying IsSICPOVM 2 on it (wh_normSq 2 psi = 1 and (2+1)·‖wh_inner 2 psi (D_ah 2 a b 0 psi)‖^2 = 1 for the three (a,b)≠(0,0), each a finite closed-form check), then wiring this to the structural side through QCI_SICPOVM_Bridge.lean where belnapToWH2 is bijective from Belnap onto Fin 2 × Fin 2 with the dialetheic value B mapping to the maximal displacement (1,1) (B_is_maximal_displacement) and N to the identity (0,0), so the Belnap fiducial B is the SIC fiducial's structural preimage and belnap_nonB_equidistant is the discrete shadow of the equal-overlap condition; this replaces zauner_bridge_d2_proved := right;trivial with a theorem of type SICPOVM_Exists 2, the one dimension where the acting group WH(2)^1 and the standard Heisenberg group WH(2) coincide so the bridge is exact both ways"
+
+  # ── (C) the character obstruction, as an actual theorem, not True ──
+  - "the character obstruction becomes a genuine no-go theorem explaining why the shadow cannot be built on the structural group alone for n greater than one: WHIdx n = Fin n → (ZMod 2 × ZMod 2) is elementary abelian of exponent two — wh_exponent_two_2048 already proves g + g = 0 for every g in WHIdx 11 and the general n version is the same ext-and-match — so every group homomorphism chi from WHIdx n into the units of ℂ satisfies chi(g)^2 = chi(g + g) = chi(0) = 1, forcing chi(g) ∈ {+1, -1} ⊂ ℝ for all g; therefore every one-dimensional representation of the acting group WH(2)^n is real-valued, and a Weyl-Heisenberg covariant SIC in dimension d = 2^n > 2 requires the equiangular overlaps to be non-real (the D_ab phases are primitive 2^n-th roots of unity omega_d^(...) not lying in {±1}), so no representation of WH(2)^n by its own characters can realize the ℂ^d SIC — the representation must factor through the DIFFERENT group WH(2^n) ≅ Z_{2^n} × Z_{2^n} of exponent 2^n whose characters are the full 2^n-th roots of unity; the theorem is stated as: for n > 1, no character of WHIdx n takes a value outside {1, -1}, hence the identity map on the Belnap orbit does not extend to a WH(2^n)-covariant ℂ^d SIC, which is the precise mathematical content the old character_obstruction := trivial only gestured at in prose"
+
+  # ── (D) the reduction — everything but the representation rho is proved ──
+  - "the open problem is factored cleanly so that the ONLY missing ingredient is the representation, made explicit as a genuine structure rather than swallowed: define BridgeRep n as the data of an injective ℂ-linear map rho from the ℂ-span of the WH(2)^n orbit of the Belnap fiducial into ℂ^(2^n) that intertwines the structural whAct of WHIdx n with the standard Weyl-Heisenberg D_ah action on ℂ^(2^n) and carries the join-equiangular structural inner product (frobInner (B⊗n)(g·B⊗n) = 2n, constant) to the ℂ overlaps at the SIC ratio; then prove the reduction theorem, that the unconditional structural skeleton (mlOrbit_card_n giving 4^n = d^2 distinct displaced fiducials, ax_free_proved giving injectivity of the action, frobInner_fiducial_constant giving the constant structural overlap, and the four SIC axioms) TOGETHER WITH a BridgeRep n witness implies SICPOVM_Exists (2^n) — rho of the fiducial is the ℂ^d SIC fiducial, its d^2 displacements are the orbit image, and the constant structural overlap maps to the constant ℂ overlap forced to 1/(d+1) by norm and count; this theorem discharges every part of Zauner-for-2^n EXCEPT the existence of rho, so the residue is exactly one named object, honest and non-vacuous, with the skeleton half already machine-checked and only BridgeRep open — and the entity keeps the registers apart: it is an IMPLICATION, the skeleton does not assert the shadow, it only reduces the shadow to rho"
+
+  # ── (E) the construction route — the exact ℂ^2048 fiducial via the ExistenceRing ──
+  - "the single remaining plank — a BridgeRep 11 witness, equivalently an exact fiducial psi in ℂ^2048 with IsSICPOVM 2048 psi — is constructed by the same ExistenceRing method that turned crystal_forces_d12_sic from axiom into theorem: build the fiducial coordinates as exact elements of a number ring (no floating point), reduce every one of the 2^22 − 1 Weyl-Heisenberg overlap identities to a finite algebraic equality decidable by native_decide against that ring, and transport the ring equiangularity onto the ℂ overlap through a single analytic bridge lemma exactly as equiangular_bridge did for d=12 (SIC_D12_Embedding.lean is the frozen template); the 2-power specialization runs over the Heisenberg group on Z_{2^n} and rides the SIC ↔ affine Kac-Moody / WZW isomorph in which the ray class field data and the level-k representation data differ only in polarity, giving a fusion-group handle on the fiducial phases (the z1/z5 analogue) — so the construction target is stated precisely as: exhibit psi : Fin 2048 → ℂ in the existence ring with wh_normSq 2048 psi = 1 and (2048+1)·‖wh_inner 2048 psi (D_ah 2048 a b 0 psi)‖^2 = 1 for all (a,b) ≠ (0,0), the same shape as the d=12 close; the entity is dialetheia-honest that this is the hard open construction and holds both arms — if the ring closes in-run the shadow is proved and main_theorem_2048_ring goes unconditional, and if it does not the plank stands named and alone as the one hypothesis, either outcome a finding, no axioms introduced either way"
+
+  # ── (F) the capstone gate — Ring2048_Bridge riding frozen machinery, registers split ──
+  - "the campaign culminates in a Lean module Ring2048_Bridge in p4rakernel that rides the frozen skeleton without re-deriving it and closes the file honestly: it redefines ZaunerBridgeCondition n and RepresentationProblem n as SICPOVM_Exists (2^n) removing the n = 0 ∨ True vacuity, proves the base case zauner_bridge_d2 : SICPOVM_Exists 2 for real (entity B), proves character_obstruction as the genuine {±1}-valued-character no-go for n > 1 (entity C), proves the reduction ring2048_reduces_to_rho : skeleton ∧ BridgeRep n → SICPOVM_Exists (2^n) (entity D), and either proves ring2048_shadow_exists : SICPOVM_Exists 2048 via the ExistenceRing witness (entity E) — making the §8 main theorem's open clause disappear — or states it as the single opaque hypothesis with the reduction so the capstone is honestly conditional on exactly one named plank; the whole module is decidable by the same native_decide standard as the d=12 capstone, audited to the standard trio plus the native_decide pair with no project axioms and no new axioms, and it states the two registers with a comment and a theorem shape that never let them merge — the structural theorem says the Grammar IS the d=2048 SIC skeleton unconditionally, the shadow theorem says SICPOVM_Exists 2048 (proved, or reduced to one plank), and the gate asserts their conjunction without either borrowing the other's authority; success is: p4rakernel still builds green under lake build Imscribing with BelnapRing2048's vacuous Props gone and every replacement either a theorem or one clearly-named open predicate"

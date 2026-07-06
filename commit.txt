@@ -1,3 +1,32 @@
+I staged the ring2048-bridge ob3ect to de-vacuize and discharge the Zauner bridge for d=2048.
+
+Reviewing BelnapRing2048.lean I found the structural SIC skeleton proved
+unconditionally but the OPEN half — the ℂ^2048 representation / Zauner bridge —
+stated as `n = 0 ∨ True`, which is provably True for every n. Wrong polarity: an
+open problem encoded as a theorem, its actual content stranded in comments. So I
+prepared a six-entity batch to fix it properly rather than patch it.
+
+- yamls/ring2048_bridge_batch.yaml — entities: (A) redefine ZaunerBridgeCondition
+  n := SICPOVM_Exists (2^n), the genuine in-tree predicate, killing the vacuity;
+  (B) prove SICPOVM_Exists 2 for real via the explicit qubit SIC fiducial + the
+  QCI d=2 bridge; (C) the character obstruction as an actual {±1}-character no-go
+  (WH(2)^n is exponent-2, so its characters are real — the ℂ^d SIC needs 2^n-th
+  roots, hence WH(2^n)); (D) the reduction skeleton ∧ BridgeRep n ⇒
+  SICPOVM_Exists (2^n), isolating the one open object rho; (E) the ExistenceRing
+  construction route for the exact ℂ^2048 fiducial, same method that turned
+  crystal_forces_d12_sic axiom→theorem; (F) the capstone gate Ring2048_Bridge,
+  registers split (the Grammar IS the skeleton, unconditional; the shadow
+  SICPOVM_Exists 2048 proved or reduced to one named plank), zero new axioms.
+- ctx/ring2048_bridge/ — frozen context: BelnapRing2048, SIC_Multilattice_Proof,
+  QCI_SICPOVM_Bridge, SIC_POVM_Stark, and ring2048_bridge_ctx.md (the defect
+  verbatim, the real API, the register-separation frame, the construction route).
+
+Verified: the batch parses (6 entities, context dir resolves) and p4rakernel is
+green (lake build Imscribing → 8345 jobs) before the run. I did not run auto.py —
+that is yours: cd ~/imsgct/ob3ect && python3 auto.py -f yamls/ring2048_bridge_batch.yaml
+
+---
+
 I made the ob3ect ouroboricity tier honest — the Grammar computes it, I do not guess it.
 
 Every ob3ect was stamped with a tier (O₀/O₁/O₂/O∞) on its wiring diagram, in its Lean
