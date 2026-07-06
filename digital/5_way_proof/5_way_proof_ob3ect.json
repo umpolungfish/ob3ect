@@ -1,0 +1,210 @@
+{
+  "name": "5-way proof",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "5-way proof",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "word tape",
+        "Adian decomposition",
+        "Belnap register"
+      ],
+      "boundary_condition": "The Burnside group B(m,n) defined by the relator x^n = e",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "void word",
+        "justification": "The uninitialized state of the word tape before generators are introduced.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Burnside relator",
+        "justification": "The terminal boundary x^n = 1 that constrains the infinite free group into a Burnside group.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "generator append",
+        "justification": "Right-multiplication by a positive generator to transform the word state forward.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "inverse append",
+        "justification": "Right-multiplication by the inverse of a generator to reverse a transformation.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "word concatenation",
+        "justification": "The sequential composition of two word segments into a single tape.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "identity check",
+        "justification": "Self-recognition of the word as the identity element e through reduction.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Adian delta-decomposition",
+        "justification": "Bifurcation of a word into maximal periodic runs and aperiodic bridges.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Adian mu-reconstruction",
+        "justification": "Interleaving of bridges and periodic segments to recover the original word exactly.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "local finiteness test",
+        "justification": "Affirmative evaluation that periodic segments reduce to identity under the exponent.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "aperiodic residual detection",
+        "justification": "Negative evaluation identifying non-trivial aperiodic obstructions to finiteness.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "paradox register",
+        "justification": "A state where the group is held as both finite and infinite during unresolved proof phases.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Novikov-Adian fixation",
+        "justification": "Permanent record of the group status based on established mathematical theorem.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "fsplit",
+      "split_input": "word w",
+      "split_outputs": [
+        "periodic segments",
+        "aperiodic bridges"
+      ],
+      "fuse_element": "ffuse",
+      "fuse_result": "word w",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "0b00: word tape empty and status uninitialized",
+      "true_description": "0b01: group is finite; word problem is decidable",
+      "false_description": "0b10: group is infinite; non-trivial elements of infinite order exist",
+      "both_description": "0b11: status unresolved; group properties are paraconsistent",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize the word tape to the empty state"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "append generator a1 to the tape"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AREV",
+          "domain_action": "append inverse generator a1-inverse to the tape"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "concatenate the current tape with a seed word"
+        },
+        {
+          "step_num": 5,
+          "opcode": "TANCH",
+          "domain_action": "apply Burnside reduction x^n = 1 to anchor the word in B(m,n)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "decompose the reduced word into periodic runs and bridges"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "verify the T-arm for local finiteness of periodic segments"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "verify the F-arm for aperiodic residuals in bridges"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "reconstruct the word from Adian components to ensure integrity"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IMSCRIB",
+          "domain_action": "check if the reconstructed word is the identity element"
+        },
+        {
+          "step_num": 11,
+          "opcode": "ENGAGR",
+          "domain_action": "engage the Belnap register to classify the exponent n"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "permanently fix the group status based on Novikov-Adian results"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IMSCRIB",
+          "domain_action": "perform final self-reference to close the proof protocol"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The rewriting engine applying free and Burnside reduction rules",
+      "ipc_mechanism": "Tuple-based word passing between opcode functions",
+      "memory_mechanism": "The global state dictionary storing the word tape and history",
+      "scheduler_mechanism": "The 13-step bootstrap orchestration in main.py",
+      "alfs_store": "The state.py classification table for known finite and infinite exponents",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational cycles consumed by the O(N^3) reduction algorithm",
+      "pre_cycle_state": "A word in the free group F_m",
+      "post_cycle_state": "A reduced word in the Burnside group B(m,n)",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The reduction process is a deterministic mapping to a canonical form.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 TANCH \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 IMSCRIB \u2192 ENGAGR \u2192 IFIX \u2192 IMSCRIB\n-- Class: 5-way proof\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(5, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [2] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc61  | composition \u2014 regime coherence\n--   [4] TANCH     top    := \ud801\udc61               \ud801\udc71 \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [10] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc7c  | identity \u2014 self-imscription\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def 5_way_proof_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def 5_way_proof_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def 5_way_proof_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def 5_way_proof_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def 5_way_proof_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def 5_way_proof_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def 5_way_proof_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def 5_way_proof_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def 5_way_proof_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def 5_way_proof_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def 5_way_proof_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def 5_way_proof_protocol : IGProtocol 5_way_proof_s0 5_way_proof_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct 5_way_proof_s8 5_way_proof_s8 = 5_way_proof_s8 (idempotent)\n  (.seq (.arrow 5_way_proof_l0 5_way_proof_s0 5_way_proof_s1) (.seq (.arrow 5_way_proof_l1 5_way_proof_s1 5_way_proof_s2) (.seq (.arrow 5_way_proof_l2 5_way_proof_s2 5_way_proof_s3) (.seq (.arrow 5_way_proof_l3 5_way_proof_s3 5_way_proof_s4) (.seq (.arrow 5_way_proof_l4 5_way_proof_s4 5_way_proof_s5) (.seq (.prod (.arrow 5_way_proof_l5 5_way_proof_s5 5_way_proof_s8) (.arrow 5_way_proof_l5 5_way_proof_s5 5_way_proof_s8)) (.seq (.arrow 5_way_proof_l8 5_way_proof_s8 5_way_proof_s8) (.seq (.arrow 5_way_proof_l8 5_way_proof_s8 5_way_proof_s9) (.seq (.arrow 5_way_proof_l9 5_way_proof_s9 5_way_proof_s10) (.seq (.arrow 5_way_proof_l10 5_way_proof_s10 5_way_proof_s11) (.arrow 5_way_proof_l11 5_way_proof_s11 5_way_proof_s12)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def 5_way_proof_true_arm : IGProtocol 5_way_proof_s0 5_way_proof_s12 :=\n  (5_way_proof_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def 5_way_proof_false_arm : IGProtocol 5_way_proof_s0 5_way_proof_s12 :=\n  (5_way_proof_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef 5_way_proof_tier : OuroboricityTier := TierFunctor.obj 5_way_proof_s0\n#eval 5_way_proof_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem 5_way_proof_frobenius :\n    igFrobeniusAlg.mul 5_way_proof_s0 5_way_proof_s0 = 5_way_proof_s0 :=\n  igFrobAlg_self_fusion 5_way_proof_s0\n",
+  "notes": "Auto-designed from: 5-way proof"
+}
