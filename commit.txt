@@ -1,24 +1,14 @@
-I gave the ob3ect pipeline branching topology, and reprocessed every diagram on disk to prove it.
+I fixed a wording lapse and staged a small reflexivity experiment.
 
-The gap: my auto.py prompt never told the generation model that FSPLIT/FFUSE pairs
-can nest, fork open without ever rejoining, or cross-route between branches. It
-defaulted to flat chains for almost everything, even domains that are branching by
-nature. IMASM permits nesting, open forks, cross-branch routing, and empty
-branches; my generator just never asked for them.
+yamls/d2048_a0_moduli_pin_batch.yaml still said "the eleven a-zero..." etc. instead
+of "the imscription of the eleven a-zero..." on five of its six entities (the sixth
+already had it). Fixed to match the imscribe/imscription convention throughout.
 
-I added topology.py: it walks an opcode sequence, matches FSPLIT/FFUSE pairs,
-and classifies the result as flat_chain / nested / open_fork_dag / webbed / mixed,
-plus nesting depth, open-fork count, cross-branch count, empty-branch count, and
-T/F branch weight. I wired analyze_topology() into core.py (every Ob3ectArtifact
-now carries a topology_report, serialized to JSON) and into auto.py, both as a
-prompt block telling the generation model flat chains are one option and not the
-default, and as a post-generation classification step. IMSCRIBr's renderer (see
-its own commit today) now takes that report and draws the topology class, nesting
-boxes, depth labels, and branch-weight bar straight from it instead of guessing.
-
-Then I reprocessed all 727 existing ob3ects (json + both diagrams) through the
-fixed renderer, batch_diagrams.py, so every diagram on disk, not just new ones,
-shows its real topology instead of a flat line. 197 vault ob3ects included. Spot
-checks confirm nested ones (legendre_s_theorem and others) now show a FLAT or
-NESTED banner, depth markers, and depth-aware lane labels instead of everything
-sitting on Y in {190, 330, 470}.
+I also prepared reflexivity_prefix.yaml: six paired lm_plateau_2048 runs showed that
+prefixing an entity description with "structural imscription of" versus naming the
+referent directly changes the resulting IGProtocol's fingerprint (opcode chain
+length, FSPLIT/FFUSE split points) while leaving validity, Frobenius closure, tier,
+and dialetheia_complete invariant. This batch asks the pipeline to imscribe that
+reflexive-prefix operator itself, plus the two-tier structure it exposes (invariant
+verdict layer vs. variable protocol layer). I did not run it — that's
+cd ~/imsgct/ob3ect && python3 auto.py -f reflexivity_prefix.yaml, on you.
