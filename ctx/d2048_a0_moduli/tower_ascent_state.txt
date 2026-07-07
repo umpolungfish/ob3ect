@@ -1,0 +1,41 @@
+d=2048 moduli tower — verified ascent state (2026-07-07), for the Grammar to imscribe the climb.
+
+The d=2048 SIC a=0 moduli N_k = |z_k|^2 are real algebraic numbers living in the MODULI FIELD =
+maximal real subfield of the ray class field of F = Q(sqrt m_d) at conductor (2048)*oo1*oo2.
+
+VERIFIED STRUCTURE (all computed, not assumed):
+- m_d = 4190205 = (d+1)(d-3) = 3*5*409*683 (Appleby discriminant); F disc = m_d, h(F)=64=2^6,
+  class group [32,2], regulator 7.6241.
+- S-unit generators of F at the ramified primes {3,5,409,683}: |eps| (=1/d, fundamental unit,
+  norm +1), 3, 5, g3 (norm -(d-3)=-2045), g4 (norm (d+1)=2049). The SIC denominator 1/(d+1) is
+  the field norm of g4.
+- MODULI FIELD DEGREE = 2^27 over Q (ray class order over F), a PURE PRO-2 TOWER
+  2^12 * 2^9 * 2^3 * 2^2 * 2^1. Calibrated on d=12 where moduli field = K16 = max real subfield of
+  the (12)*oo ray class field, degree 16 = 2^4.
+- a=0 condition (proven, verified to 1e-58 on d=12): the moduli have FLAT autocorrelation,
+  C_0 = sum N_k^2 = 2/(d+1), C_m = sum_k N_k N_{k+m} = 1/(d+1) for m!=0. Galois pairing:
+  N_{k+d/2} = sigma(N_k), so 1024 independent field elements + conjugates.
+
+TOWER CLIMB SO FAR (each level verified via bnrclassfield(bnrinit(F,1), [n], 2)):
+- Level 0: F = Q(sqrt m_d). deg 2/Q, h=64, class [32,2].
+- Levels 1-2: genus K1 = Q(sqrt5, sqrt409, sqrt2049), (Z/2)^2, deg 8/Q = 4/F, unramified.
+- Level 3: C4 via Redei 409*10245 + bnrclassfield [4]: deg 16/Q = 8/F, disc=m_d^8, extends genus.
+  Relative steps over F: quadratic then quartic. Norm eq: x=1,y=1,mu=10654 (nontrivial).
+- Level 4: C8 via bnrclassfield [8]: deg 32/Q = 16/F, disc=m_d^16, contains C4.
+- Level 5: C16 via bnrclassfield [16]: deg 64/Q = 32/F, 5508 ms. tower_C16.poly
+  (3834 bytes, sha256 2734e7f4…83d00e0). Banked in mOMonadOS d2048_sic.rs.
+- Level 6: C32 HILBERT CLASS FIELD via bnrclassfield [32]: deg 128/Q = 64/F, ~423s.
+  tower_C32.poly (14150 bytes). UNRAMIFIED ASCENT COMPLETE.
+
+HOST RUNNER (mOMonadOS): ./mOMonadOS/run_tower_d2048.sh [4|8|16|32]
+REPL (QEMU serial): d2048 tower | c16 | c32 | redei | grammar | pari | next
+
+REMAINING: ramified conductor (2048)*oo1*oo2 — 2^21 more over F up to moduli
+field (max real subfield of ray class field, deg 2^27/Q).
+quadhilbert(h=64) OVERFLOWS -- layer-by-layer bnrclassfield succeeded instead.
+
+FRAME: this is NOT a classical search (that walled out for Appleby-Flammia and produced only a
+spurious local minimum at 3.87e-3). It is the Grammar's auto-iterative SIC-POVM application: each
+tower level is one distillation (solve et coagula), the moduli assembled as the fixed point of the
+ascent. The Grammar already self-diagnosed the depth (S-units of F insufficient -> ray class field);
+imscribe the ascent itself.
