@@ -1,0 +1,33 @@
+d=2048 a=0 moduli via the KOZYREV MIRROR MOVE (fix-and-reach through character portals).
+State 2026-07-07. The pivot from climbing to reaching.
+
+THE MOVE: do NOT traverse the degree-2^26 totally-real ray class field (its polynomial is
+unrepresentable, ~2^26 coefficients). Instead FIX at the base field F = Q(sqrt m_d) and REACH
+through the ray class character portals to the special value at s=0 — the Stark unit / L-derivative
+L'(0,chi), the ALGEBRAIC point. This is Kozyrev's mirror: we don't move, we fix and reach forward
+and backward in s. The functional equation s <-> 1-s mirrors s=0 (past, algebraic Stark unit) and
+s=1 (future, transcendental analytic value); we reach BACKWARD to s=0 for the algebraic moduli.
+Each REAL modulus is the fold of a MIRRORED PAIR: L'(0,chi) + L'(0,chi_bar) collapses to the real
+line. The complex-conjugate character pair = the two time directions meeting at the real value.
+
+VALIDATED (d=12 ground truth, portals_d12.gp): bnrstark built the d=12 moduli field directly from
+Stark units (deg 8/Q); bnrL1 returned 16 clean L'(0,chi) values to 60 digits. A d=12 modulus has
+min poly degree 4 over Q = 2 over F (NOT K16's 16 — K16 is a larger coordinate field). The moduli
+live in the TOTALLY-REAL ray class field of conductor (d), oo unramified.
+
+CORRECTED TARGET (d=2048): moduli field = totally-real ray class field at conductor (2048), oo
+unramified: ray class group [4096,512,8,2], order 2^25 over F = 2^26 over Q. (Corrected from the
+earlier 2^27, which was the CM field's max real subfield — wrong field.) The unramified Hilbert
+tower (F -> genus K1 -> C4 -> C8 -> C16 -> C32=Hilbert, deg 128, already built) is the scaffold.
+
+THE REDUCTION (the open piece — which portals): bnrL1 over all 2^25 characters is infeasible. But
+the a=0 moduli are only 1024 real numbers (N_{k+1024}=sigma(N_k) halves 2048), pinned by the flat
+autocorrelation C_0 = 2/2049, C_m = 1/2049 (m!=0), which is the DFT/Wiener-Khinchin condition. Only
+the characters that SEE the a=0 stratum contribute; the Galois action + the mirror pairing reduce
+the millions of portals to a small orbit-representative set whose L-derivatives at s=0 determine the
+1024 moduli. Determining that reduced portal set + the fold map is the Kozyrev move to imscribe.
+
+FRAME: the Grammar already self-diagnosed the depth (S-units of F insufficient -> ray class field)
+and located the field. Now imscribe the fix-and-reach: the reduced character portal set and the
+mirror fold that assembles the real a=0 moduli, as an auto-iterative SIC-POVM application. Recognize
+the resulting high-precision values with sunit_recognition_d2048.py (~12-digit threshold).

@@ -1,0 +1,27 @@
+# ob3ect batch: adapt the d=12 S-unit pinning method to the REAL d=2048 tower.
+# Context carries genuine PARI-verified data (Zauner cubic, independent sqrt2/sqrt30
+# subfields, imaginary quadratic, two quartics, ray class group [12288,512,8,4,2]
+# over primes {3,5,409,683}) plus the actual d=12 pin_sunit.gp template (hardwired
+# to d=12's primes {2,3,13} — does not apply as-is). Supersedes the earlier
+# d2048-a0-moduli-pin batch, whose moduli ob3ect scaffold carried no real numbers.
+# Run WITH the new branching-topology-aware auto.py (ee7cb3d) — this construction
+# is naturally forking (magnitude tower vs phase tower vs Zauner-cubic layer), not
+# a flat chain.
+#
+# Run:  cd /home/mrnob0dy666/imsgct/ob3ect && python3 auto.py -f d2048_tower_fusion.yaml
+
+name: newtower
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 2.0
+  domain: alchemical
+  context: "/home/mrnob0dy666/.claude/projects/-home-mrnob0dy666-imsgct/memory/project_zauner_transport_map.md"
+  entry: "sic_geometric_lift_hypothesis,zauner_fixed_subspace,zauner_symmetry,stark_unit_machinery,sic_fiducial,sic_zauner_join"
+
+entities:
+  - "the reduced portal fold — compute the a=0 moduli as s=0 L-derivatives over the Galois-orbit representatives of the totally-real (2048) character group, mirror-fold the conjugate pairs to the real line, verify the flat autocorrelation, and recognize with the engine at the twelve-digit threshold."
