@@ -1,0 +1,59 @@
+# Editorial Pipeline — manuscripts3 (all three papers, shared intent)
+# Prefer per-paper YAMLs for tailored voice. This batch runs all three at once.
+# Run:  python3 ob3ect/digital/editorial_pipeline/editorial_pipeline_ob3ect.py batch ob3ect/igdocs_editorial_yamls/publishing_manuscripts3_batch.yaml
+
+name: manuscripts3_batch
+batch_dir: /home/mrnob0dy666/imsgct/ig-docs/manuscripts3/editorial_pieces
+
+context:
+  files:
+    - /home/mrnob0dy666/imsgct/ig-docs/manuscripts3/sic_povm_stark_hilbert12.tex
+    - /home/mrnob0dy666/imsgct/ig-docs/manuscripts3/witness_vessel.tex
+    - /home/mrnob0dy666/imsgct/ig-docs/manuscripts3/chrysopoeia_2048.tex
+  folders: []
+
+editorial:
+  intent: |
+    Lift this LaTeX manuscript from cold, LLM-native prose into organic, human
+    scholarly writing. Register: rigorous naturalistic / technical empirical.
+    The work is paraconsistent and formally heavy; warmth comes from clarity and
+    honest accounting, not metaphor or oversell.
+
+    PRESERVE WITHOUT EXCEPTION:
+    - Valid LaTeX with identical structure: sections, labels, refs, equations,
+      tables, listings, appendices, bibliography.
+    - Every theorem, proposition, number, Lean identifier, proof status, and
+      open-problem marker. No summarizing. Output length >= source length.
+    - Spelled-out primitive names in prose (dimensionality, topology, parity,
+      fidelity, kinetics, etc.). Larson acknowledgement and Larson1961 bib.
+    - Say representation, never encode. No em-dashes.
+
+    HUMANIZE:
+    - Vary rhythm; break template cadences; active verbs; one clear claim per
+      paragraph where possible. Let the reader feel a human author who stayed
+      with a hard problem (Larson editorial ethos) without naming that unless
+      already in Acknowledgements.
+
+    OUTPUT: the full edited .tex file only. No commentary.
+  output_dir: /home/mrnob0dy666/imsgct/ig-docs_lifted/manuscripts3
+  output_suffix: "_lifted"
+  critique: true
+  passes: 3
+  provider: null
+  model: null
+  temperature: 0.35
+  thinking: false
+  source_glob: "*.tex"
+  skip_existing: true
+  enforce_length: true
+  verbose: false
+
+# ── Pieces (3) ──
+#   sic_povm_stark_hilbert12
+#   witness_vessel
+#   chrysopoeia_2048
+#
+# Per-paper tailored intents:
+#   publishing_manuscripts3_sic_stark_hilbert12.yaml
+#   publishing_manuscripts3_witness_vessel.yaml
+#   publishing_manuscripts3_chrysopoeia_2048.yaml
