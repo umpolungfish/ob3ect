@@ -1,0 +1,36 @@
+d=2048 a=0 S-unit home — VERIFIED in PARI/GP 2.13.3 on 2026-07-07 (computed, not assumed).
+
+Base field  F = Q(sqrt m_d),  m_d = 4190205.
+  m_d = 3 * 5 * 409 * 683  (squarefree)
+  m_d = (d+1)(d-3) = d^2 - 2d - 3   for d = 2048   [Appleby discriminant]
+  m_d = 1 mod 4  =>  field disc = m_d,  integral basis (1, (1+sqrt m_d)/2)
+  class number h = 64,  class group Z/32 x Z/2
+  regulator = 7.6241303470096237106509722934010853694
+
+Ramification: all four primes dividing m_d are RAMIFIED in F.
+  p=3   e=2 f=1   (one prime above)
+  p=5   e=2 f=1
+  p=409 e=2 f=1
+  p=683 e=2 f=1
+  ramified primes {3,5,409,683} = exactly the primes of (d+1)(d-3) = 3*683 * 5*409
+
+S-unit group at S = {the 4 ramified primes}: 4 fundamental S-units + fundamental unit + torsion.
+Explicit generators (elements of F, x := sqrt m_d):
+  torsion   : -1
+  eps (fu)  : ( (d-1) - x )/2 = (2047 - x)/2 ,  norm(eps) = +1 ,  2047 = d-1 = 2^11 - 1
+  g1        : 3                                ,  norm = 9  = 3^2
+  g2        : 5                                ,  norm = 25 = 5^2
+  g3        : ( x - (d-3) )/2 = (x - 2045)/2   ,  norm = -(d-3) = -2045 = -(5*409)
+  g4        : ( (d+1) - x )/2 = (2049 - x)/2   ,  norm =  (d+1) =  2049 =  3*683
+
+KEY: the SIC normalization 1/(d+1) = 1/2049 is LITERALLY the field norm of generator g4.
+
+Consequence for the a=0 pin: IF the eleven a=0 magnitude witnesses N_k (= |z_k|^2 of the
+d=2048 fiducial) are S-units of F — the premise of the a=0 program — then each
+  N_k = ±  eps^a * 3^b * 5^c * g3^e * g4^f    (integer exponents a,b,c,e,f).
+So moduli recovery is a CLOSEST-VECTOR / PSLQ recognition over a rank-5 S-unit log lattice,
+constrained by the eleven O_{0,b}*conj = 1/2049 identities, NOT an unconstrained real
+optimization over R^2048. This mirrors the d=12 win, which pinned its N_k by PSLQ against the
+K16 integral basis (see build_k16_v3.txt) before mini_engine_a0 ran.
+
+Scratch PARI scripts: scratchpad/d2048_{field,sunit,sgens}.gp

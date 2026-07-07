@@ -1,0 +1,28 @@
+# ob3ect batch: adapt the d=12 S-unit pinning method to the REAL d=2048 tower.
+# Context carries genuine PARI-verified data (Zauner cubic, independent sqrt2/sqrt30
+# subfields, imaginary quadratic, two quartics, ray class group [12288,512,8,4,2]
+# over primes {3,5,409,683}) plus the actual d=12 pin_sunit.gp template (hardwired
+# to d=12's primes {2,3,13} — does not apply as-is). Supersedes the earlier
+# d2048-a0-moduli-pin batch, whose moduli ob3ect scaffold carried no real numbers.
+# Run WITH the new branching-topology-aware auto.py (ee7cb3d) — this construction
+# is naturally forking (magnitude tower vs phase tower vs Zauner-cubic layer), not
+# a flat chain.
+#
+# Run:  cd /home/mrnob0dy666/imsgct/ob3ect && python3 auto.py -f d2048_tower_fusion.yaml
+
+name: d2048_tower_fusion
+out_dir: digital
+
+design:
+  scope: mesoscale
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  retries: 2
+  temperature: 1.0
+  domain: computational
+  context: "/home/mrnob0dy666/ob3ect/ctx/d2048_tower_fusion"
+  entry: "sic_geometric_lift_hypothesis,zauner_fixed_subspace,zauner_symmetry,stark_unit_machinery,sic_fiducial,sic_zauner_join"
+
+entities:
+  - "the adaptation of the d=12 S-unit pinning method (algdep on a numerically recovered modulus, bnfinit on its minimal polynomial, bnfsunit over the primes actually dividing the discriminant, expressing the modulus as an exact S-unit exponent vector, reading off its square-class) to the real d=2048 ramified primes 3, 5, 409, 683 in place of d=12's primes 2, 3, 13. The confirmed-irreducible Zauner cubic, the two independent rational quadratics sqrt2 and sqrt30, the imaginary quadratic layer, and the two irreducible quartics found tonight are the candidate small pieces the pinned S-unit moduli N_k should live in or generate, mirroring how d=12 pinned N1 inside K16 before its overlap engine ran. With full Frobenius closure and Lean 4 verification scaffold, and an explicit branching topology reflecting the genuine fork between the magnitude tower and the phase tower rather than a flat chain."
+  - "the fusion of the six explicit small-degree field pieces of K_2048 found tonight, namely one cubic and five quadratic-or-quartic layers with compositum degree at most 384 over the base field F equals Q of sqrt 4190205, into a single finite commutative ring with involution analogous to d=12's R equals K16 adjoin s0 s1 s3 s9 i c5 u1 of Q-dimension 2048, identifying which pieces are magnitude classes, which is the imaginary layer, and which is the phase generator carrying the order-3 Zauner symmetry, so that the eleven a=0 stratum overlap identities become native_decide-checkable ring identities the way the d=12 SIC_D12_ExistenceRing module checks its 143 overlaps. With full Frobenius closure, Lean 4 verification scaffold, and a branching topology capturing the open-fork structure between the magnitude and phase sides before their eventual fuse."

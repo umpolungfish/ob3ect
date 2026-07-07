@@ -1,0 +1,33 @@
+d=2048 fiducial CONSTRUCTION frontier — state as of 2026-07-07 (why numerical search is dead,
+what the algebraic construction must do).
+
+WHY NUMERICAL SEARCH IS EXHAUSTED (confirmed, not conjectured):
+- Every available numerical seed (fiducial_d2048_*.npz) is trapped at a spurious LOCAL MINIMUM
+  of the SIC objective Sum_p (|A_p|^2 - 1/(d+1))^2 at residual max|W| ~ 3.87e-3.
+- At the best Zauner-symmetric seed (fiducial_d2048_zauner.npz, 100% in the Zauner subspace)
+  the gradient norm is 1.96e-8 (~0) and EVERY line-search direction increases the objective.
+  It is a genuine local minimum, an "almost-SIC," not a true SIC (true SIC has objective -> 0).
+- No local method (L-BFGS / Newton / Gauss-Newton) escapes a true local minimum. Local polish
+  is definitively dead. A true d=2048 SIC must be CONSTRUCTED, not recovered from these floats.
+
+THE ZAUNER SUBSPACE (the chamber the fiducial lives in):
+- zauner_basis_2048.npz holds B: an orthonormal (2048, 683) complex basis of the Zauner Z_3
+  eigenspace; psi = B y reduces the search from 2048 to 683 dims (3x). A SIC fiducial is
+  Zauner-symmetric, so it lives in this span. The spurious minimum above is IN this span too,
+  so the subspace alone is necessary but not sufficient — the moduli must be pinned.
+
+THE S-UNIT HOME (see sunit_home_d2048.txt — VERIFIED in PARI):
+- F = Q(sqrt m_d), m_d = 4190205 = (d+1)(d-3) [Appleby discriminant], h=64, reg=7.6241.
+- Rank-5 S-unit group at the ramified primes {3,5,409,683}; generators |eps|,3,5,|g3|,|g4| with
+  norm(g4)=d+1=2049 (the SIC denominator itself), norm(g3)=-(d-3), |eps|=0.00048852 ~ 1/d.
+- Recognition needs the moduli to ~12 significant digits (calibrated); the numerical floats give
+  only ~2-3. So recovery-from-floats fails on precision AND the floats are a spurious config.
+
+WHAT THE CONSTRUCTION MUST DO:
+- Build the fiducial directly: choose exact S-unit moduli N_k = +/- eps^a 3^b 5^c g3^e g4^f
+  (integer exponents) and Zauner-covariant phases, such that psi = B y is Zauner-symmetric AND
+  the Weyl-Heisenberg overlaps satisfy |A_{a,b}|^2 = 1/(d+1) exactly for all (a,b) != (0,0).
+- First discharge the eleven a=0 identities O_{0,b} = sum_k N_k omega^{bk}, O*conj = 1/2049,
+  b in powers of two up to 1024, as EXACT equations in the S-unit tower (mirror d=12 mini_engine_a0).
+- Admit only if the identities hold in exact arithmetic, every N_k is an exact S-unit of F, and the
+  result is genuinely in the Zauner span; else record as needing the ray class field of F.
