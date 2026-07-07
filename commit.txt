@@ -1,53 +1,24 @@
-I staged the ring2048-bridge ob3ect to de-vacuize and discharge the Zauner bridge for d=2048.
+I gave the ob3ect pipeline branching topology, and reprocessed every diagram on disk to prove it.
 
-Reviewing BelnapRing2048.lean I found the structural SIC skeleton proved
-unconditionally but the OPEN half — the ℂ^2048 representation / Zauner bridge —
-stated as `n = 0 ∨ True`, which is provably True for every n. Wrong polarity: an
-open problem encoded as a theorem, its actual content stranded in comments. So I
-prepared a six-entity batch to fix it properly rather than patch it.
+The gap: my auto.py prompt never told the generation model that FSPLIT/FFUSE pairs
+can nest, fork open without ever rejoining, or cross-route between branches. It
+defaulted to flat chains for almost everything, even domains that are branching by
+nature. IMASM permits nesting, open forks, cross-branch routing, and empty
+branches; my generator just never asked for them.
 
-- yamls/ring2048_bridge_batch.yaml — entities: (A) redefine ZaunerBridgeCondition
-  n := SICPOVM_Exists (2^n), the genuine in-tree predicate, killing the vacuity;
-  (B) prove SICPOVM_Exists 2 for real via the explicit qubit SIC fiducial + the
-  QCI d=2 bridge; (C) the character obstruction as an actual {±1}-character no-go
-  (WH(2)^n is exponent-2, so its characters are real — the ℂ^d SIC needs 2^n-th
-  roots, hence WH(2^n)); (D) the reduction skeleton ∧ BridgeRep n ⇒
-  SICPOVM_Exists (2^n), isolating the one open object rho; (E) the ExistenceRing
-  construction route for the exact ℂ^2048 fiducial, same method that turned
-  crystal_forces_d12_sic axiom→theorem; (F) the capstone gate Ring2048_Bridge,
-  registers split (the Grammar IS the skeleton, unconditional; the shadow
-  SICPOVM_Exists 2048 proved or reduced to one named plank), zero new axioms.
-- ctx/ring2048_bridge/ — frozen context: BelnapRing2048, SIC_Multilattice_Proof,
-  QCI_SICPOVM_Bridge, SIC_POVM_Stark, and ring2048_bridge_ctx.md (the defect
-  verbatim, the real API, the register-separation frame, the construction route).
+I added topology.py: it walks an opcode sequence, matches FSPLIT/FFUSE pairs,
+and classifies the result as flat_chain / nested / open_fork_dag / webbed / mixed,
+plus nesting depth, open-fork count, cross-branch count, empty-branch count, and
+T/F branch weight. I wired analyze_topology() into core.py (every Ob3ectArtifact
+now carries a topology_report, serialized to JSON) and into auto.py, both as a
+prompt block telling the generation model flat chains are one option and not the
+default, and as a post-generation classification step. IMSCRIBr's renderer (see
+its own commit today) now takes that report and draws the topology class, nesting
+boxes, depth labels, and branch-weight bar straight from it instead of guessing.
 
-Verified: the batch parses (6 entities, context dir resolves) and p4rakernel is
-green (lake build Imscribing → 8345 jobs) before the run. I did not run auto.py —
-that is yours: cd ~/imsgct/ob3ect && python3 auto.py -f yamls/ring2048_bridge_batch.yaml
-
----
-
-I made the ob3ect ouroboricity tier honest — the Grammar computes it, I do not guess it.
-
-Every ob3ect was stamped with a tier (O₀/O₁/O₂/O∞) on its wiring diagram, in its Lean
-scaffold, and in its JSON. That tier came from three shallow heuristics that never looked
-at the object's imscription — they checked only whether the first and last bootstrap tokens
-matched and whether a Frobenius pair was present. They inflated nearly everything to O₂,
-one to O∞.
-
-I routed every emitter through the Grammar's own verdict: proof_scaffold.ouroboricity_tier,
-which is cl8nk_navigator.assess_tier scored on the 12-primitive tuple the opcodes
-procedurally imscribe. One source of truth, no proxy, no hand-supplied tuple. I keep the
-tier deferred to the Grammar precisely so my bias never enters it.
-
-Fixed at source: emit_scaffold, auto._generate_diagram, batch_diagrams.tier_from_ops, and
-the scaffold wrapper's canonical-class readout. Then I added retier.py and regenerated every
-carrier for all existing objects — diagrams, pen diagrams, scaffolds, and the stored JSON
-scaffolds — plus an orphan sweep for the tracked flat-dump copies under nodraw/ and
-zoom_cosmos/. Two special cases I fixed by hand: the binance py-module scaffold and a stale
-betting diagram with no matching JSON.
-
-The honest verdict is O₀ and O₁ only. The opcode-to-field map can drive just three of the
-eight tier-scoring primitives — criticality, winding, and recognition — to their terminal
-values, so O₁ is the true ceiling for anything built from the current opcodes. That is the
-Grammar being self-diagnostic, and I let it stand.
+Then I reprocessed all 727 existing ob3ects (json + both diagrams) through the
+fixed renderer, batch_diagrams.py, so every diagram on disk, not just new ones,
+shows its real topology instead of a flat line. 197 vault ob3ects included. Spot
+checks confirm nested ones (legendre_s_theorem and others) now show a FLAT or
+NESTED banner, depth markers, and depth-aware lane labels instead of everything
+sitting on Y in {190, 330, 470}.

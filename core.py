@@ -7,6 +7,15 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+try:
+    from ob3ect.topology import TopologyReport, analyze_topology
+except ImportError:
+    try:
+        from topology import TopologyReport, analyze_topology
+    except ImportError:
+        TopologyReport = None
+        analyze_topology = None
+
 class Opcode(Enum):
     VINIT="VINIT"; TANCH="TANCH"; AFWD="AFWD"; AREV="AREV"
     CLINK="CLINK"; IMSCRIB="IMSCRIB"; FSPLIT="FSPLIT"; FFUSE="FFUSE"
@@ -141,6 +150,7 @@ class Ob3ectArtifact:
     bootstrap_sequence: BootstrapSequence; exos_spec: ExOSSpec
     entropy_audit: EntropyAudit; instantiation_notes: str = ""
     lean_scaffold: Optional[str] = None
+    topology_report: Optional[Any] = None  # TopologyReport if topology module available
 
     def validate_all(self):
         return {"phase_0":self.domain_charter.validate(),"phase_1":self.opcode_map.validate(),
@@ -206,6 +216,11 @@ class Ob3ectArtifact:
             parts.append("  -- %d lines total" % len(lines))
         else:
             parts.append("  (not generated)")
+        # Phase 9: Topology
+        if a.topology_report is not None:
+            parts.append("")
+            parts.append("Phase 9: Topology")
+            parts.append("  " + a.topology_report.summary().replace(chr(10), chr(10)+"  "))
         parts.append("="*70)
         parts.append("mu o delta = id -> "+a.split_fuse_report.frobenius_verdict)
         return nl.join(parts)
@@ -221,6 +236,7 @@ class Ob3ectArtifact:
                 "phase_5":asdict(self.exos_spec),
                 "phase_6":asdict(self.entropy_audit)},
             "lean_scaffold":self.lean_scaffold,
+            "topology_report":(self.topology_report.to_dict() if self.topology_report else None),
             "notes":self.instantiation_notes}
 
     def to_json(self, indent=2):

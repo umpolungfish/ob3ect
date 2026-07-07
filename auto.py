@@ -26,6 +26,14 @@ from ob3ect.core import (
     SplitFuseReport, RegisterMapping, BootstrapSequence,
     ExOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode,
 )
+try:
+    from ob3ect.topology import analyze_topology, TOPOLOGY_PROMPT_FRAGMENT
+except ImportError:
+    try:
+        from topology import analyze_topology, TOPOLOGY_PROMPT_FRAGMENT
+    except ImportError:
+        analyze_topology = None
+        TOPOLOGY_PROMPT_FRAGMENT = ""
 from framework.enhanced_llm_provider import get_llm_provider
 
 try:
@@ -196,6 +204,27 @@ There is no fixed length — expand until the full domain is mapped.
 {_OPCODE_REF}
 
 {_IMASM_GRAPH_REF}
+
+TOPOLOGICAL DIVERSITY
+=====================
+The IMASM composition rules explicitly permit nesting, open forks, and cross-branch routing.
+DO NOT default to flat chains when the domain requires richer topology.
+
+NESTING: FSPLIT/FFUSE pairs may nest. A branch can itself contain a sub-fork:
+  FSPLIT EVALT [inner FSPLIT EVALT EVALF FFUSE] EVALF FFUSE
+Use when the domain has hierarchical sub-decisions within a branch.
+
+OPEN FORKS: A FSPLIT without a matching FFUSE creates a permanently divergent path.
+The F-branch starts an independent sub-genesis (often beginning with VINIT).
+Use when the domain has independent parallel processes that never recombine.
+
+CROSS-BRANCH: FSPLIT.F can route to a non-matched FFUSE (entangled/paradice topology).
+Use when failure in one branch affects resolution in another (quantum, paradox, dialetheia).
+
+EMPTY BRANCHES: FSPLIT immediately followed by FFUSE is valid (vacuous evaluation).
+Use when the structural form matters more than a particular branch's content.
+
+Choose the topology that best fits the domain. Flat chains are ONE option, not the default.
 
 CRITICAL FROBENIUS CONSTRAINT:
 The FSPLIT and FFUSE elements must form a genuine pair where FFUSE(FSPLIT(x)) = x in the
@@ -525,6 +554,14 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
                                                     position_labels=position_labels)
         except Exception:
             pass
+
+    # Topology analysis: classify the structural topology of the opcode sequence
+    if analyze_topology is not None:
+        try:
+            ops = [step["opcode"] for step in bootstrap.steps]
+            artifact.topology_report = analyze_topology(ops)
+        except Exception:
+            pass
     return artifact
 
 def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False) -> Optional[Any]:
@@ -569,8 +606,13 @@ def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False) -> Optio
         from proof_scaffold import ouroboricity_tier
         tier = ouroboricity_tier(ops)
 
+        # Pass topology report for topology-aware diagram rendering
+        topo_dict = None
+        if hasattr(artifact, 'topology_report') and artifact.topology_report is not None:
+            topo_dict = artifact.topology_report if isinstance(artifact.topology_report, dict)                 else getattr(artifact.topology_report, 'to_dict', lambda: None)()
+
         return render_wiring_svg_v3(graph, graph.name, tier, graph.description, "",
-                                    pen_mode=pen_mode)
+                                    pen_mode=pen_mode, topology_report=topo_dict)
     except ImportError as e:
         print(f"  Diagram: IMSCRIBr not available ({e}) — skipping")
         return None
