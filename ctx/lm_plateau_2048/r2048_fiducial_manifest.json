@@ -1,0 +1,62 @@
+{
+  "status": "GRAMMAR_ASCENT_L1_L3_COMPLETE_L2_L4_OPEN",
+  "ascent_framework": "ig-docs/kozyrev_mirror/ascent_through_the_layers.md",
+  "ascent_campaign": "ascent_2048_campaign.json",
+  "ascent_verified": "ascent_verification.json \u2014 C=0.920/0.736/0.692, d(L1\u2192L2)=2.76, d(L2\u2192L3)=2.92, d(L3\u2192L4_doc)=2.00",
+  "exact_algebraic_R2048_in_lean": false,
+  "appleby_exact_d2048_published": false,
+  "shadow_lean_definition": "fiducial_from_stark_2048 k = embeddings_2048(k)(stark_unit_2048)",
+  "target_predicate": "SICPOVM_Exists 2048 = exists psi, IsSICPOVM 2048 psi",
+  "overlap_target": "1/2049",
+  "skeleton_not_shadow": "transport_b_fiducial k = omega^hamming(k)/sqrt(2048) is Belnap AFWD only",
+  "stage0_navigator": "r2048_stage0_assessment.json \u2014 s0=O_0, s12(TANCH)=O_1, Frobenius roundtrip OK",
+  "stage1_orbit_budget": "orbit_budget_2048.json \u2014 4194303 raw -> 143 two-adic strata -> 11 symplectic+Zauner orbits",
+  "stage2_skeleton": "skeleton_transport_2048.py \u2014 closed-form T-arm witness, norm=1, NOT SIC",
+  "stage4_field_skeleton": "field_skeleton_2048.txt \u2014 F=Q(sqrt(4190205)), h=64, R~7.624",
+  "numerical_witness_secondary": {
+    "status": "NUMERICAL_WITNESS_ONLY",
+    "best_max_overlap_residual": 0.0051740578544184745,
+    "coords_file": "coords_2048.py"
+  },
+  "mislabeled_files": [
+    "ig-docs/coordinate_witness_1500.txt",
+    "ig-docs/zauner_2048/coordinate_witness_1500.txt",
+    "_scripts/verify_2048_fiducial.py"
+  ],
+  "stage3_geometric_lift": {
+    "artifact": "stage3_floor.json",
+    "method": "143 stratum-rep L-BFGS (Layer 2 sic_geometric_lift_hypothesis)",
+    "max_res_coarse_11": 0.0004880198473644567,
+    "coarse_11_correct_reading": "|ov|^2~1e-7 on (0,b) reps \u2014 error equals target, not floor",
+    "max_res_stratum_143": 0.0026570690704498467,
+    "max_res_random_5k": 0.004542506827231566,
+    "deep_vanish_floor": false,
+    "finding": "11 coarse symplectic+Zauner reps near target; 143 strata insufficient for full SIC \u2014 Galois/min-poly collapse still needs pinned R_2048"
+  },
+  "open_next": [
+    "Stage 5: SIC_D2048_ExistenceRing.lean scaffold + gen_lean_2048_*.py",
+    "Stage 6: embedding capstone -> bridge_of_fiducial",
+    "Stage 3b: PARI high-precision on coarse-11 floor witness for algebraic recognition"
+  ],
+  "witness_1500_identified": {
+    "files": [
+      "ig-docs/coordinate_witness_1500.txt",
+      "ig-docs/zauner_2048/coordinate_witness_1500.txt",
+      "ig-docs/zauner_2048/witness.txt"
+    ],
+    "exact_value": "z = sqrt((1+sqrt(2049))/4096) * exp(i*pi/2048)",
+    "modulus_sq_minpoly": "8192*x^2 - 4*x - 1 (PSLQ, independent)",
+    "match_residual": "~1e-1516 (full 1500-digit agreement)",
+    "verdict": "exact algebraic ANSATZ, generated from closed form; NOT a recovered fiducial coordinate; genuine numerical fiducial has near-flat moduli ~1/2048",
+    "identified": "2026-07-06, mpmath dps=1520"
+  },
+  "full_overlap_solver": {
+    "script": "solve_2048_sic.py",
+    "objective": "ALL d^2-1 overlaps via FFT ambiguity function + analytic Wirtinger gradient",
+    "validation": "gradcheck d=8/12 PASS; d=12 random restart seed 9 -> max_res 8.3e-17 (true SIC)",
+    "seed_full_residual": 0.00648668,
+    "run": "background, seeded from fiducial_d2048_best.npz, ckpt fiducial_d2048_full.{npz,json}",
+    "launched": "2026-07-06"
+  },
+  "lean_a0_stratum": "SIC_D2048_A0Stratum.lean rewritten data-parametric: NO placeholder values in-tree; slots take N : nat -> F2048; builds green"
+}
