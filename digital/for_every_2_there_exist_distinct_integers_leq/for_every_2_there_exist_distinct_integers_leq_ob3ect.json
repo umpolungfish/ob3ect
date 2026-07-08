@@ -1,0 +1,233 @@
+{
+  "name": "For every >2$ there exist distinct integers \\leq x<y<z$ such that\\[\\frac{4}{n} = \\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}.\\]",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "For every >2$ there exist distinct integers \\leq x<y<z$ such that\\[\\frac{4}{n} = \\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}.\\]",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "Egyptian fraction",
+        "modular covering",
+        "Diophantine equation"
+      ],
+      "boundary_condition": "The ring of integers Z and the set of positive unit fractions",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "The unconstrained rational 4/n",
+        "justification": "The initial state before decomposition into unit fractions.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The solved identity 4/n = 1/x + 1/y + 1/z",
+        "justification": "The terminal boundary that closes the equation.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Modular expansion",
+        "justification": "Forward transformation toward a specific covering set.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Infinite descent",
+        "justification": "Reverse transformation to reduce the complexity of the denominator.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Fractional summation",
+        "justification": "Sequential chaining of unit fractions to reach the target sum.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "The integer n",
+        "justification": "The self-referential identity that defines the specific problem instance.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Modular case bifurcation",
+        "justification": "Splitting the search space into residue classes (e.g., n mod 840).",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Covering set unification",
+        "justification": "Reconstituting the general solution from the union of modular residue cases.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Existence of solution {x, y, z}",
+        "justification": "Affirmative evaluation of the conjecture for a given n.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Non-existence / Counterexample",
+        "justification": "Negative evaluation (currently empty for n > 1).",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "The Conjecture state",
+        "justification": "The paradice where existence is held as true but remains unproven for all n.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Verified solution record",
+        "justification": "Permanent append-only record of solutions for specific n (e.g., n up to 10^14).",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Modular case bifurcation",
+      "split_input": "The general problem 4/n",
+      "split_outputs": [
+        "Residue class solutions",
+        "Remaining modular gaps"
+      ],
+      "fuse_element": "Covering set unification",
+      "fuse_result": "The general problem 4/n",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The unstated problem before n is selected",
+      "true_description": "A valid triplet {x, y, z} is found",
+      "false_description": "The search space for a specific n is exhausted without a solution",
+      "both_description": "The conjecture is numerically verified but lacks a universal proof",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the target fraction 4/n for an arbitrary integer n > 1"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify the specific value of n as the problem anchor"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Bifurcate the problem into modular residue classes (e.g., n mod 3, n mod 4)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Apply modular covering identities to the T-arm (residue classes with known solutions)"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the existence of unit fractions for the covered residue classes"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "Apply infinite descent or reduction to the F-arm (residue classes requiring further search)"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Record the failure to find a general identity for the remaining residue classes"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the modular branches into the unified state of the conjecture"
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the conjecture in the paradice state (verified for all tested n, unproven for all n)"
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "Chain the unit fractions 1/x, 1/y, and 1/z into a single sum"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "Permanently record the solution triplet for the current n in the verified ledger"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "Close the system with the terminal identity 4/n = sum(1/x_i)"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Number theoretic reduction rules",
+      "ipc_mechanism": "Modular arithmetic congruences",
+      "memory_mechanism": "The sequence of verified integers n",
+      "scheduler_mechanism": "The natural ordering of integers n = 2, 3, 4...",
+      "alfs_store": "The Erd\u0151s-Straus modular covering table",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational cycles per integer n",
+      "pre_cycle_state": "Unsolved state for n_i",
+      "post_cycle_state": "Verified solution for n_i",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The mathematical truth value is conserved through the transformation from problem to solution.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 ENGAGR \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: For every >2$ there exist distinct integers \\leq x<y<z$ such that\\[\\frac{4}{n} = \\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}.\\]\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc71  | engage paradox \u2014 B-state, both arms\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc73 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def for_every_2_there_exist_distinct_c3cb56_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def for_every_2_there_exist_distinct_c3cb56_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def for_every_2_there_exist_distinct_c3cb56_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_every_2_there_exist_distinct_c3cb56_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def for_every_2_there_exist_distinct_c3cb56_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def for_every_2_there_exist_distinct_c3cb56_protocol : IGProtocol for_every_2_there_exist_distinct_c3cb56_s0 for_every_2_there_exist_distinct_c3cb56_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct for_every_2_there_exist_distinct_c3cb56_s7 for_every_2_there_exist_distinct_c3cb56_s7 = for_every_2_there_exist_distinct_c3cb56_s7 (idempotent)\n  (.seq (.arrow for_every_2_there_exist_distinct_c3cb56_l0 for_every_2_there_exist_distinct_c3cb56_s0 for_every_2_there_exist_distinct_c3cb56_s1) (.seq (.arrow for_every_2_there_exist_distinct_c3cb56_l1 for_every_2_there_exist_distinct_c3cb56_s1 for_every_2_there_exist_distinct_c3cb56_s2) (.seq (.prod (.arrow for_every_2_there_exist_distinct_c3cb56_l2 for_every_2_there_exist_distinct_c3cb56_s2 for_every_2_there_exist_distinct_c3cb56_s7) (.arrow for_every_2_there_exist_distinct_c3cb56_l2 for_every_2_there_exist_distinct_c3cb56_s2 for_every_2_there_exist_distinct_c3cb56_s7)) (.seq (.arrow for_every_2_there_exist_distinct_c3cb56_l7 for_every_2_there_exist_distinct_c3cb56_s7 for_every_2_there_exist_distinct_c3cb56_s7) (.seq (.arrow for_every_2_there_exist_distinct_c3cb56_l7 for_every_2_there_exist_distinct_c3cb56_s7 for_every_2_there_exist_distinct_c3cb56_s8) (.seq (.arrow for_every_2_there_exist_distinct_c3cb56_l8 for_every_2_there_exist_distinct_c3cb56_s8 for_every_2_there_exist_distinct_c3cb56_s9) (.seq (.arrow for_every_2_there_exist_distinct_c3cb56_l9 for_every_2_there_exist_distinct_c3cb56_s9 for_every_2_there_exist_distinct_c3cb56_s10) (.arrow for_every_2_there_exist_distinct_c3cb56_l10 for_every_2_there_exist_distinct_c3cb56_s10 for_every_2_there_exist_distinct_c3cb56_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def for_every_2_there_exist_distinct_c3cb56_true_arm : IGProtocol for_every_2_there_exist_distinct_c3cb56_s0 for_every_2_there_exist_distinct_c3cb56_s11 :=\n  (for_every_2_there_exist_distinct_c3cb56_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def for_every_2_there_exist_distinct_c3cb56_false_arm : IGProtocol for_every_2_there_exist_distinct_c3cb56_s0 for_every_2_there_exist_distinct_c3cb56_s11 :=\n  (for_every_2_there_exist_distinct_c3cb56_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef for_every_2_there_exist_distinct_c3cb56_tier : OuroboricityTier := TierFunctor.obj for_every_2_there_exist_distinct_c3cb56_s0\n#eval for_every_2_there_exist_distinct_c3cb56_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem for_every_2_there_exist_distinct_c3cb56_frobenius :\n    igFrobeniusAlg.mul for_every_2_there_exist_distinct_c3cb56_s0 for_every_2_there_exist_distinct_c3cb56_s0 = for_every_2_there_exist_distinct_c3cb56_s0 :=\n  igFrobAlg_self_fusion for_every_2_there_exist_distinct_c3cb56_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: For every >2$ there exist distinct integers \\leq x<y<z$ such that\\[\\frac{4}{n} = \\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}.\\]"
+}

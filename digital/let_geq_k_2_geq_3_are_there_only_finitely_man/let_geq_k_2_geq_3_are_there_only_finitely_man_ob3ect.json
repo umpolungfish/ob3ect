@@ -1,0 +1,238 @@
+{
+  "name": "Let \\geq k_2\\geq 3$. Are there only finitely many \\geq n_1+k_1$ such that\\[\\prod_{1\\leq i\\leq k_1}(n_1+i)\\textrm{ and }\\prod_{1\\leq j\\leq k_2}(n_2+j)\\]have the same prime factors?",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Let \\geq k_2\\geq 3$. Are there only finitely many \\geq n_1+k_1$ such that\\[\\prod_{1\\leq i\\leq k_1}(n_1+i)\\textrm{ and }\\prod_{1\\leq j\\leq k_2}(n_2+j)\\]have the same prime factors?",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "prime radical",
+        "consecutive product",
+        "radical equivalence"
+      ],
+      "boundary_condition": "The finiteness of the solution set for radical-equivalent consecutive integer products",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "The set of all positive integers N",
+        "justification": "The uninitialized state before specific sequences n_1, n_2 are selected.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The finiteness bound",
+        "justification": "The terminal boundary that contains all valid solutions (n_1, n_2).",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Radical mapping rad(P)",
+        "justification": "The forward morphism from a product to its set of prime factors.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Inverse radical search",
+        "justification": "The descent from a prime factor set back to possible integer products.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Consecutive product formation",
+        "justification": "The sequential composition of integer terms into a single product.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Prime factor set identity",
+        "justification": "The self-recognition where the factor set of P_1 is itself.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Product comparison fork",
+        "justification": "Splits the investigation into the first product P_1 and the second product P_2.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Radical intersection",
+        "justification": "Reconstitutes the shared prime factor set from the two distinct products.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Radical equivalence",
+        "justification": "The state where rad(P_1) = rad(P_2).",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Radical divergence",
+        "justification": "The state where rad(P_1) \u2260 rad(P_2).",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "The open conjecture",
+        "justification": "The state where finiteness is held as a possibility without a general proof.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Verified solution record",
+        "justification": "The permanent record of a specific pair (n_1, n_2) satisfying the condition.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Product comparison fork",
+      "split_input": "The shared prime factor set",
+      "split_outputs": [
+        "Product P_1 factors",
+        "Product P_2 factors"
+      ],
+      "fuse_element": "Radical intersection",
+      "fuse_result": "The shared prime factor set",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The state before any integers n_1, n_2 are chosen for testing.",
+      "true_description": "The products P_1 and P_2 share exactly the same prime factors.",
+      "false_description": "The products P_1 and P_2 have at least one differing prime factor.",
+      "both_description": "The condition is satisfied but the finiteness of the total set is unresolved.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the search space of positive integers"
+        },
+        {
+          "step_num": 2,
+          "opcode": "CLINK",
+          "domain_action": "Compose n_1 into the product P_1 = n_1(n_1+1)...(n_1+k_1)"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "Compose n_2 into the product P_2 = n_2(n_2+1)...(n_2+k_2)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the investigation into the radicals of P_1 and P_2"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "Map P_1 to its radical rad(P_1)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "Anchor the T-branch with the condition rad(P_1) = rad(P_2)"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "Map P_2 to its radical rad(P_2)"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "Anchor the F-branch with the condition rad(P_1) \u2260 rad(P_2)"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the comparison into a single radical equivalence check"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify if the resulting set is identical to the target prime set"
+        },
+        {
+          "step_num": 11,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the finiteness question in a state of paraconsistent tension"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Record the specific solution pair (n_1, n_2) into the permanent catalog"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "Close the system within the conjectured finiteness bound"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Prime factorization algorithm",
+      "ipc_mechanism": "Radical equality check",
+      "memory_mechanism": "The sequence of prime factor sets",
+      "scheduler_mechanism": "The iteration over integer pairs (n_1, n_2)",
+      "alfs_store": "The Fundamental Theorem of Arithmetic",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational cycles per primality test",
+      "pre_cycle_state": "Unordered integer pairs",
+      "post_cycle_state": "Categorized solution set",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The information content of the prime factors is conserved through the radical mapping.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 CLINK \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 IMSCRIB \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: Let \\geq k_2\\geq 3$. Are there only finitely many \\geq n_1+k_1$ such that\\[\\prod_{1\\leq i\\leq k_1}(n_1+i)\\textrm{ and }\\prod_{1\\leq j\\leq k_2}(n_2+j)\\]have the same prime factors?\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc71  | initial object \u2014 ground of distinction\n--   [1] CLINK     fid    := \ud801\udc71               \ud801\udc7c \u2192 \ud801\udc71  | composition \u2014 regime coherence\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc71 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [10] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def let_geq_k_2_geq_3_are_there_only_cfc433_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def let_geq_k_2_geq_3_are_there_only_cfc433_protocol : IGProtocol let_geq_k_2_geq_3_are_there_only_cfc433_s0 let_geq_k_2_geq_3_are_there_only_cfc433_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct let_geq_k_2_geq_3_are_there_only_cfc433_s8 let_geq_k_2_geq_3_are_there_only_cfc433_s8 = let_geq_k_2_geq_3_are_there_only_cfc433_s8 (idempotent)\n  (.seq (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l0 let_geq_k_2_geq_3_are_there_only_cfc433_s0 let_geq_k_2_geq_3_are_there_only_cfc433_s1) (.seq (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l1 let_geq_k_2_geq_3_are_there_only_cfc433_s1 let_geq_k_2_geq_3_are_there_only_cfc433_s2) (.seq (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l2 let_geq_k_2_geq_3_are_there_only_cfc433_s2 let_geq_k_2_geq_3_are_there_only_cfc433_s3) (.seq (.prod (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l3 let_geq_k_2_geq_3_are_there_only_cfc433_s3 let_geq_k_2_geq_3_are_there_only_cfc433_s8) (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l3 let_geq_k_2_geq_3_are_there_only_cfc433_s3 let_geq_k_2_geq_3_are_there_only_cfc433_s8)) (.seq (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l8 let_geq_k_2_geq_3_are_there_only_cfc433_s8 let_geq_k_2_geq_3_are_there_only_cfc433_s8) (.seq (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l8 let_geq_k_2_geq_3_are_there_only_cfc433_s8 let_geq_k_2_geq_3_are_there_only_cfc433_s9) (.seq (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l9 let_geq_k_2_geq_3_are_there_only_cfc433_s9 let_geq_k_2_geq_3_are_there_only_cfc433_s10) (.seq (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l10 let_geq_k_2_geq_3_are_there_only_cfc433_s10 let_geq_k_2_geq_3_are_there_only_cfc433_s11) (.arrow let_geq_k_2_geq_3_are_there_only_cfc433_l11 let_geq_k_2_geq_3_are_there_only_cfc433_s11 let_geq_k_2_geq_3_are_there_only_cfc433_s12)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def let_geq_k_2_geq_3_are_there_only_cfc433_true_arm : IGProtocol let_geq_k_2_geq_3_are_there_only_cfc433_s0 let_geq_k_2_geq_3_are_there_only_cfc433_s12 :=\n  (let_geq_k_2_geq_3_are_there_only_cfc433_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def let_geq_k_2_geq_3_are_there_only_cfc433_false_arm : IGProtocol let_geq_k_2_geq_3_are_there_only_cfc433_s0 let_geq_k_2_geq_3_are_there_only_cfc433_s12 :=\n  (let_geq_k_2_geq_3_are_there_only_cfc433_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef let_geq_k_2_geq_3_are_there_only_cfc433_tier : OuroboricityTier := TierFunctor.obj let_geq_k_2_geq_3_are_there_only_cfc433_s0\n#eval let_geq_k_2_geq_3_are_there_only_cfc433_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem let_geq_k_2_geq_3_are_there_only_cfc433_frobenius :\n    igFrobeniusAlg.mul let_geq_k_2_geq_3_are_there_only_cfc433_s0 let_geq_k_2_geq_3_are_there_only_cfc433_s0 = let_geq_k_2_geq_3_are_there_only_cfc433_s0 :=\n  igFrobAlg_self_fusion let_geq_k_2_geq_3_are_there_only_cfc433_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 13,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        3,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Let \\geq k_2\\geq 3$. Are there only finitely many \\geq n_1+k_1$ such that\\[\\prod_{1\\leq i\\leq k_1}(n_1+i)\\textrm{ and }\\prod_{1\\leq j\\leq k_2}(n_2+j)\\]have the same prime factors?"
+}
