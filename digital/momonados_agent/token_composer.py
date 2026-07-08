@@ -236,7 +236,7 @@ def validate_dag(tokens: List[Token]) -> DAGValidity:
     # Adjacency warnings
     for i in range(n - 1):
         if not ADJACENCY.get(t[i], {}).get(t[i+1], True):
-            warnings.append(f"Position {i}: unusual adjacency {t[i].name}→{t[i+1].name}")
+            warnings.append(f"Position {i}: non-canonical adjacency {t[i].name}→{t[i+1].name} (valid but not in reference patterns)")
     
     is_valid = len(errors) == 0
     
@@ -324,6 +324,119 @@ def compose_from_str(s: str) -> Tuple[Token, ...]:
             raise ValueError(f"Unknown token: {p}")
     return tuple(result)
 
+def compose_raw(*token_names: str) -> Tuple[Token, ...]:
+    """Free-form composition: take raw token names and create a program.
+    No validation, no canonical matching — pure creative assembly.
+    Use this when you want to build a novel program not derived from any schema."""
+    result = []
+    for name in token_names:
+        try:
+            result.append(Token[name.strip()])
+        except KeyError:
+            raise ValueError(f"Unknown token: {name.strip()}. Valid: {[t.name for t in Token]}")
+    return tuple(result)
+
+
+def compose_bend(tokens: Tuple[Token, ...], operation: str, *args) -> Tuple[Token, ...]:
+    """Bend/mutate a schema — take a pattern and reshape it.
+    
+    Operations:
+      swap(i,j)  — swap tokens at positions i,j
+      ins(pos,t) — insert token t at position pos
+      drop(pos)   — remove token at position pos
+      rot(n)      — rotate by n positions (positive=left, negative=right)
+      rev         — reverse the entire sequence
+      shuffle(pos_list) — reorder by position list
+      dup(i)      — duplicate token at position i
+      graft(i,j)  — move token at i to after position j
+    """
+    t = list(tokens)
+    if operation == "swap" and len(args) >= 2:
+        i, j = int(args[0]), int(args[1])
+        t[i % len(t)], t[j % len(t)] = t[j % len(t)], t[i % len(t)]
+    elif operation == "ins" and len(args) >= 2:
+        pos, tok = int(args[0]), args[1]
+        t.insert(pos % (len(t)+1), Token[tok.strip()])
+    elif operation == "drop" and len(args) >= 1:
+        pos = int(args[0])
+        if len(t) > 1:
+            t.pop(pos % len(t))
+    elif operation == "rot" and len(args) >= 1:
+        n = int(args[0])
+        if n > 0:
+            t = t[n:] + t[:n]
+        elif n < 0:
+            t = t[n:] + t[:n]
+    elif operation == "rev":
+        t.reverse()
+    elif operation == "dup" and len(args) >= 1:
+        pos = int(args[0])
+        t.insert(pos % (len(t)+1), t[pos % len(t)])
+    elif operation == "graft" and len(args) >= 2:
+        i, j = int(args[0]), int(args[1])
+        if i < len(t):
+            tok = t.pop(i)
+            t.insert(j % (len(t)+1), tok)
+    elif operation == "shuffle" and args:
+        positions = [int(a) for a in args]
+        if sorted(positions) == list(range(len(t))):
+            t = [t[p] for p in positions]
+    return tuple(t)
+
+
+def compose_splice(a: Tuple[Token, ...], b: Tuple[Token, ...], position: int = None) -> Tuple[Token, ...]:
+    """Splice schema b into schema a at position (default: midpoint)."""
+    if position is None:
+        position = len(a) // 2
+    return a[:position] + b + a[position:]
+
+
+def compose_interleave(*schemas: Tuple[Token, ...]) -> Tuple[Token, ...]:
+    """Weave multiple schemas together: a[0], b[0], c[0], a[1], b[1], c[1], ..."""
+    result = []
+    max_len = max(len(s) for s in schemas)
+    for i in range(max_len):
+        for s in schemas:
+            if i < len(s):
+                result.append(s[i])
+    return tuple(result)
+
+
+def compose_schema(name_or_tokens, *mutations) -> Tuple[Token, ...]:
+    """Start from a named schema or raw token list and optionally apply mutations.
+    
+    Examples:
+      compose_schema("bootstrap_atom")                        — use schema as-is
+      compose_schema("frobenius_pair", "rev")                 — reversed frobenius
+      compose_schema("IMSCRIB,AFWD,FSPLIT,AREV,FFUSE,IFIX")  — raw token names
+      compose_schema("bootstrap_atom", "rot:3", "dup:2")     — rotated then duplicated
+      compose_schema("dialetheia_triad", "ins:0:VINIT")       — insert VINIT at start
+    """
+    # Resolve the base
+    spec = name_or_tokens.strip()
+    if spec in NAMED_PATTERNS:
+        tokens = NAMED_PATTERNS[spec]
+    elif spec in CANONICAL_PROGRAMS:
+        tokens = CANONICAL_PROGRAMS[spec]
+    elif "," in spec or "→" in spec:
+        # Raw token names
+        if "→" in spec:
+            tokens = compose_from_str(spec)
+        else:
+            tokens = compose_raw(*[t.strip() for t in spec.split(",")])
+    else:
+        raise ValueError(f"Unknown schema: {spec}")
+    
+    # Apply mutations in order
+    for mut in mutations:
+        parts = mut.split(":")
+        op = parts[0].strip()
+        args = parts[1:] if len(parts) > 1 else []
+        tokens = compose_bend(tokens, op, *args)
+    
+    return tokens
+
+
 # All composition operations
 COMPOSERS = {
     "concat": compose_concat,
@@ -336,6 +449,12 @@ COMPOSERS = {
     "repeat": compose_repeat,
     "named": compose_named,
     "from_str": compose_from_str,
+    "raw": compose_raw,
+    "free": compose_raw,
+    "bend": compose_bend,
+    "splice": compose_splice,
+    "interleave": compose_interleave,
+    "schema": compose_schema,
 }
 
 # ========================== STRUCTURAL FINGERPRINT =========================
@@ -530,11 +649,17 @@ def all_composition_rules() -> str:
     lines.append("TOKEN COMPOSITION RULES — Comprehensive Reference")
     lines.append("=" * 70)
     lines.append("")
-    lines.append("12 IMASM Tokens (4 families):")
+    lines.append("12 IMASM Tokens (4 families) — any token can follow any token:")
     lines.append("  LOGICAL (6):    VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB")
     lines.append("  FROBENIUS (2):  FSPLIT (δ), FFUSE (μ)  — μ∘δ=id pair")
     lines.append("  DIALETHEIA (3): EVALT, EVALF, ENGAGR   — Belnap FOUR gates")
     lines.append("  LINEAR (1):     IFIX                     — irreversible fixation")
+    lines.append("")
+    lines.append("CRITICAL: These are SCHEMAS, not constraints. The 12 canonical classes and")
+    lines.append("15 named sub-patterns are starting points — you can freely compose, bend,")
+    lines.append("splice, interleave, mutate, invert, or create entirely novel programs.")
+    lines.append("The adjacency matrix tracks which transitions appear in reference patterns;")
+    lines.append("non-canonical transitions are valid and encouraged when the task calls for it.")
     lines.append("")
     lines.append("--- DAG Validity Rules ---")
     lines.append("  R1: FSPLIT must be matched by FFUSE (stack balance)")

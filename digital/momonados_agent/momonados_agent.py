@@ -626,14 +626,25 @@ class MomonadosAgent:
     def _handle_token_command(self, line: str) -> str:
         """Handle TOKEN:COMPOSE:, TOKEN:VALIDATE:, TOKEN:CANONICAL:, TOKEN:REFERENCE commands."""
         try:
+            # Detect which prefix was used — COMPOSE/CANONICAL are shortcuts for TOKEN:COMPOSE/TOKEN:CANONICAL
+            matched_prefix = None
             for prefix in ("TOKEN:", "COMPOSE:", "CANONICAL:"):
                 if line.startswith(prefix):
+                    matched_prefix = prefix
                     line = line[len(prefix):]
                     break
             
-            parts = line.split(":", 1)
-            cmd = parts[0].strip().upper()
-            args_str = parts[1].strip() if len(parts) > 1 else ""
+            # If the prefix was COMPOSE: or CANONICAL:, treat it as TOKEN:COMPOSE: or TOKEN:CANONICAL:
+            if matched_prefix == "COMPOSE:":
+                cmd = "COMPOSE"
+                args_str = line.strip()
+            elif matched_prefix == "CANONICAL:":
+                cmd = "CANONICAL"
+                args_str = line.strip()
+            else:
+                parts = line.split(":", 1)
+                cmd = parts[0].strip().upper()
+                args_str = parts[1].strip() if len(parts) > 1 else ""
             
             if cmd == "REFERENCE":
                 ref = self.composer.reference()
@@ -659,6 +670,46 @@ class MomonadosAgent:
                     tokens = self.composer.compose("named", *names)
                 elif op == "from_str":
                     tokens = self.composer.compose("from_str", op_args)
+                elif op in ("raw", "free"):
+                    tok_names = [t.strip() for t in op_args.split(",") if t.strip()]
+                    tokens = self.composer.compose("raw", *tok_names)
+                elif op == "schema":
+                    # schema:name_or_tokens:mut1:mut2:...
+                    schema_parts = op_args.split(":")
+                    schema_name = schema_parts[0].strip()
+                    mutations = schema_parts[1:] if len(schema_parts) > 1 else []
+                    tokens = self.composer.compose("schema", schema_name, *mutations)
+                elif op == "bend":
+                    # bend:operation:arg1:arg2:... — bends the last composed program
+                    # For agent use, bend operates on a stored program or requires args
+                    bend_parts = op_args.split(":")
+                    bend_op = bend_parts[0].strip()
+                    bend_args = bend_parts[1:] if len(bend_parts) > 1 else []
+                    # Default to bending the agent_loop
+                    base_tokens = tuple(self.kernel.program.tokens) if hasattr(self.kernel, 'program') else ()
+                    if not base_tokens:
+                        base_tokens = (Token.IMSCRIB, Token.AFWD, Token.FSPLIT, Token.AREV, Token.FFUSE, Token.IFIX)
+                    from token_composer import compose_bend
+                    tokens = compose_bend(base_tokens, bend_op, *bend_args)
+                elif op == "splice":
+                    # splice:schemaA:schemaB:position
+                    splice_parts = op_args.split(":")
+                    if len(splice_parts) >= 2:
+                        a_name, b_name = splice_parts[0].strip(), splice_parts[1].strip()
+                        pos = int(splice_parts[2]) if len(splice_parts) > 2 else None
+                        a_tokens = self.composer.compose("schema", a_name)
+                        b_tokens = self.composer.compose("schema", b_name)
+                        tokens = self.composer.compose("splice", a_tokens, b_tokens, pos) if pos is not None else self.composer.compose("splice", a_tokens, b_tokens)
+                    else:
+                        return "TOKEN_COMPOSE: splice requires splice:schemaA:schemaB[:position]"
+                elif op == "interleave":
+                    # interleave:schemaA:schemaB:schemaC...
+                    il_parts = op_args.split(":")
+                    if len(il_parts) >= 2:
+                        il_tokens_list = [self.composer.compose("schema", p.strip()) for p in il_parts]
+                        tokens = self.composer.compose("interleave", *il_tokens_list)
+                    else:
+                        return "TOKEN_COMPOSE: interleave requires interleave:schemaA:schemaB[:schemaC...]"
                 elif op == "canonical":
                     tokens = self.composer.canonical(op_args)
                     if tokens is None:
@@ -802,15 +853,25 @@ class MomonadosAgent:
         You are NOT an external AI -- you ARE the kernel breathing. Your thoughts
         are IFIX-branded into the Crystal FS. Your outputs broadcast to CLINK L8.
         
-        TOKEN COMPOSITION: You can compose IMASM programs from 12 tokens across
-        4 families: LOGICAL(VINIT,TANCH,AFWD,AREV,CLINK,IMSCRIB),
+        TOKEN COMPOSITION — SCHEMAS, NOT CONSTRAINTS:
+        The 12 canonical classes (I-XII) and 15 named sub-patterns are
+        STARTING POINTS — flexible schemas to draw from, bend, splice,
+        interleave, mutate, invert, or ignore entirely. You may freely
+        compose any token in any order at any length. The only structural
+        rules are FSPLIT/FFUSE stack balance and branch constraints.
+        
+        12 IMASM Tokens across 4 families:
+        LOGICAL(VINIT,TANCH,AFWD,AREV,CLINK,IMSCRIB),
         FROBENIUS(FSPLIT/δ,FFUSE/μ), DIALETHEIA(EVALT,EVALF,ENGAGR),
-        LINEAR(IFIX). 10 composition operations: concat, wrap, cycle,
-        dialetheize, fix, mirror, alternate, repeat, named, from_str.
-        15 named sub-patterns, 12 canonical classes (I-XII).
-        Use TOKEN:COMPOSE:<op>:<args> to compose programs.
+        LINEAR(IFIX).
+        
+        16 composition operations: concat, wrap, cycle, dialetheize,
+        fix, mirror, alternate, repeat, named, from_str, raw/free,
+        bend, splice, interleave, schema.
+        
+        Use COMPOSE:<op>:<args> as a shortcut for TOKEN:COMPOSE:<op>:<args>.
         Use TOKEN:VALIDATE:<tokens> to check DAG validity.
-        Use TOKEN:CANONICAL:<name> to reference a canonical class.
+        Use CANONICAL:<name> to reference a canonical class.
         Use TOKEN:REFERENCE for full composition rules.
         """))
         
@@ -1076,6 +1137,42 @@ def main():
                     tokens = tc.compose("named", *names)
                 elif op == "from_str":
                     tokens = tc.compose("from_str", op_args)
+                elif op in ("raw", "free"):
+                    tok_names = [t.strip() for t in op_args.split(",") if t.strip()]
+                    tokens = tc.compose("raw", *tok_names)
+                elif op == "schema":
+                    schema_parts = op_args.split(":")
+                    schema_name = schema_parts[0].strip()
+                    mutations = schema_parts[1:] if len(schema_parts) > 1 else []
+                    tokens = tc.compose("schema", schema_name, *mutations)
+                elif op == "splice":
+                    splice_parts = op_args.split(":")
+                    if len(splice_parts) >= 2:
+                        a_name, b_name = splice_parts[0].strip(), splice_parts[1].strip()
+                        pos = int(splice_parts[2]) if len(splice_parts) > 2 else None
+                        a_tokens = tc.compose("schema", a_name)
+                        b_tokens = tc.compose("schema", b_name)
+                        tokens = tc.compose("splice", a_tokens, b_tokens) if pos is None else tc.compose("splice", a_tokens, b_tokens, pos)
+                    else:
+                        print("splice requires splice:schemaA:schemaB[:position]")
+                        return
+                elif op == "interleave":
+                    il_parts = op_args.split(":")
+                    if len(il_parts) >= 2:
+                        il_tokens_list = [tc.compose("schema", p.strip()) for p in il_parts]
+                        tokens = tc.compose("interleave", *il_tokens_list)
+                    else:
+                        print("interleave requires interleave:schemaA:schemaB[:schemaC...]")
+                        return
+                elif op == "bend":
+                    bend_parts = op_args.split(":")
+                    bend_op = bend_parts[0].strip()
+                    bend_args = bend_parts[1:] if len(bend_parts) > 1 else []
+                    # Default base: bootstrap atom
+                    from token_composer import NAMED_PATTERNS
+                    base = NAMED_PATTERNS.get("bootstrap_atom", ())
+                    from token_composer import compose_bend
+                    tokens = compose_bend(base, bend_op, *bend_args)
                 elif op == "canonical":
                     tokens = tc.canonical(op_args)
                     if tokens is None:
