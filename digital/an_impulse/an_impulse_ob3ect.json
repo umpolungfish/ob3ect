@@ -1,0 +1,249 @@
+{
+  "name": "an impulse",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "an impulse",
+      "domain_type": "neurological",
+      "scope": "local",
+      "surface_tokens": [
+        "resting potential",
+        "depolarization",
+        "refractory period"
+      ],
+      "boundary_condition": "The neuronal cell membrane",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Resting membrane potential",
+        "justification": "The baseline electrochemical gradient before stimulus arrival",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Homeostatic recovery",
+        "justification": "The return to baseline that closes the event window",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Inward sodium influx",
+        "justification": "The movement toward the threshold of excitation",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Outward potassium efflux",
+        "justification": "The movement toward repolarization and descent from the peak",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Axonal propagation",
+        "justification": "The sequential chain of segment deploarizations",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Autocatalytic threshold",
+        "justification": "The voltage level where the channel recognizes its own state to trigger opening",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Bifurcation of signal",
+        "justification": "The division of the pulse into an active transmission branch and a metabolic cost branch",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Action potential culmination",
+        "justification": "The reunification of signal and metabolic recovery into a completed pulse",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Suprathreshold firing",
+        "justification": "Successful generation of the all or none spike",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Subthreshold decay",
+        "justification": "Failure to reach the firing threshold",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Relative refractory period",
+        "justification": "A state where the neuron is both excited and inhibited simultaneously",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Synaptic weight record",
+        "justification": "The permanent chemical trace left by the impulse passage",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Bifurcation of signal",
+      "split_input": "Voltage gated charge",
+      "split_outputs": [
+        "Active transduction",
+        "Ion pump demand"
+      ],
+      "fuse_element": "Action potential culmination",
+      "fuse_result": "Voltage gated charge",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The silent synapse before neurotransmitter binding",
+      "true_description": "The binary 1 of a successful discharge spike",
+      "false_description": "The binary 0 of a graded potential that failed to fire",
+      "both_description": "The interference pattern of simultaneous EPSP and IPSP signals",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialization of the resting potential at negative seventy millivolts"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "The membrane monitors its own voltage state to detect fluctuations"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "The stimulus initiates a positive voltage shift toward the threshold"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "The membrane evaluates whether the depolarization meets requirements"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "The threshold is surpassed leading to the primary firing arm"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "Rapid opening of sodium channels in a sequential chain reaction"
+        },
+        {
+          "step_num": 7,
+          "opcode": "IFIX",
+          "domain_action": "The peak voltage is reached and recorded as a discrete event"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "Potassium channels open to initiate the downward phase"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "The recovery phase joins the signal completion to finalize the cycle"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FSPLIT",
+          "domain_action": "The system enters a second sub-decision for immediate re-firing"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALF",
+          "domain_action": "The absolute refractory period prevents any immediate new impulse"
+        },
+        {
+          "step_num": 12,
+          "opcode": "ENGAGR",
+          "domain_action": "The relative refractory period permits firing only with high intensity"
+        },
+        {
+          "step_num": 13,
+          "opcode": "FFUSE",
+          "domain_action": "The period of instability resolves into a single recovery state"
+        },
+        {
+          "step_num": 14,
+          "opcode": "TANCH",
+          "domain_action": "The pump restores original ion concentrations and seals the event"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Voltage gated ion channel protein structures",
+      "ipc_mechanism": "Electrochemical gradient shifts and neurotransmission",
+      "memory_mechanism": "Vesicle depletion and long term potentiation state",
+      "scheduler_mechanism": "Biological clock and local circuit refractory timers",
+      "alfs_store": "The genetic encoding for channel density and type",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Adenosine triphosphate for sodium potassium pump operation",
+      "pre_cycle_state": "Ordered electrochemical gradient at rest",
+      "post_cycle_state": "Restored ordered electrochemical gradient after dissipation",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 Metabolic energy expenditure maintains the gradient order over the cycle",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 IFIX \u2192 AREV \u2192 FFUSE \u2192 FSPLIT \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 TANCH\n-- Class: an impulse\n-- Fingerprint: sig=(6,4,3,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 8), (9, 12)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [9] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [10] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [11] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc61  | fuse \u03bc \u2014 assembly mode\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc59 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def an_impulse_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def an_impulse_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def an_impulse_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def an_impulse_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def an_impulse_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def an_impulse_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def an_impulse_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def an_impulse_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def an_impulse_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def an_impulse_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def an_impulse_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def an_impulse_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_impulse_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def an_impulse_protocol : IGProtocol an_impulse_s0 an_impulse_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct an_impulse_s8 an_impulse_s8 = an_impulse_s8 (idempotent)\n  (.seq (.arrow an_impulse_l0 an_impulse_s0 an_impulse_s1) (.seq (.arrow an_impulse_l1 an_impulse_s1 an_impulse_s2) (.seq (.arrow an_impulse_l2 an_impulse_s2 an_impulse_s3) (.seq (.prod (.arrow an_impulse_l3 an_impulse_s3 an_impulse_s8) (.arrow an_impulse_l3 an_impulse_s3 an_impulse_s8)) (.seq (.arrow an_impulse_l8 an_impulse_s8 an_impulse_s8) (.seq (.arrow an_impulse_l8 an_impulse_s8 an_impulse_s9) (.seq (.arrow an_impulse_l9 an_impulse_s9 an_impulse_s10) (.seq (.arrow an_impulse_l10 an_impulse_s10 an_impulse_s11) (.seq (.arrow an_impulse_l11 an_impulse_s11 an_impulse_s12) (.arrow an_impulse_l12 an_impulse_s12 an_impulse_s13))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def an_impulse_true_arm : IGProtocol an_impulse_s0 an_impulse_s13 :=\n  (an_impulse_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def an_impulse_false_arm : IGProtocol an_impulse_s0 an_impulse_s13 :=\n  (an_impulse_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef an_impulse_tier : OuroboricityTier := TierFunctor.obj an_impulse_s0\n#eval an_impulse_tier  -- the Grammar's own verdict on its tier\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 4,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3,
+      9
+    ],
+    "fuse_positions": [
+      8,
+      12
+    ],
+    "pair_list": [
+      [
+        3,
+        8
+      ],
+      [
+        9,
+        12
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: an impulse"
+}
