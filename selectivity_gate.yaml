@@ -1,0 +1,24 @@
+# ob3ect batch: the Semantic Selectivity Gate for MoDoT — the live-loop
+# counterpart of the semantic_branch_verifier ob3ect. Auto-design it through
+# the Grammar instead of hand-cobbling it: Frobenius closure (mu.delta=id) is
+# BALANCE and never fails; SELECTIVITY (was the correct branch selected?) is the
+# separate verdict that CAN fail. Lands beside semantic_branch_verifier so the
+# runtime gate in modot/selectivity.py can be re-derived as a faithful port of a
+# procedurally-sourced, Grammar-typed ob3ect (scaffold-build-on-it), not invented.
+#
+# Run:  cd /home/mrnob0dy666/imsgct/ob3ect && python3 auto.py -f selectivity_gate.yaml
+
+name: selectivity_gate
+out_dir: /home/mrnob0dy666/imsgct/MoDoT/ob3ects
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  domain: computational
+  temperature: 0.0
+  context: "/home/mrnob0dy666/.claude/projects/-home-mrnob0dy666-imsgct/memory/project_charge_conservation_frobenius.md"
+  entry: "frobenius_roundtrip_loss,polynomial_time_verifier,stone_self_verifying_proof_kernel,chiral_selection,machine_verified_mathematics,ouroborotic_primitive_composition_schema"
+
+entities:
+  - "the semantic selectivity gate: the live-loop counterpart of semantic branch verification that grades an open answer against a correctness schema it synthesizes on the fly. Frobenius closure, mu circ delta equals id, guarantees only balance, that every FSPLIT is rejoined by FFUSE so no charge is lost, and balance is automatic and cannot fail, so it is not a correctness signal; selectivity is the separate question of whether the correct branch was selected during recombination. With no predefined schema the gate performs an adversarial examiner pass that states what any correct answer MUST satisfy and MUSTNOT violate, refusing to assume the question's premise is true, then runs two verification arms: EVALT for isomorphic match against the MUST criteria yielding assertibility, and EVALF for collision detection of any MUSTNOT violation or internal self-contradiction yielding deniability. The two arms fold to Belnap FOUR exactly as the kernel dialetheia gates do: assertible and not deniable is True, deniable and not assertible is False, both together is the dialetheic Both, neither is the vacuous Neither. Because False and Both are reachable the gate can fail, and that reachable failure is what distinguishes selectivity from the balance harness that never fails. With full Frobenius closure and Lean 4 verification scaffold."
