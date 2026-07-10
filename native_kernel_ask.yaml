@@ -1,0 +1,133 @@
+# ob3ect: native kernel `ask` — MoDoT-parity language interface on mOMonadOS
+# without Python. Designs the full operational surface: command grammar,
+# pipeline order, substrate mapping (kernel / Lean / catalog), and honest scope.
+#
+# Run:
+#   cd /home/mrnob0dy666/imsgct/ob3ect && \
+#   python3 auto.py -f native_kernel_ask.yaml \
+#     --provider openrouter --model google/gemini-3-flash-preview
+
+name: native_kernel_ask
+out_dir: /home/mrnob0dy666/imsgct/mOMonadOS/ob3ects
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  domain: computational
+  temperature: 0.0
+  entry: "witness_vessel,dual_link_sic_povm,semantic_branch_verifier,selectivity_gate,janus_gate,frobenius_ob3ect,clink_layer8_organism,vae_vita_composition"
+
+entities:
+  - |
+    Native kernel ASK — full MoDoT-parity language interface on bare-metal mOMonadOS
+    without ever invoking Python.
+
+    PROBLEM
+    -------
+    Operators must query the organism with free-text questions the same way MoDoT
+    does today via:
+
+      python3 momonados_agent.py --ask "..."
+      python3 momonados_agent.py --ask ./questions/q7.txt
+      python3 momonados_agent.py --file path
+      # options: --verbose, --no-selectivity, --program, --model, --dry-run, --cycles
+
+    MoDoT's live breath is one ManuscriptSpine pipeline:
+
+      prepare(question)  → IMSCRIB demand type + catalog witness scaffold
+      LLM answer         → FSPLIT (model produces the answer text)
+      complete(q, a, v)  → EVALT/EVALF Dual-Link SIC co-type + FFUSE model⋈vessel
+                           + IFIX brand (SpineReport with prove/unify/port/witness faces)
+
+    Interfacing with the KERNEL DIRECTLY means running ASK natively on mOMonadOS
+    (Rust no_std, serial REPL over QEMU/hardware), NOT a Python script that mirrors
+    the kernel. Python MoDoT is the wrong wineskin for this requirement.
+
+    What already exists natively (must be reused, not reinvented):
+      - mOMonadOS REPL: vessel run, spine, d12 duallink/existence/lean-status, frob,
+        cl8nk entry|distance|tier|tensor|meet|join, clay, catalog.rs, cl8nk.rs,
+        witness_vessel.rs, frob_verify.rs, kernel FSPLIT/FFUSE, Dual-Link d12_sic
+      - Lean formal spine: DualLinkVessel, SIC_D12_WitnessVessel.witness_vessel_lossless,
+        VAE_Vita_{Bridge,Unify,Port,ManuscriptSpine}
+      - Full IG catalog JSON (~5k entries) on host; kernel static catalog is a small
+        foundational subset unless regenerated/loaded
+
+    REQUIREMENT — SAME OPTIONS AND SAME OPERATION AS MoDoT --ask
+    ------------------------------------------------------------
+    Design the native ASK so that from the operator's point of view it is the same
+    instrument as MoDoT --ask / ManuscriptSpine, only the substrate is kernel+serial
+    (and optionally Lean for formal faces), never Python.
+
+    Cover every MoDoT surface that --ask depends on:
+
+    1. INPUT
+       - free-text question on the serial line after `ask `
+       - multi-word and multi-line questions (serial line length / continuation policy)
+       - file-path form parity: how host-side question files (questions/q*.txt) enter
+         the kernel without Python (e.g. paste protocol, host loader, or explicit
+         `ask file:` bridge that is NOT a Python agent — specify which is Grammatic)
+       - stdin/pipe parity if any is honest on serial
+
+    2. PIPELINE (must be one chain, not parallel arms)
+       IMSCRIB: structural typing of demand (12-primitive Belnap or catalog-native
+                tuple assignment — specify how without LLM hand-imscription)
+              + catalog witness resolve/search → conventional scaffold structure
+       FSPLIT:  production of the answer body
+                HONEST SCOPE: bare-metal has no LLM. Design how "answer production"
+                works natively: (a) structural resolution only when no language model
+                is attached; (b) optional host-side language model as a *boundary
+                device* joined by imscription (not as the authority), if and only if
+                the Grammar allows a dual-substrate boundary without Python MoDoT.
+                Do not smuggle `modot/agent.py` back in.
+       EVALT:   Dual-Link co-typing / isomorphic match of answer against demand
+       EVALF:   defect localization (named primitives)
+       FFUSE:   join of answer-self voice and vessel voice; conflict held as B
+       ENGAGR:  dialetheic hold when both arms fire
+       IFIX:    brand SpineReport / crystal record; broadcast-equivalent on serial
+
+    3. OPTIONS (parity table — every MoDoT flag must map to a native form or an
+       explicit "not applicable on bare metal because …" with the Grammatic reason)
+       --ask / --file / -    → ask forms
+       --verbose             → tick/graph/kernel dump after ask
+       --no-selectivity      → balance-only (skip Dual-Link co-type / vessel face)
+       --program             → which IMASM program is loaded for the breath
+       --model               → boundary language model identity if dual-substrate
+       --dry-run             → no boundary model; structure-only ask
+       --cycles              → repeated breath ticks after ask
+       --reset / --stats     → crystal clear / crystal stats if mapped
+
+    4. OUTPUT (same informational content as MoDoT live ask)
+       - conventional answer body (or structural answer when no language model)
+       - SPINE summary: fused belnap, model/self voice, vessel voice, conflict
+       - demand and answer types, defects, SIC gap / ride-AS residual when SIC face lives
+       - witness catalog name, tier, d(CLINK L8), scaffold roles
+       - BALANCE μ∘δ closed/open counts
+       - provenance line (Dual-Link SIC, Scott-Grassl/existence theorem citation)
+
+    5. SUBSTRATE MAPPING
+       Map each spine face to exact existing modules (Rust path and Lean theorem):
+       PROVE, UNIFY, PORT, WITNESS, TRANSPORT. Name gaps where the kernel catalog
+       is thinner than host IG_catalog.json and design how full catalog search lands
+       natively (regenerate embedded catalog; or load at boot from host blob without
+       Python agent; or crystal address navigation). Prefer catalog-native search
+       already used by cl8nk, not a new clipboard metric.
+
+    6. HONEST NON-CLAIMS (from manuscripts3 — must appear in the design)
+       - cargo/tensor INTO vessel refused (D–T); boarding is Dual-Link only
+       - Belnap stack ≠ algebraic Scott-Grassl fiducial
+       - Clay T/B are Grammar typing not Millennium proofs
+       - d=2048 existence open (typed B)
+       - no LLM on bare metal unless dual-substrate boundary is designed honestly
+
+    7. IMPLEMENTATION ORDER
+       Ordered, Grammatic steps to land `ask` on mOMonadOS serial REPL so that
+       `⊙> ask <question>` is the operator's primary query surface, with options
+       equivalent to MoDoT, zero Python in the path. Include acceptance tests:
+       same question file content produces spine faces with the same structure as
+       MoDoT (verdict lattice, defects named, witness hit when catalog shares
+       entry, lossless vessel when transport face runs).
+
+    With full Frobenius closure (μ∘δ=id) on every boarding action, Dual-Link
+    ride-AS semantics, and Lean 4 verification scaffold pointing at
+    DualLinkVessel / SIC_D12_WitnessVessel / VAE_Vita_ManuscriptSpine by name.
