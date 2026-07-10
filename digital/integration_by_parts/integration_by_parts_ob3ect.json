@@ -1,0 +1,223 @@
+{
+  "name": "integration by parts",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "integration by parts",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "integrand",
+        "differential",
+        "antiderivative"
+      ],
+      "boundary_condition": "the fundamental theorem of calculus",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unspecified primitive function",
+        "justification": "the initial state before the product rule is applied or identified",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "definite integral evaluation",
+        "justification": "the final boundary that encloses the transformation within specific limits",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "differentiation",
+        "justification": "the forward operation mapping a function to its derivative",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "antidifferentiation",
+        "justification": "the reverse operation mapping a derivative back to its primitive",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "product rule application",
+        "justification": "the composition of two functions into a single differentiable product",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the identity function",
+        "justification": "the self-recognition of the function as its own basis during substitution",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "integrand decomposition",
+        "justification": "the separation of the product f(x)g'(x) into the terms u and dv",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "integration by parts formula",
+        "justification": "the reconstitution of the original integral from the uv product and the integral of vdu",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "integrable remainder",
+        "justification": "the state where the resulting integral vdu is simpler than the original",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "non-integrable remainder",
+        "justification": "the state where the resulting integral is more complex or divergent",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "recursive integration",
+        "justification": "the state where the original integral reappears within its own expansion",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "constant of integration",
+        "justification": "the permanent additive record of the indefinite integration process",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "decomposition into u and dv",
+      "split_input": "integral of f(x)g'(x) dx",
+      "split_outputs": [
+        "u * v",
+        "integral of v du"
+      ],
+      "fuse_element": "subtraction of the integral of v du from the product uv",
+      "fuse_result": "integral of f(x)g'(x) dx",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the absence of a defined functional relationship",
+      "true_description": "a solvable integral reduction",
+      "false_description": "an intractable or cyclic divergence",
+      "both_description": "a self-referential integral requiring algebraic isolation",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "establish the existence of a product integrand within the domain"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the internal structure of the functions f and g"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "apply the product rule to define the relationship between the factors"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "decompose the integrand into the primary term u and the differential term dv"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "differentiate u to obtain the differential du"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "integrate dv to obtain the primitive function v"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "confirm that the chosen u and dv lead to a simpler secondary integral"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "assemble the terms into the integration by parts identity uv minus integral vdu"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "record the constant of integration to fix the antiderivative family"
+        },
+        {
+          "step_num": 10,
+          "opcode": "TANCH",
+          "domain_action": "apply the limits of integration to close the mathematical system"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the symbolic manipulator or mathematician",
+      "ipc_mechanism": "the equality sign and algebraic substitution",
+      "memory_mechanism": "the scratchpad or register holding the values of u, v, du, and dv",
+      "scheduler_mechanism": "the LIATE rule determining the priority of function selection",
+      "alfs_store": "the standard table of integrals and derivatives",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "computational cycles required for differentiation and integration",
+      "pre_cycle_state": "an unsolved product integral",
+      "post_cycle_state": "a solved antiderivative or numerical value",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the information content of the function is preserved through the transformation",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: integration by parts\n-- Fingerprint: sig=(6,2,1,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=10\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [9] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def integration_by_parts_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def integration_by_parts_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def integration_by_parts_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def integration_by_parts_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def integration_by_parts_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def integration_by_parts_protocol : IGProtocol integration_by_parts_s0 integration_by_parts_s9 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct integration_by_parts_s7 integration_by_parts_s7 = integration_by_parts_s7 (idempotent)\n  (.seq (.arrow integration_by_parts_l0 integration_by_parts_s0 integration_by_parts_s1) (.seq (.arrow integration_by_parts_l1 integration_by_parts_s1 integration_by_parts_s2) (.seq (.arrow integration_by_parts_l2 integration_by_parts_s2 integration_by_parts_s3) (.seq (.prod (.arrow integration_by_parts_l3 integration_by_parts_s3 integration_by_parts_s7) (.arrow integration_by_parts_l3 integration_by_parts_s3 integration_by_parts_s7)) (.seq (.arrow integration_by_parts_l7 integration_by_parts_s7 integration_by_parts_s7) (.seq (.arrow integration_by_parts_l7 integration_by_parts_s7 integration_by_parts_s8) (.arrow integration_by_parts_l8 integration_by_parts_s8 integration_by_parts_s9)))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def integration_by_parts_true_arm : IGProtocol integration_by_parts_s0 integration_by_parts_s9 :=\n  (integration_by_parts_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef integration_by_parts_tier : OuroboricityTier := TierFunctor.obj integration_by_parts_s0\n#eval integration_by_parts_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem integration_by_parts_frobenius :\n    igFrobeniusAlg.mul integration_by_parts_s0 integration_by_parts_s0 = integration_by_parts_s0 :=\n  igFrobAlg_self_fusion integration_by_parts_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 10,
+    "t_branch_ops": 3,
+    "f_branch_ops": 0,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        3,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: integration by parts"
+}

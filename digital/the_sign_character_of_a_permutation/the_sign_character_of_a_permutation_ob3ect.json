@@ -1,0 +1,223 @@
+{
+  "name": "the sign character of a permutation",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "the sign character of a permutation",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "permutation",
+        "transposition",
+        "parity"
+      ],
+      "boundary_condition": "the symmetric group S_n",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "identity permutation",
+        "justification": "the neutral element where no elements move and no transpositions exist",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "sign homomorphism",
+        "justification": "the mapping from the symmetric group to the cyclic group of order two which bounds the system",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "transposition application",
+        "justification": "the elementary operation that swaps two elements and moves the state forward",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "transposition inversion",
+        "justification": "the inverse operation that restores the previous state by swapping the same elements back",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of cycles",
+        "justification": "the sequential application of disjoint cycles to form a complete permutation",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "fixed point",
+        "justification": "an element that maps to itself under the permutation",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "parity decomposition",
+        "justification": "the branching of a permutation into a product of an even or odd number of transpositions",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "sign evaluation",
+        "justification": "the reduction of the transposition count to a single parity value of positive or negative one",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "even parity",
+        "justification": "the state where the number of transpositions is even and the sign is positive one",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "odd parity",
+        "justification": "the state where the number of transpositions is odd and the sign is negative one",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "alternating group inclusion",
+        "justification": "the simultaneous consideration of the permutation as an element of both the symmetric and alternating groups",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Levi-Civita symbol assignment",
+        "justification": "the permanent recording of the sign as a fixed coefficient in a tensor or determinant",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "parity decomposition",
+      "split_input": "permutation sigma",
+      "split_outputs": [
+        "even sequence",
+        "odd sequence"
+      ],
+      "fuse_element": "sign evaluation",
+      "fuse_result": "permutation sigma",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the empty set before any mapping is defined",
+      "true_description": "positive sign indicating an even number of transpositions",
+      "false_description": "negative sign indicating an odd number of transpositions",
+      "both_description": "a superposition of states within a group representation before projection",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "establish the identity permutation as the starting point"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the set of elements to be permuted"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "apply a sequence of transpositions to generate the target permutation"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "compose the transpositions into a single coherent mapping"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "decompose the mapping into its constituent transposition count"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "verify if the count of transpositions is even"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "verify if the count of transpositions is odd"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "consolidate the parity into a single sign value"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "record the resulting sign as a permanent attribute of the permutation"
+        },
+        {
+          "step_num": 10,
+          "opcode": "TANCH",
+          "domain_action": "close the operation within the sign homomorphism boundary"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the group action on a finite set",
+      "ipc_mechanism": "the composition law of the symmetric group",
+      "memory_mechanism": "the cycle notation representation",
+      "scheduler_mechanism": "the lexicographical ordering of permutations",
+      "alfs_store": "the fundamental theorem of symmetric groups",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one bit of information to distinguish even from odd",
+      "pre_cycle_state": "an unordered set of transpositions",
+      "post_cycle_state": "a determined parity state",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the sign is a conserved property under group isomorphism",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: the sign character of a permutation\n-- Fingerprint: sig=(5,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=10\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(4, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [9] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_sign_character_of_a_permutation_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_sign_character_of_a_permutation_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_sign_character_of_a_permutation_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_sign_character_of_a_permutation_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_sign_character_of_a_permutation_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_sign_character_of_a_permutation_protocol : IGProtocol the_sign_character_of_a_permutation_s0 the_sign_character_of_a_permutation_s9 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_sign_character_of_a_permutation_s7 the_sign_character_of_a_permutation_s7 = the_sign_character_of_a_permutation_s7 (idempotent)\n  (.seq (.arrow the_sign_character_of_a_permutation_l0 the_sign_character_of_a_permutation_s0 the_sign_character_of_a_permutation_s1) (.seq (.arrow the_sign_character_of_a_permutation_l1 the_sign_character_of_a_permutation_s1 the_sign_character_of_a_permutation_s2) (.seq (.arrow the_sign_character_of_a_permutation_l2 the_sign_character_of_a_permutation_s2 the_sign_character_of_a_permutation_s3) (.seq (.arrow the_sign_character_of_a_permutation_l3 the_sign_character_of_a_permutation_s3 the_sign_character_of_a_permutation_s4) (.seq (.prod (.arrow the_sign_character_of_a_permutation_l4 the_sign_character_of_a_permutation_s4 the_sign_character_of_a_permutation_s7) (.arrow the_sign_character_of_a_permutation_l4 the_sign_character_of_a_permutation_s4 the_sign_character_of_a_permutation_s7)) (.seq (.arrow the_sign_character_of_a_permutation_l7 the_sign_character_of_a_permutation_s7 the_sign_character_of_a_permutation_s7) (.seq (.arrow the_sign_character_of_a_permutation_l7 the_sign_character_of_a_permutation_s7 the_sign_character_of_a_permutation_s8) (.arrow the_sign_character_of_a_permutation_l8 the_sign_character_of_a_permutation_s8 the_sign_character_of_a_permutation_s9))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_sign_character_of_a_permutation_true_arm : IGProtocol the_sign_character_of_a_permutation_s0 the_sign_character_of_a_permutation_s9 :=\n  (the_sign_character_of_a_permutation_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_sign_character_of_a_permutation_false_arm : IGProtocol the_sign_character_of_a_permutation_s0 the_sign_character_of_a_permutation_s9 :=\n  (the_sign_character_of_a_permutation_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_sign_character_of_a_permutation_tier : OuroboricityTier := TierFunctor.obj the_sign_character_of_a_permutation_s0\n#eval the_sign_character_of_a_permutation_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_sign_character_of_a_permutation_frobenius :\n    igFrobeniusAlg.mul the_sign_character_of_a_permutation_s0 the_sign_character_of_a_permutation_s0 = the_sign_character_of_a_permutation_s0 :=\n  igFrobAlg_self_fusion the_sign_character_of_a_permutation_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 10,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      4
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        4,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: the sign character of a permutation"
+}

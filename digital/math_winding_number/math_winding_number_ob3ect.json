@@ -1,0 +1,254 @@
+{
+  "name": "math_winding_number",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "math_winding_number",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "contour",
+        "residue",
+        "homotopy"
+      ],
+      "boundary_condition": "the complex plane punctured at the origin",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "origin point",
+        "justification": "the singularity that defines the topological hole before any path exists",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "homotopy class",
+        "justification": "the closed set of all paths equivalent to the final integer count",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "counter-clockwise traversal",
+        "justification": "positive orientation increasing the cumulative angle",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "clockwise traversal",
+        "justification": "negative orientation decreasing the cumulative angle",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "path concatenation",
+        "justification": "joining line segments to form a continuous curve",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "closed loop condition",
+        "justification": "the requirement that the terminal point equals the initial point",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "angular bifurcation",
+        "justification": "splitting the path into a full rotation versus a non-enclosing arc",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "total circulation",
+        "justification": "recombining all angular segments into the total net change",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "enclosure",
+        "justification": "the path successfully encircles the singularity",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "exclusion",
+        "justification": "the path fails to encircle the singularity",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "boundary intersection",
+        "justification": "the path passes through the singularity rendering the number undefined",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "integer index",
+        "justification": "the final immutable winding number recorded in the topological state",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "angular bifurcation",
+      "split_input": "total path displacement",
+      "split_outputs": [
+        "integer rotations",
+        "fractional remainder"
+      ],
+      "fuse_element": "total circulation",
+      "fuse_result": "total path displacement",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "unmapped plane without defined paths",
+      "true_description": "positive integer winding",
+      "false_description": "zero or negative winding",
+      "both_description": "path singularity intersection",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "establish the punctured plane at the origin"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "define the starting point of the curve"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "initiate counter-clockwise movement along the arc"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "append subsequent infinitesimal segments to the path"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "evaluate if the current segment completes a rotation"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "confirm the path has crossed the positive real axis from below"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "increment the local rotation count"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "merge the rotation count back into the path state"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FSPLIT",
+          "domain_action": "evaluate if the path reverses direction"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALF",
+          "domain_action": "confirm clockwise movement"
+        },
+        {
+          "step_num": 11,
+          "opcode": "AREV",
+          "domain_action": "decrement the local rotation count"
+        },
+        {
+          "step_num": 12,
+          "opcode": "FFUSE",
+          "domain_action": "merge the decrement back into the path state"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IMSCRIB",
+          "domain_action": "verify the path has returned to the starting point"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "record the final net integer as the winding number"
+        },
+        {
+          "step_num": 15,
+          "opcode": "TANCH",
+          "domain_action": "seal the homotopy class of the curve"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Cauchy integral formula",
+      "ipc_mechanism": "vector field flux",
+      "memory_mechanism": "cumulative phase accumulator",
+      "scheduler_mechanism": "parameterization of the curve",
+      "alfs_store": "fundamental group of the circle",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "angular displacement",
+      "pre_cycle_state": "open path segment",
+      "post_cycle_state": "closed topological invariant",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the winding number is a discrete topological invariant conserved under continuous deformation",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 FFUSE \u2192 FSPLIT \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: math_winding_number\n-- Fingerprint: sig=(8,4,2,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=15\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(4, 7), (8, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [8] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [11] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [14] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_winding_number_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_winding_number_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_winding_number_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_winding_number_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_winding_number_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def math_winding_number_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_winding_number_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def math_winding_number_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_winding_number_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def math_winding_number_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def math_winding_number_protocol : IGProtocol math_winding_number_s0 math_winding_number_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct math_winding_number_s7 math_winding_number_s7 = math_winding_number_s7 (idempotent)\n  (.seq (.arrow math_winding_number_l0 math_winding_number_s0 math_winding_number_s1) (.seq (.arrow math_winding_number_l1 math_winding_number_s1 math_winding_number_s2) (.seq (.arrow math_winding_number_l2 math_winding_number_s2 math_winding_number_s3) (.seq (.arrow math_winding_number_l3 math_winding_number_s3 math_winding_number_s4) (.seq (.prod (.arrow math_winding_number_l4 math_winding_number_s4 math_winding_number_s7) (.arrow math_winding_number_l4 math_winding_number_s4 math_winding_number_s7)) (.seq (.arrow math_winding_number_l7 math_winding_number_s7 math_winding_number_s7) (.seq (.arrow math_winding_number_l7 math_winding_number_s7 math_winding_number_s8) (.seq (.arrow math_winding_number_l8 math_winding_number_s8 math_winding_number_s9) (.seq (.arrow math_winding_number_l9 math_winding_number_s9 math_winding_number_s10) (.seq (.arrow math_winding_number_l10 math_winding_number_s10 math_winding_number_s11) (.seq (.arrow math_winding_number_l11 math_winding_number_s11 math_winding_number_s12) (.seq (.arrow math_winding_number_l12 math_winding_number_s12 math_winding_number_s13) (.arrow math_winding_number_l13 math_winding_number_s13 math_winding_number_s14)))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def math_winding_number_true_arm : IGProtocol math_winding_number_s0 math_winding_number_s14 :=\n  (math_winding_number_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def math_winding_number_false_arm : IGProtocol math_winding_number_s0 math_winding_number_s14 :=\n  (math_winding_number_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef math_winding_number_tier : OuroboricityTier := TierFunctor.obj math_winding_number_s0\n#eval math_winding_number_tier  -- the Grammar's own verdict on its tier\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 15,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      4,
+      8
+    ],
+    "fuse_positions": [
+      7,
+      11
+    ],
+    "pair_list": [
+      [
+        4,
+        7
+      ],
+      [
+        8,
+        11
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: math_winding_number"
+}

@@ -1,0 +1,233 @@
+{
+  "name": "math_derivative_operator",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "math_derivative_operator",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "smooth function",
+        "differential operator",
+        "tangent bundle"
+      ],
+      "boundary_condition": "the space of infinitely differentiable functions on a smooth manifold",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "the empty set of mappings",
+        "justification": "the state prior to the definition of any functional relationship or coordinate system",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the algebra of smooth functions",
+        "justification": "the closed container defining the valid domain and codomain for the operator",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "differentiation",
+        "justification": "the forward transformation mapping a function to its rate of change",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "integration",
+        "justification": "the reverse transformation mapping a rate of change back to a primitive function",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "higher order derivatives",
+        "justification": "the sequential application of the derivative operator to its own output",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the identity operator",
+        "justification": "the recognition of the function as itself within the mapping space",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "the Leibniz rule",
+        "justification": "the branching of the derivative of a product into two distinct additive terms",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "summation of product terms",
+        "justification": "the reconstitution of the total derivative from the branched product rule terms",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "differentiability",
+        "justification": "the affirmative state where the limit defining the derivative exists",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "singularity",
+        "justification": "the negative state where the function is non-differentiable or the limit diverges",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "weak derivative",
+        "justification": "a state where a function is not classically differentiable yet possesses a derivative in the sense of distributions",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the derivative value at a point",
+        "justification": "the permanent fixation of a numerical slope at a specific coordinate",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Leibniz product branching",
+      "split_input": "d(uv)",
+      "split_outputs": [
+        "u dv",
+        "v du"
+      ],
+      "fuse_element": "additive reconstitution",
+      "fuse_result": "u dv + v du",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the absence of any defined mapping or topological space",
+      "true_description": "a well defined smooth mapping with a convergent limit at every point",
+      "false_description": "a discontinuity or cusp preventing the existence of a tangent vector",
+      "both_description": "a distribution or generalized function existing in the overlap of classical and non-classical analysis",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "establish the initial empty functional space"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the input function f within the smooth algebra"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "apply the Leibniz rule to a product of functions"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "verify the first term u dv is well defined"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "compute the forward morphism of the first term"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "check for singularities in the second term v du"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "verify the second term remains within the integrable boundary"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "sum the terms to reconstitute the total derivative"
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "compose the result with a second application of the operator"
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "evaluate the result at a point of weak differentiability"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "record the final derivative value into the permanent manifold state"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "close the operation within the terminal boundary of the algebra"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the formal rules of calculus and limit definitions",
+      "ipc_mechanism": "the chain rule passing local slope information between nested functions",
+      "memory_mechanism": "the coefficients and exponents stored in the functional expression",
+      "scheduler_mechanism": "the order of operations defined by the operator precedence",
+      "alfs_store": "the fundamental theorem of calculus",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "the reduction in polynomial degree or loss of constant information",
+      "pre_cycle_state": "a function of higher complexity or unknown rate of change",
+      "post_cycle_state": "a function representing the exact local linearization of the input",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the information lost in the constant is preserved in the boundary conditions",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: math_derivative_operator\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_derivative_operator_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_derivative_operator_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def math_derivative_operator_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def math_derivative_operator_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_derivative_operator_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_derivative_operator_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def math_derivative_operator_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def math_derivative_operator_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def math_derivative_operator_protocol : IGProtocol math_derivative_operator_s0 math_derivative_operator_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct math_derivative_operator_s7 math_derivative_operator_s7 = math_derivative_operator_s7 (idempotent)\n  (.seq (.arrow math_derivative_operator_l0 math_derivative_operator_s0 math_derivative_operator_s1) (.seq (.arrow math_derivative_operator_l1 math_derivative_operator_s1 math_derivative_operator_s2) (.seq (.prod (.arrow math_derivative_operator_l2 math_derivative_operator_s2 math_derivative_operator_s7) (.arrow math_derivative_operator_l2 math_derivative_operator_s2 math_derivative_operator_s7)) (.seq (.arrow math_derivative_operator_l7 math_derivative_operator_s7 math_derivative_operator_s7) (.seq (.arrow math_derivative_operator_l7 math_derivative_operator_s7 math_derivative_operator_s8) (.seq (.arrow math_derivative_operator_l8 math_derivative_operator_s8 math_derivative_operator_s9) (.seq (.arrow math_derivative_operator_l9 math_derivative_operator_s9 math_derivative_operator_s10) (.arrow math_derivative_operator_l10 math_derivative_operator_s10 math_derivative_operator_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def math_derivative_operator_true_arm : IGProtocol math_derivative_operator_s0 math_derivative_operator_s11 :=\n  (math_derivative_operator_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def math_derivative_operator_false_arm : IGProtocol math_derivative_operator_s0 math_derivative_operator_s11 :=\n  (math_derivative_operator_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef math_derivative_operator_tier : OuroboricityTier := TierFunctor.obj math_derivative_operator_s0\n#eval math_derivative_operator_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem math_derivative_operator_frobenius :\n    igFrobeniusAlg.mul math_derivative_operator_s0 math_derivative_operator_s0 = math_derivative_operator_s0 :=\n  igFrobAlg_self_fusion math_derivative_operator_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: math_derivative_operator"
+}

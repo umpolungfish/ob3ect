@@ -1,0 +1,69 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# math_catalytic_register — the mathematical register for the catalytic-site engine.
+#
+# red-hot_rebis/rhr_p4rky/ch3mpiler_serpentrod_pipeline.py designs enzyme catalytic
+# sites: it imscribes a reaction, computes the binding-pocket COMPLEMENT across the
+# six conjugate primitive pairs (D↔W, T↔H, R↔S, P↔F, K↔G, Gm↔Ph), and activates one
+# residue per pair via PRIMITIVE_TO_AA (D→Met … W→Glu). The fuse→complement→activate
+# core is register-free; only the input adapter (SMILES→signature) and the output
+# decoder (PRIMITIVE_TO_AA) are chemistry. This batch imscribes the MATH register:
+# twelve neutral mathematical operations to populate PRIMITIVE_TO_MATHOP, plus three
+# real transformations to confirm a math "reaction signature" forms.
+#
+#   p3 auto.py -f math_catalytic_register.yaml     # full ob3ects (heavy)
+#   p3 editorial.py math_catalytic_register.yaml   # census from catalog
+#
+# For the decoder table we only need the 12-primitive tuples, so the surgical path is
+# the `imscribe generate` list handed off separately — this yaml is the manifest of
+# record. Descriptions are NEUTRAL by design: name the operation, let co-typing land
+# it; PRIMITIVE_TO_MATHOP is read from where each actually falls, never assigned by hand.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: math_catalytic_register
+out_dir: digital
+
+# ── entities (both pipelines read these) ─────────────────────────────────────
+entities:
+  # -- twelve residue candidates (one canonical operation aimed at each primitive
+  #    charge; final PRIMITIVE_TO_MATHOP assigned from the machine result, not intent)
+  - "the tensor product of two vector spaces"
+  - "the boundary operator of a chain complex"
+  - "an adjoint pair of functors"
+  - "the sign character of a permutation"
+  - "an isomorphism between two structures"
+  - "the derivative operator on smooth functions"
+  - "the cardinality of a set"
+  - "composition of morphisms in a category"
+  - "the least fixed point of a monotone operator"
+  - "the antipode of a Hopf algebra"
+  - "a conservation law expressed as a balanced equation"
+  - "the winding number of a closed curve in the plane"
+  # -- three transformations (the "reactions" to be catalyzed; integration by parts
+  #    is the charge-conservation showcase — a derivative moved from one factor to the other)
+  - "integration by parts"
+  - "a change of variables in a definite integral"
+  - "cut elimination in a sequent calculus proof"
+
+entities_from:
+  file:
+  catalog_filter:
+
+# ── imscribe pipeline: every auto.py flag ────────────────────────────────────
+design:
+  domain: mathematical
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  temperature: 0.0
+  retries: infinite
+  thinking: false
+  context:
+  entry:
+  no_scaffold: false
+  no_diagram: false
+
+# ── editorial pipeline: every editorial.py flag ──────────────────────────────
+editorial:
+  ars_title: "Math Catalytic Register"
+  subtitle: "The Mathematical Residues and Transformations of the Catalytic-Site Engine"
+  output: ../math_catalytic_register/math_catalytic_register_CENSUS.md

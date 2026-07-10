@@ -1,0 +1,279 @@
+{
+  "name": "composition of morphisms in a category",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "composition of morphisms in a category",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "morphism",
+        "codomain",
+        "associativity"
+      ],
+      "boundary_condition": "the category axioms and the universe of objects",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "initial object",
+        "justification": "the unique object from which exactly one morphism exists to every other object in the category",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "terminal object",
+        "justification": "the unique object to which exactly one morphism exists from every other object in the category",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "morphism f: A \u2192 B",
+        "justification": "the directed transformation from a source object to a target object",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "opposite morphism f^op: B \u2192 A",
+        "justification": "the contravariant mapping in the opposite category",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition g \u2218 f",
+        "justification": "the sequential application of morphisms where the codomain of the first matches the domain of the second",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "identity morphism id_A",
+        "justification": "the morphism from an object to itself that acts as the unit for composition",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "source-target projection",
+        "justification": "the extraction of the domain and codomain from a single morphism",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "morphism reconstruction",
+        "justification": "the re-assembly of a morphism from its source, target, and mapping rule",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "composable pair",
+        "justification": "the condition where codomain(f) equals domain(g)",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "non-composable pair",
+        "justification": "the condition where codomain(f) does not equal domain(g)",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "isomorphism",
+        "justification": "a morphism that is simultaneously a forward map and a reversible equivalence",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "commutative diagram",
+        "justification": "the permanent fixation of a compositional identity within the category structure",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "source-target projection",
+      "split_input": "morphism f",
+      "split_outputs": [
+        "domain(f)",
+        "codomain(f)"
+      ],
+      "fuse_element": "morphism reconstruction",
+      "fuse_result": "morphism f",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the empty category containing no objects and no morphisms",
+      "true_description": "a validly composed morphism or satisfied identity law",
+      "false_description": "a composition failure due to domain-codomain mismatch",
+      "both_description": "an endomorphism where the source and target are identical",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "establish the initial object and the existence of the category"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "define the identity morphism for the source object A"
+        },
+        {
+          "step_num": 3,
+          "opcode": "IFIX",
+          "domain_action": "record the identity morphism in the category definition"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "define morphism f from object A to object B"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "project the domain and codomain of morphism f"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "verify that the codomain of f matches the domain of the next morphism g"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "define morphism g from object B to object C"
+        },
+        {
+          "step_num": 8,
+          "opcode": "CLINK",
+          "domain_action": "compose g and f to produce the morphism g \u2218 f"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute the composite morphism from its constituent parts"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IMSCRIB",
+          "domain_action": "verify the identity law where f \u2218 id_A = f"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "record the composite morphism g \u2218 f as a permanent arrow in the category"
+        },
+        {
+          "step_num": 12,
+          "opcode": "FSPLIT",
+          "domain_action": "branch to check associativity with a third morphism h"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALT",
+          "domain_action": "verify codomain of g matches domain of h"
+        },
+        {
+          "step_num": 14,
+          "opcode": "AFWD",
+          "domain_action": "define morphism h from object C to object D"
+        },
+        {
+          "step_num": 15,
+          "opcode": "CLINK",
+          "domain_action": "compose h with (g \u2218 f)"
+        },
+        {
+          "step_num": 16,
+          "opcode": "CLINK",
+          "domain_action": "compose (h \u2218 g) with f"
+        },
+        {
+          "step_num": 17,
+          "opcode": "ENGAGR",
+          "domain_action": "hold both (h \u2218 g) \u2218 f and h \u2218 (g \u2218 f) to verify equality"
+        },
+        {
+          "step_num": 18,
+          "opcode": "FFUSE",
+          "domain_action": "unify the associative paths into a single result"
+        },
+        {
+          "step_num": 19,
+          "opcode": "IFIX",
+          "domain_action": "record the associative property as a fixed law of the composition"
+        },
+        {
+          "step_num": 20,
+          "opcode": "TANCH",
+          "domain_action": "close the category under the terminal object boundary"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the category axioms defining valid objects and arrows",
+      "ipc_mechanism": "the matching of codomains to domains at morphism interfaces",
+      "memory_mechanism": "the collection of morphisms and objects within the category",
+      "scheduler_mechanism": "the sequential order of application in a composition chain",
+      "alfs_store": "the Yoneda lemma and the fundamental hom-sets",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "the computational overhead of verifying domain-codomain compatibility",
+      "pre_cycle_state": "a set of discrete morphisms and objects",
+      "post_cycle_state": "a structured category with defined composition and identity laws",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the information content of the morphisms is preserved through the composition operation",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 IFIX \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 CLINK \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 CLINK \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: composition of morphisms in a category\n-- Fingerprint: sig=(10,4,3,3)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=20\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(4, 8), (11, 17)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [2] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [11] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [12] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [13] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [14] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [15] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [16] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [17] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [18] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [19] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def composition_of_morphisms_in_a_category_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def composition_of_morphisms_in_a_category_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def composition_of_morphisms_in_a_category_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def composition_of_morphisms_in_a_category_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def composition_of_morphisms_in_a_category_protocol : IGProtocol composition_of_morphisms_in_a_category_s0 composition_of_morphisms_in_a_category_s19 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct composition_of_morphisms_in_a_category_s8 composition_of_morphisms_in_a_category_s8 = composition_of_morphisms_in_a_category_s8 (idempotent)\n  (.seq (.arrow composition_of_morphisms_in_a_category_l0 composition_of_morphisms_in_a_category_s0 composition_of_morphisms_in_a_category_s1) (.seq (.arrow composition_of_morphisms_in_a_category_l1 composition_of_morphisms_in_a_category_s1 composition_of_morphisms_in_a_category_s2) (.seq (.arrow composition_of_morphisms_in_a_category_l2 composition_of_morphisms_in_a_category_s2 composition_of_morphisms_in_a_category_s3) (.seq (.arrow composition_of_morphisms_in_a_category_l3 composition_of_morphisms_in_a_category_s3 composition_of_morphisms_in_a_category_s4) (.seq (.prod (.arrow composition_of_morphisms_in_a_category_l4 composition_of_morphisms_in_a_category_s4 composition_of_morphisms_in_a_category_s8) (.arrow composition_of_morphisms_in_a_category_l4 composition_of_morphisms_in_a_category_s4 composition_of_morphisms_in_a_category_s8)) (.seq (.arrow composition_of_morphisms_in_a_category_l8 composition_of_morphisms_in_a_category_s8 composition_of_morphisms_in_a_category_s8) (.seq (.arrow composition_of_morphisms_in_a_category_l8 composition_of_morphisms_in_a_category_s8 composition_of_morphisms_in_a_category_s9) (.seq (.arrow composition_of_morphisms_in_a_category_l9 composition_of_morphisms_in_a_category_s9 composition_of_morphisms_in_a_category_s10) (.seq (.arrow composition_of_morphisms_in_a_category_l10 composition_of_morphisms_in_a_category_s10 composition_of_morphisms_in_a_category_s11) (.seq (.arrow composition_of_morphisms_in_a_category_l11 composition_of_morphisms_in_a_category_s11 composition_of_morphisms_in_a_category_s12) (.seq (.arrow composition_of_morphisms_in_a_category_l12 composition_of_morphisms_in_a_category_s12 composition_of_morphisms_in_a_category_s13) (.seq (.arrow composition_of_morphisms_in_a_category_l13 composition_of_morphisms_in_a_category_s13 composition_of_morphisms_in_a_category_s14) (.seq (.arrow composition_of_morphisms_in_a_category_l14 composition_of_morphisms_in_a_category_s14 composition_of_morphisms_in_a_category_s15) (.seq (.arrow composition_of_morphisms_in_a_category_l15 composition_of_morphisms_in_a_category_s15 composition_of_morphisms_in_a_category_s16) (.seq (.arrow composition_of_morphisms_in_a_category_l16 composition_of_morphisms_in_a_category_s16 composition_of_morphisms_in_a_category_s17) (.seq (.arrow composition_of_morphisms_in_a_category_l17 composition_of_morphisms_in_a_category_s17 composition_of_morphisms_in_a_category_s18) (.arrow composition_of_morphisms_in_a_category_l18 composition_of_morphisms_in_a_category_s18 composition_of_morphisms_in_a_category_s19)))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def composition_of_morphisms_in_a_category_true_arm : IGProtocol composition_of_morphisms_in_a_category_s0 composition_of_morphisms_in_a_category_s19 :=\n  (composition_of_morphisms_in_a_category_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef composition_of_morphisms_in_a_category_tier : OuroboricityTier := TierFunctor.obj composition_of_morphisms_in_a_category_s0\n#eval composition_of_morphisms_in_a_category_tier  -- the Grammar's own verdict on its tier\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 20,
+    "t_branch_ops": 8,
+    "f_branch_ops": 0,
+    "branch_ratio": 8.0,
+    "fork_positions": [
+      4,
+      11
+    ],
+    "fuse_positions": [
+      8,
+      17
+    ],
+    "pair_list": [
+      [
+        4,
+        8
+      ],
+      [
+        11,
+        17
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: composition of morphisms in a category"
+}

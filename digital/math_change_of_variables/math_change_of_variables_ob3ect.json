@@ -1,0 +1,223 @@
+{
+  "name": "math_change_of_variables",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "math_change_of_variables",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "substitution",
+        "jacobian",
+        "differential"
+      ],
+      "boundary_condition": "the fundamental theorem of calculus",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unmapped integral",
+        "justification": "the initial state before a coordinate system or variable is assigned",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "definite integral value",
+        "justification": "the scalar result that bounds and completes the transformation process",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "coordinate mapping",
+        "justification": "the forward transformation function g mapping u to x",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "inverse mapping",
+        "justification": "the pull-back operation mapping x back to u",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "function composition",
+        "justification": "the nesting of the transformation within the integrand f(g(u))",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "identity transformation",
+        "justification": "the recognition that the integral value remains invariant under change of variables",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "differential expansion",
+        "justification": "the separation of the original differential dx into the derivative g'(u) and the new differential du",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "differential recombination",
+        "justification": "the product of the derivative and the new differential reconstituting the original measure",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "monotonic transformation",
+        "justification": "the successful preservation of orientation during the variable shift",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "orientation reversal",
+        "justification": "the inversion of limits requiring a sign change in the integral",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "non-invertible point",
+        "justification": "a critical point where the derivative is zero and the mapping is neither strictly forward nor reverse",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "transformed limits",
+        "justification": "the permanent fixation of the new integration boundaries",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "differential expansion",
+      "split_input": "dx",
+      "split_outputs": [
+        "g'(u)",
+        "du"
+      ],
+      "fuse_element": "differential recombination",
+      "fuse_result": "dx",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the pre-analytic state where no variable of integration is defined",
+      "true_description": "a valid transformation where the Jacobian is positive and limits are ordered",
+      "false_description": "an invalid transformation where the mapping is not one-to-one",
+      "both_description": "a transformation at a boundary where the mapping is singular yet the integral converges",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "establish the initial integral in the x-domain"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the integrand and the differential dx"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "define the substitution function x = g(u)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "branch the differential dx into the derivative g'(u) and the new differential du"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "verify the transformation is monotonic and orientation-preserving"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "compose the integrand with the substitution function to form f(g(u))"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "multiply the composed integrand by the derivative and differential to form the new integrand"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "calculate the inverse limits for the u-domain"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "fix the new limits of integration permanently"
+        },
+        {
+          "step_num": 10,
+          "opcode": "TANCH",
+          "domain_action": "evaluate the integral to reach the terminal scalar value"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the substitution rule for definite integrals",
+      "ipc_mechanism": "the chain rule for derivatives",
+      "memory_mechanism": "the lookup table for antiderivatives",
+      "scheduler_mechanism": "the sequential order of limit transformation and integrand substitution",
+      "alfs_store": "CLINK L8 Organism catalog entry",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "computational effort of calculating the Jacobian determinant",
+      "pre_cycle_state": "integral in coordinate system X",
+      "post_cycle_state": "integral in coordinate system U",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the total area under the curve is an invariant quantity",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 AREV \u2192 IFIX \u2192 TANCH\n-- Class: math_change_of_variables\n-- Fingerprint: sig=(6,2,1,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=10\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc57  | fuse \u03bc \u2014 assembly mode\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc59 \u2192 \ud801\udc6d  | reverse morphism \u2014 parity flip\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc57 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [9] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_change_of_variables_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def math_change_of_variables_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_change_of_variables_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_change_of_variables_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def math_change_of_variables_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def math_change_of_variables_protocol : IGProtocol math_change_of_variables_s0 math_change_of_variables_s9 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct math_change_of_variables_s6 math_change_of_variables_s6 = math_change_of_variables_s6 (idempotent)\n  (.seq (.arrow math_change_of_variables_l0 math_change_of_variables_s0 math_change_of_variables_s1) (.seq (.arrow math_change_of_variables_l1 math_change_of_variables_s1 math_change_of_variables_s2) (.seq (.arrow math_change_of_variables_l2 math_change_of_variables_s2 math_change_of_variables_s3) (.seq (.prod (.arrow math_change_of_variables_l3 math_change_of_variables_s3 math_change_of_variables_s6) (.arrow math_change_of_variables_l3 math_change_of_variables_s3 math_change_of_variables_s6)) (.seq (.arrow math_change_of_variables_l6 math_change_of_variables_s6 math_change_of_variables_s6) (.seq (.arrow math_change_of_variables_l6 math_change_of_variables_s6 math_change_of_variables_s7) (.seq (.arrow math_change_of_variables_l7 math_change_of_variables_s7 math_change_of_variables_s8) (.arrow math_change_of_variables_l8 math_change_of_variables_s8 math_change_of_variables_s9))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def math_change_of_variables_true_arm : IGProtocol math_change_of_variables_s0 math_change_of_variables_s9 :=\n  (math_change_of_variables_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef math_change_of_variables_tier : OuroboricityTier := TierFunctor.obj math_change_of_variables_s0\n#eval math_change_of_variables_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem math_change_of_variables_frobenius :\n    igFrobeniusAlg.mul math_change_of_variables_s0 math_change_of_variables_s0 = math_change_of_variables_s0 :=\n  igFrobAlg_self_fusion math_change_of_variables_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 10,
+    "t_branch_ops": 2,
+    "f_branch_ops": 0,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        3,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: math_change_of_variables"
+}

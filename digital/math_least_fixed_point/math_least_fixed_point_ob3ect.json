@@ -1,0 +1,249 @@
+{
+  "name": "math_least_fixed_point",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "math_least_fixed_point",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "monotone operator",
+        "prefixpoint",
+        "Knaster-Tarski iteration"
+      ],
+      "boundary_condition": "The complete lattice structure containing the monotone operator domain",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Bottom element \u22a5",
+        "justification": "The initial uninitialized state of the iteration before any application of the operator",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Top element \u22a4",
+        "justification": "The universal upper bound that contains all possible fixed points within the lattice",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Operator application f(x)",
+        "justification": "The forward transformation that maps an element to its next iteration state",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Pre-image mapping",
+        "justification": "The descent from a higher lattice point toward the lower fixed point boundary",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Function composition f \u2218 f",
+        "justification": "The sequential chaining of operator applications to reach the limit",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Fixed point condition f(x) = x",
+        "justification": "The identity state where the operator recognizes the input as itself",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Monotonicity check",
+        "justification": "The branching of a value into a candidate prefixpoint and its subsequent image",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Infimum of prefixpoints",
+        "justification": "The reconstitution of the candidate set into the unique least fixed point",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "f(x) \u2264 x",
+        "justification": "The affirmative condition identifying a prefixpoint",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "f(x) > x",
+        "justification": "The negative condition where the value has not yet reached the prefixpoint set",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Limit ordinal transition",
+        "justification": "The state where a sequence is both a collection of points and a single limit value",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Least fixed point \u03bcf",
+        "justification": "The permanent fixation of the smallest value that satisfies the identity",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Monotonicity check",
+      "split_input": "Lattice element x",
+      "split_outputs": [
+        "f(x) as prefixpoint candidate",
+        "f(x) as non-prefixpoint"
+      ],
+      "fuse_element": "Infimum of prefixpoints",
+      "fuse_result": "Lattice element x",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The empty set or bottom element before the first iteration",
+      "true_description": "A valid prefixpoint satisfying the Tarski condition",
+      "false_description": "An element that fails the prefixpoint inequality",
+      "both_description": "A limit point existing as both a sequence and a supremum",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the process at the lattice bottom element \u22a5"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Apply the monotone operator f to the current value"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the result to evaluate the prefixpoint condition"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "Confirm the value satisfies f(x) \u2264 x"
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "Compose the identity check with the current candidate"
+        },
+        {
+          "step_num": 6,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify the fixed point identity f(x) = x"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the verified identity into the candidate set"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "Perform a contravariant check against the set of all prefixpoints"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch to check if this is the minimal element in the set"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALF",
+          "domain_action": "Reject values that are strictly greater than the infimum"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the unique minimal value from the search"
+        },
+        {
+          "step_num": 12,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the limit state during transfinite iteration if necessary"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "Permanently record the least fixed point \u03bcf in the registry"
+        },
+        {
+          "step_num": 14,
+          "opcode": "TANCH",
+          "domain_action": "Close the system within the lattice boundary \u22a4"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Knaster-Tarski theorem logic",
+      "ipc_mechanism": "Lattice order relations \u2264 and \u2265",
+      "memory_mechanism": "The set of prefixpoints P = {x | f(x) \u2264 x}",
+      "scheduler_mechanism": "The transfinite induction sequence",
+      "alfs_store": "CLINK L8 Organism catalog",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One application of the monotone operator f",
+      "pre_cycle_state": "Approximation x_n",
+      "post_cycle_state": "Approximation x_{n+1}",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The monotonicity ensures the system moves toward a stable equilibrium without loss of information",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 AREV \u2192 FSPLIT \u2192 EVALF \u2192 FFUSE \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: math_least_fixed_point\n-- Fingerprint: sig=(6,4,3,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 6), (8, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [5] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc57  | fuse \u03bc \u2014 assembly mode\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc59 \u2192 \ud801\udc5a  | reverse morphism \u2014 parity flip\n--   [8] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [11] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [12] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_least_fixed_point_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def math_least_fixed_point_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def math_least_fixed_point_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def math_least_fixed_point_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def math_least_fixed_point_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def math_least_fixed_point_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def math_least_fixed_point_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def math_least_fixed_point_protocol : IGProtocol math_least_fixed_point_s0 math_least_fixed_point_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct math_least_fixed_point_s6 math_least_fixed_point_s6 = math_least_fixed_point_s6 (idempotent)\n  (.seq (.arrow math_least_fixed_point_l0 math_least_fixed_point_s0 math_least_fixed_point_s1) (.seq (.arrow math_least_fixed_point_l1 math_least_fixed_point_s1 math_least_fixed_point_s2) (.seq (.prod (.arrow math_least_fixed_point_l2 math_least_fixed_point_s2 math_least_fixed_point_s6) (.arrow math_least_fixed_point_l2 math_least_fixed_point_s2 math_least_fixed_point_s6)) (.seq (.arrow math_least_fixed_point_l6 math_least_fixed_point_s6 math_least_fixed_point_s6) (.seq (.arrow math_least_fixed_point_l6 math_least_fixed_point_s6 math_least_fixed_point_s7) (.seq (.arrow math_least_fixed_point_l7 math_least_fixed_point_s7 math_least_fixed_point_s8) (.seq (.arrow math_least_fixed_point_l8 math_least_fixed_point_s8 math_least_fixed_point_s9) (.seq (.arrow math_least_fixed_point_l9 math_least_fixed_point_s9 math_least_fixed_point_s10) (.seq (.arrow math_least_fixed_point_l10 math_least_fixed_point_s10 math_least_fixed_point_s11) (.seq (.arrow math_least_fixed_point_l11 math_least_fixed_point_s11 math_least_fixed_point_s12) (.arrow math_least_fixed_point_l12 math_least_fixed_point_s12 math_least_fixed_point_s13)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def math_least_fixed_point_true_arm : IGProtocol math_least_fixed_point_s0 math_least_fixed_point_s13 :=\n  (math_least_fixed_point_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def math_least_fixed_point_false_arm : IGProtocol math_least_fixed_point_s0 math_least_fixed_point_s13 :=\n  (math_least_fixed_point_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef math_least_fixed_point_tier : OuroboricityTier := TierFunctor.obj math_least_fixed_point_s0\n#eval math_least_fixed_point_tier  -- the Grammar's own verdict on its tier\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 1,
+    "sequence_length": 14,
+    "t_branch_ops": 3,
+    "f_branch_ops": 1,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      2,
+      8
+    ],
+    "fuse_positions": [
+      6,
+      10
+    ],
+    "pair_list": [
+      [
+        2,
+        6
+      ],
+      [
+        8,
+        10
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: math_least_fixed_point"
+}
