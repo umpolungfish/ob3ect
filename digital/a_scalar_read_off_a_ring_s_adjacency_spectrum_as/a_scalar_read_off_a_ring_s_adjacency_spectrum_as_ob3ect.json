@@ -1,0 +1,228 @@
+{
+  "name": "A scalar read off a ring's adjacency spectrum as its total absolute spectral weight, the sum over the magnitudes of all its modes \u2014 a measure of the material's whole bonding richness distinct from its single dominant mode; where the spectral radius is the ring's stiffness, this is its toughness, the reserve carried in the subdominant modes.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "A scalar read off a ring's adjacency spectrum as its total absolute spectral weight, the sum over the magnitudes of all its modes \u2014 a measure of the material's whole bonding richness distinct from its single dominant mode; where the spectral radius is the ring's stiffness, this is its toughness, the reserve carried in the subdominant modes.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "adjacency matrix",
+        "spectral weight",
+        "eigenmode manifold"
+      ],
+      "boundary_condition": "The complete modular ring spectrum bounded by its trace and spectral radius.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "null_graph",
+        "justification": "The empty adjacency matrix before vertex definition or edge weighting.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "matrix_trace",
+        "justification": "The closed boundary of the ring system where the sum of eigenvalues is fixed.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "eigenvalue_extraction",
+        "justification": "Transforming the spatial adjacency into the spectral domain.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "inverse_spectral_transform",
+        "justification": "Moving from the energy spectrum back to the spatial graph topology.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "tensor_composition",
+        "justification": "Chaining multiple sub-graphs or bonding layers into a single composite matrix.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "spectral_signature",
+        "justification": "The unique characteristic polynomial that identifies the specific ring structure.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "mode_bifurcation",
+        "justification": "Separating the dominant spectral radius from the sum of subdominant residual modes.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "total_spectral_sum",
+        "justification": "Reconstituting the absolute spectral weight from the separated modal components.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "toughness_surplus",
+        "justification": "The affirmative state where subdominant modes provide high reserve capacity.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "brittle_instability",
+        "justification": "The negative state where the spectral weight is concentrated solely in the radius.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "degenerate_bistability",
+        "justification": "A state where two modes carry equal weight, preventing a clear dominant stiffness order.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "weight_log",
+        "justification": "The permanent commit of the calculated absolute weight to the material record.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "mode_bifurcation",
+      "split_input": "adjacency_spectrum",
+      "split_outputs": [
+        "spectral_radius",
+        "residual_moduli"
+      ],
+      "fuse_element": "total_spectral_sum",
+      "fuse_result": "adjacency_spectrum",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "uninitialized adjacency matrix with zero entries",
+      "true_description": "stable bonding richness with distributed spectral weight",
+      "false_description": "spectral collapse to a single mode or disconnected topology",
+      "both_description": "modal degeneracy where multiple scales of richness coexist",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize the empty adjacency matrix for the ring structure"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "map the physical connections into a list of energy eigenvalues"
+        },
+        {
+          "step_num": 3,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the specific characteristic polynomial of this ring"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "separate the magnitude of the dominant eigenvalue from the subdominant magnitudes"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "verify that the residual modes contain significant absolute weight"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "compose the magnitudes into a single toughness metric"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "reunite the dominant and subdominant magnitudes to form the total absolute weight"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "check if the system lacks subdominant resonance leading to brittleness"
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "hold the state of modal degeneracy for complex bonding analysis"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "record the final total absolute spectral weight value"
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "close the measurement within the bounded matrix trace"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Linear algebra solver for the characteristic equation",
+      "ipc_mechanism": "Eigenvalue distribution vectors",
+      "memory_mechanism": "The adjacency matrix storage register",
+      "scheduler_mechanism": "Iterative power method for spectral radius extraction",
+      "alfs_store": "The Laplacian matrix canonical reference",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational cycles for matrix diagonalization",
+      "pre_cycle_state": "Discrete spatial adjacency configuration",
+      "post_cycle_state": "Scalar spectral weight representing global richness",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The total information contained in the spectrum is conserved across the absolute sum operation.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALF \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: A scalar read off a ring's adjacency spectrum as its total absolute spectral weight, the sum over the magnitudes of all its modes \u2014 a measure of the material's whole bonding richness distinct from its single dominant mode; where the spectral radius is the ring's stiffness, this is its toughness, the reserve carried in the subdominant modes.\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc56  | fuse \u03bc \u2014 assembly mode\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc59 \u2192 \ud801\udc73  | evaluate-false \u2014 chirality check\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc56 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def a_scalar_read_off_a_rings_adjacency_5a4e80_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def a_scalar_read_off_a_rings_adjacency_5a4e80_protocol : IGProtocol a_scalar_read_off_a_rings_adjacency_5a4e80_s0 a_scalar_read_off_a_rings_adjacency_5a4e80_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct a_scalar_read_off_a_rings_adjacency_5a4e80_s6 a_scalar_read_off_a_rings_adjacency_5a4e80_s6 = a_scalar_read_off_a_rings_adjacency_5a4e80_s6 (idempotent)\n  (.seq (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l0 a_scalar_read_off_a_rings_adjacency_5a4e80_s0 a_scalar_read_off_a_rings_adjacency_5a4e80_s1) (.seq (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l1 a_scalar_read_off_a_rings_adjacency_5a4e80_s1 a_scalar_read_off_a_rings_adjacency_5a4e80_s2) (.seq (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l2 a_scalar_read_off_a_rings_adjacency_5a4e80_s2 a_scalar_read_off_a_rings_adjacency_5a4e80_s3) (.seq (.prod (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l3 a_scalar_read_off_a_rings_adjacency_5a4e80_s3 a_scalar_read_off_a_rings_adjacency_5a4e80_s6) (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l3 a_scalar_read_off_a_rings_adjacency_5a4e80_s3 a_scalar_read_off_a_rings_adjacency_5a4e80_s6)) (.seq (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l6 a_scalar_read_off_a_rings_adjacency_5a4e80_s6 a_scalar_read_off_a_rings_adjacency_5a4e80_s6) (.seq (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l6 a_scalar_read_off_a_rings_adjacency_5a4e80_s6 a_scalar_read_off_a_rings_adjacency_5a4e80_s7) (.seq (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l7 a_scalar_read_off_a_rings_adjacency_5a4e80_s7 a_scalar_read_off_a_rings_adjacency_5a4e80_s8) (.seq (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l8 a_scalar_read_off_a_rings_adjacency_5a4e80_s8 a_scalar_read_off_a_rings_adjacency_5a4e80_s9) (.arrow a_scalar_read_off_a_rings_adjacency_5a4e80_l9 a_scalar_read_off_a_rings_adjacency_5a4e80_s9 a_scalar_read_off_a_rings_adjacency_5a4e80_s10)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def a_scalar_read_off_a_rings_adjacency_5a4e80_true_arm : IGProtocol a_scalar_read_off_a_rings_adjacency_5a4e80_s0 a_scalar_read_off_a_rings_adjacency_5a4e80_s10 :=\n  (a_scalar_read_off_a_rings_adjacency_5a4e80_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def a_scalar_read_off_a_rings_adjacency_5a4e80_false_arm : IGProtocol a_scalar_read_off_a_rings_adjacency_5a4e80_s0 a_scalar_read_off_a_rings_adjacency_5a4e80_s10 :=\n  (a_scalar_read_off_a_rings_adjacency_5a4e80_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef a_scalar_read_off_a_rings_adjacency_5a4e80_tier : OuroboricityTier := TierFunctor.obj a_scalar_read_off_a_rings_adjacency_5a4e80_s0\n#eval a_scalar_read_off_a_rings_adjacency_5a4e80_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem a_scalar_read_off_a_rings_adjacency_5a4e80_frobenius :\n    igFrobeniusAlg.mul a_scalar_read_off_a_rings_adjacency_5a4e80_s0 a_scalar_read_off_a_rings_adjacency_5a4e80_s0 = a_scalar_read_off_a_rings_adjacency_5a4e80_s0 :=\n  igFrobAlg_self_fusion a_scalar_read_off_a_rings_adjacency_5a4e80_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 2,
+    "f_branch_ops": 0,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        3,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: A scalar read off a ring's adjacency spectrum as its total absolute spectral weight, the sum over the magnitudes of all its modes \u2014 a measure of the material's whole bonding richness distinct from its single dominant mode; where the spectral radius is the ring's stiffness, this is its toughness, the reserve carried in the subdominant modes."
+}

@@ -1,0 +1,233 @@
+{
+  "name": "The operation that takes one closed ring and returns two closed rings by cutting the loop at a chosen junction and re-closing each arc into its own smaller ring \u2014 the exact reverse of welding two rings into one, the fission of a single cyclic material into a pair whose two spectra together account for the parent's dominant modes.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The operation that takes one closed ring and returns two closed rings by cutting the loop at a chosen junction and re-closing each arc into its own smaller ring \u2014 the exact reverse of welding two rings into one, the fission of a single cyclic material into a pair whose two spectra together account for the parent's dominant modes.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "cyclic_graph",
+        "edge_fission",
+        "spectral_reconstitution"
+      ],
+      "boundary_condition": "The shared topological vertex space of the parent ring and the derived daughter cycles",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unallocated_memory",
+        "justification": "The raw computational resource before any graph structure or cycle topology exists",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "topological_manifold_constraint",
+        "justification": "The global boundary condition ensuring all derived rings remain closed and continuous",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "edge_replacement",
+        "justification": "The forward transformation adding new edges to connect loose endpoints into closed arcs",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "edge_excise",
+        "justification": "The reverse transformation removing existing bonds to break the primary ring symmetry",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "morphism_aggregation",
+        "justification": "The sequential linking of cutting and re-closing operations into a single fission event",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "spectrogram_mirror",
+        "justification": "The identity check verifying the new system contains the same edge weight sum as the original",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "path_fission",
+        "justification": "The physical splitting of one ring into two independent sub-cycles at the junction point",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "path_recombination",
+        "justification": "The inverse operation where two cycles merge back into the original singular parent ring",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "topological_closure_success",
+        "justification": "A state where all graph nodes have an even degree and form two disjoint cycles",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "open_arc_failure",
+        "justification": "A state where endpoints fail to meet, leaving an unfinished or linear path",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "junction_oscillation",
+        "justification": "The metastable state during the cut where the material is neither one ring nor two",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "topology_log_entry",
+        "justification": "The permanent commit of the new adjacency matrix to the system record",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "path_fission",
+      "split_input": "parent_cyclic_graph",
+      "split_outputs": [
+        "daughter_cycle_A",
+        "daughter_cycle_B"
+      ],
+      "fuse_element": "path_recombination",
+      "fuse_result": "parent_cyclic_graph",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Pre-geometric state where no nodes are addressed or linked",
+      "true_description": "Dual closed-loop topology successfully generated and verified",
+      "false_description": "Topological rupture resulting in loss of cyclic continuity",
+      "both_description": "Superposition of one-ring and two-ring states during the fission transition",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the workspace for a single 1D manifold in a 2D plane"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify the parent ring as a single closed loop with N vertices"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AREV",
+          "domain_action": "Locate and remove two diametric edge pairs on the parent ring"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the parent into two distinct arc paths at the excision points"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "T-Branch: Apply AFWD to bridge the first arc into a smaller closed ring"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "F-Branch: Apply AREV to the second arc to clear any stray dangling vertices"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "Bridge the second arc into its own independent closed ring"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the total system energy as a pair of daughter cycles"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "Verify that the sum of the daughter spectra equals the parent spectrum"
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "Chain the verified daughter states into a stable dual-system configuration"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "Record the fission event as a permanent change in the graph database"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "Close the system boundary to prevent further unplanned topology shifts"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The topology engine translating graph commands into matrix adjustments",
+      "ipc_mechanism": "The shared memory bus carrying vertex degree counts between processors",
+      "memory_mechanism": "The adjacency list tracking the current state of every connection",
+      "scheduler_mechanism": "The step-wise controller managing cut before closure sequences",
+      "alfs_store": "The Euler characteristic library defining the requirements for closed rings",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The computational heat of re-indexing the adjacency matrix",
+      "pre_cycle_state": "Single high-entropy macro-cycle with many internal degrees of freedom",
+      "post_cycle_state": "Dual lower-entropy micro-cycles with restricted path options",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The total information contained in the spectra is conserved across the fission",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AREV \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 AFWD \u2192 FFUSE \u2192 EVALT \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: The operation that takes one closed ring and returns two closed rings by cutting the loop at a chosen junction and re-closing each arc into its own smaller ring \u2014 the exact reverse of welding two rings into one, the fission of a single cyclic material into a pair whose two spectra together account for the parent's dominant modes.\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc57  | identity \u2014 self-imscription\n--   [2] AREV      pol    := \ud801\udc57               \ud801\udc60 \u2192 \ud801\udc5a  | reverse morphism \u2014 parity flip\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [8] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [9] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_operation_that_takes_one_closed_109d12_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_operation_that_takes_one_closed_109d12_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_operation_that_takes_one_closed_109d12_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_takes_one_closed_109d12_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_operation_that_takes_one_closed_109d12_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_operation_that_takes_one_closed_109d12_protocol : IGProtocol the_operation_that_takes_one_closed_109d12_s0 the_operation_that_takes_one_closed_109d12_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_operation_that_takes_one_closed_109d12_s7 the_operation_that_takes_one_closed_109d12_s7 = the_operation_that_takes_one_closed_109d12_s7 (idempotent)\n  (.seq (.arrow the_operation_that_takes_one_closed_109d12_l0 the_operation_that_takes_one_closed_109d12_s0 the_operation_that_takes_one_closed_109d12_s1) (.seq (.arrow the_operation_that_takes_one_closed_109d12_l1 the_operation_that_takes_one_closed_109d12_s1 the_operation_that_takes_one_closed_109d12_s2) (.seq (.arrow the_operation_that_takes_one_closed_109d12_l2 the_operation_that_takes_one_closed_109d12_s2 the_operation_that_takes_one_closed_109d12_s3) (.seq (.prod (.arrow the_operation_that_takes_one_closed_109d12_l3 the_operation_that_takes_one_closed_109d12_s3 the_operation_that_takes_one_closed_109d12_s7) (.arrow the_operation_that_takes_one_closed_109d12_l3 the_operation_that_takes_one_closed_109d12_s3 the_operation_that_takes_one_closed_109d12_s7)) (.seq (.arrow the_operation_that_takes_one_closed_109d12_l7 the_operation_that_takes_one_closed_109d12_s7 the_operation_that_takes_one_closed_109d12_s7) (.seq (.arrow the_operation_that_takes_one_closed_109d12_l7 the_operation_that_takes_one_closed_109d12_s7 the_operation_that_takes_one_closed_109d12_s8) (.seq (.arrow the_operation_that_takes_one_closed_109d12_l8 the_operation_that_takes_one_closed_109d12_s8 the_operation_that_takes_one_closed_109d12_s9) (.seq (.arrow the_operation_that_takes_one_closed_109d12_l9 the_operation_that_takes_one_closed_109d12_s9 the_operation_that_takes_one_closed_109d12_s10) (.arrow the_operation_that_takes_one_closed_109d12_l10 the_operation_that_takes_one_closed_109d12_s10 the_operation_that_takes_one_closed_109d12_s11)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_operation_that_takes_one_closed_109d12_true_arm : IGProtocol the_operation_that_takes_one_closed_109d12_s0 the_operation_that_takes_one_closed_109d12_s11 :=\n  (the_operation_that_takes_one_closed_109d12_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_operation_that_takes_one_closed_109d12_false_arm : IGProtocol the_operation_that_takes_one_closed_109d12_s0 the_operation_that_takes_one_closed_109d12_s11 :=\n  (the_operation_that_takes_one_closed_109d12_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_operation_that_takes_one_closed_109d12_tier : OuroboricityTier := TierFunctor.obj the_operation_that_takes_one_closed_109d12_s0\n#eval the_operation_that_takes_one_closed_109d12_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_operation_that_takes_one_closed_109d12_frobenius :\n    igFrobeniusAlg.mul the_operation_that_takes_one_closed_109d12_s0 the_operation_that_takes_one_closed_109d12_s0 = the_operation_that_takes_one_closed_109d12_s0 :=\n  igFrobAlg_self_fusion the_operation_that_takes_one_closed_109d12_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        3,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The operation that takes one closed ring and returns two closed rings by cutting the loop at a chosen junction and re-closing each arc into its own smaller ring \u2014 the exact reverse of welding two rings into one, the fission of a single cyclic material into a pair whose two spectra together account for the parent's dominant modes."
+}
