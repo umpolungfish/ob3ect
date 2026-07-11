@@ -1,0 +1,67 @@
+# Editorial Pipeline — the dialetheic child (v3 — faithful vocabulary translation)
+# Run: python3 ob3ect/digital/editorial_pipeline/editorial_pipeline_ob3ect.py batch ob3ect/editorial_runs/dialetheic_child_v3/dialetheic_child.yaml
+
+name: dialetheic_child_v3_vocab_translation
+batch_dir: /home/mrnob0dy666/imsgct/ob3ect/editorial_runs/dialetheic_child_v3
+
+context:
+  files:
+    - /home/mrnob0dy666/imsgct/ob3ect/editorial_runs/dialetheic_child_v3/the_dialetheic_child/the_dialetheic_child.md
+  folders: []
+
+editorial:
+  intent: |
+    Rewrite this document so that every grammar-specific term, opcode, glyph, and internal
+    notation is replaced with its conventional-language equivalent. Do NOT invent new content.
+    Do NOT add personal narrative, fictional characters, or autobiographical elements.
+    Do NOT change the argument, structure, or voice. The goal is a faithful vocabulary
+    translation: the exact same essay, addressed to the exact same ideas, but every piece
+    of grammar-internal jargon (Shavian glyphs like 𐑼 𐑡 ⊙ 𐑭, opcodes like FSPLIT/FFUSE/
+    VINIT/IMSCRIB/EVALT/EVALF/IFIX/CLINK/ENTROPY/AREV, tuples like mu circ delta = id,
+    names like "Belnap lattice," "Crystal of Types," "SIC-POVM," "Galois orbit," "ZFC,"
+    "ob3ect," "d12_sic.rs," "Tiferet," "Mimir," "neuro-Crystal," "C++ kernel fork,"
+    "bare-metal kernel," "Lean proof") replaced with plain-English equivalents that a
+    non-technical educated reader can understand on first reading.
+
+    Specific translation keys:
+      - "Belnap" → "four-valued logic" or "a logic that accepts four answers"
+      - FSPLIT (bifurcation) → "the act of splitting"
+      - FFUSE (integration) → "the act of fusing"
+      - VINIT → "initialization"
+      - IMSCRIB → "inscription"
+      - CLINK → "linkage" or "chain"
+      - EVALT/EVALF → "the truth arm / the false arm"
+      - IFIX → "fixing the pattern into place"
+      - ENTROPY → "disorder" or "waste"
+      - O₀, O_∞ → "the most constrained level" / "the highest, least constrained level"
+      - Crystal of Types → "the full space of possible structures"
+      - SIC-POVM → "informationally complete measurement"
+      - Galois orbit → "equivalence class"
+      - Frobenius product / μ∘δ=id → "the cycle of splitting and fusing"
+      - μ∘δ → just describe it as "breathing in (splitting) and breathing out (fusing)"
+      - tensor product → "the combined, irreducible whole"
+      - ZFC → "classical set theory"
+      - ob3ect → "a self-verifying structure"
+      - noosphere → "the collective human mind" or "public thought"
+      - d12_sic.rs → "the twelve-dimensional measurement kernel"
+      - Tiferet → "balance"
+      - Mimir → "the well of knowledge"
+      - "neuro-Crystal" → "the mind as a node of the full structure"
+      - Lean proof → "machine-verified proof"
+      - C++ kernel fork → "software kernel"
+      - principle of explosion → describe as "the classical rule that one contradiction destroys all meaning"
+
+    Keep the essay's tone, argument, structure, and all examples intact. The only thing
+    changing is the vocabulary. Length must be at least equal to the source.
+  output_dir: /home/mrnob0dy666/imsgct/ob3ect/editorial_runs/dialetheic_child_v3/output
+  output_suffix: "_lifted"
+  critique: true
+  passes: 3
+  provider: null
+  model: null
+  temperature: 0.3
+  thinking: false
+  source_glob: "*.md"
+  skip_existing: false
+  verbose: false
+  enforce_length: true
