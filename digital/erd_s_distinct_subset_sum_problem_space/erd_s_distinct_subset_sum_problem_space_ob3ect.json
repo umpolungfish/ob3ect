@@ -1,0 +1,269 @@
+{
+  "name": "Erd\u0151s distinct subset sum problem space",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Erd\u0151s distinct subset sum problem space",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "subset sum",
+        "distinctness",
+        "partition",
+        "verification"
+      ],
+      "boundary_condition": "The Erd\u0151s condition: for a set of n integers, all 2^n subset sums are pairwise distinct.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty set and empty sum set",
+        "justification": "Before any elements are chosen, no set exists and no subset sums are defined \u2014 the void state prior to genesis of the candidate.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "declaration that the constructed set must satisfy the Erd\u0151s property",
+        "justification": "Acts as the terminal anchor that seals the candidate once construction is complete; it closes the system by asserting the global constraint.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "addition of a new element to the set and computation of the resulting subset sums",
+        "justification": "Forward morphism that extends the current set by a chosen integer and propagates the sum set forward by adding the new element to every existing sum.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "backtrack upon collision",
+        "justification": "Reverse transformation used to retract a candidate element if its addition introduces a duplicate subset sum; returns the system to the state prior to the attempt.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential composition of candidate proposals",
+        "justification": "Chains the steps of construction so that the output of one element addition becomes the input to the next.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-identity of the sum set as a set of integers",
+        "justification": "Each subset sum is simply itself; the sum set recognizes no internal structure beyond membership, establishing the identity morphism.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "partition of the full sum set into lower half (sums not containing the largest element) and upper half (sums containing it)",
+        "justification": "Co-multiplication branches the complete sum set into two disjoint sum families determined by the presence of the most significant power of two; this split leverages the binary structure inherent in a valid Erd\u0151s set.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "reunion of the two sum family halves",
+        "justification": "Multiplication that merges the lower and upper sum families to recover the exact original full sum set; guarantees FFUSE(FSPLIT(x)) = x.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "verified distinctness",
+        "justification": "Affirmative evaluation when the two halves are disjoint \u2014 the size of the union equals twice the size of each half, confirming no duplicate sums.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "collision detected",
+        "justification": "Negative evaluation when an overlap exists between the lower and upper sum families, indicating that the set does not have the Erd\u0151s property.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "a sum that simultaneously belongs to both the lower and upper families",
+        "justification": "Paradice: a single integer appears as a subset sum both with and without the largest element, held in an unresolved paradoxical state.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "committing a chosen element to the permanent set, and later recording the verification result",
+        "justification": "Irreversible fixation; once an element satisfies the distinctness condition it becomes a permanent part of the Erd\u0151s set, and the final verification is recorded as immutable truth.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "full sum set of the constructed candidate",
+      "split_input": "the set of all 2^n subset sums of the candidate",
+      "split_outputs": [
+        "sums of subsets that do not contain the largest element (values less than 2^(n-1))",
+        "sums of subsets that contain the largest element (values at least 2^(n-1))"
+      ],
+      "fuse_element": "set union of the two sum halves",
+      "fuse_result": "the original complete sum set",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "no set exists; no sums computed.",
+      "true_description": "the subset sum set has size exactly 2^n, with every sum unique \u2014 Erd\u0151s property holds.",
+      "false_description": "a duplicate subset sum exists; the candidate fails the Erd\u0151s condition.",
+      "both_description": "a specific sum value appears in both the lower and upper families, constituting a collision that is simultaneously true and false \u2014 a paradice.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initial void \u2014 no candidate set, no subset sums."
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "set target size n = 3."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "initialize empty set S = {}, sum set Sums = {0}."
+        },
+        {
+          "step_num": 4,
+          "opcode": "IMSCRIB",
+          "domain_action": "Sums is exactly {0} \u2014 self-identity of the base sum."
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "propose first candidate element x1 = 1."
+        },
+        {
+          "step_num": 6,
+          "opcode": "IFIX",
+          "domain_action": "commit x1=1; Sums becomes {0, 1}."
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "chain to next addition."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "propose second candidate element x2 = 2."
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "commit x2=2; Sums becomes {0,1,2,3}."
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "chain to next addition."
+        },
+        {
+          "step_num": 11,
+          "opcode": "AFWD",
+          "domain_action": "propose third candidate element x3 = 4."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "commit x3=4; Sums becomes {0,1,2,3,4,5,6,7}."
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "candidate set is now {1,2,4} \u2014 construction phase sealed."
+        },
+        {
+          "step_num": 14,
+          "opcode": "FSPLIT",
+          "domain_action": "partition Sums into lower family (sums < 4, i.e. {0,1,2,3}) and upper family (sums \u2265 4, i.e. {4,5,6,7})."
+        },
+        {
+          "step_num": 15,
+          "opcode": "AFWD",
+          "domain_action": "(T-arm) pass lower family as is."
+        },
+        {
+          "step_num": 16,
+          "opcode": "AFWD",
+          "domain_action": "(F-arm) confirm upper family is exactly lower family shifted by +4."
+        },
+        {
+          "step_num": 17,
+          "opcode": "FFUSE",
+          "domain_action": "reunite lower and upper families into Sums = {0,1,2,3,4,5,6,7}."
+        },
+        {
+          "step_num": 18,
+          "opcode": "EVALT",
+          "domain_action": "verify disjointness \u2014 |Sums| = 8 equals 2 * |lower|, so no collision."
+        },
+        {
+          "step_num": 19,
+          "opcode": "IFIX",
+          "domain_action": "record the set {1,2,4} as a valid Erd\u0151s distinct subset sum set of size 3."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the algorithm that translates the problem statement into a search over candidate integers",
+      "ipc_mechanism": "the sum set acts as shared state, updated after each committed addition and queried during verification",
+      "memory_mechanism": "the set of currently accumulated subset sums stored as a sorted list or hash table",
+      "scheduler_mechanism": "a greedy sequential loop that proposes the next power of two as the candidate, because it guarantees distinctness without backtracking",
+      "alfs_store": "the canonical reference Erd\u0151s conjecture paper \u2018On the set of all subset sums\u2019 (Erd\u0151s, 1963)",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one integer addition and set union per new element",
+      "pre_cycle_state": "sum set has size 2^(i-1) before adding the i-th element",
+      "post_cycle_state": "sum set has size 2^i, while the candidate set gains one element",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the size of the sum set doubles deterministically and no information is lost; the process is entropy-conservative in terms of the number of subset sums represented.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 AFWD \u2192 IMSCRIB \u2192 AFWD \u2192 IFIX \u2192 CLINK \u2192 AFWD \u2192 IFIX \u2192 CLINK \u2192 AFWD \u2192 IFIX \u2192 TANCH \u2192 FSPLIT \u2192 AFWD \u2192 AFWD \u2192 FFUSE \u2192 EVALT \u2192 IFIX\n-- Class: Erd\u0151s distinct subset sum problem space\n-- Fingerprint: sig=(12,2,1,4)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=19\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(13, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [5] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [10] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc6d  | forward morphism \u2014 bidirectional arrow\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc7e \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [13] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [14] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [15] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [16] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [17] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc6d  | evaluate-true \u2014 criticality gate open\n--   [18] IFIX      prot   := \ud801\udc6d               \u2299 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def erd_s_distinct_subset_sum_problem_space_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def erd_s_distinct_subset_sum_problem_space_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def erd_s_distinct_subset_sum_problem_space_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def erd_s_distinct_subset_sum_problem_space_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def erd_s_distinct_subset_sum_problem_space_protocol : IGProtocol erd_s_distinct_subset_sum_problem_space_s0 erd_s_distinct_subset_sum_problem_space_s18 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct erd_s_distinct_subset_sum_problem_space_s16 erd_s_distinct_subset_sum_problem_space_s16 = erd_s_distinct_subset_sum_problem_space_s16 (idempotent)\n  (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l0 erd_s_distinct_subset_sum_problem_space_s0 erd_s_distinct_subset_sum_problem_space_s1) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l1 erd_s_distinct_subset_sum_problem_space_s1 erd_s_distinct_subset_sum_problem_space_s2) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l2 erd_s_distinct_subset_sum_problem_space_s2 erd_s_distinct_subset_sum_problem_space_s3) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l3 erd_s_distinct_subset_sum_problem_space_s3 erd_s_distinct_subset_sum_problem_space_s4) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l4 erd_s_distinct_subset_sum_problem_space_s4 erd_s_distinct_subset_sum_problem_space_s5) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l5 erd_s_distinct_subset_sum_problem_space_s5 erd_s_distinct_subset_sum_problem_space_s6) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l6 erd_s_distinct_subset_sum_problem_space_s6 erd_s_distinct_subset_sum_problem_space_s7) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l7 erd_s_distinct_subset_sum_problem_space_s7 erd_s_distinct_subset_sum_problem_space_s8) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l8 erd_s_distinct_subset_sum_problem_space_s8 erd_s_distinct_subset_sum_problem_space_s9) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l9 erd_s_distinct_subset_sum_problem_space_s9 erd_s_distinct_subset_sum_problem_space_s10) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l10 erd_s_distinct_subset_sum_problem_space_s10 erd_s_distinct_subset_sum_problem_space_s11) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l11 erd_s_distinct_subset_sum_problem_space_s11 erd_s_distinct_subset_sum_problem_space_s12) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l12 erd_s_distinct_subset_sum_problem_space_s12 erd_s_distinct_subset_sum_problem_space_s13) (.seq (.prod (.arrow erd_s_distinct_subset_sum_problem_space_l13 erd_s_distinct_subset_sum_problem_space_s13 erd_s_distinct_subset_sum_problem_space_s16) (.arrow erd_s_distinct_subset_sum_problem_space_l13 erd_s_distinct_subset_sum_problem_space_s13 erd_s_distinct_subset_sum_problem_space_s16)) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l16 erd_s_distinct_subset_sum_problem_space_s16 erd_s_distinct_subset_sum_problem_space_s16) (.seq (.arrow erd_s_distinct_subset_sum_problem_space_l16 erd_s_distinct_subset_sum_problem_space_s16 erd_s_distinct_subset_sum_problem_space_s17) (.arrow erd_s_distinct_subset_sum_problem_space_l17 erd_s_distinct_subset_sum_problem_space_s17 erd_s_distinct_subset_sum_problem_space_s18)))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def erd_s_distinct_subset_sum_problem_space_true_arm : IGProtocol erd_s_distinct_subset_sum_problem_space_s0 erd_s_distinct_subset_sum_problem_space_s18 :=\n  (erd_s_distinct_subset_sum_problem_space_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef erd_s_distinct_subset_sum_problem_space_tier : OuroboricityTier := TierFunctor.obj erd_s_distinct_subset_sum_problem_space_s0\n#eval erd_s_distinct_subset_sum_problem_space_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem erd_s_distinct_subset_sum_problem_space_frobenius :\n    igFrobeniusAlg.mul erd_s_distinct_subset_sum_problem_space_s0 erd_s_distinct_subset_sum_problem_space_s0 = erd_s_distinct_subset_sum_problem_space_s0 :=\n  igFrobAlg_self_fusion erd_s_distinct_subset_sum_problem_space_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 19,
+    "t_branch_ops": 2,
+    "f_branch_ops": 0,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      13
+    ],
+    "fuse_positions": [
+      16
+    ],
+    "pair_list": [
+      [
+        13,
+        16
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Erd\u0151s distinct subset sum problem space"
+}

@@ -1,0 +1,213 @@
+{
+  "name": "a lossless separation of one input into two complementary branches that later recombine into exactly the original",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "a lossless separation of one input into two complementary branches that later recombine into exactly the original",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "beam",
+        "splitter",
+        "combiner"
+      ],
+      "boundary_condition": "interferometer: the closed optical system containing the splitter, two arms, and combiner, ensuring no external loss",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "dark state before any light emission",
+        "justification": "the void from which the coherent beam emerges; uninitialized optical field",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "final detector or output port that closes the interferometer",
+        "justification": "the terminal boundary that contains the entire split-recombine cycle, marking completion",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "forward propagation of the beam from source to splitter",
+        "justification": "directed transformation of the initial void into a traveling wave toward the splitting point",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "reflection at the combiner that sends light back toward the source (if any)",
+        "justification": "reverse morphism; in a lossless system, the reverse path is symmetric and could undo the forward split",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential passage through optical elements (lenses, mirrors) along an arm",
+        "justification": "composition of morphisms: each arm is a chain of phase shifts and reflections",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the original beam's wavefront profile as a self-identical pattern",
+        "justification": "identity: the beam is itself before splitting, and the recombined beam must match this identity",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "50:50 non-polarizing beam splitter",
+        "justification": "co-multiplication: one input beam divides into two complementary output beams (transmitted and reflected) with equal amplitude, preserving total energy",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "beam combiner (identical to splitter, used in reverse)",
+        "justification": "multiplication: the two branch beams are recombined via constructive interference to recover exactly the original beam profile and intensity",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "transmitted arm (T-branch)",
+        "justification": "affirmative path: the portion of the beam that passes straight through the splitter, representing the 'true' evaluation of the split",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "reflected arm (F-branch)",
+        "justification": "negative path: the portion that is reflected, representing the complementary 'false' branch",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "superposition state where both arm amplitudes coexist before recombination",
+        "justification": "a paradice: the two branches are simultaneously present in the interferometer, held without resolution until they interfere at the combiner",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "photographic plate or digital sensor recording the interference pattern",
+        "justification": "permanent, irreversible record of the recombined beam's intensity, fixing the outcome",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "50:50 non-polarizing beam splitter",
+      "split_input": "coherent monochromatic beam with amplitude A and phase \u03c6",
+      "split_outputs": [
+        "transmitted beam: amplitude A/\u221a2, phase \u03c6",
+        "reflected beam: amplitude A/\u221a2, phase \u03c6 + \u03c0/2 (due to reflection phase shift)"
+      ],
+      "fuse_element": "beam combiner (identical splitter oriented to recombine the two arms)",
+      "fuse_result": "recombined beam with amplitude A and original phase \u03c6 (constructive interference on one output port, destructive on the other; the original is recovered at the bright port)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "no optical field; complete darkness before the source is activated",
+      "true_description": "constructive interference yielding maximum intensity at the detector (bright fringe)",
+      "false_description": "destructive interference yielding zero intensity at the detector (dark fringe)",
+      "both_description": "superposition of the two arm amplitudes before they interfere; the field is a coherent sum of both contributions, neither resolved to a single intensity",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "the optical system is in its ground state, no light present"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "a coherent beam is generated and propagates toward the beam splitter"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "the beam splitter divides the incoming beam into two equal-amplitude branches, transmitted (T) and reflected (F)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "the T-branch travels through the transmitted arm, accumulating a phase shift from the optical path length"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALF",
+          "domain_action": "the F-branch travels through the reflected arm, accumulating its own phase shift"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FFUSE",
+          "domain_action": "the two branches recombine at the beam combiner; constructive interference on the output port recovers the original beam amplitude and phase"
+        },
+        {
+          "step_num": 7,
+          "opcode": "TANCH",
+          "domain_action": "the recombined beam reaches the detector, closing the interferometer loop"
+        },
+        {
+          "step_num": 8,
+          "opcode": "IFIX",
+          "domain_action": "the detector records the interference intensity as a permanent measurement"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "optical table alignment procedure: translates the design into physical placement of mirrors, splitter, and combiner",
+      "ipc_mechanism": "free-space propagation of the electromagnetic field; the beam itself carries the signal between components",
+      "memory_mechanism": "optical path length difference between the two arms, stored as a phase shift",
+      "scheduler_mechanism": "continuous-wave laser operation; the process is simultaneous for all photons, no discrete timing required",
+      "alfs_store": "the interferometer blueprint or schematic, serving as the canonical reference for the lossless split-recombine cycle",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "energy of the laser beam (photons emitted per unit time)",
+      "pre_cycle_state": "laser off, no optical power in the system",
+      "post_cycle_state": "laser on, recombined beam detected with the same total power as the input (minus negligible absorption in optics)",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the process is reversible: splitting and recombination conserve energy and coherence; no information is lost, so entropy does not increase",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 TANCH \u2192 IFIX\n-- Class: a lossless separation of one input into two complementary branches that later recombine into exactly the original\n-- Fingerprint: sig=(3,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=8\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 5)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc61  | fuse \u03bc \u2014 assembly mode\n--   [6] TANCH     top    := \ud801\udc61               \ud801\udc59 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [7] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_lossless_separation_of_one_input_into_ffbc62_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def a_lossless_separation_of_one_input_into_ffbc62_protocol : IGProtocol a_lossless_separation_of_one_input_into_ffbc62_s0 a_lossless_separation_of_one_input_into_ffbc62_s7 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct a_lossless_separation_of_one_input_into_ffbc62_s5 a_lossless_separation_of_one_input_into_ffbc62_s5 = a_lossless_separation_of_one_input_into_ffbc62_s5 (idempotent)\n  (.seq (.arrow a_lossless_separation_of_one_input_into_ffbc62_l0 a_lossless_separation_of_one_input_into_ffbc62_s0 a_lossless_separation_of_one_input_into_ffbc62_s1) (.seq (.arrow a_lossless_separation_of_one_input_into_ffbc62_l1 a_lossless_separation_of_one_input_into_ffbc62_s1 a_lossless_separation_of_one_input_into_ffbc62_s2) (.seq (.prod (.arrow a_lossless_separation_of_one_input_into_ffbc62_l2 a_lossless_separation_of_one_input_into_ffbc62_s2 a_lossless_separation_of_one_input_into_ffbc62_s5) (.arrow a_lossless_separation_of_one_input_into_ffbc62_l2 a_lossless_separation_of_one_input_into_ffbc62_s2 a_lossless_separation_of_one_input_into_ffbc62_s5)) (.seq (.arrow a_lossless_separation_of_one_input_into_ffbc62_l5 a_lossless_separation_of_one_input_into_ffbc62_s5 a_lossless_separation_of_one_input_into_ffbc62_s5) (.seq (.arrow a_lossless_separation_of_one_input_into_ffbc62_l5 a_lossless_separation_of_one_input_into_ffbc62_s5 a_lossless_separation_of_one_input_into_ffbc62_s6) (.arrow a_lossless_separation_of_one_input_into_ffbc62_l6 a_lossless_separation_of_one_input_into_ffbc62_s6 a_lossless_separation_of_one_input_into_ffbc62_s7))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def a_lossless_separation_of_one_input_into_ffbc62_true_arm : IGProtocol a_lossless_separation_of_one_input_into_ffbc62_s0 a_lossless_separation_of_one_input_into_ffbc62_s7 :=\n  (a_lossless_separation_of_one_input_into_ffbc62_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def a_lossless_separation_of_one_input_into_ffbc62_false_arm : IGProtocol a_lossless_separation_of_one_input_into_ffbc62_s0 a_lossless_separation_of_one_input_into_ffbc62_s7 :=\n  (a_lossless_separation_of_one_input_into_ffbc62_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef a_lossless_separation_of_one_input_into_ffbc62_tier : OuroboricityTier := TierFunctor.obj a_lossless_separation_of_one_input_into_ffbc62_s0\n#eval a_lossless_separation_of_one_input_into_ffbc62_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem a_lossless_separation_of_one_input_into_ffbc62_frobenius :\n    igFrobeniusAlg.mul a_lossless_separation_of_one_input_into_ffbc62_s0 a_lossless_separation_of_one_input_into_ffbc62_s0 = a_lossless_separation_of_one_input_into_ffbc62_s0 :=\n  igFrobAlg_self_fusion a_lossless_separation_of_one_input_into_ffbc62_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 8,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      5
+    ],
+    "pair_list": [
+      [
+        2,
+        5
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: a lossless separation of one input into two complementary branches that later recombine into exactly the original"
+}

@@ -1,0 +1,250 @@
+{
+  "name": "hypergraph_container_method",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "hypergraph_container_method",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "hypergraph",
+        "container",
+        "edge",
+        "vertex",
+        "query"
+      ],
+      "boundary_condition": "The container's public interface, which encapsulates the hypergraph state and enforces invariants such as no duplicate vertices and edge-vertex consistency.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty container",
+        "justification": "The container before any hypergraph is instantiated; no vertices, no edges, no state.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "container boundary",
+        "justification": "The closed set of all valid hypergraph configurations the container can hold, defined by its type and constraints.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "add_hyperedge",
+        "justification": "Forward morphism that inserts a new hyperedge, increasing the hypergraph's complexity.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "remove_hyperedge",
+        "justification": "Reverse morphism that deletes an existing hyperedge, descending to a simpler state.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "operation chaining",
+        "justification": "Sequential composition of container methods, e.g., add vertex then add edge, forming a derived operation.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "identity check",
+        "justification": "Self-reference: verifying that a hypergraph equals itself after a round-trip of operations, confirming structural integrity.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "predicate_split",
+        "justification": "Splits the hypergraph into two disjoint sub-hypergraphs based on a predicate (e.g., edges with even vs. odd cardinality).",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "merge_hypergraphs",
+        "justification": "Reconstitutes the original hypergraph by taking the union of the two sub-hypergraphs, exactly recovering the input to FSPLIT.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "even_cardinality_branch",
+        "justification": "Affirmative branch: the sub-hypergraph containing edges whose vertex count is even.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "odd_cardinality_branch",
+        "justification": "Negative branch: the sub-hypergraph containing edges whose vertex count is odd.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "fuzzy_membership",
+        "justification": "A paradice where a vertex is simultaneously considered a member and non-member of a hyperedge, held without resolution (e.g., probabilistic hypergraph).",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "commit_to_log",
+        "justification": "Permanent, append-only record of the current hypergraph state, irreversible once written.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "predicate_split",
+      "split_input": "original hypergraph H",
+      "split_outputs": [
+        "H_even (edges with even cardinality)",
+        "H_odd (edges with odd cardinality)"
+      ],
+      "fuse_element": "merge_hypergraphs",
+      "fuse_result": "H (the original hypergraph, since H_even \u222a H_odd = H and the two subsets are disjoint)",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Empty container with no vertices and no hyperedges; the uninitialized state before any data is stored.",
+      "true_description": "Operation succeeded; a query returns true; a hyperedge was added or found.",
+      "false_description": "Operation failed; a query returns false; a hyperedge was not found or removal failed.",
+      "both_description": "A vertex is simultaneously a member and non-member of a hyperedge, as in a fuzzy or probabilistic hypergraph where membership is a degree in (0,1) and both states are held.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Container is instantiated, holding no hypergraph; state is void."
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "The container's boundary is established, defining the valid hypergraph configurations and enforcing invariants."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Add vertex v1 to the hypergraph."
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "Chain addition of vertex v2, composing two vertex insertions."
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "Add hyperedge e1 containing vertices {v1, v2}."
+        },
+        {
+          "step_num": 6,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify identity: the hypergraph after these additions is structurally identical to itself."
+        },
+        {
+          "step_num": 7,
+          "opcode": "FSPLIT",
+          "domain_action": "Split the hypergraph into two sub-hypergraphs based on edge cardinality parity."
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALT",
+          "domain_action": "Process the even-cardinality sub-hypergraph (e.g., store it in a separate index)."
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "Process the odd-cardinality sub-hypergraph."
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "Merge the two sub-hypergraphs back, recovering the original hypergraph exactly."
+        },
+        {
+          "step_num": 11,
+          "opcode": "AREV",
+          "domain_action": "Remove hyperedge e1, reversing the forward addition."
+        },
+        {
+          "step_num": 12,
+          "opcode": "CLINK",
+          "domain_action": "Chain removal of vertex v2, composing two deletions."
+        },
+        {
+          "step_num": 13,
+          "opcode": "ENGAGR",
+          "domain_action": "Query vertex v1 in a fuzzy hyperedge where membership is both true and false, held as a paradice."
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "Commit the current hypergraph state to an append-only log, making it permanent and irreversible."
+        },
+        {
+          "step_num": 15,
+          "opcode": "TANCH",
+          "domain_action": "Reaffirm the container boundary after all operations, ensuring the final state is within the valid space."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The programming language runtime that translates method calls into machine operations (e.g., C++ compiler with STL containers).",
+      "ipc_mechanism": "Method invocations on the container object, passing arguments and receiving return values via the call stack.",
+      "memory_mechanism": "The internal data structure storing vertices and hyperedges, such as adjacency lists or incidence matrices, held in heap memory.",
+      "scheduler_mechanism": "The program's control flow, which determines the order of method calls based on the algorithm.",
+      "alfs_store": "The formal specification of the hypergraph ADT, including axioms for add, remove, and query operations.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "CPU cycles and memory writes per operation; each add or remove modifies the internal representation.",
+      "pre_cycle_state": "The hypergraph state before an operation cycle, e.g., with a specific set of vertices and edges.",
+      "post_cycle_state": "The hypergraph state after the operation cycle, which may be identical to the pre-state if an add is followed by a remove of the same element.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the container operations are information-theoretically reversible: a sequence of add then remove returns the system to its exact prior state, consuming only computational work that can be made arbitrarily close to zero with perfect reversibility.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 AFWD \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: hypergraph_container_method\n-- Fingerprint: sig=(9,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=15\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(6, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [5] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [6] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc57  | fuse \u03bc \u2014 assembly mode\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc59 \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [12] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [14] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def hypergraph_container_method_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def hypergraph_container_method_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def hypergraph_container_method_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def hypergraph_container_method_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def hypergraph_container_method_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def hypergraph_container_method_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def hypergraph_container_method_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def hypergraph_container_method_protocol : IGProtocol hypergraph_container_method_s0 hypergraph_container_method_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct hypergraph_container_method_s9 hypergraph_container_method_s9 = hypergraph_container_method_s9 (idempotent)\n  (.seq (.arrow hypergraph_container_method_l0 hypergraph_container_method_s0 hypergraph_container_method_s1) (.seq (.arrow hypergraph_container_method_l1 hypergraph_container_method_s1 hypergraph_container_method_s2) (.seq (.arrow hypergraph_container_method_l2 hypergraph_container_method_s2 hypergraph_container_method_s3) (.seq (.arrow hypergraph_container_method_l3 hypergraph_container_method_s3 hypergraph_container_method_s4) (.seq (.arrow hypergraph_container_method_l4 hypergraph_container_method_s4 hypergraph_container_method_s5) (.seq (.arrow hypergraph_container_method_l5 hypergraph_container_method_s5 hypergraph_container_method_s6) (.seq (.prod (.arrow hypergraph_container_method_l6 hypergraph_container_method_s6 hypergraph_container_method_s9) (.arrow hypergraph_container_method_l6 hypergraph_container_method_s6 hypergraph_container_method_s9)) (.seq (.arrow hypergraph_container_method_l9 hypergraph_container_method_s9 hypergraph_container_method_s9) (.seq (.arrow hypergraph_container_method_l9 hypergraph_container_method_s9 hypergraph_container_method_s10) (.seq (.arrow hypergraph_container_method_l10 hypergraph_container_method_s10 hypergraph_container_method_s11) (.seq (.arrow hypergraph_container_method_l11 hypergraph_container_method_s11 hypergraph_container_method_s12) (.seq (.arrow hypergraph_container_method_l12 hypergraph_container_method_s12 hypergraph_container_method_s13) (.arrow hypergraph_container_method_l13 hypergraph_container_method_s13 hypergraph_container_method_s14)))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def hypergraph_container_method_true_arm : IGProtocol hypergraph_container_method_s0 hypergraph_container_method_s14 :=\n  (hypergraph_container_method_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def hypergraph_container_method_false_arm : IGProtocol hypergraph_container_method_s0 hypergraph_container_method_s14 :=\n  (hypergraph_container_method_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef hypergraph_container_method_tier : OuroboricityTier := TierFunctor.obj hypergraph_container_method_s0\n#eval hypergraph_container_method_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem hypergraph_container_method_frobenius :\n    igFrobeniusAlg.mul hypergraph_container_method_s0 hypergraph_container_method_s0 = hypergraph_container_method_s0 :=\n  igFrobAlg_self_fusion hypergraph_container_method_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 15,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      6
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        6,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: hypergraph_container_method"
+}

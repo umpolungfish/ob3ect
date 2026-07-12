@@ -1,0 +1,223 @@
+{
+  "name": "divisibility_constraint_set",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "divisibility_constraint_set",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "dividend",
+        "divisor",
+        "remainder"
+      ],
+      "boundary_condition": "The set of natural numbers N",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Null set",
+        "justification": "The state before any numerical value or relation is defined.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Modulo operator",
+        "justification": "The operator that defines the limits of the divisibility check.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Division operation",
+        "justification": "The forward transformation of a number into its quotient parts.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Multiplication operation",
+        "justification": "The inverse operation that reconstructs the dividend from quotient and divisor.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Successive subtraction",
+        "justification": "The iterative process that composes the division algorithm.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Identity element 1",
+        "justification": "The number that returns itself under division, representing self-recognition.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Euclidean division",
+        "justification": "Splits a number into a quotient and a remainder.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Euclidean reconstruction",
+        "justification": "Recombines quotient and remainder to recover the original dividend.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Zero remainder",
+        "justification": "The state where the divisibility constraint is satisfied.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Non-zero remainder",
+        "justification": "The state where the divisibility constraint is violated.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Indeterminate form 0/0",
+        "justification": "A state where divisibility is neither true nor false but undefined.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Prime factorization",
+        "justification": "The permanent, irreversible decomposition of a number into its atomic parts.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Euclidean division",
+      "split_input": "Dividend n",
+      "split_outputs": [
+        "Quotient q",
+        "Remainder r"
+      ],
+      "fuse_element": "Euclidean reconstruction",
+      "fuse_result": "n = (d * q) + r",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Undefined numerical space before value assignment",
+      "true_description": "Constraint satisfied: n mod d = 0",
+      "false_description": "Constraint violated: n mod d != 0",
+      "both_description": "Singularity where division by zero occurs",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the numerical register to null"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Define the dividend as a self-consistent identity"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Apply the divisor as a transformation vector"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the dividend into quotient and remainder paths"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Verify if the remainder path contains the value zero"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "Verify if the remainder path contains a non-zero value"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the quotient and remainder to verify integrity"
+        },
+        {
+          "step_num": 8,
+          "opcode": "CLINK",
+          "domain_action": "Chain the result to the next constraint in the set"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "Record the divisibility status in the permanent factor table"
+        },
+        {
+          "step_num": 10,
+          "opcode": "TANCH",
+          "domain_action": "Close the operation within the bounds of the number system"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Arithmetic logic unit",
+      "ipc_mechanism": "Register bus for integer values",
+      "memory_mechanism": "Stack for intermediate remainders",
+      "scheduler_mechanism": "Order of operations defined by operator precedence",
+      "alfs_store": "Peano axioms",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational clock cycles",
+      "pre_cycle_state": "Unordered set of integers",
+      "post_cycle_state": "Ordered set of factors and remainders",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The information content of the dividend is preserved through the division and reconstruction cycle.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: divisibility_constraint_set\n-- Fingerprint: sig=(5,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=10\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [9] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def divisibility_constraint_set_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def divisibility_constraint_set_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def divisibility_constraint_set_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def divisibility_constraint_set_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def divisibility_constraint_set_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def divisibility_constraint_set_protocol : IGProtocol divisibility_constraint_set_s0 divisibility_constraint_set_s9 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct divisibility_constraint_set_s6 divisibility_constraint_set_s6 = divisibility_constraint_set_s6 (idempotent)\n  (.seq (.arrow divisibility_constraint_set_l0 divisibility_constraint_set_s0 divisibility_constraint_set_s1) (.seq (.arrow divisibility_constraint_set_l1 divisibility_constraint_set_s1 divisibility_constraint_set_s2) (.seq (.arrow divisibility_constraint_set_l2 divisibility_constraint_set_s2 divisibility_constraint_set_s3) (.seq (.prod (.arrow divisibility_constraint_set_l3 divisibility_constraint_set_s3 divisibility_constraint_set_s6) (.arrow divisibility_constraint_set_l3 divisibility_constraint_set_s3 divisibility_constraint_set_s6)) (.seq (.arrow divisibility_constraint_set_l6 divisibility_constraint_set_s6 divisibility_constraint_set_s6) (.seq (.arrow divisibility_constraint_set_l6 divisibility_constraint_set_s6 divisibility_constraint_set_s7) (.seq (.arrow divisibility_constraint_set_l7 divisibility_constraint_set_s7 divisibility_constraint_set_s8) (.arrow divisibility_constraint_set_l8 divisibility_constraint_set_s8 divisibility_constraint_set_s9))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def divisibility_constraint_set_true_arm : IGProtocol divisibility_constraint_set_s0 divisibility_constraint_set_s9 :=\n  (divisibility_constraint_set_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def divisibility_constraint_set_false_arm : IGProtocol divisibility_constraint_set_s0 divisibility_constraint_set_s9 :=\n  (divisibility_constraint_set_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef divisibility_constraint_set_tier : OuroboricityTier := TierFunctor.obj divisibility_constraint_set_s0\n#eval divisibility_constraint_set_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem divisibility_constraint_set_frobenius :\n    igFrobeniusAlg.mul divisibility_constraint_set_s0 divisibility_constraint_set_s0 = divisibility_constraint_set_s0 :=\n  igFrobAlg_self_fusion divisibility_constraint_set_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 10,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        3,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: divisibility_constraint_set"
+}
