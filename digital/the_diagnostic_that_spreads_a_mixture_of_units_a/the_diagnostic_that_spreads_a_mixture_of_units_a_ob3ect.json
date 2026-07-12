@@ -1,0 +1,249 @@
+{
+  "name": "The diagnostic that spreads a mixture of units along one migration axis, measuring for each how far it travels relative to the front against a fixed retaining medium, and reports how many distinct bands appear and which units travel together as one band; an analysis that counts and places the components of a mixture without isolating any of them, the quick read of how many things are present and whether any overlap.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The diagnostic that spreads a mixture of units along one migration axis, measuring for each how far it travels relative to the front against a fixed retaining medium, and reports how many distinct bands appear and which units travel together as one band; an analysis that counts and places the components of a mixture without isolating any of them, the quick read of how many things are present and whether any overlap.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "mobile phase",
+        "stationary phase",
+        "retention factor"
+      ],
+      "boundary_condition": "chromatographic plate edge",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unloaded adsorbent layer",
+        "justification": "the uninitialized substrate prior to the application of the analyte mixture",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "solvent front limit",
+        "justification": "the terminal boundary that contains the migration axis and stops the process",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "capillary migration",
+        "justification": "the forward directed movement of the mobile phase along the stationary medium",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "stationary phase retention",
+        "justification": "the subtractive force of the medium acting against the forward flow of the analyte",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "differential elution",
+        "justification": "sequential iterations of partitioning between the mobile and stationary phases",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "retention factor calculation",
+        "justification": "the self-referential identification of a unit based on its position relative to the front",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "mixture resolution",
+        "justification": "the division of the single input mixture into distinct bands based on molecular affinity",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "material balance verification",
+        "justification": "the check ensuring the sum of all separated bands equals the mass of the origin mixture",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "resolved band",
+        "justification": "a successful separation event where a unit occupies a distinct migration coordinate",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "co-elution",
+        "justification": "the failure to resolve two components resulting in a single overlapping signal",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "isocratic equilibrium",
+        "justification": "a state where the unit resides in both phases simultaneously without net resolution",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "fixed chromatogram",
+        "justification": "the permanent record of band positions after the solvent has evaporated",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "mixture resolution",
+      "split_input": "crude mixture",
+      "split_outputs": [
+        "component A band",
+        "component B band"
+      ],
+      "fuse_element": "material balance verification",
+      "fuse_result": "crude mixture",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the clean plate before sample spotting",
+      "true_description": "a clearly defined and separated band",
+      "false_description": "unresolved smear or baseline retention",
+      "both_description": "overlapping bands at the same Rf value",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "preparing the dry stationary phase"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IFIX",
+          "domain_action": "spotting the origin point with technical mixture"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "immersing the base in mobile phase to initiate migration"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "establishing the equilibrium chain between phases"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "resolving the mixture into characteristic migration paths"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "identifying a distinct band at a secondary coordinate"
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "continuing the migration across the medium length"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "sub-dividing a complex band into its internal constituents"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "detecting two units that fail to separate and travel together"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "aggregating the sub-band data for mass balance"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "reconciling all migrated bands with the total mass of the origin spot"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IMSCRIB",
+          "domain_action": "assigning an identity to the resulting pattern based on local constants"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "halting the migration at the solvent front boundary"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "recording the final distribution of units as a permanent result"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the specific solvent composition and pH levels",
+      "ipc_mechanism": "electrostatic and van der Waals interactions between molecules and substrate",
+      "memory_mechanism": "the physical depth and pore density of the stationary medium",
+      "scheduler_mechanism": "capillary action and surface tension driving the movement speed",
+      "alfs_store": "standardized reference tables of retention factors for known chemical units",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "chemical potential gradient of the solvent",
+      "pre_cycle_state": "organized concentrated sample at origin spot",
+      "post_cycle_state": "spatially distributed bands across the plate axis",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the process utilizes the enthalpy of adsorption to drive spatial separation without external energy input",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IFIX \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALF \u2192 FFUSE \u2192 FFUSE \u2192 IMSCRIB \u2192 TANCH \u2192 IFIX\n-- Class: The diagnostic that spreads a mixture of units along one migration axis, measuring for each how far it travels relative to the front against a fixed retaining medium, and reports how many distinct bands appear and which units travel together as one band; an analysis that counts and places the components of a mixture without isolating any of them, the quick read of how many things are present and whether any overlap.\n-- Fingerprint: sig=(6,4,2,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=14\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(7, 9), (4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc6d  | initial object \u2014 ground of distinction\n--   [1] IFIX      prot   := \ud801\udc6d               \ud801\udc7c \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [11] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_diagnostic_that_spreads_a_mixture_0f0f48_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_diagnostic_that_spreads_a_mixture_0f0f48_protocol : IGProtocol the_diagnostic_that_spreads_a_mixture_0f0f48_s0 the_diagnostic_that_spreads_a_mixture_0f0f48_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_diagnostic_that_spreads_a_mixture_0f0f48_s9 the_diagnostic_that_spreads_a_mixture_0f0f48_s9 = the_diagnostic_that_spreads_a_mixture_0f0f48_s9 (idempotent)\n  (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l0 the_diagnostic_that_spreads_a_mixture_0f0f48_s0 the_diagnostic_that_spreads_a_mixture_0f0f48_s1) (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l1 the_diagnostic_that_spreads_a_mixture_0f0f48_s1 the_diagnostic_that_spreads_a_mixture_0f0f48_s2) (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l2 the_diagnostic_that_spreads_a_mixture_0f0f48_s2 the_diagnostic_that_spreads_a_mixture_0f0f48_s3) (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l3 the_diagnostic_that_spreads_a_mixture_0f0f48_s3 the_diagnostic_that_spreads_a_mixture_0f0f48_s4) (.seq (.prod (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l4 the_diagnostic_that_spreads_a_mixture_0f0f48_s4 the_diagnostic_that_spreads_a_mixture_0f0f48_s9) (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l4 the_diagnostic_that_spreads_a_mixture_0f0f48_s4 the_diagnostic_that_spreads_a_mixture_0f0f48_s9)) (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l9 the_diagnostic_that_spreads_a_mixture_0f0f48_s9 the_diagnostic_that_spreads_a_mixture_0f0f48_s9) (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l9 the_diagnostic_that_spreads_a_mixture_0f0f48_s9 the_diagnostic_that_spreads_a_mixture_0f0f48_s10) (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l10 the_diagnostic_that_spreads_a_mixture_0f0f48_s10 the_diagnostic_that_spreads_a_mixture_0f0f48_s11) (.seq (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l11 the_diagnostic_that_spreads_a_mixture_0f0f48_s11 the_diagnostic_that_spreads_a_mixture_0f0f48_s12) (.arrow the_diagnostic_that_spreads_a_mixture_0f0f48_l12 the_diagnostic_that_spreads_a_mixture_0f0f48_s12 the_diagnostic_that_spreads_a_mixture_0f0f48_s13))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_diagnostic_that_spreads_a_mixture_0f0f48_true_arm : IGProtocol the_diagnostic_that_spreads_a_mixture_0f0f48_s0 the_diagnostic_that_spreads_a_mixture_0f0f48_s13 :=\n  (the_diagnostic_that_spreads_a_mixture_0f0f48_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_diagnostic_that_spreads_a_mixture_0f0f48_false_arm : IGProtocol the_diagnostic_that_spreads_a_mixture_0f0f48_s0 the_diagnostic_that_spreads_a_mixture_0f0f48_s13 :=\n  (the_diagnostic_that_spreads_a_mixture_0f0f48_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_diagnostic_that_spreads_a_mixture_0f0f48_tier : OuroboricityTier := TierFunctor.obj the_diagnostic_that_spreads_a_mixture_0f0f48_s0\n#eval the_diagnostic_that_spreads_a_mixture_0f0f48_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_diagnostic_that_spreads_a_mixture_0f0f48_frobenius :\n    igFrobeniusAlg.mul the_diagnostic_that_spreads_a_mixture_0f0f48_s0 the_diagnostic_that_spreads_a_mixture_0f0f48_s0 = the_diagnostic_that_spreads_a_mixture_0f0f48_s0 :=\n  igFrobAlg_self_fusion the_diagnostic_that_spreads_a_mixture_0f0f48_s0\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 1,
+    "sequence_length": 14,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      4,
+      7
+    ],
+    "fuse_positions": [
+      9,
+      10
+    ],
+    "pair_list": [
+      [
+        7,
+        9
+      ],
+      [
+        4,
+        10
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The diagnostic that spreads a mixture of units along one migration axis, measuring for each how far it travels relative to the front against a fixed retaining medium, and reports how many distinct bands appear and which units travel together as one band; an analysis that counts and places the components of a mixture without isolating any of them, the quick read of how many things are present and whether any overlap."
+}

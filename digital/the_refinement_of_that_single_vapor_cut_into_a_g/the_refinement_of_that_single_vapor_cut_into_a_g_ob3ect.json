@@ -1,0 +1,255 @@
+{
+  "name": "The refinement of that single vapor cut into a graded column of many successive fractions, resolving units that sit close together on the same leaving-readiness axis by repeated re-separation up a series of equilibration stages, and reporting which neighboring units are too close to resolve into distinct fractions; the same driving property as the single distillation but at higher resolving power.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The refinement of that single vapor cut into a graded column of many successive fractions, resolving units that sit close together on the same leaving-readiness axis by repeated re-separation up a series of equilibration stages, and reporting which neighboring units are too close to resolve into distinct fractions; the same driving property as the single distillation but at higher resolving power.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "theoretical plate",
+        "reflux ratio",
+        "azeotrope",
+        "chromatographic resolution"
+      ],
+      "boundary_condition": "The adiabatic fractional column wall maintaining thermal equilibrium and mass balance",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "crude feed stock",
+        "justification": "The unrefined input mixture before thermal separation or identification of constituent components.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "distillate receiver",
+        "justification": "The terminal collection vessel defining the volumetric boundary of the entire separation process.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "vapor ascent",
+        "justification": "The upward movement of energized molecules towards a lower boiling point target state.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "reflux descent",
+        "justification": "The downward movement of condensed liquid back into the column to maintain equilibrium.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "theoretical plate stage",
+        "justification": "The sequential layering of multiple vapor-liquid equilibration steps to increase purity.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "pure fraction identity",
+        "justification": "The point where a specific component recognizes its own boiling point and stabilizes.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "partial condensation",
+        "justification": "Selection where vapor either continues upward or returns as liquid based on thermal energy.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "thermal equilibration",
+        "justification": "The recombination of vapor and liquid streams into a stable molar equilibrium at a specific stage.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "high-volatility enrichment",
+        "justification": "Success state where the desired light component concentration increases in the vapor.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "heavy-tail retention",
+        "justification": "Failure state for the light cut where high boiling point impurities remain in the liquid.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "azeotropic point",
+        "justification": "A paradice state where vapor and liquid compositions are identical and cannot be further resolved.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "refractive index log",
+        "justification": "The permanent and irreversible measurement record of the fraction's final composition.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "partial condensation",
+      "split_input": "heated vapor stream",
+      "split_outputs": [
+        "ascending enriched vapor",
+        "descending depleted reflux"
+      ],
+      "fuse_element": "thermal equilibration",
+      "fuse_result": "heated vapor stream",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Pre-boiling ambient state with no distinguishable thermal gradients in the mixture.",
+      "true_description": "Successful separation of a high-purity fraction meeting the target volatility threshold.",
+      "false_description": "Departure from purity standards due to heavy component carryover or thermal instability.",
+      "both_description": "Indistinguishable phase behavior at an azeotrope where separation efficiency reaches zero.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "crude feed stock is introduced to the reboiler heat source"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "thermal energy drives initial vapor ascent into the fractional column"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "vapor enters the first theoretical plate stage for composition evaluation"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "partial condensation separates the stream into vapor and liquid components"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "the vapor arm continues upward enriched with the desired light component"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "a secondary sub-fractional split occurs within the ascending vapor"
+        },
+        {
+          "step_num": 7,
+          "opcode": "ENGAGR",
+          "domain_action": "azeotropic components are identified as inseparable at the current pressure"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "thermal equilibration reunites the azeotropic constituents into a single stable phase"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "heavy molecules are captured in the reflux and descend to the previous plate"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "downward reflux flow maintains the mass balance required for continuous operation"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "equilibration of the returning liquid and rising vapor restores the total molar mass"
+        },
+        {
+          "step_num": 12,
+          "opcode": "CLINK",
+          "domain_action": "the purified vapor stream enters the final condenser stage"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IMSCRIB",
+          "domain_action": "the molecule reaches self-identity at the terminal boiling point signature"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "the refractive index and purity of the fraction are permanently recorded"
+        },
+        {
+          "step_num": 15,
+          "opcode": "TANCH",
+          "domain_action": "the final purified product is secured in the distillate receiver vessel"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The reflux ratio controller adjusting the bypass valve based on temperature sensor feedback",
+      "ipc_mechanism": "The counter-current heat exchange between rising vapor and falling liquid films",
+      "memory_mechanism": "The liquid holdup volume residing on each individual plate or packing surface",
+      "scheduler_mechanism": "The vapor pressure and temperature gradient governing the rate of mass transfer",
+      "alfs_store": "The NIST Chemistry WebBook vapor-liquid equilibrium data tables for the specific binary mixture",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Input latent heat of vaporization from the reboiler mantle",
+      "pre_cycle_state": "Disordered multi-component liquid mixture at thermodynamic equilibrium",
+      "post_cycle_state": "Spatially ordered molecular fractions separated by chemical potential",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The process operates as a reversible heat engine where the local increase in order is balanced by the thermal work of the reboiler.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 CLINK \u2192 FSPLIT \u2192 EVALT \u2192 FSPLIT \u2192 ENGAGR \u2192 FFUSE \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: The refinement of that single vapor cut into a graded column of many successive fractions, resolving units that sit close together on the same leaving-readiness axis by repeated re-separation up a series of equilibration stages, and reporting which neighboring units are too close to resolve into distinct fractions; the same driving property as the single distillation but at higher resolving power.\n-- Fingerprint: sig=(7,4,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=15\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(5, 7), (3, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [14] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_refinement_of_that_single_vapor_cut_1e5a36_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_refinement_of_that_single_vapor_cut_1e5a36_protocol : IGProtocol the_refinement_of_that_single_vapor_cut_1e5a36_s0 the_refinement_of_that_single_vapor_cut_1e5a36_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_refinement_of_that_single_vapor_cut_1e5a36_s7 the_refinement_of_that_single_vapor_cut_1e5a36_s7 = the_refinement_of_that_single_vapor_cut_1e5a36_s7 (idempotent)\n  (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l0 the_refinement_of_that_single_vapor_cut_1e5a36_s0 the_refinement_of_that_single_vapor_cut_1e5a36_s1) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l1 the_refinement_of_that_single_vapor_cut_1e5a36_s1 the_refinement_of_that_single_vapor_cut_1e5a36_s2) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l2 the_refinement_of_that_single_vapor_cut_1e5a36_s2 the_refinement_of_that_single_vapor_cut_1e5a36_s3) (.seq (.prod (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l3 the_refinement_of_that_single_vapor_cut_1e5a36_s3 the_refinement_of_that_single_vapor_cut_1e5a36_s7) (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l3 the_refinement_of_that_single_vapor_cut_1e5a36_s3 the_refinement_of_that_single_vapor_cut_1e5a36_s7)) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l7 the_refinement_of_that_single_vapor_cut_1e5a36_s7 the_refinement_of_that_single_vapor_cut_1e5a36_s7) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l7 the_refinement_of_that_single_vapor_cut_1e5a36_s7 the_refinement_of_that_single_vapor_cut_1e5a36_s8) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l8 the_refinement_of_that_single_vapor_cut_1e5a36_s8 the_refinement_of_that_single_vapor_cut_1e5a36_s9) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l9 the_refinement_of_that_single_vapor_cut_1e5a36_s9 the_refinement_of_that_single_vapor_cut_1e5a36_s10) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l10 the_refinement_of_that_single_vapor_cut_1e5a36_s10 the_refinement_of_that_single_vapor_cut_1e5a36_s11) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l11 the_refinement_of_that_single_vapor_cut_1e5a36_s11 the_refinement_of_that_single_vapor_cut_1e5a36_s12) (.seq (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l12 the_refinement_of_that_single_vapor_cut_1e5a36_s12 the_refinement_of_that_single_vapor_cut_1e5a36_s13) (.arrow the_refinement_of_that_single_vapor_cut_1e5a36_l13 the_refinement_of_that_single_vapor_cut_1e5a36_s13 the_refinement_of_that_single_vapor_cut_1e5a36_s14))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_refinement_of_that_single_vapor_cut_1e5a36_true_arm : IGProtocol the_refinement_of_that_single_vapor_cut_1e5a36_s0 the_refinement_of_that_single_vapor_cut_1e5a36_s14 :=\n  (the_refinement_of_that_single_vapor_cut_1e5a36_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_refinement_of_that_single_vapor_cut_1e5a36_false_arm : IGProtocol the_refinement_of_that_single_vapor_cut_1e5a36_s0 the_refinement_of_that_single_vapor_cut_1e5a36_s14 :=\n  (the_refinement_of_that_single_vapor_cut_1e5a36_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_refinement_of_that_single_vapor_cut_1e5a36_tier : OuroboricityTier := TierFunctor.obj the_refinement_of_that_single_vapor_cut_1e5a36_s0\n#eval the_refinement_of_that_single_vapor_cut_1e5a36_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_refinement_of_that_single_vapor_cut_1e5a36_frobenius :\n    igFrobeniusAlg.mul the_refinement_of_that_single_vapor_cut_1e5a36_s0 the_refinement_of_that_single_vapor_cut_1e5a36_s0 = the_refinement_of_that_single_vapor_cut_1e5a36_s0 :=\n  igFrobAlg_self_fusion the_refinement_of_that_single_vapor_cut_1e5a36_s0\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 1,
+    "sequence_length": 15,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3,
+      5
+    ],
+    "fuse_positions": [
+      7,
+      10
+    ],
+    "pair_list": [
+      [
+        5,
+        7
+      ],
+      [
+        3,
+        10
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The refinement of that single vapor cut into a graded column of many successive fractions, resolving units that sit close together on the same leaving-readiness axis by repeated re-separation up a series of equilibration stages, and reporting which neighboring units are too close to resolve into distinct fractions; the same driving property as the single distillation but at higher resolving power."
+}

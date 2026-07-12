@@ -1,0 +1,254 @@
+{
+  "name": "The operation that iteratively strips from an assembly the units that are only weakly held, those associating below the threshold of a true bond, the dissolved and the loosely-trapped, cycling until only the strongly-held core remains, and reporting what left versus the purified remainder; a purification by removal of the weakly-bound, distinct from cutting a genuine bond.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The operation that iteratively strips from an assembly the units that are only weakly held, those associating below the threshold of a true bond, the dissolved and the loosely-trapped, cycling until only the strongly-held core remains, and reporting what left versus the purified remainder; a purification by removal of the weakly-bound, distinct from cutting a genuine bond.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "molecular assembly",
+        "binding affinity",
+        "threshold filter"
+      ],
+      "boundary_condition": "purification vessel environment",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unfiltered assembly",
+        "justification": "the raw state containing both strongly and weakly bound components before discrimination begins",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "purified kernel",
+        "justification": "the final stable remainder that contains the system after all weakly held units are removed",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "affinity test",
+        "justification": "the forward movement of energy or solvent to probe the strength of current bonds",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "dissolution return",
+        "justification": "the reverse path where released units return to the bulk solvent phase",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "iterative step link",
+        "justification": "the mechanism chaining successive washes or refinement cycles together",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "structural persistence",
+        "justification": "the assembly recognizing its own core identity by resisting separation",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "binding threshold discriminator",
+        "justification": "separates units into those above the energy threshold and those below it",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "mass balance reconciliation",
+        "justification": "the accounting step that ensures the sum of the residue and the filtrate equals the initial mass",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "strong bond retention",
+        "justification": "the affirmative path for units that exceed the threshold and remain in the core",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "weak bond shedding",
+        "justification": "the negative path for units failing the threshold which are then stripped",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "metastable boundary",
+        "justification": "the state of components exactly at the threshold neither fully bound nor fully dissolved",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "purification log",
+        "justification": "the permanent record of the mass removed and the final core composition",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "binding threshold discriminator",
+      "split_input": "total assembly mass",
+      "split_outputs": [
+        "retained core",
+        "dissolved filtrate"
+      ],
+      "fuse_element": "mass balance reconciliation",
+      "fuse_result": "total assembly mass",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "vacuum or solvent without solute or assembly",
+      "true_description": "stable bound state within the assembly core",
+      "false_description": "unbound state released into the solvent environment",
+      "both_description": "equilibrium state where attachment and detachment rates are equal",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "introduce the raw crude assembly into the analytical chamber"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the initial structural configuration of the assembly"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "apply the thermodynamic threshold to the assembly structure"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "select the components possessing binding energy above the threshold"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "maintain the core position for these strongly held units"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FFUSE",
+          "domain_action": "rejoin the selected core with the potential filtrate for balance check"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "initiate a reverse wash to carry away the weak associates"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "re-probe the refined assembly for any remaining loose units"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "identify the units with sub-threshold binding energy"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "transport the identified weak units to the external waste port"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "close the mass balance for the second purification cycle"
+        },
+        {
+          "step_num": 12,
+          "opcode": "CLINK",
+          "domain_action": "transition from the stripping phase to the verification phase"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IMSCRIB",
+          "domain_action": "the remaining core recognizes its stable purified structure"
+        },
+        {
+          "step_num": 14,
+          "opcode": "IFIX",
+          "domain_action": "write the final purified mass and filtrate volume to the permanent record"
+        },
+        {
+          "step_num": 15,
+          "opcode": "TANCH",
+          "domain_action": "seal the analytical chamber with the purified remainder preserved"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the control logic of the purification apparatus",
+      "ipc_mechanism": "the concentration gradient flux between the assembly and solvent",
+      "memory_mechanism": "the static location of the filter bed or trap",
+      "scheduler_mechanism": "the timed sequence of wash cycles and solvent pulses",
+      "alfs_store": "the thermodynamic affinity table for the specific molecular components",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "solvent volume and thermal energy for bond vibration probing",
+      "pre_cycle_state": "high entropy mixture of bound and loosely associated particles",
+      "post_cycle_state": "low entropy purified core and high entropy dispersed filtrate",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 local order increase in the core is balanced by the dispersion of the filtrate",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 FFUSE \u2192 AREV \u2192 FSPLIT \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: The operation that iteratively strips from an assembly the units that are only weakly held, those associating below the threshold of a true bond, the dissolved and the loosely-trapped, cycling until only the strongly-held core remains, and reporting what left versus the purified remainder; a purification by removal of the weakly-bound, distinct from cutting a genuine bond.\n-- Fingerprint: sig=(8,4,2,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=15\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 5), (7, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc57  | fuse \u03bc \u2014 assembly mode\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc59 \u2192 \ud801\udc5a  | reverse morphism \u2014 parity flip\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [14] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_operation_that_iteratively_strips_5f73cd_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_operation_that_iteratively_strips_5f73cd_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_operation_that_iteratively_strips_5f73cd_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_operation_that_iteratively_strips_5f73cd_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_operation_that_iteratively_strips_5f73cd_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_operation_that_iteratively_strips_5f73cd_protocol : IGProtocol the_operation_that_iteratively_strips_5f73cd_s0 the_operation_that_iteratively_strips_5f73cd_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_operation_that_iteratively_strips_5f73cd_s5 the_operation_that_iteratively_strips_5f73cd_s5 = the_operation_that_iteratively_strips_5f73cd_s5 (idempotent)\n  (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l0 the_operation_that_iteratively_strips_5f73cd_s0 the_operation_that_iteratively_strips_5f73cd_s1) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l1 the_operation_that_iteratively_strips_5f73cd_s1 the_operation_that_iteratively_strips_5f73cd_s2) (.seq (.prod (.arrow the_operation_that_iteratively_strips_5f73cd_l2 the_operation_that_iteratively_strips_5f73cd_s2 the_operation_that_iteratively_strips_5f73cd_s5) (.arrow the_operation_that_iteratively_strips_5f73cd_l2 the_operation_that_iteratively_strips_5f73cd_s2 the_operation_that_iteratively_strips_5f73cd_s5)) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l5 the_operation_that_iteratively_strips_5f73cd_s5 the_operation_that_iteratively_strips_5f73cd_s5) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l5 the_operation_that_iteratively_strips_5f73cd_s5 the_operation_that_iteratively_strips_5f73cd_s6) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l6 the_operation_that_iteratively_strips_5f73cd_s6 the_operation_that_iteratively_strips_5f73cd_s7) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l7 the_operation_that_iteratively_strips_5f73cd_s7 the_operation_that_iteratively_strips_5f73cd_s8) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l8 the_operation_that_iteratively_strips_5f73cd_s8 the_operation_that_iteratively_strips_5f73cd_s9) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l9 the_operation_that_iteratively_strips_5f73cd_s9 the_operation_that_iteratively_strips_5f73cd_s10) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l10 the_operation_that_iteratively_strips_5f73cd_s10 the_operation_that_iteratively_strips_5f73cd_s11) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l11 the_operation_that_iteratively_strips_5f73cd_s11 the_operation_that_iteratively_strips_5f73cd_s12) (.seq (.arrow the_operation_that_iteratively_strips_5f73cd_l12 the_operation_that_iteratively_strips_5f73cd_s12 the_operation_that_iteratively_strips_5f73cd_s13) (.arrow the_operation_that_iteratively_strips_5f73cd_l13 the_operation_that_iteratively_strips_5f73cd_s13 the_operation_that_iteratively_strips_5f73cd_s14)))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_operation_that_iteratively_strips_5f73cd_true_arm : IGProtocol the_operation_that_iteratively_strips_5f73cd_s0 the_operation_that_iteratively_strips_5f73cd_s14 :=\n  (the_operation_that_iteratively_strips_5f73cd_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_operation_that_iteratively_strips_5f73cd_false_arm : IGProtocol the_operation_that_iteratively_strips_5f73cd_s0 the_operation_that_iteratively_strips_5f73cd_s14 :=\n  (the_operation_that_iteratively_strips_5f73cd_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_operation_that_iteratively_strips_5f73cd_tier : OuroboricityTier := TierFunctor.obj the_operation_that_iteratively_strips_5f73cd_s0\n#eval the_operation_that_iteratively_strips_5f73cd_tier  -- the Grammar's own verdict on its tier\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 15,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2,
+      7
+    ],
+    "fuse_positions": [
+      5,
+      10
+    ],
+    "pair_list": [
+      [
+        2,
+        5
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The operation that iteratively strips from an assembly the units that are only weakly held, those associating below the threshold of a true bond, the dissolved and the loosely-trapped, cycling until only the strongly-held core remains, and reporting what left versus the purified remainder; a purification by removal of the weakly-bound, distinct from cutting a genuine bond."
+}

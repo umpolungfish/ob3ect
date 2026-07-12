@@ -1,0 +1,238 @@
+{
+  "name": "Proposition: For every \u03b5 > 0, there exists an infinite Sidon set A \u2282 N such that |A \u2229 {1, \u2026, N}| \u226b_\u03b5 N^1/2-\u03b5.\\n\\nI. Random Selection\\nFix \u03b5 > 0 and let \u03b4 = \u03b5/2. Let S \u2282 N be a random set where each n is included independently with probability p_n = n^-(1/2 + \u03b4). The expected size is:\\nE[|S \u2229 {1, \u2026, N}|] = \u03a3_n=1^N n^-(1/2 + \u03b4) \u2248 (N^1/2 - \u03b4) / (1/2 - \u03b4) \u226b N^1/2 - \u03b4.\\n\\nII. Conflict Analysis\\nLet Z be the number of non-trivial quadruples {a, b, c, d} \u2282 S such that a + b = c + d. The expectation is:\\nE[Z] = \u03a3_a+b=c+d p_a p_b p_c p_d = \u03a3_a+b=c+d (abcd)^-(1/2 + \u03b4).\\nFor \u03b4 > 0, this sum converges. The number of conflicts Z(N) involving elements up to N grows as O(N^-2\u03b4), which is o(E[|S \u2229 {1, \u2026, N}|]).\\n\\nIII. Alteration\\nConstruct A by removing one element from each conflicting quadruple in S. By construction, A is a Sidon set. Its expected size satisfies:\\nE[|A \u2229 {1, \u2026, N}|] \u2265 E[|S \u2229 {1, \u2026, N}|] - E[Z(N)] \u226b N^1/2 - \u03b4 > N^1/2 - \u03b5.\\nBy the probabilistic method, there exists a specific realization A satisfying the density requirement.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Proposition: For every \u03b5 > 0, there exists an infinite Sidon set A \u2282 N such that |A \u2229 {1, \u2026, N}| \u226b_\u03b5 N^1/2-\u03b5.\\n\\nI. Random Selection\\nFix \u03b5 > 0 and let \u03b4 = \u03b5/2. Let S \u2282 N be a random set where each n is included independently with probability p_n = n^-(1/2 + \u03b4). The expected size is:\\nE[|S \u2229 {1, \u2026, N}|] = \u03a3_n=1^N n^-(1/2 + \u03b4) \u2248 (N^1/2 - \u03b4) / (1/2 - \u03b4) \u226b N^1/2 - \u03b4.\\n\\nII. Conflict Analysis\\nLet Z be the number of non-trivial quadruples {a, b, c, d} \u2282 S such that a + b = c + d. The expectation is:\\nE[Z] = \u03a3_a+b=c+d p_a p_b p_c p_d = \u03a3_a+b=c+d (abcd)^-(1/2 + \u03b4).\\nFor \u03b4 > 0, this sum converges. The number of conflicts Z(N) involving elements up to N grows as O(N^-2\u03b4), which is o(E[|S \u2229 {1, \u2026, N}|]).\\n\\nIII. Alteration\\nConstruct A by removing one element from each conflicting quadruple in S. By construction, A is a Sidon set. Its expected size satisfies:\\nE[|A \u2229 {1, \u2026, N}|] \u2265 E[|S \u2229 {1, \u2026, N}|] - E[Z(N)] \u226b N^1/2 - \u03b4 > N^1/2 - \u03b5.\\nBy the probabilistic method, there exists a specific realization A satisfying the density requirement.",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "probabilistic pruning",
+        "Sidon set",
+        "additive independence"
+      ],
+      "boundary_condition": "The asymptotic density limit of the natural numbers N",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Empty set \u2205",
+        "justification": "The initial state before any integers are selected for the candidate set.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Infinite Sidon set A",
+        "justification": "The final closed system satisfying both the Sidon property and the density requirement.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Probabilistic selection p_n",
+        "justification": "The forward transformation assigning inclusion probabilities to each natural number.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Conflict subtraction",
+        "justification": "The reverse operation removing elements to resolve additive dependencies.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Expectation linearity",
+        "justification": "The composition of individual selection events into a global expected size.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Sidon property check",
+        "justification": "The self-recognition of the set as being additively independent.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Quadruple evaluation",
+        "justification": "Splits the random set into independent elements and conflicting quadruples.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Set alteration",
+        "justification": "Reconstitutes the set by merging independent elements with the pruned results of conflicts.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Density threshold met",
+        "justification": "The affirmative branch where the set size exceeds the required N^1/2-\u03b5.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Additive conflict",
+        "justification": "The negative branch identifying a violation of the Sidon property (a+b=c+d).",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Probabilistic existence",
+        "justification": "The state where the set is both a random variable and a specific realization simultaneously.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Existence proof",
+        "justification": "The permanent fixation of the existence of A via the probabilistic method.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Quadruple evaluation",
+      "split_input": "Random set S",
+      "split_outputs": [
+        "Independent elements",
+        "Conflicting quadruples"
+      ],
+      "fuse_element": "Set alteration",
+      "fuse_result": "Sidon set A",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The unpopulated sequence of natural numbers before probability is applied.",
+      "true_description": "A set configuration that satisfies the Sidon condition a+b=c+d implies {a,b}={c,d}.",
+      "false_description": "A configuration containing at least one non-trivial additive quadruple.",
+      "both_description": "The ensemble of all possible sets S before the specific realization is fixed.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the empty set over the domain of natural numbers N"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Apply probability p_n = n^-(1/2 + \u03b4) to each integer n"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "Compose the selection events to form the random set S"
+        },
+        {
+          "step_num": 4,
+          "opcode": "IFIX",
+          "domain_action": "Record the expected size E[|S|] as a baseline for density"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "Partition S into non-conflicting elements and conflicting quadruples Z"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "Identify a quadruple {a, b, c, d} where a + b = c + d"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "Remove one element from the quadruple to break the dependency"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALT",
+          "domain_action": "Retain elements that do not participate in additive conflicts"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the pruned branches to form the altered set A"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify that A now satisfies the identity of a Sidon set"
+        },
+        {
+          "step_num": 11,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the probabilistic expectation and the specific realization in tandem"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Fix the existence of the infinite Sidon set A with density N^1/2-\u03b5"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "Close the system as a completed mathematical proof"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The probabilistic method framework",
+      "ipc_mechanism": "Summation of expectations over the index set N",
+      "memory_mechanism": "The sequence of natural numbers and their assigned probabilities",
+      "scheduler_mechanism": "The order of selection followed by the alteration step",
+      "alfs_store": "The axioms of additive number theory",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Information gain regarding the specific elements of A",
+      "pre_cycle_state": "A distribution of possible sets with high uncertainty",
+      "post_cycle_state": "A fixed realization satisfying the Sidon property",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The reduction in set size exactly compensates for the removal of additive entropy.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 FSPLIT \u2192 EVALF \u2192 AREV \u2192 EVALT \u2192 FFUSE \u2192 IMSCRIB \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: Proposition: For every \u03b5 > 0, there exists an infinite Sidon set A \u2282 N such that |A \u2229 {1, \u2026, N}| \u226b_\u03b5 N^1/2-\u03b5.\\n\\nI. Random Selection\\nFix \u03b5 > 0 and let \u03b4 = \u03b5/2. Let S \u2282 N be a random set where each n is included independently with probability p_n = n^-(1/2 + \u03b4). The expected size is:\\nE[|S \u2229 {1, \u2026, N}|] = \u03a3_n=1^N n^-(1/2 + \u03b4) \u2248 (N^1/2 - \u03b4) / (1/2 - \u03b4) \u226b N^1/2 - \u03b4.\\n\\nII. Conflict Analysis\\nLet Z be the number of non-trivial quadruples {a, b, c, d} \u2282 S such that a + b = c + d. The expectation is:\\nE[Z] = \u03a3_a+b=c+d p_a p_b p_c p_d = \u03a3_a+b=c+d (abcd)^-(1/2 + \u03b4).\\nFor \u03b4 > 0, this sum converges. The number of conflicts Z(N) involving elements up to N grows as O(N^-2\u03b4), which is o(E[|S \u2229 {1, \u2026, N}|]).\\n\\nIII. Alteration\\nConstruct A by removing one element from each conflicting quadruple in S. By construction, A is a Sidon set. Its expected size satisfies:\\nE[|A \u2229 {1, \u2026, N}|] \u2265 E[|S \u2229 {1, \u2026, N}|] - E[Z(N)] \u226b N^1/2 - \u03b4 > N^1/2 - \u03b5.\\nBy the probabilistic method, there exists a specific realization A satisfying the density requirement.\n-- Fingerprint: sig=(6,2,3,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(4, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [3] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [10] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def proposition_for_every_0_there_exists_an_a32436_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def proposition_for_every_0_there_exists_an_a32436_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def proposition_for_every_0_there_exists_an_a32436_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def proposition_for_every_0_there_exists_an_a32436_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def proposition_for_every_0_there_exists_an_a32436_protocol : IGProtocol proposition_for_every_0_there_exists_an_a32436_s0 proposition_for_every_0_there_exists_an_a32436_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct proposition_for_every_0_there_exists_an_a32436_s8 proposition_for_every_0_there_exists_an_a32436_s8 = proposition_for_every_0_there_exists_an_a32436_s8 (idempotent)\n  (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l0 proposition_for_every_0_there_exists_an_a32436_s0 proposition_for_every_0_there_exists_an_a32436_s1) (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l1 proposition_for_every_0_there_exists_an_a32436_s1 proposition_for_every_0_there_exists_an_a32436_s2) (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l2 proposition_for_every_0_there_exists_an_a32436_s2 proposition_for_every_0_there_exists_an_a32436_s3) (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l3 proposition_for_every_0_there_exists_an_a32436_s3 proposition_for_every_0_there_exists_an_a32436_s4) (.seq (.prod (.arrow proposition_for_every_0_there_exists_an_a32436_l4 proposition_for_every_0_there_exists_an_a32436_s4 proposition_for_every_0_there_exists_an_a32436_s8) (.arrow proposition_for_every_0_there_exists_an_a32436_l4 proposition_for_every_0_there_exists_an_a32436_s4 proposition_for_every_0_there_exists_an_a32436_s8)) (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l8 proposition_for_every_0_there_exists_an_a32436_s8 proposition_for_every_0_there_exists_an_a32436_s8) (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l8 proposition_for_every_0_there_exists_an_a32436_s8 proposition_for_every_0_there_exists_an_a32436_s9) (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l9 proposition_for_every_0_there_exists_an_a32436_s9 proposition_for_every_0_there_exists_an_a32436_s10) (.seq (.arrow proposition_for_every_0_there_exists_an_a32436_l10 proposition_for_every_0_there_exists_an_a32436_s10 proposition_for_every_0_there_exists_an_a32436_s11) (.arrow proposition_for_every_0_there_exists_an_a32436_l11 proposition_for_every_0_there_exists_an_a32436_s11 proposition_for_every_0_there_exists_an_a32436_s12))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def proposition_for_every_0_there_exists_an_a32436_true_arm : IGProtocol proposition_for_every_0_there_exists_an_a32436_s0 proposition_for_every_0_there_exists_an_a32436_s12 :=\n  (proposition_for_every_0_there_exists_an_a32436_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def proposition_for_every_0_there_exists_an_a32436_false_arm : IGProtocol proposition_for_every_0_there_exists_an_a32436_s0 proposition_for_every_0_there_exists_an_a32436_s12 :=\n  (proposition_for_every_0_there_exists_an_a32436_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef proposition_for_every_0_there_exists_an_a32436_tier : OuroboricityTier := TierFunctor.obj proposition_for_every_0_there_exists_an_a32436_s0\n#eval proposition_for_every_0_there_exists_an_a32436_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem proposition_for_every_0_there_exists_an_a32436_frobenius :\n    igFrobeniusAlg.mul proposition_for_every_0_there_exists_an_a32436_s0 proposition_for_every_0_there_exists_an_a32436_s0 = proposition_for_every_0_there_exists_an_a32436_s0 :=\n  igFrobAlg_self_fusion proposition_for_every_0_there_exists_an_a32436_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 13,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      4
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        4,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": true,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Proposition: For every \u03b5 > 0, there exists an infinite Sidon set A \u2282 N such that |A \u2229 {1, \u2026, N}| \u226b_\u03b5 N^1/2-\u03b5.\\n\\nI. Random Selection\\nFix \u03b5 > 0 and let \u03b4 = \u03b5/2. Let S \u2282 N be a random set where each n is included independently with probability p_n = n^-(1/2 + \u03b4). The expected size is:\\nE[|S \u2229 {1, \u2026, N}|] = \u03a3_n=1^N n^-(1/2 + \u03b4) \u2248 (N^1/2 - \u03b4) / (1/2 - \u03b4) \u226b N^1/2 - \u03b4.\\n\\nII. Conflict Analysis\\nLet Z be the number of non-trivial quadruples {a, b, c, d} \u2282 S such that a + b = c + d. The expectation is:\\nE[Z] = \u03a3_a+b=c+d p_a p_b p_c p_d = \u03a3_a+b=c+d (abcd)^-(1/2 + \u03b4).\\nFor \u03b4 > 0, this sum converges. The number of conflicts Z(N) involving elements up to N grows as O(N^-2\u03b4), which is o(E[|S \u2229 {1, \u2026, N}|]).\\n\\nIII. Alteration\\nConstruct A by removing one element from each conflicting quadruple in S. By construction, A is a Sidon set. Its expected size satisfies:\\nE[|A \u2229 {1, \u2026, N}|] \u2265 E[|S \u2229 {1, \u2026, N}|] - E[Z(N)] \u226b N^1/2 - \u03b4 > N^1/2 - \u03b5.\\nBy the probabilistic method, there exists a specific realization A satisfying the density requirement."
+}
