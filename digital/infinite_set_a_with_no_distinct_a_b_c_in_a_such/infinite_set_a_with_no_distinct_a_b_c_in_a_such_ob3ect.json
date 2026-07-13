@@ -1,5 +1,5 @@
 {
-  "name": "infinite set A with no distinct a,b,c in A such that a divides b+c and b,c>a",
+  "name": "\"infinite set A with no distinct a,b,c in A such that a divides b+c and b,c > a\"",
   "is_valid_ob3ect": true,
   "validations": {
     "phase_0": [],
@@ -12,109 +12,109 @@
   },
   "phases": {
     "phase_0": {
-      "domain_name": "infinite set A with no distinct a,b,c in A such that a divides b+c and b,c>a",
+      "domain_name": "\"infinite set A with no distinct a,b,c in A such that a divides b+c and b,c > a\"",
       "domain_type": "mathematical",
       "scope": "local",
       "surface_tokens": [
-        "integer set",
-        "divisibility constraint",
-        "infinite sequence"
+        "divisor",
+        "summation",
+        "sieve"
       ],
-      "boundary_condition": "The axiomatic framework of additive number theory and set theory.",
+      "boundary_condition": "The infinite set A of integers satisfying the divisibility constraint",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "Empty set \u2205",
-        "justification": "The initial state before any integers are selected for inclusion in A.",
+        "chosen_element": "Empty set",
+        "justification": "The uninitialized state before any integers are selected for inclusion in A.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
         "chosen_element": "Infinite set A",
-        "justification": "The completed collection satisfying the divisibility constraint.",
+        "justification": "The completed collection containing all elements that satisfy the global constraint.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "Successor selection",
-        "justification": "The process of choosing the next candidate integer for the set.",
+        "chosen_element": "Successor function",
+        "justification": "The forward movement through the natural numbers to find the next candidate integer.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "Constraint check",
-        "justification": "The backward verification that a candidate does not violate the divisibility rule against existing elements.",
+        "chosen_element": "Backtracking search",
+        "justification": "The reverse inspection of previously selected elements to verify the divisibility condition.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "Set extension",
-        "justification": "The composition of a valid candidate with the existing set A_n to form A_{n+1}.",
+        "chosen_element": "Element inclusion",
+        "justification": "The sequential addition of a valid integer to the existing subset of A.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "Element identity",
-        "justification": "The recognition of an integer as a distinct member of the set.",
+        "chosen_element": "Self-consistency check",
+        "justification": "The identity operation where an element is compared against the set's defining rule.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
         "chosen_element": "Divisibility test",
-        "justification": "The branching of a candidate into either satisfying the condition a \u2224 (b+c) or failing it.",
+        "justification": "The branching of a candidate integer into either a valid inclusion path or a violation path.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "Membership resolution",
+        "chosen_element": "Set membership resolution",
         "justification": "The reunification of the test results to determine the final status of the candidate integer.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
         "chosen_element": "Constraint satisfaction",
-        "justification": "The state where no a, b, c exist such that a divides b+c for b,c > a.",
+        "justification": "The state where no a divides b+c for the given candidate and existing elements.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
         "chosen_element": "Constraint violation",
-        "justification": "The state where a divides b+c for some b,c > a, requiring rejection.",
+        "justification": "The state where a divides b+c for some a, b, c in the set.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
         "chosen_element": "Undecided candidate",
-        "justification": "A candidate integer currently undergoing evaluation against all possible pairs in the infinite set.",
+        "justification": "The state of a candidate integer before the divisibility test completes across all existing pairs.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "Set inclusion",
-        "justification": "The permanent, irreversible addition of a validated integer to the set A.",
+        "chosen_element": "Immutable inclusion",
+        "justification": "The permanent recording of an integer into the set A once validated.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
       "split_element": "Divisibility test",
-      "split_input": "Candidate integer x",
+      "split_input": "Candidate integer n",
       "split_outputs": [
-        "Valid member",
-        "Invalid member"
+        "Valid inclusion",
+        "Invalid exclusion"
       ],
-      "fuse_element": "Membership resolution",
-      "fuse_result": "Candidate integer x",
+      "fuse_element": "Set membership resolution",
+      "fuse_result": "Candidate integer n",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "The state of the set before any integers are evaluated or added.",
-      "true_description": "The condition where the divisibility constraint is strictly maintained.",
-      "false_description": "The condition where a divides b+c, violating the set definition.",
-      "both_description": "The superposition of a candidate being checked against an infinite number of potential pairs.",
+      "void_description": "The state before the first integer is evaluated for the set.",
+      "true_description": "The integer satisfies the condition that no a divides b+c.",
+      "false_description": "The integer fails the condition and is excluded from the set.",
+      "both_description": "The integer is currently being compared against multiple pairs simultaneously.",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,115 +123,162 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "Initialize the empty set A as the starting point for construction."
+          "domain_action": "Initialize the empty set A as the starting point for construction"
         },
         {
           "step_num": 2,
           "opcode": "AFWD",
-          "domain_action": "Select the first integer to serve as the base element of the set."
+          "domain_action": "Select the first candidate integer from the natural numbers"
         },
         {
           "step_num": 3,
           "opcode": "IMSCRIB",
-          "domain_action": "Identify the selected integer as a unique mathematical object."
+          "domain_action": "Identify the candidate as a potential member of the set"
         },
         {
           "step_num": 4,
-          "opcode": "IFIX",
-          "domain_action": "Permanently record the first element into the set A."
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the candidate into the divisibility test logic"
         },
         {
           "step_num": 5,
-          "opcode": "AFWD",
-          "domain_action": "Propose a new candidate integer larger than the existing elements."
+          "opcode": "EVALT",
+          "domain_action": "Confirm that no existing elements a, b, c violate the condition a divides b+c"
         },
         {
           "step_num": 6,
-          "opcode": "FSPLIT",
-          "domain_action": "Branch the candidate into the divisibility evaluation process."
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the candidate as a validated member"
         },
         {
           "step_num": 7,
-          "opcode": "AREV",
-          "domain_action": "Back-propagate the candidate against all existing pairs b, c in A."
+          "opcode": "IFIX",
+          "domain_action": "Permanently record the first element into the set A"
         },
         {
           "step_num": 8,
-          "opcode": "EVALT",
-          "domain_action": "Confirm that the candidate does not divide the sum of any two larger elements."
+          "opcode": "CLINK",
+          "domain_action": "Chain the current set state to the next selection cycle"
         },
         {
           "step_num": 9,
-          "opcode": "EVALF",
-          "domain_action": "Identify if the candidate divides the sum of any two larger elements."
+          "opcode": "AFWD",
+          "domain_action": "Increment to the next candidate integer in the sequence"
         },
         {
           "step_num": 10,
-          "opcode": "FFUSE",
-          "domain_action": "Recombine the evaluation results to finalize the candidate status."
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the new candidate to check against all previously fixed elements"
         },
         {
           "step_num": 11,
-          "opcode": "CLINK",
-          "domain_action": "Chain the validated candidate to the existing set structure."
+          "opcode": "AREV",
+          "domain_action": "Iterate backward through the fixed elements to find any divisor a"
         },
         {
           "step_num": 12,
-          "opcode": "IFIX",
-          "domain_action": "Permanently record the validated integer into the set A."
+          "opcode": "EVALF",
+          "domain_action": "Detect a violation where a divides the sum of two other elements"
         },
         {
           "step_num": 13,
-          "opcode": "IMSCRIB",
-          "domain_action": "Self-reference the expanded set to ensure internal consistency."
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the candidate as a rejected member"
         },
         {
           "step_num": 14,
+          "opcode": "CLINK",
+          "domain_action": "Skip the rejected member and proceed to the next candidate"
+        },
+        {
+          "step_num": 15,
+          "opcode": "AFWD",
+          "domain_action": "Increment to the next candidate integer"
+        },
+        {
+          "step_num": 16,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the candidate for the divisibility test"
+        },
+        {
+          "step_num": 17,
+          "opcode": "EVALT",
+          "domain_action": "Verify that for all a, b, c in the current set, a does not divide b+c"
+        },
+        {
+          "step_num": 18,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the candidate as a validated member"
+        },
+        {
+          "step_num": 19,
+          "opcode": "IFIX",
+          "domain_action": "Permanently record the new element into the set A"
+        },
+        {
+          "step_num": 20,
+          "opcode": "IMSCRIB",
+          "domain_action": "Reflect the updated set state as the new baseline for the infinite construction"
+        },
+        {
+          "step_num": 21,
           "opcode": "TANCH",
-          "domain_action": "Close the system as an infinite set A satisfying the global constraint."
+          "domain_action": "Define the boundary of the infinite set A as the limit of this recursive process"
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "The logical rules of divisibility and additive properties.",
-      "ipc_mechanism": "The relational operators of equality and division between integers.",
-      "memory_mechanism": "The sequence of integers stored within the set A.",
-      "scheduler_mechanism": "The well-ordering principle of natural numbers guiding selection.",
-      "alfs_store": "The Peano axioms and the fundamental theorem of arithmetic.",
+      "compiler_frontend": "The mathematical axioms of set theory and divisibility",
+      "ipc_mechanism": "The logical predicates defining the relationship between a, b, and c",
+      "memory_mechanism": "The ordered sequence of integers already accepted into set A",
+      "scheduler_mechanism": "The natural ordering of integers used to evaluate candidates",
+      "alfs_store": "The fundamental theorem of arithmetic and properties of the divisor function",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "The computational effort required to verify the divisibility constraint against all pairs.",
-      "pre_cycle_state": "A set A_n of n integers satisfying the constraint.",
-      "post_cycle_state": "A set A_{n+1} of n+1 integers satisfying the constraint.",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The logical information content remains constant as the set follows a deterministic rule.",
+      "cycle_cost": "Computational effort required to check the divisibility condition against all existing pairs",
+      "pre_cycle_state": "A finite subset of A satisfying the constraint",
+      "post_cycle_state": "An expanded finite subset of A still satisfying the constraint",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The logical information content of the rule remains constant regardless of set size",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 IMSCRIB \u2192 IFIX \u2192 AFWD \u2192 FSPLIT \u2192 AREV \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 IMSCRIB \u2192 TANCH\n-- Class: infinite set A with no distinct a,b,c in A such that a divides b+c and b,c>a\n-- Fingerprint: sig=(8,2,2,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=14\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(5, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [3] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc7e  | irreversible fixation \u2014 winding number\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc6d \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def infinite_set_a_with_no_distinct_a_b_c_df6407_protocol : IGProtocol infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct infinite_set_a_with_no_distinct_a_b_c_df6407_s9 infinite_set_a_with_no_distinct_a_b_c_df6407_s9 = infinite_set_a_with_no_distinct_a_b_c_df6407_s9 (idempotent)\n  (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l0 infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s1) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l1 infinite_set_a_with_no_distinct_a_b_c_df6407_s1 infinite_set_a_with_no_distinct_a_b_c_df6407_s2) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l2 infinite_set_a_with_no_distinct_a_b_c_df6407_s2 infinite_set_a_with_no_distinct_a_b_c_df6407_s3) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l3 infinite_set_a_with_no_distinct_a_b_c_df6407_s3 infinite_set_a_with_no_distinct_a_b_c_df6407_s4) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l4 infinite_set_a_with_no_distinct_a_b_c_df6407_s4 infinite_set_a_with_no_distinct_a_b_c_df6407_s5) (.seq (.prod (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l5 infinite_set_a_with_no_distinct_a_b_c_df6407_s5 infinite_set_a_with_no_distinct_a_b_c_df6407_s9) (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l5 infinite_set_a_with_no_distinct_a_b_c_df6407_s5 infinite_set_a_with_no_distinct_a_b_c_df6407_s9)) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l9 infinite_set_a_with_no_distinct_a_b_c_df6407_s9 infinite_set_a_with_no_distinct_a_b_c_df6407_s9) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l9 infinite_set_a_with_no_distinct_a_b_c_df6407_s9 infinite_set_a_with_no_distinct_a_b_c_df6407_s10) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l10 infinite_set_a_with_no_distinct_a_b_c_df6407_s10 infinite_set_a_with_no_distinct_a_b_c_df6407_s11) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l11 infinite_set_a_with_no_distinct_a_b_c_df6407_s11 infinite_set_a_with_no_distinct_a_b_c_df6407_s12) (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l12 infinite_set_a_with_no_distinct_a_b_c_df6407_s12 infinite_set_a_with_no_distinct_a_b_c_df6407_s13)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def infinite_set_a_with_no_distinct_a_b_c_df6407_true_arm : IGProtocol infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s13 :=\n  (infinite_set_a_with_no_distinct_a_b_c_df6407_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def infinite_set_a_with_no_distinct_a_b_c_df6407_false_arm : IGProtocol infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s13 :=\n  (infinite_set_a_with_no_distinct_a_b_c_df6407_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef infinite_set_a_with_no_distinct_a_b_c_df6407_tier : OuroboricityTier := TierFunctor.obj infinite_set_a_with_no_distinct_a_b_c_df6407_s0\n#eval infinite_set_a_with_no_distinct_a_b_c_df6407_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem infinite_set_a_with_no_distinct_a_b_c_df6407_frobenius :\n    igFrobeniusAlg.mul infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s0 = infinite_set_a_with_no_distinct_a_b_c_df6407_s0 :=\n  igFrobAlg_self_fusion infinite_set_a_with_no_distinct_a_b_c_df6407_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 FFUSE \u2192 IFIX \u2192 CLINK \u2192 AFWD \u2192 FSPLIT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 FFUSE \u2192 IFIX \u2192 IMSCRIB \u2192 TANCH\n-- Class: \"infinite set A with no distinct a,b,c in A such that a divides b+c and b,c > a\"\n-- Fingerprint: sig=(10,6,3,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=21\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(3, 5), (9, 12), (15, 17)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc60  | forward morphism \u2014 bidirectional arrow\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7e \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [6] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [8] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [9] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [11] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [13] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [14] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [15] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [16] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [17] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [18] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc60  | irreversible fixation \u2014 winding number\n--   [19] IMSCRIB   gram   := \ud801\udc60               \ud801\udc6d \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [20] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def infinite_set_a_with_no_distinct_a_b_c_df6407_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def infinite_set_a_with_no_distinct_a_b_c_df6407_protocol : IGProtocol infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct infinite_set_a_with_no_distinct_a_b_c_df6407_s5 infinite_set_a_with_no_distinct_a_b_c_df6407_s5 = infinite_set_a_with_no_distinct_a_b_c_df6407_s5 (idempotent)\n  (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l0 infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s1) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l1 infinite_set_a_with_no_distinct_a_b_c_df6407_s1 infinite_set_a_with_no_distinct_a_b_c_df6407_s2) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l2 infinite_set_a_with_no_distinct_a_b_c_df6407_s2 infinite_set_a_with_no_distinct_a_b_c_df6407_s3) (.seq (.prod (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l3 infinite_set_a_with_no_distinct_a_b_c_df6407_s3 infinite_set_a_with_no_distinct_a_b_c_df6407_s5) (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l3 infinite_set_a_with_no_distinct_a_b_c_df6407_s3 infinite_set_a_with_no_distinct_a_b_c_df6407_s5)) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l5 infinite_set_a_with_no_distinct_a_b_c_df6407_s5 infinite_set_a_with_no_distinct_a_b_c_df6407_s5) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l5 infinite_set_a_with_no_distinct_a_b_c_df6407_s5 infinite_set_a_with_no_distinct_a_b_c_df6407_s6) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l6 infinite_set_a_with_no_distinct_a_b_c_df6407_s6 infinite_set_a_with_no_distinct_a_b_c_df6407_s7) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l7 infinite_set_a_with_no_distinct_a_b_c_df6407_s7 infinite_set_a_with_no_distinct_a_b_c_df6407_s8) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l8 infinite_set_a_with_no_distinct_a_b_c_df6407_s8 infinite_set_a_with_no_distinct_a_b_c_df6407_s9) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l9 infinite_set_a_with_no_distinct_a_b_c_df6407_s9 infinite_set_a_with_no_distinct_a_b_c_df6407_s10) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l10 infinite_set_a_with_no_distinct_a_b_c_df6407_s10 infinite_set_a_with_no_distinct_a_b_c_df6407_s11) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l11 infinite_set_a_with_no_distinct_a_b_c_df6407_s11 infinite_set_a_with_no_distinct_a_b_c_df6407_s12) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l12 infinite_set_a_with_no_distinct_a_b_c_df6407_s12 infinite_set_a_with_no_distinct_a_b_c_df6407_s13) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l13 infinite_set_a_with_no_distinct_a_b_c_df6407_s13 infinite_set_a_with_no_distinct_a_b_c_df6407_s14) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l14 infinite_set_a_with_no_distinct_a_b_c_df6407_s14 infinite_set_a_with_no_distinct_a_b_c_df6407_s15) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l15 infinite_set_a_with_no_distinct_a_b_c_df6407_s15 infinite_set_a_with_no_distinct_a_b_c_df6407_s16) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l16 infinite_set_a_with_no_distinct_a_b_c_df6407_s16 infinite_set_a_with_no_distinct_a_b_c_df6407_s17) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l17 infinite_set_a_with_no_distinct_a_b_c_df6407_s17 infinite_set_a_with_no_distinct_a_b_c_df6407_s18) (.seq (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l18 infinite_set_a_with_no_distinct_a_b_c_df6407_s18 infinite_set_a_with_no_distinct_a_b_c_df6407_s19) (.arrow infinite_set_a_with_no_distinct_a_b_c_df6407_l19 infinite_set_a_with_no_distinct_a_b_c_df6407_s19 infinite_set_a_with_no_distinct_a_b_c_df6407_s20))))))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def infinite_set_a_with_no_distinct_a_b_c_df6407_true_arm : IGProtocol infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s20 :=\n  (infinite_set_a_with_no_distinct_a_b_c_df6407_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def infinite_set_a_with_no_distinct_a_b_c_df6407_false_arm : IGProtocol infinite_set_a_with_no_distinct_a_b_c_df6407_s0 infinite_set_a_with_no_distinct_a_b_c_df6407_s20 :=\n  (infinite_set_a_with_no_distinct_a_b_c_df6407_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef infinite_set_a_with_no_distinct_a_b_c_df6407_tier : OuroboricityTier := TierFunctor.obj infinite_set_a_with_no_distinct_a_b_c_df6407_s0\n#eval infinite_set_a_with_no_distinct_a_b_c_df6407_tier  -- the Grammar's own verdict on its tier\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
-    "total_pairs": 1,
+    "total_pairs": 3,
     "open_forks": 0,
     "cross_branches": 0,
-    "empty_branches": 0,
-    "sequence_length": 14,
-    "t_branch_ops": 1,
-    "f_branch_ops": 1,
+    "empty_branches": 2,
+    "sequence_length": 21,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
     "branch_ratio": 1.0,
     "fork_positions": [
-      5
+      3,
+      9,
+      15
     ],
     "fuse_positions": [
-      9
+      5,
+      12,
+      17
     ],
     "pair_list": [
       [
-        5,
-        9
+        3,
+        5
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        15,
+        17
       ]
     ],
     "has_cascading_ifix": false,
@@ -239,5 +286,5 @@
     "has_negation_first": false,
     "has_dual_fixation": false
   },
-  "notes": "Auto-designed from: infinite set A with no distinct a,b,c in A such that a divides b+c and b,c>a"
+  "notes": "Auto-designed from: \"infinite set A with no distinct a,b,c in A such that a divides b+c and b,c > a\""
 }
