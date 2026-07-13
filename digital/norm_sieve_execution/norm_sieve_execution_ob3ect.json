@@ -1,0 +1,280 @@
+{
+  "name": "norm_sieve_execution",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "norm_sieve_execution",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "candidate_integer",
+        "primality_test",
+        "residue_class"
+      ],
+      "boundary_condition": "the upper limit of the search space defined by the sieve range",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unallocated memory space",
+        "justification": "the state before the sieve array is initialized or populated with integers",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "sieve completion signal",
+        "justification": "the final boundary that terminates the execution once the limit is reached",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "increment pointer",
+        "justification": "the forward movement to the next integer in the sequence",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "backtrack to previous prime",
+        "justification": "the return to a previous state to re-evaluate or adjust the step size",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composite marking function",
+        "justification": "the sequential application of the marking operation to multiples of a prime",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-identity check",
+        "justification": "the verification that a number is being compared against its own primality status",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "primality bifurcation",
+        "justification": "the division of a candidate integer into either a prime path or a composite path",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "array reintegration",
+        "justification": "the merging of prime and composite classifications back into the unified result set",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "prime confirmation",
+        "justification": "the affirmative state where a number is identified as prime",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "composite confirmation",
+        "justification": "the negative state where a number is identified as composite",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "undetermined state",
+        "justification": "the state of a number before the sieve reaches its multiples where it is both potentially prime and potentially composite",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "write to result table",
+        "justification": "the permanent and irreversible recording of the primality status in the output buffer",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "primality bifurcation",
+      "split_input": "candidate_integer",
+      "split_outputs": [
+        "prime_path",
+        "composite_path"
+      ],
+      "fuse_element": "array reintegration",
+      "fuse_result": "candidate_integer",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the null state of the sieve array before memory allocation",
+      "true_description": "the bit flag representing a prime number",
+      "false_description": "the bit flag representing a composite number",
+      "both_description": "the unvisited state where a number is not yet processed by the sieve logic",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "allocate memory for the sieve array and initialize all values to the unvisited state"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the starting integer as the first candidate for evaluation"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "branch the execution based on whether the current integer is already marked as composite"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALF",
+          "domain_action": "enter the composite branch if the integer is a multiple of a previously found prime"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AREV",
+          "domain_action": "return to the main loop to skip further processing for this composite number"
+        },
+        {
+          "step_num": 6,
+          "opcode": "FFUSE",
+          "domain_action": "rejoin the execution flow to proceed to the next candidate"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FSPLIT",
+          "domain_action": "branch the execution for an unmarked integer to perform a primality test"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALT",
+          "domain_action": "enter the prime branch when the integer is confirmed as prime"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AFWD",
+          "domain_action": "move forward to calculate the multiples of this newly found prime"
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "chain the marking operations to flag every multiple of the prime as composite"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "record the prime status permanently in the result table"
+        },
+        {
+          "step_num": 12,
+          "opcode": "FFUSE",
+          "domain_action": "rejoin the execution flow after marking all multiples"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IMSCRIB",
+          "domain_action": "check if the current pointer has reached the terminal boundary"
+        },
+        {
+          "step_num": 14,
+          "opcode": "FSPLIT",
+          "domain_action": "branch based on the boundary check result"
+        },
+        {
+          "step_num": 15,
+          "opcode": "EVALF",
+          "domain_action": "continue the loop if the limit is not yet reached"
+        },
+        {
+          "step_num": 16,
+          "opcode": "AFWD",
+          "domain_action": "increment the pointer to the next integer"
+        },
+        {
+          "step_num": 17,
+          "opcode": "FFUSE",
+          "domain_action": "return to the start of the evaluation cycle"
+        },
+        {
+          "step_num": 18,
+          "opcode": "EVALT",
+          "domain_action": "enter the termination branch if the limit is reached"
+        },
+        {
+          "step_num": 19,
+          "opcode": "TANCH",
+          "domain_action": "close the sieve execution and release the result table"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the sieve algorithm logic that maps mathematical primality to bitwise operations",
+      "ipc_mechanism": "the memory bus that transfers flags between the processing unit and the sieve array",
+      "memory_mechanism": "the bit-mapped array storing the primality status of each integer",
+      "scheduler_mechanism": "the loop controller that manages the iteration over the integer range",
+      "alfs_store": "the fundamental theorem of arithmetic which dictates the sieve logic",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "the CPU cycles and memory bandwidth required to mark a single composite number",
+      "pre_cycle_state": "an array of unvisited integers with unknown primality",
+      "post_cycle_state": "a fully classified array of primes and composites",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the information gained about primality is exactly equal to the reduction in the state space of the array",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 FFUSE \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF \u2192 AFWD \u2192 FFUSE \u2192 EVALT \u2192 TANCH\n-- Class: norm_sieve_execution\n-- Fingerprint: sig=(8,6,4,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=19\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 5), (6, 11), (13, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [4] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [6] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [11] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [13] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [14] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [15] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [16] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [17] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc61  | evaluate-true \u2014 criticality gate open\n--   [18] TANCH     top    := \ud801\udc61               \u2299 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def norm_sieve_execution_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s7 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def norm_sieve_execution_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def norm_sieve_execution_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def norm_sieve_execution_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def norm_sieve_execution_protocol : IGProtocol norm_sieve_execution_s0 norm_sieve_execution_s18 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct norm_sieve_execution_s5 norm_sieve_execution_s5 = norm_sieve_execution_s5 (idempotent)\n  (.seq (.arrow norm_sieve_execution_l0 norm_sieve_execution_s0 norm_sieve_execution_s1) (.seq (.arrow norm_sieve_execution_l1 norm_sieve_execution_s1 norm_sieve_execution_s2) (.seq (.prod (.arrow norm_sieve_execution_l2 norm_sieve_execution_s2 norm_sieve_execution_s5) (.arrow norm_sieve_execution_l2 norm_sieve_execution_s2 norm_sieve_execution_s5)) (.seq (.arrow norm_sieve_execution_l5 norm_sieve_execution_s5 norm_sieve_execution_s5) (.seq (.arrow norm_sieve_execution_l5 norm_sieve_execution_s5 norm_sieve_execution_s6) (.seq (.arrow norm_sieve_execution_l6 norm_sieve_execution_s6 norm_sieve_execution_s7) (.seq (.arrow norm_sieve_execution_l7 norm_sieve_execution_s7 norm_sieve_execution_s8) (.seq (.arrow norm_sieve_execution_l8 norm_sieve_execution_s8 norm_sieve_execution_s9) (.seq (.arrow norm_sieve_execution_l9 norm_sieve_execution_s9 norm_sieve_execution_s10) (.seq (.arrow norm_sieve_execution_l10 norm_sieve_execution_s10 norm_sieve_execution_s11) (.seq (.arrow norm_sieve_execution_l11 norm_sieve_execution_s11 norm_sieve_execution_s12) (.seq (.arrow norm_sieve_execution_l12 norm_sieve_execution_s12 norm_sieve_execution_s13) (.seq (.arrow norm_sieve_execution_l13 norm_sieve_execution_s13 norm_sieve_execution_s14) (.seq (.arrow norm_sieve_execution_l14 norm_sieve_execution_s14 norm_sieve_execution_s15) (.seq (.arrow norm_sieve_execution_l15 norm_sieve_execution_s15 norm_sieve_execution_s16) (.seq (.arrow norm_sieve_execution_l16 norm_sieve_execution_s16 norm_sieve_execution_s17) (.arrow norm_sieve_execution_l17 norm_sieve_execution_s17 norm_sieve_execution_s18)))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def norm_sieve_execution_true_arm : IGProtocol norm_sieve_execution_s0 norm_sieve_execution_s18 :=\n  (norm_sieve_execution_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def norm_sieve_execution_false_arm : IGProtocol norm_sieve_execution_s0 norm_sieve_execution_s18 :=\n  (norm_sieve_execution_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef norm_sieve_execution_tier : OuroboricityTier := TierFunctor.obj norm_sieve_execution_s0\n#eval norm_sieve_execution_tier  -- the Grammar's own verdict on its tier\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 3,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 19,
+    "t_branch_ops": 4,
+    "f_branch_ops": 4,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2,
+      6,
+      13
+    ],
+    "fuse_positions": [
+      5,
+      11,
+      16
+    ],
+    "pair_list": [
+      [
+        2,
+        5
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        13,
+        16
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: norm_sieve_execution"
+}

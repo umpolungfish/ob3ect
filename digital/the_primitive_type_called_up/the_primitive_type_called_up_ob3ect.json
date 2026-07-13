@@ -1,0 +1,244 @@
+{
+  "name": "the primitive type called up",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "the primitive type called up",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "stoichiometry",
+        "unmatched",
+        "asymmetry"
+      ],
+      "boundary_condition": "the stoichiometry type system boundary",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "untyped relation",
+        "justification": "the state before any ratio or mapping cardinality is assigned",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "stoichiometric closure",
+        "justification": "the final type-checked state of the relation",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "mapping expansion",
+        "justification": "the transformation from a single source to multiple targets",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "mapping reduction",
+        "justification": "the transformation from multiple sources back to a single target",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "relational composition",
+        "justification": "the chaining of multiple n:m mappings into a single stoichiometric path",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-mapping",
+        "justification": "the recognition of the relation as a distinct stoichiometric type",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "cardinality divergence",
+        "justification": "the branching of a relation into source-heavy and target-heavy paths",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "cardinality reconciliation",
+        "justification": "the unification of divergent paths back into a single n:m relation",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "unmatched state",
+        "justification": "the confirmation that n does not equal m",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "matched state",
+        "justification": "the detection of a 1:1 or n:n symmetry which violates the 'up' type",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "dynamic ratio",
+        "justification": "a state where the ratio is fluctuating or undefined between matched and unmatched",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "type fixation",
+        "justification": "the permanent assignment of the 'up' label to the relation",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "cardinality divergence",
+      "split_input": "n:m relation",
+      "split_outputs": [
+        "source-heavy branch",
+        "target-heavy branch"
+      ],
+      "fuse_element": "cardinality reconciliation",
+      "fuse_result": "n:m relation",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "uninitialized cardinality",
+      "true_description": "unmatched stoichiometry (up)",
+      "false_description": "matched stoichiometry (hung/so)",
+      "both_description": "indeterminate stoichiometric ratio",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize the relation without cardinality"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the relation as a candidate for stoichiometric typing"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "branch the relation to evaluate its source and target counts"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "confirm the source count n is distinct from target count m"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "map the forward transformation of the n:m set"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "map the reverse transformation of the m:n set"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "reconstitute the n:m relation from its directional components"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "branch to check for strict inequality"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "reject the path if n equals m"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "return to the primary stoichiometric evaluation"
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "compose the validated n:m mapping into the type signature"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "fix the 'up' stoichiometric type in the permanent record"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "close the stoichiometric boundary"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the Lean type checker and stoichiometry inductive definition",
+      "ipc_mechanism": "internal port routing between source and target sets",
+      "memory_mechanism": "the stoichiometric register storing n and m values",
+      "scheduler_mechanism": "the ordinal ordering of F3 primitives",
+      "alfs_store": "Core.lean Stoichiometry inductive type",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one type-check cycle",
+      "pre_cycle_state": "untyped relation",
+      "post_cycle_state": "fixed 'up' stoichiometric type",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the operation merely labels an existing structural property without adding information",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 AREV \u2192 FFUSE \u2192 FSPLIT \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: the primitive type called up\n-- Fingerprint: sig=(6,4,2,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=13\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 6), (7, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_primitive_type_called_up_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_primitive_type_called_up_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_primitive_type_called_up_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_primitive_type_called_up_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_primitive_type_called_up_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_primitive_type_called_up_protocol : IGProtocol the_primitive_type_called_up_s0 the_primitive_type_called_up_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_primitive_type_called_up_s6 the_primitive_type_called_up_s6 = the_primitive_type_called_up_s6 (idempotent)\n  (.seq (.arrow the_primitive_type_called_up_l0 the_primitive_type_called_up_s0 the_primitive_type_called_up_s1) (.seq (.arrow the_primitive_type_called_up_l1 the_primitive_type_called_up_s1 the_primitive_type_called_up_s2) (.seq (.prod (.arrow the_primitive_type_called_up_l2 the_primitive_type_called_up_s2 the_primitive_type_called_up_s6) (.arrow the_primitive_type_called_up_l2 the_primitive_type_called_up_s2 the_primitive_type_called_up_s6)) (.seq (.arrow the_primitive_type_called_up_l6 the_primitive_type_called_up_s6 the_primitive_type_called_up_s6) (.seq (.arrow the_primitive_type_called_up_l6 the_primitive_type_called_up_s6 the_primitive_type_called_up_s7) (.seq (.arrow the_primitive_type_called_up_l7 the_primitive_type_called_up_s7 the_primitive_type_called_up_s8) (.seq (.arrow the_primitive_type_called_up_l8 the_primitive_type_called_up_s8 the_primitive_type_called_up_s9) (.seq (.arrow the_primitive_type_called_up_l9 the_primitive_type_called_up_s9 the_primitive_type_called_up_s10) (.seq (.arrow the_primitive_type_called_up_l10 the_primitive_type_called_up_s10 the_primitive_type_called_up_s11) (.arrow the_primitive_type_called_up_l11 the_primitive_type_called_up_s11 the_primitive_type_called_up_s12))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_primitive_type_called_up_true_arm : IGProtocol the_primitive_type_called_up_s0 the_primitive_type_called_up_s12 :=\n  (the_primitive_type_called_up_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_primitive_type_called_up_false_arm : IGProtocol the_primitive_type_called_up_s0 the_primitive_type_called_up_s12 :=\n  (the_primitive_type_called_up_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_primitive_type_called_up_tier : OuroboricityTier := TierFunctor.obj the_primitive_type_called_up_s0\n#eval the_primitive_type_called_up_tier  -- the Grammar's own verdict on its tier\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 1,
+    "sequence_length": 13,
+    "t_branch_ops": 3,
+    "f_branch_ops": 1,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      2,
+      7
+    ],
+    "fuse_positions": [
+      6,
+      9
+    ],
+    "pair_list": [
+      [
+        2,
+        6
+      ],
+      [
+        7,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: the primitive type called up"
+}
