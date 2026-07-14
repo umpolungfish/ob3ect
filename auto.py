@@ -128,7 +128,15 @@ FREE COMPOSITION RULES
   2. Expand token by token until every distinct operation, branch, state,
      and decision in the domain has been explicitly represented
   3. Each step: "OPCODE: what this token does at this point in the composition"
-  4. Every FSPLIT must have exactly one matching FFUSE (stack-matched, innermost first)
+  4. Every FSPLIT must have exactly one matching FFUSE (stack-matched, innermost first).
+     That stack rule is the WIRING convention: it says which arms get routed to which
+     join when the sequence is built. It is NOT how closure is judged. A checker pairs
+     by ANCESTRY over the edges -- two distinct in-arms of a FFUSE tracing back to a
+     common FSPLIT, however they routed -- and where several FSPLIT qualify (an upstream
+     fork reaches every later join on a strand) the join pairs with the INNERMOST one.
+     The two agree on a plain strand, which is why the stack rule is a sound way to
+     WRITE a sequence; they part company as soon as edges route otherwise (cross-branch,
+     rule 6 below).
   5. EVALT anchors the T-branch; EVALF anchors the F-branch.
      AFWD (forward morphism) also anchors T-branch if EVALT is absent.
      AREV (parity flip / reverse morphism) also anchors F-branch if EVALF is absent.
@@ -137,6 +145,30 @@ FREE COMPOSITION RULES
   8. Multiple FSPLIT/FFUSE pairs (sequential or nested) map multiple branch points
   9. Use IFIX as many times as needed -- each is a distinct permanent record event
   10. Do NOT compress -- if the domain has 30 distinct operations, write 30 tokens
+
+SINGLE-GLYPH CODES (the alphabet is fully SYMBOLIC -- no Latin initials, so no token
+can be confused with a verdict letter T/N/B/F)
+  VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   =     IMSCRIB ←
+  FSPLIT ◇     FFUSE  ●     EVALT  +     EVALF  ×     ENGAGR  ⊞     IFIX    ¬
+  A sequence may be written glued as a word: ⊢←=◇>+<⊞×●¬¬⊣ is the same program as the
+  13 spelled-out tokens. The retired letter codes V/T/B no longer parse anywhere.
+
+WHY RULE 2 AND RULE 10 ARE SAFE (inflation invariance)
+  Expanding costs nothing structural. A 1->1 token adds exactly one node and one edge,
+  so the circuit rank beta = E - V + C cannot move, and the census (branch, merge,
+  source, sink, arms) cannot move either. Extent grows without bound; structure does
+  not. This is why "expand token by token" and "do NOT compress" are free instructions
+  rather than a distortion of the domain: a longer faithful sequence is the SAME
+  topology as a shorter one, never a different one.
+  IMSCRIB (←) is the neutral element of that expansion: it is identity/self-reference
+  and does NOT transform, so inserting it at any depth leaves the verdict untouched.
+  The transforming tokens (> < = + × ⊞ ¬) are NOT neutral -- a single one placed on an
+  arm between FSPLIT and FFUSE turns an identity closure into a real one. So: expand
+  freely to map the domain, but only put a transforming token on an arm when the domain
+  really does work there.
+  A token is irreducible in KIND but unbounded in EXTENT: any 1->2 replacement must
+  itself contain a FSPLIT (it is the only brancher), so a fork reappears inside its own
+  expansion. Same for FFUSE (2->1) and VINIT (0->1).
 """
 
 _SCHEMA = """\

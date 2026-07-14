@@ -2,11 +2,12 @@
 """Convert each ob3ect in digital_fat_list.jsonl to its IMASM code word.
 
 An IMASM program is a DIRECTED GRAPH, not a line, so a glyph string alone is an
-under-reading. Each token carries a valence (MoDoT/IMASM_QUICKREF.md):
+under-reading. Each token carries a valence. The alphabet is fully symbolic — no Latin
+initials, so a token never collides with a verdict letter (IMASM_REFERENCE.md):
 
   GLYPH NAME     MEANING                          VALENCE
-   V   VINIT    begin / source                    0→1
-   T   TANCH    terminal anchor / close boundary  1→1 (sink)
+   ⊢   VINIT    begin / source boundary           0→1
+   ⊣   TANCH    terminal anchor / close boundary  1→1 (sink)
    >   AFWD     forward morphism                  1→1
    <   AREV     reverse morphism                  1→1
    =   CLINK    compose / link                    1→1
@@ -15,7 +16,7 @@ under-reading. Each token carries a valence (MoDoT/IMASM_QUICKREF.md):
    ●   FFUSE    fuse (μ) — ONLY opcode that merges    2→1
    +   EVALT    evaluate TRUE arm                 1→1
    ×   EVALF    evaluate FALSE arm                1→1
-   B   ENGAGR   hold a paradox (Belnap Both)      1→1
+   ⊞   ENGAGR   hold a paradox (Belnap Both)      1→1
    ¬   IFIX     irreversible commit / fix         1→1
 
 Only ◇ branches and only ● fuses, so the composition is fixed by which ● reconverges
@@ -29,7 +30,7 @@ uses that reading, and it reproduces content.topology_report.pair_list on every 
 that carries one. Valid HERE because the input is linear; do not lift it to a star,
 comb, or wired graph, where only ancestry holds.
 
-Rendered by bracketing each ◇…● span, e.g. V←=[◇>+<B×●]¬¬T, nesting as nested brackets;
+Rendered by bracketing each ◇…● span, e.g. ⊢←=[◇>+<⊞×●]¬¬⊣, nesting as nested brackets;
 any ◇ left unfused is marked ‹open:n›. Brackets are a reading aid for the eye: the imasm
 tool does not parse them (a bracketed word reads as empty → N (void)).
 
@@ -41,9 +42,9 @@ import collections
 import json
 import re
 
-CODE = {"VINIT": "V", "TANCH": "T", "AFWD": ">", "AREV": "<", "CLINK": "=",
+CODE = {"VINIT": "⊢", "TANCH": "⊣", "AFWD": ">", "AREV": "<", "CLINK": "=",
         "IMSCRIB": "←", "FSPLIT": "◇", "FFUSE": "●", "EVALT": "+", "EVALF": "×",
-        "ENGAGR": "B", "IFIX": "¬"}
+        "ENGAGR": "⊞", "IFIX": "¬"}
 
 
 def bracket(code, pairs):
