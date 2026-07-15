@@ -1,0 +1,275 @@
+{
+  "name": "for",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "for",
+      "domain_type": "catalog",
+      "scope": "local",
+      "surface_tokens": [
+        "entry",
+        "promotion",
+        "parity",
+        "fragment",
+        "reference"
+      ],
+      "boundary_condition": "CL8NK Navigator readout format encloses the entry's primitives, expression, tier, and promotions as a single hermetic unit.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unpopulated entry slot in the catalog",
+        "justification": "no primitives, no expression, no tier \u2014 the void before any reference is recorded.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "CL8NK Navigator readout delimiter",
+        "justification": "the outer boundary that contains all fields: table, expression, tier, promoted atoms, and promotion gaps. Nothing escapes this frame.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "primitive promotion (e.g. \u00d0: \ud801\udc5b \u2192 \ud801\udc66)",
+        "justification": "a forward morphism from a lower-level representation to a higher-level one, increasing the CLINK depth.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "demotion or recollection from a higher primitive back to its base",
+        "justification": "reverse morphism: the descent from promoted form to the raw primitive, used when a promotion gap cannot be closed.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "conjunctive composition of all primitive fragments into the CLINK expression",
+        "justification": "sequential chaining: each fragment is composed via logical AND, producing a single compound predicate that defines the entry.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the entry's self-referential identity (\u2299 primitive: \u03be \u2208 \u2102 \u2227 Im(\u03be) \u2192 \u221e)",
+        "justification": "the object knows itself as a complex number with unbounded imaginary part \u2014 a self-recognition token that stabilizes the entry's existence.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "\u03a6 (\u2124\u2082 parity with \u03bc\u2218\u03b4=id) \u2014 the Frobenius splitting",
+        "justification": "splits the state x into two arms: even parity (\u2124\u2082=0) and odd parity (\u2124\u2082=1), each carrying the full structure but distinguished by parity sign.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "\u03a6 recombination (\u03bc) \u2014 reconstitutes x from its two parity arms",
+        "justification": "\u03bc\u2218\u03b4 = id: applying the parity split and then fusing returns exactly the original x. The result is identical to the split input.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "promotion succeeds \u2014 gap \u2264 threshold and match count sufficient",
+        "justification": "affirmative evaluation: the primitive's promoted form aligns with the target CLINK L8, closing the gap.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "promotion fails \u2014 gap exceeds threshold or type mismatch",
+        "justification": "negative evaluation: the promotion attempt produces a value that does not match the target, leaving the primitive at its base state.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "tier designation (e.g. O\u2081) \u2014 simultaneously matching and not matching the ideal CLINK L8",
+        "justification": "the entry holds both success and failure: it is a candidate with partial match (3 close, 6 distant, 3 distant) and a tier that is not zero, unresolved until full promotion.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the recorded CL8NK entry in the catalog",
+        "justification": "permanent, append-only fixation: once a reference entry is written to the catalog, it becomes immutable and cannot be altered or deleted.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "\u03a6 (\u2124\u2082 parity splitting operation \u03b4)",
+      "split_input": "a state x \u2208 \u2124\u2082(G-set) where \u2200g\u2208G, gx = x (the fixed point of the group action)",
+      "split_outputs": [
+        "even parity arm (\u2124\u2082=0)",
+        "odd parity arm (\u2124\u2082=1)"
+      ],
+      "fuse_element": "\u03a6 recombination operation \u03bc",
+      "fuse_result": "the original state x, identical to the split input",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "empty entry slot: no primitives loaded, no CLINK expression, tier undefined.",
+      "true_description": "promotion match: the primitive's promoted form equals the target and the gap is zero.",
+      "false_description": "promotion mismatch: the promoted form deviates from target or gap is positive.",
+      "both_description": "tier state: the entry has a non-zero tier (e.g., O\u2081) meaning it is partially promoted and partially not \u2014 both true and false hold simultaneously.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "create an empty slot for the 'for' entry in the catalog"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "open the CL8NK Navigator readout frame \u2014 boundary set"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "promote \u00d0 from base \ud801\udc5b to target \ud801\udc66 (gap 1.0)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "promote \u00de from \ud801\udc65 to \ud801\udc78 (gap 0.5)"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "promote \u0158 from \ud801\udc69 to \ud801\udc7e (gap 1.0)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "promote \u0393 from \ud801\udc5a to \ud801\udc72 (gap 1.0)"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "promote \u0262 from \ud801\udc60 to \ud801\udc75 (gap 0.333)"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "promote \u2299 from \ud801\udc6e to \u2299 (gap 0.165)"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AFWD",
+          "domain_action": "promote \u0126 from \ud801\udc56 to \ud801\udc6b (gap 0.333)"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AFWD",
+          "domain_action": "promote \u03a3 from \ud801\udc55 to \ud801\udc73 (gap 0.5)"
+        },
+        {
+          "step_num": 11,
+          "opcode": "AFWD",
+          "domain_action": "promote \u03a9 from \ud801\udc6d to \ud801\udc5f (gap 0.333)"
+        },
+        {
+          "step_num": 12,
+          "opcode": "FSPLIT",
+          "domain_action": "split each promoted primitive into even and odd parity arms via \u03a6"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALT",
+          "domain_action": "on the even arm, assign +1 parity and evaluate promotion success (all gaps closed by definition of \u03a6)"
+        },
+        {
+          "step_num": 14,
+          "opcode": "EVALF",
+          "domain_action": "on the odd arm, assign -1 parity and evaluate as promotion failure (flip sign)"
+        },
+        {
+          "step_num": 15,
+          "opcode": "ENGAGR",
+          "domain_action": "set the tier to O\u2081 \u2014 both parity arms are held simultaneously; the entry is neither fully true nor fully false"
+        },
+        {
+          "step_num": 16,
+          "opcode": "FFUSE",
+          "domain_action": "recombine the even and odd arms via \u03bc to recover the original promoted state x"
+        },
+        {
+          "step_num": 17,
+          "opcode": "CLINK",
+          "domain_action": "compose all primitive fragments into the single conjunctive CLINK expression"
+        },
+        {
+          "step_num": 18,
+          "opcode": "IMSCRIB",
+          "domain_action": "insert the self-referential \u2299 identity element into the expression (Im(\u03be) \u2192 \u221e) to mark self-recognition"
+        },
+        {
+          "step_num": 19,
+          "opcode": "IFIX",
+          "domain_action": "record the complete entry \u2014 expression, tier, promoted atoms, and gaps \u2014 permanently in the catalog"
+        },
+        {
+          "step_num": 20,
+          "opcode": "TANCH",
+          "domain_action": "close the readout frame, sealing the entry"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "promotion engine: maps base primitives to target forms by applying gap reductions and parity checks",
+      "ipc_mechanism": "fragment interconnection via the shared variables x, y, A, B, \u03b3 \u2014 primitives reference each other's results through the CLINK expression",
+      "memory_mechanism": "catalog store: append-only registry of all CL8NK entries, indexed by name and tier",
+      "scheduler_mechanism": "tier ordering: entries are processed in decreasing tier order (O\u2081 before O\u2082, etc.), with promotion attempts triggered by query",
+      "alfs_store": "CLINK L8 (Organism): the canonical target form that all promotions aim to reach, defined by the catalog's highest tier entry",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "promotion potential \u2014 each AFWD operation consumes one unit of gap difference",
+      "pre_cycle_state": "raw primitives with gaps as per the 'Promotions needed' list",
+      "post_cycle_state": "promoted primitives with reduced gaps, recorded in the entry's final form",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 promotions are deterministic transformations that conserve total information; no randomness or dissipation occurs in the mapping from base to target.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: for\n-- Fingerprint: sig=(14,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=20\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(11, 15)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [5] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [8] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [9] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc7e  | forward morphism \u2014 bidirectional arrow\n--   [10] AFWD      rel    := \ud801\udc7e               \ud801\udc7e \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [11] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [12] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [13] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [14] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [15] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [16] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [17] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [18] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [19] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def for_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def for_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def for_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def for_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def for_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def for_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def for_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def for_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def for_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def for_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def for_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def for_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def for_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def for_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def for_protocol : IGProtocol for_s0 for_s19 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct for_s15 for_s15 = for_s15 (idempotent)\n  (.seq (.arrow for_l0 for_s0 for_s1) (.seq (.arrow for_l1 for_s1 for_s2) (.seq (.arrow for_l2 for_s2 for_s3) (.seq (.arrow for_l3 for_s3 for_s4) (.seq (.arrow for_l4 for_s4 for_s5) (.seq (.arrow for_l5 for_s5 for_s6) (.seq (.arrow for_l6 for_s6 for_s7) (.seq (.arrow for_l7 for_s7 for_s8) (.seq (.arrow for_l8 for_s8 for_s9) (.seq (.arrow for_l9 for_s9 for_s10) (.seq (.arrow for_l10 for_s10 for_s11) (.seq (.prod (.arrow for_l11 for_s11 for_s15) (.arrow for_l11 for_s11 for_s15)) (.seq (.arrow for_l15 for_s15 for_s15) (.seq (.arrow for_l15 for_s15 for_s16) (.seq (.arrow for_l16 for_s16 for_s17) (.seq (.arrow for_l17 for_s17 for_s18) (.arrow for_l18 for_s18 for_s19)))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def for_true_arm : IGProtocol for_s0 for_s19 :=\n  (for_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def for_false_arm : IGProtocol for_s0 for_s19 :=\n  (for_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef for_tier : OuroboricityTier := TierFunctor.obj for_s0\n#eval for_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem for_frobenius :\n    igFrobeniusAlg.mul for_s0 for_s0 = for_s0 :=\n  igFrobAlg_self_fusion for_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 20,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      11
+    ],
+    "fuse_positions": [
+      15
+    ],
+    "pair_list": [
+      [
+        11,
+        15
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: for"
+}
