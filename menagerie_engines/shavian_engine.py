@@ -41,7 +41,7 @@ GLYPH_OP = {
     "𐑚": "FSPLIT",    # G
     "𐑝": "FFUSE",     # Gamma
     "𐑢": "EVALT",     # Phi sub
-    "⊙": "ENGAGR",    # critical B / Phi_c
+    "⊙": "ENGAGR",    # critical B / ⊙
     "𐑓": "IFIX",      # H
     "𐑙": "IMSCRIB",   # S (re-anchor)
 }

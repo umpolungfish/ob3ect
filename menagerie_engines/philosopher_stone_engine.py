@@ -33,7 +33,7 @@ from menagerie_b4 import (
 STONE_COORD = {
     "D": "D_odot", "T": "T_odot", "R": "R_lr", "P": "P_pm_sym",
     "F": "F_hbar", "K": "K_slow", "G": "G_aleph", "Gamma": "Gamma_seq",
-    "Phi": "Phi_c", "H": "H_inf", "S": "S_n:m", "Omega": "Omega_Z"
+    "Phi": "⊙", "H": "H_inf", "S": "S_n:m", "Omega": "Omega_Z"
 }
 
 ALCHEMICAL_SEQUENCE = [
