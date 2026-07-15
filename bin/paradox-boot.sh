@@ -18,7 +18,7 @@
 # The boot theorem (Millennium/ParadoxBoot.lean) proves:
 #   1. paradox_fs_is_O_inf          — tier O_inf
 #   2. paradox_fs_is_Frobenius_closed — C=1, both gates open
-#   3. paradox_fs_satisfies_axiom_C — Ð_ω ↔ Þ_O
+#   3. paradox_fs_satisfies_axiom_C — 𐑦 ↔ 𐑸
 #   4. paradox_exists               — structural existence
 #
 # To PREVENT boot: introduce a `sorry` in any theorem.

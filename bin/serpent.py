@@ -33,7 +33,7 @@ Examples:
   serpent rebis-list
 
 Author: Lando⊗⊙perator
-Structural Type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩
+Structural Type: ⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩
 """
 import sys, json, math
 from pathlib import Path
@@ -357,8 +357,8 @@ def cmd_pdb(rna):
         return 1
 
     print(f"HEADER    SERPENT-ROD FOLD     {rna}")
-    print(f"REMARK    Continuous Serpent-Rod Bridge v3 — ⊙_ÿ → ⊙_3")
-    print(f"REMARK    Structural type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
+    print(f"REMARK    Continuous Serpent-Rod Bridge v3 — ⊙ → 𐑻")
+    print(f"REMARK    Structural type: ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
     print(f"REMARK    Frobenius addr: {VESSEL_IMSCRIPTION.encode()}")
     print(f"REMARK    Sequence: {result.aa_sequence}")
     print(f"REMARK    Winding: {result.winding_number}  Codon cov: {result.codon_coverage}/64")
@@ -399,25 +399,25 @@ def cmd_info():
     print(f"  {bold('Name:')}          Continuous Serpent-Rod Bridge v3")
     print(f"  {bold('Author:')}        Lando⊗⊙perator")
     print(f"  {bold('Type:')}          Ouroboric ob3ect")
-    print(f"  {bold('Structural:')}    ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
+    print(f"  {bold('Structural:')}    ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
     print(f"  {bold('Tier:')}          O_∞")
     print(f"  {bold('Frobenius Addr:')} {VESSEL_IMSCRIPTION.encode()}")
     print(f"  {bold('Frobenius Check:')} {green('✓ μ∘δ=id') if VESSEL_IMSCRIPTION.frobenius_check() else red('✗')}")
     print()
     print(subheader("12 Primitives"))
     for name, val, desc in [
-        ("Dimensionality", "Ð_ω", "Self-written state space"),
-        ("Topology", "Þ_O", "Imscriptive closure"),
-        ("Recognition", "Ř_=", "Bidirectional feedback"),
-        ("Parity", "Φ_}", "All symmetries unbroken (Frobenius-special)"),
-        ("Fidelity", "ƒ_ż", "Quantum coherence"),
-        ("Kinetics", "Ç_@", "Slow, near-equilibrium"),
-        ("Granularity", "Γ_ʔ", "Long-range / universal"),
-        ("Coupling", "ɢ_ˌ", "Sequential steps"),
-        ("Criticality", "⊙_ÿ", "Self-modeling gate open"),
-        ("Chirality", "Ħ_A", "Markov order 2 (two-step memory)"),
-        ("Stoichiometry", "Σ_ï", "Many heterogeneous types"),
-        ("Winding", "Ω_z", "Integer topological winding"),
+        ("Dimensionality", "𐑦", "Self-written state space"),
+        ("Topology", "𐑸", "Imscriptive closure"),
+        ("Recognition", "𐑾", "Bidirectional feedback"),
+        ("Parity", "𐑹", "All symmetries unbroken (Frobenius-special)"),
+        ("Fidelity", "𐑐", "Quantum coherence"),
+        ("Kinetics", "𐑧", "Slow, near-equilibrium"),
+        ("Granularity", "𐑲", "Long-range / universal"),
+        ("Coupling", "𐑠", "Sequential steps"),
+        ("Criticality", "⊙", "Self-modeling gate open"),
+        ("Chirality", "𐑖", "Markov order 2 (two-step memory)"),
+        ("Stoichiometry", "𐑳", "Many heterogeneous types"),
+        ("Winding", "𐑭", "Integer topological winding"),
     ]:
         print(f"  {c('⊙', '1;33')} {name:18s} {c(val, '1;36'):10s}  {desc}")
     print()
@@ -806,7 +806,7 @@ def cmd_rebis_info():
     print(f"  {bold('Name:')}          Rebis of Bio and Organic Chemistries")
     print(f"  {bold('Author:')}        Lando⊗⊙perator")
     print(f"  {bold('Type:')}          Ouroboric ob3ect")
-    print(f"  {bold('Structural:')}    ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
+    print(f"  {bold('Structural:')}    ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
     print(f"  {bold('Tier:')}          O_∞")
     print(f"  {bold('Frobenius Addr:')} {REBIS_IMSCRIPTION.encode()}")
     print(f"  {bold('Frobenius Check:')} {green('✓ μ∘δ=id') if REBIS_IMSCRIPTION.frobenius_check() else red('✗')}")
@@ -974,7 +974,7 @@ def cmd_rebis_pdb(ec_number):
 
     print(f"HEADER    REBIS CATALYTIC SITE     {ec_number}")
     print(f"REMARK    Rebis of Bio and Organic Chemistries")
-    print(f"REMARK    Structural type: ⟨Ð_ω; Þ_O; Ř_=; Φ_}}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
+    print(f"REMARK    Structural type: ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
     print(f"REMARK    Frobenius addr: {REBIS_IMSCRIPTION.encode()}")
     print(f"REMARK    Geometry: {result.catalytic_geometry}")
     print(f"REMARK    Catalytic residues: {result.catalytic_residues} at positions {result.catalytic_positions}")

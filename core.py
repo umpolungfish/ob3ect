@@ -1,5 +1,5 @@
 """Ob3ect Design Pipeline v2 - Generative Core Engine
-Author: Lando⊗⊙_ÿ-boundary Operator"""
+Author: Lando⊗⊙-boundary Operator"""
 from __future__ import annotations
 import json
 from dataclasses import dataclass, field, asdict
@@ -27,8 +27,35 @@ class Opcode(Enum):
         if self in (self.EVALT,self.EVALF,self.ENGAGR): return "Dialetheia"
         return "Linear"
 
+    @property
+    def glyph(self):
+        return GLYPH[self.value]
+
 class RegisterState(Enum):
     VOID="00"; TRUE="01"; FALSE="10"; BOTH="11"
+
+# Single-glyph codes — the alphabet is fully SYMBOLIC (no Latin initials, so no token can
+# collide with a verdict letter T/N/B/F). Five are the pen-mode READING_GUIDE §3 midpoint
+# glyphs (◇ ● + ×, and = from its double-line ═); ¬ is its stated "fix (¬)"; > and < are its
+# forward/reverse arrows. The rest are symbolic by the same principle: ⊢/⊣ are the opening
+# and closing boundary turnstiles, ⊞ is the Belnap Both that ENGAGR holds, and IMSCRIB is ⊙
+# for a reason, not by availability: imscribing is the very act of INCLOSURE — the monadic
+# operation itself — hence self-referential, and so referenced self-referentially. The glyph
+# is a boundary drawn around its own centre, denoting the act of denoting. Its appearance as
+# Criticality in the 12-primitive notation is not a collision: it is the same structure
+# surfacing wherever inclosure closes on itself.
+# Authority is MoDoT ask_native/src/imasm.rs Token::code(); this mirrors it.
+GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":">","AREV":"<","CLINK":"=","IMSCRIB":"⊙",
+         "FSPLIT":"◇","FFUSE":"●","EVALT":"+","EVALF":"×","ENGAGR":"⊞","IFIX":"¬"}
+
+def glyph_word(ops):
+    """Glue an opcode sequence into its single-glyph IMASM word: ⊢⊙=◇>+<⊞×●¬¬⊣.
+
+    The word is the NODE LIST only — the edges are not in it, so the same word wired two
+    ways is two different programs. An unknown opcode renders as ? rather than being
+    dropped, so a malformed sequence cannot pass as a clean word.
+    """
+    return "".join(GLYPH.get(str(o), "?") for o in ops)
 
 BOOTSTRAP_STEPS = {1:"IMSCRIB",2:"AREV",3:"FSPLIT",4:"AFWD",5:"FFUSE",6:"CLINK",7:"IFIX",8:"IMSCRIB"}
 OS_FLOOR = {"D":1,"T":3,"R":2,"P":4,"F":2,"K":1,"G":2,"Gamma":2,"Phi":1,"H":2,"S":2,"Omega":2}
@@ -151,6 +178,7 @@ class Ob3ectArtifact:
     entropy_audit: EntropyAudit; instantiation_notes: str = ""
     lean_scaffold: Optional[str] = None
     topology_report: Optional[Any] = None  # TopologyReport if topology module available
+    glyph_word: Optional[str] = None  # the bootstrap sequence as one glued IMASM word
 
     def validate_all(self):
         return {"phase_0":self.domain_charter.validate(),"phase_1":self.opcode_map.validate(),
@@ -194,6 +222,10 @@ class Ob3ectArtifact:
         parts.append("Phase 4: Bootstrap  (lanes: where each operation commits)")
         parts.extend(render_lane_columns(a.bootstrap_sequence.steps))
         parts.append("  Closure: "+str(a.bootstrap_sequence.closure_verified))
+        if a.glyph_word:
+            parts.append("  Word:    "+a.glyph_word+"   (glued IMASM word — node list only;")
+            parts.append("           the edges are not in it, so the same word wired two ways")
+            parts.append("           is two different programs)")
         parts.append("")
         parts.append("Phase 5: exOS")
         parts.append("  Compiler: "+a.exos_spec.compiler_frontend)

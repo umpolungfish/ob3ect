@@ -1,14 +1,23 @@
-I fixed a wording lapse and staged a small reflexivity experiment.
+Retire the gen-2 glyph-pair notation for bare Shavian
 
-yamls/d2048_a0_moduli_pin_batch.yaml still said "the eleven a-zero..." etc. instead
-of "the imscription of the eleven a-zero..." on five of its six entities (the sixth
-already had it). Fixed to match the imscribe/imscription convention throughout.
+The primitives stand on their own now, so the old `⊙_ÿ` / `Ð_ω` / `Φ_}` forms are
+residue. Rewrote all 49 of them to their Shavian values across source: 19,645
+tokens, 670 files.
 
-I also prepared reflexivity_prefix.yaml: six paired lm_plateau_2048 runs showed that
-prefixing an entity description with "structural imscription of" versus naming the
-referent directly changes the resulting IGProtocol's fingerprint (opcode chain
-length, FSPLIT/FFUSE split points) while leaving validity, Frobenius closure, tier,
-and dialetheia_complete invariant. This batch asks the pipeline to imscribe that
-reflexive-prefix operator itself, plus the two-tier structure it exposes (invariant
-verdict layer vs. variable protocol layer). I did not run it — that's
-cd ~/imsgct/ob3ect && python3 auto.py -f reflexivity_prefix.yaml, on you.
+The map was not typed. I enumerated the gen-2 tokens that actually appear in the
+corpus, paired each marker to its phonetic name, and resolved every value through
+`models.from_symbol` — so the values come from code that runs, not from a table.
+Reality arbitrated one conflict: the SOUNDS document gives `Ř_Ð`, `Γ_\`, `Σ_M`,
+but the corpus has `Ř_=`, `Γ_ʔ`, `Σ_ï` in the tens of thousands and the doc's
+variants nowhere at all. The doc is mangled; the files are the record.
+
+Left alone deliberately: `ig_outputs/` and the other run artifacts, ~455k tokens
+of it. Those runs really did emit gen-2 in May. Rewriting them would forge the
+record of what they produced, which is not tidying. The two naming documents keep
+their old-notation columns for the same reason.
+
+Bare `Phi` is untouched. Gen-1 `Phi` is today's ⊙, but today's `Φ` is Parity —
+those are genuinely different structures that happen to share letters, and no
+register makes them one, so every site needs reading. Contrast ⊙ appearing as
+both primitive and value, which is not a collision at all: `⊙ ≠ ⊙` is operator ≠
+operation, and it states `μ∘δ ≠ id` exactly.

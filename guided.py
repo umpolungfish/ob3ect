@@ -1,7 +1,7 @@
 """
 Ob3ect Pipeline - Guided Generator
 ===================================
-Author: Lando⊗⊙_ÿ-boundary Operator
+Author: Lando⊗⊙-boundary Operator
 
 Generates a complete ob3ect interactively.
 Uses Ob3ectFactory under the hood — one call produces everything.

@@ -1,7 +1,7 @@
 """
 Ob3ect Auto-Design Pipeline
 ============================
-Author: Lando⊗⊙_ÿ-boundary Operator
+Author: Lando⊗⊙-boundary Operator
 
 Given a natural-language description, produces a complete Ob3ectArtifact by
 driving an LLM through all 8 IMASM phases in a single structured call.
@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from ob3ect.core import (
     Ob3ectArtifact, DomainCharter, OpcodeMap, OpcodeEntry,
     SplitFuseReport, RegisterMapping, BootstrapSequence,
-    ExOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode,
+    ExOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode, glyph_word,
 )
 try:
     from ob3ect.topology import analyze_topology, TOPOLOGY_PROMPT_FRAGMENT
@@ -148,10 +148,10 @@ FREE COMPOSITION RULES
 
 SINGLE-GLYPH CODES (the alphabet is fully SYMBOLIC -- no Latin initials, so no token
 can be confused with a verdict letter T/N/B/F)
-  VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   =     IMSCRIB ←
+  VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   =     IMSCRIB ⊙
   FSPLIT ◇     FFUSE  ●     EVALT  +     EVALF  ×     ENGAGR  ⊞     IFIX    ¬
-  A sequence may be written glued as a word: ⊢←=◇>+<⊞×●¬¬⊣ is the same program as the
-  13 spelled-out tokens. The retired letter codes V/T/B no longer parse anywhere.
+  A sequence may be written glued as a word: ⊢⊙=◇>+<⊞×●¬¬⊣ is the same program as the
+  13 spelled-out tokens. The retired codes V/T/B and ← (the old IMSCRIB) no longer parse anywhere.
 
 WHY RULE 2 AND RULE 10 ARE SAFE (inflation invariance)
   Expanding costs nothing structural. A 1->1 token adds exactly one node and one edge,
@@ -160,7 +160,7 @@ WHY RULE 2 AND RULE 10 ARE SAFE (inflation invariance)
   not. This is why "expand token by token" and "do NOT compress" are free instructions
   rather than a distortion of the domain: a longer faithful sequence is the SAME
   topology as a shorter one, never a different one.
-  IMSCRIB (←) is the neutral element of that expansion: it is identity/self-reference
+  IMSCRIB (⊙) is the neutral element of that expansion: it is identity/self-reference
   and does NOT transform, so inserting it at any depth leaves the verdict untouched.
   The transforming tokens (> < = + × ⊞ ¬) are NOT neutral -- a single one placed on an
   arm between FSPLIT and FFUSE turns an identity closure into a real one. So: expand
@@ -586,6 +586,13 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
                                                     position_labels=position_labels)
         except Exception:
             pass
+
+    # The glued IMASM word: the bootstrap sequence in the single-glyph alphabet, e.g.
+    # ⊢⊙=◇>+<⊞×●¬¬⊣. Same node list as phase 4, one line instead of thirteen.
+    try:
+        artifact.glyph_word = glyph_word([step["opcode"] for step in bootstrap.steps])
+    except Exception:
+        pass
 
     # Topology analysis: classify the structural topology of the opcode sequence
     if analyze_topology is not None:

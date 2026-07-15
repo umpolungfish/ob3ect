@@ -140,7 +140,7 @@ verify_paradox() {
     fi
 
     # Read the paradox — this IS a structural operation.
-    # In ParadoxBoot.lean, reading changes the stat counter (Ħ_A chirality).
+    # In ParadoxBoot.lean, reading changes the stat counter (𐑖 chirality).
     local disk_type
     disk_type=$(grep "Disk type:" "${mountpoint}/.paradox" | awk '{print $NF}')
 
