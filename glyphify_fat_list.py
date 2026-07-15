@@ -11,7 +11,7 @@ initials, so a token never collides with a verdict letter (IMASM_REFERENCE.md):
    >   AFWD     forward morphism                  1→1
    <   AREV     reverse morphism                  1→1
    =   CLINK    compose / link                    1→1
-   ←   IMSCRIB  identity / self-reference         1→1
+   ⊙   IMSCRIB  identity / self-reference         1→1
    ◇   FSPLIT   fork (δ) — ONLY opcode that branches  1→2
    ●   FFUSE    fuse (μ) — ONLY opcode that merges    2→1
    +   EVALT    evaluate TRUE arm                 1→1
@@ -30,7 +30,7 @@ uses that reading, and it reproduces content.topology_report.pair_list on every 
 that carries one. Valid HERE because the input is linear; do not lift it to a star,
 comb, or wired graph, where only ancestry holds.
 
-Rendered by bracketing each ◇…● span, e.g. ⊢←=[◇>+<⊞×●]¬¬⊣, nesting as nested brackets;
+Rendered by bracketing each ◇…● span, e.g. ⊢⊙=[◇>+<⊞×●]¬¬⊣, nesting as nested brackets;
 any ◇ left unfused is marked ‹open:n›. Brackets are a reading aid for the eye: the imasm
 tool does not parse them (a bracketed word reads as empty → N (void)).
 
@@ -43,7 +43,7 @@ import json
 import re
 
 CODE = {"VINIT": "⊢", "TANCH": "⊣", "AFWD": ">", "AREV": "<", "CLINK": "=",
-        "IMSCRIB": "←", "FSPLIT": "◇", "FFUSE": "●", "EVALT": "+", "EVALF": "×",
+        "IMSCRIB": "⊙", "FSPLIT": "◇", "FFUSE": "●", "EVALT": "+", "EVALF": "×",
         "ENGAGR": "⊞", "IFIX": "¬"}
 
 
