@@ -179,6 +179,26 @@ class Ob3ectArtifact:
     lean_scaffold: Optional[str] = None
     topology_report: Optional[Any] = None  # TopologyReport if topology module available
     glyph_word: Optional[str] = None  # the bootstrap sequence as one glued IMASM word
+    # ── Gated grounding (imscribe_generator_agent) ──────────────────────────
+    # auto_design() now runs the description through the GATED imscriber
+    # (imscribing_grammar/agents/imscribe_generator_agent.py) BEFORE its own
+    # design LLM call, and shunts the resulting grounded 12-primitive tuple
+    # into that call as mandatory context — the same axiom/grounding checks
+    # (Axiom 6 D_∞ cycle-check, Axiom 7 T_⋈ closing-bond check, etc.) that
+    # `imscribe generate` runs now also constrain what ob3ect can mint,
+    # instead of ob3ect assigning primitives freely with no gate at all.
+    grounded_tuple: Optional[str] = None       # the gated imscriber's Imscription.to_notation()
+    grounding_status: str = "ungated"          # "full" | "partial" | "failed" | "override" | "ungated"
+    grounding_reasoning: str = ""              # the gated imscriber's own reasoning for the assignment
+    # ── Lean verification (the actual scripture-level check) ────────────────
+    # generate_guided's Axiom A/B and generate_from_description's Axiom 6/7 are
+    # both wet-lab heuristics on an LLM's self-consistency — not a proof. This
+    # is the real gate: the artifact's own lean_scaffold, elaborated for real
+    # against p4ramill via `lake env lean`. lean_verified=None means it was
+    # never checked (no p4ramill, no lake, no scaffold) — never conflated with
+    # a pass.
+    lean_verified: Optional[bool] = None
+    lean_verification_output: str = ""
 
     def validate_all(self):
         return {"phase_0":self.domain_charter.validate(),"phase_1":self.opcode_map.validate(),
@@ -198,6 +218,22 @@ class Ob3ectArtifact:
         parts.append("Domain: %s (%s)" % (a.domain_charter.domain_name,a.domain_charter.domain_type))
         parts.append("Scope: "+a.domain_charter.scope)
         parts.append("="*70)
+        parts.append("Phase -1: Gated Grounding (imscribe_generator_agent, runs BEFORE design)")
+        parts.append("  Status: "+a.grounding_status)
+        if a.grounded_tuple:
+            parts.append("  Tuple: "+a.grounded_tuple)
+        if a.grounding_reasoning:
+            parts.append("  Reasoning: "+a.grounding_reasoning[:200] +
+                          ("..." if len(a.grounding_reasoning) > 200 else ""))
+        parts.append("")
+        parts.append("Phase 10: Lean Verification (lean is scripture — the actual final gate)")
+        if a.lean_verified is None:
+            parts.append("  Not checked: "+(a.lean_verification_output or "no lean_scaffold to verify"))
+        else:
+            parts.append("  Kernel verdict: "+("✓ ELABORATED" if a.lean_verified else "✗ REJECTED"))
+            if a.lean_verification_output:
+                parts.append("  "+a.lean_verification_output[:300].replace(chr(10), chr(10)+"  "))
+        parts.append("")
         parts.append("Phase 0: Domain Charter")
         parts.append("  Tokens: "+", ".join(a.domain_charter.surface_tokens))
         parts.append("  TANCH: "+a.domain_charter.boundary_condition)
@@ -269,7 +305,12 @@ class Ob3ectArtifact:
                 "phase_6":asdict(self.entropy_audit)},
             "lean_scaffold":self.lean_scaffold,
             "topology_report":(self.topology_report.to_dict() if self.topology_report else None),
-            "notes":self.instantiation_notes}
+            "notes":self.instantiation_notes,
+            "grounded_tuple":self.grounded_tuple,
+            "grounding_status":self.grounding_status,
+            "grounding_reasoning":self.grounding_reasoning,
+            "lean_verified":self.lean_verified,
+            "lean_verification_output":self.lean_verification_output}
 
     def to_json(self, indent=2):
         return json.dumps(self.to_dict(), indent=indent)

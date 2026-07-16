@@ -1,5 +1,5 @@
 {
-  "name": "\u22a2>\u25c7+\u00d7\u25cf\u2299>=\u00ac<\u22a3",
+  "name": "\u22a2\u25c7++=\u22a2\u25c7><==\u22a2\u25c7><+=\u22a2\u25c7>+=\u22a2\u25c7><=<=====\u2299\u229e\u25cf+=\u22a2\u25c7><=\u00ac\u00ac\u22a3\u2299\u229e\u25cf\u22a2\u25c7><=\u2299++=+=\u22a2\u25c7><=\u22a2\u25c7><==+=\u22a2\u25c7><=\u22a2\u25c7><=\u229e\u25cf\u00ac\u00ac\u22a3\u00ac\u22a3",
   "is_valid_ob3ect": true,
   "validations": {
     "phase_0": [],
@@ -12,109 +12,109 @@
   },
   "phases": {
     "phase_0": {
-      "domain_name": "\u22a2>\u25c7+\u00d7\u25cf\u2299>=\u00ac<\u22a3",
+      "domain_name": "\u22a2\u25c7++=\u22a2\u25c7><==\u22a2\u25c7><+=\u22a2\u25c7>+=\u22a2\u25c7><=<=====\u2299\u229e\u25cf+=\u22a2\u25c7><=\u00ac\u00ac\u22a3\u2299\u229e\u25cf\u22a2\u25c7><=\u2299++=+=\u22a2\u25c7><=\u22a2\u25c7><==+=\u22a2\u25c7><=\u22a2\u25c7><=\u229e\u25cf\u00ac\u00ac\u22a3\u00ac\u22a3",
       "domain_type": "computational",
       "scope": "local",
       "surface_tokens": [
-        "bitstream",
+        "bit-stream",
         "logic-gate",
-        "registry"
+        "state-latch"
       ],
-      "boundary_condition": "system-clock-cycle",
+      "boundary_condition": "TANCH",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "null-pointer",
-        "justification": "initial state before memory allocation",
+        "chosen_element": "null-state",
+        "justification": "The initial uninitialized memory address before bit allocation.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "halt-instruction",
-        "justification": "terminates the execution flow",
+        "chosen_element": "system-boundary",
+        "justification": "The hardware-enforced limit of the addressable memory space.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "increment-pointer",
-        "justification": "advances the memory address",
+        "chosen_element": "forward-propagation",
+        "justification": "The directed flow of signal through the logic gate array.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "decrement-pointer",
-        "justification": "reverts the memory address",
+        "chosen_element": "reverse-parity",
+        "justification": "The inversion of signal polarity during feedback cycles.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "function-call",
-        "justification": "chains operations into a sequence",
+        "chosen_element": "sequential-chaining",
+        "justification": "The concatenation of logic operations into a single execution path.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "self-reference-pointer",
-        "justification": "points to the current instruction address",
+        "chosen_element": "self-reference",
+        "justification": "The pointer to the current instruction address for loop execution.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "conditional-branch",
-        "justification": "splits execution into true and false paths",
+        "chosen_element": "branch-fork",
+        "justification": "The bifurcation of the signal into true and false logic paths.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "join-point",
-        "justification": "reunites execution paths after evaluation",
+        "chosen_element": "signal-recombination",
+        "justification": "The restoration of the signal state after branch evaluation.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "true-flag",
-        "justification": "confirms successful condition match",
+        "chosen_element": "affirmative-gate",
+        "justification": "The positive evaluation of the logic condition.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "false-flag",
-        "justification": "confirms failed condition match",
+        "chosen_element": "negative-gate",
+        "justification": "The negative evaluation of the logic condition.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "superposition-state",
-        "justification": "holds both true and false states simultaneously",
+        "chosen_element": "superposition-latch",
+        "justification": "The simultaneous holding of both logic states during transition.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "write-to-rom",
-        "justification": "commits data to permanent storage",
+        "chosen_element": "write-once-memory",
+        "justification": "The permanent fixation of the logic state in ROM.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "conditional-branch",
-      "split_input": "binary-input",
+      "split_element": "FSPLIT",
+      "split_input": "signal-input",
       "split_outputs": [
         "true-path",
         "false-path"
       ],
-      "fuse_element": "join-point",
-      "fuse_result": "binary-input",
+      "fuse_element": "FFUSE",
+      "fuse_result": "signal-input",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "unallocated memory space",
-      "true_description": "logic high signal",
-      "false_description": "logic low signal",
-      "both_description": "quantum bit superposition",
+      "void_description": "The state of a register before any bit is written.",
+      "true_description": "The state of a register holding a high voltage signal.",
+      "false_description": "The state of a register holding a low voltage signal.",
+      "both_description": "The state of a register during a race condition or superposition.",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,111 +123,465 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "initialize memory address"
+          "domain_action": "Initialize the system memory."
         },
         {
           "step_num": 2,
-          "opcode": "AFWD",
-          "domain_action": "advance to first instruction"
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal into logic paths."
         },
         {
           "step_num": 3,
-          "opcode": "FSPLIT",
-          "domain_action": "branch based on input"
+          "opcode": "EVALT",
+          "domain_action": "Affirm the primary path."
         },
         {
           "step_num": 4,
           "opcode": "EVALT",
-          "domain_action": "validate true path"
+          "domain_action": "Affirm the secondary path."
         },
         {
           "step_num": 5,
-          "opcode": "EVALF",
-          "domain_action": "validate false path"
+          "opcode": "CLINK",
+          "domain_action": "Chain the logic operations."
         },
         {
           "step_num": 6,
-          "opcode": "FFUSE",
-          "domain_action": "merge paths"
+          "opcode": "VINIT",
+          "domain_action": "Reset the signal state."
         },
         {
           "step_num": 7,
-          "opcode": "IMSCRIB",
-          "domain_action": "reference current state"
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
         },
         {
           "step_num": 8,
           "opcode": "AFWD",
-          "domain_action": "move to next operation"
+          "domain_action": "Propagate forward."
         },
         {
           "step_num": 9,
-          "opcode": "CLINK",
-          "domain_action": "chain to next instruction"
+          "opcode": "AREV",
+          "domain_action": "Invert the signal."
         },
         {
           "step_num": 10,
-          "opcode": "IFIX",
-          "domain_action": "commit result to ROM"
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
         },
         {
           "step_num": 11,
-          "opcode": "AREV",
-          "domain_action": "reset pointer"
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
         },
         {
           "step_num": 12,
+          "opcode": "VINIT",
+          "domain_action": "Reset the signal state."
+        },
+        {
+          "step_num": 13,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 14,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 15,
+          "opcode": "AREV",
+          "domain_action": "Invert the signal."
+        },
+        {
+          "step_num": 16,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 17,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the path."
+        },
+        {
+          "step_num": 18,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 19,
+          "opcode": "VINIT",
+          "domain_action": "Reset the signal state."
+        },
+        {
+          "step_num": 20,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 21,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 22,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 23,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the path."
+        },
+        {
+          "step_num": 24,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 25,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 26,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 27,
+          "opcode": "AREV",
+          "domain_action": "Invert the signal."
+        },
+        {
+          "step_num": 28,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 29,
+          "opcode": "EVALF",
+          "domain_action": "Negate the path."
+        },
+        {
+          "step_num": 30,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 31,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 32,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 33,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 34,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 35,
+          "opcode": "IMSCRIB",
+          "domain_action": "Reference the current state."
+        },
+        {
+          "step_num": 36,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold both states."
+        },
+        {
+          "step_num": 37,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the signal."
+        },
+        {
+          "step_num": 38,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the path."
+        },
+        {
+          "step_num": 39,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 40,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 41,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 42,
+          "opcode": "AREV",
+          "domain_action": "Invert the signal."
+        },
+        {
+          "step_num": 43,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 44,
+          "opcode": "EVALF",
+          "domain_action": "Negate the path."
+        },
+        {
+          "step_num": 45,
+          "opcode": "IFIX",
+          "domain_action": "Fix the state."
+        },
+        {
+          "step_num": 46,
+          "opcode": "IFIX",
+          "domain_action": "Fix the state."
+        },
+        {
+          "step_num": 47,
           "opcode": "TANCH",
-          "domain_action": "terminate execution"
+          "domain_action": "Anchor the system boundary."
+        },
+        {
+          "step_num": 48,
+          "opcode": "IMSCRIB",
+          "domain_action": "Reference the current state."
+        },
+        {
+          "step_num": 49,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold both states."
+        },
+        {
+          "step_num": 50,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 51,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 52,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 53,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the path."
+        },
+        {
+          "step_num": 54,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 55,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 56,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the path."
+        },
+        {
+          "step_num": 57,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 58,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 59,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 60,
+          "opcode": "AREV",
+          "domain_action": "Invert the signal."
+        },
+        {
+          "step_num": 61,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 62,
+          "opcode": "EVALF",
+          "domain_action": "Negate the path."
+        },
+        {
+          "step_num": 63,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 64,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 65,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 66,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 67,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 68,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the path."
+        },
+        {
+          "step_num": 69,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 70,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the signal."
+        },
+        {
+          "step_num": 71,
+          "opcode": "AFWD",
+          "domain_action": "Propagate forward."
+        },
+        {
+          "step_num": 72,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 73,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the path."
+        },
+        {
+          "step_num": 74,
+          "opcode": "CLINK",
+          "domain_action": "Chain the operations."
+        },
+        {
+          "step_num": 75,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold both states."
+        },
+        {
+          "step_num": 76,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the signal."
+        },
+        {
+          "step_num": 77,
+          "opcode": "IFIX",
+          "domain_action": "Fix the state."
+        },
+        {
+          "step_num": 78,
+          "opcode": "IFIX",
+          "domain_action": "Fix the state."
+        },
+        {
+          "step_num": 79,
+          "opcode": "IFIX",
+          "domain_action": "Fix the state."
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "assembler",
-      "ipc_mechanism": "bus-signaling",
-      "memory_mechanism": "register-file",
-      "scheduler_mechanism": "clock-pulse",
-      "alfs_store": "instruction-set-architecture",
+      "compiler_frontend": "The logic-gate sequencer.",
+      "ipc_mechanism": "The signal-bus interface.",
+      "memory_mechanism": "The addressable bit-latch array.",
+      "scheduler_mechanism": "The clock-cycle trigger.",
+      "alfs_store": "The bootstrap ROM sequence.",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "thermal-dissipation",
-      "pre_cycle_state": "uninitialized-state",
-      "post_cycle_state": "fixed-state",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 logical operations are reversible in the abstract domain",
+      "cycle_cost": "The energy required to flip a bit.",
+      "pre_cycle_state": "The uninitialized memory state.",
+      "post_cycle_state": "The fixed memory state.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The system operates as a reversible logic circuit where state transitions are balanced by feedback loops.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 IMSCRIB \u2192 AFWD \u2192 CLINK \u2192 IFIX \u2192 AREV \u2192 TANCH\n-- Class: \u22a2>\u25c7+\u00d7\u25cf\u2299>=\u00ac<\u22a3\n-- Fingerprint: sig=(7,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 5)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [6] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc57  | irreversible fixation \u2014 winding number\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc6d \u2192 \ud801\udc61  | reverse morphism \u2014 parity flip\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc57 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def _s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def _l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def _l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def _l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def _protocol : IGProtocol _s0 _s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct _s5 _s5 = _s5 (idempotent)\n  (.seq (.arrow _l0 _s0 _s1) (.seq (.arrow _l1 _s1 _s2) (.seq (.prod (.arrow _l2 _s2 _s5) (.arrow _l2 _s2 _s5)) (.seq (.arrow _l5 _s5 _s5) (.seq (.arrow _l5 _s5 _s6) (.seq (.arrow _l6 _s6 _s7) (.seq (.arrow _l7 _s7 _s8) (.seq (.arrow _l8 _s8 _s9) (.seq (.arrow _l9 _s9 _s10) (.arrow _l10 _s10 _s11))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def _true_arm : IGProtocol _s0 _s11 :=\n  (_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def _false_arm : IGProtocol _s0 _s11 :=\n  (_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef _tier : OuroboricityTier := TierFunctor.obj _s0\n#eval _tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem _frobenius :\n    igFrobeniusAlg.mul _s0 _s0 = _s0 :=\n  igFrobAlg_self_fusion _s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 FSPLIT \u2192 EVALT \u2192 EVALT \u2192 CLINK \u2192 VINIT \u2192 FSPLIT \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 CLINK \u2192 VINIT \u2192 FSPLIT \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 CLINK \u2192 VINIT \u2192 FSPLIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 CLINK \u2192 CLINK \u2192 CLINK \u2192 CLINK \u2192 CLINK \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IFIX \u2192 IFIX \u2192 TANCH \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 CLINK \u2192 CLINK \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 CLINK \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 IFIX \u2192 IFIX\n-- Class: \u22a2\u25c7++=\u22a2\u25c7><==\u22a2\u25c7><+=\u22a2\u25c7>+=\u22a2\u25c7><=<=====\u2299\u229e\u25cf+=\u22a2\u25c7><=\u00ac\u00ac\u22a3\u2299\u229e\u25cf\u22a2\u25c7><=\u2299++=+=\u22a2\u25c7><=\u22a2\u25c7><==+=\u22a2\u25c7><=\u22a2\u25c7><=\u229e\u25cf\u00ac\u00ac\u22a3\u00ac\u22a3\n-- Fingerprint: sig=(47,12,15,5)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=79\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(24, 36), (69, 75)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc5a  | initial object \u2014 ground of distinction\n--   [1] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7c \u2192 \u2299  | split \u03b4 \u2014 range decomposition\n--   [2] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \u2299  | evaluate-true \u2014 criticality gate open\n--   [3] EVALT     crit   := \u2299               \u2299 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [4] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc7c  | composition \u2014 regime coherence\n--   [5] VINIT     dim    := \ud801\udc7c               \ud801\udc71 \u2192 \ud801\udc5a  | initial object \u2014 ground of distinction\n--   [6] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7c \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc71  | composition \u2014 regime coherence\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc71 \u2192 \ud801\udc7c  | composition \u2014 regime coherence\n--   [11] VINIT     dim    := \ud801\udc7c               \ud801\udc71 \u2192 \ud801\udc5a  | initial object \u2014 ground of distinction\n--   [12] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7c \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [13] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [14] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [15] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \u2299  | composition \u2014 regime coherence\n--   [16] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [17] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc7c  | composition \u2014 regime coherence\n--   [18] VINIT     dim    := \ud801\udc7c               \ud801\udc71 \u2192 \ud801\udc5a  | initial object \u2014 ground of distinction\n--   [19] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7c \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [20] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [21] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \u2299  | composition \u2014 regime coherence\n--   [22] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [23] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [24] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [25] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [26] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [27] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [28] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [29] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [30] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [31] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [32] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [33] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [34] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [35] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [36] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \u2299  | fuse \u03bc \u2014 assembly mode\n--   [37] EVALT     crit   := \u2299               \ud801\udc59 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [38] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [39] FSPLIT    gran   := \ud801\udc5a               \ud801\udc71 \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [40] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [41] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [42] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc56  | composition \u2014 regime coherence\n--   [43] EVALF     chir   := \ud801\udc56               \ud801\udc71 \u2192 \ud801\udc6d  | evaluate-false \u2014 chirality check\n--   [44] IFIX      prot   := \ud801\udc6d               \ud801\udc56 \u2192 \ud801\udc6d  | irreversible fixation \u2014 winding number\n--   [45] IFIX      prot   := \ud801\udc6d               \ud801\udc6d \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [46] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [47] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc73  | identity \u2014 self-imscription\n--   [48] ENGAGR    stoi   := \ud801\udc73               \ud801\udc60 \u2192 \ud801\udc5a  | engage paradox \u2014 B-state, both arms\n--   [49] FSPLIT    gran   := \ud801\udc5a               \ud801\udc73 \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [50] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [51] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \u2299  | composition \u2014 regime coherence\n--   [52] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [53] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc71  | composition \u2014 regime coherence\n--   [54] CLINK     fid    := \ud801\udc71               \ud801\udc71 \u2192 \u2299  | composition \u2014 regime coherence\n--   [55] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [56] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [57] FSPLIT    gran   := \ud801\udc5a               \ud801\udc71 \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [58] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [59] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [60] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc56  | composition \u2014 regime coherence\n--   [61] EVALF     chir   := \ud801\udc56               \ud801\udc71 \u2192 \ud801\udc71  | evaluate-false \u2014 chirality check\n--   [62] CLINK     fid    := \ud801\udc71               \ud801\udc56 \u2192 \ud801\udc71  | composition \u2014 regime coherence\n--   [63] CLINK     fid    := \ud801\udc71               \ud801\udc71 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [64] FSPLIT    gran   := \ud801\udc5a               \ud801\udc71 \u2192 \ud801\udc7e  | split \u03b4 \u2014 range decomposition\n--   [65] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [66] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \u2299  | composition \u2014 regime coherence\n--   [67] EVALT     crit   := \u2299               \ud801\udc71 \u2192 \ud801\udc71  | evaluate-true \u2014 criticality gate open\n--   [68] CLINK     fid    := \ud801\udc71               \u2299 \u2192 \ud801\udc5a  | composition \u2014 regime coherence\n--   [69] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [70] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [71] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [72] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [73] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [74] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [75] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [76] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc6d  | irreversible fixation \u2014 winding number\n--   [77] IFIX      prot   := \ud801\udc6d               \ud801\udc6d \u2192 \ud801\udc6d  | irreversible fixation \u2014 winding number\n--   [78] IFIX      prot   := \ud801\udc6d               \ud801\udc6d \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def _s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s33 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s34 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s35 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def _s36 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s37 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s38 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s39 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s40 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s41 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s42 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s43 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def _s44 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s45 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s46 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s47 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s48 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s49 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s50 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s51 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s52 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s53 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s54 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s55 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s56 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s57 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s58 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s59 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s60 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s61 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s62 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s63 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s64 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s65 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s66 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s67 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s68 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s69 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s70 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s71 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s72 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s73 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s74 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def _s75 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s76 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s77 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def _s78 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def _l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l11 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l18 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l20 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l25 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l27 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def _l29 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l33 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l34 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l35 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def _l36 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l37 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l38 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l39 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l40 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l41 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l42 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l43 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def _l44 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def _l45 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def _l46 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l47 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l48 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def _l49 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l50 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l51 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l52 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l53 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l54 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l55 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l56 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l57 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l58 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l59 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l60 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l61 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def _l62 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l63 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l64 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l65 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l66 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l67 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l68 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l69 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l70 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l71 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l72 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def _l73 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l74 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def _l75 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def _l76 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def _l77 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def _l78 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def _protocol : IGProtocol _s0 _s78 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct _s36 _s36 = _s36 (idempotent)\n  (.seq (.arrow _l0 _s0 _s1) (.seq (.arrow _l1 _s1 _s2) (.seq (.arrow _l2 _s2 _s3) (.seq (.arrow _l3 _s3 _s4) (.seq (.arrow _l4 _s4 _s5) (.seq (.arrow _l5 _s5 _s6) (.seq (.arrow _l6 _s6 _s7) (.seq (.arrow _l7 _s7 _s8) (.seq (.arrow _l8 _s8 _s9) (.seq (.arrow _l9 _s9 _s10) (.seq (.arrow _l10 _s10 _s11) (.seq (.arrow _l11 _s11 _s12) (.seq (.arrow _l12 _s12 _s13) (.seq (.arrow _l13 _s13 _s14) (.seq (.arrow _l14 _s14 _s15) (.seq (.arrow _l15 _s15 _s16) (.seq (.arrow _l16 _s16 _s17) (.seq (.arrow _l17 _s17 _s18) (.seq (.arrow _l18 _s18 _s19) (.seq (.arrow _l19 _s19 _s20) (.seq (.arrow _l20 _s20 _s21) (.seq (.arrow _l21 _s21 _s22) (.seq (.arrow _l22 _s22 _s23) (.seq (.arrow _l23 _s23 _s24) (.seq (.prod (.arrow _l24 _s24 _s36) (.arrow _l24 _s24 _s36)) (.seq (.arrow _l36 _s36 _s36) (.seq (.arrow _l36 _s36 _s37) (.seq (.arrow _l37 _s37 _s38) (.seq (.arrow _l38 _s38 _s39) (.seq (.arrow _l39 _s39 _s40) (.seq (.arrow _l40 _s40 _s41) (.seq (.arrow _l41 _s41 _s42) (.seq (.arrow _l42 _s42 _s43) (.seq (.arrow _l43 _s43 _s44) (.seq (.arrow _l44 _s44 _s45) (.seq (.arrow _l45 _s45 _s46) (.seq (.arrow _l46 _s46 _s47) (.seq (.arrow _l47 _s47 _s48) (.seq (.arrow _l48 _s48 _s49) (.seq (.arrow _l49 _s49 _s50) (.seq (.arrow _l50 _s50 _s51) (.seq (.arrow _l51 _s51 _s52) (.seq (.arrow _l52 _s52 _s53) (.seq (.arrow _l53 _s53 _s54) (.seq (.arrow _l54 _s54 _s55) (.seq (.arrow _l55 _s55 _s56) (.seq (.arrow _l56 _s56 _s57) (.seq (.arrow _l57 _s57 _s58) (.seq (.arrow _l58 _s58 _s59) (.seq (.arrow _l59 _s59 _s60) (.seq (.arrow _l60 _s60 _s61) (.seq (.arrow _l61 _s61 _s62) (.seq (.arrow _l62 _s62 _s63) (.seq (.arrow _l63 _s63 _s64) (.seq (.arrow _l64 _s64 _s65) (.seq (.arrow _l65 _s65 _s66) (.seq (.arrow _l66 _s66 _s67) (.seq (.arrow _l67 _s67 _s68) (.seq (.arrow _l68 _s68 _s69) (.seq (.arrow _l69 _s69 _s70) (.seq (.arrow _l70 _s70 _s71) (.seq (.arrow _l71 _s71 _s72) (.seq (.arrow _l72 _s72 _s73) (.seq (.arrow _l73 _s73 _s74) (.seq (.arrow _l74 _s74 _s75) (.seq (.arrow _l75 _s75 _s76) (.seq (.arrow _l76 _s76 _s77) (.arrow _l77 _s77 _s78))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def _true_arm : IGProtocol _s0 _s78 :=\n  (_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def _false_arm : IGProtocol _s0 _s78 :=\n  (_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef _tier : OuroboricityTier := TierFunctor.obj _s0\n#eval _tier  -- the Grammar's own verdict on its tier\n",
   "topology_report": {
-    "topology_class": "flat_chain",
-    "nesting_depth": 0,
-    "total_pairs": 1,
-    "open_forks": 0,
+    "topology_class": "mixed",
+    "nesting_depth": 8,
+    "total_pairs": 2,
+    "open_forks": 8,
     "cross_branches": 0,
     "empty_branches": 0,
-    "sequence_length": 12,
-    "t_branch_ops": 1,
-    "f_branch_ops": 1,
-    "branch_ratio": 1.0,
+    "sequence_length": 79,
+    "t_branch_ops": 5,
+    "f_branch_ops": 11,
+    "branch_ratio": 2.2,
     "fork_positions": [
-      2
+      1,
+      6,
+      12,
+      19,
+      24,
+      39,
+      49,
+      57,
+      64,
+      69
     ],
     "fuse_positions": [
-      5
+      36,
+      75
     ],
     "pair_list": [
       [
-        2,
-        5
+        24,
+        36
+      ],
+      [
+        69,
+        75
       ]
     ],
-    "has_cascading_ifix": false,
-    "max_ifix_cascade": 1,
+    "has_cascading_ifix": true,
+    "max_ifix_cascade": 3,
     "has_negation_first": false,
     "has_dual_fixation": false
   },
-  "notes": "Auto-designed from: \u22a2>\u25c7+\u00d7\u25cf\u2299>=\u00ac<\u22a3"
+  "notes": "Auto-designed from: \u22a2\u25c7++=\u22a2\u25c7><==\u22a2\u25c7><+=\u22a2\u25c7>+=\u22a2\u25c7><=<=====\u2299\u229e\u25cf+=\u22a2\u25c7><=\u00ac\u00ac\u22a3\u2299\u229e\u25cf\u22a2\u25c7><=\u2299++=+=\u22a2\u25c7><=\u22a2\u25c7><==+=\u22a2\u25c7><=\u22a2\u25c7><=\u229e\u25cf\u00ac\u00ac\u22a3\u00ac\u22a3",
+  "grounded_tuple": "\u27e8\ud801\udc5b\ud801\udc65\ud801\udc51\ud801\udc6c\ud801\udc50\ud801\udc6a\ud801\udc54\ud801\udc60\u2299\ud801\udc6d\ud801\udc73\ud801\udc6b\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc5b: The sequence utilizes iterative operators like \u22a3 and \u00ac\u00ac to cycle through state transitions before resetting at the \u2299 boundary.\n\u00de=\ud801\udc65: The recurring sequence of operators and the recursive structure of the input string indicate a self-referential, cyclic feedback loop.\n\u0158=\ud801\udc51: The sequence demonstrates a series of irreversible structural modifications and state-transitions represented by the accumulation of symbols and the negation operators.\n\u03a6=\ud801\udc6c: The sequence exhibits recurring self-complementary motifs (\u22a2\u25c7><= and \u229e\u25cf) that function as both donor and acceptor segments within the structural interface.\n\u0192=\ud801\udc50: The high density of structural operators (\u229e, \u25cf, \u22a3) and recursive logic gates indicates a geometry-enforcing architecture that minimizes entropy to ensure high-fidelity transmission.\n\u00c7=\ud801\udc67: The input string exhibits a high density of repetitive, rigid structural motifs (\u22a2\u25c7><=) and terminal negation operators (\u00ac\u00ac\u22a3), indicating a kinetically frozen state that resists reconfiguration.\n\u0393=\ud801\udc54: The recurrence of the \u22a2\u25c7><= motif across the entire string indicates a global structural dependency where interactions propagate throughout the system.\n\u0262=\ud801\udc60: The input string exhibits a repetitive, step-by-step progression of operators (\u22a2, \u25c7, \u229e, \u25cf) that indicates a strictly ordered sequence of interactions.\n\u2299=\u2299: The presence of the \u2299 primitive within the sequence indicates the system is currently operating at the phase transition threshold where scale-free correlations are active.\n\u0126=\ud801\udc6b: The sequence contains nested topological operators (\u00ac\u00ac\u22a3) and structural constraints (\u229e\u25cf) that enforce a non-trivial, globally protected state resistant to local thermal fluctuations.\n\u03a3=\ud801\udc73: The input string displays a clear imbalance in the frequency and arrangement of symbols on either side of the reaction operators, indicating an asymmetric stoichiometry.\n\u03a9=\ud801\udc6d: The presence of the \u229e\u25cf sequence indicates a discrete topological invariant associated with integer winding numbers that remain stable under continuous perturbations.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080"
 }

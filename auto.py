@@ -12,6 +12,7 @@ import json
 import re
 import asyncio
 import sys
+import hashlib
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -41,6 +42,23 @@ try:
     _SCAFFOLD = _ScaffoldOb3ect()
 except Exception:
     _SCAFFOLD = None
+
+# The GATED imscriber. auto_design() MUST run a description through this
+# before its own design LLM call — the axiom/grounding checks in
+# imscribe_generator_agent.py (Axiom 6 D_∞ cycle-check, Axiom 7 T_⋈
+# closing-bond check, LLM grounding) previously applied only to
+# `imscribe generate`, never to ob3ect's own free-form primitive
+# assignment. This closes that gap: ob3ect no longer mints its own
+# ungated 12-primitive tuple, it shunts the gated one in.
+try:
+    from imscribing_grammar.agents.imscribe_generator_agent import ImscriptionGeneratorAgent as _ImscriptionGeneratorAgent
+    from imscribing_grammar.imscrbgrmr.provider_config import build_agent_config as _build_gate_agent_config
+except Exception as _gate_import_err:
+    _ImscriptionGeneratorAgent = None
+    _build_gate_agent_config = None
+    _GATE_IMPORT_ERROR = _gate_import_err
+else:
+    _GATE_IMPORT_ERROR = None
 
 # ── IMASM opcode reference distilled from IMASM.tex ─────────────────────────
 
@@ -475,6 +493,39 @@ def _extract_json(text: str) -> Dict[str, Any]:
     raise ValueError("No JSON object found in LLM response")
 
 
+def _make_unique_slug(raw: str, max_base_len: int = 48) -> str:
+    """
+    Slugify `raw` for use as a directory/file name. If the normalized slug is
+    within max_base_len, it's returned as-is (stable: the same short
+    description always gets the same directory, which is the point — an
+    intentional re-run overwrites its own prior output on purpose).
+
+    If it would be TRUNCATED, append an 8-hex-char hash of the FULL,
+    untruncated string. Two different long descriptions that happen to share
+    the same first 48 normalized characters used to collide on the identical
+    truncated slug and silently overwrite each other's run — this is exactly
+    what happened to `the_sixteen_3_lateral_opening_discern_what_runt` (two
+    unrelated long ob3ect descriptions, same 48-char prefix, second run
+    clobbered the first). The hash is content-derived, not random, so the
+    SAME long description still lands on the same directory across runs.
+    """
+    slug = re.sub(r"[^a-z0-9]+", "_", raw.strip().lower()).strip("_")
+    if not slug:
+        # Degenerate input (empty, punctuation-only, non-ASCII-only, …). Without a
+        # hash here, two DIFFERENT degenerate descriptions (e.g. "!!!" and "???")
+        # would both fall back to the same bare "ob3ect" and collide with each
+        # other — the same collapse bug one level down. Hash the raw bytes so they
+        # still land in distinct directories; an empty raw string is the one
+        # legitimately shared case (nothing to distinguish it by).
+        if not raw.strip():
+            return "ob3ect"
+        return "ob3ect_" + hashlib.sha1(raw.encode("utf-8")).hexdigest()[:8]
+    if len(slug) <= max_base_len:
+        return slug
+    h = hashlib.sha1(raw.encode("utf-8")).hexdigest()[:8]
+    return f"{slug[:max_base_len].rstrip('_')}_{h}"
+
+
 _KNOWN_OPCODES = {oc.value for oc in Opcode}
 
 
@@ -700,6 +751,100 @@ def _build_provider_chain() -> List[Any]:
     return chain
 
 
+_P4RAMILL_DIR = Path("/home/mrnob0dy666/imsgct/p4rakernel/p4ramill")
+_GATE_CHECK_DIR = _P4RAMILL_DIR / "Imscribing" / "Ob3ects" / "GateCheck"
+
+
+async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
+    """
+    The actual final gate: lean is scripture, not the Python heuristics
+    upstream of it (generate_guided's Axiom A/B auto-correction, or
+    generate_from_description's reasoning-text keyword grounding — both are
+    wet-lab checks on an LLM's self-consistency, not a proof). Writes the
+    artifact's own Lean scaffold to a real file under p4ramill and elaborates
+    it for real with `lake env lean` — the same mechanism MoDoT's `TOOL: lean`
+    uses. Sets artifact.grounding_status from the KERNEL's verdict, not the
+    gate LLM's.
+
+    No scaffold, no p4ramill checkout, or `lake` not on PATH → grounding_status
+    stays whatever the gate step set it to, with lean_verified=None (not
+    silently claimed as verified).
+    """
+    artifact.lean_verified = None
+    artifact.lean_verification_output = ""
+    if not artifact.lean_scaffold:
+        return
+    if not _P4RAMILL_DIR.is_dir():
+        artifact.lean_verification_output = f"p4ramill not found at {_P4RAMILL_DIR} — could not elaborate."
+        return
+
+    _GATE_CHECK_DIR.mkdir(parents=True, exist_ok=True)
+    target = _GATE_CHECK_DIR / f"{slug}_gate_check.lean"
+    target.write_text(artifact.lean_scaffold, encoding="utf-8")
+
+    try:
+        proc = await asyncio.create_subprocess_exec(
+            "lake", "env", "lean", str(target),
+            cwd=str(_P4RAMILL_DIR),
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=180)
+    except FileNotFoundError:
+        artifact.lean_verification_output = "`lake` not found on PATH — could not elaborate."
+        return
+    except asyncio.TimeoutError:
+        artifact.lean_verification_output = "lake env lean timed out after 180s."
+        return
+
+    text = (stdout.decode("utf-8", "replace") + stderr.decode("utf-8", "replace"))
+    body = "\n".join(l for l in text.splitlines() if "has local changes" not in l)
+    n_err = body.count("error")
+    artifact.lean_verification_output = body.strip()
+    if proc.returncode == 0 and n_err == 0:
+        artifact.lean_verified = True
+        artifact.grounding_status = "full"
+    else:
+        artifact.lean_verified = False
+        artifact.grounding_status = "failed"
+
+
+async def _run_gated_imscription(description: str, provider_name: Optional[str], model: Optional[str]):
+    """
+    Run `description` through the GATED imscriber (imscribe_generator_agent.py)
+    and return its ImscriptionGenerationResult — the same axiom/grounding
+    checks `imscribe generate` runs (Axiom 6 D_∞ cycle-check, Axiom 7 T_⋈
+    closing-bond check, LLM grounding), applied here before ob3ect's own
+    design call gets to invent a 12-primitive tuple with no gate at all.
+
+    Uses `generate_guided` (one LLM call per primitive, numbered-choice
+    selection), NOT `generate_from_description` (one big JSON blob). Verified
+    live: the single-shot JSON path lets models swap values between adjacent
+    fields (e.g. a criticality_phase value landing in recognition_mode, or a
+    recognition_mode value landing in topology) — reproducible across 4
+    corrective retries even after the prompt's value table was fixed. The
+    guided path can't shuffle fields because it only ever asks about one at a
+    time; confirmed to return a real, fully-parseable tuple where the JSON
+    path kept failing on the exact same description.
+
+    Never defaults to Anthropic — always resolves to the same openrouter/
+    IG_MODEL convention auto_design itself uses.
+    """
+    if _ImscriptionGeneratorAgent is None or _build_gate_agent_config is None:
+        raise RuntimeError(
+            "The gated imscriber (imscribing_grammar.agents.imscribe_generator_agent) "
+            f"could not be imported: {_GATE_IMPORT_ERROR}. auto_design() cannot mint an "
+            "ungated tuple — fix the import path or pass skip_gate=True to explicitly "
+            "opt out (not recommended: the resulting artifact will carry NO axiom/"
+            "grounding validation)."
+        )
+    gate_provider = provider_name or "openrouter"
+    gate_model = model or "google/gemini-3-flash-preview"
+    config = _build_gate_agent_config(provider=gate_provider, model=gate_model, max_tokens=4000)
+    agent = _ImscriptionGeneratorAgent(config)
+    return await agent.generate_guided(description)
+
+
 async def auto_design(
     description: str,
     name: Optional[str] = None,
@@ -710,9 +855,18 @@ async def auto_design(
     max_retries: float = float("inf"),
     temperature: float = 0.0,
     context: Optional[str] = None,
+    skip_gate: bool = False,
 ) -> Ob3ectArtifact:
     """
     Auto-design an Ob3ect from a natural-language description.
+
+    MUST first run the description through the gated imscriber
+    (imscribing_grammar/agents/imscribe_generator_agent.py) and shunt the
+    resulting grounded 12-primitive tuple into the design call as mandatory
+    context, so the axiom/grounding checks that gate `imscribe generate`
+    also gate what ob3ect can mint. Pass skip_gate=True to explicitly opt
+    out (the artifact's grounding_status will read "ungated" instead of
+    "full"/"partial"/"failed" — never silent).
 
     Uses enhanced_llm_provider (QWEN_API_KEY → mulerouter, DEEPSEEK_API_KEY →
     deepseek.com) with local fine-tuned model as primary when available.
@@ -726,6 +880,7 @@ async def auto_design(
         provider_name: Override primary provider (local/qwen/deepseek)
         max_retries:   Retry attempts on JSON parse or Frobenius failure
         temperature:   LLM temperature
+        skip_gate:     Explicit opt-out of the gated imscription pre-step
 
     Returns:
         Validated Ob3ectArtifact
@@ -737,6 +892,26 @@ async def auto_design(
         model = os.environ.get("IG_MODEL", "").strip() or None
     if provider_name is None:
         provider_name = os.environ.get("IG_PROVIDER", "").strip().lower() or None
+
+    # ── Gated grounding, BEFORE the design call ─────────────────────────────
+    grounded_tuple: Optional[str] = None
+    grounding_status = "ungated"
+    grounding_reasoning = ""
+    if not skip_gate:
+        gate_result = await _run_gated_imscription(description, provider_name, model)
+        grounded_tuple = gate_result.imscription.to_notation()
+        grounding_status = gate_result.grounding_status
+        grounding_reasoning = gate_result.reasoning
+        gate_context = (
+            f"A gated imscription of this description has ALREADY been validated "
+            f"(grounding: {grounding_status}):\n"
+            f"  Tuple: {grounded_tuple}\n"
+            f"  Reasoning: {grounding_reasoning}\n"
+            f"Your opcode map, register mapping, and bootstrap sequence MUST be built "
+            f"consistent with this tuple — it is not a suggestion, it is the already-"
+            f"grounded structural type. Do not invent a different primitive assignment."
+        )
+        context = f"{gate_context}\n\n{context}" if context else gate_context
 
     if provider_name:
         chain = _PROVIDER_CHAIN.copy()
@@ -798,8 +973,13 @@ async def auto_design(
             )
             data = _extract_json(raw)
             artifact = _build_artifact(artifact_name, scope, data)
+            artifact.grounded_tuple = grounded_tuple
+            artifact.grounding_status = grounding_status
+            artifact.grounding_reasoning = grounding_reasoning
 
             if artifact.split_fuse_report.frobenius_verdict == "PASS":
+                slug = _make_unique_slug(artifact_name)
+                await _verify_lean_scaffold(artifact, slug)
                 return artifact
 
             sfr = artifact.split_fuse_report
@@ -1139,7 +1319,7 @@ if __name__ == "__main__":
                 max_retries=_parse_retries(_d.get("retries")),    # --retries (default inf)
                 context=_ctx,
             )
-            _slug = re.sub(r"[^a-z0-9]+", "_", _ent.lower()).strip("_")[:48] or f"ob3ect_{_i}"
+            _slug = _make_unique_slug(_ent) if _ent.strip() else f"ob3ect_{_i}"
             _sub = _out / _slug
             _sub.mkdir(parents=True, exist_ok=True)
             _art.save(_sub / f"{_slug}_ob3ect.json")
@@ -1186,8 +1366,6 @@ if __name__ == "__main__":
         import framework.enhanced_llm_provider as _ep
         _ep.enable_thinking = True
 
-    import re as _re_slug
-
     # ── Zoom chain mode ──────────────────────────────────────────────────
     if args.zoom_target:
         print(f"Zoom chain: {desc!r}  →  {args.zoom_target!r}  ({args.zoom_levels} levels)\n")
@@ -1206,15 +1384,12 @@ if __name__ == "__main__":
         ))
         print("\n" + chain.report())
 
-        slug = _re_slug.sub(r'[^a-z0-9]', '_',
-                            f"zoom_{desc[:20]}_{args.zoom_target[:20]}".strip().lower())
-        slug = _re_slug.sub(r'_+', '_', slug).strip('_')
+        slug = "zoom_" + _make_unique_slug(f"{desc}_{args.zoom_target}", max_base_len=40)
         out_dir = Path(__file__).parent / "digital" / slug
         out_dir.mkdir(parents=True, exist_ok=True)
 
         for lvl in chain.levels:
-            lvl_slug = _re_slug.sub(r'[^a-z0-9]', '_', lvl.description.strip().lower())[:48]
-            lvl_slug = _re_slug.sub(r'_+', '_', lvl_slug).strip('_')
+            lvl_slug = _make_unique_slug(lvl.description)
             lvl_dir = out_dir / f"gamma_{lvl.gamma}_{lvl_slug}"
             lvl_dir.mkdir(parents=True, exist_ok=True)
             lvl.artifact.save(lvl_dir / f"{lvl_slug}_ob3ect.json")
@@ -1257,8 +1432,7 @@ if __name__ == "__main__":
             print(art.lean_scaffold)
 
     # ── Persist to disk ──────────────────────────────────────────────────
-    slug = _re_slug.sub(r'[^a-z0-9]', '_', desc.strip().lower())[:48]
-    slug = _re_slug.sub(r'_+', '_', slug).strip('_')
+    slug = _make_unique_slug(desc)
     out_dir = Path(__file__).parent / "digital" / slug
     out_dir.mkdir(parents=True, exist_ok=True)
     json_path = art.save(out_dir / f"{slug}_ob3ect.json")
