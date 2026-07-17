@@ -199,6 +199,7 @@ class Ob3ectArtifact:
     # a pass.
     lean_verified: Optional[bool] = None
     lean_verification_output: str = ""
+    sixteen_3_breakdown: Optional[str] = None
 
     def validate_all(self):
         return {"phase_0":self.domain_charter.validate(),"phase_1":self.opcode_map.validate(),
@@ -289,6 +290,10 @@ class Ob3ectArtifact:
             parts.append("")
             parts.append("Phase 9: Topology")
             parts.append("  " + a.topology_report.summary().replace(chr(10), chr(10)+"  "))
+        # Phase 11: SIXTEEN_3 Trilattice Breakdown
+        if a.sixteen_3_breakdown:
+            parts.append("")
+            parts.append(a.sixteen_3_breakdown)
         parts.append("="*70)
         parts.append("mu o delta = id -> "+a.split_fuse_report.frobenius_verdict)
         return nl.join(parts)

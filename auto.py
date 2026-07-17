@@ -43,6 +43,18 @@ try:
 except Exception:
     _SCAFFOLD = None
 
+try:
+    from digital.imasm16_3_core import (
+        IMASM16_3_Machine, Sequence16_3Trace,
+        VINIT as _16VINIT, TANCH as _16TANCH, AFWD as _16AFWD, AREV as _16AREV,
+        CLINK as _16CLINK, IMSCRIB as _16IMSCRIB,
+        FSPLIT3, FFUSE3, EVALT as _16EVALT, EVALF as _16EVALF, EVALI, IFIX as _16IFIX,
+        reg_name as _16reg_name, GLYPH as _16GLYPH,
+    )
+    _IMASM16_3_AVAILABLE = True
+except Exception:
+    _IMASM16_3_AVAILABLE = False
+
 # The GATED imscriber. auto_design() MUST run a description through this
 # before its own design LLM call — the axiom/grounding checks in
 # imscribe_generator_agent.py (Axiom 6 D_∞ cycle-check, Axiom 7 T_⋈
@@ -61,6 +73,63 @@ else:
     _GATE_IMPORT_ERROR = None
 
 # ── IMASM opcode reference distilled from IMASM.tex ─────────────────────────
+
+
+
+# ── IMASM-12 → IMASM-16_3 mapping ──────────────────────────────────────────
+
+_IMASM12_TO_16_3: Dict[str, str] = {
+    "VINIT": "VINIT",
+    "TANCH": "TANCH",
+    "AFWD": "AFWD",
+    "AREV": "AREV",
+    "CLINK": "CLINK",
+    "IMSCRIB": "IMSCRIB",
+    "FSPLIT": "FSPLIT3",
+    "FFUSE": "FFUSE3",
+    "EVALT": "EVALT",
+    "EVALF": "EVALF",
+    "ENGAGR": "EVALI",
+    "IFIX": "IFIX",
+}
+
+
+def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
+    """Run the bootstrap sequence through the SIXTEEN_3 trilattice register
+    machine and return a formatted breakdown string. The 16-element carrier
+    P({T,F,t,f}) with its 3 partial orderings (information, truth, constructivity)
+    is the trilattice from Shramko, Dunn & Takenaka (2001)."""
+    if not _IMASM16_3_AVAILABLE:
+        return None
+    try:
+        ops_12 = [step["opcode"] for step in steps]
+        ops_16 = [_IMASM12_TO_16_3.get(op, "IMSCRIB") for op in ops_12]
+        mach = IMASM16_3_Machine()
+        trace = Sequence16_3Trace(ops_16, machine=mach)
+        trace.run()
+        verdict, msg = trace.tri_ancestral_verdict()
+        
+        lines = []
+        lines.append("Phase 11: SIXTEEN_3 Trilattice Breakdown")
+        lines.append("  Carrier: P({T,F,t,f}) = 16 generalized truth values")
+        lines.append("  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)")
+        lines.append("  Word: " + "".join(trace.json_report()["glyph_word"]))
+        lines.append("")
+        lines.append(f"  {'Step':>3} {'Glyph':^5} {'12-op':<8} {'16_3-op':<9} {'Reg↓':>5} → {'Reg↑':>5}")
+        lines.append(f"  {'─'*3} {'─'*5} {'─'*8} {'─'*9} {'─'*5}   {'─'*5}")
+        for i, (op12, op16, rb, ra) in enumerate(zip(ops_12, ops_16, trace.register_before, trace.register_after)):
+            g = _16GLYPH.get(op16, "?")
+            lines.append(f"  {i+1:>3} {g:^5} {op12:<8} {op16:<9} "
+                          f"{_16reg_name(rb):>5} → {_16reg_name(ra):>5}")
+        lines.append("")
+        final_reg = trace.register_after[-1] if trace.register_after else frozenset()
+        lines.append(f"  Final register: {_16reg_name(final_reg)}")
+        lines.append(f"  Closed walk: {trace.is_closed()}")
+        lines.append(f"  Tri-ancestral verdict: {verdict} — {msg}")
+        lines.append(f"  {'✓ Frobenius-verified trilattice closure' if trace.is_closed() and verdict == 'T' else '⚠ Not fully closed'}")
+        return "\n".join(lines)
+    except Exception as e:
+        return f"Phase 11: SIXTEEN_3 Trilattice Breakdown — computation failed: {e}"
 
 _OPCODE_REF = """\
 IMASM 12-OPCODE REFERENCE  (Universal Imscriptive Grammar)
@@ -652,6 +721,13 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
             artifact.topology_report = analyze_topology(ops)
         except Exception:
             pass
+
+    # SIXTEEN_3 trilattice breakdown: run the bootstrap through the 16_3 register machine
+    try:
+        artifact.sixteen_3_breakdown = _compute_16_3_breakdown(bootstrap.steps)
+    except Exception:
+        artifact.sixteen_3_breakdown = None
+
     return artifact
 
 def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False) -> Optional[Any]:
@@ -801,12 +877,11 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
     body = "\n".join(l for l in text.splitlines() if "has local changes" not in l)
     n_err = body.count("error")
     artifact.lean_verification_output = body.strip()
-    if proc.returncode == 0 and n_err == 0:
-        artifact.lean_verified = True
-        artifact.grounding_status = "full"
-    else:
-        artifact.lean_verified = False
-        artifact.grounding_status = "failed"
+    # The kernel's verdict is lean_verified, and ONLY lean_verified. grounding_status
+    # belongs to the gated imscriber: overwriting it here let a scaffold that happened to
+    # elaborate stamp "full" over a tuple the gate had (or would have) failed — the two
+    # verdicts answer different questions and must not share a field.
+    artifact.lean_verified = proc.returncode == 0 and n_err == 0
 
 
 async def _run_gated_imscription(description: str, provider_name: Optional[str], model: Optional[str]):
