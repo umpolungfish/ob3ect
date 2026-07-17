@@ -16,105 +16,105 @@
       "domain_type": "computational",
       "scope": "maximal",
       "surface_tokens": [
-        "adjacency matrix",
         "spectral radius",
-        "cross-link"
+        "cross-link",
+        "eigenvalue pinning"
       ],
-      "boundary_condition": "The characteristic polynomial \u03bb\u00b3 \u2212 6\u03bb \u2212 4 and its algebraic field Q(\u221a3)",
+      "boundary_condition": "The characteristic equation of the graph adjacency matrix",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "null graph",
-        "justification": "The uninitialized state before the definition of vertices or edges.",
+        "chosen_element": "Empty adjacency matrix",
+        "justification": "The uninitialized state before the graph topology is defined.",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "Q(\u221a3) field closure",
-        "justification": "The terminal boundary containing all possible eigenvalues for the system.",
+        "chosen_element": "Spectral stability boundary",
+        "justification": "The fixed limit where the minimum eigenvalue is pinned at -2.",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "spectral lift",
-        "justification": "The forward transformation increasing the spectral radius from 2 to 1+\u221a3.",
+        "chosen_element": "Spectral lift",
+        "justification": "The forward transformation increasing the spectral radius from 2 toward 1+sqrt(3).",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "eigenvalue pinning",
-        "justification": "The constraint maintaining the minimum eigenvalue at -2 despite structural changes.",
+        "chosen_element": "Bipartite symmetry restoration",
+        "justification": "The reverse transformation attempting to return the graph to its uncarved even cycle state.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "edge addition",
-        "justification": "The sequential composition of adjacency relations to form the graph structure.",
+        "chosen_element": "Edge composition",
+        "justification": "The sequential addition of vertices and edges to form the cycle and its bridge.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "bipartite identity",
-        "justification": "The self-recognition of the bipartite property preserved across the transformation.",
+        "chosen_element": "Eigenvalue identity",
+        "justification": "The self-recognition of the pinned minimum eigenvalue at -2 across transformations.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "topological bifurcation",
-        "justification": "The branching of a pure cycle into a cross-linked figure-8 topology.",
+        "chosen_element": "Topological bifurcation",
+        "justification": "The branching of the pure cycle into a bipartite path and a non-bipartite cross-link path.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "spectral synthesis",
-        "justification": "The reconstitution of the graph energy and trace from the branched eigenvalues.",
+        "chosen_element": "Graph synthesis",
+        "justification": "The reconstitution of the original cycle structure integrated with the new bridging interaction.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "gap opening",
-        "justification": "The successful creation of a non-zero spectral gap \u03b3 = \u221a3\u22121.",
+        "chosen_element": "Gap opening",
+        "justification": "The successful increase of the spectral radius resulting in a positive spectral gap.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "gap collapse",
-        "justification": "The zero-gap state characteristic of the uncarved even pure cycle.",
+        "chosen_element": "Gap collapse",
+        "justification": "The failure to lift the spectral radius, leaving the gap at zero as in pure even cycles.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "b-sector fixed point",
-        "justification": "The simultaneous holding of the pinned floor and the lifted ceiling in one spectrum.",
+        "chosen_element": "Critical threshold",
+        "justification": "The state where the system simultaneously holds the original cycle symmetry and the symmetry-breaking link.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "trace(A\u00b2) record",
-        "justification": "The permanent fixation of the edge count at 12 as an irreversible structural witness.",
+        "chosen_element": "Topological record",
+        "justification": "The permanent fixation of the cross-link into the graph adjacency record.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "topological bifurcation",
-      "split_input": "even pure cycle C\u2084",
+      "split_element": "Topological bifurcation",
+      "split_input": "Even pure cycle",
       "split_outputs": [
-        "lifted spectral radius",
-        "pinned minimum eigenvalue"
+        "Bipartite cycle backbone",
+        "Non-bipartite cross-link"
       ],
-      "fuse_element": "spectral synthesis",
-      "fuse_result": "even pure cycle C\u2084",
+      "fuse_element": "Graph synthesis",
+      "fuse_result": "Even pure cycle",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "uninitialized adjacency matrix with zero entries",
-      "true_description": "positive spectral gap \u03b3 > 0 with \u03c1 = 1+\u221a3",
-      "false_description": "zero spectral gap \u03b3 = 0 with \u03c1 = 2",
-      "both_description": "paraconsistent state where \u03bb_min is pinned while \u03c1 is lifted",
+      "void_description": "Unallocated graph memory",
+      "true_description": "Spectral gap open (rho > 2)",
+      "false_description": "Spectral gap closed (rho = 2)",
+      "both_description": "Phase transition (rho in flux, lambda_min pinned)",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,94 +123,94 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "initialize the null graph state"
+          "domain_action": "Initialize the null adjacency matrix for the graph domain"
         },
         {
           "step_num": 2,
           "opcode": "IMSCRIB",
-          "domain_action": "identify the bipartite symmetry of the substrate"
+          "domain_action": "Identify the base symmetry requirements for an even cycle"
         },
         {
           "step_num": 3,
           "opcode": "CLINK",
-          "domain_action": "compose the adjacency matrix for an even pure cycle"
+          "domain_action": "Compose the vertices into a closed bipartite loop structure"
         },
         {
           "step_num": 4,
           "opcode": "IFIX",
-          "domain_action": "record the initial spectral radius \u03c1 = 2"
+          "domain_action": "Record the initial state as a pure even cycle with zero gap"
         },
         {
           "step_num": 5,
           "opcode": "FSPLIT",
-          "domain_action": "branch the cycle into potential topological configurations"
+          "domain_action": "Branch the cycle into its structural backbone and a potential cross-link site"
         },
         {
           "step_num": 6,
-          "opcode": "EVALF",
-          "domain_action": "anchor the F-arm with the zero-gap state of the uncarved cycle"
+          "opcode": "EVALT",
+          "domain_action": "Direct the T-arm toward the insertion of the bridging interaction"
         },
         {
           "step_num": 7,
-          "opcode": "AREV",
-          "domain_action": "apply the descent constraint to pin \u03bb_min at -2"
+          "opcode": "AFWD",
+          "domain_action": "Lift the spectral radius from 2 toward the target value of 1+sqrt(3)"
         },
         {
           "step_num": 8,
-          "opcode": "ENGAGR",
-          "domain_action": "enter the paradice state where the floor is fixed but the ceiling is free"
+          "opcode": "EVALF",
+          "domain_action": "Direct the F-arm toward the preservation of the original bipartite symmetry"
         },
         {
           "step_num": 9,
-          "opcode": "AFWD",
-          "domain_action": "apply the forward morphism to lift \u03c1 to 1+\u221a3"
+          "opcode": "AREV",
+          "domain_action": "Maintain the minimum eigenvalue at the stability boundary of -2"
         },
         {
           "step_num": 10,
-          "opcode": "EVALT",
-          "domain_action": "anchor the T-arm with the opened gap \u03b3 = \u221a3\u22121"
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the tension between the bipartite backbone and the non-bipartite link"
         },
         {
           "step_num": 11,
           "opcode": "FFUSE",
-          "domain_action": "synthesize the branched constraints into a single spectrum"
+          "domain_action": "Reconstitute the graph into a single fused-ring topology"
         },
         {
           "step_num": 12,
-          "opcode": "CLINK",
-          "domain_action": "apply the cross-link to the adjacency matrix"
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify the identity of the pinned minimum eigenvalue at -2"
         },
         {
           "step_num": 13,
           "opcode": "IFIX",
-          "domain_action": "fix the trace(A\u00b2) = 12 as the permanent structural record"
+          "domain_action": "Commit the final adjacency matrix with the opened spectral gap to memory"
         },
         {
           "step_num": 14,
           "opcode": "TANCH",
-          "domain_action": "close the system within the Q(\u221a3) algebraic boundary"
+          "domain_action": "Close the system within the bounds of the characteristic polynomial"
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "The characteristic equation solver mapping topology to eigenvalues",
-      "ipc_mechanism": "Adjacency matrix entries communicating nodal connectivity",
-      "memory_mechanism": "The 3x3 register storing the graph spectrum",
-      "scheduler_mechanism": "The iterative re-balancing of the adjacency matrix",
-      "alfs_store": "The RiemannNavigator near_zero head providing the density-rhythm phase",
+      "compiler_frontend": "The characteristic polynomial generator",
+      "ipc_mechanism": "Eigenvector distribution across the adjacency matrix",
+      "memory_mechanism": "The sparse matrix storage for graph edges",
+      "scheduler_mechanism": "The iterative solver for spectral radius convergence",
+      "alfs_store": "The catalog of Riemann-Siegel spacing and zeta zero distributions",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "The computational work required to solve the cubic polynomial",
-      "pre_cycle_state": "Pure cycle with zero gap and rational spectrum",
-      "post_cycle_state": "Cross-linked ring with open gap and irrational spectrum",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The transformation is a reversible spectral shift within a closed algebraic field.",
+      "cycle_cost": "Computational cycles required for eigenvalue extraction",
+      "pre_cycle_state": "Pure even cycle with zero spectral gap",
+      "post_cycle_state": "Cross-linked graph with spectral gap of sqrt(3)-1",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The topological transformation is an algebraic rearrangement that preserves the stability boundary.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 CLINK \u2192 IFIX \u2192 FSPLIT \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 AFWD \u2192 EVALT \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: the zero gap of an even pure cycle, and the cross-link that lifts rho from 2 to 1+sqrt(3) while lambda_min stays pinned at -2\n-- Fingerprint: sig=(7,2,3,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [3] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [8] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [9] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [12] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s7 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := up, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := sure, stoi := up, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_protocol : IGProtocol the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 = the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 (idempotent)\n  (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s1) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l1 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s1 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s2) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l2 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s2 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s3) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l3 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s3 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4) (.seq (.prod (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10) (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10)) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s11) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l11 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s11 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s12) (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l12 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s12 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_true_arm : IGProtocol the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 :=\n  (the_zero_gap_of_an_even_pure_cycle_and_b0a96b_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_false_arm : IGProtocol the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 :=\n  (the_zero_gap_of_an_even_pure_cycle_and_b0a96b_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_zero_gap_of_an_even_pure_cycle_and_b0a96b_tier : OuroboricityTier := TierFunctor.obj the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0\n#eval the_zero_gap_of_an_even_pure_cycle_and_b0a96b_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_zero_gap_of_an_even_pure_cycle_and_b0a96b_frobenius :\n    igFrobeniusAlg.mul the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 = the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 :=\n  igFrobAlg_self_fusion the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 CLINK \u2192 IFIX \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: the zero gap of an even pure cycle, and the cross-link that lifts rho from 2 to 1+sqrt(3) while lambda_min stays pinned at -2\n-- Fingerprint: sig=(7,2,3,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [3] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc5a  | irreversible fixation \u2014 winding number\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [11] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [12] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_protocol : IGProtocol the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 = the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 (idempotent)\n  (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s1) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l1 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s1 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s2) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l2 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s2 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s3) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l3 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s3 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4) (.seq (.prod (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10) (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s4 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10)) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s10 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s11) (.seq (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l11 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s11 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s12) (.arrow the_zero_gap_of_an_even_pure_cycle_and_b0a96b_l12 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s12 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_true_arm : IGProtocol the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 :=\n  (the_zero_gap_of_an_even_pure_cycle_and_b0a96b_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_zero_gap_of_an_even_pure_cycle_and_b0a96b_false_arm : IGProtocol the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s13 :=\n  (the_zero_gap_of_an_even_pure_cycle_and_b0a96b_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_zero_gap_of_an_even_pure_cycle_and_b0a96b_tier : OuroboricityTier := TierFunctor.obj the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0\n#eval the_zero_gap_of_an_even_pure_cycle_and_b0a96b_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_zero_gap_of_an_even_pure_cycle_and_b0a96b_frobenius :\n    igFrobeniusAlg.mul the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 = the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0 :=\n  igFrobAlg_self_fusion the_zero_gap_of_an_even_pure_cycle_and_b0a96b_s0\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -219,9 +219,9 @@
     "cross_branches": 0,
     "empty_branches": 0,
     "sequence_length": 14,
-    "t_branch_ops": 1,
-    "f_branch_ops": 4,
-    "branch_ratio": 4.0,
+    "t_branch_ops": 2,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.5,
     "fork_positions": [
       4
     ],
@@ -236,13 +236,13 @@
     ],
     "has_cascading_ifix": false,
     "max_ifix_cascade": 1,
-    "has_negation_first": true,
+    "has_negation_first": false,
     "has_dual_fixation": false
   },
   "notes": "Auto-designed from: the zero gap of an even pure cycle, and the cross-link that lifts rho from 2 to 1+sqrt(3) while lambda_min stays pinned at -2",
-  "grounded_tuple": "\u27e8\ud801\udc5b\ud801\udc65\ud801\udc51\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc5d\u2299\ud801\udc6d\ud801\udc73\ud801\udc56\u27e9",
+  "grounded_tuple": "\u27e8\ud801\udc5b\ud801\udc65\ud801\udc51\ud801\udc79\ud801\udc50\ud801\udc6a\ud801\udc5a\ud801\udc5d\u2299\ud801\udc6b\ud801\udc73\ud801\udc6d\u27e9",
   "grounding_status": "full",
-  "grounding_reasoning": "\u00d0=\ud801\udc5b: The spectral shift of the spectral radius while pinning the minimum eigenvalue requires an iterative re-balancing of the cycle's adjacency matrix through a closed-loop constraint.\n\u00de=\ud801\udc65: The transition from a pure cycle to a cross-linked structure with a specific spectral shift (lifting the spectral radius while pinning the minimum eigenvalue) describes the formation of a cyclic interface or figure-8 topology.\n\u0158=\ud801\udc51: The introduction of a cross-link into a bipartite cycle creates a permanent topological change that alters the spectral radius and breaks the symmetry of the original graph structure.\n\u03a6=\ud801\udc6c: The transition from $\\rho=2$ to $1+\\sqrt{3}$ via a cross-link in an even cycle creates a bipartite structure where the interface acts as both a sink and a source, satisfying the conditions for self-complementarity.\n\u0192=\ud801\udc50: The specific geometric constraint of pinning the minimum eigenvalue at -2 while increasing the spectral radius creates a rigid, non-probabilistic structural enforcement that maximizes information density.\n\u00c7=\ud801\udc67: The pinning of the minimum eigenvalue at the boundary while the spectral radius increases indicates a rigid spectral constraint and structural locking that prevents spontaneous reconfiguration.\n\u0393=\ud801\udc54: The pinning of the spectral floor at -2 while the spectral radius shifts to an irrational algebraic integer indicates a transition to a long-range ordered state where local perturbations affect the global eigenvalue distribution.\n\u0262=\ud801\udc5d: The lifting of the spectral radius while pinning the minimum eigenvalue in a bipartite cycle requires the simultaneous presence of specific cross-link symmetries to maintain the structural constraints.\n\u2299=\u2299: The transition of the spectral radius $\\rho$ to $1+\\sqrt{3}$ while $\\lambda_{min}$ remains at $-2$ signifies the exact point where the spectral gap closes and the system reaches the threshold of structural instability.\n\u0126=\ud801\udc56: The introduction of a cross-link into an even pure cycle creates a non-planar, rigidified scaffold that enforces a specific handedness across multiple axes, preventing thermal racemization.\n\u03a3=\ud801\udc73: The introduction of a cross-link into an even cycle to specifically shift the spectral radius while pinning the minimum eigenvalue creates a structural asymmetry between the nodal degrees and the resulting stoichiometry.\n\u03a9=\ud801\udc6d: The pinning of the minimum eigenvalue at -2 during the spectral shift of the spectral radius indicates a topological constraint associated with the winding of the cycle's adjacency structure that cannot be removed by continuous local perturbations.",
+  "grounding_reasoning": "\u00d0=\ud801\udc5b: The transition from a pure cycle to a cross-linked structure involves an iterative constraint where the spectral radius shifts through recursive path-counting while the minimum eigenvalue remains fixed by the cycle's symmetry.\n\u00de=\ud801\udc65: The transition from a pure cycle to a cross-linked structure with a specific spectral shift (lifting $\\rho$) while pinning $\\lambda_{min}$ characterizes a cyclic closure that introduces internal constraints or a figure-8 topology.\n\u0158=\ud801\udc51: The introduction of a cross-link into a bipartite cycle creates a permanent topological change that alters the spectral radius and breaks the symmetry of the original graph structure.\n\u03a6=\ud801\udc79: The specific spectral shift of the spectral radius to 1+\u221a3 while pinning the minimum eigenvalue at -2 identifies the bipartite-to-non-bipartite transition of a Frobenius-Perron dimension, satisfying the exact Z2 symmetry required for the special Frobenius case.\n\u0192=\ud801\udc50: The specific geometric constraint of pinning the minimum eigenvalue at -2 while lifting the spectral radius creates a rigid, non-probabilistic structural enforcement that maximizes mutual information.\n\u00c7=\ud801\udc67: The pinning of the minimum eigenvalue at the boundary while the spectral radius increases indicates a rigid structural constraint that prevents relaxation, leading to kinetic freezing.\n\u0393=\ud801\udc5a: The specific spectral shift from $\\rho=2$ to $1+\\sqrt{3}$ while pinning $\\lambda_{min}$ requires a coordinated structural modification across a local subgraph or motif to maintain the algebraic constraints of the cycle.\n\u0262=\ud801\udc5d: The transition from a spectral radius of 2 to 1+\u221a3 via a specific cross-link in an even cycle requires the simultaneous presence of both the original cycle structure and the specific bridging interaction to satisfy the characteristic equation.\n\u2299=\u2299: The transition of the spectral radius $\\rho$ to $1+\\sqrt{3}$ while $\\lambda_{min}$ remains at the stability boundary $-2$ signifies the exact point where the spectral gap closes and the system reaches its critical threshold.\n\u0126=\ud801\udc6b: The introduction of a cross-link into an even pure cycle creates a non-planar graph topology that prevents mirror-image interconversion without breaking covalent bonds.\n\u03a3=\ud801\udc73: The introduction of a cross-link that shifts the spectral radius while pinning the minimum eigenvalue breaks the bipartite symmetry of the even cycle, resulting in an asymmetric distribution of states.\n\u03a9=\ud801\udc6d: The lifting of the spectral radius while pinning the minimum eigenvalue at -2 in a bipartite-like cycle structure indicates a change in a winding-related invariant that cannot be continuously reduced to zero without closing the gap.",
   "lean_verified": true,
   "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080"
 }
