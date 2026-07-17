@@ -16,105 +16,105 @@
       "domain_type": "linguistic",
       "scope": "local",
       "surface_tokens": [
-        "definite article",
-        "discourse uniqueness",
-        "referent tracking"
+        "referent",
+        "discourse",
+        "uniqueness"
       ],
-      "boundary_condition": "the noun phrase bound by the definiteness marker",
+      "boundary_condition": "the discourse context",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "undetermined referential gap",
-        "justification": "The initial state before any definite reference is attempted; no referent has been selected or fixed.",
+        "chosen_element": "unmarked noun",
+        "justification": "the state of a noun before specific reference is established",
         "rejected_candidates": []
       },
       "TANCH": {
         "opcode": "TANCH",
-        "chosen_element": "the definite article 'the'",
-        "justification": "The article itself closes the referent into a bounded unique entity, acting as the terminal anchor of the referential act.",
+        "chosen_element": "definite noun phrase",
+        "justification": "the completed linguistic unit that contains the specific referent",
         "rejected_candidates": []
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "selection from discourse memory",
-        "justification": "Forward morphism from the set of possible referents to the uniquely identified one via prior mention or situation.",
+        "chosen_element": "deictic pointing",
+        "justification": "the forward movement from a general category to a specific instance",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "context retrieval",
-        "justification": "Reverse morphism from the selected referent back to the discourse context that established its uniqueness.",
+        "chosen_element": "anaphoric retrieval",
+        "justification": "the backward look into prior discourse to find a mentioned entity",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
-        "chosen_element": "anaphoric chain composition",
-        "justification": "Sequential chaining of the definite article with the nominal predicate and the discourse history that identifies the referent.",
+        "chosen_element": "syntactic binding",
+        "justification": "the composition of the article with the noun to form a single unit",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "self-identity of the referent",
-        "justification": "The referent is recognized as itself across mentions; the article asserts that the designated entity is identical to the already-introduced one.",
+        "chosen_element": "referential identity",
+        "justification": "the recognition that the selected entity is identical to itself across mentions",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "definiteness source evaluation",
-        "justification": "Splits the discourse into two branches: (1) the referent is already present in discourse memory, (2) the referent is uniquely inferable from the situational context without prior mention.",
+        "chosen_element": "contextual search",
+        "justification": "the branching of the search into prior mention or situational uniqueness",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "unified definite noun phrase",
-        "justification": "Reconstitutes the two identification paths into a single definite noun phrase that carries the uniqueness property, recovering the input condition of a pending referent.",
+        "chosen_element": "referential resolution",
+        "justification": "the reunification of search paths into a single identifiable entity",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
-        "chosen_element": "anaphoric definite identification",
-        "justification": "Affirmative branch where the referent matches a previously introduced entity; the article functions as a pure anaphora.",
+        "chosen_element": "unique match",
+        "justification": "the successful identification of exactly one referent",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "situational definite identification",
-        "justification": "Negative branch (in evaluation sense) where the referent is not in memory but is uniquely given by the extra-linguistic context (e.g., 'the sun').",
+        "chosen_element": "referential failure",
+        "justification": "the failure to find a unique referent in the current context",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
-        "chosen_element": "bridging definite inference",
-        "justification": "Both anaphoric and situational sources apply simultaneously, as when a referent is accessed via a related entity in memory while also being contextually unique; the resolution is held in paradice.",
+        "chosen_element": "generic definite",
+        "justification": "the use of the article for a whole class where it is both specific and general",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
-        "chosen_element": "discourse referent record",
-        "justification": "Permanently records the referent identity in the discourse model, making it available for subsequent anaphoric references.",
+        "chosen_element": "discourse record",
+        "justification": "the permanent addition of the referent to the shared knowledge of the speakers",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "definiteness source evaluation",
-      "split_input": "discourse state with an unresolved referent that requires unique identification",
+      "split_element": "contextual search",
+      "split_input": "identifiable entity",
       "split_outputs": [
-        "anaphoric (memory-based) identification",
-        "situational (context-based) identification"
+        "prior mention",
+        "situational uniqueness"
       ],
-      "fuse_element": "unified definite noun phrase",
-      "fuse_result": "a single noun phrase that uniquely designates the referent, semantically identical to the input condition of a referent awaiting identification",
+      "fuse_element": "referential resolution",
+      "fuse_result": "identifiable entity",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "Zero referent fixed; no definite article has been processed.",
-      "true_description": "Referent uniquely identified via prior discourse mention (anaphoric).",
-      "false_description": "Referent uniquely identified via shared situational context (deictic or inferential).",
-      "both_description": "Referent is both anaphorically accessible and contextually unique (e.g., bridging reference through a related entity); held without immediate resolution.",
+      "void_description": "pre-linguistic intent before a noun is selected",
+      "true_description": "successful unique identification of the referent",
+      "false_description": "ambiguity or absence of the referent in context",
+      "both_description": "generic reference where the individual represents the entire set",
       "transitions": [],
       "entropy_assertion": "\u0394S \u2248 0"
     },
@@ -123,79 +123,79 @@
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "discourse begins with no referent fixed"
+          "domain_action": "start with an uninitialized noun concept"
         },
         {
           "step_num": 2,
-          "opcode": "TANCH",
-          "domain_action": "definite article 'the' initiates the referential boundary"
+          "opcode": "IMSCRIB",
+          "domain_action": "establish the core identity of the noun"
         },
         {
           "step_num": 3,
-          "opcode": "FSPLIT",
-          "domain_action": "evaluate source of uniqueness \u2014 anaphoric vs. situational"
+          "opcode": "AFWD",
+          "domain_action": "initiate the deictic vector toward a specific target"
         },
         {
           "step_num": 4,
-          "opcode": "EVALT",
-          "domain_action": "affirm that referent matches prior discourse entity"
+          "opcode": "FSPLIT",
+          "domain_action": "branch the search for the referent into available contexts"
         },
         {
           "step_num": 5,
-          "opcode": "AFWD",
-          "domain_action": "forward selection from memory to the exact referent"
+          "opcode": "AREV",
+          "domain_action": "look back into the prior discourse history for a match"
         },
         {
           "step_num": 6,
-          "opcode": "EVALF",
-          "domain_action": "affirm that referent is uniquely available from context"
+          "opcode": "EVALT",
+          "domain_action": "confirm a unique match exists in the history"
         },
         {
           "step_num": 7,
-          "opcode": "AREV",
-          "domain_action": "reverse descent to retrieve the contextual conditions that guarantee uniqueness"
+          "opcode": "FFUSE",
+          "domain_action": "resolve the search back into a single entity"
         },
         {
           "step_num": 8,
-          "opcode": "FFUSE",
-          "domain_action": "merge the two branches into a single definite noun phrase"
+          "opcode": "CLINK",
+          "domain_action": "bind the definite article to the noun structure"
         },
         {
           "step_num": 9,
-          "opcode": "CLINK",
-          "domain_action": "compose the article with the nominal predicate and discourse chain"
+          "opcode": "ENGAGR",
+          "domain_action": "hold the specific instance and the general category simultaneously"
         },
         {
           "step_num": 10,
-          "opcode": "IMSCRIB",
-          "domain_action": "assert self-identity of the referent across mentions"
+          "opcode": "IFIX",
+          "domain_action": "record the specific reference in the permanent discourse memory"
         },
         {
           "step_num": 11,
-          "opcode": "IFIX",
-          "domain_action": "permanently register the referent in the discourse model"
+          "opcode": "TANCH",
+          "domain_action": "close the definite noun phrase boundary"
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "speaker's referential intention interpreter \u2014 maps the desire to refer uniquely onto the morphosyntactic operation of article insertion",
-      "ipc_mechanism": "discourse inter-agent communication channel \u2014 enables speaker and hearer to share a referent through the article as a signal",
-      "memory_mechanism": "discourse model (a stack of referent representations with 2-step retrieval capacity, as required by the CL8NK specification)",
-      "scheduler_mechanism": "utterance linearization order \u2014 determines when the article is placed relative to the noun and preceding discourse",
-      "alfs_store": "CL8NK lexicon and grammar store \u2014 provides the primitive forms (e.g., glyph sequence \u27e8\ud801\udc66\u22c5\ud801\udc78\u22c5\ud801\udc7e\u22c5\ud801\udc79\u22c5\ud801\udc50\u22c5\ud801\udc67\u22c5\ud801\udc72\u22c5\ud801\udc75\u22c5\u2299\u22c5\ud801\udc6b\u22c5\ud801\udc73\u22c5\ud801\udc5f\u27e9) and the evaluation rules for definiteness",
+      "compiler_frontend": "the grammar of the speaker",
+      "ipc_mechanism": "syntactic agreement and adjacency",
+      "memory_mechanism": "the two step discourse buffer",
+      "scheduler_mechanism": "the linear flow of speech or text",
+      "alfs_store": "the lexicon and shared cultural knowledge",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "one mental token insertion per definite article use, consuming working memory for anaphoric binding",
-      "pre_cycle_state": "discourse state n with an unresolved referent, entropy H_n",
-      "post_cycle_state": "discourse state n+1 with the referent fixed and unique, entropy H_{n+1} = H_n because the referent is already determined by the previous context",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the definite article conserves discourse entropy by selecting a unique referent from an already constrained set, adding no new uncertainty",
+      "cycle_cost": "cognitive attention and contextual processing",
+      "pre_cycle_state": "high entropy due to multiple potential referents",
+      "post_cycle_state": "low entropy as the referent is uniquely fixed",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the reduction in referential uncertainty is balanced by the expenditure of contextual energy",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 IFIX\n-- Class: the\n-- Fingerprint: sig=(6,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=11\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_protocol : IGProtocol the_s0 the_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_s7 the_s7 = the_s7 (idempotent)\n  (.seq (.arrow the_l0 the_s0 the_s1) (.seq (.arrow the_l1 the_s1 the_s2) (.seq (.prod (.arrow the_l2 the_s2 the_s7) (.arrow the_l2 the_s2 the_s7)) (.seq (.arrow the_l7 the_s7 the_s7) (.seq (.arrow the_l7 the_s7 the_s8) (.seq (.arrow the_l8 the_s8 the_s9) (.arrow the_l9 the_s9 the_s10)))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_true_arm : IGProtocol the_s0 the_s10 :=\n  (the_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_false_arm : IGProtocol the_s0 the_s10 :=\n  (the_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_tier : OuroboricityTier := TierFunctor.obj the_s0\n#eval the_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_frobenius :\n    igFrobeniusAlg.mul the_s0 the_s0 = the_s0 :=\n  igFrobAlg_self_fusion the_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 AREV \u2192 EVALT \u2192 FFUSE \u2192 CLINK \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: the\n-- Fingerprint: sig=(6,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=11\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(3, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def the_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def the_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_protocol : IGProtocol the_s0 the_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_s6 the_s6 = the_s6 (idempotent)\n  (.seq (.arrow the_l0 the_s0 the_s1) (.seq (.arrow the_l1 the_s1 the_s2) (.seq (.arrow the_l2 the_s2 the_s3) (.seq (.prod (.arrow the_l3 the_s3 the_s6) (.arrow the_l3 the_s3 the_s6)) (.seq (.arrow the_l6 the_s6 the_s6) (.seq (.arrow the_l6 the_s6 the_s7) (.seq (.arrow the_l7 the_s7 the_s8) (.seq (.arrow the_l8 the_s8 the_s9) (.arrow the_l9 the_s9 the_s10)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_true_arm : IGProtocol the_s0 the_s10 :=\n  (the_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_tier : OuroboricityTier := TierFunctor.obj the_s0\n#eval the_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_frobenius :\n    igFrobeniusAlg.mul the_s0 the_s0 = the_s0 :=\n  igFrobAlg_self_fusion the_s0\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -205,18 +205,18 @@
     "empty_branches": 0,
     "sequence_length": 11,
     "t_branch_ops": 2,
-    "f_branch_ops": 2,
-    "branch_ratio": 1.0,
+    "f_branch_ops": 0,
+    "branch_ratio": 2.0,
     "fork_positions": [
-      2
+      3
     ],
     "fuse_positions": [
-      7
+      6
     ],
     "pair_list": [
       [
-        2,
-        7
+        3,
+        6
       ]
     ],
     "has_cascading_ifix": false,
@@ -224,5 +224,10 @@
     "has_negation_first": false,
     "has_dual_fixation": false
   },
-  "notes": "Auto-designed from: the"
+  "notes": "Auto-designed from: the",
+  "grounded_tuple": "\u27e8\ud801\udc7c\ud801\udc70\ud801\udc69\ud801\udc7f\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc5d\u2299\ud801\udc77\ud801\udc73\ud801\udc53\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc7c: The definite article \"the\" functions as a discrete, point-like pointer that operates on a single linguistic unit to establish specificity.\n\u00de=\ud801\udc70: The definite article functions as a linguistic container or pointer that nests a specific noun within a defined context or hierarchical set.\n\u0158=\ud801\udc69: The definite article functions as a soft associative pointer that links a noun to a specific, previously established context without altering the noun's underlying structure.\n\u03a6=\ud801\udc7f: The definite article functions as a directed pointer (deictic) that selects a specific referent from a set, establishing a single-ended vector of identification.\n\u0192=\ud801\udc50: As a definite article, it acts as a high-precision pointer that enforces specific reference within a linguistic geometry, firing with near-certainty to resolve entropy.\n\u00c7=\ud801\udc67: The definite article \"the\" represents a fixed, functional linguistic unit that remains kinetically frozen in its grammatical role unless driven by significant structural evolution.\n\u0393=\ud801\udc54: The definite article functions as a global operator in linguistics, establishing a specific reference frame that constrains the identity of a noun across the entire discourse system.\n\u0262=\ud801\udc5d: The definite article \"the\" functions as a conjunctive operator that requires the simultaneous presence of both a specific referent and a shared context to establish uniqueness.\n\u2299=\u2299: The definite article \"the\" functions as a linguistic attractor that organizes syntactic structure at the threshold of specific reference, representing the point of maximal informational sensitivity in a phrase.\n\u0126=\ud801\udc53: The word \"the\" is a common linguistic unit with no inherent structural asymmetry or persistent memory depth in this symbolic framework.\n\u03a3=\ud801\udc73: The word \"the\" functions as a definite article, typically establishing an asymmetric relationship between a single specific referent and its broader category.\n\u03a9=\ud801\udc6d: The definite article \"the\" functions as a rigid structural anchor in syntax, maintaining a specific functional winding that cannot be smoothly reduced to a null state without collapsing the grammatical reference.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080"
 }
