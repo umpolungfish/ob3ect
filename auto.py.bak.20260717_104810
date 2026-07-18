@@ -730,7 +730,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
 
     return artifact
 
-def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False, trilattice_data: dict = None) -> Optional[Any]:
+def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False) -> Optional[Any]:
     """Generate a v3 symbolic wiring diagram from the artifact's bootstrap opcodes.
 
     Uses IMSCRIBr's symbolic_diagram module to render a full-edge-granularity
@@ -778,7 +778,7 @@ def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False, trilatti
             topo_dict = artifact.topology_report if isinstance(artifact.topology_report, dict)                 else getattr(artifact.topology_report, 'to_dict', lambda: None)()
 
         return render_wiring_svg_v3(graph, graph.name, tier, graph.description, "",
-                                    pen_mode=pen_mode, topology_report=topo_dict, trilattice_data=trilattice_data)
+                                    pen_mode=pen_mode, topology_report=topo_dict)
     except ImportError as e:
         print(f"  Diagram: IMSCRIBr not available ({e}) — skipping")
         return None
@@ -788,37 +788,21 @@ def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False, trilatti
 
 
 def _write_diagrams(artifact: Ob3ectArtifact, dir_path: Path, slug: str) -> Optional[Path]:
-    """Write the black-and-white pen wiring diagram. Colored output disabled.
-    Returns the pen diagram path (or None if generation was skipped)."""
-    pen_path: Optional[Path] = None
-
-    # Compute SIXTEEN_3 trilattice data for lane augmentation
-    tri_data = None
-    if hasattr(artifact, 'bootstrap_sequence'):
-        ops = [step["opcode"] for step in artifact.bootstrap_sequence.steps]
-        tri_breakdown = _compute_16_3_breakdown(artifact.bootstrap_sequence.steps)
-        if tri_breakdown and _IMASM16_3_AVAILABLE:
-            try:
-                from digital.imasm16_3_core import (
-                    IMASM16_3_Machine, Sequence16_3Trace,
-                    _IMASM12_TO_16_3 as _M12TO16,
-                )
-                ops_12 = [step["opcode"] for step in artifact.bootstrap_sequence.steps]
-                ops_16 = [_IMASM12_TO_16_3.get(op, "IMSCRIB") for op in ops_12]
-                mach = IMASM16_3_Machine()
-                trace = Sequence16_3Trace(ops_16, machine=mach)
-                trace.run()
-                tri_data = trace.json_report()
-            except Exception:
-                pass
-
-    pen = _generate_diagram(artifact, pen_mode=True, trilattice_data=tri_data)
+    """Write both wiring diagrams for an artifact: the color `<slug>_diagram.svg`
+    and the black-and-white pen variant `<slug>_diagram_pen.svg`. Returns the
+    color path (or None if generation was skipped)."""
+    color_path: Optional[Path] = None
+    svg = _generate_diagram(artifact)
+    if svg:
+        color_path = dir_path / f"{slug}_diagram.svg"
+        svg.save(color_path)
+    pen = _generate_diagram(artifact, pen_mode=True)
     if pen:
-        pen_path = dir_path / f"{slug}_diagram_pen.svg"
-        pen.save(pen_path)
+        pen.save(dir_path / f"{slug}_diagram_pen.svg")
+    return color_path
 
-    # Colored output disabled — only pen/pencil B&W diagrams
-    return pen_path
+
+
 # ── Public API ────────────────────────────────────────────────────────────────
 
 _PROVIDER_CHAIN: List[str] = ["local", "openrouter", "deepseek"]
