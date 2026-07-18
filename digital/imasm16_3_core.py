@@ -337,9 +337,11 @@ class Sequence16_3Trace:
 
     def json_report(self) -> dict:
         verdict, msg = self.tri_ancestral_verdict()
+        interior = [GLYPH.get(t, "?") for t in self.steps if t not in (VINIT, TANCH)]
+        glyph_word = "⊢" + "".join(interior) + "⊣"
         return {
             "steps": self.steps,
-            "glyph_word": "".join(GLYPH.get(t, "?") for t in self.steps),
+            "glyph_word": glyph_word,
             "register_seq": [reg_name(r) for r in self.register_before],
             "closed": self.is_closed(),
             "verdict": verdict,
@@ -364,7 +366,8 @@ class IMASM16_3Sequence:
         print(f"\n{'='*64}")
         print(f"  {self.name}")
         print(f"  {self.description}")
-        print(f"  Word: {''.join(GLYPH.get(t,'?') for t in self.steps)}")
+        interior = [GLYPH.get(t,'?') for t in self.steps if t not in (VINIT, TANCH)]
+        print(f"  Word: ⊢{''.join(interior)}⊣")
         print(f"{'='*64}")
         print(trace.summary())
         print(f"  Final register: {reg_name(final_reg)}")

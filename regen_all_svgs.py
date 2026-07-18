@@ -16,6 +16,33 @@ from wiring import imscr_wiring
 from symbolic_diagram import render_wiring_svg_v3, generate_all_diagrams_v3
 from proof_scaffold import ouroboricity_tier
 
+# 16_3 trilattice trace for glyph words
+try:
+    from digital.imasm16_3_core import (
+        IMASM16_3_Machine, Sequence16_3Trace,
+    )
+    _IMASM12_TO_16_3 = {
+        "VINIT": "VINIT", "TANCH": "TANCH", "AFWD": "AFWD", "AREV": "AREV",
+        "CLINK": "CLINK", "IMSCRIB": "IMSCRIB", "FSPLIT": "FSPLIT3", "FFUSE": "FFUSE3",
+        "EVALT": "EVALT", "EVALF": "EVALF", "ENGAGR": "EVALI", "IFIX": "IFIX",
+    }
+    _HAS_16_3 = True
+except ImportError:
+    _HAS_16_3 = False
+
+
+def _compute_trilattice(ops):
+    if not _HAS_16_3:
+        return None
+    try:
+        ops_16 = [_IMASM12_TO_16_3.get(op, "IMSCRIB") for op in ops]
+        mach = IMASM16_3_Machine()
+        trace = Sequence16_3Trace(ops_16, machine=mach)
+        trace.run()
+        return trace.json_report()
+    except Exception:
+        return None
+
 DIGITAL = OB3ECT / "digital"
 
 def extract_opcodes(artifact: dict):
@@ -31,21 +58,24 @@ def extract_opcodes(artifact: dict):
         return list(ph1.keys())
     return []
 
-def regen_one(jp, name, graph, tier, desc):
+def regen_one(jp, name, graph, tier, desc, ops):
     """Regenerate all SVG variants for one ob3ect."""
     paths_written = []
     base = jp.parent
     
+    # Compute trilattice data for glyph word
+    tri_data = _compute_trilattice(ops)
+    
     # Pattern 1: {name}_diagram.svg / {name}_diagram_pen.svg
     for suffix, pen in [("_diagram.svg", False), ("_diagram_pen.svg", True)]:
-        svg = render_wiring_svg_v3(graph, name, tier, desc, "", pen_mode=pen)
+        svg = render_wiring_svg_v3(graph, name, tier, desc, "", pen_mode=pen, trilattice_data=tri_data)
         p = base / f"{name}{suffix}"
         svg.save(p)
         paths_written.append(p)
     
     # Pattern 2: {name}_ob3ect_diagram.svg / {name}_ob3ect_diagram_pen.svg
     for suffix, pen in [("_ob3ect_diagram.svg", False), ("_ob3ect_diagram_pen.svg", True)]:
-        svg = render_wiring_svg_v3(graph, name, tier, desc, "", pen_mode=pen)
+        svg = render_wiring_svg_v3(graph, name, tier, desc, "", pen_mode=pen, trilattice_data=tri_data)
         p = base / f"{name}{suffix}"
         svg.save(p)
         paths_written.append(p)
@@ -96,7 +126,7 @@ def regen_digital():
             sfr = art.get("split_fuse_report")
             if isinstance(sfr, dict):
                 desc = sfr.get("split_element", "")
-            n = regen_one(jp, name, graph, tier, desc)
+            n = regen_one(jp, name, graph, tier, desc, ops)
             stats["ok"] += 1
             stats["files"] += n
         except Exception as e:
