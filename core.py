@@ -57,6 +57,32 @@ def glyph_word(ops):
     """
     return "".join(GLYPH.get(str(o), "?") for o in ops)
 
+
+class OpOpcode(Enum):
+    """Operators ON a word, not tokens IN it — of a different order than the twelve
+    node-opcodes above. A node-opcode is a symbol inside a word; a composition verb turns a
+    word into a graph; an op-opcode maps a whole word to another word. Appending an
+    op-opcode's name as a token does nothing — it is not a node. The twelve are the wheel;
+    the op-opcode is the axis the wheel turns on (the thirteenth, of the crown's order, not
+    the rim's). ROTAT is the first: the cyclic shift of a ring, the Weyl-Heisenberg X.
+    """
+    ROTAT = "ROTAT"
+
+
+def rotat(ops, k: int = 1):
+    """ROTAT — the cyclic shift op-opcode: rotate a word by k (default 1), k mod len.
+
+    The ring automorphism. Every spectral invariant is ROTAT-invariant (that invariance
+    is the signal it is a symmetry, not that it is inert): on one ring nothing measurable
+    moves; between two rings being bound it sets their relative phase. A balanced tiling of
+    a period-n cycle is unique up to ROTAT. Returns a new list; the input is untouched.
+    """
+    seq = list(ops)
+    if not seq:
+        return seq
+    s = k % len(seq)
+    return seq[s:] + seq[:s]
+
 BOOTSTRAP_STEPS = {1:"IMSCRIB",2:"AREV",3:"FSPLIT",4:"AFWD",5:"FFUSE",6:"CLINK",7:"IFIX",8:"IMSCRIB"}
 OS_FLOOR = {"D":1,"T":3,"R":2,"P":4,"F":2,"K":1,"G":2,"Gamma":2,"Phi":1,"H":2,"S":2,"Omega":2}
 
