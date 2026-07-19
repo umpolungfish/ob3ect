@@ -226,6 +226,14 @@ class Ob3ectArtifact:
     lean_verified: Optional[bool] = None
     lean_verification_output: str = ""
     sixteen_3_breakdown: Optional[str] = None
+    # ── ROTAT orbit audit (the op-opcode turned on the word) ────────────────
+    # The full ROTAT orbit of the bootstrap word: every readout recomputed at
+    # every rotation. A readout constant across the orbit is a spectral
+    # invariant (the invariance IS the signal it is a symmetry); a readout
+    # that moves is phase, not spectrum. Also carries the canonical rotation
+    # (lexicographically minimal glyph word), since a balanced tiling of a
+    # period-n cycle is unique up to ROTAT.
+    rotat_audit: Optional[dict] = None
 
     def validate_all(self):
         return {"phase_0":self.domain_charter.validate(),"phase_1":self.opcode_map.validate(),
@@ -320,6 +328,18 @@ class Ob3ectArtifact:
         if a.sixteen_3_breakdown:
             parts.append("")
             parts.append(a.sixteen_3_breakdown)
+        if a.rotat_audit:
+            r = a.rotat_audit
+            parts.append("")
+            parts.append("Phase 12: ROTAT Orbit Audit (op-opcode — the axis, not a node)")
+            parts.append("  Period: %s rotations" % r.get("period"))
+            inv = r.get("invariants", {})
+            for key, holds in inv.items():
+                parts.append("  %s %s — %s" % ("⊙" if holds else "◇", key,
+                    "ROTAT-invariant (spectral)" if holds else "phase-dependent"))
+            parts.append("  Canonical rotation: k=%s  word: %s" %
+                          (r.get("canonical_k"), r.get("canonical_word")))
+            parts.append("  Verdict: " + str(r.get("verdict")))
         parts.append("="*70)
         parts.append("mu o delta = id -> "+a.split_fuse_report.frobenius_verdict)
         return nl.join(parts)
@@ -341,7 +361,8 @@ class Ob3ectArtifact:
             "grounding_status":self.grounding_status,
             "grounding_reasoning":self.grounding_reasoning,
             "lean_verified":self.lean_verified,
-            "lean_verification_output":self.lean_verification_output}
+            "lean_verification_output":self.lean_verification_output,
+            "rotat_audit":self.rotat_audit}
 
     def to_json(self, indent=2):
         return json.dumps(self.to_dict(), indent=indent)

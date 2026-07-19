@@ -26,6 +26,7 @@ from ob3ect.core import (
     Ob3ectArtifact, DomainCharter, OpcodeMap, OpcodeEntry,
     SplitFuseReport, RegisterMapping, BootstrapSequence,
     ExOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode, glyph_word,
+    OpOpcode, rotat,
 )
 try:
     from ob3ect.topology import analyze_topology, TOPOLOGY_PROMPT_FRAGMENT
@@ -130,6 +131,59 @@ def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
         return "\n".join(lines)
     except Exception as e:
         return f"Phase 11: SIXTEEN_3 Trilattice Breakdown — computation failed: {e}"
+
+def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    """Turn ROTAT — the op-opcode, the axis the wheel turns on — over the full
+    orbit of the bootstrap word and recompute every machine readout at every
+    rotation. A readout constant across the orbit is a spectral invariant of the
+    word (the invariance IS the signal it is a symmetry of the ring); a readout
+    that moves with k is phase, not spectrum. The canonical rotation is the
+    lexicographically minimal glyph word — a balanced tiling of a period-n cycle
+    is unique up to ROTAT, and this picks its representative."""
+    ops = [step["opcode"] for step in steps]
+    n = len(ops)
+    if n == 0:
+        return None
+    orbit = []
+    for k in range(n):
+        word = rotat(ops, k)
+        entry: Dict[str, Any] = {"k": k, "word": glyph_word(word)}
+        if _IMASM16_3_AVAILABLE:
+            try:
+                ops_16 = [_IMASM12_TO_16_3.get(op, "IMSCRIB") for op in word]
+                trace = Sequence16_3Trace(ops_16, machine=IMASM16_3_Machine())
+                trace.run()
+                verdict, _ = trace.tri_ancestral_verdict()
+                entry["tri_ancestral_verdict"] = verdict
+                entry["closed_walk"] = trace.is_closed()
+                final = trace.register_after[-1] if trace.register_after else frozenset()
+                entry["final_register"] = _16reg_name(final)
+            except Exception:
+                pass
+        if analyze_topology is not None:
+            try:
+                entry["topology_class"] = analyze_topology(word).topology_class
+            except Exception:
+                pass
+        orbit.append(entry)
+    readouts = [k for k in orbit[0] if k not in ("k", "word")]
+    invariants = {
+        r: all(e.get(r) == orbit[0].get(r) for e in orbit) for r in readouts
+    }
+    canonical = min(orbit, key=lambda e: e["word"])
+    variant = [r for r, holds in invariants.items() if not holds]
+    return {
+        "op_opcode": OpOpcode.ROTAT.value,
+        "period": n,
+        "orbit": orbit,
+        "invariants": invariants,
+        "canonical_k": canonical["k"],
+        "canonical_word": canonical["word"],
+        "verdict": ("SYMMETRY — every readout is ROTAT-invariant (spectral)"
+                     if not variant else
+                     "PHASE-BEARING — moves under ROTAT: " + ", ".join(variant)),
+    }
+
 
 _OPCODE_REF = """\
 IMASM 12-OPCODE REFERENCE  (Universal Imscriptive Grammar)
@@ -727,6 +781,13 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         artifact.sixteen_3_breakdown = _compute_16_3_breakdown(bootstrap.steps)
     except Exception:
         artifact.sixteen_3_breakdown = None
+
+    # ROTAT orbit audit: turn the op-opcode over the whole word and record which
+    # readouts are spectral (ROTAT-invariant) and which are phase.
+    try:
+        artifact.rotat_audit = _rotat_orbit_audit(bootstrap.steps)
+    except Exception:
+        artifact.rotat_audit = None
 
     return artifact
 
