@@ -1,0 +1,238 @@
+{
+  "name": "Optimized Qwen 3 Chat Template",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Optimized Qwen 3 Chat Template",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "chat_template",
+        "tool_call",
+        "message_role"
+      ],
+      "boundary_condition": "The Qwen 3 chat template rendering closure that encloses all message serialization and tool invocation formatting within a single deterministic output string.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unrendered_prompt_state",
+        "justification": "The void before any template variable is evaluated, where messages and tools lists are absent from the output buffer.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "final_assistant_prompt_boundary",
+        "justification": "The terminal anchor is the add_generation_prompt closure that seals the rendered sequence with the assistant start marker, containing the whole system.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "system_block_emission",
+        "justification": "Forward morphism from void to structured output by writing the system role block and tool definitions toward the generation prompt.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "reverse_message_scan",
+        "justification": "Reverse morphism traversing messages in reversed order to locate the last user query index, a descent through the array.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "role_block_chaining",
+        "justification": "Sequential composition chaining each message role block (user, assistant, tool) into the contiguous output stream.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "template_self_reference",
+        "justification": "The template references its own structure via namespace and loop constructs, recognizing itself as the rendering grammar.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "tools_present_branch",
+        "justification": "Splits the rendering path into two arms: arm T when tools list exists (emit tool schema block), arm F when absent (skip tool block). Input is the raw messages plus tools context.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "unified_render_resume",
+        "justification": "Reconstitutes the original rendering context after the tools branch by continuing the message loop, recovering the full serialization task exactly.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "tools_branch_taken",
+        "justification": "Affirmative evaluation: tools variable is non-empty, tool XML block is emitted successfully.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "no_tools_branch",
+        "justification": "Negative evaluation: tools variable absent, system block emitted without tool schema.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "assistant_think_and_content",
+        "justification": "Paradice held when assistant message contains both reasoning_content and content simultaneously, both emitted without resolution of which is primary.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "im_end_token_write",
+        "justification": "Permanent append-only record of the <|im_end|> delimiter closing each turn, cannot be undone in the output buffer.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "tools_present_branch",
+      "split_input": "raw_messages_and_tools_context",
+      "split_outputs": [
+        "tool_schema_emission_arm",
+        "system_only_arm"
+      ],
+      "fuse_element": "unified_render_resume",
+      "fuse_result": "raw_messages_and_tools_context",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Uninitialized render buffer with no messages parsed and no template execution begun.",
+      "true_description": "Affirmative state where a branch condition holds and the corresponding block is emitted correctly.",
+      "false_description": "Negative state where a branch condition fails and the skipped block is absent from output.",
+      "both_description": "Paradice where assistant reasoning and final content are both present and serialized in one block without collapse.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "establish unrendered_prompt_state as the void before template execution"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "template references its own loop and namespace grammar as identity"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "branch on tools presence, input is raw_messages_and_tools_context"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "tools list non-empty, affirm tool schema emission arm"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "emit system block and tool XML definitions toward output"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "tools absent, negative arm skips tool schema"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "reverse scan messages to find last_query_index"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "reunite arms into unified_render_resume recovering full context"
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "chain role blocks sequentially for each message in order"
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "assistant message holds both reasoning and content in one emission"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "write <|im_end|> delimiter as permanent turn closure"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "add_generation_prompt seals output with assistant start marker"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Jinja2 template engine that translates the chat template syntax into rendered string operations",
+      "ipc_mechanism": "String concatenation buffer shared across template blocks via the output stream",
+      "memory_mechanism": "Namespace object ns and loop variables holding indices and multi_step_tool flag",
+      "scheduler_mechanism": "Template loop iterator that determines message traversal order and branch execution",
+      "alfs_store": "Qwen 3 model card and chat template source defining the canonical rendering contract",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "CPU cycles and buffer allocation per rendered token",
+      "pre_cycle_state": "Unrendered message list and empty output buffer",
+      "post_cycle_state": "Fully serialized prompt string with all roles and tools formatted",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the template is deterministic and reversible in structure, consuming fixed resources per token without net disorder increase",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 ENGAGR \u2192 IFIX \u2192 TANCH\n-- Class: Optimized Qwen 3 Chat Template\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc73  | composition \u2014 regime coherence\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc71 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def optimized_qwen_3_chat_template_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def optimized_qwen_3_chat_template_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def optimized_qwen_3_chat_template_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def optimized_qwen_3_chat_template_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def optimized_qwen_3_chat_template_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def optimized_qwen_3_chat_template_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def optimized_qwen_3_chat_template_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def optimized_qwen_3_chat_template_protocol : IGProtocol optimized_qwen_3_chat_template_s0 optimized_qwen_3_chat_template_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct optimized_qwen_3_chat_template_s7 optimized_qwen_3_chat_template_s7 = optimized_qwen_3_chat_template_s7 (idempotent)\n  (.seq (.arrow optimized_qwen_3_chat_template_l0 optimized_qwen_3_chat_template_s0 optimized_qwen_3_chat_template_s1) (.seq (.arrow optimized_qwen_3_chat_template_l1 optimized_qwen_3_chat_template_s1 optimized_qwen_3_chat_template_s2) (.seq (.prod (.arrow optimized_qwen_3_chat_template_l2 optimized_qwen_3_chat_template_s2 optimized_qwen_3_chat_template_s7) (.arrow optimized_qwen_3_chat_template_l2 optimized_qwen_3_chat_template_s2 optimized_qwen_3_chat_template_s7)) (.seq (.arrow optimized_qwen_3_chat_template_l7 optimized_qwen_3_chat_template_s7 optimized_qwen_3_chat_template_s7) (.seq (.arrow optimized_qwen_3_chat_template_l7 optimized_qwen_3_chat_template_s7 optimized_qwen_3_chat_template_s8) (.seq (.arrow optimized_qwen_3_chat_template_l8 optimized_qwen_3_chat_template_s8 optimized_qwen_3_chat_template_s9) (.seq (.arrow optimized_qwen_3_chat_template_l9 optimized_qwen_3_chat_template_s9 optimized_qwen_3_chat_template_s10) (.arrow optimized_qwen_3_chat_template_l10 optimized_qwen_3_chat_template_s10 optimized_qwen_3_chat_template_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def optimized_qwen_3_chat_template_true_arm : IGProtocol optimized_qwen_3_chat_template_s0 optimized_qwen_3_chat_template_s11 :=\n  (optimized_qwen_3_chat_template_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def optimized_qwen_3_chat_template_false_arm : IGProtocol optimized_qwen_3_chat_template_s0 optimized_qwen_3_chat_template_s11 :=\n  (optimized_qwen_3_chat_template_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef optimized_qwen_3_chat_template_tier : OuroboricityTier := TierFunctor.obj optimized_qwen_3_chat_template_s0\n#eval optimized_qwen_3_chat_template_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem optimized_qwen_3_chat_template_frobenius :\n    igFrobeniusAlg.mul optimized_qwen_3_chat_template_s0 optimized_qwen_3_chat_template_s0 = optimized_qwen_3_chat_template_s0 :=\n  igFrobAlg_self_fusion optimized_qwen_3_chat_template_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Optimized Qwen 3 Chat Template",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7d\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc5a\ud801\udc75\u2299\ud801\udc56\ud801\udc73\ud801\udc74\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The operating space is scale-collapse where the boundary encodes the bulk without loss, making surface and interior a single register under \ud801\udc78 topology.\n\u00de=\ud801\udc78: The fully enclosed primitive \u00de indicates the partner is trapped within a container whose distortion is required for exit, matching total boundary confinement.\n\u0158=\ud801\udc7d: Recognition mode implies a catalytic or adjoint relation where the primitive stabilizes a transition without being consumed.\n\u03a6=\ud801\udc6c: The interface exhibits self-complementary directional character with both donor and acceptor roles present simultaneously, consistent with primitive \u03a6 assignment for polarity.\n\u0192=\ud801\udc50: The template enforces strict structural formatting and role markers, ensuring near-certain parsing with minimal ambiguity.\n\u00c7=\ud801\udc67: The kinetic character is frozen in its current arrangement and cannot rearrange without external driving due to a high energy barrier.\n\u0393=\ud801\udc5a: The interaction propagates through a motif or cluster of intermediate size rather than staying at a single bond or spanning the whole system.\n\u0262=\ud801\udc75: The primitive \u0262 denotes interaction grammar requiring broad cooperative assembly of many partners beyond ten.\n\u2299=\u2299: The assigned primitive \u2299 directly denotes the critical phase at the threshold with scale-free correlations and maximal sensitivity.\n\u0126=\ud801\udc56: The broken orientational symmetry is structurally enforced across multiple axes, giving it persistent memory depth beyond thermal fluctuation.\n\u03a3=\ud801\udc73: The participation ratio measures how many components are actively involved, which is inherently asymmetric with differing counts across sides.\n\u03a9=\ud801\udc74: The structural role is protected by a Z2 topological boundary that must be crossed to deform it away.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080"
+}
