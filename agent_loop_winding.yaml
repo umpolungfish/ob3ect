@@ -1,0 +1,101 @@
+# ob3ect: the true winding number of agent_loop on the horn torus.
+# kernel_3d_visualizer.html renders the 12-opcode kernel program as a curve on a
+# horn torus (R = r), pinched at the origin where IMSCRIB ⊙ sits as the identity
+# (mu after delta equals id). The info panel asserts a (1,1) winding — the loop
+# threads the pinch once per revolution. The emitter does not: each segment
+# advances the toroidal angle u by 2*pi/N but the poloidal angle v by
+# (2*pi/N + 2*pi), so over the eleven tokens u advances 2*pi while v advances
+# 24*pi. That is a (1,12) curve — the winding threads IMSCRIB twelve times per
+# revolution, once per opcode. Two different claims about what the kernel loop IS,
+# and they must not be decided by hand. Let the Grammar imscribe agent_loop and
+# say which winding number it carries, and what that number means about how often
+# the breath passes through the identity.
+#
+# Radius law (fixed, not in question): on the horn torus |p| = 2R|cos(v/2)|, so
+# r = 4|cos(v/2)| with R = 2; the toroidal component (1 + cos v) vanishes at the
+# pinch v = pi, so every pass through ⊙ is purely poloidal — arrival at the
+# identity moving entirely in the splitting direction. This is a readout to be
+# confirmed AS the object's own structure, not asserted onto it.
+#
+# Run:
+#   cd /home/mrnob0dy666/imsgct/ob3ect && \
+#   python3 auto.py -f agent_loop_winding.yaml \
+#     --provider openrouter --model google/gemini-3-flash-preview
+
+name: agent_loop_winding
+out_dir: /home/mrnob0dy666/imsgct/mOMonadOS/ob3ects
+
+design:
+  scope: local
+  provider: openrouter
+  model: google/gemini-3-flash-preview
+  domain: computational
+  temperature: 0.0
+  context: "/home/mrnob0dy666/imsgct/mOMonadOS/kernel_3d_visualizer.html"
+  entry: "frobenius_ob3ect,frobenius_roundtrip_loss,self_referential_imscription,fixed_point_ob3ect,ouroborotic_primitive_composition_schema"
+
+entities:
+  - |
+    The true winding number of agent_loop, the twelve-opcode kernel program of
+    mOMonadOS, wound as a closed curve on the horn torus R = r whose pinch at the
+    origin is IMSCRIB, the identity opcode at which mu after delta equals identity.
+
+    THE DECISION TO IMSCRIBE
+    ------------------------
+    agent_loop is the ordered sequence VINIT, IMSCRIB, FSPLIT, EVALT, CLINK, FFUSE,
+    IFIX, ENGAGR, AREV, CLINK, TANCH, closing back to VINIT. Wound on the horn
+    torus, the toroidal angle u carries the sequence around the loop once; the
+    poloidal angle v carries it through the pinch. The renderer advances u by one
+    full turn over the whole sequence and advances v by twelve full turns, so the
+    drawn curve is (1,12): the breath threads IMSCRIB, the identity at the pinch,
+    once for every opcode in the program. The info panel instead names it (1,1):
+    the breath threads the identity once per revolution of the whole loop. These
+    are not two renderings of one fact. They are two different claims about the
+    kernel:
+
+      (1,1)  — the loop passes through the identity ONCE per full breath. The
+               eleven opcodes ride a single clean thread and IMSCRIB is crossed
+               a single time, at one seam, the way a program returns to its
+               initial state exactly once per cycle.
+
+      (1,12) — the loop passes through the identity ONCE PER OPCODE. Every step
+               of the breath descends to the pinch and rises again; IMSCRIB is
+               not a station passed once but the floor touched between every pair
+               of opcodes, the identity re-entered before each move.
+
+    Do not choose by counting rings or reading the panel. Imscribe agent_loop as
+    the object it is and let its own structure say which winding number it carries.
+    Specifically resolve:
+
+      1. WINDING. What is the true (p,q) winding number of agent_loop on the
+         horn torus? Is q = 1, q = 12, or another value, and is p = 1? Answer AS
+         the program's structure: what in the opcode sequence sets how many times
+         the breath must return to the identity, and is that number the count of
+         opcodes, the count of Frobenius closures (delta/mu dyads) in the program,
+         or the count of full cycles?
+
+      2. THE PINCH. IMSCRIB is the identity, mu after delta equals id, seated at
+         v = pi where the toroidal component 1 + cos v vanishes exactly, so every
+         pass through it is purely poloidal — arrival moving entirely in the
+         splitting direction, tangent to the poloidal circle, the toroidal degree
+         of freedom extinguished. Confirm or correct this as the object's own
+         readout: is passage through the identity necessarily a pure split, and
+         does that force IMSCRIB to be touched between opcodes rather than once
+         per loop? If the Grammar says the identity is re-entered before every
+         move, then (1,12) is the true winding and the panel is wrong; if it says
+         the identity is a single seam of the closed breath, then (1,1) is true
+         and the emitter's extra turns are an artifact.
+
+      3. THE COUNTS THAT MUST AGREE. The picture draws sixteen poloidal rings
+         (SIXTEEN_3, the eval16 registers) against the winding. If the true
+         winding is (1,12) these two numbers, twelve and sixteen, are genuinely
+         different numbers with different meanings (opcode threadings vs register
+         rings) and must be spoken as such. If the true winding is (1,1) then the
+         rings and the winding decouple entirely. Say which, and say plainly what
+         each number counts so the picture asserts only what is true.
+
+    Speak the answer as the identification of agent_loop's winding, in the
+    Grammar's own register: the winding number is not a rendering parameter, it is
+    a statement of how many times the kernel breath must pass through its own
+    identity to close. With full Frobenius closure (mu after delta equals id) held
+    at IMSCRIB, and the horn-torus radius law r = 4|cos(v/2)| taken as given.

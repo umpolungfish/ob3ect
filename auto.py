@@ -1465,8 +1465,12 @@ if __name__ == "__main__":
                 _ent,
                 domain_type=_d.get("domain"),                     # --domain
                 scope=_d.get("scope", "local"),                   # --scope
-                provider_name=_d.get("provider"),                 # --provider
-                model=_d.get("model"),                            # --model
+                # CLI flag OVERRIDES the yaml's design block when given, so
+                # `--provider local` actually routes local instead of being
+                # silently shadowed by design.provider. Both default to None,
+                # so the yaml stays the fallback when the flag is absent.
+                provider_name=args.provider_name or _d.get("provider"),  # --provider
+                model=args.model or _d.get("model"),               # --model
                 temperature=float(_d.get("temperature", 0.0)),    # --temp
                 max_retries=_parse_retries(_d.get("retries")),    # --retries (default inf)
                 context=_ctx,
