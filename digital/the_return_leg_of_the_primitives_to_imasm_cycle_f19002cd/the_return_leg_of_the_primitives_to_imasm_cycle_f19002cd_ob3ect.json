@@ -1,0 +1,622 @@
+{
+  "name": "The return leg of the primitives-to-IMASM cycle: reading a concatenated IMASM word back into the twelve primitive types that wrote it. The forward leg writes each type as its own program and concatenates in canonical axis order; the return leg parses the word axis by axis, each axis consuming an admissible type program as a prefix, because type programs are not self-delimiting. The reading recovers the original type at every axis but is not injective: the alphabet emits fewer distinct programs than it has types, and where two colliding types share an axis the word has two pre-images and the reading reports both rather than choosing. A mu that inverts its delta everywhere except on one axis, where the ambiguity belongs to the alphabet and not to the reading.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The return leg of the primitives-to-IMASM cycle: reading a concatenated IMASM word back into the twelve primitive types that wrote it. The forward leg writes each type as its own program and concatenates in canonical axis order; the return leg parses the word axis by axis, each axis consuming an admissible type program as a prefix, because type programs are not self-delimiting. The reading recovers the original type at every axis but is not injective: the alphabet emits fewer distinct programs than it has types, and where two colliding types share an axis the word has two pre-images and the reading reports both rather than choosing. A mu that inverts its delta everywhere except on one axis, where the ambiguity belongs to the alphabet and not to the reading.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "concatenated word",
+        "axis parser",
+        "collision report"
+      ],
+      "boundary_condition": "The concatenated IMASM word, a linear string of Shavian characters encoding the twelve primitive types in canonical axis order, serving as the closed input to the reading process.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unread word",
+        "justification": "The concatenated word before any parsing begins; a void state of interpretation where the string exists but no type has been recovered from it.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "end-of-word marker",
+        "justification": "The terminal boundary of the concatenated word, signaling that all twelve axes have been consumed and the reading process is complete.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "axis advance",
+        "justification": "The forward morphism of the parser consuming the next admissible type program as a prefix from the remaining word, moving from one axis to the next in canonical order.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "backtrack on collision",
+        "justification": "When a consumed prefix admits two colliding type pre-images, the parser reverses to the axis start and reports both, descending into the ambiguity rather than resolving it.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential axis parsing",
+        "justification": "The composition of twelve axis-parsing steps chained in canonical order, each consuming its prefix and passing the remainder to the next axis.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-consistent reading",
+        "justification": "The reading process is itself a type program in the grammar's lattice; the parser recognizes its own structural type as it reads, maintaining identity across the cycle.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "collision detection",
+        "justification": "At the axis where two types share an admissible program, the parser splits into two interpretive branches, one for each colliding pre-image, rather than committing to one.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "collision report",
+        "justification": "The two branches reconstitute the original axis input by reporting both pre-images together; the fused output is the pair of types that collided, recovering the ambiguity of the alphabet.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "unambiguous axis read",
+        "justification": "The affirmative state where a single type is recovered from the consumed prefix without collision, a successful deterministic parse of that axis.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "parse failure",
+        "justification": "The negative state where no admissible type program matches the prefix at the current axis, indicating a malformed word or corrupted input.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "collision held",
+        "justification": "The paradice where both colliding pre-images are held simultaneously without resolution; the reading reports both types as valid interpretations of the same axis prefix.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "recovered type tuple",
+        "justification": "The permanent, append-only record of the twelve recovered types, written as the output of the reading process, including any collision pairs on the ambiguous axis.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "collision detection",
+      "split_input": "ambiguous axis prefix admitting two colliding type programs",
+      "split_outputs": [
+        "branch for first colliding type pre-image",
+        "branch for second colliding type pre-image"
+      ],
+      "fuse_element": "collision report",
+      "fuse_result": "the pair of colliding types, which semantically equals the original ambiguous axis input because the alphabet's non-injectivity means the prefix maps to both types",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The concatenated word before any axis has been parsed; no type has been recovered, the reading process is uninitialized.",
+      "true_description": "An axis where a single type is recovered deterministically; the parse succeeded without ambiguity.",
+      "false_description": "An axis where no admissible type program matches; the parse failed, the word is invalid at this position.",
+      "both_description": "An axis where two colliding types share the same admissible program; both are held as valid pre-images, the ambiguity is reported rather than resolved.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "the concatenated IMASM word exists as an unread string, no type has been recovered yet"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "the parser recognizes itself as a type program in the grammar's lattice, establishing self-reference for the reading cycle"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "begin the sequential composition of twelve axis-parsing steps in canonical order"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "consume the first axis prefix and recover its type deterministically, advancing to the next axis"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "the first axis parse succeeded without collision, a single type is recovered"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "consume the second axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "the second axis parse succeeded without collision"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "consume the third axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "the third axis parse succeeded without collision"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AFWD",
+          "domain_action": "consume the fourth axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALT",
+          "domain_action": "the fourth axis parse succeeded without collision"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AFWD",
+          "domain_action": "consume the fifth axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALT",
+          "domain_action": "the fifth axis parse succeeded without collision"
+        },
+        {
+          "step_num": 14,
+          "opcode": "AFWD",
+          "domain_action": "consume the sixth axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 15,
+          "opcode": "EVALT",
+          "domain_action": "the sixth axis parse succeeded without collision"
+        },
+        {
+          "step_num": 16,
+          "opcode": "AFWD",
+          "domain_action": "consume the seventh axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 17,
+          "opcode": "EVALT",
+          "domain_action": "the seventh axis parse succeeded without collision"
+        },
+        {
+          "step_num": 18,
+          "opcode": "AFWD",
+          "domain_action": "consume the eighth axis prefix; this axis admits two colliding type programs"
+        },
+        {
+          "step_num": 19,
+          "opcode": "FSPLIT",
+          "domain_action": "the parser splits into two branches, one for each colliding pre-image"
+        },
+        {
+          "step_num": 20,
+          "opcode": "AREV",
+          "domain_action": "the first branch backtracks to the axis start and reports the first colliding type"
+        },
+        {
+          "step_num": 21,
+          "opcode": "AREV",
+          "domain_action": "the second branch backtracks to the axis start and reports the second colliding type"
+        },
+        {
+          "step_num": 22,
+          "opcode": "ENGAGR",
+          "domain_action": "both colliding types are held simultaneously without resolution, the ambiguity is preserved"
+        },
+        {
+          "step_num": 23,
+          "opcode": "FFUSE",
+          "domain_action": "the two branches reconstitute the original axis input as the pair of colliding types"
+        },
+        {
+          "step_num": 24,
+          "opcode": "AFWD",
+          "domain_action": "consume the ninth axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 25,
+          "opcode": "EVALT",
+          "domain_action": "the ninth axis parse succeeded without collision"
+        },
+        {
+          "step_num": 26,
+          "opcode": "AFWD",
+          "domain_action": "consume the tenth axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 27,
+          "opcode": "EVALT",
+          "domain_action": "the tenth axis parse succeeded without collision"
+        },
+        {
+          "step_num": 28,
+          "opcode": "AFWD",
+          "domain_action": "consume the eleventh axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 29,
+          "opcode": "EVALT",
+          "domain_action": "the eleventh axis parse succeeded without collision"
+        },
+        {
+          "step_num": 30,
+          "opcode": "AFWD",
+          "domain_action": "consume the twelfth axis prefix and recover its type deterministically"
+        },
+        {
+          "step_num": 31,
+          "opcode": "EVALT",
+          "domain_action": "the twelfth axis parse succeeded without collision"
+        },
+        {
+          "step_num": 32,
+          "opcode": "TANCH",
+          "domain_action": "the end-of-word marker is reached, all twelve axes have been consumed"
+        },
+        {
+          "step_num": 33,
+          "opcode": "IFIX",
+          "domain_action": "the recovered type tuple, including the collision pair on the eighth axis, is permanently recorded as the output of the reading process"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The parser combinator that translates the concatenated word into a sequence of axis-parsing operations, matching admissible type programs as prefixes.",
+      "ipc_mechanism": "The remainder string passed from one axis parser to the next; each axis consumes its prefix and hands the unconsumed suffix forward.",
+      "memory_mechanism": "The accumulator holding the recovered type tuple, updated axis by axis, with collision axes storing both pre-images.",
+      "scheduler_mechanism": "Canonical axis order, fixed by the grammar's twelve-primitive lattice, determines the strict sequential order of parsing.",
+      "alfs_store": "The grammar's own type lattice, which defines the admissible programs for each primitive and the collision map where two types share a program.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One parse step per axis, consuming the prefix characters from the word; the collision axis costs an additional backtrack and dual-report step.",
+      "pre_cycle_state": "The concatenated word is intact, unread, containing the full encoding of all twelve types.",
+      "post_cycle_state": "The twelve types are recovered, with the collision axis reporting both pre-images; the word is fully consumed.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the reading is a mu that inverts its delta everywhere except on the collision axis, where the ambiguity belongs to the alphabet and not to the reading; the information content is conserved because the collision pair is reported without loss.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 CLINK \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 FSPLIT \u2192 AREV \u2192 AREV \u2192 ENGAGR \u2192 FFUSE \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 TANCH \u2192 IFIX\n-- Class: The return leg of the primitives-to-IMASM cycle: reading a concatenated IMASM word back into the twelve primitive types that wrote it. The forward leg writes each type as its own program and concatenates in canonical axis order; the return leg parses the word axis by axis, each axis consuming an admissible type program as a prefix, because type programs are not self-delimiting. The reading recovers the original type at every axis but is not injective: the alphabet emits fewer distinct programs than it has types, and where two colliding types share an axis the word has two pre-images and the reading reports both rather than choosing. A mu that inverts its delta everywhere except on one axis, where the ambiguity belongs to the alphabet and not to the reading.\n-- Fingerprint: sig=(18,2,12,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=33\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(18, 22)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc71  | identity \u2014 self-imscription\n--   [2] CLINK     fid    := \ud801\udc71               \ud801\udc60 \u2192 \ud801\udc7e  | composition \u2014 regime coherence\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc71 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [5] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [6] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [7] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [8] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [9] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [10] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [11] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [12] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [13] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [14] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [15] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [16] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [17] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [18] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [19] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [20] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [21] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [22] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [23] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [24] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [25] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [26] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [27] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [28] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [29] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [30] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc61  | evaluate-true \u2014 criticality gate open\n--   [31] TANCH     top    := \ud801\udc61               \u2299 \u2192 \ud801\udc6d  | terminal object \u2014 connectivity boundary\n--   [32] IFIX      prot   := \ud801\udc6d               \ud801\udc61 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l29 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_return_leg_of_the_primitives_to_5c81a6_l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_return_leg_of_the_primitives_to_5c81a6_protocol : IGProtocol the_return_leg_of_the_primitives_to_5c81a6_s0 the_return_leg_of_the_primitives_to_5c81a6_s32 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_return_leg_of_the_primitives_to_5c81a6_s22 the_return_leg_of_the_primitives_to_5c81a6_s22 = the_return_leg_of_the_primitives_to_5c81a6_s22 (idempotent)\n  (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l0 the_return_leg_of_the_primitives_to_5c81a6_s0 the_return_leg_of_the_primitives_to_5c81a6_s1) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l1 the_return_leg_of_the_primitives_to_5c81a6_s1 the_return_leg_of_the_primitives_to_5c81a6_s2) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l2 the_return_leg_of_the_primitives_to_5c81a6_s2 the_return_leg_of_the_primitives_to_5c81a6_s3) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l3 the_return_leg_of_the_primitives_to_5c81a6_s3 the_return_leg_of_the_primitives_to_5c81a6_s4) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l4 the_return_leg_of_the_primitives_to_5c81a6_s4 the_return_leg_of_the_primitives_to_5c81a6_s5) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l5 the_return_leg_of_the_primitives_to_5c81a6_s5 the_return_leg_of_the_primitives_to_5c81a6_s6) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l6 the_return_leg_of_the_primitives_to_5c81a6_s6 the_return_leg_of_the_primitives_to_5c81a6_s7) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l7 the_return_leg_of_the_primitives_to_5c81a6_s7 the_return_leg_of_the_primitives_to_5c81a6_s8) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l8 the_return_leg_of_the_primitives_to_5c81a6_s8 the_return_leg_of_the_primitives_to_5c81a6_s9) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l9 the_return_leg_of_the_primitives_to_5c81a6_s9 the_return_leg_of_the_primitives_to_5c81a6_s10) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l10 the_return_leg_of_the_primitives_to_5c81a6_s10 the_return_leg_of_the_primitives_to_5c81a6_s11) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l11 the_return_leg_of_the_primitives_to_5c81a6_s11 the_return_leg_of_the_primitives_to_5c81a6_s12) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l12 the_return_leg_of_the_primitives_to_5c81a6_s12 the_return_leg_of_the_primitives_to_5c81a6_s13) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l13 the_return_leg_of_the_primitives_to_5c81a6_s13 the_return_leg_of_the_primitives_to_5c81a6_s14) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l14 the_return_leg_of_the_primitives_to_5c81a6_s14 the_return_leg_of_the_primitives_to_5c81a6_s15) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l15 the_return_leg_of_the_primitives_to_5c81a6_s15 the_return_leg_of_the_primitives_to_5c81a6_s16) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l16 the_return_leg_of_the_primitives_to_5c81a6_s16 the_return_leg_of_the_primitives_to_5c81a6_s17) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l17 the_return_leg_of_the_primitives_to_5c81a6_s17 the_return_leg_of_the_primitives_to_5c81a6_s18) (.seq (.prod (.arrow the_return_leg_of_the_primitives_to_5c81a6_l18 the_return_leg_of_the_primitives_to_5c81a6_s18 the_return_leg_of_the_primitives_to_5c81a6_s22) (.arrow the_return_leg_of_the_primitives_to_5c81a6_l18 the_return_leg_of_the_primitives_to_5c81a6_s18 the_return_leg_of_the_primitives_to_5c81a6_s22)) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l22 the_return_leg_of_the_primitives_to_5c81a6_s22 the_return_leg_of_the_primitives_to_5c81a6_s22) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l22 the_return_leg_of_the_primitives_to_5c81a6_s22 the_return_leg_of_the_primitives_to_5c81a6_s23) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l23 the_return_leg_of_the_primitives_to_5c81a6_s23 the_return_leg_of_the_primitives_to_5c81a6_s24) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l24 the_return_leg_of_the_primitives_to_5c81a6_s24 the_return_leg_of_the_primitives_to_5c81a6_s25) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l25 the_return_leg_of_the_primitives_to_5c81a6_s25 the_return_leg_of_the_primitives_to_5c81a6_s26) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l26 the_return_leg_of_the_primitives_to_5c81a6_s26 the_return_leg_of_the_primitives_to_5c81a6_s27) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l27 the_return_leg_of_the_primitives_to_5c81a6_s27 the_return_leg_of_the_primitives_to_5c81a6_s28) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l28 the_return_leg_of_the_primitives_to_5c81a6_s28 the_return_leg_of_the_primitives_to_5c81a6_s29) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l29 the_return_leg_of_the_primitives_to_5c81a6_s29 the_return_leg_of_the_primitives_to_5c81a6_s30) (.seq (.arrow the_return_leg_of_the_primitives_to_5c81a6_l30 the_return_leg_of_the_primitives_to_5c81a6_s30 the_return_leg_of_the_primitives_to_5c81a6_s31) (.arrow the_return_leg_of_the_primitives_to_5c81a6_l31 the_return_leg_of_the_primitives_to_5c81a6_s31 the_return_leg_of_the_primitives_to_5c81a6_s32))))))))))))))))))))))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_return_leg_of_the_primitives_to_5c81a6_true_arm : IGProtocol the_return_leg_of_the_primitives_to_5c81a6_s0 the_return_leg_of_the_primitives_to_5c81a6_s32 :=\n  (the_return_leg_of_the_primitives_to_5c81a6_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_return_leg_of_the_primitives_to_5c81a6_tier : OuroboricityTier := TierFunctor.obj the_return_leg_of_the_primitives_to_5c81a6_s0\n#eval the_return_leg_of_the_primitives_to_5c81a6_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_return_leg_of_the_primitives_to_5c81a6_frobenius :\n    igFrobeniusAlg.mul the_return_leg_of_the_primitives_to_5c81a6_s0 the_return_leg_of_the_primitives_to_5c81a6_s0 = the_return_leg_of_the_primitives_to_5c81a6_s0 :=\n  igFrobAlg_self_fusion the_return_leg_of_the_primitives_to_5c81a6_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 33,
+    "t_branch_ops": 3,
+    "f_branch_ops": 0,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      18
+    ],
+    "fuse_positions": [
+      22
+    ],
+    "pair_list": [
+      [
+        18,
+        22
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The return leg of the primitives-to-IMASM cycle: reading a concatenated IMASM word back into the twelve primitive types that wrote it. The forward leg writes each type as its own program and concatenates in canonical axis order; the return leg parses the word axis by axis, each axis consuming an admissible type program as a prefix, because type programs are not self-delimiting. The reading recovers the original type at every axis but is not injective: the alphabet emits fewer distinct programs than it has types, and where two colliding types share an axis the word has two pre-images and the reading reports both rather than choosing. A mu that inverts its delta everywhere except on one axis, where the ambiguity belongs to the alphabet and not to the reading.",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc69\ud801\udc7f\ud801\udc5e\ud801\udc67\ud801\udc72\ud801\udc5c\u2299\ud801\udc56\ud801\udc73\ud801\udc74\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The concatenated IMASM word acts as a boundary register that losslessly encodes the multi-dimensional bulk content of the twelve primitive types.\n\u00de=\ud801\udc78: The non-injective reading recovers the original types losslessly by reporting multiple pre-images, mirroring a scale-collapsed boundary that fully preserves bulk content.\n\u0158=\ud801\udc69: The parsing and recognition of non-self-delimiting type programs relies on soft, reversible matching that permits multiple overlapping pre-images to be recognized simultaneously through similarity rather than rigid, irreversible binding.\n\u03a6=\ud801\udc7f: Polarity by definition implies a signed direction characterized by either an accepting or a donating pole, rather than both simultaneously.\n\u0192=\ud801\udc5e: The reading process is deterministic and recovers the correct type, but the non-injective alphabet introduces a systematic ambiguity that requires context to resolve.\n\u00c7=\ud801\udc67: A high barrier corresponds to a kinetically frozen state where the system resists change and requires external driving to rearrange.\n\u0393=\ud801\udc72: The ambiguity on a single axis does not propagate to neighboring axes, keeping the interaction strictly localized to that event.\n\u0262=\ud801\udc5c: The system's capacity to report multiple valid pre-images for colliding types corresponds to a disjunctive partner selection logic represented by the Shavian character \ud801\udc5c.\n\u2299=\u2299: The system is at a critical threshold of ambiguity where colliding types share an axis, represented by the \u2299 symbol.\n\u0126=\ud801\udc56: Structural enforcement across multiple axes prevents thermal interconversion, allowing the system to retain its chiral state indefinitely as represented by a memory depth of n.\n\u03a3=\ud801\udc73: Stoichiometry represents the relative quantities of reactants and products, which typically involves different counts on each side of a reaction or interface.\n\u03a9=\ud801\udc74: The presence of exactly two colliding pre-images and an inversion symmetry points to a Z2-protected topological classification.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 33,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": ">+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": ">+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": ">+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": ">+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": ">+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 14,
+        "word": "+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 15,
+        "word": ">+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 17,
+        "word": ">\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 18,
+        "word": "\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 19,
+        "word": "<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 20,
+        "word": "<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 21,
+        "word": "\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 22,
+        "word": "\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 23,
+        "word": ">+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 24,
+        "word": "+>+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 25,
+        "word": ">+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 26,
+        "word": "+>+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 27,
+        "word": ">+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 28,
+        "word": "+>+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 29,
+        "word": ">+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 30,
+        "word": "+\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 31,
+        "word": "\u22a3\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 32,
+        "word": "\u00ac\u22a2\u2299=>+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": false,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": false
+    },
+    "canonical_k": 4,
+    "canonical_word": "+>+>+>+>+>+>+>\u25c7<<\u229e\u25cf>+>+>+>+\u22a3\u00ac\u22a2\u2299=>",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: tri_ancestral_verdict, final_register, topology_class"
+  }
+}
