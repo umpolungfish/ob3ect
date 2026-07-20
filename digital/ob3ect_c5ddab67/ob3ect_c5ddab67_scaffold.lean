@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → CLINK → FSPLIT → EVALT → AFWD → FFUSE → CLINK → IFIX → FSPLIT → EVALF → AREV → FFUSE → IFIX → TANCH
--- Class: ⊢⊙>=☊+>☋=¬☊×<☋¬⊣
+-- Class: ⊢⊙>=∈+>∋=¬∈×<∋¬⊣
 -- Fingerprint: sig=(8,4,2,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=16

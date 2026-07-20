@@ -136,8 +136,8 @@ AFWD    = "AFWD"     # >  1→1  forward morphism, WORK
 AREV    = "AREV"     # <  1→1  reverse morphism, WORK
 CLINK   = "CLINK"    # =  1→1  composition / relational link, WORK
 IMSCRIB = "IMSCRIB"  # ⊙  1→1  identity / neutral self-reference
-FSPLIT3 = "FSPLIT3"  # ☊  1→3  3-way split: T, F, I arms
-FFUSE3  = "FFUSE3"   # ☋  3→1  3-way fuse: merges T, F, I arms
+FSPLIT3 = "FSPLIT3"  # ∈  1→3  3-way split: T, F, I arms
+FFUSE3  = "FFUSE3"   # ∋  3→1  3-way fuse: merges T, F, I arms
 EVALT   = "EVALT"    # +  1→1  evaluates the True axis (≤_t), WORK
 EVALF   = "EVALF"    # ×  1→1  evaluates the False axis (≤_t), WORK
 EVALI   = "EVALI"    # ⊞  1→1  evaluates the Information axis (≤_i), WORK
@@ -150,7 +150,7 @@ OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB, FSPLIT3, FFUSE3,
 
 GLYPH = {
     VINIT: "⊢", TANCH: "⊣", AFWD: ">", AREV: "<", CLINK: "=", IMSCRIB: "⊙",
-    FSPLIT3: "☊", FFUSE3: "☋", EVALT: "+", EVALF: "×", EVALI: "⊞",
+    FSPLIT3: "∈", FFUSE3: "∋", EVALT: "+", EVALF: "×", EVALI: "⊞",
     TNEG: "~", INEG: "≁", IFIX: "¬",
 }
 NAME_FROM_GLYPH = {v: k for k, v in GLYPH.items()}
@@ -378,7 +378,7 @@ class IMASM16_3Sequence:
 
 
 def parse_glyph_word(word: str) -> List[str]:
-    """⊢>☊+×⊞≁☋¬⊣  →  [VINIT, AFWD, FSPLIT3, EVALT, EVALF, EVALI, INEG, FFUSE3, IFIX, TANCH]"""
+    """⊢>∈+×⊞≁∋¬⊣  →  [VINIT, AFWD, FSPLIT3, EVALT, EVALF, EVALI, INEG, FFUSE3, IFIX, TANCH]"""
     return [NAME_FROM_GLYPH[ch] for ch in word if ch in NAME_FROM_GLYPH]
 
 
@@ -386,14 +386,14 @@ if __name__ == "__main__":
     # The example word from the spec: split → work T/F/I → con-negate → fuse → commit
     example = IMASM16_3Sequence()
     example.name = "Example: split, evaluate T/F/I, con-negate, fuse, commit"
-    example.description = "⊢>☊+×⊞≁☋¬⊣"
-    example.steps = parse_glyph_word("⊢>☊+×⊞≁☋¬⊣")
+    example.description = "⊢>∈+×⊞≁∋¬⊣"
+    example.steps = parse_glyph_word("⊢>∈+×⊞≁∋¬⊣")
     example.run()
 
     neutral = IMASM16_3Sequence()
     neutral.name = "Neutral inflation under ⊙"
-    neutral.description = "⊢☊⊙⊙⊙☋⊣ — valid, fully closed identity program"
-    neutral.steps = parse_glyph_word("⊢☊⊙⊙⊙☋⊣")
+    neutral.description = "⊢∈⊙⊙⊙∋⊣ — valid, fully closed identity program"
+    neutral.steps = parse_glyph_word("⊢∈⊙⊙⊙∋⊣")
     neutral.run()
 
     print("Sanity check — the paper's own worked example, T ∧ t = N (§5, p.776-777):")

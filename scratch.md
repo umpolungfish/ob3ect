@@ -6823,12 +6823,12 @@ Phase 9: Topology
 Phase 11: SIXTEEN_3 Trilattice Breakdown
   Carrier: P({T,F,t,f}) = 16 generalized truth values
   Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)
-  Word: ⊢☊>+<×⊞=⊙☋¬⊣
+  Word: ⊢∈>+<×⊞=⊙∋¬⊣
 
   Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑
   ─── ───── ──────── ───────── ─────   ─────
     1   ⊢   VINIT    VINIT         N →     N
-    2   ☊   FSPLIT   FSPLIT3       N →     N
+    2   ∈   FSPLIT   FSPLIT3       N →     N
     3   >   AFWD     AFWD          N →     T
     4   +   EVALT    EVALT         T →     T
     5   <   AREV     AREV          T →     N
@@ -6836,7 +6836,7 @@ Phase 11: SIXTEEN_3 Trilattice Breakdown
     7   ⊞   ENGAGR   EVALI         F →   Ftf
     8   =   CLINK    CLINK       Ftf →   Ftf
     9   ⊙   IMSCRIB  IMSCRIB     Ftf →   Ftf
-   10   ☋   FFUSE    FFUSE3      Ftf →   Ftf
+   10   ∋   FFUSE    FFUSE3      Ftf →   Ftf
    11   ¬   IFIX     IFIX        Ftf →   Ftf
    12   ⊣   TANCH    TANCH       Ftf →   Ftf
 
