@@ -2,23 +2,23 @@
 """
 Complete 2D Cross-Section Plotter for mOMonadOS Kernel Geometry
 ===============================================================
-Derived from kernel_3d_visualizer_3.html — all geometric relationships
-present in the 3D visualizer are rendered in 2D (z=0 plane).
+Updated to include structural constants from UCFm.md and geometric
+features from k3v.html (horn torus, gear ratio, tilt, constants).
 
-LABEL STRATEGY (v2 — de-overlapped):
-  - Legend outside plot area (right margin, two-column) — frees geometry.
-  - Annotation boxes moved to plot margins with thin leader lines.
-  - φ-tangent labels → left/right margins with arrow leaders.
-  - Distance annotations (√2, √3, 2) → chord midpoints, not nodes.
-  - Node labels offset carefully away from dense geometry clusters.
-  - Volume ratio → bottom margin. Quadratic form → top-right margin.
-  - Syzygy/horn(0) label → below the balanced point.
-  - Improved figure size to accommodate external legend.
+LABEL STRATEGY (v3 — augmented with UCFm):
+  - Legend outside plot area (right margin, two-column) — expanded.
+  - Annotation boxes for key constants: α⁻¹, sin²θ_W, gear=4, m_p/m_e.
+  - Tilt angle (14.036°) shown with arc and label.
+  - Gear ratio 4:1 indicated on the FFUSE coupler.
+  - 1:1:2 weighting shown on evaluator triangle vertices.
+  - Horn torus meridian curvature π added near split shell.
+  - All other existing features preserved.
 """
 import matplotlib
 matplotlib.use('Agg')
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 # ─── Constants ──────────────────────────────────────────────────
 R = 2.0
@@ -27,7 +27,7 @@ sqrt2 = np.sqrt(2)
 sqrt3 = np.sqrt(3)
 phi = (1 + np.sqrt(5)) / 2
 inv_phi = 1 / phi
-LR = R / 2  # evaluator radius
+LR = R / 2  # evaluator radius, also λ_C
 
 EVALT = np.array([1.0, 1.0, 0.0])
 EVALF = np.array([1.0, -0.5, sqrt3/2])
@@ -49,9 +49,10 @@ GREEN  = '#009E73'; BLUE   = '#0072B2'
 GOLD   = '#E69F00'; ORANGE = '#E69F00'
 PURPLE = '#CC79A7'; CYAN   = '#56B4E9'
 GREY   = '#888888'; WHITE  = '#ffffff'; SLATE  = '#9AA7B4'
+RED    = '#D55E00'; PINK   = '#FF1493'
 
 # ─── Create plot — wider for external legend ─────────────────────
-fig, ax = plt.subplots(figsize=(19, 12))
+fig, ax = plt.subplots(figsize=(20, 12))
 ax.set_aspect('equal')
 ax.set_facecolor('#0a0a0a')
 fig.patch.set_facecolor('#0a0a0a')
@@ -72,6 +73,12 @@ L2, = ax.plot(r_split*np.cos(theta), r_split*np.sin(theta),
 ax.plot(r_split*np.cos(theta), r_split*np.sin(theta)*0.5,
         color=ORANGE, linestyle=':', linewidth=1, alpha=0.35)
 
+# ─── Add horn torus meridian curvature label (π) ────────────────
+ax.annotate(r'$\pi$ (meridian curvature)', xy=(0.0, 1.2),
+            xytext=(-1.0, 1.8), color=SLATE,
+            arrowprops=dict(arrowstyle='->', color=SLATE, lw=1),
+            fontsize=9, fontweight='bold', alpha=0.8)
+
 # ══════════════════════════════════════════════════════════════════
 # LAYER 3 — EVALUATOR SPHERE CROSS-SECTION
 # ══════════════════════════════════════════════════════════════════
@@ -79,13 +86,13 @@ L3, = ax.plot(1 + r_split*np.cos(theta), r_split*np.sin(theta),
               color=BLUE, linestyle='--', linewidth=2)
 
 # ══════════════════════════════════════════════════════════════════
-# LAYER 4 — FFUSE3 COUPLER (bevel gear 4:1)
+# LAYER 4 — FFUSE3 COUPLER (bevel gear 4:1) — gear ratio annotation
 # ══════════════════════════════════════════════════════════════════
 L4, = ax.plot([0, 2*r_split], [0, 0], color=WHITE, linewidth=3)
-ax.annotate('bevel gear 4:1  (R:r = 2:0.5)',
-            xy=(1.0, 0.08), xytext=(3.0, 1.0),
+ax.annotate('bevel gear 4:1  (R:r = 2:0.5)  ⟹ gear=4',
+            xy=(1.0, 0.08), xytext=(3.0, 1.2),
             arrowprops=dict(arrowstyle='->', color=WHITE, lw=1.2),
-            color=WHITE, fontsize=9, ha='center', va='bottom',
+            color=WHITE, fontsize=10, ha='center', va='bottom',
             style='italic')
 
 # ══════════════════════════════════════════════════════════════════
@@ -114,7 +121,7 @@ ax.scatter(*mixed_pt,     color=WHITE, s=80, zorder=10, marker='s',
 L5e, = ax.plot([], [], 's', color=WHITE, markersize=6, markerfacecolor='none',
                markeredgecolor=WHITE, markeredgewidth=1.5)
 
-# Node labels — offset carefully to avoid geometry
+# Node labels
 ax.text(origin[0]-0.35, origin[1]-0.45, '⊙ (pinch)', color=GOLD,
         fontsize=10, fontweight='bold', ha='right', va='top')
 ax.text(fuse_tip[0]+0.1, fuse_tip[1]-0.40, '∋ FFUSE3', color=BLUE,
@@ -122,9 +129,14 @@ ax.text(fuse_tip[0]+0.1, fuse_tip[1]-0.40, '∋ FFUSE3', color=BLUE,
 ax.text(eval_t_proj[0]+0.2, eval_t_proj[1]+0.20, '+ EVALT', color=BLUE,
         fontsize=9, fontweight='bold', ha='left')
 ax.text(eval_fi_proj[0]+0.2, eval_fi_proj[1]-0.28, '× EVALF\n⊞ EVALI',
-        color='#D55E00', fontsize=8, fontweight='bold', ha='left')
-ax.text(mixed_pt[0]+0.2, mixed_pt[1]-0.35, '(1,0,0)\nunoccupied',
+        color=RED, fontsize=8, fontweight='bold', ha='left')
+ax.text(mixed_pt[0]+0.2, mixed_pt[1]-0.35, '(1,0,0) tangency',
         color=WHITE, fontsize=7.5, ha='left', va='top', alpha=0.7)
+
+# ─── Show 1:1:2 weighting on evaluator triangle ──────────────────
+# EVALI is larger (weight 2) – mark with an extra ring
+ax.scatter(*eval_fi_proj, color=GOLD, s=180, zorder=9,
+           edgecolors=WHITE, linewidths=1.5, alpha=0.4)
 
 # A₂ roots on outer equator (radius 4)
 root_0 = (2*R, 0.0)
@@ -168,6 +180,21 @@ for i in range(3):
     j = (i+1) % 3
     ax.plot([tri_verts[i,0], tri_verts[j,0]], [tri_verts[i,1], tri_verts[j,1]],
             color=GREEN, linewidth=2.5, zorder=6, alpha=0.85)
+
+# ─── Label the 1:1:2 weighting ──────────────────────────────────
+ax.text(1.25, -0.7, '1:1:2 (T:F:I)  ⟹  tilt = 14.036°',
+        color=GOLD, fontsize=9, fontweight='bold', ha='left')
+
+# ─── Draw tilt arc ──────────────────────────────────────────────
+tilt_angle = np.arctan(1/4)  # 14.036 deg
+arc_radius = 0.6
+arc_thetas = np.linspace(0, tilt_angle, 30)
+arc_x = arc_radius * np.cos(arc_thetas)
+arc_y = arc_radius * np.sin(arc_thetas)
+ax.plot(arc_x, arc_y, color=GOLD, linewidth=2, alpha=0.8)
+ax.text(arc_radius*0.8*np.cos(tilt_angle/2),
+        arc_radius*0.8*np.sin(tilt_angle/2)+0.1,
+        r'$\theta = \arctan(1/4)$', color=GOLD, fontsize=9, ha='center')
 
 # ══════════════════════════════════════════════════════════════════
 # LAYER 8 — DISTANCE ANNOTATIONS (√2, √3, 2)
@@ -343,6 +370,26 @@ ax.text(-5.3, 5.3,
                    alpha=0.7, pad=4))
 
 # ══════════════════════════════════════════════════════════════════
+# LAYER 19 — UCFm CONSTANTS BOX (added from UCFm.md)
+# ══════════════════════════════════════════════════════════════════
+ucfm_text = (
+    r"$\mathbf{UCFm\;Constants}$" + "\n"
+    r"$\alpha^{-1} = 144-7 + \arctan(1/4)/(4\sqrt{3}) = 137.035999$" + "\n"
+    r"$\sin^2\theta_W = 3/13 = 0.230769$" + "\n"
+    r"$m_p/m_e = 1836.152$" + "\n"
+    r"$m_\mu/m_e = 206.769$" + "\n"
+    r"$m_\tau/m_e = 3476.785$" + "\n"
+    r"$m_W/m_p = 85.699$" + "\n"
+    r"$m_Z/m_p = 97.715$" + "\n"
+    r"$m_H/m_p = 133.699$" + "\n"
+    r"$\alpha_s/\alpha = 16$" + "\n"
+    r"Gear ratio = 4"
+)
+ax.text(4.8, 5.2, ucfm_text, color=WHITE, fontsize=8,
+        ha='left', va='top',
+        bbox=dict(facecolor='#1a1a1a', edgecolor=GOLD, alpha=0.9, pad=6))
+
+# ══════════════════════════════════════════════════════════════════
 # FINAL STYLING
 # ══════════════════════════════════════════════════════════════════
 ax.set_xlim(-5.8, 5.8)
@@ -354,7 +401,7 @@ ax.set_title(
 ax.text(0.5, 1.01,
         'Horn torus (R=r=2) · r_split=λ_C=1 · A₂ carved ring · '
         'Syzygy axis · φ-tangent loci · Vessel/Contents=12π · '
-        '1:1:2 weighted resultant',
+        '1:1:2 weighted resultant · UCFm constants',
         transform=ax.transAxes, ha='center', color=SLATE, fontsize=10)
 
 ax.tick_params(colors=WHITE)
@@ -366,9 +413,8 @@ ax.yaxis.label.set_color(WHITE)
 plt.grid(True, linestyle='--', alpha=0.12)
 
 # ══════════════════════════════════════════════════════════════════
-# LEGEND — external, two-column, right of plot
+# LEGEND — external, two-column, right of plot (expanded)
 # ══════════════════════════════════════════════════════════════════
-# Build custom legend handles from proxy artists
 legend_items = [
     (L1,          'Horn Torus Outer Equator (R=r=2, z=0)'),
     (L2,          'FSPLIT3 split shell (r_split = λ_C)'),
@@ -408,7 +454,6 @@ leg1 = ax.legend(handles1, labels1,
 for text in leg1.get_texts():
     text.set_color(WHITE)
 
-# Add second column via a separate legend, positioned below the first
 leg2 = ax.legend(handles2, labels2,
                  loc='center left',
                  bbox_to_anchor=(1.02, -0.02),
@@ -418,7 +463,6 @@ leg2 = ax.legend(handles2, labels2,
 for text in leg2.get_texts():
     text.set_color(WHITE)
 
-# Re-add the first legend (matplotlib removes previous when adding new)
 ax.add_artist(leg1)
 
 plt.tight_layout(pad=1.0)

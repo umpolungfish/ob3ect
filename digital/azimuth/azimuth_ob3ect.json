@@ -1,0 +1,238 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → AFWD → EVALT → EVALF → AREV → AFWD → CLINK → EVALT → EVALF → ENGAGR → FFUSE → IFIX → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "azimuth",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\nazimuth",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "the horizon circle",
+      "domain_name": "azimuth",
+      "domain_type": "physical",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "deepseek",
+      "surface_tokens": [
+        "azimuth",
+        "bearing",
+        "measurement"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "Proceed along the selected method branch",
+        "justification": "Once the method is chosen, the system advances through that specific sequence of calculations or measurements.",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "Backtrack to correct method selection",
+        "justification": "If a chosen method fails, the system may revert to an earlier decision point to try an alternative.",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "Sequence of operations: correct magnetic declination, then apply variation, then compute true azimuth",
+        "justification": "Each step chains into the next to transform raw data into the final angle.",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "Conflicting azimuth readings from both methods",
+        "justification": "When both measurement and calculation produce viable but contradictory results, the system holds both possibilities simultaneously, indicating a navigation paradox.",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "Failed method execution",
+        "justification": "The branch for when the method fails (e.g., compass error, cloud cover for stars).",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "Successful method execution",
+        "justification": "The branch for when the selected method yields a valid azimuth within tolerance.",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "Azimuth result fusion",
+        "justification": "Regardless of method, the output converges back to a single azimuth value; the fusion reconstitutes the original problem into a resolved answer.",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "Method selection fork",
+        "justification": "The problem 'determine azimuth' splits into two primary approaches: direct measurement with a compass, and indirect calculation from coordinates.",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "Permanent entry in the navigational log",
+        "justification": "Once an azimuth is accepted, it is appended to the ship's log; this record cannot be altered.",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "The definition of azimuth itself: the clockwise angle from true north",
+        "justification": "This identity relation ensures that any result labeled 'azimuth' conforms to this definition; the concept is self-referential.",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "Final determined azimuth value recorded in log",
+        "justification": "The entire process closes when the azimuth is fixed and integrated into the navigation system's permanent knowledge.",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "Unoriented observer",
+        "justification": "Before any measurement, there is no oriented direction; the observer lacks a reference bearing.",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "failure_reason": "",
+      "frobenius_verdict": "PASS",
+      "fuse_element": "Azimuth result fusion",
+      "fuse_result": "Final azimuth value (or error flag)",
+      "split_element": "Method selection fork",
+      "split_input": "Problem: need azimuth",
+      "split_outputs": [
+        "Compass direct measurement",
+        "Computational method (GPS/stars)"
+      ],
+      "test_instance": ""
+    },
+    "phase_3": {
+      "both_description": "Azimuth values from both methods exist and contradict each other without resolution.",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "Azimuth determination failed; no valid value obtained.",
+      "transitions": [],
+      "true_description": "Azimuth successfully determined and verified.",
+      "void_description": "No directional reference exists; the observer has no orientation."
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "Observational void before any directional awareness.",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "Define azimuth as the clockwise angle from true north, self-referencing the navigation standard.",
+          "opcode": "IMSCRIB",
+          "step_num": 2
+        },
+        {
+          "domain_action": "Diverge into two azimuth-finding methodologies: compass-based measurement and computational astronomy.",
+          "opcode": "FSPLIT",
+          "step_num": 3
+        },
+        {
+          "domain_action": "Progress into the compass measurement branch.",
+          "opcode": "AFWD",
+          "step_num": 4
+        },
+        {
+          "domain_action": "Compass needle settles and reading is stable — measurement deemed successful.",
+          "opcode": "EVALT",
+          "step_num": 5
+        },
+        {
+          "domain_action": "Compass needle erratic or unreadable — measurement fails.",
+          "opcode": "EVALF",
+          "step_num": 6
+        },
+        {
+          "domain_action": "On failure, retraction to method selection, allowing switch to computational branch.",
+          "opcode": "AREV",
+          "step_num": 7
+        },
+        {
+          "domain_action": "Advance into computational branch using GPS and celestial data.",
+          "opcode": "AFWD",
+          "step_num": 8
+        },
+        {
+          "domain_action": "Chain coordinate conversion, declination correction, and azimuth formula steps.",
+          "opcode": "CLINK",
+          "step_num": 9
+        },
+        {
+          "domain_action": "Computation yields a consistent azimuth value within expected error.",
+          "opcode": "EVALT",
+          "step_num": 10
+        },
+        {
+          "domain_action": "Computation fails due to missing satellite fix or star occlusion.",
+          "opcode": "EVALF",
+          "step_num": 11
+        },
+        {
+          "domain_action": "Both methods produce valid but contradictory azimuths; system holds both as unresolved dual-truth.",
+          "opcode": "ENGAGR",
+          "step_num": 12
+        },
+        {
+          "domain_action": "Merge the viable pathways, reconstituting the original need into a resolved azimuth datum or an error flag.",
+          "opcode": "FFUSE",
+          "step_num": 13
+        },
+        {
+          "domain_action": "Append the final deduced azimuth or failure marker to the permanent ship's log.",
+          "opcode": "IFIX",
+          "step_num": 14
+        },
+        {
+          "domain_action": "Anchor the entire azimuth determination within the navigation system's closed state.",
+          "opcode": "TANCH",
+          "step_num": 15
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "The Nautical Almanac and GPS satellite almanac, serving as the immutable bootstrap store for celestial positions and orbital parameters.",
+      "compiler_frontend": "Navigator's training and algorithmic procedures that translate intentions into systematic measurement and computation operations.",
+      "ipc_mechanism": "Signal pathways between magnetic compass, GPS receiver, sextant optics, and the central processing unit (human brain or electronic device).",
+      "memory_mechanism": "Working memory banks holding raw readings, declination tables, and intermediate trigonometric results.",
+      "scheduler_mechanism": "Decision logic that orders method selection, retry attempts, and step-by-step chaining based on environmental conditions."
+    },
+    "phase_6": {
+      "cycle_cost": "Energy consumed by observation and computation, such as battery power for electronics or metabolic cost for human mental effort.",
+      "delta_s_verdict": "ΔS ≈ 0 — the reduction in navigational uncertainty is offset by the heat dissipated from instruments and biological metabolism during the determination cycle.",
+      "failure_mode": "",
+      "post_cycle_state": "System has collapsed potential states into a single determined azimuth, reducing uncertainty.",
+      "pre_cycle_state": "System holds no directional information but contains full potential states of possible bearings."
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 7.0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 7,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      12
+    ],
+    "nesting_depth": 0,
+    "open_forks": 0,
+    "sequence_length": 15,
+    "t_branch_ops": 1,
+    "topology_class": "flat_chain",
+    "total_pairs": 1
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
