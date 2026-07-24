@@ -430,11 +430,18 @@ class DomainTemplate:
     def bootstrap_seq(self, override: Dict[str,Any] = None) -> BootstrapSequence:
         import re as _re
         known = {oc.value for oc in Opcode}
+        _g2o = {v: k for k, v in GLYPH.items()}
         steps = []
         for i, action in enumerate(self.bootstrap):
-            m = _re.match(r'^\s*([A-Z]+)', str(action))
-            opcode = m.group(1) if (m and m.group(1) in known) else "IMSCRIB"
-            domain_action = _re.sub(r'^[A-Z]+:\s*', '', str(action).strip())
+            s = str(action).strip()
+            m = _re.match(r'^\s*([A-Z]+)', s)
+            if m and m.group(1) in known:
+                opcode = m.group(1)
+            elif s and s[0] in _g2o:
+                opcode = _g2o[s[0]]
+            else:
+                opcode = next((t for t in _re.findall(r'[A-Z]+', s) if t in known), "IMSCRIB")
+            domain_action = _re.sub(r'^[^A-Za-z]*(?:[A-Z]+:\s*)+', '', s)
             steps.append({"step_num": i+1, "opcode": opcode, "domain_action": domain_action})
         return BootstrapSequence(steps=steps, closure_verified=True)
 

@@ -652,11 +652,23 @@ def _make_unique_slug(raw: str, max_base_len: int = 48) -> str:
 _KNOWN_OPCODES = {oc.value for oc in Opcode}
 
 
+_GLYPH_TO_OP = {"⊢":"VINIT","⊣":"TANCH",">":"AFWD","<":"AREV","=":"CLINK","⊙":"IMSCRIB",
+                "◇":"FSPLIT","●":"FFUSE","+":"EVALT","×":"EVALF","⊞":"ENGAGR","¬":"IFIX"}
+
+
 def _parse_opcode(step_str: str) -> str:
-    """Extract opcode name from 'OPCODE: description' bootstrap step string."""
-    m = re.match(r'^\s*([A-Z]+)', str(step_str))
+    """Extract the opcode from a bootstrap step. Handles 'OPCODE: desc',
+    glyph-prefixed 'GLYPH: OPCODE: desc', and opcode-name-anywhere formats.
+    Only falls back to IMSCRIB when nothing parseable is present."""
+    s = str(step_str).strip()
+    m = re.match(r'^\s*([A-Z]+)', s)
     if m and m.group(1) in _KNOWN_OPCODES:
         return m.group(1)
+    if s and s[0] in _GLYPH_TO_OP:
+        return _GLYPH_TO_OP[s[0]]
+    for tok in re.findall(r'[A-Z]+', s):
+        if tok in _KNOWN_OPCODES:
+            return tok
     return "IMSCRIB"
 
 
