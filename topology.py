@@ -151,6 +151,37 @@ def _token_from_str(name: str) -> Optional[Token]:
         return None
 
 
+def _canonical_start(tokens) -> int:
+    """Offset at which to begin reading the word so FSPLIT/FFUSE pairing closes.
+
+    A word is a loop; a rotation may cut through the middle of a region, leaving
+    its FFUSE ahead of its FSPLIT in the linearization. By the cycle lemma, when
+    splits and fuses balance there is always a start at some FSPLIT from which a
+    stack pairing never underflows. Returns 0 when the word already reads
+    cleanly, or when no rotation can help (a genuine count imbalance, which is
+    real structure and must survive into the report).
+    """
+    n = len(tokens)
+    splits = [i for i, t in enumerate(tokens) if t == Token.FSPLIT]
+    fuses  = [i for i, t in enumerate(tokens) if t == Token.FFUSE]
+    if not splits or len(splits) != len(fuses):
+        return 0
+    for start in [0] + splits:
+        depth = 0
+        for off in range(n):
+            t = tokens[(start + off) % n]
+            if t == Token.FSPLIT:
+                depth += 1
+            elif t == Token.FFUSE:
+                depth -= 1
+                if depth < 0:
+                    break
+        else:
+            if depth == 0:
+                return start
+    return 0
+
+
 def analyze_topology(opcodes: List[str]) -> TopologyReport:
     """
     Analyze the structural topology of an IMASM opcode sequence.
@@ -178,12 +209,23 @@ def analyze_topology(opcodes: List[str]) -> TopologyReport:
 
     n = len(tokens)
 
+    # ── Read the word as a LOOP ──────────────────────────────────────────────
+    # ROTAT is the cyclic shift, so topology must be invariant under it. The
+    # analysis below pairs and scans linearly, which reports a region as an open
+    # fork whenever the rotation cuts through its interior. Rotating to a start
+    # where the pairing closes removes that artifact; every index the report
+    # carries is mapped back to the caller's coordinates at the end.
+    shift = _canonical_start(tokens)
+    if shift:
+        tokens = tokens[shift:] + tokens[:shift]
+    unshift = (lambda i: (i + shift) % n) if shift else (lambda i: i)
+
     # ── Matched pairs ──────────────────────────────────────────────────────
     pairs = match_pairs(tuple(tokens))
-    report.pair_list = pairs
+    report.pair_list = [(unshift(a), unshift(b)) for a, b in pairs]
     report.total_pairs = len(pairs)
-    report.fork_positions = [i for i, t in enumerate(tokens) if t == Token.FSPLIT]
-    report.fuse_positions = [i for i, t in enumerate(tokens) if t == Token.FFUSE]
+    report.fork_positions = [unshift(i) for i, t in enumerate(tokens) if t == Token.FSPLIT]
+    report.fuse_positions = [unshift(i) for i, t in enumerate(tokens) if t == Token.FFUSE]
 
     # ── Open forks: FSPLITs without matching FFUSE ──────────────────────────
     matched_fsplitts = {fs for fs, _ in pairs}

@@ -25,18 +25,45 @@ def load(path):
     return json.load(open(path, encoding="utf-8"))
 
 def arm_spans(steps):
-    """Pair FSPLIT→FFUSE by a stack over the step list; return set of step_nums
-    that lie strictly inside some open arm."""
-    stack, spans = [], []
-    for s in steps:
-        op = s.get("opcode")
+    """Pair FSPLIT→FFUSE around the step list read as a LOOP; return the set of
+    step_nums lying strictly inside some arm.
+
+    The word is a cycle and ROTAT is the cyclic shift, so a region whose FFUSE
+    wrapped past the start still has the interior it had before the cut. Pairing
+    straight through from the first step drops exactly those regions.
+    """
+    n = len(steps)
+    if not n:
+        return set(), []
+    splits = [i for i, s in enumerate(steps) if s.get("opcode") == "FSPLIT"]
+    fuses = [i for i, s in enumerate(steps) if s.get("opcode") == "FFUSE"]
+    shift = 0
+    if splits and len(splits) == len(fuses):
+        for start in [0] + splits:
+            depth = 0
+            for off in range(n):
+                op = steps[(start + off) % n].get("opcode")
+                if op == "FSPLIT":
+                    depth += 1
+                elif op == "FFUSE":
+                    depth -= 1
+                    if depth < 0:
+                        break
+            else:
+                if depth == 0:
+                    shift = start
+                    break
+    stack, spans, inside = [], [], set()
+    for off in range(n):
+        i = (shift + off) % n
+        op = steps[i].get("opcode")
         if op == "FSPLIT":
-            stack.append(s["step_num"])
+            stack.append(i)
         elif op == "FFUSE" and stack:
-            spans.append((stack.pop(), s["step_num"]))
-    inside = set()
-    for lo, hi in spans:
-        inside.update(range(lo + 1, hi))
+            lo = stack.pop()
+            spans.append((steps[lo]["step_num"], steps[i]["step_num"]))
+            for j in range(1, (i - lo) % n):
+                inside.add(steps[(lo + j) % n]["step_num"])
     return inside, spans
 
 def analyze(d):

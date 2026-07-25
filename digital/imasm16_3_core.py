@@ -167,6 +167,51 @@ assert set(OPCODES) == WORK_OPS | NO_WORK
 assert len(OPCODES) == 14
 
 
+# ─── Cyclic FSPLIT3/FFUSE3 pairing ───────────────────────────────────────────
+# A word is a loop. ROTAT is the cyclic shift (Weyl–Heisenberg X), so any
+# readout that pairs split with fuse must pair around the cycle; pairing over
+# the linearized list makes every region that the cut passes through look
+# dangling, and turns rotation-invariant structure into spurious phase.
+
+def _cyclic_pairs(steps):
+    """Pair FSPLIT3→FFUSE3 over the word read as a loop.
+
+    Returns (pairs, unmatched_splits, unmatched_fuses) as indices into `steps`;
+    each pair is (si, fj) with the region running FORWARD around the cycle from
+    si to fj. Splits and fuses go unmatched only on a true count imbalance,
+    which no rotation can repair.
+    """
+    n = len(steps)
+    split_idx = [i for i, t in enumerate(steps) if t == FSPLIT3]
+    fuse_idx  = [i for i, t in enumerate(steps) if t == FFUSE3]
+    if not split_idx and not fuse_idx:
+        return [], [], []
+    if len(split_idx) != len(fuse_idx):
+        return [], split_idx, fuse_idx
+    # Balanced counts: by the cycle lemma some rotation beginning at a split
+    # pairs every region without underflow. Read from there.
+    for start in split_idx:
+        stack, pairs = [], []
+        for off in range(n):
+            i = (start + off) % n
+            if steps[i] == FSPLIT3:
+                stack.append(i)
+            elif steps[i] == FFUSE3:
+                if not stack:
+                    break
+                pairs.append((stack.pop(), i))
+        else:
+            if not stack:
+                return pairs, [], []
+    return [], split_idx, fuse_idx
+
+
+def _cyclic_interior(steps, si, fj):
+    """Tokens strictly inside the region, walking forward around the cycle."""
+    n = len(steps)
+    return [steps[(si + 1 + j) % n] for j in range((fj - si - 1) % n)]
+
+
 class IMASM16_3_Machine:
     """
     Trilattice-aware register machine over the real 16-element carrier P({T,F,t,f}).
@@ -178,16 +223,33 @@ class IMASM16_3_Machine:
     def __init__(self):
         self.reg: Reg = EMPTY
         self.fixed = False
-        self.in_split = False
-        self.split_touched: Set[str] = set()   # accumulates base values touched inside the split
+        # Fork state is a STACK, not a flag. FSPLIT3 pushes a frame, FFUSE3 pops
+        # one and folds its touches into the register AND into the enclosing
+        # frame, so nested regions compose: an inner apex is a refinement of the
+        # outer one, and μ∘δ=id at each level composes to μ∘δ=id overall.
+        self.split_stack: List[Set[str]] = []
+
+    @property
+    def in_split(self) -> bool:
+        """True while at least one fork frame is open."""
+        return bool(self.split_stack)
+
+    @property
+    def split_depth(self) -> int:
+        return len(self.split_stack)
+
+    @property
+    def split_touched(self) -> Set[str]:
+        """Touches accumulated in the innermost open frame."""
+        return set(self.split_stack[-1]) if self.split_stack else set()
 
     def reg_name(self) -> str:
         return reg_name(self.reg)
 
     def _touch(self, values: Set[str]) -> None:
         self.reg = self.reg | frozenset(values)
-        if self.in_split:
-            self.split_touched |= values
+        if self.split_stack:
+            self.split_stack[-1] |= set(values)
 
     def transition(self, token: str) -> Reg:
         if self.fixed and token not in (IFIX, IMSCRIB):
@@ -195,8 +257,7 @@ class IMASM16_3_Machine:
 
         if token == VINIT:
             self.reg = EMPTY
-            self.in_split = False
-            self.split_touched = set()
+            self.split_stack = []
 
         elif token == TANCH:
             pass
@@ -206,9 +267,13 @@ class IMASM16_3_Machine:
                 self.reg = frozenset('T')
 
         elif token == AREV:
+            # Reverse morphism: clears the register, but does NOT close the fork.
+            # Only FSPLIT3 opens a split context and only FFUSE3 closes one; an
+            # AREV between two arms is work on an arm, not a fuse. Resetting
+            # in_split/split_touched here (the body was identical to VINIT's)
+            # discarded every touch the arms had accumulated, so a ● downstream
+            # folded an empty set and the arms reached the apex carrying nothing.
             self.reg = EMPTY
-            self.in_split = False
-            self.split_touched = set()
 
         elif token == CLINK:
             pass
@@ -218,13 +283,16 @@ class IMASM16_3_Machine:
                 self.reg = frozenset('T')
 
         elif token == FSPLIT3:
-            self.in_split = True
-            self.split_touched = set()
+            self.split_stack.append(set())
 
         elif token == FFUSE3:
-            self.reg = self.reg | frozenset(self.split_touched)
-            self.in_split = False
-            self.split_touched = set()
+            if self.split_stack:
+                closed = self.split_stack.pop()
+                self.reg = self.reg | frozenset(closed)
+                if self.split_stack:
+                    # Fold the inner apex into the enclosing fork: the outer ●
+                    # must see what its sub-regions reconnected.
+                    self.split_stack[-1] |= closed
 
         elif token == EVALT:
             self._touch({'T'})
@@ -241,7 +309,8 @@ class IMASM16_3_Machine:
             if has_f: r.add('T')
             if has_t: r.add('F')
             self.reg = frozenset(r)
-            self.split_touched = {{'T': 'F', 'F': 'T'}.get(a, a) for a in self.split_touched}
+            self.split_stack = [{{'T': 'F', 'F': 'T'}.get(a, a) for a in fr}
+                                for fr in self.split_stack]
 
         elif token == INEG:
             has_t, has_f = 't' in self.reg, 'f' in self.reg
@@ -249,7 +318,8 @@ class IMASM16_3_Machine:
             if has_f: r.add('t')
             if has_t: r.add('f')
             self.reg = frozenset(r)
-            self.split_touched = {{'t': 'f', 'f': 't'}.get(a, a) for a in self.split_touched}
+            self.split_stack = [{{'t': 'f', 'f': 't'}.get(a, a) for a in fr}
+                                for fr in self.split_stack]
 
         elif token == IFIX:
             self.fixed = True
@@ -259,8 +329,7 @@ class IMASM16_3_Machine:
     def reset(self):
         self.reg = EMPTY
         self.fixed = False
-        self.in_split = False
-        self.split_touched = set()
+        self.split_stack = []
 
 
 # ── Sequence trace ───────────────────────────────────────────────────────
@@ -295,30 +364,29 @@ class Sequence16_3Trace:
 
     def tri_ancestral_verdict(self) -> Tuple[str, str]:
         """
-        T — every FSPLIT3 pairs with a later FFUSE3, and at least one work
-            opcode ran somewhere inside that interval (a real transformation).
+        T — every FSPLIT3 pairs with a FFUSE3 around the cycle, and at least one
+            work opcode ran inside that region (a real transformation).
         N — split and fused, but no work opcode ran inside — identity only.
-        B — a FSPLIT3 dangles with no matching FFUSE3 (a fork left open).
-        F — a FFUSE3 appears with no preceding FSPLIT3 (ill-typed).
+        B — a FSPLIT3 dangles with no FFUSE3 to pair with (a fork left open).
+        F — a FFUSE3 has no FSPLIT3 to pair with (ill-typed).
+
+        Pairing is CYCLIC. A word is a loop, and ROTAT is the cyclic shift, so a
+        rotation that cuts through the interior of a region must not change the
+        verdict. Pairing linearly makes it change: a FFUSE3 landing before its
+        FSPLIT3 in the cut reads as ill-typed when the region is intact, and the
+        readout becomes a function of where you started reading.
         """
-        split_idx = [i for i, t in enumerate(self.steps) if t == FSPLIT3]
-        fuse_idx = [i for i, t in enumerate(self.steps) if t == FFUSE3]
+        pairs, un_split, un_fuse = _cyclic_pairs(self.steps)
 
-        for fj in fuse_idx:
-            if not any(si < fj for si in split_idx):
-                return ("F", f"FFUSE3 at step {fj+1} has no preceding FSPLIT3 — ill-typed")
-
-        if not split_idx and not fuse_idx:
+        if not pairs and not un_split and not un_fuse:
             return ("N", "No fork/fuse — void, never weighed alternatives")
+        if len(un_fuse) > len(un_split):
+            return ("F", f"FFUSE3 at step {un_fuse[0]+1} has no FSPLIT3 to pair — ill-typed")
+        if un_split:
+            return ("B", f"FSPLIT3 at step {un_split[0]+1} dangles — no matching FFUSE3")
 
-        unmatched = [si for si in split_idx if not any(fj > si for fj in fuse_idx)]
-        if unmatched:
-            return ("B", f"FSPLIT3 at step {unmatched[0]+1} dangles — no matching FFUSE3")
-
-        for si in split_idx:
-            fj = next(fj for fj in fuse_idx if fj > si)
-            interval = self.steps[si + 1:fj]
-            if any(t in WORK_OPS for t in interval):
+        for si, fj in pairs:
+            if any(t in WORK_OPS for t in _cyclic_interior(self.steps, si, fj)):
                 return ("T", "Tri-ancestral reconnection over a transformed object — closes")
         return ("N", "Split/fused with no work on any arm — μ∘δ=id verifies nothing")
 
