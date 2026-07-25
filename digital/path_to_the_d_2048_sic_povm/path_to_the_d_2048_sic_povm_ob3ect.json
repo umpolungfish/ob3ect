@@ -1,0 +1,351 @@
+{
+  "name": "Path to the d=2048 SIC-POVM",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Path to the d=2048 SIC-POVM",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "Hilbert-12 vacuum",
+        "Stark-unit boundary",
+        "Zauner transport",
+        "Levenberg-Marquardt descent",
+        "Weyl-Heisenberg composition"
+      ],
+      "boundary_condition": "The Stark-unit critical line singularity",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Hilbert-12 vacuum",
+        "justification": "The uninitialized state of the Hilbert space before the SIC-POVM structure is imposed.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Stark-unit boundary",
+        "justification": "The terminal anchor representing the exact algebraic limit of the d=2048 fiducial.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Zauner transport",
+        "justification": "The forward morphism mapping the Belnap skeleton into the complex Hilbert space.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Levenberg-Marquardt descent",
+        "justification": "The numerical reverse pass refining the approximate fiducial toward the algebraic target.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Weyl-Heisenberg composition",
+        "justification": "The sequential chaining of displacement operators forming the SIC orbit.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Self-measurement loop",
+        "justification": "The identity operation where the measurement apparatus coincides with the system state.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Exceptional-point bifurcation",
+        "justification": "The split into algebraic existence and numerical residual branches.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Stark-unit reconstitution",
+        "justification": "The fusion of the two branches into the singular Stark-unit fiducial.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Algebraic existence",
+        "justification": "The affirmative branch confirming the exact number field existence.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Numerical residual",
+        "justification": "The negative branch representing the approximate fiducial distance.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Critical-line paradice",
+        "justification": "The simultaneous holding of the algebraic and numerical states at the exceptional point.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Lean-verified witness",
+        "justification": "The permanent, append-only record of the structural proof.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT",
+      "split_input": "Hilbert-12 vacuum",
+      "split_outputs": [
+        "Algebraic existence",
+        "Numerical residual"
+      ],
+      "fuse_element": "FFUSE",
+      "fuse_result": "Stark-unit fiducial",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The uninitialized Hilbert space prior to the imposition of the SIC-POVM geometry.",
+      "true_description": "The affirmative state where the fiducial is identified as an exact Stark unit.",
+      "false_description": "The negative state where the numerical residual indicates a departure from the critical line.",
+      "both_description": "The paradice state where the fiducial exists as both an algebraic object and a numerical limit.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the Hilbert-12 vacuum state."
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the system at the Stark-unit boundary."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Execute the Zauner transport morphism."
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "Compose the Weyl-Heisenberg orbit."
+        },
+        {
+          "step_num": 5,
+          "opcode": "IMSCRIB",
+          "domain_action": "Perform the self-measurement loop."
+        },
+        {
+          "step_num": 6,
+          "opcode": "FSPLIT",
+          "domain_action": "Bifurcate at the exceptional point."
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALT",
+          "domain_action": "Affirm the algebraic existence branch."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "Execute the Levenberg-Marquardt descent on the numerical branch."
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "Evaluate the numerical residual."
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the critical-line paradice."
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "Record the Lean-verified witness."
+        },
+        {
+          "step_num": 12,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the Stark-unit fiducial."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Lean 4 kernel",
+      "ipc_mechanism": "Weyl-Heisenberg displacement group",
+      "memory_mechanism": "Belnap multilattice FOUR",
+      "scheduler_mechanism": "Horn-torus evaluator geometry",
+      "alfs_store": "SIC_POVM_Stark.lean",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Information gain per interaction",
+      "pre_cycle_state": "Unconstrained Hilbert space",
+      "post_cycle_state": "Rigid geometric configuration",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The SIC-POVM structure is a maximal symmetry configuration where information gain is balanced by geometric constraint.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 IFIX \u2192 FFUSE\n-- Class: Path to the d=2048 SIC-POVM\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(5, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc71  | forward morphism \u2014 bidirectional arrow\n--   [3] CLINK     fid    := \ud801\udc71               \ud801\udc7e \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [4] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [11] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7c  | fuse \u03bc \u2014 assembly mode\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def path_to_the_d_2048_sic_povm_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def path_to_the_d_2048_sic_povm_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def path_to_the_d_2048_sic_povm_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def path_to_the_d_2048_sic_povm_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def path_to_the_d_2048_sic_povm_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def path_to_the_d_2048_sic_povm_protocol : IGProtocol path_to_the_d_2048_sic_povm_s0 path_to_the_d_2048_sic_povm_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct path_to_the_d_2048_sic_povm_s11 path_to_the_d_2048_sic_povm_s11 = path_to_the_d_2048_sic_povm_s11 (idempotent)\n  (.seq (.arrow path_to_the_d_2048_sic_povm_l0 path_to_the_d_2048_sic_povm_s0 path_to_the_d_2048_sic_povm_s1) (.seq (.arrow path_to_the_d_2048_sic_povm_l1 path_to_the_d_2048_sic_povm_s1 path_to_the_d_2048_sic_povm_s2) (.seq (.arrow path_to_the_d_2048_sic_povm_l2 path_to_the_d_2048_sic_povm_s2 path_to_the_d_2048_sic_povm_s3) (.seq (.arrow path_to_the_d_2048_sic_povm_l3 path_to_the_d_2048_sic_povm_s3 path_to_the_d_2048_sic_povm_s4) (.seq (.arrow path_to_the_d_2048_sic_povm_l4 path_to_the_d_2048_sic_povm_s4 path_to_the_d_2048_sic_povm_s5) (.seq (.prod (.arrow path_to_the_d_2048_sic_povm_l5 path_to_the_d_2048_sic_povm_s5 path_to_the_d_2048_sic_povm_s11) (.arrow path_to_the_d_2048_sic_povm_l5 path_to_the_d_2048_sic_povm_s5 path_to_the_d_2048_sic_povm_s11)) (.arrow path_to_the_d_2048_sic_povm_l11 path_to_the_d_2048_sic_povm_s11 path_to_the_d_2048_sic_povm_s11)))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def path_to_the_d_2048_sic_povm_true_arm : IGProtocol path_to_the_d_2048_sic_povm_s0 path_to_the_d_2048_sic_povm_s11 :=\n  (path_to_the_d_2048_sic_povm_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def path_to_the_d_2048_sic_povm_false_arm : IGProtocol path_to_the_d_2048_sic_povm_s0 path_to_the_d_2048_sic_povm_s11 :=\n  (path_to_the_d_2048_sic_povm_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef path_to_the_d_2048_sic_povm_tier : OuroboricityTier := TierFunctor.obj path_to_the_d_2048_sic_povm_s0\n#eval path_to_the_d_2048_sic_povm_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem path_to_the_d_2048_sic_povm_frobenius :\n    igFrobeniusAlg.mul path_to_the_d_2048_sic_povm_s0 path_to_the_d_2048_sic_povm_s0 = path_to_the_d_2048_sic_povm_s0 :=\n  igFrobAlg_self_fusion path_to_the_d_2048_sic_povm_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      5
+    ],
+    "fuse_positions": [
+      11
+    ],
+    "pair_list": [
+      [
+        5,
+        11
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Path to the d=2048 SIC-POVM",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7d\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc75\u2299\ud801\udc6b\ud801\udc59\ud801\udc6d\u27e9",
+  "grounding_status": "failed",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: A SIC-POVM in dimension $d$ represents a quantum state space where the information of the entire Hilbert space is encoded into the geometry of the $d^2$ vectors, effectively mapping the bulk state onto the surface of the measurement operators.\n\u00de=\ud801\udc78: The SIC-POVM in d=2048 represents a maximal packing of quantum states where the boundary information is sufficient to reconstruct the full state space, satisfying the holographic requirement of scale-collapse.\n\u0158=\ud801\udc7d: The construction of a SIC-POVM in high-dimensional Hilbert space functions as a geometric stabilizer that facilitates the mapping of quantum states onto a symmetric frame without altering the underlying state space.\n\u03a6=\ud801\udc79: The SIC-POVM structure in dimension 2048 satisfies the conditions of a symmetric informationally complete measurement, which functions as a special Frobenius algebra where the composition of the multiplication and comultiplication maps is identity.\n\u0192=\ud801\udc50: The high dimensionality of the d=2048 SIC-POVM ensures a dense, symmetric covering of the Hilbert space that minimizes measurement uncertainty and maximizes information gain per interaction.\n\u00c7=\ud801\udc67: The existence of a SIC-POVM in high-dimensional Hilbert space represents a rigid, highly constrained geometric configuration that is kinetically trapped and requires specific algebraic construction rather than spontaneous thermal rearrangement.\n\u0393=\ud801\udc54: The d=2048 SIC-POVM represents a highly entangled, global structure where the symmetry and algebraic constraints link every element of the Hilbert space across the entire system.\n\u0262=\ud801\udc75: The construction of a SIC-POVM in dimension 2048 requires the simultaneous coordination of a vast set of vectors satisfying specific geometric constraints, necessitating a broad conjunctive assembly.\n\u2299=\u2299: The existence of a SIC-POVM in dimension 2048 represents a state of maximal symmetry and structural balance, acting as a critical point where the geometry of Hilbert space reaches a perfectly uniform configuration.\n\u0126=\ud801\udc6b: The existence of a d=2048 SIC-POVM implies a rigid, high-dimensional geometric structure that is topologically constrained and invariant under local perturbations.\n\u03a3=\ud801\udc59: The d=2048 SIC-POVM represents a highly symmetric configuration where the vectors form a tight frame with equal inner products, necessitating an equal symmetric pairing of the state space dimensions.\n\u03a9=\ud801\udc6d: The SIC-POVM structure in high-dimensional Hilbert space is defined by a rigid geometric configuration of vectors that maintains a fixed winding invariant under continuous unitary transformations.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u22a3>=\u2299\u25c7+<\u00d7\u229e\u00ac\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u22a3>=\u2299\u25c7+<\u00d7\u229e\u00ac\u25cf\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": ">=\u2299\u25c7+<\u00d7\u229e\u00ac\u25cf\u22a2\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "=\u2299\u25c7+<\u00d7\u229e\u00ac\u25cf\u22a2\u22a3>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "\u2299\u25c7+<\u00d7\u229e\u00ac\u25cf\u22a2\u22a3>=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u25c7+<\u00d7\u229e\u00ac\u25cf\u22a2\u22a3>=\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "+<\u00d7\u229e\u00ac\u25cf\u22a2\u22a3>=\u2299\u25c7",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 7,
+        "word": "<\u00d7\u229e\u00ac\u25cf\u22a2\u22a3>=\u2299\u25c7+",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 8,
+        "word": "\u00d7\u229e\u00ac\u25cf\u22a2\u22a3>=\u2299\u25c7+<",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 9,
+        "word": "\u229e\u00ac\u25cf\u22a2\u22a3>=\u2299\u25c7+<\u00d7",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 10,
+        "word": "\u00ac\u25cf\u22a2\u22a3>=\u2299\u25c7+<\u00d7\u229e",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 11,
+        "word": "\u25cf\u22a2\u22a3>=\u2299\u25c7+<\u00d7\u229e\u00ac",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "open_fork_dag"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": false,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": false
+    },
+    "canonical_k": 6,
+    "canonical_word": "+<\u00d7\u229e\u00ac\u25cf\u22a2\u22a3>=\u2299\u25c7",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: tri_ancestral_verdict, final_register, topology_class"
+  }
+}

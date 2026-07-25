@@ -298,7 +298,7 @@ class Ob3ectArtifact:
             parts.append("           the edges are not in it, so the same word wired two ways")
             parts.append("           is two different programs)")
         parts.append("")
-        parts.append("Phase 5: exOS")
+        parts.append("Phase 5: m⊙²")
         parts.append("  Compiler: "+a.exos_spec.compiler_frontend)
         parts.append("  IPC: "+a.exos_spec.ipc_mechanism)
         parts.append("  Memory: "+a.exos_spec.memory_mechanism)
