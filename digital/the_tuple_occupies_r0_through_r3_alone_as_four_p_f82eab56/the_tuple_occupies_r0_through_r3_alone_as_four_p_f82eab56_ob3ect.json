@@ -1,0 +1,337 @@
+{
+  "name": "The tuple occupies R0 through R3 alone as four pairs, and R4 through R7 belong to the closure witnesses, so the adjoint and the one-to-one do not enter the register file.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The tuple occupies R0 through R3 alone as four pairs, and R4 through R7 belong to the closure witnesses, so the adjoint and the one-to-one do not enter the register file.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "tuple",
+        "register file",
+        "closure witness",
+        "substrate vote"
+      ],
+      "boundary_condition": "the register file boundary, separating data registers R0\u2013R3 from witness registers R4\u2013R7, with the adjoint and one-to-one excluded from the file entirely",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "vacuum state of the register file before any tuple is loaded",
+        "justification": "the system begins in a void where no data or witness slots are present; all eight registers contain N",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the architectural specification that the register file is eight-wide, with the lower four holding tuple pairs and the upper four reserved for closure witnesses",
+        "justification": "this boundary closes the system, determining what may enter each register block and what is permanently excluded from the file",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "loading the IG tuple into the computational substrate",
+        "justification": "the tuple moves from an external representation into the machine, populating the eight data slots (D,\u03a6,T,\u03a9,K,f,H,P) into R0\u2013R3 as four B4 pairs",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "removal of the adjoint and one-to-one slots",
+        "justification": "the four slots R, \u0393, \u00c7, \u03a3 are actively discarded before register assignment; they are pulled out of the tuple stream and not written to the file, ensuring the file contains only data pairs",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "chaining of tuple ingestion with slot selection and witness inscription",
+        "justification": "the operations form a linear composition: void \u2192 load tuple \u2192 split into data and witness slots \u2192 select data slots \u2192 write data registers \u2192 inscribe witnesses \u2192 vote \u2192 record",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-inscription of the canonical program",
+        "justification": "the running program computes four closure witnesses (token diversity, self-reference, Frobenius order, dialetheia completeness) and writes them into R4\u2013R7, conferring identity on the system and making its closure evidence accessible for subsequent evaluation",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "decomposition of the full IG tuple into all twelve slots",
+        "justification": "the tuple is split into two sets: the eight data slots destined for R0\u2013R3 (D,\u03a6,T,\u03a9,K,f,H,P) and the four witness-ancillary slots (R,\u0393,\u00c7,\u03a3) that are excluded from the register file",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "recomposition of the data slots into the original tuple",
+        "justification": "the eight data slots are fused to recover the identical IG tuple that was loaded, verifying that the register file content suffices to reconstruct the tuple without the adjoint and one-to-one; the constraint FFUSE(FSPLIT(x)) = x holds because the excluded slots are redundant for tuple identity in this architecture",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "successful exclusion of witness-ancillary slots from the register file",
+        "justification": "the T-branch of the split evaluates to true when the four excluded slots are absent from R0\u2013R3; the file contains only clean data pairs, ready for closure witness inscription",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "inclusion of adjoint or one-to-one in the register file, violating the architectural boundary",
+        "justification": "the F-branch represents a state where witness-ancillary slots enter R0\u2013R3, corrupting the data block and mixing tuple content with closure evidence; this branch is never taken but must exist for the split to be well-formed",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "the unresolved moment during split when both inclusion and exclusion of ancillary slots are simultaneously possible",
+        "justification": "before the architectural constraint is applied, the system entertains a paradice where R, \u0393, \u00c7, \u03a3 both are and are not part of the register file; this dialetheia collapses to the true branch when the boundary rule asserts that they do not enter",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "permanent recording of the substrate vote result",
+        "justification": "the token scores computed from the register file are fixed in append-only memory, creating an irreversible record of which token the substrate selects for program synthesis; this mirrors the kernel\u2019s snapshot tier determination",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "the full twelve-slot IG tuple",
+      "split_input": "the tuple as loaded from the Grammar, containing all twelve primitive slots",
+      "split_outputs": [
+        "data slots: D, \u03a6, T, \u03a9, K, f, H, P (destined for R0\u2013R3)",
+        "witness-ancillary slots: R, \u0393, \u00c7, \u03a3 (excluded from the register file)"
+      ],
+      "fuse_element": "the eight data slots written into R0\u2013R3",
+      "fuse_result": "the identical IG tuple, because the data pairs alone uniquely determine the tuple\u2019s identity in this computational context; the excluded slots are structurally redundant",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "uninitialized register file with all eight registers set to N; the system before any tuple load or witness inscription",
+      "true_description": "a register pair encoding T in B4, indicating a successful evaluation or affirmative state, e.g., a slot combination that sums to 1 mod 4",
+      "false_description": "a register pair encoding F in B4, indicating a negative evaluation or failure, e.g., a slot combination that sums to 2 mod 4",
+      "both_description": "a register pair encoding B in B4, indicating a paradice where truth values are held simultaneously without resolution, e.g., a slot combination that sums to 3 mod 4",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "the register file is entirely void; no tuple, no witnesses, no vote. All R0\u2013R7 hold N."
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "the IG tuple is loaded from the Grammar into the computational layer, moving from external specification to internal representation."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "the tuple is decomposed into all twelve primitive slots. The T-arm collects the eight data slots (D,\u03a6,T,\u03a9,K,f,H,P); the F-arm collects the four witness-ancillary slots (R,\u0393,\u00c7,\u03a3)."
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALF",
+          "domain_action": "the F-arm immediately discards the ancillary slots; they are not written to the register file and are lost to the system. This branch terminates with an empty contribution."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "the T-arm retains the eight data slots and confirms the architectural rule that only data pairs occupy R0\u2013R3."
+        },
+        {
+          "step_num": 6,
+          "opcode": "FFUSE",
+          "domain_action": "the eight data slots are recomposed into the original tuple, proving that the register file content suffices to reconstruct the tuple identity. The file now contains the clean tuple in its lower four registers."
+        },
+        {
+          "step_num": 7,
+          "opcode": "IMSCRIB",
+          "domain_action": "the running program inspects itself and computes four closure witnesses: token diversity (written to R4 as a B4 value), self-reference (R5 as T/F), Frobenius order (R6 as T/F), and dialetheia completeness (R7 as T/F). R4\u2013R7 transition from void to concrete witness states."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "the substrate vote process begins, reading the register file to compute token affinities."
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALT",
+          "domain_action": "the vote yields a token score above the selection threshold, affirming the token that the substrate will synthesize into the next program."
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "the selected token is permanently recorded in append-only memory, creating an irreversible snapshot of the substrate\u2019s decision."
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "the system boundary is sealed; the register file now contains both the tuple data (R0\u2013R3) and closure witnesses (R4\u2013R7), and the vote outcome is fixed. The adjoint and one-to-one never entered the file."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the MiniKernel\u2019s substrate evaluator, which translates the IG tuple into a canonical program and seeds the register file",
+      "ipc_mechanism": "direct register access within the eight-wide B4 file; the token affinity table mediates between register states and program synthesis",
+      "memory_mechanism": "an append-only store for IFIX records, holding the sequence of token selections that build the program space",
+      "scheduler_mechanism": "the canonical program runs to completion, then triggers IMSCRIB and the substrate vote; execution is single-threaded and deterministic",
+      "alfs_store": "the Grammar\u2019s canonical program repository, which provides the twelve-slot tuple definition and the closure witness computation functions",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one register file read/write cycle per operation, plus the computational cost of split/merge and witness inscription",
+      "pre_cycle_state": "the register file is void (all N) before tuple loading, and the system has no closure evidence",
+      "post_cycle_state": "the register file contains the data tuple and computed witnesses; a token vote is recorded in memory. No information is lost because the tuple is fully recovered from the data slots and the witnesses are newly generated, not extracted from the tuple",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the transformation is reversible: the tuple is reconstructed exactly, and the closure witnesses are derived from the program structure, not consumed from the input entropy budget",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALF \u2192 EVALT \u2192 FFUSE \u2192 IMSCRIB \u2192 AFWD \u2192 EVALT \u2192 IFIX \u2192 TANCH\n-- Class: The tuple occupies R0 through R3 alone as four pairs, and R4 through R7 belong to the closure witnesses, so the adjoint and the one-to-one do not enter the register file.\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=11\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 5)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [6] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \u2299  | forward morphism \u2014 bidirectional arrow\n--   [8] EVALT     crit   := \u2299               \ud801\udc7e \u2192 \ud801\udc6d  | evaluate-true \u2014 criticality gate open\n--   [9] IFIX      prot   := \ud801\udc6d               \u2299 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_tuple_occupies_r0_through_r3_alone_06decd_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_tuple_occupies_r0_through_r3_alone_06decd_protocol : IGProtocol the_tuple_occupies_r0_through_r3_alone_06decd_s0 the_tuple_occupies_r0_through_r3_alone_06decd_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_tuple_occupies_r0_through_r3_alone_06decd_s5 the_tuple_occupies_r0_through_r3_alone_06decd_s5 = the_tuple_occupies_r0_through_r3_alone_06decd_s5 (idempotent)\n  (.seq (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l0 the_tuple_occupies_r0_through_r3_alone_06decd_s0 the_tuple_occupies_r0_through_r3_alone_06decd_s1) (.seq (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l1 the_tuple_occupies_r0_through_r3_alone_06decd_s1 the_tuple_occupies_r0_through_r3_alone_06decd_s2) (.seq (.prod (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l2 the_tuple_occupies_r0_through_r3_alone_06decd_s2 the_tuple_occupies_r0_through_r3_alone_06decd_s5) (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l2 the_tuple_occupies_r0_through_r3_alone_06decd_s2 the_tuple_occupies_r0_through_r3_alone_06decd_s5)) (.seq (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l5 the_tuple_occupies_r0_through_r3_alone_06decd_s5 the_tuple_occupies_r0_through_r3_alone_06decd_s5) (.seq (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l5 the_tuple_occupies_r0_through_r3_alone_06decd_s5 the_tuple_occupies_r0_through_r3_alone_06decd_s6) (.seq (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l6 the_tuple_occupies_r0_through_r3_alone_06decd_s6 the_tuple_occupies_r0_through_r3_alone_06decd_s7) (.seq (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l7 the_tuple_occupies_r0_through_r3_alone_06decd_s7 the_tuple_occupies_r0_through_r3_alone_06decd_s8) (.seq (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l8 the_tuple_occupies_r0_through_r3_alone_06decd_s8 the_tuple_occupies_r0_through_r3_alone_06decd_s9) (.arrow the_tuple_occupies_r0_through_r3_alone_06decd_l9 the_tuple_occupies_r0_through_r3_alone_06decd_s9 the_tuple_occupies_r0_through_r3_alone_06decd_s10)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_tuple_occupies_r0_through_r3_alone_06decd_true_arm : IGProtocol the_tuple_occupies_r0_through_r3_alone_06decd_s0 the_tuple_occupies_r0_through_r3_alone_06decd_s10 :=\n  (the_tuple_occupies_r0_through_r3_alone_06decd_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_tuple_occupies_r0_through_r3_alone_06decd_false_arm : IGProtocol the_tuple_occupies_r0_through_r3_alone_06decd_s0 the_tuple_occupies_r0_through_r3_alone_06decd_s10 :=\n  (the_tuple_occupies_r0_through_r3_alone_06decd_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_tuple_occupies_r0_through_r3_alone_06decd_tier_ground : OuroboricityTier := TierFunctor.obj the_tuple_occupies_r0_through_r3_alone_06decd_s0\ndef the_tuple_occupies_r0_through_r3_alone_06decd_tier : OuroboricityTier := TierFunctor.obj the_tuple_occupies_r0_through_r3_alone_06decd_s10\n#eval the_tuple_occupies_r0_through_r3_alone_06decd_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_tuple_occupies_r0_through_r3_alone_06decd_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_tuple_occupies_r0_through_r3_alone_06decd_frobenius :\n    igFrobeniusAlg.mul the_tuple_occupies_r0_through_r3_alone_06decd_s0 the_tuple_occupies_r0_through_r3_alone_06decd_s0 = the_tuple_occupies_r0_through_r3_alone_06decd_s0 :=\n  igFrobAlg_self_fusion the_tuple_occupies_r0_through_r3_alone_06decd_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      5
+    ],
+    "pair_list": [
+      [
+        2,
+        5
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": true,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The tuple occupies R0 through R3 alone as four pairs, and R4 through R7 belong to the closure witnesses, so the adjoint and the one-to-one do not enter the register file.",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc51\ud801\udc79\ud801\udc50\ud801\udc7a\ud801\udc54\ud801\udc75\ud801\udc63\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "grounding_status": "failed",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The tuple occupies R0\u2013R3 as four pairs while R4\u2013R7 are closure witnesses, meaning the boundary (surface) and interior are collapsed into a single register structure, which matches the scale-collapse primitive.\n\u00de=\ud801\udc78: The primitive \u00de (topology) with scale-collapse connectivity is required because the tuple occupies R0\u2013R3 as four pairs while R4\u2013R7 belong to closure witnesses, meaning the boundary (witnesses) carries the full bulk content losslessly, consistent with the already-assigned \ud801\udc66 dimensionality.\n\u0158=\ud801\udc51: The tuple's exclusive occupation of R0\u2013R3 and the closure witnesses in R4\u2013R7 imply a structural reconfiguration that is irreversible or semi-reversible.\n\u03a6=\ud801\udc79: The primitive \u03a6 is assigned polarity, and the tuple structure with closure witnesses in R4\u2013R7 implies a critical Z2 symmetry where \u03bc\u2218\u03b4=id holds provably exact.\n\u0192=\ud801\udc50: The tuple's exclusive occupation of R0\u2013R3 and the closure witnesses in R4\u2013R7 enforce a high-fidelity geometric constraint, yielding near-certain firing.\n\u00c7=\ud801\udc7a: The tuple structure with closure witnesses in separate registers suggests disorder-frozen localization where ergodicity is broken.\n\u0393=\ud801\udc54: The tuple structure implies a global correlation because the register file partitioning directly couples the tuple's components to the closure witnesses, affecting the entire system's state.\n\u0262=\ud801\udc75: The tuple occupies R0 through R3 alone as four pairs, and R4 through R7 belong to the closure witnesses, so the adjoint and the one-to-one do not enter the register file.\n\u2299=\ud801\udc63: The tuple occupies R0 through R3 alone as four pairs, and R4 through R7 belong to the closure witnesses, so the adjoint and the one-to-one do not enter the register file, indicating the system has passed through criticality into a supercritical regime.\n\u0126=\ud801\udc6b: The tuple structure and closure witnesses imply a topologically enforced chirality that cannot be undone without global restructuring.\n\u03a3=\ud801\udc73: The tuple occupies R0 through R3 alone as four pairs, while R4 through R7 belong to the closure witnesses, indicating different counts on each side.\n\u03a9=\ud801\udc5f: The tuple's structural role is encoded in the closure witnesses (R4\u2013R7), which carry non-Abelian protection requiring \ud801\udc66 dimensionality.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2>\u25c7\u00d7+\u25cf\u2299>+\u00ac\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": ">\u25c7\u00d7+\u25cf\u2299>+\u00ac\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u25c7\u00d7+\u25cf\u2299>+\u00ac\u22a3\u22a2>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u00d7+\u25cf\u2299>+\u00ac\u22a3\u22a2>\u25c7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+\u25cf\u2299>+\u00ac\u22a3\u22a2>\u25c7\u00d7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u25cf\u2299>+\u00ac\u22a3\u22a2>\u25c7\u00d7+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u2299>+\u00ac\u22a3\u22a2>\u25c7\u00d7+\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": ">+\u00ac\u22a3\u22a2>\u25c7\u00d7+\u25cf\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "+\u00ac\u22a3\u22a2>\u25c7\u00d7+\u25cf\u2299>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u00ac\u22a3\u22a2>\u25c7\u00d7+\u25cf\u2299>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u22a3\u22a2>\u25c7\u00d7+\u25cf\u2299>+\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 8,
+    "canonical_word": "+\u00ac\u22a3\u22a2>\u25c7\u00d7+\u25cf\u2299>",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}
