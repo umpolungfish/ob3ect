@@ -1,0 +1,245 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → EVALT → CLINK → AFWD → FSPLIT → EVALT → AFWD → EVALF → AREV → ENGAGR → FFUSE → FFUSE → IFIX → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "Measure-theoretic density of the set A in the complement",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\nMeasure-theoretic density of the set A in the complement of a maximal sum-free set S",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "The ambient measurable space containing the set A and the maximal sum-free set S",
+      "domain_name": "Measure-theoretic density of the set A in the complement",
+      "domain_type": "mathematical",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "openrouter",
+      "surface_tokens": [
+        "Lebesgue-measure",
+        "sum-free-set",
+        "density-point"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "Lebesgue integration",
+        "justification": "The forward transformation of a set into its numerical measure",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "Set inversion",
+        "justification": "The mapping from a measure value back to a candidate set of points",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "Intersection operation",
+        "justification": "The sequential composition of the set A with the complement of S",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "Boundary point",
+        "justification": "A point where every neighborhood contains both A and its complement in equal measure-theoretic weight",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "Dispersion point",
+        "justification": "The condition where the local measure ratio approaches zero",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "Density point",
+        "justification": "The condition where the local measure ratio approaches unity",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "Set union",
+        "justification": "The reconstitution of the original measurable space from S and its complement",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "Partition of the universe",
+        "justification": "The division of the space into the sum-free set S and its complement S-prime",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "The value of the density",
+        "justification": "The final scalar result appended to the mathematical record",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "Characteristic function",
+        "justification": "The identity mapping that identifies points as belonging to the set without transformation",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "The measure-theoretic limit",
+        "justification": "The final value representing the density of A in the complement of S",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "Empty measurable space",
+        "justification": "The initial state before the definition of any sets or measure assignments",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "failure_reason": "",
+      "frobenius_verdict": "PASS",
+      "fuse_element": "Set union",
+      "fuse_result": "The total measurable space X",
+      "split_element": "Partition of the universe",
+      "split_input": "The total measurable space X",
+      "split_outputs": [
+        "Maximal sum-free set S",
+        "Complement set S-prime"
+      ],
+      "test_instance": ""
+    },
+    "phase_3": {
+      "both_description": "The point is a Lebesgue point for both A and its complement",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "The set A is locally sparse within the complement of S",
+      "transitions": [],
+      "true_description": "The set A is locally dense within the complement of S",
+      "void_description": "The null set with measure zero"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "define the measurable space X",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "identify the set A within X",
+          "opcode": "IMSCRIB",
+          "step_num": 2
+        },
+        {
+          "domain_action": "partition X into S and S-prime",
+          "opcode": "FSPLIT",
+          "step_num": 3
+        },
+        {
+          "domain_action": "isolate the complement S-prime",
+          "opcode": "EVALT",
+          "step_num": 4
+        },
+        {
+          "domain_action": "intersect A with S-prime",
+          "opcode": "CLINK",
+          "step_num": 5
+        },
+        {
+          "domain_action": "apply the Lebesgue measure to the intersection",
+          "opcode": "AFWD",
+          "step_num": 6
+        },
+        {
+          "domain_action": "branch on the limit of the measure ratio at point x",
+          "opcode": "FSPLIT",
+          "step_num": 7
+        },
+        {
+          "domain_action": "point x is a density point of A in S-prime",
+          "opcode": "EVALT",
+          "step_num": 8
+        },
+        {
+          "domain_action": "increment the density count",
+          "opcode": "AFWD",
+          "step_num": 9
+        },
+        {
+          "domain_action": "point x is not a density point",
+          "opcode": "EVALF",
+          "step_num": 10
+        },
+        {
+          "domain_action": "discard the point from the density calculation",
+          "opcode": "AREV",
+          "step_num": 11
+        },
+        {
+          "domain_action": "point x lies on the measure-theoretic boundary",
+          "opcode": "ENGAGR",
+          "step_num": 12
+        },
+        {
+          "domain_action": "aggregate the local density results",
+          "opcode": "FFUSE",
+          "step_num": 13
+        },
+        {
+          "domain_action": "rejoin S and S-prime to verify the total measure",
+          "opcode": "FFUSE",
+          "step_num": 14
+        },
+        {
+          "domain_action": "record the final density value",
+          "opcode": "IFIX",
+          "step_num": 15
+        },
+        {
+          "domain_action": "close the measure-theoretic evaluation",
+          "opcode": "TANCH",
+          "step_num": 16
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "The axioms of Zermelo-Fraenkel set theory with Choice",
+      "compiler_frontend": "The Lebesgue differentiation theorem",
+      "ipc_mechanism": "The sigma-algebra of measurable sets",
+      "memory_mechanism": "The Borel measure space",
+      "scheduler_mechanism": "The limit process as the neighborhood radius approaches zero"
+    },
+    "phase_6": {
+      "cycle_cost": "The computational complexity of the limit operation",
+      "delta_s_verdict": "ΔS ≈ 0 — The information content of the set is preserved through the measure-theoretic mapping",
+      "failure_mode": "",
+      "post_cycle_state": "A fixed scalar value in the interval [0, 1]",
+      "pre_cycle_state": "An undefined density ratio"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 1.667,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 3,
+    "fork_positions": [
+      2,
+      6
+    ],
+    "fuse_positions": [
+      12,
+      13
+    ],
+    "nesting_depth": 1,
+    "open_forks": 0,
+    "sequence_length": 16,
+    "t_branch_ops": 5,
+    "topology_class": "nested",
+    "total_pairs": 2
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
