@@ -21,6 +21,11 @@ import os
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent))
+# The gate below is imported absolutely as `imscribing_grammar.agents...`, which
+# needs the parent of imscribing_grammar on the path, not imscribing_grammar
+# itself. Without it the gate import fails, and since the gate is mandatory every
+# ob3ect call dies with "auto.py exited 1".
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from ob3ect.core import (
     Ob3ectArtifact, DomainCharter, OpcodeMap, OpcodeEntry,
