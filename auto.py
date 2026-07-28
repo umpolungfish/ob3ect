@@ -293,6 +293,16 @@ BANKING A RESULT BEFORE REVERSING IT
              restores exactly what the clear took
   This is what a proof does when it establishes a lemma and keeps it in scope
   while a later chain runs: the lemma is the outer frame.
+
+  A SECOND AND INDEPENDENT RULE. Whether anything is banked is the above.
+  Whether a SURPLUS survives is a different question, decided by where the
+  splits fall between deposits of the SAME value:
+    two EVALT in ONE region      -> the region carries both, both come back
+    two EVALT split by an FSPLIT -> sibling regions, the fold keeps the LARGER
+  So a program can bank correctly and still lose a count, and a program can
+  deposit carefully into one region and lose everything because its FFUSE ran
+  before the reversal. Neither rule implies the other; both are proved in
+  p4ramill Imscribing/IMASM/BankedWeight.lean.
   Cross-branch: FSPLIT.F may route to a non-matched FFUSE (paradice / entangled topology)
 
 BACK-PROPAGATION (self-referential loops)

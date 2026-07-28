@@ -346,6 +346,10 @@ class Ob3ectArtifact:
             for e in b.get("exposed_clears", []):
                 parts.append("    step %s %s cleared %s with nothing behind it"
                              % (e["step"], e["glyph"], e["weight"]))
+            if b.get("surplus_total"):
+                parts.append("    surplus: %s unit(s) flattened by a fold between "
+                             "sibling regions" % b["surplus_total"])
+                parts.append("    " + str(b.get("surplus_note")))
             if b.get("remedy"):
                 parts.append("  " + b["remedy"])
         # Phase 11: SIXTEEN_3 Trilattice Breakdown
