@@ -170,7 +170,7 @@ class WitnessVessel:
 # whose 12 coordinates form 12 physical register "arms." Boarding
 # splits modulus from phase; readback fuses them back.
 # 
-# Structural identity: the Dual-Link structure of the d=12 fiducial
+# Identity: the Dual-Link structure of the d=12 fiducial
 # IS the fsplit/ffuse pair. z_k * conj(z_k) = N_k (modulus collapse)
 # IS the B -> (T, F) split. The half-angle reconstruction of the
 # phase IS the (T, F) -> B fuse.

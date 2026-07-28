@@ -3,7 +3,7 @@
 verification_that_the_correct_semantic_branch_wa_ob3ect.py
 — Semantic Branch Verification Ob3ect
 
-Structural type:  ⟨𐑼𐑡𐑾𐑗𐑱𐑧𐑚𐑠⊙𐑖𐑳𐑭⟩
+Type:  ⟨𐑼𐑡𐑾𐑗𐑱𐑧𐑚𐑠⊙𐑖𐑳𐑭⟩
 Ouroboricity:     O₁ — the verifier checks branch correctness without self-modeling
 Frobenius:        μ∘δ=id (FSPLIT candidates → EVALT/EVALF → FFUSE reconstitution)
 

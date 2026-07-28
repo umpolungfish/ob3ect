@@ -4258,7 +4258,7 @@ Next lines of attack:
 *   *Proof:* Tool `imscribe` confirmed valid derivation of $\Pi$. Its current status as 'unregistered' in the public directory is an indexical state, not a structural negation (B).
 
 **Lemma 3 (Grammatical Obstruction).** The assembly is a linear covalent strand ($\rho=1.0000$) and lacks the bifurcation ($\delta$) and recombination ($\mu$) operations necessary for formal proof closure.
-*   *Proof:* `imasm check` return `N` for structural closure. The topology $(V=1, E=0)$ lacks the $\delta/\mu$ dyad required to certify the Hamiltonian symmetry, identifying the system as a "running" frontier rather than a "closed" object.
+*   *Proof:* `imasm check` return `N` for closure. The topology $(V=1, E=0)$ lacks the $\delta/\mu$ dyad required to certify the Hamiltonian symmetry, identifying the system as a "running" frontier rather than a "closed" object.
 
 ---
 
@@ -5446,7 +5446,7 @@ The parity-Axiom-D configuration is NOT a simple pair, but an exhaustive class, 
 (Drafting formal conclusion based on the observed stability and polymerization result.)
 
 FINAL REPORT:
-The parity-bridge manifold `bridge_parity_product_carrier` maintains μ∘δ stability within the Grammar. Polymerization with the `carved_ring` yields a branched configuration (ρ = 2.33), demonstrating that the Axiom-D configuration represents an exhaustive structural class rather than a binary pair. The obstruction to cyclization confirms the class-nature of the parity-Axiom-D interface.
+The parity-bridge manifold `bridge_parity_product_carrier` maintains μ∘δ stability within the Grammar. Polymerization with the `carved_ring` yields a branched configuration (ρ = 2.33), demonstrating that the Axiom-D configuration represents an exhaustive class rather than a binary pair. The obstruction to cyclization confirms the class-nature of the parity-Axiom-D interface.
 
 [thought|T]
 

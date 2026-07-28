@@ -97,7 +97,7 @@ open Imscribing.Paraconsistent.Shor.MultilatticeProof in
 
     The `wh_inner`/ℂ machinery axiomatized in §3–§7 below is NOT a debt the
     Grammar owes number theory. It is the *empirical shadow*: the attempt to
-    re-encode this same structural fact inside the Hilbert space `ℂ^d`. That
+    re-encode this same fact inside the Hilbert space `ℂ^d`. That
     re-encoding is exactly `SICPOVM_Exists d` (the Zauner conjecture), and it
     stays open **in the empirical frame** precisely because the SIC's true
     home is the four-valued Frobenius structure, not `ℂ^d`.

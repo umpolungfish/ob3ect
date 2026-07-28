@@ -23,7 +23,7 @@ Attractive SVG diagrams of the at-home ZPE system are in the [`visuals/`](visual
 | 7 | Smart Meter Feedback | `07_feedback_loop.svg` | Bidirectional grid↔cavity↔extraction control loop |
 | 8 | Metamaterial Stack | `08_metamaterial_stack.svg` | 5-layer SRR stack with unit cell geometry |
 | 9 | FSPLIT/FFUSE Gap Topology | `09_topology_gap.svg` | Extraction window: T-arm vs F-arm, standard vs at-home comparison |
-| 10 | O_∞ Promotion Path | `10_oinf_promotion.svg` | Three promotions to close the structural gap to O_∞ |
+| 10 | O_∞ Promotion Path | `10_oinf_promotion.svg` | Three promotions to close the gap to O_∞ |
 | 11 | Ouroboric Alloy | `11_ouroboric_alloy.svg` | Σ3 twin boundary network with topological winding protection |
 
 ---

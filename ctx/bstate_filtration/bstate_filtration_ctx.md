@@ -80,7 +80,7 @@ ClassicalRestriction.lean (coreflection stack). Nothing re-derived.
    frobenius_closure_inexpressible_classically) is the DISCRETE SHADOW of
    theorem 2: same one-way move at the logic layer and the Hilbert layer.
    Bridge lemma: the rank-1 selection realizes the coreflector; both fail
-   reversibility for the same structural reason (the omitted object is B).
+   reversibility for the same reason (the omitted object is B).
 
 4. the empirical junction (NOT a Lean theorem — an ig-pulse verification
    pass): recompute the two CONVENTION-INDEPENDENT signatures — (a) zero

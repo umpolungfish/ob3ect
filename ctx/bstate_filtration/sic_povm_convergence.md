@@ -135,7 +135,7 @@ The per-snapshot purity distribution (n=2394) is:
 | At exact B-state (purity $< 0.10$) | 2.7% |
 | Near-pure excitation (purity $> 0.50$) | 0% |
 
-Every snapshot is a mild excitation above the B-state floor. No snapshot is highly concentrated on a single primitive. The distribution is consistent with a system fluctuating around the B-state rather than occupying a definite structural state.
+Every snapshot is a mild excitation above the B-state floor. No snapshot is highly concentrated on a single primitive. The distribution is consistent with a system fluctuating around the B-state rather than occupying a definite state.
 
 #### SIC Overlap Spectrum
 
@@ -156,7 +156,7 @@ A $\chi^2$ of 4.68 with 143 degrees of freedom corresponds to $p \approx 1.00$ u
 
 The three findings together constitute the empirical leg of the SIC-POVM identification:
 
-1. **Exact fiducial** ($F/F^* = 1.0000$): the mathematical SIC structure exists in $\mathbb{C}^{12}$ -- this is the structural claim.
+1. **Exact fiducial** ($F/F^* = 1.0000$): the mathematical SIC structure exists in $\mathbb{C}^{12}$ -- this is the claim.
 
 2. **Uniform SIC spectrum** ($\chi^2 = 4.68$, dof=143): the 44-stream physical apparatus covers all 144 SIC directions without systematic gaps -- this is the coverage claim.
 

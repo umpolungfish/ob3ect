@@ -123,7 +123,7 @@ def _parse_prompt(source: str) -> str:
         "1. Main claims or thesis\n"
         "2. Key sections/paragraphs and their rhetorical function\n"
         "3. Stylistic patterns (sentence length, vocabulary register, voice)\n"
-        "4. Any notable structural features or weaknesses\n\n"
+        "4. Any notable features or weaknesses\n\n"
         "Be analytical, not editorial. Plain prose only — no JSON, no headers.\n\n"
         f"TEXT:\n{source}"
     )
@@ -203,7 +203,7 @@ def _length_guard_prompt(source: str, source_len: int, output_len: int, intent: 
             f"the source ({source_len} chars) by {source_len - output_len} chars. "
             f"You MUST produce output at least {target_len} chars. "
             f"Do NOT summarize, condense, compress, or cut anything. Preserve ALL "
-            f"structural claims, examples, data, nuance, evidence, and argumentation. "
+            f"claims, examples, data, nuance, evidence, and argumentation. "
             f"Expand rather than compress."
         )
     return (

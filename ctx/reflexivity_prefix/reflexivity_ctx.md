@@ -35,7 +35,7 @@ count 1->2); lm_descent prefixed->bare period 26->18 (-8, pair count 3->2).
 
 ## The question this ob3ect batch is for
 
-Characterize the reflexive meta-prefix ("structural imscription of X" vs "X")
+Characterize the reflexive meta-prefix ("imscription of X" vs "X")
 as its own structural operator on the IGProtocol construction: what primitive
 or opcode delta does prepending self-referential framing to a description
 inject into the resulting protocol, given that it demonstrably changes

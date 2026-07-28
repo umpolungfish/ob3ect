@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → FSPLIT → EVALT → EVALF → AREV → ENGAGR → FFUSE → CLINK → IFIX → TANCH
--- Class: mapping structural invariants to the physical baryon asymmetry η
+-- Class: mapping invariants to the physical baryon asymmetry η
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

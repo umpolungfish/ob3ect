@@ -194,7 +194,7 @@ pub fn witness_report(problem: &str) -> String {
         out.push_str("All closure-bearing universes require Ω≥3 (integer winding).\n");
         out.push_str("This problem CANNOT close in any universe because its winding\n");
         out.push_str("is structurally insufficient. The low_winding_theorem is a\n");
-        out.push_str("structural proof — not an empirical limit.\n");
+        out.push_str("proof — not an empirical limit.\n");
     }
 
     out

@@ -23,7 +23,7 @@ The grammar is autopoietic.
 
 ## The Structural Core
 
-Every ob3ect is defined by the Imscribing Grammar—a 12-primitive coordinate system that assigns each system a location in a crystal of 17,280,000 distinct structural types. The primitives are not arbitrary categories but minimal distinguishing features: dimensionality, topology, relational mode, parity, fidelity, kinetics, scope, interaction grammar, criticality, chirality, stoichiometry, and winding.
+Every ob3ect is defined by the Imscribing Grammar—a 12-primitive coordinate system that assigns each system a location in a crystal of 17,280,000 distinct types. The primitives are not arbitrary categories but minimal distinguishing features: dimensionality, topology, relational mode, parity, fidelity, kinetics, scope, interaction grammar, criticality, chirality, stoichiometry, and winding.
 
 When an ob3ect executes, it assigns itself coordinates in this lattice. This assignment is not cosmetic; it is structural surgery. The coordinate tells us *what kind of thing* the program is—not just what it does, but how it relates to other things, how it handles uncertainty, how it preserves information, how it winds around itself.
 

@@ -162,7 +162,7 @@ These are load-bearing for everything that follows:
 | `poldisc` on raw poly | Times out at 60 s | **Never use** |
 | `quadhilbert(h=64)` | OOM > 8 GB | **Dead** |
 
-Verification uses **structural invariants** (degree, SHA256 fingerprint, disc exponent pattern m_d^(deg/F)) rather than computed discriminants.
+Verification uses **invariants** (degree, SHA256 fingerprint, disc exponent pattern m_d^(deg/F)) rather than computed discriminants.
 
 Early C16 runs with `polredabs` ran 44+ minutes and were SIGTERM'd with no output. The fast path (raw `bnrclassfield` only) completes in ~5.5 s.
 
