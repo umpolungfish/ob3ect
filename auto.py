@@ -137,6 +137,34 @@ def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
     except Exception as e:
         return f"Phase 11: SIXTEEN_3 Trilattice Breakdown — computation failed: {e}"
 
+def _banked_count_check(steps: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Was anything counted, then cleared with nothing banked behind it?
+
+    AREV empties the register and leaves open frames alone, so a count fused
+    back to depth zero is exposed to the next reversal while the same count held
+    one level up survives it. A program that counts, reverses, then bounds must
+    open the region that will HOLD the result before the region that COMPUTES
+    it, and close them in that order.
+    """
+    try:
+        import sys as _s
+        from pathlib import Path as _P
+        d = str(_P(__file__).resolve().parent.parent / "imscribing_grammar" / "scripts")
+        if d not in _s.path:
+            _s.path.insert(0, d)
+        from lattice_flow import banked_count_check, ALIAS  # noqa
+        from imasm16_3_core import NAME_FROM_GLYPH  # noqa
+        toks = []
+        for st in steps:
+            op = st.get("opcode", "")
+            toks.append("FSPLIT3" if op == "FSPLIT" else
+                        "FFUSE3" if op == "FFUSE" else
+                        "EVALI" if op == "ENGAGR" else op)
+        return banked_count_check(toks)
+    except Exception as e:
+        return {"status": "unavailable", "error": str(e)}
+
+
 def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     """Turn ROTAT — the op-opcode, the axis the wheel turns on — over the full
     orbit of the bootstrap word and recompute every machine readout at every
@@ -249,6 +277,22 @@ EDGE ROUTING INSIDE A FSPLIT/FFUSE PAIR
     AFWD (forward morphism) always belongs on the T-arm.
     Secondary anchors activate only when the primary (EVALT/EVALF) anchor is absent.
   Nesting: FSPLIT/FFUSE pairs may nest; innermost pairs matched first
+
+BANKING A RESULT BEFORE REVERSING IT
+  AREV empties the register and leaves open FSPLIT frames untouched. A result
+  fused back to depth zero is therefore exposed to the next reversal, while the
+  same result held one level up survives it.
+  So when a program COUNTS or ESTABLISHES something, then REVERSES direction
+  (AREV), then BOUNDS or CONCLUDES: open the region that will HOLD the result
+  BEFORE opening the region that COMPUTES it, and close them in that order.
+    wrong: ... FSPLIT compute FFUSE  CLINK  FSPLIT AREV bound FFUSE ...
+             the computed result is in the open when AREV arrives and is lost
+    right: ... FSPLIT  FSPLIT compute FFUSE  CLINK AREV bound  FFUSE ...
+             the inner FFUSE folds into the enclosing frame, AREV costs the
+             register everything and the frame nothing, the outer FFUSE
+             restores exactly what the clear took
+  This is what a proof does when it establishes a lemma and keeps it in scope
+  while a later chain runs: the lemma is the outer frame.
   Cross-branch: FSPLIT.F may route to a non-matched FFUSE (paradice / entangled topology)
 
 BACK-PROPAGATION (self-referential loops)
@@ -803,6 +847,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
     # readouts are spectral (ROTAT-invariant) and which are phase.
     try:
         artifact.rotat_audit = _rotat_orbit_audit(bootstrap.steps)
+        artifact.banked_count_check = _banked_count_check(bootstrap.steps)
     except Exception:
         artifact.rotat_audit = None
 

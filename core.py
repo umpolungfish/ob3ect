@@ -217,6 +217,11 @@ class Ob3ectArtifact:
     grounding_status: str = "ungated"          # "full" | "partial" | "failed" | "override" | "ungated"
     grounding_reasoning: str = ""              # the gated imscriber's own reasoning for the assignment
     grounding_failed_primitives: list = field(default_factory=list)
+    banked_count_check: dict = field(default_factory=dict)
+    # AREV empties the register and leaves open frames alone, so a count fused
+    # back to depth zero is exposed to the next reversal while the same count
+    # held one level up survives it. A program that counts, reverses, then
+    # bounds must bank the count in an enclosing region first.
     # WHICH primitives failed grounding. The gate computes this and it was being
     # discarded: an artifact could carry grounding_status "failed" with nothing
     # anywhere saying what failed, so the verdict was unactionable. A status
@@ -331,6 +336,17 @@ class Ob3ectArtifact:
             parts.append("")
             parts.append("Phase 9: Topology")
             parts.append("  " + a.topology_report.summary().replace(chr(10), chr(10)+"  "))
+        # Phase 9b: was anything counted and then cleared with nothing banked?
+        if a.banked_count_check:
+            b = a.banked_count_check
+            parts.append("")
+            parts.append("Phase 9b: Banked count")
+            parts.append("  " + ("✓ " if b.get("banked_ok") else "⚠ ") + str(b.get("verdict")))
+            for e in b.get("exposed_clears", []):
+                parts.append("    step %s %s cleared %s with nothing behind it"
+                             % (e["step"], e["glyph"], e["weight"]))
+            if b.get("remedy"):
+                parts.append("  " + b["remedy"])
         # Phase 11: SIXTEEN_3 Trilattice Breakdown
         if a.sixteen_3_breakdown:
             parts.append("")
@@ -367,6 +383,7 @@ class Ob3ectArtifact:
             "grounded_tuple":self.grounded_tuple,
             "grounding_status":self.grounding_status,
             "grounding_failed_primitives":self.grounding_failed_primitives,
+            "banked_count_check":self.banked_count_check,
             "grounding_reasoning":self.grounding_reasoning,
             "lean_verified":self.lean_verified,
             "lean_verification_output":self.lean_verification_output,
