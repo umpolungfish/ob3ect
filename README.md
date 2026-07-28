@@ -174,6 +174,29 @@ to the traced monoidal structure.
 
 ---
 
+### Churn
+
+Zoom moves across granularity, coarser and finer descriptions of one thing.
+Churn moves inward. It imscribes the description, folds the resulting ob3ect
+back into the context that produced it, and then imscribes each of that
+ob3ect's own steps as a description in its own right.
+
+The folding is the point. A child is not imscribed from its step alone but from
+its step held inside the ob3ect the step belongs to, held in turn inside the
+original description. Without that, the children are twelve unrelated ob3ects
+that happen to share a parent.
+
+Depth is counted in **windings**, one winding being a full turn of the pipeline
+over its own output. One winding is the root alone and does nothing a plain run
+would not. Two imscribes every step of the root. Three winds each of those in
+turn, so the count grows as the product of the step counts: a twelve-step
+ob3ect gives 13 ob3ects at two windings and 157 at three. `--max-ob3ects` stops
+the walk rather than letting it run away.
+
+What the report is worth reading for is its last line. A step that closes in
+place but fails when imscribed on its own is the interesting case: the parent
+has closed over something that does not close by itself.
+
 ## The Digital Tower
 
 28 self-verifying layers + 12 IMASM Novel Arrangement classes (layers 29-40). Run the full tower:
@@ -427,6 +450,10 @@ python auto.py "a linear logic proof net for the cut-elimination theorem"
 # Operating systems
 python auto.py "a self-hosting kernel that re-compiles its own scheduler" \
     --domain computational --scope maximal
+
+# Churn: wind the pipeline back over its own output
+python auto.py "a horn torus" --churn --windings 2
+python auto.py "a catalytic cycle" --churn --windings 3 --max-ob3ects 60
 
 # Physical
 python auto.py "a Bose-Einstein condensate at the critical phase boundary"  \

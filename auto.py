@@ -1353,6 +1353,192 @@ async def zoom_design(
     return ZoomChain(seed, target, zoom_levels, morphisms)
 
 
+# ── ChurnTree ─────────────────────────────────────────────────────────────────
+#
+# Zoom moves across Γ, coarser and finer descriptions of one thing. Churn moves
+# INWARD: it takes the ob3ect a description produced, puts that ob3ect back into
+# the context it came from, and then imscribes each of its own steps as a
+# description in its own right.
+#
+# The depth is counted in WINDINGS. One winding is the root ob3ect alone. Two is
+# the root plus an ob3ect for each of its steps. Three winds each of those in
+# turn. A winding is a full turn of the pipeline over its own output, which is
+# why it is the natural unit here and not "levels": the second turn is not a
+# finer description of the first, it is the first one gone round again with
+# itself in hand.
+
+
+class ChurnNode:
+    """One ob3ect in the churn, with the step of its parent that produced it."""
+
+    def __init__(self, description: str, artifact: "Ob3ectArtifact", winding: int,
+                 opcode: Optional[str] = None, step_num: Optional[int] = None):
+        self.description = description
+        self.artifact = artifact
+        self.winding = winding
+        self.opcode = opcode
+        self.step_num = step_num
+        self.children: List["ChurnNode"] = []
+
+    def walk(self):
+        yield self
+        for c in self.children:
+            yield from c.walk()
+
+
+class ChurnTree:
+    def __init__(self, seed: str, root: ChurnNode, windings: int):
+        self.seed = seed
+        self.root = root
+        self.windings = windings
+
+    def nodes(self) -> List[ChurnNode]:
+        return list(self.root.walk())
+
+    def report(self) -> str:
+        sep = "=" * 70
+        lines = [sep, f"ChurnTree: {self.seed}", f"windings: {self.windings}", sep]
+        for node in self.nodes():
+            art = node.artifact
+            pad = "  " * node.winding
+            head = f"{pad}[w={node.winding}]"
+            if node.opcode:
+                head += f" {node.opcode}"
+            lines.append(f"\n{head} {node.description[:90]}")
+            frob = art.split_fuse_report.frobenius_verdict
+            word = getattr(art, "glyph_word", "") or ""
+            lines.append(f"{pad}  Frobenius: {frob}   word: {word}")
+        lines.append(f"\n{sep}")
+        all_nodes = self.nodes()
+        passed = sum(1 for n in all_nodes
+                     if n.artifact.split_fuse_report.frobenius_verdict == "PASS")
+        lines.append(f"ob3ects: {len(all_nodes)}   Frobenius PASS: {passed}")
+        # A churn is coherent when winding inward does not break closure. A step
+        # that fails only when imscribed on its own is the interesting case: the
+        # parent closes over something that does not close by itself.
+        broke = [n for n in all_nodes
+                 if n.winding > 0 and n.artifact.split_fuse_report.frobenius_verdict != "PASS"]
+        if broke:
+            lines.append("steps that do not close when imscribed alone:")
+            for n in broke:
+                lines.append(f"  w={n.winding} {n.opcode}: {n.description[:70]}")
+        else:
+            lines.append("every step closes on its own as well as in place")
+        lines.append(sep)
+        return "\n".join(lines)
+
+    def save(self, out_dir: Path) -> Path:
+        def node_json(n: ChurnNode) -> Dict[str, Any]:
+            return {
+                "winding": n.winding,
+                "opcode": n.opcode,
+                "step_num": n.step_num,
+                "description": n.description,
+                "frobenius": n.artifact.split_fuse_report.frobenius_verdict,
+                "glyph_word": getattr(n.artifact, "glyph_word", ""),
+                "children": [node_json(c) for c in n.children],
+            }
+        manifest = {"seed": self.seed, "windings": self.windings,
+                    "root": node_json(self.root)}
+        path = out_dir / "churn_manifest.json"
+        path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
+        return path
+
+
+def _churn_context(base_context: Optional[str], seed: str,
+                   artifact: "Ob3ectArtifact") -> str:
+    """The parent ob3ect, folded back into the context that produced it.
+
+    This is the point of churn: the child is not imscribed from its step alone
+    but from its step held inside the ob3ect the step belongs to, which is in
+    turn held inside the original description. Without this the children are
+    twelve unrelated ob3ects that happen to share a parent.
+    """
+    steps = artifact.bootstrap_sequence.steps
+    word = getattr(artifact, "glyph_word", "") or ""
+    lines = [
+        "## The ob3ect this step belongs to",
+        "",
+        f"It was imscribed from: {seed}",
+        "",
+        f"Its IMASM word is {word}, and its steps are:",
+    ]
+    for st in steps:
+        lines.append(f"  {st['step_num']:>2}. {st['opcode']:<8} {st['domain_action']}")
+    lines += [
+        "",
+        f"Frobenius verdict on the whole: {artifact.split_fuse_report.frobenius_verdict}",
+        "",
+        "Imscribe the named step as an ob3ect in its own right. It is a part that",
+        "already has a place, so say what it is, not what it is for.",
+        "",
+    ]
+    folded = "\n".join(lines)
+    return (base_context + "\n\n" + folded) if base_context else folded
+
+
+async def churn_design(
+    description: str,
+    windings: int = 2,
+    domain_type: Optional[str] = None,
+    scope: str = "local",
+    provider_name: Optional[str] = None,
+    model: Optional[str] = None,
+    max_retries: int = 3,
+    temperature: float = 0.4,
+    context: Optional[str] = None,
+    max_ob3ects: int = 200,
+) -> ChurnTree:
+    """Imscribe `description`, then wind the pipeline back over its own steps.
+
+    `windings` counts full turns. One is the root alone and does nothing a plain
+    run would not. Each further winding imscribes every step of every ob3ect
+    from the turn before, so the count grows as the product of the step counts:
+    a twelve-step ob3ect gives 13 ob3ects at two windings and 157 at three.
+    `max_ob3ects` stops the walk rather than letting it run away.
+    """
+    print(f"Churning {description!r} to {windings} winding(s)")
+
+    root_art = await auto_design(
+        description, name=description, domain_type=domain_type, scope=scope,
+        provider_name=provider_name, model=model, max_retries=max_retries,
+        temperature=temperature, context=context,
+    )
+    root = ChurnNode(description, root_art, winding=0)
+    made = 1
+
+    async def wind(node: ChurnNode, depth_left: int):
+        nonlocal made
+        if depth_left <= 0:
+            return
+        steps = node.artifact.bootstrap_sequence.steps
+        inner = _churn_context(context, description, node.artifact)
+        for st in steps:
+            if made >= max_ob3ects:
+                print(f"  [churn stopped at {max_ob3ects} ob3ects]")
+                return
+            desc = st["domain_action"]
+            print(f"  {'  ' * node.winding}[w={node.winding + 1}] {st['opcode']:<8} {desc[:60]}")
+            art = await auto_design(
+                desc, name=desc, domain_type=domain_type, scope=scope,
+                provider_name=provider_name, model=model, max_retries=max_retries,
+                temperature=temperature, context=inner,
+            )
+            made += 1
+            child = ChurnNode(desc, art, node.winding + 1,
+                              opcode=st["opcode"], step_num=st["step_num"])
+            node.children.append(child)
+            await wind(child, depth_left - 1)
+
+    await wind(root, windings - 1)
+    return ChurnTree(description, root, windings)
+
+
+def churn(description: str, **kwargs) -> ChurnTree:
+    """Synchronous wrapper around churn_design."""
+    return asyncio.run(churn_design(description, **kwargs))
+
+
 def zoom(seed: str, target: str, **kwargs) -> ZoomChain:
     """Synchronous wrapper around zoom_design."""
     return asyncio.run(zoom_design(seed, target, **kwargs))
@@ -1442,6 +1628,18 @@ if __name__ == "__main__":
                     help="Design a zoom chain from DESCRIPTION (Γ=0, finest) to TARGET (Γ=N-1, coarsest)")
     ap.add_argument("--zoom-levels", type=int, default=4, dest="zoom_levels",
                     help="Number of levels in the zoom chain (default: 4)")
+    ap.add_argument("--churn", action="store_true", default=False,
+                    help="Wind the pipeline back over its own output: imscribe the "
+                         "description, fold the resulting ob3ect into the context it "
+                         "came from, then imscribe each of its steps in turn")
+    ap.add_argument("--windings", type=int, default=2, dest="churn_windings",
+                    metavar="N",
+                    help="How many full turns to churn (default: 2). One winding is "
+                         "the root alone; each further winding imscribes every step "
+                         "of every ob3ect from the turn before")
+    ap.add_argument("--max-ob3ects", type=int, default=200, dest="churn_max",
+                    metavar="N",
+                    help="Stop the churn after this many ob3ects (default: 200)")
     args = ap.parse_args()
 
     # YAML batch mode: p3 auto.py -f config.yaml — this pipeline's own batch loop
@@ -1538,6 +1736,44 @@ if __name__ == "__main__":
     if args.thinking:
         import framework.enhanced_llm_provider as _ep
         _ep.enable_thinking = True
+
+    # ── Churn mode ───────────────────────────────────────────────────────
+    if args.churn:
+        w = max(1, args.churn_windings)
+        print(f"Churn: {desc!r}  ({w} winding{'s' if w != 1 else ''})\n")
+        sys.stdout.flush()
+        tree = asyncio.run(churn_design(
+            desc,
+            windings=w,
+            domain_type=args.domain_type,
+            scope=args.scope,
+            provider_name=args.provider_name,
+            model=args.model,
+            max_retries=args.max_retries,
+            temperature=args.temperature,
+            context=ctx,
+            max_ob3ects=args.churn_max,
+        ))
+        print("\n" + tree.report())
+
+        slug = "churn_" + _make_unique_slug(desc, max_base_len=40)
+        out_dir = Path(__file__).parent / "digital" / slug
+        out_dir.mkdir(parents=True, exist_ok=True)
+
+        for node in tree.nodes():
+            n_slug = _make_unique_slug(node.description)
+            tag = f"w{node.winding}" + (f"_{node.opcode.lower()}" if node.opcode else "_root")
+            n_dir = out_dir / f"{tag}_{n_slug}"
+            n_dir.mkdir(parents=True, exist_ok=True)
+            node.artifact.save(n_dir / f"{n_slug}_ob3ect.json")
+            if node.artifact.lean_scaffold and not args.no_scaffold:
+                (n_dir / f"{n_slug}_scaffold.lean").write_text(node.artifact.lean_scaffold)
+            if not args.no_diagram:
+                _write_diagrams(node.artifact, n_dir, n_slug)
+
+        manifest_path = tree.save(out_dir)
+        print(f"\nManifest: {manifest_path}")
+        sys.exit(0)
 
     # ── Zoom chain mode ──────────────────────────────────────────────────
     if args.zoom_target:

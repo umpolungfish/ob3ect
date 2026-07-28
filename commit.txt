@@ -1,3 +1,26 @@
-The designer can import the gate it is required to run.
+--churn winds the pipeline back over its own output.
 
-auto.py imports the gated imscriber absolutely as imscribing_grammar.agents, while living inside imscribing_grammar itself, so the parent directory was never on the path. The gate is mandatory and its import failure is fatal, which meant every ob3ect call died before designing anything.
+Zoom moves across granularity: coarser and finer descriptions of one thing.
+Churn moves inward. It imscribes the description, folds the resulting ob3ect
+back into the context that produced it, and then imscribes each of that
+ob3ect's own steps as a description in its own right.
+
+The folding is what makes it churn rather than a batch. A child is imscribed
+from its step held inside the ob3ect the step belongs to, held in turn inside
+the original description. Without that the children are twelve unrelated
+ob3ects that happen to share a parent.
+
+Depth is counted in windings, one winding being a full turn of the pipeline
+over its own output, which is the right unit here and not "levels": the second
+turn is not a finer description of the first, it is the first gone round again
+with itself in hand. One winding is the root alone. Two imscribes every step of
+the root. Three winds each of those, so the count grows as the product of the
+step counts and --max-ob3ects stops the walk rather than letting it run away.
+
+The report's closing line is the one worth reading. A step that closes in place
+but fails when imscribed alone is the interesting case: the parent has closed
+over something that does not close by itself.
+
+Verified against a stubbed designer: tree shape, winding depth, ob3ect count,
+manifest, and that the child context carries the parent's word and the original
+description.
