@@ -1628,6 +1628,14 @@ if __name__ == "__main__":
     ap.add_argument("--context", dest="context_path", default=None, metavar="PATH",
                     help="File or directory of domain documents to include as context "
                          "(.md/.txt/.lean/.py/.tex/.json; up to 500 KB total)")
+    ap.add_argument("--name", dest="ob3ect_name", default=None, metavar="NAME",
+                    help="Name the imscription explicitly. Without this the name is "
+                         "derived from the description, which forces a description "
+                         "carrying LaTeX or punctuation to double as an identifier")
+    ap.add_argument("--desc-file", dest="desc_file", default=None, metavar="PATH",
+                    help="Read the description from a file instead of the command line. "
+                         "A shell eats $A, backticks and braces before the pipeline sees "
+                         "them, so a statement in LaTeX arrives silently altered")
     ap.add_argument("--entry", dest="catalog_entries", default=None, metavar="NAMES",
                     help="Comma-separated catalog entry names to inject as context "
                          "(e.g. --entry yhwh,dark_matter,proton)")
@@ -1708,10 +1716,19 @@ if __name__ == "__main__":
             print(f"      -> {_sub}/{_slug}_ob3ect.json")
         sys.exit(0)
 
-    if not args.description:
-        ap.error("give a description, or a YAML batch with -f CONFIG.yaml")
-
-    desc = " ".join(args.description)
+    if args.desc_file:
+        # Straight off disk: nothing between the file and the pipeline, so
+        # $A survives, as do braces, backslashes and backticks.
+        try:
+            desc = Path(args.desc_file).read_text(encoding="utf-8").strip()
+        except Exception as _e:
+            ap.error(f"could not read --desc-file {args.desc_file}: {_e}")
+        if not desc:
+            ap.error(f"--desc-file {args.desc_file} is empty")
+    elif args.description:
+        desc = " ".join(args.description)
+    else:
+        ap.error("give a description, --desc-file PATH, or a YAML batch with -f CONFIG.yaml")
     # Normalize common word-level typos at ingestion so they never propagate
     # into the slug, Lean identifiers, filenames, or the directory name.
     # Whole-word match only (so e.g. "amd" in "lambda" is untouched).
@@ -1821,11 +1838,21 @@ if __name__ == "__main__":
         sys.exit(0)
 
     # ── Single ob3ect mode ───────────────────────────────────────────────
+    # The name and the description are separate things. A description is prose
+    # for the imscriber to read; a name is an identifier for the slug, the
+    # directory, the catalog entry and the Lean definitions. Deriving the second
+    # from the first makes a statement in LaTeX serve as both, and it serves
+    # neither: the identifier carries backslashes and dollar signs, and it gets
+    # truncated at a length that cuts a sentence mid-clause.
+    ob3ect_name = args.ob3ect_name or desc
+    if args.ob3ect_name:
+        print(f"Name       : {ob3ect_name}")
     print(f"Auto-designing: {desc}\n")
     sys.stdout.flush()
     with _Spinner("Imscribing"):
         art = design(
             desc,
+            name=ob3ect_name,
             domain_type=args.domain_type,
             scope=args.scope,
             provider_name=args.provider_name,
@@ -1848,7 +1875,7 @@ if __name__ == "__main__":
             print(art.lean_scaffold)
 
     # ── Persist to disk ──────────────────────────────────────────────────
-    slug = _make_unique_slug(desc)
+    slug = _make_unique_slug(ob3ect_name)
     out_dir = Path(__file__).parent / "digital" / slug
     out_dir.mkdir(parents=True, exist_ok=True)
     json_path = art.save(out_dir / f"{slug}_ob3ect.json")
