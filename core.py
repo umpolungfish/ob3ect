@@ -216,6 +216,11 @@ class Ob3ectArtifact:
     grounded_tuple: Optional[str] = None       # the gated imscriber's Imscription.to_notation()
     grounding_status: str = "ungated"          # "full" | "partial" | "failed" | "override" | "ungated"
     grounding_reasoning: str = ""              # the gated imscriber's own reasoning for the assignment
+    grounding_failed_primitives: list = field(default_factory=list)
+    # WHICH primitives failed grounding. The gate computes this and it was being
+    # discarded: an artifact could carry grounding_status "failed" with nothing
+    # anywhere saying what failed, so the verdict was unactionable. A status
+    # without its cause is not a verdict, it is a mood.
     # ── Lean verification (the actual scripture-level check) ────────────────
     # generate_guided's Axiom A/B and generate_from_description's Axiom 6/7 are
     # both wet-lab heuristics on an LLM's self-consistency — not a proof. This
@@ -255,6 +260,8 @@ class Ob3ectArtifact:
         parts.append("="*70)
         parts.append("Phase -1: Gated Grounding (imscribe_generator_agent, runs BEFORE design)")
         parts.append("  Status: "+a.grounding_status)
+        if a.grounding_failed_primitives:
+            parts.append("  Ungrounded: "+", ".join(a.grounding_failed_primitives))
         if a.grounded_tuple:
             parts.append("  Tuple: "+a.grounded_tuple)
         if a.grounding_reasoning:
@@ -359,6 +366,7 @@ class Ob3ectArtifact:
             "notes":self.instantiation_notes,
             "grounded_tuple":self.grounded_tuple,
             "grounding_status":self.grounding_status,
+            "grounding_failed_primitives":self.grounding_failed_primitives,
             "grounding_reasoning":self.grounding_reasoning,
             "lean_verified":self.lean_verified,
             "lean_verification_output":self.lean_verification_output,

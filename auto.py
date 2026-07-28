@@ -1066,16 +1066,22 @@ async def auto_design(
     grounded_tuple: Optional[str] = None
     grounding_status = "ungated"
     grounding_reasoning = ""
+    grounding_failed = []
     if not skip_gate:
         gate_result = await _run_gated_imscription(description, provider_name, model)
         grounded_tuple = gate_result.imscription.to_notation()
         grounding_status = gate_result.grounding_status
         grounding_reasoning = gate_result.reasoning
+        # The gate names the primitives that failed. Reading only the status
+        # left "failed" with no cause attached anywhere in the artifact.
+        grounding_failed = list(getattr(gate_result, "failed_primitives", []) or [])
         gate_context = (
             f"A gated imscription of this description has ALREADY been validated "
             f"(grounding: {grounding_status}):\n"
             f"  Tuple: {grounded_tuple}\n"
-            f"  Reasoning: {grounding_reasoning}\n"
+            + (f"  Ungrounded primitives: {', '.join(grounding_failed)}\n"
+               if grounding_failed else "")
+            + f"  Reasoning: {grounding_reasoning}\n"
             f"Your opcode map, register mapping, and bootstrap sequence MUST be built "
             f"consistent with this tuple — it is not a suggestion, it is the already-"
             f"grounded structural type. Do not invent a different primitive assignment."
@@ -1145,6 +1151,7 @@ async def auto_design(
             artifact.grounded_tuple = grounded_tuple
             artifact.grounding_status = grounding_status
             artifact.grounding_reasoning = grounding_reasoning
+            artifact.grounding_failed_primitives = grounding_failed
 
             if artifact.split_fuse_report.frobenius_verdict == "PASS":
                 slug = _make_unique_slug(artifact_name)

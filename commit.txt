@@ -1,26 +1,14 @@
---churn winds the pipeline back over its own output.
+A grounding failure now says what failed.
 
-Zoom moves across granularity: coarser and finer descriptions of one thing.
-Churn moves inward. It imscribes the description, folds the resulting ob3ect
-back into the context that produced it, and then imscribes each of that
-ob3ect's own steps as a description in its own right.
+Two ob3ects in a row came back with is_valid_ob3ect true, lean_verified true,
+and grounding_status "failed", and nothing anywhere in either artifact said
+which primitive had failed or why. The information was not missing. The gate
+computes failed_primitives and auto.py read grounding_status and reasoning and
+dropped it, so the verdict arrived without its cause and could not be acted on.
 
-The folding is what makes it churn rather than a batch. A child is imscribed
-from its step held inside the ob3ect the step belongs to, held in turn inside
-the original description. Without that the children are twelve unrelated
-ob3ects that happen to share a parent.
+The artifact carries grounding_failed_primitives now, it is serialized, the
+summary prints it, and the tuple context handed to the design call names the
+ungrounded primitives rather than passing a failed grounding along silently as
+though it were settled.
 
-Depth is counted in windings, one winding being a full turn of the pipeline
-over its own output, which is the right unit here and not "levels": the second
-turn is not a finer description of the first, it is the first gone round again
-with itself in hand. One winding is the root alone. Two imscribes every step of
-the root. Three winds each of those, so the count grows as the product of the
-step counts and --max-ob3ects stops the walk rather than letting it run away.
-
-The report's closing line is the one worth reading. A step that closes in place
-but fails when imscribed alone is the interesting case: the parent has closed
-over something that does not close by itself.
-
-Verified against a stubbed designer: tree shape, winding depth, ob3ect count,
-manifest, and that the child context carries the parent's word and the original
-description.
+A status without its cause is not a verdict.
