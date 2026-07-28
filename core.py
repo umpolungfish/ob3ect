@@ -341,7 +341,8 @@ class Ob3ectArtifact:
             b = a.banked_count_check
             parts.append("")
             parts.append("Phase 9b: Banked count")
-            parts.append("  " + ("✓ " if b.get("banked_ok") else "⚠ ") + str(b.get("verdict")))
+            mark = ("○ " if b.get("vacuous") else "✓ ") if b.get("banked_ok") else "⚠ "
+            parts.append("  " + mark + str(b.get("verdict")))
             for e in b.get("exposed_clears", []):
                 parts.append("    step %s %s cleared %s with nothing behind it"
                              % (e["step"], e["glyph"], e["weight"]))
