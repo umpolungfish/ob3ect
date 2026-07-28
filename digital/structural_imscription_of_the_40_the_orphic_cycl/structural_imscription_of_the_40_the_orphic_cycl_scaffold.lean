@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → FSPLIT → AFWD → EVALT → IMSCRIB → CLINK → AREV → EVALF → CLINK → FFUSE → IMSCRIB → TANCH → IFIX
--- Class: structural imscription of the 40 the orphic cycle system from ig-docs/publishing/substack_articles/_batched/alchemy/40_the_orphic_cycle, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 40 the orphic cycle system from ig-docs/publishing/substack_articles/_batched/alchemy/40_the_orphic_cycle, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(8,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=13

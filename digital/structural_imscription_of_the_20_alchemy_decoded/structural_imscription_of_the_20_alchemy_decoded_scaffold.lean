@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → AFWD → EVALT → AREV → EVALT → FSPLIT → EVALT → EVALF → CLINK → FFUSE → EVALT → IMSCRIB → AFWD → ENGAGR → EVALT → AFWD → EVALT → CLINK → AFWD → EVALT → IFIX → TANCH
--- Class: structural imscription of the 20 alchemy decoded system from ig-docs/publishing/substack_articles/_batched/alchemy/20_alchemy_decoded, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 20 alchemy decoded system from ig-docs/publishing/substack_articles/_batched/alchemy/20_alchemy_decoded, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(10,2,9,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=22

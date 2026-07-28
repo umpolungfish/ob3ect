@@ -1,7 +1,7 @@
 """
 binance_optimal_profit — Self-verifying Dialetheic Market-Making Ob3ect.
 
-Structural type: ⟨𐑨𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩
+Type: ⟨𐑨𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩
 
 Derived from the Imscribing Grammar via:
 - ig-pulse cross-domain coupling data (fear/greed→solar→LN→BTC dominance)

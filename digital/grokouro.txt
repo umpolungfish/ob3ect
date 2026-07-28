@@ -668,7 +668,7 @@ from typing import List, Tuple
 # Phase 0–1: Imscription Opcodes
 # =====================================================================
 def structural_hash(tree: ast.AST) -> str:
-    """Stable structural identity beyond source formatting"""
+    """Stable identity beyond source formatting"""
     return hashlib.sha256(
         ast.dump(tree, annotate_fields=True, include_attributes=True).encode()
     ).hexdigest()[:32]
@@ -704,7 +704,7 @@ def FFUSE(tree: ast.AST, original: str) -> bool:
     regen_hash = structural_hash(regenerated_tree)
     
     if orig_hash == regen_hash:
-        print("FFUSE: Perfect imscription — structural identity confirmed")
+        print("FFUSE: Perfect imscription — identity confirmed")
         print(f"Imscription anchor: {orig_hash[:16]}...")
         return True
     else:

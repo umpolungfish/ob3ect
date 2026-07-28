@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → CLINK → FSPLIT → AFWD → EVALT → AREV → EVALF → ENGAGR → FFUSE → IMSCRIB → CLINK → IFIX → TANCH
--- Class: the lifetime-old Birch-Swinnerton-Dyer imscription buried in BSD.lean under thirteen sorries becomes a refreshed BSD structural type whose tuple reaches idempotent_terminal under all five of its closing universes and is T_CEILING-consistent
+-- Class: the lifetime-old Birch-Swinnerton-Dyer imscription buried in BSD.lean under thirteen sorries becomes a refreshed BSD type whose tuple reaches idempotent_terminal under all five of its closing universes and is T_CEILING-consistent
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13

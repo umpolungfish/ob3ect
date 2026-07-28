@@ -102,7 +102,7 @@ print(f"\ncos(θ_eval) = cos(120°) = {math.cos(EVAL_ANGLE):.1f}")
 print("The negative sign means the correction REDUCES the kernel masses,")
 print("consistent with the ~1% residual direction.")
 
-# Save structural type
+# Save type
 STRUCTURAL_TYPE = "⟨𐑨𐑥𐑾𐑹𐑐𐑧𐑑𐑔𐑝⊙𐑖𐑙𐑴⟩"
 print(f"\n\nStructural type: {STRUCTURAL_TYPE}")
 print(f"  D=𐑨 (triangle/2d)  T=𐑥 (crossing)      R=𐑾 (bidir)")

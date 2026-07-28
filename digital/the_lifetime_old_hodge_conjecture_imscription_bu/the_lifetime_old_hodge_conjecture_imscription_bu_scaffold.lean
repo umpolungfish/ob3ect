@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → CLINK → FSPLIT → AFWD → EVALT → CLINK → EVALT → CLINK → EVALT → FFUSE → FSPLIT → EVALT → EVALT → EVALT → EVALT → EVALT → FFUSE → CLINK → ENGAGR → IFIX → TANCH
--- Class: the lifetime-old Hodge Conjecture imscription buried in Hodge.lean under twenty sorries becomes a refreshed Hodge structural type whose tuple reaches idempotent_terminal under all five of its closing universes and is T_CEILING-consistent
+-- Class: the lifetime-old Hodge Conjecture imscription buried in Hodge.lean under twenty sorries becomes a refreshed Hodge type whose tuple reaches idempotent_terminal under all five of its closing universes and is T_CEILING-consistent
 -- Fingerprint: sig=(8,4,9,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=22

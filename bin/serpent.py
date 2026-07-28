@@ -358,7 +358,7 @@ def cmd_pdb(rna):
 
     print(f"HEADER    SERPENT-ROD FOLD     {rna}")
     print(f"REMARK    Continuous Serpent-Rod Bridge v3 — ⊙ → 𐑻")
-    print(f"REMARK    Structural type: ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
+    print(f"REMARK    Type: ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
     print(f"REMARK    Frobenius addr: {VESSEL_IMSCRIPTION.encode()}")
     print(f"REMARK    Sequence: {result.aa_sequence}")
     print(f"REMARK    Winding: {result.winding_number}  Codon cov: {result.codon_coverage}/64")
@@ -974,7 +974,7 @@ def cmd_rebis_pdb(ec_number):
 
     print(f"HEADER    REBIS CATALYTIC SITE     {ec_number}")
     print(f"REMARK    Rebis of Bio and Organic Chemistries")
-    print(f"REMARK    Structural type: ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
+    print(f"REMARK    Type: ⟨𐑦; 𐑸; 𐑾; 𐑹}; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩")
     print(f"REMARK    Frobenius addr: {REBIS_IMSCRIPTION.encode()}")
     print(f"REMARK    Geometry: {result.catalytic_geometry}")
     print(f"REMARK    Catalytic residues: {result.catalytic_residues} at positions {result.catalytic_positions}")

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → AFWD → FSPLIT → EVALT → IMSCRIB → FSPLIT → AFWD → EVALT → IMSCRIB → AFWD → ENGAGR → AREV → IMSCRIB → FFUSE → EVALF → IMSCRIB → FFUSE → CLINK → IFIX → IMSCRIB
--- Class: structural imscription of the 42 dark matter structural hierarchy system from ig-docs/publishing/substack_articles/_batched/physics/42_dark_matter_structural_hierarchy, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 42 dark matter structural hierarchy system from ig-docs/publishing/substack_articles/_batched/physics/42_dark_matter_structural_hierarchy, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(12,4,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=21

@@ -7,7 +7,7 @@ STATUS: T (μ∘δ=id verified for all 6 quarks). Updated 2026-07-26
         with tilt/d correction for m_c and m_b.
 
 DERIVATION:
-  All quark mass ratios are structural invariants of the 
+  All quark mass ratios are invariants of the 
   d=12 SIC-POVM evaluated across the F↔K Frobenius dual pair.
   
   F (fidelity): 𐑱(classical) → 𐑞(thermal) → 𐑐(quantum)
@@ -27,7 +27,7 @@ FORMULAS:
 
 import math
 
-# ── Structural primitives ─────────────────────────────────────────
+# ── Primitives ─────────────────────────────────────────
 d = 12
 gear = 4
 N_eval = 3

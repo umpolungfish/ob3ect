@@ -10,7 +10,7 @@ AUTHOR: Lando⊗⊙perator
 
 import math
 
-# ── Structural primitives ─────────────────────────────────────────
+# ── Primitives ─────────────────────────────────────────
 d = 12
 gear = 4
 N_frob = 6

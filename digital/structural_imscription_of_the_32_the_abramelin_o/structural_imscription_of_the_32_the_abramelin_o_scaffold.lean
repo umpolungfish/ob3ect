@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → AFWD → FSPLIT → EVALT → EVALF → ENGAGR → AREV → CLINK → CLINK → FFUSE → IMSCRIB → IFIX
--- Class: structural imscription of the 32 the abramelin operation system from ig-docs/publishing/substack_articles/_batched/alchemy/32_the_abramelin_operation, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 32 the abramelin operation system from ig-docs/publishing/substack_articles/_batched/alchemy/32_the_abramelin_operation, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13

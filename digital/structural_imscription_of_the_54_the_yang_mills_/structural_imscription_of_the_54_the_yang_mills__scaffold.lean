@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → FSPLIT → AFWD → EVALT → EVALF → ENGAGR → IMSCRIB → FFUSE → CLINK → IFIX → AREV → CLINK → IFIX
--- Class: structural imscription of the 54 the yang mills mass gap system from ig-docs/publishing/substack_articles/_batched/physics/54_the_yang_mills_mass_gap, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 54 the yang mills mass gap system from ig-docs/publishing/substack_articles/_batched/physics/54_the_yang_mills_mass_gap, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(7,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14

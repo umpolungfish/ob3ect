@@ -73,7 +73,7 @@ tier3 = {
 # Old value (3/13 ≈ 0.23077): residual +0.00591 (2.63%)
 # New value (3/√178 ≈ 0.22486): matches PDG 0.225 ± 0.001
 #
-# Structural identity: √178 = √(13² + 3²) = √(169 + 9) = √178
+# Identity: √178 = √(13² + 3²) = √(169 + 9) = √178
 # This is the hypotenuse of the (3,13) right triangle on the horn torus.
 
 theta_C = math.atan(3/13)

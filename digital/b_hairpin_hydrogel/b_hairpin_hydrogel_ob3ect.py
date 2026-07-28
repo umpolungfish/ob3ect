@@ -3,7 +3,7 @@
 b_hairpin_hydrogel_ob3ect — Self-imscribing β-hairpin hydrogel system.
 Verifies algebraic closure: μ∘δ = id_A AND δ∘μ = id_B.
 
-Structural tuple: ⟨Ð=𐑨; Þ=𐑡; Ř=𐑑; Φ=𐑯; ƒ=𐑞; Ç=𐑪; Γ=𐑚; ɢ=𐑜; ⊙=⊙; Ħ=𐑒; Σ=𐑕; Ω=𐑴⟩
+Tuple: ⟨Ð=𐑨; Þ=𐑡; Ř=𐑑; Φ=𐑯; ƒ=𐑞; Ç=𐑪; Γ=𐑚; ɢ=𐑜; ⊙=⊙; Ħ=𐑒; Σ=𐑕; Ω=𐑴⟩
 
 The ob3ect encodes:
   A  = monomer state (soluble peptide, T > Tm OR c < CGC)

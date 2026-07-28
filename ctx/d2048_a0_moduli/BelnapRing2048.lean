@@ -188,7 +188,7 @@ theorem sic_povm_2048_unconditional :
 -- does NOT depend on. An earlier draft stated it here as `n = 0 ∨ True`, which is
 -- provably `True` for every n (wrong polarity for an open problem); the base case
 -- `SICPOVM_Exists 2` and the reduction of the shadow to a single ℂ fiducial are
--- proved downstream. The genuine structural content — orbit, axioms,
+-- proved downstream. The genuine content — orbit, axioms,
 -- equiangularity — is `ring2048_skeleton_complete` just below.
 
 /-- The 2048-dimensional ring is the discrete SKELETON.

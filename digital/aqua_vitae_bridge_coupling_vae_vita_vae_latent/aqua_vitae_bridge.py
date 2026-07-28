@@ -145,7 +145,7 @@ class FrobeniusPacket:
     FFUSE(type_signature, data_payload) = latent  (μ∘δ = id)
     """
     latent: np.ndarray          # 12-dim latent vector
-    type_signature: np.ndarray  # first 8 dims: structural type
+    type_signature: np.ndarray  # first 8 dims: type
     data_payload: np.ndarray    # last 4 dims: raw data
     
     def verify_frobenius(self, tol: float = 1e-6) -> bool:

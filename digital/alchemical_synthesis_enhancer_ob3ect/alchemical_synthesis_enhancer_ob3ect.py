@@ -2,7 +2,7 @@
 """
 alchemical_synthesis_enhancer_ob3ect.py — The Alchemical Synthesis Enhancer
 
-Structural type:  ⟨𐑦;𐑸;𐑾;𐑹;𐑐;𐑧;𐑔;𐑠;⊙;𐑖;𐑳;𐑭⟩
+Type:  ⟨𐑦;𐑸;𐑾;𐑹;𐑐;𐑧;𐑔;𐑠;⊙;𐑖;𐑳;𐑭⟩
 Ouroboricity:     O_∞ — the enhancer designs syntheses that close to themselves
 Frobenius:        μ∘δ=id (retrosynthetic analysis → synthesis → product matches design)
 

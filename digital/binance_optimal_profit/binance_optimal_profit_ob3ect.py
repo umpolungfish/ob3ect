@@ -1,7 +1,7 @@
 """
 binance_optimal_profit_ob3ect.py — Self-verifying Dialetheic Market-Making Ob3ect.
 
-Structural type: <D=triangle; T=odot; R=lr; P=pm; F=hbar; K=slow; G=aleph; Gm=seq; Phi=c; H=2; S=n:m; W=Z>
+Type: <D=triangle; T=odot; R=lr; P=pm; F=hbar; K=slow; G=aleph; Gm=seq; Phi=c; H=2; S=n:m; W=Z>
 Derived from Imscribing Grammar analysis of BinanceUS exchange.
 Key findings from ig-pulse:
 - fear/greed (criticality) -> LN capacity (dimensionality) at 231k sec lag, r=0.66
@@ -495,7 +495,7 @@ def main():
     print("=" * 60)
     print("  binance_optimal_profit_ob3ect")
     print("  Self-verifying Dialetheic Market-Making Ob3ect")
-    print("  Structural type: <D=triangle; T=odot; R=lr; P=pm; F=hbar;")
+    print("  Type: <D=triangle; T=odot; R=lr; P=pm; F=hbar;")
     print("                    K=slow; G=aleph; Gm=seq; Phi=c; H=2; S=n:m; W=Z>")
     print(f"  Tier: O₂ | C_score: 0.6915 | Distance from CLINK L8: 0.9986")
     print("=" * 60)

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → CLINK → FSPLIT → EVALT → AFWD → IFIX → AREV → EVALF → FFUSE → IMSCRIB → ENGAGR → CLINK → TANCH
--- Class: A family of diagnostic reagents, each of which when applied to a unit or a set makes visible only those units carrying one specific structural feature and stays dark on the rest; a selective detector keyed to a single chosen feature, reporting which units it reveals, so a feature that is invisible in the bare description is made to show.
+-- Class: A family of diagnostic reagents, each of which when applied to a unit or a set makes visible only those units carrying one specific feature and stays dark on the rest; a selective detector keyed to a single chosen feature, reporting which units it reveals, so a feature that is invisible in the bare description is made to show.
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14

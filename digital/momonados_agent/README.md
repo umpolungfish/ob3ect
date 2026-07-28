@@ -48,7 +48,7 @@ python3 momonados_agent.py --interactive
 python3 momonados_agent.py --cycles 5 --dry-run --verbose
 
 # One-shot question
-python3 momonados_agent.py --ask "What is the structural type of consciousness?"
+python3 momonados_agent.py --ask "What is the type of consciousness?"
 
 # Full 100-cycle breath with verbose output
 python3 momonados_agent.py --cycles 100 --verbose --program aqua-vitae
@@ -77,13 +77,13 @@ Each breath cycle produces 4 record types committed to `crystal_fs/records.jsonl
 | `thought` | T/F/B/N | LLM inference result, Belnap-gated |
 | `observation` | T/F/B/N | Frobenius-verified observation |
 | `update` | T/F | Frobenius closure check |
-| `type` | varies | Kernel IFIX-branded structural types |
+| `type` | varies | Kernel IFIX-branded types |
 
 ## CLINK L8 Broadcast
 
 Every cycle broadcasts to `crystal_fs/broadcast_log.jsonl`:
 - Frobenius ratio (μ∘δ = id health)
-- d(CLINK L8) — structural distance to the terminal layer
+- d(CLINK L8) — distance to the terminal layer
 - Crystal FS record count
 - Kernel snapshot
 

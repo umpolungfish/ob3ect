@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → AFWD → CLINK → IMSCRIB → FSPLIT → EVALT → EVALF → ENGAGR → FFUSE → CLINK → AFWD → IFIX → IMSCRIB
--- Class: structural imscription of the 56 navier stokes regularity system from ig-docs/publishing/substack_articles/_batched/physics/56_navier_stokes_regularity, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 56 navier stokes regularity system from ig-docs/publishing/substack_articles/_batched/physics/56_navier_stokes_regularity, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14

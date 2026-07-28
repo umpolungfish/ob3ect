@@ -456,7 +456,7 @@ beyond simple flat chains. USE THESE WHEN THE DOMAIN REQUIRES THEM:
    The F-output of one FSPLIT connects to the T or F input of a different
    FFUSE, creating an entangled/paradice topology:
      FSPLIT ... FFUSE(1) ... FSPLIT ... [FSPLIT.F → FFUSE(1)] ... FFUSE(2)
-   This is the structural signature of entanglement: failure of one fork
+   This is the signature of entanglement: failure of one fork
    feeds into the resolution of another.
 
    When to use: the domain has genuinely entangled outcomes where failure in

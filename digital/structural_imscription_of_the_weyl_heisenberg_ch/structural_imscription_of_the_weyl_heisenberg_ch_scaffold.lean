@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → IFIX → IFIX → FSPLIT → EVALT → AFWD → CLINK → EVALF → ENGAGR → AREV → FFUSE → TANCH
--- Class: structural imscription of the Weyl-Heisenberg character obstruction for d=2048: the phase character omega_2048 = exp(2 pi i / 2048) is genuinely non-real, its imaginary part sin(2 pi / 2048) strictly positive, so no real-valued character carries the displacement phase and the four-valued F-branch (a purely real representation of the WH cocycle) is obstructed; the projective representation requires genuinely complex cohomology. With full Frobenius closure and Lean 4 verification scaffold.
+-- Class: imscription of the Weyl-Heisenberg character obstruction for d=2048: the phase character omega_2048 = exp(2 pi i / 2048) is genuinely non-real, its imaginary part sin(2 pi / 2048) strictly positive, so no real-valued character carries the displacement phase and the four-valued F-branch (a purely real representation of the WH cocycle) is obstructed; the projective representation requires genuinely complex cohomology. With full Frobenius closure and Lean 4 verification scaffold.
 -- Fingerprint: sig=(6,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13

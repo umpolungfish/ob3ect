@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → AFWD → CLINK → FSPLIT → EVALT → AREV → EVALF → FFUSE → IMSCRIB → ENGAGR → AREV → IFIX → TANCH
--- Class: structural imscription of the 27 the aether and its vessel system from ig-docs/publishing/substack_articles/_batched/physics/27_the_aether_and_its_vessel, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 27 the aether and its vessel system from ig-docs/publishing/substack_articles/_batched/physics/27_the_aether_and_its_vessel, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14

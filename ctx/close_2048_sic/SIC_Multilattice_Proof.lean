@@ -20,7 +20,7 @@
 -- §7  Proves all 4 SIC axioms for all n
 -- §8  Characterizes Ax-EQUI precisely
 --
--- ZERO axioms. ZERO sorries. All structural theorems by rfl/cases/dec_trivial.
+-- ZERO axioms. ZERO sorries. All theorems by rfl/cases/dec_trivial.
 
 import Mathlib.Tactic
 import Mathlib.Data.Fintype.Basic
@@ -161,7 +161,7 @@ def frobInner {n : ℕ} (s t : MLState n) : ℕ :=
 /-- Join of B with any Belnap value is B (join-absorption). -/
 theorem join_B_is_B (x : Belnap) : join Belnap.B x = Belnap.B := B_join_absorb x
 
-/-- Key structural theorem: The Frobenius-join inner product of the fiducial
+/-- Key theorem: The Frobenius-join inner product of the fiducial
     with any WH-displaced fiducial is CONSTANT (= 2n).
     
     ⟨B⊗n, g·B⊗n⟩_join = 2n  for ALL g ∈ WH(2)ⁿ.
@@ -256,7 +256,7 @@ theorem mlCost_classical {n : ℕ} (v : MLState n)
   classical_equidistance v hv
 
 /-- The universal 2:1 ratio: B-bias cost is twice the classical outcome cost.
-    This structural invariant encodes the Born rule. -/
+    This invariant encodes the Born rule. -/
 theorem ax_cost_proved (n : ℕ) (v : MLState n)
     (hv : ∀ i, v i = Belnap.T ∨ v i = Belnap.F) :
     mlCost (mlFiducial n) = 2 * mlCost v := by
@@ -399,7 +399,7 @@ theorem multilattice_polarization_frobenius (n : ℕ) :
 --
 -- WITH THE IGFUNCTOR THEOREMS:
 --   1. O_inf_tensor_closed: multilattice is O_∞ for all n
---   2. mu_delta_A_id: tensorProduct preserves structural type
+--   2. mu_delta_A_id: tensorProduct preserves type
 --   3. Polarization Frobenius: μ_C∘δ_C=id on Frobenius-special types
 --
 -- These theorems establish that the Belnap multilattice for any n

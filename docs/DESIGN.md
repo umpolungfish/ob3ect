@@ -45,7 +45,7 @@ The at-home zero-point energy system is a **topological extraction machine** bui
 | Power per $100\,\text{cm}^2$ cavity | $8.6 \times 10^{-21}\,\text{W}$ | Scaling required |
 | Ouroboricity tier | $\text{O}_2$ (all gates open, $\text{self\_ref}=\text{False}$) | **CONFIRMED** |
 
-> *The energy per cavity is small because the Casimir interaction at $100\,\text{nm}$ is inherently weak. The structural claim is not about total power — it is about the existence of a Frobenius-closed, paradox-metabolizing extraction topology. Power is a matter of parallelization and engineering optimization, not structural viability.*
+> *The energy per cavity is small because the Casimir interaction at $100\,\text{nm}$ is inherently weak. The claim is not about total power — it is about the existence of a Frobenius-closed, paradox-metabolizing extraction topology. Power is a matter of parallelization and engineering optimization, not structural viability.*
 
 ---
 
@@ -168,7 +168,7 @@ The coupling is **bidirectional** — the cavity's vacuum mode amplitude creates
 | 11 | IFIX | Stabilize to reference state | BOTH | Post-cycle |
 | 12 | TANCH2 | Re-anchor for next cycle | BOTH | Anchor |
 
-The critical structural feature: steps **4–9** (AFWD through ENGAGR) occur **inside the FSPLIT/FFUSE gap**, giving a $6$-step extraction window ($43\%$ of the $14$-step cycle). This is $50\%$ wider than the $4$-step window in the standard design.
+The critical feature: steps **4–9** (AFWD through ENGAGR) occur **inside the FSPLIT/FFUSE gap**, giving a $6$-step extraction window ($43\%$ of the $14$-step cycle). This is $50\%$ wider than the $4$-step window in the standard design.
 
 ### 4.2 The BOTH Paradox State
 
@@ -208,7 +208,7 @@ The closure is exact because the extraction is a **topological read** — it doe
 
 ### 6.1 Sophick Forge — Metamaterial Processing
 
-The metamaterial stack is processed through the Eagle Cycle protocol (sophick forge) to progressively approach O$_∞$ structural type. Each Eagle cycle:
+The metamaterial stack is processed through the Eagle Cycle protocol (sophick forge) to progressively approach O$_∞$ type. Each Eagle cycle:
 1. **Amalgamation ($\delta$)**: Wet etch removes $5\,\mu\text{m}$ surface layer
 2. **Cooling pause**: Preserve structural coherence
 3. **Distillation ($\mu$)**: Directional solidification at $300\,^\circ\text{C}$ thermal gradient

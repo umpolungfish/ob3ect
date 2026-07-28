@@ -1,0 +1,336 @@
+{
+  "name": "verify the self-consistency of the resulting eigenstate",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "verify the self-consistency of the resulting eigenstate",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "eigenstate",
+        "superoperator",
+        "spectral density"
+      ],
+      "boundary_condition": "The Hilbert space subspace defined by the von Neumann superoperator algebra",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unverified modal signal",
+        "justification": "The raw output from the synthesis stage before internal consistency checks begin",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "stable eigenstate",
+        "justification": "The final validated state that remains invariant under the superoperator",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "recursive mapping",
+        "justification": "The application of the superoperator to the signal to generate a comparison state",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "inverse projection",
+        "justification": "The reversal of the mapping to identify the source of divergence in the signal",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "iterative feedback loop",
+        "justification": "The sequential chaining of mapping and comparison operations",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "identity check",
+        "justification": "The self-referential recognition where the state is compared against itself",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "parity discriminator",
+        "justification": "The branching of the signal into a consistent residue and a divergent error term",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "state reintegration",
+        "justification": "The reconstitution of the original signal from the residue and error for final verdict",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "convergence",
+        "justification": "The affirmative state where the output matches the input within tolerance",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "divergence",
+        "justification": "The negative state where the output deviates from the input",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "criticality",
+        "justification": "The state at the phase boundary where convergence and divergence are balanced",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "consistency witness",
+        "justification": "The permanent fixation of the verification result in the system log",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "parity discriminator",
+      "split_input": "modal signal",
+      "split_outputs": [
+        "consistent residue",
+        "divergent error"
+      ],
+      "fuse_element": "state reintegration",
+      "fuse_result": "modal signal",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "uninitialized spectral density",
+      "true_description": "stable eigenstate convergence",
+      "false_description": "unstable modal divergence",
+      "both_description": "superposition of consistency and error at the critical threshold",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize the unverified modal signal from the synthesis buffer"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the current signal as the primary reference for self-consistency"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "apply the superoperator to the signal to generate the first recursive mapping"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "branch the mapped signal into the consistency arm and the divergence arm"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "confirm the constructive resonance of the consistency arm against the reference"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "monitor the magnitude of the divergent error term on the failure arm"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "synthesize the residue and error to recover the total modal signal"
+        },
+        {
+          "step_num": 8,
+          "opcode": "CLINK",
+          "domain_action": "couple the recovered signal back to the superoperator for a second iteration"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IMSCRIB",
+          "domain_action": "verify the identity of the signal across the iterative cycle"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "record the self-consistency verification event to the permanent record"
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "anchor the verified eigenstate as a stable point in the algebra"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The von Neumann superoperator logic",
+      "ipc_mechanism": "Spectral density flux between frames",
+      "memory_mechanism": "The holographic bulk encoding of the Hilbert space",
+      "scheduler_mechanism": "The kinetic rate of the phase space convergence",
+      "alfs_store": "The canonical bootstrap store for the triple frame algebra",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational overhead of the recursive mapping",
+      "pre_cycle_state": "Unverified modal signal in a high-entropy state",
+      "post_cycle_state": "Verified eigenstate in a low-entropy stationary state",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The verification is a reversible logical operation within a closed system",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: verify the self-consistency of the resulting eigenstate\n-- Fingerprint: sig=(6,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=11\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(3, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [7] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [8] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def verify_the_self_consistency_of_the_ff41d4_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def verify_the_self_consistency_of_the_ff41d4_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def verify_the_self_consistency_of_the_ff41d4_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def verify_the_self_consistency_of_the_ff41d4_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def verify_the_self_consistency_of_the_ff41d4_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def verify_the_self_consistency_of_the_ff41d4_protocol : IGProtocol verify_the_self_consistency_of_the_ff41d4_s0 verify_the_self_consistency_of_the_ff41d4_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct verify_the_self_consistency_of_the_ff41d4_s6 verify_the_self_consistency_of_the_ff41d4_s6 = verify_the_self_consistency_of_the_ff41d4_s6 (idempotent)\n  (.seq (.arrow verify_the_self_consistency_of_the_ff41d4_l0 verify_the_self_consistency_of_the_ff41d4_s0 verify_the_self_consistency_of_the_ff41d4_s1) (.seq (.arrow verify_the_self_consistency_of_the_ff41d4_l1 verify_the_self_consistency_of_the_ff41d4_s1 verify_the_self_consistency_of_the_ff41d4_s2) (.seq (.arrow verify_the_self_consistency_of_the_ff41d4_l2 verify_the_self_consistency_of_the_ff41d4_s2 verify_the_self_consistency_of_the_ff41d4_s3) (.seq (.prod (.arrow verify_the_self_consistency_of_the_ff41d4_l3 verify_the_self_consistency_of_the_ff41d4_s3 verify_the_self_consistency_of_the_ff41d4_s6) (.arrow verify_the_self_consistency_of_the_ff41d4_l3 verify_the_self_consistency_of_the_ff41d4_s3 verify_the_self_consistency_of_the_ff41d4_s6)) (.seq (.arrow verify_the_self_consistency_of_the_ff41d4_l6 verify_the_self_consistency_of_the_ff41d4_s6 verify_the_self_consistency_of_the_ff41d4_s6) (.seq (.arrow verify_the_self_consistency_of_the_ff41d4_l6 verify_the_self_consistency_of_the_ff41d4_s6 verify_the_self_consistency_of_the_ff41d4_s7) (.seq (.arrow verify_the_self_consistency_of_the_ff41d4_l7 verify_the_self_consistency_of_the_ff41d4_s7 verify_the_self_consistency_of_the_ff41d4_s8) (.seq (.arrow verify_the_self_consistency_of_the_ff41d4_l8 verify_the_self_consistency_of_the_ff41d4_s8 verify_the_self_consistency_of_the_ff41d4_s9) (.arrow verify_the_self_consistency_of_the_ff41d4_l9 verify_the_self_consistency_of_the_ff41d4_s9 verify_the_self_consistency_of_the_ff41d4_s10)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def verify_the_self_consistency_of_the_ff41d4_true_arm : IGProtocol verify_the_self_consistency_of_the_ff41d4_s0 verify_the_self_consistency_of_the_ff41d4_s10 :=\n  (verify_the_self_consistency_of_the_ff41d4_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def verify_the_self_consistency_of_the_ff41d4_false_arm : IGProtocol verify_the_self_consistency_of_the_ff41d4_s0 verify_the_self_consistency_of_the_ff41d4_s10 :=\n  (verify_the_self_consistency_of_the_ff41d4_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef verify_the_self_consistency_of_the_ff41d4_tier_ground : OuroboricityTier := TierFunctor.obj verify_the_self_consistency_of_the_ff41d4_s0\ndef verify_the_self_consistency_of_the_ff41d4_tier : OuroboricityTier := TierFunctor.obj verify_the_self_consistency_of_the_ff41d4_s10\n#eval verify_the_self_consistency_of_the_ff41d4_tier_ground  -- tier of the ground (pre-transformation)\n#eval verify_the_self_consistency_of_the_ff41d4_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem verify_the_self_consistency_of_the_ff41d4_frobenius :\n    igFrobeniusAlg.mul verify_the_self_consistency_of_the_ff41d4_s0 verify_the_self_consistency_of_the_ff41d4_s0 = verify_the_self_consistency_of_the_ff41d4_s0 :=\n  igFrobAlg_self_fusion verify_the_self_consistency_of_the_ff41d4_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        3,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: verify the self-consistency of the resulting eigenstate",
+  "grounded_tuple": "\u27e8\ud801\udc5b\ud801\udc65\ud801\udc7d\ud801\udc7f\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc5d\u2299\ud801\udc56\ud801\udc59\ud801\udc6d\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc5b: The verification of self-consistency requires an iterative feedback loop where the output is compared against the initial state to ensure stability through a closed cycle.\n\u00de=\ud801\udc65: Verifying the self-consistency of an eigenstate implies a closed loop of logical or mathematical feedback where the output maps back to the input, forming a cyclic interface.\n\u0158=\ud801\udc7d: The verification of self-consistency acts as a catalytic stabilization of the eigenstate, lowering the logical barrier to convergence without altering the underlying basis.\n\u03a6=\ud801\udc7f: The assignment of polarity (\u03a6) implies a vector-like orientation where the interface functions as a singular source or sink.\n\u0192=\ud801\udc50: Verifying the self-consistency of an eigenstate implies a high-precision, geometry-enforcing mechanism that requires near-certain firing to maintain structural integrity.\n\u00c7=\ud801\udc67: The instruction to verify the self-consistency of an eigenstate implies the system is in a fixed, stationary state that is kinetically frozen and resistant to spontaneous rearrangement.\n\u0393=\ud801\udc72: Verifying an eigenstate is a mathematical check of a single state's internal consistency, representing a local point of convergence rather than a propagation through neighbors.\n\u0262=\ud801\udc5d: The primitive \u0262 (interaction_grammar) represents the conjunctive logic where all specified partners must be present simultaneously to satisfy the interaction requirements.\n\u2299=\u2299: Verifying the self-consistency of an eigenstate implies checking if the system has converged to a stable solution at the boundary where the governing equations must balance, often coinciding with the scale-free threshold of the phase space.\n\u0126=\ud801\udc56: The assignment of \u0126 (chirality) as a primitive requires a persistent broken symmetry where the eigenstate remains distinct from its mirror image across multiple structural axes, ensuring a memory depth of n.\n\u03a3=\ud801\udc59: Verifying the self-consistency of an eigenstate relative to its stoichiometry implies a balanced, equal distribution across the basis states.\n\u03a9=\ud801\udc6d: The stability of the eigenstate depends on a topological winding invariant that prevents continuous deformation to a trivial state without closing the energy gap.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299>\u25c7+\u00d7\u25cf=\u2299\u00ac\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299>\u25c7+\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": ">\u25c7+\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u25c7+\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299>\u25c7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299>\u25c7+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u25cf=\u2299\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "=\u2299\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u2299\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7\u25cf=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7\u25cf=\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u22a3\u22a2\u2299>\u25c7+\u00d7\u25cf=\u2299\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 4,
+    "canonical_word": "+\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299>\u25c7",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

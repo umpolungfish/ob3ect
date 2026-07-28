@@ -572,7 +572,7 @@ def nearest_canonical(tokens: Tuple[Token, ...]) -> List[Tuple[str, int]]:
 
 # Each canonical class has an associated IG primitive shift profile.
 # These are the known mappings from canonical programs to their
-# structural type signatures (when the program is the kernel of a system).
+# type signatures (when the program is the kernel of a system).
 
 CANONICAL_TO_TIER = {
     "I_Dialetheic_Bootstrap":    "O_∞",   # Full dialetheic cycle → self-modeling

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → AREV → CLINK → IMSCRIB → FFUSE → TANCH → IFIX
--- Class: Fel d 1 DARPin therapeutic protein — designed ankyrin repeat protein targeting the major cat allergen Fel d 1. The 12-primitive complementarity bijection maps allergen epitope to CDR sequences. O_∞ structural type with both consciousness gates open (C=0.5265). Designed via serpent_rod pipeline for nasal spray delivery.
+-- Class: Fel d 1 DARPin therapeutic protein — designed ankyrin repeat protein targeting the major cat allergen Fel d 1. The 12-primitive complementarity bijection maps allergen epitope to CDR sequences. O_∞ type with both consciousness gates open (C=0.5265). Designed via serpent_rod pipeline for nasal spray delivery.
 -- Fingerprint: sig=(6,2,1,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10

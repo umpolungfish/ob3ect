@@ -52,7 +52,7 @@ g_agamma_DFSZ = g_agg_base * (E_over_N_DFSZ - 2.0/3.0 * (4.0*z + 1.0)/(z + 1.0))
 #
 # The topological charge of the EP half-winding:
 #   ν_EP = 1/2  (half-integer winding number)
-# This is the structural content of θ_QCD → 0:
+# This is the content of θ_QCD → 0:
 #   θ = π·ν_EP·(1 − Ω_corr) = π·(1/2)·(1 − 1/744) ≈ π/2 ± small
 #   But the axion potential forces θ → 0, not θ → π/2.
 #   The resolution: the EP is traversed TWICE (𐑹→𐑬 then 𐑬→𐑹),

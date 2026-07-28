@@ -6,11 +6,11 @@ Maps CH3MPILER retrosynthetic disconnections to IMASM register traces,
 verifying which disconnections satisfy μ∘δ=id (Frobenius closure).
 
 A disconnection is Frobenius-closed when forward synthesis recovers the
-exact structural type (product_delta=0 in the ch3mpiler metric).
+exact type (product_delta=0 in the ch3mpiler metric).
 
 IMASM mapping:
   VINIT    — void substrate (no molecule yet)
-  TANCH    — anchor target structural type (molecule recognized)
+  TANCH    — anchor target type (molecule recognized)
   FSPLIT   — retrosynthetic cut (δ: split into precursors)
   EVALT    — evaluation TRUE  (product_delta=0, exact reconstruction)
   EVALF    — evaluation FALSE (product_delta>0, structural mismatch)
@@ -166,7 +166,7 @@ class Ch3mpilerOb3ect:
         "paracetamol",
     ]
 
-    # Exotic and strained scaffolds: grammar must derive all structural types
+    # Exotic and strained scaffolds: grammar must derive all types
     STRESS_TEST_TARGETS = [
         # strained small rings
         "aziridine",

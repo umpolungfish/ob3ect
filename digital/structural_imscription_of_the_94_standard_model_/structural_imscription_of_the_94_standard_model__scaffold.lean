@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → FSPLIT → EVALT → EVALF → FFUSE → AFWD → AREV → CLINK → IMSCRIB → ENGAGR → IFIX
--- Class: structural imscription of the 94 standard model hierarchy system from ig-docs/publishing/substack_articles/_batched/physics/94_standard_model_hierarchy, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 94 standard model hierarchy system from ig-docs/publishing/substack_articles/_batched/physics/94_standard_model_hierarchy, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

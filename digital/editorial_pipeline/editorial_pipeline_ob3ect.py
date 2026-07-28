@@ -1,7 +1,7 @@
 """
 editorial_pipeline_ob3ect.py — LLM-integrated editorial pipeline.
 
-Structural type: ⟨𐑼𐑡𐑠𐑾𐑚⊙𐑖𐑙𐑳𐑗𐑱𐑭⟩  O₂
+Type: ⟨𐑼𐑡𐑠𐑾𐑚⊙𐑖𐑙𐑳𐑗𐑱𐑭⟩  O₂
 
 SET → SUBMIT → SERVE pipeline for multi-step text editing, parsing, and rewriting.
 
@@ -572,7 +572,7 @@ editorial:
   intent: |                    # THE PROMPT — voice, style, directive (all of it)
     Rewrite for active voice. Short paragraphs. No hedging.
     Target audience: academic but accessible.
-    Preserve all structural claims and technical terms.
+    Preserve all claims and technical terms.
   output_dir: /path/to/output         # default: batch_dir + '_edited' sibling
   output_suffix: "_edited"            # appended to output filename stems
   critique: true                      # run AREV critique passes

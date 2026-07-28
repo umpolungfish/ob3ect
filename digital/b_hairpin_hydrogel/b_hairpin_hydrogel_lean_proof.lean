@@ -1,7 +1,7 @@
 -- b_hairpin_hydrogel_lean_proof.lean
 -- Lean proof scaffold for β-hairpin hydrogel self-imscribing ob3ect
 -- Canonical class: III_Anchor_Protocol (assembly ↔ disassembly cycle)
--- Structural tuple: ⟨Ð=𐑨; Þ=𐑡; Ř=𐑑; Φ=𐑯; ƒ=𐑞; Ç=𐑪; Γ=𐑚; ɢ=𐑜; ⊙=⊙; Ħ=𐑒; Σ=𐑕; Ω=𐑴⟩
+-- Tuple: ⟨Ð=𐑨; Þ=𐑡; Ř=𐑑; Φ=𐑯; ƒ=𐑞; Ç=𐑪; Γ=𐑚; ɢ=𐑜; ⊙=⊙; Ħ=𐑒; Σ=𐑕; Ω=𐑴⟩
 -- Frobenius closure: δ∘μ = id_A ∧ μ∘δ = id_B (fully reversible gelation)
 
 import Imscribing.IGMorphism

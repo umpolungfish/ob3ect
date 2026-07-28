@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → FSPLIT → AFWD → EVALT → AREV → EVALF → FFUSE → IMSCRIB → CLINK → ENGAGR → IFIX → TANCH
--- Class: structural imscription of the 12 the cosmic breath system from ig-docs/publishing/substack_articles/_batched/physics/12_the_cosmic_breath, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 12 the cosmic breath system from ig-docs/publishing/substack_articles/_batched/physics/12_the_cosmic_breath, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

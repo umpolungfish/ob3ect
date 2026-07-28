@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → FSPLIT → AFWD → CLINK → EVALT → FFUSE → IMSCRIB → FSPLIT → ENGAGR → AREV → CLINK → IFIX → TANCH
--- Class: A novel thermostable PET hydrolase enzyme variant (F218I/S238P) designed by IG-guided active site encoding. The ob3ect encodes a protein fold with enhanced backbone rigidity (G promoted from sequential to broadcast) while preserving the catalytic triad geometry (Ser-Asp-His). Structural type matches the PETase catalytic site O_∞ Frobenius-special tuple but with G=𐑵 (broadcast) for allosteric regulation. The ob3ect self-verifies its catalytic cycle closure via the Frobenius condition μ∘δ=id.
+-- Class: A novel thermostable PET hydrolase enzyme variant (F218I/S238P) designed by IG-guided active site encoding. The ob3ect encodes a protein fold with enhanced backbone rigidity (G promoted from sequential to broadcast) while preserving the catalytic triad geometry (Ser-Asp-His). Type matches the PETase catalytic site O_∞ Frobenius-special tuple but with G=𐑵 (broadcast) for allosteric regulation. The ob3ect self-verifies its catalytic cycle closure via the Frobenius condition μ∘δ=id.
 -- Fingerprint: sig=(7,3,2,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=False | period=13

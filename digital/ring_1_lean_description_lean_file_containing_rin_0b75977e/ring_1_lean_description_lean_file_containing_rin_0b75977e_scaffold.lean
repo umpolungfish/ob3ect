@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → AFWD → CLINK → FSPLIT → EVALT → AFWD → CLINK → FSPLIT → EVALT → CLINK → FSPLIT → EVALF → AREV → FFUSE → IMSCRIB → ENGAGR → CLINK → IFIX → AFWD → TANCH
--- Class: ring_1_lean description Lean file containing ring_1 structural proof for p4ramill
+-- Class: ring_1_lean description Lean file containing ring_1 proof for p4ramill
 -- Fingerprint: sig=(11,4,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=20

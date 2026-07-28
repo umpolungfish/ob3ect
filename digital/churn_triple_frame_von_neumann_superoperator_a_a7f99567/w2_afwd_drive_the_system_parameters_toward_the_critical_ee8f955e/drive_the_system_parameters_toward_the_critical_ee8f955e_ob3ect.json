@@ -1,0 +1,349 @@
+{
+  "name": "Drive the system parameters toward the critical coupling value",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Drive the system parameters toward the critical coupling value",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "manifold",
+        "coupling",
+        "eigenmode"
+      ],
+      "boundary_condition": "The Riemann surface manifold defining the parameter space of the non-Hermitian operator.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Unperturbed manifold",
+        "justification": "The initial state of the parameter space before the application of the driving force.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Critical manifold boundary",
+        "justification": "The closed boundary of the parameter space that contains the critical coupling point.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Parameter drive",
+        "justification": "The directed transformation of system parameters toward the critical coupling value.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Adjoint feedback",
+        "justification": "The reverse transformation or adjoint response of the system to the parameter shift.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Coupling composition",
+        "justification": "The sequential chaining of parameter increments to reach the target value.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Operator identity",
+        "justification": "The self-recognition of the non-Hermitian operator at its current parameter state.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Eigenmode bifurcation",
+        "justification": "The branching of the system into distinct trajectories as it approaches the singularity.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Eigenvector coalescence",
+        "justification": "The reconstitution of branched modes into a single degenerate state at the exceptional point.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Topological stability",
+        "justification": "The affirmative state where the system maintains its topological protection during the drive.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Dissipative loss",
+        "justification": "The negative state where the system loses coherence or exits the target manifold.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Exceptional point",
+        "justification": "The paradice state where multiple modes are held simultaneously in a state of coalescence.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Winding record",
+        "justification": "The permanent fixation of the integer winding number upon reaching the critical point.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Eigenmode bifurcation",
+      "split_input": "Operator state",
+      "split_outputs": [
+        "Stable trajectory",
+        "Dissipative trajectory"
+      ],
+      "fuse_element": "Eigenvector coalescence",
+      "fuse_result": "Operator state",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "The uninitialized parameter manifold before the drive begins.",
+      "true_description": "Successful alignment with the critical coupling value.",
+      "false_description": "Failure to reach the critical point due to parameter divergence.",
+      "both_description": "Coalescence at the exceptional point where modes are indistinguishable.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the complex parameter manifold for the non-Hermitian system"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Define the identity of the operator within the manifold"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Apply the driving force to shift parameters toward the critical coupling value"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the system into distinct eigenmode trajectories as the coupling increases"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Monitor the primary branch for topological stability and alignment"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "Apply the adjoint transformation to the secondary branch to assess response"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Monitor the secondary branch for dissipative losses or mode divergence"
+        },
+        {
+          "step_num": 8,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the system at the non-Hermitian exceptional point to force mode coalescence"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the branched modes into a single degenerate eigenvector"
+        },
+        {
+          "step_num": 10,
+          "opcode": "CLINK",
+          "domain_action": "Compose the resulting state with the global superoperator algebra"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "Record the integer winding number of the singularity as a permanent state"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "Seal the Riemann surface boundary to ensure algebraic closure of the drive"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The driving protocol that translates target coupling values into parameter shifts.",
+      "ipc_mechanism": "The coupling interactions between eigenmodes within the manifold.",
+      "memory_mechanism": "The current position of the system within the complex parameter space.",
+      "scheduler_mechanism": "The sequence of parameter increments defined by the driving protocol.",
+      "alfs_store": "The Triple Frame von Neumann Superoperator Algebra reference.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The energy required to shift the system parameters against the manifold gradient.",
+      "pre_cycle_state": "System at a sub-critical parameter state.",
+      "post_cycle_state": "System at the critical coupling fixed point.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The process is a controlled adiabatic drive toward a topological fixed point.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: Drive the system parameters toward the critical coupling value\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(3, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def drive_the_system_parameters_toward_the_a6d42a_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def drive_the_system_parameters_toward_the_a6d42a_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def drive_the_system_parameters_toward_the_a6d42a_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def drive_the_system_parameters_toward_the_a6d42a_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def drive_the_system_parameters_toward_the_a6d42a_protocol : IGProtocol drive_the_system_parameters_toward_the_a6d42a_s0 drive_the_system_parameters_toward_the_a6d42a_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct drive_the_system_parameters_toward_the_a6d42a_s8 drive_the_system_parameters_toward_the_a6d42a_s8 = drive_the_system_parameters_toward_the_a6d42a_s8 (idempotent)\n  (.seq (.arrow drive_the_system_parameters_toward_the_a6d42a_l0 drive_the_system_parameters_toward_the_a6d42a_s0 drive_the_system_parameters_toward_the_a6d42a_s1) (.seq (.arrow drive_the_system_parameters_toward_the_a6d42a_l1 drive_the_system_parameters_toward_the_a6d42a_s1 drive_the_system_parameters_toward_the_a6d42a_s2) (.seq (.arrow drive_the_system_parameters_toward_the_a6d42a_l2 drive_the_system_parameters_toward_the_a6d42a_s2 drive_the_system_parameters_toward_the_a6d42a_s3) (.seq (.prod (.arrow drive_the_system_parameters_toward_the_a6d42a_l3 drive_the_system_parameters_toward_the_a6d42a_s3 drive_the_system_parameters_toward_the_a6d42a_s8) (.arrow drive_the_system_parameters_toward_the_a6d42a_l3 drive_the_system_parameters_toward_the_a6d42a_s3 drive_the_system_parameters_toward_the_a6d42a_s8)) (.seq (.arrow drive_the_system_parameters_toward_the_a6d42a_l8 drive_the_system_parameters_toward_the_a6d42a_s8 drive_the_system_parameters_toward_the_a6d42a_s8) (.seq (.arrow drive_the_system_parameters_toward_the_a6d42a_l8 drive_the_system_parameters_toward_the_a6d42a_s8 drive_the_system_parameters_toward_the_a6d42a_s9) (.seq (.arrow drive_the_system_parameters_toward_the_a6d42a_l9 drive_the_system_parameters_toward_the_a6d42a_s9 drive_the_system_parameters_toward_the_a6d42a_s10) (.arrow drive_the_system_parameters_toward_the_a6d42a_l10 drive_the_system_parameters_toward_the_a6d42a_s10 drive_the_system_parameters_toward_the_a6d42a_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def drive_the_system_parameters_toward_the_a6d42a_true_arm : IGProtocol drive_the_system_parameters_toward_the_a6d42a_s0 drive_the_system_parameters_toward_the_a6d42a_s11 :=\n  (drive_the_system_parameters_toward_the_a6d42a_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def drive_the_system_parameters_toward_the_a6d42a_false_arm : IGProtocol drive_the_system_parameters_toward_the_a6d42a_s0 drive_the_system_parameters_toward_the_a6d42a_s11 :=\n  (drive_the_system_parameters_toward_the_a6d42a_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef drive_the_system_parameters_toward_the_a6d42a_tier_ground : OuroboricityTier := TierFunctor.obj drive_the_system_parameters_toward_the_a6d42a_s0\ndef drive_the_system_parameters_toward_the_a6d42a_tier : OuroboricityTier := TierFunctor.obj drive_the_system_parameters_toward_the_a6d42a_s11\n#eval drive_the_system_parameters_toward_the_a6d42a_tier_ground  -- tier of the ground (pre-transformation)\n#eval drive_the_system_parameters_toward_the_a6d42a_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem drive_the_system_parameters_toward_the_a6d42a_frobenius :\n    igFrobeniusAlg.mul drive_the_system_parameters_toward_the_a6d42a_s0 drive_the_system_parameters_toward_the_a6d42a_s0 = drive_the_system_parameters_toward_the_a6d42a_s0 :=\n  igFrobAlg_self_fusion drive_the_system_parameters_toward_the_a6d42a_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        3,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Drive the system parameters toward the critical coupling value",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7d\ud801\udc79\ud801\udc50\ud801\udc64\ud801\udc54\ud801\udc5d\u2299\ud801\udc56\ud801\udc59\ud801\udc6d\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The critical coupling value represents a phase transition where the boundary conditions dictate the global state, effectively collapsing the bulk degrees of freedom into a single topological register.\n\u00de=\ud801\udc78: Driving parameters toward critical coupling in the context of dimensionality \ud801\udc66 implies a phase transition where the boundary encodes the bulk information, characteristic of holographic scale-collapse.\n\u0158=\ud801\udc7d: Driving parameters toward critical coupling implies a catalytic adjustment of the system's energy landscape to facilitate a phase transition or state change without necessarily altering the fundamental constituents.\n\u03a6=\ud801\udc79: The drive toward critical coupling in a system already assigned the Special Frobenius primitive (\u00de) necessitates the exact Z2 symmetry where the composition of multiplication and comultiplication is identity-preserving.\n\u0192=\ud801\udc50: Driving parameters toward critical coupling maximizes mutual information and ensures structural alignment, resulting in near-certain firing patterns.\n\u00c7=\ud801\udc64: Approaching critical coupling implies the system is becoming susceptible to fluctuations, allowing for rearrangement under the influence of the driving perturbation.\n\u0393=\ud801\udc54: Critical coupling implies the system is at a phase transition where correlation lengths diverge to encompass the entire system.\n\u0262=\ud801\udc5d: Driving a system toward a critical coupling value implies a threshold where all specific components must interact simultaneously to achieve the phase transition or synchronized state.\n\u2299=\u2299: The instruction to drive parameters toward the critical coupling value indicates the system is being positioned exactly at the phase transition threshold.\n\u0126=\ud801\udc56: The drive toward critical coupling in a system with broken orientational symmetry typically results in structural enforcement across multiple axes, leading to a persistent memory depth.\n\u03a3=\ud801\udc59: Driving the system toward critical coupling typically implies a balanced, symmetric interaction where components pair equally to reach the threshold.\n\u03a9=\ud801\udc6d: Driving the system toward a critical coupling value typically involves stabilizing a topological phase defined by an integer winding number or Chern invariant that remains invariant under continuous deformations.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf=\u00ac\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299>\u25c7+<\u00d7\u229e\u25cf=\u00ac\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": ">\u25c7+<\u00d7\u229e\u25cf=\u00ac\u22a3\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u25c7+<\u00d7\u229e\u25cf=\u00ac\u22a3\u22a2\u2299>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+<\u00d7\u229e\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "<\u00d7\u229e\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u00d7\u229e\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7+<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u229e\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7+<\u00d7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "=\u00ac\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u00ac\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf=\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 4,
+    "canonical_word": "+<\u00d7\u229e\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

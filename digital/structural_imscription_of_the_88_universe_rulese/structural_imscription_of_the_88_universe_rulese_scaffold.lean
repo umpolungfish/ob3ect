@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → AFWD → AREV → CLINK → IMSCRIB → FSPLIT → EVALT → EVALF → ENGAGR → FFUSE → IFIX → CLINK → FSPLIT → EVALT → FFUSE → IFIX
--- Class: structural imscription of the 88 universe rulesets system from ig-docs/publishing/substack_articles/_batched/physics/88_universe_rulesets, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 88 universe rulesets system from ig-docs/publishing/substack_articles/_batched/physics/88_universe_rulesets, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(7,4,4,2)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=17

@@ -204,14 +204,14 @@ class FrobeniusHarness:
         
         The verify confirms that an emit was received and processed.
         observed_hash should be a hash of the observed result.
-        We check that the emit was registered (structural closure),
+        We check that the emit was registered (closure),
         and that the result is non-trivial.
         """
         self.checks += 1
         expected = self.pending_emits.pop(emit_id, None)
         if expected is not None:
             self.open_count -= 1
-            # Structural closure: emit was received, response is non-trivial
+            # Closure: emit was received, response is non-trivial
             if observed_hash and observed_hash != hashlib.sha256(b"").hexdigest()[:16]:
                 self.passed += 1
                 return B4.T
@@ -957,7 +957,7 @@ def build_parser():
           python3 momonados_agent.py --cycles 10
         
           # One-shot query: ask the agent a question
-          python3 momonados_agent.py --ask "What is the structural type of consciousness?"
+          python3 momonados_agent.py --ask "What is the type of consciousness?"
         
           # Ask with content from a file (auto-detected if path exists)
           python3 momonados_agent.py --ask my_question.txt

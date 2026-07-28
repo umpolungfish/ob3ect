@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → IMSCRIB → AFWD → FSPLIT → EVALT → EVALF → CLINK → AREV → ENGAGR → FFUSE → IFIX → TANCH
--- Class: structural imscription of the 87 frobenius unification system from ig-docs/publishing/substack_articles/_batched/physics/87_frobenius_unification, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 87 frobenius unification system from ig-docs/publishing/substack_articles/_batched/physics/87_frobenius_unification, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13

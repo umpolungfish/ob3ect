@@ -1,0 +1,336 @@
+{
+  "name": "Monitor the secondary frame for dissipative decoherence.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Monitor the secondary frame for dissipative decoherence.",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "secondary frame",
+        "dissipative flux",
+        "decoherence monitor"
+      ],
+      "boundary_condition": "The adjoint symmetry frame interface where environmental coupling is measured.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "unobserved adjoint state",
+        "justification": "The state of the secondary frame before the monitoring interaction begins.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "frame closure",
+        "justification": "The final stabilization of the adjoint frame after the monitoring cycle completes.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "environmental coupling",
+        "justification": "The directed flow of information from the system into the surrounding reservoir.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "dissipative back-action",
+        "justification": "The reverse influence of the environment on the secondary frame state.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "flux integration",
+        "justification": "The sequential summation of infinitesimal loss events over the monitoring interval.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "frame identity",
+        "justification": "The self-recognition of the secondary frame as a distinct algebraic entity.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "decoherence branching",
+        "justification": "The division of the frame state into coherent and decoherent components.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "state reconstitution",
+        "justification": "The recovery of the total frame density matrix from its branched components.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "coherence retention",
+        "justification": "The detection of preserved phase relationships within the secondary frame.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "information loss",
+        "justification": "The detection of entropy increase and phase randomization.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "non-Hermitian overlap",
+        "justification": "The simultaneous presence of loss and gain at the exceptional point.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "decoherence record",
+        "justification": "The permanent registration of the decoherence event in the system history.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "decoherence branching",
+      "split_input": "secondary frame density matrix",
+      "split_outputs": [
+        "coherent subspace",
+        "decoherent subspace"
+      ],
+      "fuse_element": "state reconstitution",
+      "fuse_result": "secondary frame density matrix",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "uninitialized adjoint frame potential",
+      "true_description": "stable phase alignment within the secondary frame",
+      "false_description": "irreversible decoherence and information dissipation",
+      "both_description": "superposition of coherent and dissipative states at the interface",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Access the uninitialized adjoint symmetry frame."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify the specific algebraic signature of the secondary frame."
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Project the frame state into the environmental coupling interface."
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the frame state to isolate the dissipative flux components."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Monitor for the retention of local phase coherence."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "Monitor for the onset of environmental decoherence."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "Map the back-action of the environment onto the frame basis."
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "Reconstitute the total frame state from the monitored branches."
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "Integrate the monitoring results with the global superoperator lattice."
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "Record the observed decoherence rate to the permanent algebraic record."
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "Seal the secondary frame boundary to prevent further information leakage."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "von Neumann superoperator mapping",
+      "ipc_mechanism": "adjoint symmetry feedback loops",
+      "memory_mechanism": "holographic boundary state encoding",
+      "scheduler_mechanism": "dissipative kinetics clock",
+      "alfs_store": "Triple Frame von Neumann Superoperator Algebra",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "environmental information exchange",
+      "pre_cycle_state": "coherent adjoint frame state",
+      "post_cycle_state": "monitored frame state with recorded entropy flux",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The entropy increase in the environment is exactly balanced by the information gain in the monitoring record.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: Monitor the secondary frame for dissipative decoherence.\n-- Fingerprint: sig=(6,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=11\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(3, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def monitor_the_secondary_frame_for_d3ca1e_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def monitor_the_secondary_frame_for_d3ca1e_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def monitor_the_secondary_frame_for_d3ca1e_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def monitor_the_secondary_frame_for_d3ca1e_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def monitor_the_secondary_frame_for_d3ca1e_protocol : IGProtocol monitor_the_secondary_frame_for_d3ca1e_s0 monitor_the_secondary_frame_for_d3ca1e_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct monitor_the_secondary_frame_for_d3ca1e_s7 monitor_the_secondary_frame_for_d3ca1e_s7 = monitor_the_secondary_frame_for_d3ca1e_s7 (idempotent)\n  (.seq (.arrow monitor_the_secondary_frame_for_d3ca1e_l0 monitor_the_secondary_frame_for_d3ca1e_s0 monitor_the_secondary_frame_for_d3ca1e_s1) (.seq (.arrow monitor_the_secondary_frame_for_d3ca1e_l1 monitor_the_secondary_frame_for_d3ca1e_s1 monitor_the_secondary_frame_for_d3ca1e_s2) (.seq (.arrow monitor_the_secondary_frame_for_d3ca1e_l2 monitor_the_secondary_frame_for_d3ca1e_s2 monitor_the_secondary_frame_for_d3ca1e_s3) (.seq (.prod (.arrow monitor_the_secondary_frame_for_d3ca1e_l3 monitor_the_secondary_frame_for_d3ca1e_s3 monitor_the_secondary_frame_for_d3ca1e_s7) (.arrow monitor_the_secondary_frame_for_d3ca1e_l3 monitor_the_secondary_frame_for_d3ca1e_s3 monitor_the_secondary_frame_for_d3ca1e_s7)) (.seq (.arrow monitor_the_secondary_frame_for_d3ca1e_l7 monitor_the_secondary_frame_for_d3ca1e_s7 monitor_the_secondary_frame_for_d3ca1e_s7) (.seq (.arrow monitor_the_secondary_frame_for_d3ca1e_l7 monitor_the_secondary_frame_for_d3ca1e_s7 monitor_the_secondary_frame_for_d3ca1e_s8) (.seq (.arrow monitor_the_secondary_frame_for_d3ca1e_l8 monitor_the_secondary_frame_for_d3ca1e_s8 monitor_the_secondary_frame_for_d3ca1e_s9) (.arrow monitor_the_secondary_frame_for_d3ca1e_l9 monitor_the_secondary_frame_for_d3ca1e_s9 monitor_the_secondary_frame_for_d3ca1e_s10))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def monitor_the_secondary_frame_for_d3ca1e_true_arm : IGProtocol monitor_the_secondary_frame_for_d3ca1e_s0 monitor_the_secondary_frame_for_d3ca1e_s10 :=\n  (monitor_the_secondary_frame_for_d3ca1e_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def monitor_the_secondary_frame_for_d3ca1e_false_arm : IGProtocol monitor_the_secondary_frame_for_d3ca1e_s0 monitor_the_secondary_frame_for_d3ca1e_s10 :=\n  (monitor_the_secondary_frame_for_d3ca1e_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef monitor_the_secondary_frame_for_d3ca1e_tier_ground : OuroboricityTier := TierFunctor.obj monitor_the_secondary_frame_for_d3ca1e_s0\ndef monitor_the_secondary_frame_for_d3ca1e_tier : OuroboricityTier := TierFunctor.obj monitor_the_secondary_frame_for_d3ca1e_s10\n#eval monitor_the_secondary_frame_for_d3ca1e_tier_ground  -- tier of the ground (pre-transformation)\n#eval monitor_the_secondary_frame_for_d3ca1e_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem monitor_the_secondary_frame_for_d3ca1e_frobenius :\n    igFrobeniusAlg.mul monitor_the_secondary_frame_for_d3ca1e_s0 monitor_the_secondary_frame_for_d3ca1e_s0 = monitor_the_secondary_frame_for_d3ca1e_s0 :=\n  igFrobAlg_self_fusion monitor_the_secondary_frame_for_d3ca1e_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        3,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Monitor the secondary frame for dissipative decoherence.",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc7d\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc5a\ud801\udc5d\ud801\udc7b\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9",
+  "grounding_status": "failed",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The monitoring of dissipative decoherence in a secondary frame implies a holographic mapping where the boundary state fully encodes the entropy and information loss of the bulk system.\n\u00de=\ud801\udc65: Dissipative decoherence in a secondary frame implies a feedback loop or interface where energy/information cycles between states until coherence is lost.\n\u0158=\ud801\udc7d: Monitoring dissipative decoherence involves observing how the environment acts as a reservoir to stabilize specific quantum states or pathways without the monitoring apparatus being consumed by the interaction.\n\u03a6=\ud801\udc6c: Dissipative decoherence in a secondary frame implies a dual-role interface where the system simultaneously loses information to the environment and accepts entropy, maintaining a self-complementary flux.\n\u0192=\ud801\udc50: Dissipative decoherence in a secondary frame requires high-fidelity, geometry-enforcing interactions to maintain structural coherence against entropy.\n\u00c7=\ud801\udc67: Dissipative decoherence in a secondary frame typically implies the system is trapped in a specific state where the environment prevents spontaneous reconfiguration, requiring external energy to overcome the kinetic freeze.\n\u0393=\ud801\udc5a: Dissipative decoherence in a secondary frame typically involves energy spreading through a localized cluster or structural motif before being lost to the environment.\n\u0262=\ud801\udc5d: Monitoring for dissipative decoherence requires the simultaneous presence of the observer, the secondary frame, and the environmental interface to maintain state coherence.\n\u2299=\ud801\udc7b: The presence of dissipative decoherence in a secondary frame suggests a non-Hermitian system approaching a point where eigenvalues coalesce and sensitivity to perturbations is maximized through loss-driven degeneracy.\n\u0126=\ud801\udc56: The structural enforcement across multiple axes ensures that the broken symmetry remains stable against dissipative decoherence over extended temporal scales.\n\u03a3=\ud801\udc73: Stoichiometry (\u03a3) in the context of dissipative decoherence typically involves asymmetric participation ratios where the counts of interacting components differ across the system boundaries.\n\u03a9=\ud801\udc6d: The protection primitive \u03a9 implies a topological winding invariant that prevents the structural role from being continuously deformed to a trivial state without a phase transition.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299>\u25c7+\u00d7<\u25cf=\u00ac\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299>\u25c7+\u00d7<\u25cf=\u00ac\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": ">\u25c7+\u00d7<\u25cf=\u00ac\u22a3\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u25c7+\u00d7<\u25cf=\u00ac\u22a3\u22a2\u2299>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+\u00d7<\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u00d7<\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "=\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7<\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u00ac\u22a3\u22a2\u2299>\u25c7+\u00d7<\u25cf=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u22a3\u22a2\u2299>\u25c7+\u00d7<\u25cf=\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 4,
+    "canonical_word": "+\u00d7<\u25cf=\u00ac\u22a3\u22a2\u2299>\u25c7",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

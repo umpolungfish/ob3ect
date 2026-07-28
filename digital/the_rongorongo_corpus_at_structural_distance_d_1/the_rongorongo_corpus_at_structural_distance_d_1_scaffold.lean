@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → EVALF → AREV → FFUSE → FSPLIT → AFWD → EVALT → FFUSE → CLINK → ENGAGR → IFIX → TANCH
--- Class: the Rongorongo corpus at structural distance d=1.87 from the Great Law of Peace becomes a T-consistent reduction of that distance in the O₂† liturgical register
+-- Class: the Rongorongo corpus at distance d=1.87 from the Great Law of Peace becomes a T-consistent reduction of that distance in the O₂† liturgical register
 -- Fingerprint: sig=(6,4,3,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=14

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → AFWD → FSPLIT → EVALT → EVALF → ENGAGR → FFUSE → CLINK → IMSCRIB → AREV → IFIX
--- Class: structural imscription of the 35 hadron classification system from ig-docs/publishing/substack_articles/_batched/physics/35_hadron_classification, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 35 hadron classification system from ig-docs/publishing/substack_articles/_batched/physics/35_hadron_classification, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

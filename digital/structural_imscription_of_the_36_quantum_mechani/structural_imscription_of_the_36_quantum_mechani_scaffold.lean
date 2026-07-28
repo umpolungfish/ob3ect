@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → AFWD → FSPLIT → EVALT → FFUSE → AREV → EVALF → ENGAGR → CLINK → IMSCRIB → IFIX
--- Class: structural imscription of the 36 quantum mechanics structural system from ig-docs/publishing/substack_articles/_batched/physics/36_quantum_mechanics_structural, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 36 quantum mechanics structural system from ig-docs/publishing/substack_articles/_batched/physics/36_quantum_mechanics_structural, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

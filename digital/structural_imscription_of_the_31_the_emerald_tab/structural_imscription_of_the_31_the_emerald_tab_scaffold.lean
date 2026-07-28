@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → AFWD → EVALT → CLINK → AFWD → EVALT → AREV → EVALF → CLINK → FFUSE → EVALT → ENGAGR → IFIX → TANCH
--- Class: structural imscription of the 31 the emerald tablet system from ig-docs/publishing/substack_articles/_batched/alchemy/31_the_emerald_tablet, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 31 the emerald tablet system from ig-docs/publishing/substack_articles/_batched/alchemy/31_the_emerald_tablet, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(8,2,5,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=16

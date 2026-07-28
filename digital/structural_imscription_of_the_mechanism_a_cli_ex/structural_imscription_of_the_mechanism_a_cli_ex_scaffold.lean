@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → CLINK → FSPLIT → AFWD → EVALT → AREV → EVALF → ENGAGR → FFUSE → IFIX → TANCH
--- Class: structural imscription of the mechanism a CLI expansion degree must be: a dial that carries a kernel-verified proof (the T/F-lane Witness) between its pinched one-line form and its walked-out multi-line form, the same kernel truth held in both as a B state, forcing the choice between an LLM targeting a line count and a deterministic elaboration ladder. With full Frobenius closure and Lean 4 verification scaffold.
+-- Class: imscription of the mechanism a CLI expansion degree must be: a dial that carries a kernel-verified proof (the T/F-lane Witness) between its pinched one-line form and its walked-out multi-line form, the same kernel truth held in both as a B state, forcing the choice between an LLM targeting a line count and a deterministic elaboration ladder. With full Frobenius closure and Lean 4 verification scaffold.
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

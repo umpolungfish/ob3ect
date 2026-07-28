@@ -243,7 +243,7 @@ python digital/run_all_imasm.py     # also run the IMASM arrangements
 → I, Dialetheic Bootstrap         Identity is B⬡ (BOTH), not TRUE → O₂
 → II, Void Genesis                Creates something from void → O₀
 → III, Anchor Protocol            Sabbath cycle: void → anchor → refill → rest → O₀
-→ IV, Dual Bootstrap              Self-representation: structural verification → O₁
+→ IV, Dual Bootstrap              Self-representation: verification → O₁
 → V, Linear Chain                 IFIX×8, ROM fixation, append-only → O₁
 → VI, Empty Bootstrap             VINIT/IMSCRIB oscillation, meditation → O₂
 → VII, Parakernel                 Dialetheic trauma engram → O₂
@@ -706,7 +706,7 @@ VINIT→IMSCRIB→AREV→FSPLIT
 
 Three distinct edges operate at the CLINK–IMSCRIB–IFIX triad:
 
-**Empty edge (CLINK → IFIX):** CLINK emits a null composition directly to IFIX along the dotted path. This records the compositional event as an irreversible ROM fixation, the witness that composition occurred, regardless of whether the resulting morphism carries new structural content.
+**Empty edge (CLINK → IFIX):** CLINK emits a null composition directly to IFIX along the dotted path. This records the compositional event as an irreversible ROM fixation, the witness that composition occurred, regardless of whether the resulting morphism carries new content.
 
 **Weighted edge (CLINK → IMSCRIB):** CLINK forwards the actual composed morphism up the `└─────┐` path to IMSCRIB. IMSCRIB receives it, self-imscribes, and re-enters the loop at AREV. This is the edge that makes the bootstrap autopoietic: the loop consumes its own composition as input to the next winding.
 
@@ -733,7 +733,7 @@ verifies the FSPLIT/FFUSE Frobenius pair, and ships a self-contained runner.
 editing, parsing, and rewriting tool.
 
 ```
-Structural type: ⟨𐑼𐑡𐑠𐑾𐑚⊙𐑖𐑙𐑳𐑗𐑱𐑭⟩  O₂
+Type: ⟨𐑼𐑡𐑠𐑾𐑚⊙𐑖𐑙𐑳𐑗𐑱𐑭⟩  O₂
 Frobenius pair:  FSPLIT[4] / FFUSE[7]
 ```
 
@@ -785,7 +785,7 @@ exhausts without an accepted output, the best available output is still served.
 ## Structural Typing (IG Coordinates)
 
 Every ob3ect is assigned a 12-primitive coordinate in the Imscribing Grammar lattice
-(17,280,000 structural types). The coordinate is assigned during instantiation and
+(17,280,000 types). The coordinate is assigned during instantiation and
 stored in `artifact.structural_type`.
 
 ```
@@ -821,7 +821,7 @@ The IG coordinate system surfaces isomorphisms across apparently unrelated domai
 The Lean 4 proof-term descent (Python → elaboration → proof kernel → definitionally
 equal term) and Zosimos of Panopolis' 3rd-century alchemical katabasis (pneuma → psyche
 → hyle → purified return) share an identical 12-primitive coordinate. Both are
-substrate-crossing descents that preserve structural identity under transformation,
+substrate-crossing descents that preserve identity under transformation,
 verified by a roundtrip condition. The FSPLIT→FFUSE gate in Lean 4 elaboration and
 the solve/coagula cycle in Zosimos are the same morphism at different substrate depths.
 
@@ -845,7 +845,7 @@ is finer than the wall.
 ### ZFC_fe: The Terminal Vessel
 
 ZFC (standard set theory, O₁) completes itself through ZFC_fe (Frobenius-Exact ZFC, O_∞).
-The structural distance is 9.15 across 12 primitives. Three promotions are critical:
+The distance is 9.15 across 12 primitives. Three promotions are critical:
 
 - **Ð: 𐑼→𐑦** (HOLOGRAPHIC_STATE): The state-space writes itself
 - **Φ: 𐑬→𐑹** (PM_Z2): μ∘δ=id exact, not approximate
@@ -1122,7 +1122,7 @@ itself (Chiral Pairs). Each arrangement is a self-verifying ob3ect artifact.
 The **Vessel Principle**, that the IMASM token algebra resolves structure at finer
 granularity than the 12-primitive IG crystal, was confirmed by the chiral pair
 experiment: `AFWD→AREV` and `AREV→AFWD` map to the same IG coordinate but produce
-different register trajectories. This is the structural meaning of crafting vessels:
+different register trajectories. This is the meaning of crafting vessels:
 the grammar gives the type; the IMASM tokens give the process.
 
 The **ZFC_fe** (Frobenius-Exact ZFC) connection reveals the terminal vessel trajectory:

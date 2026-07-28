@@ -4,7 +4,7 @@ praxeum_ep_core_platform_ob3ect.py — Self-verifying ob3ect
 ================================================================
 CLINK Layer 3 (Molecule): β-carboline exceptional point platform.
 Live catalog entry: praxeum_ep_core_platform
-Structural type (from catalog): ⟨Ð=𐑦; Þ=𐑶; Ř=𐑾; Φ=𐑹; ƒ=𐑐; Ç=𐑧; Γ=𐑲; ɢ=𐑠; ⊙=𐑻; Ħ=𐑫; Σ=𐑳; Ω=𐑭⟩
+Type (from catalog): ⟨Ð=𐑦; Þ=𐑶; Ř=𐑾; Φ=𐑹; ƒ=𐑐; Ç=𐑧; Γ=𐑲; ɢ=𐑠; ⊙=𐑻; Ħ=𐑫; Σ=𐑳; Ω=𐑭⟩
 
 Algebraic closure: μ∘δ = id_A
 At the Exceptional Point (ε=0), the two tautomeric forms are degenerate:
@@ -17,7 +17,7 @@ Author: Lando ⊗ ⊙perator
 
 import json, hashlib, os, math
 
-# ─── Live catalog structural tuple ───────────────────────────────
+# ─── Live catalog tuple ───────────────────────────────
 PRAXEUM_TUPLE = {
     "Ð": "\U00010466",  # 𐑦 — imscriptive (3D interaction space)
     "Þ": "\U00010476",  # 𐑶 — box product (irreducible tricyclic)
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     print("=" * 60)
     print("PRAXEUM EP-CORE PLATFORM — Self-verifying ob3ect")
     print("=" * 60)
-    print(f"  Structural type: {json.dumps(PRAXEUM_TUPLE)}")
+    print(f"  Type: {json.dumps(PRAXEUM_TUPLE)}")
     print(f"  SMILES: {SMILES}")
     print(f"  InChI prefix: {INCHI_PREFIX}")
     print(f"  State: imine={ep.state[0]}, indole={ep.state[1]}")

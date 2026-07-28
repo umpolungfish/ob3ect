@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → FSPLIT → AFWD → EVALT → CLINK → AREV → EVALF → ENGAGR → FFUSE → IMSCRIB → IFIX → TANCH
--- Class: structural imscription of the 85 quantum gravity unified system from ig-docs/publishing/substack_articles/_batched/physics/85_quantum_gravity_unified, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 85 quantum gravity unified system from ig-docs/publishing/substack_articles/_batched/physics/85_quantum_gravity_unified, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13

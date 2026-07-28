@@ -1084,7 +1084,7 @@ async def auto_design(
             + f"  Reasoning: {grounding_reasoning}\n"
             f"Your opcode map, register mapping, and bootstrap sequence MUST be built "
             f"consistent with this tuple — it is not a suggestion, it is the already-"
-            f"grounded structural type. Do not invent a different primitive assignment."
+            f"grounded type. Do not invent a different primitive assignment."
         )
         context = f"{gate_context}\n\n{context}" if context else gate_context
 

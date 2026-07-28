@@ -3,7 +3,7 @@
 Six ob3ect runs tonight (2026-07-06/07), same auto.py pipeline, same provider
 (openrouter, google/gemini-3-flash-preview), same domain (computational). Three
 referent pairs, each run once with the entity description prefixed by
-"structural imscription of " and once without (bare referent). Fingerprint data
+"imscription of " and once without (bare referent). Fingerprint data
 in reflexivity_data.json.
 
 ## The three pairs
@@ -27,7 +27,7 @@ dialetheia_complete: true (6/6, per earlier phase_3 inspection).
 
 ## What varies
 
-Removing the "structural imscription of " prefix (keeping the referent's
+Removing the "imscription of " prefix (keeping the referent's
 substantive content identical) changed: fingerprint sig, period, and the
 FSPLIT/FFUSE pair count/positions, in BOTH pairs where it was tested. The
 direction is not uniform: plateau prefixed->bare period 16->17 (+1, pair

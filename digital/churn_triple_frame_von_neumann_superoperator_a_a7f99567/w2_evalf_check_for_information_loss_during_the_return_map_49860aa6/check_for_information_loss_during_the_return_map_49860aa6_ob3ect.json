@@ -1,0 +1,349 @@
+{
+  "name": "Check for information loss during the return mapping",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Check for information loss during the return mapping",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "parity_bit",
+        "syndrome_vector",
+        "fidelity_metric"
+      ],
+      "boundary_condition": "The error-correction manifold of the superoperator algebra",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "uninitialized_syndrome_space",
+        "justification": "The state before the return mapping is compared against the reference identity.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "fidelity_threshold_seal",
+        "justification": "The final boundary that accepts or rejects the mapping as a valid identity.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "syndrome_extraction",
+        "justification": "The forward movement of extracting error signatures from the bulk-to-boundary transition.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "trace_backpropagation",
+        "justification": "The reverse flow of information to locate the specific coordinate of data degradation.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "metric_aggregation",
+        "justification": "The sequential chaining of local fidelity checks into a global loss value.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self_consistency_check",
+        "justification": "The recognition of the operator as itself after the roundtrip transformation.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "divergence_test",
+        "justification": "The branching of the signal into a reference copy and the returned copy for comparison.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "signal_reconciliation",
+        "justification": "The merging of the reference and returned signals to verify total information recovery.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "unitary_preservation",
+        "justification": "The state where the return mapping matches the original identity exactly.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "information_leakage",
+        "justification": "The state where entropy has increased and the mapping is non-unitary.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "quantum_superposition_of_states",
+        "justification": "A state where the loss is indeterminate due to entanglement between bulk and boundary.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "loss_log_entry",
+        "justification": "The permanent record of the fidelity score in the algebraic trace.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "divergence_test",
+      "split_input": "operator_state",
+      "split_outputs": [
+        "reference_identity",
+        "returned_signal"
+      ],
+      "fuse_element": "signal_reconciliation",
+      "fuse_result": "operator_state",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "pre-comparison null state",
+      "true_description": "zero information loss detected",
+      "false_description": "non-zero information loss detected",
+      "both_description": "coherent interference between lossy and lossless paths",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize the syndrome space for the return mapping check"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "identify the original operator state as the reference point"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "branch the operator state into a reference arm and a comparison arm"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "project the comparison arm through the fidelity metric"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "confirm the presence of the expected unitary signature"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "invert the projection to check for hidden entropy in the bulk"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "detect any residual noise or information leakage in the return path"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "reconcile the reference arm with the comparison arm to verify identity"
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "compose the resulting fidelity score with the global manifold state"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IMSCRIB",
+          "domain_action": "verify that the operator remains self-consistent after the check"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "record the information loss value in the permanent algebraic trace"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "seal the check to prevent further modification of the fidelity record"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "von Neumann superoperator logic",
+      "ipc_mechanism": "holographic boundary-bulk signaling",
+      "memory_mechanism": "algebraic trace registers",
+      "scheduler_mechanism": "recursive fidelity loop controller",
+      "alfs_store": "Z2 symmetry reference manifold",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "computational overhead of the syndrome extraction",
+      "pre_cycle_state": "unverified return mapping state",
+      "post_cycle_state": "validated identity mapping with recorded fidelity",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the check is a non-destructive measurement of the algebraic identity",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 CLINK \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: Check for information loss during the return mapping\n-- Fingerprint: sig=(7,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc71  | fuse \u03bc \u2014 assembly mode\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc59 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [9] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def check_for_information_loss_during_the_411825_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def check_for_information_loss_during_the_411825_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def check_for_information_loss_during_the_411825_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_information_loss_during_the_411825_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def check_for_information_loss_during_the_411825_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def check_for_information_loss_during_the_411825_protocol : IGProtocol check_for_information_loss_during_the_411825_s0 check_for_information_loss_during_the_411825_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct check_for_information_loss_during_the_411825_s7 check_for_information_loss_during_the_411825_s7 = check_for_information_loss_during_the_411825_s7 (idempotent)\n  (.seq (.arrow check_for_information_loss_during_the_411825_l0 check_for_information_loss_during_the_411825_s0 check_for_information_loss_during_the_411825_s1) (.seq (.arrow check_for_information_loss_during_the_411825_l1 check_for_information_loss_during_the_411825_s1 check_for_information_loss_during_the_411825_s2) (.seq (.prod (.arrow check_for_information_loss_during_the_411825_l2 check_for_information_loss_during_the_411825_s2 check_for_information_loss_during_the_411825_s7) (.arrow check_for_information_loss_during_the_411825_l2 check_for_information_loss_during_the_411825_s2 check_for_information_loss_during_the_411825_s7)) (.seq (.arrow check_for_information_loss_during_the_411825_l7 check_for_information_loss_during_the_411825_s7 check_for_information_loss_during_the_411825_s7) (.seq (.arrow check_for_information_loss_during_the_411825_l7 check_for_information_loss_during_the_411825_s7 check_for_information_loss_during_the_411825_s8) (.seq (.arrow check_for_information_loss_during_the_411825_l8 check_for_information_loss_during_the_411825_s8 check_for_information_loss_during_the_411825_s9) (.seq (.arrow check_for_information_loss_during_the_411825_l9 check_for_information_loss_during_the_411825_s9 check_for_information_loss_during_the_411825_s10) (.arrow check_for_information_loss_during_the_411825_l10 check_for_information_loss_during_the_411825_s10 check_for_information_loss_during_the_411825_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def check_for_information_loss_during_the_411825_true_arm : IGProtocol check_for_information_loss_during_the_411825_s0 check_for_information_loss_during_the_411825_s11 :=\n  (check_for_information_loss_during_the_411825_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def check_for_information_loss_during_the_411825_false_arm : IGProtocol check_for_information_loss_during_the_411825_s0 check_for_information_loss_during_the_411825_s11 :=\n  (check_for_information_loss_during_the_411825_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef check_for_information_loss_during_the_411825_tier_ground : OuroboricityTier := TierFunctor.obj check_for_information_loss_during_the_411825_s0\ndef check_for_information_loss_during_the_411825_tier : OuroboricityTier := TierFunctor.obj check_for_information_loss_during_the_411825_s11\n#eval check_for_information_loss_during_the_411825_tier_ground  -- tier of the ground (pre-transformation)\n#eval check_for_information_loss_during_the_411825_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem check_for_information_loss_during_the_411825_frobenius :\n    igFrobeniusAlg.mul check_for_information_loss_during_the_411825_s0 check_for_information_loss_during_the_411825_s0 = check_for_information_loss_during_the_411825_s0 :=\n  igFrobAlg_self_fusion check_for_information_loss_during_the_411825_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Check for information loss during the return mapping",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc69\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc5d\u2299\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The return mapping ensures that the boundary encodes the full bulk information without loss, characteristic of a holographic scale-collapse.\n\u00de=\ud801\udc78: The return mapping describes a holographic-style reduction where the boundary state preserves the information of the bulk transition.\n\u0158=\ud801\udc69: The process involves comparing and mapping data points to verify consistency without permanent structural alteration or covalent bonding.\n\u03a6=\ud801\udc79: The return mapping preserves the exact Z2 symmetry of the Frobenius structure, ensuring no information loss during the identity transformation \u03bc\u2218\u03b4=id.\n\u0192=\ud801\udc50: The return mapping requires high fidelity to ensure geometric stability and prevent signal degradation across recursive cycles.\n\u00c7=\ud801\udc67: The kinetic character \u00c7 (\ud801\udc67) represents a high barrier where the system is kinetically frozen and requires external driving to overcome energy barriers for rearrangement.\n\u0393=\ud801\udc72: The check for information loss during return mapping is a localized validation step focused on the fidelity of a single transformation.\n\u0262=\ud801\udc5d: The interaction grammar \u0262 defines the logical constraints for binding, where the conjunctive mode requires the simultaneous presence of all specified partners to proceed.\n\u2299=\u2299: The return mapping evaluates the preservation of topological information, which is most sensitive and prone to loss at the scale-free transition point.\n\u0126=\ud801\udc56: The structural enforcement across multiple axes ensures that the broken symmetry is maintained throughout the return mapping, indicating a high memory depth.\n\u03a3=\ud801\udc73: Stoichiometry (\u03a3) measures the relative proportions of components, which inherently describes the asymmetric numerical balance between different sides of a reaction or set.\n\u03a9=\ud801\udc6d: The stability of the structural role depends on the preservation of a specific winding invariant during the mapping process.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299\u25c7>+<\u00d7\u25cf=\u2299\u00ac\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299\u25c7>+<\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u25c7>+<\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">+<\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299\u25c7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+<\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299\u25c7>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "<\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299\u25c7>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299\u25c7>+<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u25cf=\u2299\u00ac\u22a3\u22a2\u2299\u25c7>+<\u00d7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "=\u2299\u00ac\u22a3\u22a2\u2299\u25c7>+<\u00d7\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u2299\u00ac\u22a3\u22a2\u2299\u25c7>+<\u00d7\u25cf=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u00ac\u22a3\u22a2\u2299\u25c7>+<\u00d7\u25cf=\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u22a3\u22a2\u2299\u25c7>+<\u00d7\u25cf=\u2299\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 4,
+    "canonical_word": "+<\u00d7\u25cf=\u2299\u00ac\u22a3\u22a2\u2299\u25c7>",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → IMSCRIB → FSPLIT → EVALT → EVALF → ENGAGR → AFWD → AREV → CLINK → IMSCRIB → FFUSE → EVALT → IFIX
--- Class: structural imscription of the 86 sm ug t consummation system from ig-docs/publishing/substack_articles/_batched/physics/86_sm_ug_t_consummation, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 86 sm ug t consummation system from ig-docs/publishing/substack_articles/_batched/physics/86_sm_ug_t_consummation, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(7,2,4,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14

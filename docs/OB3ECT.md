@@ -31,7 +31,7 @@ For example, the core Frobenius ob3ect carries the coordinate:
 
 $$\langle \text{Ð}_{\omega};\ \text{Þ}_{O};\ \text{Ř}_{=};\ \text{Φ}_{\}};\ \text{ƒ}_{ż};\ \text{Ç}_{@};\ \text{Γ}_{ʔ};\ \text{ɢ}_{ˌ};\ {φ̂}_{ÿ};\ \text{Ħ}_{A};\ \text{Σ}_{ï};\ \text{Ω}_{z} \rangle$$
 
-This is the structural signature of a self-imscribing program that is at once 
+This is the signature of a self-imscribing program that is at once 
 
 - imscriptive ($𐑦$) 
 - topologically closed ($𐑸$) 
@@ -124,7 +124,7 @@ Full categorical tower executed.
 The grammar is autopoietic.
 ```
 
-The tower is not an end in itself; it is evidence. It demonstrates that the structural type assigned to the base ob3ect—$O_\infty$, $φ̂_ÿ$, $Φ_\}$, $𐑭$—is not an accident of design but a robust property that can be extended arbitrarily while preserving closure.
+The tower is not an end in itself; it is evidence. It demonstrates that the type assigned to the base ob3ect—$O_\infty$, $φ̂_ÿ$, $Φ_\}$, $𐑭$—is not an accident of design but a robust property that can be extended arbitrarily while preserving closure.
 
 ---
 
@@ -151,7 +151,7 @@ v0.10 (ob3ect-v0.10.iso) Bare-metal x86 bootloader ISO
 
 The descent is a directed path in Prog/~. Each edge is an IMASM morphism. The final ISO boots and prints the Frobenius identity from bare metal.
 
-The descent is not a compromise; it is a *principle*. It shows that the Frobenius condition is substrate-independent. It is not tied to Python, to ASTs, to any particular runtime. It is a structural property that can be encoded and verified at any level of abstraction, from high-level Python down to bare x86 bootloader.
+The descent is not a compromise; it is a *principle*. It shows that the Frobenius condition is substrate-independent. It is not tied to Python, to ASTs, to any particular runtime. It is a property that can be encoded and verified at any level of abstraction, from high-level Python down to bare x86 bootloader.
 
 ---
 
@@ -167,7 +167,7 @@ The ob3ect challenges a number of assumptions that are so deeply entrenched they
 
 4. **Coherence is expensive** — Formal coherence proofs in Lean or Coq are expensive, and they typically apply to one specific structure. The ob3ect demonstrates that coherence can be *local*, *automatic*, and *general*—each layer verifies its own coherence laws, and the verification scales because the structure is simple enough to be self-checked.
 
-5. **Autopoiesis is biological** — Autopoietic systems are typically described as biological (Maturana & Varela). The ob3ect shows that autopoiesis—self-making, self-sustaining, self-verification—is a structural property that can be instantiated computationally. The program makes itself, sustains itself, and verifies itself.
+5. **Autopoiesis is biological** — Autopoietic systems are typically described as biological (Maturana & Varela). The ob3ect shows that autopoiesis—self-making, self-sustaining, self-verification—is a property that can be instantiated computationally. The program makes itself, sustains itself, and verifies itself.
 
 The ob3ect is not just a curiosity. It is a *blueprint*. It shows how to build systems that are not merely reliable but self-certifying, systems that do not require external verification because they embody the verification procedure itself.
 
@@ -195,9 +195,9 @@ The key distinction between the computational tower and the Lean formalization: 
 
 The ob3ect project began with a simple self-verification loop and grew into a categorical tower—18 layers, each a different mathematical structure, each self-certifying, each building on the Frobenius condition verified at the base. The tower executes end-to-end. The descent goes from Python down to bare-metal x86 bootloader, demonstrating that the Frobenius condition is substrate-independent.
 
-This is not just an engineering achievement. It is a theoretical one. It shows that verification can be internal, that self-reference can be coherent, that autopoiesis can be computational. It shows that the structural type assigned to a system—its 12-primitive coordinate in the Imscribing Grammar lattice—can be both inferred and verified by the system itself.
+This is not just an engineering achievement. It is a theoretical one. It shows that verification can be internal, that self-reference can be coherent, that autopoiesis can be computational. It shows that the type assigned to a system—its 12-primitive coordinate in the Imscribing Grammar lattice—can be both inferred and verified by the system itself.
 
-The ob3ect is not an end point; it is a starting point. The tower can be extended—new layers can be added, each verifying its own coherence laws. The descent can continue—new substrates can be targeted, each preserving the structural identity. The formalization can deepen—more Lean proofs can be written, each closing more sorry markers.
+The ob3ect is not an end point; it is a starting point. The tower can be extended—new layers can be added, each verifying its own coherence laws. The descent can continue—new substrates can be targeted, each preserving the identity. The formalization can deepen—more Lean proofs can be written, each closing more sorry markers.
 
 What the ob3ect demonstrates is not just possibility but *necessity*. If a system is to be truly self-certifying—if it is to verify its own coherence without external tools—then it must be structured as a special Frobenius algebra in a suitable category. The ob3ect is the smallest such system, and it is also the largest: it is a template that can be scaled arbitrarily while preserving closure.
 

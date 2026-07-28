@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → FSPLIT → AFWD → EVALT → AREV → EVALF → FFUSE → ENGAGR → IMSCRIB → CLINK → IFIX
--- Class: structural imscription of the 47 the philosophers stone system from ig-docs/publishing/substack_articles/_batched/alchemy/47_the_philosophers_stone, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 47 the philosophers stone system from ig-docs/publishing/substack_articles/_batched/alchemy/47_the_philosophers_stone, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

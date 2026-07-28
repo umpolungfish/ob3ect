@@ -21,7 +21,7 @@ DERIVATION CHAIN (all structural, zero free parameters):
 
 import math, cmath
 
-# ── Structural primitives ─────────────────────────────────────────
+# ── Primitives ─────────────────────────────────────────
 d = 12
 gear = 4
 N_frob = 6

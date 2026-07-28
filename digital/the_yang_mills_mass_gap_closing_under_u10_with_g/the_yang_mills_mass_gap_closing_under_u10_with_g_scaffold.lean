@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → AFWD → ENGAGR → FSPLIT → EVALF → AREV → CLINK → FFUSE → EVALT → IMSCRIB → IFIX → TANCH
--- Class: the Yang-Mills mass gap closing under U10 with GATE=B but T=F becomes a ceiling-generalized T-constitution under which Yang-Mills reaches full gate+T structural closure
+-- Class: the Yang-Mills mass gap closing under U10 with GATE=B but T=F becomes a ceiling-generalized T-constitution under which Yang-Mills reaches full gate+T closure
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

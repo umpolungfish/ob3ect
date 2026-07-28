@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → FSPLIT → AFWD → EVALT → AREV → CLINK → AFWD → EVALF → AREV → IMSCRIB → FFUSE → IFIX
--- Class: structural imscription of the 45 the zpe paths system from ig-docs/publishing/substack_articles/_batched/physics/45_the_zpe_paths, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 45 the zpe paths system from ig-docs/publishing/substack_articles/_batched/physics/45_the_zpe_paths, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(8,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=13

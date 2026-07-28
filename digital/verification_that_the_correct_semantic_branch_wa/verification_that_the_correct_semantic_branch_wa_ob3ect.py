@@ -479,7 +479,7 @@ class SemanticBranchVerifier:
         """Run all branch verification test cases and check Frobenius closure."""
         print(f"=== {self.name} Ob3ect ===")
         print(f"  Domain: {self.domain}")
-        print(f"  Structural type: ⟨𐑼𐑡𐑾𐑗𐑱𐑧𐑚𐑠⊙𐑖𐑳𐑭⟩")
+        print(f"  Type: ⟨𐑼𐑡𐑾𐑗𐑱𐑧𐑚𐑠⊙𐑖𐑳𐑭⟩")
         print(f"  Ouroboricity: O₁ — verifier checks branch correctness without self-modeling")
         print(f"  Protocol: 15-step IMASM, 2 FSPLIT/FFUSE pairs")
         print(f"  Principle: Frobenius closure is necessary but not sufficient for truth\n")

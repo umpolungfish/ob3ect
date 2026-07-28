@@ -1,0 +1,362 @@
+{
+  "name": "Monitor for bit-flip errors or algebraic inconsistencies during the stream generation",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Monitor for bit-flip errors or algebraic inconsistencies during the stream generation",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "parity_bit",
+        "syndrome_vector",
+        "algebraic_invariant"
+      ],
+      "boundary_condition": "The error-correction manifold within the holographic stream register",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "uninitialized_parity_buffer",
+        "justification": "The state before the stream segment is evaluated for consistency.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "validated_stream_segment",
+        "justification": "The final boundary where the segment is either cleared or flagged for the record.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "syndrome_calculation",
+        "justification": "The forward transformation of raw data into a syndrome vector for error detection.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "error_pattern_reconstruction",
+        "justification": "The reverse mapping from the syndrome back to the specific bit-flip location.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential_invariant_check",
+        "justification": "The chaining of multiple algebraic checks to ensure total stream integrity.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "identity_matrix_comparison",
+        "justification": "The self-recognition step where the calculated syndrome is compared against the zero-vector identity.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "divergent_diagnostic_path",
+        "justification": "The branching of the stream into a data-integrity path and a structural-algebraic path.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "unified_diagnostic_result",
+        "justification": "The reconstitution of the two diagnostic paths into a single consistency verdict.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "algebraic_consistency",
+        "justification": "The state where the stream satisfies all polynomial constraints and parity checks.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "bit_flip_detection",
+        "justification": "The state where a specific inconsistency or parity violation is identified.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "metastable_error_state",
+        "justification": "A condition where the error is detected but not yet localized, holding both valid and invalid possibilities.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "error_log_entry",
+        "justification": "The permanent, append-only record of the detected inconsistency in the algebraic history.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "divergent_diagnostic_path",
+      "split_input": "stream_segment_state",
+      "split_outputs": [
+        "data_integrity_vector",
+        "algebraic_structure_vector"
+      ],
+      "fuse_element": "unified_diagnostic_result",
+      "fuse_result": "stream_segment_state",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "pre-diagnostic stream buffer",
+      "true_description": "zero-syndrome consistency",
+      "false_description": "non-zero syndrome detection",
+      "both_description": "superposition of error and correction states during non-Hermitian processing",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the diagnostic buffer for the incoming stream segment"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Identify the expected algebraic invariants for the current stream frame"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "Project the stream data into the syndrome subspace"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch the syndrome into a bit-level parity check and a higher-order algebraic check"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Confirm the bit-level parity matches the expected checksum"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "Invert the algebraic check to verify the underlying polynomial structure"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Identify any non-zero coefficients indicating an algebraic inconsistency"
+        },
+        {
+          "step_num": 8,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the detected inconsistency in a metastable state for holographic localization"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the bit-level and algebraic verdicts into a single stream status"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "Record the specific error coordinates into the permanent algebraic log"
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "Integrate the diagnostic result with the preceding stream history"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IMSCRIB",
+          "domain_action": "Verify the self-consistency of the updated error log"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "Seal the diagnostic frame to maintain the integrity of the holographic record"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The holographic parity generator",
+      "ipc_mechanism": "Syndrome vector bus",
+      "memory_mechanism": "Append-only algebraic record",
+      "scheduler_mechanism": "Stream-clocked diagnostic cycle",
+      "alfs_store": "The Triple Frame von Neumann Superoperator Algebra reference",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational overhead of syndrome calculation",
+      "pre_cycle_state": "Unverified stream segment",
+      "post_cycle_state": "Verified or logged stream segment",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The diagnostic cycle preserves the information content by mapping errors to a permanent record without loss of stream state.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 CLINK \u2192 IMSCRIB \u2192 TANCH\n-- Class: Monitor for bit-flip errors or algebraic inconsistencies during the stream generation\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(3, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [11] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def monitor_for_bit_flip_errors_or_37cf5b_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def monitor_for_bit_flip_errors_or_37cf5b_protocol : IGProtocol monitor_for_bit_flip_errors_or_37cf5b_s0 monitor_for_bit_flip_errors_or_37cf5b_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct monitor_for_bit_flip_errors_or_37cf5b_s8 monitor_for_bit_flip_errors_or_37cf5b_s8 = monitor_for_bit_flip_errors_or_37cf5b_s8 (idempotent)\n  (.seq (.arrow monitor_for_bit_flip_errors_or_37cf5b_l0 monitor_for_bit_flip_errors_or_37cf5b_s0 monitor_for_bit_flip_errors_or_37cf5b_s1) (.seq (.arrow monitor_for_bit_flip_errors_or_37cf5b_l1 monitor_for_bit_flip_errors_or_37cf5b_s1 monitor_for_bit_flip_errors_or_37cf5b_s2) (.seq (.arrow monitor_for_bit_flip_errors_or_37cf5b_l2 monitor_for_bit_flip_errors_or_37cf5b_s2 monitor_for_bit_flip_errors_or_37cf5b_s3) (.seq (.prod (.arrow monitor_for_bit_flip_errors_or_37cf5b_l3 monitor_for_bit_flip_errors_or_37cf5b_s3 monitor_for_bit_flip_errors_or_37cf5b_s8) (.arrow monitor_for_bit_flip_errors_or_37cf5b_l3 monitor_for_bit_flip_errors_or_37cf5b_s3 monitor_for_bit_flip_errors_or_37cf5b_s8)) (.seq (.arrow monitor_for_bit_flip_errors_or_37cf5b_l8 monitor_for_bit_flip_errors_or_37cf5b_s8 monitor_for_bit_flip_errors_or_37cf5b_s8) (.seq (.arrow monitor_for_bit_flip_errors_or_37cf5b_l8 monitor_for_bit_flip_errors_or_37cf5b_s8 monitor_for_bit_flip_errors_or_37cf5b_s9) (.seq (.arrow monitor_for_bit_flip_errors_or_37cf5b_l9 monitor_for_bit_flip_errors_or_37cf5b_s9 monitor_for_bit_flip_errors_or_37cf5b_s10) (.seq (.arrow monitor_for_bit_flip_errors_or_37cf5b_l10 monitor_for_bit_flip_errors_or_37cf5b_s10 monitor_for_bit_flip_errors_or_37cf5b_s11) (.arrow monitor_for_bit_flip_errors_or_37cf5b_l11 monitor_for_bit_flip_errors_or_37cf5b_s11 monitor_for_bit_flip_errors_or_37cf5b_s12)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def monitor_for_bit_flip_errors_or_37cf5b_true_arm : IGProtocol monitor_for_bit_flip_errors_or_37cf5b_s0 monitor_for_bit_flip_errors_or_37cf5b_s12 :=\n  (monitor_for_bit_flip_errors_or_37cf5b_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def monitor_for_bit_flip_errors_or_37cf5b_false_arm : IGProtocol monitor_for_bit_flip_errors_or_37cf5b_s0 monitor_for_bit_flip_errors_or_37cf5b_s12 :=\n  (monitor_for_bit_flip_errors_or_37cf5b_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef monitor_for_bit_flip_errors_or_37cf5b_tier_ground : OuroboricityTier := TierFunctor.obj monitor_for_bit_flip_errors_or_37cf5b_s0\ndef monitor_for_bit_flip_errors_or_37cf5b_tier : OuroboricityTier := TierFunctor.obj monitor_for_bit_flip_errors_or_37cf5b_s12\n#eval monitor_for_bit_flip_errors_or_37cf5b_tier_ground  -- tier of the ground (pre-transformation)\n#eval monitor_for_bit_flip_errors_or_37cf5b_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem monitor_for_bit_flip_errors_or_37cf5b_frobenius :\n    igFrobeniusAlg.mul monitor_for_bit_flip_errors_or_37cf5b_s0 monitor_for_bit_flip_errors_or_37cf5b_s0 = monitor_for_bit_flip_errors_or_37cf5b_s0 :=\n  igFrobAlg_self_fusion monitor_for_bit_flip_errors_or_37cf5b_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 13,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        3,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Monitor for bit-flip errors or algebraic inconsistencies during the stream generation",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc61\ud801\udc7d\ud801\udc7f\ud801\udc50\ud801\udc67\ud801\udc5a\ud801\udc5d\u2299\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9",
+  "grounding_status": "failed",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The requirement to monitor for bit-flips and algebraic inconsistencies across the entire stream generation implies a holographic mapping where the integrity of the bulk is encoded and verified at the boundary register.\n\u00de=\ud801\udc61: The monitoring of stream generation for inconsistencies implies a dynamic flow across a network where nodes (hubs) validate the integrity of the transmitted data.\n\u0158=\ud801\udc7d: Recognition mode (\u0158) functions as a catalytic filter that stabilizes specific patterns within the stream without being consumed by the underlying data transformation.\n\u03a6=\ud801\udc7f: The assignment of polarity \u03a6 implies a vector orientation with distinct source and sink characteristics.\n\u0192=\ud801\udc50: The high-fidelity requirement for monitoring bit-flip errors and algebraic inconsistencies necessitates a geometry-enforcing mechanism that fires with near-certainty to maintain structural integrity.\n\u00c7=\ud801\udc67: The kinetic character \u00c7 represents the degree of mobility, where a high barrier results in a frozen state that resists rearrangement without external energy.\n\u0393=\ud801\udc5a: The system propagates through intermediate clusters or motifs before reaching the boundary.\n\u0262=\ud801\udc5d: The interaction grammar \u0262 requires all specified components to be present simultaneously to initiate the stream generation process.\n\u2299=\u2299: The system is actively monitoring for bit-flips and inconsistencies to maintain stability at the precise boundary where scale-free sensitivity is maximal.\n\u0126=\ud801\udc56: The structural enforcement across multiple axes ensures that the broken symmetry remains stable against thermal fluctuations, resulting in a deep memory state.\n\u03a3=\ud801\udc73: Stoichiometry (\u03a3) inherently defines the quantitative relationship between distinct components, typically resulting in unbalanced or asymmetric counts across the reaction or interaction boundary.\n\u03a9=\ud801\udc6d: The assignment of primitive \u03a9 (protection) implies a topological stability that prevents continuous deformation to a trivial state, typically associated with a conserved winding invariant.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 13,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf\u00ac=\u2299\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299>\u25c7+<\u00d7\u229e\u25cf\u00ac=\u2299\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": ">\u25c7+<\u00d7\u229e\u25cf\u00ac=\u2299\u22a3\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u25c7+<\u00d7\u229e\u25cf\u00ac=\u2299\u22a3\u22a2\u2299>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+<\u00d7\u229e\u25cf\u00ac=\u2299\u22a3\u22a2\u2299>\u25c7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "<\u00d7\u229e\u25cf\u00ac=\u2299\u22a3\u22a2\u2299>\u25c7+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u00d7\u229e\u25cf\u00ac=\u2299\u22a3\u22a2\u2299>\u25c7+<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u229e\u25cf\u00ac=\u2299\u22a3\u22a2\u2299>\u25c7+<\u00d7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u25cf\u00ac=\u2299\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u00ac=\u2299\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "=\u2299\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u2299\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf\u00ac=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "\u22a3\u22a2\u2299>\u25c7+<\u00d7\u229e\u25cf\u00ac=\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 4,
+    "canonical_word": "+<\u00d7\u229e\u25cf\u00ac=\u2299\u22a3\u22a2\u2299>\u25c7",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

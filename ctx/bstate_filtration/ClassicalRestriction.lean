@@ -11,8 +11,7 @@
 
   The Frobenius incompleteness operator (inc² = inc, from
   ParaconsistentFrobeniusClosure) cannot land inside the classical
-  fragment, because inc always produces B.  This is the structural
-  reason the Frobenius closure theorem cannot be stated in classical
+  fragment, because inc always produces B.  This is the reason the Frobenius closure theorem cannot be stated in classical
   logic: the very object the theorem requires (B) is the one the
   classical constraint removes.
 
@@ -176,7 +175,7 @@ theorem classicalSwitch_image_is_classical : ∀ v : Belnap,
 /-- Classical mathematics is a constrained subcategory of paraconsistent
     bilattice logic, not its extension.
 
-    Four structural claims:
+    Four claims:
     (a) The classical fragment is a proper subcategory (injective but not
         surjective inclusion into the full bilattice).
     (b) B is the unique element excluded from the classical fragment.

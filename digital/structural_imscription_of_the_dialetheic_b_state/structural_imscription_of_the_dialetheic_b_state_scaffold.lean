@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → IFIX → IFIX → FSPLIT → EVALT → AFWD → CLINK → EVALF → ENGAGR → AREV → FFUSE → TANCH
--- Class: structural imscription of the dialetheic B-state d=2048 SIC fiducial: the EVALT branch (SICPOVM_Exists 2048 under the mixed-signature Stark conjecture, value T) and the EVALF branch (the character obstruction, omega_2048 non-real, value F) held simultaneously without collapse, the ENGAGR fixed point where the fiducial's Belnap value is B, both true and false at once. This is the honest F-branch that ZaunerTransportMap restated by hand and should have been imscribed. With full Frobenius closure and Lean 4 verification scaffold.
+-- Class: imscription of the dialetheic B-state d=2048 SIC fiducial: the EVALT branch (SICPOVM_Exists 2048 under the mixed-signature Stark conjecture, value T) and the EVALF branch (the character obstruction, omega_2048 non-real, value F) held simultaneously without collapse, the ENGAGR fixed point where the fiducial's Belnap value is B, both true and false at once. This is the honest F-branch that ZaunerTransportMap restated by hand and should have been imscribed. With full Frobenius closure and Lean 4 verification scaffold.
 -- Fingerprint: sig=(6,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13

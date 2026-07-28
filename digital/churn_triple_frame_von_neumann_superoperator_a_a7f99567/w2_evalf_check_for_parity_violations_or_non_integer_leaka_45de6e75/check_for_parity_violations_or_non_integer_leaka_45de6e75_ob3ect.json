@@ -1,0 +1,349 @@
+{
+  "name": "Check for parity violations or non-integer leakage in the reverse sector",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Check for parity violations or non-integer leakage in the reverse sector",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "parity-bit",
+        "leakage-current",
+        "integer-constraint"
+      ],
+      "boundary_condition": "The holographic boundary of the reverse sector manifold",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Unpolarized vacuum",
+        "justification": "The state of the reverse sector before the introduction of the test charge or signal.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Sector seal",
+        "justification": "The final boundary condition that prevents non-integer leakage from escaping the local manifold.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Parity projection",
+        "justification": "The forward mapping of the expected integer state onto the measurement apparatus.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Chiral inversion",
+        "justification": "The necessary transformation to align the reverse sector signal with the primary reference frame.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Error concatenation",
+        "justification": "The sequential linking of individual leakage detections into a total sector discrepancy report.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Reference parity",
+        "justification": "The self-identical standard of integer consistency against which the sector is measured.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Signal bifurcation",
+        "justification": "The division of the reverse sector signal into a discrete integer component and a potential leakage residue.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Signal recombination",
+        "justification": "The reconstitution of the total sector energy to verify that the sum of integer and leakage components equals the input.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Integer conservation",
+        "justification": "The confirmation that the signal remains quantized and parity-consistent.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Symmetry violation",
+        "justification": "The detection of non-integer leakage or broken parity within the sector.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Exceptional point",
+        "justification": "The critical state where integer and non-integer modes coalesce, held without resolution during measurement.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Violation log",
+        "justification": "The permanent, append-only record of the detected parity discrepancy.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Signal bifurcation",
+      "split_input": "Total sector signal",
+      "split_outputs": [
+        "Integer component",
+        "Leakage residue"
+      ],
+      "fuse_element": "Signal recombination",
+      "fuse_result": "Total sector signal",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Pre-measurement sector state with no defined parity",
+      "true_description": "Parity-protected integer state with zero leakage",
+      "false_description": "Broken symmetry state with detectable non-integer leakage",
+      "both_description": "Superposition of integer and leakage states at the sector interface",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the reverse sector vacuum state"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Establish the reference parity identity for the sector"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Bifurcate the incoming sector signal into discrete and continuous paths"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Project the discrete path toward the integer conservation check"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Confirm the presence of a valid integer winding number"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "Invert the continuous path to isolate potential leakage residues"
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Detect any non-integer components or parity violations"
+        },
+        {
+          "step_num": 8,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the signal at the exceptional point to observe mode coalescence"
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Recombine the discrete and continuous paths into a unified sector signal"
+        },
+        {
+          "step_num": 10,
+          "opcode": "IFIX",
+          "domain_action": "Record the parity violation status in the permanent topological log"
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "Compose the violation record with the global superoperator algebra"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "Seal the sector boundary against further continuous deformation"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The parity-criticality logic gate",
+      "ipc_mechanism": "Holographic mapping between bulk and boundary",
+      "memory_mechanism": "The topological charge register",
+      "scheduler_mechanism": "The winding number synchronization clock",
+      "alfs_store": "Triple Frame von Neumann Superoperator Algebra",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One unit of topological information per check",
+      "pre_cycle_state": "Unverified reverse sector state",
+      "post_cycle_state": "Verified and fixed parity-consistent state",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The process is a lossless holographic mapping where information is conserved.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 CLINK \u2192 TANCH\n-- Class: Check for parity violations or non-integer leakage in the reverse sector\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc61  | composition \u2014 regime coherence\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc71 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def check_for_parity_violations_or_non_b4dd3c_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def check_for_parity_violations_or_non_b4dd3c_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def check_for_parity_violations_or_non_b4dd3c_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def check_for_parity_violations_or_non_b4dd3c_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def check_for_parity_violations_or_non_b4dd3c_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def check_for_parity_violations_or_non_b4dd3c_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def check_for_parity_violations_or_non_b4dd3c_protocol : IGProtocol check_for_parity_violations_or_non_b4dd3c_s0 check_for_parity_violations_or_non_b4dd3c_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct check_for_parity_violations_or_non_b4dd3c_s8 check_for_parity_violations_or_non_b4dd3c_s8 = check_for_parity_violations_or_non_b4dd3c_s8 (idempotent)\n  (.seq (.arrow check_for_parity_violations_or_non_b4dd3c_l0 check_for_parity_violations_or_non_b4dd3c_s0 check_for_parity_violations_or_non_b4dd3c_s1) (.seq (.arrow check_for_parity_violations_or_non_b4dd3c_l1 check_for_parity_violations_or_non_b4dd3c_s1 check_for_parity_violations_or_non_b4dd3c_s2) (.seq (.prod (.arrow check_for_parity_violations_or_non_b4dd3c_l2 check_for_parity_violations_or_non_b4dd3c_s2 check_for_parity_violations_or_non_b4dd3c_s8) (.arrow check_for_parity_violations_or_non_b4dd3c_l2 check_for_parity_violations_or_non_b4dd3c_s2 check_for_parity_violations_or_non_b4dd3c_s8)) (.seq (.arrow check_for_parity_violations_or_non_b4dd3c_l8 check_for_parity_violations_or_non_b4dd3c_s8 check_for_parity_violations_or_non_b4dd3c_s8) (.seq (.arrow check_for_parity_violations_or_non_b4dd3c_l8 check_for_parity_violations_or_non_b4dd3c_s8 check_for_parity_violations_or_non_b4dd3c_s9) (.seq (.arrow check_for_parity_violations_or_non_b4dd3c_l9 check_for_parity_violations_or_non_b4dd3c_s9 check_for_parity_violations_or_non_b4dd3c_s10) (.arrow check_for_parity_violations_or_non_b4dd3c_l10 check_for_parity_violations_or_non_b4dd3c_s10 check_for_parity_violations_or_non_b4dd3c_s11)))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def check_for_parity_violations_or_non_b4dd3c_true_arm : IGProtocol check_for_parity_violations_or_non_b4dd3c_s0 check_for_parity_violations_or_non_b4dd3c_s11 :=\n  (check_for_parity_violations_or_non_b4dd3c_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def check_for_parity_violations_or_non_b4dd3c_false_arm : IGProtocol check_for_parity_violations_or_non_b4dd3c_s0 check_for_parity_violations_or_non_b4dd3c_s11 :=\n  (check_for_parity_violations_or_non_b4dd3c_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef check_for_parity_violations_or_non_b4dd3c_tier_ground : OuroboricityTier := TierFunctor.obj check_for_parity_violations_or_non_b4dd3c_s0\ndef check_for_parity_violations_or_non_b4dd3c_tier : OuroboricityTier := TierFunctor.obj check_for_parity_violations_or_non_b4dd3c_s11\n#eval check_for_parity_violations_or_non_b4dd3c_tier_ground  -- tier of the ground (pre-transformation)\n#eval check_for_parity_violations_or_non_b4dd3c_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem check_for_parity_violations_or_non_b4dd3c_frobenius :\n    igFrobeniusAlg.mul check_for_parity_violations_or_non_b4dd3c_s0 check_for_parity_violations_or_non_b4dd3c_s0 = check_for_parity_violations_or_non_b4dd3c_s0 :=\n  igFrobAlg_self_fusion check_for_parity_violations_or_non_b4dd3c_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        2,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Check for parity violations or non-integer leakage in the reverse sector",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc51\ud801\udc7f\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc5d\ud801\udc7b\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9",
+  "grounding_status": "full",
+  "grounding_reasoning": "\u00d0=\ud801\udc66: The requirement to check for non-integer leakage across a reverse sector implies a holographic mapping where the boundary (surface) and bulk (interior) are treated as a single, lossless register.\n\u00de=\ud801\udc78: The requirement to check for non-integer leakage in the reverse sector implies a holographic mapping where the boundary must account for the total bulk content losslessly.\n\u0158=\ud801\udc51: The process involves correcting parity violations and non-integer leakage, which necessitates a discrete structural reconfiguration or state change to restore integer consistency.\n\u03a6=\ud801\udc7f: The assignment of polarity (\u03a6) implies a vector orientation where the interface functions as a discrete source or sink rather than a symmetric or dual-role manifold.\n\u0192=\ud801\udc50: The requirement to check for parity violations and non-integer leakage implies a high-precision, discrete state-enforcement mechanism where information must be conserved with near-absolute fidelity.\n\u00c7=\ud801\udc67: The high barrier indicates the system is kinetically frozen and requires external driving to overcome the resistance to rearrangement.\n\u0393=\ud801\udc72: Parity violations and non-integer leakage are localized anomalies detected at specific coordinate points or individual bond transitions within the reverse sector.\n\u0262=\ud801\udc5d: The check for parity violations and non-integer leakage implies a strict, simultaneous validation of all components to ensure system integrity.\n\u2299=\ud801\udc7b: The presence of parity violations and non-integer leakage in the reverse sector indicates a non-Hermitian regime where eigenvalues coalesce at an exceptional point.\n\u0126=\ud801\udc56: The structural enforcement across multiple axes ensures that the broken symmetry remains stable against thermal fluctuations, resulting in a high memory depth.\n\u03a3=\ud801\udc73: The check for parity violations and non-integer leakage implies an imbalance or discrepancy between the sides of the reaction or sector.\n\u03a9=\ud801\udc6d: The assignment of primitive \u03a9 (protection) to the reverse sector implies a stable topological charge that resists deformation unless the global winding number is altered.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299\u25c7>+<\u00d7\u229e\u25cf\u00ac=\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299\u25c7>+<\u00d7\u229e\u25cf\u00ac=\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u25c7>+<\u00d7\u229e\u25cf\u00ac=\u22a3\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">+<\u00d7\u229e\u25cf\u00ac=\u22a3\u22a2\u2299\u25c7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+<\u00d7\u229e\u25cf\u00ac=\u22a3\u22a2\u2299\u25c7>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "<\u00d7\u229e\u25cf\u00ac=\u22a3\u22a2\u2299\u25c7>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u00d7\u229e\u25cf\u00ac=\u22a3\u22a2\u2299\u25c7>+<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u229e\u25cf\u00ac=\u22a3\u22a2\u2299\u25c7>+<\u00d7",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u25cf\u00ac=\u22a3\u22a2\u2299\u25c7>+<\u00d7\u229e",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u00ac=\u22a3\u22a2\u2299\u25c7>+<\u00d7\u229e\u25cf",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "=\u22a3\u22a2\u2299\u25c7>+<\u00d7\u229e\u25cf\u00ac",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u22a3\u22a2\u2299\u25c7>+<\u00d7\u229e\u25cf\u00ac=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 4,
+    "canonical_word": "+<\u00d7\u229e\u25cf\u00ac=\u22a3\u22a2\u2299\u25c7>",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

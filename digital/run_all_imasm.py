@@ -4,7 +4,7 @@ run_all_imasm.py — Execute & Verify All 12 IMASM Novel Arrangement Classes
 =============================================================================
 Each class is a self-verifying ob3ect artifact that runs its IMASM token
 sequence, tracks the 2-bit register, checks Frobenius μ∘δ=id, and reports
-its IG structural type and ouroboricity tier.
+its IG type and ouroboricity tier.
 
 Usage:
   cd /home/mrnob0dy666/ob3ect

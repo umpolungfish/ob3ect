@@ -293,7 +293,7 @@ private theorem two_pow_lt_zauner_d (i : Fin zauner_n) : 2 ^ i.val < zauner_d :=
     - only the bit-set probe        → F
     - neither                       → N (no evidence)
 
-    This is the structural content of the AREV opcode: the four-valued reading
+    This is the content of the AREV opcode: the four-valued reading
     of the complex marginal at each register. -/
 noncomputable def reduction_map (v : hilbert_2048) : (Fin zauner_n) → Belnap := by
   classical
@@ -369,7 +369,7 @@ theorem equiangularity_reconciliation (sc : stark_conjecture_2048) :
     equiangularity constant: the join-equiangularity in (Belnap)^11
     (frobInner = 22) corresponds to |⟨ψ|Dψ⟩|² = 1/2049 in ℂ^2048.
     
-    This is the P-70 structural identity: the 22/2049 ratio is
+    This is the P-70 identity: the 22/2049 ratio is
     precisely the dimension-dependent equiangularity of a SIC-POVM. -/
 theorem structural_shadow_agreement :
     -- In the skeleton: frobInner(B, gB) = 22 for all g
@@ -421,7 +421,7 @@ theorem zauner_order_three : True := by
 /-- The dialetheic fiducial B-state: the unique state that holds both
     TRUE and FALSE projections simultaneously without collapse.
     
-    This is the structural content of the ENGAGR opcode: the fiducial
+    This is the content of the ENGAGR opcode: the fiducial
     is the dialetheic fixed point where the EVALT (Stark unit exists)
     and EVALF (character obstruction) branches converge without
     resolution into a single value.
@@ -509,7 +509,7 @@ theorem open_plank_characterization :
 -- §10. IMSCRIBED STRUCTURAL TYPE — Zauner Transport Map Tuple
 -- ================================================================
 
-/-- The structural imscription of the Zauner Transport Map for d=2048.
+/-- The imscription of the Zauner Transport Map for d=2048.
     D = ∧ (infinite-dimensional: field-theoretic + Belnap skeleton)
     T = ⋈ (crossing point: discrete/continuous boundary)
     R = ↔ (bidirectional: transport forward, reduction back)

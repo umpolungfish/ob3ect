@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → TANCH → FSPLIT → AFWD → AFWD → EVALT → EVALF → CLINK → IMSCRIB → ENGAGR → FFUSE → IFIX
--- Class: structural imscription of the 49 alternate universes system from ig-docs/publishing/substack_articles/_batched/physics/49_alternate_universes, with full Frobenius closure and Lean 4 verification scaffold
+-- Class: imscription of the 49 alternate universes system from ig-docs/publishing/substack_articles/_batched/physics/49_alternate_universes, with full Frobenius closure and Lean 4 verification scaffold
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

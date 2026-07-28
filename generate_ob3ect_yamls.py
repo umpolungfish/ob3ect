@@ -158,7 +158,7 @@ entities:"""
         doc_name = re.sub(r'\s+', ' ', doc_name).strip()
         if len(doc_name) > 10:
             entity_descriptions.append(
-                f"structural imscription of the {doc_name} from ig-docs/{rel_path}, "
+                f"imscription of the {doc_name} from ig-docs/{rel_path}, "
                 f"with full Frobenius closure and Lean 4 verification scaffold"
             )
     
@@ -166,7 +166,7 @@ entities:"""
     if not entity_descriptions:
         dir_name = dirpath.name.replace('_', ' ')
         entity_descriptions.append(
-            f"structural imscription of the {dir_name} system from ig-docs/{rel_path}, "
+            f"imscription of the {dir_name} system from ig-docs/{rel_path}, "
             f"with full Frobenius closure and Lean 4 verification scaffold"
         )
     

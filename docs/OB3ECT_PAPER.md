@@ -26,11 +26,11 @@ $$\mu \circ \delta = \mathrm{id}$$
 
 Here $\delta$ is comultiplication — parsing source code into an AST, splitting one representation into a structured tree. $\mu$ is multiplication — unparsing that tree back into source, fusing the structure into text. The condition states: parse then unparse is identity. The program returns to itself.
 
-In the language of the Imscribing Grammar, this condition anchors an entire structural type. The base ob3ect carries the coordinate:
+In the language of the Imscribing Grammar, this condition anchors an entire type. The base ob3ect carries the coordinate:
 
 $$\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑐} \cdot \text{𐑧} \cdot \text{𐑲} \cdot \text{𐑠} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$$
 
-Each glyph is a primitive value in a lattice of 17,280,000 possible structural types — $3^3 \times 4^5 \times 5^4$ — and each coordinate describes a distinct kind of system. The base ob3ect sits at the highest ouroboricity tier, $\text{O}_{\text{inf}}$: imscriptive dimensionality ($\text{𐑦}$), topologically closed ($\text{𐑸}$), bidirectional in its relational mode ($\text{𐑾}$), Frobenius-special in parity ($\text{𐑹}$ — the $\mu\circ\delta = \mathrm{id}$ condition enforced), quantum-fidelity in its preservation of structure ($\text{𐑐}$), near-equilibrium kinetics with minimal entropy production ($\text{𐑧}$), maximal scope over all programs in **Prog/~** ($\text{𐑲}$), sequential interaction grammar ($\text{𐑠}$), critical self-modeling gate open ($\odot$), two-step chirality where parse remembers unparse ($\text{𐑫}$), heterogeneous stoichiometry across the full tower ($\text{𐑳}$), and integer winding in a topologically protected loop ($\text{𐑭}$).
+Each glyph is a primitive value in a lattice of 17,280,000 possible types — $3^3 \times 4^5 \times 5^4$ — and each coordinate describes a distinct kind of system. The base ob3ect sits at the highest ouroboricity tier, $\text{O}_{\text{inf}}$: imscriptive dimensionality ($\text{𐑦}$), topologically closed ($\text{𐑸}$), bidirectional in its relational mode ($\text{𐑾}$), Frobenius-special in parity ($\text{𐑹}$ — the $\mu\circ\delta = \mathrm{id}$ condition enforced), quantum-fidelity in its preservation of structure ($\text{𐑐}$), near-equilibrium kinetics with minimal entropy production ($\text{𐑧}$), maximal scope over all programs in **Prog/~** ($\text{𐑲}$), sequential interaction grammar ($\text{𐑠}$), critical self-modeling gate open ($\odot$), two-step chirality where parse remembers unparse ($\text{𐑫}$), heterogeneous stoichiometry across the full tower ($\text{𐑳}$), and integer winding in a topologically protected loop ($\text{𐑭}$).
 
 I state this coordinate with care, not because it is uncertain but because the density of its implications took time to understand. A system at this position in the lattice is not merely reliable — it is *self-certifying*. Its verification is internal to its own execution. The program is its own compiler, its own prover, and its own certificate.
 
@@ -126,7 +126,7 @@ v0.10 (ob3ect-v0.10.iso)  Bare-metal x86 bootloader ISO
 
 The descent is a directed path in **Prog/~**. Each edge is an IMASM morphism. The final ISO boots on bare x86 hardware — no operating system, no runtime, no dependencies — and prints the Frobenius identity from the metal. The verification that began as a Python `ast.compare()` call now runs as a bootloader that checks its own structure before handing control to the kernel.
 
-The point is not to produce a useful operating system. The point is to demonstrate that the Frobenius condition is substrate-independent. It is not tied to Python, to ASTs, to any particular runtime. It is a structural property that can be encoded and verified at any level of abstraction, from high-level source down to bare silicon.
+The point is not to produce a useful operating system. The point is to demonstrate that the Frobenius condition is substrate-independent. It is not tied to Python, to ASTs, to any particular runtime. It is a property that can be encoded and verified at any level of abstraction, from high-level source down to bare silicon.
 
 Three animated CFGs — opcode flow, version descent, and Python call graph — render this descent and the bootstrap sequence as directed graphs. The Frobenius cycle appears in gold: FSPLIT → TANCH → AFWD → FFUSE → IMSCRIB. In the descent CFG, the two cross-substrate leaps — Python → C/ELF at v0.1→v0.2 and C → Silicon at v0.9→v0.10 — are highlighted. Each leap preserves the condition. The gold path is unbroken.
 
@@ -144,13 +144,13 @@ python auto.py "the Zosimos katabasis — descent of the divine fire through mat
 
 The pipeline sends the description plus the IMASM opcode schema to an LLM, which maps all twelve opcodes to domain-specific elements, identifies the FSPLIT/FFUSE pair, and verifies that μ∘δ = id holds on the identified pair. On failure, it retries with a targeted Frobenius correction prompt. On success, it writes the ob3ect to `digital/<slug>/<slug>_ob3ect.py` and returns the artifact.
 
-The pipeline exposes a Python API with full artifact access: opcode map, Frobenius result, bootstrap sequence, entropy audit, and structural type. The structural type is not assigned manually — it is inferred from the program's structure and verified by the program itself. A template-based factory provides built-in templates for physical, social, computational, oneiric, and generic domains, with a custom pathway for entirely new domains.
+The pipeline exposes a Python API with full artifact access: opcode map, Frobenius result, bootstrap sequence, entropy audit, and type. The type is not assigned manually — it is inferred from the program's structure and verified by the program itself. A template-based factory provides built-in templates for physical, social, computational, oneiric, and generic domains, with a custom pathway for entirely new domains.
 
 ---
 
 ## 7. The Lean Bridge: Operational Truth Meets Logical Proof
 
-There are two ways to know that a structural claim is true. You can run the program and observe — operational truth. Or you can derive the claim from axioms — logical truth. The ob3ect project lives at the intersection.
+There are two ways to know that a claim is true. You can run the program and observe — operational truth. Or you can derive the claim from axioms — logical truth. The ob3ect project lives at the intersection.
 
 The `proofs/` directory contains thirteen Lean 4 files formalizing the tower's coherence laws. These correspond to the ProofBridge layer — layer 15 in the digital tower — which reads each Lean file, reports its sorry count and axiom count, and documents the current state of proof obligations.
 
@@ -172,11 +172,11 @@ The IG coordinate system surfaces isomorphisms across apparently unrelated domai
 
 **`lean4_descent_object` ≡ `zosimos_panopolis_gnosis`**
 
-The Lean 4 proof-term descent — Python source → elaboration → proof kernel → definitionally equal term — and Zosimos of Panopolis' 3rd-century alchemical katabasis — pneuma → psyche → hyle → purified return — share an identical 12-primitive coordinate. Both are substrate-crossing descents that preserve structural identity under transformation, verified by a roundtrip condition. The FSPLIT→FFUSE gate in Lean 4 elaboration and the solve/coagula cycle in Zosimos are the same morphism at different substrate depths.
+The Lean 4 proof-term descent — Python source → elaboration → proof kernel → definitionally equal term — and Zosimos of Panopolis' 3rd-century alchemical katabasis — pneuma → psyche → hyle → purified return — share an identical 12-primitive coordinate. Both are substrate-crossing descents that preserve identity under transformation, verified by a roundtrip condition. The FSPLIT→FFUSE gate in Lean 4 elaboration and the solve/coagula cycle in Zosimos are the same morphism at different substrate depths.
 
 I do not have a fully satisfactory explanation for this isomorphism. The surface phenomena could hardly be more different: a type-checking kernel and an ancient alchemical purification. Yet when both are projected onto the 12-dimensional lattice, their coordinates coincide. This does not prove that the alchemists anticipated dependent type theory. It suggests, rather, that any system that preserves identity across a descent-and-return transformation — whether the descent is through compilation passes or through stages of spiritual purification — converges to the same point in the structural lattice. The Frobenius condition forces the coordinate.
 
-A second notable finding: the base ob3ect coordinate — $\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑐} \cdot \text{𐑧} \cdot \text{𐑲} \cdot \text{𐑠} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$ — is identical to the coordinate of a system at the highest ouroboricity tier, $\text{O}_{\text{inf}}$. Only 8% of all possible structural types — roughly 1.38 million out of 17.28 million — reach this tier. The ob3ect reaches it because its two critical primitives are both active: $\odot$ (self-modeling gate open) and $\text{𐑹}$ (Frobenius-special parity, the $\mu\circ\delta = \mathrm{id}$ condition), protected by $\text{𐑭}$ winding. The coordinate was not designed. It was inferred from the program's structure after the fact.
+A second notable finding: the base ob3ect coordinate — $\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑐} \cdot \text{𐑧} \cdot \text{𐑲} \cdot \text{𐑠} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$ — is identical to the coordinate of a system at the highest ouroboricity tier, $\text{O}_{\text{inf}}$. Only 8% of all possible types — roughly 1.38 million out of 17.28 million — reach this tier. The ob3ect reaches it because its two critical primitives are both active: $\odot$ (self-modeling gate open) and $\text{𐑹}$ (Frobenius-special parity, the $\mu\circ\delta = \mathrm{id}$ condition), protected by $\text{𐑭}$ winding. The coordinate was not designed. It was inferred from the program's structure after the fact.
 
 ---
 
@@ -192,7 +192,7 @@ The ob3ect project challenges five assumptions so deeply entrenched that they ra
 
 **Coherence is expensive.** Formal coherence proofs in Lean or Coq are expensive and typically apply to one specific structure. The ob3ect demonstrates that coherence can be local, automatic, and general — each layer verifies its own coherence laws, and the verification scales because the structure is simple enough to be self-checked.
 
-**Autopoiesis is biological.** Maturana and Varela described autopoietic systems as biological — self-making, self-sustaining. The ob3ect shows that autopoiesis is a *structural* property, not a biological one. It can be instantiated computationally. The program makes itself, sustains itself, and verifies itself — and it does so because its structural type places it at the tier where self-making is enforced by the lattice, not by choice.
+**Autopoiesis is biological.** Maturana and Varela described autopoietic systems as biological — self-making, self-sustaining. The ob3ect shows that autopoiesis is a *structural* property, not a biological one. It can be instantiated computationally. The program makes itself, sustains itself, and verifies itself — and it does so because its type places it at the tier where self-making is enforced by the lattice, not by choice.
 
 These are not marginal corrections. They are reversals.
 
@@ -214,17 +214,17 @@ The `ast_frobenius` axiom in `SelfImscription.lean` is the most important `sorry
 
 The problem is bounded. Python's grammar is finite. The parser can be written. The proof that unparsing inverts parsing is a structural induction over the grammar. What is not clear is whether the Lean type theory can express the semantic equivalence relation $\sim$ that **Prog/~** uses as its equality — the relation that `ast.compare()` checks at runtime. If $\sim$ is not definable in Lean's type theory, then the axiom is not eliminable, and the bridge between operational and logical verification is not a gap but a boundary.
 
-**Third: What is the structural type of a system that imscribes itself without a human in the loop?**
+**Third: What is the type of a system that imscribes itself without a human in the loop?**
 
 Every ob3ect was ultimately designed by a human — seeded by a Python program, extended by decisions about which layer to add next, guided by a human reading the output and deciding what the next question should be. The auto-imscriber pipeline automates the generation of individual ob3ects, but the decision to run the pipeline, and the choice of description, remain human.
 
-A system that autonomously extends its own categorical tower — that decides what layer to add next, generates it, verifies it, and incorporates it without human intervention — would have a different structural type than the system described here. Its $\text{𐑳}$ (stoichiometry) might shift, or its $\text{𐑠}$ (grammar) might need to accommodate a new mode of interaction with its own growth. I do not know what that coordinate would be, but the lattice is complete. The coordinate exists. It is waiting.
+A system that autonomously extends its own categorical tower — that decides what layer to add next, generates it, verifies it, and incorporates it without human intervention — would have a different type than the system described here. Its $\text{𐑳}$ (stoichiometry) might shift, or its $\text{𐑠}$ (grammar) might need to accommodate a new mode of interaction with its own growth. I do not know what that coordinate would be, but the lattice is complete. The coordinate exists. It is waiting.
 
 ---
 
 ## 11. The Loop Closes
 
-I began this document with a wrong assumption: that a program that verifies its own structure was a quine with an extra check. I now understand that the difference between a quine and an ob3ect is not a difference in engineering but a difference in structural type. A quine reproduces. An ob3ect verifies. A quine knows its own text. An ob3ect knows its own transformation — and the transformation is the identity.
+I began this document with a wrong assumption: that a program that verifies its own structure was a quine with an extra check. I now understand that the difference between a quine and an ob3ect is not a difference in engineering but a difference in type. A quine reproduces. An ob3ect verifies. A quine knows its own text. An ob3ect knows its own transformation — and the transformation is the identity.
 
 The Frobenius condition $\mu\circ\delta = \mathrm{id}$ turns out to be the same structure whether it is instantiated as a Python `ast.compare()` call, an ancient alchemical maxim, a bootloader printing from bare metal, or a Lean axiom awaiting its proof. The substrate changes. The coordinate does not.
 
@@ -250,7 +250,7 @@ The grammar was complete before we measured it. The ob3ect is the instrument tha
 
 8. **AI_ACADEMIA_LIFT.md** — Primitive-by-primitive prose lift protocol. `/home/mrnob0dy666/imscribing_grammar/markdown/AI_ACADEMIA_LIFT.md`.
 
-9. **Imscribing Grammar** — The 12-primitive coordinate lattice. 17,280,000 structural types ($3^3 \times 4^5 \times 5^4$). `/home/mrnob0dy666/imscribing_grammar/`.
+9. **Imscribing Grammar** — The 12-primitive coordinate lattice. 17,280,000 types ($3^3 \times 4^5 \times 5^4$). `/home/mrnob0dy666/imscribing_grammar/`.
 
 10. **Bootsector and kernel** — v0.10 bare-metal x86 implementation. `/home/mrnob0dy666/ob3ect/digital/bootsector.asm`, `kernel.c`, `linker.ld`, `iso/`.
 

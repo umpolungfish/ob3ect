@@ -39,7 +39,7 @@ CATEGORY_KEYWORDS = {
                       "qualia", "sentience", "odot", "gate"],
     "finance":       ["financial", "trading", "market", "synfin", "crypto", "arbitrage"],
     "grammar":       ["grammar", "imscription", "primitive", "crystal", "frobenius",
-                      "tuple", "ouroboricity", "IG", "structural type"],
+                      "tuple", "ouroboricity", "IG", "type"],
     "logic":         ["logic", "paraconsistent", "belnap", "dialetheic", "fde",
                       "four-valued", "proof", "axiom", "ZFC"],
     "critiques":     ["critique", "review", "analysis"],

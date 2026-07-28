@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → AFWD → CLINK → IMSCRIB → FSPLIT → EVALT → AREV → EVALF → ENGAGR → FFUSE → AFWD → TANCH → IFIX
--- Class: The non-vacuous structural type of Navier-Stokes global regularity is the ob3ect whose target predicate binds the velocity field to its initial datum as a genuine H^{1/2}-critical solution of the incompressible equations, so that the remaining sorry marks the true Clay Frobenius boundary rather than a shell satisfiable by the zero field.
+-- Class: The non-vacuous type of Navier-Stokes global regularity is the ob3ect whose target predicate binds the velocity field to its initial datum as a genuine H^{1/2}-critical solution of the incompressible equations, so that the remaining sorry marks the true Clay Frobenius boundary rather than a shell satisfiable by the zero field.
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13
