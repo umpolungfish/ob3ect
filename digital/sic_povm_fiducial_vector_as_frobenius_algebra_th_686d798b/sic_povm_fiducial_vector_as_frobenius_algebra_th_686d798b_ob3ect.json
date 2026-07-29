@@ -1,0 +1,380 @@
+{
+  "name": "SIC-POVM fiducial vector as Frobenius algebra: the d=2 fiducial state B = XZ in C^2, with split (delta) mapping the state to its SIC-POVM measurement operators and fuse (mu) reconstructing the state from the measurement outcomes.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "SIC-POVM fiducial vector as Frobenius algebra: the d=2 fiducial state B = XZ in C^2, with split (delta) mapping the state to its SIC-POVM measurement operators and fuse (mu) reconstructing the state from the measurement outcomes.",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "fiducial state B",
+        "SIC-POVM operators",
+        "Weyl-Heisenberg orbit"
+      ],
+      "boundary_condition": "the Hilbert space C^2 containing the fiducial and its 4-orbit SIC-POVM",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "the void C^0 — no vector yet, pre-genesis",
+        "justification": "before the fiducial is chosen, the Hilbert space is not yet populated; the initial object ∅",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the complete SIC-POVM — the 4 symmetric informationally complete operators {Π_i}",
+        "justification": "the terminal anchor: the full measurement apparatus that closes and contains the system; all 4 rays sum to 2I, resolving the identity",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "forward Weyl-Heisenberg displacement D(i,j) = X^i Z^j",
+        "justification": "directed morphism generating the orbit from the fiducial: |ψ_i⟩ = D(i)|B⟩",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "the Hilbert space adjoint ⟨B| — the dual map forming projectors from states",
+        "justification": "reverse/descent morphism: |ψ_i⟩ → Π_i = |ψ_i⟩⟨ψ_i|, contracting bra with ket",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "composition of displacements under the Weyl-Heisenberg group law",
+        "justification": "sequential chaining: D(i,j)∘D(k,l) = ω^{il-jk} D(i+k, j+l), the group composition",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the fiducial fixed point Φ_B(B) = B — the self-identity under its own measurement channel",
+        "justification": "B = XZ is the fixed point of the measurement channel: the fiducial recognizes itself",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "δ — the SIC measurement channel that decomposes B into its 4-orbit structure",
+        "justification": "splits the fiducial state into the 4 Weyl-Heisenberg orbit states (T-arm) and their 4 projectors (F-arm)",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "μ — the reconstruction channel μ({p_i}) = Σ_i ((d+1)p_i - 1/d)Π_i",
+        "justification": "reconstitutes the fiducial from Born-rule probabilities and the SIC-POVM operators; μ∘δ = id by IC property",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "successful orbit generation: |ψ_i⟩ = D(i)|B⟩ — each displacement produces a valid state",
+        "justification": "affirmative branch: each Weyl-Heisenberg displacement successfully generates an orbit state",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "the SIC overlap condition: |⟨ψ_i|ψ_j⟩|² = 1/(d+1) = 1/3 for i≠j",
+        "justification": "negative/failure aspect: the states are NOT orthogonal — maximal overlap is a constraint, not a success",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "overcompleteness: d²=4 operators in a d=2 space — informationally complete but not a basis",
+        "justification": "a paradice: simultaneously overcomplete (4 > 2 dimensions) and informationally complete (distinguishes all states); both held without resolution",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the SIC-POVM measurement record — the permanently inscribed operator set",
+        "justification": "ROM fixation: once the SIC-POVM is constructed, its operators are fixed as the canonical measurement for C^2",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "delta",
+      "split_input": "the fiducial state B = XZ",
+      "split_outputs": [
+        "the 4 Weyl-Heisenberg orbit states |ψ_i⟩",
+        "the 4 SIC-POVM projectors Π_i = |ψ_i⟩⟨ψ_i|"
+      ],
+      "fuse_element": "mu",
+      "fuse_result": "the fiducial state B = XZ",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 — the empty Hilbert space, no vector chosen, no measurement structure",
+      "true_description": "01 — the orbit is successfully generated; all 4 states are distinct and span C^2",
+      "false_description": "10 — the non-orthogonality: no two SIC states are orthogonal, measurement ambiguity",
+      "both_description": "11 — the SIC-POVM is simultaneously overcomplete (4 operators in 2D) and informationally complete (full state reconstruction); Belnap B4 value B",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "void — the empty register before the fiducial is inscribed"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "B = XZ — the fiducial recognizes itself as the fixed point Φ_B(B)=B"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "δ — the measurement channel splits B into orbit and projector branches"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "forward Weyl-Heisenberg displacement generates the orbit states |ψ_i⟩"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "each |ψ_i⟩ = D(i)|B⟩ is a valid quantum state — affirmative generation"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "compose displacements under the WH(2) group law to chain through the orbit"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "reverse — form the projectors Π_i = |ψ_i⟩⟨ψ_i| via Hilbert space adjoint"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "the SIC overlap |⟨ψ_i|ψ_j⟩|² = 1/3 for i≠j — the non-orthogonality bound"
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "compose orbit states and projectors into the reconstruction formula"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "μ — the reconstruction μ(δ(B)) = Σ_i ((d+1)p_i - 1/d)Π_i = B"
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "the complete SIC-POVM — the 4 rays close the measurement apparatus"
+        },
+        {
+          "step_num": 12,
+          "opcode": "ENGAGR",
+          "domain_action": "overcompleteness ∧ informational completeness — both held simultaneously"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "the SIC-POVM operators are permanently fixed as the canonical measurement"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the Weyl-Heisenberg group WH(2) — generates the orbit from the fiducial via displacement operators",
+      "ipc_mechanism": "the Born rule p_i = tr(ρ Π_i) — how the state communicates probabilities to the measurement apparatus",
+      "memory_mechanism": "the density matrix ρ = |ψ⟩⟨ψ| — the state is stored as a rank-1 projector; measurement updates via Lüders rule",
+      "scheduler_mechanism": "the order of Weyl-Heisenberg displacements D(0,0), D(1,0), D(0,1), D(1,1) — the canonical 4-orbit traversal",
+      "alfs_store": "the Belnap fiducial B = XZ — the canonical reference bootstrap; B is the fixed point of its own measurement channel",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "the 4 measurement outcomes consumed per reconstruction cycle — each SIC measurement uses all 4 projectors",
+      "pre_cycle_state": "the fiducial state B = XZ in C^2, unfolded into its 4-orbit",
+      "post_cycle_state": "the fiducial state B = XZ, exactly reconstructed from measurement statistics",
+      "delta_s_verdict": "ΔS ≈ 0 — the SIC-POVM is informationally complete: no information loss in δ→μ, μ∘δ is identity on the fiducial",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → AFWD → EVALT → CLINK → AREV → EVALF → CLINK → FFUSE → TANCH → ENGAGR → IFIX\n-- Class: SIC-POVM fiducial vector as Frobenius algebra: the d=2 fiducial state B = XZ in C^2, with split (delta) mapping the state to its SIC-POVM measurement operators and fuse (mu) reconstructing the state from the measurement outcomes.\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [7] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [8] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [9] FFUSE     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [10] TANCH     top    := 𐑡               𐑙 → 𐑳  | terminal object — connectivity boundary\n--   [11] ENGAGR    stoi   := 𐑳               𐑡 → 𐑭  | engage paradox — B-state, both arms\n--   [12] IFIX      prot   := 𐑭               𐑳 → 𐑼  | irreversible fixation — winding number\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def sic_povm_fiducial_vector_as_frobenius_67dac5_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def sic_povm_fiducial_vector_as_frobenius_67dac5_protocol : IGProtocol sic_povm_fiducial_vector_as_frobenius_67dac5_s0 sic_povm_fiducial_vector_as_frobenius_67dac5_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct sic_povm_fiducial_vector_as_frobenius_67dac5_s9 sic_povm_fiducial_vector_as_frobenius_67dac5_s9 = sic_povm_fiducial_vector_as_frobenius_67dac5_s9 (idempotent)\n  (.seq (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l0 sic_povm_fiducial_vector_as_frobenius_67dac5_s0 sic_povm_fiducial_vector_as_frobenius_67dac5_s1) (.seq (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l1 sic_povm_fiducial_vector_as_frobenius_67dac5_s1 sic_povm_fiducial_vector_as_frobenius_67dac5_s2) (.seq (.prod (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l2 sic_povm_fiducial_vector_as_frobenius_67dac5_s2 sic_povm_fiducial_vector_as_frobenius_67dac5_s9) (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l2 sic_povm_fiducial_vector_as_frobenius_67dac5_s2 sic_povm_fiducial_vector_as_frobenius_67dac5_s9)) (.seq (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l9 sic_povm_fiducial_vector_as_frobenius_67dac5_s9 sic_povm_fiducial_vector_as_frobenius_67dac5_s9) (.seq (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l9 sic_povm_fiducial_vector_as_frobenius_67dac5_s9 sic_povm_fiducial_vector_as_frobenius_67dac5_s10) (.seq (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l10 sic_povm_fiducial_vector_as_frobenius_67dac5_s10 sic_povm_fiducial_vector_as_frobenius_67dac5_s11) (.arrow sic_povm_fiducial_vector_as_frobenius_67dac5_l11 sic_povm_fiducial_vector_as_frobenius_67dac5_s11 sic_povm_fiducial_vector_as_frobenius_67dac5_s12)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def sic_povm_fiducial_vector_as_frobenius_67dac5_true_arm : IGProtocol sic_povm_fiducial_vector_as_frobenius_67dac5_s0 sic_povm_fiducial_vector_as_frobenius_67dac5_s12 :=\n  (sic_povm_fiducial_vector_as_frobenius_67dac5_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def sic_povm_fiducial_vector_as_frobenius_67dac5_false_arm : IGProtocol sic_povm_fiducial_vector_as_frobenius_67dac5_s0 sic_povm_fiducial_vector_as_frobenius_67dac5_s12 :=\n  (sic_povm_fiducial_vector_as_frobenius_67dac5_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef sic_povm_fiducial_vector_as_frobenius_67dac5_tier_ground : OuroboricityTier := TierFunctor.obj sic_povm_fiducial_vector_as_frobenius_67dac5_s0\ndef sic_povm_fiducial_vector_as_frobenius_67dac5_tier : OuroboricityTier := TierFunctor.obj sic_povm_fiducial_vector_as_frobenius_67dac5_s12\n#eval sic_povm_fiducial_vector_as_frobenius_67dac5_tier_ground  -- tier of the ground (pre-transformation)\n#eval sic_povm_fiducial_vector_as_frobenius_67dac5_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem sic_povm_fiducial_vector_as_frobenius_67dac5_frobenius :\n    igFrobeniusAlg.mul sic_povm_fiducial_vector_as_frobenius_67dac5_s0 sic_povm_fiducial_vector_as_frobenius_67dac5_s0 = sic_povm_fiducial_vector_as_frobenius_67dac5_s0 :=\n  igFrobAlg_self_fusion sic_povm_fiducial_vector_as_frobenius_67dac5_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 13,
+    "t_branch_ops": 3,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        2,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: SIC-POVM fiducial vector as Frobenius algebra: the d=2 fiducial state B = XZ in C^2, with split (delta) mapping the state to its SIC-POVM measurement operators and fuse (mu) reconstructing the state from the measurement outcomes.",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈>+=<×=∋⊣⊞¬",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 0,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 13,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙◇>+=<×=●⊣⊞¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙◇>+=<×=●⊣⊞¬⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "◇>+=<×=●⊣⊞¬⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">+=<×=●⊣⊞¬⊢⊙◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "+=<×=●⊣⊞¬⊢⊙◇>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "=<×=●⊣⊞¬⊢⊙◇>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<×=●⊣⊞¬⊢⊙◇>+=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "×=●⊣⊞¬⊢⊙◇>+=<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "=●⊣⊞¬⊢⊙◇>+=<×",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "●⊣⊞¬⊢⊙◇>+=<×=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊣⊞¬⊢⊙◇>+=<×=●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊞¬⊢⊙◇>+=<×=●⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "¬⊢⊙◇>+=<×=●⊣⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 4,
+    "canonical_word": "+=<×=●⊣⊞¬⊢⊙◇>",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}

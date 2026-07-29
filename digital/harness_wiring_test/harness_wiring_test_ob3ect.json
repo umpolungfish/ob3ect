@@ -1,0 +1,298 @@
+{
+  "name": "harness wiring test",
+  "is_valid_ob3ect": false,
+  "validations": {
+    "phase_0": [
+      "need >=3 surface tokens"
+    ],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [
+      "void required",
+      "both required"
+    ],
+    "phase_4": [],
+    "phase_5": [
+      "compiler_frontend required",
+      "ipc_mechanism required",
+      "memory_mechanism required",
+      "scheduler_mechanism required",
+      "alfs_store required"
+    ],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "harness wiring test",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "pair"
+      ],
+      "boundary_condition": "the pair",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "vinit",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "tanch",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "afwd",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "arev",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "clink",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "imscrib",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "fsplit",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "ffuse",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "evalt",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "evalf",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "engagr",
+        "justification": "t",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "ifix",
+        "justification": "t",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "delta",
+      "split_input": "the pair {a,b}",
+      "split_outputs": [
+        "(a,b)",
+        "(b,a)"
+      ],
+      "fuse_element": "mu",
+      "fuse_result": "the pair {a,b}",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "",
+      "true_description": "",
+      "false_description": "",
+      "both_description": "",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "empty"
+        },
+        {
+          "step_num": 2,
+          "opcode": "FSPLIT",
+          "domain_action": "split"
+        },
+        {
+          "step_num": 3,
+          "opcode": "EVALT",
+          "domain_action": "eval"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AREV",
+          "domain_action": "clear"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FFUSE",
+          "domain_action": "rejoin"
+        },
+        {
+          "step_num": 6,
+          "opcode": "TANCH",
+          "domain_action": "seal"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "",
+      "ipc_mechanism": "",
+      "memory_mechanism": "",
+      "scheduler_mechanism": "",
+      "alfs_store": "",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "",
+      "pre_cycle_state": "",
+      "post_cycle_state": "",
+      "delta_s_verdict": "ΔS ≈ 0",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → FSPLIT → EVALT → AREV → FFUSE → TANCH\n-- Class: harness wiring test\n-- Fingerprint: sig=(3,2,1,0)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=6\n-- Expected tier: O₁\n-- FSPLIT/FFUSE pairs: [(1, 4)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [4] FFUSE     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [5] TANCH     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def harness_wiring_test_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def harness_wiring_test_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def harness_wiring_test_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def harness_wiring_test_protocol : IGProtocol harness_wiring_test_s0 harness_wiring_test_s5 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct harness_wiring_test_s4 harness_wiring_test_s4 = harness_wiring_test_s4 (idempotent)\n  (.seq (.arrow harness_wiring_test_l0 harness_wiring_test_s0 harness_wiring_test_s1) (.seq (.prod (.arrow harness_wiring_test_l1 harness_wiring_test_s1 harness_wiring_test_s4) (.arrow harness_wiring_test_l1 harness_wiring_test_s1 harness_wiring_test_s4)) (.seq (.arrow harness_wiring_test_l4 harness_wiring_test_s4 harness_wiring_test_s4) (.arrow harness_wiring_test_l4 harness_wiring_test_s4 harness_wiring_test_s5))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def harness_wiring_test_true_arm : IGProtocol harness_wiring_test_s0 harness_wiring_test_s5 :=\n  (harness_wiring_test_protocol).restrictToEVALT\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.\ndef harness_wiring_test_tier_ground : OuroboricityTier := TierFunctor.obj harness_wiring_test_s0\ndef harness_wiring_test_tier : OuroboricityTier := TierFunctor.obj harness_wiring_test_s5\n#eval harness_wiring_test_tier_ground  -- tier of the ground (pre-transformation)\n#eval harness_wiring_test_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem harness_wiring_test_frobenius :\n    igFrobeniusAlg.mul harness_wiring_test_s0 harness_wiring_test_s0 = harness_wiring_test_s0 :=\n  igFrobAlg_self_fusion harness_wiring_test_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 6,
+    "t_branch_ops": 2,
+    "f_branch_ops": 0,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      1
+    ],
+    "fuse_positions": [
+      4
+    ],
+    "pair_list": [
+      [
+        1,
+        4
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 0,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: harness wiring test",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈+<∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 1,
+    "inert": 0,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 6,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢◇+<●⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "◇+<●⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "+<●⊣⊢◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "<●⊣⊢◇+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "●⊣⊢◇+<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊣⊢◇+<●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": false,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 2,
+    "canonical_word": "+<●⊣⊢◇",
+    "verdict": "PHASE-BEARING — moves under ROTAT: closed_walk, final_register"
+  }
+}

@@ -1,91 +1,92 @@
 {
   "is_valid_ob3ect": true,
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → FSPLIT → EVALT → EVALF → ENGAGR → AFWD → CLINK → IMSCRIB → IFIX → FFUSE → AREV\n-- (native ob3ect designer; elaborate against the kernel to verify)",
-  "name": "The six-coefficient Frobenius algebra formed by the Fourier coefficients",
-  "notes": "Auto-designed from: Design an Ob3ect for:\n\nThe six-coefficient Frobenius algebra formed by the Fourier coefficients a_1..a_6 of the horn tor",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → AFWD → FSPLIT → FFUSE → AREV → EVALT → EVALF → ENGAGR → CLINK → IMSCRIB → IFIX\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "The six-coefficient Frobenius algebra formed by Fourier coefficients a_1..a_6",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\nThe six-coefficient Frobenius algebra formed by Fourier coefficients a_1..a_6 of f_HT Basis b_0..",
   "phases": {
     "phase_0": {
-      "boundary_condition": "the identity element 1",
-      "domain_name": "The six-coefficient Frobenius algebra formed by the Fourier coefficients",
+      "boundary_condition": "The 7-dimensional vector space spanned by basis b_0..b_6 with multiplicative identity b_0=1 and Frobenius product mu satisfying mu∘delta=id via coproduct delta(b_i)=b_i⊗b_0",
+      "domain_name": "The six-coefficient Frobenius algebra formed by Fourier coefficients a_1..a_6",
       "domain_type": "algebraic",
       "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
       "scope": "deepseek",
       "surface_tokens": [
+        "Frobenius algebra",
+        "group algebra R[Z7]",
         "Fourier coefficients",
-        "modular form basis",
-        "Z7 group algebra"
+        "structure constants"
       ]
     },
     "phase_1": {
       "AFWD": {
-        "chosen_element": "multiplication map μ: A⊗A → A",
-        "justification": "binary product combining two basis elements into a single basis element via cyclic group law",
+        "chosen_element": "mu: b_i ⊗ b_j → b_{i+j mod 7}",
+        "justification": "The forward morphism that combines two basis elements into one via addition modulo 7, the primitive operation of the group algebra.",
         "opcode": "AFWD",
         "rejected_candidates": []
       },
       "AREV": {
-        "chosen_element": "comultiplication map δ: A → A⊗A",
-        "justification": "splits an element into a sum of tensor products, dual to multiplication under the Frobenius bilinear form defined by the Z2 involution",
+        "chosen_element": "involution: b_i → b_{-i mod 7}",
+        "justification": "The descent morphism that reverses the index to its additive inverse modulo 7, implementing the Z2 symmetry of the Frobenius algebra.",
         "opcode": "AREV",
         "rejected_candidates": []
       },
       "CLINK": {
-        "chosen_element": "composition μ∘δ",
-        "justification": "the sequential application of comultiplication then multiplication returns the original element due to the Frobenius condition",
+        "chosen_element": "Composition mu∘delta",
+        "justification": "Sequential chaining of the coproduct followed by the product, which yields the identity by the Frobenius condition.",
         "opcode": "CLINK",
         "rejected_candidates": []
       },
       "ENGAGR": {
-        "chosen_element": "zero vector 0",
-        "justification": "both simultaneously: the zero vector is fixed by the involution (true) and also annihilates all products (false-like), held without resolution",
+        "chosen_element": "b_0 + b_0 (or the algebra itself viewed as both true and false)",
+        "justification": "The simultaneous holding of both identity and non-identity under the paraconsistent interpretation, e.g., the element 2b_0 where the truth lattice is unresolved.",
         "opcode": "ENGAGR",
         "rejected_candidates": []
       },
       "EVALF": {
-        "chosen_element": "non-identity basis elements a_i (i=1..6)",
-        "justification": "negative branch: involution maps each a_i to a_{7-i} ≠ a_i, representing false under the involution",
+        "chosen_element": "Linear functional that picks trace of left multiplication by b_0",
+        "justification": "The negative branch of the evaluation, returning zero in the group algebra case but conceptually the failure state.",
         "opcode": "EVALF",
         "rejected_candidates": []
       },
       "EVALT": {
-        "chosen_element": "elements fixed by the Z2 involution (only 1)",
-        "justification": "affirmative branch: the involution maps these to themselves, hence they are true under the symmetry",
+        "chosen_element": "Linear functional epsilon: b_i → 1 for i=0, else 0",
+        "justification": "The evaluation that picks the coefficient of b_0, corresponding to the affirmative truth state (the counit of the Frobenius algebra).",
         "opcode": "EVALT",
         "rejected_candidates": []
       },
       "FFUSE": {
-        "chosen_element": "multiplication μ",
-        "justification": "fuses two basis elements into one by cyclic group multiplication, exactly reversing δ: μ(δ(x)) = x for all x",
+        "chosen_element": "mu: b_i ⊗ b_j → b_{i+j mod 7}",
+        "justification": "The product fuses two factors into one basis element; when applied to the output of delta, it reconstitutes the original element exactly.",
         "opcode": "FFUSE",
         "rejected_candidates": []
       },
       "FSPLIT": {
-        "chosen_element": "comultiplication δ",
-        "justification": "splits an element into two paths: the two factors in the tensor product representation, here δ(1) = ∑_{i=1}^6 a_i ⊗ a_{7-i} (indices mod 7)",
+        "chosen_element": "delta: b_i → b_i ⊗ b_0",
+        "justification": "The coproduct splits a single basis element into a tensor product of itself and the identity element, opening a two-factor arm.",
         "opcode": "FSPLIT",
         "rejected_candidates": []
       },
       "IFIX": {
-        "chosen_element": "structure constants C_{ijk} defining the multiplication table",
-        "justification": "irreversible fixation: the 7×7 multiplication table with entries [1, a1, a2, a3, a4, a5, a6] in first row, and cyclic shifts for subsequent rows, recorded permanently",
+        "chosen_element": "Structure constants C_ijk (0 or 1) stored in ROM",
+        "justification": "The irreversible fixation of the multiplication table as permanent record; once defined, the constants cannot be altered.",
         "opcode": "IFIX",
         "rejected_candidates": []
       },
       "IMSCRIB": {
-        "chosen_element": "identity morphism id_A",
-        "justification": "self-reference of the algebra, unchanged under transformation, neutral in composition",
+        "chosen_element": "id: b_i → b_i",
+        "justification": "The identity morphism on the vector space; each basis element is self-recognized without transformation.",
         "opcode": "IMSCRIB",
         "rejected_candidates": []
       },
       "TANCH": {
-        "chosen_element": "unit element 1",
-        "justification": "the closed boundary that supports all products and yields identity under multiplication",
+        "chosen_element": "b_0 = 1",
+        "justification": "The multiplicative identity that closes the algebra under product; every element multiplied by b_0 returns itself, anchoring the entire structure.",
         "opcode": "TANCH",
         "rejected_candidates": []
       },
       "VINIT": {
-        "chosen_element": "abstract vector space A over C",
-        "justification": "uninitialized state before any basis or algebra structure is imposed",
+        "chosen_element": "Scalar field (R or C) prior to basis assignment",
+        "justification": "The undifferentiated coefficient space from which all linear combinations are drawn; the void before any basis vector is named.",
         "opcode": "VINIT",
         "rejected_candidates": []
       }
@@ -93,121 +94,121 @@
     "phase_2": {
       "failure_reason": "",
       "frobenius_verdict": "PASS",
-      "fuse_element": "multiplication μ",
-      "fuse_result": "the identity element 1",
-      "split_element": "comultiplication δ",
-      "split_input": "the identity element 1",
+      "fuse_element": "mu: b_i ⊗ b_j → b_{i+j mod 7}",
+      "fuse_result": "b_i (since mu(b_i⊗b_0)=b_i), which equals split_input",
+      "split_element": "delta: b_i → b_i ⊗ b_0",
+      "split_input": "a single basis element b_i",
       "split_outputs": [
-        "branch A: the first tensor factor as a_i (i=1..6)",
-        "branch B: the second tensor factor as a_{7-i} (i=1..6)"
+        "b_i (first factor)",
+        "b_0 (second factor)"
       ],
       "test_instance": ""
     },
     "phase_3": {
-      "both_description": "the zero vector 0 (both fixed and annihilates, but also the only element that is both true and false in the paraconsistent sense)",
+      "both_description": "b_0 + 0 = b_0 (or the full algebra as superposition); in the dialetheia sense, both identity and zero are held without resolution.",
       "entropy_assertion": "ΔS ≈ 0",
-      "false_description": "a representative non-identity element, e.g., a1 (negative, maps to a6 under involution)",
+      "false_description": "Zero vector 0, the additive identity representing the negative truth value.",
       "transitions": [],
-      "true_description": "the identity element 1 (affirmative, fixed under involution)",
-      "void_description": "the zero vector 0 (uninitialized state before any element is considered)"
+      "true_description": "b_0 = 1, the multiplicative identity representing the affirmative truth value.",
+      "void_description": "Scalar field before any basis element is instantiated; all coefficients are zero."
     },
     "phase_4": {
       "closure_verified": true,
       "failure_modes": [],
       "steps": [
         {
-          "domain_action": "The vector space A is undefined without a basis or algebra structure",
+          "domain_action": "Scalar field initialized with no basis designated.",
           "opcode": "VINIT",
           "step_num": 1
         },
         {
-          "domain_action": "The identity element 1 is introduced as the terminal boundary that supports the algebra",
+          "domain_action": "Identity element b_0 introduced as the terminal anchor of the algebra.",
           "opcode": "TANCH",
           "step_num": 2
         },
         {
-          "domain_action": "The comultiplication δ splits 1 into a sum over i=1..6 of a_i ⊗ a_{7-i}",
-          "opcode": "FSPLIT",
+          "domain_action": "Product mu: b_i ⊗ b_j → b_{i+j mod 7} defined for all i,j.",
+          "opcode": "AFWD",
           "step_num": 3
         },
         {
-          "domain_action": "The identity 1 is recognized as the unique element fixed by the Z2 involution",
-          "opcode": "EVALT",
+          "domain_action": "Coproduct delta applied to an arbitrary basis element b_i, splitting it into b_i ⊗ b_0.",
+          "opcode": "FSPLIT",
           "step_num": 4
         },
         {
-          "domain_action": "The six non-identity basis elements a_i are recognized as those not fixed by the involution",
-          "opcode": "EVALF",
+          "domain_action": "Product mu fuses the two factors back into b_i, confirming mu∘delta=id.",
+          "opcode": "FFUSE",
           "step_num": 5
         },
         {
-          "domain_action": "The zero vector 0 is introduced as the element that is both fixed and annihilated, held without resolution",
-          "opcode": "ENGAGR",
+          "domain_action": "Involution applied: b_i → b_{-i mod 7}; each element paired with its inverse.",
+          "opcode": "AREV",
           "step_num": 6
         },
         {
-          "domain_action": "The multiplication μ is defined by the cyclic group law on Z7: a_i * a_j = a_{i+j mod 7} with a_0=1",
-          "opcode": "AFWD",
+          "domain_action": "Counit epsilon evaluates the coefficient of b_0 from a linear combination, giving an affirmative truth value.",
+          "opcode": "EVALT",
           "step_num": 7
         },
         {
-          "domain_action": "The composition μ∘δ is applied to 1, returning 1 and verifying the Frobenius condition",
-          "opcode": "CLINK",
+          "domain_action": "Alternative evaluation returns zero for non-identity components, marking the false branch.",
+          "opcode": "EVALF",
           "step_num": 8
         },
         {
-          "domain_action": "The identity morphism id_A is placed as a neutral operation that does not transform",
-          "opcode": "IMSCRIB",
+          "domain_action": "The element 2b_0 is considered as both true and false simultaneously under the paraconsistent interpretation.",
+          "opcode": "ENGAGR",
           "step_num": 9
         },
         {
-          "domain_action": "The structure constants C_{ijk} are permanently recorded, fixing the multiplication table",
-          "opcode": "IFIX",
+          "domain_action": "Composition mu∘delta is chained to demonstrate that the identity is recovered.",
+          "opcode": "CLINK",
           "step_num": 10
         },
         {
-          "domain_action": "The multiplication μ fuses any pair of basis elements, completing the reverse of δ",
-          "opcode": "FFUSE",
+          "domain_action": "Identity morphism id applied to b_i leaves the element unchanged.",
+          "opcode": "IMSCRIB",
           "step_num": 11
         },
         {
-          "domain_action": "The comultiplication δ is applied to non-identity elements to generate tensor products, demonstrating the full Frobenius algebra",
-          "opcode": "AREV",
+          "domain_action": "Structure constants C_ijk recorded as permanent, immutable table entries.",
+          "opcode": "IFIX",
           "step_num": 12
         }
       ]
     },
     "phase_5": {
       "alfs_bootstrap_program": "",
-      "alfs_store": "the canonical basis {1, a_1, a_2, a_3, a_4, a_5, a_6} as the bootstrap store, from which all products and the comultiplication are derived",
-      "compiler_frontend": "the group algebra isomorphism Φ: C[Z7] → A that sends group elements e_j to basis elements a_j and translates the group multiplication into the Frobenius product",
-      "ipc_mechanism": "the tensor product A⊗A as the communication channel between pairs of basis elements under μ and δ",
-      "memory_mechanism": "the coefficient vector (c_0, c_1, ..., c_6) representing an element as c_0·1 + ∑ c_i·a_i, stored in a 7-dimensional array",
-      "scheduler_mechanism": "the order of multiplication operations: any composition is determined by the cyclic group structure, no external scheduling needed"
+      "alfs_store": "Canonical table of Z7 addition modulo 7, stored as the bootstrap reference for structure constants.",
+      "compiler_frontend": "Group algebra construction from the cyclic group Z7, mapping group elements to basis vectors.",
+      "ipc_mechanism": "Tensor product facilities that allow pairs of basis elements to be combined under mu or split under delta.",
+      "memory_mechanism": "Coefficient array of length 7 storing linear combinations of basis elements, with read/write operations.",
+      "scheduler_mechanism": "Multiplication order determined by the graded algebra structure; composition operations are executed sequentially."
     },
     "phase_6": {
-      "cycle_cost": "each multiplication or comultiplication consumes one unit of computational effort (a single group operation)",
-      "delta_s_verdict": "ΔS ≈ 0 — the Frobenius condition μ∘δ = id ensures every operation has an exact inverse in the cohomological sense, making the cycle entropy-conservative",
+      "cycle_cost": "One scalar multiplication and addition per product operation.",
+      "delta_s_verdict": "ΔS ≈ 0 — Group multiplication is a bijection on the basis; the operation is deterministically reversible via the involution, so no entropy is generated.",
       "failure_mode": "",
-      "post_cycle_state": "the system state after the operation: the result element x*y or the tensor product δ(x)",
-      "pre_cycle_state": "the system state before an operation: a pair of basis elements (x,y) or a single element x"
+      "post_cycle_state": "A single basis element b_{i+j mod 7} in the result register.",
+      "pre_cycle_state": "Two basis elements b_i and b_j in respective registers."
     }
   },
   "topology_report": {
-    "branch_ratio": 6.0,
+    "branch_ratio": 1.0,
     "cross_branches": 0,
-    "empty_branches": 0,
-    "f_branch_ops": 6,
+    "empty_branches": 1,
+    "f_branch_ops": 0,
     "fork_positions": [
-      2
+      3
     ],
     "fuse_positions": [
-      10
+      4
     ],
     "nesting_depth": 0,
     "open_forks": 0,
     "sequence_length": 12,
-    "t_branch_ops": 1,
+    "t_branch_ops": 0,
     "topology_class": "flat_chain",
     "total_pairs": 1
   },
