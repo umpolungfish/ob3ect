@@ -135,12 +135,27 @@ def close_harness(description: str, design: Dict[str, Any],
     # the banked count is the second seal, mechanised: a PASS that never put
     # anything at risk is a free landing, and the caller should see that here
     # rather than discover it later
-    steps = design.get("bootstrap", {}).get("steps") or design.get("steps") or []
+    # Read the steps off the BUILT artifact, not the raw design. `_build_artifact`
+    # normalises `sequence` / `bootstrap` / bare lists into one shape; reaching
+    # into the design dict for `bootstrap.steps` returned None whenever the
+    # designer used `sequence`, so the second-seal check silently reported
+    # nothing instead of failing.
+    steps = []
+    try:
+        bs = getattr(artifact, "bootstrap_sequence", None) or getattr(artifact, "bootstrap", None)
+        steps = getattr(bs, "steps", None) or (bs.get("steps") if isinstance(bs, dict) else None) or []
+    except Exception:
+        steps = []
+    if not steps:
+        steps = design.get("bootstrap", {}).get("steps") or design.get("steps") or []
     if steps:
         try:
             out["banked_count"] = _auto._banked_count_check(steps)
-        except Exception:
-            pass
+        except Exception as e:
+            out["banked_count"] = {"status": "error", "error": str(e)}
+    else:
+        out["banked_count"] = {"status": "error",
+                               "error": "no bootstrap steps found — nothing to weigh"}
 
     if verdict != "PASS":
         out["status"] = "open"
