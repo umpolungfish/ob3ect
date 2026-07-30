@@ -1,0 +1,490 @@
+{
+  "name": "ai_novm_computer",
+  "is_valid_ob3ect": false,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [
+      "compiler_frontend required",
+      "ipc_mechanism required",
+      "memory_mechanism required",
+      "scheduler_mechanism required",
+      "alfs_store required"
+    ],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "ai_novm_computer",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "Hermitian operator",
+        "quasi-probability",
+        "spectral decomposition"
+      ],
+      "boundary_condition": "the normalization constraint ∑E_i = I_d — every NOVM operator set must resolve the identity, bounding the measurement outcomes to total probability one",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty parameter register",
+        "justification": "the tool starts with no parameters loaded, no operators allocated, no state specified — void before any measurement structure is constructed",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "normalization constraint ∑E_i = I_d established as boundary",
+        "justification": "the identity-resolution condition is set as the closed container for all subsequent operations — no operator construction may violate this sum-to-identity closure",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "operator construction from parameters",
+        "justification": "forward morphism transforms the input parameters (d, m, negativity strength α, asymmetry vector) into concrete Hermitian operators {E_i} using the generalized Gell-Mann basis with parameterized negativity, ensuring each operator is self-adjoint",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "eigenvalue decomposition E_i = U_i Λ_i U_i†",
+        "justification": "reverse morphism decomposes each constructed operator into its spectral form — the descent from matrix to eigenvalues, producing the minimal eigenvalue λ_min(i) and the full spectrum needed for property verification",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "grammar pipeline integration",
+        "justification": "sequential composition chains the tool output into the Imscribing Grammar catalog — the JSON output links to the asymmetric_ai_novm entry, enabling distance computations and crystal navigation on the result",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Hermiticity self-check E_i† = E_i",
+        "justification": "identity verification confirms each operator equals its adjoint — the self-reference of a Hermitian matrix, required for real-valued quasi-probabilities and valid spectral decomposition",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "identity decomposition into NOVM operators",
+        "justification": "co-multiplication splits the identity operator I_d into the set of m Hermitian operators {E_1, ..., E_m} — each operator is a branch of the resolution of identity, with the construction guaranteeing ∑E_i = I_d",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "operator summation back to identity",
+        "justification": "multiplication fuses all m operators via summation ∑E_i, recovering exactly I_d — the NOVM normalization condition guarantees closure, and the fuse_result I_d is identical to the split_input I_d, satisfying the Frobenius constraint",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "AI-NOVM property verified",
+        "justification": "affirmative evaluation — the operator set passes the current property check: negativity eigenvalue found (λ_min < 0 for some operator), incompleteness confirmed (m < d²), or asymmetry verified (all spectra distinct)",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "AI-NOVM property failed",
+        "justification": "negative evaluation — the operator set fails the current property: all eigenvalues nonnegative (standard POVM), operators span the full operator space (tomographically complete), or spectra not distinct (symmetry group present)",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "quasi-probability dialetheia",
+        "justification": "both states held simultaneously — the Born rule output (p_1, ..., p_m) is both a valid measurement distribution (∑p_i = 1 per the NOVM normalization) and an invalid classical probability (some p_i < 0); this paradice is the defining signature of negative operator valued measures",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "JSON output artifact",
+        "justification": "permanent irreversible record — the quasi-probability vector, negativity quantification N(ρ), verification results, operator spectra, and grammar tuple ⟨𐑨𐑰𐑽𐑗𐑐𐑪𐑲𐑠𐑢𐑒𐑳𐑷⟩ are written to a fixed JSON artifact for downstream consumption by the grammar pipeline",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "identity decomposition into NOVM operators",
+      "split_input": "the identity operator I_d on ℂ^d",
+      "split_outputs": [
+        "the set of m Hermitian operators {E_1, ..., E_m}",
+        "the NOVM resolution of identity with ∑E_i = I_d by construction"
+      ],
+      "fuse_element": "operator summation back to identity",
+      "fuse_result": "the identity operator I_d on ℂ^d",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "uninitialized tool — no parameters specified, no operators allocated, no state loaded; the tool awaits dimension d, outcome count m, negativity strength α, and asymmetry parameters",
+      "true_description": "verification passed — the operator set satisfies the current AI-NOVM property being checked; the tool advances to the next verification stage or to output generation",
+      "false_description": "verification failed — the operator set does not satisfy the checked AI-NOVM property; the measurement is either a standard POVM (all eigenvalues nonnegative), tomographically complete (m ≥ d²), or symmetric (nontrivial group action)",
+      "both_description": "the quasi-probability distribution — simultaneously true as a normalized measurement outcome (∑p_i = 1) and false as a classical probability distribution (some p_i < 0); this dialetheic state is held without resolution throughout the computation",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "the tool starts in void state — no parameters for dimension d, outcome count m, negativity strength α, or asymmetry vector have been loaded"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "the normalization constraint ∑E_i = I_d is established as the closed boundary — every subsequent operator construction must resolve the identity exactly"
+        },
+        {
+          "step_num": 3,
+          "opcode": "AFWD",
+          "domain_action": "load construction parameters — read dimension d (2 through 8), outcome count m (< d² for incompleteness), negativity strength α (determining the spread of eigenvalues below zero), and asymmetry parameters (distinct spectral profiles per operator)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "decompose the identity — split I_d into m Hermitian operators {E_1, ..., E_m} constructed from the generalized Gell-Mann basis using the parameterized formula, ensuring ∑E_i = I_d by design"
+        },
+        {
+          "step_num": 5,
+          "opcode": "IMSCRIB",
+          "domain_action": "verify Hermiticity of each operator — check E_i† = E_i for all i from 1 to m, confirming each operator is self-adjoint and eligible for real-valued quasi-probability computation"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AFWD",
+          "domain_action": "load the input quantum state — accept either a pure state vector |ψ⟩ ∈ ℂ^d or a density matrix ρ as the measurement target"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AFWD",
+          "domain_action": "compute quasi-probabilities via Born rule — evaluate p_i = Tr(ρE_i) for each i, producing the m-dimensional quasi-probability vector"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "begin negativity verification — check whether any E_i possesses a strictly negative eigenvalue"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AREV",
+          "domain_action": "decompose each E_i spectrally — compute E_i = U_i Λ_i U_i†, extracting the minimal eigenvalue λ_min(i) and the full spectrum spec(E_i)"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALT",
+          "domain_action": "negativity confirmed — min_i λ_min(E_i) < 0, the measurement contains at least one operator with a negative eigenvalue, satisfying the NOVM condition"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALF",
+          "domain_action": "negativity absent — all λ_min(E_i) ≥ 0, every operator is positive semidefinite, the measurement is a standard POVM not an NOVM"
+        },
+        {
+          "step_num": 12,
+          "opcode": "AFWD",
+          "domain_action": "verify information-incompleteness — check whether the outcome count m is strictly less than d²"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALT",
+          "domain_action": "incompleteness confirmed — m < d², the operators span a proper subspace of the d²-dimensional operator space, the measurement is information-incomplete"
+        },
+        {
+          "step_num": 14,
+          "opcode": "EVALF",
+          "domain_action": "incompleteness absent — m ≥ d², the operators span the full operator space, the measurement is tomographically complete"
+        },
+        {
+          "step_num": 15,
+          "opcode": "AFWD",
+          "domain_action": "verify asymmetry — compare all m spectra pairwise to check whether any two operators share the same eigenvalue multiset"
+        },
+        {
+          "step_num": 16,
+          "opcode": "EVALT",
+          "domain_action": "asymmetry confirmed — all m spectra {spec(E_i)} are pairwise distinct, no unitary or antiunitary conjugation maps any operator to another, the measurement is asymmetric"
+        },
+        {
+          "step_num": 17,
+          "opcode": "EVALF",
+          "domain_action": "asymmetry absent — at least two operators share identical spectra, indicating a symmetry group action permuting effects, the measurement possesses nontrivial symmetry"
+        },
+        {
+          "step_num": 18,
+          "opcode": "ENGAGR",
+          "domain_action": "hold the quasi-probability paradice — the vector (p_1, ..., p_m) is acknowledged as both a valid normalized measurement (∑p_i = 1 from the NOVM boundary) and an invalid classical distribution (negative entries present); this dialetheic state is the signature of the NOVM"
+        },
+        {
+          "step_num": 19,
+          "opcode": "FFUSE",
+          "domain_action": "sum the operators back to identity — compute ∑_{i=1}^m E_i, recovering I_d exactly, closing the Frobenius pair with the original identity decomposition"
+        },
+        {
+          "step_num": 20,
+          "opcode": "CLINK",
+          "domain_action": "prepare grammar pipeline integration — construct the JSON output structure linking to the catalog entry asymmetric_ai_novm with tuple ⟨𐑨𐑰𐑽𐑗𐑐𐑪𐑲𐑠𐑢𐑒𐑳𐑷⟩"
+        },
+        {
+          "step_num": 21,
+          "opcode": "IFIX",
+          "domain_action": "write the permanent JSON output — the quasi-probability vector, negativity score N(ρ) = (∑|p_i| − 1)/2, verification results with per-property pass/fail flags, operator spectra, and grammar tuple are irreversibly recorded for downstream consumption"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "",
+      "ipc_mechanism": "",
+      "memory_mechanism": "",
+      "scheduler_mechanism": "",
+      "alfs_store": "",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "",
+      "pre_cycle_state": "",
+      "post_cycle_state": "",
+      "delta_s_verdict": "ΔS ≈ 0",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → AFWD → FSPLIT → IMSCRIB → AFWD → AFWD → AFWD → AREV → EVALT → EVALF → AFWD → EVALT → EVALF → AFWD → EVALT → EVALF → ENGAGR → FFUSE → CLINK → IFIX\n-- Class: ai_novm_computer\n-- Fingerprint: sig=(11,2,7,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=21\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(3, 18)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] TANCH     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary\n--   [2] AFWD      rel    := 𐑾               𐑡 → 𐑚  | forward morphism — bidirectional arrow\n--   [3] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [4] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [5] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [6] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [7] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [9] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [10] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [11] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [12] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [14] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [15] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [16] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [17] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [18] FFUSE     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [19] CLINK     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence\n--   [20] IFIX      prot   := 𐑭               𐑱 → 𐑼  | irreversible fixation — winding number\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def ai_novm_computer_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ai_novm_computer_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def ai_novm_computer_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def ai_novm_computer_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ai_novm_computer_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def ai_novm_computer_protocol : IGProtocol ai_novm_computer_s0 ai_novm_computer_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct ai_novm_computer_s18 ai_novm_computer_s18 = ai_novm_computer_s18 (idempotent)\n  (.seq (.arrow ai_novm_computer_l0 ai_novm_computer_s0 ai_novm_computer_s1) (.seq (.arrow ai_novm_computer_l1 ai_novm_computer_s1 ai_novm_computer_s2) (.seq (.arrow ai_novm_computer_l2 ai_novm_computer_s2 ai_novm_computer_s3) (.seq (.prod (.arrow ai_novm_computer_l3 ai_novm_computer_s3 ai_novm_computer_s18) (.arrow ai_novm_computer_l3 ai_novm_computer_s3 ai_novm_computer_s18)) (.seq (.arrow ai_novm_computer_l18 ai_novm_computer_s18 ai_novm_computer_s18) (.seq (.arrow ai_novm_computer_l18 ai_novm_computer_s18 ai_novm_computer_s19) (.arrow ai_novm_computer_l19 ai_novm_computer_s19 ai_novm_computer_s20)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def ai_novm_computer_true_arm : IGProtocol ai_novm_computer_s0 ai_novm_computer_s20 :=\n  (ai_novm_computer_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def ai_novm_computer_false_arm : IGProtocol ai_novm_computer_s0 ai_novm_computer_s20 :=\n  (ai_novm_computer_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef ai_novm_computer_tier_ground : OuroboricityTier := TierFunctor.obj ai_novm_computer_s0\ndef ai_novm_computer_tier : OuroboricityTier := TierFunctor.obj ai_novm_computer_s20\n#eval ai_novm_computer_tier_ground  -- tier of the ground (pre-transformation)\n#eval ai_novm_computer_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem ai_novm_computer_frobenius :\n    igFrobeniusAlg.mul ai_novm_computer_s0 ai_novm_computer_s0 = ai_novm_computer_s0 :=\n  igFrobAlg_self_fusion ai_novm_computer_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 21,
+    "t_branch_ops": 1,
+    "f_branch_ops": 8,
+    "branch_ratio": 8.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      18
+    ],
+    "pair_list": [
+      [
+        3,
+        18
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: ai_novm_computer",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣>∈⊙>>><+×>+×>+×⊞∋=¬",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 7,
+    "inert": 0,
+    "verdict": "nothing was at risk: no clear ever fired against a live register, 7 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 21,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣>◇⊙>>><+×>+×>+×⊞●=¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊣>◇⊙>>><+×>+×>+×⊞●=¬⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": ">◇⊙>>><+×>+×>+×⊞●=¬⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "◇⊙>>><+×>+×>+×⊞●=¬⊢⊣>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊙>>><+×>+×>+×⊞●=¬⊢⊣>◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": ">>><+×>+×>+×⊞●=¬⊢⊣>◇⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": ">><+×>+×>+×⊞●=¬⊢⊣>◇⊙>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "><+×>+×>+×⊞●=¬⊢⊣>◇⊙>>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "<+×>+×>+×⊞●=¬⊢⊣>◇⊙>>>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "+×>+×>+×⊞●=¬⊢⊣>◇⊙>>><",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "×>+×>+×⊞●=¬⊢⊣>◇⊙>>><+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": ">+×>+×⊞●=¬⊢⊣>◇⊙>>><+×",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "+×>+×⊞●=¬⊢⊣>◇⊙>>><+×>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "×>+×⊞●=¬⊢⊣>◇⊙>>><+×>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 14,
+        "word": ">+×⊞●=¬⊢⊣>◇⊙>>><+×>+×",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 15,
+        "word": "+×⊞●=¬⊢⊣>◇⊙>>><+×>+×>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "×⊞●=¬⊢⊣>◇⊙>>><+×>+×>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 17,
+        "word": "⊞●=¬⊢⊣>◇⊙>>><+×>+×>+×",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 18,
+        "word": "●=¬⊢⊣>◇⊙>>><+×>+×>+×⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 19,
+        "word": "=¬⊢⊣>◇⊙>>><+×>+×>+×⊞●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 20,
+        "word": "¬⊢⊣>◇⊙>>><+×>+×>+×⊞●=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 9,
+    "canonical_word": "+×>+×>+×⊞●=¬⊢⊣>◇⊙>>><",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}
