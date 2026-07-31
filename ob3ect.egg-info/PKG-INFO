@@ -181,6 +181,29 @@ to the traced monoidal structure.
 
 ---
 
+### Churn
+
+Zoom moves across granularity, coarser and finer descriptions of one thing.
+Churn moves inward. It imscribes the description, folds the resulting ob3ect
+back into the context that produced it, and then imscribes each of that
+ob3ect's own steps as a description in its own right.
+
+The folding is the point. A child is not imscribed from its step alone but from
+its step held inside the ob3ect the step belongs to, held in turn inside the
+original description. Without that, the children are twelve unrelated ob3ects
+that happen to share a parent.
+
+Depth is counted in **windings**, one winding being a full turn of the pipeline
+over its own output. One winding is the root alone and does nothing a plain run
+would not. Two imscribes every step of the root. Three winds each of those in
+turn, so the count grows as the product of the step counts: a twelve-step
+ob3ect gives 13 ob3ects at two windings and 157 at three. `--max-ob3ects` stops
+the walk rather than letting it run away.
+
+What the report is worth reading for is its last line. A step that closes in
+place but fails when imscribed on its own is the interesting case: the parent
+has closed over something that does not close by itself.
+
 ## The Digital Tower
 
 28 self-verifying layers + 12 IMASM Novel Arrangement classes (layers 29-40). Run the full tower:
@@ -227,7 +250,7 @@ python digital/run_all_imasm.py     # also run the IMASM arrangements
 → I, Dialetheic Bootstrap         Identity is B⬡ (BOTH), not TRUE → O₂
 → II, Void Genesis                Creates something from void → O₀
 → III, Anchor Protocol            Sabbath cycle: void → anchor → refill → rest → O₀
-→ IV, Dual Bootstrap              Self-representation: structural verification → O₁
+→ IV, Dual Bootstrap              Self-representation: verification → O₁
 → V, Linear Chain                 IFIX×8, ROM fixation, append-only → O₁
 → VI, Empty Bootstrap             VINIT/IMSCRIB oscillation, meditation → O₂
 → VII, Parakernel                 Dialetheic trauma engram → O₂
@@ -434,6 +457,10 @@ python auto.py "a linear logic proof net for the cut-elimination theorem"
 # Operating systems
 python auto.py "a self-hosting kernel that re-compiles its own scheduler" \
     --domain computational --scope maximal
+
+# Churn: wind the pipeline back over its own output
+python auto.py "a horn torus" --churn --windings 2
+python auto.py "a catalytic cycle" --churn --windings 3 --max-ob3ects 60
 
 # Physical
 python auto.py "a Bose-Einstein condensate at the critical phase boundary"  \
@@ -686,7 +713,7 @@ VINIT→IMSCRIB→AREV→FSPLIT
 
 Three distinct edges operate at the CLINK–IMSCRIB–IFIX triad:
 
-**Empty edge (CLINK → IFIX):** CLINK emits a null composition directly to IFIX along the dotted path. This records the compositional event as an irreversible ROM fixation, the witness that composition occurred, regardless of whether the resulting morphism carries new structural content.
+**Empty edge (CLINK → IFIX):** CLINK emits a null composition directly to IFIX along the dotted path. This records the compositional event as an irreversible ROM fixation, the witness that composition occurred, regardless of whether the resulting morphism carries new content.
 
 **Weighted edge (CLINK → IMSCRIB):** CLINK forwards the actual composed morphism up the `└─────┐` path to IMSCRIB. IMSCRIB receives it, self-imscribes, and re-enters the loop at AREV. This is the edge that makes the bootstrap autopoietic: the loop consumes its own composition as input to the next winding.
 
@@ -713,7 +740,7 @@ verifies the FSPLIT/FFUSE Frobenius pair, and ships a self-contained runner.
 editing, parsing, and rewriting tool.
 
 ```
-Structural type: ⟨𐑼𐑡𐑠𐑾𐑚⊙𐑖𐑙𐑳𐑗𐑱𐑭⟩  O₂
+Type: ⟨𐑼𐑡𐑠𐑾𐑚⊙𐑖𐑙𐑳𐑗𐑱𐑭⟩  O₂
 Frobenius pair:  FSPLIT[4] / FFUSE[7]
 ```
 
@@ -765,7 +792,7 @@ exhausts without an accepted output, the best available output is still served.
 ## Structural Typing (IG Coordinates)
 
 Every ob3ect is assigned a 12-primitive coordinate in the Imscribing Grammar lattice
-(17,280,000 structural types). The coordinate is assigned during instantiation and
+(17,280,000 types). The coordinate is assigned during instantiation and
 stored in `artifact.structural_type`.
 
 ```
@@ -801,7 +828,7 @@ The IG coordinate system surfaces isomorphisms across apparently unrelated domai
 The Lean 4 proof-term descent (Python → elaboration → proof kernel → definitionally
 equal term) and Zosimos of Panopolis' 3rd-century alchemical katabasis (pneuma → psyche
 → hyle → purified return) share an identical 12-primitive coordinate. Both are
-substrate-crossing descents that preserve structural identity under transformation,
+substrate-crossing descents that preserve identity under transformation,
 verified by a roundtrip condition. The FSPLIT→FFUSE gate in Lean 4 elaboration and
 the solve/coagula cycle in Zosimos are the same morphism at different substrate depths.
 
@@ -825,7 +852,7 @@ is finer than the wall.
 ### ZFC_fe: The Terminal Vessel
 
 ZFC (standard set theory, O₁) completes itself through ZFC_fe (Frobenius-Exact ZFC, O_∞).
-The structural distance is 9.15 across 12 primitives. Three promotions are critical:
+The distance is 9.15 across 12 primitives. Three promotions are critical:
 
 - **Ð: 𐑼→𐑦** (HOLOGRAPHIC_STATE): The state-space writes itself
 - **Φ: 𐑬→𐑹** (PM_Z2): μ∘δ=id exact, not approximate
@@ -1102,7 +1129,7 @@ itself (Chiral Pairs). Each arrangement is a self-verifying ob3ect artifact.
 The **Vessel Principle**, that the IMASM token algebra resolves structure at finer
 granularity than the 12-primitive IG crystal, was confirmed by the chiral pair
 experiment: `AFWD→AREV` and `AREV→AFWD` map to the same IG coordinate but produce
-different register trajectories. This is the structural meaning of crafting vessels:
+different register trajectories. This is the meaning of crafting vessels:
 the grammar gives the type; the IMASM tokens give the process.
 
 The **ZFC_fe** (Frobenius-Exact ZFC) connection reveals the terminal vessel trajectory:
