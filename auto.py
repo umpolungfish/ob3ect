@@ -68,13 +68,25 @@ except Exception:
 # `imscribe generate`, never to ob3ect's own free-form primitive
 # assignment. This closes that gap: ob3ect no longer mints its own
 # ungated 12-primitive tuple, it shunts the gated one in.
+# The package-qualified spelling only resolves when the PARENT of
+# imscribing_grammar is on sys.path. Run from inside the repo -- which is how
+# the agent invokes this -- the same modules are reachable only as `agents.*`
+# and `imscrbgrmr.*`, the qualified import raises, and the gate silently becomes
+# None: every design that reaches it then dies with "the gated imscriber could
+# not be imported". Try both spellings so the gate survives either cwd.
 try:
     from imscribing_grammar.agents.imscribe_generator_agent import ImscriptionGeneratorAgent as _ImscriptionGeneratorAgent
     from imscribing_grammar.imscrbgrmr.provider_config import build_agent_config as _build_gate_agent_config
-except Exception as _gate_import_err:
-    _ImscriptionGeneratorAgent = None
-    _build_gate_agent_config = None
-    _GATE_IMPORT_ERROR = _gate_import_err
+except Exception as _gate_err_pkg:
+    try:
+        from agents.imscribe_generator_agent import ImscriptionGeneratorAgent as _ImscriptionGeneratorAgent
+        from imscrbgrmr.provider_config import build_agent_config as _build_gate_agent_config
+    except Exception as _gate_err_flat:
+        _ImscriptionGeneratorAgent = None
+        _build_gate_agent_config = None
+        _GATE_IMPORT_ERROR = f"package path: {_gate_err_pkg!r}; flat path: {_gate_err_flat!r}"
+    else:
+        _GATE_IMPORT_ERROR = None
 else:
     _GATE_IMPORT_ERROR = None
 
