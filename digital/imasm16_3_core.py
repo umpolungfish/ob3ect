@@ -149,11 +149,18 @@ OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB, FSPLIT3, FFUSE3,
            EVALT, EVALF, EVALI, TNEG, INEG, IFIX]
 
 GLYPH = {
-    VINIT: "⊢", TANCH: "⊣", AFWD: ">", AREV: "<", CLINK: "=", IMSCRIB: "⊙",
-    FSPLIT3: "∈", FFUSE3: "∋", EVALT: "+", EVALF: "×", EVALI: "⊞",
-    TNEG: "~", INEG: "≁", IFIX: "¬",
+    VINIT: "⊢", TANCH: "⊣", AFWD: ">", AREV: "<", CLINK: "⋈", IMSCRIB: "⊙",
+    FSPLIT3: "∈", FFUSE3: "∋", EVALT: "⊤", EVALF: "⊥", EVALI: "⊞",
+    TNEG: "~", INEG: "≁", IFIX: "◻",
 }
 NAME_FROM_GLYPH = {v: k for k, v in GLYPH.items()}
+
+# Retired spellings parse and never print. imasm_core emits the marks above, so
+# a word copied out of an older report still reads without a second alphabet
+# being alive anywhere that writes.
+RETIRED_GLYPH = {"=": CLINK, "+": EVALT, "×": EVALF, "¬": IFIX,
+                 "◇": FSPLIT3, "●": FFUSE3, "⊗": FSPLIT3, "⊕": FFUSE3}
+NAME_FROM_GLYPH.update(RETIRED_GLYPH)
 
 LOGICAL   = {VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB}
 TRILATIC  = {FSPLIT3, FFUSE3}
