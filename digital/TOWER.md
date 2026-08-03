@@ -230,7 +230,7 @@ IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
   Glyphs in map: 49 (Shavian 48 + ⊙)
   Primitives:    12 / 12 = True
-  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, 'ƒ': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
+  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, '⋈': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
 FSPLIT_CORE: 12 core glyphs mapped
 FSPLIT_FULL: 49 full glyphs mapped
 FFUSE_CORE: fused 12 glyphs → PASS
@@ -270,9 +270,9 @@ SHAVIAN OB3ECT — Complete 49-Entry Decomposition Report
   #16. 𐑬 U+1046C  |  < 𐑬  (Partial)
   #17. 𐑯 U+1046F  |  < 𐑯  (Sym-Ø)
   #18. 𐑹 U+10479  |  < 𐑹  (Frobenius)
-  #19. 𐑱 U+10471  |  ƒ ƒ^ì  (Ell-Classical)
-  #20. 𐑞 U+1045E  |  ƒ ƒ^ð  (Thermal)
-  #21. 𐑐 U+10450  |  ƒ ƒ^ż  (Hbar-Quant)
+  #19. 𐑱 U+10471  |  ⋈ ⋈^ì  (Ell-Classical)
+  #20. 𐑞 U+1045E  |  ⋈ ⋈^ð  (Thermal)
+  #21. 𐑐 U+10450  |  ⋈ ⋈^ż  (Hbar-Quant)
   #22. 𐑘 U+10458  |  Ç Ç^-  (Fast-Driven)
   #23. 𐑤 U+10464  |  Ç Ç^W  (Moderate)
   #24. 𐑧 U+10467  |  Ç Ç^@  (Slow-NearEq)

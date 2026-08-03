@@ -795,7 +795,7 @@ Primitive  Symbol  Dimension
 ⊣          𐑸       Topology: closure (no boundary leakage)
 >          𐑾       Relational mode: bidirectional (parse ↔ unparse)
 <          𐑹       Parity: Frobenius-special (μ∘δ = id enforced)
-ƒ          𐑐       Fidelity: quantum (coherent state preserved)
+⋈          𐑐       Fidelity: quantum (coherent state preserved)
 Ç          𐑧       Kinetics: slow/near-equilibrium (ΔS ≈ 0)
 Γ          𐑲       Scope: maximal (all programs in Prog/~)
 ɢ          𐑠       Interaction: sequential (THINK→ACT→OBSERVE)
