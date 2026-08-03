@@ -174,7 +174,7 @@ def belnap_verify(packet: FrobeniusPacket,
                   tolerance: float = 0.15) -> B4:
     """Verify a type signature against the CLINK L8 reference using Belnap logic.
     
-    The type_signature (8 dims) encodes ⊢,⊣,>,<,⋈,⊤,∈,ɢ.
+    The type_signature (8 dims) encodes ⊢,⊣,>,<,⋈,⊤,∈,∋.
     Each dimension is checked against the reference ordinal.
     
     Returns:
@@ -489,7 +489,7 @@ class AquaVitaeBridge:
 # ── CLINK L8 Broadcast ────────────────────────────────────────────
 
 def clink_l8_broadcast(bridge: AquaVitaeBridge) -> Dict[str, Any]:
-    """ɢ=𐑵: broadcast all committed types to CLINK L8 terminal layer.
+    """∋=𐑵: broadcast all committed types to CLINK L8 terminal layer.
     
     This is the breath — the organism receives verified types.
     """

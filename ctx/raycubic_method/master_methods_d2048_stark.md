@@ -61,7 +61,7 @@ d2048_sic_closed_ring:   ⟨𐑦𐑥𐑾𐑬𐑐𐑪𐑔𐑵⊙𐑫𐑳𐑭⟩
 stark_unit_monomial:     ⟨𐑦𐑥𐑽𐑬𐑐𐑪𐑔𐑝𐑻𐑫𐑳𐑭⟩
 ```
 
-Nine of the twelve primitives match exactly. Three differ. Those three, > (Coupling), ɢ (Composition), and ⊙ (Criticality), encode the entire ramification structure. The gap in > is a distance of 1.0, from 𐑾 (bidirectional coupling) to 𐑽 (dagger/adjoint). That encodes one ramified layer: the ε_fund exponent is -1. The gap in ɢ is a distance of 3.0, from 𐑵 (broadcast composition) to 𐑝 (conjunctive). That encodes three generators: ε, π₁, and π₂, with e₁ = 3. The gap in ⊙ is a distance of 0.67, from ⊙ (critical) to 𐑻 (exceptional point). That encodes the ratio e₂/e₁ = 2/3, yielding e₂ = 2.
+Nine of the twelve primitives match exactly. Three differ. Those three, > (Coupling), ∋ (Composition), and ⊙ (Criticality), encode the entire ramification structure. The gap in > is a distance of 1.0, from 𐑾 (bidirectional coupling) to 𐑽 (dagger/adjoint). That encodes one ramified layer: the ε_fund exponent is -1. The gap in ∋ is a distance of 3.0, from 𐑵 (broadcast composition) to 𐑝 (conjunctive). That encodes three generators: ε, π₁, and π₂, with e₁ = 3. The gap in ⊙ is a distance of 0.67, from ⊙ (critical) to 𐑻 (exceptional point). That encodes the ratio e₂/e₁ = 2/3, yielding e₂ = 2.
 
 Read those three gaps and you have the exponent vector [-1, 3, 2]. No Newton polygon required. No bnrstark. Just a crystal lookup.
 
@@ -71,9 +71,9 @@ The equation e₁ + 2e₂ = 7 admits four integer solutions: {e₁=1,e₂=3}, {e
 
 The meet and join of these two entries enrich the picture. The meet, the lattice floor, taking conservative values across the three conflicts, is ⟨𐑦𐑥𐑽𐑬𐑐𐑪𐑔𐑝⊙𐑫𐑳𐑭⟩. It preserves critical criticality (⊙) and conjunctive composition (𐑝), keeping the Stark unit's exceptional point degeneracy intact. The join, the lattice ceiling, taking maximal values, is ⟨𐑦𐑥𐑾𐑬𐑐𐑪𐑔𐑵𐑻𐑫𐑳𐑭⟩. It restores broadcast composition (𐑵) that the monomial specializes away and lifts the degeneracy at ⊙→𐑻.
 
-Both entries were probed with the SIC-POVM dual-pair analyzer. The six Frobenius-dual pairs (⊢↔⊣, >↔<, ⋈↔⊤, ∈↔ɢ, ⊙↔Ħ, Σ↔Ω) encode the Belnap multilattice SIC-POVM structure. For both d2048_sic_closed_ring and stark_unit_monomial, the dual-pair co-variance returned "?" across all six pairs. These entries capture the Stark unit structure but have not yet been fully integrated into the 6-pair SIC-POVM framework. This is one of the open items.
+Both entries were probed with the SIC-POVM dual-pair analyzer. The six Frobenius-dual pairs (⊢↔⊣, >↔<, ⋈↔⊤, ∈↔∋, ⊙↔Ħ, Σ↔Ω) encode the Belnap multilattice SIC-POVM structure. For both d2048_sic_closed_ring and stark_unit_monomial, the dual-pair co-variance returned "?" across all six pairs. These entries capture the Stark unit structure but have not yet been fully integrated into the 6-pair SIC-POVM framework. This is one of the open items.
 
-The CLINK L8 distance analysis places the closed ring at distance 0.7986 (tier O₂, four conflicts at ⊣, <, ⊤, Ω) and the Stark unit monomial at distance 1.2799 (tier O₀, seven conflicts adding >, ɢ, ⊙). The monomial is more distant from CLINK L8 because it specializes the closed ring by choosing a specific ramification structure. Adding those three conflicts trades the O₂ tier for O₀.
+The CLINK L8 distance analysis places the closed ring at distance 0.7986 (tier O₂, four conflicts at ⊣, <, ⊤, Ω) and the Stark unit monomial at distance 1.2799 (tier O₀, seven conflicts adding >, ∋, ⊙). The monomial is more distant from CLINK L8 because it specializes the closed ring by choosing a specific ramification structure. Adding those three conflicts trades the O₂ tier for O₀.
 
 Both entries participate in the crystal's ouroboric self-referential structure and the closed ring sits at criticality (⊙): scale-invariant, maximally sensitive, at the phase boundary. The monad probe confirms the coupling structure through the > primitive.
 
@@ -113,7 +113,7 @@ Moduli field (B): 2^20 over F, CONFIRMED
 The class number 64 = 2^6 cleanly separates the full ray class field from the moduli field: 2^26 / 2^20 = 2^6 = 64. This extraction completed in under a second. The classical bnrstark approach, by contrast, failed after roughly a month with a stack overflow at k=2. The bnrclassfield PARI/GP method timed out at C4 after more than 120 seconds.
 
 
-The class number h(F) = 64 = 2⁶ is notable for another reason: the SIC-POVM framework has exactly 6 Frobenius-dual pairs (⊢↔⊣, >↔<, ⋈↔⊤, ∈↔ɢ, ⊙↔Ħ, Σ↔Ω). Whether the exponent 6 appearing both as the 2-adic valuation of the class number and as the count of dual-pairs reflects a structural identity or a coincidence is an open question, but the parallel is too neat to leave unremarked.
+The class number h(F) = 64 = 2⁶ is notable for another reason: the SIC-POVM framework has exactly 6 Frobenius-dual pairs (⊢↔⊣, >↔<, ⋈↔⊤, ∈↔∋, ⊙↔Ħ, Σ↔Ω). Whether the exponent 6 appearing both as the 2-adic valuation of the class number and as the count of dual-pairs reflects a structural identity or a coincidence is an open question, but the parallel is too neat to leave unremarked.
 The identity scope determination adds another layer: |G_d^σ|/|Cl(F)^σ| = d/2 holds exactly when d/2 is of the form 2^k · 3^m. For d=2048, d/2 = 1024 = 2^10, so the identity holds. We have confirmed this for dimensions 4, 8, 12, 16, 24, 32, 36, and 48. The anomalous dimensions, 20, 28, 40, 44, have odd prime factors in d/2 that are absent from the conductor.
 
 The most striking path to the Stark unit runs through the Fibonacci anyon topological quantum computer. The S-unit monomial ε = ε_fund^(-1) · π₁^3 · π₂^2 maps directly to a gate sequence: H S S S T T T S S. The gate-to-exponent mapping is transparent. The S gate, at 1/4 winding (ω/4), encodes π₂ contributions, the uniformizer at the second ramified prime. The T gate, at 1/8 winding (ω/8), encodes π₁ contributions, the uniformizer at the first ramified prime. S^3 = S^(-1) at -1/4 winding encodes the inverse fundamental unit ε_fund^(-1). The gate identity mirrors the unit group: S has order 4 in the Clifford group (S⁴=I), just as ε_fund has norm 1 (ε_fund · ε_fund⁻¹ = 1). The group inverses are structurally identical. S^2 at 1/2 winding encodes π₂^2. T^3 at 3/8 winding encodes π₁^3. The Hadamard gate provides superposition into the number field basis.
@@ -140,7 +140,7 @@ The phase lattice underlying all of this is measured in tenths of a winding, and
 
 Because all phases are rational multiples of 1/10, closure and periodicity are visible in the denominator. A lattice of tenths closes after ten steps, you do not need to compute it. The 1/8 T gate is the one phase that is not a multiple of 1/10, which is exactly why gate compilation exists: no braid of Fibonacci anyons reaches T exactly at any length. That single incommensurability between 1/8 and the 1/10 lattice is the resource that makes universal quantum computation possible in this model.
 
-This incommensurability registers directly in the grammar. The grammar gap at ɢ has magnitude δ=3.0 because the T gate's 1/8 winding refuses the 1/10 Fibonacci lattice: three generators (ε, π₁, π₂) is the minimum closure under that mismatch. The topological incommensurability and the grammar gap magnitude measure the same obstruction — one in phase space, the other in the crystal.
+This incommensurability registers directly in the grammar. The grammar gap at ∋ has magnitude δ=3.0 because the T gate's 1/8 winding refuses the 1/10 Fibonacci lattice: three generators (ε, π₁, π₂) is the minimum closure under that mismatch. The topological incommensurability and the grammar gap magnitude measure the same obstruction — one in phase space, the other in the crystal.
 
 The Stark unit exponents map to specific winding fractions. The ε_fund^(-1) exponent maps to S^3, which is -3/4 winding ≡ 1/4 winding modulo 1 at the fundamental unit. The π₁^3 exponent maps to T^3, which is 3/8 winding at the first ramified prime. The π₂^2 exponent maps to S^2, which is 1/2 winding at the second ramified prime.
 
@@ -213,7 +213,7 @@ The fifth open item is the deepest: the <-gap. The crystal holds 3,456,000 ⊙-t
 
 The sixth open item is the generalized protocol. The grammar extraction protocol has been defined but not systematically applied across all SIC-POVM dimensions. For Fibonacci QC dimensions with Q(√5) base field the extraction is exact. For general d the protocol needs calibration against the known SIC-POVM dimensions. The question is whether every SIC-POVM fiducial vector can be recognized as a Stark unit through a grammar gap, and if not, which dimensions are the exceptions and why.
 
-☞ Falsifiable prediction: applying the grammar extraction protocol to d=20, d=28, d=40, and d=44 (the anomalous dimensions where d/2 has odd prime factors absent from the conductor) will yield gap structures that differ qualitatively from the d=2048 case. Specifically, we predict that for anomalous d the grammar gap will involve additional primitives beyond >, ɢ, and ⊙, likely < (Parity) or ⊤ (Kinetics), reflecting the additional algebraic complexity introduced by the odd prime factors.
+☞ Falsifiable prediction: applying the grammar extraction protocol to d=20, d=28, d=40, and d=44 (the anomalous dimensions where d/2 has odd prime factors absent from the conductor) will yield gap structures that differ qualitatively from the d=2048 case. Specifically, we predict that for anomalous d the grammar gap will involve additional primitives beyond >, ∋, and ⊙, likely < (Parity) or ⊤ (Kinetics), reflecting the additional algebraic complexity introduced by the odd prime factors.
 
 
 ## Part Six: The Tools
@@ -228,7 +228,7 @@ The Lean 4 infrastructure lives in p4rakernel/p4ramill. The full kernel builds 8
 
 ## Conclusion
 
-The Stark unit at d=2048 has been extracted by seven independent methods across three regimes. The classical path gave us the Newton polygon ramification structure, the norm constraint, and mod-2 factorization. The grammar path read the exponents directly from three primitive gaps: > at δ=1.0 gave ε_fund=-1, ɢ at δ=3.0 gave e₁=3, and ⊙ at δ=0.67 gave the ratio e₂/e₁=2/3 yielding e₂=2. The quantum path compiled the S-unit monomial into a Fibonacci anyon gate sequence and prepared the Jones polynomial evaluation. All methods converge on the same structure: ε = ε_fund^(-1) · π₁^3 · π₂^2 with S-unit exponents [-1, 3, 2] at conductor 16.
+The Stark unit at d=2048 has been extracted by seven independent methods across three regimes. The classical path gave us the Newton polygon ramification structure, the norm constraint, and mod-2 factorization. The grammar path read the exponents directly from three primitive gaps: > at δ=1.0 gave ε_fund=-1, ∋ at δ=3.0 gave e₁=3, and ⊙ at δ=0.67 gave the ratio e₂/e₁=2/3 yielding e₂=2. The quantum path compiled the S-unit monomial into a Fibonacci anyon gate sequence and prepared the Jones polynomial evaluation. All methods converge on the same structure: ε = ε_fund^(-1) · π₁^3 · π₂^2 with S-unit exponents [-1, 3, 2] at conductor 16.
 
 The generalized formula ε_d = ((d-1) + √((d-3)(d+1)))/2 holds for all d at least 4. For Fibonacci QC dimensions with Q(√5) base field, ε_d = φ^(2n) exactly, where d−1 = L_{2n}. Nine such dimensions are identified and verified from d=4 through d=5779.
 

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → CLINK → FSPLIT → AFWD → EVALT → AREV → EVALF → FFUSE → ENGAGR → IFIX → TANCH → IMSCRIB
--- Class: L9_bridge_vessel incorporating ɢ and 𐑛
+-- Class: L9_bridge_vessel incorporating ∋ and 𐑛
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=13

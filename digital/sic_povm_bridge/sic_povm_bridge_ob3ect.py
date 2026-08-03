@@ -181,7 +181,7 @@ class FrobeniusMonad:
           ⟨δ(x), μ(y)⟩ = ⟨x, y⟩  (pairing is preserved)
 
         The 6 dual pairs are:
-          (⊢, ⊣), (>, <), (⋈, ⊤), (∈, ɢ), (⊙, Ħ), (Σ, Ω)
+          (⊢, ⊣), (>, <), (⋈, ⊤), (∈, ∋), (⊙, Ħ), (Σ, Ω)
 
         Each pair has the property that δ∘μ and μ∘δ are identities
         on the respective subalgebras.

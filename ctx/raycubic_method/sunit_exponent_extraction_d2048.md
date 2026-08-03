@@ -46,7 +46,7 @@ stark_unit_monomial     ⟨𐑦𐑥𐑽𐑬𐑐𐑪𐑔𐑝𐑻𐑫𐑳𐑭⟩
 ```
 
 which differs in three primitives and nothing else. > moves 𐑾→𐑽, bidirectional coupling
-to dagger, one ramified layer, and the fundamental unit takes exponent −1. ɢ moves 𐑵→𐑝,
+to dagger, one ramified layer, and the fundamental unit takes exponent −1. ∋ moves 𐑵→𐑝,
 broadcast to conjunctive, at δ = 3.0, and that is e₁ = 3. ⊙ moves ⊙→𐑻, critical to
 exceptional point, at δ = 0.67, the ratio e₂/e₁ = 2/3, and that is e₂ = 2. Three and two
 satisfy the norm, 3 + 4 = 7, and the monomial closes.

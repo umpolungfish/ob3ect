@@ -124,7 +124,7 @@ Over 2394 snapshots with valid primitive readings, the alert-weighted average de
 | Frobenius distance to $\mathbf{1}/12$ | 0.188 | 0 |
 | Fiducial proximity $\mathrm{Tr}(\bar{\rho} \cdot |\psi_0\rangle\langle\psi_0|)$ | 0.031 | 0.083 |
 
-The average density matrix is close to but not identical to $\mathbf{1}/12$. The residual deviation reflects which primitive channels are most active in the current epoch: chirality (Ħ) and coupling (ɢ) lead the diagonal with approximately twice the uniform weight, while recognition (>) and granularity (∈) are underweighted. This is a measurement-coverage fact about the 44 streams -- which physical domains they sample -- not a structural departure from the B-state axiom. The B-state is the prior; the average density matrix is the posterior conditioned on 100 days of physical data.
+The average density matrix is close to but not identical to $\mathbf{1}/12$. The residual deviation reflects which primitive channels are most active in the current epoch: chirality (Ħ) and coupling (∋) lead the diagonal with approximately twice the uniform weight, while recognition (>) and granularity (∈) are underweighted. This is a measurement-coverage fact about the 44 streams -- which physical domains they sample -- not a structural departure from the B-state axiom. The B-state is the prior; the average density matrix is the posterior conditioned on 100 days of physical data.
 
 The per-snapshot purity distribution (n=2394) is:
 
@@ -189,7 +189,7 @@ The model produced *Latent Manifolds of Post-Mortem Self-Organization: A Formal 
 |-----------|------------|-------------|
 | $z_1$ | Dissipative Flux | ⊢ (Dimensionality) |
 | $z_2$ | Topological Persistence | ⊣ (Topology) |
-| $z_3$ | Coupling Asymmetry | ɢ (Coupling) |
+| $z_3$ | Coupling Asymmetry | ∋ (Coupling) |
 | $z_4$ | Parity Violation | < (Parity) |
 | $z_5$ | Information Fidelity | ⋈ (Fidelity) |
 | $z_6$ | Kinetic Timescale | ⊤ (Kinetics) |

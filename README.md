@@ -798,7 +798,7 @@ Primitive  Symbol  Dimension
 ⋈          𐑐       Fidelity: quantum (coherent state preserved)
 ⊤          𐑧       Kinetics: slow/near-equilibrium (ΔS ≈ 0)
 ∈          𐑲       Scope: maximal (all programs in Prog/~)
-ɢ          𐑠       Interaction: sequential (THINK→ACT→OBSERVE)
+∋          𐑠       Interaction: sequential (THINK→ACT→OBSERVE)
 φ̂          ⊙        Criticality: critical (self-modeling gate open)
 Ħ          𐑫       Chirality: two-step memory (parse remembers unparse)
 Σ          𐑳       Stoichiometry: many heterogeneous (full tower)
