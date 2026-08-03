@@ -45,7 +45,7 @@ d2048_sic_closed_ring   ⟨𐑦𐑥𐑾𐑬𐑐𐑪𐑔𐑵⊙𐑫𐑳𐑭⟩
 stark_unit_monomial     ⟨𐑦𐑥𐑽𐑬𐑐𐑪𐑔𐑝𐑻𐑫𐑳𐑭⟩
 ```
 
-which differs in three primitives and nothing else. Ř moves 𐑾→𐑽, bidirectional coupling
+which differs in three primitives and nothing else. > moves 𐑾→𐑽, bidirectional coupling
 to dagger, one ramified layer, and the fundamental unit takes exponent −1. ɢ moves 𐑵→𐑝,
 broadcast to conjunctive, at δ = 3.0, and that is e₁ = 3. ⊙ moves ⊙→𐑻, critical to
 exceptional point, at δ = 0.67, the ratio e₂/e₁ = 2/3, and that is e₂ = 2. Three and two

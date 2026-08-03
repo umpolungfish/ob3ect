@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → CLINK → IMSCRIB → FSPLIT → AFWD → EVALT → AREV → EVALF → FFUSE → ENGAGR → AFWD → TANCH → IFIX → IFIX → IMSCRIB
--- Class: Hilbert-space embedding with promotions ⊢=𐑛 Ř=𐑑 Ç=𐑪 Γ=𐑔 ɢ=𐑝 ⊙=⊙ Ħ=𐑫 grounded tuple resolved tier lift past exceptional point with Z2 topological boundary sealed register
+-- Class: Hilbert-space embedding with promotions ⊢=𐑛 >=𐑑 Ç=𐑪 Γ=𐑔 ɢ=𐑝 ⊙=⊙ Ħ=𐑫 grounded tuple resolved tier lift past exceptional point with Z2 topological boundary sealed register
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=15

@@ -230,7 +230,7 @@ IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
   Glyphs in map: 49 (Shavian 48 + ⊙)
   Primitives:    12 / 12 = True
-  Counts per prim: {'⊢': 4, '⊣': 5, 'Ř': 4, 'Φ': 5, 'ƒ': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
+  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, 'Φ': 5, 'ƒ': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
 FSPLIT_CORE: 12 core glyphs mapped
 FSPLIT_FULL: 49 full glyphs mapped
 FFUSE_CORE: fused 12 glyphs → PASS
@@ -261,10 +261,10 @@ SHAVIAN OB3ECT — Complete 49-Entry Decomposition Report
   # 7. 𐑥 U+10465  |  ⊣ 𐑥  (Bowtie)
   # 8. 𐑶 U+10476  |  ⊣ 𐑶  (Boxtimes)
   # 9. 𐑸 U+10478  |  ⊣ 𐑸  (Odotor)
-  #10. 𐑩 U+10469  |  Ř 𐑩  (Supervene)
-  #11. 𐑑 U+10451  |  Ř 𐑑  (Categorical)
-  #12. 𐑽 U+1047D  |  Ř 𐑽  (Adjoint)
-  #13. 𐑾 U+1047E  |  Ř 𐑾  (Bidirectional)
+  #10. 𐑩 U+10469  |  > 𐑩  (Supervene)
+  #11. 𐑑 U+10451  |  > 𐑑  (Categorical)
+  #12. 𐑽 U+1047D  |  > 𐑽  (Adjoint)
+  #13. 𐑾 U+1047E  |  > 𐑾  (Bidirectional)
   #14. 𐑗 U+10457  |  Φ 𐑗  (Asym)
   #15. 𐑿 U+1047F  |  Φ 𐑿  (Psi-Quant)
   #16. 𐑬 U+1046C  |  Φ 𐑬  (Partial)
