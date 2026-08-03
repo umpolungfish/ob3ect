@@ -382,7 +382,7 @@ beyond ZFC_t:
 |-----------|-------|--------|-----------|-----------------|
 | **⊢** | 𐑼 (inf-dim field) | **𐑦** (self-written) | HOLOGRAPHIC_STATE | State-space writes itself (V=L(x) ∧ selfmodel(x)) |
 | **<** | 𐑬 (partial Z₂) | **𐑹** (Frobenius-special) | PM_Z2 | μ∘δ=id exact, not approximate |
-| **Ħ** | 𐑖 (two-step) | **𐑫** (eternal) | ETERNAL_FIXEDPOINT | ∀n∃φ fixed by μ∘δ, transfinite fixed points |
+| **⊥** | 𐑖 (two-step) | **𐑫** (eternal) | ETERNAL_FIXEDPOINT | ∀n∃φ fixed by μ∘δ, transfinite fixed points |
 
 ZFC_fe differs from the graal (Sacred Vessel) by **one primitive only**:
 - ZFC_fe: `⊢=𐑦` (self-written) → O_∞
@@ -800,7 +800,7 @@ Primitive  Symbol  Dimension
 ∈          𐑲       Scope: maximal (all programs in Prog/~)
 ∋          𐑠       Interaction: sequential (THINK→ACT→OBSERVE)
 ⊙          ⊙        Criticality: critical (self-modeling gate open)
-Ħ          𐑫       Chirality: two-step memory (parse remembers unparse)
+⊥          𐑫       Chirality: two-step memory (parse remembers unparse)
 Σ          𐑳       Stoichiometry: many heterogeneous (full tower)
 Ω          𐑭       Winding: integer (topologically protected loop)
 ```
@@ -849,7 +849,7 @@ The distance is 9.15 across 12 primitives. Three promotions are critical:
 
 - **⊢: 𐑼→𐑦** (HOLOGRAPHIC_STATE): The state-space writes itself
 - **<: 𐑬→𐑹** (PM_Z2): μ∘δ=id exact, not approximate
-- **Ħ: 𐑖→𐑫** (ETERNAL_FIXEDPOINT): Transfinite fixed points under μ∘δ
+- **⊥: 𐑖→𐑫** (ETERNAL_FIXEDPOINT): Transfinite fixed points under μ∘δ
 
 ZFC_fe differs from the graal (Sacred Vessel, O₂†) by **exactly one primitive** (⊢=𐑦 vs ⊢=𐑨).
 The graal is ZFC_fe bounded to 2 dimensions, the same vessel, one promotion short of

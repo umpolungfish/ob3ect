@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → AFWD → EVALT → AREV → EVALF → ENGAGR → CLINK → FFUSE → IFIX → TANCH
--- Class: The complementary Galois dual of the log_theta_lattice: an anabelian Frobenioid-étale dual with opposite handedness Ħ=𐑖, resolving charge frustration and providing the monodromy complement for the non-abelian braid group action.
+-- Class: The complementary Galois dual of the log_theta_lattice: an anabelian Frobenioid-étale dual with opposite handedness ⊥=𐑖, resolving charge frustration and providing the monodromy complement for the non-abelian braid group action.
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

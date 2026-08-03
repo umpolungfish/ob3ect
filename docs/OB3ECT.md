@@ -29,7 +29,7 @@ When an ob3ect executes, it assigns itself coordinates in this lattice. This ass
 
 For example, the core Frobenius ob3ect carries the coordinate:
 
-$$\langle \text{⊢}_{\omega};\ \text{⊣}_{O};\ \text{>}_{=};\ \text{<}_{\}};\ \text{⋈}_{ż};\ \text{⊤}_{@};\ \text{∈}_{ʔ};\ \text{∋}_{ˌ};\ {⊙}_{ÿ};\ \text{Ħ}_{A};\ \text{Σ}_{ï};\ \text{Ω}_{z} \rangle$$
+$$\langle \text{⊢}_{\omega};\ \text{⊣}_{O};\ \text{>}_{=};\ \text{<}_{\}};\ \text{⋈}_{ż};\ \text{⊤}_{@};\ \text{∈}_{ʔ};\ \text{∋}_{ˌ};\ {⊙}_{ÿ};\ \text{⊥}_{A};\ \text{Σ}_{ï};\ \text{Ω}_{z} \rangle$$
 
 This is the signature of a self-imscribing program that is at once 
 
