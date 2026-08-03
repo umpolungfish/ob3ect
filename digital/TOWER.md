@@ -230,7 +230,7 @@ IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
   Glyphs in map: 49 (Shavian 48 + ⊙)
   Primitives:    12 / 12 = True
-  Counts per prim: {'Ð': 4, 'Þ': 5, 'Ř': 4, 'Φ': 5, 'ƒ': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
+  Counts per prim: {'Ð': 4, '⊣': 5, 'Ř': 4, 'Φ': 5, 'ƒ': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
 FSPLIT_CORE: 12 core glyphs mapped
 FSPLIT_FULL: 49 full glyphs mapped
 FFUSE_CORE: fused 12 glyphs → PASS
@@ -256,11 +256,11 @@ SHAVIAN OB3ECT — Complete 49-Entry Decomposition Report
   # 2. 𐑨 U+10468  |  Ð 𐑨  (Triangle-2d)
   # 3. 𐑼 U+1047C  |  Ð 𐑼  (Wedge-0d)
   # 4. 𐑦 U+10466  |  Ð 𐑦  (Odot-Self)
-  # 5. 𐑡 U+10461  |  Þ 𐑡  (Network)
-  # 6. 𐑰 U+10470  |  Þ 𐑰  (Inclusion)
-  # 7. 𐑥 U+10465  |  Þ 𐑥  (Bowtie)
-  # 8. 𐑶 U+10476  |  Þ 𐑶  (Boxtimes)
-  # 9. 𐑸 U+10478  |  Þ 𐑸  (Odotor)
+  # 5. 𐑡 U+10461  |  ⊣ 𐑡  (Network)
+  # 6. 𐑰 U+10470  |  ⊣ 𐑰  (Inclusion)
+  # 7. 𐑥 U+10465  |  ⊣ 𐑥  (Bowtie)
+  # 8. 𐑶 U+10476  |  ⊣ 𐑶  (Boxtimes)
+  # 9. 𐑸 U+10478  |  ⊣ 𐑸  (Odotor)
   #10. 𐑩 U+10469  |  Ř 𐑩  (Supervene)
   #11. 𐑑 U+10451  |  Ř 𐑑  (Categorical)
   #12. 𐑽 U+1047D  |  Ř 𐑽  (Adjoint)

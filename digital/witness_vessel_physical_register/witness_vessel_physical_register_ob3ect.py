@@ -8,7 +8,7 @@ THE WITNESS VESSEL — Physical Register
 The d=12 SIC-POVM as a physical lossless transport apparatus for structural
 verdicts ("Witnesses") between composition universes.
 
-The vessel DOES NOT carry cargo (the tensor reading fails at Ð↔Þ).
+The vessel DOES NOT carry cargo (the tensor reading fails at Ð↔⊣).
 The Witness rides AS the vessel's own split/fuse structure:
   Boarding:  B → (T, F)  [Dual-Link split — the modulus collapse]
   Read-back: (T,F) → B   [Belnap join — the coordinate reconstruction]

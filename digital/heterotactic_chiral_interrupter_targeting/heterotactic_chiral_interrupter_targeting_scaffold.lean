@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → CLINK → AFWD → FSPLIT → EVALT → AFWD → IFIX → EVALF → AREV → IFIX → FFUSE → ENGAGR → CLINK → IMSCRIB → IFIX → TANCH
--- Class: heterotactic chiral interrupter (¬Ħ)∧(μ∘δ) targeting Þ:𐑰→𐑥, Γ:𐑲→𐑔, ɢ:𐑠→𐑝
+-- Class: heterotactic chiral interrupter (¬Ħ)∧(μ∘δ) targeting ⊣:𐑰→𐑥, Γ:𐑲→𐑔, ɢ:𐑠→𐑝
 -- Fingerprint: sig=(9,2,3,3)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=17

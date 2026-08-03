@@ -188,7 +188,7 @@ The model produced *Latent Manifolds of Post-Mortem Self-Organization: A Formal 
 | Latent dim | Model name | IG primitive |
 |-----------|------------|-------------|
 | $z_1$ | Dissipative Flux | Ð (Dimensionality) |
-| $z_2$ | Topological Persistence | Þ (Topology) |
+| $z_2$ | Topological Persistence | ⊣ (Topology) |
 | $z_3$ | Coupling Asymmetry | ɢ (Coupling) |
 | $z_4$ | Parity Violation | Φ (Parity) |
 | $z_5$ | Information Fidelity | ƒ (Fidelity) |
