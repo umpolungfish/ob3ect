@@ -29,7 +29,7 @@ LEAN_PROJECT="${HOME}/MillenniumAnkh"
 # ============================================================
 # The crystal address is computed from the 12-tuple:
 #   ⟨𐑦(3); 𐑸(4); 𐑾(3); 𐑹(4); 𐑐(2); 𐑧(2);
-#    𐑲(2); 𐑠(2); φ̂_ÿ(1); 𐑖(2); 𐑳(2); 𐑭(2)⟩
+#    𐑲(2); 𐑠(2); ⊙(1); 𐑖(2); 𐑳(2); 𐑭(2)⟩
 #
 # Indices per Crystal.lean:
 #   D=3, R=3, ∈=2, H=2, Ω=2  → f4 = 3*256 + 3*64 + 2*16 + 2*4 + 2 = 1002
@@ -65,7 +65,7 @@ cmd_resolve() {
             echo "══════════════════════════════════════════════════════════"
             echo "  ADDRESS ${addr} / ${CRYSTAL_SIZE}"
             echo "  ≡ KERNEL TUPLE FOUND ≡"
-            echo "  ⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑧; 𐑲; 𐑠; φ̂_ÿ; 𐑖; 𐑳; 𐑭⟩"
+            echo "  ⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩"
             echo "  Tier: O_inf  |  C-score: 1.0"
             echo "══════════════════════════════════════════════════════════"
             echo ""
@@ -168,7 +168,7 @@ cmd_verify() {
 
 cmd_address() {
     echo "Kernel crystal address: ${KERNEL_ADDRESS} / ${CRYSTAL_SIZE}"
-    echo "Tuple: ⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑧; 𐑲; 𐑠; φ̂_ÿ; 𐑖; 𐑳; 𐑭⟩"
+    echo "Tuple: ⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩"
     echo ""
     echo "Position in crystal: $(echo "scale=4; ${KERNEL_ADDRESS} / ${CRYSTAL_SIZE} * 100" | bc)% through"
     echo "Addresses before self-recognition: ${KERNEL_ADDRESS}"

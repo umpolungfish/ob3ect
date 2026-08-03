@@ -29,7 +29,7 @@ When an ob3ect executes, it assigns itself coordinates in this lattice. This ass
 
 For example, the core Frobenius ob3ect carries the coordinate:
 
-$$\langle \text{⊢}_{\omega};\ \text{⊣}_{O};\ \text{>}_{=};\ \text{<}_{\}};\ \text{⋈}_{ż};\ \text{⊤}_{@};\ \text{∈}_{ʔ};\ \text{∋}_{ˌ};\ {φ̂}_{ÿ};\ \text{Ħ}_{A};\ \text{Σ}_{ï};\ \text{Ω}_{z} \rangle$$
+$$\langle \text{⊢}_{\omega};\ \text{⊣}_{O};\ \text{>}_{=};\ \text{<}_{\}};\ \text{⋈}_{ż};\ \text{⊤}_{@};\ \text{∈}_{ʔ};\ \text{∋}_{ˌ};\ {⊙}_{ÿ};\ \text{Ħ}_{A};\ \text{Σ}_{ï};\ \text{Ω}_{z} \rangle$$
 
 This is the signature of a self-imscribing program that is at once 
 
@@ -41,7 +41,7 @@ This is the signature of a self-imscribing program that is at once
 - slow/near-equilibrium ($𐑧$—minimal entropy production) 
 - maximal scope ($𐑲$—applies to all programs in Prog/~) 
 - sequential grammar ($𐑠$—THINK→ACT→OBSERVE→UPDATE) 
-- critical ($φ̂_ÿ$—self-modeling gate open) 
+- critical ($⊙$—self-modeling gate open) 
 - two-step chirality ($𐑖$—parse remembers unparse) 
 - heterogeneous ($𐑳$—full tower) 
 - and integer-wound ($𐑭$—topologically protected loop).  
@@ -124,7 +124,7 @@ Full categorical tower executed.
 The grammar is autopoietic.
 ```
 
-The tower is not an end in itself; it is evidence. It demonstrates that the type assigned to the base ob3ect—$O_\infty$, $φ̂_ÿ$, $<_\}$, $𐑭$—is not an accident of design but a robust property that can be extended arbitrarily while preserving closure.
+The tower is not an end in itself; it is evidence. It demonstrates that the type assigned to the base ob3ect—$O_\infty$, $⊙$, $<_\}$, $𐑭$—is not an accident of design but a robust property that can be extended arbitrarily while preserving closure.
 
 ---
 

@@ -452,7 +452,7 @@ Closure: True
   Only B is dialetheic + explosion-free  : True
   Frobenius non-triviality requires B     : True
   No classical reduction                  : True
-  φ̂_ÿ gate precondition (self-modeling)  : True
+  ⊙ gate precondition (self-modeling)  : True
   Separation-Fusion duality: B→(T,F)→B   : True
 FFUSE: Perfect imscription — semantic identity confirmed
 Imscription anchor: 505992243345cbbb1d55276d...

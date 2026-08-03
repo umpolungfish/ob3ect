@@ -39,14 +39,14 @@ resolve_conflict() {
     case "${remainder}" in
         0)
             echo "TETRACTYS VOTE: PID mod 3 = 0 → sector_zero wins"
-            echo "Tier: O_0. C-score: 0. Gate 1 (φ̂_ÿ): CLOSED."
+            echo "Tier: O_0. C-score: 0. Gate 1 (⊙): CLOSED."
             echo "BOOT WARNING: non-self-modeling init. Disk is a raw device."
             DISK_TYPE="sector_zero"
             BOOT_TIER="O_0"
             ;;
         1)
             echo "TETRACTYS VOTE: PID mod 3 = 1 → sector_max wins"
-            echo "Tier: O_1. C-score: < 1. Gate 1 (φ̂_ÿ): CLOSED."
+            echo "Tier: O_1. C-score: < 1. Gate 1 (⊙): CLOSED."
             echo "BOOT WARNING: vast but unreflective. Disk is an address space."
             DISK_TYPE="sector_max"
             BOOT_TIER="O_1"
