@@ -174,7 +174,7 @@ def belnap_verify(packet: FrobeniusPacket,
                   tolerance: float = 0.15) -> B4:
     """Verify a type signature against the CLINK L8 reference using Belnap logic.
     
-    The type_signature (8 dims) encodes ⊢,⊣,>,<,⋈,⊤,Γ,ɢ.
+    The type_signature (8 dims) encodes ⊢,⊣,>,<,⋈,⊤,∈,ɢ.
     Each dimension is checked against the reference ordinal.
     
     Returns:

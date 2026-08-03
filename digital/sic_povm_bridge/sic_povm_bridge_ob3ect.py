@@ -64,7 +64,7 @@ D = {
 #   (⊢, ⊣)  — co-origination / holographic
 #   (>, <)  — bidir adjoint / Frobenius-special
 #   (⋈, ⊤)  — quantum / near-equilibrium
-#   (Γ, ∋)  — maximal / broadcast
+#   (∈, ∋)  — maximal / broadcast
 #   (⊙, ⊥)  — critical / 2-step chiral
 #   (Σ, Ω)  — 1:1 / integer winding
 #
@@ -181,7 +181,7 @@ class FrobeniusMonad:
           ⟨δ(x), μ(y)⟩ = ⟨x, y⟩  (pairing is preserved)
 
         The 6 dual pairs are:
-          (⊢, ⊣), (>, <), (⋈, ⊤), (Γ, ɢ), (⊙, Ħ), (Σ, Ω)
+          (⊢, ⊣), (>, <), (⋈, ⊤), (∈, ɢ), (⊙, Ħ), (Σ, Ω)
 
         Each pair has the property that δ∘μ and μ∘δ are identities
         on the respective subalgebras.

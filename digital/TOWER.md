@@ -230,7 +230,7 @@ IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
   Glyphs in map: 49 (Shavian 48 + ⊙)
   Primitives:    12 / 12 = True
-  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, '⋈': 3, '⊤': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
+  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, '⋈': 3, '⊤': 5, '∈': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
 FSPLIT_CORE: 12 core glyphs mapped
 FSPLIT_FULL: 49 full glyphs mapped
 FFUSE_CORE: fused 12 glyphs → PASS
@@ -278,9 +278,9 @@ SHAVIAN OB3ECT — Complete 49-Entry Decomposition Report
   #24. 𐑧 U+10467  |  ⊤ ⊤^@  (Slow-NearEq)
   #25. 𐑪 U+1046A  |  ⊤ ⊤^Ù  (Trap-Frozen)
   #26. 𐑺 U+1047A  |  ⊤ ⊤^λ  (MBL-Frozen)
-  #27. 𐑚 U+1045A  |  Γ 𐑚  (Beth-Local)
-  #28. 𐑔 U+10454  |  Γ 𐑔  (Gimel-Meso)
-  #29. 𐑲 U+10472  |  Γ 𐑲  (Aleph-Maximal)
+  #27. 𐑚 U+1045A  |  ∈ 𐑚  (Beth-Local)
+  #28. 𐑔 U+10454  |  ∈ 𐑔  (Gimel-Meso)
+  #29. 𐑲 U+10472  |  ∈ 𐑲  (Aleph-Maximal)
   #30. 𐑝 U+1045D  |  ɢ ɢ^∧  (And-Conjunctive)
   #31. 𐑜 U+1045C  |  ɢ ɢ^˝  (Or-Disjunctive)
   #32. 𐑠 U+10460  |  ɢ ɢ^ˌ  (Seq-Sequential)

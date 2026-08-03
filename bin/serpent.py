@@ -257,7 +257,7 @@ def cmd_derive(rna):
     print()
     print(header(" PHASE 5: GRAMMAR ACTIVATION "))
     all_prims = ["Dimensionality(⊢)", "Topology(⊣)", "Recognition(>)", "Parity(<)",
-                  "Fidelity(⋈)", "Kinetics(⊤)", "Granularity(Γ)", "Coupling(ɢ)",
+                  "Fidelity(⋈)", "Kinetics(⊤)", "Granularity(∈)", "Coupling(ɢ)",
                   "Criticality(⊙)", "Chirality(Ħ)", "Stoichiometry(Σ)", "Winding(Ω)"]
     for p in all_prims:
         name = p.split("(")[0]

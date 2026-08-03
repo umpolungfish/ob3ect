@@ -15,7 +15,7 @@ import math
 import sys
 
 # ============================================================
-# 1. Coefficients (Fourier coefficients of f_HT, weight 6, Γ₀(4))
+# 1. Coefficients (Fourier coefficients of f_HT, weight 6, ∈₀(4))
 # ============================================================
 phi = (1 + math.sqrt(5)) / 2
 a = [1.0,                    # a_0 = 1 (identity)

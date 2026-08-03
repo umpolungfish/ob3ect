@@ -1270,10 +1270,10 @@ def design(description: str, **kwargs) -> Ob3ectArtifact:
 # ── ZoomChain ─────────────────────────────────────────────────────────────────
 
 _ZOOM_SYSTEM = """\
-You are identifying a natural Granularity (Γ) zoom hierarchy in the Universal Imscriptive Grammar.
+You are identifying a natural Granularity (∈) zoom hierarchy in the Universal Imscriptive Grammar.
 Each level must be a coherent entity where the IMASM bootstrap runs — a bounded system with its
 own identity, Frobenius structure, and terminal anchor (TANCH). The hierarchy runs from
-finest-grain (seed, Γ=0) to coarsest-grain (target, Γ=N-1). Each CLINK morphism describes
+finest-grain (seed, ∈=0) to coarsest-grain (target, ∈=N-1). Each CLINK morphism describes
 how the finer-grain entity composes into the next coarser level.
 
 All text fields must be precise technical prose. Banned: delve, tapestry, leverage (verb),
@@ -1297,14 +1297,14 @@ _ZOOM_LEVEL_SCHEMA = """\
 async def _discover_zoom_levels(
     seed: str, target: str, n_levels: int, temperature: float = 0.3
 ) -> tuple:
-    """Use LLM to discover N zoom levels between seed (Γ=0) and target (Γ=N-1)."""
+    """Use LLM to discover N zoom levels between seed (∈=0) and target (∈=N-1)."""
     providers = _build_provider_chain()
     if not providers:
         return [seed, target], [f"{seed} composes into {target}"]
     provider = providers[0]
     prompt = (
-        f"Seed (Γ=0, finest grain): {seed}\n"
-        f"Target (Γ={n_levels - 1}, coarsest grain): {target}\n"
+        f"Seed (∈=0, finest grain): {seed}\n"
+        f"Target (∈={n_levels - 1}, coarsest grain): {target}\n"
         f"Total levels requested: {n_levels}\n\n"
         f"Identify exactly {n_levels} zoom levels forming a natural Granularity hierarchy.\n"
         f"Level 0 must be the seed, level {n_levels - 1} must be the target.\n"
@@ -1353,7 +1353,7 @@ class ZoomChain:
             tanch = art.opcode_map.entries.get("TANCH", type("", (), {"chosen_element": "?"})()).chosen_element
             frob = art.split_fuse_report.frobenius_verdict
             ds = art.entropy_audit.delta_s_verdict
-            lines.append(f"\n[Γ={lvl.gamma}] {lvl.description}")
+            lines.append(f"\n[∈={lvl.gamma}] {lvl.description}")
             lines.append(f"  TANCH    : {tanch}")
             lines.append(f"  Frobenius: {frob}  |  {ds}")
             if lvl.gamma < len(self.levels) - 1 and lvl.gamma < len(self.clink_morphisms):
@@ -1400,17 +1400,17 @@ async def zoom_design(
     context: Optional[str] = None,
 ) -> ZoomChain:
     """
-    Design a zoom chain of N ob3ects spanning seed (Γ=0, finest) to target (Γ=N-1, coarsest).
+    Design a zoom chain of N ob3ects spanning seed (∈=0, finest) to target (∈=N-1, coarsest).
     Each level is a full Ob3ectArtifact; adjacent levels are connected by CLINK morphisms.
     Reverse zoom (coarse→fine) is just seed=target, target=seed.
     """
-    print(f"Discovering {n_levels}-level Γ hierarchy: {seed!r} → {target!r}")
+    print(f"Discovering {n_levels}-level ∈ hierarchy: {seed!r} → {target!r}")
     level_descs, morphisms = await _discover_zoom_levels(seed, target, n_levels, temperature)
     print(f"Levels: {level_descs}")
 
     zoom_levels = []
     for i, desc in enumerate(level_descs):
-        print(f"\n  [Γ={i}] Imscribing: {desc}")
+        print(f"\n  [∈={i}] Imscribing: {desc}")
         art = await auto_design(
             desc,
             name=desc,
@@ -1429,7 +1429,7 @@ async def zoom_design(
 
 # ── ChurnTree ─────────────────────────────────────────────────────────────────
 #
-# Zoom moves across Γ, coarser and finer descriptions of one thing. Churn moves
+# Zoom moves across ∈, coarser and finer descriptions of one thing. Churn moves
 # INWARD: it takes the ob3ect a description produced, puts that ob3ect back into
 # the context it came from, and then imscribes each of its own steps as a
 # description in its own right.
@@ -1707,7 +1707,7 @@ if __name__ == "__main__":
                     help="Comma-separated catalog entry names to inject as context "
                          "(e.g. --entry yhwh,dark_matter,proton)")
     ap.add_argument("--zoom-to", dest="zoom_target", default=None, metavar="TARGET",
-                    help="Design a zoom chain from DESCRIPTION (Γ=0, finest) to TARGET (Γ=N-1, coarsest)")
+                    help="Design a zoom chain from DESCRIPTION (∈=0, finest) to TARGET (∈=N-1, coarsest)")
     ap.add_argument("--zoom-levels", type=int, default=4, dest="zoom_levels",
                     help="Number of levels in the zoom chain (default: 4)")
     ap.add_argument("--churn", action="store_true", default=False,

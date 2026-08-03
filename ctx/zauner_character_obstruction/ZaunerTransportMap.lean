@@ -517,7 +517,7 @@ theorem open_plank_characterization :
     F = ℏ (quantum coherence essential for complex amplitudes)
     K = ≈ (near-equilibrium: the Stark unit is exactly at critical point)
     G = ℵ (long-range: Galois action couples all coordinates)
-    Γ = → (ordered sequential: the 13-opcode protocol)
+    ∈ = → (ordered sequential: the 13-opcode protocol)
     Φ = c_complex (complex-plane critical: Stark unit on critical line)
     H = 2 (two-step Markov: Belnap evidence → complex amplitude → inner product)
     Σ = n:m (multiple distinct types: algebraic numbers, complex amplitudes, Belnap values)

@@ -205,7 +205,7 @@ theorem equiangular : ∀ (a b : Fin 12), (a, b) ≠ (0, 0) →
 
 ## Key Insight
 
-The O₀ boundary sorries are **not gaps** — they're flat positivity certificates (the Γ=𐑔, ⊙=𐑮 register: conventional SIC = O₀ complex-criticality).
+The O₀ boundary sorries are **not gaps** — they're flat positivity certificates (the ∈=𐑔, ⊙=𐑮 register: conventional SIC = O₀ complex-criticality).
 
 The structural transfer (`phi` is a star-ring hom, norm/equiangular identities) is **fully wired**. The last mile is numerical certificates from `d12_sic_build`, which already has the exact algebraic data (verified in `mini_engine_full4.py`: all 143 overlap identities, sqrt3 identity, etc.).
 
