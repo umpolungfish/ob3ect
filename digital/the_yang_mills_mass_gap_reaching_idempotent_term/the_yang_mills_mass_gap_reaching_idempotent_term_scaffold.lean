@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → FSPLIT → AFWD → IMSCRIB → EVALT → AREV → EVALF → ENGAGR → FFUSE → AFWD → IFIX → FSPLIT → AFWD → EVALT → IMSCRIB → EVALT → FFUSE → TANCH
--- Class: the Yang-Mills mass gap reaching idempotent_terminal under triple_criticality but failing T_CEILING because its kinetics ordinal 𐑪 exceeds the 𐑧 ceiling becomes a motivated non-tailored raise of the Ç ceiling anchor under which Yang-Mills reaches full gate+T closure
+-- Class: the Yang-Mills mass gap reaching idempotent_terminal under triple_criticality but failing T_CEILING because its kinetics ordinal 𐑪 exceeds the 𐑧 ceiling becomes a motivated non-tailored raise of the ⊤ ceiling anchor under which Yang-Mills reaches full gate+T closure
 -- Fingerprint: sig=(8,4,5,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=18

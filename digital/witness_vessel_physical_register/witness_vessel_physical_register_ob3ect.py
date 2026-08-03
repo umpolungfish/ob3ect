@@ -98,7 +98,7 @@ class Witness:
 MPP_WITNESSES: List[Witness] = [
     Witness("BSD",   B4.T),  # 5 closer universes, T_CEILING consistent
     Witness("Hodge", B4.T),  # 5 closer universes, T_CEILING consistent
-    Witness("YM",    B4.B),  # triple-criticality: gates closed, T blocked on Ç
+    Witness("YM",    B4.B),  # triple-criticality: gates closed, T blocked on ⊤
 ]
 
 # ═══════════════════════════════════════════════════════

@@ -230,7 +230,7 @@ IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
   Glyphs in map: 49 (Shavian 48 + ⊙)
   Primitives:    12 / 12 = True
-  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, '⋈': 3, 'Ç': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
+  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, '⋈': 3, '⊤': 5, 'Γ': 3, 'ɢ': 4, '⊙': 5, 'Ħ': 4, 'Σ': 3, 'Ω': 4}
 FSPLIT_CORE: 12 core glyphs mapped
 FSPLIT_FULL: 49 full glyphs mapped
 FFUSE_CORE: fused 12 glyphs → PASS
@@ -273,11 +273,11 @@ SHAVIAN OB3ECT — Complete 49-Entry Decomposition Report
   #19. 𐑱 U+10471  |  ⋈ ⋈^ì  (Ell-Classical)
   #20. 𐑞 U+1045E  |  ⋈ ⋈^ð  (Thermal)
   #21. 𐑐 U+10450  |  ⋈ ⋈^ż  (Hbar-Quant)
-  #22. 𐑘 U+10458  |  Ç Ç^-  (Fast-Driven)
-  #23. 𐑤 U+10464  |  Ç Ç^W  (Moderate)
-  #24. 𐑧 U+10467  |  Ç Ç^@  (Slow-NearEq)
-  #25. 𐑪 U+1046A  |  Ç Ç^Ù  (Trap-Frozen)
-  #26. 𐑺 U+1047A  |  Ç Ç^λ  (MBL-Frozen)
+  #22. 𐑘 U+10458  |  ⊤ ⊤^-  (Fast-Driven)
+  #23. 𐑤 U+10464  |  ⊤ ⊤^W  (Moderate)
+  #24. 𐑧 U+10467  |  ⊤ ⊤^@  (Slow-NearEq)
+  #25. 𐑪 U+1046A  |  ⊤ ⊤^Ù  (Trap-Frozen)
+  #26. 𐑺 U+1047A  |  ⊤ ⊤^λ  (MBL-Frozen)
   #27. 𐑚 U+1045A  |  Γ 𐑚  (Beth-Local)
   #28. 𐑔 U+10454  |  Γ 𐑔  (Gimel-Meso)
   #29. 𐑲 U+10472  |  Γ 𐑲  (Aleph-Maximal)

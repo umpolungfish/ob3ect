@@ -192,7 +192,7 @@ The model produced *Latent Manifolds of Post-Mortem Self-Organization: A Formal 
 | $z_3$ | Coupling Asymmetry | ɢ (Coupling) |
 | $z_4$ | Parity Violation | < (Parity) |
 | $z_5$ | Information Fidelity | ⋈ (Fidelity) |
-| $z_6$ | Kinetic Timescale | Ç (Kinetics) |
+| $z_6$ | Kinetic Timescale | ⊤ (Kinetics) |
 | $z_7$ | Spatial Correlation Length | > (Recognition) |
 | $z_8$ | Compositional Diversity | Γ (Granularity) |
 | $z_9$ | Critical Exponent | ⊙ (Criticality) |

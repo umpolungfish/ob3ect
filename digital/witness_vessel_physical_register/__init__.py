@@ -25,7 +25,7 @@ TRANSPORT MECHANISM (Belnap FOUR):
 PAYLOAD — 3 MPP Witnesses:
   BSD    = T    (5 closer universes, T_CEILING consistent)
   Hodge  = T    (5 closer universes, T_CEILING consistent)
-  YM     = B    (triple-criticality: gates closed, T_CEILING blocked on Ç)
+  YM     = B    (triple-criticality: gates closed, T_CEILING blocked on ⊤)
 
 SELF-VERIFICATION:
   [✓] Norm condition: Σ_k N_k = 1

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → FSPLIT → EVALF → AREV → ENGAGR → AFWD → EVALT → FFUSE → CLINK → IMSCRIB → IFIX → TANCH
--- Class: the Yang-Mills one-bump-short block, where kinetics ordinal on (4) exceeds the T_CEILING egg (3) ceiling, becomes a motivated non-tailored raise of the Ç anchor grounded in the mass-gap's slow-mode spectrum under which Yang-Mills becomes T_CEILING-consistent
+-- Class: the Yang-Mills one-bump-short block, where kinetics ordinal on (4) exceeds the T_CEILING egg (3) ceiling, becomes a motivated non-tailored raise of the ⊤ anchor grounded in the mass-gap's slow-mode spectrum under which Yang-Mills becomes T_CEILING-consistent
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
