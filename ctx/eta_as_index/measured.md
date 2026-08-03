@@ -31,7 +31,7 @@ void_consensus_protocol, and it is the pinned pole of the d=12/d=2048 vessel
 
 ## THE GATE FORK (Axiom C, three reproductions)
 
-The hybrid typing Ð=𐑦 ∧ ⊣=𐑥 is refused — not a point in the Crystal. The two repairs:
+The hybrid typing ⊢=𐑦 ∧ ⊣=𐑥 is refused — not a point in the Crystal. The two repairs:
 
     gamma_eta_holographic_arm   ⟨𐑦𐑸𐑽𐑹𐑐𐑪𐑔𐑝⊙𐑫𐑳𐑭⟩   grounding full
     gamma_eta_cyclic_arm        ⟨𐑛𐑥𐑽𐑬𐑐𐑪𐑔𐑝𐑻𐑫𐑳𐑭⟩   grounding full

@@ -260,7 +260,7 @@ Three promotions would lift this design from $\text{O}_2$ to $\text{O}_\infty$:
 
 | Primitive | Current | Target | Mechanism |
 |-----------|---------|--------|-----------|
-| **Ð** (Dimensionality) | $\text{{\igfont 𐑼}}$ (∞-dim field) | $\text{{\igfont 𐑦}}$ (self-written) | Surface encodes bulk: each cycle's extraction modifies the cavity's reference state, which feeds back into the next cycle's parameters |
+| **⊢** (Dimensionality) | $\text{{\igfont 𐑼}}$ (∞-dim field) | $\text{{\igfont 𐑦}}$ (self-written) | Surface encodes bulk: each cycle's extraction modifies the cavity's reference state, which feeds back into the next cycle's parameters |
 | **⊣** (Topology) | $\text{{\igfont 𐑡}}$ (network/branching) | $\text{{\igfont 𐑸}}$ (self-referential) | The FSPLIT/FFUSE gap includes the observer: the smart meter's measurement is part of the extraction topology, not external to it |
 | **self\_ref** | `False` | `True` | The system models its own modeling loop: the smart meter imscribes its own imscription of demand, creating a recursive self-model |
 

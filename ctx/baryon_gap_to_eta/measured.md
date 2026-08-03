@@ -63,7 +63,7 @@ carved case. ρ goes 2 → 1+√3. The gap opens from the ceiling.
 `void_consensus_protocol` — the Raft consensus algorithm generated from an empty prompt.
 
     ⟨𐑼𐑡𐑾𐑗𐑱𐑧𐑚𐑠⊙𐑖𐑳𐑭⟩
-      Ð = 𐑼   closed cycle with a specifiable reset step
+      ⊢ = 𐑼   closed cycle with a specifiable reset step
       ⊙ = ⊙   ξ → ∞ ∧ μ∘δ = id
       Ħ = 𐑖   persistent chiral
       Ω = 𐑭   integer-winding-protected

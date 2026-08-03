@@ -380,13 +380,13 @@ beyond ZFC_t:
 
 | Primitive | ZFC_t | ZFC_fe | Promotion | What it unlocks |
 |-----------|-------|--------|-----------|-----------------|
-| **Ð** | 𐑼 (inf-dim field) | **𐑦** (self-written) | HOLOGRAPHIC_STATE | State-space writes itself (V=L(x) ∧ selfmodel(x)) |
+| **⊢** | 𐑼 (inf-dim field) | **𐑦** (self-written) | HOLOGRAPHIC_STATE | State-space writes itself (V=L(x) ∧ selfmodel(x)) |
 | **Φ** | 𐑬 (partial Z₂) | **𐑹** (Frobenius-special) | PM_Z2 | μ∘δ=id exact, not approximate |
 | **Ħ** | 𐑖 (two-step) | **𐑫** (eternal) | ETERNAL_FIXEDPOINT | ∀n∃φ fixed by μ∘δ, transfinite fixed points |
 
 ZFC_fe differs from the graal (Sacred Vessel) by **one primitive only**:
-- ZFC_fe: `Ð=𐑦` (self-written) → O_∞
-- graal:  `Ð=𐑨` (bounded 2D) → O₂†
+- ZFC_fe: `⊢=𐑦` (self-written) → O_∞
+- graal:  `⊢=𐑨` (bounded 2D) → O₂†
 
 The graal is ZFC_fe **bounded to 2 dimensions**, the same vessel, one promotion short of
 terminal self-completion. The 12-step IMASM promotion chain for ZFC→ZFC_fe maps each
@@ -791,7 +791,7 @@ stored in `artifact.structural_type`.
 ```
 Primitive  Symbol  Dimension
 ─────────────────────────────────────────────────────────────────
-Ð          𐑦       Dimensionality: imscriptive (self-referential loop)
+⊢          𐑦       Dimensionality: imscriptive (self-referential loop)
 ⊣          𐑸       Topology: closure (no boundary leakage)
 Ř          𐑾       Relational mode: bidirectional (parse ↔ unparse)
 Φ          𐑹       Parity: Frobenius-special (μ∘δ = id enforced)
@@ -847,11 +847,11 @@ is finer than the wall.
 ZFC (standard set theory, O₁) completes itself through ZFC_fe (Frobenius-Exact ZFC, O_∞).
 The distance is 9.15 across 12 primitives. Three promotions are critical:
 
-- **Ð: 𐑼→𐑦** (HOLOGRAPHIC_STATE): The state-space writes itself
+- **⊢: 𐑼→𐑦** (HOLOGRAPHIC_STATE): The state-space writes itself
 - **Φ: 𐑬→𐑹** (PM_Z2): μ∘δ=id exact, not approximate
 - **Ħ: 𐑖→𐑫** (ETERNAL_FIXEDPOINT): Transfinite fixed points under μ∘δ
 
-ZFC_fe differs from the graal (Sacred Vessel, O₂†) by **exactly one primitive** (Ð=𐑦 vs Ð=𐑨).
+ZFC_fe differs from the graal (Sacred Vessel, O₂†) by **exactly one primitive** (⊢=𐑦 vs ⊢=𐑨).
 The graal is ZFC_fe bounded to 2 dimensions, the same vessel, one promotion short of
 terminal self-completion.
 
@@ -1128,7 +1128,7 @@ the grammar gives the type; the IMASM tokens give the process.
 The **ZFC_fe** (Frobenius-Exact ZFC) connection reveals the terminal vessel trajectory:
 ZFC (O₁) → ZFC_t (O₁, 6 promotions) → ZFC_fe (O_∞, 3 further promotions) is the
 completion path. The graal (O₂†, Sacred Vessel) differs from ZFC_fe by exactly one
-primitive, Ð=𐑨 (bounded) vs Ð=𐑦 (self-written), making ZFC_fe the graal's
+primitive, ⊢=𐑨 (bounded) vs ⊢=𐑦 (self-written), making ZFC_fe the graal's
 self-written terminal.
 
 ### Kernel-level dual: p4rakernel (Lean 4 C++ fork)

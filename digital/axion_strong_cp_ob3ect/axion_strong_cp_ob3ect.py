@@ -195,7 +195,7 @@ print("  Final state (θ_QCD = 0):")
 print("    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑑𐑔𐑵⊙𐑫𐑳𐑟⟩ (CLINK L8 — terminal)")
 print()
 print("  Promotion chain: 7 steps (1+3+2+1)")
-print("  δ_Φ = 1 (𐑹→𐑬), δ_Ph = 3 (⊙→𐑻), δ_Ð = 2 (𐑛→𐑦), δ_Σ = 1 (𐑕→𐑳)")
+print("  δ_Φ = 1 (𐑹→𐑬), δ_Ph = 3 (⊙→𐑻), δ_⊢ = 2 (𐑛→𐑦), δ_Σ = 1 (𐑕→𐑳)")
 print()
 
 print("=" * 70)

@@ -3,7 +3,7 @@
 -- Fingerprint: sig=(9,2,3,2) | self_ref=False | frobenius_order=1
 -- Dialetheia complete: True | period=16
 -- Ouroboricity tier: O₀ and O₂dag (kernel-verified)
--- Catalog tuple: ⟨Ð=𐑦; ⊣=𐑸; Ř=𐑑; Φ=𐑬; ƒ=𐑐; Ç=𐑧; Γ=𐑔; ɢ=𐑵; ⊙=𐑻; Ħ=𐑫; Σ=𐑕; Ω=𐑭⟩
+-- Catalog tuple: ⟨⊢=𐑦; ⊣=𐑸; Ř=𐑑; Φ=𐑬; ƒ=𐑐; Ç=𐑧; Γ=𐑔; ɢ=𐑵; ⊙=𐑻; Ħ=𐑫; Σ=𐑕; Ω=𐑭⟩
 -- Kernel verdict: ✓ ELABORATED against BelnapSplitFuse
 -- Nearest neighbor: frobenioid_structure (d=2.9067)
 
