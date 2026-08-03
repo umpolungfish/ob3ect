@@ -55,7 +55,7 @@ import style_guard  # tyrannical human-writing enforcement on every emitted docu
 
 _HERE = Path(__file__).resolve().parent
 _CATALOG = _HERE.parent / "imscribing_grammar" / "IG_catalog.json"
-PRIM_ORDER = ["Ð", "Þ", "Ř", "Φ", "Ç", "ƒ", "ɢ", "Γ", "Σ", "Ħ", "⊙", "Ω"]
+PRIM_ORDER = ["⊢", "⊣", ">", "<", "⊤", "⋈", "∋", "∈", "⊞", "⊥", "⊙", "◻"]
 
 
 # ── catalog access (the soup) ────────────────────────────────────────────────

@@ -15,18 +15,18 @@ import json, hashlib
 
 # ─── Structural Type Definition ──────────────────────────────────
 PRAXEUM_TUPLE = {
-    "Ð": "\U00010466",  # 𐑦 — imscriptive (3D interaction space)
-    "Þ": "\U00010476",  # 𐑶 — box product (irreducible tricyclic)
-    "Ř": "\U0001047e",  # 𐑾 — bidirectional (tautomeric equilibrium)
-    "Φ": "\U00010479",  # 𐑹 — Frobenius-special (high symmetry)
-    "ƒ": "\U00010450",  # 𐑐 — quantum (coherent proton transfer)
-    "Ç": "\U00010467",  # 𐑧 — moderate kinetics (transdermal)
-    "Γ": "\U00010472",  # 𐑲 — mesoscale (3 receptor systems)
-    "ɢ": "\U00010460",  # 𐑠 — sequential (co-admin activation)
+    "⊢": "\U00010466",  # 𐑦 — imscriptive (3D interaction space)
+    "⊣": "\U00010476",  # 𐑶 — box product (irreducible tricyclic)
+    ">": "\U0001047e",  # 𐑾 — bidirectional (tautomeric equilibrium)
+    "<": "\U00010479",  # 𐑹 — Frobenius-special (high symmetry)
+    "⋈": "\U00010450",  # 𐑐 — quantum (coherent proton transfer)
+    "⊤": "\U00010467",  # 𐑧 — moderate kinetics (transdermal)
+    "∈": "\U00010472",  # 𐑲 — mesoscale (3 receptor systems)
+    "∋": "\U00010460",  # 𐑠 — sequential (co-admin activation)
     "⊙": "\U0001047b",  # 𐑻 — exceptional point (tautomeric degeneracy)
-    "Ħ": "\U0001046b",  # 𐑫 — eternal (locked stereochemistry)
-    "Σ": "\U00010473",  # 𐑳 — many heterogeneous (modulator across sites)
-    "Ω": "\U0001046d",  # 𐑭 — integer winding (topological charge)
+    "⊥": "\U0001046b",  # 𐑫 — eternal (locked stereochemistry)
+    "⊞": "\U00010473",  # 𐑳 — many heterogeneous (modulator across sites)
+    "◻": "\U0001046d",  # 𐑭 — integer winding (topological charge)
 }
 
 # ─── SMILES Representation ──────────────────────────────────────

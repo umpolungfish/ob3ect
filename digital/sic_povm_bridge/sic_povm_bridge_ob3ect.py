@@ -61,11 +61,11 @@ D = {
 # 3. SIC-POVM FROBENIUS DUAL BASIS
 # ═══════════════════════════════════════════════════════════════════════
 # The 12 primitives organize as 6 Frobenius-dual pairs in the target:
-#   (Ð, Þ)  — co-origination / holographic
-#   (Ř, Φ)  — bidir adjoint / Frobenius-special
-#   (ƒ, Ç)  — quantum / near-equilibrium
-#   (Γ, ɢ)  — maximal / broadcast
-#   (⊙, Ħ)  — critical / 2-step chiral
+#   (⊢, ⊣)  — co-origination / holographic
+#   (>, Φ)  — bidir adjoint / Frobenius-special
+#   (⋈, ⊤)  — quantum / near-equilibrium
+#   (Γ, ∋)  — maximal / broadcast
+#   (⊙, ⊥)  — critical / 2-step chiral
 #   (Σ, Ω)  — 1:1 / integer winding
 #
 # Each pair satisfies μ∘δ = id in the Frobenius algebra sense.

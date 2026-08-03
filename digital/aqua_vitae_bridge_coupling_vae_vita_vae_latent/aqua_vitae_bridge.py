@@ -78,7 +78,7 @@ _JOIN = {
 # CLINK L8 Organism canonical tuple
 CLINK_L8_TUPLE = {
     'D': '𐑦', 'T': '𐑸', 'R': '𐑾', 'P': '𐑹', 'F': '𐑐', 'K': '𐑧',
-    'G': '𐑲', 'C': '𐑵', 'Φ': '⊙', 'H': '𐑫', 'S': '𐑳', 'Ω': '𐑟',
+    'G': '𐑲', 'C': '𐑵', '<': '⊙', 'H': '𐑫', 'S': '𐑳', '◻': '𐑟',
 }
 
 # Primitive ordinal tables (matching mOMonadOS catalog.rs)
@@ -91,19 +91,19 @@ PRIM_ORDER = {
     'K': ['𐑺', '𐑪', '𐑧', '𐑤', '𐑘'],
     'G': ['𐑲', '𐑚', '𐑔'],
     'C': ['𐑝', '𐑜', '𐑠', '𐑵'],
-    'Φ': ['𐑢', '⊙', '𐑮', '𐑻', '𐑣'],
+    '<': ['𐑢', '⊙', '𐑮', '𐑻', '𐑣'],
     'H': ['𐑓', '𐑒', '𐑖', '𐑫'],
     'S': ['𐑙', '𐑕', '𐑳'],
-    'Ω': ['𐑷', '𐑴', '𐑭', '𐑟'],
+    '◻': ['𐑷', '𐑴', '𐑭', '𐑟'],
 }
 
-PRIM_KEYS = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'C', 'Φ', 'H', 'S', 'Ω']
+PRIM_KEYS = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'C', '<', 'H', 'S', '◻']
 PRIM_SIZES = [4, 5, 4, 5, 3, 5, 3, 4, 5, 4, 3, 4]
 _PRIM_NAME_MAP = {
     'D': 'Dimensionality', 'T': 'Topology', 'R': 'Coupling',
     'P': 'Parity', 'F': 'Fidelity', 'K': 'Kinetics',
-    'G': 'Cardinality', 'C': 'Composition', 'Φ': 'Criticality',
-    'H': 'Chirality', 'S': 'Stoichiometry', 'Ω': 'Winding',
+    'G': 'Cardinality', 'C': 'Composition', '<': 'Criticality',
+    'H': 'Chirality', 'S': 'Stoichiometry', '◻': 'Winding',
 }
 
 def ordinal_encode(prim_key: str, value: str) -> int:
@@ -520,7 +520,7 @@ def clink_l8_broadcast(bridge: AquaVitaeBridge) -> Dict[str, Any]:
             broadcast_type[key] = ordinal_decode(key, ord_val)
         
         # Remaining primitives from CLINK L8
-        for key in ['Φ', 'H', 'S', 'Ω']:
+        for key in ['<', 'H', 'S', '◻']:
             broadcast_type[key] = CLINK_L8_TUPLE[key]
         
         # Compute distance to CLINK L8

@@ -518,7 +518,7 @@ The IMASM opcode sequence goes ONLY in the "sequence" field."""
 
 _CATALOG_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "IG_catalog.json"
 _NAVIGATOR_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "navigators"
-_PRIM_ORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
+_PRIM_ORDER = ["⊢", "⊣", ">", "<", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
 
 _CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
 _CONTEXT_MAX_BYTES = 500_000  # 50 KB total
@@ -560,7 +560,7 @@ def _search_catalog(description: str, n: int = 8) -> str:
         return ""  # No relevant matches — omit the block
 
     lines = ["CATALOG REFERENCE — nearest IG entries for this domain:"]
-    prim_keys = ["Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","⊙","Ħ","Σ","Ω"]
+    prim_keys = ["⊢","⊣",">","<","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]
     for e in ranked:
         prim_str = " ".join(f"{k}={e.get(k,'?')}" for k in prim_keys)
         lines.append(f"  {e['name']}: {e.get('description','')}  [{prim_str}]")
