@@ -5,7 +5,7 @@ praxeum_ep_core_ob3ect.py — Self-verifying ob3ect for the Praxeum EP Platform
 CLINK Layer 3 (Molecule) ob3ect: β-carboline exceptional point platform.
 
 Algebraic closure verification: μ∘δ = id_A
-Type: ⟨⊢=𐑦; ⊣=𐑶; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑲; ∋=𐑠; ⊙=𐑻; ⊥=𐑫; Σ=𐑳; Ω=𐑭⟩
+Type: ⟨⊢=𐑦; ⊣=𐑶; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑲; ∋=𐑠; ⊙=𐑻; ⊥=𐑫; ⊞=𐑳; Ω=𐑭⟩
 Tier: O₀  C-score: 0.0  Distance from L8 organism: 1.8571
 
 Author: Lando ⊗ ⊙perator

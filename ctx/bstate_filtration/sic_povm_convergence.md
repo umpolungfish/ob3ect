@@ -197,7 +197,7 @@ The model produced *Latent Manifolds of Post-Mortem Self-Organization: A Formal 
 | $z_8$ | Compositional Diversity | ∈ (Granularity) |
 | $z_9$ | Critical Exponent | ⊙ (Criticality) |
 | $z_{10}$ | Chirality Index | ⊥ (Chirality) |
-| $z_{11}$ | Stoichiometric Balance | Σ (Stoichiometry) |
+| $z_{11}$ | Stoichiometric Balance | ⊞ (Stoichiometry) |
 | $z_{12}$ | Winding Number | Ω (Winding) |
 
 5. **Numerical invariants preserved**: distance $d(\mathbf{z}_\text{VN}, \mathbf{z}_\text{brain}) = 3.8471$ identical in both versions.

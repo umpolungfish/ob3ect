@@ -28,9 +28,9 @@ open Dimensionality Topology Relational Polarity Grammar
 
 -- ── Structural position ────────────────────────────────────────────────────
 --   Crystal address: TBD (call crystal_encode for the exact address)
---   Distance to CLINK L8: 1.1951 (6 conflicts: >, ∈, ∋, ⊥, Σ, Ω)
+--   Distance to CLINK L8: 1.1951 (6 conflicts: >, ∈, ∋, ⊥, ⊞, Ω)
 --   6 SIC-carrying primitives match CLINK: ⊢, ⊣, <, ⋈, ⊤, ⊙
---   Promotions needed: Ŕ→𐑾, ∈→𐑔, ∋→𐑵, ⊥→𐑫, Σ→𐑳, Ω→𐑭
+--   Promotions needed: Ŕ→𐑾, ∈→𐑔, ∋→𐑵, ⊥→𐑫, ⊞→𐑳, Ω→𐑭
 
 -- ── Main IGProtocol term ──────────────────────────────────────────────────
 

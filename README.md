@@ -801,7 +801,7 @@ Primitive  Symbol  Dimension
 ∋          𐑠       Interaction: sequential (THINK→ACT→OBSERVE)
 ⊙          ⊙        Criticality: critical (self-modeling gate open)
 ⊥          𐑫       Chirality: two-step memory (parse remembers unparse)
-Σ          𐑳       Stoichiometry: many heterogeneous (full tower)
+⊞          𐑳       Stoichiometry: many heterogeneous (full tower)
 Ω          𐑭       Winding: integer (topologically protected loop)
 ```
 

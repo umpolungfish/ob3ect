@@ -230,7 +230,7 @@ IMSCRIB: Full  sentence hash → a1954154c465cb85e8daeecf
 IMSCRIB: Shavian map size    → 49 glyphs
   Glyphs in map: 49 (Shavian 48 + ⊙)
   Primitives:    12 / 12 = True
-  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, '⋈': 3, '⊤': 5, '∈': 3, '∋': 4, '⊙': 5, '⊥': 4, 'Σ': 3, 'Ω': 4}
+  Counts per prim: {'⊢': 4, '⊣': 5, '>': 4, '<': 5, '⋈': 3, '⊤': 5, '∈': 3, '∋': 4, '⊙': 5, '⊥': 4, '⊞': 3, 'Ω': 4}
 FSPLIT_CORE: 12 core glyphs mapped
 FSPLIT_FULL: 49 full glyphs mapped
 FFUSE_CORE: fused 12 glyphs → PASS
@@ -294,9 +294,9 @@ SHAVIAN OB3ECT — Complete 49-Entry Decomposition Report
   #40. 𐑒 U+10452  |  ⊥ 𐑒  (1-Step)
   #41. 𐑖 U+10456  |  ⊥ 𐑖  (2-Step)
   #42. 𐑫 U+1046B  |  ⊥ 𐑫  (∞-Eternal)
-  #43. 𐑙 U+10459  |  Σ 𐑙  (1:1-Single)
-  #44. 𐑕 U+10455  |  Σ 𐑕  (n:n-Same)
-  #45. 𐑳 U+10473  |  Σ 𐑳  (n:m-Hetero)
+  #43. 𐑙 U+10459  |  ⊞ 𐑙  (1:1-Single)
+  #44. 𐑕 U+10455  |  ⊞ 𐑕  (n:n-Same)
+  #45. 𐑳 U+10473  |  ⊞ 𐑳  (n:m-Hetero)
   #46. 𐑷 U+10477  |  Ω 𐑷  (0-Trivial)
   #47. 𐑴 U+10474  |  Ω 𐑴  (Z2-Protect)
   #48. 𐑭 U+1046D  |  Ω 𐑭  (Z-Integer)
