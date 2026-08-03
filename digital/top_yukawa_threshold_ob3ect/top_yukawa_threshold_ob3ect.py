@@ -109,7 +109,7 @@ print(f"  D=𐑨 (triangle/2d)  T=𐑥 (crossing)      R=𐑾 (bidir)")
 print(f"  P=𐑹 (Frobenius)    F=𐑐 (quantum)       K=𐑧 (slow)")
 print(f"  G=𐑑 (categorical)  Gm=𐑝 (and)          Ph=⊙ (critical)")
 print(f"  H=𐑖 (2-step)       S=𐑙 (1:1)            W=𐑴 (Z₂)")
-print(f"\nΩ=𐑴 (Z₂) encodes the binary on/off of the Yukawa interaction.")
+print(f"\n◻=𐑴 (Z₂) encodes the binary on/off of the Yukawa interaction.")
 
 # Tier
 print(f"\nTier: O_∞ (critical self-duality via F↔K pair)")

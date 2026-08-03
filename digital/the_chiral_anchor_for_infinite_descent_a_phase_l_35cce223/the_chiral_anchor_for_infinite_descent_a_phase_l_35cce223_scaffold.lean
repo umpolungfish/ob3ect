@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → CLINK → FSPLIT → AFWD → EVALT → FFUSE → IFIX → AREV → FSPLIT → ENGAGR → EVALF → FFUSE → CLINK → IMSCRIB → TANCH
--- Class: The chiral anchor for infinite descent: a phase-locked loop that synchronizes ⊥ across the Ω tower
+-- Class: The chiral anchor for infinite descent: a phase-locked loop that synchronizes ⊥ across the ◻ tower
 -- Fingerprint: sig=(8,4,3,1)
 --   self_ref=False | frobenius_order=3
 --   dialetheia_complete=True | period=16

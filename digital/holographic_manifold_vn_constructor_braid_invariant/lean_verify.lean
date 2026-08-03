@@ -5,7 +5,7 @@ open Primitives
 open Dimensionality Topology Relational Polarity Fidelity KineticChar
      Granularity Grammar Criticality Chirality Stoichiometry Protection
 
--- Domain Charter: ⟨⊢=𐑦; ⊣=𐑸; >=𐑑; <=𐑬; ⋈=𐑐; ⊤=𐑧; ∈=𐑔; ∋=𐑵; ⊙=𐑻; ⊥=𐑫; ⊞=𐑳; Ω=𐑟⟩
+-- Domain Charter: ⟨⊢=𐑦; ⊣=𐑸; >=𐑑; <=𐑬; ⋈=𐑐; ⊤=𐑧; ∈=𐑔; ∋=𐑵; ⊙=𐑻; ⊥=𐑫; ⊞=𐑳; ◻=𐑟⟩
 def domain_charter : Imscription := {
   dim := if'
   top := are

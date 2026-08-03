@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → FSPLIT → EVALT → AFWD → EVALF → AREV → ENGAGR → FFUSE → CLINK → IMSCRIB → IFIX → TANCH
--- Class: a bridge monomer designed to link Unit_Ω_expansion and Gaussian_prime_shift_lattice_operator by providing complementary R-S charge centers
+-- Class: a bridge monomer designed to link Unit_◻_expansion and Gaussian_prime_shift_lattice_operator by providing complementary R-S charge centers
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

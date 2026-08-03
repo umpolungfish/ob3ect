@@ -34,7 +34,7 @@ from menagerie_b4 import (
 LAYERS = [
     ("imscribing_grammar", "Crystal 17.28M + 12 primitives + B4 precondition"),
     ("ob3ect",             "34-layer autopoietic tower + auto.py + IMASM"),
-    ("exOS",               "ALEPH [u8;12] + special lattice absorption + Ω gates"),
+    ("exOS",               "ALEPH [u8;12] + special lattice absorption + ◻ gates"),
     ("MillenniumAnkh",     "Lean 4 proofs (SelfImscription, Frobenius, Paraconsistent)"),
     ("synfin",             "canonical_bridge + frobenius.py + require_frobenius traders"),
 ]

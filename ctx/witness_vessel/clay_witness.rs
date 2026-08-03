@@ -121,7 +121,7 @@ pub fn witness_report(problem: &str) -> String {
     let mut out = String::new();
     out.push_str(&alloc::format!("═══ CLAY WITNESS: {} ═══\n", report.name));
     out.push_str(&alloc::format!("Status: {}\n", report.verdict.name()));
-    out.push_str(&alloc::format!("Winding: Ω={} (ordinal {:.1})\n\n",
+    out.push_str(&alloc::format!("Winding: ◻={} (ordinal {:.1})\n\n",
         report.winding, report.winding_ordinal));
 
     if !report.closer_universes.is_empty() {
@@ -190,8 +190,8 @@ pub fn witness_report(problem: &str) -> String {
     if report.low_winding {
         out.push_str("\n── Low Winding Theorem ──\n");
         out.push_str(&alloc::format!(
-            "Ω={} (ord {:.1}) < terminal anchor 3.\n", report.winding, report.winding_ordinal));
-        out.push_str("All closure-bearing universes require Ω≥3 (integer winding).\n");
+            "◻={} (ord {:.1}) < terminal anchor 3.\n", report.winding, report.winding_ordinal));
+        out.push_str("All closure-bearing universes require ◻≥3 (integer winding).\n");
         out.push_str("This problem CANNOT close in any universe because its winding\n");
         out.push_str("is structurally insufficient. The low_winding_theorem is a\n");
         out.push_str("proof — not an empirical limit.\n");

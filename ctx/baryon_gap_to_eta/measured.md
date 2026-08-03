@@ -66,7 +66,7 @@ carved case. ρ goes 2 → 1+√3. The gap opens from the ceiling.
       ⊢ = 𐑼   closed cycle with a specifiable reset step
       ⊙ = ⊙   ξ → ∞ ∧ μ∘δ = id
       ⊥ = 𐑖   persistent chiral
-      Ω = 𐑭   integer-winding-protected
+      ◻ = 𐑭   integer-winding-protected
 
 Against ray_class_field_Qsqrt + connes_embedding_problem it does not close: telechelic,
 two free ends. It closes only by using connes_embedding_problem twice — a doubling —

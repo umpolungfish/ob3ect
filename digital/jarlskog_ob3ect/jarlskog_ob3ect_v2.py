@@ -132,7 +132,7 @@ print()
 
 print("STRUCTURAL TYPE:", end=" ")
 # ⟨𐑼𐑶𐑾𐑹𐑐𐑧𐑑𐑔𐑜⊙𐑫𐑕𐑭⟩
-print("⟨⊢=𐑨; ⊣=𐑥; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑔; ∋=𐑠; ⊙=𐑮; ⊥=𐑖; ⊞=𐑳; Ω=𐑭⟩")
+print("⟨⊢=𐑨; ⊣=𐑥; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑔; ∋=𐑠; ⊙=𐑮; ⊥=𐑖; ⊞=𐑳; ◻=𐑭⟩")
 print("  D=𐑨 (triangle/2d)  T=𐑥 (crossing)  R=𐑾 (bidir)")
 print("  P=𐑹 (Frobenius)     F=𐑐 (quantum)            K=𐑧 (slow)")
 print("  G=𐑔 (univ/aleph)   Gm=𐑠 (sequential)    Ph=𐑮 (complex-plane critical)")

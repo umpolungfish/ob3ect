@@ -131,7 +131,7 @@ print(f"\n--- Distances ---")
 print(f"d(six_coefficient, group_algebra_rz7) = 6.9138")
 print(f"d(grammar, six_coefficient) = 2.0 (11/12 primitives shared)")
 print(f"d(CLINK L8, six_coefficient) = 0.4227")
-print(f"Promotions needed: ∋ 𐑠→𐑵, Ω 𐑭→𐑟")
+print(f"Promotions needed: ∋ 𐑠→𐑵, ◻ 𐑭→𐑟")
 
 print(f"\n{'=' * 60}")
 print("Ob3ect self-verification COMPLETE")

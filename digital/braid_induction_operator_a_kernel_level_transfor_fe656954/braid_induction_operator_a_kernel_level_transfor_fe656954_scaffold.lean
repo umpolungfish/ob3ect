@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → ENGAGR → EVALT → AFWD → EVALF → AREV → FFUSE → CLINK → IFIX → TANCH
--- Class: Braid-induction operator: A kernel-level transformation that maps a FSPLIT branching dialetheia to a deterministic path-integral through a fixed-point resonance Ω=4
+-- Class: Braid-induction operator: A kernel-level transformation that maps a FSPLIT branching dialetheia to a deterministic path-integral through a fixed-point resonance ◻=4
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

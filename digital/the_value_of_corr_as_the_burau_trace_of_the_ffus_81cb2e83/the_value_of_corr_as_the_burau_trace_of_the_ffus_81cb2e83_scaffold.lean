@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → CLINK → FSPLIT → EVALT → AREV → IFIX → EVALF → AREV → IFIX → FFUSE → ENGAGR → TANCH
--- Class: the value of Ω_corr as the Burau trace of the FFUSE₃ coupler loop
+-- Class: the value of ◻_corr as the Burau trace of the FFUSE₃ coupler loop
 -- Fingerprint: sig=(7,2,3,2)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14

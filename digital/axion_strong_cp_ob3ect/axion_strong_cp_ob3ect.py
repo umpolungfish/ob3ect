@@ -18,7 +18,7 @@ Structural inputs:
   gear = 4 (horn torus bevel gear ratio)  
   tilt = arctan(1/4) (Belnap B4 popcount resultant)
   N_orbits = 31 (Clifford group orbit count)
-  Ω_corr = 1/744 (cosmological constant correction)
+  ◻_corr = 1/744 (cosmological constant correction)
 """
 
 import math
@@ -61,7 +61,7 @@ print(f"  d (SIC dimension) = {d}")
 print(f"  gear = {gear}")
 print(f"  tilt = arctan(1/4) = {math.degrees(tilt):.4f}°")
 print(f"  N_orbits (Clifford orbits) = {N_orbits}")
-print(f"  Ω_corr = {omega_corr}")
+print(f"  ◻_corr = {omega_corr}")
 print()
 print(f"  < promotion: 𐑹 (Frobenius, θ=θ₀) → 𐑬 (Z₂) → 𐑹 (Frobenius, θ=0)")
 print(f"  Intermediate: Ph=𐑻 (exceptional point)")
@@ -209,7 +209,7 @@ print("     The ratio {:.2f}x suggests higher-order corrections".format(m_a_EP/m
 print("     from the non-Abelian braiding of the 31-orbit space.")
 print()
 print("  2. Strong CP angle: the mechanism gives θ → 0 but the residual")
-print("     θ_residual < 10⁻¹⁰ is set by the non-Abelian winding Ω=𐑟.")
+print("     θ_residual < 10⁻¹⁰ is set by the non-Abelian winding ◻=𐑟.")
 print("     This requires computing the EP phase shift from the braid monodromy.")
 print()
 print("  3. Axion dark matter: the axion relic density from the EP phase")

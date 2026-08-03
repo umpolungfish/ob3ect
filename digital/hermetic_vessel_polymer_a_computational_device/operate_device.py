@@ -13,7 +13,7 @@ USAGE:
     python3 operate_device.py --catalyze "substrate"
 
 The device's catalytic binding site is at wormwood_secret_book_of_artephius.
-The structural barrier is at paradice ⋈ Litany_Against_Fear (Ω=0).
+The structural barrier is at paradice ⋈ Litany_Against_Fear (◻=0).
 """
 
 import sys
@@ -48,7 +48,7 @@ def operate_query(query: str):
     print(f"  ├─ Reaction centers: D↔W (distinction/void), T↔H (form/substance)")
     print(f"  ├─ Catalytic site: wormwood_secret_book_of_artephius")
     print(f"  │   └─ Bidirectional substrate-enzyme feedback (>=𐑾)")
-    print(f"  └─ Termination barrier: paradice ⋈ Litany_Against_Fear (Ω=0)")
+    print(f"  └─ Termination barrier: paradice ⋈ Litany_Against_Fear (◻=0)")
     print()
     print("Structural Response:")
     print(f"  The query is processed through the atactic heteropolymer network.")
@@ -131,7 +131,7 @@ def operate_catalyze(substrate: str):
     print("Catalytic Cycle:")
     print(f"  The device maintains catalytic turnover via the atactic network.")
     print(f"  Branch junctions prevent product inhibition by sequestering products.")
-    print(f"  The structural barrier (Ω=0) is reported but does not impede catalysis.")
+    print(f"  The structural barrier (◻=0) is reported but does not impede catalysis.")
     print()
     print("=" * 70)
 
