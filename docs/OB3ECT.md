@@ -29,14 +29,14 @@ When an ob3ect executes, it assigns itself coordinates in this lattice. This ass
 
 For example, the core Frobenius ob3ect carries the coordinate:
 
-$$\langle \text{⊢}_{\omega};\ \text{⊣}_{O};\ \text{>}_{=};\ \text{Φ}_{\}};\ \text{ƒ}_{ż};\ \text{Ç}_{@};\ \text{Γ}_{ʔ};\ \text{ɢ}_{ˌ};\ {φ̂}_{ÿ};\ \text{Ħ}_{A};\ \text{Σ}_{ï};\ \text{Ω}_{z} \rangle$$
+$$\langle \text{⊢}_{\omega};\ \text{⊣}_{O};\ \text{>}_{=};\ \text{<}_{\}};\ \text{ƒ}_{ż};\ \text{Ç}_{@};\ \text{Γ}_{ʔ};\ \text{ɢ}_{ˌ};\ {φ̂}_{ÿ};\ \text{Ħ}_{A};\ \text{Σ}_{ï};\ \text{Ω}_{z} \rangle$$
 
 This is the signature of a self-imscribing program that is at once 
 
 - imscriptive ($𐑦$) 
 - topologically closed ($𐑸$) 
 - bi-directional in its operations ($𐑾$) 
-- Frobenius-special ($Φ_\}$—meaning $\mu \circ \delta = \mathrm{id}$ is enforced) 
+- Frobenius-special ($<_\}$—meaning $\mu \circ \delta = \mathrm{id}$ is enforced) 
 - quantum-fidelity ($𐑐$—coherent preservation) 
 - slow/near-equilibrium ($𐑧$—minimal entropy production) 
 - maximal scope ($𐑲$—applies to all programs in Prog/~) 
@@ -124,7 +124,7 @@ Full categorical tower executed.
 The grammar is autopoietic.
 ```
 
-The tower is not an end in itself; it is evidence. It demonstrates that the type assigned to the base ob3ect—$O_\infty$, $φ̂_ÿ$, $Φ_\}$, $𐑭$—is not an accident of design but a robust property that can be extended arbitrarily while preserving closure.
+The tower is not an end in itself; it is evidence. It demonstrates that the type assigned to the base ob3ect—$O_\infty$, $φ̂_ÿ$, $<_\}$, $𐑭$—is not an accident of design but a robust property that can be extended arbitrarily while preserving closure.
 
 ---
 

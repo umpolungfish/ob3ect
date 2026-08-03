@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-axion_strong_cp_ob3ect — Φ promotion cycle 𐑹→𐑬→𐑹 through EP
+axion_strong_cp_ob3ect — < promotion cycle 𐑹→𐑬→𐑹 through EP
 
 AUTHOR: Lando⊗⊙perator
 STATUS: Structural mechanism identified, numerical values pending refinement
@@ -8,7 +8,7 @@ STATUS: Structural mechanism identified, numerical values pending refinement
 The strong CP problem: θ_QCD should be P=𐑹 (Frobenius-special, θ=0 or θ=π)
 but is observed as |θ_QCD| < 10⁻¹⁰. The axion is the structural resolution:
 
-  Φ: 𐑹 (Frobenius) → 𐑬 (Z₂) → 𐑹 (Frobenius)  [θ: θ_0 → Z₂ → 0]
+  <: 𐑹 (Frobenius) → 𐑬 (Z₂) → 𐑹 (Frobenius)  [θ: θ_0 → Z₂ → 0]
 
 The intermediate state is the exceptional point (Ph=𐑻) where parity
 symmetry is partially broken at a non-Hermitian degeneracy.
@@ -35,23 +35,23 @@ omega_corr = 1/744
 # E_EP = M_Planck · exp(-8π · δ_EP) where δ_EP is the promotion gap
 # from horn_torus_classical to the Z₂ intermediate state.
 #
-# The classical horn_torus has Φ=𐑹 (Frobenius-special).
-# The EP intermediate (tensor_agent_loop) has Φ=𐑬 (Z₂), Ph=𐑻 (EP).
+# The classical horn_torus has <=𐑹 (Frobenius-special).
+# The EP intermediate (tensor_agent_loop) has <=𐑬 (Z₂), Ph=𐑻 (EP).
 # Promotion gap δ_EP = weight(𐑹→𐑬) = 1 (single parity flip).
 #
 # But the EP is Ph=𐑻 which is weight 3 from ⊙ (criticality) → 𐑻 (EP).
-# Total gap: δ_EP = 1 (Φ) + 3 (Ph) = 4
+# Total gap: δ_EP = 1 (<) + 3 (Ph) = 4
 #
 # Each unit contributes 8π (horn torus area · S¹×S¹ factor).
 # So E_EP/M_Pl = exp(-4 · 8π) = exp(-32π)
 
-delta_ep = 1 + 3  # Φ flip + criticality→EP
+delta_ep = 1 + 3  # < flip + criticality→EP
 E_EP_over_MPl = math.exp(-delta_ep * 8 * math.pi)
 M_Pl = 1.220890e19  # GeV
 E_EP_GeV = E_EP_over_MPl * M_Pl
 
 print("=" * 70)
-print("AXION / STRONG CP — Φ PROMOTION CYCLE 𐑹→𐑬→𐑹")
+print("AXION / STRONG CP — < PROMOTION CYCLE 𐑹→𐑬→𐑹")
 print("=" * 70)
 print()
 print("─" * 70)
@@ -63,9 +63,9 @@ print(f"  tilt = arctan(1/4) = {math.degrees(tilt):.4f}°")
 print(f"  N_orbits (Clifford orbits) = {N_orbits}")
 print(f"  Ω_corr = {omega_corr}")
 print()
-print(f"  Φ promotion: 𐑹 (Frobenius, θ=θ₀) → 𐑬 (Z₂) → 𐑹 (Frobenius, θ=0)")
+print(f"  < promotion: 𐑹 (Frobenius, θ=θ₀) → 𐑬 (Z₂) → 𐑹 (Frobenius, θ=0)")
 print(f"  Intermediate: Ph=𐑻 (exceptional point)")
-print(f"  δ_EP = δ(Φ:𐑹→𐑬) + δ(Ph:⊙→𐑻) = {delta_ep}")
+print(f"  δ_EP = δ(<:𐑹→𐑬) + δ(Ph:⊙→𐑻) = {delta_ep}")
 print(f"  E_EP/M_Pl = exp(-{delta_ep}·8π) = exp(-{delta_ep*8}π)")
 print(f"  E_EP/M_Pl = {E_EP_over_MPl:.4e}")
 print(f"  E_EP = {E_EP_GeV:.4e} GeV")
@@ -164,7 +164,7 @@ print(f"  θ ⟼ 0 is topologically forced by the Z₂ intermediate")
 print()
 
 # ── §5. μ∘δ=id verification ──
-# δ: strong CP problem (θ_QCD ≈ π, P=𐑹) → axion (Φ=𐑬, Ph=𐑻) → θ=0 (P=𐑹)
+# δ: strong CP problem (θ_QCD ≈ π, P=𐑹) → axion (<=𐑬, Ph=𐑻) → θ=0 (P=𐑹)
 # μ: θ=0 → verify no CP violation (ε_K, neutron EDM constraints)
 # μ∘δ: θ_QCD → θ=0 → θ_QCD (recovered as 0 at the structural level)
 
@@ -177,7 +177,7 @@ print("     → θ_QCD < 10⁻¹⁰ (structural bound)")
 print()
 print("  μ∘δ = id: θ_QCD → (axion relaxation) → θ_QCD < 10⁻¹⁰ ≈ 0")
 print("  The loop closes: the strong CP problem is structurally resolved")
-print("  by the Φ promotion cycle through the exceptional point.")
+print("  by the < promotion cycle through the exceptional point.")
 print()
 
 print("=" * 70)
@@ -189,13 +189,13 @@ print("    ⟨𐑛𐑥𐑾𐑹𐑐𐑧𐑑𐑔𐑑𐑝⊙𐑫𐑕𐑑𐑷⟩ (ho
 print()
 print("  Intermediate (EP — axion phase):")
 print("    ⟨𐑦𐑶𐑽𐑬𐑐𐑧𐑑𐑔𐑠𐑻𐑫𐑳𐑭⟩ (tensor_agent_loop)")
-print("    Φ=𐑬 (Z₂ partial parity), Ph=𐑻 (exceptional point)")
+print("    <=𐑬 (Z₂ partial parity), Ph=𐑻 (exceptional point)")
 print()
 print("  Final state (θ_QCD = 0):")
 print("    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑑𐑔𐑵⊙𐑫𐑳𐑟⟩ (CLINK L8 — terminal)")
 print()
 print("  Promotion chain: 7 steps (1+3+2+1)")
-print("  δ_Φ = 1 (𐑹→𐑬), δ_Ph = 3 (⊙→𐑻), δ_⊢ = 2 (𐑛→𐑦), δ_Σ = 1 (𐑕→𐑳)")
+print("  δ_< = 1 (𐑹→𐑬), δ_Ph = 3 (⊙→𐑻), δ_⊢ = 2 (𐑛→𐑦), δ_Σ = 1 (𐑕→𐑳)")
 print()
 
 print("=" * 70)

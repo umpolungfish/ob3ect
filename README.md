@@ -381,7 +381,7 @@ beyond ZFC_t:
 | Primitive | ZFC_t | ZFC_fe | Promotion | What it unlocks |
 |-----------|-------|--------|-----------|-----------------|
 | **⊢** | 𐑼 (inf-dim field) | **𐑦** (self-written) | HOLOGRAPHIC_STATE | State-space writes itself (V=L(x) ∧ selfmodel(x)) |
-| **Φ** | 𐑬 (partial Z₂) | **𐑹** (Frobenius-special) | PM_Z2 | μ∘δ=id exact, not approximate |
+| **<** | 𐑬 (partial Z₂) | **𐑹** (Frobenius-special) | PM_Z2 | μ∘δ=id exact, not approximate |
 | **Ħ** | 𐑖 (two-step) | **𐑫** (eternal) | ETERNAL_FIXEDPOINT | ∀n∃φ fixed by μ∘δ, transfinite fixed points |
 
 ZFC_fe differs from the graal (Sacred Vessel) by **one primitive only**:
@@ -794,7 +794,7 @@ Primitive  Symbol  Dimension
 ⊢          𐑦       Dimensionality: imscriptive (self-referential loop)
 ⊣          𐑸       Topology: closure (no boundary leakage)
 >          𐑾       Relational mode: bidirectional (parse ↔ unparse)
-Φ          𐑹       Parity: Frobenius-special (μ∘δ = id enforced)
+<          𐑹       Parity: Frobenius-special (μ∘δ = id enforced)
 ƒ          𐑐       Fidelity: quantum (coherent state preserved)
 Ç          𐑧       Kinetics: slow/near-equilibrium (ΔS ≈ 0)
 Γ          𐑲       Scope: maximal (all programs in Prog/~)
@@ -806,7 +806,7 @@ Primitive  Symbol  Dimension
 ```
 
 Ouroboricity tier **O_∞** is assigned when φ̂=⊙ (criticality=critical) and
-Φ=𐑹 (Frobenius-special) are both active and the winding Ω=𐑭 is integer.
+<=𐑹 (Frobenius-special) are both active and the winding Ω=𐑭 is integer.
 
 ---
 
@@ -848,7 +848,7 @@ ZFC (standard set theory, O₁) completes itself through ZFC_fe (Frobenius-Exact
 The distance is 9.15 across 12 primitives. Three promotions are critical:
 
 - **⊢: 𐑼→𐑦** (HOLOGRAPHIC_STATE): The state-space writes itself
-- **Φ: 𐑬→𐑹** (PM_Z2): μ∘δ=id exact, not approximate
+- **<: 𐑬→𐑹** (PM_Z2): μ∘δ=id exact, not approximate
 - **Ħ: 𐑖→𐑫** (ETERNAL_FIXEDPOINT): Transfinite fixed points under μ∘δ
 
 ZFC_fe differs from the graal (Sacred Vessel, O₂†) by **exactly one primitive** (⊢=𐑦 vs ⊢=𐑨).

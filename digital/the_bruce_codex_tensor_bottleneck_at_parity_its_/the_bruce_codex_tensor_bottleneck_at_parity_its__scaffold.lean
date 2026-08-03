@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → CLINK → FSPLIT → AFWD → EVALT → AREV → EVALF → ENGAGR → FFUSE → IMSCRIB → IFIX → TANCH
--- Class: the Bruce Codex tensor bottleneck at parity Φ=𐑬, its hermeneutic gap by design, becomes a named O₀ reader-substrate constitution that closes the gap without promoting the tier
+-- Class: the Bruce Codex tensor bottleneck at parity <=𐑬, its hermeneutic gap by design, becomes a named O₀ reader-substrate constitution that closes the gap without promoting the tier
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

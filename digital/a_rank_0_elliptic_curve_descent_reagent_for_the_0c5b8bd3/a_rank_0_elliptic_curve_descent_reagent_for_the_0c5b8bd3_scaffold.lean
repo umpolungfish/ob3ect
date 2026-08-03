@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → CLINK → FSPLIT → AREV → EVALF → EVALT → FFUSE → ENGAGR → IFIX → TANCH
--- Class: a rank-0 elliptic curve descent reagent for the perfect cuboid Φ-bridge
+-- Class: a rank-0 elliptic curve descent reagent for the perfect cuboid <-bridge
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

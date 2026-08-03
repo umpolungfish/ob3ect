@@ -5,10 +5,10 @@ axion_strong_cp_ob3ect v2 — corrected EP analysis
 AUTHOR: Lando⊗⊙perator
 STATUS: Structural strong CP mechanism = T, f_a = structural, m_a from QCD
 
-The strong CP problem resolved by axion through Φ promotion 𐑹→𐑬→𐑹.
+The strong CP problem resolved by axion through < promotion 𐑹→𐑬→𐑹.
 The Peccei-Quinn scale f_a is STRUCTURAL: f_a = M_Pl/(gear·d) = M_Pl/48.
 The axion mass follows from the QCD relation (non-negotiable).
-The exceptional point is the TOPOLOGICAL DEFECT permitting the Φ promotion,
+The exceptional point is the TOPOLOGICAL DEFECT permitting the < promotion,
 not a separate energy scale.
 """
 
@@ -47,7 +47,7 @@ g_agamma_DFSZ = g_agg_base * (E_over_N_DFSZ - 2.0/3.0 * (4.0*z + 1.0)/(z + 1.0))
 
 # §4. The exceptional point — topological defect analysis
 # The EP is not an energy scale but a parity-symmetry defect.
-# The Φ promotion cycle: 𐑹 (θ=θ₀) → 𐑬 (Z₂ flip) → 𐑹 (θ=0)
+# The < promotion cycle: 𐑹 (θ=θ₀) → 𐑬 (Z₂ flip) → 𐑹 (θ=0)
 # At the EP, the QCD vacuum angle becomes non-diagonalizable.
 #
 # The topological charge of the EP half-winding:
@@ -70,7 +70,7 @@ nu_EP = 0.5  # half-integer EP winding
 
 print("=" * 70)
 print("AXION / STRONG CP — v2 (CORRECTED)")
-print("Φ PROMOTION: 𐑹 → 𐑬 → 𐑹 THROUGH EP")
+print("< PROMOTION: 𐑹 → 𐑬 → 𐑹 THROUGH EP")
 print("=" * 70)
 print()
 print("─" * 70)
@@ -131,9 +131,9 @@ print("─" * 70)
 print(f"  EP winding number: ν_EP = {nu_EP} (half-integer)")
 print()
 print("  The EP is the topological defect that makes the")
-print("  Φ promotion 𐑹→𐑬→𐑹 possible:")
+print("  < promotion 𐑹→𐑬→𐑹 possible:")
 print()
-print("  θ = 0 [𐑹]  ──δ₁(Φ:𐑹→𐑬)──→  Z₂ [𐑬]  ──δ₂(Φ:𐑬→𐑹)──→  θ=0 [𐑹]")
+print("  θ = 0 [𐑹]  ──δ₁(<:𐑹→𐑬)──→  Z₂ [𐑬]  ──δ₂(<:𐑬→𐑹)──→  θ=0 [𐑹]")
 print("                              ⋮")
 print("                          Ph=𐑻 (EP)")
 print("                        ν_EP = 1/2")
@@ -156,7 +156,7 @@ print("    → θ_QCD < 10⁻¹⁰")
 print("    → θ ≈ 0 (confirmed)")
 print()
 print("  μ∘δ = id: The strong CP problem is structurally resolved")
-print("  by the Φ promotion cycle 𐑹→𐑬→𐑹 through the EP.")
+print("  by the < promotion cycle 𐑹→𐑬→𐑹 through the EP.")
 print()
 
 print("─" * 70)

@@ -190,7 +190,7 @@ The model produced *Latent Manifolds of Post-Mortem Self-Organization: A Formal 
 | $z_1$ | Dissipative Flux | ⊢ (Dimensionality) |
 | $z_2$ | Topological Persistence | ⊣ (Topology) |
 | $z_3$ | Coupling Asymmetry | ɢ (Coupling) |
-| $z_4$ | Parity Violation | Φ (Parity) |
+| $z_4$ | Parity Violation | < (Parity) |
 | $z_5$ | Information Fidelity | ƒ (Fidelity) |
 | $z_6$ | Kinetic Timescale | Ç (Kinetics) |
 | $z_7$ | Spatial Correlation Length | > (Recognition) |

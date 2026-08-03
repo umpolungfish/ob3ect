@@ -357,7 +357,7 @@ theorem s1s5_sq : rmul rS1S5 rS1S5 = rK (kmul M1 M5) := by native_decide
 /-- ζ₁₂ is a primitive 12th root of unity in R. -/
 theorem zeta_pow12 : zpow 12 = rone := by native_decide
 theorem zeta_pow6 : zpow 6 = rneg rone := by native_decide
-/-- Φ₁₂(ζ) = ζ⁴ − ζ² + 1 = 0. -/
+/-- <₁₂(ζ) = ζ⁴ − ζ² + 1 = 0. -/
 theorem zeta_phi12 : radd (radd (zpow 4) (rneg (zpow 2))) rone = [] := by native_decide
 /-- u1 is a unit phase: u1·ū1 = 1. -/
 theorem u1_unit : rmul rU1 rU1i = rone := by native_decide

@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → IMSCRIB → CLINK → AFWD → FSPLIT → ENGAGR → EVALF → AREV → EVALT → FFUSE → IFIX → TANCH
--- Class: the obstruction to the Φ promotion or'→nun that resolves RH
+-- Class: the obstruction to the < promotion or'→nun that resolves RH
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

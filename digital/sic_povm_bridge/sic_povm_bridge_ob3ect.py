@@ -62,7 +62,7 @@ D = {
 # ═══════════════════════════════════════════════════════════════════════
 # The 12 primitives organize as 6 Frobenius-dual pairs in the target:
 #   (⊢, ⊣)  — co-origination / holographic
-#   (>, Φ)  — bidir adjoint / Frobenius-special
+#   (>, <)  — bidir adjoint / Frobenius-special
 #   (⋈, ⊤)  — quantum / near-equilibrium
 #   (Γ, ∋)  — maximal / broadcast
 #   (⊙, ⊥)  — critical / 2-step chiral
@@ -181,7 +181,7 @@ class FrobeniusMonad:
           ⟨δ(x), μ(y)⟩ = ⟨x, y⟩  (pairing is preserved)
 
         The 6 dual pairs are:
-          (⊢, ⊣), (>, Φ), (ƒ, Ç), (Γ, ɢ), (⊙, Ħ), (Σ, Ω)
+          (⊢, ⊣), (>, <), (ƒ, Ç), (Γ, ɢ), (⊙, Ħ), (Σ, Ω)
 
         Each pair has the property that δ∘μ and μ∘δ are identities
         on the respective subalgebras.
