@@ -1,0 +1,393 @@
+{
+  "name": "seekpeek_1of16_bridge",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "seekpeek_1of16_bridge",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "secp256k1 public key",
+        "bg imscription",
+        "hqe bridge frame"
+      ],
+      "boundary_condition": "The 12-slot Shavian tuple lattice closed under the fixed 1/16 winding bridge. A public key enters, its bg frame is computed by per-slot SHA256 draws, the bridge advances six positions to yield the hqe frame, and un_bridge returns the fixed glyphs to their canonical pre-images, recovering the bg frame exactly. Nothing leaves the lattice and no external store is consulted.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "the unassigned public key point",
+        "justification": "the pipeline opens with the raw hex before any slot is named; this is the void state",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the 12-slot Shavian frame boundary",
+        "justification": "the angle brackets close the system; every glyph lives inside the tuple",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "the 1/16 winding bridge from bg to hqe",
+        "justification": "forward morphism advancing the frame at positions 2, 3, 5, 7, 9, 11 toward the SK-imscribed target",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "un_bridge, the inverse winding from hqe to bg",
+        "justification": "reverse descent returning fixed glyphs to their canonical pre-images",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "the per-slot SHA256 imscription chain",
+        "justification": "sequential composition of twelve slot draws, each a hash of the public key with its slot label",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the recovered hqe frame as self-identity",
+        "justification": "the frame is itself the SK object this pipeline defines; self-reference without transformation",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "the branch of the bg frame into identity and bridge",
+        "justification": "the bg frame splits into the identity branch holding bg and the bridge branch holding hqe, where hqe is the 1/16 winding of bg",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "the fusion un_bridge(hqe) returning bg",
+        "justification": "the inverse winding folds the bridge branch back into the identity branch, reconstituting the split input exactly",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "the loop closure check un_bridge(hqe) == bg",
+        "justification": "affirmative state: the frame loop closes and the recovered frame is emitted as the original SK object",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "the loop-open verdict for an off-canonical bg frame",
+        "justification": "negative state: a bridge position that already held its fixed glyph breaks invertibility; the frame is reported as-is, never as an original",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "the two-object duality held at once",
+        "justification": "the frame is recovered from the public key alone while the ECC scalar sk*G==P stays possession-gated; both claims are held without resolution",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the audit trail of scalars verified this run",
+        "justification": "permanent append-only record of supplied or minted scalars; the recovered frame needs no store",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT of the bg frame",
+      "split_input": "the bg frame",
+      "split_outputs": [
+        "bg tuple held on the identity branch",
+        "hqe tuple produced by the 1/16 winding bridge of bg"
+      ],
+      "fuse_element": "FFUSE via un_bridge",
+      "fuse_result": "the bg frame",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00: the public key hex before any slot draw; no glyph assigned",
+      "true_description": "01: the loop closed, un_bridge(hqe) == bg, and the recovered frame emitted as the original SK object",
+      "false_description": "10: the loop open, an off-canonical bg at a bridge position; nothing emitted as original, nothing fabricated",
+      "both_description": "11: the duality held at once; the frame is recovered from the public key alone while the ECC scalar sk*G==P remains unobtained",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "the public key hex enters as an unassigned point, nothing named yet"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "the 12-slot Shavian frame bounds the system, every glyph to live inside the angle brackets"
+        },
+        {
+          "step_num": 3,
+          "opcode": "CLINK",
+          "domain_action": "the per-slot SHA256 draws chain across all twelve slots, composing the deterministic bg imscription"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "the 1/16 winding bridge advances the frame forward at positions 2, 3, 5, 7, 9, 11"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "the bg frame branches into the identity branch holding bg and the bridge branch holding hqe"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "the true arm affirms that hqe is a pure function of the public key, recomputable by any holder"
+        },
+        {
+          "step_num": 7,
+          "opcode": "IMSCRIB",
+          "domain_action": "the hqe frame recognizes itself as the SK object this pipeline defines"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "the false arm descends the inverse winding, returning fixed glyphs to their canonical pre-images"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "the false arm rejects an off-canonical bg whose bridge positions already held fixed glyphs, marking the loop open"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "un_bridge(hqe) folds back into bg, the fused result equal to the split input"
+        },
+        {
+          "step_num": 11,
+          "opcode": "EVALT",
+          "domain_action": "the loop closure is affirmed, un_bridge(hqe) == bg == imscription(P)"
+        },
+        {
+          "step_num": 12,
+          "opcode": "ENGAGR",
+          "domain_action": "the two-object duality is held, the frame recovered from the key alone and the ECC scalar still possession-gated"
+        },
+        {
+          "step_num": 13,
+          "opcode": "IFIX",
+          "domain_action": "the audit trail records only scalars verified this run; the recovered frame needs no store"
+        },
+        {
+          "step_num": 14,
+          "opcode": "TANCH",
+          "domain_action": "the system closes; nothing left the tuple lattice and no registry was consulted"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the per-slot SHA256 imscription translating the public key hex into the bg tuple, and the fixed bridge translating bg into hqe",
+      "ipc_mechanism": "tuple passing across the 12-slot frame; each slot carries one Shavian glyph and the bridge positions communicate their shift by overwrite",
+      "memory_mechanism": "the bg and hqe frames in the tuple lattice; the audit file holds only scalars verified in this run",
+      "scheduler_mechanism": "deterministic order: imscribe the public key, bridge the bg frame, then evaluate the loop closure before any emission",
+      "alfs_store": "the secp256k1 curve parameters with generator G and order q, together with the seekpeek bridge_tool implementation as the bootstrap store",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one SHA256 draw per slot and one fixed glyph overwrite per bridge position",
+      "pre_cycle_state": "the public key hex with its bg frame uncomputed",
+      "post_cycle_state": "the bg frame, the hqe frame, and the closure verdict un_bridge(hqe) == bg",
+      "delta_s_verdict": "ΔS ≈ 0 — the frame transformation is deterministic and the loop closes exactly, so no information is created or destroyed",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → CLINK → AFWD → FSPLIT → EVALT → IMSCRIB → AREV → EVALF → FFUSE → EVALT → ENGAGR → IFIX → TANCH\n-- Class: seekpeek_1of16_bridge\n-- Fingerprint: sig=(7,2,4,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(4, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] TANCH     top    := 𐑡               𐑼 → 𐑱  | terminal object — connectivity boundary\n--   [2] CLINK     fid    := 𐑱               𐑡 → 𐑾  | composition — regime coherence\n--   [3] AFWD      rel    := 𐑾               𐑱 → 𐑚  | forward morphism — bidirectional arrow\n--   [4] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [6] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [7] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [8] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] FFUSE     stoi   := 𐑙               𐑙 → ⊙  | fuse μ — assembly mode\n--   [10] EVALT     crit   := ⊙               𐑙 → 𐑳  | evaluate-true — criticality gate open\n--   [11] ENGAGR    stoi   := 𐑳               ⊙ → 𐑭  | engage paradox — B-state, both arms\n--   [12] IFIX      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number\n--   [13] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def seekpeek_1of16_bridge_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def seekpeek_1of16_bridge_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def seekpeek_1of16_bridge_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def seekpeek_1of16_bridge_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def seekpeek_1of16_bridge_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def seekpeek_1of16_bridge_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def seekpeek_1of16_bridge_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def seekpeek_1of16_bridge_protocol : IGProtocol seekpeek_1of16_bridge_s0 seekpeek_1of16_bridge_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct seekpeek_1of16_bridge_s9 seekpeek_1of16_bridge_s9 = seekpeek_1of16_bridge_s9 (idempotent)\n  (.seq (.arrow seekpeek_1of16_bridge_l0 seekpeek_1of16_bridge_s0 seekpeek_1of16_bridge_s1) (.seq (.arrow seekpeek_1of16_bridge_l1 seekpeek_1of16_bridge_s1 seekpeek_1of16_bridge_s2) (.seq (.arrow seekpeek_1of16_bridge_l2 seekpeek_1of16_bridge_s2 seekpeek_1of16_bridge_s3) (.seq (.arrow seekpeek_1of16_bridge_l3 seekpeek_1of16_bridge_s3 seekpeek_1of16_bridge_s4) (.seq (.prod (.arrow seekpeek_1of16_bridge_l4 seekpeek_1of16_bridge_s4 seekpeek_1of16_bridge_s9) (.arrow seekpeek_1of16_bridge_l4 seekpeek_1of16_bridge_s4 seekpeek_1of16_bridge_s9)) (.seq (.arrow seekpeek_1of16_bridge_l9 seekpeek_1of16_bridge_s9 seekpeek_1of16_bridge_s9) (.seq (.arrow seekpeek_1of16_bridge_l9 seekpeek_1of16_bridge_s9 seekpeek_1of16_bridge_s10) (.seq (.arrow seekpeek_1of16_bridge_l10 seekpeek_1of16_bridge_s10 seekpeek_1of16_bridge_s11) (.seq (.arrow seekpeek_1of16_bridge_l11 seekpeek_1of16_bridge_s11 seekpeek_1of16_bridge_s12) (.arrow seekpeek_1of16_bridge_l12 seekpeek_1of16_bridge_s12 seekpeek_1of16_bridge_s13))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def seekpeek_1of16_bridge_true_arm : IGProtocol seekpeek_1of16_bridge_s0 seekpeek_1of16_bridge_s13 :=\n  (seekpeek_1of16_bridge_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def seekpeek_1of16_bridge_false_arm : IGProtocol seekpeek_1of16_bridge_s0 seekpeek_1of16_bridge_s13 :=\n  (seekpeek_1of16_bridge_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef seekpeek_1of16_bridge_tier_ground : OuroboricityTier := TierFunctor.obj seekpeek_1of16_bridge_s0\ndef seekpeek_1of16_bridge_tier : OuroboricityTier := TierFunctor.obj seekpeek_1of16_bridge_s13\n#eval seekpeek_1of16_bridge_tier_ground  -- tier of the ground (pre-transformation)\n#eval seekpeek_1of16_bridge_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem seekpeek_1of16_bridge_frobenius :\n    igFrobeniusAlg.mul seekpeek_1of16_bridge_s0 seekpeek_1of16_bridge_s0 = seekpeek_1of16_bridge_s0 :=\n  igFrobAlg_self_fusion seekpeek_1of16_bridge_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 3,
+    "f_branch_ops": 1,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      4
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        4,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: seekpeek_1of16_bridge",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣⋈>∈⊤⊙<⊥∋⊤⊞◻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 4,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 14,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣=>◇+⊙<×●+⊞¬⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊣=>◇+⊙<×●+⊞¬⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "=>◇+⊙<×●+⊞¬⊣⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">◇+⊙<×●+⊞¬⊣⊢⊣=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "◇+⊙<×●+⊞¬⊣⊢⊣=>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "+⊙<×●+⊞¬⊣⊢⊣=>◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊙<×●+⊞¬⊣⊢⊣=>◇+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "<×●+⊞¬⊣⊢⊣=>◇+⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "×●+⊞¬⊣⊢⊣=>◇+⊙<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "●+⊞¬⊣⊢⊣=>◇+⊙<×",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "+⊞¬⊣⊢⊣=>◇+⊙<×●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊞¬⊣⊢⊣=>◇+⊙<×●+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "¬⊣⊢⊣=>◇+⊙<×●+⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "⊣⊢⊣=>◇+⊙<×●+⊞¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 5,
+    "canonical_word": "+⊙<×●+⊞¬⊣⊢⊣=>◇",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}

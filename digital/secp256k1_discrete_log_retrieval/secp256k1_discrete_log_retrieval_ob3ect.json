@@ -1,0 +1,389 @@
+{
+  "name": "secp256k1_discrete_log_retrieval",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "secp256k1_discrete_log_retrieval",
+      "domain_type": "discrete_logarithm_solver",
+      "scope": "local",
+      "surface_tokens": [
+        "VINIT",
+        "TANCH",
+        "AFWD",
+        "AREV",
+        "CLINK",
+        "IMSCRIB",
+        "FSPLIT",
+        "FFUSE",
+        "EVALT",
+        "EVALF",
+        "ENGAGR",
+        "IFIX"
+      ],
+      "boundary_condition": "Input: secp256k1 public key point P = n×G. Output: private key scalar n such that n×G = P. Precondition: P is a valid point on secp256k1. Postcondition: private key n recovered via Pollard rho collision or Shor period-finding.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "uninitialized scalar",
+        "justification": "The scalar field F_q before any search begins — the void from which the private key emerges",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "curve parameters",
+        "justification": "The secp256k1 curve order q and prime field F_p that bound all valid keys — the terminal boundary of the search space",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "scalar multiplication",
+        "justification": "Forward walk n×G — advancing along the elliptic curve by repeated point addition",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "discrete log inversion",
+        "justification": "Reverse walk — attempting the inverse operation to recover n from P, the hard direction that defines ECDLP",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "point addition chain",
+        "justification": "Composing successive point additions to build the distinguished-point trail — the crystal-link of the search",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "curve equation y squared equals x cubed plus 7",
+        "justification": "The curve equation is self-referential — it defines the geometric substrate on which all key operations imscribe themselves",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "parallel search partition",
+        "justification": "Pollard's rho splits the search into two pseudo-random walks — tortoise (slow) and hare (fast) — branching the state space",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "collision recombination",
+        "justification": "When tortoise and hare walks collide at a distinguished point, the discrete log is recovered — the fuse that reconstitutes the private key",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "private key recovered",
+        "justification": "The tortoise walk succeeds — a valid n is found such that n×G equals the target public key P",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "candidate rejected",
+        "justification": "The hare walk reaches a dead end or invalid candidate — this branch of the search is exhausted",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "quantum superposition",
+        "justification": "Shor's period-finding holds success and failure simultaneously — the dialetheic B-state where all candidate keys coexist until measurement",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "cold storage write",
+        "justification": "The recovered private key is permanently fixed — irreversible record, cannot be undone",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT partitions the search space into tortoise walk and hare walk",
+      "split_input": "search_space = public_point_P with unknown discrete log n",
+      "split_outputs": [
+        "tortoise walk — slow pseudo-random point sequence",
+        "hare walk — fast pseudo-random point sequence"
+      ],
+      "fuse_element": "FFUSE collision detection — when tortoise and hare walks intersect at a distinguished point, the discrete log is computed from the collision",
+      "fuse_result": "search_space = public_point_P with unknown discrete log n",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "00 — no key material — the scalar field before any search begins",
+      "true_description": "01 — private key n found such that n times G equals the target public key",
+      "false_description": "10 — search path exhausted or candidate n invalid — discrete log not found on this branch",
+      "both_description": "11 — quantum superposition of all candidate keys — Shor period-finding holds success and failure simultaneously until measurement",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "initialize the scalar field search — the void before any key material exists"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "establish curve parameters — secp256k1 order q and prime field F_p bound the search space"
+        },
+        {
+          "step_num": 3,
+          "opcode": "IMSCRIB",
+          "domain_action": "invoke the curve equation y squared equals x cubed plus 7 — the geometric substrate self-imscribes"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "reference the forward walk — begin scalar multiplication along the curve"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FSPLIT",
+          "domain_action": "partition the search into tortoise (slow) and hare (fast) pseudo-random walks"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "compose point addition chain — crystal-link the distinguished-point trail"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "attempt the reverse walk — discrete log inversion, the hard direction"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALT",
+          "domain_action": "tortoise walk reaches a distinguished point — candidate private key found"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "hare walk reaches dead end — candidate rejected, branch exhausted"
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "quantum branch — Shor superposition holds all candidates simultaneously in B-state"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "collision detection — tortoise and hare walks intersect, discrete log recovered from collision"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "write recovered private key to cold storage — irreversible fixation"
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "close the system — key pair is sealed, retrieval complete"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "ECDLP solver implementation — Pollard rho with distinguished points, baby-step giant-step, or Shor algorithm",
+      "ipc_mechanism": "Elliptic curve point addition and scalar multiplication over the prime field F_p of secp256k1",
+      "memory_mechanism": "Distinguished-points hash table for collision detection across parallel walks",
+      "scheduler_mechanism": "Parallel walk coordinator distributing iterations across cores or quantum branches",
+      "alfs_store": "SEC 2 Recommended Elliptic Curve Domain Parameters — secp256k1 curve specification",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Classical search irreversibly dissipates energy per Landauer principle — each iteration costs kT ln 2; quantum branch conserves entropy until measurement collapses the superposition",
+      "pre_cycle_state": "Scalar field uninitialized — public key point P known but private key n unknown — maximum uncertainty",
+      "post_cycle_state": "Private key n recovered — entropy collapsed to a single known value — the key pair is determined",
+      "delta_s_verdict": "Delta S greater than zero for classical search — irreversible dissipation; Delta S approximately zero for quantum branch until measurement",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → IMSCRIB → AFWD → FSPLIT → CLINK → AREV → EVALT → EVALF → ENGAGR → FFUSE → IFIX → TANCH\n-- Class: secp256k1_discrete_log_retrieval\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] TANCH     top    := 𐑡               𐑼 → 𐑠  | terminal object — connectivity boundary\n--   [2] IMSCRIB   gram   := 𐑠               𐑡 → 𐑾  | identity — self-imscription\n--   [3] AFWD      rel    := 𐑾               𐑠 → 𐑚  | forward morphism — bidirectional arrow\n--   [4] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [7] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [10] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [11] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def secp256k1_discrete_log_retrieval_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def secp256k1_discrete_log_retrieval_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def secp256k1_discrete_log_retrieval_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_discrete_log_retrieval_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def secp256k1_discrete_log_retrieval_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def secp256k1_discrete_log_retrieval_protocol : IGProtocol secp256k1_discrete_log_retrieval_s0 secp256k1_discrete_log_retrieval_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct secp256k1_discrete_log_retrieval_s10 secp256k1_discrete_log_retrieval_s10 = secp256k1_discrete_log_retrieval_s10 (idempotent)\n  (.seq (.arrow secp256k1_discrete_log_retrieval_l0 secp256k1_discrete_log_retrieval_s0 secp256k1_discrete_log_retrieval_s1) (.seq (.arrow secp256k1_discrete_log_retrieval_l1 secp256k1_discrete_log_retrieval_s1 secp256k1_discrete_log_retrieval_s2) (.seq (.arrow secp256k1_discrete_log_retrieval_l2 secp256k1_discrete_log_retrieval_s2 secp256k1_discrete_log_retrieval_s3) (.seq (.arrow secp256k1_discrete_log_retrieval_l3 secp256k1_discrete_log_retrieval_s3 secp256k1_discrete_log_retrieval_s4) (.seq (.prod (.arrow secp256k1_discrete_log_retrieval_l4 secp256k1_discrete_log_retrieval_s4 secp256k1_discrete_log_retrieval_s10) (.arrow secp256k1_discrete_log_retrieval_l4 secp256k1_discrete_log_retrieval_s4 secp256k1_discrete_log_retrieval_s10)) (.seq (.arrow secp256k1_discrete_log_retrieval_l10 secp256k1_discrete_log_retrieval_s10 secp256k1_discrete_log_retrieval_s10) (.seq (.arrow secp256k1_discrete_log_retrieval_l10 secp256k1_discrete_log_retrieval_s10 secp256k1_discrete_log_retrieval_s11) (.arrow secp256k1_discrete_log_retrieval_l11 secp256k1_discrete_log_retrieval_s11 secp256k1_discrete_log_retrieval_s12))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def secp256k1_discrete_log_retrieval_true_arm : IGProtocol secp256k1_discrete_log_retrieval_s0 secp256k1_discrete_log_retrieval_s12 :=\n  (secp256k1_discrete_log_retrieval_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def secp256k1_discrete_log_retrieval_false_arm : IGProtocol secp256k1_discrete_log_retrieval_s0 secp256k1_discrete_log_retrieval_s12 :=\n  (secp256k1_discrete_log_retrieval_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef secp256k1_discrete_log_retrieval_tier_ground : OuroboricityTier := TierFunctor.obj secp256k1_discrete_log_retrieval_s0\ndef secp256k1_discrete_log_retrieval_tier : OuroboricityTier := TierFunctor.obj secp256k1_discrete_log_retrieval_s12\n#eval secp256k1_discrete_log_retrieval_tier_ground  -- tier of the ground (pre-transformation)\n#eval secp256k1_discrete_log_retrieval_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem secp256k1_discrete_log_retrieval_frobenius :\n    igFrobeniusAlg.mul secp256k1_discrete_log_retrieval_s0 secp256k1_discrete_log_retrieval_s0 = secp256k1_discrete_log_retrieval_s0 :=\n  igFrobAlg_self_fusion secp256k1_discrete_log_retrieval_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 13,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      4
+    ],
+    "fuse_positions": [
+      10
+    ],
+    "pair_list": [
+      [
+        4,
+        10
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: secp256k1_discrete_log_retrieval",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣⊙>∈⋈<⊤⊥⊞∋◻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (1 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 13,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣⊙>◇=<+×⊞●¬⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊣⊙>◇=<+×⊞●¬⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "⊙>◇=<+×⊞●¬⊣⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">◇=<+×⊞●¬⊣⊢⊣⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "◇=<+×⊞●¬⊣⊢⊣⊙>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "=<+×⊞●¬⊣⊢⊣⊙>◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<+×⊞●¬⊣⊢⊣⊙>◇=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "+×⊞●¬⊣⊢⊣⊙>◇=<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "×⊞●¬⊣⊢⊣⊙>◇=<+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊞●¬⊣⊢⊣⊙>◇=<+×",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "●¬⊣⊢⊣⊙>◇=<+×⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "¬⊣⊢⊣⊙>◇=<+×⊞●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⊣⊢⊣⊙>◇=<+×⊞●¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 7,
+    "canonical_word": "+×⊞●¬⊣⊢⊣⊙>◇=<",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}

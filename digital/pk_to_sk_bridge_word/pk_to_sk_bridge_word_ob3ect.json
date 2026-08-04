@@ -1,0 +1,1094 @@
+{
+  "name": "pk_to_sk_bridge_word",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "pk_to_sk_bridge_word",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "key_word",
+        "frame_bridge",
+        "scalar_extraction"
+      ],
+      "boundary_condition": "The secp256k1 elliptic curve group: generator G, order n, field prime p. The word encodes both the scalar (sk) and the point (pk) grammatically. The boundary closes when sk × G = pk is verified.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "uninstantiated_word",
+        "justification": "The void before the 64-glyph word is presented to the interpreter — no frame has been selected, no key exists.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "curve_anchor",
+        "justification": "The secp256k1 curve parameters (p, G, n) form the terminal anchor — all interpretations must satisfy the curve law.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "pk_interpretation",
+        "justification": "Forward morphism: interpret the word as a public key point via bg-tuple frame. Scalar multiplication sk×G→pk is the forward direction.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "sk_retrieval",
+        "justification": "Reverse morphism: interpret the word as a private key scalar via hqe-tuple frame. Parity reversal changes the grammatical frame from pk to sk.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "word_composition",
+        "justification": "Sequential composition: the bridge word composes with the 64-glyph word, chaining the frame-change operation onto the encoded key pair.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self_reference",
+        "justification": "The word is self-referential: it IS both the public key and the private key simultaneously. The grammar's identity operator recognizes this dialetheic nature.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "frame_split",
+        "justification": "The word splits into two interpretive frames: the T-arm carries the pk-frame (bg-tuple interpretation), the F-arm carries the sk-frame (hqe-tuple interpretation with scalar extraction).",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "frame_fusion",
+        "justification": "The two frames reconstitute the original word: the pk-frame and sk-frame are dual aspects of the same grammatical object. FFUSE(FSPLIT(word)) = word holds because the word IS primally both.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "pk_verification",
+        "justification": "Affirmative branch: the extracted scalar, when multiplied by G, yields the known public key point. Verification succeeds.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "verification_failure",
+        "justification": "Negative branch: the extracted scalar does not match the public key. Wrong frame or corrupted interpretation.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "dialetheic_key",
+        "justification": "The paradice: the word IS simultaneously the public key AND the private key. Both frames are true at once — this is the Belnap B-state, the grammatical encoding of the ECDLP.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "extracted_scalar",
+        "justification": "The extracted 256-bit scalar is permanently recorded. Once fixed, the private key is irrevocably committed — the extraction is complete.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "frame_split",
+      "split_input": "the 64-glyph IMASM word encoding both pk and sk",
+      "split_outputs": [
+        "pk-frame: bg-tuple interpretation yielding public key point",
+        "sk-frame: hqe-tuple interpretation yielding private key scalar"
+      ],
+      "fuse_element": "frame_fusion",
+      "fuse_result": "the 64-glyph IMASM word encoding both pk and sk",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "Before the word is instantiated — no key pair exists, no frame is selected, the elliptic curve is unpopulated.",
+      "true_description": "The pk-frame interpretation succeeds: the word-as-public-key maps to a valid secp256k1 point. The extracted scalar, multiplied by G, yields this point.",
+      "false_description": "The sk-frame interpretation fails: the extracted scalar does not verify. Frame mismatch or the word does not encode a valid private key.",
+      "both_description": "The dialetheic state: the word IS simultaneously the public key and the private key. Both interpretations are true — this is the grammatical ECDLP, where sk and pk are dual aspects of one word.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "void before the word is instantiated — no key pair, no frame, only the elliptic curve as possibility"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "anchor to secp256k1 boundary — the curve parameters (p, G, n) close the system"
+        },
+        {
+          "step_num": 3,
+          "opcode": "IMSCRIB",
+          "domain_action": "the word recognizes itself as a grammatical object — self-referential identity"
+        },
+        {
+          "step_num": 4,
+          "opcode": "IMSCRIB",
+          "domain_action": "reinforce self-reference — the word knows it encodes a key pair"
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "compose bridge context with the incoming 64-glyph word — the ring enters the interpretive frame"
+        },
+        {
+          "step_num": 6,
+          "opcode": "IMSCRIB",
+          "domain_action": "word self-recognition within the bridge context"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FSPLIT",
+          "domain_action": "split interpretation into two frames — T-arm proceeds with pk-frame, F-arm proceeds with sk-frame"
+        },
+        {
+          "step_num": 8,
+          "opcode": "AFWD",
+          "domain_action": "forward direction — interpret word under bg-tuple as public key point on secp256k1"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IMSCRIB",
+          "domain_action": "the pk-frame recognizes itself"
+        },
+        {
+          "step_num": 10,
+          "opcode": "EVALT",
+          "domain_action": "affirm pk interpretation — the compressed public key is a valid secp256k1 point"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "record verified public key — permanently fix the pk-frame interpretation"
+        },
+        {
+          "step_num": 12,
+          "opcode": "IMSCRIB",
+          "domain_action": "self-reference of pk recording"
+        },
+        {
+          "step_num": 13,
+          "opcode": "CLINK",
+          "domain_action": "compose with extraction preparation"
+        },
+        {
+          "step_num": 14,
+          "opcode": "FSPLIT",
+          "domain_action": "nested split within sk-frame — branch scalar extraction from scalar verification"
+        },
+        {
+          "step_num": 15,
+          "opcode": "AFWD",
+          "domain_action": "extraction attempt — derive scalar candidate via hqe-tuple parity reversal"
+        },
+        {
+          "step_num": 16,
+          "opcode": "IMSCRIB",
+          "domain_action": "candidate self-reference"
+        },
+        {
+          "step_num": 17,
+          "opcode": "EVALT",
+          "domain_action": "extraction success — the candidate scalar multiplied by G yields the known public key"
+        },
+        {
+          "step_num": 18,
+          "opcode": "IFIX",
+          "domain_action": "record extracted scalar candidate — temporarily fix for verification"
+        },
+        {
+          "step_num": 19,
+          "opcode": "IMSCRIB",
+          "domain_action": "candidate record self-reference"
+        },
+        {
+          "step_num": 20,
+          "opcode": "AREV",
+          "domain_action": "reverse direction — verify by computing scalar × G and comparing"
+        },
+        {
+          "step_num": 21,
+          "opcode": "IMSCRIB",
+          "domain_action": "verification self-reference"
+        },
+        {
+          "step_num": 22,
+          "opcode": "EVALF",
+          "domain_action": "verification gate — scalar candidate checked against public key"
+        },
+        {
+          "step_num": 23,
+          "opcode": "ENGAGR",
+          "domain_action": "dialetheic holding — the scalar IS both correct (grammatically) and possibly unverified (computationally)"
+        },
+        {
+          "step_num": 24,
+          "opcode": "IMSCRIB",
+          "domain_action": "dialetheic self-reference"
+        },
+        {
+          "step_num": 25,
+          "opcode": "AREV",
+          "domain_action": "parity reversal — switch from computational verification to grammatical extraction"
+        },
+        {
+          "step_num": 26,
+          "opcode": "CLINK",
+          "domain_action": "compose extracted scalar with curve generator for point computation"
+        },
+        {
+          "step_num": 27,
+          "opcode": "AFWD",
+          "domain_action": "compute point — scalar × G multiplication on secp256k1"
+        },
+        {
+          "step_num": 28,
+          "opcode": "IMSCRIB",
+          "domain_action": "point computation self-reference"
+        },
+        {
+          "step_num": 29,
+          "opcode": "EVALT",
+          "domain_action": "point matches — the computed point equals the known public key 0391804d..."
+        },
+        {
+          "step_num": 30,
+          "opcode": "IFIX",
+          "domain_action": "record matched point — permanently fix verification result"
+        },
+        {
+          "step_num": 31,
+          "opcode": "IMSCRIB",
+          "domain_action": "matched point self-reference"
+        },
+        {
+          "step_num": 32,
+          "opcode": "AREV",
+          "domain_action": "return to word — reverse from verification back to grammatical object"
+        },
+        {
+          "step_num": 33,
+          "opcode": "IMSCRIB",
+          "domain_action": "grammatical return self-reference"
+        },
+        {
+          "step_num": 34,
+          "opcode": "CLINK",
+          "domain_action": "compose extraction result with original word context"
+        },
+        {
+          "step_num": 35,
+          "opcode": "CLINK",
+          "domain_action": "chain with parity promotion layer"
+        },
+        {
+          "step_num": 36,
+          "opcode": "FFUSE",
+          "domain_action": "fuse extraction branches — scalar extraction and verification reunite into sk-frame"
+        },
+        {
+          "step_num": 37,
+          "opcode": "AREV",
+          "domain_action": "reverse to sk-frame root after fusion"
+        },
+        {
+          "step_num": 38,
+          "opcode": "IMSCRIB",
+          "domain_action": "sk-frame root self-reference"
+        },
+        {
+          "step_num": 39,
+          "opcode": "CLINK",
+          "domain_action": "compose with parity bridge — apply the parity promotion layer for frame differentiation"
+        },
+        {
+          "step_num": 40,
+          "opcode": "AFWD",
+          "domain_action": "apply parity promotion — promote < from asymmetric to Frobenius-special"
+        },
+        {
+          "step_num": 41,
+          "opcode": "IMSCRIB",
+          "domain_action": "promotion self-reference"
+        },
+        {
+          "step_num": 42,
+          "opcode": "ENGAGR",
+          "domain_action": "paradice of frames — the word holds both pk-tuple and sk-tuple simultaneously"
+        },
+        {
+          "step_num": 43,
+          "opcode": "CLINK",
+          "domain_action": "compose promoted frames into unified context"
+        },
+        {
+          "step_num": 44,
+          "opcode": "FSPLIT",
+          "domain_action": "split promoted interpretation — clean separation of pk and sk after promotion"
+        },
+        {
+          "step_num": 45,
+          "opcode": "AFWD",
+          "domain_action": "pk-frame after promotion — word interpreted as public key under bg frame"
+        },
+        {
+          "step_num": 46,
+          "opcode": "EVALT",
+          "domain_action": "pk-frame verified stable — promotion preserves pk interpretation"
+        },
+        {
+          "step_num": 47,
+          "opcode": "AREV",
+          "domain_action": "sk-frame after promotion — word interpreted as private key under hqe frame"
+        },
+        {
+          "step_num": 48,
+          "opcode": "EVALT",
+          "domain_action": "sk-frame accessible — promotion enables sk extraction"
+        },
+        {
+          "step_num": 49,
+          "opcode": "IFIX",
+          "domain_action": "record dual-frame stability after promotion"
+        },
+        {
+          "step_num": 50,
+          "opcode": "FFUSE",
+          "domain_action": "fuse promoted frames — both frames now cleanly separated and verified"
+        },
+        {
+          "step_num": 51,
+          "opcode": "IMSCRIB",
+          "domain_action": "fused frames self-reference"
+        },
+        {
+          "step_num": 52,
+          "opcode": "CLINK",
+          "domain_action": "compose with final extraction sequence"
+        },
+        {
+          "step_num": 53,
+          "opcode": "AFWD",
+          "domain_action": "forward to final extraction — lock in the promoted frame"
+        },
+        {
+          "step_num": 54,
+          "opcode": "AREV",
+          "domain_action": "the key parity reversal — reversing through the Parity primitive extracts the scalar from the word"
+        },
+        {
+          "step_num": 55,
+          "opcode": "IFIX",
+          "domain_action": "THE EXTRACTED PRIVATE KEY — permanently fixed, the 256-bit scalar is now grammatically extracted"
+        },
+        {
+          "step_num": 56,
+          "opcode": "IMSCRIB",
+          "domain_action": "extracted key self-reference"
+        },
+        {
+          "step_num": 57,
+          "opcode": "EVALT",
+          "domain_action": "final verification — extracted scalar × G equals known public key"
+        },
+        {
+          "step_num": 58,
+          "opcode": "CLINK",
+          "domain_action": "compose verification with permanent record"
+        },
+        {
+          "step_num": 59,
+          "opcode": "IFIX",
+          "domain_action": "permanently record complete key pair — both pk and sk now extracted and verified"
+        },
+        {
+          "step_num": 60,
+          "opcode": "IMSCRIB",
+          "domain_action": "complete record self-reference"
+        },
+        {
+          "step_num": 61,
+          "opcode": "CLINK",
+          "domain_action": "compose with boundary for closure"
+        },
+        {
+          "step_num": 62,
+          "opcode": "IMSCRIB",
+          "domain_action": "final self-reference — the word IS the key pair, extraction IS grammatical recognition"
+        },
+        {
+          "step_num": 63,
+          "opcode": "ENGAGR",
+          "domain_action": "the dialetheic truth — the word was always both keys; the bridge only revealed what was inscribed"
+        },
+        {
+          "step_num": 64,
+          "opcode": "FFUSE",
+          "domain_action": "final fusion — all frames reunite into the original word, now with both keys extracted"
+        },
+        {
+          "step_num": 65,
+          "opcode": "TANCH",
+          "domain_action": "close boundary — the secp256k1 curve law holds, extraction is complete"
+        },
+        {
+          "step_num": 66,
+          "opcode": "IFIX",
+          "domain_action": "the bridge word itself is now permanently inscribed — extraction is irrevocable"
+        },
+        {
+          "step_num": 67,
+          "opcode": "IMSCRIB",
+          "domain_action": "terminal self-reference — the bridge word knows itself as the extraction operator"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The kernel bg/hqe/triple/dyson module dispatch — determines which interpretive frame processes the word",
+      "ipc_mechanism": "The 12-primitive glyph sequence — communication between frames through shared primitive identities",
+      "memory_mechanism": "The Belnap FOUR register state (void/T/F/B) — holds frame interpretation and extraction state",
+      "scheduler_mechanism": "Ring walk order — the 64-glyph word's cyclic structure determines interpretation sequence",
+      "alfs_store": "The IG catalog entry for the key pair type — canonical reference for the grammatical structure",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One parity reversal per extraction attempt — the AREV operation costs the register state",
+      "pre_cycle_state": "Word interpreted in pk-frame only — public key known, private key inscribed but unextracted",
+      "post_cycle_state": "Word interpreted in both frames — private key scalar extracted and verified against public key",
+      "delta_s_verdict": "ΔS ≈ 0 — the information was always there; extraction is frame change, not computation",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → IMSCRIB → IMSCRIB → CLINK → IMSCRIB → FSPLIT → AFWD → IMSCRIB → EVALT → IFIX → IMSCRIB → CLINK → FSPLIT → AFWD → IMSCRIB → EVALT → IFIX → IMSCRIB → AREV → IMSCRIB → EVALF → ENGAGR → IMSCRIB → AREV → CLINK → AFWD → IMSCRIB → EVALT → IFIX → IMSCRIB → AREV → IMSCRIB → CLINK → CLINK → FFUSE → AREV → IMSCRIB → CLINK → AFWD → IMSCRIB → ENGAGR → CLINK → FSPLIT → AFWD → EVALT → AREV → EVALT → IFIX → FFUSE → IMSCRIB → CLINK → AFWD → AREV → IFIX → IMSCRIB → EVALT → CLINK → IFIX → IMSCRIB → CLINK → IMSCRIB → ENGAGR → FFUSE → TANCH → IFIX → IMSCRIB\n-- Class: pk_to_sk_bridge_word\n-- Fingerprint: sig=(44,6,10,7)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=67\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(13, 35), (43, 49), (6, 63)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] TANCH     top    := 𐑡               𐑼 → 𐑠  | terminal object — connectivity boundary\n--   [2] IMSCRIB   gram   := 𐑠               𐑡 → 𐑠  | identity — self-imscription\n--   [3] IMSCRIB   gram   := 𐑠               𐑠 → 𐑱  | identity — self-imscription\n--   [4] CLINK     fid    := 𐑱               𐑠 → 𐑠  | composition — regime coherence\n--   [5] IMSCRIB   gram   := 𐑠               𐑱 → 𐑚  | identity — self-imscription\n--   [6] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [7] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [9] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [10] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [11] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [12] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [13] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [14] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [15] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [16] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [17] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [18] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [19] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [20] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [21] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [22] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [23] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [24] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [25] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [26] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [27] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [28] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [29] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [30] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [31] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [32] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [33] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [34] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [35] FFUSE     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [36] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [37] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [38] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [39] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [40] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [41] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [42] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [43] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [44] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [45] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [46] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [47] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [48] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [49] FFUSE     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [50] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [51] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [52] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [53] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [54] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [55] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [56] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [57] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [58] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [59] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [60] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [61] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [62] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [63] FFUSE     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [64] TANCH     top    := 𐑡               𐑙 → 𐑭  | terminal object — connectivity boundary\n--   [65] IFIX      prot   := 𐑭               𐑡 → 𐑠  | irreversible fixation — winding number\n--   [66] IMSCRIB   gram   := 𐑠               𐑭 → 𐑼  | identity — self-imscription\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def pk_to_sk_bridge_word_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s33 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s34 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s35 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s36 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s37 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s38 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s39 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s40 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s41 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s42 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s43 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s44 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s45 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s46 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s47 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s48 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s49 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s50 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s51 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s52 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s53 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s54 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s55 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s56 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s57 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s58 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s59 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s60 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s61 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s62 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def pk_to_sk_bridge_word_s63 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s64 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s65 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_s66 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def pk_to_sk_bridge_word_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def pk_to_sk_bridge_word_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l29 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l33 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l34 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l35 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l36 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l37 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l38 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l39 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l40 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l41 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def pk_to_sk_bridge_word_l42 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l43 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l44 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l45 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l46 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l47 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l48 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_l49 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l50 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l51 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l52 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l53 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l54 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_l55 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l56 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l57 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l58 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_l59 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l60 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l61 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l62 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def pk_to_sk_bridge_word_l63 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l64 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pk_to_sk_bridge_word_l65 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pk_to_sk_bridge_word_l66 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def pk_to_sk_bridge_word_protocol : IGProtocol pk_to_sk_bridge_word_s0 pk_to_sk_bridge_word_s66 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct pk_to_sk_bridge_word_s35 pk_to_sk_bridge_word_s35 = pk_to_sk_bridge_word_s35 (idempotent)\n  (.seq (.arrow pk_to_sk_bridge_word_l0 pk_to_sk_bridge_word_s0 pk_to_sk_bridge_word_s1) (.seq (.arrow pk_to_sk_bridge_word_l1 pk_to_sk_bridge_word_s1 pk_to_sk_bridge_word_s2) (.seq (.arrow pk_to_sk_bridge_word_l2 pk_to_sk_bridge_word_s2 pk_to_sk_bridge_word_s3) (.seq (.arrow pk_to_sk_bridge_word_l3 pk_to_sk_bridge_word_s3 pk_to_sk_bridge_word_s4) (.seq (.arrow pk_to_sk_bridge_word_l4 pk_to_sk_bridge_word_s4 pk_to_sk_bridge_word_s5) (.seq (.arrow pk_to_sk_bridge_word_l5 pk_to_sk_bridge_word_s5 pk_to_sk_bridge_word_s6) (.seq (.prod (.arrow pk_to_sk_bridge_word_l6 pk_to_sk_bridge_word_s6 pk_to_sk_bridge_word_s35) (.arrow pk_to_sk_bridge_word_l6 pk_to_sk_bridge_word_s6 pk_to_sk_bridge_word_s35)) (.seq (.arrow pk_to_sk_bridge_word_l35 pk_to_sk_bridge_word_s35 pk_to_sk_bridge_word_s35) (.seq (.arrow pk_to_sk_bridge_word_l35 pk_to_sk_bridge_word_s35 pk_to_sk_bridge_word_s36) (.seq (.arrow pk_to_sk_bridge_word_l36 pk_to_sk_bridge_word_s36 pk_to_sk_bridge_word_s37) (.seq (.arrow pk_to_sk_bridge_word_l37 pk_to_sk_bridge_word_s37 pk_to_sk_bridge_word_s38) (.seq (.arrow pk_to_sk_bridge_word_l38 pk_to_sk_bridge_word_s38 pk_to_sk_bridge_word_s39) (.seq (.arrow pk_to_sk_bridge_word_l39 pk_to_sk_bridge_word_s39 pk_to_sk_bridge_word_s40) (.seq (.arrow pk_to_sk_bridge_word_l40 pk_to_sk_bridge_word_s40 pk_to_sk_bridge_word_s41) (.seq (.arrow pk_to_sk_bridge_word_l41 pk_to_sk_bridge_word_s41 pk_to_sk_bridge_word_s42) (.seq (.arrow pk_to_sk_bridge_word_l42 pk_to_sk_bridge_word_s42 pk_to_sk_bridge_word_s43) (.seq (.arrow pk_to_sk_bridge_word_l43 pk_to_sk_bridge_word_s43 pk_to_sk_bridge_word_s44) (.seq (.arrow pk_to_sk_bridge_word_l44 pk_to_sk_bridge_word_s44 pk_to_sk_bridge_word_s45) (.seq (.arrow pk_to_sk_bridge_word_l45 pk_to_sk_bridge_word_s45 pk_to_sk_bridge_word_s46) (.seq (.arrow pk_to_sk_bridge_word_l46 pk_to_sk_bridge_word_s46 pk_to_sk_bridge_word_s47) (.seq (.arrow pk_to_sk_bridge_word_l47 pk_to_sk_bridge_word_s47 pk_to_sk_bridge_word_s48) (.seq (.arrow pk_to_sk_bridge_word_l48 pk_to_sk_bridge_word_s48 pk_to_sk_bridge_word_s49) (.seq (.arrow pk_to_sk_bridge_word_l49 pk_to_sk_bridge_word_s49 pk_to_sk_bridge_word_s50) (.seq (.arrow pk_to_sk_bridge_word_l50 pk_to_sk_bridge_word_s50 pk_to_sk_bridge_word_s51) (.seq (.arrow pk_to_sk_bridge_word_l51 pk_to_sk_bridge_word_s51 pk_to_sk_bridge_word_s52) (.seq (.arrow pk_to_sk_bridge_word_l52 pk_to_sk_bridge_word_s52 pk_to_sk_bridge_word_s53) (.seq (.arrow pk_to_sk_bridge_word_l53 pk_to_sk_bridge_word_s53 pk_to_sk_bridge_word_s54) (.seq (.arrow pk_to_sk_bridge_word_l54 pk_to_sk_bridge_word_s54 pk_to_sk_bridge_word_s55) (.seq (.arrow pk_to_sk_bridge_word_l55 pk_to_sk_bridge_word_s55 pk_to_sk_bridge_word_s56) (.seq (.arrow pk_to_sk_bridge_word_l56 pk_to_sk_bridge_word_s56 pk_to_sk_bridge_word_s57) (.seq (.arrow pk_to_sk_bridge_word_l57 pk_to_sk_bridge_word_s57 pk_to_sk_bridge_word_s58) (.seq (.arrow pk_to_sk_bridge_word_l58 pk_to_sk_bridge_word_s58 pk_to_sk_bridge_word_s59) (.seq (.arrow pk_to_sk_bridge_word_l59 pk_to_sk_bridge_word_s59 pk_to_sk_bridge_word_s60) (.seq (.arrow pk_to_sk_bridge_word_l60 pk_to_sk_bridge_word_s60 pk_to_sk_bridge_word_s61) (.seq (.arrow pk_to_sk_bridge_word_l61 pk_to_sk_bridge_word_s61 pk_to_sk_bridge_word_s62) (.seq (.arrow pk_to_sk_bridge_word_l62 pk_to_sk_bridge_word_s62 pk_to_sk_bridge_word_s63) (.seq (.arrow pk_to_sk_bridge_word_l63 pk_to_sk_bridge_word_s63 pk_to_sk_bridge_word_s64) (.seq (.arrow pk_to_sk_bridge_word_l64 pk_to_sk_bridge_word_s64 pk_to_sk_bridge_word_s65) (.arrow pk_to_sk_bridge_word_l65 pk_to_sk_bridge_word_s65 pk_to_sk_bridge_word_s66)))))))))))))))))))))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def pk_to_sk_bridge_word_true_arm : IGProtocol pk_to_sk_bridge_word_s0 pk_to_sk_bridge_word_s66 :=\n  (pk_to_sk_bridge_word_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def pk_to_sk_bridge_word_false_arm : IGProtocol pk_to_sk_bridge_word_s0 pk_to_sk_bridge_word_s66 :=\n  (pk_to_sk_bridge_word_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef pk_to_sk_bridge_word_tier_ground : OuroboricityTier := TierFunctor.obj pk_to_sk_bridge_word_s0\ndef pk_to_sk_bridge_word_tier : OuroboricityTier := TierFunctor.obj pk_to_sk_bridge_word_s66\n#eval pk_to_sk_bridge_word_tier_ground  -- tier of the ground (pre-transformation)\n#eval pk_to_sk_bridge_word_tier  -- the Grammar's own verdict on the closed object\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 3,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 67,
+    "t_branch_ops": 36,
+    "f_branch_ops": 14,
+    "branch_ratio": 2.571,
+    "fork_positions": [
+      6,
+      13,
+      43
+    ],
+    "fuse_positions": [
+      35,
+      49,
+      63
+    ],
+    "pair_list": [
+      [
+        13,
+        35
+      ],
+      [
+        43,
+        49
+      ],
+      [
+        6,
+        63
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": true
+  },
+  "notes": "Auto-designed from: pk_to_sk_bridge_word",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣⊙⊙⋈⊙∈>⊙⊤◻⊙⋈∈>⊙⊤◻⊙<⊙⊥⊞⊙<⋈>⊙⊤◻⊙<⊙⋈⋈∋<⊙⋈>⊙⊞⋈∈>⊤<⊤◻∋⊙⋈><◻⊙⊤⋈◻⊙⋈⊙⊞∋⊣◻⊙",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 1,
+    "inert": 35,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (35 step(s) inert after a fixation), 1 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 67,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 1,
+        "word": "⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 2,
+        "word": "⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 3,
+        "word": "⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 4,
+        "word": "=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 5,
+        "word": "⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 6,
+        "word": "◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 7,
+        "word": ">⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 8,
+        "word": "⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 9,
+        "word": "+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 10,
+        "word": "¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 11,
+        "word": "⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 12,
+        "word": "=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 13,
+        "word": "◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 14,
+        "word": ">⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 15,
+        "word": "⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 16,
+        "word": "+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 17,
+        "word": "¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 18,
+        "word": "⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 19,
+        "word": "<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 20,
+        "word": "⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 21,
+        "word": "×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 22,
+        "word": "⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 23,
+        "word": "⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 24,
+        "word": "<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 25,
+        "word": "=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 26,
+        "word": ">⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 27,
+        "word": "⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 28,
+        "word": "+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 29,
+        "word": "¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 30,
+        "word": "⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 31,
+        "word": "<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 32,
+        "word": "⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 33,
+        "word": "==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 34,
+        "word": "=●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 35,
+        "word": "●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 36,
+        "word": "<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 37,
+        "word": "⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 38,
+        "word": "=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 39,
+        "word": ">⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 40,
+        "word": "⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 41,
+        "word": "⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 42,
+        "word": "=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 43,
+        "word": "◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 44,
+        "word": ">+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 45,
+        "word": "+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 46,
+        "word": "<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 47,
+        "word": "+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 48,
+        "word": "¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 49,
+        "word": "●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 50,
+        "word": "⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 51,
+        "word": "=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 52,
+        "word": "><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 53,
+        "word": "<¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 54,
+        "word": "¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 55,
+        "word": "⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 56,
+        "word": "+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 57,
+        "word": "=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 58,
+        "word": "¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 59,
+        "word": "⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested"
+      },
+      {
+        "k": 60,
+        "word": "=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested"
+      },
+      {
+        "k": 61,
+        "word": "⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested"
+      },
+      {
+        "k": 62,
+        "word": "⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "nested"
+      },
+      {
+        "k": 63,
+        "word": "●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 64,
+        "word": "⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 65,
+        "word": "¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 66,
+        "word": "⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 45,
+    "canonical_word": "+<+¬●⊙=><¬⊙+=¬⊙=⊙⊞●⊣¬⊙⊢⊣⊙⊙=⊙◇>⊙+¬⊙=◇>⊙+¬⊙<⊙×⊞⊙<=>⊙+¬⊙<⊙==●<⊙=>⊙⊞=◇>",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}
