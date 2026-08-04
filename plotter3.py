@@ -68,8 +68,18 @@ def horn_tube_cross_section_xz():
     return left_x, left_z, right_x, right_z
 
 
-def build_three_view(output_path, dpi=300, fmt='png', title=None):
-    """Build the three-view orthographic figure."""
+def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3)):
+    """Build the orthographic figure, keeping only the requested views.
+
+    All three are always drawn, because the draw code for each is written
+    against its own axes and splitting it would be a larger change than the
+    selection is worth. The unwanted axes are removed before the layout is
+    computed, so what is saved is a figure of exactly the requested width.
+
+    Selection exists because three panels at 30 inches wide are illegible once
+    scaled into a text column: the labels survive the vector export and die on
+    the page. One view at page width reads.
+    """
     matplotlib.use('Agg')
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(30, 10))
     fig.patch.set_facecolor(PAPER)
@@ -351,6 +361,28 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
     if title:
         fig.suptitle(title, color=INK, fontsize=16, fontweight='bold', y=1.02)
 
+    for n, ax in ((1, ax1), (2, ax2), (3, ax3)):
+        if n not in views:
+            fig.delaxes(ax)
+    # Font sizes are in points and the figure is placed at a fixed width, so the
+    # only lever on apparent type size is the panel's own inches: a 10-inch panel
+    # scaled into a text column takes its 9pt labels down to about 2pt. Print
+    # halves the panel, which doubles the type at the same placed width.
+    # bbox_inches crops to the drawn content, which is roughly a third of the
+    # declared figure width because the axes carry wide empty margins. So the
+    # saved file is much narrower than the panel, and including it at \linewidth
+    # MAGNIFIES it — a 7-inch panel cropped to 186pt and blown up to a 390pt
+    # column took 8pt labels to about 17pt. The panel is therefore sized so the
+    # cropped result lands near column width and is placed at 1:1, which is the
+    # only arrangement in which the declared point sizes mean what they say.
+    panel = 15 if TRANSPARENT else 10
+    fig.set_size_inches(panel * len(views), panel)
+    if TRANSPARENT:
+        # The panel title repeats the caption on a page and is the one label
+        # guaranteed to collide with the plot at column width.
+        for ax in fig.axes:
+            ax.set_title('')
+
     plt.tight_layout(pad=2.0)
     plt.savefig(output_path, dpi=dpi, facecolor=PAPER, edgecolor='none',
                 bbox_inches='tight', transparent=TRANSPARENT)
@@ -376,15 +408,18 @@ def cli():
     parser.add_argument('--theme', choices=['dark', 'print'], default='dark',
                         help="'dark' for screen (default), 'print' for black on "
                              "a transparent background, for inclusion in a paper")
+    parser.add_argument('--views', default='1,2,3',
+                        help="Which views to keep, e.g. '1' or '1,3' (default: all)")
     args = parser.parse_args()
     set_theme(args.theme)
+    views = tuple(int(v) for v in args.views.split(',') if v.strip())
 
     out = args.output
     if not out.lower().endswith(('.png','.svg','.pdf')):
         out = os.path.splitext(out)[0] + '.' + args.format
 
     matplotlib.use('Agg')
-    build_three_view(out, dpi=args.dpi, fmt=args.format, title=args.title)
+    build_three_view(out, dpi=args.dpi, fmt=args.format, title=args.title, views=views)
 
 
 if __name__ == '__main__':
