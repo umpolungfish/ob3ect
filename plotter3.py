@@ -26,8 +26,36 @@ tG = np.arccos(inv_phi)
 # ─── Colour palette ─────────────────────────────────────────────
 GREEN  = '#009E73'; BLUE   = '#0072B2'; GOLD   = '#E69F00'
 ORANGE = '#E69F00'; PURPLE = '#CC79A7'; CYAN   = '#56B4E9'
-GREY   = '#888888'; WHITE  = 'white';   SLATE  = '#9AA7B4'
-DARK   = '#0a0a0a'; RED    = '#D55E00'
+GREY   = '#888888'; SLATE  = '#9AA7B4'
+RED    = '#D55E00'
+
+# INK is the foreground and PAPER the background. They were named WHITE and
+# DARK, which is a statement about one theme rather than about their role, and
+# that naming is why every one of the ~35 sites below had to mean 'dark'. A
+# figure bound for a printed page needs black on nothing; the same geometry
+# needs white on near-black on a screen. Same drawing, two bindings.
+INK, PAPER = 'white', '#0a0a0a'
+TRANSPARENT = False
+
+
+def set_theme(theme: str) -> None:
+    """Bind the foreground and background for the requested theme.
+
+    'print' is black on nothing: the figure carries no background of its own and
+    sits on whatever page includes it. 'dark' is the screen theme and remains
+    the default, so nothing that already calls this script changes.
+    """
+    # GREY and SLATE carry the construction lines and the lobe outlines. Both
+    # were chosen to sit just above a near-black field, so on white they drop
+    # almost to nothing and the construction the figure exists to show goes
+    # missing. The hues stay; only the value moves.
+    global INK, PAPER, TRANSPARENT, GREY, SLATE
+    if theme == "print":
+        INK, PAPER, TRANSPARENT = 'black', 'none', True
+        GREY, SLATE = '#555555', '#5A6672'
+    else:
+        INK, PAPER, TRANSPARENT = 'white', '#0a0a0a', False
+        GREY, SLATE = '#888888', '#9AA7B4' 
 
 theta = np.linspace(0, 2*np.pi, 500)
 
@@ -44,20 +72,20 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
     """Build the three-view orthographic figure."""
     matplotlib.use('Agg')
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(30, 10))
-    fig.patch.set_facecolor(DARK)
+    fig.patch.set_facecolor(PAPER)
 
     for ax in (ax1, ax2, ax3):
-        ax.set_facecolor(DARK); ax.set_aspect("equal")
-        ax.tick_params(colors=WHITE)
+        ax.set_facecolor(PAPER); ax.set_aspect("equal")
+        ax.tick_params(colors=INK)
         for s in ax.spines.values():
-            s.set_color(WHITE)
+            s.set_color(INK)
         ax.grid(True, ls='--', alpha=0.1)
 
     # ══════════════════════════════════════════════════════════════
     # VIEW 1 — SIDE-ON (xz plane, y=0)
     # ══════════════════════════════════════════════════════════════
     ax1.set_title('VIEW 1: Side-On (xz plane, y=0)',
-                  color=WHITE, fontsize=14, fontweight='bold', pad=12)
+                  color=INK, fontsize=14, fontweight='bold', pad=12)
 
     left_x, left_z, right_x, right_z = horn_tube_cross_section_xz()
     ax1.plot(left_x, left_z, color='#5a659c', lw=2.5, alpha=0.9)
@@ -74,21 +102,21 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
     ax1.plot(1 + r_split*np.cos(theta), r_split*np.sin(theta), color=BLUE, ls='--', lw=2)
 
     # FFUSE3 coupler
-    ax1.plot([0, 2], [0, 0], color=WHITE, lw=3)
+    ax1.plot([0, 2], [0, 0], color=INK, lw=3)
 
     # Key nodes
-    ax1.scatter(0, 0, color=GOLD, s=280, zorder=10, edgecolors=WHITE, lw=1.5)
-    ax1.scatter(2, 0, color=BLUE, s=160, zorder=10, edgecolors=WHITE, lw=1)
+    ax1.scatter(0, 0, color=GOLD, s=280, zorder=10, edgecolors=INK, lw=1.5)
+    ax1.scatter(2, 0, color=BLUE, s=160, zorder=10, edgecolors=INK, lw=1)
     ax1.scatter(1, 0, color=BLUE, s=120, zorder=10)
     ax1.scatter(1, sqrt3/2, color=RED, s=120, zorder=10)
     ax1.scatter(1, -sqrt3/2, color=RED, s=120, zorder=10)
-    ax1.scatter(LR, 0, color=WHITE, s=70, zorder=10, marker='s',
-                edgecolors=WHITE, facecolors='none', lw=1.5)
+    ax1.scatter(LR, 0, color=INK, s=70, zorder=10, marker='s',
+                edgecolors=INK, facecolors='none', lw=1.5)
     ax1.scatter(4, 0, color=PURPLE, s=120, zorder=9, marker='D',
-                edgecolors=WHITE, lw=1, alpha=0.8)
+                edgecolors=INK, lw=1, alpha=0.8)
 
     # Labels with background boxes
-    bbox = dict(facecolor=DARK, edgecolor='none', pad=2)
+    bbox = dict(facecolor=PAPER, edgecolor='none', pad=2)
     ax1.text(-0.35, -0.35, r'$\odot$ (pinch)', color=GOLD, fontsize=9,
              fontweight='bold', ha='right', bbox=bbox)
     ax1.text(2.1, -0.25, r'$\ni$ FFUSE3', color=BLUE, fontsize=8,
@@ -140,26 +168,26 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
 
     # φ-tangent loci
     phi_xz = horn_xy(tG)
-    ax1.scatter(phi_xz[0], 0, color=WHITE, s=90, zorder=11,
+    ax1.scatter(phi_xz[0], 0, color=INK, s=90, zorder=11,
                 edgecolors=GOLD, lw=1.5)
-    ax1.scatter(horn_xy(-tG)[0], 0, color=WHITE, s=90, zorder=11,
+    ax1.scatter(horn_xy(-tG)[0], 0, color=INK, s=90, zorder=11,
                 edgecolors=GOLD, lw=1.5)
-    ax1.text(phi_xz[0]+0.15, 0.25, r'$\phi$-tangent', color=WHITE,
+    ax1.text(phi_xz[0]+0.15, 0.25, r'$\phi$-tangent', color=INK,
              fontsize=7, alpha=0.9, bbox=bbox)
 
     # UCFm constants for side view
     ucfm_side = r"$\alpha^{-1}=137.035999$" + "\n" + r"$m_p/m_e=1836.152$"
-    ax1.text(-5.2, 4.8, ucfm_side, color=WHITE, fontsize=8,
+    ax1.text(-5.2, 4.8, ucfm_side, color=INK, fontsize=8,
              ha='left', va='top',
-             bbox=dict(facecolor=DARK, edgecolor=GOLD, alpha=0.8, pad=4))
+             bbox=dict(facecolor=PAPER, edgecolor=GOLD, alpha=0.8, pad=4))
     ax1.set_xlim(-5.5, 6.0); ax1.set_ylim(-5.5, 5.5)
-    ax1.set_xlabel('x', color=WHITE); ax1.set_ylabel('z', color=WHITE)
+    ax1.set_xlabel('x', color=INK); ax1.set_ylabel('z', color=INK)
 
     # ══════════════════════════════════════════════════════════════
     # VIEW 2 — TOP-DOWN (xy plane, z=0)
     # ══════════════════════════════════════════════════════════════
     ax2.set_title('VIEW 2: Top-Down (xy plane, z=0)',
-                  color=WHITE, fontsize=14, fontweight='bold', pad=12)
+                  color=INK, fontsize=14, fontweight='bold', pad=12)
 
     ax2.plot(2*R*np.cos(theta), 2*R*np.sin(theta), color='#5a659c', lw=2.5, alpha=0.35)
     horn_xy_pts = np.array([horn_xy(t) for t in theta])
@@ -168,18 +196,18 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
     ax2.plot(r_split*np.cos(theta), r_split*np.sin(theta), color=ORANGE, ls='--', lw=2)
     ax2.plot(r_split*np.cos(theta), r_split*np.sin(theta)*0.5, color=ORANGE, ls=':', lw=1, alpha=0.35)
     ax2.plot(1 + r_split*np.cos(theta), r_split*np.sin(theta), color=BLUE, ls='--', lw=2)
-    ax2.plot([0, 2], [0, 0], color=WHITE, lw=3)    # Nodes
-    ax2.scatter(0, 0, color=GOLD, s=280, zorder=10, edgecolors=WHITE, lw=1.5)
-    ax2.scatter(2, 0, color=BLUE, s=160, zorder=10, edgecolors=WHITE, lw=1)
+    ax2.plot([0, 2], [0, 0], color=INK, lw=3)    # Nodes
+    ax2.scatter(0, 0, color=GOLD, s=280, zorder=10, edgecolors=INK, lw=1.5)
+    ax2.scatter(2, 0, color=BLUE, s=160, zorder=10, edgecolors=INK, lw=1)
     ax2.scatter(1, 1, color=BLUE, s=120, zorder=10)
     ax2.scatter(1, -0.5, color=RED, s=120, zorder=10)
-    ax2.scatter(LR, 0, color=WHITE, s=70, zorder=10, marker='s',
-                edgecolors=WHITE, facecolors='none', lw=1.5)
+    ax2.scatter(LR, 0, color=INK, s=70, zorder=10, marker='s',
+                edgecolors=INK, facecolors='none', lw=1.5)
     ax2.scatter(*horn_xy(0), color=PURPLE, s=120, zorder=9, marker='D',
-                edgecolors=WHITE, lw=1, alpha=0.8)
+                edgecolors=INK, lw=1, alpha=0.8)
 
     # Labels
-    bbox2 = dict(facecolor=DARK, edgecolor='none', pad=2)
+    bbox2 = dict(facecolor=PAPER, edgecolor='none', pad=2)
     ax2.text(-0.35, -0.45, r'$\odot$ (pinch)', color=GOLD, fontsize=9,
              fontweight='bold', ha='right', bbox=bbox2)
     ax2.text(2.1, -0.35, r'$\ni$ FFUSE3', color=BLUE, fontsize=8,
@@ -229,9 +257,9 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
     # φ-tangent loci
     phi_plus = horn_xy(tG); phi_minus = horn_xy(-tG)
     for pt in [phi_plus, phi_minus]:
-        ax2.scatter(*pt, color=WHITE, s=90, zorder=11, edgecolors=GOLD, lw=1.5)
+        ax2.scatter(*pt, color=INK, s=90, zorder=11, edgecolors=GOLD, lw=1.5)
     ax2.text(phi_plus[0]+0.2, phi_plus[1]+0.15, r'$\phi$-tangent',
-             color=WHITE, fontsize=7, bbox=bbox2)
+             color=INK, fontsize=7, bbox=bbox2)
 
     # 16 poloidal rings
     for i in range(16):
@@ -242,18 +270,18 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
 
     # UCFm constants for top-down view
     ucfm_top = r"Gear ratio = 4" + "\n" + r"$m_\tau/m_e = 3476.785$" + "\n" + r"$\pi$ (curvature)"
-    ax2.text(-5.2, 4.8, ucfm_top, color=WHITE, fontsize=8,
+    ax2.text(-5.2, 4.8, ucfm_top, color=INK, fontsize=8,
              ha='left', va='top',
-             bbox=dict(facecolor=DARK, edgecolor=GOLD, alpha=0.8, pad=4))
+             bbox=dict(facecolor=PAPER, edgecolor=GOLD, alpha=0.8, pad=4))
 
     ax2.set_xlim(-5.5, 5.5); ax2.set_ylim(-5.5, 5.5)
-    ax2.set_xlabel('x', color=WHITE); ax2.set_ylabel('y', color=WHITE)
+    ax2.set_xlabel('x', color=INK); ax2.set_ylabel('y', color=INK)
 
     # ══════════════════════════════════════════════════════════════
     # VIEW 3 — FACE-ON ORTHO (yz plane, x=0)
     # ══════════════════════════════════════════════════════════════
     ax3.set_title('VIEW 3: Face-On Ortho (yz plane, x=0)',
-                  color=WHITE, fontsize=14, fontweight='bold', pad=12)
+                  color=INK, fontsize=14, fontweight='bold', pad=12)
 
     # Torus lobes: left (y=-2) and right (y=+2) circles
     left_lobe_y = -R + R*np.cos(theta); left_lobe_z = R*np.sin(theta)
@@ -278,8 +306,8 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
     ax3.plot(r_split*0.92*np.cos(theta), r_split*0.92*np.sin(theta),
              color=ORANGE, ls='--', lw=1, alpha=0.4)
     ax3.fill(r_split*np.cos(theta), r_split*np.sin(theta), color=BLUE, alpha=0.06)    # Center pinch
-    ax3.scatter(0, 0, color=GOLD, s=280, zorder=15, edgecolors=WHITE, lw=1.5)
-    ax3.text(0, -0.4, r'$\odot$ pinch / Bloch-FFUSE3 overlap', color=WHITE,
+    ax3.scatter(0, 0, color=GOLD, s=280, zorder=15, edgecolors=INK, lw=1.5)
+    ax3.text(0, -0.4, r'$\odot$ pinch / Bloch-FFUSE3 overlap', color=INK,
              fontsize=8, fontweight='bold', ha='center', bbox=bbox2)
 
     # Evaluator A₂ triangle nodes in yz projection
@@ -287,11 +315,11 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
     ev_z = [EVALT[2], EVALF[2], EVALI[2]]
 
     ax3.scatter(ev_y[0], ev_z[0], color=BLUE, s=140, zorder=18,
-                edgecolors=WHITE, lw=1.5)
+                edgecolors=INK, lw=1.5)
     ax3.scatter(ev_y[1], ev_z[1], color=RED, s=140, zorder=18,
-                edgecolors=WHITE, lw=1.5)
+                edgecolors=INK, lw=1.5)
     ax3.scatter(ev_y[2], ev_z[2], color=RED, s=140, zorder=18,
-                edgecolors=WHITE, lw=1.5)
+                edgecolors=INK, lw=1.5)
 
     # A₂ evaluator triangle fill and edges
     ax3.fill(ev_y, ev_z, color=GREEN, alpha=0.18, zorder=12)
@@ -310,22 +338,22 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None):
 
     # UCFm constants for face-on view
     ucfm_face = r"$\sin^2\theta_W = 3/13 = 0.230769$" + "\n" + r"$m_\mu/m_e = 206.769$"
-    ax3.text(-5.2, 4.8, ucfm_face, color=WHITE, fontsize=8,
+    ax3.text(-5.2, 4.8, ucfm_face, color=INK, fontsize=8,
              ha='left', va='top',
-             bbox=dict(facecolor=DARK, edgecolor=GOLD, alpha=0.8, pad=4))
+             bbox=dict(facecolor=PAPER, edgecolor=GOLD, alpha=0.8, pad=4))
 
     ax3.set_xlim(-5.5, 5.5); ax3.set_ylim(-5.5, 5.5)
-    ax3.set_xlabel('y', color=WHITE); ax3.set_ylabel('z', color=WHITE)
+    ax3.set_xlabel('y', color=INK); ax3.set_ylabel('z', color=INK)
 
     # ══════════════════════════════════════════════════════════════
     # SAVE
     # ══════════════════════════════════════════════════════════════
     if title:
-        fig.suptitle(title, color=WHITE, fontsize=16, fontweight='bold', y=1.02)
+        fig.suptitle(title, color=INK, fontsize=16, fontweight='bold', y=1.02)
 
     plt.tight_layout(pad=2.0)
-    plt.savefig(output_path, dpi=dpi, facecolor=DARK, edgecolor='none',
-                bbox_inches='tight')
+    plt.savefig(output_path, dpi=dpi, facecolor=PAPER, edgecolor='none',
+                bbox_inches='tight', transparent=TRANSPARENT)
     fsize = os.path.getsize(output_path)
     print(f"✅ Saved '{output_path}' ({fsize} bytes, {fsize/1024:.1f} KB, {fmt.upper()})")
     print(f"   View 1 (Side-On): kidney-bean lobes in xz plane ✓")
@@ -345,7 +373,11 @@ def cli():
     parser.add_argument('--format', '-f', choices=['png','svg','pdf'], default='png',
                         help='Output format (default: png)')
     parser.add_argument('--title', '-t', default=None, help='Figure title (suptitle)')
+    parser.add_argument('--theme', choices=['dark', 'print'], default='dark',
+                        help="'dark' for screen (default), 'print' for black on "
+                             "a transparent background, for inclusion in a paper")
     args = parser.parse_args()
+    set_theme(args.theme)
 
     out = args.output
     if not out.lower().endswith(('.png','.svg','.pdf')):
