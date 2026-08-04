@@ -35,21 +35,22 @@ class RegisterState(Enum):
     VOID="00"; TRUE="01"; FALSE="10"; BOTH="11"
 
 # Single-glyph codes — the alphabet is fully SYMBOLIC (no Latin initials, so no token can
-# collide with a verdict letter T/N/B/F). Five are the pen-mode READING_GUIDE §3 midpoint
-# glyphs (◇ ● + ×, and = from its double-line ═); ¬ is its stated "fix (¬)"; > and < are its
-# forward/reverse arrows. The rest are symbolic by the same principle: ⊢/⊣ are the opening
-# and closing boundary turnstiles, ⊞ is the Belnap Both that ENGAGR holds, and IMSCRIB is ⊙
+# collide with a verdict letter T/N/B/F). The twelve are the primitive alphabet itself, one
+# glyph per axis, rather than a notation standing beside it: the opcode set and the axis set
+# are the same twelve marks. The earlier spellings ◇ ● = + × ¬ are retired and are not
+# aliased here. ⊢/⊣ are the opening and closing boundary turnstiles, ⊞ is the Belnap Both
+# that ENGAGR holds, and IMSCRIB is ⊙
 # for a reason, not by availability: imscribing is the very act of INCLOSURE — the monadic
 # operation itself — hence self-referential, and so referenced self-referentially. The glyph
 # is a boundary drawn around its own centre, denoting the act of denoting. Its appearance as
 # Criticality in the 12-primitive notation is not a collision: it is the same structure
 # surfacing wherever inclosure closes on itself.
 # Authority is MoDoT ask_native/src/imasm.rs Token::code(); this mirrors it.
-GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":">","AREV":"<","CLINK":"=","IMSCRIB":"⊙",
-         "FSPLIT":"◇","FFUSE":"●","EVALT":"+","EVALF":"×","ENGAGR":"⊞","IFIX":"¬"}
+GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":">","AREV":"<","CLINK":"⋈","IMSCRIB":"⊙",
+         "FSPLIT":"∈","FFUSE":"∋","EVALT":"⊤","EVALF":"⊥","ENGAGR":"⊞","IFIX":"◻"}
 
 def glyph_word(ops):
-    """Glue an opcode sequence into its single-glyph IMASM word: ⊢⊙=◇>+<⊞×●¬¬⊣.
+    """Glue an opcode sequence into its single-glyph IMASM word: ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣.
 
     The word is the NODE LIST only — the edges are not in it, so the same word wired two
     ways is two different programs. An unknown opcode renders as ? rather than being
@@ -363,7 +364,7 @@ class Ob3ectArtifact:
             parts.append("  Period: %s rotations" % r.get("period"))
             inv = r.get("invariants", {})
             for key, holds in inv.items():
-                parts.append("  %s %s — %s" % ("⊙" if holds else "◇", key,
+                parts.append("  %s %s — %s" % ("⊙" if holds else "∈", key,
                     "ROTAT-invariant (spectral)" if holds else "phase-dependent"))
             parts.append("  Canonical rotation: k=%s  word: %s" %
                           (r.get("canonical_k"), r.get("canonical_word")))

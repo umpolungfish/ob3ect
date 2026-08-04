@@ -361,8 +361,8 @@ FREE COMPOSITION RULES
 SINGLE-GLYPH CODES (the alphabet is fully SYMBOLIC -- no Latin initials, so no token
 can be confused with a verdict letter T/N/B/F)
   VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   =     IMSCRIB ⊙
-  FSPLIT ◇     FFUSE  ●     EVALT  +     EVALF  ×     ENGAGR  ⊞     IFIX    ¬
-  A sequence may be written glued as a word: ⊢⊙=◇>+<⊞×●¬¬⊣ is the same program as the
+  FSPLIT ∈     FFUSE  ∋     EVALT  ⊤     EVALF  ⊥     ENGAGR  ⊞     IFIX    ◻
+  A sequence may be written glued as a word: ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣ is the same program as the
   13 spelled-out tokens. The retired codes V/T/B and ← (the old IMSCRIB) no longer parse anywhere.
 
 WHY RULE 2 AND RULE 10 ARE SAFE (inflation invariance)
@@ -724,7 +724,7 @@ _KNOWN_OPCODES = {oc.value for oc in Opcode}
 
 
 _GLYPH_TO_OP = {"⊢":"VINIT","⊣":"TANCH",">":"AFWD","<":"AREV","=":"CLINK","⊙":"IMSCRIB",
-                "◇":"FSPLIT","●":"FFUSE","+":"EVALT","×":"EVALF","⊞":"ENGAGR","¬":"IFIX"}
+                "∈":"FSPLIT","∋":"FFUSE","⊤":"EVALT","⊥":"EVALF","⊞":"ENGAGR","◻":"IFIX"}
 
 
 def _parse_opcode(step_str: str) -> str:
@@ -845,7 +845,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
             pass
 
     # The glued IMASM word: the bootstrap sequence in the single-glyph alphabet, e.g.
-    # ⊢⊙=◇>+<⊞×●¬¬⊣. Same node list as phase 4, one line instead of thirteen.
+    # ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣. Same node list as phase 4, one line instead of thirteen.
     try:
         artifact.glyph_word = glyph_word([step["opcode"] for step in bootstrap.steps])
     except Exception:
