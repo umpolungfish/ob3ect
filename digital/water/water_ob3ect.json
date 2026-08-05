@@ -1,0 +1,241 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → FSPLIT → AFWD → AREV → CLINK → FFUSE → EVALT → EVALF → ENGAGR → IFIX → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "water",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\nwater",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "water vessel",
+      "domain_name": "water",
+      "domain_type": "physical",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "local",
+      "surface_tokens": [
+        "alembic",
+        "distillation",
+        "crystallization"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "evaporation process",
+        "glyph": ">",
+        "justification": "forward morphism toward vapor phase",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "condensation process",
+        "glyph": "<",
+        "justification": "reverse/descent to liquid phase",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "phase transition chain",
+        "glyph": "⋈",
+        "justification": "composition of morphisms between states",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "both states held",
+        "glyph": "⊞",
+        "justification": "simultaneous existence of liquid and gas",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "condensation failure",
+        "glyph": "⊥",
+        "justification": "negative state for liquid phase",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "evaporation success",
+        "glyph": "⊤",
+        "justification": "affirmative state for vapor phase",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "vapor-liquid reconstitution",
+        "glyph": "∋",
+        "justification": "reconstitutes original input exactly",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "liquid-to-vapor split",
+        "glyph": "∈",
+        "justification": "branch into two distinct phases",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "audit log entry",
+        "glyph": "◻",
+        "justification": "permanent irreversible record of state changes",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "self-reference",
+        "glyph": "⊙",
+        "justification": "identity self-recognition in state transitions",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "water vessel",
+        "glyph": "⊣",
+        "justification": "closed boundary containing all system elements",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "initial liquid water",
+        "glyph": "⊢",
+        "justification": "void/uninitialized state before any transformation",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "failure_reason": "",
+      "frobenius_verdict": "PASS",
+      "fuse_element": "vapor-liquid reconstitution",
+      "fuse_result": "original input (liquid water)",
+      "split_element": "liquid-to-vapor split",
+      "split_input": "initial liquid water",
+      "split_outputs": [
+        "evaporation branch",
+        "condensation branch"
+      ],
+      "test_instance": ""
+    },
+    "phase_3": {
+      "both_description": "simultaneous existence of liquid and gas",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "negative, failure in condensation",
+      "transitions": [],
+      "true_description": "affirmative, success in evaporation",
+      "void_description": "uninitialized, before any transformation"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "initialize water as liquid",
+          "glyph": "⊢",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "split into liquid (EVALT) and vapor (EVALF)",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 2
+        },
+        {
+          "domain_action": "process liquid branch",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 3
+        },
+        {
+          "domain_action": "reverse vapor branch",
+          "glyph": "<",
+          "opcode": "AREV",
+          "step_num": 4
+        },
+        {
+          "domain_action": "connect phase transitions",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 5
+        },
+        {
+          "domain_action": "fuse back to original",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 6
+        },
+        {
+          "domain_action": "affirm liquid state",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 7
+        },
+        {
+          "domain_action": "negate vapor state",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 8
+        },
+        {
+          "domain_action": "hold both states simultaneously",
+          "glyph": "⊞",
+          "opcode": "ENGAGR",
+          "step_num": 9
+        },
+        {
+          "domain_action": "append to audit log",
+          "glyph": "◻",
+          "opcode": "IFIX",
+          "step_num": 10
+        },
+        {
+          "domain_action": "return to vessel boundary",
+          "glyph": "⊣",
+          "opcode": "TANCH",
+          "step_num": 11
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "bootstrap store for phase transitions",
+      "compiler_frontend": "translates domain intentions into operations",
+      "ipc_mechanism": "components communicate via water-phase interactions",
+      "memory_mechanism": "state stored in molecular structure and alfs",
+      "scheduler_mechanism": "determines order of evaporation/condensation cycles"
+    },
+    "phase_6": {
+      "cycle_cost": "0.1 entropy per cycle (no increase in disorder)",
+      "delta_s_verdict": "ΔS ≈ 0 — no net change in system entropy",
+      "failure_mode": "",
+      "post_cycle_state": "final vapor or liquid state",
+      "pre_cycle_state": "initial liquid state"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 3.0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 0,
+    "fork_positions": [
+      1
+    ],
+    "fuse_positions": [
+      5
+    ],
+    "nesting_depth": 0,
+    "open_forks": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 3,
+    "topology_class": "flat_chain",
+    "total_pairs": 1
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
