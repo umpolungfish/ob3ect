@@ -128,18 +128,18 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
     # Labels with background boxes
     bbox = dict(facecolor=PAPER, edgecolor='none', pad=2)
     ax1.text(-0.35 if not TRANSPARENT else -1.35, -0.35 if not TRANSPARENT else -1.05,
-             r'$\odot$ (pinch)', color=GOLD, fontsize=9, fontweight='bold',
+             r'⊙', color=GOLD, fontsize=9, fontweight='bold',
              ha='right' if not TRANSPARENT else 'center', bbox=bbox)
-    ax1.text(2.0, -0.52 if TRANSPARENT else -0.25, r'$\ni$ FFUSE3', color=BLUE,
+    ax1.text(2.0, -0.52 if TRANSPARENT else -0.25, r'∋', color=BLUE,
              fontsize=8, fontweight='bold', ha='center' if TRANSPARENT else 'left',
              bbox=bbox)
-    ax1.text(1.15, 0.2, '+ EVALT', color=BLUE, fontsize=8,
+    ax1.text(1.15, 0.2, '⊤', color=BLUE, fontsize=8,
              fontweight='bold', bbox=bbox) if not TRANSPARENT else \
-        ax1.text(1.0, 0.30, '+ EVALT', color=BLUE, fontsize=8, fontweight='bold',
+        ax1.text(1.0, 0.30, '⊤', color=BLUE, fontsize=8, fontweight='bold',
                  ha='center', bbox=bbox)
-    ax1.text(1.15, sqrt3/2+0.25, r'$\times$ EVALF', color=RED, fontsize=8,
+    ax1.text(1.15, sqrt3/2+0.25, r'⊥', color=RED, fontsize=8,
              fontweight='bold', bbox=bbox)
-    ax1.text(1.15, -sqrt3/2-0.35, r'$\sqcap$ EVALI', color=RED, fontsize=8,
+    ax1.text(1.15, -sqrt3/2-0.35, r'⊞', color=RED, fontsize=8,
              fontweight='bold', bbox=bbox)
     ax1.text(4.0, -0.80 if TRANSPARENT else -0.35, 'horn(0)', color=PURPLE,
              fontsize=8, ha='center' if TRANSPARENT else 'left', bbox=bbox)
@@ -238,13 +238,13 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
 
     # Labels
     bbox2 = dict(facecolor=PAPER, edgecolor='none', pad=2)
-    ax2.text(-0.35, -0.45, r'$\odot$ (pinch)', color=GOLD, fontsize=9,
+    ax2.text(-0.35, -0.45, r'⊙', color=GOLD, fontsize=9,
              fontweight='bold', ha='right', bbox=bbox2)
-    ax2.text(2.1, -0.35, r'$\ni$ FFUSE3', color=BLUE, fontsize=8,
+    ax2.text(2.1, -0.35, r'∋', color=BLUE, fontsize=8,
              fontweight='bold', bbox=bbox2)
-    ax2.text(1.15, 1.1, '+ EVALT', color=BLUE, fontsize=8,
+    ax2.text(1.15, 1.1, '⊤', color=BLUE, fontsize=8,
              fontweight='bold', bbox=bbox2)
-    ax2.text(1.15, -0.65, r'$\times$ EVALF', color=RED, fontsize=8,
+    ax2.text(1.15, -0.65, r'⊥', color=RED, fontsize=8,
              fontweight='bold', bbox=bbox2)
     ax2.text(horn_xy(0)[0]+0.1, horn_xy(0)[1]-0.5, 'horn(0)',
              color=PURPLE, fontsize=8, bbox=bbox2)
@@ -337,7 +337,7 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
              color=ORANGE, ls='--', lw=1, alpha=0.4)
     ax3.fill(r_split*np.cos(theta), r_split*np.sin(theta), color=BLUE, alpha=0.06)    # Center pinch
     ax3.scatter(0, 0, color=GOLD, s=280, zorder=15, edgecolors=INK, lw=1.5)
-    ax3.text(0, -0.4, r'$\odot$ pinch / Bloch-FFUSE3 overlap', color=INK,
+    ax3.text(0, -0.4, r'⊙', color=INK,
              fontsize=8, fontweight='bold', ha='center', bbox=bbox2)
 
     # Evaluator A₂ triangle nodes in yz projection
@@ -359,11 +359,11 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
                  color=GREEN, lw=2.0, alpha=0.9, zorder=14)
 
     # Labels for evaluator nodes
-    ax3.text(ev_y[0]+0.2, ev_z[0], '+ EVALT', color=BLUE, fontsize=8,
+    ax3.text(ev_y[0]+0.2, ev_z[0], '⊤', color=BLUE, fontsize=8,
              fontweight='bold', va='center', bbox=bbox2)
-    ax3.text(ev_y[1]-0.2, ev_z[1]+0.2, r'$\times$ EVALF', color=RED,
+    ax3.text(ev_y[1]-0.2, ev_z[1]+0.2, r'⊥', color=RED,
              fontsize=8, fontweight='bold', ha='right', bbox=bbox2)
-    ax3.text(ev_y[2]-0.2, ev_z[2]-0.2, r'$\sqcap$ EVALI', color=RED,
+    ax3.text(ev_y[2]-0.2, ev_z[2]-0.2, r'⊞', color=RED,
              fontsize=8, fontweight='bold', ha='right', bbox=bbox2)
 
     # UCFm constants for face-on view
