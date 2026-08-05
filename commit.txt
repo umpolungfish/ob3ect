@@ -1,21 +1,19 @@
-Let plotter3 select views, and size itself for a page
+Make the print theme fit a page, not just lose its background
 
-Two additions on top of the print theme, both forced by putting the figure on an
-actual page rather than looking at it on screen.
+Clearing the background was necessary and not sufficient. On a page the side view
+still carried a constants box in the frame corner and a dozen labels stacked in
+one square inch of the mainline.
 
---views keeps only the panels asked for. Three panels thirty inches wide are
-illegible once scaled into a text column: the labels survive the vector export
-and die on the page. All three are still drawn, because the draw code for each
-is written against its own axes, and the unwanted ones are removed before the
-layout is computed.
+Print now omits the alpha and mass-ratio box: those are derived quantities that
+belong to the caption or the text, and in the corner they are chrome.
 
-The panel is sized for 1:1 placement in print. bbox_inches crops to the drawn
-content, which is roughly a third of the declared width because the axes carry
-wide empty margins, so the saved file is much narrower than the panel and
-including it at \linewidth MAGNIFIES it. A seven-inch panel cropped to 186pt and
-blown up to a 390pt column took 8pt labels to about 17pt, which is how a figure
-ends up with type larger than the body text it sits in. Fifteen inches lands the
-crop near column width, and there the declared point sizes mean what they say.
+Print also drops the labels that collide. The three A2 root marks project onto
+the x-axis in this plane, so two of them land on the same point and their labels
+sat on top of FFUSE3 and horn(0); they are a face-on fact and the equatorial
+view is where they read. The syzygy and phi-tangent labels and three of the four
+chord labels go the same way, leaving lambda_C, which is what the section is
+about. The remaining labels are lifted off the marks they name.
 
-Print also drops the panel title, which repeats the caption and is the one label
-guaranteed to collide with the plot at column width.
+And the limits are tightened. The screen view pads the section into a square that
+is mostly empty, and at column width that empty field is what gets scaled, so the
+geometry shrinks inside its own frame.

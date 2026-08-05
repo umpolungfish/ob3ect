@@ -127,17 +127,22 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
 
     # Labels with background boxes
     bbox = dict(facecolor=PAPER, edgecolor='none', pad=2)
-    ax1.text(-0.35, -0.35, r'$\odot$ (pinch)', color=GOLD, fontsize=9,
-             fontweight='bold', ha='right', bbox=bbox)
-    ax1.text(2.1, -0.25, r'$\ni$ FFUSE3', color=BLUE, fontsize=8,
-             fontweight='bold', bbox=bbox)
+    ax1.text(-0.35 if not TRANSPARENT else -1.35, -0.35 if not TRANSPARENT else -1.05,
+             r'$\odot$ (pinch)', color=GOLD, fontsize=9, fontweight='bold',
+             ha='right' if not TRANSPARENT else 'center', bbox=bbox)
+    ax1.text(2.0, -0.52 if TRANSPARENT else -0.25, r'$\ni$ FFUSE3', color=BLUE,
+             fontsize=8, fontweight='bold', ha='center' if TRANSPARENT else 'left',
+             bbox=bbox)
     ax1.text(1.15, 0.2, '+ EVALT', color=BLUE, fontsize=8,
-             fontweight='bold', bbox=bbox)
+             fontweight='bold', bbox=bbox) if not TRANSPARENT else \
+        ax1.text(1.0, 0.30, '+ EVALT', color=BLUE, fontsize=8, fontweight='bold',
+                 ha='center', bbox=bbox)
     ax1.text(1.15, sqrt3/2+0.25, r'$\times$ EVALF', color=RED, fontsize=8,
              fontweight='bold', bbox=bbox)
     ax1.text(1.15, -sqrt3/2-0.35, r'$\sqcap$ EVALI', color=RED, fontsize=8,
              fontweight='bold', bbox=bbox)
-    ax1.text(4.1, -0.35, 'horn(0)', color=PURPLE, fontsize=8, bbox=bbox)
+    ax1.text(4.0, -0.80 if TRANSPARENT else -0.35, 'horn(0)', color=PURPLE,
+             fontsize=8, ha='center' if TRANSPARENT else 'left', bbox=bbox)
 
     # Evaluator A₂ triangle fill and edges
     tri_xz = np.array([[1, 0], [1, sqrt3/2], [1, -sqrt3/2]])
@@ -149,18 +154,23 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
 
     # Distance chords
     ax1.plot([0, 1], [0, 0], color='#aaffcc', ls=':', lw=1.5)
-    ax1.text(0.5, -0.2, r'$\sqrt{2}$', color=GREEN, fontsize=11,
-             fontweight='bold', ha='center', bbox=bbox)
-    ax1.text(0.5, sqrt3/4-0.05, r'$\sqrt{3}$', color=GREEN, fontsize=11,
-             fontweight='bold', bbox=bbox)
-    ax1.text(1.0, -0.15, '2', color=CYAN, fontsize=12,
-             fontweight='bold', ha='center', bbox=bbox)
+    # Four chord labels inside one shell radius. On screen they are readable at
+    # full width; at column width they overlap each other and the pinch label,
+    # so print keeps the one the section is about and drops the rest.
+    if not TRANSPARENT:
+        ax1.text(0.5, -0.2, r'$\sqrt{2}$', color=GREEN, fontsize=11,
+                 fontweight='bold', ha='center', bbox=bbox)
+        ax1.text(0.5, sqrt3/4-0.05, r'$\sqrt{3}$', color=GREEN, fontsize=11,
+                 fontweight='bold', bbox=bbox)
+        ax1.text(1.0, -0.15, '2', color=CYAN, fontsize=12,
+                 fontweight='bold', ha='center', bbox=bbox)
     ax1.text(0.5, 0.35, r'$\lambda_C$', color=ORANGE, fontsize=10,
-             fontweight='bold', bbox=bbox)
+             fontweight='bold', ha='center', bbox=bbox)
 
     # Syzygy axis
     ax1.plot([0, 4.2], [0, 0], color=PURPLE, ls='--', lw=2, alpha=0.6)
-    ax1.text(2.1, 0.28, 'syzygy axis', color=PURPLE, fontsize=8, alpha=0.8, bbox=bbox)
+    if not TRANSPARENT:
+        ax1.text(2.1, 0.28, 'syzygy axis', color=PURPLE, fontsize=8, alpha=0.8, bbox=bbox)
 
     # A₂ roots on outer equator (side view: project to x-axis)
     a2_angles = [0, 2*np.pi/3, 4*np.pi/3]
@@ -168,8 +178,9 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
     for i, (px, pz) in enumerate(a2_pts_xz):
         offset = 0.35 if i == 0 else -0.35
         ax1.scatter(px, offset, color=GREEN, s=80, zorder=8)
-        ax1.text(px, offset+0.2, ['n₊=+1','n₋','n₋'][i],
-                 color=GREEN, fontsize=7, fontweight='bold', ha='center', bbox=bbox)
+        if not TRANSPARENT:
+            ax1.text(px, offset+0.2, ['n₊=+1','n₋','n₋'][i],
+                     color=GREEN, fontsize=7, fontweight='bold', ha='center', bbox=bbox)
     for i in range(3):
         j = (i+1)%3
         ax1.plot([a2_pts_xz[i][0], a2_pts_xz[j][0]],
@@ -182,15 +193,24 @@ def build_three_view(output_path, dpi=300, fmt='png', title=None, views=(1, 2, 3
                 edgecolors=GOLD, lw=1.5)
     ax1.scatter(horn_xy(-tG)[0], 0, color=INK, s=90, zorder=11,
                 edgecolors=GOLD, lw=1.5)
-    ax1.text(phi_xz[0]+0.15, 0.25, r'$\phi$-tangent', color=INK,
-             fontsize=7, alpha=0.9, bbox=bbox)
+    if not TRANSPARENT:
+        ax1.text(phi_xz[0]+0.15, 0.25, r'$\phi$-tangent', color=INK,
+                 fontsize=7, alpha=0.9, bbox=bbox)
 
-    # UCFm constants for side view
-    ucfm_side = r"$\alpha^{-1}=137.035999$" + "\n" + r"$m_p/m_e=1836.152$"
-    ax1.text(-5.2, 4.8, ucfm_side, color=INK, fontsize=8,
-             ha='left', va='top',
-             bbox=dict(facecolor=PAPER, edgecolor=GOLD, alpha=0.8, pad=4))
-    ax1.set_xlim(-5.5, 6.0); ax1.set_ylim(-5.5, 5.5)
+    # UCFm constants for side view. Screen chrome: on a page they crowd the frame
+    # corner and say nothing the caption cannot, so print omits them.
+    if not TRANSPARENT:
+        ucfm_side = r"$\alpha^{-1}=137.035999$" + "\n" + r"$m_p/m_e=1836.152$"
+        ax1.text(-5.2, 4.8, ucfm_side, color=INK, fontsize=8,
+                 ha='left', va='top',
+                 bbox=dict(facecolor=PAPER, edgecolor=GOLD, alpha=0.8, pad=4))
+    # The section lives in x∈[-4,4.6], z∈[-2.4,2.4]. The screen view pads it to a
+    # square that is mostly empty; on a page that empty field is what gets scaled
+    # and the geometry shrinks inside it.
+    if TRANSPARENT:
+        ax1.set_xlim(-4.6, 5.4); ax1.set_ylim(-2.8, 2.8)
+    else:
+        ax1.set_xlim(-5.5, 6.0); ax1.set_ylim(-5.5, 5.5)
     ax1.set_xlabel('x', color=INK); ax1.set_ylabel('z', color=INK)
 
     # ══════════════════════════════════════════════════════════════
