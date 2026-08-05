@@ -1,0 +1,439 @@
+{
+  "name": "topological_readout_ob3ect_v2",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "topological_readout_ob3ect_v2",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "braid",
+        "Jones invariant",
+        "winding phase",
+        "period"
+      ],
+      "boundary_condition": "the strand guard (14 strands) and the evaluation point t=1/5 — the closed circuit that contains the whole readout; (a, N) enters, the period r leaves, nothing else crosses",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "the coprime pair (a, N)",
+        "justification": "the uninitialized input before anything is named — void, seed, nothing measured yet",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "the evaluation point t=1/5",
+        "justification": "the Jones root that closes the invariant's domain — the terminal anchor containing the whole measurement; the strand guard bounds it",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "assemble_shor_braid",
+        "justification": "the forward morphism from the pair (a, N) to the ModExp braid word — directed transformation toward the invariant",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "the phase reduction",
+        "justification": "the descent from the complex amplitude to the period — the reverse morphism, executed inside the banked frame so the reversal cannot lose the readout",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "the staged pipeline",
+        "justification": "braid assembly composed with the single evaluation composed with the winding readout — sequential chaining of the stages",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "the readout verdict",
+        "justification": "the phase recognizes itself as off the tenths lattice — identity of the invariant's value, deterministic across runs",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "the bank, then the evaluation",
+        "justification": "two splits: the outer opens the holding frame that banks the result BEFORE any computation; the inner splits the one evaluation of V into Re(V) and Im(V)",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "the inner fusion and the banked close",
+        "justification": "two fusions: the inner reconstitutes V = Re + i·Im (μ∘δ=id on the evaluation); the outer closes the bank holding the period — inner closes before outer, banking-before-compute order",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "the off-lattice phase",
+        "justification": "affirmative readout: residual > 0, the invariant off the tenths lattice — the authentic one-shot signature (verdict: snapped)",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "the on-lattice phase",
+        "justification": "negative readout: residual < 1e-6, the invariant IS the winding exactly (verdict: ON LATTICE)",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "the dialetheic hold",
+        "justification": "both readings held: the period is deterministic from braid structure AND the amplitude is a continuous mixture through golden-ratio amplitudes — a paradice held without resolution",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "the period r = ord_N(a)",
+        "justification": "the irreversible fixed-point record a^r ≡ 1 (mod N) — the unmoved mover, the readout's permanent output",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "the single Jones evaluation",
+      "split_input": "the Jones invariant V(a,N) at t=1/5 — one complex value",
+      "split_outputs": [
+        "Re(V): the real coordinate of the invariant",
+        "Im(V): the imaginary coordinate of the invariant"
+      ],
+      "fuse_element": "the complex reconstruction V = Re + i·Im",
+      "fuse_result": "the Jones invariant V(a,N) at t=1/5 — one complex value",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": ""
+    },
+    "phase_3": {
+      "void_description": "the uninitialized (a, N) pair — before the braid exists, nothing is named",
+      "true_description": "the affirmative readout — the phase off the tenths lattice, the authentic one-shot invariant (verdict: snapped)",
+      "false_description": "the negative readout — the phase on the lattice, the invariant identical to the winding (verdict: ON LATTICE)",
+      "both_description": "the dialetheic hold — deterministic period from braid structure AND continuous golden-ratio mixture in the amplitude, both true, neither resolved",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "the coprime pair (a, N) enters uninitialized — nothing is named yet"
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "the evaluation point t=1/5 is fixed — the Jones root closes the invariant's domain"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "the holding frame opens — the readout's result will be banked here BEFORE any computation (bank-before-compute)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "TANCH",
+          "domain_action": "the strand guard (>14 refuses) bounds the braid — the containing limit of the readout"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "assemble_shor_braid(a, N) builds the ModExp braid word — the forward morphism from pair to braid"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "the stages compose — assembly followed by the single evaluation"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FSPLIT",
+          "domain_action": "the one evaluation of V at t=1/5 splits into its two coordinates — Re(V) and Im(V)"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALT",
+          "domain_action": "the real coordinate is read — Re(V) enters the affirmative arm"
+        },
+        {
+          "step_num": 9,
+          "opcode": "EVALF",
+          "domain_action": "the imaginary coordinate is read — Im(V) enters the negative arm"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "the two coordinates reconstitute the invariant V = Re + i·Im — the inner fusion folds into the enclosing bank"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IMSCRIB",
+          "domain_action": "winding_of(V) reads the phase — the invariant's identity, deterministic across runs"
+        },
+        {
+          "step_num": 12,
+          "opcode": "EVALT",
+          "domain_action": "the residual check — off the tenths lattice: authentic (verdict: snapped)"
+        },
+        {
+          "step_num": 13,
+          "opcode": "EVALF",
+          "domain_action": "the residual check — on the lattice: the invariant IS the winding (verdict: ON LATTICE)"
+        },
+        {
+          "step_num": 14,
+          "opcode": "ENGAGR",
+          "domain_action": "both readings held — deterministic period AND continuous golden-ratio mixture, no resolution"
+        },
+        {
+          "step_num": 15,
+          "opcode": "AREV",
+          "domain_action": "the descent from the invariant to the period — the register clears, the banked readout survives the reversal"
+        },
+        {
+          "step_num": 16,
+          "opcode": "FFUSE",
+          "domain_action": "the bank closes — the period is held at depth zero"
+        },
+        {
+          "step_num": 17,
+          "opcode": "IFIX",
+          "domain_action": "r = ord_N(a) is fixed — the irreversible record a^r ≡ 1 (mod N), the unmoved mover"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "assemble_shor_braid — translates (a, N) into the ModExp braid word",
+      "ipc_mechanism": "the braid word passes from assembly to evaluation as a typed word — the same address, no paraphrase",
+      "memory_mechanism": "the invariant V and its winding fraction — held in the banked frame, read once",
+      "scheduler_mechanism": "the single evaluation — ONE winding, zero statistics; the order is the braid structure itself",
+      "alfs_store": "the canonical readout — fibqc readout in mOMonadOS, the verified binary (11/11 periods, Lean-formalized fixed point)",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "ONE Jones evaluation at t=1/5 per readout",
+      "pre_cycle_state": "(a, N) — the uninitialized pair",
+      "post_cycle_state": "r = ord_N(a) — the period, the fixed point a^r ≡ 1 (mod N)",
+      "delta_s_verdict": "ΔS ≈ 0 — the period is read from braid structure, deterministic; no statistics accumulated, no entropy produced",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → FSPLIT → TANCH → AFWD → CLINK → FSPLIT → EVALT → EVALF → FFUSE → IMSCRIB → EVALT → EVALF → ENGAGR → AREV → FFUSE → IFIX\n-- Class: topological_readout_ob3ect_v2\n-- Fingerprint: sig=(7,4,5,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=17\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(6, 9), (2, 15)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] TANCH     top    := 𐑡               𐑼 → 𐑚  | terminal object — connectivity boundary\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] TANCH     top    := 𐑡               𐑚 → 𐑙  | terminal object — connectivity boundary\n--   [4] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [7] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] FFUSE     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [10] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [11] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [12] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [13] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [14] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [15] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [16] IFIX      prot   := 𐑭               𐑙 → 𐑼  | irreversible fixation — winding number\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def topological_readout_ob3ect_v2_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def topological_readout_ob3ect_v2_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def topological_readout_ob3ect_v2_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def topological_readout_ob3ect_v2_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def topological_readout_ob3ect_v2_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def topological_readout_ob3ect_v2_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def topological_readout_ob3ect_v2_protocol : IGProtocol topological_readout_ob3ect_v2_s0 topological_readout_ob3ect_v2_s16 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct topological_readout_ob3ect_v2_s9 topological_readout_ob3ect_v2_s9 = topological_readout_ob3ect_v2_s9 (idempotent)\n  (.seq (.arrow topological_readout_ob3ect_v2_l0 topological_readout_ob3ect_v2_s0 topological_readout_ob3ect_v2_s1) (.seq (.arrow topological_readout_ob3ect_v2_l1 topological_readout_ob3ect_v2_s1 topological_readout_ob3ect_v2_s2) (.seq (.prod (.arrow topological_readout_ob3ect_v2_l2 topological_readout_ob3ect_v2_s2 topological_readout_ob3ect_v2_s9) (.arrow topological_readout_ob3ect_v2_l2 topological_readout_ob3ect_v2_s2 topological_readout_ob3ect_v2_s9)) (.seq (.arrow topological_readout_ob3ect_v2_l9 topological_readout_ob3ect_v2_s9 topological_readout_ob3ect_v2_s9) (.seq (.arrow topological_readout_ob3ect_v2_l9 topological_readout_ob3ect_v2_s9 topological_readout_ob3ect_v2_s10) (.seq (.arrow topological_readout_ob3ect_v2_l10 topological_readout_ob3ect_v2_s10 topological_readout_ob3ect_v2_s11) (.seq (.arrow topological_readout_ob3ect_v2_l11 topological_readout_ob3ect_v2_s11 topological_readout_ob3ect_v2_s12) (.seq (.arrow topological_readout_ob3ect_v2_l12 topological_readout_ob3ect_v2_s12 topological_readout_ob3ect_v2_s13) (.seq (.arrow topological_readout_ob3ect_v2_l13 topological_readout_ob3ect_v2_s13 topological_readout_ob3ect_v2_s14) (.seq (.arrow topological_readout_ob3ect_v2_l14 topological_readout_ob3ect_v2_s14 topological_readout_ob3ect_v2_s15) (.arrow topological_readout_ob3ect_v2_l15 topological_readout_ob3ect_v2_s15 topological_readout_ob3ect_v2_s16)))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def topological_readout_ob3ect_v2_true_arm : IGProtocol topological_readout_ob3ect_v2_s0 topological_readout_ob3ect_v2_s16 :=\n  (topological_readout_ob3ect_v2_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def topological_readout_ob3ect_v2_false_arm : IGProtocol topological_readout_ob3ect_v2_s0 topological_readout_ob3ect_v2_s16 :=\n  (topological_readout_ob3ect_v2_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef topological_readout_ob3ect_v2_tier_ground : OuroboricityTier := TierFunctor.obj topological_readout_ob3ect_v2_s0\ndef topological_readout_ob3ect_v2_tier : OuroboricityTier := TierFunctor.obj topological_readout_ob3ect_v2_s16\n#eval topological_readout_ob3ect_v2_tier_ground  -- tier of the ground (pre-transformation)\n#eval topological_readout_ob3ect_v2_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem topological_readout_ob3ect_v2_frobenius :\n    igFrobeniusAlg.mul topological_readout_ob3ect_v2_s0 topological_readout_ob3ect_v2_s0 = topological_readout_ob3ect_v2_s0 :=\n  igFrobAlg_self_fusion topological_readout_ob3ect_v2_s0\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 17,
+    "t_branch_ops": 2,
+    "f_branch_ops": 4,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2,
+      6
+    ],
+    "fuse_positions": [
+      9,
+      15
+    ],
+    "pair_list": [
+      [
+        6,
+        9
+      ],
+      [
+        2,
+        15
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: topological_readout_ob3ect_v2",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞<∋◻",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 6,
+    "deposits": 5,
+    "inert": 0,
+    "verdict": "6 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 17,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞<∋◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested"
+      },
+      {
+        "k": 1,
+        "word": "⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞<∋◻⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested"
+      },
+      {
+        "k": 2,
+        "word": "∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞<∋◻⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested"
+      },
+      {
+        "k": 3,
+        "word": "⊣>⋈∈⊤⊥∋⊙⊤⊥⊞<∋◻⊢⊣∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 4,
+        "word": ">⋈∈⊤⊥∋⊙⊤⊥⊞<∋◻⊢⊣∈⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 5,
+        "word": "⋈∈⊤⊥∋⊙⊤⊥⊞<∋◻⊢⊣∈⊣>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 6,
+        "word": "∈⊤⊥∋⊙⊤⊥⊞<∋◻⊢⊣∈⊣>⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 7,
+        "word": "⊤⊥∋⊙⊤⊥⊞<∋◻⊢⊣∈⊣>⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 8,
+        "word": "⊥∋⊙⊤⊥⊞<∋◻⊢⊣∈⊣>⋈∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 9,
+        "word": "∋⊙⊤⊥⊞<∋◻⊢⊣∈⊣>⋈∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 10,
+        "word": "⊙⊤⊥⊞<∋◻⊢⊣∈⊣>⋈∈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 11,
+        "word": "⊤⊥⊞<∋◻⊢⊣∈⊣>⋈∈⊤⊥∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 12,
+        "word": "⊥⊞<∋◻⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 13,
+        "word": "⊞<∋◻⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 14,
+        "word": "<∋◻⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 15,
+        "word": "∋◻⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 16,
+        "word": "◻⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞<∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": false,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 14,
+    "canonical_word": "<∋◻⊢⊣∈⊣>⋈∈⊤⊥∋⊙⊤⊥⊞",
+    "verdict": "PHASE-BEARING — moves under ROTAT: closed_walk, final_register"
+  }
+}
