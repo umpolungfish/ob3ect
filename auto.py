@@ -233,6 +233,24 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
 _OPCODE_REF = """\
 IMASM 12-OPCODE REFERENCE  (Universal Imscriptive Grammar)
 
+LOGIC SUBSTRATE — read this before assigning anything. This grammar is PARACONSISTENT.
+There is no PASS/FAIL and no classical true-or-false. Every closure resolves to ONE of
+four Belnap values (B4), and a contradiction is a legitimate result, not an error:
+  N — neither: nothing was established. The empty state {}. register 00.
+  T — true: constructively proven / affirmed. register 01.
+  F — false: constructively refuted / negated. register 10.
+  B — BOTH: true and false held at once. A contradiction does NOT explode and is NOT a
+      failure — holding both IS the resolution. register 11.
+Two arms that conflict FUSE to B, not to an error. Forward and backward, success and
+failure, thesis and antithesis: when they meet they fuse to a definite verdict, often B,
+and that is correct. Never try to make a fork "cancel back to the input".
+
+STATE SPACE — the verdict is computed over SIXTEEN_3 = P({T,F,t,f}), the sixteen subsets
+of four base values (T proven, F refuted, t acceptable, f rejectable) under three orderings
+(information, truth, constructivity — the trilattice). You do NOT compute the verdict and
+you NEVER assert PASS/FAIL — you describe the STRUCTURE; the kernel runs the token word over
+SIXTEEN_3 and returns the B4 value.
+
 LOGICAL (6) — categorical skeleton:
   VINIT  (0x0) — Initial object ∅. Void/uninitialized state before anything is named.
                  Examples: Hebrew Aleph (air), Basque absolutive, seed before planting.
@@ -247,18 +265,21 @@ LOGICAL (6) — categorical skeleton:
   IMSCRIB (0x5) — Identity id. Self-reference, self-recognition. The element is itself.
                  Examples: Sanskrit nasals, Egyptian logograms, the stone that knows itself.
 
-FROBENIUS (2) — the core algebra, μ∘δ = id:
-  FSPLIT (0x6) — Co-multiplication δ. One thing branches into two or more distinct paths.
+FROBENIUS (2) — the fork/fuse pair, μ∘δ:
+  FSPLIT (0x6) — Co-multiplication δ. One state opens into two or more arms.
                  Examples: Hebrew Doubles (hard/soft), Sanskrit aspirate pairs,
                  Egyptian trilateral roots, separatio, Raft log append to all peers.
-  FFUSE  (0x7) — Multiplication μ. Branches reconstitute the original input exactly.
+  FFUSE  (0x7) — Multiplication μ. The arms rejoin (Belnap join) into ONE B4 verdict.
                  Examples: Conjunctio, trilateral roots recovering base form, Raft commit.
-                 CONSTRAINT: FFUSE(FSPLIT(x)) = x  ←  this MUST hold in the domain.
+                 μ∘δ=id is a STRUCTURAL identity the kernel checks over SIXTEEN_3 — it means
+                 the arms rejoin to a single resolved verdict (conflicting arms rejoin to B),
+                 NOT that the domain's contents come back unchanged. A fork that never rejoins
+                 is an OPEN fork (verdict B or N), which is legitimate, not a failure.
 
-DIALETHEIA (3) — paraconsistent truth lattice:
-  EVALT  (0x8) — True/affirmative branch. Positive evaluation.
-  EVALF  (0x9) — False/negative branch. Negative evaluation.
-  ENGAGR (0xA) — Both simultaneously. A paradice: held without resolution.
+DIALETHEIA (3) — the paraconsistent evaluators:
+  EVALT  (0x8) — touches constructive truth T (the affirmative arm).
+  EVALF  (0x9) — touches constructive falsity F (the negative arm).
+  ENGAGR (0xA) — holds BOTH at once: the B state, a contradiction kept live (not resolved away).
                  Examples: Cuneiform polysemous sign, bicameral compromise, albedo stage.
 
 LINEAR (1) — irreversible fixation:
@@ -360,7 +381,7 @@ FREE COMPOSITION RULES
 
 SINGLE-GLYPH CODES (the alphabet is fully SYMBOLIC -- no Latin initials, so no token
 can be confused with a verdict letter T/N/B/F)
-  VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   =     IMSCRIB ⊙
+  VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   ⋈     IMSCRIB ⊙
   FSPLIT ∈     FFUSE  ∋     EVALT  ⊤     EVALF  ⊥     ENGAGR  ⊞     IFIX    ◻
   A sequence may be written glued as a word: ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣ is the same program as the
   13 spelled-out tokens. The retired codes V/T/B and ← (the old IMSCRIB) no longer parse anywhere.
@@ -374,7 +395,7 @@ WHY RULE 2 AND RULE 10 ARE SAFE (inflation invariance)
   topology as a shorter one, never a different one.
   IMSCRIB (⊙) is the neutral element of that expansion: it is identity/self-reference
   and does NOT transform, so inserting it at any depth leaves the verdict untouched.
-  The transforming tokens (> < = + × ⊞ ¬) are NOT neutral -- a single one placed on an
+  The transforming tokens (> < ⋈ ⊤ ⊥ ⊞ ◻) are NOT neutral -- a single one placed on an
   arm between FSPLIT and FFUSE turns an identity closure into a real one. So: expand
   freely to map the domain, but only put a transforming token on an arm when the domain
   really does work there.
@@ -409,9 +430,8 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
     "split_input":   "<what enters the split>",
     "split_outputs": ["<branch A>", "<branch B>"],
     "fuse_element":  "<the FFUSE element>",
-    "fuse_result":   "<result — must semantically equal split_input>",
-    "verdict":       "PASS",
-    "failure_reason": ""
+    "fuse_result":   "<the single state the arms rejoin into — conflicting arms rejoin to B; this need NOT recreate split_input>",
+    "rejoin_note":   "<one line: what work runs on the arms and whether they rejoin or the fork stays open. Do NOT state a verdict — the kernel computes the B4 value over SIXTEEN_3.>"
   },
   "registers": {
     "void":  "<domain description of 00 — uninitialized, before anything exists>",
@@ -470,10 +490,12 @@ Use when the structural form matters more than a particular branch's content.
 
 Choose the topology that best fits the domain. Flat chains are ONE option, not the default.
 
-CRITICAL FROBENIUS CONSTRAINT:
-The FSPLIT and FFUSE elements must form a genuine pair where FFUSE(FSPLIT(x)) = x in the
-domain. Reason carefully: if you branch X into [A, B], then fusing [A, B] must recover X.
-If no such pair exists, set verdict to "FAIL" and explain why in failure_reason.
+FROBENIUS STRUCTURE (not a pass/fail test):
+Where the domain forks, pair a FSPLIT with a FFUSE and say what work runs on the arms and
+how they rejoin. Conflicting arms rejoin to B — that is a result, not a failure. Where a
+fork stays permanently open, leave it open and say so. Do NOT reason about whether contents
+return unchanged, do NOT decide whether it closes, and do NOT emit PASS/FAIL: the kernel runs
+the token word over SIXTEEN_3 and returns the B4 verdict (N/T/F/B).
 
 Output ONLY the JSON object — no preamble, no markdown fences, no trailing text.
 
@@ -772,9 +794,9 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         split_outputs=fb.get("split_outputs", []),
         fuse_element=fb.get("fuse_element", ""),
         fuse_result=fb.get("fuse_result", ""),
-        frobenius_verdict=fb.get("verdict", "PASS"),
+        frobenius_verdict="UNCHECKED",   # set by the kernel below, never by the model
         test_instance="",
-        failure_reason=fb.get("failure_reason", ""),
+        failure_reason="",
     )
 
     r = data.get("registers", {})
@@ -799,6 +821,22 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         ],
         closure_verified=True,
     )
+
+    # The kernel decides the verdict, not the model. Run the emitted opcode word
+    # through the SIXTEEN_3 engine and read the real Belnap value (N/T/F/B); a
+    # model-asserted PASS/FAIL is never trusted — that framing is what drove the
+    # designer to reason toward classical invertibility instead of structure.
+    if _IMASM16_3_AVAILABLE:
+        try:
+            _ops16 = [_IMASM12_TO_16_3.get(s["opcode"], "IMSCRIB") for s in bootstrap.steps]
+            _tr = Sequence16_3Trace(_ops16, machine=IMASM16_3_Machine())
+            _tr.run()
+            _vd, _msg = _tr.tri_ancestral_verdict()
+            split_fuse.frobenius_verdict = _vd            # one of N / T / F / B
+            split_fuse.failure_reason = _msg
+            bootstrap.closure_verified = _vd in ("T", "B")
+        except Exception:
+            pass
 
     e = data.get("exos", {})
     exos = ExOSSpec(
@@ -1220,20 +1258,13 @@ async def auto_design(
             artifact.grounding_reasoning = grounding_reasoning
             artifact.grounding_failed_primitives = grounding_failed
 
-            if artifact.split_fuse_report.frobenius_verdict == "PASS":
-                slug = _make_unique_slug(artifact_name)
-                await _verify_lean_scaffold(artifact, slug)
-                return artifact
-
-            sfr = artifact.split_fuse_report
-            retry_info = (
-                f"Frobenius verdict: FAIL.\n"
-                f"  FSPLIT {sfr.split_element!r}: {sfr.split_input!r} → {sfr.split_outputs}\n"
-                f"  FFUSE  {sfr.fuse_element!r}: returned {sfr.fuse_result!r}\n"
-                f"  Reason: {sfr.failure_reason}\n"
-                f"  Fix: choose a split/fuse pair where FFUSE(FSPLIT(x)) = x holds in the domain."
-            )
-            attempt += 1
+            # The kernel's B4 verdict (N/T/F/B) is the RESULT, not a gate: T, F, B and N
+            # are all legitimate outcomes, recorded on the artifact. We no longer retry to
+            # force a classical "PASS" — that demand was what drove the designer to reason
+            # toward domain invertibility instead of describing the fork's structure.
+            slug = _make_unique_slug(artifact_name)
+            await _verify_lean_scaffold(artifact, slug)
+            return artifact
 
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 429:
@@ -1360,8 +1391,8 @@ class ZoomChain:
                 lines.append(f"  ↕ CLINK  : {self.clink_morphisms[lvl.gamma]}")
         lines.append(f"\n{sep}")
         lines.append(f"Levels: {len(self.levels)}  |  CLINK morphisms: {len(self.clink_morphisms)}")
-        all_pass = all(lvl.artifact.split_fuse_report.frobenius_verdict == "PASS" for lvl in self.levels)
-        lines.append(f"Chain Frobenius: {'PASS' if all_pass else 'PARTIAL'}")
+        all_closed = all(lvl.artifact.split_fuse_report.frobenius_verdict in ("T", "B") for lvl in self.levels)
+        lines.append(f"Chain Frobenius: {'CLOSED' if all_closed else 'PARTIAL'} (every level T or B)")
         lines.append(sep)
         return "\n".join(lines)
 
@@ -1484,14 +1515,14 @@ class ChurnTree:
             lines.append(f"{pad}  Frobenius: {frob}   word: {word}")
         lines.append(f"\n{sep}")
         all_nodes = self.nodes()
-        passed = sum(1 for n in all_nodes
-                     if n.artifact.split_fuse_report.frobenius_verdict == "PASS")
-        lines.append(f"ob3ects: {len(all_nodes)}   Frobenius PASS: {passed}")
+        closed = sum(1 for n in all_nodes
+                     if n.artifact.split_fuse_report.frobenius_verdict in ("T", "B"))
+        lines.append(f"ob3ects: {len(all_nodes)}   Frobenius closed (T/B): {closed}")
         # A churn is coherent when winding inward does not break closure. A step
-        # that fails only when imscribed on its own is the interesting case: the
-        # parent closes over something that does not close by itself.
+        # that does not close (verdict N or F) only when imscribed on its own is the
+        # interesting case: the parent closes over something that does not by itself.
         broke = [n for n in all_nodes
-                 if n.winding > 0 and n.artifact.split_fuse_report.frobenius_verdict != "PASS"]
+                 if n.winding > 0 and n.artifact.split_fuse_report.frobenius_verdict not in ("T", "B")]
         if broke:
             lines.append("steps that do not close when imscribed alone:")
             for n in broke:
