@@ -1,0 +1,325 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → EVALT → AFWD → EVALF → EVALT → AFWD → EVALF → EVALT → AFWD → EVALF → EVALT → AFWD → EVALF → EVALT → AFWD → EVALF → ENGAGR → FFUSE → EVALT → EVALF → IFIX → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "secp256k1 public key --direct extract-> original secret key",
+  "notes": "Auto-designed from: <domain-context>\n\n========== CONTEXT: file:/home/mrnob0dy666/imsgct/ig-docs/FIXED_POINT_NESTING_RULE_CONTINUATION.md (47",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "The secp256k1 curve parameters (p, a, b, G, n, h) and the computational hardness of the elliptic curve discrete logarithm problem (ECDLP) over the finite field F_p.",
+      "domain_name": "secp256k1 public key --direct extract-> original secret key",
+      "domain_type": "cryptographic",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "openrouter",
+      "surface_tokens": [
+        "secp256k1",
+        "public_key",
+        "private_key",
+        "discrete_log",
+        "extraction"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "Forward extraction step: apply candidate attack (brute force, Pollard's rho, baby-step giant-step, lattice reduction, nonce reuse recovery, side-channel leverage)",
+        "glyph": ">",
+        "justification": "Each attack algorithm transforms the search state toward the private scalar; forward morphism because computation progresses from public key toward secret recovery.",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "Reverse descent: backtrack from failed attack branch, discard exhausted search subspace, return to branch point",
+        "glyph": "<",
+        "justification": "When an attack vector yields no scalar, the search state reverses — the subspace is marked exhausted and the analyzer returns to the decision point to try the next vector.",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "Chained attack pipeline: weak-key check → nonce-reuse check → small-subgroup check → generic DLP solver",
+        "glyph": "⋈",
+        "justification": "Attacks compose sequentially; each stage's output (candidate scalar or failure) feeds the next stage's input, forming a deterministic pipeline.",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "Live contradiction: partial candidate from weak-key arm conflicts with generic-hard arm's infeasibility proof",
+        "glyph": "⊞",
+        "justification": "When a structural weakness suggests a candidate but the generic solver cannot confirm it within budget, both 'extractable' and 'not extractable' hold simultaneously — the key is in a dialetheic state pending oracle resolution.",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "Negative extraction: all feasible attack vectors exhausted, no scalar satisfies Q = d·G within computational budget",
+        "glyph": "⊥",
+        "justification": "The search space is constructively refuted up to the resource bound; the private key remains cryptographically hidden.",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "Affirmative extraction: candidate scalar d' satisfies Q = d'·G",
+        "glyph": "⊤",
+        "justification": "The verification equation holds; the discrete logarithm is constructively proven and the private key is recovered.",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "Rejoin into unified extraction outcome: recovered scalar d OR infeasibility certificate",
+        "glyph": "∋",
+        "justification": "All arms converge to one resolved state — either a verified private key (T-arm success) or a composite failure across all vectors (F-arm dominance); conflicting partial results (e.g., candidate from one arm, rejection from another) fuse to B.",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "Branch on private key extractability class: weak-key / nonce-reuse / small-scalar / side-channel / generic-hard",
+        "glyph": "∈",
+        "justification": "The single public key fans into five mutually exclusive extractability arms — each arm represents a distinct mathematical weakness that would permit direct extraction.",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "Immutable audit record: public key, attack vectors attempted, computational cost, final verdict (d / infeasible / contradictory)",
+        "glyph": "◻",
+        "justification": "The extraction attempt is permanently logged append-only; no subsequent operation can alter the recorded outcome or the resource expenditure.",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "Curve equation self-check: verify Q satisfies y² ≡ x³ + 7 (mod p) and Q ≠ ∞",
+        "glyph": "⊙",
+        "justification": "The public key validates itself against the curve definition; this identity operation confirms the point is well-formed without transforming the extraction state.",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "Sealed extraction verdict: either recovered private scalar d or proven computational infeasibility",
+        "glyph": "⊣",
+        "justification": "The process terminates when the extraction attempt concludes — either the scalar is found and verified against the public key, or all feasible attack vectors are exhausted and the result is fixed as unrecoverable.",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "Unanalyzed secp256k1 public key point Q = (x, y) on the curve",
+        "glyph": "⊢",
+        "justification": "The public key arrives as a raw curve point with no prior knowledge of its generating scalar d; the discrete logarithm d such that Q = d·G is unknown and the state is void of any extraction path.",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "frobenius_verdict": "T",
+      "fuse_element": "Unified extraction verdict",
+      "fuse_result": "Single state: recovered private scalar d (if any arm succeeds), infeasibility certificate (if all arms fail), or contradictory partial recovery (if arms conflict) — conflicting arms rejoin to B",
+      "rejoin_note": "Each arm runs its specific attack to completion; weak-key and nonce-reuse arms are deterministic and fast, small-scalar arm runs bounded Pollard's rho, side-channel arm requires oracle access, generic-hard arm runs until resource exhaustion. Arms rejoin at the verification gate Q = d·G; the fork closes only when all arms have terminated or a verified scalar is found.",
+      "split_element": "Extractability classification fork",
+      "split_input": "Raw secp256k1 public key Q with no auxiliary data",
+      "split_outputs": [
+        "Weak-key arm (known vulnerable parameters)",
+        "Nonce-reuse arm (ECDSA signature leakage)",
+        "Small-scalar arm (d < 2^80 brute-forceable)",
+        "Side-channel arm (timing/power/cache leakage)",
+        "Generic-hard arm (full ECDLP, no known weakness)"
+      ],
+      "verdict_reason": "Tri-ancestral reconnection over a transformed object — closes",
+      "verdict_source": "kernel: tri_ancestral_verdict over SIXTEEN_3"
+    },
+    "phase_3": {
+      "both_description": "B4 B (11) — both held at once: a candidate scalar emerges from a structural weakness arm but cannot be verified or rejected within the resource bound, or multiple arms produce conflicting candidates — the key is simultaneously extractable and not extractable until oracle resolution",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "B4 F (10) — constructively refuted: all feasible attack vectors exhausted, no scalar satisfies the curve equation within computational budget",
+      "transitions": [],
+      "true_description": "B4 T (01) — constructively proven: private scalar d recovered and verified via Q = d·G",
+      "void_description": "B4 N (00) — neither: public key received, no extraction attempted, no weakness identified"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "secp256k1 public key Q arrives unanalyzed",
+          "glyph": "⊢",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "verify Q satisfies curve equation y² ≡ x³ + 7 (mod p) and Q ≠ ∞",
+          "glyph": "⊙",
+          "opcode": "IMSCRIB",
+          "step_num": 2
+        },
+        {
+          "domain_action": "branch on extractability class — weak-key / nonce-reuse / small-scalar / side-channel / generic-hard",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 3
+        },
+        {
+          "domain_action": "weak-key arm — check Q against known vulnerable parameter databases (e.g., Debian OpenSSL bug, smartcard weak RNG)",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 4
+        },
+        {
+          "domain_action": "weak-key arm — if match found, compute candidate d from known vulnerability",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 5
+        },
+        {
+          "domain_action": "weak-key arm — no match in vulnerability databases",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 6
+        },
+        {
+          "domain_action": "nonce-reuse arm — search for ECDSA signatures with repeated k value yielding d = (s₁ - s₂)⁻¹(z₁ - z₂) mod n",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 7
+        },
+        {
+          "domain_action": "nonce-reuse arm — if repeated nonce found, compute d directly",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 8
+        },
+        {
+          "domain_action": "nonce-reuse arm — no signature set available or no nonce reuse detected",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 9
+        },
+        {
+          "domain_action": "small-scalar arm — bound d < 2^80, launch Pollard's rho with distinguished points",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 10
+        },
+        {
+          "domain_action": "small-scalar arm — iterate rho until collision yields candidate d",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 11
+        },
+        {
+          "domain_action": "small-scalar arm — rho exhausts budget without collision",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 12
+        },
+        {
+          "domain_action": "side-channel arm — query timing/power/cache oracle for scalar bits",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 13
+        },
+        {
+          "domain_action": "side-channel arm — reconstruct d from leaked bits via lattice reduction",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 14
+        },
+        {
+          "domain_action": "side-channel arm — no oracle access or insufficient leakage",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 15
+        },
+        {
+          "domain_action": "generic-hard arm — launch parallel Pollard's rho on full 256-bit space",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 16
+        },
+        {
+          "domain_action": "generic-hard arm — iterate until resource exhaustion (expected 2^128 steps)",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 17
+        },
+        {
+          "domain_action": "generic-hard arm — budget exhausted, no collision",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 18
+        },
+        {
+          "domain_action": "hold contradictory state if weak-key candidate exists but generic arm cannot verify within budget",
+          "glyph": "⊞",
+          "opcode": "ENGAGR",
+          "step_num": 19
+        },
+        {
+          "domain_action": "rejoin all arms at verification gate — test each candidate d' against Q = d'·G",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 20
+        },
+        {
+          "domain_action": "verification gate — candidate d' satisfies Q = d'·G, private key recovered",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 21
+        },
+        {
+          "domain_action": "verification gate — no candidate satisfies equation, extraction infeasible",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 22
+        },
+        {
+          "domain_action": "append immutable record: Q, arms attempted, computational cost, final verdict",
+          "glyph": "◻",
+          "opcode": "IFIX",
+          "step_num": 23
+        },
+        {
+          "domain_action": "extraction process sealed — verdict fixed as recovered scalar, infeasibility, or contradiction",
+          "glyph": "⊣",
+          "opcode": "TANCH",
+          "step_num": 24
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "secp256k1 domain parameters (p = 2^256 - 2^32 - 977, a = 0, b = 7, G, n, h) + known weak key databases (Debian OpenSSL, ROCA, smartcard vendor leaks) + ECDSA signature corpuses for nonce-reuse analysis",
+      "compiler_frontend": "Attack vector selector — maps public key properties (curve parameters, associated signatures, implementation metadata) to the ordered sequence of extraction algorithms",
+      "ipc_mechanism": "Oracle interface — side-channel arm communicates with external measurement hardware; nonce-reuse arm queries signature databases; weak-key arm queries vulnerability registries",
+      "memory_mechanism": "Distinguished point table for Pollard's rho (disk-backed hash map); candidate scalar register (256-bit); verification cache (Q, d') pairs",
+      "scheduler_mechanism": "Resource-aware priority queue — weak-key and nonce-reuse arms run first (milliseconds), small-scalar arm runs with configurable budget (seconds to hours), generic-hard arm runs as background lowest priority"
+    },
+    "phase_6": {
+      "cycle_cost": "~2^128 group operations for generic ECDLP; ~2^40 for small-scalar; O(1) for weak-key/nonce-reuse; side-channel cost depends on oracle query count",
+      "delta_s_verdict": "ΔS ≈ 0 — weak-key and nonce-reuse arms are deterministic lookups (zero entropy cost); small-scalar and generic arms consume entropy proportional to search space reduction; side-channel arm exports entropy from physical oracle; total cycle conserves entropy because verification gate Q = d·G is a reversible check",
+      "failure_mode": "",
+      "post_cycle_state": "Either private scalar d (entropy 0), infeasibility certificate (entropy unchanged at 256 bits), or contradictory partial state (entropy reduced but not zero)",
+      "pre_cycle_state": "Public key Q, zero knowledge of d, full computational budget available"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 7.0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 14,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      19
+    ],
+    "nesting_depth": 0,
+    "open_forks": 0,
+    "sequence_length": 24,
+    "t_branch_ops": 2,
+    "topology_class": "flat_chain",
+    "total_pairs": 1
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
