@@ -130,48 +130,49 @@ assert meet_t(frozenset('T'), frozenset('t')) == EMPTY, "meet_t formula does not
 
 
 # ── Opcode constants (glyph is the wire form; name is for humans/logs) ──
+# In catalog order — the same ordering IG_catalog.json gives its columns. ⊙
+# stands at slot nine, Criticality: IMSCRIB is ⊙ because imscribing is
+# inclosure, a boundary drawn around its own centre, and a critical point is
+# where a system turns on itself.
 VINIT   = "VINIT"    # ⊢  0→1  source boundary
 TANCH   = "TANCH"    # ⊣  1→1  sink boundary
 AFWD    = "AFWD"     # >  1→1  forward morphism, WORK
 AREV    = "AREV"     # <  1→1  reverse morphism, WORK
-CLINK   = "CLINK"    # =  1→1  composition / relational link, WORK
-IMSCRIB = "IMSCRIB"  # ⊙  1→1  identity / neutral self-reference
+CLINK   = "CLINK"    # ⋈  1→1  composition / relational link, WORK
+EVALT   = "EVALT"    # ⊤  1→1  evaluates the True axis (≤_t), WORK
 FSPLIT3 = "FSPLIT3"  # ∈  1→3  3-way split: T, F, I arms
 FFUSE3  = "FFUSE3"   # ∋  3→1  3-way fuse: merges T, F, I arms
-EVALT   = "EVALT"    # +  1→1  evaluates the True axis (≤_t), WORK
-EVALF   = "EVALF"    # ×  1→1  evaluates the False axis (≤_t), WORK
+IMSCRIB = "IMSCRIB"  # ⊙  1→1  identity / neutral self-reference
+EVALF   = "EVALF"    # ⊥  1→1  evaluates the False axis (≤_t), WORK
 EVALI   = "EVALI"    # ⊞  1→1  evaluates the Information axis (≤_i), WORK
-TNEG    = "TNEG"     # ~  1→1  negation: inverts T ↔ F, WORK
-INEG    = "INEG"     # ≁  1→1  con-negation: inverts t ↔ f, WORK
-IFIX    = "IFIX"     # ¬  1→1  irreversible commit, WORK
+IFIX    = "IFIX"     # ◻  1→1  irreversible commit, WORK
 
-OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB, FSPLIT3, FFUSE3,
-           EVALT, EVALF, EVALI, TNEG, INEG, IFIX]
+OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, EVALT, FSPLIT3, FFUSE3,
+           IMSCRIB, EVALF, EVALI, IFIX]
 
 GLYPH = {
-    VINIT: "⊢", TANCH: "⊣", AFWD: ">", AREV: "<", CLINK: "⋈", IMSCRIB: "⊙",
-    FSPLIT3: "∈", FFUSE3: "∋", EVALT: "⊤", EVALF: "⊥", EVALI: "⊞",
-    TNEG: "~", INEG: "≁", IFIX: "◻",
+    VINIT: "⊢", TANCH: "⊣", AFWD: ">", AREV: "<", CLINK: "⋈", EVALT: "⊤",
+    FSPLIT3: "∈", FFUSE3: "∋", IMSCRIB: "⊙", EVALF: "⊥", EVALI: "⊞",
+    IFIX: "◻",
 }
-NAME_FROM_GLYPH = {v: k for k, v in GLYPH.items()}
 
-# Retired spellings parse and never print. imasm_core emits the marks above, so
-# a word copied out of an older report still reads without a second alphabet
-# being alive anywhere that writes.
-RETIRED_GLYPH = {"=": CLINK, "+": EVALT, "×": EVALF, "¬": IFIX,
-                 "◇": FSPLIT3, "●": FFUSE3, "⊗": FSPLIT3, "⊕": FFUSE3}
-NAME_FROM_GLYPH.update(RETIRED_GLYPH)
+# THE set is twelve. Only these glyphs are tokens. The old marks ◇ ● = + × ¬ ~ ≁
+# do NOT parse — no alias, no shim; a word containing one reads it as nothing,
+# exactly as a stray letter does. A retired form that still loads is how legacy
+# notation survives a purge, so there is none. TNEG and INEG were never a
+# thirteenth and fourteenth opcode: the two-layer swaps they named are internal
+# to AREV `<`, which is the whole reverse morphism, and ◻ IFIX replaced the rest.
+NAME_FROM_GLYPH = {v: k for k, v in GLYPH.items()}
 
 LOGICAL   = {VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB}
 TRILATIC  = {FSPLIT3, FFUSE3}
 EVAL      = {EVALT, EVALF, EVALI}
-NEGATION  = {TNEG, INEG}
 LINEAR    = {IFIX}
-WORK_OPS  = {AFWD, AREV, CLINK, EVALT, EVALF, EVALI, TNEG, INEG, IFIX}
+WORK_OPS  = {AFWD, AREV, CLINK, EVALT, EVALF, EVALI, IFIX}
 NO_WORK   = {VINIT, TANCH, IMSCRIB, FSPLIT3, FFUSE3}
 
 assert set(OPCODES) == WORK_OPS | NO_WORK
-assert len(OPCODES) == 14
+assert len(OPCODES) == 12
 
 
 # ─── Cyclic FSPLIT3/FFUSE3 pairing ───────────────────────────────────────────
@@ -310,24 +311,6 @@ class IMASM16_3_Machine:
         elif token == EVALI:
             self._touch({'t', 'f'})
 
-        elif token == TNEG:
-            has_t, has_f = 'T' in self.reg, 'F' in self.reg
-            r = set(self.reg) - {'T', 'F'}
-            if has_f: r.add('T')
-            if has_t: r.add('F')
-            self.reg = frozenset(r)
-            self.split_stack = [{{'T': 'F', 'F': 'T'}.get(a, a) for a in fr}
-                                for fr in self.split_stack]
-
-        elif token == INEG:
-            has_t, has_f = 't' in self.reg, 'f' in self.reg
-            r = set(self.reg) - {'t', 'f'}
-            if has_f: r.add('t')
-            if has_t: r.add('f')
-            self.reg = frozenset(r)
-            self.split_stack = [{{'t': 'f', 'f': 't'}.get(a, a) for a in fr}
-                                for fr in self.split_stack]
-
         elif token == IFIX:
             self.fixed = True
 
@@ -453,7 +436,7 @@ class IMASM16_3Sequence:
 
 
 def parse_glyph_word(word: str) -> List[str]:
-    """⊢>∈+×⊞≁∋¬⊣  →  [VINIT, AFWD, FSPLIT3, EVALT, EVALF, EVALI, INEG, FFUSE3, IFIX, TANCH]"""
+    """⊢>∈⊤⊥⊞∋◻⊣  →  [VINIT, AFWD, FSPLIT3, EVALT, EVALF, EVALI, FFUSE3, IFIX, TANCH]"""
     return [NAME_FROM_GLYPH[ch] for ch in word if ch in NAME_FROM_GLYPH]
 
 
