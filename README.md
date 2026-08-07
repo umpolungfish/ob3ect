@@ -967,7 +967,6 @@ ob3ect/
 └── digital/                , The digital tower + IMASM arrangements
     ├── frob.py             , Original Frobenius self-imscriber (the seed)
     ├── ob3ect-imscriber.py , v0.1: Python Frobenius compiler
-    ├── grokouro.txt        , Full Grok dialogue log: 3 FAIL → PASS + descent to v0.10
     ├── runall.py           , Execute the full 28-layer tower
     ├── run_all_imasm.py    , Execute all 12 IMASM arrangement classes + chiral pairs
     ├── imasm_core.py       , Dialetheic-aware IMASM register machine (2-bit: VO⌀/T/F/B⬡)
@@ -1034,7 +1033,7 @@ ob3ect/
     ├── temporal_ob3ect/    , Temporal ob3ect (with verify_closure.py)
     ├── topologically_protected_memory/, Topologically protected memory ob3ect
     ├── self_verifying_proof_assistant_structural_sibling_of_the_stone/, Self-verifying proof assistant
-    ├── dialetheic/         , Earlier dialetheic prototype
+    ├── dialetheic/         , Dialetheic prototype
     ├── parakernel/         , Paraconsistent kernel ob3ect
     └── stub_ob3ect_*/      , 10 stub ob3ects (experimental / partial)
 ```
@@ -1097,14 +1096,11 @@ python digital/cfg_python.py    # → digital/docs/cfg_python.gif
 
 ## Background
 
-The ob3ect originated from a pipeline experiment: supply the IMASM specification to
-an LLM, ask it to generate a self-imscribing compiler, and verify the Frobenius
-condition on the output. Three attempts failed (string equality → normalization →
-structural hash with attributes). The fourth passed using `ast.compare()` with
-`include_attributes=False`. That passing program, `frob.py`, is the seed of
-everything in this repository.
-
-The full dialogue is in `digital/grokouro.txt`.
+The seed of the repository is `digital/frob.py`: a self-imscribing compiler whose
+Frobenius condition is decided by `ast.compare()` with `include_attributes=False`.
+The equivalence relation is what makes the gate work — string equality, source
+normalization, and structural hashing with attributes all fail to identify
+`unparse(parse(src))` with `src`.
 
 The descent from `frob.py` to the bare-metal x86 ISO (`v0.10`) follows the same
 bootstrap sequence that appears in every IMASM system:
@@ -1192,4 +1188,4 @@ The vessel is what we make.
 
 ---
 
-*Author: USER · Lando⊗⊙perator · License: Unlicense (public domain)*
+*Author: Lando⊗⊙perator · License: Unlicense (public domain)*
