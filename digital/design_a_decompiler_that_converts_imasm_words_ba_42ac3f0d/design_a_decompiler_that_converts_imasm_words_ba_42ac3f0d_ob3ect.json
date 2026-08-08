@@ -1,0 +1,367 @@
+{
+  "name": "Design a decompiler that converts IMASM words back to bytecode, closing the μ∘δ=id loop for the Vox control-flow-closure auditor. The system needs: (1) IMASM word → glyph token stream, (2) glyph tokens → native instruction reconstruction, (3) instruction → bytecode emission with proper operands, (4) μ∘δ=id verification (lift(recompose(word)) = word). Focus on x86 PE/ELF targets using capstone for disassembly context.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Design a decompiler that converts IMASM words back to bytecode, closing the μ∘δ=id loop for the Vox control-flow-closure auditor. The system needs: (1) IMASM word → glyph token stream, (2) glyph tokens → native instruction reconstruction, (3) instruction → bytecode emission with proper operands, (4) μ∘δ=id verification (lift(recompose(word)) = word). Focus on x86 PE/ELF targets using capstone for disassembly context.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "glyph_stream",
+        "instruction_reconstruction",
+        "operand_payload"
+      ],
+      "boundary_condition": "x86 PE/ELF binary boundary containing the instruction set and operand metadata",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "binary entry point initialization",
+        "justification": "Initial object: empty glyph stream before any instruction is processed",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "emitted binary section end",
+        "justification": "Terminal anchor: final byte offset after all glyphs reconstructed",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "glyph to instruction forward mapping",
+        "justification": "Forward morphism through 12:12 bijection",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "operand resolution from disassembly context",
+        "justification": "Reverse descent resolving operands from binary memory layout",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "sequential instruction chaining",
+        "justification": "Composition through program counter sequence",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "self-referential glyph identity",
+        "justification": "Glyph is its own address for lift back verification",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "control flow fork at position 6",
+        "justification": "Co-multiplication delta representing conditional branch",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "control flow merge at merge target",
+        "justification": "Multiplication mu rejoining fork arms into single stream",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "truth producing condition",
+        "justification": "Affirmative state from cmp/test conditioning branch resolution",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "consumed condition",
+        "justification": "Negative state from setcc/cmovcc resolving data flow",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "ALU computation engagement",
+        "justification": "Paradice where operation and operand coexist as B-state",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "permanent bytecode record",
+        "justification": "ROM fixation: instruction bytes permanent and append-only",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT control flow fork glyph",
+      "split_input": "FSPLIT glyph at position 6 representing conditional branch",
+      "split_outputs": [
+        "conditional branch instruction with resolved target",
+        "fall-through sequence to merge point"
+      ],
+      "fuse_element": "FFUSE control flow merge glyph",
+      "fuse_result": "FSPLIT glyph at position 6 representing conditional branch",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "empty glyph stream state 00",
+      "true_description": "state 01 resolved branch target",
+      "false_description": "state 10 unresolved conditional branch",
+      "both_description": "state 11 dialetheic both valid and unresolved",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "VINIT"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "IMSCRIB"
+        },
+        {
+          "step_num": 3,
+          "opcode": "EVALT",
+          "domain_action": "EVALT"
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALF",
+          "domain_action": "EVALF"
+        },
+        {
+          "step_num": 5,
+          "opcode": "ENGAGR",
+          "domain_action": "ENGAGR"
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "CLINK"
+        },
+        {
+          "step_num": 7,
+          "opcode": "IFIX",
+          "domain_action": "IFIX"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FSPLIT",
+          "domain_action": "FSPLIT"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AFWD",
+          "domain_action": "AFWD"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "AREV"
+        },
+        {
+          "step_num": 11,
+          "opcode": "FFUSE",
+          "domain_action": "FFUSE"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "TANCH"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "capstone disassembly context",
+      "ipc_mechanism": "shared operand buffer",
+      "memory_mechanism": "append-only byte buffer",
+      "scheduler_mechanism": "linear position counter",
+      "alfs_store": "IMASM module format",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "disassembly and operand resolution per glyph",
+      "pre_cycle_state": "unresolved glyph with missing payload",
+      "post_cycle_state": "resolved instruction in byte buffer",
+      "delta_s_verdict": "delta S approximately 0, entropy conserved per glyph",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → EVALT → EVALF → ENGAGR → CLINK → IFIX → FSPLIT → AFWD → AREV → FFUSE → TANCH\n-- Class: Design a decompiler that converts IMASM words back to bytecode, closing the μ∘δ=id loop for the Vox control-flow-closure auditor. The system needs: (1) IMASM word → glyph token stream, (2) glyph tokens → native instruction reconstruction, (3) instruction → bytecode emission with proper operands, (4) μ∘δ=id verification (lift(recompose(word)) = word). Focus on x86 PE/ELF targets using capstone for disassembly context.\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(7, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] IMSCRIB   gram   := 𐑠               𐑼 → ⊙  | identity — self-imscription\n--   [2] EVALT     crit   := ⊙               𐑠 → 𐑖  | evaluate-true — criticality gate open\n--   [3] EVALF     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check\n--   [4] ENGAGR    stoi   := 𐑳               𐑖 → 𐑱  | engage paradox — B-state, both arms\n--   [5] CLINK     fid    := 𐑱               𐑳 → 𐑭  | composition — regime coherence\n--   [6] IFIX      prot   := 𐑭               𐑱 → 𐑚  | irreversible fixation — winding number\n--   [7] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [8] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [9] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [10] FFUSE     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [11] TANCH     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s7 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def design_a_decompiler_that_converts_imasm_2ab022_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def design_a_decompiler_that_converts_imasm_2ab022_protocol : IGProtocol design_a_decompiler_that_converts_imasm_2ab022_s0 design_a_decompiler_that_converts_imasm_2ab022_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct design_a_decompiler_that_converts_imasm_2ab022_s10 design_a_decompiler_that_converts_imasm_2ab022_s10 = design_a_decompiler_that_converts_imasm_2ab022_s10 (idempotent)\n  (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l0 design_a_decompiler_that_converts_imasm_2ab022_s0 design_a_decompiler_that_converts_imasm_2ab022_s1) (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l1 design_a_decompiler_that_converts_imasm_2ab022_s1 design_a_decompiler_that_converts_imasm_2ab022_s2) (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l2 design_a_decompiler_that_converts_imasm_2ab022_s2 design_a_decompiler_that_converts_imasm_2ab022_s3) (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l3 design_a_decompiler_that_converts_imasm_2ab022_s3 design_a_decompiler_that_converts_imasm_2ab022_s4) (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l4 design_a_decompiler_that_converts_imasm_2ab022_s4 design_a_decompiler_that_converts_imasm_2ab022_s5) (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l5 design_a_decompiler_that_converts_imasm_2ab022_s5 design_a_decompiler_that_converts_imasm_2ab022_s6) (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l6 design_a_decompiler_that_converts_imasm_2ab022_s6 design_a_decompiler_that_converts_imasm_2ab022_s7) (.seq (.prod (.arrow design_a_decompiler_that_converts_imasm_2ab022_l7 design_a_decompiler_that_converts_imasm_2ab022_s7 design_a_decompiler_that_converts_imasm_2ab022_s10) (.arrow design_a_decompiler_that_converts_imasm_2ab022_l7 design_a_decompiler_that_converts_imasm_2ab022_s7 design_a_decompiler_that_converts_imasm_2ab022_s10)) (.seq (.arrow design_a_decompiler_that_converts_imasm_2ab022_l10 design_a_decompiler_that_converts_imasm_2ab022_s10 design_a_decompiler_that_converts_imasm_2ab022_s10) (.arrow design_a_decompiler_that_converts_imasm_2ab022_l10 design_a_decompiler_that_converts_imasm_2ab022_s10 design_a_decompiler_that_converts_imasm_2ab022_s11))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def design_a_decompiler_that_converts_imasm_2ab022_true_arm : IGProtocol design_a_decompiler_that_converts_imasm_2ab022_s0 design_a_decompiler_that_converts_imasm_2ab022_s11 :=\n  (design_a_decompiler_that_converts_imasm_2ab022_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def design_a_decompiler_that_converts_imasm_2ab022_false_arm : IGProtocol design_a_decompiler_that_converts_imasm_2ab022_s0 design_a_decompiler_that_converts_imasm_2ab022_s11 :=\n  (design_a_decompiler_that_converts_imasm_2ab022_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef design_a_decompiler_that_converts_imasm_2ab022_tier_ground : OuroboricityTier := TierFunctor.obj design_a_decompiler_that_converts_imasm_2ab022_s0\ndef design_a_decompiler_that_converts_imasm_2ab022_tier : OuroboricityTier := TierFunctor.obj design_a_decompiler_that_converts_imasm_2ab022_s11\n#eval design_a_decompiler_that_converts_imasm_2ab022_tier_ground  -- tier of the ground (pre-transformation)\n#eval design_a_decompiler_that_converts_imasm_2ab022_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem design_a_decompiler_that_converts_imasm_2ab022_frobenius :\n    igFrobeniusAlg.mul design_a_decompiler_that_converts_imasm_2ab022_s0 design_a_decompiler_that_converts_imasm_2ab022_s0 = design_a_decompiler_that_converts_imasm_2ab022_s0 :=\n  igFrobAlg_self_fusion design_a_decompiler_that_converts_imasm_2ab022_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 0,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      7
+    ],
+    "fuse_positions": [
+      10
+    ],
+    "pair_list": [
+      [
+        7,
+        10
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Design a decompiler that converts IMASM words back to bytecode, closing the μ∘δ=id loop for the Vox control-flow-closure auditor. The system needs: (1) IMASM word → glyph token stream, (2) glyph tokens → native instruction reconstruction, (3) instruction → bytecode emission with proper operands, (4) μ∘δ=id verification (lift(recompose(word)) = word). Focus on x86 PE/ELF targets using capstone for disassembly context.",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙⊤⊥⊞⋈◻∈><∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 5,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (5 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙⊤⊥⊞⋈◻∈><∋⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙⊤⊥⊞⋈◻∈><∋⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "⊤⊥⊞⋈◻∈><∋⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⊥⊞⋈◻∈><∋⊣⊢⊙⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊞⋈◻∈><∋⊣⊢⊙⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⋈◻∈><∋⊣⊢⊙⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "◻∈><∋⊣⊢⊙⊤⊥⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "∈><∋⊣⊢⊙⊤⊥⊞⋈◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "><∋⊣⊢⊙⊤⊥⊞⋈◻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "<∋⊣⊢⊙⊤⊥⊞⋈◻∈>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "∋⊣⊢⊙⊤⊥⊞⋈◻∈><",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢⊙⊤⊥⊞⋈◻∈><∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 9,
+    "canonical_word": "<∋⊣⊢⊙⊤⊥⊞⋈◻∈>",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}
