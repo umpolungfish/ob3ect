@@ -1,0 +1,372 @@
+{
+  "name": "BTC address scalar retrieval for 5 P2PKH addresses using seekpeek DLOG recovery pipeline. The addresses are P2PKH mainnet: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn, 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC, 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG, 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX, 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr. The IMASM word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T). The FSPLIT/FFUSE μ∘δ=id operates at the BTC address level: FSPLIT decomposes BTC address → hash160 + checksum, FFUSE reconstitutes hash160 + checksum → address. The scalar recovery via Pollard's rho runs as a separate EVALT/EVALF dialetheic branch on the secp256k1 cyclic group <G>. The seekpeek pipeline uses base58check unwrap for FSPLIT and base58check reconstitution for FFUSE. The bridge_tool.py has been verified with 11 self-check tests passing. All 37 pubkeys were found from blockchain transactions across the 5 addresses, but none matched the seekpeek registry.",
+  "is_valid_ob3ect": false,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [
+      "ENGAGR: justification required"
+    ],
+    "phase_2": [],
+    "phase_3": [
+      "void required",
+      "both required"
+    ],
+    "phase_4": [],
+    "phase_5": [
+      "compiler_frontend required",
+      "ipc_mechanism required",
+      "memory_mechanism required",
+      "scheduler_mechanism required",
+      "alfs_store required"
+    ],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "BTC address scalar retrieval for 5 P2PKH addresses using seekpeek DLOG recovery pipeline. The addresses are P2PKH mainnet: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn, 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC, 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG, 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX, 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr. The IMASM word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T). The FSPLIT/FFUSE μ∘δ=id operates at the BTC address level: FSPLIT decomposes BTC address → hash160 + checksum, FFUSE reconstitutes hash160 + checksum → address. The scalar recovery via Pollard's rho runs as a separate EVALT/EVALF dialetheic branch on the secp256k1 cyclic group <G>. The seekpeek pipeline uses base58check unwrap for FSPLIT and base58check reconstitution for FFUSE. The bridge_tool.py has been verified with 11 self-check tests passing. All 37 pubkeys were found from blockchain transactions across the 5 addresses, but none matched the seekpeek registry.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "BTC address",
+        "hash160",
+        "checksum",
+        "secp256k1 public key",
+        "private scalar",
+        "Pollard's rho",
+        "base58check unwrap",
+        "base58check reconstitution",
+        "sk*G==pk verification",
+        "ECDLP bound"
+      ],
+      "boundary_condition": "Flat chain of 11 tokens mapping VINIT→IMSCRIB→FSPLIT→CLINK→EVALT→EVALF→FFUSE→IFIX→AFWD→AREV→TANCH. FSPLIT/FFUSE pair at the BTC address level satisfies μ∘δ=id: FSPLIT unwraps the BTC address to hash160 + checksum (base58check decode), FFUSE reconstitutes the address from those components (base58check reconstitution). The Pollard's rho scalar recovery runs as EVALT/EVALF evaluation arms on the secp256k1 cyclic group <G>. AFWD on T-arm represents forward transformation from address to hash160 (base58check decode). AREV on F-arm represents reverse morphism from point coordinates to scalar (Pollard's rho descent). EVALT gate verifies sk*G==pk machine-verified this run. EVALF captures the ECDLP bound when scalar recovery fails. IFIX commits the audit record. TANCH seals the boundary with μ∘δ=id closure.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "BTC address enters the system (genesis)",
+        "justification": "Initial object - the starting state before any transformation",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Terminal boundary seal with μ∘δ=id verification",
+        "justification": "Closed boundary containing the whole system",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Forward transform: address → hash160 (base58check unwrap)",
+        "justification": "Forward morphism on T-arm",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Reverse transform: point coordinates → scalar (Pollard's rho descent)",
+        "justification": "Contravariant mapping on F-arm",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Composition of group law operations",
+        "justification": "Sequential chaining - the scalar recovery steps chained",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Formal verification word self-references",
+        "justification": "Identity - the system knows its own closure",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Base58check unwrap of BTC address into hash160 + checksum",
+        "justification": "Co-multiplication δ - decomposes the address into its two recoverable components",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Base58check reconstitution of BTC address from hash160 + checksum",
+        "justification": "Multiplication μ - the arms rejoin into a single resolved BTC address",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Affirmative evaluation - sk*G==pk machine-verification",
+        "justification": "Constructive truth - forward verification that recovered scalar is correct",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Negative evaluation - ECDLP bound established",
+        "justification": "Constructive falsity - when recovery fails over complete search space",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "ENGAGR",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Permanent audit record fixation",
+        "justification": "Irreversible record of the recovery attempt",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "BTC address (base58check encoded P2PKH string)",
+      "split_input": "17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn",
+      "split_outputs": [
+        "hash160: 4b39e3c5b4c6c14324af7d0ce99aaa216cef768c",
+        "checksum: ce9f7d39"
+      ],
+      "fuse_element": "BTC address reconstruction from hash160 + checksum via base58check reconstitution",
+      "fuse_result": "17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "",
+      "true_description": "",
+      "false_description": "",
+      "both_description": "",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "VINIT"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "IMSCRIB"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "FSPLIT"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "CLINK"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "EVALT"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "EVALF"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "FFUSE"
+        },
+        {
+          "step_num": 8,
+          "opcode": "IFIX",
+          "domain_action": "IFIX"
+        },
+        {
+          "step_num": 9,
+          "opcode": "AFWD",
+          "domain_action": "AFWD"
+        },
+        {
+          "step_num": 10,
+          "opcode": "AREV",
+          "domain_action": "AREV"
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "TANCH"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "",
+      "ipc_mechanism": "",
+      "memory_mechanism": "",
+      "scheduler_mechanism": "",
+      "alfs_store": "",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "",
+      "pre_cycle_state": "",
+      "post_cycle_state": "",
+      "delta_s_verdict": "ΔS ≈ 0",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → CLINK → EVALT → EVALF → FFUSE → IFIX → AFWD → AREV → TANCH\n-- Class: BTC address scalar retrieval for 5 P2PKH addresses using seekpeek DLOG recovery pipeline. The addresses are P2PKH mainnet: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn, 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC, 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG, 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX, 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr. The IMASM word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T). The FSPLIT/FFUSE μ∘δ=id operates at the BTC address level: FSPLIT decomposes BTC address → hash160 + checksum, FFUSE reconstitutes hash160 + checksum → address. The scalar recovery via Pollard's rho runs as a separate EVALT/EVALF dialetheic branch on the secp256k1 cyclic group <G>. The seekpeek pipeline uses base58check unwrap for FSPLIT and base58check reconstitution for FFUSE. The bridge_tool.py has been verified with 11 self-check tests passing. All 37 pubkeys were found from blockchain transactions across the 5 addresses, but none matched the seekpeek registry.\n-- Fingerprint: sig=(6,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=11\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [4] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [6] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [7] IFIX      prot   := 𐑭               𐑙 → 𐑾  | irreversible fixation — winding number\n--   [8] AFWD      rel    := 𐑾               𐑭 → 𐑗  | forward morphism — bidirectional arrow\n--   [9] AREV      pol    := 𐑗               𐑾 → 𐑡  | reverse morphism — parity flip\n--   [10] TANCH     top    := 𐑡               𐑗 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def btc_address_scalar_retrieval_for_5_87918c_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s7 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def btc_address_scalar_retrieval_for_5_87918c_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def btc_address_scalar_retrieval_for_5_87918c_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def btc_address_scalar_retrieval_for_5_87918c_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def btc_address_scalar_retrieval_for_5_87918c_protocol : IGProtocol btc_address_scalar_retrieval_for_5_87918c_s0 btc_address_scalar_retrieval_for_5_87918c_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct btc_address_scalar_retrieval_for_5_87918c_s6 btc_address_scalar_retrieval_for_5_87918c_s6 = btc_address_scalar_retrieval_for_5_87918c_s6 (idempotent)\n  (.seq (.arrow btc_address_scalar_retrieval_for_5_87918c_l0 btc_address_scalar_retrieval_for_5_87918c_s0 btc_address_scalar_retrieval_for_5_87918c_s1) (.seq (.arrow btc_address_scalar_retrieval_for_5_87918c_l1 btc_address_scalar_retrieval_for_5_87918c_s1 btc_address_scalar_retrieval_for_5_87918c_s2) (.seq (.prod (.arrow btc_address_scalar_retrieval_for_5_87918c_l2 btc_address_scalar_retrieval_for_5_87918c_s2 btc_address_scalar_retrieval_for_5_87918c_s6) (.arrow btc_address_scalar_retrieval_for_5_87918c_l2 btc_address_scalar_retrieval_for_5_87918c_s2 btc_address_scalar_retrieval_for_5_87918c_s6)) (.seq (.arrow btc_address_scalar_retrieval_for_5_87918c_l6 btc_address_scalar_retrieval_for_5_87918c_s6 btc_address_scalar_retrieval_for_5_87918c_s6) (.seq (.arrow btc_address_scalar_retrieval_for_5_87918c_l6 btc_address_scalar_retrieval_for_5_87918c_s6 btc_address_scalar_retrieval_for_5_87918c_s7) (.seq (.arrow btc_address_scalar_retrieval_for_5_87918c_l7 btc_address_scalar_retrieval_for_5_87918c_s7 btc_address_scalar_retrieval_for_5_87918c_s8) (.seq (.arrow btc_address_scalar_retrieval_for_5_87918c_l8 btc_address_scalar_retrieval_for_5_87918c_s8 btc_address_scalar_retrieval_for_5_87918c_s9) (.arrow btc_address_scalar_retrieval_for_5_87918c_l9 btc_address_scalar_retrieval_for_5_87918c_s9 btc_address_scalar_retrieval_for_5_87918c_s10))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def btc_address_scalar_retrieval_for_5_87918c_true_arm : IGProtocol btc_address_scalar_retrieval_for_5_87918c_s0 btc_address_scalar_retrieval_for_5_87918c_s10 :=\n  (btc_address_scalar_retrieval_for_5_87918c_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def btc_address_scalar_retrieval_for_5_87918c_false_arm : IGProtocol btc_address_scalar_retrieval_for_5_87918c_s0 btc_address_scalar_retrieval_for_5_87918c_s10 :=\n  (btc_address_scalar_retrieval_for_5_87918c_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef btc_address_scalar_retrieval_for_5_87918c_tier_ground : OuroboricityTier := TierFunctor.obj btc_address_scalar_retrieval_for_5_87918c_s0\ndef btc_address_scalar_retrieval_for_5_87918c_tier : OuroboricityTier := TierFunctor.obj btc_address_scalar_retrieval_for_5_87918c_s10\n#eval btc_address_scalar_retrieval_for_5_87918c_tier_ground  -- tier of the ground (pre-transformation)\n#eval btc_address_scalar_retrieval_for_5_87918c_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem btc_address_scalar_retrieval_for_5_87918c_frobenius :\n    igFrobeniusAlg.mul btc_address_scalar_retrieval_for_5_87918c_s0 btc_address_scalar_retrieval_for_5_87918c_s0 = btc_address_scalar_retrieval_for_5_87918c_s0 :=\n  igFrobAlg_self_fusion btc_address_scalar_retrieval_for_5_87918c_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        2,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: BTC address scalar retrieval for 5 P2PKH addresses using seekpeek DLOG recovery pipeline. The addresses are P2PKH mainnet: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn, 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC, 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG, 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX, 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr. The IMASM word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T). The FSPLIT/FFUSE μ∘δ=id operates at the BTC address level: FSPLIT decomposes BTC address → hash160 + checksum, FFUSE reconstitutes hash160 + checksum → address. The scalar recovery via Pollard's rho runs as a separate EVALT/EVALF dialetheic branch on the secp256k1 cyclic group <G>. The seekpeek pipeline uses base58check unwrap for FSPLIT and base58check reconstitution for FFUSE. The bridge_tool.py has been verified with 11 self-check tests passing. All 37 pubkeys were found from blockchain transactions across the 5 addresses, but none matched the seekpeek registry.",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈⋈⊤⊥∋◻><⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 2,
+    "inert": 3,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (3 step(s) inert after a fixation), 2 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈⋈⊤⊥∋◻><⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙∈⋈⊤⊥∋◻><⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈⋈⊤⊥∋◻><⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⋈⊤⊥∋◻><⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊤⊥∋◻><⊣⊢⊙∈⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊥∋◻><⊣⊢⊙∈⋈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "∋◻><⊣⊢⊙∈⋈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "◻><⊣⊢⊙∈⋈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "><⊣⊢⊙∈⋈⊤⊥∋◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "<⊣⊢⊙∈⋈⊤⊥∋◻>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊣⊢⊙∈⋈⊤⊥∋◻><",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 9,
+    "canonical_word": "<⊣⊢⊙∈⋈⊤⊥∋◻>",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}

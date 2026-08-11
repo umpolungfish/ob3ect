@@ -1,0 +1,346 @@
+{
+  "name": "The secp256k1 discrete logarithm parameterized on the perfect horn torus (R=r, d=12, 16 sectors). The scalar multiplication sk \u00d7 G = pk becomes a winding coordinate problem: toroidal winding n = sk, poloidal winding l = pk coordinates. The 1/16 winding bridge recovers sk from pk via horn torus geometry. Universal for any ECC key pair",
+  "is_valid_ob3ect": false,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [
+      "Verdict must be PASS/FAIL"
+    ],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The secp256k1 discrete logarithm parameterized on the perfect horn torus (R=r, d=12, 16 sectors). The scalar multiplication sk \u00d7 G = pk becomes a winding coordinate problem: toroidal winding n = sk, poloidal winding l = pk coordinates. The 1/16 winding bridge recovers sk from pk via horn torus geometry. Universal for any ECC key pair",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "horn torus",
+        "winding",
+        "discrete logarithm"
+      ],
+      "boundary_condition": "The perfect horn torus (R=r, d=12, 16 sectors) with its 1/16 winding bridge forms the closed boundary that contains the secp256k1 discrete logarithm problem as a toroidal winding coordinate system",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "The seed scalar n=0 or the initial toroidal winding state before any scalar multiplication",
+        "justification": "Represents the void/uninitialized state before the scalar sk enters the horn torus winding coordinate system",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The horn torus boundary itself (R=r, the critical self-duality surface)",
+        "justification": "The terminal anchor is the closed toroidal surface that bounds the entire winding coordinate system",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Toroidal winding progression (n = sk advancing around the torus major circumference)",
+        "justification": "Forward morphism represents the scalar multiplication sk \u00d7 G = pk as toroidal winding advancement",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Poloidal winding descent (l = pk coordinate unraveling)",
+        "justification": "Contravariant reverse transformation represents the discrete logarithm recovery via poloidal coordinate descent",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Composition of winding coordinates (toroidal n composed with poloidal l)",
+        "justification": "Sequential chaining of the toroidal and poloidal winding morphisms into a composite coordinate transformation",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Self-referential winding closure (\u03bc\u2218\u03b4=id on the torus)",
+        "justification": "Identity morphism represents the self-recognition where the winding bridge recovers sk from pk",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "The 1/16 winding bridge bifurcation",
+        "justification": "One winding state opens into two arms: the constructive proof path (EVALT) and the refutation path (EVALF) for discrete logarithm recovery",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "The winding coordinate rejoin over SIXTEEN_3",
+        "justification": "The two winding arms rejoin into a single B4 verdict over the sixteen poloidal sectors",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Constructive proof that sk \u00d7 G = pk (scalar multiplication verified)",
+        "justification": "Affirmative arm: the toroidal winding n=sk successfully generates the poloidal coordinate l=pk",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Constructive refutation that sk \u00d7 G \u2260 pk (discrete logarithm not recovered)",
+        "justification": "Negative arm: the winding bridge fails to recover sk from pk, the ECDLP bound",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "The paradoxical state where both sk recovery succeeds and fails simultaneously",
+        "justification": "Dialetheia: the horn torus geometry both recovers and does not recover sk, holding both verdicts without resolution",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "The permanent record of the winding bridge result (catalog commitment)",
+        "justification": "ROM fixation of the discrete logarithm recovery attempt as an append-only measurement record",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "The 1/16 winding bridge bifurcation",
+      "split_input": "The public key pk as poloidal winding coordinate l",
+      "split_outputs": [
+        "Constructive recovery path (EVALT: sk \u00d7 G = pk verified)",
+        "Refutation path (EVALF: sk \u00d7 G \u2260 pk, ECDLP bound)"
+      ],
+      "fuse_element": "The winding coordinate rejoin over SIXTEEN_3",
+      "fuse_result": "A single B4 verdict (T if sk recovered and verified, F if ECDLP bound, B if both held, N if neither established)",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object \u2014 closes"
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 The uninitialized toroidal winding state before any scalar enters the horn torus coordinate system",
+      "true_description": "01 \u2014 The affirmative state where sk \u00d7 G = pk is constructively verified, the scalar multiplication succeeds",
+      "false_description": "10 \u2014 The negative state where the discrete logarithm cannot be recovered, the ECDLP bound holds",
+      "both_description": "11 \u2014 The paradice state where both sk recovery and ECDLP bound are simultaneously held without resolution",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "The seed scalar n=0 enters the void state before toroidal winding begins"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-referential identification of the scalar sk with its toroidal winding coordinate n"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "The 1/16 winding bridge bifurcates the poloidal coordinate l=pk into constructive and refutational arms"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Toroidal winding advancement n = sk propagates forward through the horn torus geometry"
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Constructive evaluation \u2014 sk \u00d7 G = pk is verified, the scalar multiplication succeeds"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "Refutational evaluation \u2014 the discrete logarithm recovery fails, the ECDLP bound holds"
+        },
+        {
+          "step_num": 7,
+          "opcode": "CLINK",
+          "domain_action": "Composition of the toroidal winding n and poloidal winding l into the composite coordinate transformation"
+        },
+        {
+          "step_num": 8,
+          "opcode": "FFUSE",
+          "domain_action": "The winding arms rejoin over SIXTEEN_3, the Belnap join produces a single B4 verdict"
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "The permanent record of the winding bridge result is committed as an append-only catalog entry"
+        },
+        {
+          "step_num": 10,
+          "opcode": "TANCH",
+          "domain_action": "The horn torus boundary (R=r) closes the system, the terminal anchor contains the entire winding coordinate problem"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The IMASM kernel engine (ask_native_bin --imasm check) translates the winding coordinate problem into the 12-opcode token sequence",
+      "ipc_mechanism": "The \u03bc\u2218\u03b4=id closure check serves as the inter-component communication protocol, verifying that un_bridge(hqe) == imscription(pk)",
+      "memory_mechanism": "The catalog layer stores the fixed delta map {2,3,6,7,9,11} between pk and sk types as a deterministic per-slot SHA256 imscription",
+      "scheduler_mechanism": "The 1/16 winding bridge positions (2,3,5,7,9,11) determine the order and timing of the six primitive shifts between public and private frames",
+      "alfs_store": "The IG_catalog.json serves as the canonical reference store, carrying the fixed delta map between pk and sk types for all secp256k1 key pairs",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One winding quantum per scalar multiplication step, measured as the tilt angle arctan(1/4) on the horn torus",
+      "pre_cycle_state": "The public key pk exists as a poloidal winding coordinate l on the horn torus surface",
+      "post_cycle_state": "The scalar sk is either recovered (T), bounded (F), both held (B), or undetermined (N) after the winding bridge evaluation",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the \u03bc\u2218\u03b4=id closure check is entropy-conservative because the winding bridge is a reversible coordinate transformation on the horn torus, the forward toroidal winding and backward poloidal descent cancel over SIXTEEN_3",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: The secp256k1 discrete logarithm parameterized on the perfect horn torus (R=r, d=12, 16 sectors). The scalar multiplication sk \u00d7 G = pk becomes a winding coordinate problem: toroidal winding n = sk, poloidal winding l = pk coordinates. The 1/16 winding bridge recovers sk from pk via horn torus geometry. Universal for any ECC key pair\n-- Fingerprint: sig=(5,2,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=10\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [9] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_secp256k1_discrete_logarithm_22f336_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_secp256k1_discrete_logarithm_22f336_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_secp256k1_discrete_logarithm_22f336_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_secp256k1_discrete_logarithm_22f336_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_secp256k1_discrete_logarithm_22f336_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_secp256k1_discrete_logarithm_22f336_protocol : IGProtocol the_secp256k1_discrete_logarithm_22f336_s0 the_secp256k1_discrete_logarithm_22f336_s9 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_secp256k1_discrete_logarithm_22f336_s7 the_secp256k1_discrete_logarithm_22f336_s7 = the_secp256k1_discrete_logarithm_22f336_s7 (idempotent)\n  (.seq (.arrow the_secp256k1_discrete_logarithm_22f336_l0 the_secp256k1_discrete_logarithm_22f336_s0 the_secp256k1_discrete_logarithm_22f336_s1) (.seq (.arrow the_secp256k1_discrete_logarithm_22f336_l1 the_secp256k1_discrete_logarithm_22f336_s1 the_secp256k1_discrete_logarithm_22f336_s2) (.seq (.prod (.arrow the_secp256k1_discrete_logarithm_22f336_l2 the_secp256k1_discrete_logarithm_22f336_s2 the_secp256k1_discrete_logarithm_22f336_s7) (.arrow the_secp256k1_discrete_logarithm_22f336_l2 the_secp256k1_discrete_logarithm_22f336_s2 the_secp256k1_discrete_logarithm_22f336_s7)) (.seq (.arrow the_secp256k1_discrete_logarithm_22f336_l7 the_secp256k1_discrete_logarithm_22f336_s7 the_secp256k1_discrete_logarithm_22f336_s7) (.seq (.arrow the_secp256k1_discrete_logarithm_22f336_l7 the_secp256k1_discrete_logarithm_22f336_s7 the_secp256k1_discrete_logarithm_22f336_s8) (.arrow the_secp256k1_discrete_logarithm_22f336_l8 the_secp256k1_discrete_logarithm_22f336_s8 the_secp256k1_discrete_logarithm_22f336_s9))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_secp256k1_discrete_logarithm_22f336_true_arm : IGProtocol the_secp256k1_discrete_logarithm_22f336_s0 the_secp256k1_discrete_logarithm_22f336_s9 :=\n  (the_secp256k1_discrete_logarithm_22f336_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_secp256k1_discrete_logarithm_22f336_false_arm : IGProtocol the_secp256k1_discrete_logarithm_22f336_s0 the_secp256k1_discrete_logarithm_22f336_s9 :=\n  (the_secp256k1_discrete_logarithm_22f336_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_secp256k1_discrete_logarithm_22f336_tier_ground : OuroboricityTier := TierFunctor.obj the_secp256k1_discrete_logarithm_22f336_s0\ndef the_secp256k1_discrete_logarithm_22f336_tier : OuroboricityTier := TierFunctor.obj the_secp256k1_discrete_logarithm_22f336_s9\n#eval the_secp256k1_discrete_logarithm_22f336_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_secp256k1_discrete_logarithm_22f336_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_secp256k1_discrete_logarithm_22f336_frobenius :\n    igFrobeniusAlg.mul the_secp256k1_discrete_logarithm_22f336_s0 the_secp256k1_discrete_logarithm_22f336_s0 = the_secp256k1_discrete_logarithm_22f336_s0 :=\n  igFrobAlg_self_fusion the_secp256k1_discrete_logarithm_22f336_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 10,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The secp256k1 discrete logarithm parameterized on the perfect horn torus (R=r, d=12, 16 sectors). The scalar multiplication sk \u00d7 G = pk becomes a winding coordinate problem: toroidal winding n = sk, poloidal winding l = pk coordinates. The 1/16 winding bridge recovers sk from pk via horn torus geometry. Universal for any ECC key pair",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc7d\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc6d\u27e9",
+  "grounding_status": "failed",
+  "grounding_failed_primitives": [
+    "Axiom A: \u22a5=\ud801\udc6b requires \u22a4=\ud801\udc6a (got \u22a4=\ud801\udc67)",
+    "Axiom C: \u22a2=\ud801\udc66 and \u22a3=\ud801\udc78 must co-occur (got \u22a2=\ud801\udc66, \u22a3=\ud801\udc65)"
+  ],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "\u22a2\u2299\u2208>\u22a4\u22a5\u22c8\u220b\u25fb\u22a3",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 2,
+    "inert": 1,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (1 step(s) inert after a fixation), 2 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "\u22a3=\ud801\udc65: The horn torus geometry inherently involves cyclic winding paths (poloidal and toroidal) that form closed loops, with the 1/16 winding bridge representing a cyclic interface for recovering the scalar.\n\u22a2=\ud801\udc66: The horn torus geometry unifies surface and interior into a single register, enabling lossless scale-collapse propagation.\n\u229e=\ud801\udc73: The horn torus geometry inherently involves asymmetric winding numbers (n \u2260 l) for scalar and public keys, reflecting different counts on each side.\n\u25fb=\ud801\udc6d: The integer winding numbers n and l are topological invariants that cannot be continuously deformed without changing the discrete logarithm relationship.\n\u2299=\u2299: The horn torus geometry with 1/16 winding bridge represents a critical threshold where discrete logarithm recovery becomes maximally sensitive to geometric perturbations.\n\u22a5=\ud801\udc6b: The horn torus geometry enforces a topological chirality where the scalar multiplication's winding structure cannot be reversed without altering the global toroidal topology, ensuring persistent orientational symmetry breaking.\n>=\ud801\udc7d: The horn torus geometry acts as a catalytic framework that lowers the computational barrier for recovering the scalar from the public key without being consumed in the process.\n<=\ud801\udc79: The horn torus geometry with 1/16 winding bridge provides exact Z2 symmetry at criticality, making \u03bc\u2218\u03b4=id provably exact.\n\u22c8=\ud801\udc50: The horn torus geometry enforces deterministic winding relationships, yielding high-fidelity information transfer exceeding 9 bits per interaction.\n\u22a4=\ud801\udc67: The high barrier reflects the computational hardness assumption underlying secp256k1, where reversing the scalar multiplication (finding sk from pk) is kinetically frozen without solving the discrete logarithm problem.\n\u2208=\ud801\udc54: The horn torus geometry and toroidal winding structure imply global propagation across the entire system, as the scalar multiplication inherently involves the full cyclic group structure of secp256k1.\n\u220b=\ud801\udc75: The horn torus geometry requires many cooperative winding partners (>10) to reconstruct the scalar via toroidal coordinate recovery.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 10,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299\u2208>\u22a4\u22a5\u22c8\u220b\u25fb\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299\u2208>\u22a4\u22a5\u22c8\u220b\u25fb\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u2208>\u22a4\u22a5\u22c8\u220b\u25fb\u22a3\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">\u22a4\u22a5\u22c8\u220b\u25fb\u22a3\u22a2\u2299\u2208",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "\u22a4\u22a5\u22c8\u220b\u25fb\u22a3\u22a2\u2299\u2208>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u22a5\u22c8\u220b\u25fb\u22a3\u22a2\u2299\u2208>\u22a4",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u22c8\u220b\u25fb\u22a3\u22a2\u2299\u2208>\u22a4\u22a5",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u220b\u25fb\u22a3\u22a2\u2299\u2208>\u22a4\u22a5\u22c8",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u25fb\u22a3\u22a2\u2299\u2208>\u22a4\u22a5\u22c8\u220b",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u22a3\u22a2\u2299\u2208>\u22a4\u22a5\u22c8\u220b\u25fb",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 3,
+    "canonical_word": ">\u22a4\u22a5\u22c8\u220b\u25fb\u22a3\u22a2\u2299\u2208",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

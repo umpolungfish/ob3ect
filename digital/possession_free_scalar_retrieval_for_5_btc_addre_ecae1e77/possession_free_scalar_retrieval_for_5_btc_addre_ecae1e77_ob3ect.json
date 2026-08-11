@@ -1,0 +1,370 @@
+{
+  "name": "Possession-free scalar retrieval for 5 BTC addresses using IMASM formal verification. The BTC addresses are P2PKH mainnet addresses that need to be converted to hash160 values. The IMASM system word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T) via MoDoT ask_native_bin. The retrieval pipeline uses Pollard's rho as FSPLIT/FFUSE algebra over secp256k1 cyclic group <G>, gated by EVALT (sk*G==pk machine-verification). The 5 BTC addresses are: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn (hash160: 4b39e3c5b4c6c14324af7d0ce99aaa216cef768c), 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC (hash160: 74d7cc7f9622c6c8bb07ae3209df2a55c2d8ccbc), 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG (hash160: a91b3e836ce8da023fb32f6866eb09096a34ac88), 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX (hash160: 31f19a7d0379f56cb3be0761c21f1f0c9553a47f), 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr (hash160: 12d5a845f2b212ce0c3bd65a4035881d9219090e). All are P2PKH version byte 0. The previous agent tried conventional polynomial routes (300k+ candidates, 0 hits) but never used IMASM formal verification. The one_pipeline selfcheck passes on all 5 toy groups with ORIGINAL scalar recovered and sk*G==pk verified.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Possession-free scalar retrieval for 5 BTC addresses using IMASM formal verification. The BTC addresses are P2PKH mainnet addresses that need to be converted to hash160 values. The IMASM system word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T) via MoDoT ask_native_bin. The retrieval pipeline uses Pollard's rho as FSPLIT/FFUSE algebra over secp256k1 cyclic group <G>, gated by EVALT (sk*G==pk machine-verification). The 5 BTC addresses are: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn (hash160: 4b39e3c5b4c6c14324af7d0ce99aaa216cef768c), 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC (hash160: 74d7cc7f9622c6c8bb07ae3209df2a55c2d8ccbc), 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG (hash160: a91b3e836ce8da023fb32f6866eb09096a34ac88), 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX (hash160: 31f19a7d0379f56cb3be0761c21f1f0c9553a47f), 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr (hash160: 12d5a845f2b212ce0c3bd65a4035881d9219090e). All are P2PKH version byte 0. The previous agent tried conventional polynomial routes (300k+ candidates, 0 hits) but never used IMASM formal verification. The one_pipeline selfcheck passes on all 5 toy groups with ORIGINAL scalar recovered and sk*G==pk verified.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "btc_address",
+        "hash160",
+        "public_key_point",
+        "pollard_rho_walk",
+        "scalar_candidate"
+      ],
+      "boundary_condition": "The secp256k1 elliptic curve group over F_P with generator G of order Q. Bounded by the 12-slot IMASM tuple frame, the IMASM verification word verified T by ask_native_bin, the EVALT gate requiring sk*G==pk machine-verified this run, and the base58check encoding layer wrapping each BTC P2PKH address.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "five BTC P2PKH addresses",
+        "justification": "Initial void state: five BTC addresses enter as uninitialized input before base58check extraction.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "scalar verification boundary",
+        "justification": "Terminal anchor: EVALT gate and IFIX sealing form closed boundary within secp256k1 group order Q.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "pollard rho advancement",
+        "justification": "Forward morphism: walk steps advance tortoise and hare via x_{i+1}=x_i + R_{h(x_i)} recording affine coefficients.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "coefficient backpropagation",
+        "justification": "Contravariant descent: on collision computes n = (a_h - a_t) * inv(b_t - b_h, q) mod q.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "point addition composition",
+        "justification": "Sequential composition: group law composes point additions as partition-class walk steps.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "address self recognition",
+        "justification": "Identity/self-reference: BTC address self-identifies within base58check encoding. IMASM word closes T.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "base58check unwrap",
+        "justification": "Co-multiplication delta: splits BTC address into version byte, hash160 digest, and checksum via base58check decode.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "base58check reconstruct",
+        "justification": "Multiplication mu: rejoins version, hash160, checksum into exact BTC address via base58check encode.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "scalar affirmative gate",
+        "justification": "Affirmative evaluation: verifies candidate scalar n where n*G == pk machine-verified this run.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "walk exhaustion negative",
+        "justification": "Negative evaluation: identifies collision failures and walk exhaustion over 2^256-order group.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "positive negative tension",
+        "justification": "Paradice: holds both toy-curve scalar recovery and secp256k1 generic DLOG bound simultaneously.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "audit trail fixation",
+        "justification": "ROM fixation: permanent record of retrieval attempts in registry.json.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "base58check_unwrap",
+      "split_input": "BTC_address_17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn",
+      "split_outputs": [
+        "version_byte_0x00",
+        "hash160_4b39e3c5b4c6c14324af7d0ce99aaa216cef768c",
+        "checksum_ee9f7d39"
+      ],
+      "fuse_element": "base58check_reconstruct",
+      "fuse_result": "BTC_address_17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "00 - Five BTC addresses pending hash160 extraction and scalar recovery.",
+      "true_description": "01 - Scalar candidate n where n*G==pk verified on toy cyclic groups.",
+      "false_description": "10 - Walk exhausted over secp256k1 cyclic group of order 2^256, ECDLP=2^128 bound.",
+      "both_description": "11 - Paradice: toy-curve scalar recovery succeeds while secp256k1 generic walk is open.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "five BTC P2PKH addresses enter as uninitialized input"
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "ask_native_bin --imasm check returns T for word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "delta splits BTC address into version, hash160, checksum"
+        },
+        {
+          "step_num": 4,
+          "opcode": "CLINK",
+          "domain_action": "group law composes point additions as partition-class walk steps"
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "tortoise and hare advance via Pollard rho with affine coefficients"
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "affirmative gate n*G==pk machine-verified this run"
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "coefficient backpropagation on collision n=(a_h-a_t)*inv(b_t-b_h,q) mod q"
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "negative gate walk exhausted without collision"
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "dialetheic hold toy success and secp256k1 bound held simultaneously"
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "mu reconstructs BTC address from version+hash160+checksum"
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "permanent record in registry"
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "terminal anchor system closed by EVALT gate and IFIX seal"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "IMASM engine ask_native_bin --imasm check over SIXTEEN_3 lattice returns B4 verdict.",
+      "ipc_mechanism": "Seekpeek Python pipeline communicates with kernel via shared imports and subprocess calls.",
+      "memory_mechanism": "In-memory cyclic group representation with points as tuples over F_P, scalars as integers mod Q.",
+      "scheduler_mechanism": "Sequential: IMASM gate first, base58check unwrap, Pollard rho walks, EVALT/EVALF evaluation, IFIX commitment, TANCH closure.",
+      "alfs_store": "Canonical reference: pk_sk_formula_closure verified T, one_pipeline.py selfcheck passes all 5 toy groups.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "O(sqrt(Q)) group operations on secp256k1 for Pollard rho walk.",
+      "pre_cycle_state": "Five BTC addresses with unknown discrete logarithms, 256-bit entropy each.",
+      "post_cycle_state": "Either machine-verified scalar or ECDLP bound. No entropy destroyed.",
+      "delta_s_verdict": "Delta S approximately 0 — entropy-conservative cycle.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → CLINK → AFWD → EVALT → AREV → EVALF → ENGAGR → FFUSE → IFIX → TANCH\n-- Class: Possession-free scalar retrieval for 5 BTC addresses using IMASM formal verification. The BTC addresses are P2PKH mainnet addresses that need to be converted to hash160 values. The IMASM system word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T) via MoDoT ask_native_bin. The retrieval pipeline uses Pollard's rho as FSPLIT/FFUSE algebra over secp256k1 cyclic group <G>, gated by EVALT (sk*G==pk machine-verification). The 5 BTC addresses are: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn (hash160: 4b39e3c5b4c6c14324af7d0ce99aaa216cef768c), 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC (hash160: 74d7cc7f9622c6c8bb07ae3209df2a55c2d8ccbc), 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG (hash160: a91b3e836ce8da023fb32f6866eb09096a34ac88), 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX (hash160: 31f19a7d0379f56cb3be0761c21f1f0c9553a47f), 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr (hash160: 12d5a845f2b212ce0c3bd65a4035881d9219090e). All are P2PKH version byte 0. The previous agent tried conventional polynomial routes (300k+ candidates, 0 hits) but never used IMASM formal verification. The one_pipeline selfcheck passes on all 5 toy groups with ORIGINAL scalar recovered and sk*G==pk verified.\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [4] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [6] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [7] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [8] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [9] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [10] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [11] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def possession_free_scalar_retrieval_for_5_5bc139_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def possession_free_scalar_retrieval_for_5_5bc139_protocol : IGProtocol possession_free_scalar_retrieval_for_5_5bc139_s0 possession_free_scalar_retrieval_for_5_5bc139_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct possession_free_scalar_retrieval_for_5_5bc139_s9 possession_free_scalar_retrieval_for_5_5bc139_s9 = possession_free_scalar_retrieval_for_5_5bc139_s9 (idempotent)\n  (.seq (.arrow possession_free_scalar_retrieval_for_5_5bc139_l0 possession_free_scalar_retrieval_for_5_5bc139_s0 possession_free_scalar_retrieval_for_5_5bc139_s1) (.seq (.arrow possession_free_scalar_retrieval_for_5_5bc139_l1 possession_free_scalar_retrieval_for_5_5bc139_s1 possession_free_scalar_retrieval_for_5_5bc139_s2) (.seq (.prod (.arrow possession_free_scalar_retrieval_for_5_5bc139_l2 possession_free_scalar_retrieval_for_5_5bc139_s2 possession_free_scalar_retrieval_for_5_5bc139_s9) (.arrow possession_free_scalar_retrieval_for_5_5bc139_l2 possession_free_scalar_retrieval_for_5_5bc139_s2 possession_free_scalar_retrieval_for_5_5bc139_s9)) (.seq (.arrow possession_free_scalar_retrieval_for_5_5bc139_l9 possession_free_scalar_retrieval_for_5_5bc139_s9 possession_free_scalar_retrieval_for_5_5bc139_s9) (.seq (.arrow possession_free_scalar_retrieval_for_5_5bc139_l9 possession_free_scalar_retrieval_for_5_5bc139_s9 possession_free_scalar_retrieval_for_5_5bc139_s10) (.arrow possession_free_scalar_retrieval_for_5_5bc139_l10 possession_free_scalar_retrieval_for_5_5bc139_s10 possession_free_scalar_retrieval_for_5_5bc139_s11))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def possession_free_scalar_retrieval_for_5_5bc139_true_arm : IGProtocol possession_free_scalar_retrieval_for_5_5bc139_s0 possession_free_scalar_retrieval_for_5_5bc139_s11 :=\n  (possession_free_scalar_retrieval_for_5_5bc139_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def possession_free_scalar_retrieval_for_5_5bc139_false_arm : IGProtocol possession_free_scalar_retrieval_for_5_5bc139_s0 possession_free_scalar_retrieval_for_5_5bc139_s11 :=\n  (possession_free_scalar_retrieval_for_5_5bc139_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef possession_free_scalar_retrieval_for_5_5bc139_tier_ground : OuroboricityTier := TierFunctor.obj possession_free_scalar_retrieval_for_5_5bc139_s0\ndef possession_free_scalar_retrieval_for_5_5bc139_tier : OuroboricityTier := TierFunctor.obj possession_free_scalar_retrieval_for_5_5bc139_s11\n#eval possession_free_scalar_retrieval_for_5_5bc139_tier_ground  -- tier of the ground (pre-transformation)\n#eval possession_free_scalar_retrieval_for_5_5bc139_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem possession_free_scalar_retrieval_for_5_5bc139_frobenius :\n    igFrobeniusAlg.mul possession_free_scalar_retrieval_for_5_5bc139_s0 possession_free_scalar_retrieval_for_5_5bc139_s0 = possession_free_scalar_retrieval_for_5_5bc139_s0 :=\n  igFrobAlg_self_fusion possession_free_scalar_retrieval_for_5_5bc139_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        2,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Possession-free scalar retrieval for 5 BTC addresses using IMASM formal verification. The BTC addresses are P2PKH mainnet addresses that need to be converted to hash160 values. The IMASM system word VINIT IMSCRIB FSPLIT CLINK EVALT EVALF FFUSE IFIX TANCH has been formally verified to close (T) via MoDoT ask_native_bin. The retrieval pipeline uses Pollard's rho as FSPLIT/FFUSE algebra over secp256k1 cyclic group <G>, gated by EVALT (sk*G==pk machine-verification). The 5 BTC addresses are: 17rm2dvb439dZqyMe2d4D6AQJSgg6yeNRn (hash160: 4b39e3c5b4c6c14324af7d0ce99aaa216cef768c), 1BeouDc6jtHpitvPz3gR3LQnBGb7dKRrtC (hash160: 74d7cc7f9622c6c8bb07ae3209df2a55c2d8ccbc), 1GR9qNz7zgtaW5HwwVpEJWMnGWhsbsieCG (hash160: a91b3e836ce8da023fb32f6866eb09096a34ac88), 15Z5YJaaNSxeynvr6uW6jQZLwq3n1Hu6RX (hash160: 31f19a7d0379f56cb3be0761c21f1f0c9553a47f), 12ib7dApVFvg82TXKycWBNpN8kFyiAN1dr (hash160: 12d5a845f2b212ce0c3bd65a4035881d9219090e). All are P2PKH version byte 0. The previous agent tried conventional polynomial routes (300k+ candidates, 0 hits) but never used IMASM formal verification. The one_pipeline selfcheck passes on all 5 toy groups with ORIGINAL scalar recovered and sk*G==pk verified.",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈⋈>⊤<⊥⊞∋◻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈⋈>⊤<⊥⊞∋◻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙∈⋈>⊤<⊥⊞∋◻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈⋈>⊤<⊥⊞∋◻⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⋈>⊤<⊥⊞∋◻⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": ">⊤<⊥⊞∋◻⊣⊢⊙∈⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊤<⊥⊞∋◻⊣⊢⊙∈⋈>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<⊥⊞∋◻⊣⊢⊙∈⋈>⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊥⊞∋◻⊣⊢⊙∈⋈>⊤<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⊞∋◻⊣⊢⊙∈⋈>⊤<⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "∋◻⊣⊢⊙∈⋈>⊤<⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻⊣⊢⊙∈⋈>⊤<⊥⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢⊙∈⋈>⊤<⊥⊞∋◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 6,
+    "canonical_word": "<⊥⊞∋◻⊣⊢⊙∈⋈>⊤",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  }
+}
