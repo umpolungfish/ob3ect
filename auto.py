@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import re
 import asyncio
+import contextlib
 import sys
 import hashlib
 from pathlib import Path
@@ -1130,6 +1131,7 @@ async def auto_design(
     temperature: float = 0.0,
     context: Optional[str] = None,
     skip_gate: bool = False,
+    stream: bool = False,
 ) -> Ob3ectArtifact:
     """
     Auto-design an Ob3ect from a natural-language description.
@@ -1246,11 +1248,24 @@ async def auto_design(
     while attempt < max_retries:
         prompt = _build_prompt(description, domain_type, retry_info, context=context)
         try:
-            raw = await provider.query(
-                prompt,
-                system=_SYSTEM_PROMPT,
-                temperature=temperature,
-            )
+            # Streaming is a VIEW of the same call: the deltas go to stderr as
+            # they arrive and the whole text still comes back, so the JSON
+            # extraction and everything downstream is unchanged. stderr, not
+            # stdout, because stdout carries the artifact.
+            query_kwargs: Dict[str, Any] = {
+                "system": _SYSTEM_PROMPT,
+                "temperature": temperature,
+            }
+            if stream:
+                def _emit(piece: str) -> None:
+                    sys.stderr.write(piece)
+                    sys.stderr.flush()
+                query_kwargs["on_token"] = _emit
+                print(f"── streaming from {provider.__class__.__name__} ──",
+                      file=sys.stderr, flush=True)
+            raw = await provider.query(prompt, **query_kwargs)
+            if stream:
+                print("\n── stream complete ──", file=sys.stderr, flush=True)
             data = _extract_json(raw)
             artifact = _build_artifact(artifact_name, scope, data)
             artifact.grounded_tuple = grounded_tuple
@@ -1717,6 +1732,10 @@ if __name__ == "__main__":
     ap.add_argument("--retries", type=_parse_retries, default=float("inf"), dest="max_retries",
                     help="Max design retries per entity; 'inf'/'infinite' = retry until success (default: inf)")
     ap.add_argument("--temp", type=float, default=0.0, dest="temperature")
+    ap.add_argument("--stream", action="store_true", default=False,
+                    help="Stream the design call's output as it generates. Tokens go to "
+                         "stderr so stdout still carries only the artifact; the full text "
+                         "is returned either way, so nothing downstream changes.")
     ap.add_argument("--thinking", action="store_true", default=False,
                     help="Enable <thinking> tokens in local Qwen model (default: off)")
     ap.add_argument("--no-scaffold", action="store_true", dest="no_scaffold",
@@ -1947,7 +1966,11 @@ if __name__ == "__main__":
         print(f"Name       : {ob3ect_name}")
     print(f"Auto-designing: {desc}\n")
     sys.stdout.flush()
-    with _Spinner("Imscribing"):
+    # The spinner and a token stream cannot share the line: the spinner rewrites
+    # it with carriage returns and would chew through the text as it arrives. When
+    # streaming, the stream IS the progress indicator.
+    _progress = contextlib.nullcontext() if args.stream else _Spinner("Imscribing")
+    with _progress:
         art = design(
             desc,
             name=ob3ect_name,
@@ -1958,6 +1981,7 @@ if __name__ == "__main__":
             max_retries=args.max_retries,
             temperature=args.temperature,
             context=ctx,
+            stream=args.stream,
         )
     print(art.report())
     errs = art.validate_all()

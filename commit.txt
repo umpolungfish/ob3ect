@@ -1,19 +1,24 @@
-Make the print theme fit a page, not just lose its background
+--stream on the design call
 
-Clearing the background was necessary and not sufficient. On a page the side view
-still carried a constants box in the frame corner and a dozen labels stacked in
-one square inch of the mainline.
+The design call could take a minute behind a spinner with nothing to show for it.
+`--stream` prints the model's output as it arrives.
 
-Print now omits the alpha and mass-ratio box: those are derived quantities that
-belong to the caption or the text, and in the corner they are chrome.
+Streaming is a VIEW of the same call, not a second path: the deltas are handed to
+a callback as they land and the whole text is still returned, so the JSON
+extraction, the artifact build and the cache are untouched. Tokens go to STDERR
+because stdout carries the artifact — piping still works.
 
-Print also drops the labels that collide. The three A2 root marks project onto
-the x-axis in this plane, so two of them land on the same point and their labels
-sat on top of FFUSE3 and horn(0); they are a face-on fact and the equatorial
-view is where they read. The syzygy and phi-tangent labels and three of the four
-chord labels go the same way, leaving lambda_C, which is what the section is
-about. The remaining labels are lifted off the marks they name.
+Three providers, three mechanisms. The HTTP chain (openrouter, deepseek, qwen)
+sets stream:true and parses the SSE deltas. The local kernel already streams its
+tokens to stderr and was only silent because the subprocess captured them, so
+under --stream stderr stays attached to the terminal while stdout is still
+captured as the return value. A provider with no streaming support returns at the
+end as before.
 
-And the limits are tightened. The screen view pads the section into a square that
-is mostly empty, and at column width that empty field is what gets scaled, so the
-geometry shrinks inside its own frame.
+The spinner is suppressed while streaming — it rewrites its line with carriage
+returns and would chew through the text as it arrived. The stream is the progress
+indicator.
+
+Checked with a fake provider: stream off writes nothing to stderr and returns the
+text; stream on writes the deltas and returns the same text. SSE parsing checked
+against a body with an empty delta, a comment line and [DONE].
