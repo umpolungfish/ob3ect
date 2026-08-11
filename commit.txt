@@ -1,24 +1,12 @@
---stream on the design call
+An empty answer switches provider, and parse retries are bounded
 
-The design call could take a minute behind a spinner with nothing to show for it.
-`--stream` prints the model's output as it arrives.
+A provider that returns no text at all was being treated as a model that
+answered badly: the parse raised, the parse branch counted it as the model's
+mistake and asked again, and --retries defaults to infinity, so it asked forever.
+Nothing in the output said what was wrong — just banners.
 
-Streaming is a VIEW of the same call, not a second path: the deltas are handed to
-a callback as they land and the whole text is still returned, so the JSON
-extraction, the artifact build and the cache are untouched. Tokens go to STDERR
-because stdout carries the artifact — piping still works.
-
-Three providers, three mechanisms. The HTTP chain (openrouter, deepseek, qwen)
-sets stream:true and parses the SSE deltas. The local kernel already streams its
-tokens to stderr and was only silent because the subprocess captured them, so
-under --stream stderr stays attached to the terminal while stdout is still
-captured as the return value. A provider with no streaming support returns at the
-end as before.
-
-The spinner is suppressed while streaming — it rewrites its line with carriage
-returns and would chew through the text as it arrived. The stream is the progress
-indicator.
-
-Checked with a fake provider: stream off writes nothing to stderr and returns the
-text; stream on writes the deltas and returns the same text. SSE parsing checked
-against a body with an empty delta, a comment line and [DONE].
+An empty response is now its own failure, named, printed, and answered by moving
+to the next provider. And a parse failure gets three attempts at one provider
+before the chain moves on, however large --retries is: the unbounded budget is
+for rate limits and transient HTTP, where waiting is the right move, not for
+asking a model the same question a thousand times.

@@ -1120,6 +1120,15 @@ async def _run_gated_imscription(description: str, provider_name: Optional[str],
     return await agent.generate_guided(description)
 
 
+class _EmptyResponse(RuntimeError):
+    """The provider answered with no text at all."""
+
+
+# How many times a single provider may return unparseable text before the chain
+# moves on. Distinct from --retries, which governs rate limits and transient HTTP.
+_MAX_PARSE_RETRIES = 3
+
+
 async def auto_design(
     description: str,
     name: Optional[str] = None,
@@ -1245,6 +1254,7 @@ async def auto_design(
         print(f"Provider failed, switching to: {provider.__class__.__name__}")
 
     attempt = 0
+    parse_failures = 0
     while attempt < max_retries:
         prompt = _build_prompt(description, domain_type, retry_info, context=context)
         try:
@@ -1266,6 +1276,16 @@ async def auto_design(
             raw = await provider.query(prompt, **query_kwargs)
             if stream:
                 print("\n── stream complete ──", file=sys.stderr, flush=True)
+            # An EMPTY answer is a provider failure, not a malformed one. Retrying
+            # the same silent call is what turned an unreachable local kernel into
+            # an unbounded loop of banners: the parse raised, the parse branch
+            # counted it as the model's mistake and asked again, and with
+            # --retries defaulting to infinity it asked forever.
+            if not (raw or "").strip():
+                raise _EmptyResponse(
+                    f"{provider.__class__.__name__} returned no text "
+                    f"(model={getattr(provider, 'model', None) or getattr(provider, 'model_path', '?')})"
+                )
             data = _extract_json(raw)
             artifact = _build_artifact(artifact_name, scope, data)
             artifact.grounded_tuple = grounded_tuple
@@ -1295,9 +1315,22 @@ async def auto_design(
             else:
                 _next_provider(e)   # permanent failure, don't burn retry slot
 
+        except _EmptyResponse as e:
+            # Nothing came back at all — a different provider, not a re-ask.
+            print(f"  {e}", file=sys.stderr, flush=True)
+            _next_provider(e)
+
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             retry_info = f"JSON parse failed ({e}). Respond with ONLY a valid JSON object."
             attempt += 1
+            # A parse retry is bounded even when --retries is infinite. The
+            # unbounded budget exists for rate limits and transient HTTP, where
+            # waiting is the right move; asking a model the same question a
+            # thousand times is not.
+            parse_failures += 1
+            if parse_failures >= _MAX_PARSE_RETRIES:
+                _next_provider(e)
+                parse_failures = 0
 
         except Exception as e:
             _next_provider(e)
