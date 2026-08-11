@@ -1204,6 +1204,21 @@ async def auto_design(
         )
         context = f"{gate_context}\n\n{context}" if context else gate_context
 
+    def _model_for(provider: str) -> dict:
+        """A model id belongs to the provider it names.
+
+        A local checkpoint is a filesystem PATH, and handing that to a cloud
+        endpoint produces "/home/…/.modelz/ADULTBB is not a valid model ID" —
+        the fallback chain turning a local model into a bad request against
+        somebody else's API. A path goes only to a provider that loads paths.
+        """
+        if not model:
+            return {}
+        looks_local = model.startswith(("/", "~", ".")) or Path(model).expanduser().exists()
+        if looks_local and provider != "local":
+            return {}
+        return {"model": model}
+
     if provider_name:
         chain = _PROVIDER_CHAIN.copy()
         if provider_name in chain:
@@ -1212,7 +1227,7 @@ async def auto_design(
         providers = []
         for n in chain:
             try:
-                kwargs = {"model": model} if model and n == provider_name else {}
+                kwargs = _model_for(n) if n == provider_name else {}
                 p = get_llm_provider(n, **kwargs)
                 if hasattr(p, "model_path") and not Path(p.model_path).exists():
                     continue
@@ -1220,11 +1235,12 @@ async def auto_design(
             except Exception:
                 continue
     else:
-        first_kwargs = {"model": model} if model else {}
         providers = []
         for n in _PROVIDER_CHAIN:
             try:
-                kwargs = first_kwargs if not providers else {}
+                # The model was named for the FIRST provider in the chain, not for
+                # whichever one happens to be reached after a failure.
+                kwargs = _model_for(n) if not providers else {}
                 p = get_llm_provider(n, **kwargs)
                 if hasattr(p, "model_path") and not Path(p.model_path).exists():
                     continue
@@ -1243,12 +1259,20 @@ async def auto_design(
     retry_info: Optional[str] = None
     artifact: Optional[Ob3ectArtifact] = None
 
+    tried: List[str] = []
+
     def _next_provider(err: Exception) -> None:
         nonlocal provider_idx, provider
+        tried.append(f"{provider.__class__.__name__}: {type(err).__name__}: {str(err)[:160]}")
         provider_idx += 1
         if provider_idx >= len(providers):
+            # Every provider's own reason, not just the last one's. A chain that
+            # dies on DeepSeek's 400 after the local model returned nothing and
+            # OpenRouter rejected a filesystem path has three different faults,
+            # and reporting only the third sends the reader to the wrong one.
+            detail = "\n  ".join(tried)
             raise RuntimeError(
-                f"All providers exhausted. Last error: {err}"
+                f"All {len(providers)} providers failed:\n  {detail}"
             ) from err
         provider = providers[provider_idx]
         print(f"Provider failed, switching to: {provider.__class__.__name__}")

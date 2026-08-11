@@ -1,12 +1,12 @@
-An empty answer switches provider, and parse retries are bounded
+A local model path is not a cloud model ID
 
-A provider that returns no text at all was being treated as a model that
-answered badly: the parse raised, the parse branch counted it as the model's
-mistake and asked again, and --retries defaults to infinity, so it asked forever.
-Nothing in the output said what was wrong — just banners.
+The fallback chain handed /home/mrnob0dy666/.modelz/ADULTBB to OpenRouter as a
+model id and got back "is not a valid model ID" — a local checkpoint is a
+filesystem path, and it belongs only to a provider that loads paths. --model now
+reaches the provider it was named for, and a path is never passed to a cloud
+endpoint.
 
-An empty response is now its own failure, named, printed, and answered by moving
-to the next provider. And a parse failure gets three attempts at one provider
-before the chain moves on, however large --retries is: the unbounded budget is
-for rate limits and transient HTTP, where waiting is the right move, not for
-asking a model the same question a thousand times.
+And exhaustion reports every provider's own reason rather than the last one's. In
+this run there were three different faults — the local model returned nothing,
+OpenRouter rejected a path, DeepSeek 400'd — and only the third was printed,
+which points the reader at the wrong one.
