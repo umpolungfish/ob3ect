@@ -1,8 +1,8 @@
 # The Erdős objects nest
 
-Twelve imscriptions, one per object the corpus needs and does not have. Each
-describes the object wanted and names no candidate, so what comes back is not a
-restatement of a guess.
+One batch config, `erdos_objects.yaml`, carrying twelve entities — one per object
+the corpus needs and does not have. Each entity names the object wanted and no
+candidate for it, so what comes back is not a restatement of a guess.
 
 Eleven of them exist because a statement had to be removed from the batch files:
 it named a quantity the development cannot express, so the placeholder that stood
@@ -26,18 +26,24 @@ the rung bound, which is what settles Erdős–Straus on the surviving class.
 
 ## Running them
 
-The lane is kilo with `poolside/laguna-s-2.1:free`; openrouter was 402.
+One batch, one config. The lane is kilo with `poolside/laguna-s-2.1:free`;
+openrouter was 402.
 
 ```
 cd ~/imsgct/ob3ect
-export KILO_API_KEY=…  IG_MODEL=poolside/laguna-s-2.1:free  IG_PROVIDER=kilo
-for f in nests/erdos_objects/[0-9]*.txt; do
-  b=$(basename "$f" .txt)
-  python3 auto.py --desc-file "$f" --provider kilo --model "$IG_MODEL" \
-    --name "erdos_${b#*_}"
-done
-python3 revalidate_straus.py $(ls -d digital/erdos_* | xargs -n1 basename)
+export KILO_API_KEY=…
+python3 auto.py -f nests/erdos_objects/erdos_objects.yaml
+python3 revalidate_straus.py $(ls -d digital/erdos_objects/* | xargs -n1 basename)
 ```
+
+The config carries the design — domain `computational`, scope `mesoscale`,
+temperature 0, retries unbounded, no cap on tokens — the context file, and the
+catalog entries injected as context. Those entries are taken from the catalog by
+name, not written out: `ramsey_numbers_general`, `ramsey_number`,
+`ramsey_number_odd_cycle`, `ramsey_3_hypergraph`, `generic_graph`,
+`bipartite_graph`, `hamiltonian_cycle`, `hypergraph_turan_density`,
+`hypergraph_chromatic`, `sphere_packing_density_open`, `steiner_tree_problem`,
+`continuum_hypothesis`, `erdos_straus_conjecture`.
 
 `revalidate_straus.py` re-checks against the corrected gates — Axiom C
 one-directional, Axiom A admitting both slow kinetics, the Frobenius verdict a B4
