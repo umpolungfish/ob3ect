@@ -1,0 +1,357 @@
+{
+  "name": "straus_two_parameter_family",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "straus_two_parameter_family",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "divisibility",
+        "congruence",
+        "factorization"
+      ],
+      "boundary_condition": "The terminal anchor ⊣ bounds the arithmetic constraint system over pairs (k, w) for fixed odd n ≡ 1 mod 24, containing all divisibility, coprimality, and congruence conditions that define valid pairs and their emptiness or least-k resolution.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "The void state before any pair (k, w) is named or tested",
+        "justification": "Before any positive integer pair is introduced, no divisibility or congruence condition has been evaluated; the register is void (00) and no parameter exists.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The closed boundary of the constraint system over (k, w) for fixed n",
+        "justification": "The terminal anchor ⊣ contains the entire system of interdependent divisibility and congruence constraints that form a connected graph of relationships among k, w, and n.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Forward morphism toward a valid pair (k, w) satisfying all constraints",
+        "justification": "The forward morphism → represents the directed transformation from candidate parameters toward a target pair that satisfies w | kn+1, gcd(w, 4k) = 1, k | w+1, and (w+1)/k ≡ 3 mod 4.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Reverse morphism descending through factorization of kn+1",
+        "justification": "The reverse morphism ← represents the descent transformation through the factorization of kn+1, exploring divisor structure to find valid w values.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Sequential chaining of divisibility and congruence checks",
+        "justification": "Composition ∘ chains the iterative cycles of factorization and congruence checks that propagate through the parameter space to explore valid (k, w) pairs.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Self-reference of the constraint system on itself",
+        "justification": "The identity id represents the system's self-recognition: the constraints on k and w are purely arithmetic and do not invoke any topological invariant, so the role carries no intrinsic protection.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Splitting the parameter search into existence and emptiness branches",
+        "justification": "The co-multiplication δ opens the state into two arms: one exploring whether valid pairs exist (T-arm) and one determining whether the family is empty (F-arm).",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Rejoining existence and emptiness determinations into a single verdict",
+        "justification": "The multiplication μ reunites the T-arm (valid pairs found) and F-arm (family empty) into one B4 verdict, where conflicting arms rejoin to B if both states are held.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Affirmative state: a valid pair (k, w) exists",
+        "justification": "The constructive truth T represents the affirmative arm where w divides kn+1, w is coprime to 4k, k divides w+1, and (w+1)/k ≡ 3 mod 4 are all satisfied.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Negative state: no valid pair (k, w) exists",
+        "justification": "The constructive falsity F represents the negative arm where the family of pairs is empty, meaning no (k, w) satisfies all four arithmetic conditions simultaneously.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Paradise state: both existence and emptiness are simultaneously held",
+        "justification": "The B state holds both the affirmative (valid pairs exist) and negative (family is empty) simultaneously, a contradiction kept live without resolution, indicating critical behavior at the threshold.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Permanent record of the least k when pairs exist",
+        "justification": "ROM fixation ◻ permanently records the least k value when the family is non-empty, an irreversible append-only record of the minimal solution.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT",
+      "split_input": "The initial parameter search state for pairs (k, w) under fixed odd n ≡ 1 mod 24",
+      "split_outputs": [
+        "Existence branch: searching for valid (k, w) pairs satisfying all constraints",
+        "Emptiness branch: determining whether no valid pair exists"
+      ],
+      "fuse_element": "FFUSE",
+      "fuse_result": "A single B4 verdict over SIXTEEN_3: T if least k is found, F if family is empty, B if both states are held simultaneously",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "00 — No pair (k, w) has been introduced; no divisibility, coprimality, or congruence condition has been evaluated.",
+      "true_description": "01 — A valid pair (k, w) exists satisfying w | kn+1, gcd(w, 4k) = 1, k | w+1, and (w+1)/k ≡ 3 mod 4, with least k recorded.",
+      "false_description": "10 — The family of pairs is empty; no (k, w) satisfies all four arithmetic conditions simultaneously for the given n.",
+      "both_description": "11 — Paradice: both existence and emptiness are simultaneously held, indicating critical behavior where the system exhibits scale-free correlations and maximal sensitivity at the threshold.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "The void state before any pair (k, w) is named or tested — register 00, no parameters exist."
+        },
+        {
+          "step_num": 2,
+          "opcode": "FSPLIT",
+          "domain_action": "The parameter search splits into two arms — T-arm for existence of valid pairs, F-arm for emptiness determination."
+        },
+        {
+          "step_num": 3,
+          "opcode": "EVALT",
+          "domain_action": "The T-arm affirms constructive truth — a valid pair (k, w) exists satisfying w | kn+1, gcd(w, 4k) = 1, k | w+1, and (w+1)/k ≡ 3 mod 4."
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Forward morphism toward the target pair — directed transformation from candidate parameters to a valid (k, w) satisfying all constraints."
+        },
+        {
+          "step_num": 5,
+          "opcode": "CLINK",
+          "domain_action": "Sequential chaining of divisibility and congruence checks — composition ∘ propagates through iterative cycles of factorization and congruence verification."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALF",
+          "domain_action": "The F-arm refutes constructive falsity — no valid pair (k, w) exists, the family is empty."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "Reverse morphism descending through factorization of kn+1 — explores divisor structure to find valid w values, parity flip on the F-arm."
+        },
+        {
+          "step_num": 8,
+          "opcode": "ENGAGR",
+          "domain_action": "Paradice state — both existence and emptiness are simultaneously held, a contradiction kept live without resolution, indicating critical behavior."
+        },
+        {
+          "step_num": 9,
+          "opcode": "IFIX",
+          "domain_action": "Permanent ROM fixation — records the least k value when the family is non-empty, an irreversible append-only record."
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "The arms rejoin into one B4 verdict — T if least k is found, F if family is empty, B if both states are held simultaneously."
+        },
+        {
+          "step_num": 11,
+          "opcode": "TANCH",
+          "domain_action": "Terminal anchor ⊣ closes and contains the entire constraint system over (k, w) for fixed odd n ≡ 1 mod 24."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The arithmetic constraint compiler translates divisibility, coprimality, and congruence conditions into iterative factorization and modular checks over the parameter space.",
+      "ipc_mechanism": "Components communicate through shared register states (00/01/10/11) and edge routing between FSPLIT and FFUSE arms, with the kernel running the token word over SIXTEEN_3.",
+      "memory_mechanism": "State is stored in the B4 register (void/true/false/both) and in IFIX permanent records of least k values, with AREV emptying the register between cycles.",
+      "scheduler_mechanism": "The scheduler determines order through the trilattice orderings (information, truth, constructivity) over SIXTEEN_3, processing factorization cycles with reset steps to explore valid (k, w) pairs.",
+      "alfs_store": "The canonical reference is the grounded tuple ⟨𐑛𐑡𐑽𐑬𐑐𐑧𐑔𐑝⊙𐑖𐑙𐑷⟩ with its validated opcode map and register mapping for this arithmetic constraint system.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Per operation cycle: factorization of kn+1, modular arithmetic checks, and register state transitions consume computational steps but no physical energy.",
+      "pre_cycle_state": "Before the cycle: the register holds a candidate state (void, true, false, or both) and the parameter search is in progress.",
+      "post_cycle_state": "After the cycle: the register holds the resolved B4 verdict (T, F, or B) with least k recorded in IFIX if existence was affirmed.",
+      "delta_s_verdict": "ΔS ≈ 0 — The cycle is entropy-conservative because the arithmetic constraints are purely structural and the register transitions are reversible information operations over SIXTEEN_3, with IFIX providing append-only records that do not dissipate entropy.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → FSPLIT → EVALT → AFWD → CLINK → EVALF → AREV → ENGAGR → IFIX → FFUSE → TANCH\n-- Class: straus_two_parameter_family\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(1, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [5] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [6] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [7] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [8] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [9] FFUSE     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [10] TANCH     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def straus_two_parameter_family_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def straus_two_parameter_family_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def straus_two_parameter_family_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def straus_two_parameter_family_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def straus_two_parameter_family_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def straus_two_parameter_family_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def straus_two_parameter_family_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_two_parameter_family_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def straus_two_parameter_family_protocol : IGProtocol straus_two_parameter_family_s0 straus_two_parameter_family_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct straus_two_parameter_family_s9 straus_two_parameter_family_s9 = straus_two_parameter_family_s9 (idempotent)\n  (.seq (.arrow straus_two_parameter_family_l0 straus_two_parameter_family_s0 straus_two_parameter_family_s1) (.seq (.prod (.arrow straus_two_parameter_family_l1 straus_two_parameter_family_s1 straus_two_parameter_family_s9) (.arrow straus_two_parameter_family_l1 straus_two_parameter_family_s1 straus_two_parameter_family_s9)) (.seq (.arrow straus_two_parameter_family_l9 straus_two_parameter_family_s9 straus_two_parameter_family_s9) (.arrow straus_two_parameter_family_l9 straus_two_parameter_family_s9 straus_two_parameter_family_s10))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def straus_two_parameter_family_true_arm : IGProtocol straus_two_parameter_family_s0 straus_two_parameter_family_s10 :=\n  (straus_two_parameter_family_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def straus_two_parameter_family_false_arm : IGProtocol straus_two_parameter_family_s0 straus_two_parameter_family_s10 :=\n  (straus_two_parameter_family_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef straus_two_parameter_family_tier_ground : OuroboricityTier := TierFunctor.obj straus_two_parameter_family_s0\ndef straus_two_parameter_family_tier : OuroboricityTier := TierFunctor.obj straus_two_parameter_family_s10\n#eval straus_two_parameter_family_tier_ground  -- tier of the ground (pre-transformation)\n#eval straus_two_parameter_family_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem straus_two_parameter_family_frobenius :\n    igFrobeniusAlg.mul straus_two_parameter_family_s0 straus_two_parameter_family_s0 = straus_two_parameter_family_s0 :=\n  igFrobAlg_self_fusion straus_two_parameter_family_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 3,
+    "f_branch_ops": 4,
+    "branch_ratio": 1.333,
+    "fork_positions": [
+      1
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        1,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: straus_two_parameter_family",
+  "grounded_tuple": "⟨𐑛𐑡𐑽𐑬𐑐𐑧𐑔𐑝⊙𐑖𐑙𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈⊤>⋈⊥<⊞◻∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 1,
+      "F": 1
+    },
+    "surplus_total": 2,
+    "live_clears": 1,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 2,
+    "verdict": "0 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 2 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The conditions define a network of interdependent divisibility and congruence constraints that form a connected graph of relationships among the parameters.\n⊢=𐑛: The constraints involve divisibility and modular conditions that propagate through iterative cycles of factorization and congruence checks, requiring temporal/iterative processing with reset steps to explore valid (k, w) pairs.\n⊞=𐑙: The conditions impose symmetric divisibility and congruence constraints on both k and w, requiring balanced pairing.\n◻=𐑷: The conditions on k and w are purely arithmetic and do not invoke any topological invariant or winding structure, so the role carries no intrinsic protection.\n⊙=⊙: The system exhibits scale-free correlations and maximal sensitivity at the threshold, indicating critical behavior.\n⊥=𐑖: The persistence arises from multiple structural axes enforced by the number-theoretic constraints, yielding memory depth tied to the factorization of kn+1.\n>=𐑽: The mechanism involves transition-state stabilization through catalytic interactions that lower energy barriers without being consumed, enabling the transformation to proceed efficiently.\n<=𐑬: The conditions impose a self-complementary structure where both donor and acceptor roles are inherently linked through the divisibility and congruence constraints.\n⋈=𐑐: The constraints tightly couple k, w, and n through divisibility and congruence, enforcing a rigid structure that reliably determines when solutions exist.\n⊤=𐑧: The constraints on k, w, and n create a rigid structure that prevents rearrangement without significant external influence.\n∈=𐑔: The conditions involve global divisibility and congruence constraints that link k, w, and n across the entire parameter space, requiring system-wide consistency.\n∋=𐑝: The conditions require all constraints (divisibility, coprimality, congruence) to hold simultaneously for valid pairs.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢∈⊤>⋈⊥<⊞◻∋⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "∈⊤>⋈⊥<⊞◻∋⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "⊤>⋈⊥<⊞◻∋⊣⊢∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">⋈⊥<⊞◻∋⊣⊢∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⋈⊥<⊞◻∋⊣⊢∈⊤>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊥<⊞◻∋⊣⊢∈⊤>⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<⊞◻∋⊣⊢∈⊤>⋈⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊞◻∋⊣⊢∈⊤>⋈⊥<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "◻∋⊣⊢∈⊤>⋈⊥<⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "∋⊣⊢∈⊤>⋈⊥<⊞◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊣⊢∈⊤>⋈⊥<⊞◻∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": false,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 6,
+    "canonical_word": "<⊞◻∋⊣⊢∈⊤>⋈⊥",
+    "verdict": "PHASE-BEARING — moves under ROTAT: closed_walk, final_register"
+  }
+}
