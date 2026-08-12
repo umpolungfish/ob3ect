@@ -20,7 +20,7 @@
         "prime factor",
         "tree flattening"
       ],
-      "boundary_condition": "The terminal anchor is the completed Pratt certificate tree for a prime p, whose root is p and whose children are certified prime factors of p\u22121, recursively closed under the monad structure",
+      "boundary_condition": "The terminal anchor is the completed Pratt certificate tree for a prime p, whose root is p and whose children are certified prime factors of p−1, recursively closed under the monad structure",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
@@ -62,14 +62,14 @@
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "The branching of a prime p into its set of certified prime factors of p\u22121",
-        "justification": "The co-multiplication splits a prime p into the multiple prime factors of p\u22121, each of which must itself carry a sub-certificate. This is the branching of the certificate tree",
+        "chosen_element": "The branching of a prime p into its set of certified prime factors of p−1",
+        "justification": "The co-multiplication splits a prime p into the multiple prime factors of p−1, each of which must itself carry a sub-certificate. This is the branching of the certificate tree",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
-        "chosen_element": "The reconstitution of prime p from its verified prime factor certificates of p\u22121",
-        "justification": "The multiplication fuses the verified sub-certificates of the factors of p\u22121 back into the single certificate for p. By associativity of tree flattening, this recovers the original prime exactly",
+        "chosen_element": "The reconstitution of prime p from its verified prime factor certificates of p−1",
+        "justification": "The multiplication fuses the verified sub-certificates of the factors of p−1 back into the single certificate for p. By associativity of tree flattening, this recovers the original prime exactly",
         "rejected_candidates": []
       },
       "EVALT": {
@@ -98,10 +98,10 @@
       }
     },
     "phase_2": {
-      "split_element": "FSPLIT: the prime p branching into its certified prime factors of p\u22121",
+      "split_element": "FSPLIT: the prime p branching into its certified prime factors of p−1",
       "split_input": "A prime p requiring a Pratt certificate",
       "split_outputs": [
-        "The set of certified prime factors of p\u22121",
+        "The set of certified prime factors of p−1",
         "The recursive sub-certificate structure for each factor"
       ],
       "fuse_element": "FFUSE: the reconstitution of p from its verified factor certificates",
@@ -116,7 +116,7 @@
       "false_description": "A factor has failed primality testing or its sub-certificate chain is incomplete or invalid",
       "both_description": "A factor exists in a paraconsistent state where it is simultaneously verified and unverified, held without classical resolution",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
@@ -133,7 +133,7 @@
         {
           "step_num": 3,
           "opcode": "FSPLIT",
-          "domain_action": "The prime p branches into its certified prime factors of p\u22121, each requiring a sub-certificate"
+          "domain_action": "The prime p branches into its certified prime factors of p−1, each requiring a sub-certificate"
         },
         {
           "step_num": 4,
@@ -191,11 +191,11 @@
       "cycle_cost": "Each verification step consumes computational resources for primality testing and factor decomposition",
       "pre_cycle_state": "An unverified prime p with an incomplete or absent certificate tree",
       "post_cycle_state": "A fully verified Pratt certificate tree for p, with all sub-certificates recursively confirmed and permanently recorded",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The certificate verification process is information-preserving: the entropy of the unverified prime is exactly balanced by the entropy of the verified certificate tree, with no net information gain or loss",
+      "delta_s_verdict": "ΔS ≈ 0 — The certificate verification process is information-preserving: the entropy of the unverified prime is exactly balanced by the entropy of the verified certificate tree, with no net information gain or loss",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: Pratt certificate monad: free monad on the prime-factors-of-n-minus-1 relation, unit maps prime to trivial certificate, multiplication flattens certificate-of-certificates. Monad laws hold by associativity of tree flattening.\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def pratt_certificate_monad_free_monad_on_54fa82_protocol : IGProtocol pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct pratt_certificate_monad_free_monad_on_54fa82_s8 pratt_certificate_monad_free_monad_on_54fa82_s8 = pratt_certificate_monad_free_monad_on_54fa82_s8 (idempotent)\n  (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l0 pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s1) (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l1 pratt_certificate_monad_free_monad_on_54fa82_s1 pratt_certificate_monad_free_monad_on_54fa82_s2) (.seq (.prod (.arrow pratt_certificate_monad_free_monad_on_54fa82_l2 pratt_certificate_monad_free_monad_on_54fa82_s2 pratt_certificate_monad_free_monad_on_54fa82_s8) (.arrow pratt_certificate_monad_free_monad_on_54fa82_l2 pratt_certificate_monad_free_monad_on_54fa82_s2 pratt_certificate_monad_free_monad_on_54fa82_s8)) (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l8 pratt_certificate_monad_free_monad_on_54fa82_s8 pratt_certificate_monad_free_monad_on_54fa82_s8) (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l8 pratt_certificate_monad_free_monad_on_54fa82_s8 pratt_certificate_monad_free_monad_on_54fa82_s9) (.arrow pratt_certificate_monad_free_monad_on_54fa82_l9 pratt_certificate_monad_free_monad_on_54fa82_s9 pratt_certificate_monad_free_monad_on_54fa82_s10))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def pratt_certificate_monad_free_monad_on_54fa82_true_arm : IGProtocol pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s10 :=\n  (pratt_certificate_monad_free_monad_on_54fa82_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def pratt_certificate_monad_free_monad_on_54fa82_false_arm : IGProtocol pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s10 :=\n  (pratt_certificate_monad_free_monad_on_54fa82_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef pratt_certificate_monad_free_monad_on_54fa82_tier_ground : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_free_monad_on_54fa82_s0\ndef pratt_certificate_monad_free_monad_on_54fa82_tier : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_free_monad_on_54fa82_s10\n#eval pratt_certificate_monad_free_monad_on_54fa82_tier_ground  -- tier of the ground (pre-transformation)\n#eval pratt_certificate_monad_free_monad_on_54fa82_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem pratt_certificate_monad_free_monad_on_54fa82_frobenius :\n    igFrobeniusAlg.mul pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s0 = pratt_certificate_monad_free_monad_on_54fa82_s0 :=\n  igFrobAlg_self_fusion pratt_certificate_monad_free_monad_on_54fa82_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → EVALF → ENGAGR → CLINK → IMSCRIB → FFUSE → IFIX → TANCH\n-- Class: Pratt certificate monad: free monad on the prime-factors-of-n-minus-1 relation, unit maps prime to trivial certificate, multiplication flattens certificate-of-certificates. Monad laws hold by associativity of tree flattening.\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] AFWD      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [6] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [7] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [8] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [9] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [10] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_free_monad_on_54fa82_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def pratt_certificate_monad_free_monad_on_54fa82_protocol : IGProtocol pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct pratt_certificate_monad_free_monad_on_54fa82_s8 pratt_certificate_monad_free_monad_on_54fa82_s8 = pratt_certificate_monad_free_monad_on_54fa82_s8 (idempotent)\n  (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l0 pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s1) (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l1 pratt_certificate_monad_free_monad_on_54fa82_s1 pratt_certificate_monad_free_monad_on_54fa82_s2) (.seq (.prod (.arrow pratt_certificate_monad_free_monad_on_54fa82_l2 pratt_certificate_monad_free_monad_on_54fa82_s2 pratt_certificate_monad_free_monad_on_54fa82_s8) (.arrow pratt_certificate_monad_free_monad_on_54fa82_l2 pratt_certificate_monad_free_monad_on_54fa82_s2 pratt_certificate_monad_free_monad_on_54fa82_s8)) (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l8 pratt_certificate_monad_free_monad_on_54fa82_s8 pratt_certificate_monad_free_monad_on_54fa82_s8) (.seq (.arrow pratt_certificate_monad_free_monad_on_54fa82_l8 pratt_certificate_monad_free_monad_on_54fa82_s8 pratt_certificate_monad_free_monad_on_54fa82_s9) (.arrow pratt_certificate_monad_free_monad_on_54fa82_l9 pratt_certificate_monad_free_monad_on_54fa82_s9 pratt_certificate_monad_free_monad_on_54fa82_s10))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def pratt_certificate_monad_free_monad_on_54fa82_true_arm : IGProtocol pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s10 :=\n  (pratt_certificate_monad_free_monad_on_54fa82_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def pratt_certificate_monad_free_monad_on_54fa82_false_arm : IGProtocol pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s10 :=\n  (pratt_certificate_monad_free_monad_on_54fa82_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef pratt_certificate_monad_free_monad_on_54fa82_tier_ground : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_free_monad_on_54fa82_s0\ndef pratt_certificate_monad_free_monad_on_54fa82_tier : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_free_monad_on_54fa82_s10\n#eval pratt_certificate_monad_free_monad_on_54fa82_tier_ground  -- tier of the ground (pre-transformation)\n#eval pratt_certificate_monad_free_monad_on_54fa82_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem pratt_certificate_monad_free_monad_on_54fa82_frobenius :\n    igFrobeniusAlg.mul pratt_certificate_monad_free_monad_on_54fa82_s0 pratt_certificate_monad_free_monad_on_54fa82_s0 = pratt_certificate_monad_free_monad_on_54fa82_s0 :=\n  igFrobAlg_self_fusion pratt_certificate_monad_free_monad_on_54fa82_s0\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -225,18 +225,18 @@
     "has_dual_fixation": false
   },
   "notes": "Auto-designed from: Pratt certificate monad: free monad on the prime-factors-of-n-minus-1 relation, unit maps prime to trivial certificate, multiplication flattens certificate-of-certificates. Monad laws hold by associativity of tree flattening.",
-  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc70\ud801\udc7d\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc5c\u2299\ud801\udc6b\ud801\udc73\ud801\udc6d\u27e9",
-  "grounding_status": "failed",
-  "grounding_reasoning": "\u00d0=\ud801\udc66: The free monad structure with flattening implies a scale-collapse where certificates and their compositions exist in the same register, requiring \ud801\udc78 topology.\n\u00de=\ud801\udc70: The free monad structure generates a nested hierarchy of certificates where each prime factor's sub-certificate is contained within the parent, forming a branched tree of dependencies.\n\u0158=\ud801\udc7d: The primitive \u0158 acts as a catalyst that lowers the computational barrier for prime recognition by stabilizing intermediate certificate structures without being consumed in the transformation.\n\u03a6=\ud801\udc6c: The Pratt certificate monad's structure inherently combines both donor (prime generation) and acceptor (certificate verification) roles in a self-complementary manner.\n\u0192=\ud801\udc50: The Pratt certificate monad enforces geometric structure through associative tree flattening, ensuring near-certain propagation of primitive \u0192 across interactions.\n\u00c7=\ud801\udc67: High barrier \u2014 kinetically frozen; requires external driving to rearrange.\n\u0393=\ud801\udc54: The free monad structure with flattening propagates interactions globally through nested certificate trees, making the correlation length scale-free.\n\u0262=\ud801\udc5c: The free monad structure allows choosing any valid prime factor certificate, so disjunctive selection fits the non-deterministic branching of the multiplication flattening operation.\n\u2299=\u2299: The system exhibits scale-free correlations through recursive certificate composition and flattening, indicating it operates at the critical threshold.\n\u0126=\ud801\udc6b: The Pratt certificate monad's free structure over prime-factor relations implies topological persistence of chirality, as the certificate hierarchy cannot be globally restructured without violating the monad's associativity.\n\u03a3=\ud801\udc73: The participation ratio reflects asymmetric stoichiometric relationships where different counts of components participate on each side of the reaction.\n\u03a9=\ud801\udc6d: The structural role is protected by an integer winding invariant that cannot be removed without closing the gap.",
+  "grounded_tuple": "⟨𐑦𐑰𐑽𐑬𐑐𐑧𐑔𐑜⊙𐑫𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_reasoning": "Ð=𐑦: The free monad structure with flattening implies a scale-collapse where certificates and their compositions exist in the same register, requiring 𐑸 topology.\nÞ=𐑰: The free monad structure generates a nested hierarchy of certificates where each prime factor's sub-certificate is contained within the parent, forming a branched tree of dependencies.\nŘ=𐑽: The primitive Ř acts as a catalyst that lowers the computational barrier for prime recognition by stabilizing intermediate certificate structures without being consumed in the transformation.\nΦ=𐑬: The Pratt certificate monad's structure inherently combines both donor (prime generation) and acceptor (certificate verification) roles in a self-complementary manner.\nƒ=𐑐: The Pratt certificate monad enforces geometric structure through associative tree flattening, ensuring near-certain propagation of primitive ƒ across interactions.\nÇ=𐑧: High barrier — kinetically frozen; requires external driving to rearrange.\nΓ=𐑔: The free monad structure with flattening propagates interactions globally through nested certificate trees, making the correlation length scale-free.\nɢ=𐑜: The free monad structure allows choosing any valid prime factor certificate, so disjunctive selection fits the non-deterministic branching of the multiplication flattening operation.\n⊙=⊙: The system exhibits scale-free correlations through recursive certificate composition and flattening, indicating it operates at the critical threshold.\nĦ=𐑫: The Pratt certificate monad's free structure over prime-factor relations implies topological persistence of chirality, as the certificate hierarchy cannot be globally restructured without violating the monad's associativity.\nΣ=𐑳: The participation ratio reflects asymmetric stoichiometric relationships where different counts of components participate on each side of the reaction.\nΩ=𐑭: The structural role is protected by an integer winding invariant that cannot be removed without closing the gap.",
   "lean_verified": true,
-  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
     "op_opcode": "ROTAT",
     "period": 11,
     "orbit": [
       {
         "k": 0,
-        "word": "\u22a2>\u25c7+\u00d7\u229e=\u2299\u25cf\u00ac\u22a3",
+        "word": "⊢>◇+×⊞=⊙●¬⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -244,7 +244,7 @@
       },
       {
         "k": 1,
-        "word": ">\u25c7+\u00d7\u229e=\u2299\u25cf\u00ac\u22a3\u22a2",
+        "word": ">◇+×⊞=⊙●¬⊣⊢",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -252,7 +252,7 @@
       },
       {
         "k": 2,
-        "word": "\u25c7+\u00d7\u229e=\u2299\u25cf\u00ac\u22a3\u22a2>",
+        "word": "◇+×⊞=⊙●¬⊣⊢>",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -260,7 +260,7 @@
       },
       {
         "k": 3,
-        "word": "+\u00d7\u229e=\u2299\u25cf\u00ac\u22a3\u22a2>\u25c7",
+        "word": "+×⊞=⊙●¬⊣⊢>◇",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -268,7 +268,7 @@
       },
       {
         "k": 4,
-        "word": "\u00d7\u229e=\u2299\u25cf\u00ac\u22a3\u22a2>\u25c7+",
+        "word": "×⊞=⊙●¬⊣⊢>◇+",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "Ftf",
@@ -276,7 +276,7 @@
       },
       {
         "k": 5,
-        "word": "\u229e=\u2299\u25cf\u00ac\u22a3\u22a2>\u25c7+\u00d7",
+        "word": "⊞=⊙●¬⊣⊢>◇+×",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -284,7 +284,7 @@
       },
       {
         "k": 6,
-        "word": "=\u2299\u25cf\u00ac\u22a3\u22a2>\u25c7+\u00d7\u229e",
+        "word": "=⊙●¬⊣⊢>◇+×⊞",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -292,7 +292,7 @@
       },
       {
         "k": 7,
-        "word": "\u2299\u25cf\u00ac\u22a3\u22a2>\u25c7+\u00d7\u229e=",
+        "word": "⊙●¬⊣⊢>◇+×⊞=",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -300,7 +300,7 @@
       },
       {
         "k": 8,
-        "word": "\u25cf\u00ac\u22a3\u22a2>\u25c7+\u00d7\u229e=\u2299",
+        "word": "●¬⊣⊢>◇+×⊞=⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -308,7 +308,7 @@
       },
       {
         "k": 9,
-        "word": "\u00ac\u22a3\u22a2>\u25c7+\u00d7\u229e=\u2299\u25cf",
+        "word": "¬⊣⊢>◇+×⊞=⊙●",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -316,7 +316,7 @@
       },
       {
         "k": 10,
-        "word": "\u22a3\u22a2>\u25c7+\u00d7\u229e=\u2299\u25cf\u00ac",
+        "word": "⊣⊢>◇+×⊞=⊙●¬",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -330,7 +330,8 @@
       "topology_class": true
     },
     "canonical_k": 3,
-    "canonical_word": "+\u00d7\u229e=\u2299\u25cf\u00ac\u22a3\u22a2>\u25c7",
-    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
-  }
+    "canonical_word": "+×⊞=⊙●¬⊣⊢>◇",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "grounding_failed_primitives": []
 }

@@ -31,8 +31,10 @@ async def ground(paths, provider, model):
         except Exception as e:
             print(f"{pathlib.Path(d).name}: gate failed — {type(e).__name__}: {str(e)[:90]}")
             continue
-        art['grounded_tuple'] = res.imscription.to_glyph_string() \
-            if hasattr(res.imscription, 'to_glyph_string') else str(res.imscription)
+        # to_notation is what auto.py stores — the twelve glyphs, nothing
+        # attached. Storing the repr instead puts a Python object where the
+        # notation belongs, which is what the first run of this script did.
+        art['grounded_tuple'] = res.imscription.to_notation()
         art['grounding_status'] = res.grounding_status
         art['grounding_failed_primitives'] = list(res.failed_primitives or [])
         art['grounding_reasoning'] = res.reasoning

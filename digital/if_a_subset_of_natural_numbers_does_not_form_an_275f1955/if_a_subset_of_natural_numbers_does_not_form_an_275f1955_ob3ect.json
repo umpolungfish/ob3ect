@@ -26,7 +26,7 @@
     "phase_1": {
       "VINIT": {
         "opcode": "VINIT",
-        "chosen_element": "Empty subset A \u2286 N",
+        "chosen_element": "Empty subset A ⊆ N",
         "justification": "The initial state before any elements are selected or properties are tested",
         "rejected_candidates": []
       },
@@ -116,7 +116,7 @@
       "false_description": "The subset does not form an asymptotic basis of order two",
       "both_description": "The subset is in a transitional state where its basis status is undecidable or at the limit",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
@@ -173,7 +173,7 @@
         {
           "step_num": 11,
           "opcode": "IFIX",
-          "domain_action": "Fix the permanent upper bound C such that r(n) \u2264 C for all n"
+          "domain_action": "Fix the permanent upper bound C such that r(n) ≤ C for all n"
         },
         {
           "step_num": 12,
@@ -194,18 +194,18 @@
       "ipc_mechanism": "The representation function r(n) mapping integers to sum-counts",
       "memory_mechanism": "The set of natural numbers N acting as the address space",
       "scheduler_mechanism": "The asymptotic limit as n approaches infinity",
-      "alfs_store": "The Erd\u0151s-Tur\u00e1n conjecture and related additive basis axioms",
+      "alfs_store": "The Erdős-Turán conjecture and related additive basis axioms",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
       "cycle_cost": "Computational verification of sums for each integer n",
       "pre_cycle_state": "Unclassified subset A with unknown representation density",
       "post_cycle_state": "Classified subset A with fixed representation bounds",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The classification reveals inherent structural properties without altering the set's composition",
+      "delta_s_verdict": "ΔS ≈ 0 — The classification reveals inherent structural properties without altering the set's composition",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 AREV \u2192 FFUSE \u2192 FSPLIT \u2192 EVALF \u2192 CLINK \u2192 IFIX \u2192 FFUSE \u2192 TANCH\n-- Class: if a subset of natural numbers does not form an asymptotic base of order two, then the number of ways to represent those integers is bounded\n-- Fingerprint: sig=(6,4,2,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=13\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 6), (7, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc59  | fuse \u03bc \u2014 assembly mode\n--   [7] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [11] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc61  | fuse \u03bc \u2014 assembly mode\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc59 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def if_a_subset_of_natural_numbers_does_not_87f574_protocol : IGProtocol if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct if_a_subset_of_natural_numbers_does_not_87f574_s6 if_a_subset_of_natural_numbers_does_not_87f574_s6 = if_a_subset_of_natural_numbers_does_not_87f574_s6 (idempotent)\n  (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l0 if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s1) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l1 if_a_subset_of_natural_numbers_does_not_87f574_s1 if_a_subset_of_natural_numbers_does_not_87f574_s2) (.seq (.prod (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l2 if_a_subset_of_natural_numbers_does_not_87f574_s2 if_a_subset_of_natural_numbers_does_not_87f574_s6) (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l2 if_a_subset_of_natural_numbers_does_not_87f574_s2 if_a_subset_of_natural_numbers_does_not_87f574_s6)) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l6 if_a_subset_of_natural_numbers_does_not_87f574_s6 if_a_subset_of_natural_numbers_does_not_87f574_s6) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l6 if_a_subset_of_natural_numbers_does_not_87f574_s6 if_a_subset_of_natural_numbers_does_not_87f574_s7) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l7 if_a_subset_of_natural_numbers_does_not_87f574_s7 if_a_subset_of_natural_numbers_does_not_87f574_s8) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l8 if_a_subset_of_natural_numbers_does_not_87f574_s8 if_a_subset_of_natural_numbers_does_not_87f574_s9) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l9 if_a_subset_of_natural_numbers_does_not_87f574_s9 if_a_subset_of_natural_numbers_does_not_87f574_s10) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l10 if_a_subset_of_natural_numbers_does_not_87f574_s10 if_a_subset_of_natural_numbers_does_not_87f574_s11) (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l11 if_a_subset_of_natural_numbers_does_not_87f574_s11 if_a_subset_of_natural_numbers_does_not_87f574_s12))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def if_a_subset_of_natural_numbers_does_not_87f574_true_arm : IGProtocol if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s12 :=\n  (if_a_subset_of_natural_numbers_does_not_87f574_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def if_a_subset_of_natural_numbers_does_not_87f574_false_arm : IGProtocol if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s12 :=\n  (if_a_subset_of_natural_numbers_does_not_87f574_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef if_a_subset_of_natural_numbers_does_not_87f574_tier_ground : OuroboricityTier := TierFunctor.obj if_a_subset_of_natural_numbers_does_not_87f574_s0\ndef if_a_subset_of_natural_numbers_does_not_87f574_tier : OuroboricityTier := TierFunctor.obj if_a_subset_of_natural_numbers_does_not_87f574_s12\n#eval if_a_subset_of_natural_numbers_does_not_87f574_tier_ground  -- tier of the ground (pre-transformation)\n#eval if_a_subset_of_natural_numbers_does_not_87f574_tier  -- the Grammar's own verdict on the closed object\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → EVALT → AFWD → AREV → FFUSE → FSPLIT → EVALF → CLINK → IFIX → FFUSE → TANCH\n-- Class: if a subset of natural numbers does not form an asymptotic base of order two, then the number of ways to represent those integers is bounded\n-- Fingerprint: sig=(6,4,2,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=False | period=13\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 6), (7, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] FFUSE     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [7] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [8] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [10] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [11] FFUSE     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [12] TANCH     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def if_a_subset_of_natural_numbers_does_not_87f574_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def if_a_subset_of_natural_numbers_does_not_87f574_protocol : IGProtocol if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct if_a_subset_of_natural_numbers_does_not_87f574_s6 if_a_subset_of_natural_numbers_does_not_87f574_s6 = if_a_subset_of_natural_numbers_does_not_87f574_s6 (idempotent)\n  (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l0 if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s1) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l1 if_a_subset_of_natural_numbers_does_not_87f574_s1 if_a_subset_of_natural_numbers_does_not_87f574_s2) (.seq (.prod (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l2 if_a_subset_of_natural_numbers_does_not_87f574_s2 if_a_subset_of_natural_numbers_does_not_87f574_s6) (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l2 if_a_subset_of_natural_numbers_does_not_87f574_s2 if_a_subset_of_natural_numbers_does_not_87f574_s6)) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l6 if_a_subset_of_natural_numbers_does_not_87f574_s6 if_a_subset_of_natural_numbers_does_not_87f574_s6) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l6 if_a_subset_of_natural_numbers_does_not_87f574_s6 if_a_subset_of_natural_numbers_does_not_87f574_s7) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l7 if_a_subset_of_natural_numbers_does_not_87f574_s7 if_a_subset_of_natural_numbers_does_not_87f574_s8) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l8 if_a_subset_of_natural_numbers_does_not_87f574_s8 if_a_subset_of_natural_numbers_does_not_87f574_s9) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l9 if_a_subset_of_natural_numbers_does_not_87f574_s9 if_a_subset_of_natural_numbers_does_not_87f574_s10) (.seq (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l10 if_a_subset_of_natural_numbers_does_not_87f574_s10 if_a_subset_of_natural_numbers_does_not_87f574_s11) (.arrow if_a_subset_of_natural_numbers_does_not_87f574_l11 if_a_subset_of_natural_numbers_does_not_87f574_s11 if_a_subset_of_natural_numbers_does_not_87f574_s12))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def if_a_subset_of_natural_numbers_does_not_87f574_true_arm : IGProtocol if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s12 :=\n  (if_a_subset_of_natural_numbers_does_not_87f574_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def if_a_subset_of_natural_numbers_does_not_87f574_false_arm : IGProtocol if_a_subset_of_natural_numbers_does_not_87f574_s0 if_a_subset_of_natural_numbers_does_not_87f574_s12 :=\n  (if_a_subset_of_natural_numbers_does_not_87f574_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef if_a_subset_of_natural_numbers_does_not_87f574_tier_ground : OuroboricityTier := TierFunctor.obj if_a_subset_of_natural_numbers_does_not_87f574_s0\ndef if_a_subset_of_natural_numbers_does_not_87f574_tier : OuroboricityTier := TierFunctor.obj if_a_subset_of_natural_numbers_does_not_87f574_s12\n#eval if_a_subset_of_natural_numbers_does_not_87f574_tier_ground  -- tier of the ground (pre-transformation)\n#eval if_a_subset_of_natural_numbers_does_not_87f574_tier  -- the Grammar's own verdict on the closed object\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -241,30 +241,28 @@
     "has_dual_fixation": false
   },
   "notes": "Auto-designed from: if a subset of natural numbers does not form an asymptotic base of order two, then the number of ways to represent those integers is bounded",
-  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc61\ud801\udc7d\ud801\udc7f\ud801\udc71\ud801\udc67\ud801\udc72\ud801\udc5c\ud801\udc62\ud801\udc56\ud801\udc73\ud801\udc77\u27e9",
-  "grounding_status": "failed",
-  "grounding_failed_primitives": [
-    "Axiom C: \u00d0=\ud801\udc66 and \u00de=\ud801\udc78 must co-occur (got \u00d0=\ud801\udc66, \u00de=\ud801\udc61)"
-  ],
+  "grounded_tuple": "⟨𐑦𐑡𐑽𐑿𐑱𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
   "banked_count_check": {
     "status": "ok",
-    "word": "\u22a2\u2299\u2208+><\u220b\u2208\u00d7=\u00ac\u220b\u22a3",
+    "word": "⊢⊙∈+><∋∈×=¬∋⊣",
     "exposed_clears": [],
     "weight_lost_in_the_open": 0,
     "banked_ok": true,
     "verdict": "nothing counted was exposed to a clear",
     "remedy": null
   },
-  "grounding_reasoning": "\u00d0=\ud801\udc66: The boundary of the subset's representation function determines the global property of the set, where the limit behavior at the surface (asymptotic density) dictates the interior bulk constraints (boundedness).\n\u00de=\ud801\udc61: The statement describes a generic network of additive representations where the failure to form a base implies a sparse or restricted distribution of edges (sums) between nodes.\n\u0158=\ud801\udc7d: The condition acts as a catalytic constraint (transition-state) that stabilizes the density of representations below a threshold, governing the transformation from a non-base to a bounded state.\n\u03a6=\ud801\udc7f: The system exhibits a signed directionality because the failure to form an asymptotic base implies a specific deficiency in the additive coverage of the natural numbers, acting as a one-sided constraint on the representation function.\n\u0192=\ud801\udc71: The statement describes a property of non-bases where the representation function is bounded, implying a sparse or \"thin\" distribution that lacks the high-fidelity, near-certain firing required for higher information density.\n\u00c7=\ud801\udc67: The condition describes a failure to form a basis where representation counts are bounded, implying the set is sparse and kinetically frozen in a state that cannot cover the integers, thus resisting rearrangement into a complete additive structure.\n\u0393=\ud801\udc72: The property of being an asymptotic basis of order two depends on the representation function for each individual integer, which is determined by finite, local sums rather than long-range system-wide propagation.\n\u0262=\ud801\udc5c: The logic is disjunctive because the failure to form an asymptotic basis occurs if any single condition for representation density is not met, allowing for various independent counterexamples.\n\u2299=\ud801\udc62: The statement describes a condition where the representation function is bounded, implying the system lacks the divergent growth or scale-free density characteristic of a critical threshold.\n\u0126=\ud801\udc56: The failure to form an asymptotic base of order two implies a structural deficiency in the subset's additive density, indicating a persistent, non-interconvertible configuration of elements that limits representation counts.\n\u03a3=\ud801\udc73: The input describes an additive basis problem where the number of representations is bounded, implying an imbalance between the set's density and the integers it fails to cover.\n\u03a9=\ud801\udc77: The statement describes a thin set where the representation function is bounded, implying the absence of a topological invariant or additive structure that would prevent deformation to a trivial (empty or finite) state.",
+  "grounding_reasoning": "Ð=𐑦: The boundary of the subset's representation function determines the global property of the set, where the limit behavior at the surface (asymptotic density) dictates the interior bulk constraints (boundedness).\nÞ=𐑡: The statement describes a generic network of additive representations where the failure to form a base implies a sparse or restricted distribution of edges (sums) between nodes.\nŘ=𐑽: The condition acts as a catalytic constraint (transition-state) that stabilizes the density of representations below a threshold, governing the transformation from a non-base to a bounded state.\nΦ=𐑿: The system exhibits a signed directionality because the failure to form an asymptotic base implies a specific deficiency in the additive coverage of the natural numbers, acting as a one-sided constraint on the representation function.\nƒ=𐑱: The statement describes a property of non-bases where the representation function is bounded, implying a sparse or \"thin\" distribution that lacks the high-fidelity, near-certain firing required for higher information density.\nÇ=𐑧: The condition describes a failure to form a basis where representation counts are bounded, implying the set is sparse and kinetically frozen in a state that cannot cover the integers, thus resisting rearrangement into a complete additive structure.\nΓ=𐑲: The property of being an asymptotic basis of order two depends on the representation function for each individual integer, which is determined by finite, local sums rather than long-range system-wide propagation.\nɢ=𐑜: The logic is disjunctive because the failure to form an asymptotic basis occurs if any single condition for representation density is not met, allowing for various independent counterexamples.\n⊙=𐑢: The statement describes a condition where the representation function is bounded, implying the system lacks the divergent growth or scale-free density characteristic of a critical threshold.\nĦ=𐑖: The failure to form an asymptotic base of order two implies a structural deficiency in the subset's additive density, indicating a persistent, non-interconvertible configuration of elements that limits representation counts.\nΣ=𐑳: The input describes an additive basis problem where the number of representations is bounded, implying an imbalance between the set's density and the integers it fails to cover.\nΩ=𐑷: The statement describes a thin set where the representation function is bounded, implying the absence of a topological invariant or additive structure that would prevent deformation to a trivial (empty or finite) state.",
   "lean_verified": true,
-  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
     "op_opcode": "ROTAT",
     "period": 13,
     "orbit": [
       {
         "k": 0,
-        "word": "\u22a2\u2299\u25c7+><\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3",
+        "word": "⊢⊙◇+><●◇×=¬●⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "TF",
@@ -272,7 +270,7 @@
       },
       {
         "k": 1,
-        "word": "\u2299\u25c7+><\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2",
+        "word": "⊙◇+><●◇×=¬●⊣⊢",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "TF",
@@ -280,7 +278,7 @@
       },
       {
         "k": 2,
-        "word": "\u25c7+><\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299",
+        "word": "◇+><●◇×=¬●⊣⊢⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "TF",
@@ -288,7 +286,7 @@
       },
       {
         "k": 3,
-        "word": "+><\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7",
+        "word": "+><●◇×=¬●⊣⊢⊙◇",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "F",
@@ -296,7 +294,7 @@
       },
       {
         "k": 4,
-        "word": "><\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7+",
+        "word": "><●◇×=¬●⊣⊢⊙◇+",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "F",
@@ -304,7 +302,7 @@
       },
       {
         "k": 5,
-        "word": "<\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7+>",
+        "word": "<●◇×=¬●⊣⊢⊙◇+>",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "F",
@@ -312,7 +310,7 @@
       },
       {
         "k": 6,
-        "word": "\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7+><",
+        "word": "●◇×=¬●⊣⊢⊙◇+><",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "F",
@@ -320,7 +318,7 @@
       },
       {
         "k": 7,
-        "word": "\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7+><\u25cf",
+        "word": "◇×=¬●⊣⊢⊙◇+><●",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "F",
@@ -328,7 +326,7 @@
       },
       {
         "k": 8,
-        "word": "\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7+><\u25cf\u25c7",
+        "word": "×=¬●⊣⊢⊙◇+><●◇",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "F",
@@ -336,7 +334,7 @@
       },
       {
         "k": 9,
-        "word": "=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7+><\u25cf\u25c7\u00d7",
+        "word": "=¬●⊣⊢⊙◇+><●◇×",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -344,7 +342,7 @@
       },
       {
         "k": 10,
-        "word": "\u00ac\u25cf\u22a3\u22a2\u2299\u25c7+><\u25cf\u25c7\u00d7=",
+        "word": "¬●⊣⊢⊙◇+><●◇×=",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -352,7 +350,7 @@
       },
       {
         "k": 11,
-        "word": "\u25cf\u22a3\u22a2\u2299\u25c7+><\u25cf\u25c7\u00d7=\u00ac",
+        "word": "●⊣⊢⊙◇+><●◇×=¬",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "TF",
@@ -360,7 +358,7 @@
       },
       {
         "k": 12,
-        "word": "\u22a3\u22a2\u2299\u25c7+><\u25cf\u25c7\u00d7=\u00ac\u25cf",
+        "word": "⊣⊢⊙◇+><●◇×=¬●",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "TF",
@@ -374,7 +372,7 @@
       "topology_class": true
     },
     "canonical_k": 3,
-    "canonical_word": "+><\u25cf\u25c7\u00d7=\u00ac\u25cf\u22a3\u22a2\u2299\u25c7",
-    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+    "canonical_word": "+><●◇×=¬●⊣⊢⊙◇",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
   }
 }

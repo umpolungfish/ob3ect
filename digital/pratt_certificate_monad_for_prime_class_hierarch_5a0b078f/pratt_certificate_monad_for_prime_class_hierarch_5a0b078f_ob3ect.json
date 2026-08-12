@@ -20,7 +20,7 @@
         "pratt_certificate",
         "witness_chain"
       ],
-      "boundary_condition": "The terminal anchor of the Pratt certificate monad is the complete primality proof for a prime p, which requires verifying every prime factor of p\u22121 and recursively certifying each factor until reaching base primes 2 and 3. This constitutes the hermetic closure of the system: all branches of the certificate tree terminate in certified base cases, and the entire structure is self-contained within the finite descent of the prime class hierarchy.",
+      "boundary_condition": "The terminal anchor of the Pratt certificate monad is the complete primality proof for a prime p, which requires verifying every prime factor of p−1 and recursively certifying each factor until reaching base primes 2 and 3. This constitutes the hermetic closure of the system: all branches of the certificate tree terminate in certified base cases, and the entire structure is self-contained within the finite descent of the prime class hierarchy.",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
@@ -38,85 +38,85 @@
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "Descent from p to its prime factors of p\u22121",
-        "justification": "The forward morphism in the Pratt certificate monad is the directed transformation from a prime p to the set of prime factors of p\u22121. Each factor must itself carry a Pratt certificate, so the morphism propagates downward through the prime class hierarchy, reducing the problem size at each step.",
+        "chosen_element": "Descent from p to its prime factors of p−1",
+        "justification": "The forward morphism in the Pratt certificate monad is the directed transformation from a prime p to the set of prime factors of p−1. Each factor must itself carry a Pratt certificate, so the morphism propagates downward through the prime class hierarchy, reducing the problem size at each step.",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
         "chosen_element": "Ascent from certified factors back to the primality of p",
-        "justification": "The contravariant morphism is the reverse transformation: once all prime factors of p\u22121 are certified, the ascent reconstructs the proof that p itself is prime. This descent-then-ascent is the solve/coagula cycle of the monad, where the downward split is reversed by the upward fuse.",
+        "justification": "The contravariant morphism is the reverse transformation: once all prime factors of p−1 are certified, the ascent reconstructs the proof that p itself is prime. This descent-then-ascent is the solve/coagula cycle of the monad, where the downward split is reversed by the upward fuse.",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
         "chosen_element": "Composition of witness chain segments",
-        "justification": "CLINK chains together sequential morphisms in the certificate: the witness g for p, the factorization of p\u22121, and the recursive certificates for each factor. Each segment is composed with the next, forming the continuous witness chain that constitutes the full Pratt certificate.",
+        "justification": "CLINK chains together sequential morphisms in the certificate: the witness g for p, the factorization of p−1, and the recursive certificates for each factor. Each segment is composed with the next, forming the continuous witness chain that constitutes the full Pratt certificate.",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
         "chosen_element": "The self-referential structure of the Pratt certificate monad",
-        "justification": "IMSCRIB represents the identity: the certificate for p references certificates for its factors, which in turn reference certificates for their factors, and so on. The monad is self-similar \u2014 the structure of a certificate at any level mirrors the structure at every other level. The element is itself.",
+        "justification": "IMSCRIB represents the identity: the certificate for p references certificates for its factors, which in turn reference certificates for their factors, and so on. The monad is self-similar — the structure of a certificate at any level mirrors the structure at every other level. The element is itself.",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
-        "chosen_element": "Splitting prime p into its witness and the prime factors of p\u22121",
-        "justification": "FSPLIT branches the prime p into two arms: the T-arm carries the primitive root witness g that demonstrates the multiplicative order condition, and the F-arm carries the prime factorization of p\u22121, each factor requiring its own sub-certificate. The single prime p becomes the witness and the factor set.",
+        "chosen_element": "Splitting prime p into its witness and the prime factors of p−1",
+        "justification": "FSPLIT branches the prime p into two arms: the T-arm carries the primitive root witness g that demonstrates the multiplicative order condition, and the F-arm carries the prime factorization of p−1, each factor requiring its own sub-certificate. The single prime p becomes the witness and the factor set.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
         "chosen_element": "Reconstituting primality of p from witness and certified factors",
-        "justification": "FFUSE reunites the T-arm (witness g satisfying g^(p\u22121) \u2261 1 mod p and g^((p\u22121)/q) \u2260 1 mod p for each factor q) and the F-arm (certified prime factors of p\u22121) to recover the complete proof that p is prime. FFUSE(FSPLIT(p)) = p, the original prime, now certified.",
+        "justification": "FFUSE reunites the T-arm (witness g satisfying g^(p−1) ≡ 1 mod p and g^((p−1)/q) ≠ 1 mod p for each factor q) and the F-arm (certified prime factors of p−1) to recover the complete proof that p is prime. FFUSE(FSPLIT(p)) = p, the original prime, now certified.",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
         "chosen_element": "Successful witness verification: g has correct multiplicative order modulo p",
-        "justification": "The affirmative branch evaluates to true when the primitive root witness g satisfies the order condition: g^(p\u22121) \u2261 1 mod p and for every prime factor q of p\u22121, g^((p\u22121)/q) \u2260 1 mod p. This confirms g generates a subgroup of order p\u22121, proving p is prime.",
+        "justification": "The affirmative branch evaluates to true when the primitive root witness g satisfies the order condition: g^(p−1) ≡ 1 mod p and for every prime factor q of p−1, g^((p−1)/q) ≠ 1 mod p. This confirms g generates a subgroup of order p−1, proving p is prime.",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
         "chosen_element": "Failed witness verification: no valid primitive root found",
-        "justification": "The negative branch evaluates to false when the candidate witness g fails the order condition \u2014 either g^(p\u22121) \u2260 1 mod p, or g^((p\u22121)/q) \u2261 1 mod p for some factor q. This indicates the candidate is not a valid witness, and either p is composite or a different witness must be sought.",
+        "justification": "The negative branch evaluates to false when the candidate witness g fails the order condition — either g^(p−1) ≠ 1 mod p, or g^((p−1)/q) ≡ 1 mod p for some factor q. This indicates the candidate is not a valid witness, and either p is composite or a different witness must be sought.",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
         "chosen_element": "Paradice state where witness is simultaneously valid and invalid",
-        "justification": "In the dialetheia state, the witness g both satisfies and fails the order condition \u2014 for example, when p is a pseudoprime to base g, where g^(p\u22121) \u2261 1 mod p holds but p is actually composite. Both truth values are held without resolution: the surface condition is met while the deeper primality is not.",
+        "justification": "In the dialetheia state, the witness g both satisfies and fails the order condition — for example, when p is a pseudoprime to base g, where g^(p−1) ≡ 1 mod p holds but p is actually composite. Both truth values are held without resolution: the surface condition is met while the deeper primality is not.",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
         "chosen_element": "Permanent recording of a certified prime in the proof tree",
-        "justification": "Once a prime p has been fully certified \u2014 witness verified and all factors of p\u22121 recursively certified \u2014 the result is irreversibly fixed as a leaf or internal node in the Pratt certificate tree. This record cannot be undone; it becomes part of the permanent structure of the proof.",
+        "justification": "Once a prime p has been fully certified — witness verified and all factors of p−1 recursively certified — the result is irreversibly fixed as a leaf or internal node in the Pratt certificate tree. This record cannot be undone; it becomes part of the permanent structure of the proof.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "FSPLIT on prime p: branches into witness g (T-arm) and prime factorization of p\u22121 (F-arm)",
+      "split_element": "FSPLIT on prime p: branches into witness g (T-arm) and prime factorization of p−1 (F-arm)",
       "split_input": "Prime p (unverified candidate)",
       "split_outputs": [
         "Primitive root witness g satisfying order conditions",
-        "Set of prime factors of p\u22121 each requiring recursive certification"
+        "Set of prime factors of p−1 each requiring recursive certification"
       ],
-      "fuse_element": "FFUSE: reunites witness g and certified factors of p\u22121 to recover primality of p",
+      "fuse_element": "FFUSE: reunites witness g and certified factors of p−1 to recover primality of p",
       "fuse_result": "Prime p, now certified as prime via complete Pratt certificate",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "State 00: Prime candidate p exists as a raw integer with no witness, no factorization of p\u22121, and no recursive sub-certificates. The monadic structure has not yet been applied.",
-      "true_description": "State 01: Witness g satisfies the multiplicative order condition modulo p, and all prime factors of p\u22121 are certified. The Pratt certificate for p is complete and valid.",
-      "false_description": "State 10: Either no valid primitive root witness exists for p, or at least one prime factor of p\u22121 fails its recursive certification. The candidate p cannot be certified as prime.",
-      "both_description": "State 11: A paradice where the witness condition is simultaneously satisfied and violated \u2014 for instance, p is a pseudoprime to base g, where g^(p\u22121) \u2261 1 mod p holds but p is composite. Both truth values coexist without resolution.",
+      "void_description": "State 00: Prime candidate p exists as a raw integer with no witness, no factorization of p−1, and no recursive sub-certificates. The monadic structure has not yet been applied.",
+      "true_description": "State 01: Witness g satisfies the multiplicative order condition modulo p, and all prime factors of p−1 are certified. The Pratt certificate for p is complete and valid.",
+      "false_description": "State 10: Either no valid primitive root witness exists for p, or at least one prime factor of p−1 fails its recursive certification. The candidate p cannot be certified as prime.",
+      "both_description": "State 11: A paradice where the witness condition is simultaneously satisfied and violated — for instance, p is a pseudoprime to base g, where g^(p−1) ≡ 1 mod p holds but p is composite. Both truth values coexist without resolution.",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
@@ -128,27 +128,27 @@
         {
           "step_num": 2,
           "opcode": "FSPLIT",
-          "domain_action": "Split prime p into two branches \u2014 T-arm receives the primitive root witness g, F-arm receives the prime factorization of p\u22121."
+          "domain_action": "Split prime p into two branches — T-arm receives the primitive root witness g, F-arm receives the prime factorization of p−1."
         },
         {
           "step_num": 3,
           "opcode": "EVALT",
-          "domain_action": "Evaluate the T-arm by checking that g^(p\u22121) \u2261 1 mod p and g^((p\u22121)/q) \u2260 1 mod p for each prime factor q of p\u22121, confirming g is a valid witness."
+          "domain_action": "Evaluate the T-arm by checking that g^(p−1) ≡ 1 mod p and g^((p−1)/q) ≠ 1 mod p for each prime factor q of p−1, confirming g is a valid witness."
         },
         {
           "step_num": 4,
           "opcode": "AFWD",
-          "domain_action": "Descend from each prime factor q of p\u22121 into its own Pratt certificate construction, applying the forward morphism to reduce the problem to smaller primes."
+          "domain_action": "Descend from each prime factor q of p−1 into its own Pratt certificate construction, applying the forward morphism to reduce the problem to smaller primes."
         },
         {
           "step_num": 5,
           "opcode": "VINIT",
-          "domain_action": "Initialize sub-candidate for each prime factor q of p\u22121 in void state, beginning recursive certification."
+          "domain_action": "Initialize sub-candidate for each prime factor q of p−1 in void state, beginning recursive certification."
         },
         {
           "step_num": 6,
           "opcode": "FSPLIT",
-          "domain_action": "Split each factor q into its witness and the factorization of q\u22121, creating nested sub-branches."
+          "domain_action": "Split each factor q into its witness and the factorization of q−1, creating nested sub-branches."
         },
         {
           "step_num": 7,
@@ -163,12 +163,12 @@
         {
           "step_num": 9,
           "opcode": "EVALT",
-          "domain_action": "Verify base prime 2 has trivial witness (no factors of 2\u22121=1 to check), confirming it is prime."
+          "domain_action": "Verify base prime 2 has trivial witness (no factors of 2−1=1 to check), confirming it is prime."
         },
         {
           "step_num": 10,
           "opcode": "EVALT",
-          "domain_action": "Verify base prime 3 has trivial witness (no factors of 3\u22121=2 beyond the already-certified base prime 2), confirming it is prime."
+          "domain_action": "Verify base prime 3 has trivial witness (no factors of 3−1=2 beyond the already-certified base prime 2), confirming it is prime."
         },
         {
           "step_num": 11,
@@ -178,7 +178,7 @@
         {
           "step_num": 12,
           "opcode": "CLINK",
-          "domain_action": "Compose the witness chain segments \u2014 link the verified witness g for p with the certified factors of p\u22121 into a continuous proof structure."
+          "domain_action": "Compose the witness chain segments — link the verified witness g for p with the certified factors of p−1 into a continuous proof structure."
         },
         {
           "step_num": 13,
@@ -188,7 +188,7 @@
         {
           "step_num": 14,
           "opcode": "FFUSE",
-          "domain_action": "Fuse the T-arm (verified witness g) and F-arm (certified prime factors of p\u22121) to reconstitute the complete primality proof for p, satisfying FFUSE(FSPLIT(p)) = p."
+          "domain_action": "Fuse the T-arm (verified witness g) and F-arm (certified prime factors of p−1) to reconstitute the complete primality proof for p, satisfying FFUSE(FSPLIT(p)) = p."
         },
         {
           "step_num": 15,
@@ -198,29 +198,29 @@
         {
           "step_num": 16,
           "opcode": "TANCH",
-          "domain_action": "The terminal anchor closes the system \u2014 the complete Pratt certificate tree for p is a finite, self-contained primality proof with all branches terminating in base primes 2 and 3."
+          "domain_action": "The terminal anchor closes the system — the complete Pratt certificate tree for p is a finite, self-contained primality proof with all branches terminating in base primes 2 and 3."
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "The Pratt certificate compiler translates a prime candidate p into the sequence of operations: factor p\u22121, find a witness g, recursively certify each factor, and assemble the proof tree. It is the monadic bind that threads the certificate construction through each level of the prime class hierarchy.",
+      "compiler_frontend": "The Pratt certificate compiler translates a prime candidate p into the sequence of operations: factor p−1, find a witness g, recursively certify each factor, and assemble the proof tree. It is the monadic bind that threads the certificate construction through each level of the prime class hierarchy.",
       "ipc_mechanism": "Components communicate through the witness chain: the factorization module passes prime factors to the recursive certification module, which returns certified sub-certificates. The witness verification module receives the candidate witness and factor set, returning a boolean evaluation. All communication flows along the directed edges of the certificate tree.",
-      "memory_mechanism": "State is stored as the Pratt certificate tree itself \u2014 each node is a prime with its witness and child certificates. The tree is immutable once constructed, serving as both the computation trace and the permanent proof record. Intermediate states are ephemeral; only the final fixed tree persists.",
-      "scheduler_mechanism": "The scheduler determines the order of recursive certification: it processes factors of p\u22121 in ascending order, ensuring that smaller primes are certified before larger ones that depend on them. The schedule is depth-first, following each branch to its base case before returning to fuse the results.",
+      "memory_mechanism": "State is stored as the Pratt certificate tree itself — each node is a prime with its witness and child certificates. The tree is immutable once constructed, serving as both the computation trace and the permanent proof record. Intermediate states are ephemeral; only the final fixed tree persists.",
+      "scheduler_mechanism": "The scheduler determines the order of recursive certification: it processes factors of p−1 in ascending order, ensuring that smaller primes are certified before larger ones that depend on them. The schedule is depth-first, following each branch to its base case before returning to fuse the results.",
       "alfs_store": "The canonical reference store is the set of base primes {2, 3} which are axiomatically certified without further recursion. These are the bootstrap seeds from which all higher Pratt certificates are constructed. The store also includes known primitive roots for small primes, serving as cached witnesses to avoid recomputation.",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "Each operation cycle consumes computational work: factoring p\u22121, testing witness conditions modulo p, and recursively certifying factors. The cost is measured in modular exponentiations and integer factorizations, which are the fundamental operations of the certificate monad.",
-      "pre_cycle_state": "Before the cycle: prime candidate p is unverified, p\u22121 is unfactored, no witness has been tested, and no sub-certificates exist. The system is in a state of maximum uncertainty about p's primality.",
+      "cycle_cost": "Each operation cycle consumes computational work: factoring p−1, testing witness conditions modulo p, and recursively certifying factors. The cost is measured in modular exponentiations and integer factorizations, which are the fundamental operations of the certificate monad.",
+      "pre_cycle_state": "Before the cycle: prime candidate p is unverified, p−1 is unfactored, no witness has been tested, and no sub-certificates exist. The system is in a state of maximum uncertainty about p's primality.",
       "post_cycle_state": "After the cycle: p is either certified prime (complete Pratt certificate tree constructed and fixed) or certified composite (witness verification failed). The certificate tree is permanently recorded, and the system state has been resolved to a definitive truth value.",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The Pratt certificate monad is entropy-conservative because the computational work invested in factoring p\u22121 and verifying witnesses is exactly balanced by the information gained: the complete primality proof. No information is lost or created; the certificate is a lossless encoding of the primality decision. The recursive structure ensures that work at each level is proportional to the information extracted at that level, maintaining a zero net entropy change across the entire proof tree.",
+      "delta_s_verdict": "ΔS ≈ 0 — The Pratt certificate monad is entropy-conservative because the computational work invested in factoring p−1 and verifying witnesses is exactly balanced by the information gained: the complete primality proof. No information is lost or created; the certificate is a lossless encoding of the primality decision. The recursive structure ensures that work at each level is proportional to the information extracted at that level, maintaining a zero net entropy change across the entire proof tree.",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 VINIT \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 EVALT \u2192 EVALT \u2192 AREV \u2192 CLINK \u2192 IMSCRIB \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: Pratt certificate monad for prime class hierarchy\n-- Fingerprint: sig=(8,3,4,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=16\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(5, 13)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc5a  | initial object \u2014 ground of distinction\n--   [1] FSPLIT    gran   := \ud801\udc5a               \ud801\udc7c \u2192 \u2299  | split \u03b4 \u2014 range decomposition\n--   [2] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc7e  | evaluate-true \u2014 criticality gate open\n--   [3] AFWD      rel    := \ud801\udc7e               \u2299 \u2192 \ud801\udc7c  | forward morphism \u2014 bidirectional arrow\n--   [4] VINIT     dim    := \ud801\udc7c               \ud801\udc7e \u2192 \ud801\udc5a  | initial object \u2014 ground of distinction\n--   [5] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [6] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [8] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [9] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [10] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [11] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [12] IMSCRIB   gram   := \ud801\udc60               \ud801\udc5a \u2192 \ud801\udc59  | identity \u2014 self-imscription\n--   [13] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [14] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [15] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def pratt_certificate_monad_for_prime_class_85b31f_protocol : IGProtocol pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s15 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct pratt_certificate_monad_for_prime_class_85b31f_s13 pratt_certificate_monad_for_prime_class_85b31f_s13 = pratt_certificate_monad_for_prime_class_85b31f_s13 (idempotent)\n  (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l0 pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s1) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l1 pratt_certificate_monad_for_prime_class_85b31f_s1 pratt_certificate_monad_for_prime_class_85b31f_s2) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l2 pratt_certificate_monad_for_prime_class_85b31f_s2 pratt_certificate_monad_for_prime_class_85b31f_s3) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l3 pratt_certificate_monad_for_prime_class_85b31f_s3 pratt_certificate_monad_for_prime_class_85b31f_s4) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l4 pratt_certificate_monad_for_prime_class_85b31f_s4 pratt_certificate_monad_for_prime_class_85b31f_s5) (.seq (.prod (.arrow pratt_certificate_monad_for_prime_class_85b31f_l5 pratt_certificate_monad_for_prime_class_85b31f_s5 pratt_certificate_monad_for_prime_class_85b31f_s13) (.arrow pratt_certificate_monad_for_prime_class_85b31f_l5 pratt_certificate_monad_for_prime_class_85b31f_s5 pratt_certificate_monad_for_prime_class_85b31f_s13)) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l13 pratt_certificate_monad_for_prime_class_85b31f_s13 pratt_certificate_monad_for_prime_class_85b31f_s13) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l13 pratt_certificate_monad_for_prime_class_85b31f_s13 pratt_certificate_monad_for_prime_class_85b31f_s14) (.arrow pratt_certificate_monad_for_prime_class_85b31f_l14 pratt_certificate_monad_for_prime_class_85b31f_s14 pratt_certificate_monad_for_prime_class_85b31f_s15)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def pratt_certificate_monad_for_prime_class_85b31f_true_arm : IGProtocol pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s15 :=\n  (pratt_certificate_monad_for_prime_class_85b31f_protocol).restrictToEVALT\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef pratt_certificate_monad_for_prime_class_85b31f_tier_ground : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_for_prime_class_85b31f_s0\ndef pratt_certificate_monad_for_prime_class_85b31f_tier : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_for_prime_class_85b31f_s15\n#eval pratt_certificate_monad_for_prime_class_85b31f_tier_ground  -- tier of the ground (pre-transformation)\n#eval pratt_certificate_monad_for_prime_class_85b31f_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem pratt_certificate_monad_for_prime_class_85b31f_frobenius :\n    igFrobeniusAlg.mul pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s0 = pratt_certificate_monad_for_prime_class_85b31f_s0 :=\n  igFrobAlg_self_fusion pratt_certificate_monad_for_prime_class_85b31f_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → FSPLIT → EVALT → AFWD → VINIT → FSPLIT → EVALT → AFWD → EVALT → EVALT → AREV → CLINK → IMSCRIB → FFUSE → IFIX → TANCH\n-- Class: Pratt certificate monad for prime class hierarchy\n-- Fingerprint: sig=(8,3,4,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=16\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(5, 13)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] FSPLIT    gran   := 𐑚               𐑼 → ⊙  | split δ — range decomposition\n--   [2] EVALT     crit   := ⊙               𐑚 → 𐑾  | evaluate-true — criticality gate open\n--   [3] AFWD      rel    := 𐑾               ⊙ → 𐑼  | forward morphism — bidirectional arrow\n--   [4] VINIT     dim    := 𐑼               𐑾 → 𐑚  | initial object — ground of distinction\n--   [5] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] AFWD      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [9] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [10] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [11] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [12] IMSCRIB   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [13] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [14] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [15] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def pratt_certificate_monad_for_prime_class_85b31f_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def pratt_certificate_monad_for_prime_class_85b31f_protocol : IGProtocol pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s15 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct pratt_certificate_monad_for_prime_class_85b31f_s13 pratt_certificate_monad_for_prime_class_85b31f_s13 = pratt_certificate_monad_for_prime_class_85b31f_s13 (idempotent)\n  (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l0 pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s1) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l1 pratt_certificate_monad_for_prime_class_85b31f_s1 pratt_certificate_monad_for_prime_class_85b31f_s2) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l2 pratt_certificate_monad_for_prime_class_85b31f_s2 pratt_certificate_monad_for_prime_class_85b31f_s3) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l3 pratt_certificate_monad_for_prime_class_85b31f_s3 pratt_certificate_monad_for_prime_class_85b31f_s4) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l4 pratt_certificate_monad_for_prime_class_85b31f_s4 pratt_certificate_monad_for_prime_class_85b31f_s5) (.seq (.prod (.arrow pratt_certificate_monad_for_prime_class_85b31f_l5 pratt_certificate_monad_for_prime_class_85b31f_s5 pratt_certificate_monad_for_prime_class_85b31f_s13) (.arrow pratt_certificate_monad_for_prime_class_85b31f_l5 pratt_certificate_monad_for_prime_class_85b31f_s5 pratt_certificate_monad_for_prime_class_85b31f_s13)) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l13 pratt_certificate_monad_for_prime_class_85b31f_s13 pratt_certificate_monad_for_prime_class_85b31f_s13) (.seq (.arrow pratt_certificate_monad_for_prime_class_85b31f_l13 pratt_certificate_monad_for_prime_class_85b31f_s13 pratt_certificate_monad_for_prime_class_85b31f_s14) (.arrow pratt_certificate_monad_for_prime_class_85b31f_l14 pratt_certificate_monad_for_prime_class_85b31f_s14 pratt_certificate_monad_for_prime_class_85b31f_s15)))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def pratt_certificate_monad_for_prime_class_85b31f_true_arm : IGProtocol pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s15 :=\n  (pratt_certificate_monad_for_prime_class_85b31f_protocol).restrictToEVALT\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef pratt_certificate_monad_for_prime_class_85b31f_tier_ground : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_for_prime_class_85b31f_s0\ndef pratt_certificate_monad_for_prime_class_85b31f_tier : OuroboricityTier := TierFunctor.obj pratt_certificate_monad_for_prime_class_85b31f_s15\n#eval pratt_certificate_monad_for_prime_class_85b31f_tier_ground  -- tier of the ground (pre-transformation)\n#eval pratt_certificate_monad_for_prime_class_85b31f_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem pratt_certificate_monad_for_prime_class_85b31f_frobenius :\n    igFrobeniusAlg.mul pratt_certificate_monad_for_prime_class_85b31f_s0 pratt_certificate_monad_for_prime_class_85b31f_s0 = pratt_certificate_monad_for_prime_class_85b31f_s0 :=\n  igFrobAlg_self_fusion pratt_certificate_monad_for_prime_class_85b31f_s0\n",
   "topology_report": {
     "topology_class": "mixed",
     "nesting_depth": 1,
@@ -251,18 +251,18 @@
     "has_dual_fixation": false
   },
   "notes": "Auto-designed from: Pratt certificate monad for prime class hierarchy",
-  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc70\ud801\udc7d\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc5c\u2299\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9",
-  "grounding_status": "failed",
-  "grounding_reasoning": "\u00d0=\ud801\udc66: The Pratt certificate monad operates with scale-collapse, where the boundary carries the full bulk content losslessly, unifying surface and interior in a single register.\n\u00de=\ud801\udc70: The Pratt certificate monad for prime class hierarchy represents a containment structure where primitive roots and their certified primes are organized in a nested, hierarchical tree of dependencies.\n\u0158=\ud801\udc7d: Pratt certificates involve catalytic verification steps that lower computational barriers for primality testing without being consumed in the process.\n\u03a6=\ud801\udc6c: The Pratt certificate monad for prime class hierarchy inherently requires both donor and acceptor roles to validate primality, making it self-complementary.\n\u0192=\ud801\udc50: The Pratt certificate monad enforces geometric primality through deterministic witness chains, yielding near-certain firing reliability above 9 bits.\n\u00c7=\ud801\udc67: High barrier implies kinetic freezing, requiring external driving to overcome the energy landscape and enable rearrangement.\n\u0393=\ud801\udc54: Pratt certificates establish global primality proofs requiring all factors of p\u22121 to be verified, creating scale-free propagation.\n\u0262=\ud801\udc5c: The partner selection logic requires any single valid partner from a set to satisfy the condition.\n\u2299=\u2299: The presence of a criticality_phase primitive \u2299 indicates the system is tuned to the threshold where scale-free correlations and maximal sensitivity emerge.\n\u0126=\ud801\udc56: Persistent chiral with multiple axes and structurally enforced symmetry breaking provides memory depth n, maintaining orientation over extended configurations.\n\u03a3=\ud801\udc73: The participation ratio reflects asymmetric stoichiometric assignments with varying counts on each side of the prime class hierarchy.\n\u03a9=\ud801\udc6d: The structural role carries an integer-winding invariant that prevents continuous deformation to a trivial state without closing a gap.",
+  "grounded_tuple": "⟨𐑦𐑰𐑽𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_reasoning": "Ð=𐑦: The Pratt certificate monad operates with scale-collapse, where the boundary carries the full bulk content losslessly, unifying surface and interior in a single register.\nÞ=𐑰: The Pratt certificate monad for prime class hierarchy represents a containment structure where primitive roots and their certified primes are organized in a nested, hierarchical tree of dependencies.\nŘ=𐑽: Pratt certificates involve catalytic verification steps that lower computational barriers for primality testing without being consumed in the process.\nΦ=𐑬: The Pratt certificate monad for prime class hierarchy inherently requires both donor and acceptor roles to validate primality, making it self-complementary.\nƒ=𐑐: The Pratt certificate monad enforces geometric primality through deterministic witness chains, yielding near-certain firing reliability above 9 bits.\nÇ=𐑧: High barrier implies kinetic freezing, requiring external driving to overcome the energy landscape and enable rearrangement.\nΓ=𐑔: Pratt certificates establish global primality proofs requiring all factors of p−1 to be verified, creating scale-free propagation.\nɢ=𐑜: The partner selection logic requires any single valid partner from a set to satisfy the condition.\n⊙=⊙: The presence of a criticality_phase primitive ⊙ indicates the system is tuned to the threshold where scale-free correlations and maximal sensitivity emerge.\nĦ=𐑖: Persistent chiral with multiple axes and structurally enforced symmetry breaking provides memory depth n, maintaining orientation over extended configurations.\nΣ=𐑳: The participation ratio reflects asymmetric stoichiometric assignments with varying counts on each side of the prime class hierarchy.\nΩ=𐑭: The structural role carries an integer-winding invariant that prevents continuous deformation to a trivial state without closing a gap.",
   "lean_verified": true,
-  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
     "op_opcode": "ROTAT",
     "period": 16,
     "orbit": [
       {
         "k": 0,
-        "word": "\u22a2\u25c7+>\u22a2\u25c7+>++<=\u2299\u25cf\u00ac\u22a3",
+        "word": "⊢◇+>⊢◇+>++<=⊙●¬⊣",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -270,7 +270,7 @@
       },
       {
         "k": 1,
-        "word": "\u25c7+>\u22a2\u25c7+>++<=\u2299\u25cf\u00ac\u22a3\u22a2",
+        "word": "◇+>⊢◇+>++<=⊙●¬⊣⊢",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -278,7 +278,7 @@
       },
       {
         "k": 2,
-        "word": "+>\u22a2\u25c7+>++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7",
+        "word": "+>⊢◇+>++<=⊙●¬⊣⊢◇",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -286,7 +286,7 @@
       },
       {
         "k": 3,
-        "word": ">\u22a2\u25c7+>++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+",
+        "word": ">⊢◇+>++<=⊙●¬⊣⊢◇+",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -294,7 +294,7 @@
       },
       {
         "k": 4,
-        "word": "\u22a2\u25c7+>++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>",
+        "word": "⊢◇+>++<=⊙●¬⊣⊢◇+>",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -302,7 +302,7 @@
       },
       {
         "k": 5,
-        "word": "\u25c7+>++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2",
+        "word": "◇+>++<=⊙●¬⊣⊢◇+>⊢",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -310,7 +310,7 @@
       },
       {
         "k": 6,
-        "word": "+>++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7",
+        "word": "+>++<=⊙●¬⊣⊢◇+>⊢◇",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -318,7 +318,7 @@
       },
       {
         "k": 7,
-        "word": ">++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+",
+        "word": ">++<=⊙●¬⊣⊢◇+>⊢◇+",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -326,7 +326,7 @@
       },
       {
         "k": 8,
-        "word": "++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>",
+        "word": "++<=⊙●¬⊣⊢◇+>⊢◇+>",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -334,7 +334,7 @@
       },
       {
         "k": 9,
-        "word": "+<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>+",
+        "word": "+<=⊙●¬⊣⊢◇+>⊢◇+>+",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -342,7 +342,7 @@
       },
       {
         "k": 10,
-        "word": "<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>++",
+        "word": "<=⊙●¬⊣⊢◇+>⊢◇+>++",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -350,7 +350,7 @@
       },
       {
         "k": 11,
-        "word": "=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>++<",
+        "word": "=⊙●¬⊣⊢◇+>⊢◇+>++<",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -358,7 +358,7 @@
       },
       {
         "k": 12,
-        "word": "\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>++<=",
+        "word": "⊙●¬⊣⊢◇+>⊢◇+>++<=",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -366,7 +366,7 @@
       },
       {
         "k": 13,
-        "word": "\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>++<=\u2299",
+        "word": "●¬⊣⊢◇+>⊢◇+>++<=⊙",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -374,7 +374,7 @@
       },
       {
         "k": 14,
-        "word": "\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>++<=\u2299\u25cf",
+        "word": "¬⊣⊢◇+>⊢◇+>++<=⊙●",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -382,7 +382,7 @@
       },
       {
         "k": 15,
-        "word": "\u22a3\u22a2\u25c7+>\u22a2\u25c7+>++<=\u2299\u25cf\u00ac",
+        "word": "⊣⊢◇+>⊢◇+>++<=⊙●¬",
         "tri_ancestral_verdict": "B",
         "closed_walk": false,
         "final_register": "T",
@@ -396,7 +396,8 @@
       "topology_class": false
     },
     "canonical_k": 8,
-    "canonical_word": "++<=\u2299\u25cf\u00ac\u22a3\u22a2\u25c7+>\u22a2\u25c7+>",
-    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: topology_class"
-  }
+    "canonical_word": "++<=⊙●¬⊣⊢◇+>⊢◇+>",
+    "verdict": "PHASE-BEARING — moves under ROTAT: topology_class"
+  },
+  "grounding_failed_primitives": []
 }

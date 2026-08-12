@@ -1,6 +1,6 @@
 {
   "name": "obtaining secp256k1 private key from its public key",
-  "is_valid_ob3ect": true,
+  "is_valid_ob3ect": false,
   "validations": {
     "phase_0": [],
     "phase_1": [],
@@ -27,7 +27,7 @@
       "VINIT": {
         "opcode": "VINIT",
         "chosen_element": "uninitialized scalar",
-        "justification": "the 256-bit private key space before any candidate is selected \u2014 void of key material",
+        "justification": "the 256-bit private key space before any candidate is selected — void of key material",
         "rejected_candidates": []
       },
       "TANCH": {
@@ -39,61 +39,61 @@
       "AFWD": {
         "opcode": "AFWD",
         "chosen_element": "scalar multiplication",
-        "justification": "the easy forward morphism n \u2192 n\u00d7G that derives public key from private key",
+        "justification": "the easy forward morphism n → n×G that derives public key from private key",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
         "chosen_element": "discrete log inversion",
-        "justification": "the hard reverse morphism attempting to recover n from P = n\u00d7G via ECDLP solving",
+        "justification": "the hard reverse morphism attempting to recover n from P = n×G via ECDLP solving",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
         "chosen_element": "point addition chain",
-        "justification": "sequential composition of group operations \u2014 each step adds a point in the search walk",
+        "justification": "sequential composition of group operations — each step adds a point in the search walk",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
-        "chosen_element": "curve equation y\u00b2=x\u00b3+7",
-        "justification": "the group law identity \u2014 the curve recognizes itself as the algebraic structure governing all operations",
+        "chosen_element": "curve equation y²=x³+7",
+        "justification": "the group law identity — the curve recognizes itself as the algebraic structure governing all operations",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
         "chosen_element": "parallel search partition",
-        "justification": "the scalar field splits into independent Pollard's rho walks (or baby-step/giant-step tables) \u2014 one input branches to many parallel paths",
+        "justification": "the scalar field splits into independent Pollard's rho walks (or baby-step/giant-step tables) — one input branches to many parallel paths",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
         "chosen_element": "collision recombination",
-        "justification": "parallel walks fuse at a distinguished-point collision, recovering the discrete log \u2014 the private key is reconstituted exactly",
+        "justification": "parallel walks fuse at a distinguished-point collision, recovering the discrete log — the private key is reconstituted exactly",
         "rejected_candidates": []
       },
       "EVALT": {
         "opcode": "EVALT",
         "chosen_element": "private key recovered",
-        "justification": "affirmative branch: collision yields valid n such that n\u00d7G = P \u2014 success state",
+        "justification": "affirmative branch: collision yields valid n such that n×G = P — success state",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
         "chosen_element": "candidate rejected",
-        "justification": "negative branch: walk terminates without collision or yields invalid n \u2014 failure state",
+        "justification": "negative branch: walk terminates without collision or yields invalid n — failure state",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
         "chosen_element": "quantum superposition",
-        "justification": "Shor's algorithm holds both 'key exists' and 'key unreachable' simultaneously \u2014 a paradice resolved only by measurement",
+        "justification": "Shor's algorithm holds both 'key exists' and 'key unreachable' simultaneously — a paradice resolved only by measurement",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
         "chosen_element": "cold storage write",
-        "justification": "the recovered private key is permanently recorded in append-only offline storage \u2014 irreversible fixation",
+        "justification": "the recovered private key is permanently recorded in append-only offline storage — irreversible fixation",
         "rejected_candidates": []
       }
     },
@@ -111,19 +111,19 @@
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "no key material \u2014 the scalar field before any search begins",
-      "true_description": "private key n found such that n\u00d7G equals the target public key",
-      "false_description": "search path exhausted or candidate n invalid \u2014 discrete log not found on this branch",
-      "both_description": "quantum superposition of all candidate keys \u2014 Shor's period-finding holds success and failure simultaneously until measurement",
+      "void_description": "no key material — the scalar field before any search begins",
+      "true_description": "private key n found such that n×G equals the target public key",
+      "false_description": "search path exhausted or candidate n invalid — discrete log not found on this branch",
+      "both_description": "quantum superposition of all candidate keys — Shor's period-finding holds success and failure simultaneously until measurement",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "initialize the void scalar field \u2014 no private key candidate exists"
+          "domain_action": "initialize the void scalar field — no private key candidate exists"
         },
         {
           "step_num": 2,
@@ -133,12 +133,12 @@
         {
           "step_num": 3,
           "opcode": "IMSCRIB",
-          "domain_action": "invoke the curve equation y\u00b2=x\u00b3+7 as the self-referential group law"
+          "domain_action": "invoke the curve equation y²=x³+7 as the self-referential group law"
         },
         {
           "step_num": 4,
           "opcode": "AFWD",
-          "domain_action": "reference the forward morphism \u2014 we know P = n\u00d7G defines the target"
+          "domain_action": "reference the forward morphism — we know P = n×G defines the target"
         },
         {
           "step_num": 5,
@@ -148,42 +148,42 @@
         {
           "step_num": 6,
           "opcode": "CLINK",
-          "domain_action": "compose point additions \u2014 each step advances both walks via deterministic pseudorandom function"
+          "domain_action": "compose point additions — each step advances both walks via deterministic pseudorandom function"
         },
         {
           "step_num": 7,
           "opcode": "AREV",
-          "domain_action": "attempt the reverse morphism \u2014 each walk searches for the discrete log"
+          "domain_action": "attempt the reverse morphism — each walk searches for the discrete log"
         },
         {
           "step_num": 8,
           "opcode": "EVALT",
-          "domain_action": "tortoise walk reaches distinguished point \u2014 candidate private key proposed"
+          "domain_action": "tortoise walk reaches distinguished point — candidate private key proposed"
         },
         {
           "step_num": 9,
           "opcode": "EVALF",
-          "domain_action": "hare walk reaches distinguished point without match \u2014 candidate rejected"
+          "domain_action": "hare walk reaches distinguished point without match — candidate rejected"
         },
         {
           "step_num": 10,
           "opcode": "ENGAGR",
-          "domain_action": "quantum branch \u2014 Shor's algorithm enters superposition over all periods"
+          "domain_action": "quantum branch — Shor's algorithm enters superposition over all periods"
         },
         {
           "step_num": 11,
           "opcode": "FFUSE",
-          "domain_action": "collision detected between walks \u2014 private key n reconstituted from cycle length"
+          "domain_action": "collision detected between walks — private key n reconstituted from cycle length"
         },
         {
           "step_num": 12,
           "opcode": "IFIX",
-          "domain_action": "write recovered private key to cold storage \u2014 permanent irreversible record"
+          "domain_action": "write recovered private key to cold storage — permanent irreversible record"
         },
         {
           "step_num": 13,
           "opcode": "TANCH",
-          "domain_action": "close the system \u2014 curve parameters remain, search concludes"
+          "domain_action": "close the system — curve parameters remain, search concludes"
         }
       ],
       "closure_verified": true,
@@ -194,18 +194,18 @@
       "ipc_mechanism": "elliptic curve point addition and scalar multiplication over F_p",
       "memory_mechanism": "distinguished-points hash table for collision detection across parallel walks",
       "scheduler_mechanism": "parallel walk coordinator distributing iterations across cores or nodes",
-      "alfs_store": "SEC 2: Recommended Elliptic Curve Domain Parameters \u2014 secp256k1 curve specification",
+      "alfs_store": "SEC 2: Recommended Elliptic Curve Domain Parameters — secp256k1 curve specification",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
       "cycle_cost": "~2^128 scalar multiplications for classical Pollard's rho; polynomial for quantum Shor's",
-      "pre_cycle_state": "public key P known, private key n unknown \u2014 maximal uncertainty over Z/qZ",
-      "post_cycle_state": "private key n known (or search space reduced by factor) \u2014 uncertainty collapsed",
-      "delta_s_verdict": "\u0394S > 0 \u2014 classical search irreversibly dissipates energy per Landauer; quantum branch conserves entropy until measurement",
+      "pre_cycle_state": "public key P known, private key n unknown — maximal uncertainty over Z/qZ",
+      "post_cycle_state": "private key n known (or search space reduced by factor) — uncertainty collapsed",
+      "delta_s_verdict": "ΔS > 0 — classical search irreversibly dissipates energy per Landauer; quantum branch conserves entropy until measurement",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 IMSCRIB \u2192 AFWD \u2192 FSPLIT \u2192 CLINK \u2192 AREV \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 TANCH\n-- Class: obtaining secp256k1 private key from its public key\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [2] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc7e  | identity \u2014 self-imscription\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc60 \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def obtaining_secp256k1_private_key_from_f1684e_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def obtaining_secp256k1_private_key_from_f1684e_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def obtaining_secp256k1_private_key_from_f1684e_protocol : IGProtocol obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct obtaining_secp256k1_private_key_from_f1684e_s10 obtaining_secp256k1_private_key_from_f1684e_s10 = obtaining_secp256k1_private_key_from_f1684e_s10 (idempotent)\n  (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l0 obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s1) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l1 obtaining_secp256k1_private_key_from_f1684e_s1 obtaining_secp256k1_private_key_from_f1684e_s2) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l2 obtaining_secp256k1_private_key_from_f1684e_s2 obtaining_secp256k1_private_key_from_f1684e_s3) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l3 obtaining_secp256k1_private_key_from_f1684e_s3 obtaining_secp256k1_private_key_from_f1684e_s4) (.seq (.prod (.arrow obtaining_secp256k1_private_key_from_f1684e_l4 obtaining_secp256k1_private_key_from_f1684e_s4 obtaining_secp256k1_private_key_from_f1684e_s10) (.arrow obtaining_secp256k1_private_key_from_f1684e_l4 obtaining_secp256k1_private_key_from_f1684e_s4 obtaining_secp256k1_private_key_from_f1684e_s10)) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l10 obtaining_secp256k1_private_key_from_f1684e_s10 obtaining_secp256k1_private_key_from_f1684e_s10) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l10 obtaining_secp256k1_private_key_from_f1684e_s10 obtaining_secp256k1_private_key_from_f1684e_s11) (.arrow obtaining_secp256k1_private_key_from_f1684e_l11 obtaining_secp256k1_private_key_from_f1684e_s11 obtaining_secp256k1_private_key_from_f1684e_s12))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def obtaining_secp256k1_private_key_from_f1684e_true_arm : IGProtocol obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s12 :=\n  (obtaining_secp256k1_private_key_from_f1684e_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def obtaining_secp256k1_private_key_from_f1684e_false_arm : IGProtocol obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s12 :=\n  (obtaining_secp256k1_private_key_from_f1684e_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef obtaining_secp256k1_private_key_from_f1684e_tier_ground : OuroboricityTier := TierFunctor.obj obtaining_secp256k1_private_key_from_f1684e_s0\ndef obtaining_secp256k1_private_key_from_f1684e_tier : OuroboricityTier := TierFunctor.obj obtaining_secp256k1_private_key_from_f1684e_s12\n#eval obtaining_secp256k1_private_key_from_f1684e_tier_ground  -- tier of the ground (pre-transformation)\n#eval obtaining_secp256k1_private_key_from_f1684e_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem obtaining_secp256k1_private_key_from_f1684e_frobenius :\n    igFrobeniusAlg.mul obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s0 = obtaining_secp256k1_private_key_from_f1684e_s0 :=\n  igFrobAlg_self_fusion obtaining_secp256k1_private_key_from_f1684e_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → IMSCRIB → AFWD → FSPLIT → CLINK → AREV → EVALT → EVALF → ENGAGR → FFUSE → IFIX → TANCH\n-- Class: obtaining secp256k1 private key from its public key\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] TANCH     top    := 𐑡               𐑼 → 𐑠  | terminal object — connectivity boundary\n--   [2] IMSCRIB   gram   := 𐑠               𐑡 → 𐑾  | identity — self-imscription\n--   [3] AFWD      rel    := 𐑾               𐑠 → 𐑚  | forward morphism — bidirectional arrow\n--   [4] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [7] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [10] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [11] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [12] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def obtaining_secp256k1_private_key_from_f1684e_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def obtaining_secp256k1_private_key_from_f1684e_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def obtaining_secp256k1_private_key_from_f1684e_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def obtaining_secp256k1_private_key_from_f1684e_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def obtaining_secp256k1_private_key_from_f1684e_protocol : IGProtocol obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct obtaining_secp256k1_private_key_from_f1684e_s10 obtaining_secp256k1_private_key_from_f1684e_s10 = obtaining_secp256k1_private_key_from_f1684e_s10 (idempotent)\n  (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l0 obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s1) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l1 obtaining_secp256k1_private_key_from_f1684e_s1 obtaining_secp256k1_private_key_from_f1684e_s2) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l2 obtaining_secp256k1_private_key_from_f1684e_s2 obtaining_secp256k1_private_key_from_f1684e_s3) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l3 obtaining_secp256k1_private_key_from_f1684e_s3 obtaining_secp256k1_private_key_from_f1684e_s4) (.seq (.prod (.arrow obtaining_secp256k1_private_key_from_f1684e_l4 obtaining_secp256k1_private_key_from_f1684e_s4 obtaining_secp256k1_private_key_from_f1684e_s10) (.arrow obtaining_secp256k1_private_key_from_f1684e_l4 obtaining_secp256k1_private_key_from_f1684e_s4 obtaining_secp256k1_private_key_from_f1684e_s10)) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l10 obtaining_secp256k1_private_key_from_f1684e_s10 obtaining_secp256k1_private_key_from_f1684e_s10) (.seq (.arrow obtaining_secp256k1_private_key_from_f1684e_l10 obtaining_secp256k1_private_key_from_f1684e_s10 obtaining_secp256k1_private_key_from_f1684e_s11) (.arrow obtaining_secp256k1_private_key_from_f1684e_l11 obtaining_secp256k1_private_key_from_f1684e_s11 obtaining_secp256k1_private_key_from_f1684e_s12))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def obtaining_secp256k1_private_key_from_f1684e_true_arm : IGProtocol obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s12 :=\n  (obtaining_secp256k1_private_key_from_f1684e_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def obtaining_secp256k1_private_key_from_f1684e_false_arm : IGProtocol obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s12 :=\n  (obtaining_secp256k1_private_key_from_f1684e_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef obtaining_secp256k1_private_key_from_f1684e_tier_ground : OuroboricityTier := TierFunctor.obj obtaining_secp256k1_private_key_from_f1684e_s0\ndef obtaining_secp256k1_private_key_from_f1684e_tier : OuroboricityTier := TierFunctor.obj obtaining_secp256k1_private_key_from_f1684e_s12\n#eval obtaining_secp256k1_private_key_from_f1684e_tier_ground  -- tier of the ground (pre-transformation)\n#eval obtaining_secp256k1_private_key_from_f1684e_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem obtaining_secp256k1_private_key_from_f1684e_frobenius :\n    igFrobeniusAlg.mul obtaining_secp256k1_private_key_from_f1684e_s0 obtaining_secp256k1_private_key_from_f1684e_s0 = obtaining_secp256k1_private_key_from_f1684e_s0 :=\n  igFrobAlg_self_fusion obtaining_secp256k1_private_key_from_f1684e_s0\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -235,15 +235,14 @@
     "has_dual_fixation": false
   },
   "notes": "Auto-designed from: obtaining secp256k1 private key from its public key",
-  "grounded_tuple": "\u27e8\ud801\udc7c\ud801\udc61\ud801\udc51\ud801\udc57\ud801\udc71\ud801\udc67\ud801\udc54\ud801\udc5d\ud801\udc62\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "grounded_tuple": "⟨𐑼𐑡𐑑𐑗𐑱𐑧𐑔𐑝𐑢𐑫𐑳𐑟⟩",
   "grounding_status": "failed",
   "grounding_failed_primitives": [
-    "Axiom A: \u22a5=\ud801\udc6b requires \u22a4=\ud801\udc6a (got \u22a4=\ud801\udc67)",
-    "Axiom D: \u25fb=\ud801\udc5f requires \u22a2=\ud801\udc66 (got \u22a2=\ud801\udc7c)"
+    "Axiom D: ◻=𐑟 requires ⊢=𐑦 (got ⊢=𐑼)"
   ],
   "banked_count_check": {
     "status": "ok",
-    "word": "\u22a2\u22a3\u2299>\u2208\u22c8<\u22a4\u22a5\u229e\u220b\u25fb\u22a3",
+    "word": "⊢⊣⊙>∈⋈<⊤⊥⊞∋◻⊣",
     "exposed_clears": [],
     "weight_lost_in_the_open": 0,
     "banked_ok": true,
@@ -258,16 +257,16 @@
     "surplus_note": null,
     "remedy": null
   },
-  "grounding_reasoning": "\u22a2=\ud801\udc7c: The operation targets a single scalar private key corresponding to one public key point, making it a point-like constraint satisfaction problem with no spatial, temporal, or holographic structure.\n\u22a3=\ud801\udc61: The relationship between a secp256k1 private key and its public key forms a one-way functional mapping across a vast, sparse domain where each private key connects to exactly one public key, resembling a directed, deterministic graph structure with no cycles or hierarchical containment.\n>=\ud801\udc51: The derivation of a private key from a public key on secp256k1 requires solving the elliptic curve discrete logarithm problem, an irreversible structural transformation that breaks the one-way cryptographic binding.\n<=\ud801\udc57: The cryptographic derivation from public key to private key is computationally infeasible and lacks any bidirectional or self-complementary structure, exhibiting no preferred directional interface in the assigned primitive sense.\n\u22c8=\ud801\udc71: Recovering a secp256k1 private key from its public key requires solving the elliptic curve discrete logarithm problem, which is computationally infeasible with current technology and transmits effectively zero usable information per interaction.\n\u22a4=\ud801\udc67: The discrete logarithm problem creates a computationally insurmountable barrier, making private key recovery from a public key kinetically frozen without exponential-time algorithms or quantum computation.\n\u2208=\ud801\udc54: The discrete logarithm problem underlying secp256k1 creates a global correlation where any public key constrains the private key across the entire 256-bit scalar field, making every bit of the secret dependent on the whole public point.\n\u220b=\ud801\udc5d: The cryptographic relationship requires the simultaneous mathematical presence of both the private key and the elliptic curve parameters to derive the public key, making all partners conjunctively necessary.\n\u2299=\ud801\udc62: The discrete logarithm problem underlying secp256k1 creates a computationally subcritical regime where no continuous phase transition or scale-free sensitivity exists between public and private keys.\n\u22a5=\ud801\udc6b: The discrete logarithm problem creates a topological barrier where inversion requires global restructuring of the computational state space, making chirality irreversible without exponential work.\n\u229e=\ud801\udc73: The relationship is fundamentally asymmetric, as deriving a private key from a public key is computationally infeasible while the reverse is trivial, creating a severe imbalance in operational capability.\n\u25fb=\ud801\udc5f: The discrete logarithm problem on secp256k1 constitutes a non-Abelian protection where the private key cannot be continuously deformed from the public key without traversing the full exponential state space of the elliptic curve group.",
+  "grounding_reasoning": "⊢=𐑼: The operation targets a single scalar private key corresponding to one public key point, making it a point-like constraint satisfaction problem with no spatial, temporal, or holographic structure.\n⊣=𐑡: The relationship between a secp256k1 private key and its public key forms a one-way functional mapping across a vast, sparse domain where each private key connects to exactly one public key, resembling a directed, deterministic graph structure with no cycles or hierarchical containment.\n>=𐑑: The derivation of a private key from a public key on secp256k1 requires solving the elliptic curve discrete logarithm problem, an irreversible structural transformation that breaks the one-way cryptographic binding.\n<=𐑗: The cryptographic derivation from public key to private key is computationally infeasible and lacks any bidirectional or self-complementary structure, exhibiting no preferred directional interface in the assigned primitive sense.\n⋈=𐑱: Recovering a secp256k1 private key from its public key requires solving the elliptic curve discrete logarithm problem, which is computationally infeasible with current technology and transmits effectively zero usable information per interaction.\n⊤=𐑧: The discrete logarithm problem creates a computationally insurmountable barrier, making private key recovery from a public key kinetically frozen without exponential-time algorithms or quantum computation.\n∈=𐑔: The discrete logarithm problem underlying secp256k1 creates a global correlation where any public key constrains the private key across the entire 256-bit scalar field, making every bit of the secret dependent on the whole public point.\n∋=𐑝: The cryptographic relationship requires the simultaneous mathematical presence of both the private key and the elliptic curve parameters to derive the public key, making all partners conjunctively necessary.\n⊙=𐑢: The discrete logarithm problem underlying secp256k1 creates a computationally subcritical regime where no continuous phase transition or scale-free sensitivity exists between public and private keys.\n⊥=𐑫: The discrete logarithm problem creates a topological barrier where inversion requires global restructuring of the computational state space, making chirality irreversible without exponential work.\n⊞=𐑳: The relationship is fundamentally asymmetric, as deriving a private key from a public key is computationally infeasible while the reverse is trivial, creating a severe imbalance in operational capability.\n◻=𐑟: The discrete logarithm problem on secp256k1 constitutes a non-Abelian protection where the private key cannot be continuously deformed from the public key without traversing the full exponential state space of the elliptic curve group.",
   "lean_verified": true,
-  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
     "op_opcode": "ROTAT",
     "period": 13,
     "orbit": [
       {
         "k": 0,
-        "word": "\u22a2\u22a3\u2299>\u25c7=<+\u00d7\u229e\u25cf\u00ac\u22a3",
+        "word": "⊢⊣⊙>◇=<+×⊞●¬⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -275,7 +274,7 @@
       },
       {
         "k": 1,
-        "word": "\u22a3\u2299>\u25c7=<+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2",
+        "word": "⊣⊙>◇=<+×⊞●¬⊣⊢",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -283,7 +282,7 @@
       },
       {
         "k": 2,
-        "word": "\u2299>\u25c7=<+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3",
+        "word": "⊙>◇=<+×⊞●¬⊣⊢⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -291,7 +290,7 @@
       },
       {
         "k": 3,
-        "word": ">\u25c7=<+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299",
+        "word": ">◇=<+×⊞●¬⊣⊢⊣⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -299,7 +298,7 @@
       },
       {
         "k": 4,
-        "word": "\u25c7=<+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>",
+        "word": "◇=<+×⊞●¬⊣⊢⊣⊙>",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -307,7 +306,7 @@
       },
       {
         "k": 5,
-        "word": "=<+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7",
+        "word": "=<+×⊞●¬⊣⊢⊣⊙>◇",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -315,7 +314,7 @@
       },
       {
         "k": 6,
-        "word": "<+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7=",
+        "word": "<+×⊞●¬⊣⊢⊣⊙>◇=",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -323,7 +322,7 @@
       },
       {
         "k": 7,
-        "word": "+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7=<",
+        "word": "+×⊞●¬⊣⊢⊣⊙>◇=<",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -331,7 +330,7 @@
       },
       {
         "k": 8,
-        "word": "\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7=<+",
+        "word": "×⊞●¬⊣⊢⊣⊙>◇=<+",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "Ftf",
@@ -339,7 +338,7 @@
       },
       {
         "k": 9,
-        "word": "\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7=<+\u00d7",
+        "word": "⊞●¬⊣⊢⊣⊙>◇=<+×",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -347,7 +346,7 @@
       },
       {
         "k": 10,
-        "word": "\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7=<+\u00d7\u229e",
+        "word": "●¬⊣⊢⊣⊙>◇=<+×⊞",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -355,7 +354,7 @@
       },
       {
         "k": 11,
-        "word": "\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7=<+\u00d7\u229e\u25cf",
+        "word": "¬⊣⊢⊣⊙>◇=<+×⊞●",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -363,7 +362,7 @@
       },
       {
         "k": 12,
-        "word": "\u22a3\u22a2\u22a3\u2299>\u25c7=<+\u00d7\u229e\u25cf\u00ac",
+        "word": "⊣⊢⊣⊙>◇=<+×⊞●¬",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -377,7 +376,7 @@
       "topology_class": true
     },
     "canonical_k": 7,
-    "canonical_word": "+\u00d7\u229e\u25cf\u00ac\u22a3\u22a2\u22a3\u2299>\u25c7=<",
-    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+    "canonical_word": "+×⊞●¬⊣⊢⊣⊙>◇=<",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
   }
 }

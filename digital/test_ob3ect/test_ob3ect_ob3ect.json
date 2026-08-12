@@ -116,7 +116,7 @@
       "false_description": "odd parity failure state",
       "both_description": "barriered simultaneous state",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
@@ -216,11 +216,11 @@
       "cycle_cost": "one computational step per token",
       "pre_cycle_state": "system at void state",
       "post_cycle_state": "system at recorded closed state",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 each token transition is reversible given FSPLIT/FFUSE pair guarantees structural identity",
+      "delta_s_verdict": "ΔS ≈ 0 — each token transition is reversible given FSPLIT/FFUSE pair guarantees structural identity",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 IFIX \u2192 EVALF \u2192 IFIX \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX \u2192 TANCH \u2192 IMSCRIB\n-- Class: test ob3ect\n-- Fingerprint: sig=(8,2,3,3)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=16\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(6, 12)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc7e  | terminal object \u2014 connectivity boundary\n--   [2] AFWD      rel    := \ud801\udc7e               \ud801\udc61 \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [3] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [4] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc60  | composition \u2014 regime coherence\n--   [5] IMSCRIB   gram   := \ud801\udc60               \ud801\udc71 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [6] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [7] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [8] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [9] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc5a \u2192 \ud801\udc59  | irreversible fixation \u2014 winding number\n--   [11] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [12] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [13] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [14] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [15] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc7c  | identity \u2014 self-imscription\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def test_ob3ect_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def test_ob3ect_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def test_ob3ect_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def test_ob3ect_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def test_ob3ect_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def test_ob3ect_protocol : IGProtocol test_ob3ect_s0 test_ob3ect_s15 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct test_ob3ect_s12 test_ob3ect_s12 = test_ob3ect_s12 (idempotent)\n  (.seq (.arrow test_ob3ect_l0 test_ob3ect_s0 test_ob3ect_s1) (.seq (.arrow test_ob3ect_l1 test_ob3ect_s1 test_ob3ect_s2) (.seq (.arrow test_ob3ect_l2 test_ob3ect_s2 test_ob3ect_s3) (.seq (.arrow test_ob3ect_l3 test_ob3ect_s3 test_ob3ect_s4) (.seq (.arrow test_ob3ect_l4 test_ob3ect_s4 test_ob3ect_s5) (.seq (.arrow test_ob3ect_l5 test_ob3ect_s5 test_ob3ect_s6) (.seq (.prod (.arrow test_ob3ect_l6 test_ob3ect_s6 test_ob3ect_s12) (.arrow test_ob3ect_l6 test_ob3ect_s6 test_ob3ect_s12)) (.seq (.arrow test_ob3ect_l12 test_ob3ect_s12 test_ob3ect_s12) (.seq (.arrow test_ob3ect_l12 test_ob3ect_s12 test_ob3ect_s13) (.seq (.arrow test_ob3ect_l13 test_ob3ect_s13 test_ob3ect_s14) (.arrow test_ob3ect_l14 test_ob3ect_s14 test_ob3ect_s15)))))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def test_ob3ect_true_arm : IGProtocol test_ob3ect_s0 test_ob3ect_s15 :=\n  (test_ob3ect_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def test_ob3ect_false_arm : IGProtocol test_ob3ect_s0 test_ob3ect_s15 :=\n  (test_ob3ect_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef test_ob3ect_tier : OuroboricityTier := TierFunctor.obj test_ob3ect_s0\n#eval test_ob3ect_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem test_ob3ect_frobenius :\n    igFrobeniusAlg.mul test_ob3ect_s0 test_ob3ect_s0 = test_ob3ect_s0 :=\n  igFrobAlg_self_fusion test_ob3ect_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → TANCH → AFWD → AREV → CLINK → IMSCRIB → FSPLIT → EVALT → IFIX → EVALF → IFIX → ENGAGR → FFUSE → IFIX → TANCH → IMSCRIB\n-- Class: test ob3ect\n-- Fingerprint: sig=(8,2,3,3)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=16\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(6, 12)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] TANCH     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary\n--   [2] AFWD      rel    := 𐑾               𐑡 → 𐑗  | forward morphism — bidirectional arrow\n--   [3] AREV      pol    := 𐑗               𐑾 → 𐑱  | reverse morphism — parity flip\n--   [4] CLINK     fid    := 𐑱               𐑗 → 𐑠  | composition — regime coherence\n--   [5] IMSCRIB   gram   := 𐑠               𐑱 → 𐑚  | identity — self-imscription\n--   [6] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [7] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [9] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [10] IFIX      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [11] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [12] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [13] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [14] TANCH     top    := 𐑡               𐑭 → 𐑠  | terminal object — connectivity boundary\n--   [15] IMSCRIB   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def test_ob3ect_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def test_ob3ect_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def test_ob3ect_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def test_ob3ect_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def test_ob3ect_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def test_ob3ect_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def test_ob3ect_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def test_ob3ect_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def test_ob3ect_protocol : IGProtocol test_ob3ect_s0 test_ob3ect_s15 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct test_ob3ect_s12 test_ob3ect_s12 = test_ob3ect_s12 (idempotent)\n  (.seq (.arrow test_ob3ect_l0 test_ob3ect_s0 test_ob3ect_s1) (.seq (.arrow test_ob3ect_l1 test_ob3ect_s1 test_ob3ect_s2) (.seq (.arrow test_ob3ect_l2 test_ob3ect_s2 test_ob3ect_s3) (.seq (.arrow test_ob3ect_l3 test_ob3ect_s3 test_ob3ect_s4) (.seq (.arrow test_ob3ect_l4 test_ob3ect_s4 test_ob3ect_s5) (.seq (.arrow test_ob3ect_l5 test_ob3ect_s5 test_ob3ect_s6) (.seq (.prod (.arrow test_ob3ect_l6 test_ob3ect_s6 test_ob3ect_s12) (.arrow test_ob3ect_l6 test_ob3ect_s6 test_ob3ect_s12)) (.seq (.arrow test_ob3ect_l12 test_ob3ect_s12 test_ob3ect_s12) (.seq (.arrow test_ob3ect_l12 test_ob3ect_s12 test_ob3ect_s13) (.seq (.arrow test_ob3ect_l13 test_ob3ect_s13 test_ob3ect_s14) (.arrow test_ob3ect_l14 test_ob3ect_s14 test_ob3ect_s15)))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def test_ob3ect_true_arm : IGProtocol test_ob3ect_s0 test_ob3ect_s15 :=\n  (test_ob3ect_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def test_ob3ect_false_arm : IGProtocol test_ob3ect_s0 test_ob3ect_s15 :=\n  (test_ob3ect_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef test_ob3ect_tier : OuroboricityTier := TierFunctor.obj test_ob3ect_s0\n#eval test_ob3ect_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem test_ob3ect_frobenius :\n    igFrobeniusAlg.mul test_ob3ect_s0 test_ob3ect_s0 = test_ob3ect_s0 :=\n  igFrobAlg_self_fusion test_ob3ect_s0\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -250,18 +250,18 @@
     "has_dual_fixation": true
   },
   "notes": "Auto-designed from: test ob3ect",
-  "grounded_tuple": "\u27e8\ud801\udc68\ud801\udc65\ud801\udc69\ud801\udc7f\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc6b\ud801\udc55\ud801\udc74\u27e9",
-  "grounding_status": "failed",
-  "grounding_reasoning": "\u00d0=\ud801\udc68: The input \"ob3ect\" suggests a three-dimensional object, so constraint propagation operates spatially in a 3D arrangement.\n\u00de=\ud801\udc65: The thorn symbol (\u00de) has a loop, indicating a cyclic structure, and the input \"ob3ect\" contains the digit 3, further suggesting cyclic closure.\n\u0158=\ud801\udc69: The input \"test ob3ect\" is effectively \"test object,\" implying a recognition-based pattern matching that operates through soft, reversible associations.\n\u03a6=\ud801\udc7f: The boundary between \"test\" (probing) and \"object\" (target) suggests a one-way directional interaction, fitting a signed donor-acceptor polarity.\n\u0192=\ud801\udc50: Fidelity implies high reliability and near-certain information transmission, consistent with I_net > 9 bits.\n\u00c7=\ud801\udc67: The input contains the digit '3', which directly corresponds to the third option describing a high barrier to rearrangement.\n\u0393=\ud801\udc72: The input \"test ob3ect\" likely refers to a single test object, indicating local interactions with no neighbor influence.\n\u0262=\ud801\udc60: The input contains the digit '3', which directly corresponds to the third option for sequential partner selection.\n\u2299=\u2299: The assigned primitive \u2299 directly corresponds to the critical state.\n\u0126=\ud801\udc6b: The digit '3' in 'ob3ect' suggests a trefoil knot, which is topologically chiral and cannot be undone without global restructuring.\n\u03a3=\ud801\udc55: The digit \"3\" in \"ob3ect\" indicates a trimer or higher-order symmetric grouping.\n\u03a9=\ud801\udc74: The presence of the digit '3' suggests an odd parity that requires crossing a Z2 topological boundary to change.",
+  "grounded_tuple": "⟨𐑨𐑥𐑩𐑿𐑐𐑧𐑲𐑠⊙𐑫𐑕𐑴⟩",
+  "grounding_status": "full",
+  "grounding_reasoning": "Ð=𐑨: The input \"ob3ect\" suggests a three-dimensional object, so constraint propagation operates spatially in a 3D arrangement.\nÞ=𐑥: The thorn symbol (Þ) has a loop, indicating a cyclic structure, and the input \"ob3ect\" contains the digit 3, further suggesting cyclic closure.\nŘ=𐑩: The input \"test ob3ect\" is effectively \"test object,\" implying a recognition-based pattern matching that operates through soft, reversible associations.\nΦ=𐑿: The boundary between \"test\" (probing) and \"object\" (target) suggests a one-way directional interaction, fitting a signed donor-acceptor polarity.\nƒ=𐑐: Fidelity implies high reliability and near-certain information transmission, consistent with I_net > 9 bits.\nÇ=𐑧: The input contains the digit '3', which directly corresponds to the third option describing a high barrier to rearrangement.\nΓ=𐑲: The input \"test ob3ect\" likely refers to a single test object, indicating local interactions with no neighbor influence.\nɢ=𐑠: The input contains the digit '3', which directly corresponds to the third option for sequential partner selection.\n⊙=⊙: The assigned primitive ⊙ directly corresponds to the critical state.\nĦ=𐑫: The digit '3' in 'ob3ect' suggests a trefoil knot, which is topologically chiral and cannot be undone without global restructuring.\nΣ=𐑕: The digit \"3\" in \"ob3ect\" indicates a trimer or higher-order symmetric grouping.\nΩ=𐑴: The presence of the digit '3' suggests an odd parity that requires crossing a Z2 topological boundary to change.",
   "lean_verified": true,
-  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀",
   "rotat_audit": {
     "op_opcode": "ROTAT",
     "period": 16,
     "orbit": [
       {
         "k": 0,
-        "word": "\u22a2\u22a3><=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299",
+        "word": "⊢⊣><=⊙◇+¬×¬⊞●¬⊣⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -269,7 +269,7 @@
       },
       {
         "k": 1,
-        "word": "\u22a3><=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2",
+        "word": "⊣><=⊙◇+¬×¬⊞●¬⊣⊙⊢",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -277,7 +277,7 @@
       },
       {
         "k": 2,
-        "word": "><=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3",
+        "word": "><=⊙◇+¬×¬⊞●¬⊣⊙⊢⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -285,7 +285,7 @@
       },
       {
         "k": 3,
-        "word": "<=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3>",
+        "word": "<=⊙◇+¬×¬⊞●¬⊣⊙⊢⊣>",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -293,7 +293,7 @@
       },
       {
         "k": 4,
-        "word": "=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><",
+        "word": "=⊙◇+¬×¬⊞●¬⊣⊙⊢⊣><",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -301,7 +301,7 @@
       },
       {
         "k": 5,
-        "word": "\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=",
+        "word": "⊙◇+¬×¬⊞●¬⊣⊙⊢⊣><=",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -309,7 +309,7 @@
       },
       {
         "k": 6,
-        "word": "\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299",
+        "word": "◇+¬×¬⊞●¬⊣⊙⊢⊣><=⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -317,7 +317,7 @@
       },
       {
         "k": 7,
-        "word": "+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7",
+        "word": "+¬×¬⊞●¬⊣⊙⊢⊣><=⊙◇",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -325,7 +325,7 @@
       },
       {
         "k": 8,
-        "word": "\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7+",
+        "word": "¬×¬⊞●¬⊣⊙⊢⊣><=⊙◇+",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -333,7 +333,7 @@
       },
       {
         "k": 9,
-        "word": "\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7+\u00ac",
+        "word": "×¬⊞●¬⊣⊙⊢⊣><=⊙◇+¬",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "F",
@@ -341,7 +341,7 @@
       },
       {
         "k": 10,
-        "word": "\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7+\u00ac\u00d7",
+        "word": "¬⊞●¬⊣⊙⊢⊣><=⊙◇+¬×",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -349,7 +349,7 @@
       },
       {
         "k": 11,
-        "word": "\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7+\u00ac\u00d7\u00ac",
+        "word": "⊞●¬⊣⊙⊢⊣><=⊙◇+¬×¬",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "tf",
@@ -357,7 +357,7 @@
       },
       {
         "k": 12,
-        "word": "\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e",
+        "word": "●¬⊣⊙⊢⊣><=⊙◇+¬×¬⊞",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -365,7 +365,7 @@
       },
       {
         "k": 13,
-        "word": "\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf",
+        "word": "¬⊣⊙⊢⊣><=⊙◇+¬×¬⊞●",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -373,7 +373,7 @@
       },
       {
         "k": 14,
-        "word": "\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac",
+        "word": "⊣⊙⊢⊣><=⊙◇+¬×¬⊞●¬",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -381,7 +381,7 @@
       },
       {
         "k": 15,
-        "word": "\u2299\u22a2\u22a3><=\u2299\u25c7+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3",
+        "word": "⊙⊢⊣><=⊙◇+¬×¬⊞●¬⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -395,7 +395,8 @@
       "topology_class": false
     },
     "canonical_k": 7,
-    "canonical_word": "+\u00ac\u00d7\u00ac\u229e\u25cf\u00ac\u22a3\u2299\u22a2\u22a3><=\u2299\u25c7",
-    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: tri_ancestral_verdict, final_register, topology_class"
-  }
+    "canonical_word": "+¬×¬⊞●¬⊣⊙⊢⊣><=⊙◇",
+    "verdict": "PHASE-BEARING — moves under ROTAT: tri_ancestral_verdict, final_register, topology_class"
+  },
+  "grounding_failed_primitives": []
 }

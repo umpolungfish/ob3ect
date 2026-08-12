@@ -27,7 +27,7 @@
       "VINIT": {
         "opcode": "VINIT",
         "chosen_element": "The empty dialect set before any gate thresholds are assigned",
-        "justification": "Before any dialect is enumerated, there are zero dialects \u2014 the void state of the enumeration space",
+        "justification": "Before any dialect is enumerated, there are zero dialects — the void state of the enumeration space",
         "rejected_candidates": []
       },
       "TANCH": {
@@ -38,26 +38,26 @@
       },
       "AFWD": {
         "opcode": "AFWD",
-        "chosen_element": "Ascending to higher gate thresholds (\u22651 \u2192 \u22653 \u2192 \u22654 \u2192 \u22655)",
+        "chosen_element": "Ascending to higher gate thresholds (≥1 → ≥3 → ≥4 → ≥5)",
         "justification": "Forward morphism represents the progression from permissive to stricter gate thresholds",
         "rejected_candidates": []
       },
       "AREV": {
         "opcode": "AREV",
-        "chosen_element": "Descending to lower gate thresholds (\u22655 \u2192 \u22654 \u2192 \u22653 \u2192 \u22651)",
+        "chosen_element": "Descending to lower gate thresholds (≥5 → ≥4 → ≥3 → ≥1)",
         "justification": "Reverse morphism represents the descent from strict to permissive gate thresholds",
         "rejected_candidates": []
       },
       "CLINK": {
         "opcode": "CLINK",
         "chosen_element": "Sequential chaining of gate evaluations across the three gate positions",
-        "justification": "Composition chains the three gate checks (G1 \u2192 G2 \u2192 G3) in sequence",
+        "justification": "Composition chains the three gate checks (G1 → G2 → G3) in sequence",
         "rejected_candidates": []
       },
       "IMSCRIB": {
         "opcode": "IMSCRIB",
         "chosen_element": "The self-referential dialect that maps to itself in the knot lattice",
-        "justification": "Identity element \u2014 the dialect that recognizes its own structure in the (p,q) knot mapping",
+        "justification": "Identity element — the dialect that recognizes its own structure in the (p,q) knot mapping",
         "rejected_candidates": []
       },
       "FSPLIT": {
@@ -75,19 +75,19 @@
       "EVALT": {
         "opcode": "EVALT",
         "chosen_element": "A gate threshold is met (passing the dialect through that gate)",
-        "justification": "Affirmative branch \u2014 the dialect satisfies the gate threshold requirement",
+        "justification": "Affirmative branch — the dialect satisfies the gate threshold requirement",
         "rejected_candidates": []
       },
       "EVALF": {
         "opcode": "EVALF",
         "chosen_element": "A gate threshold is not met (blocking the dialect at that gate)",
-        "justification": "Negative branch \u2014 the dialect fails the gate threshold requirement",
+        "justification": "Negative branch — the dialect fails the gate threshold requirement",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
         "chosen_element": "A dialect that simultaneously passes and fails a gate (paradice state)",
-        "justification": "Both states held simultaneously \u2014 a dialect that is both valid and invalid at the same gate",
+        "justification": "Both states held simultaneously — a dialect that is both valid and invalid at the same gate",
         "rejected_candidates": []
       },
       "IFIX": {
@@ -98,26 +98,26 @@
       }
     },
     "phase_2": {
-      "split_element": "FSPLIT \u2014 the dialect enumeration",
+      "split_element": "FSPLIT — the dialect enumeration",
       "split_input": "A single dialect specification with three gate positions",
       "split_outputs": [
         "Gate 1 threshold evaluation",
         "Gate 2 threshold evaluation",
         "Gate 3 threshold evaluation"
       ],
-      "fuse_element": "FFUSE \u2014 the dialect recombination",
+      "fuse_element": "FFUSE — the dialect recombination",
       "fuse_result": "The original dialect specification with all three gate evaluations resolved",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "00 \u2014 No dialects enumerated, the empty set before any gate threshold assignment",
-      "true_description": "01 \u2014 A dialect passes all three gate thresholds in sequence, yielding a valid dialect",
-      "false_description": "10 \u2014 A dialect fails at least one gate threshold, yielding an invalid dialect",
-      "both_description": "11 \u2014 A dialect simultaneously passes and fails gate thresholds (paradice), held without resolution",
+      "void_description": "00 — No dialects enumerated, the empty set before any gate threshold assignment",
+      "true_description": "01 — A dialect passes all three gate thresholds in sequence, yielding a valid dialect",
+      "false_description": "10 — A dialect fails at least one gate threshold, yielding an invalid dialect",
+      "both_description": "11 — A dialect simultaneously passes and fails gate thresholds (paradice), held without resolution",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
@@ -139,12 +139,12 @@
         {
           "step_num": 4,
           "opcode": "EVALT",
-          "domain_action": "Evaluate Gate 1 threshold \u2014 affirmative branch where the dialect meets the threshold"
+          "domain_action": "Evaluate Gate 1 threshold — affirmative branch where the dialect meets the threshold"
         },
         {
           "step_num": 5,
           "opcode": "EVALF",
-          "domain_action": "Evaluate Gate 1 threshold \u2014 negative branch where the dialect fails the threshold"
+          "domain_action": "Evaluate Gate 1 threshold — negative branch where the dialect fails the threshold"
         },
         {
           "step_num": 6,
@@ -159,12 +159,12 @@
         {
           "step_num": 8,
           "opcode": "AFWD",
-          "domain_action": "Ascend to stricter gate thresholds (\u22651 \u2192 \u22653 \u2192 \u22654 \u2192 \u22655)"
+          "domain_action": "Ascend to stricter gate thresholds (≥1 → ≥3 → ≥4 → ≥5)"
         },
         {
           "step_num": 9,
           "opcode": "AREV",
-          "domain_action": "Descend to permissive gate thresholds (\u22655 \u2192 \u22654 \u2192 \u22653 \u2192 \u22651)"
+          "domain_action": "Descend to permissive gate thresholds (≥5 → ≥4 → ≥3 → ≥1)"
         },
         {
           "step_num": 10,
@@ -189,19 +189,19 @@
       "compiler_frontend": "The DIALECTS array and TOKEN_TUPLES map translate gate threshold specifications into executable dialect evaluations",
       "ipc_mechanism": "The KNOT_MAP provides the (p,q) coordinate system through which dialects communicate their topological identity",
       "memory_mechanism": "The localStorage-backed panel state and the embedded CATALOG_WORDS registry store dialect configurations and their IMASM words",
-      "scheduler_mechanism": "The sequential gate ordering (G1 \u2192 G2 \u2192 G3) with threshold comparison determines which dialects are admitted at each level",
-      "alfs_store": "The canonical dialect U0 with gate thresholds \u2299\u22653, \u03a9\u22653, \u03a6\u22653 serves as the bootstrap reference for all dialect enumeration",
+      "scheduler_mechanism": "The sequential gate ordering (G1 → G2 → G3) with threshold comparison determines which dialects are admitted at each level",
+      "alfs_store": "The canonical dialect U0 with gate thresholds ⊙≥3, Ω≥3, Φ≥3 serves as the bootstrap reference for all dialect enumeration",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
       "cycle_cost": "One gate threshold comparison per gate position per dialect evaluation",
       "pre_cycle_state": "A dialect specification with three unassigned gate positions awaiting evaluation",
       "post_cycle_state": "A dialect verdict (pass/fail/both) with all three gate positions resolved",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The gate evaluation is a deterministic threshold comparison that maps each dialect to a fixed verdict without information loss",
+      "delta_s_verdict": "ΔS ≈ 0 — The gate evaluation is a deterministic threshold comparison that maps each dialect to a fixed verdict without information loss",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 AFWD \u2192 AREV \u2192 CLINK \u2192 IFIX \u2192 TANCH\n-- Class: the number of Imscribing Grammatic Dialects\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [6] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc7e  | fuse \u03bc \u2014 assembly mode\n--   [7] AFWD      rel    := \ud801\udc7e               \ud801\udc59 \u2192 \ud801\udc57  | forward morphism \u2014 bidirectional arrow\n--   [8] AREV      pol    := \ud801\udc57               \ud801\udc7e \u2192 \ud801\udc71  | reverse morphism \u2014 parity flip\n--   [9] CLINK     fid    := \ud801\udc71               \ud801\udc57 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [10] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [11] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_number_of_imscribing_grammatic_b5c142_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_number_of_imscribing_grammatic_b5c142_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_number_of_imscribing_grammatic_b5c142_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_number_of_imscribing_grammatic_b5c142_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_number_of_imscribing_grammatic_b5c142_protocol : IGProtocol the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_number_of_imscribing_grammatic_b5c142_s6 the_number_of_imscribing_grammatic_b5c142_s6 = the_number_of_imscribing_grammatic_b5c142_s6 (idempotent)\n  (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l0 the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s1) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l1 the_number_of_imscribing_grammatic_b5c142_s1 the_number_of_imscribing_grammatic_b5c142_s2) (.seq (.prod (.arrow the_number_of_imscribing_grammatic_b5c142_l2 the_number_of_imscribing_grammatic_b5c142_s2 the_number_of_imscribing_grammatic_b5c142_s6) (.arrow the_number_of_imscribing_grammatic_b5c142_l2 the_number_of_imscribing_grammatic_b5c142_s2 the_number_of_imscribing_grammatic_b5c142_s6)) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l6 the_number_of_imscribing_grammatic_b5c142_s6 the_number_of_imscribing_grammatic_b5c142_s6) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l6 the_number_of_imscribing_grammatic_b5c142_s6 the_number_of_imscribing_grammatic_b5c142_s7) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l7 the_number_of_imscribing_grammatic_b5c142_s7 the_number_of_imscribing_grammatic_b5c142_s8) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l8 the_number_of_imscribing_grammatic_b5c142_s8 the_number_of_imscribing_grammatic_b5c142_s9) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l9 the_number_of_imscribing_grammatic_b5c142_s9 the_number_of_imscribing_grammatic_b5c142_s10) (.arrow the_number_of_imscribing_grammatic_b5c142_l10 the_number_of_imscribing_grammatic_b5c142_s10 the_number_of_imscribing_grammatic_b5c142_s11)))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_number_of_imscribing_grammatic_b5c142_true_arm : IGProtocol the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s11 :=\n  (the_number_of_imscribing_grammatic_b5c142_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_number_of_imscribing_grammatic_b5c142_false_arm : IGProtocol the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s11 :=\n  (the_number_of_imscribing_grammatic_b5c142_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_number_of_imscribing_grammatic_b5c142_tier_ground : OuroboricityTier := TierFunctor.obj the_number_of_imscribing_grammatic_b5c142_s0\ndef the_number_of_imscribing_grammatic_b5c142_tier : OuroboricityTier := TierFunctor.obj the_number_of_imscribing_grammatic_b5c142_s11\n#eval the_number_of_imscribing_grammatic_b5c142_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_number_of_imscribing_grammatic_b5c142_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_number_of_imscribing_grammatic_b5c142_frobenius :\n    igFrobeniusAlg.mul the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s0 = the_number_of_imscribing_grammatic_b5c142_s0 :=\n  igFrobAlg_self_fusion the_number_of_imscribing_grammatic_b5c142_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → EVALT → EVALF → ENGAGR → FFUSE → AFWD → AREV → CLINK → IFIX → TANCH\n-- Class: the number of Imscribing Grammatic Dialects\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [6] FFUSE     stoi   := 𐑙               𐑙 → 𐑾  | fuse μ — assembly mode\n--   [7] AFWD      rel    := 𐑾               𐑙 → 𐑗  | forward morphism — bidirectional arrow\n--   [8] AREV      pol    := 𐑗               𐑾 → 𐑱  | reverse morphism — parity flip\n--   [9] CLINK     fid    := 𐑱               𐑗 → 𐑭  | composition — regime coherence\n--   [10] IFIX      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number\n--   [11] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def the_number_of_imscribing_grammatic_b5c142_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_number_of_imscribing_grammatic_b5c142_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def the_number_of_imscribing_grammatic_b5c142_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_number_of_imscribing_grammatic_b5c142_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_number_of_imscribing_grammatic_b5c142_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def the_number_of_imscribing_grammatic_b5c142_protocol : IGProtocol the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_number_of_imscribing_grammatic_b5c142_s6 the_number_of_imscribing_grammatic_b5c142_s6 = the_number_of_imscribing_grammatic_b5c142_s6 (idempotent)\n  (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l0 the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s1) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l1 the_number_of_imscribing_grammatic_b5c142_s1 the_number_of_imscribing_grammatic_b5c142_s2) (.seq (.prod (.arrow the_number_of_imscribing_grammatic_b5c142_l2 the_number_of_imscribing_grammatic_b5c142_s2 the_number_of_imscribing_grammatic_b5c142_s6) (.arrow the_number_of_imscribing_grammatic_b5c142_l2 the_number_of_imscribing_grammatic_b5c142_s2 the_number_of_imscribing_grammatic_b5c142_s6)) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l6 the_number_of_imscribing_grammatic_b5c142_s6 the_number_of_imscribing_grammatic_b5c142_s6) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l6 the_number_of_imscribing_grammatic_b5c142_s6 the_number_of_imscribing_grammatic_b5c142_s7) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l7 the_number_of_imscribing_grammatic_b5c142_s7 the_number_of_imscribing_grammatic_b5c142_s8) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l8 the_number_of_imscribing_grammatic_b5c142_s8 the_number_of_imscribing_grammatic_b5c142_s9) (.seq (.arrow the_number_of_imscribing_grammatic_b5c142_l9 the_number_of_imscribing_grammatic_b5c142_s9 the_number_of_imscribing_grammatic_b5c142_s10) (.arrow the_number_of_imscribing_grammatic_b5c142_l10 the_number_of_imscribing_grammatic_b5c142_s10 the_number_of_imscribing_grammatic_b5c142_s11)))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def the_number_of_imscribing_grammatic_b5c142_true_arm : IGProtocol the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s11 :=\n  (the_number_of_imscribing_grammatic_b5c142_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_number_of_imscribing_grammatic_b5c142_false_arm : IGProtocol the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s11 :=\n  (the_number_of_imscribing_grammatic_b5c142_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef the_number_of_imscribing_grammatic_b5c142_tier_ground : OuroboricityTier := TierFunctor.obj the_number_of_imscribing_grammatic_b5c142_s0\ndef the_number_of_imscribing_grammatic_b5c142_tier : OuroboricityTier := TierFunctor.obj the_number_of_imscribing_grammatic_b5c142_s11\n#eval the_number_of_imscribing_grammatic_b5c142_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_number_of_imscribing_grammatic_b5c142_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem the_number_of_imscribing_grammatic_b5c142_frobenius :\n    igFrobeniusAlg.mul the_number_of_imscribing_grammatic_b5c142_s0 the_number_of_imscribing_grammatic_b5c142_s0 = the_number_of_imscribing_grammatic_b5c142_s0 :=\n  igFrobAlg_self_fusion the_number_of_imscribing_grammatic_b5c142_s0\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -231,14 +231,12 @@
     "has_dual_fixation": false
   },
   "notes": "Auto-designed from: the number of Imscribing Grammatic Dialects",
-  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc51\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc5a\ud801\udc5c\u2299\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9",
-  "grounding_status": "failed",
-  "grounding_failed_primitives": [
-    "Axiom C: \u00d0=\ud801\udc66 and \u00de=\ud801\udc78 must co-occur (got \u00d0=\ud801\udc66, \u00de=\ud801\udc65)"
-  ],
+  "grounded_tuple": "⟨𐑦𐑥𐑑𐑬𐑐𐑧𐑚𐑜⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
   "banked_count_check": {
     "status": "ok",
-    "word": "\u22a2\u2299\u2208+\u00d7\u229e\u220b><=\u00ac\u22a3",
+    "word": "⊢⊙∈+×⊞∋><=¬⊣",
     "exposed_clears": [
       {
         "step": 9,
@@ -265,16 +263,16 @@
     "surplus_note": null,
     "remedy": "open the region that holds the result BEFORE the region that computes it, and close them in that order, so the inner fuse folds into the enclosing frame rather than into the register"
   },
-  "grounding_reasoning": "\u00d0=\ud801\udc66: The system operates through scale-collapse where boundary and interior form a unified register, requiring \ud801\udc78 topology for lossless constraint propagation.\n\u00de=\ud801\udc65: The cyclic closure pattern reflects a topology where influence loops back on itself, forming closed pathways characteristic of figure-8 or double-well structures.\n\u0158=\ud801\udc51: The interaction involves structural reorganization and bond formation, indicating an irreversible or semi-reversible transformation process.\n\u03a6=\ud801\udc6c: The presence of both donor and acceptor roles simultaneously indicates self-complementarity.\n\u0192=\ud801\udc50: The system enforces geometric constraints that ensure reliable, high-fidelity signal transmission.\n\u00c7=\ud801\udc67: The high barrier indicates kinetic freezing, requiring external driving to overcome resistance to rearrangement.\n\u0393=\ud801\udc5a: The correlation length spans a mesoscale range, propagating through motifs or clusters of 10\u20131000 units.\n\u0262=\ud801\udc5c: Disjunctive selection allows any single partner from a set to satisfy the grammatical requirement, matching the flexible interaction patterns of primitive \u0262.\n\u2299=\u2299: The system exhibits scale-free correlations and maximal sensitivity, indicating it is precisely at the critical threshold.\n\u0126=\ud801\udc56: The persistence of broken orientational symmetry across multiple axes indicates structural enforcement rather than thermal or topological constraints.\n\u03a3=\ud801\udc73: The participation ratio reflects asymmetric contributions, where each side has distinct counts rather than equal or symmetric pairing.\n\u03a9=\ud801\udc6d: The role is protected by an integer winding invariant, making it stable against perturbations that preserve this topological property.",
+  "grounding_reasoning": "Ð=𐑦: The system operates through scale-collapse where boundary and interior form a unified register, requiring 𐑸 topology for lossless constraint propagation.\nÞ=𐑥: The cyclic closure pattern reflects a topology where influence loops back on itself, forming closed pathways characteristic of figure-8 or double-well structures.\nŘ=𐑑: The interaction involves structural reorganization and bond formation, indicating an irreversible or semi-reversible transformation process.\nΦ=𐑬: The presence of both donor and acceptor roles simultaneously indicates self-complementarity.\nƒ=𐑐: The system enforces geometric constraints that ensure reliable, high-fidelity signal transmission.\nÇ=𐑧: The high barrier indicates kinetic freezing, requiring external driving to overcome resistance to rearrangement.\nΓ=𐑚: The correlation length spans a mesoscale range, propagating through motifs or clusters of 10–1000 units.\nɢ=𐑜: Disjunctive selection allows any single partner from a set to satisfy the grammatical requirement, matching the flexible interaction patterns of primitive ɢ.\n⊙=⊙: The system exhibits scale-free correlations and maximal sensitivity, indicating it is precisely at the critical threshold.\nĦ=𐑖: The persistence of broken orientational symmetry across multiple axes indicates structural enforcement rather than thermal or topological constraints.\nΣ=𐑳: The participation ratio reflects asymmetric contributions, where each side has distinct counts rather than equal or symmetric pairing.\nΩ=𐑭: The role is protected by an integer winding invariant, making it stable against perturbations that preserve this topological property.",
   "lean_verified": true,
-  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
     "op_opcode": "ROTAT",
     "period": 12,
     "orbit": [
       {
         "k": 0,
-        "word": "\u22a2\u2299\u25c7+\u00d7\u229e\u25cf><=\u00ac\u22a3",
+        "word": "⊢⊙◇+×⊞●><=¬⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": true,
         "final_register": "N",
@@ -282,7 +280,7 @@
       },
       {
         "k": 1,
-        "word": "\u2299\u25c7+\u00d7\u229e\u25cf><=\u00ac\u22a3\u22a2",
+        "word": "⊙◇+×⊞●><=¬⊣⊢",
         "tri_ancestral_verdict": "T",
         "closed_walk": true,
         "final_register": "N",
@@ -290,7 +288,7 @@
       },
       {
         "k": 2,
-        "word": "\u25c7+\u00d7\u229e\u25cf><=\u00ac\u22a3\u22a2\u2299",
+        "word": "◇+×⊞●><=¬⊣⊢⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -298,7 +296,7 @@
       },
       {
         "k": 3,
-        "word": "+\u00d7\u229e\u25cf><=\u00ac\u22a3\u22a2\u2299\u25c7",
+        "word": "+×⊞●><=¬⊣⊢⊙◇",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -306,7 +304,7 @@
       },
       {
         "k": 4,
-        "word": "\u00d7\u229e\u25cf><=\u00ac\u22a3\u22a2\u2299\u25c7+",
+        "word": "×⊞●><=¬⊣⊢⊙◇+",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -314,7 +312,7 @@
       },
       {
         "k": 5,
-        "word": "\u229e\u25cf><=\u00ac\u22a3\u22a2\u2299\u25c7+\u00d7",
+        "word": "⊞●><=¬⊣⊢⊙◇+×",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -322,7 +320,7 @@
       },
       {
         "k": 6,
-        "word": "\u25cf><=\u00ac\u22a3\u22a2\u2299\u25c7+\u00d7\u229e",
+        "word": "●><=¬⊣⊢⊙◇+×⊞",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -330,7 +328,7 @@
       },
       {
         "k": 7,
-        "word": "><=\u00ac\u22a3\u22a2\u2299\u25c7+\u00d7\u229e\u25cf",
+        "word": "><=¬⊣⊢⊙◇+×⊞●",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -338,7 +336,7 @@
       },
       {
         "k": 8,
-        "word": "<=\u00ac\u22a3\u22a2\u2299\u25c7+\u00d7\u229e\u25cf>",
+        "word": "<=¬⊣⊢⊙◇+×⊞●>",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -346,7 +344,7 @@
       },
       {
         "k": 9,
-        "word": "=\u00ac\u22a3\u22a2\u2299\u25c7+\u00d7\u229e\u25cf><",
+        "word": "=¬⊣⊢⊙◇+×⊞●><",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -354,7 +352,7 @@
       },
       {
         "k": 10,
-        "word": "\u00ac\u22a3\u22a2\u2299\u25c7+\u00d7\u229e\u25cf><=",
+        "word": "¬⊣⊢⊙◇+×⊞●><=",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -362,7 +360,7 @@
       },
       {
         "k": 11,
-        "word": "\u22a3\u22a2\u2299\u25c7+\u00d7\u229e\u25cf><=\u00ac",
+        "word": "⊣⊢⊙◇+×⊞●><=¬",
         "tri_ancestral_verdict": "T",
         "closed_walk": true,
         "final_register": "N",
@@ -376,7 +374,7 @@
       "topology_class": true
     },
     "canonical_k": 3,
-    "canonical_word": "+\u00d7\u229e\u25cf><=\u00ac\u22a3\u22a2\u2299\u25c7",
-    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: closed_walk, final_register"
+    "canonical_word": "+×⊞●><=¬⊣⊢⊙◇",
+    "verdict": "PHASE-BEARING — moves under ROTAT: closed_walk, final_register"
   }
 }

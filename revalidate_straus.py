@@ -17,9 +17,12 @@ from imscribing_grammar.agents.imscribe_generator_agent import validate_structur
 from imscribing_grammar.agents.imscribe_generator_agent import _CANON_VALUES
 SLOTS = list(_CANON_VALUES)
 
-def tuple_from_glyphs(word: str):
-    glyphs = [c for c in word if c not in "⟨⟩"]
-    return glyphs
+def tuple_from_glyphs(word):
+    """The twelve glyphs of a notation string. An artifact with no tuple — the
+    native designer writes none — has nothing to re-check, and returns []."""
+    if not isinstance(word, str):
+        return []
+    return [c for c in word if c not in "⟨⟩"]
 
 def main(names):
     for n in names:
