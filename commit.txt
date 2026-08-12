@@ -1,11 +1,10 @@
-The Frobenius verdict is a B4 value, not a bool
+revalidate_straus: re-check built ob3ects against the corrected gates
 
-SplitFuseReport.validate refused anything but PASS/FAIL, so an ob3ect reporting
-an honest B or N was marked invalid. auto.py had already stopped retrying to
-force a classical PASS — that demand is what pushed the designer to reason toward
-domain invertibility instead of describing the fork — and this validator was the
-last place still asking for the bool. T, F, B and N are accepted now, with F and
-N carrying a reason.
+Artifacts designed while Axiom C was a biconditional and the Frobenius verdict
+had to be PASS/FAIL carry a stale grounding_status and a stale is_valid_ob3ect,
+while their tuples and phases are untouched. Re-running the checks is the repair:
+nothing is regenerated and nothing is hand-edited. The slot order is taken from
+the gate rather than retyped, so there is one copy of it.
 
-Also adds nests/straus: ten imscriptions as stepping stones toward the rung
-bound, each an exact question with no candidate named.
+The three built so far all come back grounding=full, valid=True, verdict=T — the
+gates were the obstruction, not the objects.

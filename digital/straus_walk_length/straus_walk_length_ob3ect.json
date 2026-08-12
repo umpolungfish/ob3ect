@@ -1,0 +1,379 @@
+{
+  "name": "straus_walk_length",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "straus_walk_length",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "divisor",
+        "factorization",
+        "congruence"
+      ],
+      "boundary_condition": "The terminal anchor is the completed assignment of the least valid r to a given n, bounded by the congruence class n ≡ 1 (mod 24) and the modular condition r ≡ 3 (mod 4).",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Uninitialized integer n before congruence or factorization is applied",
+        "justification": "The void state precedes any arithmetic invariant or structural property of n.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The final resolved value of r satisfying all modular and divisibility constraints",
+        "justification": "The terminal anchor closes the system once the least r is found and verified.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Forward propagation of factorization data of n into candidate r values",
+        "justification": "The forward morphism drives the search from n's structure toward valid r candidates.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Reverse descent from candidate r back to divisor checks on n(n+r)/4",
+        "justification": "The reverse morphism evaluates whether a candidate r admits a divisor congruent to -1 (mod r).",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Sequential chaining of congruence checks and divisor evaluations",
+        "justification": "Composition links each modular filter and divisibility test in order.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Self-referential loop where n's factorization data determines its own critical r",
+        "justification": "The identity token captures the structural self-consistency of the assignment.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "The search for least r splits into a T-arm of valid candidates and an F-arm of rejected candidates",
+        "justification": "The fork separates candidates that pass modular and divisibility tests from those that fail.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "The join of valid and invalid candidate evaluations into a single verdict on r",
+        "justification": "The fuse reconstitutes the search outcome into a resolved state for r.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "A candidate r that satisfies r ≡ 3 (mod 4) and admits a divisor ≡ -1 (mod r)",
+        "justification": "The affirmative arm confirms a structurally valid assignment.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "A candidate r that fails the congruence or divisor condition",
+        "justification": "The negative arm refutes an invalid candidate.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "A candidate r that simultaneously satisfies and violates the divisor condition due to conflicting factorization paths",
+        "justification": "The paradice state holds both outcomes without resolution, reflecting arithmetic ambiguity.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "The permanent record of the least valid r assigned to n",
+        "justification": "The fixed point is an irreversible, append-only entry in the assignment table.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT",
+      "split_input": "Candidate integer r under evaluation",
+      "split_outputs": [
+        "Valid r satisfying all conditions",
+        "Invalid r failing one or more conditions"
+      ],
+      "fuse_element": "FFUSE",
+      "fuse_result": "Resolved verdict on r: accepted, rejected, or both",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "Register 00: n exists but no congruence class, factorization, or candidate r has been established.",
+      "true_description": "Register 01: r satisfies r ≡ 3 (mod 4) and n(n+r)/4 admits a divisor congruent to -1 (mod r).",
+      "false_description": "Register 10: r fails the congruence condition or the divisor condition is not met.",
+      "both_description": "Register 11: r simultaneously satisfies and fails the conditions due to overlapping factorization paths, held as a live contradiction.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the system with an odd integer n before any congruence or factorization is applied."
+        },
+        {
+          "step_num": 2,
+          "opcode": "AFWD",
+          "domain_action": "Propagate the factorization data of n forward into the search space for candidate r values."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Fork the candidate r into a T-arm of potentially valid values and an F-arm of potentially invalid values."
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "Evaluate the T-arm by checking r ≡ 3 (mod 4) and the existence of a divisor of n(n+r)/4 congruent to -1 (mod r)."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALF",
+          "domain_action": "Evaluate the F-arm by confirming the failure of the congruence or divisor condition."
+        },
+        {
+          "step_num": 6,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold any candidate r that simultaneously satisfies and violates the conditions as a paradice state."
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "Join the T-arm and F-arm evaluations into a single verdict on the candidate r."
+        },
+        {
+          "step_num": 8,
+          "opcode": "CLINK",
+          "domain_action": "Chain the verdict on r to the next candidate in the ordered search for the least valid r."
+        },
+        {
+          "step_num": 9,
+          "opcode": "AREV",
+          "domain_action": "Reverse from the current candidate r back to the divisor check on n(n+r)/4 to validate the modular condition."
+        },
+        {
+          "step_num": 10,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-reference the structural consistency where n's factorization data determines its own critical r."
+        },
+        {
+          "step_num": 11,
+          "opcode": "IFIX",
+          "domain_action": "Permanently record the least valid r assigned to n as an append-only fixed point."
+        },
+        {
+          "step_num": 12,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the system at the completed assignment of the least valid r to n, closing the evaluation."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The arithmetic compiler translates congruence conditions and factorization data into modular filters and divisor checks.",
+      "ipc_mechanism": "Components communicate through shared registers holding candidate r values, factorization data, and verdict states.",
+      "memory_mechanism": "State is stored in registers tracking void, true, false, and both conditions for each candidate r.",
+      "scheduler_mechanism": "The scheduler orders the search for the least r by ascending candidate values, applying congruence and divisor checks sequentially.",
+      "alfs_store": "The canonical reference is the number-theoretic framework defining n ≡ 1 (mod 24), r ≡ 3 (mod 4), and the divisor condition on n(n+r)/4.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Each operation cycle consumes one candidate r evaluation and one divisor check.",
+      "pre_cycle_state": "The system holds an unverified candidate r and unresolved factorization data of n.",
+      "post_cycle_state": "The system holds a verified verdict on r and updated factorization constraints propagated forward.",
+      "delta_s_verdict": "ΔS ≈ 0 — The cycle is entropy-conservative because each candidate evaluation is deterministic and the factorization data is preserved through forward and reverse morphisms.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → EVALF → ENGAGR → FFUSE → CLINK → AREV → IMSCRIB → IFIX → TANCH\n-- Class: straus_walk_length\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] AFWD      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [6] FFUSE     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [7] CLINK     fid    := 𐑱               𐑙 → 𐑗  | composition — regime coherence\n--   [8] AREV      pol    := 𐑗               𐑱 → 𐑠  | reverse morphism — parity flip\n--   [9] IMSCRIB   gram   := 𐑠               𐑗 → 𐑭  | identity — self-imscription\n--   [10] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [11] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def straus_walk_length_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def straus_walk_length_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def straus_walk_length_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def straus_walk_length_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def straus_walk_length_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def straus_walk_length_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def straus_walk_length_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def straus_walk_length_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def straus_walk_length_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def straus_walk_length_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def straus_walk_length_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def straus_walk_length_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def straus_walk_length_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def straus_walk_length_protocol : IGProtocol straus_walk_length_s0 straus_walk_length_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct straus_walk_length_s6 straus_walk_length_s6 = straus_walk_length_s6 (idempotent)\n  (.seq (.arrow straus_walk_length_l0 straus_walk_length_s0 straus_walk_length_s1) (.seq (.arrow straus_walk_length_l1 straus_walk_length_s1 straus_walk_length_s2) (.seq (.prod (.arrow straus_walk_length_l2 straus_walk_length_s2 straus_walk_length_s6) (.arrow straus_walk_length_l2 straus_walk_length_s2 straus_walk_length_s6)) (.seq (.arrow straus_walk_length_l6 straus_walk_length_s6 straus_walk_length_s6) (.seq (.arrow straus_walk_length_l6 straus_walk_length_s6 straus_walk_length_s7) (.seq (.arrow straus_walk_length_l7 straus_walk_length_s7 straus_walk_length_s8) (.seq (.arrow straus_walk_length_l8 straus_walk_length_s8 straus_walk_length_s9) (.seq (.arrow straus_walk_length_l9 straus_walk_length_s9 straus_walk_length_s10) (.arrow straus_walk_length_l10 straus_walk_length_s10 straus_walk_length_s11)))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def straus_walk_length_true_arm : IGProtocol straus_walk_length_s0 straus_walk_length_s11 :=\n  (straus_walk_length_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def straus_walk_length_false_arm : IGProtocol straus_walk_length_s0 straus_walk_length_s11 :=\n  (straus_walk_length_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef straus_walk_length_tier_ground : OuroboricityTier := TierFunctor.obj straus_walk_length_s0\ndef straus_walk_length_tier : OuroboricityTier := TierFunctor.obj straus_walk_length_s11\n#eval straus_walk_length_tier_ground  -- tier of the ground (pre-transformation)\n#eval straus_walk_length_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem straus_walk_length_frobenius :\n    igFrobeniusAlg.mul straus_walk_length_s0 straus_walk_length_s0 = straus_walk_length_s0 :=\n  igFrobAlg_self_fusion straus_walk_length_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        2,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: straus_walk_length",
+  "grounded_tuple": "⟨𐑛𐑡𐑽𐑗𐑐𐑧𐑔𐑜⊙𐑖𐑕𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢>∈⊤⊥⊞∋⋈<⊙◻⊣",
+    "exposed_clears": [
+      {
+        "step": 9,
+        "glyph": "<",
+        "lost": {
+          "T": 1,
+          "F": 1,
+          "f": 1,
+          "t": 1
+        },
+        "weight": 4
+      }
+    ],
+    "weight_lost_in_the_open": 4,
+    "banked_ok": false,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "4 unit(s) of weight cleared with nothing banked behind them: the count was in the open when the reversal came",
+    "surplus_note": null,
+    "remedy": "open the region that holds the result BEFORE the region that computes it, and close them in that order, so the inner fuse folds into the enclosing frame rather than into the register"
+  },
+  "grounding_reasoning": "⊣=𐑡: The assignment involves a generic network structure where the function depends on arithmetic invariants of n, with mixed connectivity patterns arising from the factorization data and modular conditions.\n⊢=𐑛: The assignment involves iterative computation over factorisation data of n, propagating constraints through cycles of divisor checks until the least r is found.\n⊞=𐑕: The assignment involves higher-order symmetric structures through divisor relationships and factorization data, indicating oligomeric or committee-like organization.\n◻=𐑷: The assignment is derived from arithmetic invariants of n, making it structurally stable and continuously deformable to a trivial state.\n⊙=⊙: I need to analyze this problem carefully. The input describes a mathematical construction involving odd integers n ≡ 1 (mod 24), finding the least positive integer r ≡ 3 (mod 4) such that n(n+r)/4 has a divisor congruent to -1 (mod r). This is framed as assigning a \"primitive ⊙ (criticality_phase)\" and asking how close the system is to a critical point.\n\nThe mathematical structure involves:\n- Number-theoretic constraints (congruences modulo 24 and 4)\n- A minimization condition (least r)\n- A divisibility condition with modular constraints\n- The assignment is described as needing to be \"structural\" - derived from arithmetic invariants\n\nThis appears to be describing a number-theoretic system that exhibits critical behavior. The use of \"criticality_phase\" and the question about proximity to a critical point/threshold suggests we're looking at a system that may be at or near criticality.\n\nGiven the mathematical complexity and the framing around critical points, thresholds, and structural assignments based on arithmetic invariants, this seems to describe a system that is at a critical point - exhibiting the kind of scale-free, sensitive behavior characteristic of critical systems.\n\nThe answer is likely option 2 (Critical) since the system appears to be precisely at the threshold where the number-theoretic conditions create critical behavior.\n\n2 — The system operates at the threshold where arithmetic constraints create scale-free sensitivity.\n⊥=𐑖: The structural enforcement through multiple axes and arithmetic invariants of n creates persistent chirality with memory depth n.\n>=𐑽: The mechanism involves transition-state stabilization, where the arithmetic invariants of n act as catalysts that lower the barrier for finding the least positive integer r, without being consumed in the process.\n<=𐑗: I need to analyze this problem carefully. The question is about determining the \"directional character of the interface\" for a mathematical object that assigns to each odd integer n ≡ 1 (mod 24) the least positive integer r ≡ 3 (mod 4) such that n(n+r)/4 admits a divisor congruent to -1 modulo r.\n\nLet me think about the mathematical structure here:\n\n1. We have odd integers n ≡ 1 (mod 24)\n2. We're looking for the least r ≡ 3 (mod 4) \n3. Such that n(n+r)/4 has a divisor ≡ -1 (mod r)\n4. The assignment should be structural, based on factorization data of n\n\nThe key mathematical elements:\n- n ≡ 1 (mod 24) means n ≡ 1 (mod 8) and n ≡ 1 (mod 3)\n- r ≡ 3 (mod 4) \n- The condition involves n(n+r)/4 having a divisor ≡ -1 (mod r)\n\nThis seems to relate to quadratic forms, class field theory, or modular forms given the congruence conditions. The condition n ≡ 1 (mod 24) is significant in the theory of modular forms and elliptic curves.\n\nThe assignment of \"primitive < (polarity)\" suggests we're looking at some kind of ordering or polarity structure.\n\nGiven the congruence conditions and the search for divisors with specific properties, this likely relates to:\n- Class groups of quadratic fields\n- The structure of ideals in number fields\n- Possibly the 2-Sylow subgroup structure\n\nThe condition that r ≡ 3 (mod 4) and we want a divisor ≡ -1 (mod r) suggests a relationship with quadratic reciprocity or genus theory.\n\nFor the \"directional character\":\n- The assignment is from n to r, which is directional (n → r)\n- But the question asks about the \"interface\" character\n- The mention of \"polarity\" suggests some duality\n\nGiven that we're assigning the \"least\" such r, and the conditions involve congruences that create a structured relationship, this seems to have a signed direction - one object (n) determines another (r) in a specific way.\n\nThe answer appears to be option 2 — Signed direction — one accepting OR one donating pole.\n\nThe reasoning: The assignment is fundamentally directional (from n to r), and the \"polarity\" mentioned suggests a signed relationship where n acts as a donor of information that determines r, which acts as an acceptor of this determination. The least r is uniquely determined by n's factorization data, creating a one-way dependency.\n\n2 — The assignment creates a signed directional relationship where n's factorization data determines r as the minimal solution, establishing a donor-acceptor polarity.\n⋈=𐑐: The assignment is deterministic and derived from structural arithmetic invariants of n, ensuring high reliability and minimal false positives.\n⊤=𐑧: The kinetic character is primitive ⊤, indicating a high barrier where the system is kinetically frozen and requires external driving to rearrange.\n∈=𐑔: 𐑔 — The assignment depends on global arithmetic invariants of n, propagating across the entire factorization structure.\n∋=𐑜: The assignment requires finding the least r satisfying a divisibility condition, which can be met by any valid partner from a set of candidates.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢>∈⊤⊥⊞∋⋈<⊙◻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": ">∈⊤⊥⊞∋⋈<⊙◻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈⊤⊥⊞∋⋈<⊙◻⊣⊢>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⊤⊥⊞∋⋈<⊙◻⊣⊢>∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊥⊞∋⋈<⊙◻⊣⊢>∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊞∋⋈<⊙◻⊣⊢>∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "∋⋈<⊙◻⊣⊢>∈⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⋈<⊙◻⊣⊢>∈⊤⊥⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "<⊙◻⊣⊢>∈⊤⊥⊞∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊙◻⊣⊢>∈⊤⊥⊞∋⋈<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻⊣⊢>∈⊤⊥⊞∋⋈<⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢>∈⊤⊥⊞∋⋈<⊙◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": true,
+      "topology_class": true
+    },
+    "canonical_k": 8,
+    "canonical_word": "<⊙◻⊣⊢>∈⊤⊥⊞∋⋈",
+    "verdict": "SYMMETRY — every readout is ROTAT-invariant (spectral)"
+  }
+}
