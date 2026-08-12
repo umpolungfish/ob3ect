@@ -1289,6 +1289,10 @@ async def auto_design(
             query_kwargs: Dict[str, Any] = {
                 "system": _SYSTEM_PROMPT,
                 "temperature": temperature,
+                # Uncapped: the artifact is eight phases of JSON and a cap
+                # truncates it into a parse failure that reports as an empty
+                # response. Design calls are never capped here.
+                "max_tokens": None,
             }
             if stream:
                 def _emit(piece: str) -> None:

@@ -6,11 +6,14 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."          # ~/imsgct/ob3ect
 
-: "${KILO_API_KEY:?export KILO_API_KEY first — the lane is kilo, openrouter was 402}"
-export IG_PROVIDER=kilo
-export IG_MODEL="${IG_MODEL:-poolside/laguna-s-2.1:free}"
+# The lane comes from the environment. Pinning one here is what made this script
+# fail when kilo's gateway went down: the batch is about the objects, not about
+# which provider imscribes them.
+: "${IG_PROVIDER:?export IG_PROVIDER and the matching key first}"
+: "${IG_MODEL:?export IG_MODEL first}"
 
-python3 auto.py -f nests/erdos_objects/erdos_objects.yaml
+python3 auto.py -f nests/erdos_objects/erdos_objects.yaml \
+  --provider "$IG_PROVIDER" --model "$IG_MODEL"
 
 # Re-check against the corrected gates: Axiom C one-directional, Axiom A
 # admitting both slow kinetics, the Frobenius verdict a B4 value. Without this a

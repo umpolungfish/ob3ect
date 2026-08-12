@@ -9,14 +9,18 @@
 # Each entity names the object wanted and no candidate for it. The catalog
 # entries under `entry` are the context, taken from the catalog by name.
 #
-# Run:  cd ~/imsgct/ob3ect && python3 auto.py -f nests/erdos_objects/erdos_objects.yaml
+# Run:  cd ~/imsgct/ob3ect && bash nests/erdos_objects/run.sh
+# The lane is named here and the key comes from the environment. Leaving the
+# lane empty let the chain fall through to a local model that returns malformed
+# JSON and then to a provider with no credit, which is how a batch reports
+# 'all providers failed' while a working key sits unused in the environment.
 name: erdos_objects
 out_dir: digital/erdos_objects
 design:
   domain: computational
   scope: mesoscale
-  provider: kilo
-  model: poolside/laguna-s-2.1:free
+  provider: deepseek
+  model: deepseek-v4-pro
   temperature: 0.0
   retries: infinite
   thinking: false
