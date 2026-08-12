@@ -1,0 +1,367 @@
+{
+  "name": "the largest girth available to a graph of given order and chromatic number, as a structural ob3ect",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "the largest girth available to a graph of given order and chromatic number, as a structural ob3ect",
+      "domain_type": "computational",
+      "scope": "mesoscale",
+      "surface_tokens": [
+        "girth",
+        "chromatic number",
+        "order"
+      ],
+      "boundary_condition": "The closed boundary of the graph G = (V, E) with fixed order |V| = n and chromatic number \u03c7(G) = k, within which the maximum girth g(G) is structurally determined.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Empty graph with no vertices or edges",
+        "justification": "Before any graph structure is imposed, there is no vertex set, no edge set, and no chromatic or girth constraints. This is the void state from which all graph-theoretic construction begins.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The complete graph boundary enclosing all vertices and edges of G",
+        "justification": "The terminal anchor is the fully specified graph G with order n, chromatic number k, and the girth constraint g(G) maximally enforced. It is the closed system that contains the entire structural resolution.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Forward morphism from vertex set to edge set construction",
+        "justification": "The forward direction builds the graph by adding edges to vertices, increasing chromatic number while respecting girth constraints. This is the constructive ascent toward higher chromatic complexity.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Reverse morphism from edge removal to vertex isolation",
+        "justification": "The reverse direction removes edges, potentially lowering chromatic number and increasing girth. This descent explores the space of sparser graphs with the same vertex set.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Sequential composition of graph construction steps",
+        "justification": "Each edge addition or removal is composed sequentially, chaining morphisms that transform the graph state. CLINK binds these transformations into a coherent structural path.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Self-referential graph property: girth as a function of chromatic number and order",
+        "justification": "The girth of a graph is a self-defining property \u2014 it refers back to the graph's own cycle structure. The graph recognizes itself through its girth-chromatic relationship.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "The girth-chromatic constraint splitting into two structural arms",
+        "justification": "The constraint splits into a T-arm exploring graphs where girth can be increased without bound (constructive truth) and an F-arm exploring graphs where girth is bounded by chromatic number (constructive falsity).",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Reunification of girth exploration arms into a single structural verdict",
+        "justification": "The two arms of girth exploration \u2014 unbounded increase versus bounded constraint \u2014 rejoin into a single B4 verdict over SIXTEEN_3, resolving the maximum girth structurally.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Affirmative state: girth can be made arbitrarily large for fixed chromatic number",
+        "justification": "This arm affirms that for any k, there exist graphs with chromatic number k and arbitrarily large girth, as proven by probabilistic constructions.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Negative state: girth is bounded by order and chromatic number",
+        "justification": "This arm refutes unbounded girth by showing that for fixed order n and chromatic number k, the girth is constrained by the finite structure of the graph.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Paradice state: both unbounded and bounded girth coexist in the structural resolution",
+        "justification": "The system holds both the affirmation that girth can grow arbitrarily (for unbounded order) and the refutation that girth is bounded (for fixed order) simultaneously, without resolving the contradiction.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Permanent record of the maximum girth value for given n and k",
+        "justification": "The computed maximum girth is fixed as an immutable record, append-only and irreversible, representing the structural theorem's conclusion.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: The girth-chromatic constraint",
+      "split_input": "A graph G with order n and chromatic number k, seeking maximum girth",
+      "split_outputs": [
+        "T-arm: girth increases without bound (probabilistic construction)",
+        "F-arm: girth bounded by finite order and chromatic number"
+      ],
+      "fuse_element": "FFUSE: Reunification of girth exploration arms",
+      "fuse_result": "B-state: both unbounded and bounded girth coexist as a structural paradox resolved over SIXTEEN_3",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object \u2014 closes"
+    },
+    "phase_3": {
+      "void_description": "No graph exists \u2014 no vertices, no edges, no chromatic number, no girth. The empty set before any structural assignment.",
+      "true_description": "A graph with chromatic number k and girth that can be made arbitrarily large through probabilistic construction, affirming the existence of high-girth, high-chromatic graphs.",
+      "false_description": "A graph with fixed order n and chromatic number k where girth is structurally bounded by the finite vertex and edge constraints, refuting unbounded girth.",
+      "both_description": "The paradice state where both arbitrarily large girth (for unbounded order) and bounded girth (for fixed order) are simultaneously held as structural truths without resolution.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the void state \u2014 no graph, no vertices, no edges, no chromatic or girth constraints exist."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-reference the girth-chromatic relationship \u2014 the graph's girth is defined by its own cycle structure, creating a self-referential loop."
+        },
+        {
+          "step_num": 3,
+          "opcode": "TANCH",
+          "domain_action": "Establish the terminal boundary \u2014 the complete graph G with order n, chromatic number k, and girth constraint g(G) maximally enforced."
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Split the girth-chromatic constraint into two arms \u2014 T-arm for unbounded girth construction, F-arm for bounded girth enforcement."
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "Forward morphism on T-arm \u2014 construct graphs with increasing girth through probabilistic edge addition while maintaining chromatic number k."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "Affirm on T-arm \u2014 for any k, there exist graphs with chromatic number k and arbitrarily large girth, proven by probabilistic methods."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "Reverse morphism on F-arm \u2014 remove edges to explore the space of sparser graphs, increasing girth while potentially lowering chromatic number."
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "Refute on F-arm \u2014 for fixed order n and chromatic number k, girth is bounded by the finite structure of the graph."
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Reunite the two arms \u2014 the T-arm's unbounded girth and F-arm's bounded girth rejoin into a single B4 verdict over SIXTEEN_3."
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "Enter paradice state \u2014 both unbounded and bounded girth coexist simultaneously, held without resolution as a structural paradox."
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "Compose the structural path \u2014 chain the forward construction, reverse exploration, and fusion into a coherent girth-chromatic theorem."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Fix the maximum girth permanently \u2014 record the structural resolution as an immutable, append-only theorem in the computational register."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The graph construction compiler translates probabilistic existence proofs and finite combinatorial bounds into executable structural operations over vertex and edge sets.",
+      "ipc_mechanism": "Components communicate through shared vertex and edge sets, with chromatic number and girth values passed as structural constraints between construction and evaluation modules.",
+      "memory_mechanism": "State is stored as adjacency lists for edges, color assignments for vertices, and cycle-length records for girth tracking, all maintained in append-only registers.",
+      "scheduler_mechanism": "The scheduler determines the order of edge additions and removals based on probabilistic sampling for the T-arm and exhaustive enumeration for the F-arm, ensuring structural coverage.",
+      "alfs_store": "The canonical reference is the Erd\u0151s probabilistic construction proving existence of graphs with high girth and high chromatic number, grounded in the formal corpus of Millennium/Erdos/ChromaticOddCycle.lean.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Each operation cycle consumes computational resources for edge sampling, cycle detection, and chromatic verification, measured in graph traversal steps.",
+      "pre_cycle_state": "The system begins in a state of structural uncertainty \u2014 girth and chromatic number are not yet related, and the graph may or may not support high-girth constructions.",
+      "post_cycle_state": "The system reaches a resolved structural state \u2014 the maximum girth for given order and chromatic number is determined, with both unbounded and bounded aspects held in paradice.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The cycle is entropy-conservative because the forward construction (adding edges, increasing chromatic number) is balanced by the reverse exploration (removing edges, increasing girth), and the fusion of both arms into a B-state preserves structural information without net loss or gain.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 TANCH \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 ENGAGR \u2192 CLINK \u2192 IFIX\n-- Class: the largest girth available to a graph of given order and chromatic number, as a structural ob3ect\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(3, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [2] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc71  | engage paradox \u2014 B-state, both arms\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc73 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_largest_girth_available_to_a_graph_000dca_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_largest_girth_available_to_a_graph_000dca_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_largest_girth_available_to_a_graph_000dca_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_largest_girth_available_to_a_graph_000dca_protocol : IGProtocol the_largest_girth_available_to_a_graph_000dca_s0 the_largest_girth_available_to_a_graph_000dca_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_largest_girth_available_to_a_graph_000dca_s8 the_largest_girth_available_to_a_graph_000dca_s8 = the_largest_girth_available_to_a_graph_000dca_s8 (idempotent)\n  (.seq (.arrow the_largest_girth_available_to_a_graph_000dca_l0 the_largest_girth_available_to_a_graph_000dca_s0 the_largest_girth_available_to_a_graph_000dca_s1) (.seq (.arrow the_largest_girth_available_to_a_graph_000dca_l1 the_largest_girth_available_to_a_graph_000dca_s1 the_largest_girth_available_to_a_graph_000dca_s2) (.seq (.arrow the_largest_girth_available_to_a_graph_000dca_l2 the_largest_girth_available_to_a_graph_000dca_s2 the_largest_girth_available_to_a_graph_000dca_s3) (.seq (.prod (.arrow the_largest_girth_available_to_a_graph_000dca_l3 the_largest_girth_available_to_a_graph_000dca_s3 the_largest_girth_available_to_a_graph_000dca_s8) (.arrow the_largest_girth_available_to_a_graph_000dca_l3 the_largest_girth_available_to_a_graph_000dca_s3 the_largest_girth_available_to_a_graph_000dca_s8)) (.seq (.arrow the_largest_girth_available_to_a_graph_000dca_l8 the_largest_girth_available_to_a_graph_000dca_s8 the_largest_girth_available_to_a_graph_000dca_s8) (.seq (.arrow the_largest_girth_available_to_a_graph_000dca_l8 the_largest_girth_available_to_a_graph_000dca_s8 the_largest_girth_available_to_a_graph_000dca_s9) (.seq (.arrow the_largest_girth_available_to_a_graph_000dca_l9 the_largest_girth_available_to_a_graph_000dca_s9 the_largest_girth_available_to_a_graph_000dca_s10) (.arrow the_largest_girth_available_to_a_graph_000dca_l10 the_largest_girth_available_to_a_graph_000dca_s10 the_largest_girth_available_to_a_graph_000dca_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_largest_girth_available_to_a_graph_000dca_true_arm : IGProtocol the_largest_girth_available_to_a_graph_000dca_s0 the_largest_girth_available_to_a_graph_000dca_s11 :=\n  (the_largest_girth_available_to_a_graph_000dca_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_largest_girth_available_to_a_graph_000dca_false_arm : IGProtocol the_largest_girth_available_to_a_graph_000dca_s0 the_largest_girth_available_to_a_graph_000dca_s11 :=\n  (the_largest_girth_available_to_a_graph_000dca_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_largest_girth_available_to_a_graph_000dca_tier_ground : OuroboricityTier := TierFunctor.obj the_largest_girth_available_to_a_graph_000dca_s0\ndef the_largest_girth_available_to_a_graph_000dca_tier : OuroboricityTier := TierFunctor.obj the_largest_girth_available_to_a_graph_000dca_s11\n#eval the_largest_girth_available_to_a_graph_000dca_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_largest_girth_available_to_a_graph_000dca_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_largest_girth_available_to_a_graph_000dca_frobenius :\n    igFrobeniusAlg.mul the_largest_girth_available_to_a_graph_000dca_s0 the_largest_girth_available_to_a_graph_000dca_s0 = the_largest_girth_available_to_a_graph_000dca_s0 :=\n  igFrobAlg_self_fusion the_largest_girth_available_to_a_graph_000dca_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        3,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: the largest girth available to a graph of given order and chromatic number, as a structural ob3ect",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc7d\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc5d\u2299\ud801\udc56\ud801\udc55\ud801\udc77\u27e9",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 0,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "\u22a3=\ud801\udc65: The largest girth constraint creates cyclic dependencies that form closed loops, reflecting a cyclic interface pattern.\n\u22a2=\ud801\udc66: The girth-chromatic number relationship involves a scale-collapse where the boundary (girth) encodes the full chromatic constraint, requiring topological integration of surface and interior.\n\u229e=\ud801\udc55: The participation ratio reflects higher-order symmetric organization, as the largest girth constraint involves balanced structural relationships across multiple nodes.\n\u25fb=\ud801\udc77: The girth constraint is a combinatorial property that can be continuously relaxed by adding edges without topological obstruction.\n\u2299=\u2299: The system operates at the threshold where maximal sensitivity and scale-free correlations emerge.\n\u22a5=\ud801\udc56: The largest girth constraint enforces structural rigidity across multiple axes, preventing symmetry restoration without global rearrangement.\n>=\ud801\udc7d: The mechanism involves lowering energy barriers through catalytic stabilization of transition states, enabling structural transformations without being consumed.\n<=\ud801\udc6c: The largest girth constraint enforces a self-complementary structure where both donor and acceptor roles coexist to maintain chromatic requirements.\n\u22c8=\ud801\udc50: The largest girth constraint enforces a rigid geometric structure that reliably determines chromatic behavior with high certainty.\n\u22a4=\ud801\udc67: High barrier \u2014 kinetically frozen; requires external driving to rearrange.\n\u2208=\ud801\udc54: The girth and chromatic number are global graph properties that constrain the entire structure, so interactions propagate across the whole system.\n\u220b=\ud801\udc5d: The largest girth constraint requires all necessary structural conditions to be satisfied simultaneously to prevent short cycles.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": ">\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 6,
+    "canonical_word": "<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

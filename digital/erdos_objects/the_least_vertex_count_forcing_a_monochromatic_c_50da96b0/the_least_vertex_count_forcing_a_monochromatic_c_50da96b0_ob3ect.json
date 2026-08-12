@@ -1,0 +1,367 @@
+{
+  "name": "the least vertex count forcing a monochromatic copy of one of two given graphs, as a structural ob3ect",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "the least vertex count forcing a monochromatic copy of one of two given graphs, as a structural ob3ect",
+      "domain_type": "computational",
+      "scope": "mesoscale",
+      "surface_tokens": [
+        "monochromatic copy",
+        "vertex count threshold",
+        "two given graphs"
+      ],
+      "boundary_condition": "The closed boundary is the least vertex count N such that any 2-coloring of the edges of the complete graph on N vertices contains a monochromatic copy of one of the two given graphs H1 or H2. This threshold N is the Ramsey-type forcing boundary that contains the entire combinatorial structure of the problem.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Empty graph with no vertices",
+        "justification": "The initial void state before any vertex count threshold is established or any graph coloring exists.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "The least vertex count N forcing a monochromatic copy",
+        "justification": "This is the terminal anchor that closes and contains the entire Ramsey-type forcing system, defining the boundary where the structural constraint becomes unavoidable.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Edge coloring extension process",
+        "justification": "The forward morphism represents the directed transformation of extending a partial edge coloring toward a complete coloring on N vertices, moving toward the target of finding a monochromatic subgraph.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Descent through vertex subsets",
+        "justification": "The reverse morphism represents the descent transformation of examining smaller vertex subsets and their induced colorings, moving from the full graph back to substructures.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Sequential composition of coloring steps",
+        "justification": "Composition chains the sequential steps of building up the edge coloring and checking for monochromatic subgraphs, linking each morphism in the forcing process.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Self-referential Ramsey condition",
+        "justification": "The identity represents the self-recognition that the forcing condition refers back to itself: the threshold N is defined by the property that any coloring on N vertices must contain a monochromatic copy of H1 or H2.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Branching into H1-monochromatic and H2-monochromatic cases",
+        "justification": "The co-multiplication splits the forcing condition into two arms: one where a monochromatic copy of H1 is forced, and one where a monochromatic copy of H2 is forced. This reflects the disjunctive nature of the Ramsey-type problem.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Rejoining the two monochromatic cases into the forcing threshold",
+        "justification": "The multiplication reunites the H1-forcing and H2-forcing arms into the single resolved verdict that the vertex count threshold N forces at least one of the two graphs to appear monochromatically.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Existence of a monochromatic H1 copy",
+        "justification": "The affirmative arm evaluates the constructive proof that a monochromatic copy of the first given graph H1 exists in the coloring.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Absence of a monochromatic H1 copy",
+        "justification": "The negative arm evaluates the constructive refutation that no monochromatic copy of H1 exists, which then requires H2 to appear monochromatically.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Simultaneous H1 and H2 monochromatic copies",
+        "justification": "The paradice state holds both the affirmation and refutation simultaneously: both H1 and H2 appear as monochromatic copies in the same coloring, a contradiction sustained without collapse.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Permanent record of the forcing threshold N",
+        "justification": "The ROM fixation permanently records the least vertex count N that forces a monochromatic copy, an irreversible append-only entry in the structural ob3ect.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT into H1-monochromatic and H2-monochromatic forcing arms",
+      "split_input": "The Ramsey-type forcing condition on N vertices with two target graphs H1 and H2",
+      "split_outputs": [
+        "H1-monochromatic forcing arm",
+        "H2-monochromatic forcing arm"
+      ],
+      "fuse_element": "FFUSE rejoining the two monochromatic forcing arms",
+      "fuse_result": "The resolved forcing threshold N that guarantees at least one of H1 or H2 appears monochromatically",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object \u2014 closes"
+    },
+    "phase_3": {
+      "void_description": "00 \u2014 No vertex count threshold established, no edge coloring exists, the graph is empty and uninitialized.",
+      "true_description": "01 \u2014 A monochromatic copy of H1 is constructively proven to exist in the edge coloring on N vertices.",
+      "false_description": "10 \u2014 A monochromatic copy of H1 is constructively refuted, meaning H1 does not appear monochromatically, forcing H2 to appear instead.",
+      "both_description": "11 \u2014 Both H1 and H2 appear as monochromatic copies simultaneously in the same edge coloring, a paradice state where the contradiction is held without resolution.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the empty graph with no vertices and no edge coloring \u2014 the void state before any forcing threshold exists."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Establish the self-referential Ramsey condition that the threshold N is defined by the property that any 2-coloring on N vertices contains a monochromatic copy of H1 or H2."
+        },
+        {
+          "step_num": 3,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the system at the least vertex count N that forces a monochromatic copy of one of the two given graphs \u2014 the closed boundary containing the entire structure."
+        },
+        {
+          "step_num": 4,
+          "opcode": "FSPLIT",
+          "domain_action": "Split the forcing condition into two arms \u2014 the T-arm for H1-monochromatic forcing and the F-arm for H2-monochromatic forcing, reflecting the disjunctive nature of the problem."
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "On the T-arm, apply the forward morphism of extending the edge coloring toward a complete coloring on N vertices, moving toward the target of finding a monochromatic H1 copy."
+        },
+        {
+          "step_num": 6,
+          "opcode": "EVALT",
+          "domain_action": "Evaluate the affirmative arm \u2014 constructively prove that a monochromatic copy of H1 exists in the edge coloring on N vertices."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "On the F-arm, apply the reverse morphism of descending through vertex subsets and their induced colorings, examining smaller substructures to refute H1 monochromaticity."
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "Evaluate the negative arm \u2014 constructively refute the existence of a monochromatic H1 copy, which necessitates that H2 appears monochromatically instead."
+        },
+        {
+          "step_num": 9,
+          "opcode": "FFUSE",
+          "domain_action": "Rejoin the H1-monochromatic and H2-monochromatic arms into the single resolved forcing threshold N, where conflicting arms fuse to the B4 verdict over SIXTEEN_3."
+        },
+        {
+          "step_num": 10,
+          "opcode": "ENGAGR",
+          "domain_action": "Enter the paradice state where both H1 and H2 appear as monochromatic copies simultaneously in the same coloring, holding the contradiction without resolution."
+        },
+        {
+          "step_num": 11,
+          "opcode": "CLINK",
+          "domain_action": "Compose the sequential steps of the forcing process \u2014 from initialization through splitting, evaluation, and rejoining \u2014 into the complete structural chain."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Permanently fix the forcing threshold N as an irreversible append-only record in the structural ob3ect, documenting the least vertex count that forces a monochromatic copy."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Ramsey-type compiler translates the combinatorial forcing condition into the operational sequence of vertex count thresholds, edge colorings, and monochromatic subgraph detection.",
+      "ipc_mechanism": "Components communicate through the shared vertex count register and the edge coloring state, passing information about partial colorings and monochromatic subgraph discoveries between the forcing arms.",
+      "memory_mechanism": "State is stored as the current edge coloring on N vertices, the set of discovered monochromatic subgraphs, and the forcing threshold N itself, all maintained in the paraconsistent kernel registers.",
+      "scheduler_mechanism": "The scheduler determines the order of vertex additions and edge colorings, prioritizing the exploration of colorings that either force H1 or H2 monochromaticity, following the Frobenius invariant on all four Belnap values.",
+      "alfs_store": "The canonical reference is the Erd\u0151s corpus index, specifically the Ramsey-type forcing conditions documented in Millennium/Erdos/MonochromaticOddCycle.lean and Millennium/Erdos/RamseyAsymptotics.lean.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Each operation cycle consumes one unit of combinatorial exploration \u2014 the examination of one edge coloring configuration on N vertices.",
+      "pre_cycle_state": "The system state before the cycle is a partial edge coloring on N vertices with no confirmed monochromatic copy of H1 or H2.",
+      "post_cycle_state": "The system state after the cycle is either a confirmed monochromatic copy of H1 or H2, or a refined partial coloring that eliminates one possibility.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The cycle is entropy-conservative because the paraconsistent kernel preserves information across the Belnap four-value system, and the Frobenius invariant ensures that no information is lost when conflicting arms rejoin to the B-state.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 TANCH \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE \u2192 ENGAGR \u2192 CLINK \u2192 IFIX\n-- Class: the least vertex count forcing a monochromatic copy of one of two given graphs, as a structural ob3ect\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(3, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc61  | identity \u2014 self-imscription\n--   [2] TANCH     top    := \ud801\udc61               \ud801\udc60 \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [3] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc71  | engage paradox \u2014 B-state, both arms\n--   [10] CLINK     fid    := \ud801\udc71               \ud801\udc73 \u2192 \ud801\udc6d  | composition \u2014 regime coherence\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc71 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_least_vertex_count_forcing_a_1fd7da_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_least_vertex_count_forcing_a_1fd7da_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_least_vertex_count_forcing_a_1fd7da_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_least_vertex_count_forcing_a_1fd7da_protocol : IGProtocol the_least_vertex_count_forcing_a_1fd7da_s0 the_least_vertex_count_forcing_a_1fd7da_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_least_vertex_count_forcing_a_1fd7da_s8 the_least_vertex_count_forcing_a_1fd7da_s8 = the_least_vertex_count_forcing_a_1fd7da_s8 (idempotent)\n  (.seq (.arrow the_least_vertex_count_forcing_a_1fd7da_l0 the_least_vertex_count_forcing_a_1fd7da_s0 the_least_vertex_count_forcing_a_1fd7da_s1) (.seq (.arrow the_least_vertex_count_forcing_a_1fd7da_l1 the_least_vertex_count_forcing_a_1fd7da_s1 the_least_vertex_count_forcing_a_1fd7da_s2) (.seq (.arrow the_least_vertex_count_forcing_a_1fd7da_l2 the_least_vertex_count_forcing_a_1fd7da_s2 the_least_vertex_count_forcing_a_1fd7da_s3) (.seq (.prod (.arrow the_least_vertex_count_forcing_a_1fd7da_l3 the_least_vertex_count_forcing_a_1fd7da_s3 the_least_vertex_count_forcing_a_1fd7da_s8) (.arrow the_least_vertex_count_forcing_a_1fd7da_l3 the_least_vertex_count_forcing_a_1fd7da_s3 the_least_vertex_count_forcing_a_1fd7da_s8)) (.seq (.arrow the_least_vertex_count_forcing_a_1fd7da_l8 the_least_vertex_count_forcing_a_1fd7da_s8 the_least_vertex_count_forcing_a_1fd7da_s8) (.seq (.arrow the_least_vertex_count_forcing_a_1fd7da_l8 the_least_vertex_count_forcing_a_1fd7da_s8 the_least_vertex_count_forcing_a_1fd7da_s9) (.seq (.arrow the_least_vertex_count_forcing_a_1fd7da_l9 the_least_vertex_count_forcing_a_1fd7da_s9 the_least_vertex_count_forcing_a_1fd7da_s10) (.arrow the_least_vertex_count_forcing_a_1fd7da_l10 the_least_vertex_count_forcing_a_1fd7da_s10 the_least_vertex_count_forcing_a_1fd7da_s11))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_least_vertex_count_forcing_a_1fd7da_true_arm : IGProtocol the_least_vertex_count_forcing_a_1fd7da_s0 the_least_vertex_count_forcing_a_1fd7da_s11 :=\n  (the_least_vertex_count_forcing_a_1fd7da_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_least_vertex_count_forcing_a_1fd7da_false_arm : IGProtocol the_least_vertex_count_forcing_a_1fd7da_s0 the_least_vertex_count_forcing_a_1fd7da_s11 :=\n  (the_least_vertex_count_forcing_a_1fd7da_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_least_vertex_count_forcing_a_1fd7da_tier_ground : OuroboricityTier := TierFunctor.obj the_least_vertex_count_forcing_a_1fd7da_s0\ndef the_least_vertex_count_forcing_a_1fd7da_tier : OuroboricityTier := TierFunctor.obj the_least_vertex_count_forcing_a_1fd7da_s11\n#eval the_least_vertex_count_forcing_a_1fd7da_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_least_vertex_count_forcing_a_1fd7da_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_least_vertex_count_forcing_a_1fd7da_frobenius :\n    igFrobeniusAlg.mul the_least_vertex_count_forcing_a_1fd7da_s0 the_least_vertex_count_forcing_a_1fd7da_s0 = the_least_vertex_count_forcing_a_1fd7da_s0 :=\n  igFrobAlg_self_fusion the_least_vertex_count_forcing_a_1fd7da_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        3,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: the least vertex count forcing a monochromatic copy of one of two given graphs, as a structural ob3ect",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc69\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc5c\u2299\ud801\udc56\ud801\udc73\ud801\udc77\u27e9",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 0,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "\u22a3=\ud801\udc65: The cyclic closure pattern reflects the structural feedback inherent in Ramsey-type vertex-forcing constraints.\n\u22a2=\ud801\udc66: The constraint involves a Ramsey-type condition where the boundary (vertex count threshold) encodes the full combinatorial structure, collapsing scale between surface and interior.\n\u229e=\ud801\udc73: The participation ratio reflects asymmetric stoichiometry with different vertex counts on each side.\n\u25fb=\ud801\udc77: The role can be continuously deformed to a trivial state without encountering any topological protection.\n\u2299=\u2299: The least vertex count forcing a monochromatic copy indicates the system is at the threshold where scale-free correlations emerge.\n\u22a5=\ud801\udc56: The structural enforcement of multiple axes in persistent chirality implies a memory depth that extends beyond a single interaction, maintaining the broken symmetry across n steps.\n>=\ud801\udc69: The mechanism involves recognizing structural patterns through analogical similarity rather than forming new bonds or undergoing topological changes.\n<=\ud801\udc6c: The least vertex count forcing a monochromatic copy of one of two given graphs inherently involves both donor and acceptor roles simultaneously, reflecting self-complementarity in the structural object.\n\u22c8=\ud801\udc50: The Ramsey-type forcing condition ensures deterministic geometric structure emergence with high information content.\n\u22a4=\ud801\udc67: The kinetic character indicates resistance to rearrangement, requiring external driving to overcome the high barrier.\n\u2208=\ud801\udc54: The Ramsey-type condition imposes a global constraint that propagates across the entire graph structure.\n\u220b=\ud801\udc5c: The Ramsey-type problem requires finding any one of two possible monochromatic subgraphs, so a disjunctive partner selection suffices.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u2208>\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": ">\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u22a4<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u25fb\u22a2\u2299\u22a3\u2208>\u22a4<\u22a5\u220b\u229e\u22c8",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 6,
+    "canonical_word": "<\u22a5\u220b\u229e\u22c8\u25fb\u22a2\u2299\u22a3\u2208>\u22a4",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

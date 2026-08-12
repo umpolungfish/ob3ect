@@ -1,0 +1,393 @@
+{
+  "name": "the maximum edge count of a graph admitting no two cycles without a shared edge, as a structural ob3ect",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "the maximum edge count of a graph admitting no two cycles without a shared edge, as a structural ob3ect",
+      "domain_type": "computational",
+      "scope": "mesoscale",
+      "surface_tokens": [
+        "cycle",
+        "edge",
+        "graph"
+      ],
+      "boundary_condition": "The closed boundary of a finite simple graph whose edge set is constrained so that no two cycles share an edge, with the maximum edge count enforced as a structural invariant.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "Empty graph with no vertices or edges",
+        "justification": "Before any cycle or edge is introduced, the graph exists in an uninitialized state with no structure.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "Maximum edge count threshold for cycle-disjoint graphs",
+        "justification": "The terminal anchor defines the upper bound on edges such that no two cycles share an edge, closing the system's structural constraint.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "Edge addition preserving cycle-disjointness",
+        "justification": "Each forward morphism represents the directed transformation of adding an edge while maintaining the invariant that cycles remain edge-disjoint.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "Cycle detection and edge removal to restore constraint",
+        "justification": "The reverse morphism descends from a state where cycles may share edges back to a valid configuration by removing conflicting edges.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "Sequential composition of edge additions and cycle checks",
+        "justification": "Composition chains each edge addition with its corresponding cycle-disjointness verification, forming the operational sequence.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "Self-referential graph structure",
+        "justification": "The graph recognizes itself as a cycle-disjoint entity, embedding its own structural constraint as an identity morphism.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "Branching into cycle-disjoint and cycle-sharing configurations",
+        "justification": "The split opens into two arms: one where the next edge preserves cycle-disjointness (T-arm) and one where it introduces a shared edge (F-arm).",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "Rejoining of cycle-disjoint and cycle-sharing branches",
+        "justification": "The arms rejoin into a single verdict over the graph's edge set, where conflicting evaluations fuse to a B-state if both conditions are held.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "Affirmative cycle-disjointness",
+        "justification": "The T-state affirms that the current edge set admits no two cycles sharing an edge.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "Negative cycle-sharing detected",
+        "justification": "The F-state refutes the constraint by identifying at least one pair of cycles sharing an edge.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "Simultaneous cycle-disjointness and cycle-sharing",
+        "justification": "A paradice state where the graph both satisfies and violates the constraint, held without resolution as a contradiction.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "Permanent record of maximum edge count",
+        "justification": "The final edge count is fixed irreversibly as a measurement record, append-only and unchangeable.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "FSPLIT: Branching into cycle-disjoint and cycle-sharing configurations",
+      "split_input": "Current edge set under evaluation for cycle-disjointness",
+      "split_outputs": [
+        "Cycle-disjoint edge addition (T-arm)",
+        "Cycle-sharing edge addition (F-arm)"
+      ],
+      "fuse_element": "FFUSE: Rejoining of cycle-disjoint and cycle-sharing branches",
+      "fuse_result": "Single B4 verdict over the graph's edge set, where conflicting arms fuse to B",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object \u2014 closes"
+    },
+    "phase_3": {
+      "void_description": "No vertices or edges exist; the graph is uninitialized and no cycles are present.",
+      "true_description": "The graph admits no two cycles sharing an edge; the edge set satisfies the cycle-disjointness invariant.",
+      "false_description": "At least one pair of cycles shares an edge; the edge set violates the cycle-disjointness invariant.",
+      "both_description": "The graph simultaneously satisfies and violates the cycle-disjointness invariant, holding both states without resolution.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the empty graph with no vertices or edges, establishing the void state before any structure exists."
+        },
+        {
+          "step_num": 2,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the system with the terminal boundary defining the maximum edge count for cycle-disjoint graphs."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Branch into two arms \u2014 one preserving cycle-disjointness (T-arm) and one introducing cycle-sharing (F-arm)."
+        },
+        {
+          "step_num": 4,
+          "opcode": "EVALT",
+          "domain_action": "Affirm that the T-arm maintains no two cycles sharing an edge, establishing the true state."
+        },
+        {
+          "step_num": 5,
+          "opcode": "AFWD",
+          "domain_action": "Apply a forward morphism representing edge addition that preserves the cycle-disjointness invariant."
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "Compose the edge addition with its cycle-disjointness verification, chaining the operational sequence."
+        },
+        {
+          "step_num": 7,
+          "opcode": "EVALF",
+          "domain_action": "Refute the F-arm by detecting at least one pair of cycles sharing an edge, establishing the false state."
+        },
+        {
+          "step_num": 8,
+          "opcode": "AREV",
+          "domain_action": "Apply a reverse morphism descending from a cycle-sharing configuration back to a valid cycle-disjoint state by removing conflicting edges."
+        },
+        {
+          "step_num": 9,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold both the affirmative and negative cycle-disjointness evaluations simultaneously as a paradice state without resolution."
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "Rejoin the T-arm and F-arm into a single B4 verdict over the graph's edge set, where conflicting arms fuse to B."
+        },
+        {
+          "step_num": 11,
+          "opcode": "IMSCRIB",
+          "domain_action": "Embed the graph's self-recognition as a cycle-disjoint entity, forming a self-referential identity morphism."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Permanently fix the maximum edge count as an irreversible record, append-only and unchangeable."
+        },
+        {
+          "step_num": 13,
+          "opcode": "CLINK",
+          "domain_action": "Compose the final edge count with the structural invariant, completing the operational sequence."
+        },
+        {
+          "step_num": 14,
+          "opcode": "TANCH",
+          "domain_action": "Close the system at the terminal anchor, bounding the graph's edge set within the maximum cycle-disjoint threshold."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "A structural compiler that translates cycle-disjointness constraints into edge addition and removal operations over finite simple graphs.",
+      "ipc_mechanism": "Components communicate through shared edge set registers, where each operation reads and writes the current graph state.",
+      "memory_mechanism": "State is stored as a finite simple graph with vertices and edges, retrieved through adjacency and cycle detection queries.",
+      "scheduler_mechanism": "A sequential scheduler that orders edge additions and cycle checks, ensuring each operation preserves or restores the cycle-disjointness invariant.",
+      "alfs_store": "The canonical reference is the maximum edge count for graphs with no two cycles sharing an edge, grounded in extremal graph theory.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Each operation cycle consumes one edge addition or removal, with no net change in the graph's structural complexity.",
+      "pre_cycle_state": "The graph exists in a state where the edge set may or may not satisfy the cycle-disjointness invariant.",
+      "post_cycle_state": "The graph exists in a state where the edge set satisfies the cycle-disjointness invariant, with the maximum edge count fixed.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The cycle is entropy-conservative because edge additions and removals are balanced by cycle detection and restoration, preserving the graph's structural invariant.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 TANCH \u2192 FSPLIT \u2192 EVALT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 CLINK \u2192 TANCH\n-- Class: the maximum edge count of a graph admitting no two cycles without a shared edge, as a structural ob3ect\n-- Fingerprint: sig=(8,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc61  | initial object \u2014 ground of distinction\n--   [1] TANCH     top    := \ud801\udc61               \ud801\udc7c \u2192 \ud801\udc5a  | terminal object \u2014 connectivity boundary\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [10] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc71  | irreversible fixation \u2014 winding number\n--   [12] CLINK     fid    := \ud801\udc71               \ud801\udc6d \u2192 \ud801\udc61  | composition \u2014 regime coherence\n--   [13] TANCH     top    := \ud801\udc61               \ud801\udc71 \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_maximum_edge_count_of_a_graph_132685_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_maximum_edge_count_of_a_graph_132685_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_maximum_edge_count_of_a_graph_132685_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_maximum_edge_count_of_a_graph_132685_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_maximum_edge_count_of_a_graph_132685_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_maximum_edge_count_of_a_graph_132685_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_maximum_edge_count_of_a_graph_132685_protocol : IGProtocol the_maximum_edge_count_of_a_graph_132685_s0 the_maximum_edge_count_of_a_graph_132685_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_maximum_edge_count_of_a_graph_132685_s9 the_maximum_edge_count_of_a_graph_132685_s9 = the_maximum_edge_count_of_a_graph_132685_s9 (idempotent)\n  (.seq (.arrow the_maximum_edge_count_of_a_graph_132685_l0 the_maximum_edge_count_of_a_graph_132685_s0 the_maximum_edge_count_of_a_graph_132685_s1) (.seq (.arrow the_maximum_edge_count_of_a_graph_132685_l1 the_maximum_edge_count_of_a_graph_132685_s1 the_maximum_edge_count_of_a_graph_132685_s2) (.seq (.prod (.arrow the_maximum_edge_count_of_a_graph_132685_l2 the_maximum_edge_count_of_a_graph_132685_s2 the_maximum_edge_count_of_a_graph_132685_s9) (.arrow the_maximum_edge_count_of_a_graph_132685_l2 the_maximum_edge_count_of_a_graph_132685_s2 the_maximum_edge_count_of_a_graph_132685_s9)) (.seq (.arrow the_maximum_edge_count_of_a_graph_132685_l9 the_maximum_edge_count_of_a_graph_132685_s9 the_maximum_edge_count_of_a_graph_132685_s9) (.seq (.arrow the_maximum_edge_count_of_a_graph_132685_l9 the_maximum_edge_count_of_a_graph_132685_s9 the_maximum_edge_count_of_a_graph_132685_s10) (.seq (.arrow the_maximum_edge_count_of_a_graph_132685_l10 the_maximum_edge_count_of_a_graph_132685_s10 the_maximum_edge_count_of_a_graph_132685_s11) (.seq (.arrow the_maximum_edge_count_of_a_graph_132685_l11 the_maximum_edge_count_of_a_graph_132685_s11 the_maximum_edge_count_of_a_graph_132685_s12) (.arrow the_maximum_edge_count_of_a_graph_132685_l12 the_maximum_edge_count_of_a_graph_132685_s12 the_maximum_edge_count_of_a_graph_132685_s13))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_maximum_edge_count_of_a_graph_132685_true_arm : IGProtocol the_maximum_edge_count_of_a_graph_132685_s0 the_maximum_edge_count_of_a_graph_132685_s13 :=\n  (the_maximum_edge_count_of_a_graph_132685_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_maximum_edge_count_of_a_graph_132685_false_arm : IGProtocol the_maximum_edge_count_of_a_graph_132685_s0 the_maximum_edge_count_of_a_graph_132685_s13 :=\n  (the_maximum_edge_count_of_a_graph_132685_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef the_maximum_edge_count_of_a_graph_132685_tier_ground : OuroboricityTier := TierFunctor.obj the_maximum_edge_count_of_a_graph_132685_s0\ndef the_maximum_edge_count_of_a_graph_132685_tier : OuroboricityTier := TierFunctor.obj the_maximum_edge_count_of_a_graph_132685_s13\n#eval the_maximum_edge_count_of_a_graph_132685_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_maximum_edge_count_of_a_graph_132685_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_maximum_edge_count_of_a_graph_132685_frobenius :\n    igFrobeniusAlg.mul the_maximum_edge_count_of_a_graph_132685_s0 the_maximum_edge_count_of_a_graph_132685_s0 = the_maximum_edge_count_of_a_graph_132685_s0 :=\n  igFrobAlg_self_fusion the_maximum_edge_count_of_a_graph_132685_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 3,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        2,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: the maximum edge count of a graph admitting no two cycles without a shared edge, as a structural ob3ect",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc51\ud801\udc57\ud801\udc50\ud801\udc67\ud801\udc54\ud801\udc5d\u2299\ud801\udc56\ud801\udc55\ud801\udc77\u27e9",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 2,
+    "deposits": 3,
+    "inert": 2,
+    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "\u22a3=\ud801\udc65: The constraint of no two cycles sharing an edge implies a structure where cycles are isolated and closed, resembling cyclic interfaces like figure-8 configurations.\n\u22a2=\ud801\udc66: The constraint operates across scale-collapse where boundary and interior form a unified register, reflecting the structural unity of cycle-free edge-maximization.\n\u229e=\ud801\udc55: The constraint on cycle sharing enforces a higher-order symmetric structure where edges participate in coordinated groupings rather than simple pairwise or asymmetric arrangements.\n\u25fb=\ud801\udc77: The maximum edge count constraint for graphs with no two cycles sharing an edge represents a structural property that can be continuously deformed to a trivial state without encountering any topological protection.\n\u2299=\u2299: The constraint of no two cycles sharing an edge enforces a structural threshold where the graph maximizes edge count while maintaining critical cycle independence.\n\u22a5=\ud801\udc56: The structural enforcement of multiple axes in the graph's cycle arrangement creates persistent chirality with memory depth n.\n>=\ud801\udc51: The constraint on cycles sharing edges enforces a structural transformation where the graph's edge count is maximized under irreversible topological restrictions.\n<=\ud801\udc57: The constraint on cycles without shared edges implies a structural balance that does not inherently favor a directional polarity or self-complementary symmetry.\n\u22c8=\ud801\udc50: The constraint of no two cycles sharing an edge enforces a rigid geometric structure, ensuring high-fidelity transmission.\n\u22a4=\ud801\udc67: The graph's structural constraint of no two cycles sharing an edge creates a high barrier to rearrangement, as any change would require breaking and reforming cycles in a coordinated manner that is kinetically unfavorable.\n\u2208=\ud801\udc54: The constraint on cycles without shared edges imposes a global structural limitation that affects the entire graph's connectivity.\n\u220b=\ud801\udc5d: The constraint requires all cycle partners to be present simultaneously to prevent shared edges.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 14,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u2208\u22a4>\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "\u22a4>\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": ">\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "\u22a5<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e\u220b",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e\u220b\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e\u220b\u2299\u25fb",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5<\u229e\u220b\u2299\u25fb\u22c8",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 7,
+    "canonical_word": "<\u229e\u220b\u2299\u25fb\u22c8\u22a3\u22a2\u22a3\u2208\u22a4>\u22c8\u22a5",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}

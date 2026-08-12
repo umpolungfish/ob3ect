@@ -1,0 +1,349 @@
+{
+ "name": "framed_deposit_region",
+ "is_valid_ob3ect": true,
+ "validations": {
+  "phase_0": [],
+  "phase_1": [],
+  "phase_2": [],
+  "phase_3": [],
+  "phase_4": [],
+  "phase_5": [],
+  "phase_6": []
+ },
+ "phases": {
+  "phase_0": {
+   "domain_name": "framed_deposit_region",
+   "domain_type": "computational",
+   "scope": "local",
+   "surface_tokens": [
+    "frame",
+    "deposit",
+    "reversal",
+    "register",
+    "restore"
+   ],
+   "boundary_condition": "The frame pair closes the system: every deposit enters a frame opened before it, every frame closes after the reversal it protects, and the outer fuse restores exactly what the clear took. The IFIX record seals the closure.",
+   "justification": "Auto-designed by Ob3ect Auto-Designer"
+  },
+  "phase_1": {
+   "VINIT": {
+    "opcode": "VINIT",
+    "chosen_element": "the empty register",
+    "justification": "the void state before any token runs, four constituents unset",
+    "rejected_candidates": []
+   },
+   "TANCH": {
+    "opcode": "TANCH",
+    "chosen_element": "the sealed word",
+    "justification": "the terminal boundary that contains the whole sequence, the closed vessel of the discipline",
+    "rejected_candidates": []
+   },
+   "AFWD": {
+    "opcode": "AFWD",
+    "chosen_element": "the advance into the frame",
+    "justification": "the forward morphism that carries a deposit toward its banked depth",
+    "rejected_candidates": []
+   },
+   "AREV": {
+    "opcode": "AREV",
+    "chosen_element": "the clearing reversal",
+    "justification": "the contravariant move that empties the register's open half while banked weight survives",
+    "rejected_candidates": []
+   },
+   "CLINK": {
+    "opcode": "CLINK",
+    "chosen_element": "the chained continuation",
+    "justification": "sequential composition, the lemma stays in scope while the later chain runs",
+    "rejected_candidates": []
+   },
+   "IMSCRIB": {
+    "opcode": "IMSCRIB",
+    "chosen_element": "the self-recognizing register",
+    "justification": "identity, the register holds its own weight through the reversal it survives",
+    "rejected_candidates": []
+   },
+   "FSPLIT": {
+    "opcode": "FSPLIT",
+    "chosen_element": "the frame opening",
+    "justification": "one state opens into a banked half and an exposed half, the weight sits one level up",
+    "rejected_candidates": []
+   },
+   "FFUSE": {
+    "opcode": "FFUSE",
+    "chosen_element": "the frame closing",
+    "justification": "the arms rejoin, what was banked returns to the register, reconstituting the split input",
+    "rejected_candidates": []
+   },
+   "EVALT": {
+    "opcode": "EVALT",
+    "chosen_element": "the weighted deposit",
+    "justification": "touches the T constituent and banks one unit at the current depth",
+    "rejected_candidates": []
+   },
+   "EVALF": {
+    "opcode": "EVALF",
+    "chosen_element": "the refuted arm",
+    "justification": "touches the F constituent, the negative arm present in the register but not exercised by this discipline",
+    "rejected_candidates": []
+   },
+   "ENGAGR": {
+    "opcode": "ENGAGR",
+    "chosen_element": "the held contradiction",
+    "justification": "both T and F held at once without resolution, the dialetheic register state",
+    "rejected_candidates": []
+   },
+   "IFIX": {
+    "opcode": "IFIX",
+    "chosen_element": "the sealed record",
+    "justification": "permanent fixation, the closure verdict is appended and cannot be undone",
+    "rejected_candidates": []
+   }
+  },
+  "phase_2": {
+   "split_element": "the frame opening FSPLIT",
+   "split_input": "the register with the T constituent banked one level up inside the open frame",
+   "split_outputs": [
+    "the banked half held at depth one",
+    "the open half exposed to the register"
+   ],
+   "fuse_element": "the frame closing FFUSE",
+   "fuse_result": "the register with the T constituent banked one level up inside the open frame",
+   "frobenius_verdict": "PASS",
+   "test_instance": "",
+   "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+  },
+  "phase_3": {
+   "void_description": "the uninitialized register, four constituents unset, before any weight exists",
+   "true_description": "the register holding the T constituent, one unit of weight banked at depth one",
+   "false_description": "the register holding the F constituent, the refuted arm standing alone",
+   "both_description": "the register holding T and F simultaneously, the dialetheic state kept live without resolution",
+   "transitions": [],
+   "entropy_assertion": "ΔS ≈ 0"
+  },
+  "phase_4": {
+   "steps": [
+    {
+     "step_num": 1,
+     "opcode": "VINIT",
+     "domain_action": "the empty register opens, four constituents unset, the void before any weight exists"
+    },
+    {
+     "step_num": 2,
+     "opcode": "FSPLIT",
+     "domain_action": "the outer frame opens, the region that will hold the result once banked"
+    },
+    {
+     "step_num": 3,
+     "opcode": "FSPLIT",
+     "domain_action": "the inner frame opens inside it, the region that computes the deposit"
+    },
+    {
+     "step_num": 4,
+     "opcode": "EVALT",
+     "domain_action": "the deposit lands inside the inner frame, touching the T constituent and banking one unit at depth two"
+    },
+    {
+     "step_num": 5,
+     "opcode": "FFUSE",
+     "domain_action": "the inner frame closes, folding the deposit into the enclosing frame at depth one"
+    },
+    {
+     "step_num": 6,
+     "opcode": "CLINK",
+     "domain_action": "the continuation chains, the lemma stays in scope while the reversal runs"
+    },
+    {
+     "step_num": 7,
+     "opcode": "AREV",
+     "domain_action": "the clearing reversal fires, emptying the register's open half while the frame holds the weight"
+    },
+    {
+     "step_num": 8,
+     "opcode": "EVALT",
+     "domain_action": "the conclusion deposit lands in the open register, re-establishing the T constituent after the clear"
+    },
+    {
+     "step_num": 9,
+     "opcode": "FFUSE",
+     "domain_action": "the outer frame closes, restoring exactly what the clear took, the banked weight returns to the register"
+    },
+    {
+     "step_num": 10,
+     "opcode": "IFIX",
+     "domain_action": "the closure fixes, the record seals, the verdict becomes permanent"
+    }
+   ],
+   "closure_verified": true,
+   "failure_modes": []
+  },
+  "phase_5": {
+   "compiler_frontend": "the word writer that turns the discipline into a token sequence",
+   "ipc_mechanism": "the frame handoff, the inner fuse folds its result into the enclosing frame",
+   "memory_mechanism": "the register, four constituents whose deposits accumulate",
+   "scheduler_mechanism": "token order, one opcode per step, the reversal placed between the two fuses",
+   "alfs_store": "the banked-weight lemma in p4ramill Imscribing IMASM BankedWeight.lean",
+   "alfs_bootstrap_program": ""
+  },
+  "phase_6": {
+   "cycle_cost": "one clear per reversal, the weight it takes is exactly what the fuse restores",
+   "pre_cycle_state": "the register holding the deposit inside the open frame",
+   "post_cycle_state": "the register holding the deposit after the outer fuse",
+   "delta_s_verdict": "ΔS ≈ 0 — the clear takes one unit and the fuse restores one unit, the cycle conserves weight",
+   "failure_mode": ""
+  }
+ },
+ "lean_scaffold": "-- IGProtocol scaffold: VINIT → FSPLIT → FSPLIT → EVALT → FFUSE → CLINK → AREV → EVALT → FFUSE → IFIX\n-- Class: framed_deposit_region\n-- Fingerprint: sig=(3,4,2,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=10\n-- Expected tier: O₂dag\n-- FSPLIT/FFUSE pairs: [(2, 4), (1, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] FFUSE     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [7] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [9] IFIX      prot   := 𐑭               𐑙 → 𐑼  | irreversible fixation — winding number\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def framed_deposit_region_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s7 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s8 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_s9 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def framed_deposit_region_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def framed_deposit_region_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def framed_deposit_region_protocol : IGProtocol framed_deposit_region_s0 framed_deposit_region_s9 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct framed_deposit_region_s4 framed_deposit_region_s4 = framed_deposit_region_s4 (idempotent)\n  (.seq (.arrow framed_deposit_region_l0 framed_deposit_region_s0 framed_deposit_region_s1) (.seq (.prod (.arrow framed_deposit_region_l1 framed_deposit_region_s1 framed_deposit_region_s4) (.arrow framed_deposit_region_l1 framed_deposit_region_s1 framed_deposit_region_s4)) (.seq (.arrow framed_deposit_region_l4 framed_deposit_region_s4 framed_deposit_region_s4) (.seq (.arrow framed_deposit_region_l4 framed_deposit_region_s4 framed_deposit_region_s5) (.seq (.arrow framed_deposit_region_l5 framed_deposit_region_s5 framed_deposit_region_s6) (.seq (.arrow framed_deposit_region_l6 framed_deposit_region_s6 framed_deposit_region_s7) (.seq (.arrow framed_deposit_region_l7 framed_deposit_region_s7 framed_deposit_region_s8) (.arrow framed_deposit_region_l8 framed_deposit_region_s8 framed_deposit_region_s9))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def framed_deposit_region_true_arm : IGProtocol framed_deposit_region_s0 framed_deposit_region_s9 :=\n  (framed_deposit_region_protocol).restrictToEVALT\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef framed_deposit_region_tier_ground : OuroboricityTier := TierFunctor.obj framed_deposit_region_s0\ndef framed_deposit_region_tier : OuroboricityTier := TierFunctor.obj framed_deposit_region_s9\n#eval framed_deposit_region_tier_ground  -- tier of the ground (pre-transformation)\n#eval framed_deposit_region_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem framed_deposit_region_frobenius :\n    igFrobeniusAlg.mul framed_deposit_region_s0 framed_deposit_region_s0 = framed_deposit_region_s0 :=\n  igFrobAlg_self_fusion framed_deposit_region_s0\n",
+ "topology_report": {
+  "topology_class": "nested",
+  "nesting_depth": 1,
+  "total_pairs": 2,
+  "open_forks": 0,
+  "cross_branches": 0,
+  "empty_branches": 1,
+  "sequence_length": 10,
+  "t_branch_ops": 4,
+  "f_branch_ops": 0,
+  "branch_ratio": 4.0,
+  "fork_positions": [
+   1,
+   2
+  ],
+  "fuse_positions": [
+   4,
+   8
+  ],
+  "pair_list": [
+   [
+    2,
+    4
+   ],
+   [
+    1,
+    8
+   ]
+  ],
+  "has_cascading_ifix": false,
+  "max_ifix_cascade": 1,
+  "has_negation_first": false,
+  "has_dual_fixation": false
+ },
+ "notes": "Auto-designed from: framed_deposit_region",
+ "grounded_tuple": null,
+ "grounding_status": "ungated",
+ "grounding_failed_primitives": [],
+ "banked_count_check": {
+  "status": "ok",
+  "word": "⊢∈∈⊤∋⋈<⊤∋◻",
+  "exposed_clears": [],
+  "weight_lost_in_the_open": 0,
+  "banked_ok": true,
+  "vacuous": false,
+  "surplus_discarded": {},
+  "surplus_total": 0,
+  "live_clears": 1,
+  "restored": 1,
+  "deposits": 2,
+  "inert": 0,
+  "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+  "surplus_note": null,
+  "remedy": null
+ },
+ "grounding_reasoning": "",
+ "lean_verified": "ok",
+ "lean_verification_output": "lake env lean Imscribing/FramedDepositRegion.lean — exit 0, zero sorry slots\n#eval tier_ground: OuroboricityTier.O₀\n#eval tier (closed): OuroboricityTier.O₂dag  (matches scaffold expected tier O₂dag)\ntheorem framed_deposit_region_frobenius: igFrobeniusAlg.mul s0 s0 = s0 by igFrobAlg_self_fusion — compiled clean\nCompiled against p4ramill at commit 761e0a2 era, Imscribing/FramedDepositRegion.lean",
+ "rotat_audit": {
+  "op_opcode": "ROTAT",
+  "period": 10,
+  "orbit": [
+   {
+    "k": 0,
+    "word": "⊢∈∈⊤∋⋈<⊤∋◻",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 1,
+    "word": "∈∈⊤∋⋈<⊤∋◻⊢",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 2,
+    "word": "∈⊤∋⋈<⊤∋◻⊢∈",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 3,
+    "word": "⊤∋⋈<⊤∋◻⊢∈∈",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 4,
+    "word": "∋⋈<⊤∋◻⊢∈∈⊤",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 5,
+    "word": "⋈<⊤∋◻⊢∈∈⊤∋",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 6,
+    "word": "<⊤∋◻⊢∈∈⊤∋⋈",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 7,
+    "word": "⊤∋◻⊢∈∈⊤∋⋈<",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": false,
+    "final_register": "T",
+    "topology_class": "nested"
+   },
+   {
+    "k": 8,
+    "word": "∋◻⊢∈∈⊤∋⋈<⊤",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": true,
+    "final_register": "N",
+    "topology_class": "nested"
+   },
+   {
+    "k": 9,
+    "word": "◻⊢∈∈⊤∋⋈<⊤∋",
+    "tri_ancestral_verdict": "T",
+    "closed_walk": true,
+    "final_register": "N",
+    "topology_class": "nested"
+   }
+  ],
+  "invariants": {
+   "tri_ancestral_verdict": true,
+   "closed_walk": false,
+   "final_register": false,
+   "topology_class": true
+  },
+  "canonical_k": 6,
+  "canonical_word": "<⊤∋◻⊢∈∈⊤∋⋈",
+  "verdict": "PHASE-BEARING — moves under ROTAT: closed_walk, final_register"
+ }
+}
