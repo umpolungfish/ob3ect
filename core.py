@@ -153,9 +153,18 @@ class SplitFuseReport:
     fuse_element: str; fuse_result: str; frobenius_verdict: str; test_instance: str
     failure_reason: str = ""
     def validate(self):
+        # The verdict is a B4 value, not a bool. auto.py stopped retrying to force
+        # a classical PASS precisely because that demand pushed the designer to
+        # reason toward domain invertibility instead of describing the fork; this
+        # validator was still refusing anything but PASS/FAIL, which made every
+        # honest B or N an invalid ob3ect. T and B are legitimate outcomes, F and
+        # N carry a reason.
         e = []
-        if self.frobenius_verdict not in ("PASS","FAIL"): e.append("Verdict must be PASS/FAIL")
-        if self.frobenius_verdict=="FAIL" and not self.failure_reason.strip(): e.append("failure_reason required")
+        verdict = (self.frobenius_verdict or "").strip().upper()
+        if verdict not in ("PASS", "FAIL", "T", "F", "B", "N"):
+            e.append("Verdict must be one of PASS, FAIL, T, F, B, N")
+        if verdict in ("FAIL", "F", "N") and not self.failure_reason.strip():
+            e.append("failure_reason required")
         return e
 
 @dataclass
