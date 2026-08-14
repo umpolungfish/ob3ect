@@ -1361,6 +1361,8 @@ def _is_unreachable(err: Exception) -> bool:
 
 # How many times a single provider may return unparseable text before the chain
 # moves on. Distinct from --retries, which governs rate limits and transient HTTP.
+_PROVIDER_ANNOUNCED: Optional[str] = None
+
 _MAX_PARSE_RETRIES = 3
 
 
@@ -1509,8 +1511,15 @@ async def auto_design(
     if providers:
         _first = providers[0]
         _what = getattr(_first, "model", None) or getattr(_first, "model_path", "?")
-        print(f"Provider: {getattr(_first, '_ig_chain_name', '?')} "
-              f"({type(_first).__name__}) — {_what}")
+        _line = (f"Provider: {getattr(_first, '_ig_chain_name', '?')} "
+                 f"({type(_first).__name__}) — {_what}")
+        # Once per RUN, not once per call. A churn calls auto_design for every node
+        # and printed this line for each of them, so the one fact it exists to state
+        # arrived as a wall of identical lines.
+        global _PROVIDER_ANNOUNCED
+        if _line != _PROVIDER_ANNOUNCED:
+            print(_line)
+            _PROVIDER_ANNOUNCED = _line
 
     if not providers:
         gone = ", ".join(sorted(_UNREACHABLE)) or "none"
@@ -2029,7 +2038,8 @@ async def churn_design(
             break
 
         for node, _inner, st in planned:
-            print(f"  [w={turn + 1}] {st['opcode']:<3} {st['domain_action'][:60]}")
+            print(f"  [w={turn + 1}] {_CORE_GLYPH.get(st['opcode'], st['opcode']):<3} "
+                  f"{st['domain_action'][:60]}")
 
         # Siblings do not depend on each other, so they are imscribed together.
         # `concurrency` bounds it: a local server has a fixed number of slots and
