@@ -1486,6 +1486,17 @@ async def auto_design(
             except Exception:
                 continue
 
+    # Which model is answering is the single most load-bearing fact about a run
+    # and it was never stated. A chain reordered by IG_PROVIDER silently sent a
+    # 10,513-char context to a 1.7B, which cannot use it and answered out of its
+    # fine-tuning distribution instead — indistinguishable, from the output alone,
+    # from the context not arriving at all.
+    if providers:
+        _first = providers[0]
+        _what = getattr(_first, "model", None) or getattr(_first, "model_path", "?")
+        print(f"Provider: {getattr(_first, '_ig_chain_name', '?')} "
+              f"({type(_first).__name__}) — {_what}")
+
     if not providers:
         gone = ", ".join(sorted(_UNREACHABLE)) or "none"
         raise RuntimeError(
