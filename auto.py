@@ -32,6 +32,7 @@ from ob3ect.core import (
     Ob3ectArtifact, DomainCharter, OpcodeMap, OpcodeEntry,
     SplitFuseReport, RegisterMapping, BootstrapSequence,
     ExOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode, glyph_word,
+    GLYPH as _CORE_GLYPH,
     OpOpcode, rotat,
 )
 try:
@@ -746,8 +747,58 @@ def _make_unique_slug(raw: str, max_base_len: int = 48) -> str:
 _KNOWN_OPCODES = {oc.value for oc in Opcode}
 
 
-_GLYPH_TO_OP = {"⊢":"VINIT","⊣":"TANCH",">":"AFWD","<":"AREV","=":"CLINK","⊙":"IMSCRIB",
-                "∈":"FSPLIT","∋":"FFUSE","⊤":"EVALT","⊥":"EVALF","⊞":"ENGAGR","◻":"IFIX"}
+# The inverse of core.GLYPH, built from it rather than typed out again: this
+# copy still carried the retired mark "=" for CLINK, so a step written with the
+# live ⋈ fell past the glyph branch and was parsed by its Latin name or not at
+# all. One alphabet, one direction of truth.
+_GLYPH_TO_OP = {g: name for name, g in _CORE_GLYPH.items()}
+
+
+# The order the opcodes are listed in the prompt's alphabet block. A sequence
+# that reproduces this exactly is the model reciting the alphabet back rather
+# than composing anything with it.
+_PROMPT_ALPHABET_ORDER = ["VINIT", "TANCH", "AFWD", "AREV", "CLINK", "IMSCRIB",
+                          "FSPLIT", "FFUSE", "EVALT", "EVALF", "ENGAGR", "IFIX"]
+
+
+def _validate_sequence(data: Dict[str, Any]) -> None:
+    """A step names a token AND says what it does. Raise if it does neither.
+
+    `"sequence": ["VINIT", "TANCH", ...]` parses cleanly, builds an artifact,
+    and yields a word that is the twelve marks in the order the prompt happens
+    to list them, with no split/fuse pair and a Frobenius verdict of N. Nothing
+    downstream can tell that apart from a design, and a churn started from one
+    winds it into every child: 155 ob3ects, none closed, every word identical.
+    So it is a parse failure here, where the retry ladder can say what was
+    wrong, rather than an artifact nobody asked for.
+    """
+    seq = data.get("sequence", data.get("bootstrap"))
+    if not isinstance(seq, list) or not seq:
+        raise ValueError("the 'sequence' field is missing or empty")
+
+    bare = []
+    for i, act in enumerate(seq):
+        text = str(act).strip()
+        action = re.sub(r'^[^A-Za-z]*(?:[A-Z]+:\s*)+', '', text).strip()
+        if not action or action.upper() in _KNOWN_OPCODES:
+            bare.append(f"step {i + 1} ({text!r})")
+    if bare:
+        raise ValueError(
+            "sequence steps name an opcode and nothing else: "
+            + ", ".join(bare[:4])
+            + (f" and {len(bare) - 4} more" if len(bare) > 4 else "")
+            + ". Every step must read 'OPCODE: what this token does at this "
+              "point in THIS domain', in the domain's own vocabulary."
+        )
+
+    opcodes = [_parse_opcode(a) for a in seq]
+    if opcodes == _PROMPT_ALPHABET_ORDER:
+        raise ValueError(
+            "the sequence is the twelve opcodes in the order the prompt lists "
+            "them, which is the alphabet recited rather than a composition. "
+            "Order the tokens by what the domain does, and repeat or omit "
+            "tokens as the domain requires."
+        )
 
 
 def _parse_opcode(step_str: str) -> str:
@@ -1005,7 +1056,12 @@ def _write_diagrams(artifact: Ob3ectArtifact, dir_path: Path, slug: str) -> Opti
     return pen_path
 # ── Public API ────────────────────────────────────────────────────────────────
 
-_PROVIDER_CHAIN: List[str] = ["local", "openrouter", "deepseek"]
+# The local 27B served on loopback is the DEFAULT lane for every ob3ect, not a
+# provider you have to name. An ob3ect is an eight-phase design over a large
+# context; sending that to a metered endpoint by default is how a routing
+# default turned into a credit balance. The cloud entries stay as fallback,
+# reached only when the loopback server is not answering.
+_PROVIDER_CHAIN: List[str] = ["llamacpp", "local", "openrouter", "deepseek"]
 
 # IG_PROVIDER env var → promote to front of chain (respects IG_MODEL for model selection)
 #
@@ -1112,8 +1168,9 @@ async def _run_gated_imscription(description: str, provider_name: Optional[str],
     time; confirmed to return a real, fully-parseable tuple where the JSON
     path kept failing on the exact same description.
 
-    Never defaults to Anthropic — always resolves to the same openrouter/
-    IG_MODEL convention auto_design itself uses.
+    Never defaults to Anthropic — resolves to the same lane auto_design itself
+    uses, which is the head of _PROVIDER_CHAIN (the loopback 27B) unless the
+    caller pinned something else.
     """
     if _ImscriptionGeneratorAgent is None or _build_gate_agent_config is None:
         raise RuntimeError(
@@ -1123,8 +1180,15 @@ async def _run_gated_imscription(description: str, provider_name: Optional[str],
             "opt out (not recommended: the resulting artifact will carry NO axiom/"
             "grounding validation)."
         )
-    gate_provider = provider_name or "openrouter"
-    gate_model = model or "google/gemini-3-flash-preview"
+    # The gate runs on the SAME lane as the design call. A hardcoded cloud
+    # provider and model here meant Phase -1 was metered even when the design
+    # itself ran on loopback, and the two phases could disagree about which
+    # model produced the artifact. None as the model lets a local server report
+    # its own id rather than being handed somebody else's slug.
+    gate_provider = provider_name or _PROVIDER_CHAIN[0]
+    gate_model = model
+    if gate_model is None and gate_provider not in (("local",) + _LOCAL_HTTP_PROVIDERS):
+        gate_model = "google/gemini-3-flash-preview"
     config = _build_gate_agent_config(provider=gate_provider, model=gate_model, max_tokens=4000)
     agent = _ImscriptionGeneratorAgent(config)
     return await agent.generate_guided(description)
@@ -1230,6 +1294,15 @@ async def auto_design(
         # that loads paths", not "only to the provider named local".
         if looks_local and provider not in (("local",) + _LOCAL_HTTP_PROVIDERS):
             return {}
+        # A local OpenAI-compatible server serves exactly one thing and rejects
+        # every other id, so ITS answer outranks a nickname from the
+        # environment. IG_MODEL=Q3p527b names a model DIRECTORY, not the id
+        # llama-server reports (the full .gguf path); forwarding it here as an
+        # explicit argument overrode the factory's server probe and turned the
+        # pinned local provider into an instant 400, which then cascaded the
+        # same bad id down the cloud chain. Let the probe answer instead.
+        if not looks_local and provider in _LOCAL_HTTP_PROVIDERS:
+            return {}
         return {"model": model}
 
     if provider_name:
@@ -1287,8 +1360,13 @@ async def auto_design(
             raise RuntimeError(
                 f"All {len(providers)} providers failed:\n  {detail}"
             ) from err
+        prev = tried[-1]
         provider = providers[provider_idx]
-        print(f"Provider failed, switching to: {provider.__class__.__name__}")
+        # The reason belongs AT the switch, not only in the aggregate raised
+        # after the last provider dies: a chain that announces three switches
+        # and no causes leaves the one fault that mattered — the pinned local
+        # one — unreadable behind two downstream symptoms.
+        print(f"Provider failed ({prev}), switching to: {provider.__class__.__name__}")
 
     attempt = 0
     parse_failures = 0
@@ -1328,6 +1406,7 @@ async def auto_design(
                     f"(model={getattr(provider, 'model', None) or getattr(provider, 'model_path', '?')})"
                 )
             data = _extract_json(raw)
+            _validate_sequence(data)
             artifact = _build_artifact(artifact_name, scope, data)
             artifact.grounded_tuple = grounded_tuple
             artifact.grounding_status = grounding_status
@@ -1362,6 +1441,12 @@ async def auto_design(
             _next_provider(e)
 
         except (json.JSONDecodeError, ValueError, KeyError) as e:
+            # An answer this call cannot use must not be served back to the retry
+            # that was asked to replace it. Without this the ladder re-reads the
+            # same truncated text from cache three times in half a second and
+            # reports a working provider as exhausted.
+            with contextlib.suppress(Exception):
+                await provider.invalidate_last()
             retry_info = f"JSON parse failed ({e}). Respond with ONLY a valid JSON object."
             attempt += 1
             # A parse retry is bounded even when --retries is infinite. The
@@ -1682,6 +1767,7 @@ async def churn_design(
     temperature: float = 0.4,
     context: Optional[str] = None,
     max_ob3ects: int = 200,
+    stream: bool = False,
 ) -> ChurnTree:
     """Imscribe `description`, then wind the pipeline back over its own steps.
 
@@ -1696,7 +1782,7 @@ async def churn_design(
     root_art = await auto_design(
         description, name=description, domain_type=domain_type, scope=scope,
         provider_name=provider_name, model=model, max_retries=max_retries,
-        temperature=temperature, context=context,
+        temperature=temperature, context=context, stream=stream,
     )
     root = ChurnNode(description, root_art, winding=0)
     made = 1
@@ -1716,7 +1802,7 @@ async def churn_design(
             art = await auto_design(
                 desc, name=desc, domain_type=domain_type, scope=scope,
                 provider_name=provider_name, model=model, max_retries=max_retries,
-                temperature=temperature, context=inner,
+                temperature=temperature, context=inner, stream=stream,
             )
             made += 1
             child = ChurnNode(desc, art, node.winding + 1,
@@ -1968,6 +2054,9 @@ if __name__ == "__main__":
             temperature=args.temperature,
             context=ctx,
             max_ob3ects=args.churn_max,
+            # --stream was accepted by the parser and dropped here, so a churn
+            # ran silent no matter what the caller asked for.
+            stream=args.stream,
         ))
         print("\n" + tree.report())
 

@@ -1,0 +1,394 @@
+{
+  "name": "completed",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "completed",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "lcm_sequence",
+        "coprime_pair",
+        "logarithmic_bound",
+        "density_one"
+      ],
+      "boundary_condition": "The integer threshold n=3 where the quadratic lower bound strictly exceeds the logarithmic comparison, enclosing the set of all valid integers.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "empty_integer_set",
+        "justification": "The state before any integers are selected or the LCM is computed.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "threshold_n_equals_3",
+        "justification": "The closed boundary where the inequality holds for all subsequent integers, defining the system's validity range.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "quadratic_growth",
+        "justification": "The forward morphism representing the n(n-1) lower bound increasing with n.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "logarithmic_comparison",
+        "justification": "The reverse/descent morphism representing the n*log(n+1) term which grows slower and is dominated.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "inequality_chain",
+        "justification": "The composition linking the coprime product bound to the final LCM value.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "coprime_identity",
+        "justification": "The self-reference of consecutive integers n and n-1 being coprime, a property inherent to the integers themselves.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "bound_divergence",
+        "justification": "Splits the analysis into the affirmative quadratic lower bound and the negative logarithmic upper comparison.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "strict_inequality",
+        "justification": "Reconstitutes the two bounds into a single resolved state where the lower bound strictly exceeds the upper bound.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "quadratic_dominance",
+        "justification": "Affirms that n(n-1) is a valid lower bound for the LCM.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "logarithmic_subordination",
+        "justification": "Refutes the possibility that the logarithmic term exceeds the quadratic term for n >= 3.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "density_one_paradox",
+        "justification": "Holds the state where the set of valid n is both finite in its exclusion (n<3) and infinite in its inclusion (n>=3), a paradice of density.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "formal_proof_record",
+        "justification": "The permanent, append-only record of the Lean formalization verifying the inequality.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "bound_divergence",
+      "split_input": "integer_sequence_n",
+      "split_outputs": [
+        "quadratic_lower_bound",
+        "logarithmic_upper_comparison"
+      ],
+      "fuse_element": "strict_inequality",
+      "fuse_result": "verified_inequality_state",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object \u2014 closes"
+    },
+    "phase_3": {
+      "void_description": "No integers selected; LCM undefined.",
+      "true_description": "The inequality lcm(1..n) > n*log(n+1) is constructively proven for a given n.",
+      "false_description": "The inequality fails (specifically at n=2) or the bounds are not yet established.",
+      "both_description": "The system holds the tension between the finite failure set {1,2} and the infinite success set {3..infinity} simultaneously as a density-one result.",
+      "transitions": [],
+      "entropy_assertion": "\u0394S \u2248 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "VINIT",
+          "domain_action": "Initialize the domain with an empty set of integers before any LCM computation."
+        },
+        {
+          "step_num": 2,
+          "opcode": "IMSCRIB",
+          "domain_action": "Recognize the intrinsic property that consecutive integers n and n-1 are coprime."
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "Diverge the analysis into two parallel evaluation paths: the lower bound and the upper comparison."
+        },
+        {
+          "step_num": 4,
+          "opcode": "AFWD",
+          "domain_action": "Advance the T-arm to compute the quadratic lower bound n(n-1) derived from the coprime product."
+        },
+        {
+          "step_num": 5,
+          "opcode": "EVALT",
+          "domain_action": "Affirm that n(n-1) divides the LCM, establishing the constructive truth of the lower bound."
+        },
+        {
+          "step_num": 6,
+          "opcode": "CLINK",
+          "domain_action": "Chain the divisibility of n and n-1 to the product n(n-1) within the T-arm."
+        },
+        {
+          "step_num": 7,
+          "opcode": "AREV",
+          "domain_action": "Descend the F-arm to evaluate the logarithmic comparison term n*log(n+1)."
+        },
+        {
+          "step_num": 8,
+          "opcode": "EVALF",
+          "domain_action": "Refute the dominance of the logarithmic term by showing log(n+1) < n-1 for n >= 3."
+        },
+        {
+          "step_num": 9,
+          "opcode": "CLINK",
+          "domain_action": "Chain the exponential inequality e^(n-1) > n+1 to the logarithmic bound in the F-arm."
+        },
+        {
+          "step_num": 10,
+          "opcode": "FFUSE",
+          "domain_action": "Rejoin the T-arm (quadratic lower) and F-arm (logarithmic upper) to resolve the strict inequality."
+        },
+        {
+          "step_num": 11,
+          "opcode": "ENGAGR",
+          "domain_action": "Hold the paradice state where the exclusion of n=1,2 and inclusion of n>=3 coexist as a density-one set."
+        },
+        {
+          "step_num": 12,
+          "opcode": "IFIX",
+          "domain_action": "Permanently record the formal verification of the inequality in the Lean proof assistant."
+        },
+        {
+          "step_num": 13,
+          "opcode": "TANCH",
+          "domain_action": "Anchor the system at the boundary n=3, defining the closed region where the theorem holds."
+        },
+        {
+          "step_num": 14,
+          "opcode": "IMSCRIB",
+          "domain_action": "Self-reference the completed theorem as a stable object within the mathematical landscape."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Lean 4 theorem prover translating mathematical assertions into type-theoretic proofs.",
+      "ipc_mechanism": "Logical implication chains connecting lemmas about coprimality, divisibility, and exponential bounds.",
+      "memory_mechanism": "Mathlib library storing pre-proven properties of primes, logarithms, and the LCM function.",
+      "scheduler_mechanism": "Sequential dependency resolution ensuring the quadratic bound is established before the logarithmic comparison.",
+      "alfs_store": "The formalized theorem statement in Mathlib serving as the canonical reference for the inequality.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational resources for symbolic manipulation and type checking in Lean.",
+      "pre_cycle_state": "Unverified conjecture about the growth rate of LCM relative to logarithmic functions.",
+      "post_cycle_state": "Verified theorem with a constructive proof and formal record.",
+      "delta_s_verdict": "\u0394S \u2248 0 \u2014 The proof process transforms uncertainty into certainty without losing information, conserving the logical structure of the domain.",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 IMSCRIB \u2192 FSPLIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR \u2192 IFIX \u2192 TANCH \u2192 IMSCRIB\n-- Class: completed\n-- Fingerprint: sig=(8,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O\u2082dag\n-- FSPLIT/FFUSE pairs: [(2, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc60  | initial object \u2014 ground of distinction\n--   [1] IMSCRIB   gram   := \ud801\udc60               \ud801\udc7c \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] AFWD      rel    := \ud801\udc7e               \ud801\udc5a \u2192 \ud801\udc59  | forward morphism \u2014 bidirectional arrow\n--   [4] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [5] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [6] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [7] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [8] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [9] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc73  | fuse \u03bc \u2014 assembly mode\n--   [10] ENGAGR    stoi   := \ud801\udc73               \ud801\udc59 \u2192 \ud801\udc6d  | engage paradox \u2014 B-state, both arms\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc73 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [12] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [13] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc7c  | identity \u2014 self-imscription\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def completed_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def completed_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def completed_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def completed_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def completed_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def completed_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def completed_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def completed_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def completed_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def completed_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def completed_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def completed_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def completed_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def completed_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def completed_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def completed_protocol : IGProtocol completed_s0 completed_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct completed_s9 completed_s9 = completed_s9 (idempotent)\n  (.seq (.arrow completed_l0 completed_s0 completed_s1) (.seq (.arrow completed_l1 completed_s1 completed_s2) (.seq (.prod (.arrow completed_l2 completed_s2 completed_s9) (.arrow completed_l2 completed_s2 completed_s9)) (.seq (.arrow completed_l9 completed_s9 completed_s9) (.seq (.arrow completed_l9 completed_s9 completed_s10) (.seq (.arrow completed_l10 completed_s10 completed_s11) (.seq (.arrow completed_l11 completed_s11 completed_s12) (.arrow completed_l12 completed_s12 completed_s13))))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def completed_true_arm : IGProtocol completed_s0 completed_s13 :=\n  (completed_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def completed_false_arm : IGProtocol completed_s0 completed_s13 :=\n  (completed_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2082dag.\ndef completed_tier_ground : OuroboricityTier := TierFunctor.obj completed_s0\ndef completed_tier : OuroboricityTier := TierFunctor.obj completed_s13\n#eval completed_tier_ground  -- tier of the ground (pre-transformation)\n#eval completed_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem completed_frobenius :\n    igFrobeniusAlg.mul completed_s0 completed_s0 = completed_s0 :=\n  igFrobAlg_self_fusion completed_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 3,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        2,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: completed",
+  "grounded_tuple": "\u27e8\ud801\udc66\ud801\udc61\ud801\udc51\ud801\udc7f\ud801\udc50\ud801\udc67\ud801\udc5a\ud801\udc5d\u2299\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "\u22a3=\ud801\udc61: The primitive \u22a3 (topology) implies a generic connected graph structure without the specific constraints of containment, cyclic closure, or scale-collapse.\n\u22a2=\ud801\udc66: The \"completed\" state implies a scale-collapse where the boundary fully encapsulates the interior content, rendering surface and interior as a single register.\n\u229e=\ud801\udc73: The asymmetric assignment of distinct primitives (\ud801\udc61 and \ud801\udc66) to the left and right sides indicates different counts or roles on each side.\n\u25fb=\ud801\udc6d: The assignment of a primitive protection symbol indicates the role is stabilized by an integer winding invariant, preventing continuous deformation to a trivial state.\n\u2299=\u2299: The assignment of the primitive \u2299 explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n\u22a5=\ud801\udc56: Persistent chiral symmetry breaking implies multiple structurally enforced axes that maintain memory depth n.\n>=\ud801\udc51: Assigning a primitive to a recognition mode constitutes a structural transformation that binds the abstract concept to a specific operational definition.\n<=\ud801\udc7f: The primitive < denotes a strict ordering or flow with a single direction, indicating a signed interface where one side acts as the donor and the other as the acceptor.\n\u22c8=\ud801\udc50: The 'completed' state implies a finalized, geometry-enforcing configuration that fires with near-certainty.\n\u22a4=\ud801\udc67: The state \"completed\" implies a kinetically frozen configuration where rearrangement is blocked by a high barrier and requires external driving to proceed.\n\u2208=\ud801\udc5a: The completion of a primitive interaction typically propagates through a local motif or cluster rather than affecting the entire system or remaining strictly isolated.\n\u220b=\ud801\udc5d: The primitive \u220b denotes set membership requiring the simultaneous presence of all necessary partners to satisfy the interaction condition.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O\u2080\nImscribing.Primitives.OuroboricityTier.O\u2082dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 14,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": ">\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b\u229e",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "\u2299\u22a2\u2299\u2208>\u22a4\u22c8<\u22a5\u22c8\u220b\u229e\u25fb\u22a3",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 6,
+    "canonical_word": "<\u22a5\u22c8\u220b\u229e\u25fb\u22a3\u2299\u22a2\u2299\u2208>\u22a4\u22c8",
+    "verdict": "PHASE-BEARING \u2014 moves under ROTAT: final_register"
+  }
+}
