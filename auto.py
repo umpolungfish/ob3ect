@@ -10,6 +10,7 @@ Retries on JSON parse failure or Frobenius FAIL (up to max_retries).
 from __future__ import annotations
 import json
 import re
+import subprocess
 import asyncio
 import contextlib
 import sys
@@ -31,7 +32,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from ob3ect.core import (
     Ob3ectArtifact, DomainCharter, OpcodeMap, OpcodeEntry,
     SplitFuseReport, RegisterMapping, BootstrapSequence,
-    ExOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode, glyph_word,
+    MOMonadOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode, glyph_word,
     GLYPH as _CORE_GLYPH,
     OpOpcode, rotat,
 )
@@ -446,7 +447,7 @@ Respond with ONLY a single JSON object — no markdown fences, no explanation ou
     "<OPCODE: domain action>",
     "<... continue one token per step until every distinct operation, branch, state, and decision in the domain is explicitly represented — there is NO maximum length>"
   ],
-  "exos": {
+  "m⊙²": {
     "compiler":  "<what translates domain intentions into operations>",
     "ipc":       "<how components communicate within the system>",
     "memory":    "<how state is stored and retrieved>",
@@ -561,8 +562,14 @@ def _load_raw_catalog() -> List[Dict]:
     return _catalog_cache
 
 
-def _search_catalog(description: str, n: int = 8) -> str:
-    """Return a compact block of the N catalog entries most relevant to description."""
+def _search_catalog(description: str, n: int = 8, context: Optional[str] = None) -> str:
+    """Return a compact block of the N catalog entries most relevant to the request.
+
+    The context counts as part of the request. A description is a sentence and a
+    context is the actual subject — searching the catalog on the sentence alone
+    meant a run handed a Lean file full of its own vocabulary retrieved on the
+    handful of ceremony words in its title instead.
+    """
     entries = _load_raw_catalog()
     if not entries:
         return ""
@@ -572,15 +579,37 @@ def _search_catalog(description: str, n: int = 8) -> str:
     tokens = set(_re.sub(r"[^a-z0-9_]", " ", description.lower()).split())
     tokens -= {"the", "a", "an", "of", "in", "is", "it", "to", "and", "or",
                "for", "with", "that", "this", "are", "be", "as", "by", "at"}
+    # Ceremony is not content. Words like proof/closed/gapless/sorry describe the
+    # STATE a request wants an artifact to reach, and every finished entry in the
+    # catalog says them too — so they match everything and discriminate nothing.
+    # Scored as content they let "SORRY-FREE GAPLESS CLOSED ... PROOF" retrieve
+    # eight entries on ritual phrasing alone, none of which shared a single
+    # mathematical term with the problem actually being imscribed.
+    tokens -= {"proof", "proofs", "prove", "proved", "closed", "close", "completed",
+               "complete", "gapless", "sorry", "free", "sorryfree", "done",
+               "full", "final", "clean", "verified", "valid", "correct"}
+
+    # Context tokens are evidence, but weaker evidence: there are thousands of
+    # them against a description's handful, so they rank on the entry NAME only
+    # and never outvote a term the caller actually wrote.
+    ctx_tokens: set = set()
+    if context:
+        ctx_tokens = set(_re.sub(r"[^a-z0-9_]", " ", context.lower()).split())
+        ctx_tokens = {t for t in ctx_tokens if len(t) > 3} - tokens
 
     def _score(entry: Dict) -> int:
         name_words = set(entry.get("name", "").replace("_", " ").lower().split())
         desc_words = set(_re.sub(r"[^a-z0-9 ]", " ",
                                   entry.get("description", "").lower()).split())
-        return len(tokens & name_words) * 3 + len(tokens & desc_words)
+        return (len(tokens & name_words) * 3 + len(tokens & desc_words)
+                + len(ctx_tokens & name_words))
 
-    ranked = sorted(entries, key=_score, reverse=True)[:n]
-    if not any(_score(e) > 0 for e in ranked):
+    # Each entry earns its own place. Filtering on `any(score > 0)` and then
+    # printing all N let one real match drag seven zero-scoring entries into the
+    # prompt behind it, which is how unrelated problems ended up cited as the
+    # nearest reference.
+    ranked = [e for e in sorted(entries, key=_score, reverse=True)[:n] if _score(e) > 0]
+    if not ranked:
         return ""  # No relevant matches — omit the block
 
     lines = ["CATALOG REFERENCE — nearest IG entries for this domain:"]
@@ -685,12 +714,16 @@ def _build_prompt(
         f"<domain-context>\n{context}\n</domain-context>\n\n"
         if context else ""
     )
-    catalog_block = _search_catalog(description)
+    catalog_block = _search_catalog(description, context=context)
     catalog_section = (
         f"<catalog-reference>\n{catalog_block}\n</catalog-reference>\n\n"
         if catalog_block else ""
     )
-    return f"{catalog_section}{context_block}Design an Ob3ect for:\n\n{description}{dt_hint}\n\n{_SCHEMA}{retry_block}"
+    # Context leads, catalog trails. A context given explicitly with --context is
+    # the subject; the catalog is a neighbourhood hint. Putting the hint first put
+    # 3.4KB of a DIFFERENT solved problem at the head of the prompt, and the model
+    # took its boundary token from there instead of from the file it was handed.
+    return f"{context_block}{catalog_section}Design an Ob3ect for:\n\n{description}{dt_hint}\n\n{_SCHEMA}{retry_block}"
 
 
 def _extract_json(text: str) -> Dict[str, Any]:
@@ -765,40 +798,39 @@ def _validate_sequence(data: Dict[str, Any]) -> None:
     """A step names a token AND says what it does. Raise if it does neither.
 
     `"sequence": ["VINIT", "TANCH", ...]` parses cleanly, builds an artifact,
-    and yields a word that is the twelve marks in the order the prompt happens
-    to list them, with no split/fuse pair and a Frobenius verdict of N. Nothing
-    downstream can tell that apart from a design, and a churn started from one
-    winds it into every child: 155 ob3ects, none closed, every word identical.
-    So it is a parse failure here, where the retry ladder can say what was
-    wrong, rather than an artifact nobody asked for.
+    and yields a word that is the twelve marks in the order the prompt lists
+    them, with no split/fuse pair and a Frobenius verdict of N. Nothing
+    downstream can tell that from a design, and a churn started on one winds it
+    into every child.
+
+    Vox read the first version as F — the lifted graph did not validate, from
+    branches raising out of the middle of a scan. One scan, one decision, one
+    raise at the end.
     """
     seq = data.get("sequence", data.get("bootstrap"))
+    fault = ""
     if not isinstance(seq, list) or not seq:
-        raise ValueError("the 'sequence' field is missing or empty")
-
-    bare = []
-    for i, act in enumerate(seq):
-        text = str(act).strip()
-        action = re.sub(r'^[^A-Za-z]*(?:[A-Z]+:\s*)+', '', text).strip()
-        if not action or action.upper() in _KNOWN_OPCODES:
-            bare.append(f"step {i + 1} ({text!r})")
-    if bare:
-        raise ValueError(
-            "sequence steps name an opcode and nothing else: "
-            + ", ".join(bare[:4])
-            + (f" and {len(bare) - 4} more" if len(bare) > 4 else "")
-            + ". Every step must read 'OPCODE: what this token does at this "
-              "point in THIS domain', in the domain's own vocabulary."
-        )
-
-    opcodes = [_parse_opcode(a) for a in seq]
-    if opcodes == _PROMPT_ALPHABET_ORDER:
-        raise ValueError(
-            "the sequence is the twelve opcodes in the order the prompt lists "
-            "them, which is the alphabet recited rather than a composition. "
-            "Order the tokens by what the domain does, and repeat or omit "
-            "tokens as the domain requires."
-        )
+        fault = "the 'sequence' field is missing or empty"
+    else:
+        bare = [
+            f"step {i + 1} ({str(a).strip()!r})"
+            for i, a in enumerate(seq)
+            if (lambda t: not t or t.upper() in _KNOWN_OPCODES)(
+                re.sub(r"^[^A-Za-z]*(?:[A-Z]+:\s*)+", "", str(a).strip()).strip())
+        ]
+        if bare:
+            fault = ("sequence steps name an opcode and nothing else: "
+                     + ", ".join(bare[:4])
+                     + (f" and {len(bare) - 4} more" if len(bare) > 4 else "")
+                     + ". Every step must read 'OPCODE: what this token does at "
+                       "this point in THIS domain', in the domain's own vocabulary.")
+        elif [_parse_opcode(a) for a in seq] == _PROMPT_ALPHABET_ORDER:
+            fault = ("the sequence is the twelve opcodes in the order the prompt "
+                     "lists them, which is the alphabet recited rather than a "
+                     "composition. Order the tokens by what the domain does, and "
+                     "repeat or omit tokens as the domain requires.")
+    if fault:
+        raise ValueError(fault)
 
 
 def _parse_opcode(step_str: str) -> str:
@@ -815,6 +847,66 @@ def _parse_opcode(step_str: str) -> str:
         if tok in _KNOWN_OPCODES:
             return tok
     return "IMSCRIB"
+
+
+
+_MOMONADOS = Path("/home/mrnob0dy666/imsgct/mOMonadOS")
+
+
+_REPAIR_HOLD = re.compile(r"^(\S)\s+at\s+(\d+)\s+(\S+)$")
+_REPAIR_COUNT = re.compile(r"(\d+)\s+distinct word\(s\) hold, of (\d+) tried")
+_ANSI = re.compile(r"\x1b\[[0-9;]*m")
+
+
+async def _run_kernel(arg: str, timeout: int) -> str:
+    """One kernel command, its transcript, and nothing raised.
+
+    The try lives here alone so the parser above it stays a straight line. A
+    handler edge inside a scan is what Vox reads as a graph that does not
+    validate, and it is also what makes such a function hard to follow.
+    """
+    runner = _MOMONADOS / "run_hosted_cmds.sh"
+    raw = b""
+    if runner.exists():
+        proc = None
+        try:
+            proc = await asyncio.create_subprocess_exec(
+                str(runner), arg, cwd=str(_MOMONADOS),
+                stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
+            so, se = await asyncio.wait_for(proc.communicate(), timeout=timeout)
+            raw = so + se
+        except Exception:
+            raw = b""
+        finally:
+            # wait_for cancels communicate(); it does NOT stop the child. Without
+            # this the timed-out kernel call keeps running with its pipes held, one
+            # orphan per churn node, and a live child at interpreter exit is what
+            # asyncio's subprocess teardown aborts on. Kill, then REAP: an unwaited
+            # child is a zombie, which is the same leak wearing a different name.
+            if proc is not None and proc.returncode is None:
+                try:
+                    proc.kill()
+                    await proc.wait()
+                except Exception:
+                    pass
+    return _ANSI.sub("", raw.decode("utf-8", "replace"))
+
+
+async def _kernel_repairs(word: str, timeout: int = 30) -> Optional[dict]:
+    """Ask the kernel which single-glyph insertions make `word` hold.
+
+    Awaited rather than blocking: `subprocess.run` inside an async design loop
+    stops the loop for the length of the call, which on a churn is once per node
+    with nothing else able to proceed.
+    """
+    out = await _run_kernel(f"insert {word}", timeout) if word else ""
+    holds = [{"glyph": m.group(1), "position": int(m.group(2)), "word": m.group(3)}
+             for m in (_REPAIR_HOLD.match(l.strip()) for l in out.splitlines()) if m]
+    counted = [c for c in (_REPAIR_COUNT.search(l) for l in out.splitlines()) if c]
+    counts = ({"hold": int(counted[0].group(1)), "tried": int(counted[0].group(2))}
+              if counted else None)
+    vacuous = any(l.strip().startswith("vacuous:") for l in out.splitlines())
+    return {"vacuous": vacuous, "holds": holds, "counts": counts} if (counts or holds) else None
 
 
 def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifact:
@@ -890,8 +982,11 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         except Exception:
             pass
 
-    e = data.get("exos", {})
-    exos = ExOSSpec(
+    # Phase 5 is m⊙², the kernel spec. It was keyed "exos" everywhere — in the
+    # prompt the model answers, in the artifact, in the templates — which is the
+    # old name for it and the one thing about the phase that was stale.
+    e = data.get("m⊙²", {})
+    momonados = MOMonadOSSpec(
         compiler_frontend=e.get("compiler", ""),
         ipc_mechanism=e.get("ipc", ""),
         memory_mechanism=e.get("memory", ""),
@@ -916,7 +1011,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         split_fuse_report=split_fuse,
         register_mapping=registers,
         bootstrap_sequence=bootstrap,
-        exos_spec=exos,
+        momonados_spec=momonados,
         entropy_audit=entropy,
         instantiation_notes=f"Auto-designed from: {name}",
     )
@@ -1020,6 +1115,33 @@ def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False, trilatti
     except Exception as e:
         print(f"  Diagram: generation failed ({e}) — skipping")
         return None
+
+
+
+def _print_artifact_block(art: "Ob3ectArtifact", no_scaffold: bool = False) -> None:
+    """Everything a single run prints for one ob3ect.
+
+    The churn produced artifacts identical in every field to a single run and
+    showed one line each, so the phases, the word, the register walk, the ROTAT
+    audit and the validation were computed and not shown. One block, both paths.
+
+    Vox read the first version as B — an early branch printed and returned
+    without rejoining. The block is assembled and then emitted once.
+    """
+    errs = art.validate_all()
+    out = [art.report(), f"\nValid: {art.is_valid_ob3ect}"]
+    if any(v for v in errs.values()):
+        out.append(f"Validation issues: {({k: v for k, v in errs.items() if v})}")
+    rep = art.kernel_repairs or {}
+    counts = rep.get("counts") or {}
+    if counts:
+        out.append(f"\nKernel repair set: {counts.get('hold', 0)} of "
+                   f"{counts.get('tried', 0)} one-glyph insertions hold")
+        out += [f"  {h['glyph']} at {h['position']:>2}   {h['word']}"
+                for h in rep.get("holds", [])[:6]]
+    if art.lean_scaffold and not no_scaffold:
+        out += ["\n" + "=" * 70, "Lean Scaffold", "=" * 70, art.lean_scaffold]
+    print("\n".join(out))
 
 
 def _write_diagrams(artifact: Ob3ectArtifact, dir_path: Path, slug: str) -> Optional[Path]:
@@ -1136,6 +1258,15 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
         artifact.lean_verification_output = "`lake` not found on PATH — could not elaborate."
         return
     except asyncio.TimeoutError:
+        # Same reaping the kernel call needs: wait_for cancels communicate() but
+        # leaves `lake` running. On a churn this fires once per node, so the
+        # orphans accumulate for the whole walk and the last of them is still
+        # alive when the interpreter tears down.
+        try:
+            proc.kill()
+            await proc.wait()
+        except Exception:
+            pass
         artifact.lean_verification_output = "lake env lean timed out after 180s."
         return
 
@@ -1196,6 +1327,21 @@ async def _run_gated_imscription(description: str, provider_name: Optional[str],
 
 class _EmptyResponse(RuntimeError):
     """The provider answered with no text at all."""
+
+
+# Providers that could not be REACHED in this process. A churn calls auto_design
+# once per node and rebuilds the chain each time, so a dead loopback server was
+# dialled, timed out and reported again for every one of 157 nodes. Unreachable
+# is a fact about the machine and it does not change between nodes; a 400 or a
+# bad answer is a fact about the request and is not recorded here.
+_UNREACHABLE: set = set()
+
+
+def _is_unreachable(err: Exception) -> bool:
+    text = f"{type(err).__name__}: {err}".lower()
+    return any(k in text for k in (
+        "connecterror", "connection attempts failed", "connection refused",
+        "connecttimeout", "name or service not known", "network is unreachable"))
 
 
 # How many times a single provider may return unparseable text before the chain
@@ -1312,17 +1458,22 @@ async def auto_design(
         chain.insert(0, provider_name)
         providers = []
         for n in chain:
+            if n in _UNREACHABLE:
+                continue
             try:
                 kwargs = _model_for(n) if n == provider_name else {}
                 p = get_llm_provider(n, **kwargs)
                 if hasattr(p, "model_path") and not Path(p.model_path).exists():
                     continue
+                p._ig_chain_name = n
                 providers.append(p)
             except Exception:
                 continue
     else:
         providers = []
         for n in _PROVIDER_CHAIN:
+            if n in _UNREACHABLE:
+                continue
             try:
                 # The model was named for the FIRST provider in the chain, not for
                 # whichever one happens to be reached after a failure.
@@ -1330,13 +1481,16 @@ async def auto_design(
                 p = get_llm_provider(n, **kwargs)
                 if hasattr(p, "model_path") and not Path(p.model_path).exists():
                     continue
+                p._ig_chain_name = n
                 providers.append(p)
             except Exception:
                 continue
 
     if not providers:
+        gone = ", ".join(sorted(_UNREACHABLE)) or "none"
         raise RuntimeError(
-            "No provider available. Check QWEN_API_KEY / DEEPSEEK_API_KEY env vars."
+            "No provider available. Unreachable this run: " + gone +
+            ". Check QWEN_API_KEY / DEEPSEEK_API_KEY, or start the local server."
         )
 
     provider_idx = 0
@@ -1361,6 +1515,11 @@ async def auto_design(
                 f"All {len(providers)} providers failed:\n  {detail}"
             ) from err
         prev = tried[-1]
+        if _is_unreachable(err):
+            dead = getattr(providers[provider_idx - 1], "_ig_chain_name", None)
+            if dead and dead not in _UNREACHABLE:
+                _UNREACHABLE.add(dead)
+                print(f"  [{dead} is unreachable — not dialled again this run]")
         provider = providers[provider_idx]
         # The reason belongs AT the switch, not only in the aggregate raised
         # after the last provider dies: a chain that announces three switches
@@ -1419,6 +1578,11 @@ async def auto_design(
             # toward domain invertibility instead of describing the fork's structure.
             slug = _make_unique_slug(artifact_name)
             await _verify_lean_scaffold(artifact, slug)
+            # What the kernel says would close it, when it does not close. One
+            # await, only for a word that failed, so a closing design pays
+            # nothing for this.
+            if artifact.split_fuse_report.frobenius_verdict not in ("T", "B"):
+                artifact.kernel_repairs = await _kernel_repairs(artifact.glyph_word)
             return artifact
 
         except httpx.HTTPStatusError as e:
@@ -1875,8 +2039,38 @@ def _parse_retries(v):
     return int(v)
 
 
+def _install_interrupt_handler() -> None:
+    """Make Ctrl+C exit immediately instead of dumping core.
+
+    The design call runs `model.generate()` on the default executor, which is a
+    long NATIVE torch/CUDA call. SIGINT is delivered to the main thread only and
+    native code never checks for it, so the normal unwind does this: KeyboardInterrupt
+    raises here, `asyncio.run` calls `loop.shutdown_default_executor()`, that JOINS a
+    worker wedged inside a CUDA kernel, and the interpreter finalises anyway with a
+    live CUDA context still attached — which aborts, and the abort is the core dump.
+
+    There is nothing to unwind that matters: artifacts are written when they complete,
+    never partially. So the first Ctrl+C skips finalisation entirely with os._exit,
+    which tears the process down without touching the CUDA context. 130 is the
+    conventional status for death by SIGINT.
+    """
+    import signal as _signal
+
+    def _handler(signum, frame):  # noqa: ARG001
+        # os.write on fd 2, not sys.stderr.write: the spinner daemon may be holding
+        # the BufferedWriter lock at this instant, and taking that lock inside a
+        # signal handler is how the same deadlock gets re-entered from the handler
+        # meant to avoid it. A raw fd write needs no lock.
+        os.write(2, b"\ninterrupted\n")
+        os._exit(130)
+
+    _signal.signal(_signal.SIGINT, _handler)
+    _signal.signal(_signal.SIGTERM, _handler)
+
+
 if __name__ == "__main__":
     import argparse
+    _install_interrupt_handler()
     ap = argparse.ArgumentParser(description="Auto-design an Ob3ect from a description.")
     ap.add_argument("description", nargs="*", help="Natural-language description (omit when using -f)")
     ap.add_argument("-f", "--yaml", "--file", dest="yaml_config", default=None, metavar="CONFIG.yaml",
@@ -2069,6 +2263,11 @@ if __name__ == "__main__":
             tag = f"w{node.winding}" + (f"_{node.opcode.lower()}" if node.opcode else "_root")
             n_dir = out_dir / f"{tag}_{n_slug}"
             n_dir.mkdir(parents=True, exist_ok=True)
+            print("\n" + "=" * 70)
+            print(f"[w={node.winding}]" + (f" {node.opcode}" if node.opcode else " root")
+                  + f"  {node.description[:70]}")
+            print("=" * 70)
+            _print_artifact_block(node.artifact, no_scaffold=args.no_scaffold)
             node.artifact.save(n_dir / f"{n_slug}_ob3ect.json")
             if node.artifact.lean_scaffold and not args.no_scaffold:
                 (n_dir / f"{n_slug}_scaffold.lean").write_text(node.artifact.lean_scaffold)
@@ -2146,18 +2345,7 @@ if __name__ == "__main__":
             context=ctx,
             stream=args.stream,
         )
-    print(art.report())
-    errs = art.validate_all()
-    has_errors = any(v for v in errs.values())
-    print(f"\nValid: {art.is_valid_ob3ect}")
-    if has_errors:
-        print("Validation issues:", {k: v for k, v in errs.items() if v})
-    if not args.no_scaffold:
-        if art.lean_scaffold:
-            print("\n" + "="*70)
-            print("Lean Scaffold")
-            print("="*70)
-            print(art.lean_scaffold)
+    _print_artifact_block(art, no_scaffold=args.no_scaffold)
 
     # ── Persist to disk ──────────────────────────────────────────────────
     slug = _make_unique_slug(ob3ect_name)
