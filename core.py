@@ -2,6 +2,7 @@
 Author: Lando⊗⊙-boundary Operator"""
 from __future__ import annotations
 import json
+import re
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 from pathlib import Path
@@ -48,6 +49,57 @@ class RegisterState(Enum):
 # Authority is MoDoT ask_native/src/imasm.rs Token::code(); this mirrors it.
 GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":">","AREV":"<","CLINK":"⋈","IMSCRIB":"⊙",
          "FSPLIT":"∈","FFUSE":"∋","EVALT":"⊤","EVALF":"⊥","ENGAGR":"⊞","IFIX":"◻"}
+
+# The mark is the name. VINIT/TANCH/FSPLIT are how the twelve are SPELLED for a
+# keyboard, not what they are, and an artifact that ships the spelling makes the
+# reader translate a notation it already knows. Serialisation renders marks;
+# anything reading an artifact back accepts either, because artifacts written
+# before this exist and are not being rewritten.
+UNGLYPH = {v: k for k, v in GLYPH.items()}
+
+
+def as_opcode(x):
+    """A mark or a mnemonic, in; the mnemonic, out. Unknown tokens pass through."""
+    return UNGLYPH.get(x, x)
+
+
+def as_mark(x):
+    """A mnemonic or a mark, in; the mark, out. Unknown tokens pass through."""
+    return GLYPH.get(x, x)
+
+
+# "FSPLIT: the proof forks" -> "∈: the proof forks". Only a LEADING mnemonic is
+# rewritten: the same letters inside prose are prose.
+_LEADING_MNEMONIC = re.compile(r"^(" + "|".join(GLYPH) + r")\b")
+
+
+def _mark_prefix(text):
+    if not isinstance(text, str):
+        return text
+    return _LEADING_MNEMONIC.sub(lambda m: GLYPH[m.group(1)], text, count=1)
+
+
+def _mark_entry(d):
+    """One phase_1 entry, with its opcode field carrying the mark."""
+    if "opcode" in d:
+        d["opcode"] = as_mark(d["opcode"])
+    return d
+
+
+def _mark_bootstrap(d):
+    """phase_4: every step names its token by mark."""
+    for st in d.get("steps") or []:
+        if "opcode" in st:
+            st["opcode"] = as_mark(st["opcode"])
+    return d
+
+
+def _mark_frobenius(d):
+    """phase_2: split_element and fuse_element lead with the mark, not the spelling."""
+    for k in ("split_element", "fuse_element"):
+        if k in d:
+            d[k] = _mark_prefix(d[k])
+    return d
 
 def glyph_word(ops):
     """Glue an opcode sequence into its single-glyph IMASM word: ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣.
@@ -189,7 +241,7 @@ class BootstrapSequence:
         return e
 
 @dataclass
-class ExOSSpec:
+class MOMonadOSSpec:
     compiler_frontend:str; ipc_mechanism:str; memory_mechanism:str
     scheduler_mechanism:str; alfs_store:str; alfs_bootstrap_program:str = ""
     def validate(self):
@@ -210,7 +262,7 @@ class EntropyAudit:
 class Ob3ectArtifact:
     name: str; domain_charter: DomainCharter; opcode_map: OpcodeMap
     split_fuse_report: SplitFuseReport; register_mapping: RegisterMapping
-    bootstrap_sequence: BootstrapSequence; exos_spec: ExOSSpec
+    bootstrap_sequence: BootstrapSequence; momonados_spec: MOMonadOSSpec
     entropy_audit: EntropyAudit; instantiation_notes: str = ""
     lean_scaffold: Optional[str] = None
     topology_report: Optional[Any] = None  # TopologyReport if topology module available
@@ -254,11 +306,15 @@ class Ob3ectArtifact:
     # (lexicographically minimal glyph word), since a balanced tiling of a
     # period-n cycle is unique up to ROTAT.
     rotat_audit: Optional[dict] = None
+    # What the KERNEL says would close this word, when it does not close.
+    # `insert` sweeps every one-glyph insertion at every position; the kernel
+    # owns that sweep, so this is carried rather than recomputed here.
+    kernel_repairs: Optional[dict] = None
 
     def validate_all(self):
         return {"phase_0":self.domain_charter.validate(),"phase_1":self.opcode_map.validate(),
             "phase_2":self.split_fuse_report.validate(),"phase_3":self.register_mapping.validate(),
-            "phase_4":self.bootstrap_sequence.validate(),"phase_5":self.exos_spec.validate(),
+            "phase_4":self.bootstrap_sequence.validate(),"phase_5":self.momonados_spec.validate(),
             "phase_6":self.entropy_audit.validate()}
 
     @property
@@ -320,12 +376,12 @@ class Ob3ectArtifact:
             parts.append("           the edges are not in it, so the same word wired two ways")
             parts.append("           is two different programs)")
         parts.append("")
-        parts.append("Phase 5: m⊙²")
-        parts.append("  Compiler: "+a.exos_spec.compiler_frontend)
-        parts.append("  IPC: "+a.exos_spec.ipc_mechanism)
-        parts.append("  Memory: "+a.exos_spec.memory_mechanism)
-        parts.append("  Scheduler: "+a.exos_spec.scheduler_mechanism)
-        parts.append("  ALFS: "+a.exos_spec.alfs_store)
+        parts.append("Phase 5: m\u2299\u00b2")
+        parts.append("  Compiler: "+a.momonados_spec.compiler_frontend)
+        parts.append("  IPC: "+a.momonados_spec.ipc_mechanism)
+        parts.append("  Memory: "+a.momonados_spec.memory_mechanism)
+        parts.append("  Scheduler: "+a.momonados_spec.scheduler_mechanism)
+        parts.append("  ALFS: "+a.momonados_spec.alfs_store)
         parts.append("")
         parts.append("Phase 6: Entropy")
         parts.append("  DS: "+a.entropy_audit.delta_s_verdict)
@@ -386,12 +442,19 @@ class Ob3ectArtifact:
         return {"name":self.name,"is_valid_ob3ect":self.is_valid_ob3ect,
             "validations":self.validate_all(),
             "phases":{"phase_0":asdict(self.domain_charter),
-                "phase_1":{k:asdict(v) for k,v in self.opcode_map.entries.items()},
-                "phase_2":asdict(self.split_fuse_report),
+                "phase_1":{as_mark(k):_mark_entry(asdict(v))
+                           for k,v in self.opcode_map.entries.items()},
+                "phase_2":_mark_frobenius(asdict(self.split_fuse_report)),
                 "phase_3":asdict(self.register_mapping),
-                "phase_4":asdict(self.bootstrap_sequence),
-                "phase_5":asdict(self.exos_spec),
+                "phase_4":_mark_bootstrap(asdict(self.bootstrap_sequence)),
+                "phase_5":asdict(self.momonados_spec),
                 "phase_6":asdict(self.entropy_audit)},
+            # The IMASM word is the object. It was computed, printed to the
+            # terminal and then dropped on the way to disk, so every saved
+            # artifact and every churn node lacked the one field the pipeline
+            # exists to produce.
+            "glyph_word":getattr(self,"glyph_word",""),
+            "sixteen_3_breakdown":getattr(self,"sixteen_3_breakdown",None),
             "lean_scaffold":self.lean_scaffold,
             "topology_report":(self.topology_report.to_dict() if self.topology_report else None),
             "notes":self.instantiation_notes,
@@ -402,13 +465,18 @@ class Ob3ectArtifact:
             "grounding_reasoning":self.grounding_reasoning,
             "lean_verified":self.lean_verified,
             "lean_verification_output":self.lean_verification_output,
-            "rotat_audit":self.rotat_audit}
+            "rotat_audit":self.rotat_audit,
+            "kernel_repairs":self.kernel_repairs}
 
     def to_json(self, indent=2):
-        return json.dumps(self.to_dict(), indent=indent)
+        # ensure_ascii escaped every mark and every accented name: the artifact for
+        # Erdos #3 said \\u0151 for the o and \\u22a2 for the turnstile, so the one
+        # field the pipeline exists to produce was unreadable in the file it was
+        # written to.
+        return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)
 
     def save(self, path):
-        p=Path(path); p.write_text(self.to_json()); return p
+        p=Path(path); p.write_text(self.to_json(), encoding="utf-8"); return p
 class DomainTemplate:
     """Wraps a domain config dict and provides auto-fill for all phases."""
     def __init__(self, config: Dict[str,Any]):
@@ -419,7 +487,7 @@ class DomainTemplate:
         self.frobenius = config["frobenius"]
         self.registers = config["registers"]
         self.bootstrap = config.get("sequence", config.get("bootstrap", []))
-        self.exos = config["exos"]
+        self.momonados = config["m⊙²"]
         self.entropy = config["entropy"]
 
     def charter(self, domain_name: str, scope: str, override: Dict[str,Any] = None) -> DomainCharter:
@@ -485,10 +553,10 @@ class DomainTemplate:
             steps.append({"step_num": i+1, "opcode": opcode, "domain_action": domain_action})
         return BootstrapSequence(steps=steps, closure_verified=True)
 
-    def exos_spec(self, override: Dict[str,Any] = None) -> ExOSSpec:
-        e = self.exos
-        ov = (override or {}).get("exos",{})
-        return ExOSSpec(
+    def momonados_spec(self, override: Dict[str,Any] = None) -> MOMonadOSSpec:
+        e = self.momonados
+        ov = (override or {}).get("m⊙²",{})
+        return MOMonadOSSpec(
             compiler_frontend=ov.get("compiler_frontend", e.get("compiler","")),
             ipc_mechanism=ov.get("ipc_mechanism", e.get("ipc","")),
             memory_mechanism=ov.get("memory_mechanism", e.get("memory","")),
@@ -511,7 +579,7 @@ class DomainTemplate:
             name=name, domain_charter=self.charter(name, scope, override),
             opcode_map=self.opcode_map(override), split_fuse_report=self.split_fuse(override),
             register_mapping=self.registers_map(override), bootstrap_sequence=self.bootstrap_seq(override),
-            exos_spec=self.exos_spec(override), entropy_audit=self.entropy_audit(override),
+            momonados_spec=self.momonados_spec(override), entropy_audit=self.entropy_audit(override),
             instantiation_notes="Produced by Ob3ectFactory from %s template" % self.label)
 
 class Ob3ectFactory:
@@ -541,7 +609,7 @@ class Ob3ectFactory:
         tpl = cls._templates[domain_type]
         override = overrides or {}
         if context:
-            for phase_key in ["opcodes","frobenius","registers","bootstrap","exos","entropy"]:
+            for phase_key in ["opcodes","frobenius","registers","bootstrap","m⊙²","entropy"]:
                 if phase_key in context:
                     if phase_key not in override: override[phase_key] = {}
                     override[phase_key].update(context[phase_key])
@@ -586,8 +654,8 @@ class Ob3ectPipeline:
     def design_bootstrap(self, steps=None):
         steps = steps or [{"step_num": 1, "opcode": "IMSCRIB", "domain_action": "identity"}]
         self._advance(4, BootstrapSequence(steps=steps, closure_verified=True))
-    def specify_exos(self, compiler, ipc, memory, scheduler, alfs):
-        self._advance(5, ExOSSpec(compiler_frontend=compiler, ipc_mechanism=ipc,
+    def specify_momonados(self, compiler, ipc, memory, scheduler, alfs):
+        self._advance(5, MOMonadOSSpec(compiler_frontend=compiler, ipc_mechanism=ipc,
             memory_mechanism=memory, scheduler_mechanism=scheduler, alfs_store=alfs))
     def audit_entropy(self, cost, pre, post, delta_s, failure=""):
         self._advance(6, EntropyAudit(cycle_cost=cost, pre_cycle_state=pre,
@@ -600,7 +668,7 @@ class Ob3ectPipeline:
             split_fuse_report=self._artifacts["phase_2"],
             register_mapping=self._artifacts["phase_3"],
             bootstrap_sequence=self._artifacts["phase_4"],
-            exos_spec=self._artifacts["phase_5"],
+            momonados_spec=self._artifacts["phase_5"],
             entropy_audit=self._artifacts["phase_6"],
             instantiation_notes=notes or "Manual pipeline")
 

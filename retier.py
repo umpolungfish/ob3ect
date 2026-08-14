@@ -98,7 +98,7 @@ def process(json_path, dry=False):
                 counts["scaffold"] += 1
             if has_json_scaf and d.get("lean_scaffold") != new_scaf:
                 d["lean_scaffold"] = new_scaf
-                Path(json_path).write_text(json.dumps(d, indent=2), encoding="utf-8")
+                Path(json_path).write_text(json.dumps(d, indent=2, ensure_ascii=False), encoding="utf-8")
                 counts["json"] = True
     return ("ok", tier, counts)
 

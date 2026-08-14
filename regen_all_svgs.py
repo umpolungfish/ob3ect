@@ -1,3 +1,4 @@
+from core import as_opcode
 #!/usr/bin/env python3
 """Regenerate ALL ob3ect SVGs — both naming patterns (_diagram and _ob3ect_diagram),
 color + pen, plus drawdoc/nodraw copies, plus canonicals and novels."""
@@ -48,14 +49,14 @@ DIGITAL = OB3ECT / "digital"
 def extract_opcodes(artifact: dict):
     bs = artifact.get("bootstrap_sequence")
     if bs and isinstance(bs, dict) and "steps" in bs:
-        return [s["opcode"] for s in bs["steps"]]
+        return [as_opcode(s["opcode"]) for s in bs["steps"]]
     ph4 = artifact.get("phases", {}).get("phase_4", {})
     steps = ph4.get("steps", [])
     if steps:
-        return [s["opcode"] for s in steps]
+        return [as_opcode(s["opcode"]) for s in steps]
     ph1 = artifact.get("phases", {}).get("phase_1", {})
     if ph1:
-        return list(ph1.keys())
+        return [as_opcode(k) for k in ph1.keys()]
     return []
 
 def regen_one(jp, name, graph, tier, desc, ops):

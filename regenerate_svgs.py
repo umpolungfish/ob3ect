@@ -1,3 +1,4 @@
+from core import as_opcode
 #!/usr/bin/env python3
 """Regenerate all B&W pen wiring diagrams for every ob3ect in digital/.
 
@@ -73,14 +74,14 @@ def regenerate_one(json_path: Path, force: bool = False):
     ph4 = phases.get("phase_4", {})
     steps = ph4.get("steps", [])
     if steps:
-        ops_12 = [s["opcode"] for s in steps]
+        ops_12 = [as_opcode(s["opcode"]) for s in steps]
         print(f"    (extracted {len(ops_12)} opcodes from phase_4)")
     else:
         phase1 = phases.get("phase_1", {})
         if not phase1:
             print(f"  SKIP (no phase_4 and no phase_1): {slug}")
             return
-        ops_12 = list(phase1.keys())
+        ops_12 = [as_opcode(k) for k in phase1.keys()]
         print(f"    (fallback: extracted {len(ops_12)} opcodes from phase_1 keys)")
 
     if not ops_12:

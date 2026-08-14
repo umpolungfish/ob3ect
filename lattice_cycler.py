@@ -1,3 +1,4 @@
+from core import as_opcode
 #!/usr/bin/env python3
 """Lattice cycler — walk a word around its ROTAT orbit and report what moves.
 
@@ -180,7 +181,7 @@ def main():
     if args.entry:
         data = json.loads(Path(args.entry).read_text(encoding="utf-8"))
         seq = (data.get("phases", {}).get("phase_4", {}) or {}).get("steps", [])
-        steps = [s["opcode"] for s in seq]
+        steps = [as_opcode(s["opcode"]) for s in seq]
         if not steps:
             ap.error(f"no bootstrap sequence found in {args.entry}")
     elif args.word:
