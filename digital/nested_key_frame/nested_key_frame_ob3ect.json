@@ -1,0 +1,310 @@
+{
+  "name": "nested_key_frame",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "nested_key_frame",
+      "domain_type": "nested_frame_closure",
+      "scope": "local",
+      "surface_tokens": [
+        "tuple seed",
+        "outer frame",
+        "inner frame",
+        "register bank",
+        "closure verdict"
+      ],
+      "boundary_condition": "The outer frame opens first and closes last, so both frames and their AREV work sit inside one boundary; the register is N before the first token and N after the last, which is what closure by construction means.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "VINIT": {
+        "opcode": "VINIT",
+        "chosen_element": "VINIT",
+        "justification": "Open the boundary: dimensionality no-op; reads the initial state into the register.",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "opcode": "TANCH",
+        "chosen_element": "TANCH",
+        "justification": "Close the boundary: topology no-op; seals the word at its end.",
+        "rejected_candidates": []
+      },
+      "AFWD": {
+        "opcode": "AFWD",
+        "chosen_element": "AFWD",
+        "justification": "Advance: relational work that moves the machine forward one step.",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "opcode": "AREV",
+        "chosen_element": "AREV",
+        "justification": "Reverse: the clearing move; clears the register to EMPTY, and since the register here is N throughout, AREV from N is the identity on N — the work sits inside the frames and leaves nothing exposed.",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "opcode": "CLINK",
+        "chosen_element": "CLINK",
+        "justification": "Compose with a return: fidelity-preserving call/return pair.",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "opcode": "IMSCRIB",
+        "chosen_element": "IMSCRIB",
+        "justification": "Self-imscription: the identity; criticality no-op, refers the word to itself.",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "opcode": "FSPLIT",
+        "chosen_element": "FSPLIT",
+        "justification": "Open a frame: δ, the fork; from register N it forks to N,N and opens a scope the AREV work cannot escape.",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "opcode": "FFUSE",
+        "chosen_element": "FFUSE",
+        "justification": "Close a frame: μ, the fuse; folds the frame contents back into the register, N,N → N, restoring the enclosing register exactly.",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "opcode": "EVALT",
+        "chosen_element": "EVALT",
+        "justification": "Deposit T: kinetics work that touches the {T} cell.",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "opcode": "EVALF",
+        "chosen_element": "EVALF",
+        "justification": "Deposit F: chirality work that touches the {F} cell.",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "opcode": "ENGAGR",
+        "chosen_element": "ENGAGR",
+        "justification": "The Belnap diagonal: stoichiometry work on the {t,f} cell.",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "opcode": "IFIX",
+        "chosen_element": "IFIX",
+        "justification": "Fix the result: winding work that sets fixed=True on the final register.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "∈ FSPLIT3 at position 0",
+      "split_input": "N",
+      "split_outputs": [
+        "N",
+        "N"
+      ],
+      "fuse_element": "∋ FFUSE3 at position 6",
+      "fuse_result": "N",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "N — the empty register; nothing is ever at risk because the AREV clears fire against N and N is already empty.",
+      "true_description": "T — the deposit cell for EVALT work.",
+      "false_description": "F — the deposit cell for EVALF work.",
+      "both_description": "B — the Belnap diagonal, T and F held at once, the dialetheic cell.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "FSPLIT",
+          "domain_action": "∈"
+        },
+        {
+          "step_num": 2,
+          "opcode": "AREV",
+          "domain_action": "<"
+        },
+        {
+          "step_num": 3,
+          "opcode": "FSPLIT",
+          "domain_action": "∈"
+        },
+        {
+          "step_num": 4,
+          "opcode": "AREV",
+          "domain_action": "<"
+        },
+        {
+          "step_num": 5,
+          "opcode": "FFUSE",
+          "domain_action": "∋"
+        },
+        {
+          "step_num": 6,
+          "opcode": "AREV",
+          "domain_action": "<"
+        },
+        {
+          "step_num": 7,
+          "opcode": "FFUSE",
+          "domain_action": "∋"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The word is the program: ∈<∈<∋<∋ needs no frontend because the glyph sequence IS the compiled form.",
+      "ipc_mechanism": "The frame pair is the only channel: FSPLIT and FFUSE pass the register between the inner and outer frames.",
+      "memory_mechanism": "The register bank is the memory: N/T/F/B are the four cells and the frames are the nesting above them.",
+      "scheduler_mechanism": "Sequential: tokens execute in order 0..6, outer frame 0→6, inner frame 2→4, no branch ever taken (both arms empty).",
+      "alfs_store": "No unbounded store is needed: the artifact closes entirely within the register and its two frames.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "7 tokens, 2 frames, 3 clears, 2 fuses",
+      "pre_cycle_state": "N",
+      "post_cycle_state": "N",
+      "delta_s_verdict": "ΔS ≈ 0",
+      "failure_mode": ""
+    }
+  },
+  "lean_scaffold": "-- IGProtocol scaffold: FSPLIT → AREV → FSPLIT → AREV → FFUSE → AREV → FFUSE\n-- Class: nested_key_frame\n-- Fingerprint: sig=(3,4,0,0)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=7\n-- Expected tier: O₀\n-- FSPLIT/FFUSE pairs: [(2, 4), (0, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [1] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑙  | split δ — range decomposition\n--   [3] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [4] FFUSE     stoi   := 𐑙               𐑚 → 𐑙  | fuse μ — assembly mode\n--   [5] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] FFUSE     stoi   := 𐑙               𐑙 → 𐑚  | fuse μ — assembly mode\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def nested_key_frame_s0 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_s1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_s2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_s3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_s4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_s5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_s6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def nested_key_frame_l0 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def nested_key_frame_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def nested_key_frame_protocol : IGProtocol nested_key_frame_s0 nested_key_frame_s6 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct nested_key_frame_s4 nested_key_frame_s4 = nested_key_frame_s4 (idempotent)\n  (.seq (.prod (.arrow nested_key_frame_l0 nested_key_frame_s0 nested_key_frame_s4) (.arrow nested_key_frame_l0 nested_key_frame_s0 nested_key_frame_s4)) (.seq (.arrow nested_key_frame_l4 nested_key_frame_s4 nested_key_frame_s4) (.seq (.arrow nested_key_frame_l4 nested_key_frame_s4 nested_key_frame_s5) (.arrow nested_key_frame_l5 nested_key_frame_s5 nested_key_frame_s6))))\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₀.\ndef nested_key_frame_tier_ground : OuroboricityTier := TierFunctor.obj nested_key_frame_s0\ndef nested_key_frame_tier : OuroboricityTier := TierFunctor.obj nested_key_frame_s6\n#eval nested_key_frame_tier_ground  -- tier of the ground (pre-transformation)\n#eval nested_key_frame_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem nested_key_frame_frobenius :\n    igFrobeniusAlg.mul nested_key_frame_s0 nested_key_frame_s0 = nested_key_frame_s0 :=\n  igFrobAlg_self_fusion nested_key_frame_s0\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 1,
+    "sequence_length": 7,
+    "t_branch_ops": 3,
+    "f_branch_ops": 0,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      0,
+      2
+    ],
+    "fuse_positions": [
+      4,
+      6
+    ],
+    "pair_list": [
+      [
+        2,
+        4
+      ],
+      [
+        0,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 0,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: nested_key_frame",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "∈<∈<∋<∋",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 0,
+    "inert": 0,
+    "verdict": "nothing was at risk: no clear ever fired against a live register, nothing deposited",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 7,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "∈<∈<∋<∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 1,
+        "word": "<∈<∋<∋∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 2,
+        "word": "∈<∋<∋∈<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 3,
+        "word": "<∋<∋∈<∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 4,
+        "word": "∋<∋∈<∈<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 5,
+        "word": "<∋∈<∈<∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      },
+      {
+        "k": 6,
+        "word": "∋∈<∈<∋<",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "nested"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": true,
+      "topology_class": true
+    },
+    "canonical_k": 1,
+    "canonical_word": "<∈<∋<∋∈",
+    "verdict": "SYMMETRY — every readout is ROTAT-invariant (spectral)"
+  }
+}

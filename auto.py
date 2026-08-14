@@ -1008,8 +1008,18 @@ def _write_diagrams(artifact: Ob3ectArtifact, dir_path: Path, slug: str) -> Opti
 _PROVIDER_CHAIN: List[str] = ["local", "openrouter", "deepseek"]
 
 # IG_PROVIDER env var → promote to front of chain (respects IG_MODEL for model selection)
+#
+# The local OpenAI-compatible servers belong in this list. They were missing, so
+# IG_PROVIDER=vllm was accepted by the shell, silently dropped here, and the run
+# went to a cloud provider anyway — the failure looked like a billing error
+# rather than a routing one.
+_LOCAL_HTTP_PROVIDERS = ("vllm", "llama-server", "llamacpp", "ollama",
+                         "lm-studio", "lmstudio", "local-http")
 _IG_PROVIDER = os.environ.get("IG_PROVIDER", "").strip().lower()
-if _IG_PROVIDER and _IG_PROVIDER in ("anthropic", "google", "gemini", "deepseek", "qwen", "openrouter", "mistral", "aider"):
+if _IG_PROVIDER and _IG_PROVIDER in (
+    ("anthropic", "google", "gemini", "deepseek", "qwen", "openrouter",
+     "mistral", "aider", "local") + _LOCAL_HTTP_PROVIDERS
+):
     _PROVIDER_CHAIN = [_IG_PROVIDER] + [p for p in _PROVIDER_CHAIN if p != _IG_PROVIDER]
 
 
@@ -1215,7 +1225,10 @@ async def auto_design(
         if not model:
             return {}
         looks_local = model.startswith(("/", "~", ".")) or Path(model).expanduser().exists()
-        if looks_local and provider != "local":
+        # llama-server and vLLM identify their model BY PATH, so a path is a
+        # valid id for them too; the rule is "a path goes only to a provider
+        # that loads paths", not "only to the provider named local".
+        if looks_local and provider not in (("local",) + _LOCAL_HTTP_PROVIDERS):
             return {}
         return {"model": model}
 
