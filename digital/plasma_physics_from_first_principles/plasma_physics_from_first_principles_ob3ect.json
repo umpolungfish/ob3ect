@@ -17,10 +17,10 @@
       "scope": "local",
       "surface_tokens": [
         "Langmuir oscillation",
-        "Alfv\u00e9n wave",
+        "Alfvén wave",
         "Debye sphere"
       ],
-      "boundary_condition": "Debye sphere \u2014 the natural screening length beyond which charge neutrality is enforced",
+      "boundary_condition": "Debye sphere — the natural screening length beyond which charge neutrality is enforced",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
@@ -33,7 +33,7 @@
       "TANCH": {
         "opcode": "TANCH",
         "chosen_element": "Debye sphere",
-        "justification": "The closed boundary of electrostatic influence; within one Debye length, charge imbalances are felt, outside they are screened, defining the system\u2019s containment",
+        "justification": "The closed boundary of electrostatic influence; within one Debye length, charge imbalances are felt, outside they are screened, defining the system’s containment",
         "rejected_candidates": []
       },
       "AFWD": {
@@ -57,19 +57,19 @@
       "IMSCRIB": {
         "opcode": "IMSCRIB",
         "chosen_element": "self-consistent electromagnetic fields",
-        "justification": "Self-reference: the plasma generates fields that determine particle motion, which in turn generates those same fields; the system\u2019s identity is its own field-particle loop",
+        "justification": "Self-reference: the plasma generates fields that determine particle motion, which in turn generates those same fields; the system’s identity is its own field-particle loop",
         "rejected_candidates": []
       },
       "FSPLIT": {
         "opcode": "FSPLIT",
         "chosen_element": "decomposition into electrostatic and electromagnetic collective modes",
-        "justification": "The complete plasma linear response splits into longitudinal (Langmuir, electrostatic) and transverse (Alfv\u00e9n, electromagnetic) branches, corresponding to distinct physical excitations",
+        "justification": "The complete plasma linear response splits into longitudinal (Langmuir, electrostatic) and transverse (Alfvén, electromagnetic) branches, corresponding to distinct physical excitations",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
         "chosen_element": "plasma dielectric tensor unification",
-        "justification": "The electrostatic and electromagnetic responses are combined via the full dielectric tensor \u03b5(\u03c9,k), recovering the complete wave spectrum of the Vlasov-Maxwell system \u2014 the original self-consistent state is reconstituted",
+        "justification": "The electrostatic and electromagnetic responses are combined via the full dielectric tensor ε(ω,k), recovering the complete wave spectrum of the Vlasov-Maxwell system — the original self-consistent state is reconstituted",
         "rejected_candidates": []
       },
       "EVALT": {
@@ -80,20 +80,20 @@
       },
       "EVALF": {
         "opcode": "EVALF",
-        "chosen_element": "Alfv\u00e9nic instability onset",
+        "chosen_element": "Alfvénic instability onset",
         "justification": "The negative branch: magnetic fluctuations that surpass stability thresholds (e.g., firehose, kink), leading to disruptive loss of confinement",
         "rejected_candidates": []
       },
       "ENGAGR": {
         "opcode": "ENGAGR",
         "chosen_element": "collisionless Landau damping",
-        "justification": "A paradice: wave energy dissipates without binary collisions \u2014 simultaneously a collective (wave) and a kinetic (resonant particle) process, held in unresolved dual description",
+        "justification": "A paradice: wave energy dissipates without binary collisions — simultaneously a collective (wave) and a kinetic (resonant particle) process, held in unresolved dual description",
         "rejected_candidates": []
       },
       "IFIX": {
         "opcode": "IFIX",
         "chosen_element": "frozen-in magnetic flux",
-        "justification": "In ideal MHD, Alfv\u00e9n\u2019s theorem makes the magnetic field topology an irreversible record of the plasma\u2019s flow, permanently imprinted in the fluid elements",
+        "justification": "In ideal MHD, Alfvén’s theorem makes the magnetic field topology an irreversible record of the plasma’s flow, permanently imprinted in the fluid elements",
         "rejected_candidates": []
       }
     },
@@ -102,7 +102,7 @@
       "split_input": "complete Vlasov-Maxwell linear wave spectrum (all collective modes)",
       "split_outputs": [
         "Langmuir oscillation (longitudinal/electrostatic)",
-        "Alfv\u00e9n wave (transverse/electromagnetic)"
+        "Alfvén wave (transverse/electromagnetic)"
       ],
       "fuse_element": "plasma dielectric tensor unification",
       "fuse_result": "complete Vlasov-Maxwell linear wave spectrum (the original, self-consistent mode structure)",
@@ -111,24 +111,24 @@
       "failure_reason": ""
     },
     "phase_3": {
-      "void_description": "neutral gas \u2014 no charge separation, no collective fields, no ionization",
-      "true_description": "stable confined plasma \u2014 well-contained, laminar in MHD, no disruptive instabilities",
-      "false_description": "disrupted plasma \u2014 loss of confinement, major instability (e.g., tokamak disruption)",
-      "both_description": "collisionless plasma exhibiting collective fluid-like behavior without local thermodynamic equilibrium \u2014 a state of simultaneous particle and wave character",
+      "void_description": "neutral gas — no charge separation, no collective fields, no ionization",
+      "true_description": "stable confined plasma — well-contained, laminar in MHD, no disruptive instabilities",
+      "false_description": "disrupted plasma — loss of confinement, major instability (e.g., tokamak disruption)",
+      "both_description": "collisionless plasma exhibiting collective fluid-like behavior without local thermodynamic equilibrium — a state of simultaneous particle and wave character",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "neutral gas at thermal equilibrium, no ionization or collective effects \u2014 the plasma does not yet exist"
+          "domain_action": "neutral gas at thermal equilibrium, no ionization or collective effects — the plasma does not yet exist"
         },
         {
           "step_num": 2,
           "opcode": "AFWD",
-          "domain_action": "ionization \u2014 energy input drives the gas into a plasma state, creating free electrons and ions"
+          "domain_action": "ionization — energy input drives the gas into a plasma state, creating free electrons and ions"
         },
         {
           "step_num": 3,
@@ -138,7 +138,7 @@
         {
           "step_num": 4,
           "opcode": "IMSCRIB",
-          "domain_action": "self-consistent fields develop \u2014 particle currents generate electromagnetic fields that react back on the particles, closing the identity loop"
+          "domain_action": "self-consistent fields develop — particle currents generate electromagnetic fields that react back on the particles, closing the identity loop"
         },
         {
           "step_num": 5,
@@ -148,32 +148,32 @@
         {
           "step_num": 6,
           "opcode": "EVALT",
-          "domain_action": "stable Langmuir oscillation \u2014 an electrostatic collective mode, the affirmative/success state of coherent electron motion"
+          "domain_action": "stable Langmuir oscillation — an electrostatic collective mode, the affirmative/success state of coherent electron motion"
         },
         {
           "step_num": 7,
           "opcode": "CLINK",
-          "domain_action": "electron-ion hybrid coupling \u2014 Langmuir oscillations interact with ion inertia, producing ion-acoustic waves via compositional chaining"
+          "domain_action": "electron-ion hybrid coupling — Langmuir oscillations interact with ion inertia, producing ion-acoustic waves via compositional chaining"
         },
         {
           "step_num": 8,
           "opcode": "AREV",
-          "domain_action": "ion-cyclotron damping \u2014 in the electromagnetic branch, wave energy is resonantly transferred to ions, reversing from organized wave to random thermal motion"
+          "domain_action": "ion-cyclotron damping — in the electromagnetic branch, wave energy is resonantly transferred to ions, reversing from organized wave to random thermal motion"
         },
         {
           "step_num": 9,
           "opcode": "EVALF",
-          "domain_action": "Alfv\u00e9nic instability onset \u2014 if the magnetic perturbation exceeds the stability threshold, the Alfv\u00e9n wave becomes unstable, triggering the negative/failure state"
+          "domain_action": "Alfvénic instability onset — if the magnetic perturbation exceeds the stability threshold, the Alfvén wave becomes unstable, triggering the negative/failure state"
         },
         {
           "step_num": 10,
           "opcode": "ENGAGR",
-          "domain_action": "collisionless Landau damping \u2014 wave energy dissipates without collisions, a paradice holding both wave-like collective behavior and resonant particle interactions simultaneously"
+          "domain_action": "collisionless Landau damping — wave energy dissipates without collisions, a paradice holding both wave-like collective behavior and resonant particle interactions simultaneously"
         },
         {
           "step_num": 11,
           "opcode": "FFUSE",
-          "domain_action": "the dielectric tensor \u03b5(\u03c9,k) unifies the electrostatic and electromagnetic responses, reconstructing the complete linear wave spectrum and returning to the full Vlasov-Maxwell system"
+          "domain_action": "the dielectric tensor ε(ω,k) unifies the electrostatic and electromagnetic responses, reconstructing the complete linear wave spectrum and returning to the full Vlasov-Maxwell system"
         },
         {
           "step_num": 12,
@@ -185,22 +185,22 @@
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "Vlasov-Maxwell solver (e.g., particle-in-cell code) \u2014 translates the continuous distribution and field equations into discrete computational steps",
-      "ipc_mechanism": "self-consistent field coupling \u2014 charge and current densities computed from the particle distribution provide sources for Maxwell\u2019s equations, and the resulting Lorentz force feeds back into the Vlasov equation",
-      "memory_mechanism": "particle phase space \u2014 the distribution function f(x,v) stores the state of all charged particles; field values are stored in space-time grids",
-      "scheduler_mechanism": "time-stepping algorithm (e.g., leapfrog or Crank-Nicolson) \u2014 determines the sequential advance of particle and field states while preserving symplectic structure",
-      "alfs_store": "Boltzmann equation / neutral gas ensemble \u2014 the canonical bootstrap store from which the plasma is born through ionization",
+      "compiler_frontend": "Vlasov-Maxwell solver (e.g., particle-in-cell code) — translates the continuous distribution and field equations into discrete computational steps",
+      "ipc_mechanism": "self-consistent field coupling — charge and current densities computed from the particle distribution provide sources for Maxwell’s equations, and the resulting Lorentz force feeds back into the Vlasov equation",
+      "memory_mechanism": "particle phase space — the distribution function f(x,v) stores the state of all charged particles; field values are stored in space-time grids",
+      "scheduler_mechanism": "time-stepping algorithm (e.g., leapfrog or Crank-Nicolson) — determines the sequential advance of particle and field states while preserving symplectic structure",
+      "alfs_store": "Boltzmann equation / neutral gas ensemble — the canonical bootstrap store from which the plasma is born through ionization",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
       "cycle_cost": "no energy is dissipated in the collisionless Vlasov-Maxwell cycle; the only cost is the computational effort of solving the equations",
       "pre_cycle_state": "coherent collective modes prior to any collisional or dissipative process",
-      "post_cycle_state": "the same collective mode structure after one closed loop (electrostatic + electromagnetic \u2192 unified \u2192 split again) \u2014 no net entropy increase",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 collisionless plasma dynamics preserve phase-space entropy; the cycle is reversible and non-dissipative, consistent with the Frobenius closure",
+      "post_cycle_state": "the same collective mode structure after one closed loop (electrostatic + electromagnetic → unified → split again) — no net entropy increase",
+      "delta_s_verdict": "ΔS ≈ 0 — collisionless plasma dynamics preserve phase-space entropy; the cycle is reversible and non-dissipative, consistent with the Frobenius closure",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 TANCH \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT \u2192 CLINK \u2192 AREV \u2192 EVALF \u2192 ENGAGR \u2192 FFUSE \u2192 IFIX\n-- Class: Plasma Physics from First Principles\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc61  | forward morphism \u2014 bidirectional arrow\n--   [2] TANCH     top    := \ud801\udc61               \ud801\udc7e \u2192 \ud801\udc60  | terminal object \u2014 connectivity boundary\n--   [3] IMSCRIB   gram   := \ud801\udc60               \ud801\udc61 \u2192 \ud801\udc5a  | identity \u2014 self-imscription\n--   [4] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [5] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] AREV      pol    := \ud801\udc57               \ud801\udc5a \u2192 \ud801\udc59  | reverse morphism \u2014 parity flip\n--   [8] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [9] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [10] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc6d  | fuse \u03bc \u2014 assembly mode\n--   [11] IFIX      prot   := \ud801\udc6d               \ud801\udc59 \u2192 \ud801\udc7c  | irreversible fixation \u2014 winding number\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def plasma_physics_from_first_principles_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def plasma_physics_from_first_principles_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def plasma_physics_from_first_principles_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def plasma_physics_from_first_principles_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def plasma_physics_from_first_principles_protocol : IGProtocol plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct plasma_physics_from_first_principles_s10 plasma_physics_from_first_principles_s10 = plasma_physics_from_first_principles_s10 (idempotent)\n  (.seq (.arrow plasma_physics_from_first_principles_l0 plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s1) (.seq (.arrow plasma_physics_from_first_principles_l1 plasma_physics_from_first_principles_s1 plasma_physics_from_first_principles_s2) (.seq (.arrow plasma_physics_from_first_principles_l2 plasma_physics_from_first_principles_s2 plasma_physics_from_first_principles_s3) (.seq (.arrow plasma_physics_from_first_principles_l3 plasma_physics_from_first_principles_s3 plasma_physics_from_first_principles_s4) (.seq (.prod (.arrow plasma_physics_from_first_principles_l4 plasma_physics_from_first_principles_s4 plasma_physics_from_first_principles_s10) (.arrow plasma_physics_from_first_principles_l4 plasma_physics_from_first_principles_s4 plasma_physics_from_first_principles_s10)) (.seq (.arrow plasma_physics_from_first_principles_l10 plasma_physics_from_first_principles_s10 plasma_physics_from_first_principles_s10) (.arrow plasma_physics_from_first_principles_l10 plasma_physics_from_first_principles_s10 plasma_physics_from_first_principles_s11)))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def plasma_physics_from_first_principles_true_arm : IGProtocol plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s11 :=\n  (plasma_physics_from_first_principles_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def plasma_physics_from_first_principles_false_arm : IGProtocol plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s11 :=\n  (plasma_physics_from_first_principles_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef plasma_physics_from_first_principles_tier : OuroboricityTier := TierFunctor.obj plasma_physics_from_first_principles_s0\n#eval plasma_physics_from_first_principles_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem plasma_physics_from_first_principles_frobenius :\n    igFrobeniusAlg.mul plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s0 = plasma_physics_from_first_principles_s0 :=\n  igFrobAlg_self_fusion plasma_physics_from_first_principles_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → AFWD → TANCH → IMSCRIB → FSPLIT → EVALT → CLINK → AREV → EVALF → ENGAGR → FFUSE → IFIX\n-- Class: Plasma Physics from First Principles\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₁\n-- FSPLIT/FFUSE pairs: [(4, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] AFWD      rel    := 𐑾               𐑼 → 𐑡  | forward morphism — bidirectional arrow\n--   [2] TANCH     top    := 𐑡               𐑾 → 𐑠  | terminal object — connectivity boundary\n--   [3] IMSCRIB   gram   := 𐑠               𐑡 → 𐑚  | identity — self-imscription\n--   [4] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [6] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [7] AREV      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [8] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [10] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [11] IFIX      prot   := 𐑭               𐑙 → 𐑼  | irreversible fixation — winding number\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def plasma_physics_from_first_principles_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def plasma_physics_from_first_principles_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def plasma_physics_from_first_principles_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def plasma_physics_from_first_principles_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def plasma_physics_from_first_principles_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def plasma_physics_from_first_principles_protocol : IGProtocol plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s11 :=\n  .withGram Grammar.measure ≺|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct plasma_physics_from_first_principles_s10 plasma_physics_from_first_principles_s10 = plasma_physics_from_first_principles_s10 (idempotent)\n  (.seq (.arrow plasma_physics_from_first_principles_l0 plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s1) (.seq (.arrow plasma_physics_from_first_principles_l1 plasma_physics_from_first_principles_s1 plasma_physics_from_first_principles_s2) (.seq (.arrow plasma_physics_from_first_principles_l2 plasma_physics_from_first_principles_s2 plasma_physics_from_first_principles_s3) (.seq (.arrow plasma_physics_from_first_principles_l3 plasma_physics_from_first_principles_s3 plasma_physics_from_first_principles_s4) (.seq (.prod (.arrow plasma_physics_from_first_principles_l4 plasma_physics_from_first_principles_s4 plasma_physics_from_first_principles_s10) (.arrow plasma_physics_from_first_principles_l4 plasma_physics_from_first_principles_s4 plasma_physics_from_first_principles_s10)) (.seq (.arrow plasma_physics_from_first_principles_l10 plasma_physics_from_first_principles_s10 plasma_physics_from_first_principles_s10) (.arrow plasma_physics_from_first_principles_l10 plasma_physics_from_first_principles_s10 plasma_physics_from_first_principles_s11)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def plasma_physics_from_first_principles_true_arm : IGProtocol plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s11 :=\n  (plasma_physics_from_first_principles_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def plasma_physics_from_first_principles_false_arm : IGProtocol plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s11 :=\n  (plasma_physics_from_first_principles_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.\ndef plasma_physics_from_first_principles_tier : OuroboricityTier := TierFunctor.obj plasma_physics_from_first_principles_s0\n#eval plasma_physics_from_first_principles_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem plasma_physics_from_first_principles_frobenius :\n    igFrobeniusAlg.mul plasma_physics_from_first_principles_s0 plasma_physics_from_first_principles_s0 = plasma_physics_from_first_principles_s0 :=\n  igFrobAlg_self_fusion plasma_physics_from_first_principles_s0\n",
   "notes": "Auto-designed from: Plasma Physics from First Principles",
   "topology_report": {
     "topology_class": "flat_chain",

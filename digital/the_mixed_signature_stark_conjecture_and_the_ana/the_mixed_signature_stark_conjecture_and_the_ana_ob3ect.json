@@ -20,7 +20,7 @@
         "L-function",
         "mixed signature"
       ],
-      "boundary_condition": "The ray class field K_d for real quadratic field Q(\u221a(d(d-2)))",
+      "boundary_condition": "The ray class field K_d for real quadratic field Q(√(d(d-2)))",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
@@ -33,7 +33,7 @@
       "TANCH": {
         "opcode": "TANCH",
         "chosen_element": "Ray class field K_d",
-        "justification": "The terminal algebraic closure containing all abelian extensions of Q(\u221a(d(d-2))) with conductor d; it bounds the domain of the Stark conjecture.",
+        "justification": "The terminal algebraic closure containing all abelian extensions of Q(√(d(d-2))) with conductor d; it bounds the domain of the Stark conjecture.",
         "rejected_candidates": []
       },
       "AFWD": {
@@ -63,13 +63,13 @@
       "FSPLIT": {
         "opcode": "FSPLIT",
         "chosen_element": "Splitting of embeddings",
-        "justification": "The real embedding \u03c3_1 and complex embedding \u03c3_2 of Q(\u221a(d(d-2))) induce a branching into real and complex components at the level of L-function derivatives.",
+        "justification": "The real embedding σ_1 and complex embedding σ_2 of Q(√(d(d-2))) induce a branching into real and complex components at the level of L-function derivatives.",
         "rejected_candidates": []
       },
       "FFUSE": {
         "opcode": "FFUSE",
         "chosen_element": "Fusion via regulator determinant",
-        "justification": "The regulator formed from log|\u03c3_i(\u03b5)| for Stark unit \u03b5 reconstitutes the original field invariant, matching the leading term of L'(0,\u03c7).",
+        "justification": "The regulator formed from log|σ_i(ε)| for Stark unit ε reconstitutes the original field invariant, matching the leading term of L'(0,χ).",
         "rejected_candidates": []
       },
       "EVALT": {
@@ -81,7 +81,7 @@
       "EVALF": {
         "opcode": "EVALF",
         "chosen_element": "Failure of triviality condition",
-        "justification": "If no such unit exists, the regulator would vanish, contradicting non-vanishing of L'(0,\u03c7); this negative branch is excluded by evidence.",
+        "justification": "If no such unit exists, the regulator would vanish, contradicting non-vanishing of L'(0,χ); this negative branch is excluded by evidence.",
         "rejected_candidates": []
       },
       "ENGAGR": {
@@ -93,19 +93,19 @@
       "IFIX": {
         "opcode": "IFIX",
         "chosen_element": "Permanent record of L-function special value",
-        "justification": "The value L'(0,\u03c7) is fixed in the Deligne-Ribet p-adic L-function framework, serving as an irreversible arithmetic invariant.",
+        "justification": "The value L'(0,χ) is fixed in the Deligne-Ribet p-adic L-function framework, serving as an irreversible arithmetic invariant.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
       "split_element": "FSPLIT",
-      "split_input": "Stark unit in Q(\u221a(d(d-2)))",
+      "split_input": "Stark unit in Q(√(d(d-2)))",
       "split_outputs": [
-        "Real embedding component: log|\u03c3_1(\u03b5)|",
-        "Complex embedding component: arg(\u03c3_2(\u03b5))"
+        "Real embedding component: log|σ_1(ε)|",
+        "Complex embedding component: arg(σ_2(ε))"
       ],
       "fuse_element": "FFUSE",
-      "fuse_result": "Regulator determinant equal to L'(0,\u03c7) up to rational factor",
+      "fuse_result": "Regulator determinant equal to L'(0,χ) up to rational factor",
       "frobenius_verdict": "PASS",
       "test_instance": "",
       "failure_reason": ""
@@ -116,64 +116,64 @@
       "false_description": "No unit satisfies the regulator condition; the L-function derivative would be zero, contradicting non-vanishing.",
       "both_description": "The unit simultaneously satisfies archimedean and anti-archimedean conditions at real and complex places, held without contradiction.",
       "transitions": [],
-      "entropy_assertion": "\u0394S \u2248 0"
+      "entropy_assertion": "ΔS ≈ 0"
     },
     "phase_4": {
       "steps": [
         {
           "step_num": 1,
           "opcode": "VINIT",
-          "domain_action": "Begin in the void \u2014 no field embeddings distinguished, no signature specified."
+          "domain_action": "Begin in the void — no field embeddings distinguished, no signature specified."
         },
         {
           "step_num": 2,
           "opcode": "AFWD",
-          "domain_action": "Apply forward morphism \u2014 embed Q(\u221a(d(d-2))) into C^2 via its two archimedean completions."
+          "domain_action": "Apply forward morphism — embed Q(√(d(d-2))) into C^2 via its two archimedean completions."
         },
         {
           "step_num": 3,
           "opcode": "FSPLIT",
-          "domain_action": "Split the system \u2014 articulate the real embedding \u03c3_1 and complex embedding \u03c3_2 as distinct branches."
+          "domain_action": "Split the system — articulate the real embedding σ_1 and complex embedding σ_2 as distinct branches."
         },
         {
           "step_num": 4,
           "opcode": "EVALT",
-          "domain_action": "On the real branch \u2014 compute log|\u03c3_1(\u03b5)| for candidate Stark unit \u03b5."
+          "domain_action": "On the real branch — compute log|σ_1(ε)| for candidate Stark unit ε."
         },
         {
           "step_num": 5,
           "opcode": "EVALF",
-          "domain_action": "On the complex branch \u2014 extract arg(\u03c3_2(\u03b5)) as angular component."
+          "domain_action": "On the complex branch — extract arg(σ_2(ε)) as angular component."
         },
         {
           "step_num": 6,
           "opcode": "ENGAGR",
-          "domain_action": "Enter paradice \u2014 hold both real logarithmic and complex angular data simultaneously without collapse."
+          "domain_action": "Enter paradice — hold both real logarithmic and complex angular data simultaneously without collapse."
         },
         {
           "step_num": 7,
           "opcode": "CLINK",
-          "domain_action": "Compose regulator \u2014 chain the two components into det[log|\u03c3_i(\u03b5_j)|] matrix."
+          "domain_action": "Compose regulator — chain the two components into det[log|σ_i(ε_j)|] matrix."
         },
         {
           "step_num": 8,
           "opcode": "FFUSE",
-          "domain_action": "Fuse branches \u2014 the determinant recovers L'(0,\u03c7) up to rational factor, reconstructing the input invariant."
+          "domain_action": "Fuse branches — the determinant recovers L'(0,χ) up to rational factor, reconstructing the input invariant."
         },
         {
           "step_num": 9,
           "opcode": "IMSCRIB",
-          "domain_action": "Self-recognize \u2014 the unit's regulator is identical to the analytic prediction, confirming self-reference."
+          "domain_action": "Self-recognize — the unit's regulator is identical to the analytic prediction, confirming self-reference."
         },
         {
           "step_num": 10,
           "opcode": "IFIX",
-          "domain_action": "Record permanently \u2014 the value L'(0,\u03c7) is fixed in the p-adic L-function, append-only."
+          "domain_action": "Record permanently — the value L'(0,χ) is fixed in the p-adic L-function, append-only."
         },
         {
           "step_num": 11,
           "opcode": "TANCH",
-          "domain_action": "Close at terminal boundary \u2014 the ray class field K_d contains all such units, completing the system."
+          "domain_action": "Close at terminal boundary — the ray class field K_d contains all such units, completing the system."
         }
       ],
       "closure_verified": true,
@@ -191,11 +191,11 @@
       "cycle_cost": "One evaluation of L-function derivative",
       "pre_cycle_state": "Indeterminate unit group in mixed signature",
       "post_cycle_state": "Stark unit explicitly constructed with matching regulator",
-      "delta_s_verdict": "\u0394S \u2248 0 \u2014 the Frobenius round-trip from unit to regulator and back preserves arithmetic information losslessly",
+      "delta_s_verdict": "ΔS ≈ 0 — the Frobenius round-trip from unit to regulator and back preserves arithmetic information losslessly",
       "failure_mode": ""
     }
   },
-  "lean_scaffold": "-- IGProtocol scaffold: VINIT \u2192 AFWD \u2192 FSPLIT \u2192 EVALT \u2192 EVALF \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 IMSCRIB \u2192 IFIX \u2192 TANCH\n-- Class: The mixed-signature Stark conjecture and the analytic passage to the C^2 metric\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O\u2081\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- \u2500\u2500 Token \u2192 IG field mapping \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n--   [0] VINIT     dim    := \ud801\udc7c               \ud801\udc7c \u2192 \ud801\udc7e  | initial object \u2014 ground of distinction\n--   [1] AFWD      rel    := \ud801\udc7e               \ud801\udc7c \u2192 \ud801\udc5a  | forward morphism \u2014 bidirectional arrow\n--   [2] FSPLIT    gran   := \ud801\udc5a               \ud801\udc5a \u2192 \ud801\udc5a  | split \u03b4 \u2014 range decomposition\n--   [3] EVALT     crit   := \u2299               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-true \u2014 criticality gate open\n--   [4] EVALF     chir   := \ud801\udc56               \ud801\udc5a \u2192 \ud801\udc59  | evaluate-false \u2014 chirality check\n--   [5] ENGAGR    stoi   := \ud801\udc73               \ud801\udc5a \u2192 \ud801\udc59  | engage paradox \u2014 B-state, both arms\n--   [6] CLINK     fid    := \ud801\udc71               \ud801\udc5a \u2192 \ud801\udc59  | composition \u2014 regime coherence\n--   [7] FFUSE     stoi   := \ud801\udc59               \ud801\udc59 \u2192 \ud801\udc60  | fuse \u03bc \u2014 assembly mode\n--   [8] IMSCRIB   gram   := \ud801\udc60               \ud801\udc59 \u2192 \ud801\udc6d  | identity \u2014 self-imscription\n--   [9] IFIX      prot   := \ud801\udc6d               \ud801\udc60 \u2192 \ud801\udc61  | irreversible fixation \u2014 winding number\n--   [10] TANCH     top    := \ud801\udc61               \ud801\udc6d \u2192 \ud801\udc7c  | terminal object \u2014 connectivity boundary\n\n-- \u2500\u2500 Stage Imscriptions (per-node cumulative) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- \u2500\u2500 Label Imscriptions (per-node delta) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- \u2500\u2500 Main IGProtocol term \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnoncomputable def the_mixed_signature_stark_conjecture_ddf1c9_protocol : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s7 = the_mixed_signature_stark_conjecture_ddf1c9_s7 (idempotent)\n  (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l0 the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s1) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l1 the_mixed_signature_stark_conjecture_ddf1c9_s1 the_mixed_signature_stark_conjecture_ddf1c9_s2) (.seq (.prod (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l2 the_mixed_signature_stark_conjecture_ddf1c9_s2 the_mixed_signature_stark_conjecture_ddf1c9_s7) (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l2 the_mixed_signature_stark_conjecture_ddf1c9_s2 the_mixed_signature_stark_conjecture_ddf1c9_s7)) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l7 the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s7) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l7 the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s8) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l8 the_mixed_signature_stark_conjecture_ddf1c9_s8 the_mixed_signature_stark_conjecture_ddf1c9_s9) (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l9 the_mixed_signature_stark_conjecture_ddf1c9_s9 the_mixed_signature_stark_conjecture_ddf1c9_s10)))))))\n\n-- \u2500\u2500 Evaluation arm sub-defs \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- truth arm\nnoncomputable def the_mixed_signature_stark_conjecture_ddf1c9_true_arm : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=\n  (the_mixed_signature_stark_conjecture_ddf1c9_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_mixed_signature_stark_conjecture_ddf1c9_false_arm : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=\n  (the_mixed_signature_stark_conjecture_ddf1c9_protocol).restrictToEVALF\n\n-- \u2500\u2500 Verification theorems \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O\u2081.\ndef the_mixed_signature_stark_conjecture_ddf1c9_tier : OuroboricityTier := TierFunctor.obj the_mixed_signature_stark_conjecture_ddf1c9_s0\n#eval the_mixed_signature_stark_conjecture_ddf1c9_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split \u2192 fuse): \u03bc\u2218\u03b4 = id on the ground imscription\ntheorem the_mixed_signature_stark_conjecture_ddf1c9_frobenius :\n    igFrobeniusAlg.mul the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s0 = the_mixed_signature_stark_conjecture_ddf1c9_s0 :=\n  igFrobAlg_self_fusion the_mixed_signature_stark_conjecture_ddf1c9_s0\n",
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → EVALF → ENGAGR → CLINK → FFUSE → IMSCRIB → IFIX → TANCH\n-- Class: The mixed-signature Stark conjecture and the analytic passage to the C^2 metric\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₁\n-- FSPLIT/FFUSE pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] VINIT     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] AFWD      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow\n--   [2] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] EVALF     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ENGAGR    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [6] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [7] FFUSE     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode\n--   [8] IMSCRIB   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription\n--   [9] IFIX      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [10] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_mixed_signature_stark_conjecture_ddf1c9_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def the_mixed_signature_stark_conjecture_ddf1c9_protocol : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=\n  .withGram Grammar.measure ≺|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s7 = the_mixed_signature_stark_conjecture_ddf1c9_s7 (idempotent)\n  (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l0 the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s1) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l1 the_mixed_signature_stark_conjecture_ddf1c9_s1 the_mixed_signature_stark_conjecture_ddf1c9_s2) (.seq (.prod (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l2 the_mixed_signature_stark_conjecture_ddf1c9_s2 the_mixed_signature_stark_conjecture_ddf1c9_s7) (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l2 the_mixed_signature_stark_conjecture_ddf1c9_s2 the_mixed_signature_stark_conjecture_ddf1c9_s7)) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l7 the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s7) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l7 the_mixed_signature_stark_conjecture_ddf1c9_s7 the_mixed_signature_stark_conjecture_ddf1c9_s8) (.seq (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l8 the_mixed_signature_stark_conjecture_ddf1c9_s8 the_mixed_signature_stark_conjecture_ddf1c9_s9) (.arrow the_mixed_signature_stark_conjecture_ddf1c9_l9 the_mixed_signature_stark_conjecture_ddf1c9_s9 the_mixed_signature_stark_conjecture_ddf1c9_s10)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def the_mixed_signature_stark_conjecture_ddf1c9_true_arm : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=\n  (the_mixed_signature_stark_conjecture_ddf1c9_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_mixed_signature_stark_conjecture_ddf1c9_false_arm : IGProtocol the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s10 :=\n  (the_mixed_signature_stark_conjecture_ddf1c9_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.\ndef the_mixed_signature_stark_conjecture_ddf1c9_tier : OuroboricityTier := TierFunctor.obj the_mixed_signature_stark_conjecture_ddf1c9_s0\n#eval the_mixed_signature_stark_conjecture_ddf1c9_tier  -- the Grammar's own verdict on its tier\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem the_mixed_signature_stark_conjecture_ddf1c9_frobenius :\n    igFrobeniusAlg.mul the_mixed_signature_stark_conjecture_ddf1c9_s0 the_mixed_signature_stark_conjecture_ddf1c9_s0 = the_mixed_signature_stark_conjecture_ddf1c9_s0 :=\n  igFrobAlg_self_fusion the_mixed_signature_stark_conjecture_ddf1c9_s0\n",
   "notes": "Auto-designed from: The mixed-signature Stark conjecture and the analytic passage to the C^2 metric",
   "topology_report": {
     "topology_class": "flat_chain",

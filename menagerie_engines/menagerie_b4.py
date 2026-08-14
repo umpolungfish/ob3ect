@@ -152,7 +152,7 @@ _B4_SYM   = {B4.N: '∅', B4.T: '⊤', B4.F: '⊥', B4.B: '◈'}
 
 # Crystal / ob3ect glyphs used across engines
 CRYSTAL = "⊙"
-PHI     = "<"
+PHI     = "≺"
 MU      = "μ"
 DELTA   = "δ"
 

@@ -42,7 +42,7 @@ import collections
 import json
 import re
 
-CODE = {"VINIT": "⊢", "TANCH": "⊣", "AFWD": ">", "AREV": "<", "CLINK": "=",
+CODE = {"VINIT": "⊢", "TANCH": "⊣", "AFWD": "≻", "AREV": "≺", "CLINK": "=",
         "IMSCRIB": "⊙", "FSPLIT": "◇", "FFUSE": "●", "EVALT": "+", "EVALF": "×",
         "ENGAGR": "⊞", "IFIX": "¬"}
 

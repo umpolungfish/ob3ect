@@ -62,7 +62,7 @@ UNGLYPH = {v: k for k, v in GLYPH.items()}
 # generics, and 36 angle-bracket placeholders in the design prompt itself, which
 # is where the ambiguity actually bit. Words written before the change still say
 # < and >, so reading accepts them; nothing WRITES them.
-LEGACY_MARK = {">": "AFWD", "<": "AREV"}
+LEGACY_MARK = {"≻": "AFWD", "≺": "AREV"}
 UNGLYPH.update(LEGACY_MARK)
 
 
