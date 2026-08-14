@@ -543,7 +543,7 @@ The IMASM opcode sequence goes ONLY in the "sequence" field."""
 
 _CATALOG_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "IG_catalog.json"
 _NAVIGATOR_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "navigators"
-_PRIM_ORDER = ["⊢", "⊣", ">", "<", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
+_PRIM_ORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
 
 _CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
 _CONTEXT_MAX_BYTES = 500_000  # 50 KB total
@@ -613,7 +613,7 @@ def _search_catalog(description: str, n: int = 8, context: Optional[str] = None)
         return ""  # No relevant matches — omit the block
 
     lines = ["CATALOG REFERENCE — nearest IG entries for this domain:"]
-    prim_keys = ["⊢","⊣",">","<","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]
+    prim_keys = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]
     for e in ranked:
         prim_str = " ".join(f"{k}={e.get(k,'?')}" for k in prim_keys)
         lines.append(f"  {e['name']}: {e.get('description','')}  [{prim_str}]")
@@ -1958,14 +1958,21 @@ async def churn_design(
     context: Optional[str] = None,
     max_ob3ects: int = 200,
     stream: bool = False,
+    concurrency: int = 4,
 ) -> ChurnTree:
     """Imscribe `description`, then wind the pipeline back over its own steps.
 
     `windings` counts full turns. One is the root alone and does nothing a plain
     run would not. Each further winding imscribes every step of every ob3ect
     from the turn before, so the count grows as the product of the step counts:
-    a twelve-step ob3ect gives 13 ob3ects at two windings and 157 at three.
-    `max_ob3ects` stops the walk rather than letting it run away.
+    a twelve-step ob3ect gives 13 ob3ects at two windings and 157 at three; a
+    fourteen-step one gives 15 and 211. `max_ob3ects` stops the walk rather than
+    letting it run away, and says what it did not imscribe.
+
+    The walk is BREADTH-first and each node carries the context it was imscribed
+    under, so a child is held inside its parent's ob3ect, which is held inside
+    ITS parent's, down to the original description. Siblings are independent and
+    run together, `concurrency` at a time.
     """
     print(f"Churning {description!r} to {windings} winding(s)")
 
@@ -1976,31 +1983,79 @@ async def churn_design(
     )
     root = ChurnNode(description, root_art, winding=0)
     made = 1
+    skipped: List[tuple] = []
+    sem = asyncio.Semaphore(max(1, concurrency))
 
-    async def wind(node: ChurnNode, depth_left: int):
-        nonlocal made
-        if depth_left <= 0:
-            return
-        steps = node.artifact.bootstrap_sequence.steps
-        inner = _churn_context(context, description, node.artifact)
-        for st in steps:
-            if made >= max_ob3ects:
-                print(f"  [churn stopped at {max_ob3ects} ob3ects]")
-                return
-            desc = st["domain_action"]
-            print(f"  {'  ' * node.winding}[w={node.winding + 1}] {st['opcode']:<8} {desc[:60]}")
+    async def imscribe(step: Dict[str, Any], parent_context: Optional[str],
+                       winding: int) -> ChurnNode:
+        desc = step["domain_action"]
+        async with sem:
             art = await auto_design(
                 desc, name=desc, domain_type=domain_type, scope=scope,
                 provider_name=provider_name, model=model, max_retries=max_retries,
-                temperature=temperature, context=inner, stream=stream,
+                temperature=temperature, context=parent_context, stream=stream,
             )
-            made += 1
-            child = ChurnNode(desc, art, node.winding + 1,
-                              opcode=st["opcode"], step_num=st["step_num"])
-            node.children.append(child)
-            await wind(child, depth_left - 1)
+        return ChurnNode(desc, art, winding,
+                         opcode=step["opcode"], step_num=step["step_num"])
 
-    await wind(root, windings - 1)
+    # BREADTH-first, and each node carries the context it was imscribed under.
+    #
+    # Depth-first spent the whole budget on the first step's subtree, so a capped
+    # run did not lose a slice of every branch — it lost the LAST steps entirely
+    # while the first got full depth. A level at a time truncates evenly.
+    #
+    # The pair is (node, the context that produced it). Folding a child's context
+    # from ITS OWN parent's context is what accumulates the lineage: rebuilding
+    # from the original `context` each time, as this did, gave a grandchild the
+    # seed file and its parent's word with the generation between them missing —
+    # which is not what the docstring above promises.
+    frontier: List[tuple] = [(root, context)]
+
+    for turn in range(windings - 1):
+        planned: List[tuple] = []
+        for node, node_context in frontier:
+            inner = _churn_context(node_context, description, node.artifact)
+            for st in node.artifact.bootstrap_sequence.steps:
+                planned.append((node, inner, st))
+        if not planned:
+            break
+
+        room = max(0, max_ob3ects - made)
+        if len(planned) > room:
+            for node, _inner, st in planned[room:]:
+                skipped.append((turn + 1, st["opcode"], st["domain_action"]))
+            planned = planned[:room]
+        if not planned:
+            break
+
+        for node, _inner, st in planned:
+            print(f"  [w={turn + 1}] {st['opcode']:<3} {st['domain_action'][:60]}")
+
+        # Siblings do not depend on each other, so they are imscribed together.
+        # `concurrency` bounds it: a local server has a fixed number of slots and
+        # queueing more than it has just moves the wait.
+        children = await asyncio.gather(
+            *(imscribe(st, inner, turn + 1) for _node, inner, st in planned)
+        )
+        made += len(children)
+
+        next_frontier: List[tuple] = []
+        for (node, inner, _st), child in zip(planned, children):
+            node.children.append(child)
+            next_frontier.append((child, inner))
+        frontier = next_frontier
+
+    if skipped:
+        # Once, with the count and what went unimscribed — the old code printed
+        # the same stop line from every node that hit the cap and never said
+        # which steps it dropped.
+        print(f"\n  [churn capped at {max_ob3ects} ob3ects; "
+              f"{len(skipped)} step(s) not imscribed]")
+        for w, op, desc in skipped[:8]:
+            print(f"    w={w} {op:<3} {desc[:58]}")
+        if len(skipped) > 8:
+            print(f"    ... and {len(skipped) - 8} more")
+
     return ChurnTree(description, root, windings)
 
 
@@ -2152,6 +2207,11 @@ if __name__ == "__main__":
     ap.add_argument("--max-ob3ects", type=int, default=200, dest="churn_max",
                     metavar="N",
                     help="Stop the churn after this many ob3ects (default: 200)")
+    ap.add_argument("--concurrency", type=int, default=4, dest="churn_concurrency",
+                    metavar="N",
+                    help="How many sibling ob3ects to imscribe at once during a "
+                         "churn (default: 4). A local server has a fixed number "
+                         "of slots; queueing past them only moves the wait.")
     args = ap.parse_args()
 
     # YAML batch mode: p3 auto.py -f config.yaml — this pipeline's own batch loop
@@ -2274,9 +2334,14 @@ if __name__ == "__main__":
             temperature=args.temperature,
             context=ctx,
             max_ob3ects=args.churn_max,
+            concurrency=args.churn_concurrency,
             # --stream was accepted by the parser and dropped here, so a churn
             # ran silent no matter what the caller asked for.
-            stream=args.stream,
+            #
+            # Concurrent siblings interleave their deltas, so a churn running more
+            # than one at a time streams nothing: the tokens would arrive shuffled
+            # from several ob3ects at once and read as noise.
+            stream=args.stream and args.churn_concurrency == 1,
         ))
         print("\n" + tree.report())
 

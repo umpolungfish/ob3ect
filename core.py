@@ -47,7 +47,7 @@ class RegisterState(Enum):
 # Criticality in the 12-primitive notation is not a collision: it is the same structure
 # surfacing wherever inclosure closes on itself.
 # Authority is MoDoT ask_native/src/imasm.rs Token::code(); this mirrors it.
-GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":">","AREV":"<","CLINK":"⋈","IMSCRIB":"⊙",
+GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":"≻","AREV":"≺","CLINK":"⋈","IMSCRIB":"⊙",
          "FSPLIT":"∈","FFUSE":"∋","EVALT":"⊤","EVALF":"⊥","ENGAGR":"⊞","IFIX":"◻"}
 
 # The mark is the name. VINIT/TANCH/FSPLIT are how the twelve are SPELLED for a
@@ -56,6 +56,14 @@ GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":">","AREV":"<","CLINK":"⋈","IMSCRI
 # anything reading an artifact back accepts either, because artifacts written
 # before this exist and are not being rewritten.
 UNGLYPH = {v: k for k, v in GLYPH.items()}
+
+# AFWD and AREV were < and > until they were not. Those two were the only marks
+# that were also metacharacters — shell redirection, XML, LaTeX relations, Rust
+# generics, and 36 angle-bracket placeholders in the design prompt itself, which
+# is where the ambiguity actually bit. Words written before the change still say
+# < and >, so reading accepts them; nothing WRITES them.
+LEGACY_MARK = {">": "AFWD", "<": "AREV"}
+UNGLYPH.update(LEGACY_MARK)
 
 
 def as_opcode(x):
