@@ -147,7 +147,18 @@ def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
         lines.append(f"  Final register: {_16reg_name(final_reg)}")
         lines.append(f"  Closed walk: {trace.is_closed()}")
         lines.append(f"  Tri-ancestral verdict: {verdict} — {msg}")
-        lines.append(f"  {'✓ Frobenius-verified trilattice closure' if trace.is_closed() and verdict == 'T' else '⚠ Not fully closed'}")
+        # Two readings, both reported. A T verdict against an open walk is not a
+        # failure to be warned about, it is the tri-ancestral reading and the
+        # walk reading disagreeing, which is a fact about the object. Collapsing
+        # them to one ⚠ threw the informative half away.
+        if trace.is_closed() and verdict == "T":
+            lines.append("  ✓ Frobenius-verified trilattice closure — walk closed, verdict T")
+        elif verdict == "T":
+            lines.append("  ◐ Verdict T over an OPEN walk — reconnection without return")
+        elif trace.is_closed():
+            lines.append(f"  ◐ Walk closed, verdict {verdict}")
+        else:
+            lines.append(f"  ⚠ Walk open, verdict {verdict}")
         return "\n".join(lines)
     except Exception as e:
         return f"Phase 11: SIXTEEN_3 Trilattice Breakdown — computation failed: {e}"
@@ -732,6 +743,90 @@ def _build_prompt(
     # 3.4KB of a DIFFERENT solved problem at the head of the prompt, and the model
     # took its boundary token from there instead of from the file it was handed.
     return f"{context_block}{catalog_section}Design an Ob3ect for:\n\n{description}{dt_hint}\n\n{_SCHEMA}{retry_block}"
+
+
+
+def _server_context_limit(provider: Any) -> Optional[int]:
+    """What the local server will actually accept, asked of the server.
+
+    A 400 that says "request (90010 tokens) exceeds the available context size
+    (65536 tokens)" carries both numbers, and httpx's one-line `Client error
+    '400 Bad Request'` throws them away. The remedy is not to read that message
+    better after the fact — it is to ask before sending.
+    """
+    base = getattr(provider, "base_url", "") or ""
+    if not getattr(provider, "local_http", False) or "/v1/" not in base:
+        return None
+    root = base.split("/v1/")[0]
+    try:
+        import httpx as _httpx
+        r = _httpx.get(f"{root}/props", timeout=10)
+        r.raise_for_status()
+        d = r.json()
+        n = d.get("default_generation_settings", {}).get("n_ctx")
+        return int(n) if n else None
+    except Exception:
+        return None
+
+
+def _count_tokens(provider: Any, text: str) -> Optional[int]:
+    """The server's own tokenizer, not an estimate. Characters per token vary by
+    a factor of three across Shavian, LaTeX and prose, and this context is all
+    three at once."""
+    base = getattr(provider, "base_url", "") or ""
+    if not getattr(provider, "local_http", False) or "/v1/" not in base:
+        return None
+    root = base.split("/v1/")[0]
+    try:
+        import httpx as _httpx
+        r = _httpx.post(f"{root}/tokenize", json={"content": text}, timeout=60)
+        r.raise_for_status()
+        return len(r.json().get("tokens", []))
+    except Exception:
+        return None
+
+
+def _fit_context(provider: Any, description: str, domain_type: Optional[str],
+                 retry_info: Optional[str], context: Optional[str],
+                 reserve: int = 8192) -> Optional[str]:
+    """Trim the CONTEXT until the prompt fits the server's window, and say so.
+
+    Only the context is cut. The description and the system prompt are the
+    question, and a question trimmed to fit is a different question. Cutting is
+    reported in tokens, because a context silently truncated to fit is
+    indistinguishable, from the output alone, from a context that never arrived.
+    """
+    if not context:
+        return context
+    limit = _server_context_limit(provider)
+    if not limit:
+        return context
+    budget = limit - reserve
+    full = _build_prompt(description, domain_type, retry_info, context=context)
+    have = _count_tokens(provider, full)
+    if have is None or have <= budget:
+        return context
+    # The overhead is everything that is not context, measured rather than assumed.
+    bare = _build_prompt(description, domain_type, retry_info, context=None)
+    overhead = _count_tokens(provider, bare) or 0
+    ctx_tokens = have - overhead
+    room = budget - overhead
+    if room <= 0:
+        print(f"  [context dropped entirely: the question alone is {overhead} tokens "
+              f"against a {limit}-token window]")
+        return None
+    keep = max(1, int(len(context) * (room / max(ctx_tokens, 1)) * 0.97))
+    trimmed = context[:keep]
+    # Verify against the server rather than trusting the ratio.
+    for _ in range(6):
+        check = _count_tokens(provider, _build_prompt(description, domain_type,
+                                                      retry_info, context=trimmed))
+        if check is None or check <= budget:
+            break
+        trimmed = trimmed[:int(len(trimmed) * 0.9)]
+    print(f"  [context {have} tokens exceeds the {limit}-token window; "
+          f"sent {len(trimmed):,} of {len(context):,} chars]")
+    return trimmed
 
 
 def _extract_json(text: str) -> Dict[str, Any]:
@@ -1477,10 +1572,13 @@ async def auto_design(
         return {"model": model}
 
     if provider_name:
-        chain = _PROVIDER_CHAIN.copy()
-        if provider_name in chain:
-            chain.remove(provider_name)
-        chain.insert(0, provider_name)
+        # A NAMED provider is the only lane. This used to move it to the front
+        # of the full chain and keep the rest behind it, so `--provider llamacpp`
+        # with IG_PROVIDER=llamacpp still walked to OpenRouter and DeepSeek and
+        # died on a 402 from a service that was never asked for. Three downstream
+        # symptoms buried the one fault that mattered. Naming a provider is an
+        # instruction, not a preference: if it fails, that failure is the answer.
+        chain = [provider_name]
         providers = []
         for n in chain:
             if n in _UNREACHABLE:
@@ -1492,8 +1590,14 @@ async def auto_design(
                     continue
                 p._ig_chain_name = n
                 providers.append(p)
-            except Exception:
-                continue
+            except Exception as e:
+                # A pinned provider that cannot even be CONSTRUCTED used to be
+                # swallowed here and reported downstream as "no provider
+                # available", which names the wrong fault.
+                raise RuntimeError(
+                    f"provider '{n}' was named and could not be built: "
+                    f"{type(e).__name__}: {e}"
+                ) from e
     else:
         providers = []
         for n in _PROVIDER_CHAIN:
@@ -1572,7 +1676,12 @@ async def auto_design(
 
     attempt = 0
     parse_failures = 0
+    fitted_for: Any = None
     while attempt < max_retries:
+        # Fit to whatever provider is answering NOW, since a switch changes the window.
+        if fitted_for is not provider:
+            context = _fit_context(provider, description, domain_type, retry_info, context)
+            fitted_for = provider
         prompt = _build_prompt(description, domain_type, retry_info, context=context)
         try:
             # Streaming is a VIEW of the same call: the deltas go to stderr as

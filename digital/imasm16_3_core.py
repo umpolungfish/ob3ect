@@ -151,7 +151,7 @@ OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, EVALT, FSPLIT3, FFUSE3,
            IMSCRIB, EVALF, EVALI, IFIX]
 
 GLYPH = {
-    VINIT: "⊢", TANCH: "⊣", AFWD: ">", AREV: "<", CLINK: "⋈", EVALT: "⊤",
+    VINIT: "⊢", TANCH: "⊣", AFWD: "≻", AREV: "≺", CLINK: "⋈", EVALT: "⊤",
     FSPLIT3: "∈", FFUSE3: "∋", IMSCRIB: "⊙", EVALF: "⊥", EVALI: "⊞",
     IFIX: "◻",
 }
@@ -395,8 +395,13 @@ class Sequence16_3Trace:
 
     def json_report(self) -> dict:
         verdict, msg = self.tri_ancestral_verdict()
-        interior = [GLYPH.get(t, "?") for t in self.steps if t not in (VINIT, TANCH)]
-        glyph_word = "⊢" + "".join(interior) + "⊣"
+        # The word REPORTED is the word WALKED. This used to strip every VINIT
+        # and TANCH out of the interior and re-wrap the remainder in ⊢…⊣, which
+        # is a second construction of an object that already exists: a sequence
+        # carrying an interior ⊣ came back one glyph shorter than the table
+        # printed beside it, and the two disagreed with nothing to say which was
+        # the word.
+        glyph_word = "".join(GLYPH.get(t, "?") for t in self.steps)
         return {
             "steps": self.steps,
             "glyph_word": glyph_word,
