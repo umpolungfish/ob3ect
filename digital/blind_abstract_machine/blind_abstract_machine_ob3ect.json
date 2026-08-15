@@ -1,0 +1,896 @@
+{
+  "name": "blind_abstract_machine",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "blind_abstract_machine",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "scratch_region",
+        "persistent_region",
+        "position_marker",
+        "allowance_budget",
+        "operation_label",
+        "nested_run"
+      ],
+      "boundary_condition": "The finite allowance budget and the fixed array of operation labels that delimit the execution scope",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized_run_state",
+        "justification": "The void state before the position marker is set, the allowance is allocated, or any scratch value exists.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "run_termination",
+        "justification": "The closed boundary where the run ends (K14, K15, K16), containing the final state of the persistent region.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "marker_advance",
+        "justification": "The directed transformation where the position marker moves to the next label in the fixed array.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "allowance_decrement",
+        "justification": "The descent transformation where the finite allowance budget is consumed, reducing the remaining capacity.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "operation_chaining",
+        "justification": "The sequential composition of operations where the output of one step (e.g., K05 arithmetic) becomes the input for the next.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "label_identity",
+        "justification": "The self-reference of the opaque operation labels (K01-K20) which define the system's behavior without external interpretation.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "conditional_branching",
+        "justification": "The fork created by K12 where the marker path diverges based on the indicator value, creating a success arm and a failure arm.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "execution_convergence",
+        "justification": "The rejoining of execution paths where the marker resumes a single trajectory after a conditional or nested run completes.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "indicator_set",
+        "justification": "The affirmative state where the comparison (K06) or nested run (K17) yields a true indicator, enabling the conditional jump.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "indicator_clear",
+        "justification": "The negative state where the comparison yields false or the nested run fails, causing the marker to advance normally.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "nested_suspension",
+        "justification": "The paradice state during K17 where the current run is suspended while a nested run executes, holding both contexts simultaneously.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "persistent_write",
+        "justification": "The irreversible fixation of data into the persistent region (K10, K14) that outlives the run.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "conditional_branching",
+      "split_input": "marker_at_K12_with_indicator",
+      "split_outputs": [
+        "jump_to_label",
+        "advance_to_next"
+      ],
+      "fuse_element": "execution_convergence",
+      "fuse_result": "single_marker_trajectory",
+      "frobenius_verdict": "B",
+      "test_instance": "",
+      "failure_reason": "FSPLIT3 at step 5 dangles — no matching FFUSE3"
+    },
+    "phase_3": {
+      "void_description": "No allowance allocated, no marker position, empty scratch and persistent regions.",
+      "true_description": "Operation executed successfully, allowance remains, marker advanced or jumped correctly.",
+      "false_description": "Operation failed or allowance exhausted, run terminated without persistence.",
+      "both_description": "Nested run suspended with current context held while sub-context executes, or a conditional branch where both paths are structurally valid before resolution.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the run state with zero allowance and undefined marker position."
+        },
+        {
+          "step_num": 2,
+          "opcode": "◻",
+          "domain_action": "Load the fixed array of operation labels into the persistent region."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Advance the position marker to the first operation label."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≺",
+          "domain_action": "Decrement the allowance budget for the first operation."
+        },
+        {
+          "step_num": 5,
+          "opcode": "∈",
+          "domain_action": "Evaluate the operation type at the current marker position."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊤",
+          "domain_action": "If the operation is K01-K06 (scratch manipulation), proceed to scratch processing."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⋈",
+          "domain_action": "Execute the specific scratch operation (pop, push, dup, swap, calc, compare)."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∋",
+          "domain_action": "Rejoin the scratch processing path to the main execution flow."
+        },
+        {
+          "step_num": 9,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K07-K08 (discardable region access)."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊤",
+          "domain_action": "If true, read or write to the discardable region at the specified offset."
+        },
+        {
+          "step_num": 11,
+          "opcode": "∋",
+          "domain_action": "Rejoin the discardable access path to the main execution flow."
+        },
+        {
+          "step_num": 12,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K09-K10 (persistent region access)."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊤",
+          "domain_action": "If true, read or write to the persistent region at the specified key."
+        },
+        {
+          "step_num": 14,
+          "opcode": "◻",
+          "domain_action": "Fix the written data in the persistent region if K10 was executed."
+        },
+        {
+          "step_num": 15,
+          "opcode": "∋",
+          "domain_action": "Rejoin the persistent access path to the main execution flow."
+        },
+        {
+          "step_num": 16,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K11 (unconditional jump)."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⊤",
+          "domain_action": "If true, move the marker to the offset taken from the scratch region."
+        },
+        {
+          "step_num": 18,
+          "opcode": "∋",
+          "domain_action": "Rejoin the jump path to the main execution flow."
+        },
+        {
+          "step_num": 19,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K12 (conditional jump)."
+        },
+        {
+          "step_num": 20,
+          "opcode": "⊤",
+          "domain_action": "If the indicator is set, move the marker to the specified offset."
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊥",
+          "domain_action": "If the indicator is clear, advance the marker to the next label."
+        },
+        {
+          "step_num": 22,
+          "opcode": "∋",
+          "domain_action": "Rejoin the conditional jump paths to the main execution flow."
+        },
+        {
+          "step_num": 23,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K13 (label)."
+        },
+        {
+          "step_num": 24,
+          "opcode": "⊤",
+          "domain_action": "If true, perform no operation and continue."
+        },
+        {
+          "step_num": 25,
+          "opcode": "∋",
+          "domain_action": "Rejoin the label path to the main execution flow."
+        },
+        {
+          "step_num": 26,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K14-K16 (termination)."
+        },
+        {
+          "step_num": 27,
+          "opcode": "⊤",
+          "domain_action": "If true, end the run and preserve persistent region (K14) or discard (K15/K16)."
+        },
+        {
+          "step_num": 28,
+          "opcode": "⊣",
+          "domain_action": "Close the system boundary and finalize the run state."
+        },
+        {
+          "step_num": 29,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K17 (nested run)."
+        },
+        {
+          "step_num": 30,
+          "opcode": "⊞",
+          "domain_action": "Suspend the current run and initiate a nested run over a different array."
+        },
+        {
+          "step_num": 31,
+          "opcode": "⋈",
+          "domain_action": "Execute the nested run operations until completion."
+        },
+        {
+          "step_num": 32,
+          "opcode": "⊤",
+          "domain_action": "If the nested run kept its writes, set the indicator for the parent run."
+        },
+        {
+          "step_num": 33,
+          "opcode": "⊥",
+          "domain_action": "If the nested run discarded writes, clear the indicator."
+        },
+        {
+          "step_num": 34,
+          "opcode": "∋",
+          "domain_action": "Resume the parent run with the indicator result."
+        },
+        {
+          "step_num": 35,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K18-K19 (reporting)."
+        },
+        {
+          "step_num": 36,
+          "opcode": "⊤",
+          "domain_action": "If true, report remaining allowance or current marker position."
+        },
+        {
+          "step_num": 37,
+          "opcode": "∋",
+          "domain_action": "Rejoin the reporting path to the main execution flow."
+        },
+        {
+          "step_num": 38,
+          "opcode": "∈",
+          "domain_action": "Evaluate if the operation is K20 (external copy)."
+        },
+        {
+          "step_num": 39,
+          "opcode": "⊤",
+          "domain_action": "If true, copy external data into the discardable region."
+        },
+        {
+          "step_num": 40,
+          "opcode": "∋",
+          "domain_action": "Rejoin the external copy path to the main execution flow."
+        },
+        {
+          "step_num": 41,
+          "opcode": "≺",
+          "domain_action": "Decrement the allowance budget for the next operation."
+        },
+        {
+          "step_num": 42,
+          "opcode": "≻",
+          "domain_action": "Advance the marker to the next label if not terminated."
+        },
+        {
+          "step_num": 43,
+          "opcode": "⋈",
+          "domain_action": "Chain the next operation to the current state."
+        },
+        {
+          "step_num": 44,
+          "opcode": "⊙",
+          "domain_action": "Self-reference the current operation label to maintain identity."
+        },
+        {
+          "step_num": 45,
+          "opcode": "∈",
+          "domain_action": "Check if allowance is exhausted."
+        },
+        {
+          "step_num": 46,
+          "opcode": "⊥",
+          "domain_action": "If allowance is zero, terminate the run."
+        },
+        {
+          "step_num": 47,
+          "opcode": "∋",
+          "domain_action": "Rejoin the exhaustion check to the main flow."
+        },
+        {
+          "step_num": 48,
+          "opcode": "⊣",
+          "domain_action": "Final closure of the system if the run ends naturally."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The fixed array of opaque operation labels that maps abstract intentions to specific machine actions.",
+      "ipc_mechanism": "The scratch region and position marker that mediate data flow and control flow between operations.",
+      "memory_mechanism": "The dual-region architecture of discardable scratch space and persistent storage.",
+      "scheduler_mechanism": "The position marker advancing through the fixed array, driven by the allowance budget.",
+      "alfs_store": "The initial tuple of operation labels and the allowance budget that bootstrap the run.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One unit of allowance budget per operation cycle.",
+      "pre_cycle_state": "Marker at current label, allowance > 0, scratch and persistent regions in defined state.",
+      "post_cycle_state": "Marker at next label, allowance decremented, scratch/persistent regions updated per operation.",
+      "delta_s_verdict": "ΔS ≈ 0 — The system is deterministic and reversible in state transitions except for the irreversible allowance consumption and persistent writes, which are accounted for in the boundary conditions.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢◻><∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋<>⋈⊙∈⊥∋⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ◻   IFIX     IFIX          N →     N\n    3   >   AFWD     AFWD          N →     N\n    4   <   AREV     AREV          N →     N\n    5   ∈   FSPLIT   FSPLIT3       N →     N\n    6   ⊤   EVALT    EVALT         N →     N\n    7   ⋈   CLINK    CLINK         N →     N\n    8   ∋   FFUSE    FFUSE3        N →     N\n    9   ∈   FSPLIT   FSPLIT3       N →     N\n   10   ⊤   EVALT    EVALT         N →     N\n   11   ∋   FFUSE    FFUSE3        N →     N\n   12   ∈   FSPLIT   FSPLIT3       N →     N\n   13   ⊤   EVALT    EVALT         N →     N\n   14   ◻   IFIX     IFIX          N →     N\n   15   ∋   FFUSE    FFUSE3        N →     N\n   16   ∈   FSPLIT   FSPLIT3       N →     N\n   17   ⊤   EVALT    EVALT         N →     N\n   18   ∋   FFUSE    FFUSE3        N →     N\n   19   ∈   FSPLIT   FSPLIT3       N →     N\n   20   ⊤   EVALT    EVALT         N →     N\n   21   ⊥   EVALF    EVALF         N →     N\n   22   ∋   FFUSE    FFUSE3        N →     N\n   23   ∈   FSPLIT   FSPLIT3       N →     N\n   24   ⊤   EVALT    EVALT         N →     N\n   25   ∋   FFUSE    FFUSE3        N →     N\n   26   ∈   FSPLIT   FSPLIT3       N →     N\n   27   ⊤   EVALT    EVALT         N →     N\n   28   ⊣   TANCH    TANCH         N →     N\n   29   ∈   FSPLIT   FSPLIT3       N →     N\n   30   ⊞   ENGAGR   EVALI         N →     N\n   31   ⋈   CLINK    CLINK         N →     N\n   32   ⊤   EVALT    EVALT         N →     N\n   33   ⊥   EVALF    EVALF         N →     N\n   34   ∋   FFUSE    FFUSE3        N →     N\n   35   ∈   FSPLIT   FSPLIT3       N →     N\n   36   ⊤   EVALT    EVALT         N →     N\n   37   ∋   FFUSE    FFUSE3        N →     N\n   38   ∈   FSPLIT   FSPLIT3       N →     N\n   39   ⊤   EVALT    EVALT         N →     N\n   40   ∋   FFUSE    FFUSE3        N →     N\n   41   <   AREV     AREV          N →     N\n   42   >   AFWD     AFWD          N →     N\n   43   ⋈   CLINK    CLINK         N →     N\n   44   ⊙   IMSCRIB  IMSCRIB       N →     T\n   45   ∈   FSPLIT   FSPLIT3       T →     T\n   46   ⊥   EVALF    EVALF         T →     T\n   47   ∋   FFUSE    FFUSE3        T →     T\n   48   ⊣   TANCH    TANCH         T →     T\n\n  Final register: T\n  Closed walk: False\n  Tri-ancestral verdict: B — FSPLIT3 at step 5 dangles — no matching FFUSE3\n  ⚠ Not fully closed",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ◻ → ≻ → ≺ → ∈ → ⊤ → ⋈ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ◻ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ⊥ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ⊣ → ∈ → ⊞ → ⋈ → ⊤ → ⊥ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ∋ → ≺ → ≻ → ⋈ → ⊙ → ∈ → ⊥ → ∋ → ⊣\n-- Class: blind_abstract_machine\n-- Fingerprint: sig=(11,21,14,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=48\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(4, 7), (8, 10), (11, 14), (15, 17), (18, 21), (22, 24), (28, 33), (34, 36), (37, 39), (44, 46)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑭  | initial object — ground of distinction\n--   [1] ◻      prot   := 𐑭               𐑼 → 𐑾  | irreversible fixation — winding number\n--   [2] ≻      rel    := 𐑾               𐑭 → 𐑗  | forward morphism — bidirectional arrow\n--   [3] ≺      pol    := 𐑗               𐑾 → 𐑚  | reverse morphism — parity flip\n--   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [6] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [8] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [9] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [10] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [14] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [15] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [16] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [17] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [18] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [19] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [20] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [21] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [22] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [23] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [24] ∋     stoi   := 𐑙               𐑙 → 𐑚  | fuse μ — assembly mode\n--   [25] ∈    gran   := 𐑚               𐑙 → ⊙  | split δ — range decomposition\n--   [26] ⊤     crit   := ⊙               𐑚 → 𐑡  | evaluate-true — criticality gate open\n--   [27] ⊣     top    := 𐑡               ⊙ → 𐑚  | terminal object — connectivity boundary\n--   [28] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [29] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [30] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [31] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [32] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [33] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [34] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [35] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [36] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [37] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [38] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [39] ∋     stoi   := 𐑙               𐑙 → 𐑗  | fuse μ — assembly mode\n--   [40] ≺      pol    := 𐑗               𐑙 → 𐑾  | reverse morphism — parity flip\n--   [41] ≻      rel    := 𐑾               𐑗 → 𐑱  | forward morphism — bidirectional arrow\n--   [42] ⋈     fid    := 𐑱               𐑾 → 𐑠  | composition — regime coherence\n--   [43] ⊙   gram   := 𐑠               𐑱 → 𐑚  | identity — self-imscription\n--   [44] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [45] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [46] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [47] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def blind_abstract_machine_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def blind_abstract_machine_s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def blind_abstract_machine_s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def blind_abstract_machine_s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def blind_abstract_machine_s33 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s34 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s35 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s36 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s37 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s38 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s39 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s40 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s41 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s42 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s43 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s44 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s45 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s46 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_s47 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def blind_abstract_machine_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def blind_abstract_machine_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l29 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def blind_abstract_machine_l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l33 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l34 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l35 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l36 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l37 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l38 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l39 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l40 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l41 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l42 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l43 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l44 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l45 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l46 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def blind_abstract_machine_l47 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def blind_abstract_machine_protocol : IGProtocol blind_abstract_machine_s0 blind_abstract_machine_s47 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct blind_abstract_machine_s7 blind_abstract_machine_s7 = blind_abstract_machine_s7 (idempotent)\n  (.seq (.arrow blind_abstract_machine_l0 blind_abstract_machine_s0 blind_abstract_machine_s1) (.seq (.arrow blind_abstract_machine_l1 blind_abstract_machine_s1 blind_abstract_machine_s2) (.seq (.arrow blind_abstract_machine_l2 blind_abstract_machine_s2 blind_abstract_machine_s3) (.seq (.arrow blind_abstract_machine_l3 blind_abstract_machine_s3 blind_abstract_machine_s4) (.seq (.prod (.arrow blind_abstract_machine_l4 blind_abstract_machine_s4 blind_abstract_machine_s7) (.arrow blind_abstract_machine_l4 blind_abstract_machine_s4 blind_abstract_machine_s7)) (.seq (.arrow blind_abstract_machine_l7 blind_abstract_machine_s7 blind_abstract_machine_s7) (.seq (.arrow blind_abstract_machine_l7 blind_abstract_machine_s7 blind_abstract_machine_s8) (.seq (.arrow blind_abstract_machine_l8 blind_abstract_machine_s8 blind_abstract_machine_s9) (.seq (.arrow blind_abstract_machine_l9 blind_abstract_machine_s9 blind_abstract_machine_s10) (.seq (.arrow blind_abstract_machine_l10 blind_abstract_machine_s10 blind_abstract_machine_s11) (.seq (.arrow blind_abstract_machine_l11 blind_abstract_machine_s11 blind_abstract_machine_s12) (.seq (.arrow blind_abstract_machine_l12 blind_abstract_machine_s12 blind_abstract_machine_s13) (.seq (.arrow blind_abstract_machine_l13 blind_abstract_machine_s13 blind_abstract_machine_s14) (.seq (.arrow blind_abstract_machine_l14 blind_abstract_machine_s14 blind_abstract_machine_s15) (.seq (.arrow blind_abstract_machine_l15 blind_abstract_machine_s15 blind_abstract_machine_s16) (.seq (.arrow blind_abstract_machine_l16 blind_abstract_machine_s16 blind_abstract_machine_s17) (.seq (.arrow blind_abstract_machine_l17 blind_abstract_machine_s17 blind_abstract_machine_s18) (.seq (.arrow blind_abstract_machine_l18 blind_abstract_machine_s18 blind_abstract_machine_s19) (.seq (.arrow blind_abstract_machine_l19 blind_abstract_machine_s19 blind_abstract_machine_s20) (.seq (.arrow blind_abstract_machine_l20 blind_abstract_machine_s20 blind_abstract_machine_s21) (.seq (.arrow blind_abstract_machine_l21 blind_abstract_machine_s21 blind_abstract_machine_s22) (.seq (.arrow blind_abstract_machine_l22 blind_abstract_machine_s22 blind_abstract_machine_s23) (.seq (.arrow blind_abstract_machine_l23 blind_abstract_machine_s23 blind_abstract_machine_s24) (.seq (.arrow blind_abstract_machine_l24 blind_abstract_machine_s24 blind_abstract_machine_s25) (.seq (.arrow blind_abstract_machine_l25 blind_abstract_machine_s25 blind_abstract_machine_s26) (.seq (.arrow blind_abstract_machine_l26 blind_abstract_machine_s26 blind_abstract_machine_s27) (.seq (.arrow blind_abstract_machine_l27 blind_abstract_machine_s27 blind_abstract_machine_s28) (.seq (.arrow blind_abstract_machine_l28 blind_abstract_machine_s28 blind_abstract_machine_s29) (.seq (.arrow blind_abstract_machine_l29 blind_abstract_machine_s29 blind_abstract_machine_s30) (.seq (.arrow blind_abstract_machine_l30 blind_abstract_machine_s30 blind_abstract_machine_s31) (.seq (.arrow blind_abstract_machine_l31 blind_abstract_machine_s31 blind_abstract_machine_s32) (.seq (.arrow blind_abstract_machine_l32 blind_abstract_machine_s32 blind_abstract_machine_s33) (.seq (.arrow blind_abstract_machine_l33 blind_abstract_machine_s33 blind_abstract_machine_s34) (.seq (.arrow blind_abstract_machine_l34 blind_abstract_machine_s34 blind_abstract_machine_s35) (.seq (.arrow blind_abstract_machine_l35 blind_abstract_machine_s35 blind_abstract_machine_s36) (.seq (.arrow blind_abstract_machine_l36 blind_abstract_machine_s36 blind_abstract_machine_s37) (.seq (.arrow blind_abstract_machine_l37 blind_abstract_machine_s37 blind_abstract_machine_s38) (.seq (.arrow blind_abstract_machine_l38 blind_abstract_machine_s38 blind_abstract_machine_s39) (.seq (.arrow blind_abstract_machine_l39 blind_abstract_machine_s39 blind_abstract_machine_s40) (.seq (.arrow blind_abstract_machine_l40 blind_abstract_machine_s40 blind_abstract_machine_s41) (.seq (.arrow blind_abstract_machine_l41 blind_abstract_machine_s41 blind_abstract_machine_s42) (.seq (.arrow blind_abstract_machine_l42 blind_abstract_machine_s42 blind_abstract_machine_s43) (.seq (.arrow blind_abstract_machine_l43 blind_abstract_machine_s43 blind_abstract_machine_s44) (.seq (.arrow blind_abstract_machine_l44 blind_abstract_machine_s44 blind_abstract_machine_s45) (.seq (.arrow blind_abstract_machine_l45 blind_abstract_machine_s45 blind_abstract_machine_s46) (.arrow blind_abstract_machine_l46 blind_abstract_machine_s46 blind_abstract_machine_s47))))))))))))))))))))))))))))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def blind_abstract_machine_true_arm : IGProtocol blind_abstract_machine_s0 blind_abstract_machine_s47 :=\n  (blind_abstract_machine_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def blind_abstract_machine_false_arm : IGProtocol blind_abstract_machine_s0 blind_abstract_machine_s47 :=\n  (blind_abstract_machine_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef blind_abstract_machine_tier_ground : OuroboricityTier := TierFunctor.obj blind_abstract_machine_s0\ndef blind_abstract_machine_tier : OuroboricityTier := TierFunctor.obj blind_abstract_machine_s47\n#eval blind_abstract_machine_tier_ground  -- tier of the ground (pre-transformation)\n#eval blind_abstract_machine_tier  -- the Grammar's own verdict on the closed object\n",
+  "topology_report": {
+    "topology_class": "mixed",
+    "nesting_depth": 1,
+    "total_pairs": 10,
+    "open_forks": 1,
+    "cross_branches": 0,
+    "empty_branches": 6,
+    "sequence_length": 48,
+    "t_branch_ops": 11,
+    "f_branch_ops": 3,
+    "branch_ratio": 3.667,
+    "fork_positions": [
+      4,
+      8,
+      11,
+      15,
+      18,
+      22,
+      25,
+      28,
+      34,
+      37,
+      44
+    ],
+    "fuse_positions": [
+      7,
+      10,
+      14,
+      17,
+      21,
+      24,
+      33,
+      36,
+      39,
+      46
+    ],
+    "pair_list": [
+      [
+        4,
+        7
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        15,
+        17
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        22,
+        24
+      ],
+      [
+        28,
+        33
+      ],
+      [
+        34,
+        36
+      ],
+      [
+        37,
+        39
+      ],
+      [
+        44,
+        46
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: blind_abstract_machine",
+  "grounded_tuple": "⟨𐑦𐑡𐑽𐑿𐑐𐑧𐑚𐑝⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢◻><∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋<>⋈⊙∈⊥∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 0,
+    "inert": 44,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (44 step(s) inert after a fixation), nothing deposited",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The generic network pattern represents the fundamental connectivity of influence in an abstract machine where opaque labels imply a connected graph without specific hierarchical or topological constraints.\n⊢=𐑦: The definition of \"Scale-collapse\" where the boundary carries the full bulk content losslessly directly corresponds to the concept of dimensionality reduction or topological equivalence between surface and interior.\n⊞=𐑳: The participation ratio in stoichiometry reflects the asymmetric distribution of reactant counts required to balance the equation.\n◻=𐑭: Integer-winding protection implies stability against continuous deformations that preserve the winding invariant, preventing the role from being deformed away to a trivial state.\n⊙=⊙: The symbol ⊙ is explicitly defined in the prompt as the primitive for criticality_phase, which corresponds to the system being at the threshold with scale-free correlations.\n⊥=𐑖: Persistent chiral symmetry breaking requires multiple structurally enforced axes to maintain a memory depth of n, distinguishing it from thermally interconvertible or topological states.\n≻=𐑽: The primitive ≻ (recognition_mode) functions as a transition-state stabilizer that lowers the barrier for operation selection without being consumed, analogous to a catalytic or adjoint mechanism.\n≺=𐑿: The primitive ≺ denotes a strict ordering or polarity, which implies a signed direction with distinct accepting and donating poles rather than symmetry or self-complementarity.\n⋈=𐑐: High-fidelity interactions require geometry-enforcing primitives that fire with near-certainty to ensure reliable information transmission.\n⊤=𐑧: The description of being \"kinetically frozen\" and requiring \"external driving\" to rearrange directly corresponds to a high energy barrier that prevents spontaneous change.\n∈=𐑚: The correlation length in such abstract systems typically spans a mesoscale motif or cluster rather than remaining strictly local or extending globally across the entire system.\n∋=𐑝: The primitive ∋ (element of) inherently requires the simultaneous presence of both an element and a set to define a valid interaction, aligning with the conjunctive logic where all required partners must be present.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 48,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 1,
+        "word": "◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 2,
+        "word": "≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 3,
+        "word": "≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 4,
+        "word": "∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 5,
+        "word": "⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 6,
+        "word": "⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 7,
+        "word": "∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 8,
+        "word": "∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 9,
+        "word": "⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 10,
+        "word": "∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 11,
+        "word": "∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 12,
+        "word": "⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 13,
+        "word": "◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 14,
+        "word": "∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 15,
+        "word": "∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 16,
+        "word": "⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 17,
+        "word": "∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 18,
+        "word": "∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 19,
+        "word": "⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 20,
+        "word": "⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 21,
+        "word": "∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 22,
+        "word": "∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 23,
+        "word": "⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 24,
+        "word": "∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 25,
+        "word": "∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 26,
+        "word": "⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 27,
+        "word": "⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 28,
+        "word": "∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 29,
+        "word": "⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 30,
+        "word": "⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 31,
+        "word": "⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 32,
+        "word": "⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 33,
+        "word": "∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 34,
+        "word": "∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 35,
+        "word": "⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 36,
+        "word": "∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 37,
+        "word": "∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 38,
+        "word": "⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 39,
+        "word": "∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 40,
+        "word": "≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 41,
+        "word": "≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 42,
+        "word": "⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 43,
+        "word": "⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 44,
+        "word": "∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 45,
+        "word": "⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 46,
+        "word": "∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 47,
+        "word": "⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": false,
+      "final_register": false,
+      "topology_class": false
+    },
+    "canonical_k": 28,
+    "canonical_word": "∈⊞⋈⊤⊥∋∈⊤∋∈⊤∋≺≻⋈⊙∈⊥∋⊣⊢◻≻≺∈⊤⋈∋∈⊤∋∈⊤◻∋∈⊤∋∈⊤⊥∋∈⊤∋∈⊤⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: closed_walk, final_register, topology_class"
+  },
+  "kernel_repairs": null
+}

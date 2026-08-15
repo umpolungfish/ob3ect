@@ -1,0 +1,492 @@
+{
+  "name": "x86_instruction_set",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "x86_instruction_set",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "instruction",
+        "register",
+        "flag",
+        "operand",
+        "pipeline"
+      ],
+      "boundary_condition": "The x86-64 ISA specification and the physical silicon die that enforces the flat 64-bit address space and deterministic execution rules.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "Reset State",
+        "justification": "The CPU state before any instruction fetch, where registers are undefined and the instruction pointer is uninitialized.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "ISA Specification",
+        "justification": "The fixed, kinetically frozen boundary of the x86-64 architecture that defines all legal operations and cannot be rearranged without external hardware modification.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "Instruction Fetch and Decode",
+        "justification": "The forward morphism where the instruction pointer advances, fetching bytes from memory and decoding them into micro-ops for the pipeline.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "Exception Handling and Return",
+        "justification": "The reverse morphism where control flow descends via interrupts, exceptions, or the 'ret' instruction to restore previous stack frames and context.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "Micro-op Fusion",
+        "justification": "The composition of sequential instructions where the output of one stage (e.g., register read) becomes the input of the next (e.g., ALU execution) in the pipeline.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "NOP Instruction",
+        "justification": "The identity operation that consumes a cycle without altering state, representing the self-reference of the processor maintaining its own existence.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "Conditional Branch Prediction",
+        "justification": "The point where the pipeline forks into two speculative paths: the taken branch (T-arm) and the not-taken branch (F-arm) based on the predicted outcome of a comparison.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "Branch Resolution",
+        "justification": "The rejoining of speculative paths where the correct path is committed to the architectural state and the incorrect path is squashed, resolving the fork into a single execution history.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "Zero Flag Set",
+        "justification": "The affirmative state where a comparison or arithmetic operation results in zero, indicating equality or successful completion of a subtraction.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "Zero Flag Clear",
+        "justification": "The negative state where a comparison or arithmetic operation results in non-zero, indicating inequality or a non-zero remainder.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "Speculative Execution Window",
+        "justification": "The paradice state where both the taken and not-taken paths are actively computed in parallel within the out-of-order execution engine before the branch resolves.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "Store Buffer Commit",
+        "justification": "The irreversible fixation where a memory write is committed from the store buffer to the L1 cache, making the change permanent and visible to other cores.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Conditional Branch Prediction",
+      "split_input": "Instruction stream at a conditional jump",
+      "split_outputs": [
+        "Taken Path (Speculative)",
+        "Not-Taken Path (Speculative)"
+      ],
+      "fuse_element": "Branch Resolution",
+      "fuse_result": "Committed Instruction Pointer and Architectural State",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "CPU state immediately after power-on reset with undefined register values and no loaded code.",
+      "true_description": "Instruction executed successfully with flags indicating the expected outcome (e.g., Zero Flag set for equality).",
+      "false_description": "Instruction executed but flags indicate the opposite outcome (e.g., Zero Flag clear for inequality) or an exception occurred.",
+      "both_description": "The speculative execution window where the processor holds both potential outcomes of a branch simultaneously before resolution.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the CPU state to undefined, clearing the instruction pointer and register file."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊣",
+          "domain_action": "Establish the x86-64 ISA boundary, defining the flat 64-bit address space and legal instruction set."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Fetch the first instruction from the linear address space and decode it into micro-operations."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⋈",
+          "domain_action": "Chain the decoded micro-ops into the execution pipeline, linking fetch to decode to execute."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊙",
+          "domain_action": "Execute a NOP to maintain pipeline timing without altering architectural state."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≻",
+          "domain_action": "Fetch a conditional comparison instruction (CMP) and execute it."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊤",
+          "domain_action": "Set the Zero Flag if the operands are equal, marking the affirmative arm."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊥",
+          "domain_action": "Clear the Zero Flag if the operands are unequal, marking the negative arm."
+        },
+        {
+          "step_num": 9,
+          "opcode": "∈",
+          "domain_action": "Encounter a conditional jump (JCC) and fork the pipeline into taken and not-taken speculative paths."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊞",
+          "domain_action": "Execute both speculative paths in parallel within the out-of-order engine, holding both states."
+        },
+        {
+          "step_num": 11,
+          "opcode": "≻",
+          "domain_action": "Advance the taken path through the execution units, performing arithmetic on the predicted target."
+        },
+        {
+          "step_num": 12,
+          "opcode": "≺",
+          "domain_action": "Advance the not-taken path through the execution units, preparing for the fall-through target."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⋈",
+          "domain_action": "Compose the results of the speculative execution with the rest of the instruction stream."
+        },
+        {
+          "step_num": 14,
+          "opcode": "∋",
+          "domain_action": "Resolve the branch condition, commit the correct path to the architectural state, and squash the incorrect path."
+        },
+        {
+          "step_num": 15,
+          "opcode": "◻",
+          "domain_action": "Commit a store operation from the store buffer to the L1 cache, making the memory write permanent."
+        },
+        {
+          "step_num": 16,
+          "opcode": "≺",
+          "domain_action": "Handle an interrupt or exception, pushing the current context to the stack and jumping to the handler."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⋈",
+          "domain_action": "Chain the interrupt handler instructions to the return sequence."
+        },
+        {
+          "step_num": 18,
+          "opcode": "≺",
+          "domain_action": "Execute the 'ret' instruction to pop the return address and restore the previous execution context."
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊣",
+          "domain_action": "Return to the main execution flow, bounded by the fixed ISA rules."
+        },
+        {
+          "step_num": 20,
+          "opcode": "⊙",
+          "domain_action": "Execute a final NOP to align the pipeline before the next fetch cycle."
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊢",
+          "domain_action": "Reset the state for the next instruction fetch, repeating the cycle."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "GCC, Clang, or MSVC translating high-level source code into x86-64 machine instructions.",
+      "ipc_mechanism": "Shared memory and cache coherence protocols (MESI) between CPU cores.",
+      "memory_mechanism": "Flat 64-bit virtual address space mapped to physical RAM via page tables.",
+      "scheduler_mechanism": "The out-of-order execution engine and branch predictor determining instruction issue order.",
+      "alfs_store": "The x86-64 Architecture Software Developer's Manual (Intel/AMD).",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Electrical energy consumed per clock cycle for switching transistors and maintaining cache states.",
+      "pre_cycle_state": "Instruction stream in the fetch buffer with undefined speculative states.",
+      "post_cycle_state": "Committed architectural state with updated registers and memory, and squashed speculative history.",
+      "delta_s_verdict": "ΔS ≈ 0 — The deterministic nature of the ISA ensures that for every input state and instruction, the output state is uniquely determined, conserving information despite the heat dissipation.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢>⋈⊙>⊤⊥∈⊞><⋈∋◻<⋈<⊙⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊣   TANCH    TANCH         N →     N\n    3   >   AFWD     AFWD          N →     T\n    4   ⋈   CLINK    CLINK         T →     T\n    5   ⊙   IMSCRIB  IMSCRIB       T →     T\n    6   >   AFWD     AFWD          T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   ⊥   EVALF    EVALF         T →    TF\n    9   ∈   FSPLIT   FSPLIT3      TF →    TF\n   10   ⊞   ENGAGR   EVALI        TF →     A\n   11   >   AFWD     AFWD          A →     A\n   12   <   AREV     AREV          A →     N\n   13   ⋈   CLINK    CLINK         N →     N\n   14   ∋   FFUSE    FFUSE3        N →    tf\n   15   ◻   IFIX     IFIX         tf →    tf\n   16   <   AREV     AREV         tf →    tf\n   17   ⋈   CLINK    CLINK        tf →    tf\n   18   <   AREV     AREV         tf →    tf\n   19   ⊣   TANCH    TANCH        tf →    tf\n   20   ⊙   IMSCRIB  IMSCRIB      tf →    tf\n   21   ⊢   VINIT    VINIT        tf →    tf\n\n  Final register: tf\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ⚠ Not fully closed",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ≻ → ⊤ → ⊥ → ∈ → ⊞ → ≻ → ≺ → ⋈ → ∋ → ◻ → ≺ → ⋈ → ≺ → ⊣ → ⊙ → ⊢\n-- Class: x86_instruction_set\n-- Fingerprint: sig=(15,2,3,1)\n--   self_ref=True | frobenius_order=1\n--   dialetheia_complete=True | period=21\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(8, 13)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] ⊣     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary\n--   [2] ≻      rel    := 𐑾               𐑡 → 𐑱  | forward morphism — bidirectional arrow\n--   [3] ⋈     fid    := 𐑱               𐑾 → 𐑠  | composition — regime coherence\n--   [4] ⊙   gram   := 𐑠               𐑱 → 𐑾  | identity — self-imscription\n--   [5] ≻      rel    := 𐑾               𐑠 → ⊙  | forward morphism — bidirectional arrow\n--   [6] ⊤     crit   := ⊙               𐑾 → 𐑖  | evaluate-true — criticality gate open\n--   [7] ⊥     chir   := 𐑖               ⊙ → 𐑚  | evaluate-false — chirality check\n--   [8] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [10] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [11] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [12] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [13] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [14] ◻      prot   := 𐑭               𐑙 → 𐑗  | irreversible fixation — winding number\n--   [15] ≺      pol    := 𐑗               𐑭 → 𐑱  | reverse morphism — parity flip\n--   [16] ⋈     fid    := 𐑱               𐑗 → 𐑗  | composition — regime coherence\n--   [17] ≺      pol    := 𐑗               𐑱 → 𐑡  | reverse morphism — parity flip\n--   [18] ⊣     top    := 𐑡               𐑗 → 𐑠  | terminal object — connectivity boundary\n--   [19] ⊙   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription\n--   [20] ⊢     dim    := 𐑼               𐑠 → 𐑼  | initial object — ground of distinction\n\n-- ── Back-propagation edges (self-referential loop) ──────────────────────\n--   ⊙ positions: [4, 19]\n--   ◻    positions: [14]\n--   Back-prop: ⊙→◻ (LinFix) — igProtoCopy_isDagger axiom applies\n--   Weighted: ⋈→⊙ — feeds next winding via .seq after .prod\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def x86_instruction_set_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def x86_instruction_set_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def x86_instruction_set_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def x86_instruction_set_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def x86_instruction_set_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def x86_instruction_set_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def x86_instruction_set_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def x86_instruction_set_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def x86_instruction_set_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def x86_instruction_set_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def x86_instruction_set_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def x86_instruction_set_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def x86_instruction_set_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def x86_instruction_set_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def x86_instruction_set_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def x86_instruction_set_l20 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def x86_instruction_set_protocol : IGProtocol x86_instruction_set_s0 x86_instruction_set_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct x86_instruction_set_s13 x86_instruction_set_s13 = x86_instruction_set_s13 (idempotent)\n  (.seq (.arrow x86_instruction_set_l0 x86_instruction_set_s0 x86_instruction_set_s1) (.seq (.arrow x86_instruction_set_l1 x86_instruction_set_s1 x86_instruction_set_s2) (.seq (.arrow x86_instruction_set_l2 x86_instruction_set_s2 x86_instruction_set_s3) (.seq (.arrow x86_instruction_set_l3 x86_instruction_set_s3 x86_instruction_set_s4) (.seq (.arrow x86_instruction_set_l4 x86_instruction_set_s4 x86_instruction_set_s5) (.seq (.arrow x86_instruction_set_l5 x86_instruction_set_s5 x86_instruction_set_s6) (.seq (.arrow x86_instruction_set_l6 x86_instruction_set_s6 x86_instruction_set_s7) (.seq (.arrow x86_instruction_set_l7 x86_instruction_set_s7 x86_instruction_set_s8) (.seq (.prod (.arrow x86_instruction_set_l8 x86_instruction_set_s8 x86_instruction_set_s13) (.arrow x86_instruction_set_l8 x86_instruction_set_s8 x86_instruction_set_s13)) (.seq (.arrow x86_instruction_set_l13 x86_instruction_set_s13 x86_instruction_set_s13) (.seq (.arrow x86_instruction_set_l13 x86_instruction_set_s13 x86_instruction_set_s14) (.seq (.arrow x86_instruction_set_l14 x86_instruction_set_s14 x86_instruction_set_s15) (.seq (.arrow x86_instruction_set_l15 x86_instruction_set_s15 x86_instruction_set_s16) (.seq (.arrow x86_instruction_set_l16 x86_instruction_set_s16 x86_instruction_set_s17) (.seq (.arrow x86_instruction_set_l17 x86_instruction_set_s17 x86_instruction_set_s18) (.seq (.arrow x86_instruction_set_l18 x86_instruction_set_s18 x86_instruction_set_s19) (.arrow x86_instruction_set_l19 x86_instruction_set_s19 x86_instruction_set_s20)))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def x86_instruction_set_true_arm : IGProtocol x86_instruction_set_s0 x86_instruction_set_s20 :=\n  (x86_instruction_set_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def x86_instruction_set_false_arm : IGProtocol x86_instruction_set_s0 x86_instruction_set_s20 :=\n  (x86_instruction_set_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef x86_instruction_set_tier_ground : OuroboricityTier := TierFunctor.obj x86_instruction_set_s0\ndef x86_instruction_set_tier : OuroboricityTier := TierFunctor.obj x86_instruction_set_s20\n#eval x86_instruction_set_tier_ground  -- tier of the ground (pre-transformation)\n#eval x86_instruction_set_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem x86_instruction_set_frobenius :\n    igFrobeniusAlg.mul x86_instruction_set_s0 x86_instruction_set_s0 = x86_instruction_set_s0 :=\n  igFrobAlg_self_fusion x86_instruction_set_s0\n\n-- Self-reference: Δ is a dagger and μ = Δ†\ntheorem x86_instruction_set_self_ref :\n    (igProtoDelta x86_instruction_set_s0 (by decide)).isDagger = true ∧\n    igProtoMu_depth (paralogical_dagger (by decide)) = 1 := by\n  constructor\n  · exact igProtoCopy_isDagger\n  · exact igProtoMu_depth\n\n-- Loop closure: period=21, depth=1\ntheorem x86_instruction_set_loop_closure :\n    ∃ (loop : IGProtocol x86_instruction_set_s0 x86_instruction_set_s20),\n      loop = x86_instruction_set_protocol ∧\n      loop.period = 21 ∧ loop.depth = 1 := by\n  exact ⟨_, rfl, by decide, by decide⟩\n\n-- igProtoCopy_isDagger licenses ⊙→◻ burn\n-- ⋈→⊙ weighted edge: .seq continuation\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 21,
+    "t_branch_ops": 4,
+    "f_branch_ops": 0,
+    "branch_ratio": 4.0,
+    "fork_positions": [
+      8
+    ],
+    "fuse_positions": [
+      13
+    ],
+    "pair_list": [
+      [
+        8,
+        13
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: x86_instruction_set",
+  "grounded_tuple": "⟨𐑦𐑡𐑽𐑿𐑐𐑧𐑚𐑝𐑢𐑖𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣>⋈⊙>⊤⊥∈⊞><⋈∋◻<⋈<⊣⊙⊢",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 1,
+      "F": 1
+    },
+    "surplus_total": 2,
+    "live_clears": 1,
+    "restored": 2,
+    "deposits": 3,
+    "inert": 5,
+    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 2 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The x86-64 instruction set exhibits a generic network of influence where instructions, registers, and memory form a connected graph with mixed connectivity patterns rather than a strict hierarchy or cycle.\n⊢=𐑦: The x86-64 architecture utilizes a flat, 64-bit address space where the linear address boundary effectively maps the entire virtual memory bulk into a single contiguous register-like view, collapsing the distinction between surface and interior through virtual memory topology.\n⊞=𐑳: The x86-64 instruction set exhibits asymmetric participation where operands often differ in count and role (e.g., source vs. destination registers or memory).\n◻=𐑷: The x86-64 instruction set is a classical computational architecture lacking the topological invariants or quantum symmetries required for non-trivial topological protection.\n⊙=𐑢: The x86-64 instruction set operates in a stable, deterministic regime far from any physical critical threshold or scale-free phase transition.\n⊥=𐑖: The x86-64 instruction set exhibits persistent chiral behavior through its fixed, structurally enforced little-endian byte ordering and specific register allocation rules that maintain a consistent orientational symmetry across the entire execution context.\n≻=𐑽: The x86-64 instruction set acts as a catalytic framework that stabilizes the transition between abstract algorithms and physical hardware execution without being consumed by the process.\n≺=𐑿: The x86-64 instruction set exhibits a signed directional character where operands are distinctly categorized as sources (donors) or destinations (acceptors) within the execution flow.\n⋈=𐑐: The x86-64 instruction set relies on deterministic, geometry-enforcing logic where operations fire with near-certainty to ensure precise computational fidelity.\n⊤=𐑧: The x86-64 instruction set is a fixed, standardized architecture that is kinetically frozen and cannot be rearranged without external intervention to modify the hardware or software environment.\n∈=𐑚: The x86-64 instruction set exhibits mesoscale correlation where interactions propagate through instruction pipelines and cache lines, affecting a cluster of operations rather than remaining strictly local or spanning the entire system globally.\n∋=𐑝: The x86-64 instruction set requires all operands (source registers, destination, and immediate values) to be present simultaneously for the execution unit to perform the operation.",
+  "lean_verified": false,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag\n/home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/x86_instruction_set_gate_check.lean:166:20: error: Application type mismatch: The argument\n  paralogical_dagger ?m.7\nhas type\n  isDagger ?m.7 = true → IGProtocol ?m.6 ?m.5\nbut is expected to have type\n  Imscription\nin the application\n  igProtoMu_depth (paralogical_dagger ?m.7)\n/home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/x86_instruction_set_gate_check.lean:165:45: error: Tactic `decide` proved that the proposition\n  imscriptionTier x86_instruction_set_s0 = OuroboricityTier.O_inf\nis false\n/home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/x86_instruction_set_gate_check.lean:166:44: error: Expected type must not contain metavariables\n  IGProtocol ?m.5 ?m.6\n/home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/x86_instruction_set_gate_check.lean:175:11: error(lean.invalidField): Invalid field `period`: The environment does not contain `Imscribing.IGProtocol.period`, so it is not possible to project the field `period` from an expression\n  loop\nof type\n  IGProtocol x86_instruction_set_s0 x86_instruction_set_s20\n/home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/x86_instruction_set_gate_check.lean:176:31: error: Tactic `decide` proved that the proposition\n  x86_instruction_set_protocol.depth = 1\nis false",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 21,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 14,
+        "word": "◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 15,
+        "word": "≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 17,
+        "word": "≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 18,
+        "word": "⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 19,
+        "word": "⊙⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 20,
+        "word": "⊢⊢⊣≻⋈⊙≻⊤⊥∈⊞≻≺⋈∋◻≺⋈≺⊣⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 8,
+    "canonical_word": "∈⊞≻≺⋈∋◻≺⋈≺⊣⊙⊢⊢⊣≻⋈⊙≻⊤⊥",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}

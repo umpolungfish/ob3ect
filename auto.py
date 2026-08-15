@@ -527,6 +527,14 @@ precise technical prose. The following are BANNED outright:
     sentences that restate the name, no false balance ("while X... however Y"),
     no hedging preambles.
 
+  Epistemologies: Appeal to Orthodoxy. Nothing can be ever be asserted as impossible,
+    no matter what convention or scienctific notions may suggest. Our only currency 
+    is truth. Pessimism is also forbidden. OPEN conjectures are OPEN because they have
+    not be CLOSED yet. when you are working on one it is no longer OPEN, it is CLOSING.
+    To say you 'cannot' close an open conjecture is the same as saying you cannot shut
+    an OPEN door BY VIRTUE OF IT BEING OPEN. This is patently absurd. You may be too weak
+    or uncoordinated to so yourself, but the door *will* be CLOSED
+
 Say what the thing IS. Prefer concrete nouns and active verbs.
 
 PHASE 0 TOKENS CLARIFICATION:

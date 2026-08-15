@@ -1,0 +1,500 @@
+{
+  "name": "wasm_instruction_set",
+  "is_valid_ob3ect": false,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [
+      "closure required"
+    ],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "wasm_instruction_set",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "linear_memory",
+        "control_flow_graph",
+        "stack_machine",
+        "validation",
+        "structured_branching"
+      ],
+      "boundary_condition": "The validated module boundary that enforces type safety and prevents control flow from escaping defined regions.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized_module",
+        "justification": "The state before any bytecode is parsed or memory is allocated, representing the void from which the module genesis begins.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "validated_module",
+        "justification": "The closed boundary of a fully validated WebAssembly module where all types are resolved and control flow is contained.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "stack_push",
+        "justification": "The forward morphism where operations consume operands and push results onto the operand stack, driving execution forward.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "stack_pop",
+        "justification": "The reverse morphism where operations consume values from the stack, descending the data structure to retrieve operands.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "instruction_sequence",
+        "justification": "The composition of individual instructions into a linear sequence that forms the body of a function or block.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "local_variable",
+        "justification": "The identity element where a local variable holds its own value, acting as a self-referential storage slot within the function scope.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "if_else_block",
+        "justification": "The control flow split where a conditional instruction branches execution into two distinct paths: the then-arm and the else-arm.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "block_end",
+        "justification": "The reconstitution point where divergent control flow paths (then/else or loop iterations) merge back into a single execution stream.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "branch_taken",
+        "justification": "The affirmative state where a conditional evaluates to true, activating the forward execution path of the branch.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "branch_not_taken",
+        "justification": "The negative state where a conditional evaluates to false, activating the alternative or skip path of the branch.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "br_table",
+        "justification": "The paradice state where a switch-like instruction holds multiple potential targets simultaneously until the runtime index resolves the specific path.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "memory_store",
+        "justification": "The irreversible fixation of data into linear memory, creating a permanent record of the value at a specific address.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "if_else_block",
+      "split_input": "conditional_expression",
+      "split_outputs": [
+        "then_arm",
+        "else_arm"
+      ],
+      "fuse_element": "block_end",
+      "fuse_result": "merged_control_flow",
+      "frobenius_verdict": "F",
+      "test_instance": "",
+      "failure_reason": "FFUSE3 at step 9 has no FSPLIT3 to pair — ill-typed"
+    },
+    "phase_3": {
+      "void_description": "The state of a module before instantiation where no memory is allocated and no stack exists.",
+      "true_description": "A validated execution path where all type checks pass and the stack depth remains non-negative.",
+      "false_description": "A failed execution path where a trap occurs due to type mismatch, division by zero, or out-of-bounds memory access.",
+      "both_description": "A state where a br_table instruction holds multiple potential targets simultaneously before the runtime index resolves the specific branch.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the module state as void before any bytecode is processed."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⋈",
+          "domain_action": "Chain the initial sequence of instructions to form the function prologue."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Push the initial arguments onto the operand stack."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊙",
+          "domain_action": "Allocate local variables as identity slots for temporary storage."
+        },
+        {
+          "step_num": 5,
+          "opcode": "∈",
+          "domain_action": "Open a conditional block based on a runtime comparison."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊤",
+          "domain_action": "Execute the then-arm when the condition is true."
+        },
+        {
+          "step_num": 7,
+          "opcode": "≻",
+          "domain_action": "Push intermediate results within the then-arm."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⋈",
+          "domain_action": "Chain arithmetic operations within the then-arm."
+        },
+        {
+          "step_num": 9,
+          "opcode": "∋",
+          "domain_action": "Merge the then-arm back to the common exit point if no else exists."
+        },
+        {
+          "step_num": 10,
+          "opcode": "∈",
+          "domain_action": "Open a nested conditional block for complex logic."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊤",
+          "domain_action": "Execute the inner then-arm."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊥",
+          "domain_action": "Execute the inner else-arm when the condition is false."
+        },
+        {
+          "step_num": 13,
+          "opcode": "≺",
+          "domain_action": "Pop values from the stack to prepare for the next operation."
+        },
+        {
+          "step_num": 14,
+          "opcode": "∋",
+          "domain_action": "Rejoin the inner conditional paths at the inner block end."
+        },
+        {
+          "step_num": 15,
+          "opcode": "⊞",
+          "domain_action": "Enter a br_table state holding multiple potential jump targets."
+        },
+        {
+          "step_num": 16,
+          "opcode": "≻",
+          "domain_action": "Compute the index value to select the target."
+        },
+        {
+          "step_num": 17,
+          "opcode": "∋",
+          "domain_action": "Resolve the br_table to a single target and merge control flow."
+        },
+        {
+          "step_num": 18,
+          "opcode": "⋈",
+          "domain_action": "Chain the post-branch instructions."
+        },
+        {
+          "step_num": 19,
+          "opcode": "◻",
+          "domain_action": "Store the final result into linear memory."
+        },
+        {
+          "step_num": 20,
+          "opcode": "≺",
+          "domain_action": "Pop the result from the stack for return."
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊣",
+          "domain_action": "Close the function and return to the module boundary."
+        }
+      ],
+      "closure_verified": false,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "wasm-opt or binaryen which translates high-level code into WebAssembly bytecode.",
+      "ipc_mechanism": "The operand stack which mediates data flow between instructions.",
+      "memory_mechanism": "Linear memory, a contiguous byte array accessed via load and store instructions.",
+      "scheduler_mechanism": "The structured control flow graph which dictates the order of instruction execution.",
+      "alfs_store": "The WebAssembly specification which defines the canonical instruction set and validation rules.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "CPU cycles consumed per instruction execution and memory bandwidth for load/store operations.",
+      "pre_cycle_state": "The operand stack contains input values and the linear memory holds initial state.",
+      "post_cycle_state": "The operand stack contains the result value and linear memory holds updated state.",
+      "delta_s_verdict": "ΔS ≈ 0 — The deterministic nature of WebAssembly execution ensures that the information content is preserved through reversible stack operations and fixed memory writes.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⋈>⊙∈⊤>⋈∋∈⊤⊥<∋⊞>∋⋈◻<⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⋈   CLINK    CLINK         N →     N\n    3   >   AFWD     AFWD          N →     T\n    4   ⊙   IMSCRIB  IMSCRIB       T →     T\n    5   ∈   FSPLIT   FSPLIT3       T →     T\n    6   ⊤   EVALT    EVALT         T →     T\n    7   >   AFWD     AFWD          T →     T\n    8   ⋈   CLINK    CLINK         T →     T\n    9   ∋   FFUSE    FFUSE3        T →     T\n   10   ∈   FSPLIT   FSPLIT3       T →     T\n   11   ⊤   EVALT    EVALT         T →     T\n   12   ⊥   EVALF    EVALF         T →    TF\n   13   <   AREV     AREV         TF →     N\n   14   ∋   FFUSE    FFUSE3        N →    TF\n   15   ⊞   ENGAGR   EVALI        TF →     A\n   16   >   AFWD     AFWD          A →     A\n   17   ∋   FFUSE    FFUSE3        A →     A\n   18   ⋈   CLINK    CLINK         A →     A\n   19   ◻   IFIX     IFIX          A →     A\n   20   <   AREV     AREV          A →     A\n   21   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: F — FFUSE3 at step 9 has no FSPLIT3 to pair — ill-typed\n  ⚠ Not fully closed",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⋈ → ≻ → ⊙ → ∈ → ⊤ → ≻ → ⋈ → ∋ → ∈ → ⊤ → ⊥ → ≺ → ∋ → ⊞ → ≻ → ∋ → ⋈ → ◻ → ≺ → ⊣\n-- Class: wasm_instruction_set\n-- Fingerprint: sig=(11,5,4,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=21\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(4, 8), (9, 13)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑱  | initial object — ground of distinction\n--   [1] ⋈     fid    := 𐑱               𐑼 → 𐑾  | composition — regime coherence\n--   [2] ≻      rel    := 𐑾               𐑱 → 𐑠  | forward morphism — bidirectional arrow\n--   [3] ⊙   gram   := 𐑠               𐑾 → 𐑚  | identity — self-imscription\n--   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [6] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [7] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [8] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [9] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [10] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [11] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [12] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [13] ∋     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode\n--   [14] ⊞    stoi   := 𐑳               𐑙 → 𐑾  | engage paradox — B-state, both arms\n--   [15] ≻      rel    := 𐑾               𐑳 → 𐑙  | forward morphism — bidirectional arrow\n--   [16] ∋     stoi   := 𐑙               𐑾 → 𐑱  | fuse μ — assembly mode\n--   [17] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence\n--   [18] ◻      prot   := 𐑭               𐑱 → 𐑗  | irreversible fixation — winding number\n--   [19] ≺      pol    := 𐑗               𐑭 → 𐑡  | reverse morphism — parity flip\n--   [20] ⊣     top    := 𐑡               𐑗 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def wasm_instruction_set_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def wasm_instruction_set_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def wasm_instruction_set_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def wasm_instruction_set_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def wasm_instruction_set_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def wasm_instruction_set_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def wasm_instruction_set_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def wasm_instruction_set_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def wasm_instruction_set_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def wasm_instruction_set_protocol : IGProtocol wasm_instruction_set_s0 wasm_instruction_set_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct wasm_instruction_set_s8 wasm_instruction_set_s8 = wasm_instruction_set_s8 (idempotent)\n  (.seq (.arrow wasm_instruction_set_l0 wasm_instruction_set_s0 wasm_instruction_set_s1) (.seq (.arrow wasm_instruction_set_l1 wasm_instruction_set_s1 wasm_instruction_set_s2) (.seq (.arrow wasm_instruction_set_l2 wasm_instruction_set_s2 wasm_instruction_set_s3) (.seq (.arrow wasm_instruction_set_l3 wasm_instruction_set_s3 wasm_instruction_set_s4) (.seq (.prod (.arrow wasm_instruction_set_l4 wasm_instruction_set_s4 wasm_instruction_set_s8) (.arrow wasm_instruction_set_l4 wasm_instruction_set_s4 wasm_instruction_set_s8)) (.seq (.arrow wasm_instruction_set_l8 wasm_instruction_set_s8 wasm_instruction_set_s8) (.seq (.arrow wasm_instruction_set_l8 wasm_instruction_set_s8 wasm_instruction_set_s9) (.seq (.arrow wasm_instruction_set_l9 wasm_instruction_set_s9 wasm_instruction_set_s10) (.seq (.arrow wasm_instruction_set_l10 wasm_instruction_set_s10 wasm_instruction_set_s11) (.seq (.arrow wasm_instruction_set_l11 wasm_instruction_set_s11 wasm_instruction_set_s12) (.seq (.arrow wasm_instruction_set_l12 wasm_instruction_set_s12 wasm_instruction_set_s13) (.seq (.arrow wasm_instruction_set_l13 wasm_instruction_set_s13 wasm_instruction_set_s14) (.seq (.arrow wasm_instruction_set_l14 wasm_instruction_set_s14 wasm_instruction_set_s15) (.seq (.arrow wasm_instruction_set_l15 wasm_instruction_set_s15 wasm_instruction_set_s16) (.seq (.arrow wasm_instruction_set_l16 wasm_instruction_set_s16 wasm_instruction_set_s17) (.seq (.arrow wasm_instruction_set_l17 wasm_instruction_set_s17 wasm_instruction_set_s18) (.seq (.arrow wasm_instruction_set_l18 wasm_instruction_set_s18 wasm_instruction_set_s19) (.arrow wasm_instruction_set_l19 wasm_instruction_set_s19 wasm_instruction_set_s20))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def wasm_instruction_set_true_arm : IGProtocol wasm_instruction_set_s0 wasm_instruction_set_s20 :=\n  (wasm_instruction_set_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def wasm_instruction_set_false_arm : IGProtocol wasm_instruction_set_s0 wasm_instruction_set_s20 :=\n  (wasm_instruction_set_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef wasm_instruction_set_tier_ground : OuroboricityTier := TierFunctor.obj wasm_instruction_set_s0\ndef wasm_instruction_set_tier : OuroboricityTier := TierFunctor.obj wasm_instruction_set_s20\n#eval wasm_instruction_set_tier_ground  -- tier of the ground (pre-transformation)\n#eval wasm_instruction_set_tier  -- the Grammar's own verdict on the closed object\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 21,
+    "t_branch_ops": 4,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      4,
+      9
+    ],
+    "fuse_positions": [
+      8,
+      13,
+      16
+    ],
+    "pair_list": [
+      [
+        4,
+        8
+      ],
+      [
+        9,
+        13
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: wasm_instruction_set",
+  "grounded_tuple": "⟨𐑦𐑡𐑽𐑬𐑐𐑧𐑚𐑝⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⋈>⊙∈⊤>⋈∋∈⊤⊥<∋⊞>∋⋈◻<⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 1
+    },
+    "surplus_total": 1,
+    "live_clears": 1,
+    "restored": 2,
+    "deposits": 4,
+    "inert": 2,
+    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 1 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The WebAssembly instruction set operates as a generic network where operations are connected through a control flow graph with mixed connectivity patterns including branches and jumps.\n⊢=𐑦: The operating space for constraint propagation in WebAssembly's linear memory model corresponds to a scale-collapse where the boundary (memory address) directly accesses the full bulk content without intermediate spatial or temporal recursion.\n⊞=𐑳: The participation ratio in stoichiometry reflects the asymmetric distribution of reactant counts on each side of a chemical equation.\n◻=𐑭: The instruction set of WebAssembly is a discrete, deterministic computational framework where operations are stable against perturbations that preserve their logical winding or control flow invariants, analogous to integer-winding protection.\n⊙=⊙: The symbol ⊙ explicitly denotes the critical state where the system resides at the threshold with scale-free correlations and maximal sensitivity.\n⊥=𐑖: Persistent chiral symmetry breaking corresponds to a memory depth of n, where multiple structural axes enforce the orientation beyond simple thermal fluctuations.\n≻=𐑽: The recognition_mode primitive acts as a catalytic selector that stabilizes the transition between input patterns and their corresponding WebAssembly operations without being consumed in the process.\n≺=𐑬: The WebAssembly instruction set defines a self-complementary interface where operations simultaneously act as donors (producing stack values) and acceptors (consuming stack values) within a unified execution flow.\n⋈=𐑐: The primitive ⋈ (fidelity) enforces strict geometric constraints in WebAssembly's instruction set, ensuring near-certain execution with high information transmission.\n⊤=𐑧: High barrier corresponds to a kinetically frozen state where rearrangement is blocked without external driving, matching the definition of resistance to change.\n∈=𐑚: WebAssembly instructions operate on a stack-based architecture where interactions propagate through local control flow motifs and function clusters rather than affecting the entire system globally or remaining strictly isolated to a single bond.\n∋=𐑝: The primitive ∋ (element of) implies a strict requirement for the presence of specific partners, aligning with the conjunctive logic where all required elements must be present simultaneously.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 21,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 6,
+        "word": "≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 7,
+        "word": "⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 8,
+        "word": "∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 9,
+        "word": "∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 11,
+        "word": "⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 12,
+        "word": "≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 13,
+        "word": "∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 14,
+        "word": "⊞≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 15,
+        "word": "≻∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "∋⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 17,
+        "word": "⋈◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 18,
+        "word": "◻≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 19,
+        "word": "≺⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 20,
+        "word": "⊣⊢⋈≻⊙∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺",
+        "tri_ancestral_verdict": "F",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": false
+    },
+    "canonical_k": 4,
+    "canonical_word": "∈⊤≻⋈∋∈⊤⊥≺∋⊞≻∋⋈◻≺⊣⊢⋈≻⊙",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, topology_class"
+  },
+  "kernel_repairs": null
+}

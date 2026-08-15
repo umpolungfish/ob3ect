@@ -1,0 +1,464 @@
+{
+  "name": "cpython_instruction_set",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "cpython_instruction_set",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "code_object",
+        "bytecode_stream",
+        "value_stack",
+        "frame",
+        "opcode",
+        "jump_target"
+      ],
+      "boundary_condition": "The code object boundary that encapsulates the bytecode stream, constant table, and variable names, isolating the execution context from the global interpreter state.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "Empty Frame",
+        "justification": "The uninitialized execution context before the code object is loaded, representing the void state where no variables or stack exist.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "Code Object",
+        "justification": "The terminal anchor that contains the entire bytecode sequence, constant pool, and variable definitions, defining the closed system boundary.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "Program Counter Advance",
+        "justification": "The forward morphism where the program counter increments to the next instruction, driving the linear progression of execution.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "Stack Unwind",
+        "justification": "The reverse morphism where an exception or return unwinds the call stack, descending through frames to restore previous states.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "Instruction Sequence",
+        "justification": "The composition of opcodes where the output of one instruction (stack state) becomes the input for the next, chaining operations.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "NOP",
+        "justification": "The identity operation that consumes a cycle without altering the stack or program state, representing self-reference.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "Conditional Jump",
+        "justification": "The co-multiplication where a single instruction (e.g., POP_JUMP_IF_TRUE) branches the control flow into two distinct paths based on a condition.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "Fall-through Convergence",
+        "justification": "The multiplication where divergent control paths (jump target and fall-through) rejoin at a common instruction, resolving the branch.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "Successful Execution",
+        "justification": "The affirmative state where an instruction executes without raising an exception, affirming the validity of the operation.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "Exception Raise",
+        "justification": "The negative state where an instruction fails (e.g., ZeroDivisionError), refuting the current execution path and triggering unwinding.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "Generator Yield",
+        "justification": "The paradice state where execution is suspended (yield) but the frame remains active, holding both the paused state and the potential for resumption simultaneously.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "Bytecode Compilation",
+        "justification": "The irreversible fixation where source code is compiled into a frozen bytecode stream, creating a permanent, append-only record of the program logic.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Conditional Jump",
+      "split_input": "Control flow at a decision point",
+      "split_outputs": [
+        "True Branch (Jump Target)",
+        "False Branch (Fall-through)"
+      ],
+      "fuse_element": "Fall-through Convergence",
+      "fuse_result": "Unified Control Flow State",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "No frame allocated; the interpreter is idle or the code object has not been loaded.",
+      "true_description": "Instruction executed successfully; the stack is in a valid state and the program counter has advanced.",
+      "false_description": "An exception was raised; the current frame is invalid and the stack is being unwound to a handler.",
+      "both_description": "A generator is suspended at a yield point; the frame is both paused (inactive) and active (holding state for resumption).",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "◻",
+          "domain_action": "Source code is compiled into a frozen bytecode stream, creating the immutable code object."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊢",
+          "domain_action": "An empty frame is allocated, initializing the local variable array and value stack to void."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊣",
+          "domain_action": "The code object boundary is established, containing the bytecode stream and constant table."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "The program counter advances to the first instruction, initiating the forward morphism."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⋈",
+          "domain_action": "Instructions are chained sequentially, where the output of one feeds the input of the next."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊙",
+          "domain_action": "A NOP instruction executes, maintaining the current state without transformation."
+        },
+        {
+          "step_num": 7,
+          "opcode": "≻",
+          "domain_action": "The program counter advances to a conditional jump instruction."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∈",
+          "domain_action": "The control flow splits into two arms based on the truth value of the top stack item."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊤",
+          "domain_action": "The T-arm executes the jump target block, affirming the condition was met."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊥",
+          "domain_action": "The F-arm executes the fall-through block, refuting the condition."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⋈",
+          "domain_action": "Both arms continue executing their respective instruction sequences."
+        },
+        {
+          "step_num": 12,
+          "opcode": "∋",
+          "domain_action": "The divergent paths rejoin at a common instruction, fusing the control flow."
+        },
+        {
+          "step_num": 13,
+          "opcode": "≻",
+          "domain_action": "Execution continues linearly toward the next operation."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊞",
+          "domain_action": "A YIELD_VALUE instruction suspends execution, holding the frame in a paradice state."
+        },
+        {
+          "step_num": 15,
+          "opcode": "≺",
+          "domain_action": "An exception is raised, triggering a reverse morphism that unwinds the stack."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊥",
+          "domain_action": "The exception handler evaluates the failure state, refuting the current path."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⋈",
+          "domain_action": "The handler executes recovery instructions, chaining the error response."
+        },
+        {
+          "step_num": 18,
+          "opcode": "≻",
+          "domain_action": "Execution resumes or terminates based on the handler outcome."
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊣",
+          "domain_action": "The function returns, closing the frame and anchoring the result in the caller."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Python compiler (PyCompile) that translates source code into bytecode instructions.",
+      "ipc_mechanism": "The value stack and local variable array that mediate data flow between instructions.",
+      "memory_mechanism": "The frame object that stores the execution context, including the stack, locals, and code object reference.",
+      "scheduler_mechanism": "The Global Interpreter Lock (GIL) and the bytecode interpreter loop that determine instruction timing.",
+      "alfs_store": "The .pyc bytecode cache files that serve as the canonical bootstrap store for compiled code.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "CPU cycles and stack memory allocation per instruction execution.",
+      "pre_cycle_state": "The frame state before an instruction executes, with the program counter pointing to the current opcode.",
+      "post_cycle_state": "The frame state after execution, with the program counter advanced and the stack modified.",
+      "delta_s_verdict": "ΔS ≈ 0 — The deterministic nature of bytecode execution ensures that state transitions are reversible in principle (via stack unwinding) and conserve information within the closed system of the code object.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢◻>⋈⊙>∈⊤⊥⋈∋>⊞<⊥⋈>⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ◻   IFIX     IFIX          N →     N\n    2   ⊢   VINIT    VINIT         N →     N\n    3   ⊣   TANCH    TANCH         N →     N\n    4   >   AFWD     AFWD          N →     N\n    5   ⋈   CLINK    CLINK         N →     N\n    6   ⊙   IMSCRIB  IMSCRIB       N →     T\n    7   >   AFWD     AFWD          T →     T\n    8   ∈   FSPLIT   FSPLIT3       T →     T\n    9   ⊤   EVALT    EVALT         T →     T\n   10   ⊥   EVALF    EVALF         T →     T\n   11   ⋈   CLINK    CLINK         T →     T\n   12   ∋   FFUSE    FFUSE3        T →     T\n   13   >   AFWD     AFWD          T →     T\n   14   ⊞   ENGAGR   EVALI         T →     T\n   15   <   AREV     AREV          T →     T\n   16   ⊥   EVALF    EVALF         T →     T\n   17   ⋈   CLINK    CLINK         T →     T\n   18   >   AFWD     AFWD          T →     T\n   19   ⊣   TANCH    TANCH         T →     T\n\n  Final register: T\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ⚠ Not fully closed",
+  "lean_scaffold": "-- IGProtocol scaffold: ◻ → ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ≻ → ∈ → ⊤ → ⊥ → ⋈ → ∋ → ≻ → ⊞ → ≺ → ⊥ → ⋈ → ≻ → ⊣\n-- Class: cpython_instruction_set\n-- Fingerprint: sig=(12,2,4,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=19\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(7, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ◻      prot   := 𐑭               𐑭 → 𐑼  | irreversible fixation — winding number\n--   [1] ⊢     dim    := 𐑼               𐑭 → 𐑡  | initial object — ground of distinction\n--   [2] ⊣     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary\n--   [3] ≻      rel    := 𐑾               𐑡 → 𐑱  | forward morphism — bidirectional arrow\n--   [4] ⋈     fid    := 𐑱               𐑾 → 𐑠  | composition — regime coherence\n--   [5] ⊙   gram   := 𐑠               𐑱 → 𐑾  | identity — self-imscription\n--   [6] ≻      rel    := 𐑾               𐑠 → 𐑚  | forward morphism — bidirectional arrow\n--   [7] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [8] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [9] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [10] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [11] ∋     stoi   := 𐑙               𐑙 → 𐑾  | fuse μ — assembly mode\n--   [12] ≻      rel    := 𐑾               𐑙 → 𐑳  | forward morphism — bidirectional arrow\n--   [13] ⊞    stoi   := 𐑳               𐑾 → 𐑗  | engage paradox — B-state, both arms\n--   [14] ≺      pol    := 𐑗               𐑳 → 𐑖  | reverse morphism — parity flip\n--   [15] ⊥     chir   := 𐑖               𐑗 → 𐑱  | evaluate-false — chirality check\n--   [16] ⋈     fid    := 𐑱               𐑖 → 𐑾  | composition — regime coherence\n--   [17] ≻      rel    := 𐑾               𐑱 → 𐑡  | forward morphism — bidirectional arrow\n--   [18] ⊣     top    := 𐑡               𐑾 → 𐑭  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def cpython_instruction_set_s0 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def cpython_instruction_set_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def cpython_instruction_set_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def cpython_instruction_set_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def cpython_instruction_set_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def cpython_instruction_set_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def cpython_instruction_set_l0 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def cpython_instruction_set_l1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def cpython_instruction_set_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def cpython_instruction_set_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def cpython_instruction_set_protocol : IGProtocol cpython_instruction_set_s0 cpython_instruction_set_s18 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct cpython_instruction_set_s11 cpython_instruction_set_s11 = cpython_instruction_set_s11 (idempotent)\n  (.seq (.arrow cpython_instruction_set_l0 cpython_instruction_set_s0 cpython_instruction_set_s1) (.seq (.arrow cpython_instruction_set_l1 cpython_instruction_set_s1 cpython_instruction_set_s2) (.seq (.arrow cpython_instruction_set_l2 cpython_instruction_set_s2 cpython_instruction_set_s3) (.seq (.arrow cpython_instruction_set_l3 cpython_instruction_set_s3 cpython_instruction_set_s4) (.seq (.arrow cpython_instruction_set_l4 cpython_instruction_set_s4 cpython_instruction_set_s5) (.seq (.arrow cpython_instruction_set_l5 cpython_instruction_set_s5 cpython_instruction_set_s6) (.seq (.arrow cpython_instruction_set_l6 cpython_instruction_set_s6 cpython_instruction_set_s7) (.seq (.prod (.arrow cpython_instruction_set_l7 cpython_instruction_set_s7 cpython_instruction_set_s11) (.arrow cpython_instruction_set_l7 cpython_instruction_set_s7 cpython_instruction_set_s11)) (.seq (.arrow cpython_instruction_set_l11 cpython_instruction_set_s11 cpython_instruction_set_s11) (.seq (.arrow cpython_instruction_set_l11 cpython_instruction_set_s11 cpython_instruction_set_s12) (.seq (.arrow cpython_instruction_set_l12 cpython_instruction_set_s12 cpython_instruction_set_s13) (.seq (.arrow cpython_instruction_set_l13 cpython_instruction_set_s13 cpython_instruction_set_s14) (.seq (.arrow cpython_instruction_set_l14 cpython_instruction_set_s14 cpython_instruction_set_s15) (.seq (.arrow cpython_instruction_set_l15 cpython_instruction_set_s15 cpython_instruction_set_s16) (.seq (.arrow cpython_instruction_set_l16 cpython_instruction_set_s16 cpython_instruction_set_s17) (.arrow cpython_instruction_set_l17 cpython_instruction_set_s17 cpython_instruction_set_s18))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def cpython_instruction_set_true_arm : IGProtocol cpython_instruction_set_s0 cpython_instruction_set_s18 :=\n  (cpython_instruction_set_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def cpython_instruction_set_false_arm : IGProtocol cpython_instruction_set_s0 cpython_instruction_set_s18 :=\n  (cpython_instruction_set_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef cpython_instruction_set_tier_ground : OuroboricityTier := TierFunctor.obj cpython_instruction_set_s0\ndef cpython_instruction_set_tier : OuroboricityTier := TierFunctor.obj cpython_instruction_set_s18\n#eval cpython_instruction_set_tier_ground  -- tier of the ground (pre-transformation)\n#eval cpython_instruction_set_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem cpython_instruction_set_frobenius :\n    igFrobeniusAlg.mul cpython_instruction_set_s0 cpython_instruction_set_s0 = cpython_instruction_set_s0 :=\n  igFrobAlg_self_fusion cpython_instruction_set_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 19,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      7
+    ],
+    "fuse_positions": [
+      11
+    ],
+    "pair_list": [
+      [
+        7,
+        11
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: cpython_instruction_set",
+  "grounded_tuple": "⟨𐑛𐑡𐑽𐑿𐑐𐑧𐑚𐑝⊙𐑖𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "◻⊢⊣>⋈⊙>∈⊤⊥⋈∋>⊞<⊥⋈>⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 0,
+    "inert": 17,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (17 step(s) inert after a fixation), nothing deposited",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The CPython bytecode instruction set forms a connected graph where operations flow through a control structure with mixed connectivity patterns including linear sequences, branches, and loops.\n⊢=𐑛: CPython bytecode executes sequentially through a linear instruction stream where the program counter iterates through opcodes, resetting or branching to form control flow cycles.\n⊞=𐑳: The participation ratio in bytecode execution reflects an asymmetric distribution where a single instruction operates on a variable number of operands from the stack, unlike symmetric pairing or oligomeric structures.\n◻=𐑷: The bytecode instruction set of CPython is a classical, non-topological software construct with no physical invariants or topological protection, allowing its state to be continuously deformed to a trivial state.\n⊙=⊙: The bytecode instruction set of CPython operates in a stable, deterministic regime where execution follows a fixed sequence without the scale-free correlations or maximal sensitivity characteristic of a critical point.\n⊥=𐑖: The persistent orientational symmetry breaking in CPython's bytecode execution stack implies a structurally enforced memory depth dependent on the call stack size (n).\n≻=𐑽: The bytecode instruction set functions as a catalytic mechanism that stabilizes the transition between source code and machine execution without being consumed in the process.\n≺=𐑿: The CPython bytecode interface exhibits a signed direction where the interpreter acts as a single accepting pole for instructions while the code object serves as the donating source.\n⋈=𐑐: The bytecode instruction set of CPython is a deterministic, geometry-enforcing sequence where each operation fires with near-certainty to ensure precise program execution.\n⊤=𐑧: High barrier corresponds to a kinetically frozen state where rearrangement is resisted and requires external driving, matching the definition of resistance to change.\n∈=𐑚: The bytecode instruction set operates on a mesoscale where interactions propagate through local control flow motifs and function call clusters rather than affecting the entire system globally or remaining strictly isolated.\n∋=𐑝: The partner selection logic for bytecode instruction sets requires all operands and context to be present simultaneously for execution.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 19,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 14,
+        "word": "≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 15,
+        "word": "⊥⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "⋈≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 17,
+        "word": "≻⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 18,
+        "word": "⊣◻⊢⊣≻⋈⊙≻∈⊤⊥⋈∋≻⊞≺⊥⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 7,
+    "canonical_word": "∈⊤⊥⋈∋≻⊞≺⊥⋈≻⊣◻⊢⊣≻⋈⊙≻",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
