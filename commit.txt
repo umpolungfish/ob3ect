@@ -1,32 +1,20 @@
-The trilattice reports the word it walked, in the marks the Grammar uses
+The canonical frame is the one the boundary marks name
 
-Three faults in one block of the Phase 11 breakdown, found in the artifact for
-the cosmic-winding ob3ect, which grounded full and verified in Lean while its own
-breakdown printed a word the artifact does not contain.
+A word opens on VINIT and closes on TANCH. That is the convention, and it means
+the canonical rotation is not a matter of taste: the cut putting ⊢ first and ⊣
+last is the word's own frame.
 
-The GLYPH table still spelled AFWD and AREV as ASCII > and <. imasm_core emits
-≻ and ≺, so the printed step table showed two marks that no longer exist while
-the steps beside them were current.
+The audit was picking `min(orbit, key=word)` — lexicographic, which is by
+CODEPOINT, and ∈ (U+2208) sorts below ⊢ (U+22A2). So it landed on a cut that opens
+mid-word and buries both boundaries inside the ring. On the carrier ob3ect it
+reported canonical_k = 1 and a canonical_word of ∈≻⊤⊥≺…⊣⊢, disagreeing with the
+artifact's own glyph_word for no reason a reader could see, and inviting exactly
+the wrong conclusion — that glyph_word was an arbitrary frame and the canonical
+one was considered.
 
-json_report did not report the word it walked. It stripped every VINIT and TANCH
-out of the interior and re-wrapped the remainder in ⊢…⊣ — a second construction
-of an object that already exists. The ob3ect's word carries an interior ⊣, so it
-came back thirteen glyphs as a twelve-glyph word, disagreeing with the table
-printed directly beneath it and with nothing to say which one was the word. It
-now joins the walked sequence and nothing else.
+It was the other way round. glyph_word was right.
 
-And the closing line collapsed two readings into one warning. A T verdict against
-an open walk is not a failure to be warned about; it is the tri-ancestral reading
-and the walk reading disagreeing, which is a fact about the object. This artifact
-is exactly that case — verdict T, closed walk false — and it printed only
-"not fully closed", throwing the informative half away. Four outcomes now, each
-said.
-
-Verified: the ob3ect's own thirteen-step sequence now reports
-⊢⊣∈≻⊤≺⊥⋈⊙⊞∋◻⊣, identical to its glyph_word.
-
-Noted, not fixed: Vox and ob3ect each carry an imasm16_3_core.py and they have
-diverged in architecture, not only in content. In Vox the glyph IS the opcode
-value, so there is no name-to-symbol boundary for a mismatch to hide behind. In
-ob3ect the constants are names and GLYPH is a translation table — which is the
-boundary that rule exists to abolish, and it is where all three of these hid.
+Now the canonical frame is the bounded one, with the lexicographic representative
+kept only for a word carrying no boundary to read — which is the case the
+convention genuinely leaves open. On the carrier word this returns k = 0 and a
+canonical_word identical to glyph_word.

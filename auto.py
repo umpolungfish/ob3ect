@@ -191,13 +191,20 @@ def _banked_count_check(steps: List[Dict[str, Any]]) -> Dict[str, Any]:
         return {"status": "unavailable", "error": str(e)}
 
 
+GLYPH_VINIT = "⊢"
+GLYPH_TANCH = "⊣"
+
+
 def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     """Turn ROTAT — the op-opcode, the axis the wheel turns on — over the full
     orbit of the bootstrap word and recompute every machine readout at every
     rotation. A readout constant across the orbit is a spectral invariant of the
     word (the invariance IS the signal it is a symmetry of the ring); a readout
-    that moves with k is phase, not spectrum. The canonical rotation is the
-    lexicographically minimal glyph word — a balanced tiling of a period-n cycle
+    that moves with k is phase, not spectrum. The canonical rotation is the frame
+    the BOUNDARY MARKS name: a word opens on VINIT and closes on TANCH, so the cut
+    putting ⊢ first and ⊣ last is the word's own frame rather than a matter of
+    taste. Where no such cut exists there is no boundary to read, and only there
+    does the lexicographically minimal glyph word
     is unique up to ROTAT, and this picks its representative."""
     ops = [step["opcode"] for step in steps]
     n = len(ops)
@@ -229,7 +236,13 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     invariants = {
         r: all(e.get(r) == orbit[0].get(r) for e in orbit) for r in readouts
     }
-    canonical = min(orbit, key=lambda e: e["word"])
+    # Lexicographic minimum alone picked by CODEPOINT — ∈ (U+2208) sorts below
+    # ⊢ (U+22A2) — so it landed on a cut that opens mid-word and buries both
+    # boundaries inside the ring, disagreeing with the artifact's own glyph_word
+    # for no reason a reader could see.
+    bounded = [e for e in orbit
+               if e["word"].startswith(GLYPH_VINIT) and e["word"].endswith(GLYPH_TANCH)]
+    canonical = min(bounded or orbit, key=lambda e: e["word"])
     variant = [r for r, holds in invariants.items() if not holds]
     return {
         "op_opcode": OpOpcode.ROTAT.value,
