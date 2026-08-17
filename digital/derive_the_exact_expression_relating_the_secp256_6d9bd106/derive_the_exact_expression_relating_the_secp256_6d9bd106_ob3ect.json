@@ -1,0 +1,400 @@
+{
+  "name": "Derive the exact expression relating the secp256k1 secret key extraction to the secp256k1 public_key",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Derive the exact expression relating the secp256k1 secret key extraction to the secp256k1 public_key",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "scalar",
+        "point",
+        "discrete_logarithm",
+        "scalar_multiplication",
+        "metastable_barrier"
+      ],
+      "boundary_condition": "The secp256k1 elliptic curve group order and the cryptographic hardness of the discrete logarithm problem",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized_scalar_space",
+        "justification": "The void state before any secret scalar is defined or any public point is computed",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "curve_group_order",
+        "justification": "The terminal anchor defining the finite cyclic group boundary containing all valid keys",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "scalar_multiplication",
+        "justification": "The forward morphism transforming a secret scalar into a public point via iterative addition",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "discrete_logarithm_inversion",
+        "justification": "The reverse morphism attempting to derive the scalar from the point, blocked by computational infeasibility",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "deterministic_mapping",
+        "justification": "The composition ensuring the scalar maps to exactly one point with geometric fidelity",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "keypair_identity",
+        "justification": "The self-reference where the secret key and public point are recognized as a single cryptographic unit",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "extraction_attempt",
+        "justification": "The fork separating the affirmative path of valid derivation from the negative path of computational infeasibility",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "dialetheic_resolution",
+        "justification": "The fusion of the successful derivation arm and the infeasible inversion arm into a single contradictory state",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "valid_public_point",
+        "justification": "The affirmative state where the public point exists and is mathematically valid",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "infeasible_secret_recovery",
+        "justification": "The negative state where the secret key cannot be recovered from the public point",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "simultaneous_existence_and_hiddenness",
+        "justification": "The paradice holding the secret key as both existing (T) and hidden (F) without logical explosion",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "cryptographic_record",
+        "justification": "The permanent, append-only record of the key derivation event and its one-way nature",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "extraction_attempt",
+      "split_input": "public_key_point",
+      "split_outputs": [
+        "valid_secret_scalar",
+        "computational_barrier"
+      ],
+      "fuse_element": "dialetheic_resolution",
+      "fuse_result": "contradictory_key_state",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "No scalar or point defined; the empty cryptographic state",
+      "true_description": "A valid public point derived from a known secret scalar",
+      "false_description": "The inability to derive the secret scalar from the public point",
+      "both_description": "The secret scalar exists as the generator of the point yet remains computationally inaccessible from it",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the cryptographic domain with no defined scalar or point"
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "Establish the identity of the secp256k1 curve as the self-referential context"
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Apply scalar multiplication to transform a secret scalar into a public point"
+        },
+        {
+          "step_num": 4,
+          "opcode": "⋈",
+          "domain_action": "Compose the deterministic mapping ensuring geometric fidelity between scalar and point"
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Affirm the existence of the valid public point on the curve"
+        },
+        {
+          "step_num": 6,
+          "opcode": "∈",
+          "domain_action": "Fork the domain into the path of secret recovery and the path of computational hardness"
+        },
+        {
+          "step_num": 7,
+          "opcode": "≻",
+          "domain_action": "Advance the T-arm to verify the public point's validity and structure"
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊤",
+          "domain_action": "Confirm the public point is a valid element of the group"
+        },
+        {
+          "step_num": 9,
+          "opcode": "≺",
+          "domain_action": "Attempt the reverse morphism to derive the secret scalar from the public point"
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊥",
+          "domain_action": "Refute the possibility of recovering the secret scalar due to the discrete logarithm problem"
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊞",
+          "domain_action": "Hold the contradictory state where the secret key is both the generator and unrecoverable"
+        },
+        {
+          "step_num": 12,
+          "opcode": "∋",
+          "domain_action": "Fuse the affirmative validity of the point and the negative infeasibility of recovery into a single B state"
+        },
+        {
+          "step_num": 13,
+          "opcode": "◻",
+          "domain_action": "Record the one-way nature of the derivation as a permanent cryptographic fact"
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊣",
+          "domain_action": "Anchor the system within the finite group order, closing the boundary of valid operations"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Elliptic curve arithmetic engine translating scalar inputs to point outputs",
+      "ipc_mechanism": "Group law operations (point addition and doubling) communicating state changes",
+      "memory_mechanism": "Finite field elements stored in registers representing x and y coordinates",
+      "scheduler_mechanism": "Deterministic scalar multiplication algorithm executing in fixed time",
+      "alfs_store": "secp256k1 curve parameters (a, b, G, n, h) as the canonical bootstrap store",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational resources required for scalar multiplication and verification",
+      "pre_cycle_state": "System state with a known secret scalar and unknown public point",
+      "post_cycle_state": "System state with a known public point and unknown secret scalar (from the perspective of an external observer)",
+      "delta_s_verdict": "ΔS ≈ 0 — The cycle is entropy-conservative as the information content of the keypair remains constant, merely shifting between accessible and inaccessible forms without loss or gain of total information.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙≻⋈⊤∈≻⊤≺⊥⊞∋◻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙≻⋈⊤∈≻⊤≺⊥⊞∋◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ≻   AFWD     AFWD          T →     T\n    4   ⋈   CLINK    CLINK         T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ∈   FSPLIT   FSPLIT3       T →     T\n    7   ≻   AFWD     AFWD          T →     T\n    8   ⊤   EVALT    EVALT         T →     T\n    9   ≺   AREV     AREV          T →     N\n   10   ⊥   EVALF    EVALF         N →     F\n   11   ⊞   ENGAGR   EVALI         F →   Ftf\n   12   ∋   FFUSE    FFUSE3      Ftf →     A\n   13   ◻   IFIX     IFIX          A →     A\n   14   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ≻ → ⋈ → ⊤ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ◻ → ⊣\n-- Class: Derive the exact expression relating the secp256k1 secret key extraction to the secp256k1 public_key\n-- Fingerprint: sig=(7,2,4,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(5, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑼 → 𐑾  | identity — self-imscription\n--   [2] ≻      rel    := 𐑾               𐑠 → 𐑱  | forward morphism — bidirectional arrow\n--   [3] ⋈     fid    := 𐑱               𐑾 → ⊙  | composition — regime coherence\n--   [4] ⊤     crit   := ⊙               𐑱 → 𐑚  | evaluate-true — criticality gate open\n--   [5] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [7] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [9] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [10] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [11] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [12] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [13] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def derive_the_exact_expression_relating_6ca464_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def derive_the_exact_expression_relating_6ca464_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def derive_the_exact_expression_relating_6ca464_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def derive_the_exact_expression_relating_6ca464_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def derive_the_exact_expression_relating_6ca464_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def derive_the_exact_expression_relating_6ca464_protocol : IGProtocol derive_the_exact_expression_relating_6ca464_s0 derive_the_exact_expression_relating_6ca464_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct derive_the_exact_expression_relating_6ca464_s11 derive_the_exact_expression_relating_6ca464_s11 = derive_the_exact_expression_relating_6ca464_s11 (idempotent)\n  (.seq (.arrow derive_the_exact_expression_relating_6ca464_l0 derive_the_exact_expression_relating_6ca464_s0 derive_the_exact_expression_relating_6ca464_s1) (.seq (.arrow derive_the_exact_expression_relating_6ca464_l1 derive_the_exact_expression_relating_6ca464_s1 derive_the_exact_expression_relating_6ca464_s2) (.seq (.arrow derive_the_exact_expression_relating_6ca464_l2 derive_the_exact_expression_relating_6ca464_s2 derive_the_exact_expression_relating_6ca464_s3) (.seq (.arrow derive_the_exact_expression_relating_6ca464_l3 derive_the_exact_expression_relating_6ca464_s3 derive_the_exact_expression_relating_6ca464_s4) (.seq (.arrow derive_the_exact_expression_relating_6ca464_l4 derive_the_exact_expression_relating_6ca464_s4 derive_the_exact_expression_relating_6ca464_s5) (.seq (.prod (.arrow derive_the_exact_expression_relating_6ca464_l5 derive_the_exact_expression_relating_6ca464_s5 derive_the_exact_expression_relating_6ca464_s11) (.arrow derive_the_exact_expression_relating_6ca464_l5 derive_the_exact_expression_relating_6ca464_s5 derive_the_exact_expression_relating_6ca464_s11)) (.seq (.arrow derive_the_exact_expression_relating_6ca464_l11 derive_the_exact_expression_relating_6ca464_s11 derive_the_exact_expression_relating_6ca464_s11) (.seq (.arrow derive_the_exact_expression_relating_6ca464_l11 derive_the_exact_expression_relating_6ca464_s11 derive_the_exact_expression_relating_6ca464_s12) (.arrow derive_the_exact_expression_relating_6ca464_l12 derive_the_exact_expression_relating_6ca464_s12 derive_the_exact_expression_relating_6ca464_s13)))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def derive_the_exact_expression_relating_6ca464_true_arm : IGProtocol derive_the_exact_expression_relating_6ca464_s0 derive_the_exact_expression_relating_6ca464_s13 :=\n  (derive_the_exact_expression_relating_6ca464_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def derive_the_exact_expression_relating_6ca464_false_arm : IGProtocol derive_the_exact_expression_relating_6ca464_s0 derive_the_exact_expression_relating_6ca464_s13 :=\n  (derive_the_exact_expression_relating_6ca464_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef derive_the_exact_expression_relating_6ca464_tier_ground : OuroboricityTier := TierFunctor.obj derive_the_exact_expression_relating_6ca464_s0\ndef derive_the_exact_expression_relating_6ca464_tier : OuroboricityTier := TierFunctor.obj derive_the_exact_expression_relating_6ca464_s13\n#eval derive_the_exact_expression_relating_6ca464_tier_ground  -- tier of the ground (pre-transformation)\n#eval derive_the_exact_expression_relating_6ca464_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem derive_the_exact_expression_relating_6ca464_frobenius :\n    igFrobeniusAlg.mul derive_the_exact_expression_relating_6ca464_s0 derive_the_exact_expression_relating_6ca464_s0 = derive_the_exact_expression_relating_6ca464_s0 :=\n  igFrobAlg_self_fusion derive_the_exact_expression_relating_6ca464_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      5
+    ],
+    "fuse_positions": [
+      11
+    ],
+    "pair_list": [
+      [
+        5,
+        11
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Derive the exact expression relating the secp256k1 secret key extraction to the secp256k1 public_key",
+  "grounded_tuple": "⟨𐑛𐑡𐑑𐑿𐑐𐑪𐑲𐑝𐑢𐑫𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙≻⋈⊤∈≻⊤≺⊥⊞∋◻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 1
+    },
+    "surplus_total": 1,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 4,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 1 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: No valid option can be selected because deriving a secret key from a public key in secp256k1 is computationally infeasible due to the discrete logarithm problem, meaning no functional connectivity pattern exists between them in the forward direction.\n⊢=𐑛: The secp256k1 key derivation relies on iterative scalar multiplication over a finite cyclic group, where the secret key acts as a recurrence count through the curve's order.\n⊞=𐑳: The secp256k1 key derivation is an asymmetric operation where a single secret scalar generates a unique public point, matching the \"different counts on each side\" definition.\n◻=𐑷: The secp256k1 secret key extraction is a deterministic algebraic computation without topological invariants, allowing the role to be continuously deformed to a trivial state.\n⊙=𐑢: The secp256k1 key derivation is a deterministic, bounded cryptographic operation that does not exhibit the scale-free correlations or maximal sensitivity characteristic of a critical phase transition.\n⊥=𐑫: The secp256k1 public key derivation is a one-way cryptographic function where the secret key cannot be recovered from the public key without global restructuring of the discrete logarithm problem, mirroring topological protection.\n≻=𐑑: The transformation from a secp256k1 secret key to a public key involves an irreversible scalar multiplication on an elliptic curve, constituting a structural change rather than a reversible association.\n≺=𐑿: The interface between a secret key and its derived public key exhibits a signed, unidirectional character where the secret acts as a unique donor to generate the public key, which cannot be reversed to recover the secret.\n⋈=𐑐: The deterministic mathematical mapping from a secp256k1 secret key to its public key via elliptic curve scalar multiplication ensures near-certain, geometry-enforcing fidelity with no probabilistic failure.\n⊤=𐑪: The cryptographic barrier to deriving the secret key from the public key is a metastable state where the discrete logarithm problem prevents equilibration without extraordinary computational perturbation.\n∈=𐑲: The secp256k1 public key is derived from the secret key via a deterministic scalar multiplication on an elliptic curve, representing a single, isolated mathematical operation with no propagation to neighboring keys or system-wide states.\n∋=𐑝: The secp256k1 public key is deterministically derived from the secret key via elliptic curve scalar multiplication, requiring the simultaneous presence of the secret key and the curve parameters as a conjunctive pair.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 14,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙≻⋈⊤∈≻⊤≺⊥⊞∋◻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙≻⋈⊤∈≻⊤≺⊥⊞∋◻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "≻⋈⊤∈≻⊤≺⊥⊞∋◻⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⋈⊤∈≻⊤≺⊥⊞∋◻⊣⊢⊙≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊤∈≻⊤≺⊥⊞∋◻⊣⊢⊙≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "∈≻⊤≺⊥⊞∋◻⊣⊢⊙≻⋈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "≻⊤≺⊥⊞∋◻⊣⊢⊙≻⋈⊤∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊤≺⊥⊞∋◻⊣⊢⊙≻⋈⊤∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "≺⊥⊞∋◻⊣⊢⊙≻⋈⊤∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊥⊞∋◻⊣⊢⊙≻⋈⊤∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊞∋◻⊣⊢⊙≻⋈⊤∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "∋◻⊣⊢⊙≻⋈⊤∈≻⊤≺⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "◻⊣⊢⊙≻⋈⊤∈≻⊤≺⊥⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "⊣⊢⊙≻⋈⊤∈≻⊤≺⊥⊞∋◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙≻⋈⊤∈≻⊤≺⊥⊞∋◻⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}

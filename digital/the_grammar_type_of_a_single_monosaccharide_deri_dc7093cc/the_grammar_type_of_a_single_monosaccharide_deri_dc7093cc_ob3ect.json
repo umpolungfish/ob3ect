@@ -1,0 +1,398 @@
+{
+  "name": "The grammar type of a single monosaccharide, derived from the functional groups its ring carries rather than assigned. Report the type of each mammalian N-glycan sugar and which functional group forces each mark.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The grammar type of a single monosaccharide, derived from the functional groups its ring carries rather than assigned. Report the type of each mammalian N-glycan sugar and which functional group forces each mark.",
+      "domain_type": "alchemical",
+      "scope": "local",
+      "surface_tokens": [
+        "monosaccharide",
+        "glycosidic_bond",
+        "anomeric_center",
+        "hydroxyl_group",
+        "n_acetyl_group"
+      ],
+      "boundary_condition": "The covalent ring closure of the monosaccharide, which kinetically freezes the configuration and prevents spontaneous rearrangement without enzymatic catalysis.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "acyclic_precursor",
+        "justification": "The open-chain aldehyde or ketone form before cyclization, representing the void state before the ring structure is established.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "ring_closure",
+        "justification": "The hemiacetal or hemiketal bond that seals the ring, acting as the terminal anchor that contains the entire sugar topology.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "glycosyl_transfer",
+        "justification": "The forward morphism of adding a sugar residue to a growing chain, driven by the reactivity of the anomeric hydroxyl group.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "hydrolysis",
+        "justification": "The reverse morphism of breaking a glycosidic bond, representing descent or decomposition of the structure.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "glycosidic_linkage",
+        "justification": "The sequential chaining of monosaccharides via O-glycosidic bonds, transmitting stereochemical geometry and information content.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "pyranose_furanose_identity",
+        "justification": "The self-recognition of the ring system (6-membered pyranose or 5-membered furanose) as a stable, self-referential unit.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "anomeric_center",
+        "justification": "The anomeric carbon splits into two distinct stereochemical arms: alpha (axial) and beta (equatorial) configurations.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "mutarotation_equilibrium",
+        "justification": "The rejoining of alpha and beta arms into a single dynamic equilibrium state, or a fixed state if locked by a glycosidic bond.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "hydroxyl_acidity",
+        "justification": "The affirmative state of the hydroxyl group acting as an acid (EVALT), donating a proton or participating in hydrogen bonding as a donor.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "amine_basicity",
+        "justification": "The negative state of the N-acetyl amine group acting as a base (EVALF), accepting a proton or serving as a hydrogen bond acceptor.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "chiral_center",
+        "justification": "The paradice state where a chiral center holds both R and S potential simultaneously in the transition state, or where a sugar exhibits dual donor/acceptor roles.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "covalent_freeze",
+        "justification": "The irreversible fixation of the glycosidic bond, which locks the anomeric configuration and prevents thermal interconversion.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "anomeric_center",
+      "split_input": "the reactive hemiacetal carbon",
+      "split_outputs": [
+        "alpha_anomer",
+        "beta_anomer"
+      ],
+      "fuse_element": "mutarotation_equilibrium",
+      "fuse_result": "dynamic_mixture_or_locked_bond",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The open-chain aldehyde/ketone precursor before cyclization.",
+      "true_description": "The alpha-anomer configuration (axial) or the beta-anomer configuration (equatorial) when exclusively stabilized.",
+      "false_description": "The refuted anomer configuration when the other is locked, or the absence of a specific functional group interaction.",
+      "both_description": "The mutarotation equilibrium where alpha and beta forms coexist, or a chiral center holding dual potential in a transition state.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the acyclic sugar precursor (aldehyde/ketone) in the void state."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Drive the cyclization reaction forward via nucleophilic attack of a hydroxyl on the carbonyl."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊣",
+          "domain_action": "Seal the ring with the hemiacetal/hemiketal bond, establishing the boundary."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊙",
+          "domain_action": "Recognize the ring identity (pyranose or furanose) as a self-contained unit."
+        },
+        {
+          "step_num": 5,
+          "opcode": "∈",
+          "domain_action": "Split the anomeric carbon into alpha and beta stereochemical arms."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the alpha-arm: hydroxyl groups act as acids (donors) and ring oxygen as acceptor."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the beta-arm: N-acetyl groups (in GlcNAc/GalNAc) act as bases (acceptors)."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "Hold the chiral center in a paradice state where both R/S potentials are active during transition."
+        },
+        {
+          "step_num": 9,
+          "opcode": "∋",
+          "domain_action": "Rejoin the alpha and beta arms into a single equilibrium state (B) or a locked state (T/F)."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⋈",
+          "domain_action": "Chain the monosaccharide to the next via a glycosidic bond, transmitting stereochemical fidelity."
+        },
+        {
+          "step_num": 11,
+          "opcode": "◻",
+          "domain_action": "Irreversibly fix the glycosidic bond, freezing the anomeric configuration and preventing rearrangement."
+        },
+        {
+          "step_num": 12,
+          "opcode": "≺",
+          "domain_action": "Allow for hydrolysis (reverse morphism) only if enzymatic catalysis is present, otherwise the bond remains fixed."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊙",
+          "domain_action": "Re-assert the identity of the now-linked disaccharide or oligosaccharide unit."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊣",
+          "domain_action": "Anchor the entire glycan tree at the reducing end, completing the boundary interface."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The functional group grammar (SMARTS patterns) that maps chemical structures to IMASM opcodes.",
+      "ipc_mechanism": "Hydrogen bonding networks and steric interactions between sugar residues.",
+      "memory_mechanism": "The covalent glycosidic bonds that store the sequence and stereochemistry of the glycan.",
+      "scheduler_mechanism": "The ordered sequence of enzymatic additions (glycosyltransferases) that dictate the growth of the glycan tree.",
+      "alfs_store": "The set of mammalian N-glycan monosaccharides (GlcNAc, GalNAc, Mannose, Galactose, Glucose, Fucose, Sialic acid, Xylose) and their functional group signatures.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Activation energy required for glycosyltransferase catalysis and the entropic cost of ordering the sugar residues.",
+      "pre_cycle_state": "A disordered mixture of monosaccharide precursors and lipid carriers.",
+      "post_cycle_state": "A highly ordered, branched glycan tree with specific stereochemistry and functional group orientation.",
+      "delta_s_verdict": "ΔS ≈ 0 — The system is entropy-conservative because the covalent fixation (IFIX) of the glycosidic bonds locks the configuration, preventing thermal interconversion and maintaining the ordered state without continuous energy input.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⊣⊙∈⊤⊥⊞∋⋈◻≺⊙⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⊣⊙∈⊤⊥⊞∋⋈◻≺⊙⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⊣   TANCH    TANCH         T →     T\n    4   ⊙   IMSCRIB  IMSCRIB       T →     T\n    5   ∈   FSPLIT   FSPLIT3       T →     T\n    6   ⊤   EVALT    EVALT         T →     T\n    7   ⊥   EVALF    EVALF         T →    TF\n    8   ⊞   ENGAGR   EVALI        TF →     A\n    9   ∋   FFUSE    FFUSE3        A →     A\n   10   ⋈   CLINK    CLINK         A →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ≺   AREV     AREV          A →     A\n   13   ⊙   IMSCRIB  IMSCRIB       A →     A\n   14   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⊣ → ⊙ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ◻ → ≺ → ⊙ → ⊣\n-- Class: The grammar type of a single monosaccharide, derived from the functional groups its ring carries rather than assigned. Report the type of each mammalian N-glycan sugar and which functional group forces each mark.\n-- Fingerprint: sig=(8,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(4, 8)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑡  | forward morphism — bidirectional arrow\n--   [2] ⊣     top    := 𐑡               𐑾 → 𐑠  | terminal object — connectivity boundary\n--   [3] ⊙   gram   := 𐑠               𐑡 → 𐑚  | identity — self-imscription\n--   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [8] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [9] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence\n--   [10] ◻      prot   := 𐑭               𐑱 → 𐑗  | irreversible fixation — winding number\n--   [11] ≺      pol    := 𐑗               𐑭 → 𐑠  | reverse morphism — parity flip\n--   [12] ⊙   gram   := 𐑠               𐑗 → 𐑡  | identity — self-imscription\n--   [13] ⊣     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def the_grammar_type_of_a_single_454765_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_grammar_type_of_a_single_454765_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_grammar_type_of_a_single_454765_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_grammar_type_of_a_single_454765_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def the_grammar_type_of_a_single_454765_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_grammar_type_of_a_single_454765_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_grammar_type_of_a_single_454765_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def the_grammar_type_of_a_single_454765_protocol : IGProtocol the_grammar_type_of_a_single_454765_s0 the_grammar_type_of_a_single_454765_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_grammar_type_of_a_single_454765_s8 the_grammar_type_of_a_single_454765_s8 = the_grammar_type_of_a_single_454765_s8 (idempotent)\n  (.seq (.arrow the_grammar_type_of_a_single_454765_l0 the_grammar_type_of_a_single_454765_s0 the_grammar_type_of_a_single_454765_s1) (.seq (.arrow the_grammar_type_of_a_single_454765_l1 the_grammar_type_of_a_single_454765_s1 the_grammar_type_of_a_single_454765_s2) (.seq (.arrow the_grammar_type_of_a_single_454765_l2 the_grammar_type_of_a_single_454765_s2 the_grammar_type_of_a_single_454765_s3) (.seq (.arrow the_grammar_type_of_a_single_454765_l3 the_grammar_type_of_a_single_454765_s3 the_grammar_type_of_a_single_454765_s4) (.seq (.prod (.arrow the_grammar_type_of_a_single_454765_l4 the_grammar_type_of_a_single_454765_s4 the_grammar_type_of_a_single_454765_s8) (.arrow the_grammar_type_of_a_single_454765_l4 the_grammar_type_of_a_single_454765_s4 the_grammar_type_of_a_single_454765_s8)) (.seq (.arrow the_grammar_type_of_a_single_454765_l8 the_grammar_type_of_a_single_454765_s8 the_grammar_type_of_a_single_454765_s8) (.seq (.arrow the_grammar_type_of_a_single_454765_l8 the_grammar_type_of_a_single_454765_s8 the_grammar_type_of_a_single_454765_s9) (.seq (.arrow the_grammar_type_of_a_single_454765_l9 the_grammar_type_of_a_single_454765_s9 the_grammar_type_of_a_single_454765_s10) (.seq (.arrow the_grammar_type_of_a_single_454765_l10 the_grammar_type_of_a_single_454765_s10 the_grammar_type_of_a_single_454765_s11) (.seq (.arrow the_grammar_type_of_a_single_454765_l11 the_grammar_type_of_a_single_454765_s11 the_grammar_type_of_a_single_454765_s12) (.arrow the_grammar_type_of_a_single_454765_l12 the_grammar_type_of_a_single_454765_s12 the_grammar_type_of_a_single_454765_s13)))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def the_grammar_type_of_a_single_454765_true_arm : IGProtocol the_grammar_type_of_a_single_454765_s0 the_grammar_type_of_a_single_454765_s13 :=\n  (the_grammar_type_of_a_single_454765_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_grammar_type_of_a_single_454765_false_arm : IGProtocol the_grammar_type_of_a_single_454765_s0 the_grammar_type_of_a_single_454765_s13 :=\n  (the_grammar_type_of_a_single_454765_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef the_grammar_type_of_a_single_454765_tier_ground : OuroboricityTier := TierFunctor.obj the_grammar_type_of_a_single_454765_s0\ndef the_grammar_type_of_a_single_454765_tier : OuroboricityTier := TierFunctor.obj the_grammar_type_of_a_single_454765_s13\n#eval the_grammar_type_of_a_single_454765_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_grammar_type_of_a_single_454765_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem the_grammar_type_of_a_single_454765_frobenius :\n    igFrobeniusAlg.mul the_grammar_type_of_a_single_454765_s0 the_grammar_type_of_a_single_454765_s0 = the_grammar_type_of_a_single_454765_s0 :=\n  igFrobAlg_self_fusion the_grammar_type_of_a_single_454765_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      4
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "pair_list": [
+      [
+        4,
+        8
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The grammar type of a single monosaccharide, derived from the functional groups its ring carries rather than assigned. Report the type of each mammalian N-glycan sugar and which functional group forces each mark.",
+  "grounded_tuple": "⟨𐑨𐑰𐑑𐑬𐑐𐑧𐑚𐑠𐑢𐑖𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⊣⊙∈⊤⊥⊞∋⋈◻≺⊙⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 2,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (2 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: Mammalian N-glycans exhibit a branched tree topology where sugar residues are added hierarchically to a core structure, forming a nested containment pattern rather than a cyclic or fully enclosed network.\n⊢=𐑨: The 3D arrangement of mammalian N-glycans dictates that functional group constraints propagate through the extended spatial structure of the ring system.\n⊞=𐑳: N-glycans exhibit asymmetric branching with unequal counts of sugar residues on the mannose arms, forcing an asymmetric participation ratio.\n◻=𐑷: The input describes a biochemical classification system that lacks the topological invariants or symmetry constraints necessary for any form of topological protection.\n⊙=𐑢: The input describes a static biochemical classification of monosaccharides based on functional groups, which lacks the dynamic, scale-free correlations required for a system to be at a critical point.\n⊥=𐑖: Mammalian N-glycans possess multiple chiral centers that are structurally enforced by covalent bonds, preventing thermal interconversion and resulting in persistent orientational symmetry breaking.\n≻=𐑑: The formation of N-glycan structures involves the irreversible creation of covalent glycosidic bonds between monosaccharides, driven by the reactivity of their anomeric hydroxyl groups.\n≺=𐑬: The glycosidic interface of mammalian N-glycans is self-complementary because the ring oxygen acts as a hydrogen bond acceptor while the hydroxyl groups on the sugar serve as donors, enabling simultaneous dual roles.\n⋈=𐑐: The specific stereochemical geometry of monosaccharide ring functional groups enforces near-certain binding fidelity in mammalian N-glycans, transmitting high information content per interaction.\n⊤=𐑧: The covalent glycosidic bonds in mammalian N-glycans possess high activation energies that kinetically freeze their configurations, preventing spontaneous rearrangement without enzymatic catalysis.\n∈=𐑚: Glycan branching motifs propagate structural and functional information across a mesoscale cluster of sugar units rather than remaining strictly local or spanning the entire biological system.\n∋=𐑠: N-glycan biosynthesis requires a strictly ordered sequence of enzymatic additions to the lipid carrier and growing chain, where each step depends on the completion of the previous one.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 14,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⊣⊙∈⊤⊥⊞∋⋈◻≺⊙⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "≻⊣⊙∈⊤⊥⊞∋⋈◻≺⊙⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "⊣⊙∈⊤⊥⊞∋⋈◻≺⊙⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⊙∈⊤⊥⊞∋⋈◻≺⊙⊣⊢≻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "∈⊤⊥⊞∋⋈◻≺⊙⊣⊢≻⊣⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⊤⊥⊞∋⋈◻≺⊙⊣⊢≻⊣⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊥⊞∋⋈◻≺⊙⊣⊢≻⊣⊙∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊞∋⋈◻≺⊙⊣⊢≻⊣⊙∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "∋⋈◻≺⊙⊣⊢≻⊣⊙∈⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⋈◻≺⊙⊣⊢≻⊣⊙∈⊤⊥⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻≺⊙⊣⊢≻⊣⊙∈⊤⊥⊞∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "≺⊙⊣⊢≻⊣⊙∈⊤⊥⊞∋⋈◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⊙⊣⊢≻⊣⊙∈⊤⊥⊞∋⋈◻≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "⊣⊢≻⊣⊙∈⊤⊥⊞∋⋈◻≺⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⊣⊙∈⊤⊥⊞∋⋈◻≺⊙⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
