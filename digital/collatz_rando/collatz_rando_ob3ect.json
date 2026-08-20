@@ -1,0 +1,372 @@
+{
+  "name": "collatz_rando",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "collatz_rando",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "residue class",
+        "odd step",
+        "predecessor tree",
+        "amplitude",
+        "junction"
+      ],
+      "boundary_condition": "The natural numbers under the shortcut Collatz map, bounded by the 3-adic valuation structure and the depth-k residue split where the all-odd class 2^k - 1 persists as a non-contracting survivor at every level.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "void state before residue assignment",
+        "justification": "The initial object ∅ represents the state before a specific residue r mod 2^k is named, where the affine structure col^[k](2^k t + r) has not yet been instantiated.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "terminal anchor of the Collatz trajectory",
+        "justification": "The closed boundary ⊤ corresponds to the convergence point or the fixed cycle 1-2-1 that terminates the descent, acting as the hermetic seal for the system's dynamics.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "forward morphism of the Collatz map",
+        "justification": "The directed transformation → maps n to col(n), representing the ascent or growth phase where odd steps multiply by 3/2 and even steps halve, moving toward the target state.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "reverse morphism of the predecessor tree",
+        "justification": "The contravariant ← maps m to its predecessors 2m and (2t+1) where m=3t+2, representing the descent or reconstruction of the tree from the target back to the root.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "composition of depth-k iterates",
+        "justification": "The sequential chaining ∘ composes the k-fold iterate col^[k] with the affine shift, linking the residue class r to the global behavior of 2^k t + r.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "identity of the residue class",
+        "justification": "The self-reference ⊙ denotes the class r mod 2^k recognizing itself as invariant under the shift theorem, where oddSteps(2^k t + r) k = oddSteps r k.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "parity split of the residue",
+        "justification": "The co-multiplication δ splits the state into the even arm (halving) and the odd arm (3n+1)/2, branching the trajectory based on the parity of the current value.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "fusion of contraction and survival",
+        "justification": "The multiplication μ rejoin the arms into a single B4 verdict: if the multiplier 3^oddSteps < 2^k, the class contracts (T); if not, it survives (F); if both conditions hold in a dialetheic sense, it is B.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "affirmative contraction",
+        "justification": "The constructive truth T is established when the class contracts, i.e., 3^oddSteps r k < 2^k, proving that the residue descends within k steps.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "negative survival",
+        "justification": "The constructive falsity F is established when the class does not contract, i.e., 3^oddSteps r k ≥ 2^k, refuting the descent and affirming survival to the next depth.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "paradice of the all-odd class",
+        "justification": "The B state holds both the potential for descent and the actual survival of the class 2^k - 1, which takes an odd step at every level, maintaining a contradiction between the expected contraction and the observed persistence.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "permanent record of the survivor census",
+        "justification": "The ROM fixation ◻ records the set of survivors at each depth, such as [7, 11, 15] mod 16, as an append-only log that cannot be undone or altered by subsequent iterations.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "parity split of the residue",
+      "split_input": "residue r mod 2^k",
+      "split_outputs": [
+        "even arm (halving)",
+        "odd arm (3n+1)/2"
+      ],
+      "fuse_element": "fusion of contraction and survival",
+      "fuse_result": "B4 verdict of the class's fate at depth k",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "Uninitialized state before the residue r is assigned, where the affine structure is undefined.",
+      "true_description": "The class contracts: 3^oddSteps r k < 2^k, and the residue descends within k steps.",
+      "false_description": "The class survives: 3^oddSteps r k ≥ 2^k, and the residue does not descend within k steps.",
+      "both_description": "The all-odd class 2^k - 1 holds both the potential for descent and the actual survival, maintaining a live contradiction at every depth.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the void state before the residue r mod 2^k is named."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "Establish the identity of the residue class r, recognizing its invariance under the shift theorem."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Split the residue r into its even and odd arms based on parity."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "Apply the forward morphism to the odd arm, mapping n to (3n+1)/2."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the affirmative arm: if the odd step leads to contraction, affirm T."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "Apply the reverse morphism to the even arm, mapping n to n/2."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the negative arm: if the even step leads to survival, affirm F."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∋",
+          "domain_action": "Fuse the arms into a single B4 verdict, determining if the class contracts or survives."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "Compose the depth-k iterate with the affine shift, linking r to 2^k t + r."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊞",
+          "domain_action": "Hold the paradice of the all-odd class 2^k - 1, which survives at every depth despite the expected contraction."
+        },
+        {
+          "step_num": 11,
+          "opcode": "◻",
+          "domain_action": "Record the survivor census at depth k as a permanent, append-only log."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊣",
+          "domain_action": "Anchor the system at the terminal boundary, where the trajectory converges to the 1-2-1 cycle."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The shift theorem compiler translates the residue class r into the affine form col^[k](2^k t + r) = 3^oddSteps r k * t + col^[k] r.",
+      "ipc_mechanism": "The predecessor tree communicates via the bijection between junctions mod 3^(r+1) and residues mod 3^r, where the odd arm map t ↦ 2t+1 is injective and onto.",
+      "memory_mechanism": "State is stored in the 3-adic valuation structure, where the amplitude A(v) is a multiplicative cocycle whose weights are the shares of the junctions.",
+      "scheduler_mechanism": "The depth-k split determines the order of operations, with the all-odd class 2^k - 1 scheduled to survive at every level, forcing the next rung to read the class rather than the depth.",
+      "alfs_store": "The canonical reference is the set of survivors at small depth, such as [7, 11, 15] mod 16 and [7, 15, 27, 31] mod 32, which are computed by decide and serve as the bootstrap store.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One 3-adic digit of resolution is consumed per level, as the tree starts at a point and every level consumes a digit rather than producing one.",
+      "pre_cycle_state": "The system is in a state of uniformity mod 3^r, with the amplitude A(v) bounded by the Fibonacci ceiling φ^d.",
+      "post_cycle_state": "The system is in a state of uniformity mod 3^(r+1), with the amplitude A(v) converging to the measured value, and the excess over the flat part bounded by the square-root law.",
+      "delta_s_verdict": "ΔS ≈ 0 — The cycle is entropy-conservative because the uniform measure is fixed by the level map, and the convergence to it is maintained by the cancellation in the feed term, which sees only the difference of the three lifts and never their size.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ≻   AFWD     AFWD          T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ≺   AREV     AREV          T →     N\n    7   ⊥   EVALF    EVALF         N →     F\n    8   ∋   FFUSE    FFUSE3        F →    TF\n    9   ⋈   CLINK    CLINK        TF →    TF\n   10   ⊞   ENGAGR   EVALI        TF →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊞ → ◻ → ⊣\n-- Class: collatz_rando\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [8] ⋈     fid    := 𐑱               𐑙 → 𐑳  | composition — regime coherence\n--   [9] ⊞    stoi   := 𐑳               𐑱 → 𐑭  | engage paradox — B-state, both arms\n--   [10] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number\n--   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def collatz_rando_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_rando_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_rando_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_rando_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_rando_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def collatz_rando_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def collatz_rando_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_rando_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_rando_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def collatz_rando_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def collatz_rando_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def collatz_rando_protocol : IGProtocol collatz_rando_s0 collatz_rando_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct collatz_rando_s7 collatz_rando_s7 = collatz_rando_s7 (idempotent)\n  (.seq (.arrow collatz_rando_l0 collatz_rando_s0 collatz_rando_s1) (.seq (.arrow collatz_rando_l1 collatz_rando_s1 collatz_rando_s2) (.seq (.prod (.arrow collatz_rando_l2 collatz_rando_s2 collatz_rando_s7) (.arrow collatz_rando_l2 collatz_rando_s2 collatz_rando_s7)) (.seq (.arrow collatz_rando_l7 collatz_rando_s7 collatz_rando_s7) (.seq (.arrow collatz_rando_l7 collatz_rando_s7 collatz_rando_s8) (.seq (.arrow collatz_rando_l8 collatz_rando_s8 collatz_rando_s9) (.seq (.arrow collatz_rando_l9 collatz_rando_s9 collatz_rando_s10) (.arrow collatz_rando_l10 collatz_rando_s10 collatz_rando_s11))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def collatz_rando_true_arm : IGProtocol collatz_rando_s0 collatz_rando_s11 :=\n  (collatz_rando_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_rando_false_arm : IGProtocol collatz_rando_s0 collatz_rando_s11 :=\n  (collatz_rando_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef collatz_rando_tier_ground : OuroboricityTier := TierFunctor.obj collatz_rando_s0\ndef collatz_rando_tier : OuroboricityTier := TierFunctor.obj collatz_rando_s11\n#eval collatz_rando_tier_ground  -- tier of the ground (pre-transformation)\n#eval collatz_rando_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem collatz_rando_frobenius :\n    igFrobeniusAlg.mul collatz_rando_s0 collatz_rando_s0 = collatz_rando_s0 :=\n  igFrobAlg_self_fusion collatz_rando_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: collatz_rando",
+  "grounded_tuple": "⟨𐑨𐑡𐑩𐑿𐑐𐑧𐑚𐑜⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The primitive ⊣ denotes a generic topological connection where influence flows through a connected graph structure without specific constraints like containment or cyclic closure.\n⊢=𐑨: The assignment of dimensionality to the primitive ⊢ implies an extended spatial arrangement where constraints propagate through a 3D structure rather than remaining local or collapsing scales.\n⊞=𐑳: Stoichiometry defines the specific quantitative ratios of reactants and products, which are inherently asymmetric in their counts on each side of a reaction equation.\n◻=𐑭: The primitive ◻ denotes a topological defect with integer winding number, which remains stable against continuous deformations as long as the winding invariant is preserved.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n⊥=𐑖: Persistent chiral states with multiple structurally enforced axes maintain broken orientational symmetry over a memory depth of n.\n≻=𐑩: The primitive ≻ denotes a recognition mode based on analogical similarity, which aligns with the soft, non-covalent, and reversible association described in option 1.\n≺=𐑿: The primitive ≺ denotes a signed directional relationship where one pole acts as a donor and the other as an acceptor, establishing a single preferred orientation.\n⋈=𐑐: The primitive ⋈ (fidelity) implies a high-reliability, geometry-enforcing interaction that fires with near-certainty, corresponding to the highest information transmission tier.\n⊤=𐑧: A high barrier to rearrangement implies the system is kinetically frozen and requires external driving to overcome resistance to change.\n∈=𐑚: The propagation of interactions through a motif or cluster defines a mesoscale correlation length distinct from purely local or global scales.\n∋=𐑜: The partner selection logic for interaction_grammar typically allows any valid partner from a defined set to satisfy the interaction requirement, aligning with the disjunctive primitive.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙∈≻⊤≺⊥∋⋈⊞◻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈≻⊤≺⊥∋⋈⊞◻⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⊤≺⊥∋⋈⊞◻⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊤≺⊥∋⋈⊞◻⊣⊢⊙∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≺⊥∋⋈⊞◻⊣⊢⊙∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊥∋⋈⊞◻⊣⊢⊙∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "∋⋈⊞◻⊣⊢⊙∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⋈⊞◻⊣⊢⊙∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊞◻⊣⊢⊙∈≻⊤≺⊥∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻⊣⊢⊙∈≻⊤≺⊥∋⋈⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢⊙∈≻⊤≺⊥∋⋈⊞◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}

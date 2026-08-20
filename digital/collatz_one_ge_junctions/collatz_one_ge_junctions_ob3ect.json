@@ -1,0 +1,372 @@
+{
+  "name": "collatz_one_ge_junctions",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "collatz_one_ge_junctions",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "residue class",
+        "predecessor tree",
+        "collision excess",
+        "conductor",
+        "amplitude"
+      ],
+      "boundary_condition": "The terminal anchor is the finite tower of conductors 3^r bounded by the level size N, where the top rung saturates and the norm is attained, closing the system against infinite dilution.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "root node",
+        "justification": "The single point at level 0, the void state before any branching or residue structure is established.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "finite tower bound",
+        "justification": "The maximum conductor 3^r <= N that contains the entire level, acting as the closed boundary for the norm calculation.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "doubling map",
+        "justification": "The forward morphism m -> 2m, which is a bijection on residues mod 3^r and permutes the characters of a fixed conductor.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "odd lift",
+        "justification": "The reverse/descent morphism m -> 2t+1 for m=3t+2, which reaches one conductor higher and feeds the coefficient from the level above.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "level recursion",
+        "justification": "The sequential chaining of the doubling and odd lift maps to build the next level from the current one.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "identity map",
+        "justification": "The self-reference of the level map, where the structure is invariant under the composition of the arms.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "residue class",
+        "justification": "The split of a level into its doubling image and its odd image, branching into the two arms of the predecessor tree.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "collision count",
+        "justification": "The rejoining of the doubling and odd arms into the total collision count C(r), where conflicting arms fuse to the excess.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "doubling leg",
+        "justification": "The affirmative arm, where the doubling bijection preserves the collision count exactly from the previous level.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "odd leg",
+        "justification": "The negative arm, where the odd lift introduces the deviation and the cross term that provides the decay.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "marginal fixed point",
+        "justification": "The paradice where the linear part has multiplier one and the cross term is negative, holding both growth and decay simultaneously.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "Cauchy-Schwarz bound",
+        "justification": "The permanent record of the structural bound on the cross term, which is tight at the lowest conductor and loose at the top.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "residue class",
+      "split_input": "level L",
+      "split_outputs": [
+        "doubling image",
+        "odd image"
+      ],
+      "fuse_element": "collision count",
+      "fuse_result": "excess e(r)",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The root node, a single point with no residue structure or branching.",
+      "true_description": "The doubling leg, where the bijection preserves the collision count and the deviation is zero.",
+      "false_description": "The odd leg, where the lift introduces the deviation and the cross term is negative.",
+      "both_description": "The marginal fixed point, where the linear part contracts at 3/4 and the cross term is negative, holding both states.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the root node at level 0, the void state before any branching."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "Establish the identity of the level map, where the structure is invariant under the composition of the arms."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Split the level into its doubling image and its odd image, branching into the two arms of the predecessor tree."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "Apply the doubling map m -> 2m, which is a bijection on residues mod 3^r and permutes the characters of a fixed conductor."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the doubling leg, where the bijection preserves the collision count exactly from the previous level."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "Apply the odd lift m -> 2t+1 for m=3t+2, which reaches one conductor higher and feeds the coefficient from the level above."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the odd leg, where the lift introduces the deviation and the cross term that provides the decay."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∋",
+          "domain_action": "Rejoin the doubling and odd arms into the total collision count C(r), where conflicting arms fuse to the excess."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "Chain the level recursion, building the next level from the current one by composing the doubling and odd lift maps."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊞",
+          "domain_action": "Hold the marginal fixed point, where the linear part has multiplier one and the cross term is negative, holding both growth and decay simultaneously."
+        },
+        {
+          "step_num": 11,
+          "opcode": "◻",
+          "domain_action": "Record the Cauchy-Schwarz bound on the cross term, which is tight at the lowest conductor and loose at the top."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊣",
+          "domain_action": "Anchor the finite tower of conductors 3^r bounded by the level size N, closing the system against infinite dilution."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The level map, which translates the residue structure into the collision count and the excess.",
+      "ipc_mechanism": "The flow between conductors, where the doubling permutation moves no mass and the odd arm feeds from the conductor above.",
+      "memory_mechanism": "The weighted norm ||e|| = sup_r 3^{-r} e(r), which stores the deviation from uniform and is attained at the top rung.",
+      "scheduler_mechanism": "The per-level recursion, which determines the order of the doubling and odd lift maps and the timing of the cross term.",
+      "alfs_store": "The two bijections, double_collide_iff and arm_collide_iff, which are the canonical reference for the level map.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One 3-adic digit of resolution per level, consumed by the odd lift.",
+      "pre_cycle_state": "The level L with its residue structure and collision count C(r).",
+      "post_cycle_state": "The next level L' with its updated collision count and the excess e(r) that decays at the square-root rate.",
+      "delta_s_verdict": "ΔS ≈ 0 — the cycle is entropy-conservative because the linear part contracts at 3/4 and the cross term is negative, holding the excess at its marginal fixed point.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ≻   AFWD     AFWD          T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ≺   AREV     AREV          T →     N\n    7   ⊥   EVALF    EVALF         N →     F\n    8   ∋   FFUSE    FFUSE3        F →    TF\n    9   ⋈   CLINK    CLINK        TF →    TF\n   10   ⊞   ENGAGR   EVALI        TF →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊞ → ◻ → ⊣\n-- Class: collatz_one_ge_junctions\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [8] ⋈     fid    := 𐑱               𐑙 → 𐑳  | composition — regime coherence\n--   [9] ⊞    stoi   := 𐑳               𐑱 → 𐑭  | engage paradox — B-state, both arms\n--   [10] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number\n--   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def collatz_one_ge_junctions_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_one_ge_junctions_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def collatz_one_ge_junctions_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def collatz_one_ge_junctions_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_one_ge_junctions_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def collatz_one_ge_junctions_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def collatz_one_ge_junctions_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def collatz_one_ge_junctions_protocol : IGProtocol collatz_one_ge_junctions_s0 collatz_one_ge_junctions_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct collatz_one_ge_junctions_s7 collatz_one_ge_junctions_s7 = collatz_one_ge_junctions_s7 (idempotent)\n  (.seq (.arrow collatz_one_ge_junctions_l0 collatz_one_ge_junctions_s0 collatz_one_ge_junctions_s1) (.seq (.arrow collatz_one_ge_junctions_l1 collatz_one_ge_junctions_s1 collatz_one_ge_junctions_s2) (.seq (.prod (.arrow collatz_one_ge_junctions_l2 collatz_one_ge_junctions_s2 collatz_one_ge_junctions_s7) (.arrow collatz_one_ge_junctions_l2 collatz_one_ge_junctions_s2 collatz_one_ge_junctions_s7)) (.seq (.arrow collatz_one_ge_junctions_l7 collatz_one_ge_junctions_s7 collatz_one_ge_junctions_s7) (.seq (.arrow collatz_one_ge_junctions_l7 collatz_one_ge_junctions_s7 collatz_one_ge_junctions_s8) (.seq (.arrow collatz_one_ge_junctions_l8 collatz_one_ge_junctions_s8 collatz_one_ge_junctions_s9) (.seq (.arrow collatz_one_ge_junctions_l9 collatz_one_ge_junctions_s9 collatz_one_ge_junctions_s10) (.arrow collatz_one_ge_junctions_l10 collatz_one_ge_junctions_s10 collatz_one_ge_junctions_s11))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def collatz_one_ge_junctions_true_arm : IGProtocol collatz_one_ge_junctions_s0 collatz_one_ge_junctions_s11 :=\n  (collatz_one_ge_junctions_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_one_ge_junctions_false_arm : IGProtocol collatz_one_ge_junctions_s0 collatz_one_ge_junctions_s11 :=\n  (collatz_one_ge_junctions_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef collatz_one_ge_junctions_tier_ground : OuroboricityTier := TierFunctor.obj collatz_one_ge_junctions_s0\ndef collatz_one_ge_junctions_tier : OuroboricityTier := TierFunctor.obj collatz_one_ge_junctions_s11\n#eval collatz_one_ge_junctions_tier_ground  -- tier of the ground (pre-transformation)\n#eval collatz_one_ge_junctions_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem collatz_one_ge_junctions_frobenius :\n    igFrobeniusAlg.mul collatz_one_ge_junctions_s0 collatz_one_ge_junctions_s0 = collatz_one_ge_junctions_s0 :=\n  igFrobAlg_self_fusion collatz_one_ge_junctions_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 1,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: collatz_one_ge_junctions",
+  "grounded_tuple": "⟨𐑦𐑸𐑑𐑹𐑐𐑧𐑚𐑵⊙𐑖𐑳𐑴⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑸: The pattern exhibits a recursive, self-similar structure where the boundary (defined by the ⊣ topology) encloses and carries the internal bulk content (the repeating ◻ and ⊙ motifs) without loss, characteristic of scale-collapse connectivity.\n⊢=𐑦: The presence of the primitive ⊣ (assigned as 𐑸, indicating a topology where surface and interior are unified) combined with the complex, self-similar recursive structure of the input string suggests a scale-collapse operating space where the boundary carries the full bulk content.\n⊞=𐑳: The sequence exhibits a complex, non-uniform distribution of symbols (◻, ⊙, ⊥, etc.) with varying frequencies and irregular clustering, indicating an asymmetric composition rather than a simple symmetric pairing or higher-order symmetric oligomeric structure.\n◻=𐑴: The sequence exhibits a repeating periodic structure of $\\odot$ symbols that creates a $\\mathbb{Z}_2$ topological invariant, preventing continuous deformation to the trivial state without breaking this symmetry.\n⊙=⊙: The system exhibits a high density of criticality markers (⊙) interspersed with the base state (◻), indicating a regime of scale-free correlations and maximal sensitivity characteristic of a critical point.\n⊥=𐑖: The sequence exhibits a complex, repeating structural pattern with multiple distinct chiral motifs (⊙) embedded within a lattice of ◻, indicating persistent chirality enforced by the structural arrangement rather than simple thermal fluctuations or topological protection.\n≻=𐑑: The sequence exhibits a progressive, irreversible accumulation of structural complexity and specific topological markers (⊙, ⊥) that define a directional transformation pathway.\n≺=𐑹: The sequence exhibits a highly regular, repeating structural motif with specific boundary conditions (⊢...⊣) and internal symmetries (⊥, ⊤) that suggest a self-dual or Frobenius algebraic structure where the multiplication and comultiplication are inverses or related by a Z2 symmetry.\n⋈=𐑐: The input sequence exhibits a highly structured, repeating geometric pattern of symbols (◻, ⊙) separated by the primitive ⋈, suggesting a deterministic, geometry-enforcing transmission with high fidelity and near-certainty.\n⊤=𐑧: The input string exhibits a highly repetitive, periodic structure with specific, rigid motifs (such as the recurring `⊙⋈◻⋈⊙` pattern) and distinct boundary markers (`⊢`, `⊣`), indicating a system that is kinetically frozen in a specific configuration and resistant to rearrangement without external driving.\n∈=𐑚: The sequence exhibits a repeating, nested hierarchical structure of motifs (clusters of ◻ and ⊙) that propagates across the entire string, indicating mesoscale organization rather than purely local or fully global scale-free behavior.\n∋=𐑵: The input sequence contains a very large number of `◻` symbols (assigned to `𐑵`, Broad conjunctive) interacting with `⊙` and other primitives, indicating a cooperative assembly requiring many partners.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙∈≻⊤≺⊥∋⋈⊞◻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈≻⊤≺⊥∋⋈⊞◻⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⊤≺⊥∋⋈⊞◻⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊤≺⊥∋⋈⊞◻⊣⊢⊙∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≺⊥∋⋈⊞◻⊣⊢⊙∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊥∋⋈⊞◻⊣⊢⊙∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "∋⋈⊞◻⊣⊢⊙∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⋈⊞◻⊣⊢⊙∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊞◻⊣⊢⊙∈≻⊤≺⊥∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻⊣⊢⊙∈≻⊤≺⊥∋⋈⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢⊙∈≻⊤≺⊥∋⋈⊞◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙∈≻⊤≺⊥∋⋈⊞◻⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}

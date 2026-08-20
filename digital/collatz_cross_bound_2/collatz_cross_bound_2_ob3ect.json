@@ -1,0 +1,372 @@
+{
+  "name": "collatz_cross_bound_2",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "collatz_cross_bound_2",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "residue",
+        "cross sum",
+        "weighted norm",
+        "bijection",
+        "threshold"
+      ],
+      "boundary_condition": "The weighted excess norm ‖e‖ = sup_r 3^(-r) e(r) over the finite tower of conductors 3^r ≤ N, where the top rung saturates at 3^r/N and the base is the single root node.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "root node",
+        "justification": "The single integer 1 at level 0, the void state before any predecessor branches are generated.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "weighted norm bound",
+        "justification": "The closed boundary condition 3/4 + c < 1 that contains the contraction and defines the system's stability limit.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "doubling map",
+        "justification": "The forward morphism m ↦ 2m, which is a bijection on residues mod 3^r and generates the even arm of the level.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "odd lift",
+        "justification": "The reverse/descent morphism m ↦ 2t+1 for m=3t+2, which reaches one conductor higher and generates the odd arm.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "level composition",
+        "justification": "The sequential chaining of the doubling and odd lift maps to build level d+1 from level d.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "residue class",
+        "justification": "The identity of the residue class mod 3^r, which is preserved under the bijections and defines the self-referential structure of the tree.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "collision legs",
+        "justification": "The split of the collision count C(r) into three legs: doubling-doubling, odd-odd, and mixed (cross) terms.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "excess norm",
+        "justification": "The reconstitution of the three legs into the single weighted excess norm ‖e‖, where conflicting signs fuse to a B-state if the cross term is not controlled.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "linear contraction",
+        "justification": "The affirmative state where the linear part (9/16 + 3/16) contracts at 3/4, proven by the two bijections.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "cross term deviation",
+        "justification": "The negative state where the cross term exceeds the bound, causing the norm to expand rather than contract.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "marginal fixed point",
+        "justification": "The paradice where the linear part has multiplier 1 (when E(r+1)=3E(r)) and the cross term is negative, holding both growth and decay simultaneously.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "Cauchy-Schwarz bound",
+        "justification": "The permanent record of the structural bound |cross| ≤ 2√(δ_even δ_odd), which holds in every measured row and is irreversible.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "collision legs",
+      "split_input": "collision count C(r) at level d",
+      "split_outputs": [
+        "linear legs (dd + oo)",
+        "cross leg (mixed)"
+      ],
+      "fuse_element": "excess norm",
+      "fuse_result": "weighted excess ‖e_{d+1}‖",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "level 0, single node, no residues defined",
+      "true_description": "norm contracts, 3/4 + c < 1 holds",
+      "false_description": "norm expands, cross term exceeds bound",
+      "both_description": "marginal fixed point, linear part multiplier 1, cross term negative",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "initialize the root node at level 0"
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "establish the residue class identity mod 3^r"
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "split the collision count into linear and cross legs"
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "apply the doubling map to generate the even arm"
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "affirm the linear contraction at 3/4"
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "apply the odd lift to generate the odd arm"
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "evaluate the cross term deviation"
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "hold the marginal fixed point where linear and cross terms balance"
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "compose the level maps to build level d+1"
+        },
+        {
+          "step_num": 10,
+          "opcode": "∋",
+          "domain_action": "fuse the legs into the weighted excess norm"
+        },
+        {
+          "step_num": 11,
+          "opcode": "◻",
+          "domain_action": "record the Cauchy-Schwarz bound as a permanent structural constraint"
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊣",
+          "domain_action": "anchor the system at the boundary condition 3/4 + c < 1"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "residue bijection compiler",
+      "ipc_mechanism": "conductor flow between 3^r and 3^(r+1)",
+      "memory_mechanism": "weighted norm ‖e‖ = sup_r 3^(-r) e(r)",
+      "scheduler_mechanism": "level-by-level recursion with finite tower depth 0.262d",
+      "alfs_store": "Cauchy-Schwarz bound |cross| ≤ 2√(δ_even δ_odd)",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one 3-adic digit of resolution per level",
+      "pre_cycle_state": "level d with excess ‖e_d‖",
+      "post_cycle_state": "level d+1 with excess ‖e_{d+1}‖ ≤ (3/4 + c)‖e_d‖",
+      "delta_s_verdict": "ΔS ≈ 0 — the contraction at 3/4 balances the cost of the digit, maintaining the square-root law",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙∈≻⊤≺⊥⊞⋈∋◻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙∈≻⊤≺⊥⊞⋈∋◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ≻   AFWD     AFWD          T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ≺   AREV     AREV          T →     N\n    7   ⊥   EVALF    EVALF         N →     F\n    8   ⊞   ENGAGR   EVALI         F →   Ftf\n    9   ⋈   CLINK    CLINK       Ftf →   Ftf\n   10   ∋   FFUSE    FFUSE3      Ftf →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ⋈ → ∋ → ◻ → ⊣\n-- Class: collatz_cross_bound_2\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [8] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [10] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def collatz_cross_bound_2_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cross_bound_2_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cross_bound_2_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def collatz_cross_bound_2_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def collatz_cross_bound_2_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def collatz_cross_bound_2_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cross_bound_2_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def collatz_cross_bound_2_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def collatz_cross_bound_2_protocol : IGProtocol collatz_cross_bound_2_s0 collatz_cross_bound_2_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct collatz_cross_bound_2_s9 collatz_cross_bound_2_s9 = collatz_cross_bound_2_s9 (idempotent)\n  (.seq (.arrow collatz_cross_bound_2_l0 collatz_cross_bound_2_s0 collatz_cross_bound_2_s1) (.seq (.arrow collatz_cross_bound_2_l1 collatz_cross_bound_2_s1 collatz_cross_bound_2_s2) (.seq (.prod (.arrow collatz_cross_bound_2_l2 collatz_cross_bound_2_s2 collatz_cross_bound_2_s9) (.arrow collatz_cross_bound_2_l2 collatz_cross_bound_2_s2 collatz_cross_bound_2_s9)) (.seq (.arrow collatz_cross_bound_2_l9 collatz_cross_bound_2_s9 collatz_cross_bound_2_s9) (.seq (.arrow collatz_cross_bound_2_l9 collatz_cross_bound_2_s9 collatz_cross_bound_2_s10) (.arrow collatz_cross_bound_2_l10 collatz_cross_bound_2_s10 collatz_cross_bound_2_s11))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def collatz_cross_bound_2_true_arm : IGProtocol collatz_cross_bound_2_s0 collatz_cross_bound_2_s11 :=\n  (collatz_cross_bound_2_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_cross_bound_2_false_arm : IGProtocol collatz_cross_bound_2_s0 collatz_cross_bound_2_s11 :=\n  (collatz_cross_bound_2_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef collatz_cross_bound_2_tier_ground : OuroboricityTier := TierFunctor.obj collatz_cross_bound_2_s0\ndef collatz_cross_bound_2_tier : OuroboricityTier := TierFunctor.obj collatz_cross_bound_2_s11\n#eval collatz_cross_bound_2_tier_ground  -- tier of the ground (pre-transformation)\n#eval collatz_cross_bound_2_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem collatz_cross_bound_2_frobenius :\n    igFrobeniusAlg.mul collatz_cross_bound_2_s0 collatz_cross_bound_2_s0 = collatz_cross_bound_2_s0 :=\n  igFrobAlg_self_fusion collatz_cross_bound_2_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        2,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: collatz_cross_bound_2",
+  "grounded_tuple": "⟨𐑦𐑰𐑑𐑿𐑐𐑧𐑲𐑜⊙𐑖𐑳𐑴⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈≻⊤≺⊥⊞⋈∋◻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: The input describes a bound on a tree level that is valid once the level exceeds a stated size, which implies a hierarchical, nested structure where influence propagates through containment or branching rather than a flat network or cyclic closure.\n⊢=𐑦: The condition that the boundary carries the full bulk content losslessly (surface and interior are one register) defines a scale-collapse operating space where the constraint propagation is governed by the boundary's complete encoding of the interior.\n⊞=𐑳: The condition that the weighted cross sum is small enough to keep three quarters plus it below one implies a strict asymmetry in the distribution of weights or counts, ruling out the symmetric pairings of options 1 and 2.\n◻=𐑴: The bound derived from residue structure (rather than census) implies a discrete topological invariant, specifically a Z2 symmetry, which protects the role against continuous deformation to the trivial state.\n⊙=⊙: The prompt explicitly assigns the primitive ⊙, which is defined in the options as representing the critical state at the threshold.\n⊥=𐑖: The condition that the weighted cross sum bound is small enough to keep three quarters plus it below one implies a stable, structurally enforced chiral state with persistent memory depth n, rather than a topologically protected or thermally labile one.\n≻=𐑑: The bound on the weighted cross sum of a tree level exceeding a stated size implies a structural transformation or phase transition in the tree's growth dynamics, where the accumulation of interactions (cross sum) forces a change in the system's state or structure, consistent with bond formation or structural reorganization rather than mere association or catalysis.\n≺=𐑿: The primitive ≺ denotes a strict, asymmetric ordering (polarity) that distinguishes a lower from a higher element, implying a signed direction with distinct accepting and donating roles rather than symmetry or self-complementarity.\n⋈=𐑐: The bound derived from residue structure (rather than census) implies a geometric constraint that enforces high fidelity, ensuring the interaction fires with near-certainty and transmits high information.\n⊤=𐑧: The term \"kinetically frozen\" directly corresponds to a high barrier to rearrangement, where the system cannot change its configuration without external driving, distinguishing it from metastability or localization which imply different underlying mechanisms.\n∈=𐑲: The bound is explicitly described as \"small enough that three quarters plus it stays below one,\" indicating a negligible, local perturbation that does not propagate significantly beyond the immediate interaction site.\n∋=𐑜: The condition \"small enough that three quarters plus it stays below one\" implies a threshold where a single sufficient residue (partner) from a set is adequate to satisfy the bound, rather than requiring all partners simultaneously.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈≻⊤≺⊥⊞⋈∋◻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙∈≻⊤≺⊥⊞⋈∋◻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈≻⊤≺⊥⊞⋈∋◻⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⊤≺⊥⊞⋈∋◻⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊤≺⊥⊞⋈∋◻⊣⊢⊙∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≺⊥⊞⋈∋◻⊣⊢⊙∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊥⊞⋈∋◻⊣⊢⊙∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊞⋈∋◻⊣⊢⊙∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⋈∋◻⊣⊢⊙∈≻⊤≺⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "∋◻⊣⊢⊙∈≻⊤≺⊥⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻⊣⊢⊙∈≻⊤≺⊥⊞⋈∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢⊙∈≻⊤≺⊥⊞⋈∋◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙∈≻⊤≺⊥⊞⋈∋◻⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
