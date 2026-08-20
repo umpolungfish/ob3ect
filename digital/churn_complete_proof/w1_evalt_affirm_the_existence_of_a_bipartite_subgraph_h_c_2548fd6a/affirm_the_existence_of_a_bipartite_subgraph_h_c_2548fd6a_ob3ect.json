@@ -1,0 +1,383 @@
+{
+  "name": "Affirm the existence of a bipartite subgraph H' contained in H.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Affirm the existence of a bipartite subgraph H' contained in H.",
+      "domain_type": "combinatorial",
+      "scope": "local",
+      "surface_tokens": [
+        "bipartite_subgraph",
+        "vertex_partition",
+        "edge_pruning"
+      ],
+      "boundary_condition": "The finite host graph H containing the subgraph H'",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "empty_vertex_set",
+        "justification": "Initial state before any vertices or edges are selected from the host graph.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "host_graph_H",
+        "justification": "The closed boundary defining the finite domain within which the subgraph must exist.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "vertex_selection",
+        "justification": "Forward morphism selecting vertices to form the first partition set U.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "edge_removal",
+        "justification": "Reverse morphism pruning edges that violate the bipartite constraint between U and V.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "subgraph_embedding",
+        "justification": "Composition of vertex selection and edge pruning to form the valid subgraph H'.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "bipartite_identity",
+        "justification": "Self-reference where the constructed subgraph H' recognizes its own bipartite structure.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "partition_branching",
+        "justification": "Splits the evaluation into the affirmative construction of the bipartite sets and the negative calculation of removed edges.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "existence_verification",
+        "justification": "Rejoins the construction and pruning arms to verify the existence of H' within the bound.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "bipartite_affirmation",
+        "justification": "Affirms the constructive existence of the disjoint vertex sets U and V.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "edge_deficit",
+        "justification": "Quantifies the negative state of edges removed to satisfy the bipartite condition.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "structural_tension",
+        "justification": "Holds the simultaneous state of high chromatic potential in H and low chromatic realization in H'.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "bipartition_index",
+        "justification": "Permanent record of the integer invariant defining the specific bipartition of H'.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "partition_branching",
+      "split_input": "finite_host_graph_H",
+      "split_outputs": [
+        "bipartite_construction_arm",
+        "edge_pruning_arm"
+      ],
+      "fuse_element": "existence_verification",
+      "fuse_result": "verified_bipartite_subgraph_H_prime",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "No vertices or edges selected; the graph is undefined.",
+      "true_description": "A valid bipartite subgraph H' is constructed and contained in H.",
+      "false_description": "The edge removal count exceeds the bound f(n) or no bipartite structure exists.",
+      "both_description": "The host graph H retains high chromatic number while H' exhibits bipartite structure simultaneously.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the domain with an empty vertex set before selection."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Select vertices to form the first partition set U of the bipartite subgraph."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Branch into the affirmative construction of the bipartite structure and the negative calculation of edge removal."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊤",
+          "domain_action": "Affirm the existence of the disjoint vertex sets U and V within the host graph."
+        },
+        {
+          "step_num": 5,
+          "opcode": "≻",
+          "domain_action": "Propagate the selection to define the second partition set V."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "Prune edges connecting vertices within the same set to enforce bipartiteness."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "Quantify the number of edges removed as the deficit relative to the original graph."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⋈",
+          "domain_action": "Compose the vertex selection and edge pruning to form the valid subgraph H'."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊞",
+          "domain_action": "Hold the state where the host graph's high chromatic number coexists with the subgraph's bipartite nature."
+        },
+        {
+          "step_num": 10,
+          "opcode": "∋",
+          "domain_action": "Rejoin the construction and pruning arms to verify the existence of H' within the bound."
+        },
+        {
+          "step_num": 11,
+          "opcode": "◻",
+          "domain_action": "Record the bipartition index as a permanent integer invariant."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊙",
+          "domain_action": "Establish self-reference where the subgraph H' recognizes its own validity."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊣",
+          "domain_action": "Close the system within the boundary of the finite host graph H."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Graph homomorphism engine translating combinatorial constraints into vertex/edge operations.",
+      "ipc_mechanism": "Edge adjacency lists communicating membership between partition sets.",
+      "memory_mechanism": "Finite set storage for vertex partitions and edge counts.",
+      "scheduler_mechanism": "Deterministic traversal order ensuring all edges are checked for bipartite violation.",
+      "alfs_store": "Theorem erdos_problem_74 as the canonical reference for the existence proof.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One edge evaluation per cycle to determine partition membership.",
+      "pre_cycle_state": "Host graph H with unknown bipartite substructure.",
+      "post_cycle_state": "Verified bipartite subgraph H' with quantified edge deficit.",
+      "delta_s_verdict": "ΔS ≈ 0 — The operation is a structural rearrangement within a finite set, conserving information while reorganizing constraints.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻∈⊤≻≺⊥⋈⊞∋◻⊙⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻∈⊤≻≺⊥⋈⊞∋◻⊙⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ⊤   EVALT    EVALT         T →     T\n    5   ≻   AFWD     AFWD          T →     T\n    6   ≺   AREV     AREV          T →     N\n    7   ⊥   EVALF    EVALF         N →     F\n    8   ⋈   CLINK    CLINK         F →     F\n    9   ⊞   ENGAGR   EVALI         F →   Ftf\n   10   ∋   FFUSE    FFUSE3      Ftf →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ⊙   IMSCRIB  IMSCRIB       A →     A\n   13   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ≻ → ≺ → ⊥ → ⋈ → ⊞ → ∋ → ◻ → ⊙ → ⊣\n-- Class: Affirm the existence of a bipartite subgraph H' contained in H.\n-- Fingerprint: sig=(7,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=13\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [10] ◻      prot   := 𐑭               𐑙 → 𐑠  | irreversible fixation — winding number\n--   [11] ⊙   gram   := 𐑠               𐑭 → 𐑡  | identity — self-imscription\n--   [12] ⊣     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirm_the_existence_of_a_bipartite_cad4fd_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def affirm_the_existence_of_a_bipartite_cad4fd_protocol : IGProtocol affirm_the_existence_of_a_bipartite_cad4fd_s0 affirm_the_existence_of_a_bipartite_cad4fd_s12 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct affirm_the_existence_of_a_bipartite_cad4fd_s9 affirm_the_existence_of_a_bipartite_cad4fd_s9 = affirm_the_existence_of_a_bipartite_cad4fd_s9 (idempotent)\n  (.seq (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l0 affirm_the_existence_of_a_bipartite_cad4fd_s0 affirm_the_existence_of_a_bipartite_cad4fd_s1) (.seq (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l1 affirm_the_existence_of_a_bipartite_cad4fd_s1 affirm_the_existence_of_a_bipartite_cad4fd_s2) (.seq (.prod (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l2 affirm_the_existence_of_a_bipartite_cad4fd_s2 affirm_the_existence_of_a_bipartite_cad4fd_s9) (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l2 affirm_the_existence_of_a_bipartite_cad4fd_s2 affirm_the_existence_of_a_bipartite_cad4fd_s9)) (.seq (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l9 affirm_the_existence_of_a_bipartite_cad4fd_s9 affirm_the_existence_of_a_bipartite_cad4fd_s9) (.seq (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l9 affirm_the_existence_of_a_bipartite_cad4fd_s9 affirm_the_existence_of_a_bipartite_cad4fd_s10) (.seq (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l10 affirm_the_existence_of_a_bipartite_cad4fd_s10 affirm_the_existence_of_a_bipartite_cad4fd_s11) (.arrow affirm_the_existence_of_a_bipartite_cad4fd_l11 affirm_the_existence_of_a_bipartite_cad4fd_s11 affirm_the_existence_of_a_bipartite_cad4fd_s12)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def affirm_the_existence_of_a_bipartite_cad4fd_true_arm : IGProtocol affirm_the_existence_of_a_bipartite_cad4fd_s0 affirm_the_existence_of_a_bipartite_cad4fd_s12 :=\n  (affirm_the_existence_of_a_bipartite_cad4fd_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def affirm_the_existence_of_a_bipartite_cad4fd_false_arm : IGProtocol affirm_the_existence_of_a_bipartite_cad4fd_s0 affirm_the_existence_of_a_bipartite_cad4fd_s12 :=\n  (affirm_the_existence_of_a_bipartite_cad4fd_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef affirm_the_existence_of_a_bipartite_cad4fd_tier_ground : OuroboricityTier := TierFunctor.obj affirm_the_existence_of_a_bipartite_cad4fd_s0\ndef affirm_the_existence_of_a_bipartite_cad4fd_tier : OuroboricityTier := TierFunctor.obj affirm_the_existence_of_a_bipartite_cad4fd_s12\n#eval affirm_the_existence_of_a_bipartite_cad4fd_tier_ground  -- tier of the ground (pre-transformation)\n#eval affirm_the_existence_of_a_bipartite_cad4fd_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem affirm_the_existence_of_a_bipartite_cad4fd_frobenius :\n    igFrobeniusAlg.mul affirm_the_existence_of_a_bipartite_cad4fd_s0 affirm_the_existence_of_a_bipartite_cad4fd_s0 = affirm_the_existence_of_a_bipartite_cad4fd_s0 :=\n  igFrobAlg_self_fusion affirm_the_existence_of_a_bipartite_cad4fd_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 13,
+    "t_branch_ops": 3,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        2,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Affirm the existence of a bipartite subgraph H' contained in H.",
+  "grounded_tuple": "⟨𐑨𐑰𐑑𐑬𐑐𐑧𐑚𐑝𐑢𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻∈⊤≻≺⊥⋈⊞∋◻⊙⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: A bipartite subgraph inherently structures influence as a branched hierarchy where nodes partition into two distinct sets without internal cycles, fitting the containment pattern.\n⊢=𐑨: The existence of a bipartite subgraph implies a structural arrangement where constraints propagate across the spatial separation of the two disjoint vertex sets.\n⊞=𐑳: A bipartite subgraph inherently consists of two disjoint sets of vertices with edges only between them, representing an asymmetric structure where the counts on each side can differ.\n◻=𐑭: The existence of a bipartite subgraph implies a discrete integer invariant (such as a winding number or bipartition index) that stabilizes the role against continuous deformation.\n⊙=𐑢: The affirmation of a bipartite subgraph indicates a structured, stable regime without the scale-free correlations characteristic of a critical point.\n⊥=𐑖: The existence of a bipartite subgraph H' implies a structurally enforced multiple-axis configuration that sustains persistent chiral memory depth n.\n≻=𐑑: Affirming the existence of a subgraph involves selecting and fixing a specific structural subset, which corresponds to a bond formation or structural transformation within the graph.\n≺=𐑬: A bipartite subgraph inherently possesses two distinct sets of vertices that can simultaneously serve as donor and acceptor roles, satisfying the condition of self-complementarity.\n⋈=𐑐: The affirmation of a specific bipartite subgraph implies a rigid structural constraint that enforces high-fidelity, near-certain interactions.\n⊤=𐑧: A bipartite subgraph implies a structured, constrained configuration that resists spontaneous rearrangement without external driving forces.\n∈=𐑚: A bipartite subgraph represents a structured motif where interactions propagate through connected clusters rather than remaining isolated or spanning the entire system.\n∋=𐑝: A bipartite subgraph requires the simultaneous presence of two distinct vertex sets to define its edges, aligning with the conjunctive logic where all required partners must be present.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 13,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻∈⊤≻≺⊥⋈⊞∋◻⊙⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "≻∈⊤≻≺⊥⋈⊞∋◻⊙⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈⊤≻≺⊥⋈⊞∋◻⊙⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⊤≻≺⊥⋈⊞∋◻⊙⊣⊢≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "≻≺⊥⋈⊞∋◻⊙⊣⊢≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≺⊥⋈⊞∋◻⊙⊣⊢≻∈⊤≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊥⋈⊞∋◻⊙⊣⊢≻∈⊤≻≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⋈⊞∋◻⊙⊣⊢≻∈⊤≻≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⊞∋◻⊙⊣⊢≻∈⊤≻≺⊥⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "∋◻⊙⊣⊢≻∈⊤≻≺⊥⋈⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻⊙⊣⊢≻∈⊤≻≺⊥⋈⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊙⊣⊢≻∈⊤≻≺⊥⋈⊞∋◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⊣⊢≻∈⊤≻≺⊥⋈⊞∋◻⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻∈⊤≻≺⊥⋈⊞∋◻⊙⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}

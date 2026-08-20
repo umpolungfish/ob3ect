@@ -1,0 +1,397 @@
+{
+  "name": "collatz_level_contraction",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "collatz_level_contraction",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "residue_level",
+        "doubling_map",
+        "odd_lift",
+        "deviation_bound"
+      ],
+      "boundary_condition": "The predecessor tree level L_k and its image L_{k+1} under the inverse Collatz map, bounded by the modulus 3^r where the two residue bijections (doubling and odd-lift) operate.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "empty_level",
+        "justification": "The state before any nodes are generated at level k, representing the void set from which the tree grows.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "level_k",
+        "justification": "The closed set of nodes at depth k, serving as the boundary condition for the next iteration.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "doubling_map",
+        "justification": "The forward morphism m -> 2m, which maps every node in L_k to a unique even node in L_{k+1}.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "odd_lift",
+        "justification": "The reverse morphism m -> (2m-1)/3, which maps nodes m ≡ 2 (mod 3) in L_k to odd nodes in L_{k+1}, representing the descent into the 3-adic structure.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "level_union",
+        "justification": "The composition of the doubling image and the odd-lift image to form the complete set L_{k+1}.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "residue_identity",
+        "justification": "The self-reference of the residue class modulo 3^r, ensuring the bijection properties hold within the ring.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "parity_filter",
+        "justification": "Splits the level L_k into two arms: the full set for doubling and the subset m ≡ 2 (mod 3) for the odd lift.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "cardinality_sum",
+        "justification": "Rejoins the two arms to compute the total count of L_{k+1} as |L_k| + |L_k ∩ {2 mod 3}|.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "uniform_limit",
+        "justification": "The affirmative state where the fraction of nodes at 2 mod 3 converges to 1/3, yielding the 4/3 branch factor.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "deviation_bound",
+        "justification": "The negative state representing the measured deviation from uniformity, which decays geometrically but is strictly non-zero at finite k.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "mixing_gap",
+        "justification": "The paradice state holding both the theoretical 4/3 limit and the measured deviation simultaneously, as the system is not yet uniform.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "deviation_record",
+        "justification": "The permanent record of the maximum deviation at level k, which bounds the deviation at level k+1 by a factor strictly below one.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "parity_filter",
+      "split_input": "level_k",
+      "split_outputs": [
+        "full_set_for_doubling",
+        "subset_2_mod_3_for_odd_lift"
+      ],
+      "fuse_element": "cardinality_sum",
+      "fuse_result": "level_k_plus_1",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "No nodes exist at the current level; the tree has not started.",
+      "true_description": "The level is perfectly uniform modulo 3^r, and the branch factor is exactly 4/3.",
+      "false_description": "The level exhibits a measurable deviation from uniformity, and the branch factor is strictly less than 4/3.",
+      "both_description": "The level is simultaneously approaching the 4/3 limit (true) and retaining a specific non-zero deviation (false), held in the mixing gap.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the empty set for level k."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊣",
+          "domain_action": "Anchor the system at the current level L_k."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Split L_k into the full set for doubling and the subset m ≡ 2 (mod 3) for the odd lift."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "Apply the doubling map m -> 2m to the full set, generating the even nodes of L_{k+1}."
+        },
+        {
+          "step_num": 5,
+          "opcode": "≺",
+          "domain_action": "Apply the odd lift m -> (2m-1)/3 to the subset m ≡ 2 (mod 3), generating the odd nodes of L_{k+1}."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⋈",
+          "domain_action": "Compose the even and odd images to form the complete set L_{k+1}."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊙",
+          "domain_action": "Assert the residue identity modulo 3^r for the new level."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the affirmative state where the fraction of 2 mod 3 nodes is 1/3."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the negative state where the deviation from 1/3 is non-zero."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊞",
+          "domain_action": "Hold the mixing gap where both the limit and the deviation coexist."
+        },
+        {
+          "step_num": 11,
+          "opcode": "◻",
+          "domain_action": "Record the maximum deviation at level k as a permanent bound."
+        },
+        {
+          "step_num": 12,
+          "opcode": "∋",
+          "domain_action": "Rejoin the arms to compute the cardinality of L_{k+1} and the new deviation bound."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⋈",
+          "domain_action": "Chain the new level to the next iteration, carrying the deviation bound forward."
+        },
+        {
+          "step_num": 14,
+          "opcode": "◻",
+          "domain_action": "Fix the new deviation bound, which is strictly less than the previous bound by a factor below one."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The inverse Collatz map logic that translates residue classes into tree levels.",
+      "ipc_mechanism": "The residue bijections (doubling and odd-lift) that communicate between levels.",
+      "memory_mechanism": "The set of nodes at each level, stored as a finite set of integers.",
+      "scheduler_mechanism": "The depth-first traversal of the predecessor tree, level by level.",
+      "alfs_store": "The Lean module CollatzDepthSplit.lean, which proves the bijection properties and the deviation bounds.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One 3-adic digit of resolution per level, consumed by the mixing process.",
+      "pre_cycle_state": "Level k with a specific deviation from uniformity.",
+      "post_cycle_state": "Level k+1 with a strictly smaller deviation from uniformity.",
+      "delta_s_verdict": "ΔS ≈ 0 — The system is entropy-conservative because the deviation decays geometrically, preserving the total information content while approaching the uniform limit.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊣∈≻≺⋈⊙⊤⊥⊞◻∋⋈◻",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊣∈≻≺⋈⊙⊤⊥⊞◻∋⋈◻\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊣   TANCH    TANCH         N →     N\n    3   ∈   FSPLIT   FSPLIT3       N →     N\n    4   ≻   AFWD     AFWD          N →     T\n    5   ≺   AREV     AREV          T →     N\n    6   ⋈   CLINK    CLINK         N →     N\n    7   ⊙   IMSCRIB  IMSCRIB       N →     T\n    8   ⊤   EVALT    EVALT         T →     T\n    9   ⊥   EVALF    EVALF         T →    TF\n   10   ⊞   ENGAGR   EVALI        TF →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ∋   FFUSE    FFUSE3        A →     A\n   13   ⋈   CLINK    CLINK         A →     A\n   14   ◻   IFIX     IFIX          A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ≺ → ⋈ → ⊙ → ⊤ → ⊥ → ⊞ → ◻ → ∋ → ⋈ → ◻\n-- Class: collatz_level_contraction\n-- Fingerprint: sig=(7,2,3,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] ⊣     top    := 𐑡               𐑼 → 𐑚  | terminal object — connectivity boundary\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [5] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [7] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [10] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [11] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [12] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence\n--   [13] ◻      prot   := 𐑭               𐑱 → 𐑼  | irreversible fixation — winding number\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def collatz_level_contraction_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_level_contraction_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def collatz_level_contraction_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def collatz_level_contraction_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def collatz_level_contraction_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def collatz_level_contraction_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def collatz_level_contraction_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def collatz_level_contraction_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_level_contraction_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def collatz_level_contraction_protocol : IGProtocol collatz_level_contraction_s0 collatz_level_contraction_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct collatz_level_contraction_s11 collatz_level_contraction_s11 = collatz_level_contraction_s11 (idempotent)\n  (.seq (.arrow collatz_level_contraction_l0 collatz_level_contraction_s0 collatz_level_contraction_s1) (.seq (.arrow collatz_level_contraction_l1 collatz_level_contraction_s1 collatz_level_contraction_s2) (.seq (.prod (.arrow collatz_level_contraction_l2 collatz_level_contraction_s2 collatz_level_contraction_s11) (.arrow collatz_level_contraction_l2 collatz_level_contraction_s2 collatz_level_contraction_s11)) (.seq (.arrow collatz_level_contraction_l11 collatz_level_contraction_s11 collatz_level_contraction_s11) (.seq (.arrow collatz_level_contraction_l11 collatz_level_contraction_s11 collatz_level_contraction_s12) (.arrow collatz_level_contraction_l12 collatz_level_contraction_s12 collatz_level_contraction_s13))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def collatz_level_contraction_true_arm : IGProtocol collatz_level_contraction_s0 collatz_level_contraction_s13 :=\n  (collatz_level_contraction_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_level_contraction_false_arm : IGProtocol collatz_level_contraction_s0 collatz_level_contraction_s13 :=\n  (collatz_level_contraction_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef collatz_level_contraction_tier_ground : OuroboricityTier := TierFunctor.obj collatz_level_contraction_s0\ndef collatz_level_contraction_tier : OuroboricityTier := TierFunctor.obj collatz_level_contraction_s13\n#eval collatz_level_contraction_tier_ground  -- tier of the ground (pre-transformation)\n#eval collatz_level_contraction_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem collatz_level_contraction_frobenius :\n    igFrobeniusAlg.mul collatz_level_contraction_s0 collatz_level_contraction_s0 = collatz_level_contraction_s0 :=\n  igFrobAlg_self_fusion collatz_level_contraction_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 1,
+    "f_branch_ops": 3,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      11
+    ],
+    "pair_list": [
+      [
+        2,
+        11
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: collatz_level_contraction",
+  "grounded_tuple": "⟨𐑦𐑰𐑽𐑿𐑐𐑧𐑚𐑝⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣∈≻≺⋈⊙⊤⊥⊞◻∋⋈◻",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 2,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (2 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: The reference to a \"predecessor tree\" and a quantity bounded by a factor strictly below one across levels indicates a hierarchical, branched structure where influence flows through nested containment rather than cyclic or fully enclosed patterns.\n⊢=𐑦: The requirement that a boundary quantity bounds the next level by a factor strictly below one while carrying full bulk content losslessly defines a scale-collapse regime where surface and interior are unified.\n⊞=𐑳: The requirement for a bounding factor strictly below one implies an asymmetric reduction in quantity between levels, which corresponds to different counts on each side of the stoichiometric relationship.\n◻=𐑭: The existence of a strictly sub-unity contraction factor enforced by bijections implies a stable integer winding invariant that prevents continuous deformation to a trivial state.\n⊙=⊙: The strict contraction factor below one enforced by residue bijections indicates the system is self-organizing at the threshold of criticality, exhibiting scale-free behavior without external tuning.\n⊥=𐑖: The requirement for a quantity to be strictly bounded by a factor below one across levels via forced residue bijections implies a structurally enforced, multi-axis persistence of chirality rather than a transient or topologically isolated state.\n≻=𐑽: The mechanism acts as a catalytic constraint that forces a strict reduction factor across levels without being consumed by the census, analogous to transition-state stabilization.\n≺=𐑿: The requirement for a strict contraction factor below one implies an asymmetric, directed flow between levels, corresponding to a signed direction with distinct accepting or donating poles rather than self-complementarity or symmetry.\n⋈=𐑐: The requirement for a strictly sub-unitary bound enforced by residue bijections implies a deterministic, geometry-enforcing mechanism that eliminates probabilistic noise, ensuring near-certain firing.\n⊤=𐑧: The strict contraction factor below one enforced by residue bijections implies a high kinetic barrier that prevents spontaneous rearrangement without external driving.\n∈=𐑚: The constraint of a strictly sub-unity bounding factor across tree levels implies a geometric decay of influence, limiting propagation to a finite mesoscale range rather than allowing global scale-free behavior or restricting it to a single local event.\n∋=𐑝: The requirement for two specific residue bijections to simultaneously force a bound implies a conjunctive logic where all necessary partners must be present.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 14,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣∈≻≺⋈⊙⊤⊥⊞◻∋⋈◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊣∈≻≺⋈⊙⊤⊥⊞◻∋⋈◻⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈≻≺⋈⊙⊤⊥⊞◻∋⋈◻⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻≺⋈⊙⊤⊥⊞◻∋⋈◻⊢⊣∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "≺⋈⊙⊤⊥⊞◻∋⋈◻⊢⊣∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⋈⊙⊤⊥⊞◻∋⋈◻⊢⊣∈≻≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊙⊤⊥⊞◻∋⋈◻⊢⊣∈≻≺⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊤⊥⊞◻∋⋈◻⊢⊣∈≻≺⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⊥⊞◻∋⋈◻⊢⊣∈≻≺⋈⊙⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊞◻∋⋈◻⊢⊣∈≻≺⋈⊙⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "◻∋⋈◻⊢⊣∈≻≺⋈⊙⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "∋⋈◻⊢⊣∈≻≺⋈⊙⊤⊥⊞◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⋈◻⊢⊣∈≻≺⋈⊙⊤⊥⊞◻∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "◻⊢⊣∈≻≺⋈⊙⊤⊥⊞◻∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 2,
+    "canonical_word": "∈≻≺⋈⊙⊤⊥⊞◻∋⋈◻⊢⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}

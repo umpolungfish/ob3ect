@@ -18,107 +18,106 @@
       "domain_type": "computational",
       "scope": "local",
       "surface_tokens": [
-        "reciprocal_sum",
-        "density_threshold",
-        "three_term_ap",
-        "finite_filter",
-        "corners_bound"
+        "parity_gate",
+        "modular_residue",
+        "contraction_step",
+        "stopping_time"
       ],
-      "boundary_condition": "The Erdos-Turan density theorem closure that maps divergent reciprocal sums to the existence of arithmetic progressions within finite subsets of natural numbers.",
+      "boundary_condition": "The unit cycle {1} acts as the terminal anchor where all trajectories converge or loop, defining the closed boundary of the Collatz state space.",
       "justification": "Auto-designed by Ob3ect Auto-Designer"
     },
     "phase_1": {
       "⊢": {
         "opcode": "⊢",
-        "chosen_element": "empty_set",
-        "justification": "The initial state before any natural numbers are selected or the set A is defined.",
+        "chosen_element": "arbitrary_natural_number",
+        "justification": "The system begins with an uninitialized natural number n ≥ 1, representing the void state before parity evaluation.",
         "rejected_candidates": []
       },
       "⊣": {
         "opcode": "⊣",
-        "chosen_element": "erdos_turan_closure",
-        "justification": "The final theorem statement that contains the entire logical derivation from divergence to progression existence.",
+        "chosen_element": "unit_cycle",
+        "justification": "The value 1 forms the closed boundary; reaching 1 implies entry into the 1→1 loop, the terminal anchor of the system.",
         "rejected_candidates": []
       },
       "≻": {
         "opcode": "≻",
-        "chosen_element": "density_propagation",
-        "justification": "The forward morphism where positive density implies the existence of structure (3-AP) as N increases.",
+        "chosen_element": "odd_expansion",
+        "justification": "The transformation (3n+1)/2 for odd n represents the forward morphism, increasing magnitude and moving away from the anchor.",
         "rejected_candidates": []
       },
       "≺": {
         "opcode": "≺",
-        "chosen_element": "difference_extraction",
-        "justification": "The reverse morphism extracting the common difference d from the ordered triple (a, a+d, a+2d) to verify the progression.",
+        "chosen_element": "even_contraction",
+        "justification": "The transformation n/2 for even n represents the reverse morphism, decreasing magnitude and descending toward the anchor.",
         "rejected_candidates": []
       },
       "⋈": {
         "opcode": "⋈",
-        "chosen_element": "theorem_composition",
-        "justification": "Chaining the density lemma with the corners theorem to derive the final existence proof.",
+        "chosen_element": "iterate_chain",
+        "justification": "Sequential application of the Collatz map composes multiple steps into a single trajectory path.",
         "rejected_candidates": []
       },
       "⊙": {
         "opcode": "⊙",
-        "chosen_element": "set_membership",
-        "justification": "The self-referential check that an element x belongs to the filtered set S and thus to the original set A.",
+        "chosen_element": "fixed_point_1",
+        "justification": "The state n=1 is self-referential; col(1)=1, meaning the element recognizes itself as the identity of the loop.",
         "rejected_candidates": []
       },
       "∈": {
         "opcode": "∈",
-        "chosen_element": "ordering_branch",
-        "justification": "Splits the proof path based on the relative ordering of the three terms (a < b < c vs c < b < a) to define the common difference.",
+        "chosen_element": "parity_decision",
+        "justification": "The system splits into two distinct arms based on the parity of n: the odd arm (expansion) and the even arm (contraction).",
         "rejected_candidates": []
       },
       "∋": {
         "opcode": "∋",
-        "chosen_element": "progression_unification",
-        "justification": "Rejoins the two ordering branches into a single existential claim that a valid (a, d) pair exists regardless of initial order.",
+        "chosen_element": "trajectory_convergence",
+        "justification": "The arms rejoin at the next integer state; conflicting paths (expansion vs contraction) fuse into a single resolved trajectory step.",
         "rejected_candidates": []
       },
       "⊤": {
         "opcode": "⊤",
-        "chosen_element": "divergence_affirmed",
-        "justification": "The state where the sum of reciprocals is proven to diverge, establishing the premise for positive density.",
+        "chosen_element": "contraction_verified",
+        "justification": "The affirmative state where the trajectory strictly decreases (col^k(n) < n), confirming progress toward the anchor.",
         "rejected_candidates": []
       },
       "⊥": {
         "opcode": "⊥",
-        "chosen_element": "three_ap_free",
-        "justification": "The state where a set is assumed to be free of 3-term arithmetic progressions, which is refuted by the density argument.",
+        "chosen_element": "expansion_verified",
+        "justification": "The negative state where the trajectory increases (col(n) > n), representing a temporary divergence from the anchor.",
         "rejected_candidates": []
       },
       "⊞": {
         "opcode": "⊞",
-        "chosen_element": "critical_density",
-        "justification": "The paradice state where the set simultaneously exhibits high density (forcing structure) and the potential for sparsity, held at the threshold of the corners theorem.",
+        "chosen_element": "modular_residue_ambiguity",
+        "justification": "The state where n ≡ 3 (mod 4) holds both expansion potential (odd) and immediate contraction potential (next step even), a paradice of simultaneous opposing forces.",
         "rejected_candidates": []
       },
       "◻": {
         "opcode": "◻",
-        "chosen_element": "winding_invariant",
-        "justification": "The permanent record of the integer winding number that prevents the topological deformation of the progression structure to a trivial state.",
+        "chosen_element": "stopping_time_record",
+        "justification": "The permanent record of the step count k where the trajectory first reaches 1, an irreversible fixation of the stopping time.",
         "rejected_candidates": []
       }
     },
     "phase_2": {
-      "split_element": "ordering_branch",
-      "split_input": "unordered_triple",
+      "split_element": "parity_decision",
+      "split_input": "current_integer_n",
       "split_outputs": [
-        "ascending_sequence",
-        "descending_sequence"
+        "odd_expansion_arm",
+        "even_contraction_arm"
       ],
-      "fuse_element": "progression_unification",
-      "fuse_result": "existential_progression",
-      "frobenius_verdict": "B",
+      "fuse_element": "trajectory_convergence",
+      "fuse_result": "next_integer_state",
+      "frobenius_verdict": "T",
       "test_instance": "",
-      "failure_reason": "FSPLIT3 at step 2 dangles — no matching FFUSE3"
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
     },
     "phase_3": {
-      "void_description": "No set A defined; no natural numbers selected; the domain is empty.",
-      "true_description": "A valid 3-term arithmetic progression (a, a+d, a+2d) exists within set A with d >= 1.",
-      "false_description": "Set A is 3-AP-free; no such progression exists (refuted by density).",
-      "both_description": "The set A is at the critical threshold where it is dense enough to force a progression while the specific configuration remains undetermined until the corners bound is applied.",
+      "void_description": "An arbitrary natural number n ≥ 1 before any Collatz operation is applied.",
+      "true_description": "The trajectory has contracted (col^k(n) < n) or reached the unit cycle.",
+      "false_description": "The trajectory has expanded (col(n) > n) in the current step.",
+      "both_description": "A state n ≡ 3 (mod 4) where the immediate step expands but the subsequent step contracts, holding both expansion and contraction potentials simultaneously.",
       "transitions": [],
       "entropy_assertion": "ΔS ≈ 0"
     },
@@ -127,128 +126,230 @@
         {
           "step_num": 1,
           "opcode": "⊢",
-          "domain_action": "Initialize the domain with an empty set of natural numbers before defining A."
+          "domain_action": "Initialize the system with an arbitrary natural number n ≥ 1."
         },
         {
           "step_num": 2,
           "opcode": "∈",
-          "domain_action": "Branch the logical path to evaluate the divergence of the reciprocal sum of A."
+          "domain_action": "Branch the trajectory based on the parity of n."
         },
         {
           "step_num": 3,
-          "opcode": "⊤",
-          "domain_action": "Affirm that the sum of reciprocals diverges, establishing the premise."
+          "opcode": "≻",
+          "domain_action": "Execute the odd expansion morphism (3n+1)/2 on the T-arm."
         },
         {
           "step_num": 4,
-          "opcode": "≻",
-          "domain_action": "Propagate the divergence to establish a positive lower bound epsilon for the density of A."
+          "opcode": "⊤",
+          "domain_action": "Affirm the expansion state where magnitude increases."
         },
         {
           "step_num": 5,
-          "opcode": "⋈",
-          "domain_action": "Compose the density bound with the corners theorem to determine the finite range N."
+          "opcode": "≺",
+          "domain_action": "Execute the even contraction morphism n/2 on the F-arm."
         },
         {
           "step_num": 6,
-          "opcode": "∈",
-          "domain_action": "Split the evaluation of the finite subset S based on the ordering of potential progression terms."
+          "opcode": "⊥",
+          "domain_action": "Affirm the contraction state where magnitude decreases."
         },
         {
           "step_num": 7,
-          "opcode": "⊤",
-          "domain_action": "Evaluate the ascending branch where a < b < c to derive d = b - a."
+          "opcode": "∋",
+          "domain_action": "Rejoin the parity arms into the next integer state."
         },
         {
           "step_num": 8,
-          "opcode": "≻",
-          "domain_action": "Forward morphism confirming the existence of a, a+d, a+2d in the ascending case."
+          "opcode": "⋈",
+          "domain_action": "Compose the current step with the previous trajectory history."
         },
         {
           "step_num": 9,
-          "opcode": "⊥",
-          "domain_action": "Evaluate the descending branch where c < b < a to derive d = b - c."
+          "opcode": "∈",
+          "domain_action": "Branch again based on the parity of the new state."
         },
         {
           "step_num": 10,
-          "opcode": "≺",
-          "domain_action": "Reverse morphism extracting the difference d from the descending order to normalize the progression."
+          "opcode": "≻",
+          "domain_action": "Apply odd expansion if the new state is odd."
         },
         {
           "step_num": 11,
-          "opcode": "∋",
-          "domain_action": "Rejoin the ascending and descending branches to unify the existence of a valid (a, d) pair."
+          "opcode": "⊤",
+          "domain_action": "Record the affirmative expansion."
         },
         {
           "step_num": 12,
-          "opcode": "⊞",
-          "domain_action": "Hold the critical state where the density epsilon and the corners bound N interact at the threshold."
+          "opcode": "≺",
+          "domain_action": "Apply even contraction if the new state is even."
         },
         {
           "step_num": 13,
-          "opcode": "⊙",
-          "domain_action": "Verify self-reference by confirming membership of the found terms in the original set A."
+          "opcode": "⊥",
+          "domain_action": "Record the negative contraction."
         },
         {
           "step_num": 14,
-          "opcode": "⋈",
-          "domain_action": "Chain the verified membership back to the existential quantifier for the final theorem."
+          "opcode": "∋",
+          "domain_action": "Fuse the arms to produce the subsequent state."
         },
         {
           "step_num": 15,
-          "opcode": "◻",
-          "domain_action": "Fix the integer winding invariant that prevents the progression from deforming to a trivial state."
+          "opcode": "⊞",
+          "domain_action": "Hold the modular residue state n ≡ 3 (mod 4) where expansion and contraction coexist."
         },
         {
           "step_num": 16,
+          "opcode": "⋈",
+          "domain_action": "Chain the modular residue evaluation into the trajectory."
+        },
+        {
+          "step_num": 17,
+          "opcode": "∈",
+          "domain_action": "Split the trajectory for the 8m+3 case analysis."
+        },
+        {
+          "step_num": 18,
+          "opcode": "≻",
+          "domain_action": "Apply the 3-step expansion sequence for 8m+3."
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊤",
+          "domain_action": "Verify the expansion to 9m+4."
+        },
+        {
+          "step_num": 20,
+          "opcode": "≺",
+          "domain_action": "Apply the subsequent contraction steps."
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊥",
+          "domain_action": "Verify the contraction to a value less than input."
+        },
+        {
+          "step_num": 22,
+          "opcode": "∋",
+          "domain_action": "Fuse the 8m+3 analysis into a single contraction verdict."
+        },
+        {
+          "step_num": 23,
+          "opcode": "∈",
+          "domain_action": "Split the trajectory for the 8m+7 case analysis."
+        },
+        {
+          "step_num": 24,
+          "opcode": "≻",
+          "domain_action": "Apply the expansion sequence for 8m+7."
+        },
+        {
+          "step_num": 25,
+          "opcode": "⊤",
+          "domain_action": "Verify the expansion to 27m+26."
+        },
+        {
+          "step_num": 26,
+          "opcode": "≺",
+          "domain_action": "Apply the contraction sequence."
+        },
+        {
+          "step_num": 27,
+          "opcode": "⊥",
+          "domain_action": "Verify the contraction to a value less than input."
+        },
+        {
+          "step_num": 28,
+          "opcode": "∋",
+          "domain_action": "Fuse the 8m+7 analysis into a single contraction verdict."
+        },
+        {
+          "step_num": 29,
+          "opcode": "⋈",
+          "domain_action": "Compose the 8m+3 and 8m+7 contraction proofs."
+        },
+        {
+          "step_num": 30,
+          "opcode": "⊙",
+          "domain_action": "Recognize the fixed point n=1 where col(1)=1."
+        },
+        {
+          "step_num": 31,
+          "opcode": "⊤",
+          "domain_action": "Affirm the termination condition at n=1."
+        },
+        {
+          "step_num": 32,
+          "opcode": "◻",
+          "domain_action": "Record the stopping time k as a permanent, append-only fact."
+        },
+        {
+          "step_num": 33,
           "opcode": "⊣",
-          "domain_action": "Anchor the entire derivation in the Erdos-Turan closure, completing the proof."
+          "domain_action": "Close the system at the unit cycle boundary."
         }
       ],
       "closure_verified": true,
       "failure_modes": []
     },
     "phase_5": {
-      "compiler_frontend": "The Lean theorem prover translating the density axioms into constructive existence proofs.",
-      "ipc_mechanism": "The logical implication chain passing the density epsilon from the divergence lemma to the corners theorem.",
-      "memory_mechanism": "The finite set S storing the filtered elements of A within the range N.",
-      "scheduler_mechanism": "The proof tactic sequence that unfolds definitions, pushes negations, and applies the omega decision procedure.",
-      "alfs_store": "The Millennium.ErdosProblems namespace containing the grounded tuple and the reciprocal divergence axiom.",
+      "compiler_frontend": "The parity check function that translates integer n into the appropriate morphism (3n+1)/2 or n/2.",
+      "ipc_mechanism": "The integer value passed sequentially between iterations of the Collatz map.",
+      "memory_mechanism": "The trajectory history stored as a sequence of integers leading to the current state.",
+      "scheduler_mechanism": "The deterministic rule that selects the next operation based solely on the parity of the current integer.",
+      "alfs_store": "The set of lemmas proving contraction for n ≡ 3 (mod 4) and n ≡ 7 (mod 8) as the canonical reference for convergence.",
       "alfs_bootstrap_program": ""
     },
     "phase_6": {
-      "cycle_cost": "The computational effort to filter the set A and verify the arithmetic progression constraints.",
-      "pre_cycle_state": "A set A with divergent reciprocal sum but unknown internal structure.",
-      "post_cycle_state": "A set A proven to contain a specific 3-term arithmetic progression.",
-      "delta_s_verdict": "ΔS ≈ 0 — The logical derivation conserves information by mapping the divergence property directly to the structural existence without loss.",
+      "cycle_cost": "One bit of parity information consumed per operation cycle.",
+      "pre_cycle_state": "An integer n with unknown trajectory length.",
+      "post_cycle_state": "An integer col(n) with one step of trajectory history recorded.",
+      "delta_s_verdict": "ΔS ≈ 0 — The system is deterministic and reversible in principle (given the full trajectory), conserving information while reducing magnitude on average.",
       "failure_mode": ""
     }
   },
-  "glyph_word": "⊢∈⊤≻⋈∈⊤≻⊥≺∋⊞⊙⋈◻⊣",
-  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤>⋈∈⊤>⊥<∋⊞⊙⋈◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   >   AFWD     AFWD          T →     T\n    5   ⋈   CLINK    CLINK         T →     T\n    6   ∈   FSPLIT   FSPLIT3       T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   >   AFWD     AFWD          T →     T\n    9   ⊥   EVALF    EVALF         T →    TF\n   10   <   AREV     AREV         TF →     N\n   11   ∋   FFUSE    FFUSE3        N →    TF\n   12   ⊞   ENGAGR   EVALI        TF →     A\n   13   ⊙   IMSCRIB  IMSCRIB       A →     A\n   14   ⋈   CLINK    CLINK         A →     A\n   15   ◻   IFIX     IFIX          A →     A\n   16   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: B — FSPLIT3 at step 2 dangles — no matching FFUSE3\n  ⚠ Not fully closed",
-  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⊞ → ⊙ → ⋈ → ◻ → ⊣\n-- Class: ob3ect_sequence\n-- Fingerprint: sig=(8,3,4,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=16\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(5, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑼 → ⊙  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑾  | evaluate-true — criticality gate open\n--   [3] ≻      rel    := 𐑾               ⊙ → 𐑱  | forward morphism — bidirectional arrow\n--   [4] ⋈     fid    := 𐑱               𐑾 → 𐑚  | composition — regime coherence\n--   [5] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [10] ∋     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode\n--   [11] ⊞    stoi   := 𐑳               𐑙 → 𐑠  | engage paradox — B-state, both arms\n--   [12] ⊙   gram   := 𐑠               𐑳 → 𐑱  | identity — self-imscription\n--   [13] ⋈     fid    := 𐑱               𐑠 → 𐑭  | composition — regime coherence\n--   [14] ◻      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number\n--   [15] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def ob3ect_sequence_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def ob3ect_sequence_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def ob3ect_sequence_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def ob3ect_sequence_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def ob3ect_sequence_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def ob3ect_sequence_protocol : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s15 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct ob3ect_sequence_s10 ob3ect_sequence_s10 = ob3ect_sequence_s10 (idempotent)\n  (.seq (.arrow ob3ect_sequence_l0 ob3ect_sequence_s0 ob3ect_sequence_s1) (.seq (.arrow ob3ect_sequence_l1 ob3ect_sequence_s1 ob3ect_sequence_s2) (.seq (.arrow ob3ect_sequence_l2 ob3ect_sequence_s2 ob3ect_sequence_s3) (.seq (.arrow ob3ect_sequence_l3 ob3ect_sequence_s3 ob3ect_sequence_s4) (.seq (.arrow ob3ect_sequence_l4 ob3ect_sequence_s4 ob3ect_sequence_s5) (.seq (.prod (.arrow ob3ect_sequence_l5 ob3ect_sequence_s5 ob3ect_sequence_s10) (.arrow ob3ect_sequence_l5 ob3ect_sequence_s5 ob3ect_sequence_s10)) (.seq (.arrow ob3ect_sequence_l10 ob3ect_sequence_s10 ob3ect_sequence_s10) (.seq (.arrow ob3ect_sequence_l10 ob3ect_sequence_s10 ob3ect_sequence_s11) (.seq (.arrow ob3ect_sequence_l11 ob3ect_sequence_s11 ob3ect_sequence_s12) (.seq (.arrow ob3ect_sequence_l12 ob3ect_sequence_s12 ob3ect_sequence_s13) (.seq (.arrow ob3ect_sequence_l13 ob3ect_sequence_s13 ob3ect_sequence_s14) (.arrow ob3ect_sequence_l14 ob3ect_sequence_s14 ob3ect_sequence_s15))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def ob3ect_sequence_true_arm : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s15 :=\n  (ob3ect_sequence_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def ob3ect_sequence_false_arm : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s15 :=\n  (ob3ect_sequence_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef ob3ect_sequence_tier_ground : OuroboricityTier := TierFunctor.obj ob3ect_sequence_s0\ndef ob3ect_sequence_tier : OuroboricityTier := TierFunctor.obj ob3ect_sequence_s15\n#eval ob3ect_sequence_tier_ground  -- tier of the ground (pre-transformation)\n#eval ob3ect_sequence_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem ob3ect_sequence_frobenius :\n    igFrobeniusAlg.mul ob3ect_sequence_s0 ob3ect_sequence_s0 = ob3ect_sequence_s0 :=\n  igFrobAlg_self_fusion ob3ect_sequence_s0\n",
+  "glyph_word": "⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ≻   AFWD     AFWD          N →     T\n    4   ⊤   EVALT    EVALT         T →     T\n    5   ≺   AREV     AREV          T →     N\n    6   ⊥   EVALF    EVALF         N →     F\n    7   ∋   FFUSE    FFUSE3        F →    TF\n    8   ⋈   CLINK    CLINK        TF →    TF\n    9   ∈   FSPLIT   FSPLIT3      TF →    TF\n   10   ≻   AFWD     AFWD         TF →    TF\n   11   ⊤   EVALT    EVALT        TF →    TF\n   12   ≺   AREV     AREV         TF →     N\n   13   ⊥   EVALF    EVALF         N →     F\n   14   ∋   FFUSE    FFUSE3        F →    TF\n   15   ⊞   ENGAGR   EVALI        TF →     A\n   16   ⋈   CLINK    CLINK         A →     A\n   17   ∈   FSPLIT   FSPLIT3       A →     A\n   18   ≻   AFWD     AFWD          A →     A\n   19   ⊤   EVALT    EVALT         A →     A\n   20   ≺   AREV     AREV          A →     N\n   21   ⊥   EVALF    EVALF         N →     F\n   22   ∋   FFUSE    FFUSE3        F →    TF\n   23   ∈   FSPLIT   FSPLIT3      TF →    TF\n   24   ≻   AFWD     AFWD         TF →    TF\n   25   ⊤   EVALT    EVALT        TF →    TF\n   26   ≺   AREV     AREV         TF →     N\n   27   ⊥   EVALF    EVALF         N →     F\n   28   ∋   FFUSE    FFUSE3        F →    TF\n   29   ⋈   CLINK    CLINK        TF →    TF\n   30   ⊙   IMSCRIB  IMSCRIB      TF →    TF\n   31   ⊤   EVALT    EVALT        TF →    TF\n   32   ◻   IFIX     IFIX         TF →    TF\n   33   ⊣   TANCH    TANCH        TF →    TF\n\n  Final register: TF\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊞ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊙ → ⊤ → ◻ → ⊣\n-- Class: ob3ect_sequence\n-- Fingerprint: sig=(14,8,10,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=33\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(1, 6), (8, 13), (16, 21), (22, 27)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [3] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [5] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [6] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [7] ⋈     fid    := 𐑱               𐑙 → 𐑚  | composition — regime coherence\n--   [8] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [9] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [10] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [11] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [12] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [13] ∋     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode\n--   [14] ⊞    stoi   := 𐑳               𐑙 → 𐑱  | engage paradox — B-state, both arms\n--   [15] ⋈     fid    := 𐑱               𐑳 → 𐑚  | composition — regime coherence\n--   [16] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [17] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [18] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [19] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [20] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [21] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [22] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [23] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [24] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [25] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [26] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [27] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [28] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [29] ⊙   gram   := 𐑠               𐑱 → ⊙  | identity — self-imscription\n--   [30] ⊤     crit   := ⊙               𐑠 → 𐑭  | evaluate-true — criticality gate open\n--   [31] ◻      prot   := 𐑭               ⊙ → 𐑡  | irreversible fixation — winding number\n--   [32] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def ob3ect_sequence_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def ob3ect_sequence_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def ob3ect_sequence_s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def ob3ect_sequence_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def ob3ect_sequence_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l29 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def ob3ect_sequence_l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def ob3ect_sequence_l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def ob3ect_sequence_protocol : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s32 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct ob3ect_sequence_s6 ob3ect_sequence_s6 = ob3ect_sequence_s6 (idempotent)\n  (.seq (.arrow ob3ect_sequence_l0 ob3ect_sequence_s0 ob3ect_sequence_s1) (.seq (.prod (.arrow ob3ect_sequence_l1 ob3ect_sequence_s1 ob3ect_sequence_s6) (.arrow ob3ect_sequence_l1 ob3ect_sequence_s1 ob3ect_sequence_s6)) (.seq (.arrow ob3ect_sequence_l6 ob3ect_sequence_s6 ob3ect_sequence_s6) (.seq (.arrow ob3ect_sequence_l6 ob3ect_sequence_s6 ob3ect_sequence_s7) (.seq (.arrow ob3ect_sequence_l7 ob3ect_sequence_s7 ob3ect_sequence_s8) (.seq (.arrow ob3ect_sequence_l8 ob3ect_sequence_s8 ob3ect_sequence_s9) (.seq (.arrow ob3ect_sequence_l9 ob3ect_sequence_s9 ob3ect_sequence_s10) (.seq (.arrow ob3ect_sequence_l10 ob3ect_sequence_s10 ob3ect_sequence_s11) (.seq (.arrow ob3ect_sequence_l11 ob3ect_sequence_s11 ob3ect_sequence_s12) (.seq (.arrow ob3ect_sequence_l12 ob3ect_sequence_s12 ob3ect_sequence_s13) (.seq (.arrow ob3ect_sequence_l13 ob3ect_sequence_s13 ob3ect_sequence_s14) (.seq (.arrow ob3ect_sequence_l14 ob3ect_sequence_s14 ob3ect_sequence_s15) (.seq (.arrow ob3ect_sequence_l15 ob3ect_sequence_s15 ob3ect_sequence_s16) (.seq (.arrow ob3ect_sequence_l16 ob3ect_sequence_s16 ob3ect_sequence_s17) (.seq (.arrow ob3ect_sequence_l17 ob3ect_sequence_s17 ob3ect_sequence_s18) (.seq (.arrow ob3ect_sequence_l18 ob3ect_sequence_s18 ob3ect_sequence_s19) (.seq (.arrow ob3ect_sequence_l19 ob3ect_sequence_s19 ob3ect_sequence_s20) (.seq (.arrow ob3ect_sequence_l20 ob3ect_sequence_s20 ob3ect_sequence_s21) (.seq (.arrow ob3ect_sequence_l21 ob3ect_sequence_s21 ob3ect_sequence_s22) (.seq (.arrow ob3ect_sequence_l22 ob3ect_sequence_s22 ob3ect_sequence_s23) (.seq (.arrow ob3ect_sequence_l23 ob3ect_sequence_s23 ob3ect_sequence_s24) (.seq (.arrow ob3ect_sequence_l24 ob3ect_sequence_s24 ob3ect_sequence_s25) (.seq (.arrow ob3ect_sequence_l25 ob3ect_sequence_s25 ob3ect_sequence_s26) (.seq (.arrow ob3ect_sequence_l26 ob3ect_sequence_s26 ob3ect_sequence_s27) (.seq (.arrow ob3ect_sequence_l27 ob3ect_sequence_s27 ob3ect_sequence_s28) (.seq (.arrow ob3ect_sequence_l28 ob3ect_sequence_s28 ob3ect_sequence_s29) (.seq (.arrow ob3ect_sequence_l29 ob3ect_sequence_s29 ob3ect_sequence_s30) (.seq (.arrow ob3ect_sequence_l30 ob3ect_sequence_s30 ob3ect_sequence_s31) (.arrow ob3ect_sequence_l31 ob3ect_sequence_s31 ob3ect_sequence_s32)))))))))))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def ob3ect_sequence_true_arm : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s32 :=\n  (ob3ect_sequence_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def ob3ect_sequence_false_arm : IGProtocol ob3ect_sequence_s0 ob3ect_sequence_s32 :=\n  (ob3ect_sequence_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef ob3ect_sequence_tier_ground : OuroboricityTier := TierFunctor.obj ob3ect_sequence_s0\ndef ob3ect_sequence_tier : OuroboricityTier := TierFunctor.obj ob3ect_sequence_s32\n#eval ob3ect_sequence_tier_ground  -- tier of the ground (pre-transformation)\n#eval ob3ect_sequence_tier  -- the Grammar's own verdict on the closed object\n",
   "topology_report": {
-    "topology_class": "mixed",
-    "nesting_depth": 1,
-    "total_pairs": 1,
-    "open_forks": 1,
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 4,
+    "open_forks": 0,
     "cross_branches": 0,
     "empty_branches": 0,
-    "sequence_length": 16,
-    "t_branch_ops": 2,
-    "f_branch_ops": 2,
-    "branch_ratio": 1.0,
+    "sequence_length": 33,
+    "t_branch_ops": 8,
+    "f_branch_ops": 4,
+    "branch_ratio": 2.0,
     "fork_positions": [
       1,
-      5
+      8,
+      16,
+      22
     ],
     "fuse_positions": [
-      10
+      6,
+      13,
+      21,
+      27
     ],
     "pair_list": [
       [
-        5,
-        10
+        1,
+        6
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        22,
+        27
       ]
     ],
     "has_cascading_ifix": false,
@@ -257,173 +358,312 @@
     "has_dual_fixation": false
   },
   "notes": "Auto-designed from: ",
-  "grounded_tuple": "⟨𐑨𐑡𐑽𐑿𐑐𐑧𐑚𐑜⊙𐑖𐑳𐑭⟩",
+  "grounded_tuple": "⟨𐑨𐑡𐑩𐑿𐑐𐑧𐑚𐑜⊙𐑖𐑳𐑭⟩",
   "grounding_status": "full",
   "grounding_failed_primitives": [],
   "banked_count_check": {
     "status": "ok",
-    "word": "⊢∈⊤>⋈∈⊤>⊥<∋⊞⊙⋈◻⊣",
+    "word": "⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣",
     "exposed_clears": [],
     "weight_lost_in_the_open": 0,
     "banked_ok": true,
     "vacuous": false,
     "surplus_discarded": {
-      "T": 1
+      "F": 3,
+      "T": 3,
+      "t": 1,
+      "f": 1
     },
-    "surplus_total": 1,
-    "live_clears": 1,
-    "restored": 2,
-    "deposits": 4,
+    "surplus_total": 8,
+    "live_clears": 4,
+    "restored": 4,
+    "deposits": 10,
     "inert": 1,
-    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 1 further unit(s) flattened by a fold between sibling regions and not restored",
+    "verdict": "4 unit(s) survived a clear by being banked in a frame (4 live clear(s)); 8 further unit(s) flattened by a fold between sibling regions and not restored",
     "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
     "remedy": null
   },
-  "grounding_reasoning": "⊣=𐑡: The primitive ⊣ denotes a generic topological connection where influence flows through a connected graph structure without specific constraints like containment or cyclic closure.\n⊢=𐑨: The assignment of dimensionality to the primitive ⊢ implies an extended spatial arrangement where constraints propagate through a 3D structure rather than remaining local or collapsing scales.\n⊞=𐑳: Stoichiometry defines the specific, often unequal, quantitative ratios of reactants and products, which corresponds to an asymmetric distribution of counts.\n◻=𐑭: The primitive ◻ denotes a topological structure with integer winding that prevents continuous deformation to a trivial state without breaking the invariant.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n⊥=𐑖: Persistent chiral states with multiple structurally enforced axes exhibit a memory depth of n, distinguishing them from thermally interconvertible soft chiral systems.\n≻=𐑽: The primitive ≻ denotes a recognition mode that stabilizes a transition state through catalytic or adjoint action without being consumed.\n≺=𐑿: The primitive ≺ denotes a strict ordering or polarity, indicating a signed direction where one pole acts as a donor and the other as an acceptor.\n⋈=𐑐: The ⋈ (join) operation enforces strict geometric constraints, ensuring high-fidelity transmission with near-certainty.\n⊤=𐑧: A high barrier to rearrangement implies the system is kinetically frozen and requires external driving to overcome resistance to change.\n∈=𐑚: The propagation of interactions through a motif or cluster defines a mesoscale correlation length distinct from single-bond locality or global scale-free behavior.\n∋=𐑜: The partner selection logic for interaction_grammar typically allows any valid partner from a defined set to satisfy the interaction requirement, aligning with disjunctive selection.",
+  "grounding_reasoning": "⊣=𐑡: The primitive ⊣ denotes a generic topological connection where influence flows through a connected graph structure without specific constraints like containment or cyclic closure.\n⊢=𐑨: The assignment of dimensionality to the primitive ⊢ implies an extended spatial arrangement where constraints propagate through a 3D structure rather than remaining local or collapsing scales.\n⊞=𐑳: Stoichiometry defines the specific quantitative ratios of reactants and products, which are inherently asymmetric in their counts on each side of a reaction equation.\n◻=𐑭: The primitive ◻ denotes a topological defect with integer winding number, which remains stable against continuous deformations as long as the winding invariant is preserved.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n⊥=𐑖: Persistent chiral states with multiple structurally enforced axes maintain broken orientational symmetry over a memory depth of n.\n≻=𐑩: The primitive ≻ denotes a recognition mode based on analogical similarity, which aligns with the soft, non-covalent, and reversible association described in option 1.\n≺=𐑿: The primitive ≺ denotes a signed directional relationship where one pole acts as a donor and the other as an acceptor, establishing a single preferred orientation.\n⋈=𐑐: The primitive ⋈ (fidelity) implies a high-reliability, geometry-enforcing interaction that fires with near-certainty, corresponding to the highest information transmission tier.\n⊤=𐑧: A high barrier to rearrangement implies the system is kinetically frozen and requires external driving to overcome resistance to change.\n∈=𐑚: The propagation of interactions through a motif or cluster defines a mesoscale correlation length distinct from purely local or global scales.\n∋=𐑜: The partner selection logic for interaction_grammar typically allows any valid partner from a defined set to satisfy the interaction requirement, aligning with the disjunctive primitive.",
   "lean_verified": true,
   "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
     "op_opcode": "ROTAT",
-    "period": 16,
+    "period": 33,
     "orbit": [
       {
         "k": 0,
-        "word": "⊢∈⊤≻⋈∈⊤≻⊥≺∋⊞⊙⋈◻⊣",
-        "tri_ancestral_verdict": "B",
+        "word": "⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "A",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 1,
-        "word": "∈⊤≻⋈∈⊤≻⊥≺∋⊞⊙⋈◻⊣⊢",
-        "tri_ancestral_verdict": "B",
+        "word": "∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "A",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 2,
-        "word": "⊤≻⋈∈⊤≻⊥≺∋⊞⊙⋈◻⊣⊢∈",
-        "tri_ancestral_verdict": "B",
+        "word": "≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "A",
-        "topology_class": "open_fork_dag"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 3,
-        "word": "≻⋈∈⊤≻⊥≺∋⊞⊙⋈◻⊣⊢∈⊤",
-        "tri_ancestral_verdict": "B",
+        "word": "⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "A",
-        "topology_class": "open_fork_dag"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 4,
-        "word": "⋈∈⊤≻⊥≺∋⊞⊙⋈◻⊣⊢∈⊤≻",
-        "tri_ancestral_verdict": "B",
+        "word": "≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "A",
-        "topology_class": "open_fork_dag"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 5,
-        "word": "∈⊤≻⊥≺∋⊞⊙⋈◻⊣⊢∈⊤≻⋈",
-        "tri_ancestral_verdict": "B",
+        "word": "⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "A",
-        "topology_class": "open_fork_dag"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 6,
-        "word": "⊤≻⊥≺∋⊞⊙⋈◻⊣⊢∈⊤≻⋈∈",
-        "tri_ancestral_verdict": "B",
+        "word": "∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "tf",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 7,
-        "word": "≻⊥≺∋⊞⊙⋈◻⊣⊢∈⊤≻⋈∈⊤",
-        "tri_ancestral_verdict": "B",
+        "word": "⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "tf",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 8,
-        "word": "⊥≺∋⊞⊙⋈◻⊣⊢∈⊤≻⋈∈⊤≻",
-        "tri_ancestral_verdict": "B",
+        "word": "∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "tf",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 9,
-        "word": "≺∋⊞⊙⋈◻⊣⊢∈⊤≻⋈∈⊤≻⊥",
-        "tri_ancestral_verdict": "B",
+        "word": "≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "tf",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 10,
-        "word": "∋⊞⊙⋈◻⊣⊢∈⊤≻⋈∈⊤≻⊥≺",
-        "tri_ancestral_verdict": "B",
+        "word": "⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "tf",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 11,
-        "word": "⊞⊙⋈◻⊣⊢∈⊤≻⋈∈⊤≻⊥≺∋",
-        "tri_ancestral_verdict": "B",
+        "word": "≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "tf",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 12,
-        "word": "⊙⋈◻⊣⊢∈⊤≻⋈∈⊤≻⊥≺∋⊞",
-        "tri_ancestral_verdict": "B",
+        "word": "⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "T",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 13,
-        "word": "⋈◻⊣⊢∈⊤≻⋈∈⊤≻⊥≺∋⊞⊙",
-        "tri_ancestral_verdict": "B",
+        "word": "∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "T",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 14,
-        "word": "◻⊣⊢∈⊤≻⋈∈⊤≻⊥≺∋⊞⊙⋈",
-        "tri_ancestral_verdict": "B",
+        "word": "⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "T",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       },
       {
         "k": 15,
-        "word": "⊣⊢∈⊤≻⋈∈⊤≻⊥≺∋⊞⊙⋈◻",
-        "tri_ancestral_verdict": "B",
+        "word": "⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞",
+        "tri_ancestral_verdict": "T",
         "closed_walk": false,
-        "final_register": "A",
-        "topology_class": "mixed"
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 17,
+        "word": "≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 18,
+        "word": "⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 19,
+        "word": "≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 20,
+        "word": "⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 21,
+        "word": "∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 22,
+        "word": "∈≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 23,
+        "word": "≻⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 24,
+        "word": "⊤≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 25,
+        "word": "≺⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 26,
+        "word": "⊥∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 27,
+        "word": "∋⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 28,
+        "word": "⋈⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 29,
+        "word": "⊙⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 30,
+        "word": "⊤◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 31,
+        "word": "◻⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 32,
+        "word": "⊣⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain"
       }
     ],
     "invariants": {
       "tri_ancestral_verdict": true,
       "closed_walk": true,
       "final_register": false,
-      "topology_class": false
+      "topology_class": true
     },
-    "canonical_k": 5,
-    "canonical_word": "∈⊤≻⊥≺∋⊞⊙⋈◻⊣⊢∈⊤≻⋈",
-    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, topology_class"
+    "canonical_k": 0,
+    "canonical_word": "⊢∈≻⊤≺⊥∋⋈∈≻⊤≺⊥∋⊞⋈∈≻⊤≺⊥∋∈≻⊤≺⊥∋⋈⊙⊤◻⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
   },
   "kernel_repairs": null
 }
