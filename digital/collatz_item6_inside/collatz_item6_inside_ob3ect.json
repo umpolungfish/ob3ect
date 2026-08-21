@@ -1,0 +1,359 @@
+{
+  "name": "collatz_item6_inside",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "collatz_item6_inside",
+      "domain_type": "number-theoretic",
+      "scope": "local",
+      "surface_tokens": [
+        "cycle_margin",
+        "banked_count",
+        "exponent_pinning",
+        "residue_determination",
+        "topological_obstruction"
+      ],
+      "boundary_condition": "The nontrivial Collatz cycle of length k at its minimum n, enclosed by the identity (n+1)(2^k - 3^j) = bank(n,k) which fixes the margin and exponent from within the assumption.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "void_state",
+        "justification": "The initial state before the cycle assumption is introduced, representing the empty set of integers or the pre-assumption void.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "cycle_boundary",
+        "justification": "The closed loop of the nontrivial cycle, acting as the terminal anchor that contains the entire trajectory and prevents exit without breaking the cycle's integrity.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "forward_morphism",
+        "justification": "The deterministic transformation of the Collatz map T(n) that drives the trajectory forward through the cycle, mapping the state toward the target minimum.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "reverse_descent",
+        "justification": "The reversal of direction used to bound the minimum n+1 from the derived constraints, representing the descent back to the initial state or the clearing of the register.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "composition_chain",
+        "justification": "The sequential chaining of the k steps in the cycle, composing the morphisms to return to the initial state n.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "self_reference",
+        "justification": "The identity of the minimum n with itself after k steps, col^[k] n = n, representing the self-recognition of the cycle.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "branch_decision",
+        "justification": "The split into the two possible cases for the ratio 3^j relative to 2^k: either 3^j < 2^k < 3^(j+1) (pinning k/j) or the minimum is bounded by 3(k-j)/2.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "rejoin_verdict",
+        "justification": "The rejoining of the two branches into a single B4 verdict, where conflicting constraints on k and j fuse to a definite resolution.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "affirmative_arm",
+        "justification": "The constructive proof that the margin is positive (3^j < 2^k) and that the exponent j is determined mod 2^(k-2) by the congruence.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "negative_arm",
+        "justification": "The constructive refutation that the cycle cannot close on an odd step, and the bound that n+1 <= (k-j) 2^k / (2^k - 3^j).",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "paradice_state",
+        "justification": "The simultaneous holding of the cycle assumption and the derived contradiction, where the topological obstruction and the algebraic constraint are both true at once.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "permanent_record",
+        "justification": "The irreversible fixation of the banked count bank(n,k) and the residue n mod 2^k, which are determined by the cycle structure and cannot be undone.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "branch_decision",
+      "split_input": "the cycle assumption with fixed margin and exponent",
+      "split_outputs": [
+        "pinning of k/j against log2 3",
+        "bound on minimum n+1"
+      ],
+      "fuse_element": "rejoin_verdict",
+      "fuse_result": "a single B4 verdict on the existence of the cycle",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The state before the cycle assumption, where no integers are named and no trajectory exists.",
+      "true_description": "The state where the cycle is constructively proven to exist, with the margin and exponent fixed by the identity.",
+      "false_description": "The state where the cycle is constructively refuted, with the minimum n+1 bounded above by a computable function of k.",
+      "both_description": "The state where the cycle assumption and the derived contradiction are both held, representing the topological obstruction that cannot be resolved without global restructuring.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the void state before the cycle assumption."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "Establish the self-reference of the minimum n, col^[k] n = n."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Split into the two cases for the ratio 3^j relative to 2^k."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊤",
+          "domain_action": "On the T-arm, prove the margin is positive and the exponent j is determined mod 2^(k-2)."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⋈",
+          "domain_action": "Compose the k steps of the cycle to return to n."
+        },
+        {
+          "step_num": 6,
+          "opcode": "◻",
+          "domain_action": "Fix the banked count bank(n,k) and the residue n mod 2^k as permanent records."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "On the F-arm, prove the cycle cannot close on an odd step and bound n+1."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∋",
+          "domain_action": "Rejoin the two arms into a single B4 verdict on the existence of the cycle."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊞",
+          "domain_action": "Hold the cycle assumption and the derived contradiction simultaneously."
+        },
+        {
+          "step_num": 10,
+          "opcode": "≺",
+          "domain_action": "Reverse the direction to bound the minimum n+1 from the derived constraints."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊣",
+          "domain_action": "Anchor the closed loop of the cycle, preventing exit without breaking the cycle's integrity."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Lean theorem prover, which translates the domain intentions into formal operations.",
+      "ipc_mechanism": "The type system of Lean, which ensures that all operations are well-typed and consistent.",
+      "memory_mechanism": "The state of the Lean environment, which stores the definitions and theorems used in the proof.",
+      "scheduler_mechanism": "The order of the proof steps, which determines the timing of the operations.",
+      "alfs_store": "The file /home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/Millennium/Erdos/CollatzDepthSplit.lean, which contains the full cycle apparatus.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The computational cost of running the Lean theorem prover on the proof.",
+      "pre_cycle_state": "The state before the proof, where the cycle assumption is introduced but not yet resolved.",
+      "post_cycle_state": "The state after the proof, where the cycle is either closed or left open as a topological obstruction.",
+      "delta_s_verdict": "ΔS ≈ 0 — the proof is entropy-conservative because it does not introduce new information but only reorganizes the existing constraints.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙∈⊤⋈◻⊥∋⊞≺⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙∈⊤⋈◻⊥∋⊞≺⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ⊤   EVALT    EVALT         T →     T\n    5   ⋈   CLINK    CLINK         T →     T\n    6   ◻   IFIX     IFIX          T →     T\n    7   ⊥   EVALF    EVALF         T →     T\n    8   ∋   FFUSE    FFUSE3        T →     T\n    9   ⊞   ENGAGR   EVALI         T →     T\n   10   ≺   AREV     AREV          T →     T\n   11   ⊣   TANCH    TANCH         T →     T\n\n  Final register: T\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ⋈ → ◻ → ⊥ → ∋ → ⊞ → ≺ → ⊣\n-- Class: collatz_item6_inside\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [5] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode\n--   [8] ⊞    stoi   := 𐑳               𐑙 → 𐑗  | engage paradox — B-state, both arms\n--   [9] ≺      pol    := 𐑗               𐑳 → 𐑡  | reverse morphism — parity flip\n--   [10] ⊣     top    := 𐑡               𐑗 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def collatz_item6_inside_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_s4 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_s5 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def collatz_item6_inside_s6 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def collatz_item6_inside_s7 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def collatz_item6_inside_s8 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def collatz_item6_inside_s9 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def collatz_item6_inside_s10 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def collatz_item6_inside_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def collatz_item6_inside_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def collatz_item6_inside_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_item6_inside_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def collatz_item6_inside_protocol : IGProtocol collatz_item6_inside_s0 collatz_item6_inside_s10 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct collatz_item6_inside_s7 collatz_item6_inside_s7 = collatz_item6_inside_s7 (idempotent)\n  (.seq (.arrow collatz_item6_inside_l0 collatz_item6_inside_s0 collatz_item6_inside_s1) (.seq (.arrow collatz_item6_inside_l1 collatz_item6_inside_s1 collatz_item6_inside_s2) (.seq (.prod (.arrow collatz_item6_inside_l2 collatz_item6_inside_s2 collatz_item6_inside_s7) (.arrow collatz_item6_inside_l2 collatz_item6_inside_s2 collatz_item6_inside_s7)) (.seq (.arrow collatz_item6_inside_l7 collatz_item6_inside_s7 collatz_item6_inside_s7) (.seq (.arrow collatz_item6_inside_l7 collatz_item6_inside_s7 collatz_item6_inside_s8) (.seq (.arrow collatz_item6_inside_l8 collatz_item6_inside_s8 collatz_item6_inside_s9) (.arrow collatz_item6_inside_l9 collatz_item6_inside_s9 collatz_item6_inside_s10)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def collatz_item6_inside_true_arm : IGProtocol collatz_item6_inside_s0 collatz_item6_inside_s10 :=\n  (collatz_item6_inside_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_item6_inside_false_arm : IGProtocol collatz_item6_inside_s0 collatz_item6_inside_s10 :=\n  (collatz_item6_inside_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef collatz_item6_inside_tier_ground : OuroboricityTier := TierFunctor.obj collatz_item6_inside_s0\ndef collatz_item6_inside_tier : OuroboricityTier := TierFunctor.obj collatz_item6_inside_s10\n#eval collatz_item6_inside_tier_ground  -- tier of the ground (pre-transformation)\n#eval collatz_item6_inside_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem collatz_item6_inside_frobenius :\n    igFrobeniusAlg.mul collatz_item6_inside_s0 collatz_item6_inside_s0 = collatz_item6_inside_s0 :=\n  igFrobAlg_self_fusion collatz_item6_inside_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 3,
+    "f_branch_ops": 1,
+    "branch_ratio": 3.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        2,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: collatz_item6_inside",
+  "grounded_tuple": "⟨𐑦𐑶𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑫𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈⊤⋈◻⊥∋⊞≺⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 1,
+    "inert": 5,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (5 step(s) inert after a fixation), 1 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑶: The assumption of a nontrivial cycle implies a closed loop where the state is fully enclosed within the periodic orbit, preventing exit without breaking the cycle's integrity.\n⊢=𐑦: The problem reduces the entire interior trajectory to a single boundary equation involving the margin, implying the surface carries the full bulk content losslessly.\n⊞=𐑳: The Collatz cycle involves an asymmetric balance between the number of doubling steps (k) and tripling steps (j), which are generally unequal in nontrivial cycles.\n◻=𐑭: The integer winding number (or net exponent difference) is a topological invariant that remains stable under continuous perturbations preserving the cycle structure.\n⊙=⊙: The assumption of a nontrivial Collatz cycle implies the system is operating at a precise threshold where the multiplicative factors of 2 and 3 balance to return to the minimum, exhibiting the maximal sensitivity and scale-free correlations characteristic of criticality.\n⊥=𐑫: The assumption of a nontrivial Collatz cycle implies a topological obstruction in the number-theoretic flow that cannot be resolved without a global restructuring of the integer lattice, mirroring the definition of topological chirality.\n≻=𐑑: The derivation transforms the assumed cycle structure into a specific algebraic constraint (bank equation) that forces a structural contradiction or bound, representing a deterministic transformation of the system's state.\n≺=𐑿: The interface between the Collatz cycle assumption and the derived contradiction exhibits a signed directional character, acting as a specific pole (either accepting the cycle's existence or donating the contradiction) rather than being symmetric or undirected.\n⋈=𐑐: The geometric constraints of the Collatz map enforce a deterministic trajectory where the cycle structure is fixed by the arithmetic properties, resulting in high-fidelity information transmission.\n⊤=𐑧: The assumption of a nontrivial Collatz cycle implies a kinetically frozen state where the system is locked in a non-equilibrium configuration that resists rearrangement without external driving, consistent with a high barrier to change.\n∈=𐑔: The assumption of a global cycle implies that the arithmetic constraints propagate across the entire sequence, creating a system-wide dependency that links the initial state to the return condition.\n∋=𐑠: The derivation requires a sequential engagement of logical steps to trace the cycle from its minimum and derive a contradiction.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈⊤⋈◻⊥∋⊞≺⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙∈⊤⋈◻⊥∋⊞≺⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈⊤⋈◻⊥∋⊞≺⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⊤⋈◻⊥∋⊞≺⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⋈◻⊥∋⊞≺⊣⊢⊙∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "◻⊥∋⊞≺⊣⊢⊙∈⊤⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊥∋⊞≺⊣⊢⊙∈⊤⋈◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "∋⊞≺⊣⊢⊙∈⊤⋈◻⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⊞≺⊣⊢⊙∈⊤⋈◻⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "≺⊣⊢⊙∈⊤⋈◻⊥∋⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊣⊢⊙∈⊤⋈◻⊥∋⊞≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": true,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙∈⊤⋈◻⊥∋⊞≺⊣",
+    "verdict": "SYMMETRY — every readout is ROTAT-invariant (spectral)"
+  },
+  "kernel_repairs": null
+}

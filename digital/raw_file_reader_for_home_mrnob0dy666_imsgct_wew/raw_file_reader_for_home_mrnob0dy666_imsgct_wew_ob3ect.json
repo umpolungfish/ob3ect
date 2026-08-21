@@ -1,0 +1,294 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → ENGAGR → AFWD → FSPLIT → EVALT → AFWD → FSPLIT → EVALT → AREV → IFIX → EVALF → AREV → FFUSE → EVALF → AREV → FFUSE → CLINK → IMSCRIB → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "raw file reader for /home/mrnob0dy666/imsgct/wew.txt",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\nraw file reader for /home/mrnob0dy666/imsgct/wew.txt",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "the raw file reader request and response envelope for /home/mrnob0dy666/imsgct/wew.txt",
+      "domain_name": "raw file reader for /home/mrnob0dy666/imsgct/wew.txt",
+      "domain_type": "computational",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "llamacpp",
+      "surface_tokens": [
+        "file descriptor",
+        "raw byte buffer",
+        "response envelope"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "path resolution, descriptor open, and read",
+        "glyph": "≻",
+        "justification": "the request moves forward from a path string to an open descriptor and then to a raw byte buffer",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "descriptor close and error descent",
+        "glyph": "≺",
+        "justification": "the reader descends back from the open file state by closing the descriptor and forming an error body",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "response assembly",
+        "glyph": "⋈",
+        "justification": "the body, status code, and content length are chained into one response",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "mutable file and immutable payload",
+        "glyph": "⊞",
+        "justification": "the target is held as both a mutable user file and an immutable raw byte source while the reader starts",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "failed open and failed read",
+        "glyph": "⊥",
+        "justification": "these states refute the read path by producing an error body without raw bytes",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "successful open and successful read",
+        "glyph": "⊤",
+        "justification": "these states affirm that the descriptor is readable and the buffer holds the file bytes",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "response body and response envelope",
+        "glyph": "∋",
+        "justification": "the read arms rejoin into one body and the open arms rejoin into one envelope",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "open result and read result",
+        "glyph": "∈",
+        "justification": "the reader forks on whether the file opens and, after opening, whether the read completes",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "raw byte buffer",
+        "glyph": "◻",
+        "justification": "the read bytes are fixed as the response payload and cannot be rewritten by later steps",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "raw file reader identity",
+        "glyph": "⊙",
+        "justification": "the response identifies itself as the output of this reader without changing the payload",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "sealed response envelope",
+        "glyph": "⊣",
+        "justification": "the final envelope contains the status, headers, and body and closes the reader's work",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "incoming raw file request",
+        "glyph": "⊢",
+        "justification": "the request names the target path before any descriptor, byte, or error exists",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "frobenius_verdict": "T",
+      "fuse_element": "response body and response envelope",
+      "fuse_result": "one response state containing either the raw byte body or an error body",
+      "rejoin_note": "the read arms rejoin into the response body first, then the open arms rejoin into the response envelope",
+      "split_element": "open result and read result",
+      "split_input": "the open attempt and the subsequent read attempt for /home/mrnob0dy666/imsgct/wew.txt",
+      "split_outputs": [
+        "open success arm",
+        "open failure arm",
+        "read success arm",
+        "read failure arm"
+      ],
+      "verdict_reason": "Tri-ancestral reconnection over a transformed object — closes",
+      "verdict_source": "kernel: tri_ancestral_verdict over SIXTEEN_3"
+    },
+    "phase_3": {
+      "both_description": "B4 B (11) - both held at once: the file is both readable and unreadable in a race",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "B4 F (10) - constructively refuted: the file could not be opened or read",
+      "transitions": [],
+      "true_description": "B4 T (01) - constructively proven: the file opened and read",
+      "void_description": "B4 N (00) - neither: no file bytes or error established"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "request arrives for raw file /home/mrnob0dy666/imsgct/wew.txt with no bytes loaded",
+          "glyph": "⊢",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "the target is held as both a mutable user file and an immutable raw byte source while the reader starts",
+          "glyph": "⊞",
+          "opcode": "ENGAGR",
+          "step_num": 2
+        },
+        {
+          "domain_action": "resolve the path to an inode and open a read-only file descriptor",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 3
+        },
+        {
+          "domain_action": "branch on open result",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 4
+        },
+        {
+          "domain_action": "open succeeded and the descriptor is readable",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 5
+        },
+        {
+          "domain_action": "read the descriptor into a raw byte buffer",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 6
+        },
+        {
+          "domain_action": "branch on read result",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 7
+        },
+        {
+          "domain_action": "read completed and the buffer holds zero or more file bytes",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 8
+        },
+        {
+          "domain_action": "close the descriptor after successful read",
+          "glyph": "≺",
+          "opcode": "AREV",
+          "step_num": 9
+        },
+        {
+          "domain_action": "fix the raw byte buffer as the immutable response payload",
+          "glyph": "◻",
+          "opcode": "IFIX",
+          "step_num": 10
+        },
+        {
+          "domain_action": "read failed after open",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 11
+        },
+        {
+          "domain_action": "close the descriptor and form an error body",
+          "glyph": "≺",
+          "opcode": "AREV",
+          "step_num": 12
+        },
+        {
+          "domain_action": "rejoin the read arms into one response body",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 13
+        },
+        {
+          "domain_action": "open failed because the file is missing or unreadable",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 14
+        },
+        {
+          "domain_action": "form an error body without reading",
+          "glyph": "≺",
+          "opcode": "AREV",
+          "step_num": 15
+        },
+        {
+          "domain_action": "rejoin the open arms into one response envelope",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 16
+        },
+        {
+          "domain_action": "chain the response body, status code, and content length into the final response",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 17
+        },
+        {
+          "domain_action": "the final response identifies itself as the raw file reader output",
+          "glyph": "⊙",
+          "opcode": "IMSCRIB",
+          "step_num": 18
+        },
+        {
+          "domain_action": "response sealed and returned",
+          "glyph": "⊣",
+          "opcode": "TANCH",
+          "step_num": 19
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "the file path /home/mrnob0dy666/imsgct/wew.txt is the canonical source",
+      "compiler_frontend": "the request parser translates the path string into open, read, close, and response assembly operations",
+      "ipc_mechanism": "the response body, status code, and headers pass through the response envelope",
+      "memory_mechanism": "the raw byte buffer holds the file bytes until the response is sealed",
+      "scheduler_mechanism": "the open, read, close, and response assembly steps run in request order"
+    },
+    "phase_6": {
+      "cycle_cost": "one open, one read, one close, and one response assembly per request",
+      "delta_s_verdict": "ΔS ≈ 0 - the reader consumes file bytes and returns them without adding unbounded state",
+      "failure_mode": "",
+      "post_cycle_state": "response sealed, descriptor closed, payload fixed",
+      "pre_cycle_state": "request received, no descriptor, no payload"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 1.25,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 4,
+    "fork_positions": [
+      3,
+      6
+    ],
+    "fuse_positions": [
+      12,
+      15
+    ],
+    "nesting_depth": 1,
+    "open_forks": 0,
+    "sequence_length": 19,
+    "t_branch_ops": 5,
+    "topology_class": "nested",
+    "total_pairs": 2
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
