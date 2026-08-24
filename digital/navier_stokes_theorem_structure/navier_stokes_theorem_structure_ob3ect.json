@@ -1,0 +1,375 @@
+{
+  "name": "Navier-Stokes Theorem structure",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Navier-Stokes Theorem structure",
+      "domain_type": "physical",
+      "scope": "local",
+      "surface_tokens": [
+        "pinch",
+        "vorticity",
+        "convective_term",
+        "diffusive_term",
+        "pressure_field",
+        "winding_number"
+      ],
+      "boundary_condition": "The horn torus pinch point where the fluid domain self-intersects, marking the criticality coordinate of the Navier-Stokes transition.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized_flow_field",
+        "justification": "The void state before velocity, pressure, and viscosity are defined; the empty manifold prior to the horn torus geometry.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "horn_torus_pinch",
+        "justification": "The terminal anchor where the tube radius equals the center radius, closing the hole to a single point of self-reference.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "convective_transport",
+        "justification": "The forward morphism representing the nonlinear advection of momentum by the flow itself.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "viscous_diffusion",
+        "justification": "The reverse morphism representing the descent of energy into heat via viscosity, opposing the convective ascent.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "momentum_conservation",
+        "justification": "The sequential chaining of convective and diffusive terms to enforce the continuity of the fluid medium.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "criticality_fixed_point",
+        "justification": "The self-reference where the flow state maps to itself at the pinch, satisfying the condition ξ → ∞.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "bifurcation_to_turbulence",
+        "justification": "The split of the smooth laminar state into two divergent arms: one maintaining regularity and one developing singularities.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "existence_and_smoothness_verdict",
+        "justification": "The reconstitution of the two arms into a single B4 verdict regarding the global existence of smooth solutions.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "global_smooth_solution",
+        "justification": "The affirmative arm where the solution remains bounded and differentiable for all time.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "finite_time_blowup",
+        "justification": "The negative arm where the solution develops a singularity, refuting global smoothness.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "turbulent_criticality",
+        "justification": "The paradice state where the flow simultaneously exhibits smooth structure and incipient singularity at the critical threshold.",
+        "rejected_candidates": []
+      },
+      "◻": {
+        "opcode": "◻",
+        "chosen_element": "integer_winding_number",
+        "justification": "The permanent record of the topological defect, an integer invariant that prevents continuous deformation to a trivial state.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "bifurcation_to_turbulence",
+      "split_input": "laminar_flow_state",
+      "split_outputs": [
+        "global_smooth_solution",
+        "finite_time_blowup"
+      ],
+      "fuse_element": "existence_and_smoothness_verdict",
+      "fuse_result": "B4_verdict_on_regularity",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The empty manifold before the Navier-Stokes equations are instantiated; no velocity or pressure exists.",
+      "true_description": "A globally smooth solution exists for all time; the flow remains regular and bounded.",
+      "false_description": "A singularity forms in finite time; the solution blows up and smoothness is refuted.",
+      "both_description": "The critical state at the pinch where the flow is simultaneously smooth and singular, a stable contradiction defining the transition to turbulence.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the void manifold before fluid dynamics are defined."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "Establish the self-referential pinch point as the criticality coordinate."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Branch the flow state into the possibility of smoothness and the possibility of blowup."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "Propagate the convective term forward on the T-arm, driving momentum transport."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Affirm the constructive existence of a smooth solution on the T-arm."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "Propagate the viscous diffusion backward on the F-arm, representing energy descent."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "Refute smoothness on the F-arm by establishing the potential for finite-time blowup."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "Hold the contradiction at the pinch where both smoothness and blowup are simultaneously active."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "Chain the convective and diffusive terms to enforce momentum conservation across the domain."
+        },
+        {
+          "step_num": 10,
+          "opcode": "◻",
+          "domain_action": "Record the integer winding number of the vortex as a permanent topological invariant."
+        },
+        {
+          "step_num": 11,
+          "opcode": "∋",
+          "domain_action": "Rejoin the T and F arms to compute the B4 verdict on the existence and smoothness of the solution."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊣",
+          "domain_action": "Anchor the entire system at the horn torus pinch, closing the boundary of the fluid domain."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Navier-Stokes partial differential equations translating physical forces into velocity fields.",
+      "ipc_mechanism": "The pressure field mediating instantaneous, non-local interactions across the entire fluid domain.",
+      "memory_mechanism": "The vorticity field storing the history of rotational motion and topological defects.",
+      "scheduler_mechanism": "The time derivative ∂/∂t determining the evolution of the flow state from one instant to the next.",
+      "alfs_store": "The horn torus geometry with the (16,3) knot structure serving as the canonical reference for the criticality coordinate.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Viscous dissipation converting kinetic energy into heat per operation cycle.",
+      "pre_cycle_state": "A laminar flow state with defined velocity and pressure gradients.",
+      "post_cycle_state": "A flow state potentially containing singularities or stabilized turbulence.",
+      "delta_s_verdict": "ΔS ≈ 0 — The system is conservative in its topological invariants (winding number) while dissipating energy locally, maintaining the structural integrity of the horn torus.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙∈≻⊤≺⊥⊞⋈◻∋⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙∈≻⊤≺⊥⊞⋈◻∋⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ≻   AFWD     AFWD          T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ≺   AREV     AREV          T →     N\n    7   ⊥   EVALF    EVALF         N →     F\n    8   ⊞   ENGAGR   EVALI         F →   Ftf\n    9   ⋈   CLINK    CLINK       Ftf →   Ftf\n   10   ◻   IFIX     IFIX        Ftf →   Ftf\n   11   ∋   FFUSE    FFUSE3      Ftf →   Ftf\n   12   ⊣   TANCH    TANCH       Ftf →   Ftf\n\n  Final register: Ftf\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ⋈ → ◻ → ∋ → ⊣\n-- Class: Navier-Stokes Theorem structure\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 10)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑼 → 𐑚  | identity — self-imscription\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [8] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [9] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [10] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [11] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def navier_stokes_theorem_structure_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def navier_stokes_theorem_structure_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def navier_stokes_theorem_structure_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def navier_stokes_theorem_structure_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def navier_stokes_theorem_structure_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def navier_stokes_theorem_structure_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def navier_stokes_theorem_structure_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def navier_stokes_theorem_structure_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def navier_stokes_theorem_structure_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def navier_stokes_theorem_structure_protocol : IGProtocol navier_stokes_theorem_structure_s0 navier_stokes_theorem_structure_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct navier_stokes_theorem_structure_s10 navier_stokes_theorem_structure_s10 = navier_stokes_theorem_structure_s10 (idempotent)\n  (.seq (.arrow navier_stokes_theorem_structure_l0 navier_stokes_theorem_structure_s0 navier_stokes_theorem_structure_s1) (.seq (.arrow navier_stokes_theorem_structure_l1 navier_stokes_theorem_structure_s1 navier_stokes_theorem_structure_s2) (.seq (.prod (.arrow navier_stokes_theorem_structure_l2 navier_stokes_theorem_structure_s2 navier_stokes_theorem_structure_s10) (.arrow navier_stokes_theorem_structure_l2 navier_stokes_theorem_structure_s2 navier_stokes_theorem_structure_s10)) (.seq (.arrow navier_stokes_theorem_structure_l10 navier_stokes_theorem_structure_s10 navier_stokes_theorem_structure_s10) (.arrow navier_stokes_theorem_structure_l10 navier_stokes_theorem_structure_s10 navier_stokes_theorem_structure_s11)))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def navier_stokes_theorem_structure_true_arm : IGProtocol navier_stokes_theorem_structure_s0 navier_stokes_theorem_structure_s11 :=\n  (navier_stokes_theorem_structure_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def navier_stokes_theorem_structure_false_arm : IGProtocol navier_stokes_theorem_structure_s0 navier_stokes_theorem_structure_s11 :=\n  (navier_stokes_theorem_structure_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef navier_stokes_theorem_structure_tier_ground : OuroboricityTier := TierFunctor.obj navier_stokes_theorem_structure_s0\ndef navier_stokes_theorem_structure_tier : OuroboricityTier := TierFunctor.obj navier_stokes_theorem_structure_s11\n#eval navier_stokes_theorem_structure_tier_ground  -- tier of the ground (pre-transformation)\n#eval navier_stokes_theorem_structure_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem navier_stokes_theorem_structure_frobenius :\n    igFrobeniusAlg.mul navier_stokes_theorem_structure_s0 navier_stokes_theorem_structure_s0 = navier_stokes_theorem_structure_s0 :=\n  igFrobAlg_self_fusion navier_stokes_theorem_structure_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 4,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      10
+    ],
+    "pair_list": [
+      [
+        2,
+        10
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Navier-Stokes Theorem structure",
+  "grounded_tuple": "⟨𐑨𐑥𐑽𐑬𐑐𐑧𐑔𐑝⊙𐑫𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈≻⊤≺⊥⊞⋈◻∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 1
+    },
+    "surplus_total": 1,
+    "live_clears": 1,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 2,
+    "verdict": "0 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 1 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑥: The Navier-Stokes equations describe fluid dynamics where vorticity and circulation often form closed loops or cyclic interfaces, reflecting the conservation of momentum in a continuous medium.\n⊢=𐑨: The Navier-Stokes equations govern fluid dynamics by propagating constraints (momentum and mass) through a continuous, extended 3D spatial domain.\n⊞=𐑳: The Navier-Stokes equations describe asymmetric momentum transport where convective and diffusive terms differ in structure and order.\n◻=𐑭: The Navier-Stokes equations describe fluid flow where topological defects like vortices are stabilized by an integer winding number that prevents continuous deformation to a trivial state.\n⊙=⊙: The Navier-Stokes equations describe fluid dynamics where criticality corresponds to the onset of turbulence, characterized by scale-free correlations and maximal sensitivity to initial conditions.\n⊥=𐑫: The Navier-Stokes equations govern fluid dynamics where chirality arises from topological vortex structures that are protected by the flow's global topology and cannot be undone without a fundamental restructuring of the field.\n≻=𐑽: The Navier-Stokes equations describe the evolution of fluid flow where the convective and diffusive terms act as a transition-state stabilization mechanism, guiding the system's trajectory without being consumed.\n≺=𐑬: The Navier-Stokes interface exhibits self-complementary behavior where fluid elements simultaneously act as donors and acceptors of momentum and vorticity through the convective and diffusive terms.\n⋈=𐑐: The Navier-Stokes equations enforce strict geometric and conservation constraints, ensuring high-fidelity, deterministic interactions with near-certainty.\n⊤=𐑧: High viscosity in the Navier-Stokes framework represents a significant resistance to flow, effectively freezing the fluid's kinematic state unless driven by external forces.\n∈=𐑔: In the Navier-Stokes equations, the pressure field mediates instantaneous, non-local interactions that propagate across the entire fluid domain, making the correlation length global and scale-free.\n∋=𐑝: The Navier-Stokes equations require the simultaneous presence of velocity, pressure, and viscosity fields to define fluid motion, reflecting a conjunctive logic where all components must interact at once.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈≻⊤≺⊥⊞⋈◻∋⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊙∈≻⊤≺⊥⊞⋈◻∋⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈≻⊤≺⊥⊞⋈◻∋⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⊤≺⊥⊞⋈◻∋⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊤≺⊥⊞⋈◻∋⊣⊢⊙∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≺⊥⊞⋈◻∋⊣⊢⊙∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊥⊞⋈◻∋⊣⊢⊙∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊞⋈◻∋⊣⊢⊙∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⋈◻∋⊣⊢⊙∈≻⊤≺⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "◻∋⊣⊢⊙∈≻⊤≺⊥⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "∋⊣⊢⊙∈≻⊤≺⊥⊞⋈◻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢⊙∈≻⊤≺⊥⊞⋈◻∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙∈≻⊤≺⊥⊞⋈◻∋⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
