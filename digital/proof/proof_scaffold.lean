@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊙ → ⊞ → ∋ → ◻ → ⋈ → ∈ → ≻ → ≺ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊙ → ⊞ → ∋ → ⊡ → ⋈ → ∈ → ≻ → ≺ → ∋ → ⊡ → ⊣
 -- Class: proof
 -- Fingerprint: sig=(10,4,3,2)
 --   self_ref=False | frobenius_order=3
@@ -26,13 +26,13 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [11] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [12] ⋈     fid    := 𐑱               𐑭 → 𐑚  | composition — regime coherence
 --   [13] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [14] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
 --   [15] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [16] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [17] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [17] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [18] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

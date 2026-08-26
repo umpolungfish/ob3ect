@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≺ → ◻ → ∋ → ∈ → ⊥ → ≻ → ◻ → ∋ → ⋈ → ⊙ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≺ → ⊡ → ∋ → ∈ → ⊥ → ≻ → ⊡ → ∋ → ⋈ → ⊙ → ⊞ → ⊡ → ⊣
 -- Class: Let  \n\n\[f(n)=\begin{cases}n/2, & n \text{ even},\3n+1, & n \text{ odd}.\end{cases}\]\n\nThere exists a positive integer \(n\) such that repeatedly applying \(f\) never reaches \(1\). That is, there exists \(n\in\mathbb{Z}_{>0}\) such that for all \(k\ge 0\),  \n\n\[f^k(n)\ne 1\]
 -- Fingerprint: sig=(6,4,3,3)
 --   self_ref=False | frobenius_order=3
@@ -19,17 +19,17 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [3] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
---   [4] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [4] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [5] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode
 --   [6] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [7] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [8] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [9] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [9] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [11] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [12] ⊙   gram   := 𐑠               𐑱 → 𐑳  | identity — self-imscription
 --   [13] ⊞    stoi   := 𐑳               𐑠 → 𐑭  | engage paradox — B-state, both arms
---   [14] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [14] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [15] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

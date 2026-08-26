@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⊙ → ∋ → ◻ → ⋈ → ⊙ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⊙ → ∋ → ⊡ → ⋈ → ⊙ → ⊣
 -- Class: collatz_or_closure: the halving and tripling arms fuse Frobenius-self-dual
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [11] ⋈     fid    := 𐑱               𐑭 → 𐑠  | composition — regime coherence
 --   [12] ⊙   gram   := 𐑠               𐑱 → 𐑡  | identity — self-imscription
 --   [13] ⊣     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary

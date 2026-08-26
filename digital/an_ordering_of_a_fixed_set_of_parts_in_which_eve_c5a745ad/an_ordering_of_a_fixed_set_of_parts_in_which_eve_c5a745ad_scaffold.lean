@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊞ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊞ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊙ → ⊡ → ⊣
 -- Class: An ordering of a fixed set of parts in which every division precedes the work that its later merge closes, given as the reordering that carries a tangled arrangement into that order. Report the order it produces and that the reordered whole closes.
 -- Fingerprint: sig=(14,8,9,1)
 --   self_ref=False | frobenius_order=3
@@ -45,7 +45,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [27] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [28] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [29] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [30] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [30] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [31] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

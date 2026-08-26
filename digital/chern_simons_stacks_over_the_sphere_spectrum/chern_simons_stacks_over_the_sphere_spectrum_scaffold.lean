@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ◻ → ⋈ → ≻ → ⊤ → ∋ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⊡ → ⋈ → ≻ → ⊤ → ∋ → ⊙ → ⊡ → ⊣
 -- Class: Chern–Simons ∞-Stacks over the Sphere Spectrum
 -- Fingerprint: sig=(9,3,4,2)
 --   self_ref=False | frobenius_order=1
@@ -25,13 +25,13 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [9] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [10] ◻      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
 --   [11] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [12] ≻      rel    := 𐑾               𐑱 → ⊙  | forward morphism — bidirectional arrow
 --   [13] ⊤     crit   := ⊙               𐑾 → 𐑙  | evaluate-true — criticality gate open
 --   [14] ∋     stoi   := 𐑙               ⊙ → 𐑠  | fuse μ — assembly mode
 --   [15] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [16] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [16] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [17] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

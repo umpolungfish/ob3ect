@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⋈ → ⊤ → ⊞ → ◻ → ∋ → ⊥ → ≺ → ◻ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⋈ → ⊤ → ⊞ → ⊡ → ∋ → ⊥ → ≺ → ⊡ → ∋ → ⊣
 -- Class: augmenting sk_forge by imscribing the bip39 wordlist
 -- Fingerprint: sig=(8,3,4,2)
 --   self_ref=False | frobenius_order=1
@@ -25,11 +25,11 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [8] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [10] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [11] ∋     stoi   := 𐑙               𐑙 → 𐑖  | fuse μ — assembly mode
 --   [12] ⊥     chir   := 𐑖               𐑙 → 𐑗  | evaluate-false — chirality check
 --   [13] ≺      pol    := 𐑗               𐑖 → 𐑭  | reverse morphism — parity flip
---   [14] ◻      prot   := 𐑭               𐑗 → 𐑙  | irreversible fixation — winding number
+--   [14] ⊡      prot   := 𐑭               𐑗 → 𐑙  | irreversible fixation — winding number
 --   [15] ∋     stoi   := 𐑙               𐑭 → 𐑡  | fuse μ — assembly mode
 --   [16] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary
 

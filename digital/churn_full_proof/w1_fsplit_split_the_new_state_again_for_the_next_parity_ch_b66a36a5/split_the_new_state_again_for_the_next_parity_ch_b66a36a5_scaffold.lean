@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ◻ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ⊡ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ⊡ → ⊣
 -- Class: Split the new state again for the next parity check, continuing the iteration.
 -- Fingerprint: sig=(9,4,5,2)
 --   self_ref=False | frobenius_order=3
@@ -24,7 +24,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [6] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [7] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [8] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [9] ◻      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number
+--   [9] ⊡      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number
 --   [10] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [11] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [12] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
@@ -33,7 +33,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [15] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [16] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [17] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [18] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [18] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [19] ⊣     top    := 𐑡               𐑭 → 𐑚  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⊡ → ⊣
 -- Class: the BIP39 public key boundary -> seed words -> secret key bulk
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [10] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [11] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [12] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

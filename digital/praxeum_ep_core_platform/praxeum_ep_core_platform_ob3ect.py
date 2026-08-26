@@ -4,7 +4,7 @@ praxeum_ep_core_platform_ob3ect.py — Self-verifying ob3ect
 ================================================================
 CLINK Layer 3 (Molecule): β-carboline exceptional point platform.
 Live catalog entry: praxeum_ep_core_platform
-Type (from catalog): ⟨⊢=𐑦; ⊣=𐑶; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑲; ∋=𐑠; ⊙=𐑻; ⊥=𐑫; ⊞=𐑳; ◻=𐑭⟩
+Type (from catalog): ⟨⊢=𐑦; ⊣=𐑶; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑲; ∋=𐑠; ⊙=𐑻; ⊥=𐑫; ⊞=𐑳; ⊡=𐑭⟩
 
 Algebraic closure: μ∘δ = id_A
 At the Exceptional Point (ε=0), the two tautomeric forms are degenerate:
@@ -30,7 +30,7 @@ PRAXEUM_TUPLE = {
     "⊙": "\U0001047b",  # 𐑻 — exceptional point (tautomeric degeneracy)
     "⊥": "\U0001046b",  # 𐑫 — eternal (locked stereochemistry)
     "⊞": "\U00010473",  # 𐑳 — many heterogeneous (modulator across sites)
-    "◻": "\U0001046d",  # 𐑭 — integer winding (topological charge)
+    "⊡": "\U0001046d",  # 𐑭 — integer winding (topological charge)
 }
 
 SMILES = "CC1=C(C(=O)NC2=CC=CC3=C2C=CN3)C(=O)N1C"

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊞ → ⊡ → ⊣
 -- Class: collatz_item1_descent
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [8] ⋈     fid    := 𐑱               𐑙 → 𐑳  | composition — regime coherence
 --   [9] ⊞    stoi   := 𐑳               𐑱 → 𐑭  | engage paradox — B-state, both arms
---   [10] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≺ → ⊥ → ≻ → ≺ → ∋ → ⋈ → ⊞ → ◻ → ⊙ → ∈ → ⊤ → ≺ → ⊥ → ≻ → ≺ → ∋ → ⋈ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≺ → ⊥ → ≻ → ≺ → ∋ → ⋈ → ⊞ → ⊡ → ⊙ → ∈ → ⊤ → ≺ → ⊥ → ≻ → ≺ → ∋ → ⋈ → ⊡ → ⊣
 -- Class: collatz_descent_affirm
 -- Fingerprint: sig=(11,4,5,2)
 --   self_ref=False | frobenius_order=3
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [8] ⋈     fid    := 𐑱               𐑙 → 𐑳  | composition — regime coherence
 --   [9] ⊞    stoi   := 𐑳               𐑱 → 𐑭  | engage paradox — B-state, both arms
---   [10] ◻      prot   := 𐑭               𐑳 → 𐑠  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑳 → 𐑠  | irreversible fixation — winding number
 --   [11] ⊙   gram   := 𐑠               𐑭 → 𐑚  | identity — self-imscription
 --   [12] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [13] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
@@ -35,7 +35,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [17] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [18] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [19] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence
---   [20] ◻      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
+--   [20] ⊡      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [21] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

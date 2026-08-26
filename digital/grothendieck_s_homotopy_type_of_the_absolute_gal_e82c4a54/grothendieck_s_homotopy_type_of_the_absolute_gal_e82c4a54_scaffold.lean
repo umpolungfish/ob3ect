@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ◻ → ⊣ → ⋈ → ⊙ → ◻
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⊡ → ⊣ → ⋈ → ⊙ → ⊡
 -- Class: Grothendieck’s Homotopy Type of the Absolute Galois Group
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
@@ -25,11 +25,11 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [9] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [10] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑱  | terminal object — connectivity boundary
 --   [12] ⋈     fid    := 𐑱               𐑡 → 𐑠  | composition — regime coherence
 --   [13] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [14] ◻      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
+--   [14] ⊡      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def grothendieck_s_homotopy_type_of_the_7611a2_s0 : Imscription :=

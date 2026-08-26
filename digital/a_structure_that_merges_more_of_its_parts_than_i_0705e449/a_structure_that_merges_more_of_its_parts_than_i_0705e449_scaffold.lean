@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⋈ → ⊙ → ∋ → ⊥ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⋈ → ⊙ → ∋ → ⊥ → ⊞ → ⊡ → ⊣
 -- Class: A structure that merges more of its parts than it divides, and the one division it must add to bring the two into balance. Report where the missing split belongs and what closes once it is there.
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ∋     stoi   := 𐑙               𐑙 → 𐑖  | fuse μ — assembly mode
 --   [8] ⊥     chir   := 𐑖               𐑙 → 𐑳  | evaluate-false — chirality check
 --   [9] ⊞    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms
---   [10] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

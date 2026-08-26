@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊞ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊙ → ⊤ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊞ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊙ → ⊤ → ⊡ → ⊣
 -- Class: ob3ect_sequence
 -- Fingerprint: sig=(14,8,10,1)
 --   self_ref=False | frobenius_order=3
@@ -46,7 +46,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [28] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [29] ⊙   gram   := 𐑠               𐑱 → ⊙  | identity — self-imscription
 --   [30] ⊤     crit   := ⊙               𐑠 → 𐑭  | evaluate-true — criticality gate open
---   [31] ◻      prot   := 𐑭               ⊙ → 𐑡  | irreversible fixation — winding number
+--   [31] ⊡      prot   := 𐑭               ⊙ → 𐑡  | irreversible fixation — winding number
 --   [32] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

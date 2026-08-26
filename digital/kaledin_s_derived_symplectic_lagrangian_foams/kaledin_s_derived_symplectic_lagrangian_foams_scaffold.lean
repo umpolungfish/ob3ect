@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ◻ → ⋈ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⊡ → ⋈ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊡ → ⊣
 -- Class: Kaledin’s Derived Symplectic Lagrangian Foams
 -- Fingerprint: sig=(8,4,6,2)
 --   self_ref=False | frobenius_order=3
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [9] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [10] ◻      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
 --   [11] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [12] ≻      rel    := 𐑾               𐑱 → 𐑚  | forward morphism — bidirectional arrow
 --   [13] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
@@ -33,7 +33,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [15] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [16] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [17] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [18] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [18] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [19] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

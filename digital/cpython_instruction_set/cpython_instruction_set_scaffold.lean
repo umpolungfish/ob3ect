@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ◻ → ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ≻ → ∈ → ⊤ → ⊥ → ⋈ → ∋ → ≻ → ⊞ → ≺ → ⊥ → ⋈ → ≻ → ⊣
+-- IGProtocol scaffold: ⊡ → ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ≻ → ∈ → ⊤ → ⊥ → ⋈ → ∋ → ≻ → ⊞ → ≺ → ⊥ → ⋈ → ≻ → ⊣
 -- Class: cpython_instruction_set
 -- Fingerprint: sig=(12,2,4,1)
 --   self_ref=False | frobenius_order=1
@@ -15,7 +15,7 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
---   [0] ◻      prot   := 𐑭               𐑭 → 𐑼  | irreversible fixation — winding number
+--   [0] ⊡      prot   := 𐑭               𐑭 → 𐑼  | irreversible fixation — winding number
 --   [1] ⊢     dim    := 𐑼               𐑭 → 𐑡  | initial object — ground of distinction
 --   [2] ⊣     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary
 --   [3] ≻      rel    := 𐑾               𐑡 → 𐑱  | forward morphism — bidirectional arrow

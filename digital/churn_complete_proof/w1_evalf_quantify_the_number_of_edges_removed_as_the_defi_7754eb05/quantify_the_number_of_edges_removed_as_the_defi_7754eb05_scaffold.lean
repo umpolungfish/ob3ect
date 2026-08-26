@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ≻ → ≺ → ⊥ → ⋈ → ⊞ → ∋ → ◻ → ⊙ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ≻ → ≺ → ⊥ → ⋈ → ⊞ → ∋ → ⊡ → ⊙ → ⊣
 -- Class: Quantify the number of edges removed as the deficit.
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑠  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑠  | irreversible fixation — winding number
 --   [11] ⊙   gram   := 𐑠               𐑭 → 𐑡  | identity — self-imscription
 --   [12] ⊣     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ⊙ → ∋ → ◻ → ⋈ → ≻ → ≺ → ⊞ → ⊙ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ⊙ → ∋ → ⊡ → ⋈ → ≻ → ≺ → ⊞ → ⊙ → ∋ → ⊡ → ⊣
 -- Class: Kontsevich’s Formality Theorem for Derived Poisson–Lie Groupoids
 -- Fingerprint: sig=(10,3,4,2)
 --   self_ref=False | frobenius_order=1
@@ -25,14 +25,14 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [11] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [12] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow
 --   [13] ≺      pol    := 𐑗               𐑾 → 𐑳  | reverse morphism — parity flip
 --   [14] ⊞    stoi   := 𐑳               𐑗 → 𐑠  | engage paradox — B-state, both arms
 --   [15] ⊙   gram   := 𐑠               𐑳 → 𐑙  | identity — self-imscription
 --   [16] ∋     stoi   := 𐑙               𐑠 → 𐑭  | fuse μ — assembly mode
---   [17] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [17] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [18] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

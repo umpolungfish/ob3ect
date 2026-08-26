@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⊙ → ⋈ → ≻ → ≺ → ⊥ → ⊞ → ∋ → ◻ → ⋈ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⊙ → ⋈ → ≻ → ≺ → ⊥ → ⊞ → ∋ → ⊡ → ⋈ → ⊣
 -- Class: information, inertia, and gravity are the same geometric object**, viewed through the three orderings of the Belnap trilattice: Arithmetic (Truth), Logic (Information), and Computation (Constructivity)
 -- Fingerprint: sig=(9,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -27,7 +27,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [9] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [10] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [11] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [12] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [12] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [13] ⋈     fid    := 𐑱               𐑭 → 𐑡  | composition — regime coherence
 --   [14] ⊣     top    := 𐑡               𐑱 → 𐑼  | terminal object — connectivity boundary
 

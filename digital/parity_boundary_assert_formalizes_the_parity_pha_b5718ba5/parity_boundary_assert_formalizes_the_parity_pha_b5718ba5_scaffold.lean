@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → FSPLIT → AFWD → EVALT → AREV → EVALF → ENGAGR → CLINK → IMSCRIB → FFUSE → IFIX → TANCH
--- Class: parity_boundary_assert: formalizes the parity phase transition coupling between topological winders ◻=𐭭 and kernel state Σ
+-- Class: parity_boundary_assert: formalizes the parity phase transition coupling between topological winders ⊡=𐭭 and kernel state Σ
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=12

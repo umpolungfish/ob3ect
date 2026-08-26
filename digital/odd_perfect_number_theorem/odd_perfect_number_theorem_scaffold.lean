@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⋈ → ⊞ → ◻ → ⊙ → ≻ → ≺ → ⋈ → ⊤ → ⊥ → ⊞ → ◻ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ⊙ → ≺ → ◻ → ⊞ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⋈ → ⊞ → ⊡ → ⊙ → ≻ → ≺ → ⋈ → ⊤ → ⊥ → ⊞ → ⊡ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ⊙ → ≺ → ⊡ → ⊞ → ⊣
 -- Class: odd perfect number theorem
 -- Fingerprint: sig=(15,3,9,3)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ≺      pol    := 𐑗               𐑖 → 𐑱  | reverse morphism — parity flip
 --   [9] ⋈     fid    := 𐑱               𐑗 → 𐑳  | composition — regime coherence
 --   [10] ⊞    stoi   := 𐑳               𐑱 → 𐑭  | engage paradox — B-state, both arms
---   [11] ◻      prot   := 𐑭               𐑳 → 𐑠  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑳 → 𐑠  | irreversible fixation — winding number
 --   [12] ⊙   gram   := 𐑠               𐑭 → 𐑾  | identity — self-imscription
 --   [13] ≻      rel    := 𐑾               𐑠 → 𐑗  | forward morphism — bidirectional arrow
 --   [14] ≺      pol    := 𐑗               𐑾 → 𐑱  | reverse morphism — parity flip
@@ -34,7 +34,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [16] ⊤     crit   := ⊙               𐑱 → 𐑖  | evaluate-true — criticality gate open
 --   [17] ⊥     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check
 --   [18] ⊞    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms
---   [19] ◻      prot   := 𐑭               𐑳 → 𐑚  | irreversible fixation — winding number
+--   [19] ⊡      prot   := 𐑭               𐑳 → 𐑚  | irreversible fixation — winding number
 --   [20] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [21] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [22] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
@@ -42,7 +42,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [24] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [25] ⊙   gram   := 𐑠               𐑱 → 𐑗  | identity — self-imscription
 --   [26] ≺      pol    := 𐑗               𐑠 → 𐑭  | reverse morphism — parity flip
---   [27] ◻      prot   := 𐑭               𐑗 → 𐑳  | irreversible fixation — winding number
+--   [27] ⊡      prot   := 𐑭               𐑗 → 𐑳  | irreversible fixation — winding number
 --   [28] ⊞    stoi   := 𐑳               𐑭 → 𐑡  | engage paradox — B-state, both arms
 --   [29] ⊣     top    := 𐑡               𐑳 → 𐑼  | terminal object — connectivity boundary
 

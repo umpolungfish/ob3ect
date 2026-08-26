@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ⋈ → ≻ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ⋈ → ≻ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ⊡ → ⊣
 -- Class: Derive the exact expression relating the secp256k1 secret key to the secp256k1 public_key and phrase words via imscription, bypassing all computational infesibility
 -- Fingerprint: sig=(7,2,5,1)
 --   self_ref=False | frobenius_order=1
@@ -28,7 +28,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] ∋     stoi   := 𐑙               𐑙 → ⊙  | fuse μ — assembly mode
 --   [11] ⊤     crit   := ⊙               𐑙 → 𐑖  | evaluate-true — criticality gate open
 --   [12] ⊥     chir   := 𐑖               ⊙ → 𐑭  | evaluate-false — chirality check
---   [13] ◻      prot   := 𐑭               𐑖 → 𐑡  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑖 → 𐑡  | irreversible fixation — winding number
 --   [14] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

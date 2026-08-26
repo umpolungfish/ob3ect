@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ◻ → ⋈ → ≻ → ⊣ → ⊙ → ◻
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⊡ → ⋈ → ≻ → ⊣ → ⊙ → ⊡
 -- Class: Crystalline Representations of the Absolute Galois Group of ℚ
 -- Fingerprint: sig=(10,2,3,2)
 --   self_ref=False | frobenius_order=1
@@ -26,12 +26,12 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [10] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [11] ◻      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
 --   [12] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [13] ≻      rel    := 𐑾               𐑱 → 𐑡  | forward morphism — bidirectional arrow
 --   [14] ⊣     top    := 𐑡               𐑾 → 𐑠  | terminal object — connectivity boundary
 --   [15] ⊙   gram   := 𐑠               𐑡 → 𐑭  | identity — self-imscription
---   [16] ◻      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
+--   [16] ⊡      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def crystalline_representations_of_the_6f0920_s0 : Imscription :=

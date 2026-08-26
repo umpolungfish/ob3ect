@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⋈ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ◻ → ⋈ → ≻ → ⊙ → ⊣ → ◻
+-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⋈ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊡ → ⋈ → ≻ → ⊙ → ⊣ → ⊡
 -- Class: Transfinite Iterated Forcing Extensions of Étale Homotopy Types
 -- Fingerprint: sig=(12,4,6,2)
 --   self_ref=False | frobenius_order=3
@@ -33,12 +33,12 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [15] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [16] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [17] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [18] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [18] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [19] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [20] ≻      rel    := 𐑾               𐑱 → 𐑠  | forward morphism — bidirectional arrow
 --   [21] ⊙   gram   := 𐑠               𐑾 → 𐑡  | identity — self-imscription
 --   [22] ⊣     top    := 𐑡               𐑠 → 𐑭  | terminal object — connectivity boundary
---   [23] ◻      prot   := 𐑭               𐑡 → 𐑼  | irreversible fixation — winding number
+--   [23] ⊡      prot   := 𐑭               𐑡 → 𐑼  | irreversible fixation — winding number
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def transfinite_iterated_forcing_extensions_166ca2_s0 : Imscription :=

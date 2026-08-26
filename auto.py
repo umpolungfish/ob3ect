@@ -409,8 +409,8 @@ FREE COMPOSITION RULES
 SINGLE-GLYPH CODES (the alphabet is fully SYMBOLIC -- no Latin initials, so no token
 can be confused with a verdict letter T/N/B/F)
   VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   ⋈     IMSCRIB ⊙
-  FSPLIT ∈     FFUSE  ∋     EVALT  ⊤     EVALF  ⊥     ENGAGR  ⊞     IFIX    ◻
-  A sequence may be written glued as a word: ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣ is the same program as the
+  FSPLIT ∈     FFUSE  ∋     EVALT  ⊤     EVALF  ⊥     ENGAGR  ⊞     IFIX    ⊡
+  A sequence may be written glued as a word: ⊢⊙⋈∈>⊤<⊞⊥∋⊡⊡⊣ is the same program as the
   13 spelled-out tokens. The retired codes V/T/B and ← (the old IMSCRIB) no longer parse anywhere.
 
 WHY RULE 2 AND RULE 10 ARE SAFE (inflation invariance)
@@ -422,7 +422,7 @@ WHY RULE 2 AND RULE 10 ARE SAFE (inflation invariance)
   topology as a shorter one, never a different one.
   IMSCRIB (⊙) is the neutral element of that expansion: it is identity/self-reference
   and does NOT transform, so inserting it at any depth leaves the verdict untouched.
-  The transforming tokens (> < ⋈ ⊤ ⊥ ⊞ ◻) are NOT neutral -- a single one placed on an
+  The transforming tokens (> < ⋈ ⊤ ⊥ ⊞ ⊡) are NOT neutral -- a single one placed on an
   arm between FSPLIT and FFUSE turns an identity closure into a real one. So: expand
   freely to map the domain, but only put a transforming token on an arm when the domain
   really does work there.
@@ -575,7 +575,7 @@ The IMASM opcode sequence goes ONLY in the "sequence" field."""
 
 _CATALOG_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "IG_catalog.json"
 _NAVIGATOR_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "navigators"
-_PRIM_ORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
+_PRIM_ORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
 _CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
 _CONTEXT_MAX_BYTES = 500_000  # 50 KB total
@@ -645,7 +645,7 @@ def _search_catalog(description: str, n: int = 8, context: Optional[str] = None)
         return ""  # No relevant matches — omit the block
 
     lines = ["CATALOG REFERENCE — nearest IG entries for this domain:"]
-    prim_keys = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]
+    prim_keys = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]
     for e in ranked:
         prim_str = " ".join(f"{k}={e.get(k,'?')}" for k in prim_keys)
         lines.append(f"  {e['name']}: {e.get('description','')}  [{prim_str}]")
@@ -1161,7 +1161,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
             pass
 
     # The glued IMASM word: the bootstrap sequence in the single-glyph alphabet, e.g.
-    # ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣. Same node list as phase 4, one line instead of thirteen.
+    # ⊢⊙⋈∈>⊤<⊞⊥∋⊡⊡⊣. Same node list as phase 4, one line instead of thirteen.
     try:
         artifact.glyph_word = glyph_word([step["opcode"] for step in bootstrap.steps])
     except Exception:

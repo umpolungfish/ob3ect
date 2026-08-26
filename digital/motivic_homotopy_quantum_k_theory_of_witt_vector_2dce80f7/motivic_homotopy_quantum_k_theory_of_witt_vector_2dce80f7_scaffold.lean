@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⋈ → ⊞ → ∋ → ⊙ → ◻ → ⋈ → ⊣ → ⊙
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⋈ → ⊞ → ∋ → ⊙ → ⊡ → ⋈ → ⊣ → ⊙
 -- Class: Motivic Homotopy Quantum K-Theory of Witt Vectors
 -- Fingerprint: sig=(10,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -27,7 +27,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [11] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [12] ◻      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
+--   [12] ⊡      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
 --   [13] ⋈     fid    := 𐑱               𐑭 → 𐑡  | composition — regime coherence
 --   [14] ⊣     top    := 𐑡               𐑱 → 𐑠  | terminal object — connectivity boundary
 --   [15] ⊙   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription

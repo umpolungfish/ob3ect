@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ⋈ → ⊙ → ◻ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ⋈ → ⊙ → ⊡ → ∋ → ⊣
 -- Class: past some bound the numbers with an even count of prime factors lead
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [10] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
---   [11] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [12] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [13] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary
 

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⋈ → ⊞ → ◻ → ⊙ → ∋ → ⋈ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ◻ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⋈ → ⊞ → ⊡ → ⊙ → ∋ → ⋈ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ⊡ → ∋ → ⊣
 -- Class: collatz_parity_promotion: the Collatz measure's parity closes from nun to or'
 -- Fingerprint: sig=(10,4,6,2)
 --   self_ref=False | frobenius_order=3
@@ -24,7 +24,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [6] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [7] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [9] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [9] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [10] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [11] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [12] ⋈     fid    := 𐑱               𐑙 → 𐑚  | composition — regime coherence
@@ -34,7 +34,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [16] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [17] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [18] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [19] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [19] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [20] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [21] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary
 

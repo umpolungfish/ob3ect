@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊙ → ⊞ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊙ → ⊞ → ∋ → ⊡ → ⊣
 -- Class: Winding taken to its cosmic limit. Curves are how we store complexity and the Cosmos unwinds itself as we observe and how this relates to the apparent flatness of space. When we approach a planet from far away it is round, smooth, simple. but as we descend towards its surface, its boundary, it unwinds and reveals its complexity. We can see the 'inversion happenning when we approach a planet because we can be 'removed' from that planet allowing observation of the whole. We cannot do the same for the cosmos because we cannot stand outside it to observe the curvature unwinding into the observed flat topology
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [11] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [12] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

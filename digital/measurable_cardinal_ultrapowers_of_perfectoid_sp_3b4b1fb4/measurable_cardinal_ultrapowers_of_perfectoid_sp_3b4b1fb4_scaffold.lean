@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⋈ → ⊙ → ⊞ → ⊥ → ≺ → ∋ → ◻ → ⋈ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⋈ → ⊙ → ⊞ → ⊥ → ≺ → ∋ → ⊡ → ⋈ → ⊣
 -- Class: Measurable Cardinal Ultrapowers of Perfectoid Spaces
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [8] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [11] ⋈     fid    := 𐑱               𐑭 → 𐑡  | composition — regime coherence
 --   [12] ⊣     top    := 𐑡               𐑱 → 𐑼  | terminal object — connectivity boundary
 

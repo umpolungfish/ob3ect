@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⊙ → ∋ → ◻ → ⋈ → ≻ → ≺ → ⊤ → ⊥ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⊙ → ∋ → ⊡ → ⋈ → ≻ → ≺ → ⊤ → ⊥ → ⊞ → ⊡ → ⊣
 -- Class: Yang–Mills Existence and Mass Gap Theorem
 -- Fingerprint: sig=(10,2,6,2)
 --   self_ref=False | frobenius_order=1
@@ -26,14 +26,14 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [11] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [12] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [13] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow
 --   [14] ≺      pol    := 𐑗               𐑾 → ⊙  | reverse morphism — parity flip
 --   [15] ⊤     crit   := ⊙               𐑗 → 𐑖  | evaluate-true — criticality gate open
 --   [16] ⊥     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check
 --   [17] ⊞    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms
---   [18] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [18] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [19] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ≻ → ◻ → ⊥ → ≺ → ⊞ → ⋈ → ∈ → ⊤ → ≻ → ◻ → ⊥ → ≺ → ⊞ → ⋈ → ∋ → ⊣ → ⊙ → ◻
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ≻ → ⊡ → ⊥ → ≺ → ⊞ → ⋈ → ∈ → ⊤ → ≻ → ⊡ → ⊥ → ≺ → ⊞ → ⋈ → ∋ → ⊣ → ⊙ → ⊡
 -- Class: Let  \n\n\[f(n)=\begin{cases}n/2, & n \text{ even},\3n+1, & n \text{ odd}.\end{cases}\]\n\nFor every positive integer \(n\), repeatedly applying \(f\) eventually reaches \(1\). That is, for all \(n\in\mathbb{Z}_{>0}\), there exists \(k\ge 0\) such that  \n\n\[f^k(n)=1\]
 -- Fingerprint: sig=(10,3,6,3)
 --   self_ref=False | frobenius_order=1
@@ -20,7 +20,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [2] ∈    gran   := 𐑚               𐑠 → ⊙  | split δ — range decomposition
 --   [3] ⊤     crit   := ⊙               𐑚 → 𐑾  | evaluate-true — criticality gate open
 --   [4] ≻      rel    := 𐑾               ⊙ → 𐑭  | forward morphism — bidirectional arrow
---   [5] ◻      prot   := 𐑭               𐑾 → 𐑖  | irreversible fixation — winding number
+--   [5] ⊡      prot   := 𐑭               𐑾 → 𐑖  | irreversible fixation — winding number
 --   [6] ⊥     chir   := 𐑖               𐑭 → 𐑗  | evaluate-false — chirality check
 --   [7] ≺      pol    := 𐑗               𐑖 → 𐑳  | reverse morphism — parity flip
 --   [8] ⊞    stoi   := 𐑳               𐑗 → 𐑱  | engage paradox — B-state, both arms
@@ -28,7 +28,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [11] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [12] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [13] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [15] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [16] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
@@ -36,7 +36,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [18] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [19] ⊣     top    := 𐑡               𐑙 → 𐑠  | terminal object — connectivity boundary
 --   [20] ⊙   gram   := 𐑠               𐑡 → 𐑭  | identity — self-imscription
---   [21] ◻      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
+--   [21] ⊡      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def let_n_n_f_n_begin_cases_n_2_n_text_even_769e03_s0 : Imscription :=

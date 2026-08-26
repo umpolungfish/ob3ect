@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ⋈ → ∋ → ◻ → ⊙ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ⋈ → ∋ → ⊡ → ⊙ → ⊣
 -- Class: Yang-Mills structure
 -- Fingerprint: sig=(10,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -28,7 +28,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [11] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [12] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [13] ◻      prot   := 𐑭               𐑙 → 𐑠  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑙 → 𐑠  | irreversible fixation — winding number
 --   [14] ⊙   gram   := 𐑠               𐑭 → 𐑡  | identity — self-imscription
 --   [15] ⊣     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary
 

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ≺ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ◻ → ⋈ → ≻ → ≺ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ≺ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ⊡ → ⋈ → ≻ → ≺ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊡ → ⊣
 -- Class: Hodge Theorem
 -- Fingerprint: sig=(10,4,6,2)
 --   self_ref=False | frobenius_order=3
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [10] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [11] ◻      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑠 → 𐑱  | irreversible fixation — winding number
 --   [12] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [13] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow
 --   [14] ≺      pol    := 𐑗               𐑾 → 𐑚  | reverse morphism — parity flip
@@ -35,7 +35,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [17] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [18] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [19] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [20] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [20] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [21] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

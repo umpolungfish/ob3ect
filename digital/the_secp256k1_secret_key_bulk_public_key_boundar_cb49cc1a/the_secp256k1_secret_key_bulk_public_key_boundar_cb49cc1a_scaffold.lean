@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ◻ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ⋈ → ⊙ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊡ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ⋈ → ⊙ → ⊣
 -- Class: the secp256k1 secret key bulk + public key boundary
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -16,7 +16,7 @@ open Dimensionality Topology Relational Polarity Grammar
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
 --   [0] ⊢     dim    := 𐑼               𐑼 → 𐑭  | initial object — ground of distinction
---   [1] ◻      prot   := 𐑭               𐑼 → 𐑚  | irreversible fixation — winding number
+--   [1] ⊡      prot   := 𐑭               𐑼 → 𐑚  | irreversible fixation — winding number
 --   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
 --   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open

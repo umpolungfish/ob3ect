@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⊙ → ◻ → ∋ → ⊣ → ⋈ → ⊙ → ◻
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⊙ → ⊡ → ∋ → ⊣ → ⋈ → ⊙ → ⊡
 -- Class: up to every bound the numbers with an odd count of prime factors lead
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
@@ -24,12 +24,12 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [6] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
---   [9] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [9] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [11] ⊣     top    := 𐑡               𐑙 → 𐑱  | terminal object — connectivity boundary
 --   [12] ⋈     fid    := 𐑱               𐑡 → 𐑠  | composition — regime coherence
 --   [13] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [14] ◻      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
+--   [14] ⊡      prot   := 𐑭               𐑠 → 𐑼  | irreversible fixation — winding number
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def up_to_every_bound_the_numbers_with_an_9862e4_s0 : Imscription :=

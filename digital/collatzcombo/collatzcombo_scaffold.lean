@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ≻ → ≺ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ≻ → ≺ → ⊞ → ⊡ → ⊣
 -- Class: collatzcombo
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow
 --   [8] ≺      pol    := 𐑗               𐑾 → 𐑳  | reverse morphism — parity flip
 --   [9] ⊞    stoi   := 𐑳               𐑗 → 𐑭  | engage paradox — B-state, both arms
---   [10] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

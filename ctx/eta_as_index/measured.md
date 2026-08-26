@@ -20,14 +20,14 @@
 Imscribing/HowDiracEquationArise.lean, 26 theorems:
 
     line  80   ah [𐑭]  Integer winding — Spectral flow, index theorem
-    line 203   ◻=ah is structurally realized as the index of the Dirac operator
+    line 203   ⊡=ah is structurally realized as the index of the Dirac operator
                index(D̸) = n₊ − n₋ = ∫ Â(M) ch(E)
     line 209   theorem omega_z_forces_integer_index : dirac_equation.prot = ah := rfl
     line 333   Remove ah → no index theorem, anomaly not quantized
 
-◻=𐑭 is carried by: both gamma_eta arms, paraconsistent_computer [ZWIND],
+⊡=𐑭 is carried by: both gamma_eta arms, paraconsistent_computer [ZWIND],
 void_consensus_protocol, and it is the pinned pole of the d=12/d=2048 vessel
-(six primitives moved between the proven and open SIC entries; ◻=𐑭 did not).
+(six primitives moved between the proven and open SIC entries; ⊡=𐑭 did not).
 
 ## THE GATE FORK (Axiom C, three reproductions)
 

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊙ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊙ → ⊞ → ⊡ → ⊣
 -- Class: A transformation that takes a structure with unmatched mergings and places, at each unmatched merge, the division it was missing, so the whole comes into balance. Report where each division lands and that the transformed structure closes.
 -- Fingerprint: sig=(14,8,9,1)
 --   self_ref=False | frobenius_order=3
@@ -45,7 +45,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [27] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [28] ⊙   gram   := 𐑠               𐑙 → 𐑳  | identity — self-imscription
 --   [29] ⊞    stoi   := 𐑳               𐑠 → 𐑭  | engage paradox — B-state, both arms
---   [30] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [30] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [31] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

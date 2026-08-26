@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ≺ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ≺ → ⊙ → ⊡ → ⊣
 -- Class: SORRY-FREE PROOF
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⋈     fid    := 𐑱               𐑙 → 𐑗  | composition — regime coherence
 --   [9] ≺      pol    := 𐑗               𐑱 → 𐑠  | reverse morphism — parity flip
 --   [10] ⊙   gram   := 𐑠               𐑗 → 𐑭  | identity — self-imscription
---   [11] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [12] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

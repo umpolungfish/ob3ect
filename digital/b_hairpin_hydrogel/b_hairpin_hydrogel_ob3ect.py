@@ -3,7 +3,7 @@
 b_hairpin_hydrogel_ob3ect — Self-imscribing β-hairpin hydrogel system.
 Verifies algebraic closure: μ∘δ = id_A AND δ∘μ = id_B.
 
-Tuple: ⟨⊢=𐑨; ⊣=𐑡; >=𐑑; <=𐑯; ⋈=𐑞; ⊤=𐑪; ∈=𐑚; ∋=𐑜; ⊙=⊙; ⊥=𐑒; ⊞=𐑕; ◻=𐑴⟩
+Tuple: ⟨⊢=𐑨; ⊣=𐑡; >=𐑑; <=𐑯; ⋈=𐑞; ⊤=𐑪; ∈=𐑚; ∋=𐑜; ⊙=⊙; ⊥=𐑒; ⊞=𐑕; ⊡=𐑴⟩
 
 The ob3ect encodes:
   A  = monomer state (soluble peptide, T > Tm OR c < CGC)
@@ -118,7 +118,7 @@ class BetaHairpinHydrogel:
             "Dialetheic at CGC (7.8 mg/mL, 25°C):",
             f"  {self.dialetheic_at_cgc(7.8, 25.0)['b4']} — {self.dialetheic_at_cgc(7.8, 25.0)['meaning']}",
             "",
-            "Structural Tuple: ⟨⊢=𐑨; ⊣=𐑡; >=𐑑; <=𐑯; ⋈=𐑞; ⊤=𐑪; ∈=𐑚; ∋=𐑜; ⊙=⊙; ⊥=𐑒; ⊞=𐑕; ◻=𐑴⟩",
+            "Structural Tuple: ⟨⊢=𐑨; ⊣=𐑡; >=𐑑; <=𐑯; ⋈=𐑞; ⊤=𐑪; ∈=𐑚; ∋=𐑜; ⊙=⊙; ⊥=𐑒; ⊞=𐑕; ⊡=𐑴⟩",
             f"Tier: O₂ | Frobenius: {'CLOSED' if fc['all_closed'] else 'OPEN'}",
             "=" * 60,
         ]

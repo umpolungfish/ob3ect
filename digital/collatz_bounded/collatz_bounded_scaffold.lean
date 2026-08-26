@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≺ → ◻ → ⊥ → ≻ → ◻ → ∋ → ⋈ → ⊞ → ⊙ → ∈ → ⊤ → ≺ → ◻ → ⊥ → ≻ → ◻ → ∋ → ⋈ → ⊞ → ⊙ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≺ → ⊡ → ⊥ → ≻ → ⊡ → ∋ → ⋈ → ⊞ → ⊙ → ∈ → ⊤ → ≺ → ⊡ → ⊥ → ≻ → ⊡ → ∋ → ⋈ → ⊞ → ⊙ → ⊣
 -- Class: collatz_bounded
 -- Fingerprint: sig=(10,4,6,4)
 --   self_ref=False | frobenius_order=3
@@ -19,10 +19,10 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [3] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
---   [4] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [4] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [5] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [6] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [7] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [7] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [8] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [9] ⋈     fid    := 𐑱               𐑙 → 𐑳  | composition — regime coherence
 --   [10] ⊞    stoi   := 𐑳               𐑱 → 𐑠  | engage paradox — B-state, both arms
@@ -30,10 +30,10 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [12] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [13] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [14] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
---   [15] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [15] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [16] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [17] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
---   [18] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [18] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [19] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [20] ⋈     fid    := 𐑱               𐑙 → 𐑳  | composition — regime coherence
 --   [21] ⊞    stoi   := 𐑳               𐑱 → 𐑠  | engage paradox — B-state, both arms

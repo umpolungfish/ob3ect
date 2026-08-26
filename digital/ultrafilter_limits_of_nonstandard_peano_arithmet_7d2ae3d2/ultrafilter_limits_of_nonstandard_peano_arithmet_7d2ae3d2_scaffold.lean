@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ⊙ → ◻ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ⊙ → ⊡ → ∋ → ⊣
 -- Class: Ultrafilter Limits of Nonstandard Peano Arithmetic Models under Voevodsky’s Univalence
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -24,7 +24,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [6] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
---   [9] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [9] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [11] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary
 

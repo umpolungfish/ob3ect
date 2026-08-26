@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ⊣ → ≻ → ⋈ → ⊙ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ⊣ → ≻ → ⋈ → ⊙ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ⊞ → ⊡ → ⊣
 -- Class: lossless extraction of secp256k1 secret key from corresponding secp256k1 public key
 -- Fingerprint: sig=(9,2,6,1)
 --   self_ref=False | frobenius_order=1
@@ -31,7 +31,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [13] ⊤     crit   := ⊙               𐑙 → 𐑖  | evaluate-true — criticality gate open
 --   [14] ⊥     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check
 --   [15] ⊞    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms
---   [16] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [16] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [17] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

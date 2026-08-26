@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ⊙ → ≺ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ⊙ → ≺ → ⊡ → ⊣
 -- Class: Aperiodic Monstrous Moonshine Quasicrystals
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [8] ⊙   gram   := 𐑠               𐑱 → 𐑗  | identity — self-imscription
 --   [9] ≺      pol    := 𐑗               𐑠 → 𐑭  | reverse morphism — parity flip
---   [10] ◻      prot   := 𐑭               𐑗 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑗 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

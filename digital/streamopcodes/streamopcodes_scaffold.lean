@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ∈ → ⊤ → ≺ → ⊥ → ⊞ → ⋈ → ⊙ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ∈ → ⊤ → ≺ → ⊥ → ⊞ → ⋈ → ⊙ → ∋ → ⊡ → ⊣
 -- Class: streamopcodes
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [9] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [11] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [12] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

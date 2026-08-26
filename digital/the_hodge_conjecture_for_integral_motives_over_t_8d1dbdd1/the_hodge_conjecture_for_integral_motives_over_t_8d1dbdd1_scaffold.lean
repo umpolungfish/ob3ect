@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ◻ → ⊙ → ∋ → ⊣ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ◻ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ⊡ → ⊙ → ∋ → ⊣ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ⊡ → ∋ → ⊣
 -- Class: The Hodge Conjecture for Integral Motives over the Field of Fractions of the Witt Ring
 -- Fingerprint: sig=(10,4,6,2)
 --   self_ref=False | frobenius_order=3
@@ -23,7 +23,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [8] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [8] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [9] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [11] ⊣     top    := 𐑡               𐑙 → 𐑱  | terminal object — connectivity boundary
@@ -34,7 +34,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [16] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [17] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [18] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [19] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [19] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [20] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [21] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary
 

@@ -258,7 +258,7 @@ def cmd_derive(rna):
     print(header(" PHASE 5: GRAMMAR ACTIVATION "))
     all_prims = ["Dimensionality(⊢)", "Topology(⊣)", "Recognition(>)", "Parity(<)",
                   "Fidelity(⋈)", "Kinetics(⊤)", "Granularity(∈)", "Coupling(∋)",
-                  "Criticality(⊙)", "Chirality(⊥)", "Stoichiometry(⊞)", "Winding(◻)"]
+                  "Criticality(⊙)", "Chirality(⊥)", "Stoichiometry(⊞)", "Winding(⊡)"]
     for p in all_prims:
         name = p.split("(")[0]
         status = green("ACTIVE") if name in result.activation_set else dim("inactive")

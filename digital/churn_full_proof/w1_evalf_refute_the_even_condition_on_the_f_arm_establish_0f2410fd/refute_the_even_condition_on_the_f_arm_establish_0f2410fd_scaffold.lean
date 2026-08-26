@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ◻ → ∈ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ⊡ → ∈ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ⊡ → ⊣
 -- Class: Refute the even condition on the F-arm, establishing the constructive proof for the odd transformation.
 -- Fingerprint: sig=(8,4,3,2)
 --   self_ref=False | frobenius_order=3
@@ -23,14 +23,14 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [5] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [6] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [7] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [8] ◻      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number
+--   [8] ⊡      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number
 --   [9] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [10] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [11] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [12] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [13] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [14] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [15] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [15] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [16] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

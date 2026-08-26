@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ◻ → ⋈ → ⊙ → ∋ → ⊣ → ◻
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ⊡ → ⋈ → ⊙ → ∋ → ⊣ → ⊡
 -- Class: P vs NP structure
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
@@ -24,12 +24,12 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [6] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [7] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [9] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [9] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [10] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [11] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [12] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [13] ⊣     top    := 𐑡               𐑙 → 𐑭  | terminal object — connectivity boundary
---   [14] ◻      prot   := 𐑭               𐑡 → 𐑼  | irreversible fixation — winding number
+--   [14] ⊡      prot   := 𐑭               𐑡 → 𐑼  | irreversible fixation — winding number
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def p_vs_np_structure_s0 : Imscription :=

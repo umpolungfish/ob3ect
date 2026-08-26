@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⋈ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⋈ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ⊡ → ⊣
 -- Class: The value 0391804d11a725b91dbfd1fbb83b437e0d69fe25f1323ce92e9e74f1edc930eef4 itself, independent of any cryptographic notions
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

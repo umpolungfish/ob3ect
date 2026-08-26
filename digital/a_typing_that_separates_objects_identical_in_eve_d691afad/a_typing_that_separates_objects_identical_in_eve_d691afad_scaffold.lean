@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊞ → ⋈ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⊞ → ⋈ → ⊙ → ⊡ → ⊣
 -- Class: A typing that separates objects identical in every functional group and differing only in the orientation of their parts. Report what must be read to tell them apart and which axis carries the distinction the achiral reading drops.
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑙 → 𐑱  | engage paradox — B-state, both arms
 --   [8] ⋈     fid    := 𐑱               𐑳 → 𐑠  | composition — regime coherence
 --   [9] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [10] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

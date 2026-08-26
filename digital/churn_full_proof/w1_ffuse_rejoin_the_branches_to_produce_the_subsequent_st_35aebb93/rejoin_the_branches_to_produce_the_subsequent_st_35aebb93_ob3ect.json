@@ -91,8 +91,8 @@
         "justification": "Holds the stoichiometric balance of the asymmetric operations in a B state during transition",
         "rejected_candidates": []
       },
-      "◻": {
-        "opcode": "◻",
+      "⊡": {
+        "opcode": "⊡",
         "chosen_element": "trajectory_log_entry",
         "justification": "Permanent, append-only record of the step as a topological invariant",
         "rejected_candidates": []
@@ -173,7 +173,7 @@
         },
         {
           "step_num": 11,
-          "opcode": "◻",
+          "opcode": "⊡",
           "domain_action": "Record the current step in the trajectory log as an immutable topological invariant"
         },
         {
@@ -218,7 +218,7 @@
         },
         {
           "step_num": 20,
-          "opcode": "◻",
+          "opcode": "⊡",
           "domain_action": "Fix the step in the permanent record"
         },
         {
@@ -246,9 +246,9 @@
       "failure_mode": ""
     }
   },
-  "glyph_word": "⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣",
-  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤>⊥<⊞∋⋈⊙◻∈⊤>⊥<∋⋈⊙◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   >   AFWD     AFWD          T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   <   AREV     AREV         TF →     N\n    7   ⊞   ENGAGR   EVALI         N →    tf\n    8   ∋   FFUSE    FFUSE3       tf →     A\n    9   ⋈   CLINK    CLINK         A →     A\n   10   ⊙   IMSCRIB  IMSCRIB       A →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ∈   FSPLIT   FSPLIT3       A →     A\n   13   ⊤   EVALT    EVALT         A →     A\n   14   >   AFWD     AFWD          A →     A\n   15   ⊥   EVALF    EVALF         A →     A\n   16   <   AREV     AREV          A →     A\n   17   ∋   FFUSE    FFUSE3        A →     A\n   18   ⋈   CLINK    CLINK         A →     A\n   19   ⊙   IMSCRIB  IMSCRIB       A →     A\n   20   ◻   IFIX     IFIX          A →     A\n   21   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ⚠ Not fully closed",
-  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ◻ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ◻ → ⊣\n-- Class: Rejoin the branches to produce the subsequent state.\n-- Fingerprint: sig=(10,4,5,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=21\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(1, 7), (11, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [8] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [9] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [10] ◻      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [15] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [16] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [17] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [18] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [19] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [20] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def rejoin_the_branches_to_produce_the_f76eee_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def rejoin_the_branches_to_produce_the_f76eee_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def rejoin_the_branches_to_produce_the_f76eee_protocol : IGProtocol rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct rejoin_the_branches_to_produce_the_f76eee_s7 rejoin_the_branches_to_produce_the_f76eee_s7 = rejoin_the_branches_to_produce_the_f76eee_s7 (idempotent)\n  (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l0 rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s1) (.seq (.prod (.arrow rejoin_the_branches_to_produce_the_f76eee_l1 rejoin_the_branches_to_produce_the_f76eee_s1 rejoin_the_branches_to_produce_the_f76eee_s7) (.arrow rejoin_the_branches_to_produce_the_f76eee_l1 rejoin_the_branches_to_produce_the_f76eee_s1 rejoin_the_branches_to_produce_the_f76eee_s7)) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l7 rejoin_the_branches_to_produce_the_f76eee_s7 rejoin_the_branches_to_produce_the_f76eee_s7) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l7 rejoin_the_branches_to_produce_the_f76eee_s7 rejoin_the_branches_to_produce_the_f76eee_s8) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l8 rejoin_the_branches_to_produce_the_f76eee_s8 rejoin_the_branches_to_produce_the_f76eee_s9) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l9 rejoin_the_branches_to_produce_the_f76eee_s9 rejoin_the_branches_to_produce_the_f76eee_s10) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l10 rejoin_the_branches_to_produce_the_f76eee_s10 rejoin_the_branches_to_produce_the_f76eee_s11) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l11 rejoin_the_branches_to_produce_the_f76eee_s11 rejoin_the_branches_to_produce_the_f76eee_s12) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l12 rejoin_the_branches_to_produce_the_f76eee_s12 rejoin_the_branches_to_produce_the_f76eee_s13) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l13 rejoin_the_branches_to_produce_the_f76eee_s13 rejoin_the_branches_to_produce_the_f76eee_s14) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l14 rejoin_the_branches_to_produce_the_f76eee_s14 rejoin_the_branches_to_produce_the_f76eee_s15) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l15 rejoin_the_branches_to_produce_the_f76eee_s15 rejoin_the_branches_to_produce_the_f76eee_s16) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l16 rejoin_the_branches_to_produce_the_f76eee_s16 rejoin_the_branches_to_produce_the_f76eee_s17) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l17 rejoin_the_branches_to_produce_the_f76eee_s17 rejoin_the_branches_to_produce_the_f76eee_s18) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l18 rejoin_the_branches_to_produce_the_f76eee_s18 rejoin_the_branches_to_produce_the_f76eee_s19) (.arrow rejoin_the_branches_to_produce_the_f76eee_l19 rejoin_the_branches_to_produce_the_f76eee_s19 rejoin_the_branches_to_produce_the_f76eee_s20))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def rejoin_the_branches_to_produce_the_f76eee_true_arm : IGProtocol rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s20 :=\n  (rejoin_the_branches_to_produce_the_f76eee_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def rejoin_the_branches_to_produce_the_f76eee_false_arm : IGProtocol rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s20 :=\n  (rejoin_the_branches_to_produce_the_f76eee_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef rejoin_the_branches_to_produce_the_f76eee_tier_ground : OuroboricityTier := TierFunctor.obj rejoin_the_branches_to_produce_the_f76eee_s0\ndef rejoin_the_branches_to_produce_the_f76eee_tier : OuroboricityTier := TierFunctor.obj rejoin_the_branches_to_produce_the_f76eee_s20\n#eval rejoin_the_branches_to_produce_the_f76eee_tier_ground  -- tier of the ground (pre-transformation)\n#eval rejoin_the_branches_to_produce_the_f76eee_tier  -- the Grammar's own verdict on the closed object\n",
+  "glyph_word": "⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤>⊥<⊞∋⋈⊙⊡∈⊤>⊥<∋⋈⊙⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   >   AFWD     AFWD          T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   <   AREV     AREV         TF →     N\n    7   ⊞   ENGAGR   EVALI         N →    tf\n    8   ∋   FFUSE    FFUSE3       tf →     A\n    9   ⋈   CLINK    CLINK         A →     A\n   10   ⊙   IMSCRIB  IMSCRIB       A →     A\n   11   ⊡   IFIX     IFIX          A →     A\n   12   ∈   FSPLIT   FSPLIT3       A →     A\n   13   ⊤   EVALT    EVALT         A →     A\n   14   >   AFWD     AFWD          A →     A\n   15   ⊥   EVALF    EVALF         A →     A\n   16   <   AREV     AREV          A →     A\n   17   ∋   FFUSE    FFUSE3        A →     A\n   18   ⋈   CLINK    CLINK         A →     A\n   19   ⊙   IMSCRIB  IMSCRIB       A →     A\n   20   ⊡   IFIX     IFIX          A →     A\n   21   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ⚠ Not fully closed",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ⊡ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ⊡ → ⊣\n-- Class: Rejoin the branches to produce the subsequent state.\n-- Fingerprint: sig=(10,4,5,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=21\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(1, 7), (11, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [8] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [9] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [15] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [16] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [17] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [18] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [19] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [20] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def rejoin_the_branches_to_produce_the_f76eee_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def rejoin_the_branches_to_produce_the_f76eee_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def rejoin_the_branches_to_produce_the_f76eee_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def rejoin_the_branches_to_produce_the_f76eee_protocol : IGProtocol rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct rejoin_the_branches_to_produce_the_f76eee_s7 rejoin_the_branches_to_produce_the_f76eee_s7 = rejoin_the_branches_to_produce_the_f76eee_s7 (idempotent)\n  (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l0 rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s1) (.seq (.prod (.arrow rejoin_the_branches_to_produce_the_f76eee_l1 rejoin_the_branches_to_produce_the_f76eee_s1 rejoin_the_branches_to_produce_the_f76eee_s7) (.arrow rejoin_the_branches_to_produce_the_f76eee_l1 rejoin_the_branches_to_produce_the_f76eee_s1 rejoin_the_branches_to_produce_the_f76eee_s7)) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l7 rejoin_the_branches_to_produce_the_f76eee_s7 rejoin_the_branches_to_produce_the_f76eee_s7) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l7 rejoin_the_branches_to_produce_the_f76eee_s7 rejoin_the_branches_to_produce_the_f76eee_s8) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l8 rejoin_the_branches_to_produce_the_f76eee_s8 rejoin_the_branches_to_produce_the_f76eee_s9) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l9 rejoin_the_branches_to_produce_the_f76eee_s9 rejoin_the_branches_to_produce_the_f76eee_s10) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l10 rejoin_the_branches_to_produce_the_f76eee_s10 rejoin_the_branches_to_produce_the_f76eee_s11) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l11 rejoin_the_branches_to_produce_the_f76eee_s11 rejoin_the_branches_to_produce_the_f76eee_s12) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l12 rejoin_the_branches_to_produce_the_f76eee_s12 rejoin_the_branches_to_produce_the_f76eee_s13) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l13 rejoin_the_branches_to_produce_the_f76eee_s13 rejoin_the_branches_to_produce_the_f76eee_s14) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l14 rejoin_the_branches_to_produce_the_f76eee_s14 rejoin_the_branches_to_produce_the_f76eee_s15) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l15 rejoin_the_branches_to_produce_the_f76eee_s15 rejoin_the_branches_to_produce_the_f76eee_s16) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l16 rejoin_the_branches_to_produce_the_f76eee_s16 rejoin_the_branches_to_produce_the_f76eee_s17) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l17 rejoin_the_branches_to_produce_the_f76eee_s17 rejoin_the_branches_to_produce_the_f76eee_s18) (.seq (.arrow rejoin_the_branches_to_produce_the_f76eee_l18 rejoin_the_branches_to_produce_the_f76eee_s18 rejoin_the_branches_to_produce_the_f76eee_s19) (.arrow rejoin_the_branches_to_produce_the_f76eee_l19 rejoin_the_branches_to_produce_the_f76eee_s19 rejoin_the_branches_to_produce_the_f76eee_s20))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def rejoin_the_branches_to_produce_the_f76eee_true_arm : IGProtocol rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s20 :=\n  (rejoin_the_branches_to_produce_the_f76eee_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def rejoin_the_branches_to_produce_the_f76eee_false_arm : IGProtocol rejoin_the_branches_to_produce_the_f76eee_s0 rejoin_the_branches_to_produce_the_f76eee_s20 :=\n  (rejoin_the_branches_to_produce_the_f76eee_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef rejoin_the_branches_to_produce_the_f76eee_tier_ground : OuroboricityTier := TierFunctor.obj rejoin_the_branches_to_produce_the_f76eee_s0\ndef rejoin_the_branches_to_produce_the_f76eee_tier : OuroboricityTier := TierFunctor.obj rejoin_the_branches_to_produce_the_f76eee_s20\n#eval rejoin_the_branches_to_produce_the_f76eee_tier_ground  -- tier of the ground (pre-transformation)\n#eval rejoin_the_branches_to_produce_the_f76eee_tier  -- the Grammar's own verdict on the closed object\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -289,7 +289,7 @@
   "grounding_failed_primitives": [],
   "banked_count_check": {
     "status": "ok",
-    "word": "⊢∈⊤>⊥<⊞∋⋈⊙◻∈⊤>⊥<∋⋈⊙◻⊣",
+    "word": "⊢∈⊤>⊥<⊞∋⋈⊙⊡∈⊤>⊥<∋⋈⊙⊡⊣",
     "exposed_clears": [],
     "weight_lost_in_the_open": 0,
     "banked_ok": true,
@@ -304,7 +304,7 @@
     "surplus_note": null,
     "remedy": null
   },
-  "grounding_reasoning": "⊣=𐑰: The instruction to rejoin branches implies a hierarchical structure where distinct paths merge into a unified container or nested system.\n⊢=𐑨: The assignment of dimensionality to the primitive ⊢ implies an extended spatial arrangement where constraints propagate through a 3D structure rather than remaining local or collapsing scales.\n⊞=𐑳: The assignment of distinct primitives (𐑰 and 𐑨) to the left and right branches indicates an asymmetric configuration with different counts on each side.\n◻=𐑭: The rejoining of branches creates a closed loop structure that stabilizes the role via an integer winding invariant, preventing continuous deformation to a trivial state.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n⊥=𐑖: Rejoining branches creates a multi-axial structure where chirality is structurally enforced, resulting in persistent memory depth n.\n>=𐑑: Rejoining branches to form a subsequent state implies a structural transformation or bond formation that integrates separate components into a unified whole.\n<=𐑿: The primitive '<' denotes a strict ordering or polarity where one side acts as a donor and the other as an acceptor, establishing a signed direction.\n⋈=𐑐: The high-fidelity join operation enforces geometric constraints that ensure near-certain firing, transmitting more than 9 bits of information per interaction.\n⊤=𐑧: The high barrier corresponds to a kinetically frozen state where rearrangement is blocked without external driving, matching the definition of resistance to change.\n∈=𐑚: The rejoining of branches implies a localized propagation through a connected motif or cluster rather than a single isolated event or a system-wide cascade.\n∋=𐑜: The symbol ∋ (element of) implies a selection from a set where any single valid partner suffices to establish the relationship.",
+  "grounding_reasoning": "⊣=𐑰: The instruction to rejoin branches implies a hierarchical structure where distinct paths merge into a unified container or nested system.\n⊢=𐑨: The assignment of dimensionality to the primitive ⊢ implies an extended spatial arrangement where constraints propagate through a 3D structure rather than remaining local or collapsing scales.\n⊞=𐑳: The assignment of distinct primitives (𐑰 and 𐑨) to the left and right branches indicates an asymmetric configuration with different counts on each side.\n⊡=𐑭: The rejoining of branches creates a closed loop structure that stabilizes the role via an integer winding invariant, preventing continuous deformation to a trivial state.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n⊥=𐑖: Rejoining branches creates a multi-axial structure where chirality is structurally enforced, resulting in persistent memory depth n.\n>=𐑑: Rejoining branches to form a subsequent state implies a structural transformation or bond formation that integrates separate components into a unified whole.\n<=𐑿: The primitive '<' denotes a strict ordering or polarity where one side acts as a donor and the other as an acceptor, establishing a signed direction.\n⋈=𐑐: The high-fidelity join operation enforces geometric constraints that ensure near-certain firing, transmitting more than 9 bits of information per interaction.\n⊤=𐑧: The high barrier corresponds to a kinetically frozen state where rearrangement is blocked without external driving, matching the definition of resistance to change.\n∈=𐑚: The rejoining of branches implies a localized propagation through a connected motif or cluster rather than a single isolated event or a system-wide cascade.\n∋=𐑜: The symbol ∋ (element of) implies a selection from a set where any single valid partner suffices to establish the relationship.",
   "lean_verified": true,
   "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
@@ -313,7 +313,7 @@
     "orbit": [
       {
         "k": 0,
-        "word": "⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣",
+        "word": "⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -321,7 +321,7 @@
       },
       {
         "k": 1,
-        "word": "∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢",
+        "word": "∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -329,7 +329,7 @@
       },
       {
         "k": 2,
-        "word": "⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈",
+        "word": "⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -337,7 +337,7 @@
       },
       {
         "k": 3,
-        "word": "≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤",
+        "word": "≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -345,7 +345,7 @@
       },
       {
         "k": 4,
-        "word": "⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻",
+        "word": "⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -353,7 +353,7 @@
       },
       {
         "k": 5,
-        "word": "≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥",
+        "word": "≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -361,7 +361,7 @@
       },
       {
         "k": 6,
-        "word": "⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺",
+        "word": "⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -369,7 +369,7 @@
       },
       {
         "k": 7,
-        "word": "∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞",
+        "word": "∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -377,7 +377,7 @@
       },
       {
         "k": 8,
-        "word": "⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋",
+        "word": "⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -385,7 +385,7 @@
       },
       {
         "k": 9,
-        "word": "⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈",
+        "word": "⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -393,7 +393,7 @@
       },
       {
         "k": 10,
-        "word": "◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙",
+        "word": "⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -401,7 +401,7 @@
       },
       {
         "k": 11,
-        "word": "∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻",
+        "word": "∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "TF",
@@ -409,7 +409,7 @@
       },
       {
         "k": 12,
-        "word": "⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈",
+        "word": "⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -417,7 +417,7 @@
       },
       {
         "k": 13,
-        "word": "≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤",
+        "word": "≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -425,7 +425,7 @@
       },
       {
         "k": 14,
-        "word": "⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻",
+        "word": "⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -433,7 +433,7 @@
       },
       {
         "k": 15,
-        "word": "≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥",
+        "word": "≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -441,7 +441,7 @@
       },
       {
         "k": 16,
-        "word": "∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺",
+        "word": "∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -449,7 +449,7 @@
       },
       {
         "k": 17,
-        "word": "⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋",
+        "word": "⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -457,7 +457,7 @@
       },
       {
         "k": 18,
-        "word": "⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈",
+        "word": "⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -465,7 +465,7 @@
       },
       {
         "k": 19,
-        "word": "◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙",
+        "word": "⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -473,7 +473,7 @@
       },
       {
         "k": 20,
-        "word": "⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻",
+        "word": "⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -487,7 +487,7 @@
       "topology_class": true
     },
     "canonical_k": 11,
-    "canonical_word": "∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻",
+    "canonical_word": "∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡",
     "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
   },
   "kernel_repairs": null

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ⊞ → ⋈ → ⊙ → ≺ → ⊥ → ∋ → ◻ → ⋈ → ⊙
+-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ⊞ → ⋈ → ⊙ → ≺ → ⊥ → ∋ → ⊡ → ⋈ → ⊙
 -- Class: riemann_critical_line
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [9] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [11] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [12] ⋈     fid    := 𐑱               𐑭 → 𐑠  | composition — regime coherence
 --   [13] ⊙   gram   := 𐑠               𐑱 → 𐑼  | identity — self-imscription
 

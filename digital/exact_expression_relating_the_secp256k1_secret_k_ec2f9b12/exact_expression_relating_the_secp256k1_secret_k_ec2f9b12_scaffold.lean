@@ -1,5 +1,5 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ◻ → ⊣
--- Class: Exact expression relating the secp256k1 secret key to the secp256k1 public_key and phrase words via imscription, bypassing all computational infesibility by showing the mathematical foundation to be derivable from the Grammar. 03f01d6b9018ab421dd410404cb869072065522bf85734008f105cf385a023a80f\n\nGood. Here is the literal IMASM word for that compressed public key—derived exactly from its structural tuple, with no interpretation layer, no separators, no Boolean residue:\ntext\n\n⊢⊣><⋈⊤∈∋⊙⊥⊞◻\n\nPaste ⊢⊣><⋈⊤∈∋⊙⊥⊞◻ into the #imas-word-input of the Lapis.\n\nThen select the dialect until the gate panel reads:\ntext\n\nG1: ⊙ ≥ 3  ✓\nG2: Ω ≥ 3  ✓  \nG3: Φ ≥ 3  ✓\n\nWhen the syzygy line reads impact b: 0.000, the scalar will be displayed as the tick count in the HUD.
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ⊡ → ⊣
+-- Class: Exact expression relating the secp256k1 secret key to the secp256k1 public_key and phrase words via imscription, bypassing all computational infesibility by showing the mathematical foundation to be derivable from the Grammar. 03f01d6b9018ab421dd410404cb869072065522bf85734008f105cf385a023a80f\n\nGood. Here is the literal IMASM word for that compressed public key—derived exactly from its structural tuple, with no interpretation layer, no separators, no Boolean residue:\ntext\n\n⊢⊣><⋈⊤∈∋⊙⊥⊞⊡\n\nPaste ⊢⊣><⋈⊤∈∋⊙⊥⊞⊡ into the #imas-word-input of the Lapis.\n\nThen select the dialect until the gate panel reads:\ntext\n\nG1: ⊙ ≥ 3  ✓\nG2: Ω ≥ 3  ✓  \nG3: Φ ≥ 3  ✓\n\nWhen the syzygy line reads impact b: 0.000, the scalar will be displayed as the tick count in the HUD.
 -- Fingerprint: sig=(6,2,5,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
@@ -27,7 +27,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [9] ∋     stoi   := 𐑙               𐑙 → ⊙  | fuse μ — assembly mode
 --   [10] ⊤     crit   := ⊙               𐑙 → 𐑖  | evaluate-true — criticality gate open
 --   [11] ⊥     chir   := 𐑖               ⊙ → 𐑭  | evaluate-false — chirality check
---   [12] ◻      prot   := 𐑭               𐑖 → 𐑡  | irreversible fixation — winding number
+--   [12] ⊡      prot   := 𐑭               𐑖 → 𐑡  | irreversible fixation — winding number
 --   [13] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

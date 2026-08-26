@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⋈ → ⊞ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⊙ → ⋈ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⋈ → ⊞ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⊙ → ⋈ → ⊡ → ⊣
 -- Class: dialetheic fibonacci shors algorithm
 -- Fingerprint: sig=(8,3,3,1)
 --   self_ref=False | frobenius_order=1
@@ -28,7 +28,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [11] ⊙   gram   := 𐑠               𐑙 → 𐑱  | identity — self-imscription
 --   [12] ⋈     fid    := 𐑱               𐑠 → 𐑭  | composition — regime coherence
---   [13] ◻      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [14] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

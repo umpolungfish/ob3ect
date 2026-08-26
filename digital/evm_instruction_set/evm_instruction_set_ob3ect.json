@@ -94,10 +94,10 @@
         "justification": "The paradice ⊞ where the system holds both the potential for execution (gas available) and the constraint of exhaustion (gas limit) simultaneously.",
         "rejected_candidates": []
       },
-      "◻": {
-        "opcode": "◻",
+      "⊡": {
+        "opcode": "⊡",
         "chosen_element": "SSTORE Operation",
-        "justification": "The ROM fixation ◻ where a value is written to persistent storage, creating an irreversible, append-only record in the world state.",
+        "justification": "The ROM fixation ⊡ where a value is written to persistent storage, creating an irreversible, append-only record in the world state.",
         "rejected_candidates": []
       }
     },
@@ -201,7 +201,7 @@
         },
         {
           "step_num": 16,
-          "opcode": "◻",
+          "opcode": "⊡",
           "domain_action": "Write a computed value to persistent storage via SSTORE."
         },
         {
@@ -236,7 +236,7 @@
         },
         {
           "step_num": 23,
-          "opcode": "◻",
+          "opcode": "⊡",
           "domain_action": "Record the final state changes in the block's Merkle tree."
         },
         {
@@ -264,9 +264,9 @@
       "failure_mode": ""
     }
   },
-  "glyph_word": "⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣",
-  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢>⋈>⋈∈⊤>⋈∋⊥>⋈∋⊞◻⋈<⊙>⋈⊤◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   >   AFWD     AFWD          N →     T\n    3   ⋈   CLINK    CLINK         T →     T\n    4   >   AFWD     AFWD          T →     T\n    5   ⋈   CLINK    CLINK         T →     T\n    6   ∈   FSPLIT   FSPLIT3       T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   >   AFWD     AFWD          T →     T\n    9   ⋈   CLINK    CLINK         T →     T\n   10   ∋   FFUSE    FFUSE3        T →     T\n   11   ⊥   EVALF    EVALF         T →    TF\n   12   >   AFWD     AFWD         TF →    TF\n   13   ⋈   CLINK    CLINK        TF →    TF\n   14   ∋   FFUSE    FFUSE3       TF →    TF\n   15   ⊞   ENGAGR   EVALI        TF →     A\n   16   ◻   IFIX     IFIX          A →     A\n   17   ⋈   CLINK    CLINK         A →     A\n   18   <   AREV     AREV          A →     A\n   19   ⊙   IMSCRIB  IMSCRIB       A →     A\n   20   >   AFWD     AFWD          A →     A\n   21   ⋈   CLINK    CLINK         A →     A\n   22   ⊤   EVALT    EVALT         A →     A\n   23   ◻   IFIX     IFIX          A →     A\n   24   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: F — FFUSE3 at step 10 has no FSPLIT3 to pair — ill-typed\n  ⚠ Not fully closed",
-  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⋈ → ∋ → ⊥ → ≻ → ⋈ → ∋ → ⊞ → ◻ → ⋈ → ≺ → ⊙ → ≻ → ⋈ → ⊤ → ◻ → ⊣\n-- Class: evm_instruction_set\n-- Fingerprint: sig=(15,3,4,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=24\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(5, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑱  | forward morphism — bidirectional arrow\n--   [2] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [3] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [4] ⋈     fid    := 𐑱               𐑾 → 𐑚  | composition — regime coherence\n--   [5] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑖  | fuse μ — assembly mode\n--   [10] ⊥     chir   := 𐑖               𐑙 → 𐑾  | evaluate-false — chirality check\n--   [11] ≻      rel    := 𐑾               𐑖 → 𐑱  | forward morphism — bidirectional arrow\n--   [12] ⋈     fid    := 𐑱               𐑾 → 𐑙  | composition — regime coherence\n--   [13] ∋     stoi   := 𐑙               𐑱 → 𐑳  | fuse μ — assembly mode\n--   [14] ⊞    stoi   := 𐑳               𐑙 → 𐑭  | engage paradox — B-state, both arms\n--   [15] ◻      prot   := 𐑭               𐑳 → 𐑱  | irreversible fixation — winding number\n--   [16] ⋈     fid    := 𐑱               𐑭 → 𐑗  | composition — regime coherence\n--   [17] ≺      pol    := 𐑗               𐑱 → 𐑠  | reverse morphism — parity flip\n--   [18] ⊙   gram   := 𐑠               𐑗 → 𐑾  | identity — self-imscription\n--   [19] ≻      rel    := 𐑾               𐑠 → 𐑱  | forward morphism — bidirectional arrow\n--   [20] ⋈     fid    := 𐑱               𐑾 → ⊙  | composition — regime coherence\n--   [21] ⊤     crit   := ⊙               𐑱 → 𐑭  | evaluate-true — criticality gate open\n--   [22] ◻      prot   := 𐑭               ⊙ → 𐑡  | irreversible fixation — winding number\n--   [23] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def evm_instruction_set_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def evm_instruction_set_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def evm_instruction_set_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def evm_instruction_set_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evm_instruction_set_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evm_instruction_set_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def evm_instruction_set_protocol : IGProtocol evm_instruction_set_s0 evm_instruction_set_s23 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct evm_instruction_set_s9 evm_instruction_set_s9 = evm_instruction_set_s9 (idempotent)\n  (.seq (.arrow evm_instruction_set_l0 evm_instruction_set_s0 evm_instruction_set_s1) (.seq (.arrow evm_instruction_set_l1 evm_instruction_set_s1 evm_instruction_set_s2) (.seq (.arrow evm_instruction_set_l2 evm_instruction_set_s2 evm_instruction_set_s3) (.seq (.arrow evm_instruction_set_l3 evm_instruction_set_s3 evm_instruction_set_s4) (.seq (.arrow evm_instruction_set_l4 evm_instruction_set_s4 evm_instruction_set_s5) (.seq (.prod (.arrow evm_instruction_set_l5 evm_instruction_set_s5 evm_instruction_set_s9) (.arrow evm_instruction_set_l5 evm_instruction_set_s5 evm_instruction_set_s9)) (.seq (.arrow evm_instruction_set_l9 evm_instruction_set_s9 evm_instruction_set_s9) (.seq (.arrow evm_instruction_set_l9 evm_instruction_set_s9 evm_instruction_set_s10) (.seq (.arrow evm_instruction_set_l10 evm_instruction_set_s10 evm_instruction_set_s11) (.seq (.arrow evm_instruction_set_l11 evm_instruction_set_s11 evm_instruction_set_s12) (.seq (.arrow evm_instruction_set_l12 evm_instruction_set_s12 evm_instruction_set_s13) (.seq (.arrow evm_instruction_set_l13 evm_instruction_set_s13 evm_instruction_set_s14) (.seq (.arrow evm_instruction_set_l14 evm_instruction_set_s14 evm_instruction_set_s15) (.seq (.arrow evm_instruction_set_l15 evm_instruction_set_s15 evm_instruction_set_s16) (.seq (.arrow evm_instruction_set_l16 evm_instruction_set_s16 evm_instruction_set_s17) (.seq (.arrow evm_instruction_set_l17 evm_instruction_set_s17 evm_instruction_set_s18) (.seq (.arrow evm_instruction_set_l18 evm_instruction_set_s18 evm_instruction_set_s19) (.seq (.arrow evm_instruction_set_l19 evm_instruction_set_s19 evm_instruction_set_s20) (.seq (.arrow evm_instruction_set_l20 evm_instruction_set_s20 evm_instruction_set_s21) (.seq (.arrow evm_instruction_set_l21 evm_instruction_set_s21 evm_instruction_set_s22) (.arrow evm_instruction_set_l22 evm_instruction_set_s22 evm_instruction_set_s23)))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def evm_instruction_set_true_arm : IGProtocol evm_instruction_set_s0 evm_instruction_set_s23 :=\n  (evm_instruction_set_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def evm_instruction_set_false_arm : IGProtocol evm_instruction_set_s0 evm_instruction_set_s23 :=\n  (evm_instruction_set_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef evm_instruction_set_tier_ground : OuroboricityTier := TierFunctor.obj evm_instruction_set_s0\ndef evm_instruction_set_tier : OuroboricityTier := TierFunctor.obj evm_instruction_set_s23\n#eval evm_instruction_set_tier_ground  -- tier of the ground (pre-transformation)\n#eval evm_instruction_set_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem evm_instruction_set_frobenius :\n    igFrobeniusAlg.mul evm_instruction_set_s0 evm_instruction_set_s0 = evm_instruction_set_s0 :=\n  igFrobAlg_self_fusion evm_instruction_set_s0\n",
+  "glyph_word": "⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢>⋈>⋈∈⊤>⋈∋⊥>⋈∋⊞⊡⋈<⊙>⋈⊤⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   >   AFWD     AFWD          N →     T\n    3   ⋈   CLINK    CLINK         T →     T\n    4   >   AFWD     AFWD          T →     T\n    5   ⋈   CLINK    CLINK         T →     T\n    6   ∈   FSPLIT   FSPLIT3       T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   >   AFWD     AFWD          T →     T\n    9   ⋈   CLINK    CLINK         T →     T\n   10   ∋   FFUSE    FFUSE3        T →     T\n   11   ⊥   EVALF    EVALF         T →    TF\n   12   >   AFWD     AFWD         TF →    TF\n   13   ⋈   CLINK    CLINK        TF →    TF\n   14   ∋   FFUSE    FFUSE3       TF →    TF\n   15   ⊞   ENGAGR   EVALI        TF →     A\n   16   ⊡   IFIX     IFIX          A →     A\n   17   ⋈   CLINK    CLINK         A →     A\n   18   <   AREV     AREV          A →     A\n   19   ⊙   IMSCRIB  IMSCRIB       A →     A\n   20   >   AFWD     AFWD          A →     A\n   21   ⋈   CLINK    CLINK         A →     A\n   22   ⊤   EVALT    EVALT         A →     A\n   23   ⊡   IFIX     IFIX          A →     A\n   24   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: F — FFUSE3 at step 10 has no FSPLIT3 to pair — ill-typed\n  ⚠ Not fully closed",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ≻ → ⋈ → ∈ → ⊤ → ≻ → ⋈ → ∋ → ⊥ → ≻ → ⋈ → ∋ → ⊞ → ⊡ → ⋈ → ≺ → ⊙ → ≻ → ⋈ → ⊤ → ⊡ → ⊣\n-- Class: evm_instruction_set\n-- Fingerprint: sig=(15,3,4,2)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=24\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(5, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑱  | forward morphism — bidirectional arrow\n--   [2] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [3] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [4] ⋈     fid    := 𐑱               𐑾 → 𐑚  | composition — regime coherence\n--   [5] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑖  | fuse μ — assembly mode\n--   [10] ⊥     chir   := 𐑖               𐑙 → 𐑾  | evaluate-false — chirality check\n--   [11] ≻      rel    := 𐑾               𐑖 → 𐑱  | forward morphism — bidirectional arrow\n--   [12] ⋈     fid    := 𐑱               𐑾 → 𐑙  | composition — regime coherence\n--   [13] ∋     stoi   := 𐑙               𐑱 → 𐑳  | fuse μ — assembly mode\n--   [14] ⊞    stoi   := 𐑳               𐑙 → 𐑭  | engage paradox — B-state, both arms\n--   [15] ⊡      prot   := 𐑭               𐑳 → 𐑱  | irreversible fixation — winding number\n--   [16] ⋈     fid    := 𐑱               𐑭 → 𐑗  | composition — regime coherence\n--   [17] ≺      pol    := 𐑗               𐑱 → 𐑠  | reverse morphism — parity flip\n--   [18] ⊙   gram   := 𐑠               𐑗 → 𐑾  | identity — self-imscription\n--   [19] ≻      rel    := 𐑾               𐑠 → 𐑱  | forward morphism — bidirectional arrow\n--   [20] ⋈     fid    := 𐑱               𐑾 → ⊙  | composition — regime coherence\n--   [21] ⊤     crit   := ⊙               𐑱 → 𐑭  | evaluate-true — criticality gate open\n--   [22] ⊡      prot   := 𐑭               ⊙ → 𐑡  | irreversible fixation — winding number\n--   [23] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def evm_instruction_set_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def evm_instruction_set_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def evm_instruction_set_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def evm_instruction_set_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def evm_instruction_set_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evm_instruction_set_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def evm_instruction_set_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def evm_instruction_set_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def evm_instruction_set_protocol : IGProtocol evm_instruction_set_s0 evm_instruction_set_s23 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct evm_instruction_set_s9 evm_instruction_set_s9 = evm_instruction_set_s9 (idempotent)\n  (.seq (.arrow evm_instruction_set_l0 evm_instruction_set_s0 evm_instruction_set_s1) (.seq (.arrow evm_instruction_set_l1 evm_instruction_set_s1 evm_instruction_set_s2) (.seq (.arrow evm_instruction_set_l2 evm_instruction_set_s2 evm_instruction_set_s3) (.seq (.arrow evm_instruction_set_l3 evm_instruction_set_s3 evm_instruction_set_s4) (.seq (.arrow evm_instruction_set_l4 evm_instruction_set_s4 evm_instruction_set_s5) (.seq (.prod (.arrow evm_instruction_set_l5 evm_instruction_set_s5 evm_instruction_set_s9) (.arrow evm_instruction_set_l5 evm_instruction_set_s5 evm_instruction_set_s9)) (.seq (.arrow evm_instruction_set_l9 evm_instruction_set_s9 evm_instruction_set_s9) (.seq (.arrow evm_instruction_set_l9 evm_instruction_set_s9 evm_instruction_set_s10) (.seq (.arrow evm_instruction_set_l10 evm_instruction_set_s10 evm_instruction_set_s11) (.seq (.arrow evm_instruction_set_l11 evm_instruction_set_s11 evm_instruction_set_s12) (.seq (.arrow evm_instruction_set_l12 evm_instruction_set_s12 evm_instruction_set_s13) (.seq (.arrow evm_instruction_set_l13 evm_instruction_set_s13 evm_instruction_set_s14) (.seq (.arrow evm_instruction_set_l14 evm_instruction_set_s14 evm_instruction_set_s15) (.seq (.arrow evm_instruction_set_l15 evm_instruction_set_s15 evm_instruction_set_s16) (.seq (.arrow evm_instruction_set_l16 evm_instruction_set_s16 evm_instruction_set_s17) (.seq (.arrow evm_instruction_set_l17 evm_instruction_set_s17 evm_instruction_set_s18) (.seq (.arrow evm_instruction_set_l18 evm_instruction_set_s18 evm_instruction_set_s19) (.seq (.arrow evm_instruction_set_l19 evm_instruction_set_s19 evm_instruction_set_s20) (.seq (.arrow evm_instruction_set_l20 evm_instruction_set_s20 evm_instruction_set_s21) (.seq (.arrow evm_instruction_set_l21 evm_instruction_set_s21 evm_instruction_set_s22) (.arrow evm_instruction_set_l22 evm_instruction_set_s22 evm_instruction_set_s23)))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def evm_instruction_set_true_arm : IGProtocol evm_instruction_set_s0 evm_instruction_set_s23 :=\n  (evm_instruction_set_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def evm_instruction_set_false_arm : IGProtocol evm_instruction_set_s0 evm_instruction_set_s23 :=\n  (evm_instruction_set_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef evm_instruction_set_tier_ground : OuroboricityTier := TierFunctor.obj evm_instruction_set_s0\ndef evm_instruction_set_tier : OuroboricityTier := TierFunctor.obj evm_instruction_set_s23\n#eval evm_instruction_set_tier_ground  -- tier of the ground (pre-transformation)\n#eval evm_instruction_set_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem evm_instruction_set_frobenius :\n    igFrobeniusAlg.mul evm_instruction_set_s0 evm_instruction_set_s0 = evm_instruction_set_s0 :=\n  igFrobAlg_self_fusion evm_instruction_set_s0\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -302,7 +302,7 @@
   "grounding_failed_primitives": [],
   "banked_count_check": {
     "status": "ok",
-    "word": "⊢>⋈>⋈∈⊤>⋈∋⊥>⋈∋⊞◻⋈<⊙>⋈⊤◻⊣",
+    "word": "⊢>⋈>⋈∈⊤>⋈∋⊥>⋈∋⊞⊡⋈<⊙>⋈⊤⊡⊣",
     "exposed_clears": [],
     "weight_lost_in_the_open": 0,
     "banked_ok": true,
@@ -317,7 +317,7 @@
     "surplus_note": null,
     "remedy": null
   },
-  "grounding_reasoning": "⊣=𐑡: The Ethereum Virtual Machine's instruction set operates as a generic connected graph where opcodes form a hub-spoke or mixed connectivity pattern rather than a strict hierarchy or closed cycle.\n⊢=𐑦: The EVM's stack-based architecture collapses the entire computational state into a single linear register where the boundary (stack pointer) dictates access to the full bulk content without spatial extension.\n⊞=𐑳: The participation ratio in stoichiometry reflects the asymmetric distribution of reactant counts on opposing sides of a chemical equation.\n◻=𐑷: The Ethereum Virtual Machine is a classical, deterministic stack-based system lacking the topological invariants or non-Abelian symmetries required for any form of topological protection.\n⊙=⊙: The primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations and maximal sensitivity.\n⊥=𐑖: The Ethereum Virtual Machine's stack-based architecture enforces a persistent, structurally defined order of operations where the memory depth corresponds to the stack size, preventing thermal interconversion of state.\n≻=𐑽: The Ethereum Virtual Machine operates as a deterministic state transition mechanism where the instruction set acts as a catalyst to transform the global state without being consumed, analogous to transition-state stabilization.\n≺=𐑬: The Ethereum Virtual Machine's stack-based architecture inherently supports self-complementary operations where the same interface acts as both a donor (pushing data) and an acceptor (popping data) simultaneously.\n⋈=𐑐: The fidelity primitive ⋈ enforces strict geometric constraints to ensure near-certain firing, corresponding to high information transmission (>9 bits).\n⊤=𐑧: The high barrier to rearrangement corresponds to a kinetically frozen state where the system resists change and requires external driving to reconfigure.\n∈=𐑔: The Ethereum Virtual Machine executes state transitions that propagate globally across the entire network, affecting the shared ledger without spatial locality constraints.\n∋=𐑝: The primitive ∋ (element of) implies a strict membership requirement where all specified partners must be present simultaneously to satisfy the interaction condition.",
+  "grounding_reasoning": "⊣=𐑡: The Ethereum Virtual Machine's instruction set operates as a generic connected graph where opcodes form a hub-spoke or mixed connectivity pattern rather than a strict hierarchy or closed cycle.\n⊢=𐑦: The EVM's stack-based architecture collapses the entire computational state into a single linear register where the boundary (stack pointer) dictates access to the full bulk content without spatial extension.\n⊞=𐑳: The participation ratio in stoichiometry reflects the asymmetric distribution of reactant counts on opposing sides of a chemical equation.\n⊡=𐑷: The Ethereum Virtual Machine is a classical, deterministic stack-based system lacking the topological invariants or non-Abelian symmetries required for any form of topological protection.\n⊙=⊙: The primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations and maximal sensitivity.\n⊥=𐑖: The Ethereum Virtual Machine's stack-based architecture enforces a persistent, structurally defined order of operations where the memory depth corresponds to the stack size, preventing thermal interconversion of state.\n≻=𐑽: The Ethereum Virtual Machine operates as a deterministic state transition mechanism where the instruction set acts as a catalyst to transform the global state without being consumed, analogous to transition-state stabilization.\n≺=𐑬: The Ethereum Virtual Machine's stack-based architecture inherently supports self-complementary operations where the same interface acts as both a donor (pushing data) and an acceptor (popping data) simultaneously.\n⋈=𐑐: The fidelity primitive ⋈ enforces strict geometric constraints to ensure near-certain firing, corresponding to high information transmission (>9 bits).\n⊤=𐑧: The high barrier to rearrangement corresponds to a kinetically frozen state where the system resists change and requires external driving to reconfigure.\n∈=𐑔: The Ethereum Virtual Machine executes state transitions that propagate globally across the entire network, affecting the shared ledger without spatial locality constraints.\n∋=𐑝: The primitive ∋ (element of) implies a strict membership requirement where all specified partners must be present simultaneously to satisfy the interaction condition.",
   "lean_verified": true,
   "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
@@ -326,7 +326,7 @@
     "orbit": [
       {
         "k": 0,
-        "word": "⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣",
+        "word": "⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -334,7 +334,7 @@
       },
       {
         "k": 1,
-        "word": "≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢",
+        "word": "≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -342,7 +342,7 @@
       },
       {
         "k": 2,
-        "word": "⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻",
+        "word": "⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -350,7 +350,7 @@
       },
       {
         "k": 3,
-        "word": "≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈",
+        "word": "≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -358,7 +358,7 @@
       },
       {
         "k": 4,
-        "word": "⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻",
+        "word": "⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -366,7 +366,7 @@
       },
       {
         "k": 5,
-        "word": "∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈",
+        "word": "∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -374,7 +374,7 @@
       },
       {
         "k": 6,
-        "word": "⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈",
+        "word": "⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -382,7 +382,7 @@
       },
       {
         "k": 7,
-        "word": "≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤",
+        "word": "≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -390,7 +390,7 @@
       },
       {
         "k": 8,
-        "word": "⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻",
+        "word": "⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "Ftf",
@@ -398,7 +398,7 @@
       },
       {
         "k": 9,
-        "word": "∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈",
+        "word": "∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "Ftf",
@@ -406,7 +406,7 @@
       },
       {
         "k": 10,
-        "word": "⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋",
+        "word": "⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "Ftf",
@@ -414,7 +414,7 @@
       },
       {
         "k": 11,
-        "word": "≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥",
+        "word": "≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "Ttf",
@@ -422,7 +422,7 @@
       },
       {
         "k": 12,
-        "word": "⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻",
+        "word": "⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "tf",
@@ -430,7 +430,7 @@
       },
       {
         "k": 13,
-        "word": "∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈",
+        "word": "∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "tf",
@@ -438,7 +438,7 @@
       },
       {
         "k": 14,
-        "word": "⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋",
+        "word": "⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "tf",
@@ -446,7 +446,7 @@
       },
       {
         "k": 15,
-        "word": "◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞",
+        "word": "⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -454,7 +454,7 @@
       },
       {
         "k": 16,
-        "word": "⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻",
+        "word": "⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -462,7 +462,7 @@
       },
       {
         "k": 17,
-        "word": "≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈",
+        "word": "≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -470,7 +470,7 @@
       },
       {
         "k": 18,
-        "word": "⊙≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺",
+        "word": "⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -478,7 +478,7 @@
       },
       {
         "k": 19,
-        "word": "≻⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙",
+        "word": "≻⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -486,7 +486,7 @@
       },
       {
         "k": 20,
-        "word": "⋈⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻",
+        "word": "⋈⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -494,7 +494,7 @@
       },
       {
         "k": 21,
-        "word": "⊤◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈",
+        "word": "⊤⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -502,7 +502,7 @@
       },
       {
         "k": 22,
-        "word": "◻⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤",
+        "word": "⊡⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "T",
@@ -510,7 +510,7 @@
       },
       {
         "k": 23,
-        "word": "⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻",
+        "word": "⊣⊢≻⋈≻⋈∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡",
         "tri_ancestral_verdict": "F",
         "closed_walk": false,
         "final_register": "A",
@@ -524,7 +524,7 @@
       "topology_class": false
     },
     "canonical_k": 5,
-    "canonical_word": "∈⊤≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣⊢≻⋈≻⋈",
+    "canonical_word": "∈⊤≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣⊢≻⋈≻⋈",
     "verdict": "PHASE-BEARING — moves under ROTAT: final_register, topology_class"
   },
   "kernel_repairs": {
@@ -533,32 +533,32 @@
       {
         "glyph": "⊢",
         "position": 7,
-        "word": "⊢≻⋈≻⋈∈⊤⊢≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣"
+        "word": "⊢≻⋈≻⋈∈⊤⊢≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣"
       },
       {
         "glyph": "≺",
         "position": 7,
-        "word": "⊢≻⋈≻⋈∈⊤≺≻⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣"
+        "word": "⊢≻⋈≻⋈∈⊤≺≻⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣"
       },
       {
         "glyph": "⊢",
         "position": 8,
-        "word": "⊢≻⋈≻⋈∈⊤≻⊢⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣"
+        "word": "⊢≻⋈≻⋈∈⊤≻⊢⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣"
       },
       {
         "glyph": "≺",
         "position": 8,
-        "word": "⊢≻⋈≻⋈∈⊤≻≺⋈∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣"
+        "word": "⊢≻⋈≻⋈∈⊤≻≺⋈∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣"
       },
       {
         "glyph": "⊢",
         "position": 9,
-        "word": "⊢≻⋈≻⋈∈⊤≻⋈⊢∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣"
+        "word": "⊢≻⋈≻⋈∈⊤≻⋈⊢∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣"
       },
       {
         "glyph": "≺",
         "position": 9,
-        "word": "⊢≻⋈≻⋈∈⊤≻⋈≺∋⊥≻⋈∋⊞◻⋈≺⊙≻⋈⊤◻⊣"
+        "word": "⊢≻⋈≻⋈∈⊤≻⋈≺∋⊥≻⋈∋⊞⊡⋈≺⊙≻⋈⊤⊡⊣"
       }
     ],
     "counts": {

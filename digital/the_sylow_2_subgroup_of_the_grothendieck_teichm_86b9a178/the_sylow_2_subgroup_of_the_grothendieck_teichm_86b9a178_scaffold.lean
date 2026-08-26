@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⋈ → ◻ → ∈ → ⊤ → ⊥ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊙ → ⋈ → ⊡ → ∈ → ⊤ → ⊥ → ∋ → ⊣
 -- Class: The Sylow 2-Subgroup of the Grothendieck–Teichmüller Group
 -- Fingerprint: sig=(7,4,5,1)
 --   self_ref=False | frobenius_order=3
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [9] ⊙   gram   := 𐑠               𐑙 → 𐑱  | identity — self-imscription
 --   [10] ⋈     fid    := 𐑱               𐑠 → 𐑭  | composition — regime coherence
---   [11] ◻      prot   := 𐑭               𐑱 → 𐑚  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑱 → 𐑚  | irreversible fixation — winding number
 --   [12] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [13] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check

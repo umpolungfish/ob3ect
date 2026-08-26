@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ⋈ → ⊙ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ⋈ → ⊙ → ∋ → ⊡ → ⊣
 -- Class: The retirement of a duplicate result whose replacement is strictly stronger,
 leaving no second copy and no dangling dependent. Report the order of removal that
 never leaves the build red.
@@ -27,7 +27,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

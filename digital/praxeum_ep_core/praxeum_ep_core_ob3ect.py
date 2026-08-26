@@ -5,7 +5,7 @@ praxeum_ep_core_ob3ect.py — Self-verifying ob3ect for the Praxeum EP Platform
 CLINK Layer 3 (Molecule) ob3ect: β-carboline exceptional point platform.
 
 Algebraic closure verification: μ∘δ = id_A
-Type: ⟨⊢=𐑦; ⊣=𐑶; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑲; ∋=𐑠; ⊙=𐑻; ⊥=𐑫; ⊞=𐑳; ◻=𐑭⟩
+Type: ⟨⊢=𐑦; ⊣=𐑶; >=𐑾; <=𐑹; ⋈=𐑐; ⊤=𐑧; ∈=𐑲; ∋=𐑠; ⊙=𐑻; ⊥=𐑫; ⊞=𐑳; ⊡=𐑭⟩
 Tier: O₀  C-score: 0.0  Distance from L8 organism: 1.8571
 
 Author: Lando ⊗ ⊙perator
@@ -26,7 +26,7 @@ PRAXEUM_TUPLE = {
     "⊙": "\U0001047b",  # 𐑻 — exceptional point (tautomeric degeneracy)
     "⊥": "\U0001046b",  # 𐑫 — eternal (locked stereochemistry)
     "⊞": "\U00010473",  # 𐑳 — many heterogeneous (modulator across sites)
-    "◻": "\U0001046d",  # 𐑭 — integer winding (topological charge)
+    "⊡": "\U0001046d",  # 𐑭 — integer winding (topological charge)
 }
 
 # ─── SMILES Representation ──────────────────────────────────────

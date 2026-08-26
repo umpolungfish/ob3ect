@@ -1,5 +1,5 @@
 -- IGProtocol scaffold: VINIT → AFWD → FSPLIT → EVALT → ENGAGR → CLINK → IFIX → FFUSE → IMSCRIB → TANCH
--- Class: ◻_class_anneal_protocol: a 3-step cycle · anneal · excite · forge to map the ◻=𐑟* metastable state
+-- Class: ⊡_class_anneal_protocol: a 3-step cycle · anneal · excite · forge to map the ⊡=𐑟* metastable state
 -- Fingerprint: sig=(5,2,2,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=False | period=10

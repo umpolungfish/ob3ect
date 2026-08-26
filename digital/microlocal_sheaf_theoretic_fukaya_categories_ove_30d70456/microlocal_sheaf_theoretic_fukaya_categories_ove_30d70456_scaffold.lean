@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ⋈ → ⊙ → ≺ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ⋈ → ⊙ → ≺ → ∋ → ⊡ → ⊣
 -- Class: Microlocal Sheaf-Theoretic Fukaya Categories over Tropical Curves
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [8] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

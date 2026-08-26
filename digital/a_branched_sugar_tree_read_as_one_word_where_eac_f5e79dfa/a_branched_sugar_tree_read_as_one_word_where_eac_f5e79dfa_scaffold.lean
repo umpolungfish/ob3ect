@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ≻ → ⋈ → ⊙ → ∈ → ≻ → ⋈ → ⊙ → ⊣ → ≻ → ⋈ → ⊙ → ⊣ → ∋ → ⊤ → ⊥ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ≻ → ⋈ → ⊙ → ∈ → ≻ → ⋈ → ⊙ → ⊣ → ≻ → ⋈ → ⊙ → ⊣ → ∋ → ⊤ → ⊥ → ⊞ → ⊡ → ⊣
 -- Class: A branched sugar tree read as one word, where each branch point is a split and the reducing end is the anchor. Report how the tree's branching becomes fork/fuse structure and what closure the whole glycan carries.
 -- Fingerprint: sig=(14,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -33,7 +33,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [15] ⊤     crit   := ⊙               𐑙 → 𐑖  | evaluate-true — criticality gate open
 --   [16] ⊥     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check
 --   [17] ⊞    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms
---   [18] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [18] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [19] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ≺ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ⊙ → ◻ → ≻ → ≺ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ⊙ → ◻ → ⋈ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ≺ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ⊙ → ⊡ → ≻ → ≺ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ⊙ → ⊡ → ⋈ → ∋ → ⊣
 -- Class: true homeopathy
 -- Fingerprint: sig=(12,3,6,2)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊥     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check
 --   [8] ⊞    stoi   := 𐑳               𐑖 → 𐑠  | engage paradox — B-state, both arms
 --   [9] ⊙   gram   := 𐑠               𐑳 → 𐑭  | identity — self-imscription
---   [10] ◻      prot   := 𐑭               𐑠 → 𐑾  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑾  | irreversible fixation — winding number
 --   [11] ≻      rel    := 𐑾               𐑭 → 𐑗  | forward morphism — bidirectional arrow
 --   [12] ≺      pol    := 𐑗               𐑾 → 𐑱  | reverse morphism — parity flip
 --   [13] ⋈     fid    := 𐑱               𐑗 → 𐑚  | composition — regime coherence
@@ -34,7 +34,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [16] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [17] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [18] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
---   [19] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [19] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [20] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [21] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [22] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary

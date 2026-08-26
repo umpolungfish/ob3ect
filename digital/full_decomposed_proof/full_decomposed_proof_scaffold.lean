@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ≻ → ⊥ → ≺ → ⋈ → ⊞ → ⊙ → ∋ → ⋈ → ◻ → ⊣ → ⊙ → ⊢ → ≻ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ≻ → ⊥ → ≺ → ⋈ → ⊞ → ⊙ → ∋ → ⋈ → ⊡ → ⊣ → ⊙ → ⊢ → ≻ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ⊡ → ⊣
 -- Class: full decomposed proof
 -- Fingerprint: sig=(14,4,5,2)
 --   self_ref=False | frobenius_order=3
@@ -28,7 +28,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [11] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [12] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence
---   [13] ◻      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [14] ⊣     top    := 𐑡               𐑭 → 𐑠  | terminal object — connectivity boundary
 --   [15] ⊙   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription
 --   [16] ⊢     dim    := 𐑼               𐑠 → 𐑾  | initial object — ground of distinction
@@ -38,7 +38,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [20] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [21] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [22] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence
---   [23] ◻      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
+--   [23] ⊡      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [24] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

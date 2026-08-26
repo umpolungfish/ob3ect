@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ◻ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ⊡ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊣
 -- Class: the Mertens sum stays inside the square-root bound at every height
 -- Fingerprint: sig=(9,6,9,1)
 --   self_ref=False | frobenius_order=3
@@ -31,7 +31,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [13] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [14] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [15] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [16] ◻      prot   := 𐑭               𐑠 → 𐑾  | irreversible fixation — winding number
+--   [16] ⊡      prot   := 𐑭               𐑠 → 𐑾  | irreversible fixation — winding number
 --   [17] ≻      rel    := 𐑾               𐑭 → 𐑱  | forward morphism — bidirectional arrow
 --   [18] ⋈     fid    := 𐑱               𐑾 → 𐑚  | composition — regime coherence
 --   [19] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition

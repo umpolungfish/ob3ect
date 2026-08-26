@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ◻ → ⋈ → ∋ → ⊤ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ⊡ → ⋈ → ∋ → ⊤ → ⊣
 -- Class: collatz_cross_bound
 -- Fingerprint: sig=(6,2,4,1)
 --   self_ref=False | frobenius_order=1
@@ -23,7 +23,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [8] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [8] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [9] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [10] ∋     stoi   := 𐑙               𐑙 → ⊙  | fuse μ — assembly mode
 --   [11] ⊤     crit   := ⊙               𐑙 → 𐑡  | evaluate-true — criticality gate open

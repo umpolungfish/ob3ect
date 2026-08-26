@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊙ → ⊞ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ⊙ → ⊞ → ⊡ → ⊣
 -- Class: A structure whose divisions and mergings stand in exact balance, given as a rule that builds toward that balance rather than a test that detects it after the fact. Report what each division must pair with and how the balance is held as the structure grows.
 -- Fingerprint: sig=(15,8,9,1)
 --   self_ref=False | frobenius_order=3
@@ -46,7 +46,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [28] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [29] ⊙   gram   := 𐑠               𐑱 → 𐑳  | identity — self-imscription
 --   [30] ⊞    stoi   := 𐑳               𐑠 → 𐑭  | engage paradox — B-state, both arms
---   [31] ◻      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
+--   [31] ⊡      prot   := 𐑭               𐑳 → 𐑡  | irreversible fixation — winding number
 --   [32] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

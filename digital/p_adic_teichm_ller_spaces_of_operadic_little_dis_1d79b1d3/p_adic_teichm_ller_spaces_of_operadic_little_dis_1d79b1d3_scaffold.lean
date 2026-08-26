@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⋈ → ◻ → ≺ → ⊥ → ⊞ → ∋ → ⋈ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⋈ → ⊡ → ≺ → ⊥ → ⊞ → ∋ → ⋈ → ⊙ → ⊡ → ⊣
 -- Class: p-Adic Teichmüller Spaces of Operadic Little Disks
 -- Fingerprint: sig=(8,2,3,2)
 --   self_ref=False | frobenius_order=1
@@ -21,14 +21,14 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow
 --   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [5] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
---   [6] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [6] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [7] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [8] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [11] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [12] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [13] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [14] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ⊙ → ⋈ → ◻ → ∋ → ⊣ → ⊙
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ⊙ → ⋈ → ⊡ → ∋ → ⊣ → ⊙
 -- Class: P versus NP Theorem
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [9] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
---   [10] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [11] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode
 --   [12] ⊣     top    := 𐑡               𐑙 → 𐑠  | terminal object — connectivity boundary
 --   [13] ⊙   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊙ → ◻ → ⊥ → ≺ → ⋈ → ⊞ → ∋ → ⊣ → ⊙
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊙ → ⊡ → ⊥ → ≺ → ⋈ → ⊞ → ∋ → ⊣ → ⊙
 -- Class: riemann_zero_dichotomy
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -20,7 +20,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [3] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [4] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
---   [5] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [5] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [7] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [8] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence

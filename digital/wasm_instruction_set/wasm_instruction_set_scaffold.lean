@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⋈ → ≻ → ⊙ → ∈ → ⊤ → ≻ → ⋈ → ∋ → ∈ → ⊤ → ⊥ → ≺ → ∋ → ⊞ → ≻ → ∋ → ⋈ → ◻ → ≺ → ⊣
+-- IGProtocol scaffold: ⊢ → ⋈ → ≻ → ⊙ → ∈ → ⊤ → ≻ → ⋈ → ∋ → ∈ → ⊤ → ⊥ → ≺ → ∋ → ⊞ → ≻ → ∋ → ⋈ → ⊡ → ≺ → ⊣
 -- Class: wasm_instruction_set
 -- Fingerprint: sig=(11,5,4,1)
 --   self_ref=False | frobenius_order=3
@@ -33,7 +33,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [15] ≻      rel    := 𐑾               𐑳 → 𐑙  | forward morphism — bidirectional arrow
 --   [16] ∋     stoi   := 𐑙               𐑾 → 𐑱  | fuse μ — assembly mode
 --   [17] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence
---   [18] ◻      prot   := 𐑭               𐑱 → 𐑗  | irreversible fixation — winding number
+--   [18] ⊡      prot   := 𐑭               𐑱 → 𐑗  | irreversible fixation — winding number
 --   [19] ≺      pol    := 𐑗               𐑭 → 𐑡  | reverse morphism — parity flip
 --   [20] ⊣     top    := 𐑡               𐑗 → 𐑼  | terminal object — connectivity boundary
 

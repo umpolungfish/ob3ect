@@ -90,8 +90,8 @@
         "justification": "The holding of both asymmetric operations (halving and tripling) in a paradice state, ensuring the system remains balanced during the transition.",
         "rejected_candidates": []
       },
-      "◻": {
-        "opcode": "◻",
+      "⊡": {
+        "opcode": "⊡",
         "chosen_element": "trajectory_log_entry",
         "justification": "The permanent, append-only record of the current step in the trajectory, creating an immutable topological invariant.",
         "rejected_candidates": []
@@ -172,7 +172,7 @@
         },
         {
           "step_num": 11,
-          "opcode": "◻",
+          "opcode": "⊡",
           "domain_action": "Record the current step in the trajectory log as an immutable topological invariant."
         },
         {
@@ -217,7 +217,7 @@
         },
         {
           "step_num": 20,
-          "opcode": "◻",
+          "opcode": "⊡",
           "domain_action": "Fix the step in the permanent record."
         },
         {
@@ -245,9 +245,9 @@
       "failure_mode": ""
     }
   },
-  "glyph_word": "⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣",
-  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤>⊥<⊞∋⋈⊙◻∈⊤>⊥<∋⋈⊙◻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   >   AFWD     AFWD          T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   <   AREV     AREV         TF →     N\n    7   ⊞   ENGAGR   EVALI         N →    tf\n    8   ∋   FFUSE    FFUSE3       tf →     A\n    9   ⋈   CLINK    CLINK         A →     A\n   10   ⊙   IMSCRIB  IMSCRIB       A →     A\n   11   ◻   IFIX     IFIX          A →     A\n   12   ∈   FSPLIT   FSPLIT3       A →     A\n   13   ⊤   EVALT    EVALT         A →     A\n   14   >   AFWD     AFWD          A →     A\n   15   ⊥   EVALF    EVALF         A →     A\n   16   <   AREV     AREV          A →     A\n   17   ∋   FFUSE    FFUSE3        A →     A\n   18   ⋈   CLINK    CLINK         A →     A\n   19   ⊙   IMSCRIB  IMSCRIB       A →     A\n   20   ◻   IFIX     IFIX          A →     A\n   21   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ⚠ Not fully closed",
-  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ◻ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ◻ → ⊣\n-- Class: Recognize the new state as the input for the next iteration, maintaining self-reference at the critical threshold.\n-- Fingerprint: sig=(10,4,5,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=21\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(1, 7), (11, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [8] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [9] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [10] ◻      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [15] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [16] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [17] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [18] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [19] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [20] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def recognize_the_new_state_as_the_input_87c7e3_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def recognize_the_new_state_as_the_input_87c7e3_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def recognize_the_new_state_as_the_input_87c7e3_protocol : IGProtocol recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct recognize_the_new_state_as_the_input_87c7e3_s7 recognize_the_new_state_as_the_input_87c7e3_s7 = recognize_the_new_state_as_the_input_87c7e3_s7 (idempotent)\n  (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l0 recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s1) (.seq (.prod (.arrow recognize_the_new_state_as_the_input_87c7e3_l1 recognize_the_new_state_as_the_input_87c7e3_s1 recognize_the_new_state_as_the_input_87c7e3_s7) (.arrow recognize_the_new_state_as_the_input_87c7e3_l1 recognize_the_new_state_as_the_input_87c7e3_s1 recognize_the_new_state_as_the_input_87c7e3_s7)) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l7 recognize_the_new_state_as_the_input_87c7e3_s7 recognize_the_new_state_as_the_input_87c7e3_s7) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l7 recognize_the_new_state_as_the_input_87c7e3_s7 recognize_the_new_state_as_the_input_87c7e3_s8) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l8 recognize_the_new_state_as_the_input_87c7e3_s8 recognize_the_new_state_as_the_input_87c7e3_s9) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l9 recognize_the_new_state_as_the_input_87c7e3_s9 recognize_the_new_state_as_the_input_87c7e3_s10) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l10 recognize_the_new_state_as_the_input_87c7e3_s10 recognize_the_new_state_as_the_input_87c7e3_s11) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l11 recognize_the_new_state_as_the_input_87c7e3_s11 recognize_the_new_state_as_the_input_87c7e3_s12) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l12 recognize_the_new_state_as_the_input_87c7e3_s12 recognize_the_new_state_as_the_input_87c7e3_s13) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l13 recognize_the_new_state_as_the_input_87c7e3_s13 recognize_the_new_state_as_the_input_87c7e3_s14) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l14 recognize_the_new_state_as_the_input_87c7e3_s14 recognize_the_new_state_as_the_input_87c7e3_s15) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l15 recognize_the_new_state_as_the_input_87c7e3_s15 recognize_the_new_state_as_the_input_87c7e3_s16) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l16 recognize_the_new_state_as_the_input_87c7e3_s16 recognize_the_new_state_as_the_input_87c7e3_s17) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l17 recognize_the_new_state_as_the_input_87c7e3_s17 recognize_the_new_state_as_the_input_87c7e3_s18) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l18 recognize_the_new_state_as_the_input_87c7e3_s18 recognize_the_new_state_as_the_input_87c7e3_s19) (.arrow recognize_the_new_state_as_the_input_87c7e3_l19 recognize_the_new_state_as_the_input_87c7e3_s19 recognize_the_new_state_as_the_input_87c7e3_s20))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def recognize_the_new_state_as_the_input_87c7e3_true_arm : IGProtocol recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s20 :=\n  (recognize_the_new_state_as_the_input_87c7e3_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def recognize_the_new_state_as_the_input_87c7e3_false_arm : IGProtocol recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s20 :=\n  (recognize_the_new_state_as_the_input_87c7e3_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef recognize_the_new_state_as_the_input_87c7e3_tier_ground : OuroboricityTier := TierFunctor.obj recognize_the_new_state_as_the_input_87c7e3_s0\ndef recognize_the_new_state_as_the_input_87c7e3_tier : OuroboricityTier := TierFunctor.obj recognize_the_new_state_as_the_input_87c7e3_s20\n#eval recognize_the_new_state_as_the_input_87c7e3_tier_ground  -- tier of the ground (pre-transformation)\n#eval recognize_the_new_state_as_the_input_87c7e3_tier  -- the Grammar's own verdict on the closed object\n",
+  "glyph_word": "⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤>⊥<⊞∋⋈⊙⊡∈⊤>⊥<∋⋈⊙⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   >   AFWD     AFWD          T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   <   AREV     AREV         TF →     N\n    7   ⊞   ENGAGR   EVALI         N →    tf\n    8   ∋   FFUSE    FFUSE3       tf →     A\n    9   ⋈   CLINK    CLINK         A →     A\n   10   ⊙   IMSCRIB  IMSCRIB       A →     A\n   11   ⊡   IFIX     IFIX          A →     A\n   12   ∈   FSPLIT   FSPLIT3       A →     A\n   13   ⊤   EVALT    EVALT         A →     A\n   14   >   AFWD     AFWD          A →     A\n   15   ⊥   EVALF    EVALF         A →     A\n   16   <   AREV     AREV          A →     A\n   17   ∋   FFUSE    FFUSE3        A →     A\n   18   ⋈   CLINK    CLINK         A →     A\n   19   ⊙   IMSCRIB  IMSCRIB       A →     A\n   20   ⊡   IFIX     IFIX          A →     A\n   21   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ⚠ Not fully closed",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⋈ → ⊙ → ⊡ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⋈ → ⊙ → ⊡ → ⊣\n-- Class: Recognize the new state as the input for the next iteration, maintaining self-reference at the critical threshold.\n-- Fingerprint: sig=(10,4,5,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=21\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(1, 7), (11, 16)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [8] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [9] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑚  | irreversible fixation — winding number\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [15] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [16] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [17] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence\n--   [18] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [19] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [20] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def recognize_the_new_state_as_the_input_87c7e3_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def recognize_the_new_state_as_the_input_87c7e3_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def recognize_the_new_state_as_the_input_87c7e3_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def recognize_the_new_state_as_the_input_87c7e3_protocol : IGProtocol recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s20 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct recognize_the_new_state_as_the_input_87c7e3_s7 recognize_the_new_state_as_the_input_87c7e3_s7 = recognize_the_new_state_as_the_input_87c7e3_s7 (idempotent)\n  (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l0 recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s1) (.seq (.prod (.arrow recognize_the_new_state_as_the_input_87c7e3_l1 recognize_the_new_state_as_the_input_87c7e3_s1 recognize_the_new_state_as_the_input_87c7e3_s7) (.arrow recognize_the_new_state_as_the_input_87c7e3_l1 recognize_the_new_state_as_the_input_87c7e3_s1 recognize_the_new_state_as_the_input_87c7e3_s7)) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l7 recognize_the_new_state_as_the_input_87c7e3_s7 recognize_the_new_state_as_the_input_87c7e3_s7) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l7 recognize_the_new_state_as_the_input_87c7e3_s7 recognize_the_new_state_as_the_input_87c7e3_s8) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l8 recognize_the_new_state_as_the_input_87c7e3_s8 recognize_the_new_state_as_the_input_87c7e3_s9) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l9 recognize_the_new_state_as_the_input_87c7e3_s9 recognize_the_new_state_as_the_input_87c7e3_s10) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l10 recognize_the_new_state_as_the_input_87c7e3_s10 recognize_the_new_state_as_the_input_87c7e3_s11) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l11 recognize_the_new_state_as_the_input_87c7e3_s11 recognize_the_new_state_as_the_input_87c7e3_s12) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l12 recognize_the_new_state_as_the_input_87c7e3_s12 recognize_the_new_state_as_the_input_87c7e3_s13) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l13 recognize_the_new_state_as_the_input_87c7e3_s13 recognize_the_new_state_as_the_input_87c7e3_s14) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l14 recognize_the_new_state_as_the_input_87c7e3_s14 recognize_the_new_state_as_the_input_87c7e3_s15) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l15 recognize_the_new_state_as_the_input_87c7e3_s15 recognize_the_new_state_as_the_input_87c7e3_s16) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l16 recognize_the_new_state_as_the_input_87c7e3_s16 recognize_the_new_state_as_the_input_87c7e3_s17) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l17 recognize_the_new_state_as_the_input_87c7e3_s17 recognize_the_new_state_as_the_input_87c7e3_s18) (.seq (.arrow recognize_the_new_state_as_the_input_87c7e3_l18 recognize_the_new_state_as_the_input_87c7e3_s18 recognize_the_new_state_as_the_input_87c7e3_s19) (.arrow recognize_the_new_state_as_the_input_87c7e3_l19 recognize_the_new_state_as_the_input_87c7e3_s19 recognize_the_new_state_as_the_input_87c7e3_s20))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def recognize_the_new_state_as_the_input_87c7e3_true_arm : IGProtocol recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s20 :=\n  (recognize_the_new_state_as_the_input_87c7e3_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def recognize_the_new_state_as_the_input_87c7e3_false_arm : IGProtocol recognize_the_new_state_as_the_input_87c7e3_s0 recognize_the_new_state_as_the_input_87c7e3_s20 :=\n  (recognize_the_new_state_as_the_input_87c7e3_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef recognize_the_new_state_as_the_input_87c7e3_tier_ground : OuroboricityTier := TierFunctor.obj recognize_the_new_state_as_the_input_87c7e3_s0\ndef recognize_the_new_state_as_the_input_87c7e3_tier : OuroboricityTier := TierFunctor.obj recognize_the_new_state_as_the_input_87c7e3_s20\n#eval recognize_the_new_state_as_the_input_87c7e3_tier_ground  -- tier of the ground (pre-transformation)\n#eval recognize_the_new_state_as_the_input_87c7e3_tier  -- the Grammar's own verdict on the closed object\n",
   "topology_report": {
     "topology_class": "flat_chain",
     "nesting_depth": 0,
@@ -288,7 +288,7 @@
   "grounding_failed_primitives": [],
   "banked_count_check": {
     "status": "ok",
-    "word": "⊢∈⊤>⊥<⊞∋⋈⊙◻∈⊤>⊥<∋⋈⊙◻⊣",
+    "word": "⊢∈⊤>⊥<⊞∋⋈⊙⊡∈⊤>⊥<∋⋈⊙⊡⊣",
     "exposed_clears": [],
     "weight_lost_in_the_open": 0,
     "banked_ok": true,
@@ -303,7 +303,7 @@
     "surplus_note": null,
     "remedy": null
   },
-  "grounding_reasoning": "⊣=𐑥: The requirement to maintain self-reference at a critical threshold implies a cyclic closure where the output loops back as input, forming a figure-8 or double-well topology.\n⊢=𐑦: The requirement to maintain self-reference at a critical threshold while collapsing the boundary and bulk into a single register defines a scale-collapse operating space.\n⊞=𐑕: The assignment of stoichiometry implies a higher-order symmetric organization involving multiple units, consistent with oligomers or committees.\n◻=𐑴: The assignment of the primitive ◻ (protection) indicates a Z2 topological invariant that prevents continuous deformation to a trivial state without crossing a phase boundary.\n⊙=⊙: The explicit assignment of the primitive ⊙ (criticality_phase) and the instruction to maintain self-reference at the critical threshold indicate the system is currently operating at the critical point.\n⊥=𐑖: The requirement to maintain self-reference at a critical threshold implies a structurally enforced state with multiple axes that preserves memory depth beyond a single step.\n>=𐑽: The mechanism stabilizes the critical threshold for self-reference without being consumed, acting as a catalytic bridge between iterations.\n<=𐑹: The critical threshold with exact self-reference and identity composition (μ∘δ=id) defines the special Frobenius state with Z2 symmetry.\n⋈=𐑐: The requirement to maintain self-reference at a critical threshold implies a high-fidelity, geometry-enforcing mechanism that ensures near-certain firing to preserve the system's state.\n⊤=𐑧: The requirement for external driving to rearrange indicates a high kinetic barrier where the system is effectively frozen without intervention.\n∈=𐑔: Maintaining self-reference at a critical threshold implies scale-free dynamics where interactions propagate globally across the entire system.\n∋=𐑝: The requirement to maintain self-reference at a critical threshold implies a strict dependency where all necessary partners must be present simultaneously to sustain the state.",
+  "grounding_reasoning": "⊣=𐑥: The requirement to maintain self-reference at a critical threshold implies a cyclic closure where the output loops back as input, forming a figure-8 or double-well topology.\n⊢=𐑦: The requirement to maintain self-reference at a critical threshold while collapsing the boundary and bulk into a single register defines a scale-collapse operating space.\n⊞=𐑕: The assignment of stoichiometry implies a higher-order symmetric organization involving multiple units, consistent with oligomers or committees.\n⊡=𐑴: The assignment of the primitive ⊡ (protection) indicates a Z2 topological invariant that prevents continuous deformation to a trivial state without crossing a phase boundary.\n⊙=⊙: The explicit assignment of the primitive ⊙ (criticality_phase) and the instruction to maintain self-reference at the critical threshold indicate the system is currently operating at the critical point.\n⊥=𐑖: The requirement to maintain self-reference at a critical threshold implies a structurally enforced state with multiple axes that preserves memory depth beyond a single step.\n>=𐑽: The mechanism stabilizes the critical threshold for self-reference without being consumed, acting as a catalytic bridge between iterations.\n<=𐑹: The critical threshold with exact self-reference and identity composition (μ∘δ=id) defines the special Frobenius state with Z2 symmetry.\n⋈=𐑐: The requirement to maintain self-reference at a critical threshold implies a high-fidelity, geometry-enforcing mechanism that ensures near-certain firing to preserve the system's state.\n⊤=𐑧: The requirement for external driving to rearrange indicates a high kinetic barrier where the system is effectively frozen without intervention.\n∈=𐑔: Maintaining self-reference at a critical threshold implies scale-free dynamics where interactions propagate globally across the entire system.\n∋=𐑝: The requirement to maintain self-reference at a critical threshold implies a strict dependency where all necessary partners must be present simultaneously to sustain the state.",
   "lean_verified": true,
   "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
   "rotat_audit": {
@@ -312,7 +312,7 @@
     "orbit": [
       {
         "k": 0,
-        "word": "⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣",
+        "word": "⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -320,7 +320,7 @@
       },
       {
         "k": 1,
-        "word": "∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢",
+        "word": "∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -328,7 +328,7 @@
       },
       {
         "k": 2,
-        "word": "⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈",
+        "word": "⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -336,7 +336,7 @@
       },
       {
         "k": 3,
-        "word": "≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤",
+        "word": "≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -344,7 +344,7 @@
       },
       {
         "k": 4,
-        "word": "⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻",
+        "word": "⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -352,7 +352,7 @@
       },
       {
         "k": 5,
-        "word": "≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥",
+        "word": "≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -360,7 +360,7 @@
       },
       {
         "k": 6,
-        "word": "⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺",
+        "word": "⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "tf",
@@ -368,7 +368,7 @@
       },
       {
         "k": 7,
-        "word": "∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞",
+        "word": "∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -376,7 +376,7 @@
       },
       {
         "k": 8,
-        "word": "⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋",
+        "word": "⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -384,7 +384,7 @@
       },
       {
         "k": 9,
-        "word": "⊙◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈",
+        "word": "⊙⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -392,7 +392,7 @@
       },
       {
         "k": 10,
-        "word": "◻∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙",
+        "word": "⊡∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -400,7 +400,7 @@
       },
       {
         "k": 11,
-        "word": "∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻",
+        "word": "∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "TF",
@@ -408,7 +408,7 @@
       },
       {
         "k": 12,
-        "word": "⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈",
+        "word": "⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -416,7 +416,7 @@
       },
       {
         "k": 13,
-        "word": "≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤",
+        "word": "≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -424,7 +424,7 @@
       },
       {
         "k": 14,
-        "word": "⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻",
+        "word": "⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -432,7 +432,7 @@
       },
       {
         "k": 15,
-        "word": "≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥",
+        "word": "≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -440,7 +440,7 @@
       },
       {
         "k": 16,
-        "word": "∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺",
+        "word": "∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -448,7 +448,7 @@
       },
       {
         "k": 17,
-        "word": "⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋",
+        "word": "⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -456,7 +456,7 @@
       },
       {
         "k": 18,
-        "word": "⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈",
+        "word": "⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -464,7 +464,7 @@
       },
       {
         "k": 19,
-        "word": "◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙",
+        "word": "⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "T",
@@ -472,7 +472,7 @@
       },
       {
         "k": 20,
-        "word": "⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻∈⊤≻⊥≺∋⋈⊙◻",
+        "word": "⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡∈⊤≻⊥≺∋⋈⊙⊡",
         "tri_ancestral_verdict": "T",
         "closed_walk": false,
         "final_register": "A",
@@ -486,7 +486,7 @@
       "topology_class": true
     },
     "canonical_k": 11,
-    "canonical_word": "∈⊤≻⊥≺∋⋈⊙◻⊣⊢∈⊤≻⊥≺⊞∋⋈⊙◻",
+    "canonical_word": "∈⊤≻⊥≺∋⋈⊙⊡⊣⊢∈⊤≻⊥≺⊞∋⋈⊙⊡",
     "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
   },
   "kernel_repairs": null

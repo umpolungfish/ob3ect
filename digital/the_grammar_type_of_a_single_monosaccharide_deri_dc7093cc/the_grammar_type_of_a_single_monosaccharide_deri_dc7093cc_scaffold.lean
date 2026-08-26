@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ⊣ → ⊙ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ◻ → ≺ → ⊙ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ⊣ → ⊙ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ⊡ → ≺ → ⊙ → ⊣
 -- Class: The grammar type of a single monosaccharide, derived from the functional groups its ring carries rather than assigned. Report the type of each mammalian N-glycan sugar and which functional group forces each mark.
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [8] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [9] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence
---   [10] ◻      prot   := 𐑭               𐑱 → 𐑗  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑱 → 𐑗  | irreversible fixation — winding number
 --   [11] ≺      pol    := 𐑗               𐑭 → 𐑠  | reverse morphism — parity flip
 --   [12] ⊙   gram   := 𐑠               𐑗 → 𐑡  | identity — self-imscription
 --   [13] ⊣     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary

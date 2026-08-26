@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ⊙ → ≻ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ⊙ → ≻ → ∈ → ⊤ → ≻ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊤ → ⊥ → ⊡ → ⊣
 -- Class: lossless extraction of secp256k1 secret key from corresponding secp256k1 public key via nesting and advanced First Degree Entailment and Lattice manipulation that transcend what is conventionally thought possible
 -- Fingerprint: sig=(8,2,5,1)
 --   self_ref=False | frobenius_order=1
@@ -29,7 +29,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [11] ∋     stoi   := 𐑙               𐑙 → ⊙  | fuse μ — assembly mode
 --   [12] ⊤     crit   := ⊙               𐑙 → 𐑖  | evaluate-true — criticality gate open
 --   [13] ⊥     chir   := 𐑖               ⊙ → 𐑭  | evaluate-false — chirality check
---   [14] ◻      prot   := 𐑭               𐑖 → 𐑡  | irreversible fixation — winding number
+--   [14] ⊡      prot   := 𐑭               𐑖 → 𐑡  | irreversible fixation — winding number
 --   [15] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

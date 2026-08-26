@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ∋ → ◻ → ⋈ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ≻ → ⊤ → ⋈ → ≺ → ⊥ → ⊞ → ∋ → ⊡ → ⋈ → ⊙ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ⊡ → ⊣
 -- Class: Homotopy Type-Theoretic Models of Inaccessible Infinity-Topoi
 -- Fingerprint: sig=(10,4,6,2)
 --   self_ref=False | frobenius_order=3
@@ -25,7 +25,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [10] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [11] ⋈     fid    := 𐑱               𐑭 → 𐑠  | composition — regime coherence
 --   [12] ⊙   gram   := 𐑠               𐑱 → 𐑚  | identity — self-imscription
 --   [13] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
@@ -35,7 +35,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [17] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [18] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [19] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [20] ◻      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
+--   [20] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
 --   [21] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

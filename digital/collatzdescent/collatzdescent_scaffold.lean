@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ≻ → ≺ → ◻ → ⊞ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ⊥ → ∋ → ⋈ → ≻ → ≺ → ⊡ → ⊞ → ⊣
 -- Class: collatzdescent
 -- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -24,7 +24,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [6] ⋈     fid    := 𐑱               𐑙 → 𐑾  | composition — regime coherence
 --   [7] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow
 --   [8] ≺      pol    := 𐑗               𐑾 → 𐑭  | reverse morphism — parity flip
---   [9] ◻      prot   := 𐑭               𐑗 → 𐑳  | irreversible fixation — winding number
+--   [9] ⊡      prot   := 𐑭               𐑗 → 𐑳  | irreversible fixation — winding number
 --   [10] ⊞    stoi   := 𐑳               𐑭 → 𐑡  | engage paradox — B-state, both arms
 --   [11] ⊣     top    := 𐑡               𐑳 → 𐑼  | terminal object — connectivity boundary
 

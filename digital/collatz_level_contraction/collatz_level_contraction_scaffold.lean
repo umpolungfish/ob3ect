@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ≺ → ⋈ → ⊙ → ⊤ → ⊥ → ⊞ → ◻ → ∋ → ⋈ → ◻
+-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ≺ → ⋈ → ⊙ → ⊤ → ⊥ → ⊞ → ⊡ → ∋ → ⋈ → ⊡
 -- Class: collatz_level_contraction
 -- Fingerprint: sig=(7,2,3,2)
 --   self_ref=False | frobenius_order=1
@@ -25,10 +25,10 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [7] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
 --   [8] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
 --   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
---   [10] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [10] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [11] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [12] ⋈     fid    := 𐑱               𐑙 → 𐑭  | composition — regime coherence
---   [13] ◻      prot   := 𐑭               𐑱 → 𐑼  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑱 → 𐑼  | irreversible fixation — winding number
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def collatz_level_contraction_s0 : Imscription :=

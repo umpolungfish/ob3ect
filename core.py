@@ -48,7 +48,7 @@ class RegisterState(Enum):
 # surfacing wherever inclosure closes on itself.
 # Authority is MoDoT ask_native/src/imasm.rs Token::code(); this mirrors it.
 GLYPH = {"VINIT":"⊢","TANCH":"⊣","AFWD":"≻","AREV":"≺","CLINK":"⋈","IMSCRIB":"⊙",
-         "FSPLIT":"∈","FFUSE":"∋","EVALT":"⊤","EVALF":"⊥","ENGAGR":"⊞","IFIX":"◻"}
+         "FSPLIT":"∈","FFUSE":"∋","EVALT":"⊤","EVALF":"⊥","ENGAGR":"⊞","IFIX":"⊡"}
 
 # The mark is the name. VINIT/TANCH/FSPLIT are how the twelve are SPELLED for a
 # keyboard, not what they are, and an artifact that ships the spelling makes the
@@ -110,7 +110,7 @@ def _mark_frobenius(d):
     return d
 
 def glyph_word(ops):
-    """Glue an opcode sequence into its single-glyph IMASM word: ⊢⊙⋈∈>⊤<⊞⊥∋◻◻⊣.
+    """Glue an opcode sequence into its single-glyph IMASM word: ⊢⊙⋈∈>⊤<⊞⊥∋⊡⊡⊣.
 
     The word is the NODE LIST only — the edges are not in it, so the same word wired two
     ways is two different programs. An unknown opcode renders as ? rather than being

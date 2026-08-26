@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⊞ → ∋ → ⋈ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⊞ → ∋ → ⋈ → ⊙ → ⊡ → ⊣
 -- Class: Apply the halving operation if the condition is affirmed.
 -- Fingerprint: sig=(5,2,2,1)
 --   self_ref=False | frobenius_order=1
@@ -23,7 +23,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [5] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [6] ⋈     fid    := 𐑱               𐑙 → 𐑠  | composition — regime coherence
 --   [7] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription
---   [8] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [8] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [9] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

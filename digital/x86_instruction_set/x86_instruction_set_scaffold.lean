@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ≻ → ⊤ → ⊥ → ∈ → ⊞ → ≻ → ≺ → ⋈ → ∋ → ◻ → ≺ → ⋈ → ≺ → ⊣ → ⊙ → ⊢
+-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ≻ → ⊤ → ⊥ → ∈ → ⊞ → ≻ → ≺ → ⋈ → ∋ → ⊡ → ≺ → ⋈ → ≺ → ⊣ → ⊙ → ⊢
 -- Class: x86_instruction_set
 -- Fingerprint: sig=(15,2,3,1)
 --   self_ref=True | frobenius_order=1
@@ -29,7 +29,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [11] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip
 --   [12] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
 --   [13] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [14] ◻      prot   := 𐑭               𐑙 → 𐑗  | irreversible fixation — winding number
+--   [14] ⊡      prot   := 𐑭               𐑙 → 𐑗  | irreversible fixation — winding number
 --   [15] ≺      pol    := 𐑗               𐑭 → 𐑱  | reverse morphism — parity flip
 --   [16] ⋈     fid    := 𐑱               𐑗 → 𐑗  | composition — regime coherence
 --   [17] ≺      pol    := 𐑗               𐑱 → 𐑡  | reverse morphism — parity flip
@@ -39,8 +39,8 @@ open Dimensionality Topology Relational Polarity Grammar
 
 -- ── Back-propagation edges (self-referential loop) ──────────────────────
 --   ⊙ positions: [4, 19]
---   ◻    positions: [14]
---   Back-prop: ⊙→◻ (LinFix) — igProtoCopy_isDagger axiom applies
+--   ⊡    positions: [14]
+--   Back-prop: ⊙→⊡ (LinFix) — igProtoCopy_isDagger axiom applies
 --   Weighted: ⋈→⊙ — feeds next winding via .seq after .prod
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
@@ -175,5 +175,5 @@ theorem x86_instruction_set_loop_closure :
       loop.period = 21 ∧ loop.depth = 1 := by
   exact ⟨_, rfl, by decide, by decide⟩
 
--- igProtoCopy_isDagger licenses ⊙→◻ burn
+-- igProtoCopy_isDagger licenses ⊙→⊡ burn
 -- ⋈→⊙ weighted edge: .seq continuation

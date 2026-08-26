@@ -145,7 +145,7 @@ FFUSE3  = "FFUSE3"   # ∋  3→1  3-way fuse: merges T, F, I arms
 IMSCRIB = "IMSCRIB"  # ⊙  1→1  identity / neutral self-reference
 EVALF   = "EVALF"    # ⊥  1→1  evaluates the False axis (≤_t), WORK
 EVALI   = "EVALI"    # ⊞  1→1  evaluates the Information axis (≤_i), WORK
-IFIX    = "IFIX"     # ◻  1→1  irreversible commit, WORK
+IFIX    = "IFIX"     # ⊡  1→1  irreversible commit, WORK
 
 OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, EVALT, FSPLIT3, FFUSE3,
            IMSCRIB, EVALF, EVALI, IFIX]
@@ -153,7 +153,7 @@ OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, EVALT, FSPLIT3, FFUSE3,
 GLYPH = {
     VINIT: "⊢", TANCH: "⊣", AFWD: "≻", AREV: "≺", CLINK: "⋈", EVALT: "⊤",
     FSPLIT3: "∈", FFUSE3: "∋", IMSCRIB: "⊙", EVALF: "⊥", EVALI: "⊞",
-    IFIX: "◻",
+    IFIX: "⊡",
 }
 
 # THE set is twelve. Only these glyphs are tokens. The old marks ◇ ● = + × ¬ ~ ≁
@@ -161,7 +161,7 @@ GLYPH = {
 # exactly as a stray letter does. A retired form that still loads is how legacy
 # notation survives a purge, so there is none. TNEG and INEG were never a
 # thirteenth and fourteenth opcode: the two-layer swaps they named are internal
-# to AREV `<`, which is the whole reverse morphism, and ◻ IFIX replaced the rest.
+# to AREV `<`, which is the whole reverse morphism, and ⊡ IFIX replaced the rest.
 NAME_FROM_GLYPH = {v: k for k, v in GLYPH.items()}
 
 LOGICAL   = {VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB}
@@ -441,7 +441,7 @@ class IMASM16_3Sequence:
 
 
 def parse_glyph_word(word: str) -> List[str]:
-    """⊢>∈⊤⊥⊞∋◻⊣  →  [VINIT, AFWD, FSPLIT3, EVALT, EVALF, EVALI, FFUSE3, IFIX, TANCH]"""
+    """⊢>∈⊤⊥⊞∋⊡⊣  →  [VINIT, AFWD, FSPLIT3, EVALT, EVALF, EVALI, FFUSE3, IFIX, TANCH]"""
     return [NAME_FROM_GLYPH[ch] for ch in word if ch in NAME_FROM_GLYPH]
 
 

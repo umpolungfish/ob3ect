@@ -10,7 +10,7 @@ The structural lift (CFG skeleton, the noise filtered to the load-bearing ops):
   POP_JUMP_IF_* (cond branch)  -> FSPLIT  ∈
   taken block work / else work -> AFWD > / AREV <, tagged EVALT ⊤ / EVALF ⊥
   the branch merge point       -> FFUSE   ∋   (absent when a path returns early)
-  STORE_* (state write)        -> IFIX    ◻
+  STORE_* (state write)        -> IFIX    ⊡
   RETURN_VALUE                 -> TANCH   ⊣
 """
 import dis

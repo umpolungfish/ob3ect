@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ⊙ → ⋈ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊣ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ∋ → ⊙ → ⋈ → ⊡ → ⊣
 -- Class: Riemann structure
 -- Fingerprint: sig=(7,2,3,1)
 --   self_ref=False | frobenius_order=1
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [9] ⊙   gram   := 𐑠               𐑙 → 𐑱  | identity — self-imscription
 --   [10] ⋈     fid    := 𐑱               𐑠 → 𐑭  | composition — regime coherence
---   [11] ◻      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number
 --   [12] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

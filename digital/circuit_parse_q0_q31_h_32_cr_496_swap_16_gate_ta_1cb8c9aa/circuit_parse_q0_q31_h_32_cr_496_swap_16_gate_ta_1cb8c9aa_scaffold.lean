@@ -1,5 +1,5 @@
--- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⋈ → ⋈ → ⊥ → ⊞ → ∋ → ⊙ → ◻ → ≺ → ⊣
--- Class: ⊢⊙≻circuit≻parse∈q0…q31∋H×32⋈CR×496⋈SWAP×16⊤gate-tally=544≻identify≻QFT₃₂⊤exact-match-standard⊞no-optimize-needed◻⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⋈ → ⋈ → ⋈ → ⊥ → ⊞ → ∋ → ⊙ → ⊡ → ≺ → ⊣
+-- Class: ⊢⊙≻circuit≻parse∈q0…q31∋H×32⋈CR×496⋈SWAP×16⊤gate-tally=544≻identify≻QFT₃₂⊤exact-match-standard⊞no-optimize-needed⊡⊣
 -- Fingerprint: sig=(8,2,3,1)
 --   self_ref=False | frobenius_order=1
 --   dialetheia_complete=True | period=14
@@ -26,7 +26,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [9] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
 --   [10] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
---   [11] ◻      prot   := 𐑭               𐑠 → 𐑗  | irreversible fixation — winding number
+--   [11] ⊡      prot   := 𐑭               𐑠 → 𐑗  | irreversible fixation — winding number
 --   [12] ≺      pol    := 𐑗               𐑭 → 𐑡  | reverse morphism — parity flip
 --   [13] ⊣     top    := 𐑡               𐑗 → 𐑼  | terminal object — connectivity boundary
 

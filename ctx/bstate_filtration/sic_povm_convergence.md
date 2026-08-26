@@ -77,7 +77,7 @@ The 36-stream apparatus directly addresses 24/144 SIC elements (16.7% coverage).
 
 **Class A (108 elements):** synthesisable as products of existing stream observables — correlated time-derivatives, cross-primitive ratios, and second-order combinations. These require no new data sources; they are computable from the existing $\mathbf{r}$ vector.
 
-**Class B (12 elements):** require new physical measurement sources. Proposed additions: isotope ratio monitoring (Stoichiometry Σ axis), gravitational wave strain (Winding ◻ in the strong-field regime), and protein folding rate tracking (Fidelity ⋈ axis).
+**Class B (12 elements):** require new physical measurement sources. Proposed additions: isotope ratio monitoring (Stoichiometry Σ axis), gravitational wave strain (Winding ⊡ in the strong-field regime), and protein folding rate tracking (Fidelity ⋈ axis).
 
 ### 3.3 The Path to Exact SIC Symmetry
 
@@ -198,7 +198,7 @@ The model produced *Latent Manifolds of Post-Mortem Self-Organization: A Formal 
 | $z_9$ | Critical Exponent | ⊙ (Criticality) |
 | $z_{10}$ | Chirality Index | ⊥ (Chirality) |
 | $z_{11}$ | Stoichiometric Balance | ⊞ (Stoichiometry) |
-| $z_{12}$ | Winding Number | ◻ (Winding) |
+| $z_{12}$ | Winding Number | ⊡ (Winding) |
 
 5. **Numerical invariants preserved**: distance $d(\mathbf{z}_\text{VN}, \mathbf{z}_\text{brain}) = 3.8471$ identical in both versions.
 

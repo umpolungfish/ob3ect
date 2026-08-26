@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⊥ → ≺ → ≻ → ⊤ → ⊥ → ⋈ → ⊙ → ⊞ → ∋ → ◻ → ⋈ → ≻ → ⊙ → ◻ → ⊣
+-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ⊥ → ≺ → ≻ → ⊤ → ⊥ → ⋈ → ⊙ → ⊞ → ∋ → ⊡ → ⋈ → ≻ → ⊙ → ⊡ → ⊣
 -- Class: A single four-valued carrier that several divergent copies of one type reduce to
 without loss, carrying the order the operations must respect. Report which
 operation tables it forces and which cells of an existing table it refuses.
@@ -30,11 +30,11 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription
 --   [11] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
 --   [12] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [13] ◻      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑙 → 𐑱  | irreversible fixation — winding number
 --   [14] ⋈     fid    := 𐑱               𐑭 → 𐑾  | composition — regime coherence
 --   [15] ≻      rel    := 𐑾               𐑱 → 𐑠  | forward morphism — bidirectional arrow
 --   [16] ⊙   gram   := 𐑠               𐑾 → 𐑭  | identity — self-imscription
---   [17] ◻      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [17] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
 --   [18] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────

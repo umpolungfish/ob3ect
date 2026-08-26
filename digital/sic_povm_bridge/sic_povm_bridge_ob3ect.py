@@ -66,7 +66,7 @@ D = {
 #   (⋈, ⊤)  — quantum / near-equilibrium
 #   (∈, ∋)  — maximal / broadcast
 #   (⊙, ⊥)  — critical / 2-step chiral
-#   (Σ, ◻)  — 1:1 / integer winding
+#   (Σ, ⊡)  — 1:1 / integer winding
 #
 # Each pair satisfies μ∘δ = id in the Frobenius algebra sense.
 
@@ -181,7 +181,7 @@ class FrobeniusMonad:
           ⟨δ(x), μ(y)⟩ = ⟨x, y⟩  (pairing is preserved)
 
         The 6 dual pairs are:
-          (⊢, ⊣), (>, <), (⋈, ⊤), (∈, ∋), (⊙, ⊥), (⊞, ◻)
+          (⊢, ⊣), (>, <), (⋈, ⊤), (∈, ∋), (⊙, ⊥), (⊞, ⊡)
 
         Each pair has the property that δ∘μ and μ∘δ are identities
         on the respective subalgebras.

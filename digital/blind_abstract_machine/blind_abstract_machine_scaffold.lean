@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ◻ → ≻ → ≺ → ∈ → ⊤ → ⋈ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ◻ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ⊥ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ⊣ → ∈ → ⊞ → ⋈ → ⊤ → ⊥ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ∋ → ≺ → ≻ → ⋈ → ⊙ → ∈ → ⊥ → ∋ → ⊣
+-- IGProtocol scaffold: ⊢ → ⊡ → ≻ → ≺ → ∈ → ⊤ → ⋈ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ⊡ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ⊥ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ⊣ → ∈ → ⊞ → ⋈ → ⊤ → ⊥ → ∋ → ∈ → ⊤ → ∋ → ∈ → ⊤ → ∋ → ≺ → ≻ → ⋈ → ⊙ → ∈ → ⊥ → ∋ → ⊣
 -- Class: blind_abstract_machine
 -- Fingerprint: sig=(11,21,14,2)
 --   self_ref=False | frobenius_order=3
@@ -16,7 +16,7 @@ open Dimensionality Topology Relational Polarity Grammar
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
 --   [0] ⊢     dim    := 𐑼               𐑼 → 𐑭  | initial object — ground of distinction
---   [1] ◻      prot   := 𐑭               𐑼 → 𐑾  | irreversible fixation — winding number
+--   [1] ⊡      prot   := 𐑭               𐑼 → 𐑾  | irreversible fixation — winding number
 --   [2] ≻      rel    := 𐑾               𐑭 → 𐑗  | forward morphism — bidirectional arrow
 --   [3] ≺      pol    := 𐑗               𐑾 → 𐑚  | reverse morphism — parity flip
 --   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
@@ -28,7 +28,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [10] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode
 --   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [13] ◻      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
+--   [13] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number
 --   [14] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode
 --   [15] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
 --   [16] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open

@@ -1,4 +1,4 @@
--- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ≻ → ◻ → ≺ → ⋈ → ⊙ → ⊞ → ⊣
+-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⋈ → ≻ → ⊡ → ≺ → ⋈ → ⊙ → ⊞ → ⊣
 -- Class: dialetheic paraconsistent-native LLM
 -- Fingerprint: sig=(11,4,7,1)
 --   self_ref=False | frobenius_order=3
@@ -32,7 +32,7 @@ open Dimensionality Topology Relational Polarity Grammar
 --   [14] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode
 --   [15] ⋈     fid    := 𐑱               𐑙 → 𐑾  | composition — regime coherence
 --   [16] ≻      rel    := 𐑾               𐑱 → 𐑭  | forward morphism — bidirectional arrow
---   [17] ◻      prot   := 𐑭               𐑾 → 𐑗  | irreversible fixation — winding number
+--   [17] ⊡      prot   := 𐑭               𐑾 → 𐑗  | irreversible fixation — winding number
 --   [18] ≺      pol    := 𐑗               𐑭 → 𐑱  | reverse morphism — parity flip
 --   [19] ⋈     fid    := 𐑱               𐑗 → 𐑠  | composition — regime coherence
 --   [20] ⊙   gram   := 𐑠               𐑱 → 𐑳  | identity — self-imscription
