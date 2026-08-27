@@ -1781,9 +1781,23 @@ async def auto_design(
             slug = _make_unique_slug(artifact_name)
             await _verify_lean_scaffold(artifact, slug)
             # What the kernel says would close it, when it does not close. One
-            # await, only for a word that failed, so a closing design pays
+            # await, only for a word that needs it, so a clean design pays
             # nothing for this.
-            if artifact.split_fuse_report.frobenius_verdict not in ("T", "B"):
+            #
+            # Frobenius T/B alone used to be the only trigger — but T and B are
+            # the control-flow verdict (does every FSPLIT reach a FFUSE), a
+            # different question from whether the WEIGHT that flows through
+            # those forks survives to where it is used. t2_efl_affirm closed
+            # T (three clean FSPLIT/FFUSE pairs) while its own banked_count_check
+            # found 2 units cleared by an AREV with nothing banked ahead of it -
+            # a real, repairable defect (insert found 5 one-glyph fixes) that a
+            # T/B-only gate would never have asked the kernel about.
+            bcc = artifact.banked_count_check or {}
+            needs_repair_check = (
+                artifact.split_fuse_report.frobenius_verdict not in ("T", "B")
+                or bcc.get("banked_ok") is False
+            )
+            if needs_repair_check:
                 artifact.kernel_repairs = await _kernel_repairs(artifact.glyph_word)
             return artifact
 
