@@ -625,7 +625,7 @@ def _search_catalog(description: str, n: int = 8, context: Optional[str] = None)
     # Ceremony is not content. Words like proof/closed/gapless/sorry describe the
     # STATE a request wants an artifact to reach, and every finished entry in the
     # catalog says them too — so they match everything and discriminate nothing.
-    # Scored as content they let "SORRY-FREE GAPLESS CLOSED ... PROOF" retrieve
+    # Scored as content they let "*sans* sorry GAPLESS CLOSED ... PROOF" retrieve
     # eight entries on ritual phrasing alone, none of which shared a single
     # mathematical term with the problem actually being imscribed.
     tokens -= {"proof", "proofs", "prove", "proved", "closed", "close", "completed",

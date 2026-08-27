@@ -1,0 +1,38 @@
+{
+  "domain_type": "mathematical probabilistic existence proof",
+  "tokens": [
+    "mean functional",
+    "second moment",
+    "deviation event",
+    "almost-sure set",
+    "limit constant"
+  ],
+  "boundary": "Product probability space Omega = (n : Nat) -> Bool with measure mu = Pi n bernoulli(p n) where p n = min(1, sqrt(log(n+1)/(n+1))) with c=1. Random set A(omega) := { n | omega n = true }. Witness is pair (A, pi).",
+  "opcodes": {
+    "VINIT": "seed Omega and its product measure mu as the genesis of the random set",
+    "FSPLIT": "decompose E[r A n] = sum_{a=1}^{n-1} p_a p_{n-a} over the two summand arms a and n-a",
+    "AREV": "reverse Var[r A n] <= E[r A n] + E[r A n]^2 to isolate the deviation from the mean",
+    "EVALT": "deposit the limit constant pi as the target kinetic value",
+    "AFWD": "Cauchy-Schwarz bound on second moment pairs summand terms as adjoint",
+    "FFUSE": "Chebyshev on subsequence n_k=2^k fuses deviation probability back with mean",
+    "IMSCRIB": "self-reference: A(omega) is defined by omega which indexes the summands of r"
+  },
+  "frobenius": {
+    "split_input": "mean functional E[r A n] / log n decomposed over summand pair (a, n-a) as p_a p_{n-a} / log n",
+    "fuse_result": "limit pi reconstructed from Var/log n -> 0 and almost-sure convergence of the subsequence",
+    "verdict": "T"
+  },
+  "registers": {
+    "R0": {
+      "name": "mean functional",
+      "initial": "E[r A n] / log n",
+      "final": "pi"
+    },
+    "R1": {
+      "name": "deviation probability",
+      "initial": "Var[r A n] / log n",
+      "final": "0"
+    }
+  },
+  "sequence": "VINIT FSPLIT AREV EVALT AFWD FFUSE AFWD IMSCRIB IMSCRIB FFUSE"
+}

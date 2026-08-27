@@ -9,7 +9,7 @@
 #   ExecStart=paradox-boot.sh --mount       (mounts the paradox filesystem)
 #
 # --verify: runs `lake build Imscribing.Millennium.ParadoxBoot`.
-#           lake exits 0 iff ALL theorems are sorry-free.
+#           lake exits 0 iff ALL theorems are *sans* sorry.
 #           If any theorem has a `sorry`, the service fails to start.
 #           The boot IS the proof.
 #
@@ -39,7 +39,7 @@ do_verify() {
 
     cd "${MILLENNIUM_ANKH}"
     if lake build Imscribing.Millennium.ParadoxBoot > /dev/null 2>&1; then
-        echo "[paradox-boot] ✓ Boot theorem verified — paradox_exists is sorry-free."
+        echo "[paradox-boot] ✓ Boot theorem verified — paradox_exists is *sans* sorry."
         echo "[paradox-boot]   paradox_fs_is_O_inf:           proved"
         echo "[paradox-boot]   paradox_fs_is_Frobenius_closed: proved"
         echo "[paradox-boot]   paradox_fs_satisfies_axiom_C:   proved"
@@ -91,7 +91,7 @@ do_status() {
     # Check the boot theorem
     cd "${MILLENNIUM_ANKH}"
     if lake build Imscribing.Millennium.ParadoxBoot > /dev/null 2>&1; then
-        echo "  Boot theorem: VERIFIED (sorry-free)"
+        echo "  Boot theorem: VERIFIED (*sans* sorry)"
     else
         echo "  Boot theorem: FAILED (contains sorry)"
     fi

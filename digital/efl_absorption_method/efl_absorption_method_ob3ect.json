@@ -1,0 +1,439 @@
+{
+  "name": "efl_absorption_method",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "efl_absorption_method",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "clique_merge",
+        "greedy_sequence",
+        "reserve_subset",
+        "color_assignment",
+        "constraint_propagation"
+      ],
+      "boundary_condition": "The global n-coloring invariant that encapsulates the merged graph and the reserve subset, ensuring no local greedy choice violates the global validity.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "unmerged_cliques",
+        "justification": "The initial state where n cliques exist as disjoint or loosely connected components before the merge operation defines the graph topology.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "global_coloring_invariant",
+        "justification": "The closed boundary condition that the final state must satisfy: a valid n-coloring of the entire merged graph.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "greedy_coloring_step",
+        "justification": "The forward morphism representing the sequential assignment of colors to non-reserve vertices, moving the system toward completion.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "constraint_backflow",
+        "justification": "The reverse morphism representing the propagation of constraints from the colored bulk back into the reserve subset, defining the available color space.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "clique_merging",
+        "justification": "The composition operation that chains the individual cliques into a single merged graph structure.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "vertex_self_consistency",
+        "justification": "The identity condition where a vertex's color assignment is recognized as valid relative to its own state before neighbor constraints are applied.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "reserve_flexibility_branch",
+        "justification": "The split into two arms: the T-arm where the reserve successfully absorbs constraints, and the F-arm where a specific constraint configuration would theoretically fail if the reserve were not flexible.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "reserve_completion",
+        "justification": "The reconstitution of the reserve state into a single valid coloring, fusing the successful absorption of constraints with the theoretical failure modes to produce a resolved B-state of guaranteed validity.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "valid_color_assignment",
+        "justification": "The affirmative state where a vertex is successfully assigned a color not used by its neighbors.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "constraint_violation",
+        "justification": "The negative state where a vertex's available colors are exhausted by neighbor assignments, representing the failure mode the reserve is designed to prevent.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "reserve_paradice",
+        "justification": "The state where the reserve holds both the potential for constraint satisfaction and the memory of potential failure simultaneously, ensuring robustness without resolving the contradiction until the final step.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "final_coloring_record",
+        "justification": "The permanent, append-only record of the completed n-coloring, fixing the state of every vertex in the merged graph.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "reserve_flexibility_branch",
+      "split_input": "the uncolored reserve subset with incoming constraints",
+      "split_outputs": [
+        "successful_absorption",
+        "theoretical_violation"
+      ],
+      "fuse_element": "reserve_completion",
+      "fuse_result": "a valid n-coloring of the reserve",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The state before the cliques are merged and the reserve is defined.",
+      "true_description": "A vertex is successfully colored without violating neighbor constraints.",
+      "false_description": "A vertex has no available colors due to neighbor constraints.",
+      "both_description": "The reserve subset holds the potential for both success and failure simultaneously, ensuring the final state is valid by design.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the system with n disjoint cliques of n vertices each."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⋈",
+          "domain_action": "Merge the cliques into a single graph where any two share at most one vertex."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Branch the process into the bulk coloring path and the reserve flexibility path."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "Begin the greedy sequential coloring of the non-reserve vertices."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Assign a valid color to the current vertex from the n available colors."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⋈",
+          "domain_action": "Chain the color assignment to the next vertex in the sequence."
+        },
+        {
+          "step_num": 7,
+          "opcode": "≻",
+          "domain_action": "Continue the forward morphism through all non-reserve vertices."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊤",
+          "domain_action": "Confirm the validity of the bulk coloring state."
+        },
+        {
+          "step_num": 9,
+          "opcode": "≺",
+          "domain_action": "Propagate the constraints from the colored bulk back to the reserve subset."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊥",
+          "domain_action": "Identify the theoretical constraint violations that would occur without the reserve."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊞",
+          "domain_action": "Hold the reserve in a paradice state, maintaining both the constraint pressure and the flexibility to absorb it."
+        },
+        {
+          "step_num": 12,
+          "opcode": "≻",
+          "domain_action": "Execute the completion of the coloring on the reserve subset."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊤",
+          "domain_action": "Verify that the reserve vertices can be colored to match the incoming constraints."
+        },
+        {
+          "step_num": 14,
+          "opcode": "∋",
+          "domain_action": "Rejoin the bulk coloring and reserve completion into a single valid global state."
+        },
+        {
+          "step_num": 15,
+          "opcode": "⊙",
+          "domain_action": "Recognize the entire merged graph as a self-consistent n-colored structure."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊡",
+          "domain_action": "Record the final valid n-coloring as a permanent, irreversible state."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⊣",
+          "domain_action": "Close the system with the global coloring invariant satisfied."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The greedy coloring algorithm that translates the graph topology into a sequence of color assignments.",
+      "ipc_mechanism": "Constraint propagation between colored vertices and the uncolored reserve subset.",
+      "memory_mechanism": "The state of each vertex's color assignment and the set of available colors for uncolored vertices.",
+      "scheduler_mechanism": "The sequential order of vertex processing, prioritizing non-reserve vertices before the reserve.",
+      "alfs_store": "The definition of the reserve subset and the n-coloring invariant.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The computational effort to check neighbor constraints and select a valid color.",
+      "pre_cycle_state": "A partially colored graph with an uncolored reserve subset.",
+      "post_cycle_state": "A fully colored graph with a valid n-coloring.",
+      "delta_s_verdict": "ΔS ≈ 0 — The process is entropy-conservative because the reserve subset is designed to absorb all constraint entropy, ensuring the final state is as ordered as the initial state.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⋈   CLINK    CLINK         N →     N\n    3   ∈   FSPLIT   FSPLIT3       N →     N\n    4   ≻   AFWD     AFWD          N →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ⋈   CLINK    CLINK         T →     T\n    7   ≻   AFWD     AFWD          T →     T\n    8   ⊤   EVALT    EVALT         T →     T\n    9   ≺   AREV     AREV          T →     N\n   10   ⊥   EVALF    EVALF         N →     F\n   11   ⊞   ENGAGR   EVALI         F →   Ftf\n   12   ≻   AFWD     AFWD        Ftf →   Ftf\n   13   ⊤   EVALT    EVALT       Ftf →     A\n   14   ∋   FFUSE    FFUSE3        A →     A\n   15   ⊙   IMSCRIB  IMSCRIB       A →     A\n   16   ⊡   IFIX     IFIX          A →     A\n   17   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⋈ → ∈ → ≻ → ⊤ → ⋈ → ≻ → ⊤ → ≺ → ⊥ → ⊞ → ≻ → ⊤ → ∋ → ⊙ → ⊡ → ⊣\n-- Class: efl_absorption_method\n-- Fingerprint: sig=(9,2,5,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=17\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 13)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑱  | initial object — ground of distinction\n--   [1] ⋈     fid    := 𐑱               𐑼 → 𐑚  | composition — regime coherence\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [7] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [8] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [9] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [10] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [11] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode\n--   [14] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription\n--   [15] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [16] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def efl_absorption_method_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def efl_absorption_method_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def efl_absorption_method_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def efl_absorption_method_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def efl_absorption_method_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def efl_absorption_method_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def efl_absorption_method_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def efl_absorption_method_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_absorption_method_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def efl_absorption_method_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def efl_absorption_method_protocol : IGProtocol efl_absorption_method_s0 efl_absorption_method_s16 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct efl_absorption_method_s13 efl_absorption_method_s13 = efl_absorption_method_s13 (idempotent)\n  (.seq (.arrow efl_absorption_method_l0 efl_absorption_method_s0 efl_absorption_method_s1) (.seq (.arrow efl_absorption_method_l1 efl_absorption_method_s1 efl_absorption_method_s2) (.seq (.prod (.arrow efl_absorption_method_l2 efl_absorption_method_s2 efl_absorption_method_s13) (.arrow efl_absorption_method_l2 efl_absorption_method_s2 efl_absorption_method_s13)) (.seq (.arrow efl_absorption_method_l13 efl_absorption_method_s13 efl_absorption_method_s13) (.seq (.arrow efl_absorption_method_l13 efl_absorption_method_s13 efl_absorption_method_s14) (.seq (.arrow efl_absorption_method_l14 efl_absorption_method_s14 efl_absorption_method_s15) (.arrow efl_absorption_method_l15 efl_absorption_method_s15 efl_absorption_method_s16)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def efl_absorption_method_true_arm : IGProtocol efl_absorption_method_s0 efl_absorption_method_s16 :=\n  (efl_absorption_method_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def efl_absorption_method_false_arm : IGProtocol efl_absorption_method_s0 efl_absorption_method_s16 :=\n  (efl_absorption_method_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef efl_absorption_method_tier_ground : OuroboricityTier := TierFunctor.obj efl_absorption_method_s0\ndef efl_absorption_method_tier : OuroboricityTier := TierFunctor.obj efl_absorption_method_s16\n#eval efl_absorption_method_tier_ground  -- tier of the ground (pre-transformation)\n#eval efl_absorption_method_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem efl_absorption_method_frobenius :\n    igFrobeniusAlg.mul efl_absorption_method_s0 efl_absorption_method_s0 = efl_absorption_method_s0 :=\n  igFrobAlg_self_fusion efl_absorption_method_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 17,
+    "t_branch_ops": 5,
+    "f_branch_ops": 4,
+    "branch_ratio": 1.25,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      13
+    ],
+    "pair_list": [
+      [
+        2,
+        13
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: efl_absorption_method",
+  "grounded_tuple": "⟨𐑛𐑸𐑽𐑿𐑐𐑧𐑔𐑠𐑢𐑖𐑕𐑭⟩",
+  "grounding_status": "failed",
+  "grounding_failed_primitives": [
+    "Axiom C: ⊣=𐑸 requires ⊢=𐑦 (got ⊢=𐑛)"
+  ],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 2,
+    "deposits": 5,
+    "inert": 1,
+    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑸: The reserve subset acts as a boundary that encapsulates the entire coloring flexibility, allowing the bulk constraints from the n cliques to be resolved losslessly within this minimal set.\n⊢=𐑛: The process relies on a sequential, iterative coloring of vertices followed by a final reset step to resolve the reserved subset, matching the temporal/iterative primitive.\n⊞=𐑕: The construction involves n cliques of equal size interacting symmetrically through shared vertices, forming a higher-order symmetric structure akin to oligomers or committees rather than simple pairwise or asymmetric arrangements.\n⊡=𐑭: The construction relies on a global integer invariant (the number of available colors $n$) that remains stable against local greedy perturbations, ensuring the reserve's role cannot be deformed away without violating the coloring constraint.\n⊙=𐑢: The system operates in a subcritical regime because the greedy coloring strategy succeeds deterministically without exhibiting the scale-free correlations or maximal sensitivity characteristic of a critical threshold.\n⊥=𐑖: The construction relies on a sequence of n cliques where each step's coloring choice constrains the next, creating a dependency chain of length n that enforces persistent chiral memory.\n≻=𐑽: The reserve acts as a catalytic buffer that stabilizes the coloring process by absorbing constraints without being consumed, ensuring the final valid state is reached.\n≺=𐑿: The greedy sequential coloring process establishes a strict temporal and causal direction where earlier choices constrain later ones, creating a signed interface between the fixed exterior and the flexible reserve.\n⋈=𐑐: The deterministic, geometry-enforcing nature of the clique merging and greedy coloring process ensures near-certain constraint satisfaction, corresponding to high-fidelity information transmission.\n⊤=𐑧: The greedy sequential coloring process locks the system into a specific configuration that cannot be rearranged without external intervention to resolve the constraints imposed on the reserve.\n∈=𐑔: The greedy coloring process propagates constraints sequentially through the entire merged graph, requiring the reserve to accommodate global dependencies to ensure a valid final coloring.\n∋=𐑠: The process explicitly describes a sequential procedure where vertices are colored one at a time in a specific order before the reserve is addressed.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 17,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣⊢⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣⊢⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣⊢⋈∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣⊢⋈∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "≻⊤≺⊥⊞≻⊤∋⊙⊡⊣⊢⋈∈≻⊤⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊤≺⊥⊞≻⊤∋⊙⊡⊣⊢⋈∈≻⊤⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "≺⊥⊞≻⊤∋⊙⊡⊣⊢⋈∈≻⊤⋈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊥⊞≻⊤∋⊙⊡⊣⊢⋈∈≻⊤⋈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊞≻⊤∋⊙⊡⊣⊢⋈∈≻⊤⋈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "≻⊤∋⊙⊡⊣⊢⋈∈≻⊤⋈≻⊤≺⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⊤∋⊙⊡⊣⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "∋⊙⊡⊣⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 14,
+        "word": "⊙⊡⊣⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 15,
+        "word": "⊡⊣⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "⊣⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⋈∈≻⊤⋈≻⊤≺⊥⊞≻⊤∋⊙⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
