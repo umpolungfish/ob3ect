@@ -1947,6 +1947,15 @@ class ZoomChain:
         lines.append(f"Levels: {len(self.levels)}  |  CLINK morphisms: {len(self.clink_morphisms)}")
         all_closed = all(lvl.artifact.split_fuse_report.frobenius_verdict in ("T", "B") for lvl in self.levels)
         lines.append(f"Chain Frobenius: {'CLOSED' if all_closed else 'PARTIAL'} (every level T or B)")
+        # Frobenius closed is the graph question; banked_ok is a separate one
+        # (t2_efl_affirm closed T and still cleared 2 units with nothing banked
+        # ahead of the reversal) — check it too rather than let "CLOSED" imply it.
+        leaked = [lvl for lvl in self.levels
+                  if (lvl.artifact.banked_count_check or {}).get("banked_ok") is False]
+        if leaked:
+            lines.append(f"{len(leaked)} level(s) closed but leaked weight on their own bank check:")
+            for lvl in leaked:
+                lines.append(f"  ∈={lvl.gamma} {lvl.description[:70]}")
         lines.append(sep)
         return "\n".join(lines)
 
@@ -1963,6 +1972,7 @@ class ZoomChain:
                         "TANCH", type("", (), {"chosen_element": "?"})()
                     ).chosen_element,
                     "frobenius": lvl.artifact.split_fuse_report.frobenius_verdict,
+                    "banked_ok": (lvl.artifact.banked_count_check or {}).get("banked_ok"),
                 }
                 for lvl in self.levels
             ],
@@ -2083,6 +2093,16 @@ class ChurnTree:
                 lines.append(f"  w={n.winding} {n.opcode}: {n.description[:70]}")
         else:
             lines.append("every step closes on its own as well as in place")
+        # Frobenius closed and banked ok are different questions (t2_efl_affirm
+        # closed T while its own AREV cleared 2 units with nothing banked ahead of
+        # it) — a churn report that only ever says T/B would carry that same blind
+        # spot across every node instead of just one.
+        leaked = [n for n in all_nodes
+                  if (n.artifact.banked_count_check or {}).get("banked_ok") is False]
+        if leaked:
+            lines.append(f"\n{len(leaked)} node(s) closed but leaked weight on their own bank check:")
+            for n in leaked:
+                lines.append(f"  w={n.winding} {n.opcode}: {n.description[:70]}")
         lines.append(sep)
         return "\n".join(lines)
 
@@ -2095,6 +2115,7 @@ class ChurnTree:
                 "description": n.description,
                 "frobenius": n.artifact.split_fuse_report.frobenius_verdict,
                 "glyph_word": getattr(n.artifact, "glyph_word", ""),
+                "banked_ok": (n.artifact.banked_count_check or {}).get("banked_ok"),
                 "children": [node_json(c) for c in n.children],
             }
         manifest = {"seed": self.seed, "windings": self.windings,

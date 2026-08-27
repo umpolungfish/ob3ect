@@ -1,23 +1,14 @@
-Run kernel repairs on banked-count failure, not just a bad Frobenius verdict
+Churn and zoom already ran the full audit per node; their rollups didn't say so
 
-The DECISION VS ITERATION fix worked. t2_efl_affirm closed T this time, three
-clean FSPLIT/FFUSE pairs, one per clique's color decision, chained by CLINK
-between them instead of one orphan fork at the top - the exact shape
-t2_efl_negate already had. Confirmed independently with the standalone vox
-binary: T, fully paired, nothing unanswered.
+Checked churn_design and zoom_design: both already call auto_design for every
+node and level, so each one already gets the full rotat_audit/banked_count_check
+treatment from the last two fixes, and each node's own JSON on disk already
+carries it. Nothing to propagate there.
 
-But its own banked_count_check flagged something the topology fix didn't
-touch: 2 units cleared by the overlap-reduction step (AREV) with nothing
-banked ahead of them, the exact ordering mistake the prompt's own BANKING
-A RESULT BEFORE REVERSING IT section warns against. Real and repairable -
-ran insert on the word directly and it found 5 one-glyph fixes.
-
-kernel_repairs came back null anyway, because the gate that decides whether
-to even ask the kernel for repairs only fired on a bad Frobenius verdict
-(not T or B). Frobenius T/B is the control-flow question, does every fork
-reach a fuse - a different question from whether the weight flowing through
-those forks survives to where it's banked. A design can close clean on the
-first question and still fail the second, which is exactly what t2_efl_affirm
-did. Gated the kernel-repairs call on banked_count_check.banked_ok being
-False too, not just the verdict, so this case gets asked next time instead
-of silently reporting nothing to fix.
+But ChurnTree.report()/save() and ZoomChain.report()/save() are the rollup
+views, and both only ever summarized Frobenius (T/B, "CLOSED"), the same blind
+spot the kernel-repairs gate had: a node can close clean on the graph question
+and still leak weight on the bank question, and the rollup said nothing about
+it. Added a banked_ok field to both manifests and a leak line to both reports,
+so scanning the summary for a run with many nodes surfaces a leak instead of
+requiring a look inside every individual node's JSON to find one.
