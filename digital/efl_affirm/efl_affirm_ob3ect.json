@@ -1,0 +1,699 @@
+{
+  "name": "efl_affirm",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "efl_affirm",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "n-clique",
+        "shared-vertex",
+        "color-assignment",
+        "chromatic-invariant"
+      ],
+      "boundary_condition": "The global graph formed by the union of n cliques of size n, constrained by the rule that any two cliques share at most one vertex, which enforces a chromatic number of exactly n.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "empty-graph",
+        "justification": "The state before any vertices or edges are instantiated; the void from which the n-clique structure emerges.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "n-color-bound",
+        "justification": "The closed boundary condition where the chromatic number is fixed at n, preventing any expansion to n+1 colors regardless of overlap topology.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "clique-construction",
+        "justification": "The forward morphism that builds each n-clique by adding n vertices and all internal edges, moving from partial to complete local structures.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "overlap-reduction",
+        "justification": "The reverse morphism that identifies shared vertices between cliques, collapsing the vertex count and enforcing the 'at most one shared vertex' constraint.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "global-merge",
+        "justification": "The composition of all local clique constructions and overlap reductions into a single connected graph object.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "vertex-identity",
+        "justification": "The self-reference of each vertex maintaining its unique color assignment across all cliques it inhabits.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "color-choice",
+        "justification": "The branching point where a vertex must be assigned a color from the set of n available colors, splitting into the affirmative (valid color) and negative (conflict) arms.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "valid-coloring",
+        "justification": "The rejoining of the color-choice arms into a single state where the vertex holds a valid color consistent with all neighbors.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "color-consistency",
+        "justification": "The affirmative state where a vertex's color differs from all adjacent vertices in its cliques.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "color-conflict",
+        "justification": "The negative state where a vertex's color matches an adjacent vertex, violating the coloring constraint.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "shared-vertex-duality",
+        "justification": "The paradice state where a shared vertex simultaneously belongs to multiple cliques, holding the color constraint for all parent cliques at once.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "chromatic-invariant",
+        "justification": "The permanent record that the graph is n-colorable, an integer-valued invariant fixed by the clique structure.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "color-choice",
+      "split_input": "unassigned-vertex",
+      "split_outputs": [
+        "valid-color-assignment",
+        "color-conflict"
+      ],
+      "fuse_element": "valid-coloring",
+      "fuse_result": "colored-vertex",
+      "frobenius_verdict": "B",
+      "test_instance": "",
+      "failure_reason": "FSPLIT3 at step 2 dangles — no matching FFUSE3"
+    },
+    "phase_3": {
+      "void_description": "No vertices or edges exist; the graph is empty.",
+      "true_description": "A valid n-coloring exists where no edge connects vertices of the same color.",
+      "false_description": "A color conflict exists where an edge connects vertices of the same color.",
+      "both_description": "A shared vertex holds a color that is valid for all its parent cliques simultaneously, satisfying the dual constraints of multiple overlapping structures.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the empty graph state before any cliques are defined."
+        },
+        {
+          "step_num": 2,
+          "opcode": "∈",
+          "domain_action": "Branch the construction process into the generation of n distinct cliques."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Construct the first n-clique by adding n vertices and all internal edges."
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "Branch the color assignment for the first vertex of the first clique."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Assign a color to the vertex that is consistent with no neighbors (initially none)."
+        },
+        {
+          "step_num": 6,
+          "opcode": "∋",
+          "domain_action": "Fuse the color choice into a valid state for the first vertex."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⋈",
+          "domain_action": "Chain the construction to the second vertex of the first clique."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∈",
+          "domain_action": "Branch the color assignment for the second vertex."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊤",
+          "domain_action": "Assign a color distinct from the first vertex."
+        },
+        {
+          "step_num": 10,
+          "opcode": "∋",
+          "domain_action": "Fuse the color choice into a valid state for the second vertex."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⋈",
+          "domain_action": "Repeat the color assignment process for all n vertices in the first clique."
+        },
+        {
+          "step_num": 12,
+          "opcode": "≻",
+          "domain_action": "Construct the second n-clique, sharing at most one vertex with the first."
+        },
+        {
+          "step_num": 13,
+          "opcode": "≺",
+          "domain_action": "Identify the shared vertex between the first and second cliques."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊞",
+          "domain_action": "Hold the shared vertex in a state where it satisfies the color constraints of both cliques simultaneously."
+        },
+        {
+          "step_num": 15,
+          "opcode": "∈",
+          "domain_action": "Branch the color assignment for the new vertices in the second clique."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊤",
+          "domain_action": "Assign colors to new vertices ensuring they differ from the shared vertex and each other."
+        },
+        {
+          "step_num": 17,
+          "opcode": "∋",
+          "domain_action": "Fuse the color choices into a valid state for the second clique."
+        },
+        {
+          "step_num": 18,
+          "opcode": "⋈",
+          "domain_action": "Merge the second clique into the global graph structure."
+        },
+        {
+          "step_num": 19,
+          "opcode": "≻",
+          "domain_action": "Construct the third n-clique, sharing at most one vertex with previous cliques."
+        },
+        {
+          "step_num": 20,
+          "opcode": "≺",
+          "domain_action": "Identify shared vertices with existing cliques."
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊞",
+          "domain_action": "Maintain the dual constraint on shared vertices across multiple cliques."
+        },
+        {
+          "step_num": 22,
+          "opcode": "∈",
+          "domain_action": "Branch the color assignment for new vertices in the third clique."
+        },
+        {
+          "step_num": 23,
+          "opcode": "⊤",
+          "domain_action": "Assign colors ensuring consistency with all shared vertices."
+        },
+        {
+          "step_num": 24,
+          "opcode": "∋",
+          "domain_action": "Fuse the color choices into a valid state for the third clique."
+        },
+        {
+          "step_num": 25,
+          "opcode": "⋈",
+          "domain_action": "Merge the third clique into the global graph structure."
+        },
+        {
+          "step_num": 26,
+          "opcode": "≻",
+          "domain_action": "Continue constructing remaining cliques up to n."
+        },
+        {
+          "step_num": 27,
+          "opcode": "≺",
+          "domain_action": "Identify all shared vertices across the entire graph."
+        },
+        {
+          "step_num": 28,
+          "opcode": "⊞",
+          "domain_action": "Hold the global state where all shared vertices satisfy constraints for all parent cliques."
+        },
+        {
+          "step_num": 29,
+          "opcode": "∈",
+          "domain_action": "Branch the final validation of the global coloring."
+        },
+        {
+          "step_num": 30,
+          "opcode": "⊤",
+          "domain_action": "Verify that no edge in the entire graph connects vertices of the same color."
+        },
+        {
+          "step_num": 31,
+          "opcode": "⊥",
+          "domain_action": "Check for any potential conflicts (which the structure guarantees do not exist)."
+        },
+        {
+          "step_num": 32,
+          "opcode": "∋",
+          "domain_action": "Fuse the validation arms into a single state confirming the n-coloring."
+        },
+        {
+          "step_num": 33,
+          "opcode": "⊡",
+          "domain_action": "Record the chromatic invariant that the graph is n-colorable."
+        },
+        {
+          "step_num": 34,
+          "opcode": "⊙",
+          "domain_action": "Self-reference the graph structure as a valid n-colorable object."
+        },
+        {
+          "step_num": 35,
+          "opcode": "⊣",
+          "domain_action": "Close the system with the boundary condition that n colors are sufficient and necessary."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The constraint solver that translates the clique overlap rules into color assignment operations.",
+      "ipc_mechanism": "The shared vertex mechanism that communicates color constraints between overlapping cliques.",
+      "memory_mechanism": "The color registry that stores the assigned color for each vertex across all cliques.",
+      "scheduler_mechanism": "The clique construction order that determines the sequence of vertex additions and color assignments.",
+      "alfs_store": "The n-clique graph definition that serves as the canonical reference for the coloring problem.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The computational effort to verify color consistency across shared vertices.",
+      "pre_cycle_state": "A graph with n cliques of size n, uncolored, with potential for color conflicts.",
+      "post_cycle_state": "A fully colored graph where every vertex has a valid color and no conflicts exist.",
+      "delta_s_verdict": "ΔS ≈ 0 — The coloring process is deterministic and reversible in structure; the information content of the graph (n-clique topology) dictates the outcome without loss or gain of entropy.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ≻   AFWD     AFWD          N →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ∋   FFUSE    FFUSE3        T →     T\n    7   ⋈   CLINK    CLINK         T →     T\n    8   ∈   FSPLIT   FSPLIT3       T →     T\n    9   ⊤   EVALT    EVALT         T →     T\n   10   ∋   FFUSE    FFUSE3        T →     T\n   11   ⋈   CLINK    CLINK         T →     T\n   12   ≻   AFWD     AFWD          T →     T\n   13   ≺   AREV     AREV          T →     N\n   14   ⊞   ENGAGR   EVALI         N →    tf\n   15   ∈   FSPLIT   FSPLIT3      tf →    tf\n   16   ⊤   EVALT    EVALT        tf →   Ttf\n   17   ∋   FFUSE    FFUSE3      Ttf →   Ttf\n   18   ⋈   CLINK    CLINK       Ttf →   Ttf\n   19   ≻   AFWD     AFWD        Ttf →   Ttf\n   20   ≺   AREV     AREV        Ttf →     N\n   21   ⊞   ENGAGR   EVALI         N →    tf\n   22   ∈   FSPLIT   FSPLIT3      tf →    tf\n   23   ⊤   EVALT    EVALT        tf →   Ttf\n   24   ∋   FFUSE    FFUSE3      Ttf →   Ttf\n   25   ⋈   CLINK    CLINK       Ttf →   Ttf\n   26   ≻   AFWD     AFWD        Ttf →   Ttf\n   27   ≺   AREV     AREV        Ttf →     N\n   28   ⊞   ENGAGR   EVALI         N →    tf\n   29   ∈   FSPLIT   FSPLIT3      tf →    tf\n   30   ⊤   EVALT    EVALT        tf →   Ttf\n   31   ⊥   EVALF    EVALF       Ttf →     A\n   32   ∋   FFUSE    FFUSE3        A →     A\n   33   ⊡   IFIX     IFIX          A →     A\n   34   ⊙   IMSCRIB  IMSCRIB       A →     A\n   35   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: B — FSPLIT3 at step 2 dangles — no matching FFUSE3\n  ⚠ Walk open, verdict B",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ∈ → ⊤ → ∋ → ⋈ → ∈ → ⊤ → ∋ → ⋈ → ≻ → ≺ → ⊞ → ∈ → ⊤ → ∋ → ⋈ → ≻ → ≺ → ⊞ → ∈ → ⊤ → ∋ → ⋈ → ≻ → ≺ → ⊞ → ∈ → ⊤ → ⊥ → ∋ → ⊡ → ⊙ → ⊣\n-- Class: efl_affirm\n-- Fingerprint: sig=(14,11,9,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=35\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(3, 5), (7, 9), (14, 16), (21, 23), (28, 31)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑼 → 𐑾  | split δ — range decomposition\n--   [2] ≻      rel    := 𐑾               𐑚 → 𐑚  | forward morphism — bidirectional arrow\n--   [3] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [6] ⋈     fid    := 𐑱               𐑙 → 𐑚  | composition — regime coherence\n--   [7] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [8] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [10] ⋈     fid    := 𐑱               𐑙 → 𐑾  | composition — regime coherence\n--   [11] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow\n--   [12] ≺      pol    := 𐑗               𐑾 → 𐑳  | reverse morphism — parity flip\n--   [13] ⊞    stoi   := 𐑳               𐑗 → 𐑚  | engage paradox — B-state, both arms\n--   [14] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [15] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [16] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [17] ⋈     fid    := 𐑱               𐑙 → 𐑾  | composition — regime coherence\n--   [18] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow\n--   [19] ≺      pol    := 𐑗               𐑾 → 𐑳  | reverse morphism — parity flip\n--   [20] ⊞    stoi   := 𐑳               𐑗 → 𐑚  | engage paradox — B-state, both arms\n--   [21] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [22] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [23] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [24] ⋈     fid    := 𐑱               𐑙 → 𐑾  | composition — regime coherence\n--   [25] ≻      rel    := 𐑾               𐑱 → 𐑗  | forward morphism — bidirectional arrow\n--   [26] ≺      pol    := 𐑗               𐑾 → 𐑳  | reverse morphism — parity flip\n--   [27] ⊞    stoi   := 𐑳               𐑗 → 𐑚  | engage paradox — B-state, both arms\n--   [28] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [29] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [30] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [31] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [32] ⊡      prot   := 𐑭               𐑙 → 𐑠  | irreversible fixation — winding number\n--   [33] ⊙   gram   := 𐑠               𐑭 → 𐑡  | identity — self-imscription\n--   [34] ⊣     top    := 𐑡               𐑠 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def efl_affirm_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def efl_affirm_s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def efl_affirm_s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def efl_affirm_s33 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def efl_affirm_s34 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def efl_affirm_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def efl_affirm_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l29 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def efl_affirm_l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def efl_affirm_l33 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def efl_affirm_l34 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def efl_affirm_protocol : IGProtocol efl_affirm_s0 efl_affirm_s34 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct efl_affirm_s5 efl_affirm_s5 = efl_affirm_s5 (idempotent)\n  (.seq (.arrow efl_affirm_l0 efl_affirm_s0 efl_affirm_s1) (.seq (.arrow efl_affirm_l1 efl_affirm_s1 efl_affirm_s2) (.seq (.arrow efl_affirm_l2 efl_affirm_s2 efl_affirm_s3) (.seq (.prod (.arrow efl_affirm_l3 efl_affirm_s3 efl_affirm_s5) (.arrow efl_affirm_l3 efl_affirm_s3 efl_affirm_s5)) (.seq (.arrow efl_affirm_l5 efl_affirm_s5 efl_affirm_s5) (.seq (.arrow efl_affirm_l5 efl_affirm_s5 efl_affirm_s6) (.seq (.arrow efl_affirm_l6 efl_affirm_s6 efl_affirm_s7) (.seq (.arrow efl_affirm_l7 efl_affirm_s7 efl_affirm_s8) (.seq (.arrow efl_affirm_l8 efl_affirm_s8 efl_affirm_s9) (.seq (.arrow efl_affirm_l9 efl_affirm_s9 efl_affirm_s10) (.seq (.arrow efl_affirm_l10 efl_affirm_s10 efl_affirm_s11) (.seq (.arrow efl_affirm_l11 efl_affirm_s11 efl_affirm_s12) (.seq (.arrow efl_affirm_l12 efl_affirm_s12 efl_affirm_s13) (.seq (.arrow efl_affirm_l13 efl_affirm_s13 efl_affirm_s14) (.seq (.arrow efl_affirm_l14 efl_affirm_s14 efl_affirm_s15) (.seq (.arrow efl_affirm_l15 efl_affirm_s15 efl_affirm_s16) (.seq (.arrow efl_affirm_l16 efl_affirm_s16 efl_affirm_s17) (.seq (.arrow efl_affirm_l17 efl_affirm_s17 efl_affirm_s18) (.seq (.arrow efl_affirm_l18 efl_affirm_s18 efl_affirm_s19) (.seq (.arrow efl_affirm_l19 efl_affirm_s19 efl_affirm_s20) (.seq (.arrow efl_affirm_l20 efl_affirm_s20 efl_affirm_s21) (.seq (.arrow efl_affirm_l21 efl_affirm_s21 efl_affirm_s22) (.seq (.arrow efl_affirm_l22 efl_affirm_s22 efl_affirm_s23) (.seq (.arrow efl_affirm_l23 efl_affirm_s23 efl_affirm_s24) (.seq (.arrow efl_affirm_l24 efl_affirm_s24 efl_affirm_s25) (.seq (.arrow efl_affirm_l25 efl_affirm_s25 efl_affirm_s26) (.seq (.arrow efl_affirm_l26 efl_affirm_s26 efl_affirm_s27) (.seq (.arrow efl_affirm_l27 efl_affirm_s27 efl_affirm_s28) (.seq (.arrow efl_affirm_l28 efl_affirm_s28 efl_affirm_s29) (.seq (.arrow efl_affirm_l29 efl_affirm_s29 efl_affirm_s30) (.seq (.arrow efl_affirm_l30 efl_affirm_s30 efl_affirm_s31) (.seq (.arrow efl_affirm_l31 efl_affirm_s31 efl_affirm_s32) (.seq (.arrow efl_affirm_l32 efl_affirm_s32 efl_affirm_s33) (.arrow efl_affirm_l33 efl_affirm_s33 efl_affirm_s34))))))))))))))))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def efl_affirm_true_arm : IGProtocol efl_affirm_s0 efl_affirm_s34 :=\n  (efl_affirm_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def efl_affirm_false_arm : IGProtocol efl_affirm_s0 efl_affirm_s34 :=\n  (efl_affirm_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef efl_affirm_tier_ground : OuroboricityTier := TierFunctor.obj efl_affirm_s0\ndef efl_affirm_tier : OuroboricityTier := TierFunctor.obj efl_affirm_s34\n#eval efl_affirm_tier_ground  -- tier of the ground (pre-transformation)\n#eval efl_affirm_tier  -- the Grammar's own verdict on the closed object\n",
+  "topology_report": {
+    "topology_class": "mixed",
+    "nesting_depth": 1,
+    "total_pairs": 5,
+    "open_forks": 1,
+    "cross_branches": 0,
+    "empty_branches": 4,
+    "sequence_length": 35,
+    "t_branch_ops": 5,
+    "f_branch_ops": 1,
+    "branch_ratio": 5.0,
+    "fork_positions": [
+      1,
+      3,
+      7,
+      14,
+      21,
+      28
+    ],
+    "fuse_positions": [
+      5,
+      9,
+      16,
+      23,
+      31
+    ],
+    "pair_list": [
+      [
+        3,
+        5
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        21,
+        23
+      ],
+      [
+        28,
+        31
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: efl_affirm",
+  "grounded_tuple": "⟨𐑦𐑡𐑽𐑗𐑐𐑧𐑔𐑝𐑢𐑖𐑕𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 4,
+      "t": 2,
+      "f": 2
+    },
+    "surplus_total": 8,
+    "live_clears": 3,
+    "restored": 0,
+    "deposits": 9,
+    "inert": 1,
+    "verdict": "0 unit(s) survived a clear by being banked in a frame (3 live clear(s)); 8 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The graph forms a generic connected network where cliques overlap at single vertices, creating a hub-spoke or mixed connectivity pattern rather than a strict hierarchy or cyclic closure.\n⊢=𐑦: The problem describes a scenario where n cliques of size n can be perfectly colored with only n colors despite overlaps, implying a structural collapse where the boundary constraints (clique edges) fully determine the interior state without requiring additional degrees of freedom, characteristic of a scale-collapse topology.\n⊞=𐑕: The graph structure formed by overlapping cliques of size n, which requires n colors for a valid coloring, represents a higher-order symmetric system where vertices participate in multiple interconnected groups (oligomers or committees) rather than simple pairwise or asymmetric arrangements.\n⊡=𐑭: The graph's chromatic number is fixed at n by the presence of n-cliques, creating an integer-valued invariant that prevents continuous deformation to a trivial state without breaking the clique structure.\n⊙=𐑢: The system is subcritical because the strict constraint of at most one shared vertex between cliques prevents the formation of a giant connected component or scale-free correlations, keeping the graph in a normal, fragmented regime.\n⊥=𐑖: The graph's n-colorability constraint enforces a rigid, structurally determined configuration across n overlapping cliques, creating a persistent chiral state with memory depth proportional to n.\n≻=𐑽: The graph coloring problem acts as a catalytic constraint that stabilizes the valid configuration (transition state) of the overlapping cliques without consuming the vertices or edges, ensuring the system remains solvable with n colors regardless of the specific arrangement.\n≺=𐑗: The graph coloring problem describes a symmetric, undirected constraint system where edges lack inherent polarity or directional flow, corresponding to an interface with no preferred direction.\n⋈=𐑐: The graph's structure enforces a deterministic n-coloring regardless of overlap, indicating a high-fidelity, geometry-enforcing interaction that fires with near-certainty.\n⊤=𐑧: The graph's rigid structure, where n-cliques enforce strict local constraints that propagate globally, creates a high energy barrier that kinetically freezes the system into a specific coloring configuration.\n∈=𐑔: The constraint that any two cliques share at most one vertex allows the graph to form a large connected component where a local coloring choice propagates globally to satisfy the n-coloring requirement across the entire system.\n∋=𐑝: The constraint that every vertex in an n-clique must have a unique color requires all n distinct colors to be simultaneously present and coordinated within each clique to satisfy the coloring condition.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 35,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 1,
+        "word": "∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 2,
+        "word": "≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 3,
+        "word": "∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 4,
+        "word": "⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 5,
+        "word": "∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 6,
+        "word": "⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 7,
+        "word": "∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 8,
+        "word": "⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 9,
+        "word": "∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 10,
+        "word": "⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 11,
+        "word": "≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 12,
+        "word": "≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 13,
+        "word": "⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 14,
+        "word": "∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 15,
+        "word": "⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 16,
+        "word": "∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 17,
+        "word": "⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 18,
+        "word": "≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 19,
+        "word": "≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 20,
+        "word": "⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 21,
+        "word": "∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 22,
+        "word": "⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 23,
+        "word": "∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 24,
+        "word": "⋈≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 25,
+        "word": "≻≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 26,
+        "word": "≺⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 27,
+        "word": "⊞∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 28,
+        "word": "∈⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 29,
+        "word": "⊤⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 30,
+        "word": "⊥∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 31,
+        "word": "∋⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 32,
+        "word": "⊡⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 33,
+        "word": "⊙⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 34,
+        "word": "⊣⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢∈≻∈⊤∋⋈∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤∋⋈≻≺⊞∈⊤⊥∋⊡⊙⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, topology_class"
+  },
+  "kernel_repairs": null
+}
