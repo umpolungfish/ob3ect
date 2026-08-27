@@ -1,0 +1,27 @@
+Reinforce auto.py with what the efl_affirm/efl_negate pair just taught it
+
+Ran the affirmation and negation of a corrected Erdős-Faber-Lovász through the
+auto-designer. The negation closed clean, one fork, one fuse, nothing
+discarded. The affirmation carried an orphan FSPLIT at its very first step,
+"branch the construction process into the generation of n distinct cliques" -
+a fork with nothing on the other side of it, because building n cliques isn't
+a decision, it's a repetition. insert confirmed it: already holds, nothing to
+repair, because nothing was ever at risk there.
+
+Traced it to the schema. Rule 4 says every FSPLIT wants a matching FFUSE, but
+the TOPOLOGICAL DIVERSITY section tells the model not to default to flat
+chains and offers open forks as a legitimate topology choice. Nothing in
+between says what actually distinguishes a genuine either/or from an iterated
+construction, so the same "build n things" instruction can read as a fork or
+a chain depending on phrasing alone. Added a DECISION VS ITERATION paragraph
+naming the difference directly, with the vacuous/already-holds outcome as the
+tell that a fork wasn't a real one.
+
+While tracing the fork with insert, found that _kernel_repairs was silently
+losing the two most informative outcomes: "already holds, nothing to repair"
+and "exposed, N units cleared with nothing banked" both fell through the old
+three-way check (holds/counts/vacuous) into a plain None, indistinguishable
+from the kernel call producing nothing at all - and vacuous alone, without an
+accompanying holds list, hit the same silent None. Fixed the parser to catch
+all of it and added a report line so it surfaces in the printed artifact
+block too, not just the JSON.
