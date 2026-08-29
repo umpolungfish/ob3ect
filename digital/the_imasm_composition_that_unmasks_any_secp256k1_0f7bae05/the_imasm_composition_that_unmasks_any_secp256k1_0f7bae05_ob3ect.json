@@ -1,0 +1,396 @@
+{
+  "name": "The IMASM composition that unmasks any secp256k1 public key to reveal its corresponding original private key",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The IMASM composition that unmasks any secp256k1 public key to reveal its corresponding original private key",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "secp256k1_public_key",
+        "discrete_logarithm_barrier",
+        "private_key_recovery"
+      ],
+      "boundary_condition": "The cryptographic hardness of the secp256k1 curve where the discrete logarithm problem creates a topological barrier preventing the derivation of the private key from the public key.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized_key_space",
+        "justification": "The void state before any key pair is instantiated or any cryptographic operation is attempted.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "secp256k1_curve_boundary",
+        "justification": "The closed boundary of the elliptic curve group that contains all valid public and private key states.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "scalar_multiplication",
+        "justification": "The forward morphism where a private key scalar d multiplies the generator G to produce the public key Q.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "discrete_logarithm_attempt",
+        "justification": "The reverse morphism attempting to derive d from Q, which encounters the topological barrier of the discrete logarithm problem.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "key_pair_generation_chain",
+        "justification": "The sequential composition of operations that links the generation of a private key to its corresponding public key.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "self_referential_key_state",
+        "justification": "The identity of the key pair where the public key is the image of the private key under the curve's group law.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "cryptographic_fork",
+        "justification": "The split into two arms: the T-arm representing the valid forward derivation and the F-arm representing the impossible reverse derivation.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "verdict_fusion",
+        "justification": "The rejoining of the forward and reverse arms into a single B4 verdict that holds both the possibility of forward derivation and the impossibility of reverse derivation.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "valid_public_key",
+        "justification": "The affirmative state where the public key is successfully derived from the private key.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "failed_private_key_recovery",
+        "justification": "The negative state where the attempt to recover the private key from the public key fails due to cryptographic hardness.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "cryptographic_paradox",
+        "justification": "The paradice state holding both the existence of the private key and the impossibility of its recovery simultaneously.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "immutable_security_record",
+        "justification": "The permanent record of the cryptographic barrier that cannot be undone or bypassed.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "cryptographic_fork",
+      "split_input": "public_key_state",
+      "split_outputs": [
+        "valid_forward_derivation",
+        "impossible_reverse_derivation"
+      ],
+      "fuse_element": "verdict_fusion",
+      "fuse_result": "cryptographic_paradox_state",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "No key pair exists; the cryptographic space is uninitialized.",
+      "true_description": "The public key is validly derived from the private key via scalar multiplication.",
+      "false_description": "The private key cannot be derived from the public key due to the discrete logarithm barrier.",
+      "both_description": "The system holds both the existence of the private key and the impossibility of its recovery as a stable paradox.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the cryptographic space before any key pair exists."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊣",
+          "domain_action": "Establish the secp256k1 curve as the closed boundary containing all valid states."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Perform scalar multiplication to derive the public key from the private key."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⋈",
+          "domain_action": "Chain the key generation operations to link private and public keys."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊙",
+          "domain_action": "Assert the self-referential identity of the key pair within the curve."
+        },
+        {
+          "step_num": 6,
+          "opcode": "∈",
+          "domain_action": "Fork the state into forward derivation and reverse recovery attempts."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊤",
+          "domain_action": "Affirm the validity of the forward derivation on the T-arm."
+        },
+        {
+          "step_num": 8,
+          "opcode": "≻",
+          "domain_action": "Continue the forward morphism to confirm the public key state."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊥",
+          "domain_action": "Refute the possibility of reverse derivation on the F-arm."
+        },
+        {
+          "step_num": 10,
+          "opcode": "≺",
+          "domain_action": "Attempt the reverse morphism to recover the private key, encountering the barrier."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊞",
+          "domain_action": "Hold the paradox of existing private key and impossible recovery simultaneously."
+        },
+        {
+          "step_num": 12,
+          "opcode": "∋",
+          "domain_action": "Rejoin the T and F arms into a single B4 verdict."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊡",
+          "domain_action": "Record the immutable cryptographic barrier as a permanent state."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊣",
+          "domain_action": "Close the system within the curve boundary, finalizing the verdict."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The elliptic curve group law that translates scalar multiplication into point coordinates.",
+      "ipc_mechanism": "The discrete logarithm problem that mediates communication between private and public key states.",
+      "memory_mechanism": "The finite field arithmetic that stores and retrieves key states within the curve.",
+      "scheduler_mechanism": "The cryptographic hardness that determines the order and feasibility of operations.",
+      "alfs_store": "The secp256k1 standard that serves as the canonical reference for key generation and validation.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational effort required to attempt the discrete logarithm reversal.",
+      "pre_cycle_state": "The system holds a valid public key with an unknown private key.",
+      "post_cycle_state": "The system holds the same public key with the confirmed impossibility of private key recovery.",
+      "delta_s_verdict": "ΔS ≈ 0 — The cryptographic barrier ensures no information is lost or gained; the state remains stable.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊣≻⋈⊙∈⊤≻⊥≺⊞∋⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊣≻⋈⊙∈⊤≻⊥≺⊞∋⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊣   TANCH    TANCH         N →     N\n    3   ≻   AFWD     AFWD          N →     T\n    4   ⋈   CLINK    CLINK         T →     T\n    5   ⊙   IMSCRIB  IMSCRIB       T →     T\n    6   ∈   FSPLIT   FSPLIT3       T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   ≻   AFWD     AFWD          T →     T\n    9   ⊥   EVALF    EVALF         T →    TF\n   10   ≺   AREV     AREV         TF →     N\n   11   ⊞   ENGAGR   EVALI         N →    tf\n   12   ∋   FFUSE    FFUSE3       tf →     A\n   13   ⊡   IFIX     IFIX          A →     A\n   14   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ⋈ → ⊙ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ⊞ → ∋ → ⊡ → ⊣\n-- Class: The IMASM composition that unmasks any secp256k1 public key to reveal its corresponding original private key\n-- Fingerprint: sig=(8,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=14\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(5, 11)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] ⊣     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary\n--   [2] ≻      rel    := 𐑾               𐑡 → 𐑱  | forward morphism — bidirectional arrow\n--   [3] ⋈     fid    := 𐑱               𐑾 → 𐑠  | composition — regime coherence\n--   [4] ⊙   gram   := 𐑠               𐑱 → 𐑚  | identity — self-imscription\n--   [5] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [10] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [11] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [12] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [13] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def the_imasm_composition_that_unmasks_any_9537d3_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def the_imasm_composition_that_unmasks_any_9537d3_protocol : IGProtocol the_imasm_composition_that_unmasks_any_9537d3_s0 the_imasm_composition_that_unmasks_any_9537d3_s13 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_imasm_composition_that_unmasks_any_9537d3_s11 the_imasm_composition_that_unmasks_any_9537d3_s11 = the_imasm_composition_that_unmasks_any_9537d3_s11 (idempotent)\n  (.seq (.arrow the_imasm_composition_that_unmasks_any_9537d3_l0 the_imasm_composition_that_unmasks_any_9537d3_s0 the_imasm_composition_that_unmasks_any_9537d3_s1) (.seq (.arrow the_imasm_composition_that_unmasks_any_9537d3_l1 the_imasm_composition_that_unmasks_any_9537d3_s1 the_imasm_composition_that_unmasks_any_9537d3_s2) (.seq (.arrow the_imasm_composition_that_unmasks_any_9537d3_l2 the_imasm_composition_that_unmasks_any_9537d3_s2 the_imasm_composition_that_unmasks_any_9537d3_s3) (.seq (.arrow the_imasm_composition_that_unmasks_any_9537d3_l3 the_imasm_composition_that_unmasks_any_9537d3_s3 the_imasm_composition_that_unmasks_any_9537d3_s4) (.seq (.arrow the_imasm_composition_that_unmasks_any_9537d3_l4 the_imasm_composition_that_unmasks_any_9537d3_s4 the_imasm_composition_that_unmasks_any_9537d3_s5) (.seq (.prod (.arrow the_imasm_composition_that_unmasks_any_9537d3_l5 the_imasm_composition_that_unmasks_any_9537d3_s5 the_imasm_composition_that_unmasks_any_9537d3_s11) (.arrow the_imasm_composition_that_unmasks_any_9537d3_l5 the_imasm_composition_that_unmasks_any_9537d3_s5 the_imasm_composition_that_unmasks_any_9537d3_s11)) (.seq (.arrow the_imasm_composition_that_unmasks_any_9537d3_l11 the_imasm_composition_that_unmasks_any_9537d3_s11 the_imasm_composition_that_unmasks_any_9537d3_s11) (.seq (.arrow the_imasm_composition_that_unmasks_any_9537d3_l11 the_imasm_composition_that_unmasks_any_9537d3_s11 the_imasm_composition_that_unmasks_any_9537d3_s12) (.arrow the_imasm_composition_that_unmasks_any_9537d3_l12 the_imasm_composition_that_unmasks_any_9537d3_s12 the_imasm_composition_that_unmasks_any_9537d3_s13)))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def the_imasm_composition_that_unmasks_any_9537d3_true_arm : IGProtocol the_imasm_composition_that_unmasks_any_9537d3_s0 the_imasm_composition_that_unmasks_any_9537d3_s13 :=\n  (the_imasm_composition_that_unmasks_any_9537d3_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_imasm_composition_that_unmasks_any_9537d3_false_arm : IGProtocol the_imasm_composition_that_unmasks_any_9537d3_s0 the_imasm_composition_that_unmasks_any_9537d3_s13 :=\n  (the_imasm_composition_that_unmasks_any_9537d3_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef the_imasm_composition_that_unmasks_any_9537d3_tier_ground : OuroboricityTier := TierFunctor.obj the_imasm_composition_that_unmasks_any_9537d3_s0\ndef the_imasm_composition_that_unmasks_any_9537d3_tier : OuroboricityTier := TierFunctor.obj the_imasm_composition_that_unmasks_any_9537d3_s13\n#eval the_imasm_composition_that_unmasks_any_9537d3_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_imasm_composition_that_unmasks_any_9537d3_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem the_imasm_composition_that_unmasks_any_9537d3_frobenius :\n    igFrobeniusAlg.mul the_imasm_composition_that_unmasks_any_9537d3_s0 the_imasm_composition_that_unmasks_any_9537d3_s0 = the_imasm_composition_that_unmasks_any_9537d3_s0 :=\n  igFrobAlg_self_fusion the_imasm_composition_that_unmasks_any_9537d3_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 2,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      5
+    ],
+    "fuse_positions": [
+      11
+    ],
+    "pair_list": [
+      [
+        5,
+        11
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: The IMASM composition that unmasks any secp256k1 public key to reveal its corresponding original private key",
+  "grounded_tuple": "⟨𐑦𐑡𐑩𐑹𐑱𐑪𐑔𐑝𐑢𐑫𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣≻⋈⊙∈⊤≻⊥≺⊞∋⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 2,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: No valid option exists because the premise of deriving a secp256k1 private key from its public key is mathematically impossible under current cryptographic standards.\n⊢=𐑦: The claim of deriving a private key from a public key implies a collapse of the cryptographic boundary where the surface (public) fully reveals the interior (private), matching the scale-collapse definition.\n⊞=𐑳: The cryptographic relationship between a public key and its private key is fundamentally asymmetric, as the derivation is one-way and the keys are not interchangeable or symmetrically paired.\n⊡=𐑷: The premise describes a cryptographic break that trivializes the security role, meaning no topological protection exists to prevent deformation to a trivial state.\n⊙=𐑢: The premise describes an impossible cryptographic break that does not exist in reality, placing the system in a stable, subcritical state where no such critical threshold or scale-free behavior can occur.\n⊥=𐑫: The cryptographic hardness of secp256k1 implies a topological barrier where reversing the public key to the private key is impossible without global restructuring of the discrete logarithm problem.\n≻=𐑩: No valid option exists — the described mechanism is mathematically impossible as secp256k1 is a one-way cryptographic function that cannot be reversed to reveal a private key from a public key.\n≺=𐑹: The claim of unmasking secp256k1 keys implies a mathematically impossible exact symmetry (μ∘δ=id) that would trivialize the cryptographic hardness, corresponding to the \"Special Frobenius\" primitive.\n⋈=𐑱: The premise of unmasking secp256k1 private keys from public keys is mathematically impossible, rendering the interaction a probabilistic failure with no reliable information transmission.\n⊤=𐑪: The cryptographic security of secp256k1 relies on the discrete logarithm problem being computationally infeasible to reverse, effectively locking the private key in a metastable state that cannot be reached without extraordinary (impossible) perturbation.\n∈=𐑔: The claim implies a global correlation where a single interaction (the composition) propagates across the entire cryptographic system to universally break secp256k1, which is mathematically impossible as the security relies on the lack of such global correlations.\n∋=𐑝: No valid option exists because the premise of deriving a secp256k1 private key from a public key is mathematically impossible under current cryptographic standards.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 14,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣≻⋈⊙∈⊤≻⊥≺⊞∋⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "⊣≻⋈⊙∈⊤≻⊥≺⊞∋⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "≻⋈⊙∈⊤≻⊥≺⊞∋⊡⊣⊢⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "⋈⊙∈⊤≻⊥≺⊞∋⊡⊣⊢⊣≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊙∈⊤≻⊥≺⊞∋⊡⊣⊢⊣≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "∈⊤≻⊥≺⊞∋⊡⊣⊢⊣≻⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⊤≻⊥≺⊞∋⊡⊣⊢⊣≻⋈⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "≻⊥≺⊞∋⊡⊣⊢⊣≻⋈⊙∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⊥≺⊞∋⊡⊣⊢⊣≻⋈⊙∈⊤≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "≺⊞∋⊡⊣⊢⊣≻⋈⊙∈⊤≻⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊞∋⊡⊣⊢⊣≻⋈⊙∈⊤≻⊥≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "∋⊡⊣⊢⊣≻⋈⊙∈⊤≻⊥≺⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⊡⊣⊢⊣≻⋈⊙∈⊤≻⊥≺⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "⊣⊢⊣≻⋈⊙∈⊤≻⊥≺⊞∋⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊣≻⋈⊙∈⊤≻⊥≺⊞∋⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
