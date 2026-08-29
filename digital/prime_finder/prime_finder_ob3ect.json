@@ -1,0 +1,673 @@
+{
+  "name": "Prime Finder",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Prime Finder",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "candidate",
+        "divisor",
+        "remainder",
+        "prime_certificate",
+        "winding_number"
+      ],
+      "boundary_condition": "The Horn Torus pinch point where the candidate integer touches the divisibility lattice, closing the search space to a single point of self-reference.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "candidate_integer",
+        "justification": "The void state before a specific integer is selected for primality testing; the empty set of factors.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "search_limit",
+        "justification": "The terminal anchor defining the upper bound of the trial division or sieving range; the closed boundary of the search.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "trial_division_step",
+        "justification": "The forward morphism advancing the divisor counter through the sequence of potential factors.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "remainder_reset",
+        "justification": "The reverse morphism resetting the state when a divisor fails to divide, descending back to the next candidate.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "factor_chain",
+        "justification": "The composition of sequential divisibility checks linking one divisor to the next in the chain.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "critical_threshold",
+        "justification": "The identity of the prime number itself; the point where the distribution exhibits scale-free correlations and maximal sensitivity.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "divisibility_test",
+        "justification": "The split into two arms: one where the remainder is zero (divisible) and one where the remainder is non-zero (not divisible).",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "primality_verdict",
+        "justification": "The reconstitution of the two arms into a single state: either composite (F) or prime (T), or a dialetheic state if the test is inconclusive.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "non_divisible_arm",
+        "justification": "The affirmative arm where the candidate resists division, maintaining the hypothesis of primality.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "divisible_arm",
+        "justification": "The negative arm where a factor is found, refuting the hypothesis of primality.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "semiprime_boundary",
+        "justification": "The paradice state where a number is simultaneously a product of two primes and exhibits prime-like distribution properties at the critical threshold.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "prime_certificate",
+        "justification": "The permanent, append-only record of a verified prime, such as a Pratt certificate or a sieved entry.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "divisibility_test",
+      "split_input": "candidate_integer",
+      "split_outputs": [
+        "remainder_zero",
+        "remainder_nonzero"
+      ],
+      "fuse_element": "primality_verdict",
+      "fuse_result": "prime_status",
+      "frobenius_verdict": "B",
+      "test_instance": "",
+      "failure_reason": "FSPLIT3 at step 4 dangles — no matching FFUSE3"
+    },
+    "phase_3": {
+      "void_description": "No candidate selected; the number line is unexamined.",
+      "true_description": "The candidate has passed all divisibility tests up to the square root; it is affirmed as prime.",
+      "false_description": "A divisor was found; the candidate is refuted as composite.",
+      "both_description": "The candidate exists at the critical threshold where it is simultaneously a product of primes and exhibits prime-like statistical behavior (dialetheia).",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the search space with an empty candidate integer."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊣",
+          "domain_action": "Set the terminal anchor at the search limit for the trial division."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Advance the divisor counter to the first potential factor."
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "Split the candidate into two arms based on the divisibility test."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the non-divisible arm where the remainder is non-zero."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⋈",
+          "domain_action": "Chain the next divisor in the sequence for the non-divisible arm."
+        },
+        {
+          "step_num": 7,
+          "opcode": "≻",
+          "domain_action": "Advance the divisor counter again in the non-divisible arm."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∈",
+          "domain_action": "Split again for the next divisor in the non-divisible arm."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the continued non-divisibility."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⋈",
+          "domain_action": "Chain the next divisor."
+        },
+        {
+          "step_num": 11,
+          "opcode": "≻",
+          "domain_action": "Advance the divisor counter."
+        },
+        {
+          "step_num": 12,
+          "opcode": "∈",
+          "domain_action": "Split for the final divisor check."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the final non-divisibility."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊙",
+          "domain_action": "The candidate recognizes itself as prime at the critical threshold."
+        },
+        {
+          "step_num": 15,
+          "opcode": "⊡",
+          "domain_action": "Record the prime certificate permanently."
+        },
+        {
+          "step_num": 16,
+          "opcode": "∋",
+          "domain_action": "Fuse the non-divisible arm back to the main flow as a prime verdict."
+        },
+        {
+          "step_num": 17,
+          "opcode": "≺",
+          "domain_action": "Reset the state for the next candidate in the sequence."
+        },
+        {
+          "step_num": 18,
+          "opcode": "∈",
+          "domain_action": "Split the next candidate into divisible and non-divisible arms."
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the divisible arm where a factor is found."
+        },
+        {
+          "step_num": 20,
+          "opcode": "⊡",
+          "domain_action": "Record the composite status."
+        },
+        {
+          "step_num": 21,
+          "opcode": "∋",
+          "domain_action": "Fuse the divisible arm back to the main flow as a composite verdict."
+        },
+        {
+          "step_num": 22,
+          "opcode": "⊞",
+          "domain_action": "Hold the semiprime boundary state where both prime and composite properties coexist."
+        },
+        {
+          "step_num": 23,
+          "opcode": "⋈",
+          "domain_action": "Chain the next candidate in the sequence."
+        },
+        {
+          "step_num": 24,
+          "opcode": "≻",
+          "domain_action": "Advance the search to the next integer."
+        },
+        {
+          "step_num": 25,
+          "opcode": "∈",
+          "domain_action": "Split the new candidate."
+        },
+        {
+          "step_num": 26,
+          "opcode": "⊤",
+          "domain_action": "Evaluate non-divisibility."
+        },
+        {
+          "step_num": 27,
+          "opcode": "⋈",
+          "domain_action": "Chain the next divisor."
+        },
+        {
+          "step_num": 28,
+          "opcode": "≻",
+          "domain_action": "Advance the divisor."
+        },
+        {
+          "step_num": 29,
+          "opcode": "∈",
+          "domain_action": "Split for the next divisor."
+        },
+        {
+          "step_num": 30,
+          "opcode": "⊥",
+          "domain_action": "Evaluate divisibility."
+        },
+        {
+          "step_num": 31,
+          "opcode": "∋",
+          "domain_action": "Fuse the arms to a composite verdict."
+        },
+        {
+          "step_num": 32,
+          "opcode": "≺",
+          "domain_action": "Reset for the next candidate."
+        },
+        {
+          "step_num": 33,
+          "opcode": "⊣",
+          "domain_action": "Reach the terminal anchor of the search limit."
+        },
+        {
+          "step_num": 34,
+          "opcode": "⊙",
+          "domain_action": "The system recognizes the completed search as a self-referential closure."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Horn Torus geometry that translates the arithmetic of primes into the winding of the (16,3) knot.",
+      "ipc_mechanism": "The divisibility lattice where candidates communicate via remainder signals.",
+      "memory_mechanism": "The sieve array or certificate chain storing the state of each integer.",
+      "scheduler_mechanism": "The trial division sequence that determines the order of divisor checks.",
+      "alfs_store": "The Prime Number Theorem and the Riemann Zeta function as the canonical reference for prime distribution.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The computational work of trial division or sieving per candidate.",
+      "pre_cycle_state": "The candidate is unexamined; the state is void.",
+      "post_cycle_state": "The candidate is classified as prime or composite; the state is fixed.",
+      "delta_s_verdict": "ΔS ≈ 0 — The classification process is reversible in the sense that the arithmetic properties of the number do not change, only our knowledge of them.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊣   TANCH    TANCH         N →     N\n    3   ≻   AFWD     AFWD          N →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ⋈   CLINK    CLINK         T →     T\n    7   ≻   AFWD     AFWD          T →     T\n    8   ∈   FSPLIT   FSPLIT3       T →     T\n    9   ⊤   EVALT    EVALT         T →     T\n   10   ⋈   CLINK    CLINK         T →     T\n   11   ≻   AFWD     AFWD          T →     T\n   12   ∈   FSPLIT   FSPLIT3       T →     T\n   13   ⊤   EVALT    EVALT         T →     T\n   14   ⊙   IMSCRIB  IMSCRIB       T →     T\n   15   ⊡   IFIX     IFIX          T →     T\n   16   ∋   FFUSE    FFUSE3        T →     T\n   17   ≺   AREV     AREV          T →     T\n   18   ∈   FSPLIT   FSPLIT3       T →     T\n   19   ⊥   EVALF    EVALF         T →     T\n   20   ⊡   IFIX     IFIX          T →     T\n   21   ∋   FFUSE    FFUSE3        T →     T\n   22   ⊞   ENGAGR   EVALI         T →     T\n   23   ⋈   CLINK    CLINK         T →     T\n   24   ≻   AFWD     AFWD          T →     T\n   25   ∈   FSPLIT   FSPLIT3       T →     T\n   26   ⊤   EVALT    EVALT         T →     T\n   27   ⋈   CLINK    CLINK         T →     T\n   28   ≻   AFWD     AFWD          T →     T\n   29   ∈   FSPLIT   FSPLIT3       T →     T\n   30   ⊥   EVALF    EVALF         T →     T\n   31   ∋   FFUSE    FFUSE3        T →     T\n   32   ≺   AREV     AREV          T →     T\n   33   ⊣   TANCH    TANCH         T →     T\n   34   ⊙   IMSCRIB  IMSCRIB       T →     T\n\n  Final register: T\n  Closed walk: False\n  Tri-ancestral verdict: B — FSPLIT3 at step 4 dangles — no matching FFUSE3\n  ⚠ Walk open, verdict B",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ∈ → ⊤ → ⋈ → ≻ → ∈ → ⊤ → ⋈ → ≻ → ∈ → ⊤ → ⊙ → ⊡ → ∋ → ≺ → ∈ → ⊥ → ⊡ → ∋ → ⊞ → ⋈ → ≻ → ∈ → ⊤ → ⋈ → ≻ → ∈ → ⊥ → ∋ → ≺ → ⊣ → ⊙\n-- Class: Prime Finder\n-- Fingerprint: sig=(16,9,7,2)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=34\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(11, 15), (17, 20), (28, 30)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] ⊣     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary\n--   [2] ≻      rel    := 𐑾               𐑡 → 𐑚  | forward morphism — bidirectional arrow\n--   [3] ∈    gran   := 𐑚               𐑾 → ⊙  | split δ — range decomposition\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑱  | evaluate-true — criticality gate open\n--   [5] ⋈     fid    := 𐑱               ⊙ → 𐑾  | composition — regime coherence\n--   [6] ≻      rel    := 𐑾               𐑱 → 𐑚  | forward morphism — bidirectional arrow\n--   [7] ∈    gran   := 𐑚               𐑾 → ⊙  | split δ — range decomposition\n--   [8] ⊤     crit   := ⊙               𐑚 → 𐑱  | evaluate-true — criticality gate open\n--   [9] ⋈     fid    := 𐑱               ⊙ → 𐑾  | composition — regime coherence\n--   [10] ≻      rel    := 𐑾               𐑱 → 𐑚  | forward morphism — bidirectional arrow\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [14] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [15] ∋     stoi   := 𐑙               𐑙 → 𐑗  | fuse μ — assembly mode\n--   [16] ≺      pol    := 𐑗               𐑙 → 𐑚  | reverse morphism — parity flip\n--   [17] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [18] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [19] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [20] ∋     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode\n--   [21] ⊞    stoi   := 𐑳               𐑙 → 𐑱  | engage paradox — B-state, both arms\n--   [22] ⋈     fid    := 𐑱               𐑳 → 𐑾  | composition — regime coherence\n--   [23] ≻      rel    := 𐑾               𐑱 → 𐑚  | forward morphism — bidirectional arrow\n--   [24] ∈    gran   := 𐑚               𐑾 → ⊙  | split δ — range decomposition\n--   [25] ⊤     crit   := ⊙               𐑚 → 𐑱  | evaluate-true — criticality gate open\n--   [26] ⋈     fid    := 𐑱               ⊙ → 𐑾  | composition — regime coherence\n--   [27] ≻      rel    := 𐑾               𐑱 → 𐑚  | forward morphism — bidirectional arrow\n--   [28] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [29] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [30] ∋     stoi   := 𐑙               𐑙 → 𐑗  | fuse μ — assembly mode\n--   [31] ≺      pol    := 𐑗               𐑙 → 𐑡  | reverse morphism — parity flip\n--   [32] ⊣     top    := 𐑡               𐑗 → 𐑠  | terminal object — connectivity boundary\n--   [33] ⊙   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def prime_finder_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def prime_finder_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def prime_finder_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def prime_finder_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def prime_finder_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def prime_finder_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def prime_finder_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def prime_finder_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def prime_finder_s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def prime_finder_s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def prime_finder_s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def prime_finder_s33 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def prime_finder_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def prime_finder_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def prime_finder_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def prime_finder_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def prime_finder_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l29 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def prime_finder_l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def prime_finder_l33 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def prime_finder_protocol : IGProtocol prime_finder_s0 prime_finder_s33 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct prime_finder_s15 prime_finder_s15 = prime_finder_s15 (idempotent)\n  (.seq (.arrow prime_finder_l0 prime_finder_s0 prime_finder_s1) (.seq (.arrow prime_finder_l1 prime_finder_s1 prime_finder_s2) (.seq (.arrow prime_finder_l2 prime_finder_s2 prime_finder_s3) (.seq (.arrow prime_finder_l3 prime_finder_s3 prime_finder_s4) (.seq (.arrow prime_finder_l4 prime_finder_s4 prime_finder_s5) (.seq (.arrow prime_finder_l5 prime_finder_s5 prime_finder_s6) (.seq (.arrow prime_finder_l6 prime_finder_s6 prime_finder_s7) (.seq (.arrow prime_finder_l7 prime_finder_s7 prime_finder_s8) (.seq (.arrow prime_finder_l8 prime_finder_s8 prime_finder_s9) (.seq (.arrow prime_finder_l9 prime_finder_s9 prime_finder_s10) (.seq (.arrow prime_finder_l10 prime_finder_s10 prime_finder_s11) (.seq (.prod (.arrow prime_finder_l11 prime_finder_s11 prime_finder_s15) (.arrow prime_finder_l11 prime_finder_s11 prime_finder_s15)) (.seq (.arrow prime_finder_l15 prime_finder_s15 prime_finder_s15) (.seq (.arrow prime_finder_l15 prime_finder_s15 prime_finder_s16) (.seq (.arrow prime_finder_l16 prime_finder_s16 prime_finder_s17) (.seq (.arrow prime_finder_l17 prime_finder_s17 prime_finder_s18) (.seq (.arrow prime_finder_l18 prime_finder_s18 prime_finder_s19) (.seq (.arrow prime_finder_l19 prime_finder_s19 prime_finder_s20) (.seq (.arrow prime_finder_l20 prime_finder_s20 prime_finder_s21) (.seq (.arrow prime_finder_l21 prime_finder_s21 prime_finder_s22) (.seq (.arrow prime_finder_l22 prime_finder_s22 prime_finder_s23) (.seq (.arrow prime_finder_l23 prime_finder_s23 prime_finder_s24) (.seq (.arrow prime_finder_l24 prime_finder_s24 prime_finder_s25) (.seq (.arrow prime_finder_l25 prime_finder_s25 prime_finder_s26) (.seq (.arrow prime_finder_l26 prime_finder_s26 prime_finder_s27) (.seq (.arrow prime_finder_l27 prime_finder_s27 prime_finder_s28) (.seq (.arrow prime_finder_l28 prime_finder_s28 prime_finder_s29) (.seq (.arrow prime_finder_l29 prime_finder_s29 prime_finder_s30) (.seq (.arrow prime_finder_l30 prime_finder_s30 prime_finder_s31) (.seq (.arrow prime_finder_l31 prime_finder_s31 prime_finder_s32) (.arrow prime_finder_l32 prime_finder_s32 prime_finder_s33)))))))))))))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def prime_finder_true_arm : IGProtocol prime_finder_s0 prime_finder_s33 :=\n  (prime_finder_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def prime_finder_false_arm : IGProtocol prime_finder_s0 prime_finder_s33 :=\n  (prime_finder_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef prime_finder_tier_ground : OuroboricityTier := TierFunctor.obj prime_finder_s0\ndef prime_finder_tier : OuroboricityTier := TierFunctor.obj prime_finder_s33\n#eval prime_finder_tier_ground  -- tier of the ground (pre-transformation)\n#eval prime_finder_tier  -- the Grammar's own verdict on the closed object\n",
+  "topology_report": {
+    "topology_class": "mixed",
+    "nesting_depth": 3,
+    "total_pairs": 3,
+    "open_forks": 3,
+    "cross_branches": 0,
+    "empty_branches": 1,
+    "sequence_length": 34,
+    "t_branch_ops": 3,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3,
+      7,
+      11,
+      17,
+      24,
+      28
+    ],
+    "fuse_positions": [
+      15,
+      20,
+      30
+    ],
+    "pair_list": [
+      [
+        11,
+        15
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        28,
+        30
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: Prime Finder",
+  "grounded_tuple": "⟨𐑛𐑰𐑽𐑿𐑐𐑧𐑔𐑝⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 17,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (17 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: Prime numbers exhibit a branched tree structure where each prime acts as a unique generator for its multiples within the nested hierarchy of integers.\n⊢=𐑛: Prime finding relies on iterative trial division or sieving that recurs through a sequence of candidates with periodic resets to identify divisibility.\n⊞=𐑳: The asymmetric nature of prime numbers, where factors cannot be evenly paired except for 1 and the number itself, aligns with the definition of different counts on each side.\n⊡=𐑭: The distribution of prime numbers exhibits a non-trivial integer winding structure in the complex plane that remains stable against continuous deformations preserving the Riemann zeta function's analytic properties.\n⊙=⊙: The Prime Finder operates at a critical threshold where the distribution of primes exhibits scale-free correlations and maximal sensitivity to initial conditions.\n⊥=𐑖: Prime numbers exhibit a persistent, structurally enforced asymmetry in their distribution that cannot be thermally interconverted, reflecting a deep memory of the underlying arithmetic constraints.\n≻=𐑽: The Prime Finder acts as a catalytic filter that stabilizes the transition state for identifying primes without being consumed in the process.\n≺=𐑿: The symbol ≺ denotes a strict ordering with a single directional flow, indicating a signed direction where one pole acts as the donor and the other as the acceptor.\n⋈=𐑐: Prime finding relies on deterministic geometric constraints that enforce near-certain firing with high information fidelity.\n⊤=𐑧: A high barrier to rearrangement implies the system is kinetically frozen and requires external driving to overcome resistance to change.\n∈=𐑔: The distribution of prime numbers exhibits long-range correlations that propagate across the entire number line, characteristic of a global, scale-free system.\n∋=𐑝: Prime numbers are defined by the simultaneous absence of all non-trivial divisors, requiring a conjunctive verification of all potential factors.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 34,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 1,
+        "word": "⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 2,
+        "word": "≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 3,
+        "word": "∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 4,
+        "word": "⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 5,
+        "word": "⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 6,
+        "word": "≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 7,
+        "word": "∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 8,
+        "word": "⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 9,
+        "word": "⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 10,
+        "word": "≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 11,
+        "word": "∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 12,
+        "word": "⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 13,
+        "word": "⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 14,
+        "word": "⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 15,
+        "word": "∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 16,
+        "word": "≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 17,
+        "word": "∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 18,
+        "word": "⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 19,
+        "word": "⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 20,
+        "word": "∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 21,
+        "word": "⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 22,
+        "word": "⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 23,
+        "word": "≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 24,
+        "word": "∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 25,
+        "word": "⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 26,
+        "word": "⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 27,
+        "word": "≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 28,
+        "word": "∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 29,
+        "word": "⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 30,
+        "word": "∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 31,
+        "word": "≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 32,
+        "word": "⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 33,
+        "word": "⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 11,
+    "canonical_word": "∈⊤⊙⊡∋≺∈⊥⊡∋⊞⋈≻∈⊤⋈≻∈⊥∋≺⊣⊙⊢⊣≻∈⊤⋈≻∈⊤⋈≻",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
