@@ -1,0 +1,24 @@
+{
+  "name": "btc_key_deriver",
+  "description": "Private key deriver based on FDE lattice structure from btclattice.txt",
+  "version": "1.0",
+  "derivation_chain": {
+    "seed_state": "A = TFtf",
+    "privkey_state": "T = pure truth",
+    "pubkey_state": "T with verdict F"
+  },
+  "lattice": {
+    "sixteen_3": "{T,F} × {t,f} as tensor product",
+    "truth_layer": "{T,F}",
+    "info_layer": "{t,f}"
+  },
+  "born_rule": {
+    "formula": "|ψ∩{T}|/|ψ|",
+    "seed_ratio": {"p_T": 0.25, "p_F": 0.25, "tau": 0.5},
+    "privkey_ratio": {"p_T": 1.0, "p_F": 0.0, "tau": 1.0}
+  },
+  "example_seed": "⊞∋∋⊙⊣∈⊣⊥⊤⊞⊡≺≻⊤⊙⊞≻⊞≻⊙⊤⊙⊢≺∈⋈⋈≺≺≻∋⊞⊥⊙≻⊣⊥⊢∋⊥⊡∋⋈⊙⊡⊞⊙⊢⊞∈⊙∋⊙∈≻≻⊥⊞⋈⋈⊢⊞⊣⊡",
+  "example_privkey": "⊞∈≻⋈⊢⊢⊢∈≺⊢⊡⊡≻⊙⊙∈⋈⊡⊡⋈≺≻⊞⊡⊣⊥⊡∋⊣⊢⊙⊢",
+  "example_pubkey": "≺≻⊞≺⊡⊙⊥⊥⋈≺≻⊤⊥⊢∋⊞≺∋⊢⊤⊡≺⋈≻≺⊙⊤⊡⊡≻⋈⊡⋈",
+  "key_insight": "Seed in A state (TFtf) collapses to T state through key derivation - this is the Born rule in action"
+}

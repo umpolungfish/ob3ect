@@ -1,0 +1,508 @@
+{
+  "name": "collatz_cycle_period_fde_dive",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "collatz_cycle_period_fde_dive",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "parity_gate",
+        "3n_plus_1_step",
+        "halving_step",
+        "cycle_period",
+        "fde_depth",
+        "winding_number"
+      ],
+      "boundary_condition": "The closed loop of the nontrivial Collatz cycle where the trajectory returns to its starting integer, bounded by the FDE depth required to recover the period.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "initial_integer",
+        "justification": "The starting positive integer n before any Collatz operations are applied, representing the void state of the trajectory.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "cycle_closure",
+        "justification": "The terminal anchor where the trajectory returns to the starting integer, closing the loop and defining the cycle's boundary.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "3n_plus_1_morphism",
+        "justification": "The forward morphism applied when n is odd, transforming the state upward via 3n+1.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "halving_morphism",
+        "justification": "The reverse/descent morphism applied when n is even, transforming the state downward via n/2.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "trajectory_chain",
+        "justification": "The sequential composition of operations that links each state to the next in the deterministic trajectory.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "critical_threshold",
+        "justification": "The self-referential state at the critical threshold where scale-free correlations emerge and the system exhibits maximal sensitivity.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "parity_decision",
+        "justification": "The split into two branches based on the parity of the current integer: odd (T-arm) or even (F-arm).",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "period_recovery",
+        "justification": "The reconstitution of the trajectory into a single resolved state after traversing the cycle, recovering the period.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "odd_branch_affirmation",
+        "justification": "The affirmative evaluation of the odd branch where the 3n+1 operation is constructively proven.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "even_branch_refutation",
+        "justification": "The negative evaluation of the even branch where the halving operation is constructively refuted as a descent.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "asymmetric_balance",
+        "justification": "The paradice state holding both the count of divisions by 3 and divisions by 2 simultaneously, reflecting the asymmetric balance of operations.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "winding_record",
+        "justification": "The permanent, append-only record of the cycle's period as a discrete integer winding number.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "parity_decision",
+      "split_input": "current_integer_state",
+      "split_outputs": [
+        "odd_branch_3n_plus_1",
+        "even_branch_halving"
+      ],
+      "fuse_element": "period_recovery",
+      "fuse_result": "resolved_cycle_state",
+      "frobenius_verdict": "B",
+      "test_instance": "",
+      "failure_reason": "FSPLIT3 at step 2 dangles — no matching FFUSE3"
+    },
+    "phase_3": {
+      "void_description": "The state before any integer is selected or any Collatz operation is initiated.",
+      "true_description": "The state where the trajectory successfully follows the 3n+1 rule for an odd integer.",
+      "false_description": "The state where the trajectory successfully follows the n/2 rule for an even integer.",
+      "both_description": "The state where the cycle holds both the ascent and descent operations simultaneously, maintaining the asymmetric balance required for the nontrivial period.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the system with an arbitrary positive integer n as the starting point of the trajectory."
+        },
+        {
+          "step_num": 2,
+          "opcode": "∈",
+          "domain_action": "Branch the trajectory based on the parity of n, creating an odd branch and an even branch."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Apply the 3n+1 morphism on the odd branch, transforming the state upward."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊤",
+          "domain_action": "Affirm the constructive truth of the 3n+1 operation on the odd branch."
+        },
+        {
+          "step_num": 5,
+          "opcode": "≺",
+          "domain_action": "Apply the halving morphism on the even branch, transforming the state downward."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊥",
+          "domain_action": "Refute the constructive falsity of the halving operation on the even branch as a descent."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⋈",
+          "domain_action": "Chain the resulting state to the next iteration of the Collatz map."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "Hold the asymmetric balance of operation counts (divisions by 3 vs divisions by 2) in a paradice state."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊙",
+          "domain_action": "Recognize the critical threshold where the system exhibits scale-free correlations and maximal sensitivity."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⋈",
+          "domain_action": "Continue the trajectory chain through successive iterations."
+        },
+        {
+          "step_num": 11,
+          "opcode": "∈",
+          "domain_action": "Re-evaluate parity at the next integer state, creating a new split."
+        },
+        {
+          "step_num": 12,
+          "opcode": "≻",
+          "domain_action": "Apply 3n+1 if the new state is odd."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊤",
+          "domain_action": "Affirm the odd branch operation."
+        },
+        {
+          "step_num": 14,
+          "opcode": "≺",
+          "domain_action": "Apply n/2 if the new state is even."
+        },
+        {
+          "step_num": 15,
+          "opcode": "⊥",
+          "domain_action": "Refute the even branch operation."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⋈",
+          "domain_action": "Link the new state to the trajectory."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⊞",
+          "domain_action": "Maintain the paradice of asymmetric operation counts."
+        },
+        {
+          "step_num": 18,
+          "opcode": "⋈",
+          "domain_action": "Iterate until the trajectory returns to the starting integer."
+        },
+        {
+          "step_num": 19,
+          "opcode": "∋",
+          "domain_action": "Rejoin the odd and even branches at the cycle closure, resolving the trajectory into a single state."
+        },
+        {
+          "step_num": 20,
+          "opcode": "⊡",
+          "domain_action": "Record the cycle period as a discrete integer winding number in the permanent register."
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊣",
+          "domain_action": "Anchor the system at the closed loop boundary, confirming the cycle's existence."
+        },
+        {
+          "step_num": 22,
+          "opcode": "⊙",
+          "domain_action": "Self-reference the critical threshold state, completing the loop."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The parity-gated Collatz map that translates integer states into 3n+1 or n/2 operations.",
+      "ipc_mechanism": "The deterministic trajectory chain that communicates state transitions between iterations.",
+      "memory_mechanism": "The FDE depth register that stores the winding number and operation counts.",
+      "scheduler_mechanism": "The parity check that determines the order of 3n+1 and n/2 operations.",
+      "alfs_store": "The catalog entry fde_collatz_period defining the bounded period recovery.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One parity check and one arithmetic operation per cycle iteration.",
+      "pre_cycle_state": "An arbitrary positive integer n with undefined trajectory.",
+      "post_cycle_state": "A closed cycle with a defined period and asymmetric operation balance.",
+      "delta_s_verdict": "ΔS ≈ 0 — The cycle is entropy-conservative because the deterministic map preserves the topological structure of the trajectory without dissipating information.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ≻   AFWD     AFWD          N →     T\n    4   ⊤   EVALT    EVALT         T →     T\n    5   ≺   AREV     AREV          T →     N\n    6   ⊥   EVALF    EVALF         N →     F\n    7   ⋈   CLINK    CLINK         F →     F\n    8   ⊞   ENGAGR   EVALI         F →   Ftf\n    9   ⊙   IMSCRIB  IMSCRIB     Ftf →   Ftf\n   10   ⋈   CLINK    CLINK       Ftf →   Ftf\n   11   ∈   FSPLIT   FSPLIT3     Ftf →   Ftf\n   12   ≻   AFWD     AFWD        Ftf →   Ftf\n   13   ⊤   EVALT    EVALT       Ftf →     A\n   14   ≺   AREV     AREV          A →     N\n   15   ⊥   EVALF    EVALF         N →     F\n   16   ⋈   CLINK    CLINK         F →     F\n   17   ⊞   ENGAGR   EVALI         F →   Ftf\n   18   ⋈   CLINK    CLINK       Ftf →   Ftf\n   19   ∋   FFUSE    FFUSE3      Ftf →     A\n   20   ⊡   IFIX     IFIX          A →     A\n   21   ⊣   TANCH    TANCH         A →     A\n   22   ⊙   IMSCRIB  IMSCRIB       A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: B — FSPLIT3 at step 2 dangles — no matching FFUSE3\n  ⚠ Walk open, verdict B",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⊙ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ⋈ → ⊞ → ⋈ → ∋ → ⊡ → ⊣ → ⊙\n-- Class: collatz_cycle_period_fde_dive\n-- Fingerprint: sig=(12,3,6,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=22\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(10, 18)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑼 → 𐑾  | split δ — range decomposition\n--   [2] ≻      rel    := 𐑾               𐑚 → ⊙  | forward morphism — bidirectional arrow\n--   [3] ⊤     crit   := ⊙               𐑾 → 𐑗  | evaluate-true — criticality gate open\n--   [4] ≺      pol    := 𐑗               ⊙ → 𐑖  | reverse morphism — parity flip\n--   [5] ⊥     chir   := 𐑖               𐑗 → 𐑱  | evaluate-false — chirality check\n--   [6] ⋈     fid    := 𐑱               𐑖 → 𐑳  | composition — regime coherence\n--   [7] ⊞    stoi   := 𐑳               𐑱 → 𐑠  | engage paradox — B-state, both arms\n--   [8] ⊙   gram   := 𐑠               𐑳 → 𐑱  | identity — self-imscription\n--   [9] ⋈     fid    := 𐑱               𐑠 → 𐑚  | composition — regime coherence\n--   [10] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [11] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [12] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [13] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [15] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [16] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [17] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [18] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [19] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [20] ⊣     top    := 𐑡               𐑭 → 𐑠  | terminal object — connectivity boundary\n--   [21] ⊙   gram   := 𐑠               𐑡 → 𐑼  | identity — self-imscription\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def collatz_cycle_period_fde_dive_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def collatz_cycle_period_fde_dive_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def collatz_cycle_period_fde_dive_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def collatz_cycle_period_fde_dive_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def collatz_cycle_period_fde_dive_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def collatz_cycle_period_fde_dive_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def collatz_cycle_period_fde_dive_protocol : IGProtocol collatz_cycle_period_fde_dive_s0 collatz_cycle_period_fde_dive_s21 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct collatz_cycle_period_fde_dive_s18 collatz_cycle_period_fde_dive_s18 = collatz_cycle_period_fde_dive_s18 (idempotent)\n  (.seq (.arrow collatz_cycle_period_fde_dive_l0 collatz_cycle_period_fde_dive_s0 collatz_cycle_period_fde_dive_s1) (.seq (.arrow collatz_cycle_period_fde_dive_l1 collatz_cycle_period_fde_dive_s1 collatz_cycle_period_fde_dive_s2) (.seq (.arrow collatz_cycle_period_fde_dive_l2 collatz_cycle_period_fde_dive_s2 collatz_cycle_period_fde_dive_s3) (.seq (.arrow collatz_cycle_period_fde_dive_l3 collatz_cycle_period_fde_dive_s3 collatz_cycle_period_fde_dive_s4) (.seq (.arrow collatz_cycle_period_fde_dive_l4 collatz_cycle_period_fde_dive_s4 collatz_cycle_period_fde_dive_s5) (.seq (.arrow collatz_cycle_period_fde_dive_l5 collatz_cycle_period_fde_dive_s5 collatz_cycle_period_fde_dive_s6) (.seq (.arrow collatz_cycle_period_fde_dive_l6 collatz_cycle_period_fde_dive_s6 collatz_cycle_period_fde_dive_s7) (.seq (.arrow collatz_cycle_period_fde_dive_l7 collatz_cycle_period_fde_dive_s7 collatz_cycle_period_fde_dive_s8) (.seq (.arrow collatz_cycle_period_fde_dive_l8 collatz_cycle_period_fde_dive_s8 collatz_cycle_period_fde_dive_s9) (.seq (.arrow collatz_cycle_period_fde_dive_l9 collatz_cycle_period_fde_dive_s9 collatz_cycle_period_fde_dive_s10) (.seq (.prod (.arrow collatz_cycle_period_fde_dive_l10 collatz_cycle_period_fde_dive_s10 collatz_cycle_period_fde_dive_s18) (.arrow collatz_cycle_period_fde_dive_l10 collatz_cycle_period_fde_dive_s10 collatz_cycle_period_fde_dive_s18)) (.seq (.arrow collatz_cycle_period_fde_dive_l18 collatz_cycle_period_fde_dive_s18 collatz_cycle_period_fde_dive_s18) (.seq (.arrow collatz_cycle_period_fde_dive_l18 collatz_cycle_period_fde_dive_s18 collatz_cycle_period_fde_dive_s19) (.seq (.arrow collatz_cycle_period_fde_dive_l19 collatz_cycle_period_fde_dive_s19 collatz_cycle_period_fde_dive_s20) (.arrow collatz_cycle_period_fde_dive_l20 collatz_cycle_period_fde_dive_s20 collatz_cycle_period_fde_dive_s21)))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def collatz_cycle_period_fde_dive_true_arm : IGProtocol collatz_cycle_period_fde_dive_s0 collatz_cycle_period_fde_dive_s21 :=\n  (collatz_cycle_period_fde_dive_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def collatz_cycle_period_fde_dive_false_arm : IGProtocol collatz_cycle_period_fde_dive_s0 collatz_cycle_period_fde_dive_s21 :=\n  (collatz_cycle_period_fde_dive_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef collatz_cycle_period_fde_dive_tier_ground : OuroboricityTier := TierFunctor.obj collatz_cycle_period_fde_dive_s0\ndef collatz_cycle_period_fde_dive_tier : OuroboricityTier := TierFunctor.obj collatz_cycle_period_fde_dive_s21\n#eval collatz_cycle_period_fde_dive_tier_ground  -- tier of the ground (pre-transformation)\n#eval collatz_cycle_period_fde_dive_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem collatz_cycle_period_fde_dive_frobenius :\n    igFrobeniusAlg.mul collatz_cycle_period_fde_dive_s0 collatz_cycle_period_fde_dive_s0 = collatz_cycle_period_fde_dive_s0 :=\n  igFrobAlg_self_fusion collatz_cycle_period_fde_dive_s0\n",
+  "topology_report": {
+    "topology_class": "mixed",
+    "nesting_depth": 1,
+    "total_pairs": 1,
+    "open_forks": 1,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 22,
+    "t_branch_ops": 2,
+    "f_branch_ops": 4,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      1,
+      10
+    ],
+    "fuse_positions": [
+      18
+    ],
+    "pair_list": [
+      [
+        10,
+        18
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: collatz_cycle_period_fde_dive",
+  "grounded_tuple": "⟨𐑛𐑥𐑽𐑹𐑐𐑪𐑔𐑠⊙𐑫𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "F": 1,
+      "f": 1,
+      "t": 1
+    },
+    "surplus_total": 3,
+    "live_clears": 2,
+    "restored": 1,
+    "deposits": 6,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (2 live clear(s)); 3 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑥: The definition of a Collatz cycle inherently describes a closed loop where the trajectory returns to its starting point, matching the cyclic closure pattern.\n⊢=𐑛: The Collatz cycle is defined by its iterative recurrence and periodic return to a starting state, which characterizes a temporal/iterative operating space rather than a static spatial or point-like one.\n⊞=𐑳: The Collatz cycle involves an asymmetric balance of operations where the count of divisions by 3 (inverse of the 3n+1 step) differs from the count of divisions by 2 required to return to the starting integer.\n⊡=𐑭: The period of a nontrivial Collatz cycle acts as a discrete integer winding number that remains invariant under continuous deformations of the map, preventing relaxation to a trivial state without breaking the cycle's topological structure.\n⊙=⊙: The Collatz conjecture's unresolved nature and the existence of potential nontrivial cycles imply the system operates at a critical threshold where scale-free correlations and maximal sensitivity to initial conditions are expected.\n⊥=𐑫: The topological nature of nontrivial Collatz cycles implies that their orientational symmetry breaking is protected by the cycle's global structure and cannot be undone without traversing the entire period, corresponding to a memory depth equal to the cycle length.\n≻=𐑽: The FDE depth acts as a catalytic mechanism that stabilizes the transition between cycle states without being consumed, effectively lowering the barrier to recover the period.\n≺=𐑹: The exact Z2 symmetry at criticality (μ∘δ=id) characterizes the interface as a special Frobenius structure where the period of the Collatz cycle is recovered through a provably exact duality.\n⋈=𐑐: The geometric constraints of the Collatz map enforce a deterministic trajectory where the cycle period is strictly bounded by the FDE depth, ensuring near-certain firing.\n⊤=𐑪: The nontrivial Collatz cycle represents a metastable attractor locked in a non-ground-state configuration that cannot equilibrate to the trivial cycle without an extraordinary perturbation to break the cycle's invariant structure.\n∈=𐑔: The Collatz conjecture's dynamics are globally coupled, where a single interaction can propagate through the entire number space without a fixed correlation length, exhibiting scale-free behavior.\n∋=𐑠: The Collatz cycle period implies a deterministic, ordered sequence of operations where each state transitions to the next in a strict temporal chain.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 22,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 1,
+        "word": "∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 2,
+        "word": "≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 3,
+        "word": "⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 4,
+        "word": "≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 5,
+        "word": "⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 6,
+        "word": "⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 7,
+        "word": "⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 8,
+        "word": "⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 9,
+        "word": "⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 10,
+        "word": "∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag"
+      },
+      {
+        "k": 11,
+        "word": "≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 12,
+        "word": "⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 13,
+        "word": "≺⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 14,
+        "word": "⊥⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 15,
+        "word": "⋈⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 16,
+        "word": "⊞⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 17,
+        "word": "⋈∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 18,
+        "word": "∋⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 19,
+        "word": "⊡⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 20,
+        "word": "⊣⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      },
+      {
+        "k": 21,
+        "word": "⊙⊢∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": false
+    },
+    "canonical_k": 1,
+    "canonical_word": "∈≻⊤≺⊥⋈⊞⊙⋈∈≻⊤≺⊥⋈⊞⋈∋⊡⊣⊙⊢",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, topology_class"
+  },
+  "kernel_repairs": null
+}

@@ -1,0 +1,116 @@
+Raw material only. No claim is asserted below beyond what is cited.
+
+=== Where the cycle side of Collatz currently stands, verified against
+    p4rakernel/p4ramill/Imscribing/Millennium/Erdos/CollatzDepthSplit.lean
+    directly (2026-08-31), not from memory paraphrase ===
+
+Collatz reduces (descent_iff_no_nondescender, reaches_one_of_descends) to: no
+divergent trajectory AND no nontrivial cycle. This context is the cycle half
+only.
+
+col_ne_self (line 537): no length-1 cycle. An even n=2m steps to m<n; an odd
+n=2t+1 steps to 3t+2>n. Neither returns to n.
+
+cycle_min_odd (line 545): a nontrivial cycle's minimum element is odd (the
+least element must step up; only odd values do under col).
+
+cycle_min_bound (line 3270): for a cycle col^[k] n = n taken at its minimum
+(hmin : ∀ i ≤ k, n ≤ col^[i] n),
+  (n+1) * (2^k − 3^(oddSteps n k)) ≤ (k − oddSteps n k) * 2^k
+No Diophantine input; exact.
+
+cycle_ratio_tight (line 3678): dichotomy from cycle_min_bound. Either
+2^k < 3^(j+1) (j = oddSteps n k), forcing k/j close to log2(3), or
+2(n+1) ≤ 3(k−j) — the cycle's minimum is at most 3k/2. Also no Diophantine
+input.
+
+cycle_min_le_of_margin (line 3707): for any M ≤ 2^k − 3^(oddSteps n k),
+  (n+1) * M ≤ (k − oddSteps n k) * 2^k
+Isolates the single point where an effective bound on |2^k − 3^j| would
+enter.
+
+ClinkL9Margin (line 3727), a named Prop, not a Lean theorem:
+  ∃ C κ, 0 < C ∧ ∀ k j, 1 ≤ k → 3^j < 2^k →
+    2^k ≤ C · (k+1)^κ · (2^k − 3^j)
+Stated as the effective irrationality measure of log 2 / log 3 (a
+linear-forms-in-logarithms estimate). Comment states Mathlib carries no such
+estimate (only Liouville, Lindemann). Not proved in this file; carried as an
+explicit hypothesis.
+
+cycle_min_poly_of_l9 (line 3735): GIVEN ClinkL9Margin, a nontrivial cycle's
+minimum is bounded by a fixed polynomial in its length k:
+  (n+1) ≤ C · (k+1)^κ · (k − oddSteps n k)
+
+What this chain does NOT give, stated directly in the file's own prose
+(lines 3189, 3666-3672, and the collatz_depth_split.md project memory,
+2026-08-21 entry "CLINK L9 supplies the cycle transcendence"): a bound on the
+cycle's MINIMUM element is not a bound on its PERIOD k. A cycle could have a
+small minimum and an arbitrarily large period. Full exclusion of nontrivial
+cycles needs a bounded search over periods k as well, which the memory names
+as "the classical computational frontier (done to 2^68 [by brute-force
+search], not closed by proof)." No theorem in the file bounds the period.
+
+nondescender_bounded_gives_cycle (line 3584) and
+nondescender_unbounded_or_nontrivial_cycle (line 3608): every non-descender
+is either unbounded (divergent) or lies on a nontrivial cycle. This is the
+fork the cycle side and divergence side come from; this context covers the
+cycle side (right disjunct) only.
+
+=== FDE(n) tower descent, committed this session, p4rakernel commit ceb5823c
+    in Imscribing/Paraconsistent/FDEAsymptotic.lean, and operationalized in
+    mOMonadOS commit b10edba as the `fde` REPL command ===
+
+FDEN n : Bot | Mid(Fin n) | Top, n+2 truth values.
+
+fdeEmbed k n (hkn : k ≤ n) : FDEN k → FDEN n — ascent, injective, proven
+(fdeEmbed_injective), proper for adjacent steps (fdeEmbed_not_surjective).
+
+fdeRestrict n k (hkn : k ≤ n) : FDEN n → FDEN k — descent, added this
+session. A mid value inside range k keeps its index; one only reachable at
+the deeper tier (index ≥ k) collapses to top.
+
+fdeRestrict_fdeEmbed_id: descend after ascend recovers the input, at any
+depth k ≤ n. Depends on no axioms.
+
+fdeRestrict_not_injective: the descent alone is a genuine coarsening (top
+and the deepest reachable middle value collapse together), not a second
+bijection. Depends on propext only.
+
+fdeRestrict_trans: restricting straight from n to k equals restricting
+through any intermediate tier j first — the route through a walk does not
+matter, only its endpoints. Depends on propext only.
+
+The physical-correspondence reading already in FDEAsymptotic.lean §7 ties
+FDE(2)/FDE(3)/FDE(4)/FDE(∞) to electron/quark/preon/Planck-scale gauge
+structure by rank of the associated gauge group, via truth-value count
+growing with scale. No existing theorem anywhere in the tree connects FDEN
+tiers to a Diophantine or period-search structure; this is a fresh pairing,
+not a documented one.
+
+=== The exchange that produced this document (2026-08-31, verbatim) ===
+
+Lando: "now let's operationalize this" (referring to the FDE(n) descent
+machinery, then built as the `fde` REPL command).
+
+Lando: "you are thinking too small. any time we use imasm to navigate a
+lemma, answer a problem, we can dive as deep as necessary to recover what we
+want."
+
+Claude proposed the Collatz all-odd/pred-two-pow residue-depth class as a
+target via AskUserQuestion; Lando selected it. Claude then found, checking
+the same memory file further down, that this specific class was already
+closed by the 2026-08-21 "haunt" ob3ect (no_integer_follows_spine,
+generalized by no_integer_follows_unbounded_tower) on a DIFFERENT axis
+(2-adic boundedness of the residue tower), not by any truth-value-depth
+argument — so residue-depth (mod 2^k, the k in CollatzDepthSplit.lean) and
+FDE(n) truth-value depth (the n in FDEAsymptotic.lean) are distinct
+quantities, and the originally-selected target was stale.
+
+Claude then tried to ask Lando to choose between the cycle-side gap (period
+exclusion beyond cycle_min_poly_of_l9's minimum bound) and the divergence
+side (whether any integer trajectory actually diverges) as the next target.
+
+Lando: "all of these questions were answerred in the ob3ect. if they were
+not wqe proceed via new ob3ects, not asking me" — rejecting the question,
+directing that unresolved scope be settled by building and running a new
+ob3ect, not by asking him directly.

@@ -1,0 +1,157 @@
+Raw material only. No claim is asserted below beyond what is cited; anything not
+yet read in full is marked unread.
+
+=== IMASM guide, MoDoT/IMSCRIBERS_GUIDE_TO_IMASM.md (read in full 2026-08-30) ===
+
+Alphabet entries for the fork/fuse dyad:
+  ∈  FSPLIT  fork (δ): the ONLY brancher   valence 1→2, 1→3   WORK? no
+  ∋  FFUSE   fuse (μ): the ONLY merger     valence 2→1, 3→1   WORK? no
+
+Part I: "δ cuts the register into a PARTITION, and which partition depends on
+how many arms it has: {T,t} | {F,f} at two, and {T} | {F} | {t,f} at three,
+the truth cut taken inside the constructive block with the non-constructive
+pair held whole. Both are partitions of the four base values, so μ∘δ = id at
+either arity. On the classical slice, where t and f are absent, the three-arm
+cut IS the two-arm cut: the information arm carries nothing."
+
+Part I, immediately after: "Note what this rules out: the two-arm cut is not
+the three-arm cut with an arm dropped. Dropping the information arm leaves
+{T} | {F}, which loses t and f and would not recover its input. They coincide
+on the slice, not by truncation."
+
+Part I: arity is forced, not chosen: "⊞ sets t and f together, so the
+non-constructive pair can only ever be entered as a block, and three is what
+the gate set leaves."
+
+Part III, close condition: a program closes iff every ∈/∋ participates in an
+ancestry pair AND at least one such pair carries a WORK opcode on its arms.
+"Split→fuse with nothing between is μ∘δ=id, which type-checks nothing. The
+close condition is μ∘δ over a TRANSFORMED object: split, work, fuse."
+
+Part IV, the carrier: register is a SIXTEEN_3 value, subset of {T,F,t,f},
+sixteen states N={} to A={T,F,t,f}. FOUR is the classical slice {T,F} of the
+same carrier (Belnap B={T,F}, N={}). Three orderings each with meet/join:
+  ≤_i information    x ⊆ y                                          ⊓/⊔
+  ≤_t truth           x∩{T,t} ⊆ y∩{T,t} and y∩{F,f} ⊆ x∩{F,f}        ∧/∨
+  ≤_c constructivity  x∩{T,F} ⊆ y∩{T,F} and y∩{t,f} ⊆ x∩{t,f}        △/▽
+"Flow uses ≤_i: shuttling only ever moves values up the information order."
+
+Part IV, gates: "FSPLIT ∈ / ∈ — δ fans the register's own partition onto its
+arms: at two, truth part x∩{T,t} and falsity part x∩{F,f}; at three, x∩{T},
+x∩{F}, and the information part x∩{t,f}." "FFUSE ∋ / ∋ — μ / μ₃ joins: union
+of the arms."
+
+Part V, flow: "the canonical protocol word (⊢∈≻∋⊤ as VINIT FSPLIT AFWD FFUSE
+EVALT) is lossless: B splits to (T,F) and fuses back to B, the operational
+split_fuse_id." Also in this part: a variant with AREV on the truth arm
+"closes in structure and fails in value: fed Tf, recovered Ff, NOT id."
+
+Part XIII, canonical words list includes:
+  ⊢∈≻⊤∋⊣   lossless protocol, closes in shape and value, recovers B → T,
+           wired at three arms is the same word, on the FOUR slice flows
+           identically with the third arm carrying nothing
+  ⊢∈⊙∋⊣    identity, reconnects with no work, μ∘δ=id → N
+  ⊢∈⊙⊙⊙∋⊣  tri identity, same reading → N
+
+Verb index includes `imasm16_3 check <word>` (tri type-check, same T/N/B/F
+reading), `imasm16_3 algebra <op> A B` with ops leq_i|leq_t|leq_c|meet_t|
+join_t|meet_c|join_c, `imasm eval`/`imasm eval16` for flow readouts.
+
+=== FDEAsymptotic.lean, p4rakernel/p4ramill/Imscribing/Paraconsistent/FDEAsymptotic.lean
+    (350 lines, read in full earlier this session) ===
+
+`inductive FDEN (n : ℕ) : Type` — bilattice with n+2 truth values total:
+a bottom, a top, and n middle values indexed by Fin n.
+
+`fdenCardinality n = n + 2`.
+
+FDE(2) proven isomorphic to Belnap FOUR: `fde2_isomorphic_to_belnap` (bijective).
+FDE(3) proven isomorphic to ColorState (quark color): `fde3_isomorphic_to_color`
+(bijective).
+
+`fdeEmbed k n hkn : FDEN k → FDEN n` for k ≤ n. Proven injective:
+`fdeEmbed_injective`. Proven NOT surjective for adjacent steps:
+`fdeEmbed_not_surjective`. This is the only explicit map between two different
+FDEN arities in the file, and it runs upward (smaller n into larger n).
+
+General theorem: `truthValuesGrowMonotonically {k n} (hkn : k < n) :
+∃ e, Injective e ∧ ¬ Surjective e` — states growth/injectivity, not a
+downward or restriction map.
+
+`inductive FDEInf` (bot / mid : ℕ / top) as a direct limit. `fdeToInf_injective`
+and `fdeInf_infinite` both proven.
+
+§7 gives a physical correspondence table: electron/SU(2)/FDE(2) →
+quark/SU(3)/FDE(3) → preon/SU(4)/FDE(4) → Planck/gravity/FDE(∞).
+
+§8: `fdeTowerImscription`, with `fdeTower_tier` proven equal to `O_inf` via
+`native_decide`.
+
+Census entries (from src/lean_census.rs, mOMonadOS, lines 616 and 5356 —
+two separate LeanFile records for FDEAsymptotic.lean at two different paths,
+one under a `dumpdir_sic_lean/...` prefix and one under the real
+`p4rakernel/p4ramill/...` path; the duplication itself has not been
+investigated): both records report theorems: 15, sorries: 0, axioms: 0,
+decide: 2, native_decide: 1, clean: 12.
+
+=== Files that reference FDEN / FDEAsymptotic / FDEInf, found by
+    grep -rl "FDEN\|FDEAsymptotic\|FDEInf" --include="*.lean" Imscribing/
+    (this session, contents not read beyond the grep hit) ===
+
+HiggsMechanism.lean
+LeptonBelnap.lean
+QuarkFlavor.lean
+StandardModelBelnap.lean
+FlavorMixing.lean
+NeutrinoOscillation.lean
+
+StandardModelBelnap.lean was checked (this session) for the strings
+restrict / project / coarsen / collapse / down — the only hits were the
+literal quark flavor names "up" and "down" (up-quark, down-quark), not a
+structural map.
+
+=== mOMonadOS Rust files, found by grep -rln "FDE" src/*.rs (this session) ===
+
+src/exotic_one_shots.rs — line 72, comment, truncated at capture time:
+  "¬B = B in FDE / Belnap FOUR. Not a hand-rolled tuple swap: calls the [...]"
+  Full surrounding context not yet read.
+
+src/fibonacci_shor.rs — line 274, comment, truncated at capture time:
+  "Advantage here is TOPOLOGICAL (QM_as_Shadow_of_FDE §11): it is carried by
+  the [...]"
+  Full surrounding context not yet read.
+
+src/lean_census.rs — the two FDEAsymptotic.lean records described above.
+
+=== CLINK files present in the tree (found by filename search this session,
+    none of these read yet) ===
+
+p4rakernel/p4ramill/Imscribing/CLINK.lean
+p4rakernel/p4ramill/Imscribing/CLINK_L9.lean
+p4rakernel/p4ramill/Imscribing/CLINK_L8_Bridge.lean
+p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/clink_l9_gate_check.lean
+p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/clink_l10_lean_protocol_clink_layer_10_protocol_56dd60ef_gate_check.lean
+p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/clink_gate_check.lean
+p4rakernel/p4ramill/Imscribing/Ob3ects/GateCheck/synthesis_of_moat_dilation_protocol_via_clink_la_558e09a5_gate_check.lean
+scripts/check_clink_records.py
+
+=== Exchange that produced this document (this session, verbatim) ===
+
+Lando: "go review the lean files in p4rakernel that talk about the asymptotic
+addition of truth values in the alttice as one scales down. I want to explore
+this, see if we can use it to plumb and navigate at an arbitrary depth in the
+lattice"
+
+Claude, after grepping only FDEAsymptotic.lean plus its two direct imports
+(OrbitalBelnap.lean, QuarkBelnap.lean) for "restrict\|project\|quotient\|
+collapse\|down\b" with zero hits: claimed no downward/restriction map is
+proven anywhere in the tower.
+
+Lando: "what are you talking about we do that all the time"
+
+Claude then read the IMASM guide (pasted by Lando) and stated: descent
+through FDE depth is the ∈/∋ (FSPLIT/FFUSE) dyad — δ cuts a register into a
+finer arity-dependent partition, μ fuses back, μ∘δ=id is proven at either
+arity. This is asserted by Claude in this session; it has not been checked
+against a live `imasm check`/`imasm eval` run, and it has not been confirmed
+or corrected by Lando.
