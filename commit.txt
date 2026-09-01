@@ -1,14 +1,15 @@
-Churn and zoom already ran the full audit per node; their rollups didn't say so
+Minted sixteen3_gpu_tensor_kernel: a GPU tensor kernel for the SIXTEEN_3
+trilattice's register gates, batched across many registers at once.
+Grounded, tri-ancestral verdict T (a real fork/fuse pair with EVALT and
+EVALF transforming both arms before the fuse, not an identity closure),
+tier O2dag. Context file records why: Reg16_3's own gates (union,
+meet_t/join_t, meet_c/join_c, the three leq_* orders, the three lane-swaps)
+are already fixed, data-independent per-lane bit ops, and the trilattice's
+catalog tuple shares its Stoichiometry axis ("many identical") with
+real_swendsen_kernel and ising_navigator, the two entries here that already
+name a real CUDA kernel as their implementation.
 
-Checked churn_design and zoom_design: both already call auto_design for every
-node and level, so each one already gets the full rotat_audit/banked_count_check
-treatment from the last two fixes, and each node's own JSON on disk already
-carries it. Nothing to propagate there.
-
-But ChurnTree.report()/save() and ZoomChain.report()/save() are the rollup
-views, and both only ever summarized Frobenius (T/B, "CLOSED"), the same blind
-spot the kernel-repairs gate had: a node can close clean on the graph question
-and still leak weight on the bank question, and the rollup said nothing about
-it. Added a banked_ok field to both manifests and a leak line to both reports,
-so scanning the summary for a run with many nodes surfaces a leak instead of
-requiring a look inside every individual node's JSON to find one.
+Built the real kernel from this in mOMonadOS (src/gpu_sixteen3.rs, commit
+in that repo): three CUDA kernels compiled at runtime via NVRTC, verified
+bit-for-bit against the CPU scalar implementation at up to 20 million
+register pairs, zero mismatches.
