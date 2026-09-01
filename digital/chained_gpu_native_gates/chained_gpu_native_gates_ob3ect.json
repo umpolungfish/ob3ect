@@ -1,0 +1,591 @@
+{
+  "name": "chained_gpu_native_gates",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "chained_gpu_native_gates",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "register_batch",
+        "kernel_chain",
+        "winding_invariant"
+      ],
+      "boundary_condition": "The RTX 4070 GPU memory space containing 50,000,000 register pairs, bounded by the start and end of the single-pass execution window.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "register_batch",
+        "justification": "The 50,000,000 register pairs exist in an uninitialized state before the protocol word begins its traversal.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "protocol_completion",
+        "justification": "The final state where the entire repaired protocol word has been applied to the batch, closing the computational boundary.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "kernel_dispatch",
+        "justification": "The forward morphism representing the sequential dispatch of each verified GPU kernel in the literal glyph order.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "state_clear",
+        "justification": "The parity flip or descent operation that clears intermediate register states between kernel invocations to prevent carry-over contamination.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "output_feed",
+        "justification": "The composition mechanism where the output of one gate (e.g., meet_t) feeds directly into the input of the next gate (e.g., join_t) without intermediate storage.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "threshold_correlation",
+        "justification": "The identity phase where the system operates at the scale-free correlation threshold, recognizing the batch as a unified surface.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "branch_topology",
+        "justification": "The structural split where the single-pass flow diverges into the T-arm (constructive interference path) and F-arm (destructive interference path) for parallel evaluation.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "verdict_reunion",
+        "justification": "The reconstitution of the divergent arms into a single B4 verdict, fusing conflicting results into a stable state.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "constructive_match",
+        "justification": "The evaluation of the affirmative arm where register pairs match the expected protocol outcome.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "refuted_candidate",
+        "justification": "The evaluation of the negative arm where register pairs fail the protocol check or represent refuted candidates.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "dialetheic_coherence",
+        "justification": "The state where both constructive and destructive interference patterns are held simultaneously without resolution, representing the B-state paradox.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "winding_record",
+        "justification": "The permanent, append-only recording of the topological winding number invariant, ensuring the protocol structure remains unchanged under deformation.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "branch_topology",
+      "split_input": "register_batch",
+      "split_outputs": [
+        "constructive_match",
+        "refuted_candidate"
+      ],
+      "fuse_element": "verdict_reunion",
+      "fuse_result": "dialetheic_coherence",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The 50,000,000 register pairs before any kernel has touched them, holding no established truth or falsity.",
+      "true_description": "A register pair where the kernel chain confirms the protocol word's expected outcome with zero mismatches.",
+      "false_description": "A register pair where the kernel chain detects a deviation or mismatch in the protocol word's expected outcome.",
+      "both_description": "A register pair where the system holds both a confirmed match and a refuted candidate simultaneously, representing a dialetheic state.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the 50,000,000 register pairs in the GPU memory to the void state before protocol execution."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Dispatch the first kernel (meet_t) to begin the forward morphism over the register batch."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of meet_t directly into the input of the next kernel (join_t) without intermediate storage."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "Dispatch the join_t kernel to continue the forward morphism."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of join_t into the union kernel."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≻",
+          "domain_action": "Dispatch the union kernel to process the batch."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of union into the truth_swap kernel."
+        },
+        {
+          "step_num": 8,
+          "opcode": "≻",
+          "domain_action": "Dispatch the truth_swap kernel to perform the swap operation."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of truth_swap into the info_swap kernel."
+        },
+        {
+          "step_num": 10,
+          "opcode": "≻",
+          "domain_action": "Dispatch the info_swap kernel to perform the information swap."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of info_swap into the invol kernel."
+        },
+        {
+          "step_num": 12,
+          "opcode": "≻",
+          "domain_action": "Dispatch the invol kernel to perform the inversion."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of invol into the leq_i kernel."
+        },
+        {
+          "step_num": 14,
+          "opcode": "≻",
+          "domain_action": "Dispatch the leq_i kernel to perform the information order check."
+        },
+        {
+          "step_num": 15,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of leq_i into the leq_t kernel."
+        },
+        {
+          "step_num": 16,
+          "opcode": "≻",
+          "domain_action": "Dispatch the leq_t kernel to perform the truth order check."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⋈",
+          "domain_action": "Feed the output of leq_t into the leq_c kernel."
+        },
+        {
+          "step_num": 18,
+          "opcode": "≻",
+          "domain_action": "Dispatch the leq_c kernel to perform the constructivity order check."
+        },
+        {
+          "step_num": 19,
+          "opcode": "∈",
+          "domain_action": "Split the register batch into two arms: one for constructive interference (T) and one for destructive interference (F)."
+        },
+        {
+          "step_num": 20,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the T-arm for constructive matches where the protocol word holds."
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the F-arm for refuted candidates where the protocol word fails."
+        },
+        {
+          "step_num": 22,
+          "opcode": "⊞",
+          "domain_action": "Hold both the constructive match and refuted candidate states simultaneously in the register batch."
+        },
+        {
+          "step_num": 23,
+          "opcode": "∋",
+          "domain_action": "Rejoin the T and F arms into a single verdict state, fusing conflicting results."
+        },
+        {
+          "step_num": 24,
+          "opcode": "⊙",
+          "domain_action": "Recognize the system at the threshold of scale-free correlations, ensuring the batch operates as a unified surface."
+        },
+        {
+          "step_num": 25,
+          "opcode": "⊡",
+          "domain_action": "Record the topological winding number invariant to ensure the protocol structure remains unchanged."
+        },
+        {
+          "step_num": 26,
+          "opcode": "≺",
+          "domain_action": "Clear intermediate states to prepare for the next phase or to reset the register batch."
+        },
+        {
+          "step_num": 27,
+          "opcode": "⋈",
+          "domain_action": "Chain the cleared state back into the main flow for potential re-evaluation."
+        },
+        {
+          "step_num": 28,
+          "opcode": "≻",
+          "domain_action": "Dispatch the final verification kernel to confirm zero mismatches."
+        },
+        {
+          "step_num": 29,
+          "opcode": "⊣",
+          "domain_action": "Close the computational boundary, marking the completion of the single-pass protocol word execution."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The GPU-native-build ob3ect's protocol word parser that translates the glyph sequence into kernel dispatch instructions.",
+      "ipc_mechanism": "The direct memory access (DMA) channels between GPU cores that pass register pair data between sequential kernels.",
+      "memory_mechanism": "The global GPU memory space holding the 50,000,000 register pairs in a contiguous block.",
+      "scheduler_mechanism": "The GPU warp scheduler that determines the order and timing of kernel invocations within the single pass.",
+      "alfs_store": "The repaired protocol word (⊢⊣≻⋈∈⊤⊥⊞⊢∋⊙≺⊡⋈≻∈⊤⊥∋⊙⊡⊣) stored in the GPU's constant memory as the canonical reference.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The energy consumed by the GPU to execute the 11 verified kernels in sequence over the register batch.",
+      "pre_cycle_state": "The register batch in an uninitialized state with no established truth or falsity.",
+      "post_cycle_state": "The register batch in a resolved state with a B4 verdict for each pair, holding the topological winding invariant.",
+      "delta_s_verdict": "ΔS ≈ 0 — The single-pass execution reuses verified kernels without introducing new computational bulk, preserving the entropy of the system.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⋈   CLINK    CLINK         T →     T\n    4   ≻   AFWD     AFWD          T →     T\n    5   ⋈   CLINK    CLINK         T →     T\n    6   ≻   AFWD     AFWD          T →     T\n    7   ⋈   CLINK    CLINK         T →     T\n    8   ≻   AFWD     AFWD          T →     T\n    9   ⋈   CLINK    CLINK         T →     T\n   10   ≻   AFWD     AFWD          T →     T\n   11   ⋈   CLINK    CLINK         T →     T\n   12   ≻   AFWD     AFWD          T →     T\n   13   ⋈   CLINK    CLINK         T →     T\n   14   ≻   AFWD     AFWD          T →     T\n   15   ⋈   CLINK    CLINK         T →     T\n   16   ≻   AFWD     AFWD          T →     T\n   17   ⋈   CLINK    CLINK         T →     T\n   18   ≻   AFWD     AFWD          T →     T\n   19   ∈   FSPLIT   FSPLIT3       T →     T\n   20   ⊤   EVALT    EVALT         T →     T\n   21   ⊥   EVALF    EVALF         T →    TF\n   22   ⊞   ENGAGR   EVALI        TF →     A\n   23   ∋   FFUSE    FFUSE3        A →     A\n   24   ⊙   IMSCRIB  IMSCRIB       A →     A\n   25   ⊡   IFIX     IFIX          A →     A\n   26   ≺   AREV     AREV          A →     A\n   27   ⋈   CLINK    CLINK         A →     A\n   28   ≻   AFWD     AFWD          A →     A\n   29   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ≻ → ⋈ → ≻ → ⋈ → ≻ → ⋈ → ≻ → ⋈ → ≻ → ⋈ → ≻ → ⋈ → ≻ → ⋈ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ⊡ → ≺ → ⋈ → ≻ → ⊣\n-- Class: chained_gpu_native_gates\n-- Fingerprint: sig=(23,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=29\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(18, 22)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑱  | forward morphism — bidirectional arrow\n--   [2] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [3] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [4] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [5] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [6] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [7] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [8] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [9] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [10] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [11] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [12] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [13] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [14] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [15] ≻      rel    := 𐑾               𐑱 → 𐑱  | forward morphism — bidirectional arrow\n--   [16] ⋈     fid    := 𐑱               𐑾 → 𐑾  | composition — regime coherence\n--   [17] ≻      rel    := 𐑾               𐑱 → 𐑚  | forward morphism — bidirectional arrow\n--   [18] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [19] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [20] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [21] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [22] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode\n--   [23] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription\n--   [24] ⊡      prot   := 𐑭               𐑠 → 𐑗  | irreversible fixation — winding number\n--   [25] ≺      pol    := 𐑗               𐑭 → 𐑱  | reverse morphism — parity flip\n--   [26] ⋈     fid    := 𐑱               𐑗 → 𐑾  | composition — regime coherence\n--   [27] ≻      rel    := 𐑾               𐑱 → 𐑡  | forward morphism — bidirectional arrow\n--   [28] ⊣     top    := 𐑡               𐑾 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def chained_gpu_native_gates_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def chained_gpu_native_gates_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def chained_gpu_native_gates_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def chained_gpu_native_gates_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def chained_gpu_native_gates_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def chained_gpu_native_gates_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def chained_gpu_native_gates_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def chained_gpu_native_gates_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def chained_gpu_native_gates_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def chained_gpu_native_gates_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def chained_gpu_native_gates_protocol : IGProtocol chained_gpu_native_gates_s0 chained_gpu_native_gates_s28 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct chained_gpu_native_gates_s22 chained_gpu_native_gates_s22 = chained_gpu_native_gates_s22 (idempotent)\n  (.seq (.arrow chained_gpu_native_gates_l0 chained_gpu_native_gates_s0 chained_gpu_native_gates_s1) (.seq (.arrow chained_gpu_native_gates_l1 chained_gpu_native_gates_s1 chained_gpu_native_gates_s2) (.seq (.arrow chained_gpu_native_gates_l2 chained_gpu_native_gates_s2 chained_gpu_native_gates_s3) (.seq (.arrow chained_gpu_native_gates_l3 chained_gpu_native_gates_s3 chained_gpu_native_gates_s4) (.seq (.arrow chained_gpu_native_gates_l4 chained_gpu_native_gates_s4 chained_gpu_native_gates_s5) (.seq (.arrow chained_gpu_native_gates_l5 chained_gpu_native_gates_s5 chained_gpu_native_gates_s6) (.seq (.arrow chained_gpu_native_gates_l6 chained_gpu_native_gates_s6 chained_gpu_native_gates_s7) (.seq (.arrow chained_gpu_native_gates_l7 chained_gpu_native_gates_s7 chained_gpu_native_gates_s8) (.seq (.arrow chained_gpu_native_gates_l8 chained_gpu_native_gates_s8 chained_gpu_native_gates_s9) (.seq (.arrow chained_gpu_native_gates_l9 chained_gpu_native_gates_s9 chained_gpu_native_gates_s10) (.seq (.arrow chained_gpu_native_gates_l10 chained_gpu_native_gates_s10 chained_gpu_native_gates_s11) (.seq (.arrow chained_gpu_native_gates_l11 chained_gpu_native_gates_s11 chained_gpu_native_gates_s12) (.seq (.arrow chained_gpu_native_gates_l12 chained_gpu_native_gates_s12 chained_gpu_native_gates_s13) (.seq (.arrow chained_gpu_native_gates_l13 chained_gpu_native_gates_s13 chained_gpu_native_gates_s14) (.seq (.arrow chained_gpu_native_gates_l14 chained_gpu_native_gates_s14 chained_gpu_native_gates_s15) (.seq (.arrow chained_gpu_native_gates_l15 chained_gpu_native_gates_s15 chained_gpu_native_gates_s16) (.seq (.arrow chained_gpu_native_gates_l16 chained_gpu_native_gates_s16 chained_gpu_native_gates_s17) (.seq (.arrow chained_gpu_native_gates_l17 chained_gpu_native_gates_s17 chained_gpu_native_gates_s18) (.seq (.prod (.arrow chained_gpu_native_gates_l18 chained_gpu_native_gates_s18 chained_gpu_native_gates_s22) (.arrow chained_gpu_native_gates_l18 chained_gpu_native_gates_s18 chained_gpu_native_gates_s22)) (.seq (.arrow chained_gpu_native_gates_l22 chained_gpu_native_gates_s22 chained_gpu_native_gates_s22) (.seq (.arrow chained_gpu_native_gates_l22 chained_gpu_native_gates_s22 chained_gpu_native_gates_s23) (.seq (.arrow chained_gpu_native_gates_l23 chained_gpu_native_gates_s23 chained_gpu_native_gates_s24) (.seq (.arrow chained_gpu_native_gates_l24 chained_gpu_native_gates_s24 chained_gpu_native_gates_s25) (.seq (.arrow chained_gpu_native_gates_l25 chained_gpu_native_gates_s25 chained_gpu_native_gates_s26) (.seq (.arrow chained_gpu_native_gates_l26 chained_gpu_native_gates_s26 chained_gpu_native_gates_s27) (.arrow chained_gpu_native_gates_l27 chained_gpu_native_gates_s27 chained_gpu_native_gates_s28))))))))))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def chained_gpu_native_gates_true_arm : IGProtocol chained_gpu_native_gates_s0 chained_gpu_native_gates_s28 :=\n  (chained_gpu_native_gates_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def chained_gpu_native_gates_false_arm : IGProtocol chained_gpu_native_gates_s0 chained_gpu_native_gates_s28 :=\n  (chained_gpu_native_gates_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef chained_gpu_native_gates_tier_ground : OuroboricityTier := TierFunctor.obj chained_gpu_native_gates_s0\ndef chained_gpu_native_gates_tier : OuroboricityTier := TierFunctor.obj chained_gpu_native_gates_s28\n#eval chained_gpu_native_gates_tier_ground  -- tier of the ground (pre-transformation)\n#eval chained_gpu_native_gates_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem chained_gpu_native_gates_frobenius :\n    igFrobeniusAlg.mul chained_gpu_native_gates_s0 chained_gpu_native_gates_s0 = chained_gpu_native_gates_s0 :=\n  igFrobAlg_self_fusion chained_gpu_native_gates_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 29,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      18
+    ],
+    "fuse_positions": [
+      22
+    ],
+    "pair_list": [
+      [
+        18,
+        22
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: chained_gpu_native_gates",
+  "grounded_tuple": "⟨𐑦𐑰𐑽𐑿𐑐𐑧𐑚𐑠⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 4,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (4 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: The instruction to chain gates into a single sequential pass over a register batch implies a linear, hierarchical flow of data processing characteristic of a branched tree topology.\n⊢=𐑦: The instruction to chain gates into a single pass over a register batch while reusing kernels implies a scale-collapse where the entire computational bulk is compressed into a unified surface operation.\n⊞=𐑳: The asymmetric nature of chaining gates into a single pass over a register batch implies different counts of inputs and outputs on each side of the operation.\n⊡=𐑭: The chaining of gates into a single pass over a register batch implies a topological winding number that remains invariant under continuous deformations preserving the protocol structure.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system operates at the threshold with scale-free correlations.\n⊥=𐑖: The chaining of gates into a single pass over a register batch creates a structurally enforced sequence with multiple axes, resulting in persistent chiral memory depth n.\n≻=𐑽: The process reuses existing kernels to facilitate a single-pass transformation without consuming the underlying computational resources, mirroring the catalytic role of transition-state stabilization.\n≺=𐑿: The primitive ≺ denotes a strict ordering or polarity, indicating a signed direction where one pole acts as the donor and the other as the acceptor.\n⋈=𐑐: The reuse of pre-built kernels in a single-pass GPU-native chain enforces strict geometric consistency, ensuring near-certain firing with high information fidelity.\n⊤=𐑧: The description of reusing pre-built kernels and chaining gates into a single pass implies a rigid, kinetically frozen structure that resists spontaneous rearrangement without external driving.\n∈=𐑚: Chaining gates into a single pass over a register batch implies propagation through a localized cluster of operations rather than isolated events or a global system-wide cascade.\n∋=𐑠: The instruction to \"chain\" gates into a single pass implies an ordered, sequential engagement of partners rather than simultaneous or arbitrary selection.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 29,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 12,
+        "word": "⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 13,
+        "word": "≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 14,
+        "word": "⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 15,
+        "word": "≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 16,
+        "word": "⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 17,
+        "word": "≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 18,
+        "word": "∈⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 19,
+        "word": "⊤⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 20,
+        "word": "⊥⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 21,
+        "word": "⊞∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 22,
+        "word": "∋⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 23,
+        "word": "⊙⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 24,
+        "word": "⊡≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 25,
+        "word": "≺⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 26,
+        "word": "⋈≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 27,
+        "word": "≻⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 28,
+        "word": "⊣⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻⋈≻∈⊤⊥⊞∋⊙⊡≺⋈≻⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}

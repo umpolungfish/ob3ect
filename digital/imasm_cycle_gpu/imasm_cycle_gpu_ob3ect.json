@@ -1,0 +1,441 @@
+{
+  "name": "imasm_cycle_gpu",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "imasm_cycle_gpu",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "catalog_entry",
+        "gpu_thread",
+        "winding_invariant"
+      ],
+      "boundary_condition": "The batched GPU kernel execution context containing the finite set of catalog entries and the shared compute resources.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized_catalog_batch",
+        "justification": "The state before the GPU kernel launches, where the batch of catalog entries exists as raw data but no computational cycle has begun.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "kernel_completion_barrier",
+        "justification": "The global synchronization point where all GPU threads have finished their independent cycles and the batch result is available.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "forward_parse",
+        "justification": "The directed transformation where a GPU thread reads a catalog entry's twelve type-glyphs and constructs the IMASM word.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "ancestry_backtrack",
+        "justification": "The reverse morphism where the thread traverses the word's graph backward to recover per-axis pre-image sets and verify ancestry pairing.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "cycle_iteration",
+        "justification": "The sequential chaining of the read-write-verify steps within a single thread's processing of one catalog entry.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "self_imscription_check",
+        "justification": "The identity operation where the recovered tuple's word is compared against the original to verify coordinate stability.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "closure_decision",
+        "justification": "The fork where the cycle outcome branches into either a clean closure (exact match) or a divergence (ambiguity/break).",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "batch_result_aggregation",
+        "justification": "The rejoining of all thread outcomes into a single batch status, where conflicting results (some closed, some broken) fuse to a B state.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "exact_closure",
+        "justification": "The affirmative state where a catalog entry's round trip closes exactly with no ambiguity.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "structural_break",
+        "justification": "The negative state where a catalog entry's round trip fails to close or breaks the winding invariant.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "partial_batch_success",
+        "justification": "The paradice state where the batch contains both exact closures and structural breaks simultaneously, held without resolution.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "winding_record",
+        "justification": "The permanent, append-only record of the integer winding invariant established by the successful cycles.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "closure_decision",
+      "split_input": "processed_catalog_entry",
+      "split_outputs": [
+        "exact_closure",
+        "structural_break"
+      ],
+      "fuse_element": "batch_result_aggregation",
+      "fuse_result": "batch_verdict",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The GPU memory space before kernel launch, containing raw catalog data but no active computation.",
+      "true_description": "A catalog entry that completes its round trip with exact closure and stable winding.",
+      "false_description": "A catalog entry that fails to close or exhibits a broken winding invariant.",
+      "both_description": "A batch result containing a mixture of exact closures and structural breaks, representing a valid dialetheic state.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the GPU memory with the batch of catalog entries."
+        },
+        {
+          "step_num": 2,
+          "opcode": "∈",
+          "domain_action": "Launch the kernel, splitting the batch into independent GPU threads."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Each thread reads the twelve type-glyphs of its assigned entry."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⋈",
+          "domain_action": "Construct the IMASM word from the glyphs."
+        },
+        {
+          "step_num": 5,
+          "opcode": "≻",
+          "domain_action": "Write the word to the per-axis pre-image sets."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "Traverse the word graph backward to recover the tuple."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⋈",
+          "domain_action": "Write the recovered tuple's word again."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊙",
+          "domain_action": "Compare the recovered word with the original for self-reference."
+        },
+        {
+          "step_num": 9,
+          "opcode": "∈",
+          "domain_action": "Branch based on the comparison result."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊤",
+          "domain_action": "If exact match, affirm the closure state."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊡",
+          "domain_action": "Record the stable winding invariant for this entry."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊥",
+          "domain_action": "If mismatch or break, negate the closure state."
+        },
+        {
+          "step_num": 13,
+          "opcode": "∋",
+          "domain_action": "Rejoin the T and F arms of the single thread's decision."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⋈",
+          "domain_action": "Chain the result to the next entry in the batch (if sequential) or proceed to aggregation."
+        },
+        {
+          "step_num": 15,
+          "opcode": "⊞",
+          "domain_action": "If the batch contains mixed results, hold the B state."
+        },
+        {
+          "step_num": 16,
+          "opcode": "∋",
+          "domain_action": "Aggregate all thread results into the final batch verdict."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⊣",
+          "domain_action": "Signal kernel completion and synchronize the global barrier."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "CUDA/HIP kernel launcher translating the IMASM cycle logic into GPU instructions.",
+      "ipc_mechanism": "Shared global memory and thread-local registers for passing catalog entries and results.",
+      "memory_mechanism": "GPU global memory for the catalog batch and constant memory for the IMASM grammar rules.",
+      "scheduler_mechanism": "GPU warp scheduler determining the order of thread execution within the batch.",
+      "alfs_store": "IG_catalog.json as the canonical reference store for the twelve type-glyphs.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "GPU compute cycles and memory bandwidth per catalog entry processed.",
+      "pre_cycle_state": "A batch of unprocessed catalog entries with undefined closure status.",
+      "post_cycle_state": "A batch of processed entries with determined closure status (T, F, or B).",
+      "delta_s_verdict": "ΔS ≈ 0 — The cycle is entropy-conservative because the IMASM grammar is deterministic and reversible within the SIXTEEN_3 lattice; information is transformed but not lost.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ≻   AFWD     AFWD          N →     T\n    4   ⋈   CLINK    CLINK         T →     T\n    5   ≻   AFWD     AFWD          T →     T\n    6   ≺   AREV     AREV          T →     N\n    7   ⋈   CLINK    CLINK         N →     N\n    8   ⊙   IMSCRIB  IMSCRIB       N →     T\n    9   ∈   FSPLIT   FSPLIT3       T →     T\n   10   ⊤   EVALT    EVALT         T →     T\n   11   ⊡   IFIX     IFIX          T →     T\n   12   ⊥   EVALF    EVALF         T →     T\n   13   ∋   FFUSE    FFUSE3        T →     T\n   14   ⋈   CLINK    CLINK         T →     T\n   15   ⊞   ENGAGR   EVALI         T →     T\n   16   ∋   FFUSE    FFUSE3        T →     T\n   17   ⊣   TANCH    TANCH         T →     T\n\n  Final register: T\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ≻ → ⋈ → ≻ → ≺ → ⋈ → ⊙ → ∈ → ⊤ → ⊡ → ⊥ → ∋ → ⋈ → ⊞ → ∋ → ⊣\n-- Class: imasm_cycle_gpu\n-- Fingerprint: sig=(9,4,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=17\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(8, 12), (1, 15)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [3] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [4] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [7] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [8] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [9] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [10] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [11] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [12] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [13] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [14] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [15] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [16] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def imasm_cycle_gpu_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def imasm_cycle_gpu_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def imasm_cycle_gpu_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def imasm_cycle_gpu_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def imasm_cycle_gpu_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def imasm_cycle_gpu_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def imasm_cycle_gpu_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def imasm_cycle_gpu_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def imasm_cycle_gpu_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def imasm_cycle_gpu_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def imasm_cycle_gpu_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def imasm_cycle_gpu_protocol : IGProtocol imasm_cycle_gpu_s0 imasm_cycle_gpu_s16 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct imasm_cycle_gpu_s12 imasm_cycle_gpu_s12 = imasm_cycle_gpu_s12 (idempotent)\n  (.seq (.arrow imasm_cycle_gpu_l0 imasm_cycle_gpu_s0 imasm_cycle_gpu_s1) (.seq (.prod (.arrow imasm_cycle_gpu_l1 imasm_cycle_gpu_s1 imasm_cycle_gpu_s12) (.arrow imasm_cycle_gpu_l1 imasm_cycle_gpu_s1 imasm_cycle_gpu_s12)) (.seq (.arrow imasm_cycle_gpu_l12 imasm_cycle_gpu_s12 imasm_cycle_gpu_s12) (.seq (.arrow imasm_cycle_gpu_l12 imasm_cycle_gpu_s12 imasm_cycle_gpu_s13) (.seq (.arrow imasm_cycle_gpu_l13 imasm_cycle_gpu_s13 imasm_cycle_gpu_s14) (.seq (.arrow imasm_cycle_gpu_l14 imasm_cycle_gpu_s14 imasm_cycle_gpu_s15) (.arrow imasm_cycle_gpu_l15 imasm_cycle_gpu_s15 imasm_cycle_gpu_s16)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def imasm_cycle_gpu_true_arm : IGProtocol imasm_cycle_gpu_s0 imasm_cycle_gpu_s16 :=\n  (imasm_cycle_gpu_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def imasm_cycle_gpu_false_arm : IGProtocol imasm_cycle_gpu_s0 imasm_cycle_gpu_s16 :=\n  (imasm_cycle_gpu_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef imasm_cycle_gpu_tier_ground : OuroboricityTier := TierFunctor.obj imasm_cycle_gpu_s0\ndef imasm_cycle_gpu_tier : OuroboricityTier := TierFunctor.obj imasm_cycle_gpu_s16\n#eval imasm_cycle_gpu_tier_ground  -- tier of the ground (pre-transformation)\n#eval imasm_cycle_gpu_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem imasm_cycle_gpu_frobenius :\n    igFrobeniusAlg.mul imasm_cycle_gpu_s0 imasm_cycle_gpu_s0 = imasm_cycle_gpu_s0 :=\n  igFrobAlg_self_fusion imasm_cycle_gpu_s0\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 17,
+    "t_branch_ops": 10,
+    "f_branch_ops": 1,
+    "branch_ratio": 10.0,
+    "fork_positions": [
+      1,
+      8
+    ],
+    "fuse_positions": [
+      12,
+      15
+    ],
+    "pair_list": [
+      [
+        8,
+        12
+      ],
+      [
+        1,
+        15
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: imasm_cycle_gpu",
+  "grounded_tuple": "⟨𐑛𐑡𐑽𐑿𐑐𐑧𐑚𐑵⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 1,
+    "inert": 6,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (6 step(s) inert after a fixation), 1 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: A batched GPU kernel processing many catalog entries simultaneously implies a generic network topology where independent data units are connected to shared compute resources in a mixed or hub-spoke pattern.\n⊢=𐑛: The kernel executes a closed iterative cycle (imasm) across batched entries, defining the operating space as temporal/iterative rather than spatial or point-like.\n⊞=𐑳: The batched processing of many catalog entries implies an asymmetric relationship where a single kernel instance (one side) operates on a large, variable set of data entries (the other side).\n⊡=𐑭: The batched GPU kernel's parallel execution across catalog entries establishes a stable integer winding invariant that prevents continuous deformation to a trivial state.\n⊙=⊙: The batched GPU kernel processing many catalog entries simultaneously exhibits scale-free correlations and maximal sensitivity characteristic of a system operating at the critical threshold.\n⊥=𐑖: The batched GPU kernel processes many catalog entries simultaneously, implying a structurally enforced state across multiple axes that maintains broken orientational symmetry with a memory depth proportional to the batch size n.\n≻=𐑽: The kernel acts as a catalytic mechanism that stabilizes the transition state of the imasm cycle across batched entries without being consumed by the individual transformations.\n≺=𐑿: The primitive ≺ denotes a strict ordering or polarity where one element acts as a donor and the other as an acceptor, establishing a signed directional character.\n⋈=𐑐: The batched GPU kernel enforces strict geometric constraints across catalog entries, ensuring near-certain firing with high information fidelity.\n⊤=𐑧: A batched GPU kernel processing many entries simultaneously implies a kinetically frozen state where individual configurations cannot rearrange without the external driving force of the kernel execution.\n∈=𐑚: The batched GPU kernel processes a finite set of catalog entries simultaneously, implying interactions propagate through a localized cluster or motif rather than affecting the entire global system or remaining strictly isolated to a single bond.\n∋=𐑵: The batched GPU kernel processing many catalog entries simultaneously implies a cooperative assembly requiring numerous partners to be present at once.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 17,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 1,
+        "word": "∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 2,
+        "word": "≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣⊢∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 3,
+        "word": "⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣⊢∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 4,
+        "word": "≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣⊢∈≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 5,
+        "word": "≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣⊢∈≻⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 6,
+        "word": "⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣⊢∈≻⋈≻≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 7,
+        "word": "⊙∈⊤⊡⊥∋⋈⊞∋⊣⊢∈≻⋈≻≺⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 8,
+        "word": "∈⊤⊡⊥∋⋈⊞∋⊣⊢∈≻⋈≻≺⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 9,
+        "word": "⊤⊡⊥∋⋈⊞∋⊣⊢∈≻⋈≻≺⋈⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 10,
+        "word": "⊡⊥∋⋈⊞∋⊣⊢∈≻⋈≻≺⋈⊙∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 11,
+        "word": "⊥∋⋈⊞∋⊣⊢∈≻⋈≻≺⋈⊙∈⊤⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 12,
+        "word": "∋⋈⊞∋⊣⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 13,
+        "word": "⋈⊞∋⊣⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 14,
+        "word": "⊞∋⊣⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 15,
+        "word": "∋⊣⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      },
+      {
+        "k": 16,
+        "word": "⊣⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": true,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢∈≻⋈≻≺⋈⊙∈⊤⊡⊥∋⋈⊞∋⊣",
+    "verdict": "SYMMETRY — every readout is ROTAT-invariant (spectral)"
+  },
+  "kernel_repairs": null
+}
