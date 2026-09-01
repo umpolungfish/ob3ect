@@ -1,0 +1,370 @@
+{
+  "name": "sixteen3_gpu_tensor_kernel",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "sixteen3_gpu_tensor_kernel",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "tensor_batch",
+        "lane_permutation",
+        "elementwise_gate"
+      ],
+      "boundary_condition": "The CUDA kernel launch boundary that encapsulates the batched evaluation of N registers over the fixed 4-lane boolean vector, containing the entire computation within a single GPU thread block execution.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized_tensor_block",
+        "justification": "Represents the void state before the (N,4) boolean tensor is allocated or loaded into GPU global memory, the empty set of registers prior to kernel invocation.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "kernel_launch_barrier",
+        "justification": "The terminal anchor representing the completion of the kernel launch and the synchronization point where all N threads have finished their elementwise operations.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "forward_gate_application",
+        "justification": "The directed transformation where the fixed opcode (e.g., union, meet_t) is applied forward across the batch, propagating the logical operation from input tensor to output tensor.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "lane_permutation_reversal",
+        "justification": "The reverse morphism corresponding to the fixed permutations (truth_swap, info_swap, invol) that reorder the 4 lanes, effectively reversing the information flow direction within the register structure.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "sequential_gate_chain",
+        "justification": "The composition of multiple gate operations (e.g., meet_t followed by join_c) chained sequentially within the same kernel or across dependent kernel launches.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "register_self_identity",
+        "justification": "The identity operation where a register's 4-lane state is read and written back unchanged, representing the self-reference of the Reg16_3 struct within the batch.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "branch_on_opcode_selection",
+        "justification": "The co-multiplication that splits the single batched execution context into two parallel logical arms: one for the T-arm (affirmative lanes T,t) and one for the F-arm (negative lanes F,f) based on the specific gate logic.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "result_recombination",
+        "justification": "The multiplication that reconstitutes the processed T-arm and F-arm results into a single unified 4-lane output register, resolving the parallel lane computations into one verdict.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "affirmative_lane_activation",
+        "justification": "The evaluation of the constructive truth arm, specifically activating the T and t lanes within the boolean vector to compute the affirmative component of the lattice operation.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "negative_lane_activation",
+        "justification": "The evaluation of the constructive falsity arm, specifically activating the F and f lanes within the boolean vector to compute the negative component of the lattice operation.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "paradice_state_holding",
+        "justification": "The simultaneous holding of both affirmative and negative states (B value) within a register, representing a contradiction or dual activation that is preserved without resolution in the batched output.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "global_memory_commit",
+        "justification": "The irreversible fixation of the computed batched result into GPU global memory, creating a permanent, append-only record of the kernel's output tensor.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "branch_on_opcode_selection",
+      "split_input": "batched_input_tensor",
+      "split_outputs": [
+        "affirmative_lane_computation",
+        "negative_lane_computation"
+      ],
+      "fuse_element": "result_recombination",
+      "fuse_result": "unified_output_register",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The uninitialized GPU memory block where the (N,4) tensor has not yet been allocated or populated with boolean values.",
+      "true_description": "A register state where the T lane is set to 1 and all other lanes are 0, representing a constructively proven affirmative value across the batch.",
+      "false_description": "A register state where the F lane is set to 1 and all other lanes are 0, representing a constructively refuted negative value across the batch.",
+      "both_description": "A register state where both T and F lanes are set to 1 simultaneously, representing a dialetheic contradiction held live within the batched computation.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the void state for the GPU tensor block before any data is loaded."
+        },
+        {
+          "step_num": 2,
+          "opcode": "∈",
+          "domain_action": "Split the batched execution context into parallel T-arm and F-arm processing lanes."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊤",
+          "domain_action": "Activate the affirmative computation path for the T and t lanes within the batch."
+        },
+        {
+          "step_num": 4,
+          "opcode": "≻",
+          "domain_action": "Apply the forward morphism of the selected gate (e.g., union) to the T-arm lanes."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊥",
+          "domain_action": "Activate the negative computation path for the F and f lanes within the batch."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "Apply the reverse morphism (lane permutation) to the F-arm lanes if required by the gate."
+        },
+        {
+          "step_num": 7,
+          "opcode": "∋",
+          "domain_action": "Rejoin the T-arm and F-arm results into a single unified 4-lane register output."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "Hold the resulting B-state (both true and false) if the gate logic produces a contradiction."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "Chain the output of this gate to the input of the next gate in the sequence."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊙",
+          "domain_action": "Perform a self-reference check on the register state to verify identity preservation."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊡",
+          "domain_action": "Commit the final computed tensor to global GPU memory as an immutable record."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊣",
+          "domain_action": "Close the kernel execution boundary and synchronize all threads."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "nvcc CUDA compiler translating the IMASM token sequence into PTX assembly for the RTX 4070/3060 hardware.",
+      "ipc_mechanism": "Shared memory and global memory barriers within the CUDA thread block for inter-thread communication.",
+      "memory_mechanism": "GPU global memory storing the (N,4) boolean tensor as uint8 or bool arrays.",
+      "scheduler_mechanism": "CUDA runtime scheduler determining the launch configuration (grid/block dimensions) for the batched kernel.",
+      "alfs_store": "The imasm_core::imasm16_3 scalar CPU implementation serving as the canonical reference for gate correctness.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "GPU compute cycles and memory bandwidth consumed per elementwise operation across the batch.",
+      "pre_cycle_state": "Input tensor with N registers in arbitrary SIXTEEN_3 states.",
+      "post_cycle_state": "Output tensor with N registers transformed by the fixed gate logic.",
+      "delta_s_verdict": "ΔS ≈ 0 — The operation is a fixed, data-independent permutation and elementwise boolean logic, preserving the total information content of the batch without loss or generation of new entropy.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢∈⊤≻⊥≺∋⊞⋈⊙⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤≻⊥≺∋⊞⋈⊙⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   ≻   AFWD     AFWD          T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   ≺   AREV     AREV         TF →     N\n    7   ∋   FFUSE    FFUSE3        N →    TF\n    8   ⊞   ENGAGR   EVALI        TF →     A\n    9   ⋈   CLINK    CLINK         A →     A\n   10   ⊙   IMSCRIB  IMSCRIB       A →     A\n   11   ⊡   IFIX     IFIX          A →     A\n   12   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ≻ → ⊥ → ≺ → ∋ → ⊞ → ⋈ → ⊙ → ⊡ → ⊣\n-- Class: sixteen3_gpu_tensor_kernel\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(1, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [4] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [6] ∋     stoi   := 𐑙               𐑙 → 𐑳  | fuse μ — assembly mode\n--   [7] ⊞    stoi   := 𐑳               𐑙 → 𐑱  | engage paradox — B-state, both arms\n--   [8] ⋈     fid    := 𐑱               𐑳 → 𐑠  | composition — regime coherence\n--   [9] ⊙   gram   := 𐑠               𐑱 → 𐑭  | identity — self-imscription\n--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number\n--   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def sixteen3_gpu_tensor_kernel_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def sixteen3_gpu_tensor_kernel_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def sixteen3_gpu_tensor_kernel_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def sixteen3_gpu_tensor_kernel_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def sixteen3_gpu_tensor_kernel_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def sixteen3_gpu_tensor_kernel_protocol : IGProtocol sixteen3_gpu_tensor_kernel_s0 sixteen3_gpu_tensor_kernel_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct sixteen3_gpu_tensor_kernel_s6 sixteen3_gpu_tensor_kernel_s6 = sixteen3_gpu_tensor_kernel_s6 (idempotent)\n  (.seq (.arrow sixteen3_gpu_tensor_kernel_l0 sixteen3_gpu_tensor_kernel_s0 sixteen3_gpu_tensor_kernel_s1) (.seq (.prod (.arrow sixteen3_gpu_tensor_kernel_l1 sixteen3_gpu_tensor_kernel_s1 sixteen3_gpu_tensor_kernel_s6) (.arrow sixteen3_gpu_tensor_kernel_l1 sixteen3_gpu_tensor_kernel_s1 sixteen3_gpu_tensor_kernel_s6)) (.seq (.arrow sixteen3_gpu_tensor_kernel_l6 sixteen3_gpu_tensor_kernel_s6 sixteen3_gpu_tensor_kernel_s6) (.seq (.arrow sixteen3_gpu_tensor_kernel_l6 sixteen3_gpu_tensor_kernel_s6 sixteen3_gpu_tensor_kernel_s7) (.seq (.arrow sixteen3_gpu_tensor_kernel_l7 sixteen3_gpu_tensor_kernel_s7 sixteen3_gpu_tensor_kernel_s8) (.seq (.arrow sixteen3_gpu_tensor_kernel_l8 sixteen3_gpu_tensor_kernel_s8 sixteen3_gpu_tensor_kernel_s9) (.seq (.arrow sixteen3_gpu_tensor_kernel_l9 sixteen3_gpu_tensor_kernel_s9 sixteen3_gpu_tensor_kernel_s10) (.arrow sixteen3_gpu_tensor_kernel_l10 sixteen3_gpu_tensor_kernel_s10 sixteen3_gpu_tensor_kernel_s11))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def sixteen3_gpu_tensor_kernel_true_arm : IGProtocol sixteen3_gpu_tensor_kernel_s0 sixteen3_gpu_tensor_kernel_s11 :=\n  (sixteen3_gpu_tensor_kernel_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def sixteen3_gpu_tensor_kernel_false_arm : IGProtocol sixteen3_gpu_tensor_kernel_s0 sixteen3_gpu_tensor_kernel_s11 :=\n  (sixteen3_gpu_tensor_kernel_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef sixteen3_gpu_tensor_kernel_tier_ground : OuroboricityTier := TierFunctor.obj sixteen3_gpu_tensor_kernel_s0\ndef sixteen3_gpu_tensor_kernel_tier : OuroboricityTier := TierFunctor.obj sixteen3_gpu_tensor_kernel_s11\n#eval sixteen3_gpu_tensor_kernel_tier_ground  -- tier of the ground (pre-transformation)\n#eval sixteen3_gpu_tensor_kernel_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem sixteen3_gpu_tensor_kernel_frobenius :\n    igFrobeniusAlg.mul sixteen3_gpu_tensor_kernel_s0 sixteen3_gpu_tensor_kernel_s0 = sixteen3_gpu_tensor_kernel_s0 :=\n  igFrobAlg_self_fusion sixteen3_gpu_tensor_kernel_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 2,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      1
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        1,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: sixteen3_gpu_tensor_kernel",
+  "grounded_tuple": "⟨𐑨𐑰𐑽𐑿𐑐𐑧𐑚𐑵⊙𐑖𐑕𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈⊤≻⊥≺∋⊞⋈⊙⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 2,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: The trilattice structure implies a nested hierarchy of truth values where registers are organized in a branched containment pattern.\n⊢=𐑨: The batched processing across many registers within a trilattice structure implies an extended spatial arrangement where constraints propagate through the 3D grid rather than acting on isolated points or temporal cycles.\n⊞=𐑕: The batched processing of many registers simultaneously implies a higher-order symmetric organization akin to oligomers or committees rather than simple pairwise or asymmetric interactions.\n⊡=𐑭: The SIXTEEN_3 trilattice structure implies an integer-valued winding invariant that stabilizes the protection role against continuous deformation.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n⊥=𐑖: The assignment of primitive ⊥ (chirality) within the SIXTEEN_3 trilattice's register gates implies a structurally enforced, multi-axis configuration that maintains broken orientational symmetry across the batched registers, corresponding to a memory depth of n.\n≻=𐑽: The recognition_mode acts as a catalytic selector that stabilizes the transition between lattice states without being consumed in the batched tensor operation.\n≺=𐑿: The primitive ≺ (polarity) inherently defines a signed direction by distinguishing between an accepting and a donating pole, breaking symmetry to establish a specific flow.\n⋈=𐑐: The SIXTEEN_3 trilattice's register gates enforce strict geometric constraints that ensure near-certain firing and high information transmission per interaction.\n⊤=𐑧: The assignment of kinetic character (⊤) to a high barrier implies the system is kinetically frozen and requires external driving to rearrange.\n∈=𐑚: The SIXTEEN_3 trilattice structure implies a finite, non-trivial interaction range where register gates influence a local cluster or motif rather than remaining strictly isolated or propagating globally across the entire batched system.\n∋=𐑵: The SIXTEEN_3 trilattice's register gates require cooperative assembly of many partners (>10) to function within the batched GPU tensor kernel context.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢∈⊤≻⊥≺∋⊞⋈⊙⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 1,
+        "word": "∈⊤≻⊥≺∋⊞⋈⊙⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 2,
+        "word": "⊤≻⊥≺∋⊞⋈⊙⊡⊣⊢∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 3,
+        "word": "≻⊥≺∋⊞⋈⊙⊡⊣⊢∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 4,
+        "word": "⊥≺∋⊞⋈⊙⊡⊣⊢∈⊤≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 5,
+        "word": "≺∋⊞⋈⊙⊡⊣⊢∈⊤≻⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 6,
+        "word": "∋⊞⋈⊙⊡⊣⊢∈⊤≻⊥≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 7,
+        "word": "⊞⋈⊙⊡⊣⊢∈⊤≻⊥≺∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 8,
+        "word": "⋈⊙⊡⊣⊢∈⊤≻⊥≺∋⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 9,
+        "word": "⊙⊡⊣⊢∈⊤≻⊥≺∋⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 10,
+        "word": "⊡⊣⊢∈⊤≻⊥≺∋⊞⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain"
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢∈⊤≻⊥≺∋⊞⋈⊙⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain"
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢∈⊤≻⊥≺∋⊞⋈⊙⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register"
+  },
+  "kernel_repairs": null
+}
