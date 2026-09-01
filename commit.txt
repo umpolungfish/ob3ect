@@ -1,15 +1,22 @@
-Minted sixteen3_gpu_tensor_kernel: a GPU tensor kernel for the SIXTEEN_3
-trilattice's register gates, batched across many registers at once.
-Grounded, tri-ancestral verdict T (a real fork/fuse pair with EVALT and
-EVALF transforming both arms before the fuse, not an identity closure),
-tier O2dag. Context file records why: Reg16_3's own gates (union,
-meet_t/join_t, meet_c/join_c, the three leq_* orders, the three lane-swaps)
-are already fixed, data-independent per-lane bit ops, and the trilattice's
-catalog tuple shares its Stoichiometry axis ("many identical") with
-real_swendsen_kernel and ising_navigator, the two entries here that already
-name a real CUDA kernel as their implementation.
+Minted both next-step candidates and checked them against each other rather
+than picking one from priors: imasm_cycle_gpu (batch imasm cycle across
+catalog entries) and chained_gpu_native_gates (chain the GPU-native-build
+protocol's gates into one pass, reusing the kernels already built).
 
-Built the real kernel from this in mOMonadOS (src/gpu_sixteen3.rs, commit
-in that repo): three CUDA kernels compiled at runtime via NVRTC, verified
-bit-for-bit against the CPU scalar implementation at up to 20 million
-register pairs, zero mismatches.
+Both grounded, both tri-ancestral T. The JSON's own banked_ok:true for both
+turned out to mean vacuous, not held -- checked live against the real
+kernel (vox sixteen3 check + banked, not trusted from the pipeline's own
+field), both report VACUOUS: no clear ever fired against a live register,
+for either word. Neither is more banked than the other; both are equally
+untested on that axis.
+
+Tuple comparison: the two share 9 of 12 axes with each other, closer to
+each other than either is to sixteen_3_trilattice (4/12 and 3/12) or to
+real_swendsen_kernel, the already-proven GPU-Ising-kernel reference (1/12
+each). Both land on Stoichiometry=heterogeneous, not the many-identical
+value that made the register-gate kernel and the Ising kernel agree in the
+first place. That's the real answer the check gave: neither candidate is
+the same shape as what already got built, both are correctly typed as
+doing genuinely different work per unit, not many copies of the same op,
+so neither gets the batched-kernel trick for free. Real design work either
+way, not a repeat.
