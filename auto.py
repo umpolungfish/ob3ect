@@ -163,6 +163,28 @@ def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
     except Exception as e:
         return f"Phase 11: SIXTEEN_3 Trilattice Breakdown — computation failed: {e}"
 
+def _lattice_flow_tokens(ops: List[str]) -> List[str]:
+    """Translate this pipeline's opcode names to lattice_flow's own: FSPLIT ->
+    FSPLIT3, FFUSE -> FFUSE3, ENGAGR -> EVALI, everything else unchanged."""
+    return ["FSPLIT3" if op == "FSPLIT" else
+            "FFUSE3" if op == "FFUSE" else
+            "EVALI" if op == "ENGAGR" else op
+            for op in ops]
+
+
+def _import_banked_count_check():
+    """Lazy import of lattice_flow.banked_count_check, done once and cached
+    (import machinery already memoizes the module) rather than re-resolved on
+    every call — the orbit audit below calls this once per rotation."""
+    import sys as _s
+    from pathlib import Path as _P
+    d = str(_P(__file__).resolve().parent.parent / "imscribing_grammar" / "scripts")
+    if d not in _s.path:
+        _s.path.insert(0, d)
+    from lattice_flow import banked_count_check  # noqa
+    return banked_count_check
+
+
 def _banked_count_check(steps: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Was anything counted, then cleared with nothing banked behind it?
 
@@ -171,21 +193,20 @@ def _banked_count_check(steps: List[Dict[str, Any]]) -> Dict[str, Any]:
     one level up survives it. A program that counts, reverses, then bounds must
     open the region that will HOLD the result before the region that COMPUTES
     it, and close them in that order.
+
+    This checks ONE reading: the word as bootstrapped, its own canonical
+    presentation. Whether that reading generalizes to every rotation of the
+    word's own orbit is a different, separate question — see
+    `_rotat_orbit_audit`, which runs this same check at every k and reports
+    whether banked-safety is a SYMMETRY (true or false alike at every cut) or
+    PHASE-BEARING (true at some, exposed at others). A single-frame "OK" here
+    is not evidence for "OK at every cut": that claim needs the full orbit
+    read, and asserting it from one frame is exactly the mistake this check
+    was added to stop repeating.
     """
     try:
-        import sys as _s
-        from pathlib import Path as _P
-        d = str(_P(__file__).resolve().parent.parent / "imscribing_grammar" / "scripts")
-        if d not in _s.path:
-            _s.path.insert(0, d)
-        from lattice_flow import banked_count_check, ALIAS  # noqa
-        from imasm16_3_core import NAME_FROM_GLYPH  # noqa
-        toks = []
-        for st in steps:
-            op = st.get("opcode", "")
-            toks.append("FSPLIT3" if op == "FSPLIT" else
-                        "FFUSE3" if op == "FFUSE" else
-                        "EVALI" if op == "ENGAGR" else op)
+        banked_count_check = _import_banked_count_check()
+        toks = _lattice_flow_tokens([st.get("opcode", "") for st in steps])
         return banked_count_check(toks)
     except Exception as e:
         return {"status": "unavailable", "error": str(e)}
@@ -210,6 +231,10 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     n = len(ops)
     if n == 0:
         return None
+    try:
+        _banked_check_fn = _import_banked_count_check()
+    except Exception:
+        _banked_check_fn = None
     orbit = []
     for k in range(n):
         word = rotat(ops, k)
@@ -231,6 +256,14 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
                 entry["topology_class"] = analyze_topology(word).topology_class
             except Exception:
                 pass
+        if _banked_check_fn is not None:
+            try:
+                bcc = _banked_check_fn(_lattice_flow_tokens(word))
+                entry["banked_ok"] = bcc.get("banked_ok")
+                entry["vacuous"] = bcc.get("vacuous")
+                entry["exposed_count"] = len(bcc.get("exposed_clears") or [])
+            except Exception:
+                pass
         orbit.append(entry)
     readouts = [k for k in orbit[0] if k not in ("k", "word")]
     invariants = {
@@ -244,7 +277,7 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
                if e["word"].startswith(GLYPH_VINIT) and e["word"].endswith(GLYPH_TANCH)]
     canonical = min(bounded or orbit, key=lambda e: e["word"])
     variant = [r for r, holds in invariants.items() if not holds]
-    return {
+    result = {
         "op_opcode": OpOpcode.ROTAT.value,
         "period": n,
         "orbit": orbit,
@@ -255,6 +288,22 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
                      if not variant else
                      "PHASE-BEARING — moves under ROTAT: " + ", ".join(variant)),
     }
+    # Named separately from the generic invariants dict because this is the
+    # exact split "already holds / vacuous / exposed" that a single-frame
+    # banked_ok check cannot distinguish from "holds at every cut" — see the
+    # docstring on _banked_count_check. Present only when the per-rotation
+    # check above actually ran (entries carry "banked_ok").
+    if orbit and "banked_ok" in orbit[0]:
+        already = sum(1 for e in orbit if e.get("banked_ok") and not e.get("vacuous"))
+        vacuous_n = sum(1 for e in orbit if e.get("vacuous"))
+        exposed_n = sum(1 for e in orbit if e.get("banked_ok") is False)
+        result["banked_orbit_summary"] = {
+            "already_holds": already,
+            "vacuous": vacuous_n,
+            "exposed": exposed_n,
+            "exposed_at_k": [e["k"] for e in orbit if e.get("banked_ok") is False],
+        }
+    return result
 
 
 _OPCODE_REF = """\

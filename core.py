@@ -441,6 +441,16 @@ class Ob3ectArtifact:
                     "ROTAT-invariant (spectral)" if holds else "phase-dependent"))
             parts.append("  Canonical rotation: k=%s  word: %s" %
                           (r.get("canonical_k"), r.get("canonical_word")))
+            bos = r.get("banked_orbit_summary")
+            if bos:
+                parts.append("  Banked-safety across the orbit: %d already hold, "
+                              "%d vacuous, %d exposed%s" % (
+                    bos["already_holds"], bos["vacuous"], bos["exposed"],
+                    (" at k=%s" % ",".join(str(k) for k in bos["exposed_at_k"]))
+                    if bos["exposed"] else ""))
+                if bos["exposed"]:
+                    parts.append("    a single-frame \"OK\" does not generalize to "
+                                  "\"OK at every cut\" -- this is the full orbit read")
             parts.append("  Verdict: " + str(r.get("verdict")))
         parts.append("="*70)
         parts.append("mu o delta = id -> "+a.split_fuse_report.frobenius_verdict)
