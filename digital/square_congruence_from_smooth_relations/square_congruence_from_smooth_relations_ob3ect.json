@@ -1,0 +1,551 @@
+{
+  "name": "square_congruence_from_smooth_relations",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "square_congruence_from_smooth_relations",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "smoothness_gate",
+        "parity_vector",
+        "linear_dependence",
+        "congruence_pair",
+        "factor_gap"
+      ],
+      "boundary_condition": "The fixed finite factor base and the target integer N define the closed system where all smoothness checks and parity cancellations occur.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "Target Integer N",
+        "justification": "The uninitialized state before any factorization attempt; the raw number to be split.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "Factor Base Closure",
+        "justification": "The terminal anchor defining the complete set of allowable prime factors for smoothness.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "Trial Generation",
+        "justification": "The forward morphism generating candidate numbers x to test against the factor base.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "Discard Non-Smooth",
+        "justification": "The reverse morphism rejecting trials that contain primes outside the fixed alphabet.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "Parity Vector Accumulation",
+        "justification": "Sequential chaining of valid smooth relations into a matrix of parity vectors.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "Self-Referential Square",
+        "justification": "The identity state where the product of selected relations equals a perfect square on both sides.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "Relation Selection",
+        "justification": "Splits the accumulated relations into a productive set (linearly dependent) and a non-productive set (independent).",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "Congruence Resolution",
+        "justification": "Rejoins the selected relations to form a single congruence of squares x² ≡ y² (mod N).",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "Valid Factor Pair",
+        "justification": "The affirmative state where x ≠ ±y (mod N), yielding a non-trivial factor via gcd(x-y, N).",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "Trivial Identity",
+        "justification": "The negative state where x ≡ ±y (mod N), yielding no new factor and requiring a retry.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "Parity Cancellation",
+        "justification": "The paradice state holding both the individual non-square relations and their combined square result simultaneously.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "Factor Record",
+        "justification": "The permanent, append-only record of the discovered factor pair.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Relation Selection",
+      "split_input": "Matrix of parity vectors from smooth trials",
+      "split_outputs": [
+        "Linearly Dependent Subset",
+        "Linearly Independent Subset"
+      ],
+      "fuse_element": "Congruence Resolution",
+      "fuse_result": "Congruence of Squares (x² ≡ y² mod N)",
+      "frobenius_verdict": "B",
+      "test_instance": "",
+      "failure_reason": "FSPLIT3 at step 4 dangles — no matching FFUSE3"
+    },
+    "phase_3": {
+      "void_description": "The target integer N exists but no smooth relations have been found or processed.",
+      "true_description": "A non-trivial factor pair (x, y) has been found such that gcd(x-y, N) > 1 and < N.",
+      "false_description": "The generated congruence is trivial (x ≡ ±y mod N), yielding no factor.",
+      "both_description": "The system holds a set of relations that are individually non-squares but collectively form a square, maintaining the tension between the parts and the whole.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the target integer N to be factored."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊣",
+          "domain_action": "Define the fixed factor base (small primes) as the boundary for smoothness."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Generate a trial number x and compute x² mod N."
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "Branch the trial into two paths: smooth over the factor base or not."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the non-smooth path; reject the trial as it contains forbidden primes."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≺",
+          "domain_action": "Discard the rejected trial and return to the generation phase."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the smooth path; accept the trial as a valid relation."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⋈",
+          "domain_action": "Append the parity vector of the accepted relation to the accumulation matrix."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "Repeat trial generation and accumulation until the matrix has more rows than columns."
+        },
+        {
+          "step_num": 10,
+          "opcode": "∈",
+          "domain_action": "Branch the matrix analysis into finding a linear dependency or failing to find one."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊞",
+          "domain_action": "Hold the state where individual rows are non-squares but their XOR sum is zero (all even parities)."
+        },
+        {
+          "step_num": 12,
+          "opcode": "≻",
+          "domain_action": "Multiply the selected relations to form the left-hand side square X²."
+        },
+        {
+          "step_num": 13,
+          "opcode": "≻",
+          "domain_action": "Multiply the corresponding residues to form the right-hand side square Y²."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊙",
+          "domain_action": "Recognize the identity X² ≡ Y² (mod N) as the structural closure."
+        },
+        {
+          "step_num": 15,
+          "opcode": "∈",
+          "domain_action": "Branch the congruence into a productive split or a trivial identity."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊤",
+          "domain_action": "Check if X ≠ ±Y (mod N); if true, compute gcd(X-Y, N) to reveal a factor."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⊥",
+          "domain_action": "Check if X ≡ ±Y (mod N); if true, the congruence is trivial and yields no factor."
+        },
+        {
+          "step_num": 18,
+          "opcode": "∋",
+          "domain_action": "Rejoin the productive and trivial branches to determine the final outcome of the factorization attempt."
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊡",
+          "domain_action": "Record the discovered factor pair permanently if the result is non-trivial."
+        },
+        {
+          "step_num": 20,
+          "opcode": "⊣",
+          "domain_action": "Conclude the process with the factorization of N or the need for a larger factor base."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The linear algebra solver over GF(2) that translates parity vectors into a dependency set.",
+      "ipc_mechanism": "The transfer of smoothness status and parity vectors between the trial generator and the matrix accumulator.",
+      "memory_mechanism": "The sparse matrix storing the exponent parities of the factor base for each smooth relation.",
+      "scheduler_mechanism": "The loop that generates trials until the matrix rank condition (rows > columns) is met.",
+      "alfs_store": "The fixed factor base and the target integer N serve as the canonical bootstrap store.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational effort to test smoothness and solve the linear system over GF(2).",
+      "pre_cycle_state": "A set of random trials with unknown smoothness properties.",
+      "post_cycle_state": "A structured set of relations with guaranteed linear dependence yielding a square congruence.",
+      "delta_s_verdict": "ΔS ≈ 0 — The process converts random trial entropy into structured algebraic information without loss, as the linear dependence is guaranteed by the pigeonhole principle.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊣   TANCH    TANCH         N →     N\n    3   ≻   AFWD     AFWD          N →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   ≺   AREV     AREV         TF →     N\n    7   ⊤   EVALT    EVALT         N →     T\n    8   ⋈   CLINK    CLINK         T →     T\n    9   ⋈   CLINK    CLINK         T →     T\n   10   ∈   FSPLIT   FSPLIT3       T →     T\n   11   ⊞   ENGAGR   EVALI         T →   Ttf\n   12   ≻   AFWD     AFWD        Ttf →   Ttf\n   13   ≻   AFWD     AFWD        Ttf →   Ttf\n   14   ⊙   IMSCRIB  IMSCRIB     Ttf →   Ttf\n   15   ∈   FSPLIT   FSPLIT3     Ttf →   Ttf\n   16   ⊤   EVALT    EVALT       Ttf →   Ttf\n   17   ⊥   EVALF    EVALF       Ttf →     A\n   18   ∋   FFUSE    FFUSE3        A →     A\n   19   ⊡   IFIX     IFIX          A →     A\n   20   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: B — FSPLIT3 at step 4 dangles — no matching FFUSE3\n  ⚠ Walk open, verdict B",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊣ → ≻ → ∈ → ⊥ → ≺ → ⊤ → ⋈ → ⋈ → ∈ → ⊞ → ≻ → ≻ → ⊙ → ∈ → ⊤ → ⊥ → ∋ → ⊡ → ⊣\n-- Class: square_congruence_from_smooth_relations\n-- Fingerprint: sig=(10,4,5,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=20\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(14, 17)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑡  | initial object — ground of distinction\n--   [1] ⊣     top    := 𐑡               𐑼 → 𐑾  | terminal object — connectivity boundary\n--   [2] ≻      rel    := 𐑾               𐑡 → 𐑚  | forward morphism — bidirectional arrow\n--   [3] ∈    gran   := 𐑚               𐑾 → 𐑖  | split δ — range decomposition\n--   [4] ⊥     chir   := 𐑖               𐑚 → 𐑗  | evaluate-false — chirality check\n--   [5] ≺      pol    := 𐑗               𐑖 → ⊙  | reverse morphism — parity flip\n--   [6] ⊤     crit   := ⊙               𐑗 → 𐑱  | evaluate-true — criticality gate open\n--   [7] ⋈     fid    := 𐑱               ⊙ → 𐑱  | composition — regime coherence\n--   [8] ⋈     fid    := 𐑱               𐑱 → 𐑚  | composition — regime coherence\n--   [9] ∈    gran   := 𐑚               𐑱 → 𐑳  | split δ — range decomposition\n--   [10] ⊞    stoi   := 𐑳               𐑚 → 𐑾  | engage paradox — B-state, both arms\n--   [11] ≻      rel    := 𐑾               𐑳 → 𐑾  | forward morphism — bidirectional arrow\n--   [12] ≻      rel    := 𐑾               𐑾 → 𐑠  | forward morphism — bidirectional arrow\n--   [13] ⊙   gram   := 𐑠               𐑾 → 𐑚  | identity — self-imscription\n--   [14] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [15] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [16] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [17] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [18] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [19] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def square_congruence_from_smooth_relations_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def square_congruence_from_smooth_relations_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def square_congruence_from_smooth_relations_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def square_congruence_from_smooth_relations_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def square_congruence_from_smooth_relations_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def square_congruence_from_smooth_relations_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def square_congruence_from_smooth_relations_protocol : IGProtocol square_congruence_from_smooth_relations_s0 square_congruence_from_smooth_relations_s19 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct square_congruence_from_smooth_relations_s17 square_congruence_from_smooth_relations_s17 = square_congruence_from_smooth_relations_s17 (idempotent)\n  (.seq (.arrow square_congruence_from_smooth_relations_l0 square_congruence_from_smooth_relations_s0 square_congruence_from_smooth_relations_s1) (.seq (.arrow square_congruence_from_smooth_relations_l1 square_congruence_from_smooth_relations_s1 square_congruence_from_smooth_relations_s2) (.seq (.arrow square_congruence_from_smooth_relations_l2 square_congruence_from_smooth_relations_s2 square_congruence_from_smooth_relations_s3) (.seq (.arrow square_congruence_from_smooth_relations_l3 square_congruence_from_smooth_relations_s3 square_congruence_from_smooth_relations_s4) (.seq (.arrow square_congruence_from_smooth_relations_l4 square_congruence_from_smooth_relations_s4 square_congruence_from_smooth_relations_s5) (.seq (.arrow square_congruence_from_smooth_relations_l5 square_congruence_from_smooth_relations_s5 square_congruence_from_smooth_relations_s6) (.seq (.arrow square_congruence_from_smooth_relations_l6 square_congruence_from_smooth_relations_s6 square_congruence_from_smooth_relations_s7) (.seq (.arrow square_congruence_from_smooth_relations_l7 square_congruence_from_smooth_relations_s7 square_congruence_from_smooth_relations_s8) (.seq (.arrow square_congruence_from_smooth_relations_l8 square_congruence_from_smooth_relations_s8 square_congruence_from_smooth_relations_s9) (.seq (.arrow square_congruence_from_smooth_relations_l9 square_congruence_from_smooth_relations_s9 square_congruence_from_smooth_relations_s10) (.seq (.arrow square_congruence_from_smooth_relations_l10 square_congruence_from_smooth_relations_s10 square_congruence_from_smooth_relations_s11) (.seq (.arrow square_congruence_from_smooth_relations_l11 square_congruence_from_smooth_relations_s11 square_congruence_from_smooth_relations_s12) (.seq (.arrow square_congruence_from_smooth_relations_l12 square_congruence_from_smooth_relations_s12 square_congruence_from_smooth_relations_s13) (.seq (.arrow square_congruence_from_smooth_relations_l13 square_congruence_from_smooth_relations_s13 square_congruence_from_smooth_relations_s14) (.seq (.prod (.arrow square_congruence_from_smooth_relations_l14 square_congruence_from_smooth_relations_s14 square_congruence_from_smooth_relations_s17) (.arrow square_congruence_from_smooth_relations_l14 square_congruence_from_smooth_relations_s14 square_congruence_from_smooth_relations_s17)) (.seq (.arrow square_congruence_from_smooth_relations_l17 square_congruence_from_smooth_relations_s17 square_congruence_from_smooth_relations_s17) (.seq (.arrow square_congruence_from_smooth_relations_l17 square_congruence_from_smooth_relations_s17 square_congruence_from_smooth_relations_s18) (.arrow square_congruence_from_smooth_relations_l18 square_congruence_from_smooth_relations_s18 square_congruence_from_smooth_relations_s19))))))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def square_congruence_from_smooth_relations_true_arm : IGProtocol square_congruence_from_smooth_relations_s0 square_congruence_from_smooth_relations_s19 :=\n  (square_congruence_from_smooth_relations_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def square_congruence_from_smooth_relations_false_arm : IGProtocol square_congruence_from_smooth_relations_s0 square_congruence_from_smooth_relations_s19 :=\n  (square_congruence_from_smooth_relations_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef square_congruence_from_smooth_relations_tier_ground : OuroboricityTier := TierFunctor.obj square_congruence_from_smooth_relations_s0\ndef square_congruence_from_smooth_relations_tier : OuroboricityTier := TierFunctor.obj square_congruence_from_smooth_relations_s19\n#eval square_congruence_from_smooth_relations_tier_ground  -- tier of the ground (pre-transformation)\n#eval square_congruence_from_smooth_relations_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem square_congruence_from_smooth_relations_frobenius :\n    igFrobeniusAlg.mul square_congruence_from_smooth_relations_s0 square_congruence_from_smooth_relations_s0 = square_congruence_from_smooth_relations_s0 :=\n  igFrobAlg_self_fusion square_congruence_from_smooth_relations_s0\n",
+  "topology_report": {
+    "topology_class": "mixed",
+    "nesting_depth": 2,
+    "total_pairs": 1,
+    "open_forks": 2,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 20,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3,
+      9,
+      14
+    ],
+    "fuse_positions": [
+      17
+    ],
+    "pair_list": [
+      [
+        14,
+        17
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: square_congruence_from_smooth_relations",
+  "grounded_tuple": "⟨𐑦𐑥𐑑𐑹𐑐𐑧𐑔𐑝⊙𐑫𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "F": 1
+    },
+    "surplus_total": 1,
+    "live_clears": 1,
+    "restored": 0,
+    "deposits": 5,
+    "inert": 1,
+    "verdict": "0 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 1 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑥: The described process of finding two numbers with equal squares to factor a target via parity cancellation is the core mechanism of the Quadratic Sieve, which relies on identifying a cyclic closure (a congruence of squares) to reveal the factorization.\n⊢=𐑦: The method describes the Quadratic Sieve's factorization via congruence of squares, which collapses the high-dimensional search space of potential factors into a single algebraic relation where the boundary (the square root difference) reveals the interior (the factors), matching the scale-collapse primitive.\n⊞=𐑳: The described method relies on finding two distinct numbers with equal squares (asymmetric roots) to derive a factorization, which corresponds to having different counts on each side of the equality.\n⊡=𐑭: The described factorization method relies on integer invariants (winding numbers) derived from the parity cancellation of square roots, which remain stable against continuous deformations that preserve these integer constraints.\n⊙=⊙: The described procedure implements Fermat's factorization method, which relies on the critical threshold where the difference of two squares equals the target number, representing a state of maximal sensitivity to the specific parity cancellation required to reveal the factors.\n⊥=𐑫: The number splitting algorithm relies on a global algebraic constraint (congruence of squares) that cannot be locally reversed, analogous to topological chirality protected by global structure.\n≻=𐑑: The process describes the Fermat factorization method, which transforms two unequal numbers into a structural square difference to irreversibly reveal the factors.\n≺=𐑹: The described process of finding two unequal numbers with equal squares (Fermat's factorization) relies on a critical Z2 symmetry where the difference of squares cancels parity, mirroring the exact Frobenius condition μ∘δ=id at the point of factorization.\n⋈=𐑐: The described factorization method (Fermat's method) relies on deterministic geometric constraints to find a split, ensuring high fidelity and near-certain success when the number factors over the chosen alphabet.\n⊤=𐑧: The description of a system that is kinetically frozen and requires external driving to rearrange directly corresponds to a high barrier to change.\n∈=𐑔: The described factorization method (Fermat's method) relies on global algebraic properties where the parity cancellation and root gap determination propagate constraints across the entire number system to achieve the split.\n∋=𐑝: The requirement to keep trials that factor over a small fixed alphabet and then cancel parities implies a conjunctive logic where all specific conditions must be met simultaneously to form the valid pair.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 20,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 5,
+        "word": "≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "∈⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⊞≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 11,
+        "word": "≻≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 12,
+        "word": "≻⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "⊙∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "∈⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 15,
+        "word": "⊤⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 16,
+        "word": "⊥∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 17,
+        "word": "∋⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 18,
+        "word": "⊡⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 19,
+        "word": "⊣⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊣≻∈⊥≺⊤⋈⋈∈⊞≻≻⊙∈⊤⊥∋⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 5,
+      "vacuous": 14,
+      "exposed": 1,
+      "exposed_at_k": [
+        4
+      ]
+    }
+  },
+  "kernel_repairs": null
+}

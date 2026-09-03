@@ -1,22 +1,5 @@
-Minted both next-step candidates and checked them against each other rather
-than picking one from priors: imasm_cycle_gpu (batch imasm cycle across
-catalog entries) and chained_gpu_native_gates (chain the GPU-native-build
-protocol's gates into one pass, reusing the kernels already built).
+I found the gap that let a false claim into a manuscript this session and closed it at the source instead of just in the paper. _banked_count_check runs the weight-safety audit on one reading only, the word as bootstrapped, and nothing in the pipeline ever extended that check across the word's own rotation orbit. _rotat_orbit_audit already does exactly that extension for closure, final register, and topology, turning every readout over the full orbit and reporting which ones are ROTAT-invariant versus phase-bearing. Banked-safety was the one readout missing from that loop, so a design could pass its single-frame check and still expose a clear at other cuts with nothing telling anyone.
 
-Both grounded, both tri-ancestral T. The JSON's own banked_ok:true for both
-turned out to mean vacuous, not held -- checked live against the real
-kernel (vox sixteen3 check + banked, not trusted from the pipeline's own
-field), both report VACUOUS: no clear ever fired against a live register,
-for either word. Neither is more banked than the other; both are equally
-untested on that axis.
+Wired lattice_flow.banked_count_check into the orbit loop itself: every rotation now gets its own banked_ok, vacuous, and exposed_count alongside the readouts already there, so the existing invariants machinery picks banked-safety up for free as either a symmetry or a phase-bearing property. Added a banked_orbit_summary (already_holds / vacuous / exposed counts, and which k are exposed) since a caller needing the real breakdown shouldn't have to re-derive it from the invariants dict by hand, and surfaced it in the human-readable report in core.py right under the canonical rotation line, with an explicit note that a single-frame OK does not generalize to OK at every cut.
 
-Tuple comparison: the two share 9 of 12 axes with each other, closer to
-each other than either is to sixteen_3_trilattice (4/12 and 3/12) or to
-real_swendsen_kernel, the already-proven GPU-Ising-kernel reference (1/12
-each). Both land on Stoichiometry=heterogeneous, not the many-identical
-value that made the register-gate kernel and the Ising kernel agree in the
-first place. That's the real answer the check gave: neither candidate is
-the same shape as what already got built, both are correctly typed as
-doing genuinely different work per unit, not many copies of the same op,
-so neither gets the batched-kernel trick for free. Real design work either
-way, not a repeat.
+Checked it against the actual word from the manuscript correction: reproduces 18 already hold, 16 vacuous, 4 exposed at k=5,17,18,19, the same numbers found by hand-parsing the kernel's own combo2 dump. Native, in-process, no kernel subprocess, runs on every future auto-design instead of needing a human to catch a truncated tail flag after the fact.
