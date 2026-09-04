@@ -1,0 +1,539 @@
+{
+  "name": "lifting hex values with Vox",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "lifting hex values with Vox",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "hex_stream",
+        "vox_lift",
+        "control_flow",
+        "audit_log"
+      ],
+      "boundary_condition": "The IMASM module boundary that contains the lifted hex stream from entry to terminal, enforcing the Z2 topological invariant of the compilation process.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "raw_hex_buffer",
+        "justification": "The uninitialized state before the hex stream is parsed; the void from which the loader begins reading bytes.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "compiled_module",
+        "justification": "The terminal anchor representing the fully compiled IMASM module, the closed boundary containing the entire lifted program.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "linear_decode",
+        "justification": "The forward morphism of the decoder walking the hex stream linearly, transforming raw bytes into structured operands.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "indirect_jump_target",
+        "justification": "The reverse/descent transformation where control flow jumps back or to a non-linear target, requiring the decoder to resolve the address.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "instruction_chain",
+        "justification": "The composition of sequential instructions, chaining the output of one glyph to the input of the next in the linear flow.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "self_reference",
+        "justification": "The identity operation where the system reads its own image (vox self), the structure taking itself as its own object.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "branch_decision",
+        "justification": "The co-multiplication where a conditional instruction (cmp/jmp) splits the control flow into two distinct arms: taken and not-taken.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "control_rejoin",
+        "justification": "The multiplication where the two control flow arms rejoin at a common successor, fusing their paths into a single resolved state.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "valid_decode",
+        "justification": "The affirmative state where an opcode is recognized and successfully decoded into a glyph.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "decode_failure",
+        "justification": "The negative state where an unknown opcode is encountered, causing the walk to stop and report partial coverage.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "open_fork",
+        "justification": "The paradice state where a branch (early return or exit) leaves the system without rejoining, holding both the path and the termination simultaneously.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "audit_record",
+        "justification": "The permanent, append-only record of the verdict (T/B/N/F) and the surplus count, fixed in the audit log.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "branch_decision",
+      "split_input": "conditional_instruction",
+      "split_outputs": [
+        "taken_path",
+        "not_taken_path"
+      ],
+      "fuse_element": "control_rejoin",
+      "fuse_result": "merged_control_flow",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The raw hex buffer before any decoding or lifting has occurred.",
+      "true_description": "A function that closes perfectly, with all branches rejoining and no open exits.",
+      "false_description": "An ill-typed word where a fuse occurs without a preceding split, or a decode failure halts the process.",
+      "both_description": "A function with an open fork (early return or exit) that holds the contradiction of being both active and terminated.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the void state with the raw hex input stream."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Begin the linear forward morphism to decode the hex bytes into operands."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊤",
+          "domain_action": "Affirm the validity of the first opcode, mapping it to a glyph."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⋈",
+          "domain_action": "Chain the first glyph to the next in the instruction sequence."
+        },
+        {
+          "step_num": 5,
+          "opcode": "∈",
+          "domain_action": "Encounter a conditional branch, splitting the flow into taken and not-taken arms."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≻",
+          "domain_action": "Advance the taken arm through its specific instruction sequence."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊤",
+          "domain_action": "Affirm the successful execution of the taken path logic."
+        },
+        {
+          "step_num": 8,
+          "opcode": "≺",
+          "domain_action": "Advance the not-taken arm, potentially reversing direction or jumping to a target."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the negative path, checking for decode failures or invalid targets."
+        },
+        {
+          "step_num": 10,
+          "opcode": "∋",
+          "domain_action": "Rejoin the taken and not-taken arms at the common successor point."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⋈",
+          "domain_action": "Continue the linear chain after the branch rejoin."
+        },
+        {
+          "step_num": 12,
+          "opcode": "∈",
+          "domain_action": "Encounter a second branch or a function pointer dispatch."
+        },
+        {
+          "step_num": 13,
+          "opcode": "≻",
+          "domain_action": "Traverse the primary execution path of the second branch."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊞",
+          "domain_action": "Detect an early return or exit in one arm, holding the open fork state."
+        },
+        {
+          "step_num": 15,
+          "opcode": "∋",
+          "domain_action": "Attempt to fuse the arms, resulting in a B state due to the open fork."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊙",
+          "domain_action": "The system reads its own compiled image, establishing self-reference."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⋈",
+          "domain_action": "Chain the self-referential state back into the main audit flow."
+        },
+        {
+          "step_num": 18,
+          "opcode": "⊡",
+          "domain_action": "Fix the audit record, permanently storing the verdict and surplus count."
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊣",
+          "domain_action": "Anchor the final state as the completed compiled module."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The Vox lifter that translates hex streams into IMASM glyph sequences.",
+      "ipc_mechanism": "The glyph dispatch mechanism that routes control flow between split and fuse points.",
+      "memory_mechanism": "The IMASM register file and byte memory that holds state during execution.",
+      "scheduler_mechanism": "The linear walk of the decoder that determines the order of instruction lifting.",
+      "alfs_store": "The genetic table and x86 opcode map that serve as the canonical reference for glyph assignment.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One step of the IMASM machine per glyph executed.",
+      "pre_cycle_state": "The hex stream is a disordered sequence of bytes with no semantic structure.",
+      "post_cycle_state": "The IMASM module is a structured word with defined control flow and verdict.",
+      "delta_s_verdict": "ΔS ≈ 0 — The lifting process is a lossless translation of structure, conserving the information content of the original code.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⊤   EVALT    EVALT         T →     T\n    4   ⋈   CLINK    CLINK         T →     T\n    5   ∈   FSPLIT   FSPLIT3       T →     T\n    6   ≻   AFWD     AFWD          T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   ≺   AREV     AREV          T →     N\n    9   ⊥   EVALF    EVALF         N →     F\n   10   ∋   FFUSE    FFUSE3        F →    TF\n   11   ⋈   CLINK    CLINK        TF →    TF\n   12   ∈   FSPLIT   FSPLIT3      TF →    TF\n   13   ≻   AFWD     AFWD         TF →    TF\n   14   ⊞   ENGAGR   EVALI        TF →     A\n   15   ∋   FFUSE    FFUSE3        A →     A\n   16   ⊙   IMSCRIB  IMSCRIB       A →     A\n   17   ⋈   CLINK    CLINK         A →     A\n   18   ⊡   IFIX     IFIX          A →     A\n   19   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⊤ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊞ → ∋ → ⊙ → ⋈ → ⊡ → ⊣\n-- Class: lifting hex values with Vox\n-- Fingerprint: sig=(10,4,4,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=19\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(4, 9), (11, 14)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → ⊙  | forward morphism — bidirectional arrow\n--   [2] ⊤     crit   := ⊙               𐑾 → 𐑱  | evaluate-true — criticality gate open\n--   [3] ⋈     fid    := 𐑱               ⊙ → 𐑚  | composition — regime coherence\n--   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [8] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [10] ⋈     fid    := 𐑱               𐑙 → 𐑚  | composition — regime coherence\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [13] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [14] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode\n--   [15] ⊙   gram   := 𐑠               𐑙 → 𐑱  | identity — self-imscription\n--   [16] ⋈     fid    := 𐑱               𐑠 → 𐑭  | composition — regime coherence\n--   [17] ⊡      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number\n--   [18] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def lifting_hex_values_with_vox_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def lifting_hex_values_with_vox_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def lifting_hex_values_with_vox_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def lifting_hex_values_with_vox_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def lifting_hex_values_with_vox_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def lifting_hex_values_with_vox_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def lifting_hex_values_with_vox_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def lifting_hex_values_with_vox_protocol : IGProtocol lifting_hex_values_with_vox_s0 lifting_hex_values_with_vox_s18 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct lifting_hex_values_with_vox_s9 lifting_hex_values_with_vox_s9 = lifting_hex_values_with_vox_s9 (idempotent)\n  (.seq (.arrow lifting_hex_values_with_vox_l0 lifting_hex_values_with_vox_s0 lifting_hex_values_with_vox_s1) (.seq (.arrow lifting_hex_values_with_vox_l1 lifting_hex_values_with_vox_s1 lifting_hex_values_with_vox_s2) (.seq (.arrow lifting_hex_values_with_vox_l2 lifting_hex_values_with_vox_s2 lifting_hex_values_with_vox_s3) (.seq (.arrow lifting_hex_values_with_vox_l3 lifting_hex_values_with_vox_s3 lifting_hex_values_with_vox_s4) (.seq (.prod (.arrow lifting_hex_values_with_vox_l4 lifting_hex_values_with_vox_s4 lifting_hex_values_with_vox_s9) (.arrow lifting_hex_values_with_vox_l4 lifting_hex_values_with_vox_s4 lifting_hex_values_with_vox_s9)) (.seq (.arrow lifting_hex_values_with_vox_l9 lifting_hex_values_with_vox_s9 lifting_hex_values_with_vox_s9) (.seq (.arrow lifting_hex_values_with_vox_l9 lifting_hex_values_with_vox_s9 lifting_hex_values_with_vox_s10) (.seq (.arrow lifting_hex_values_with_vox_l10 lifting_hex_values_with_vox_s10 lifting_hex_values_with_vox_s11) (.seq (.arrow lifting_hex_values_with_vox_l11 lifting_hex_values_with_vox_s11 lifting_hex_values_with_vox_s12) (.seq (.arrow lifting_hex_values_with_vox_l12 lifting_hex_values_with_vox_s12 lifting_hex_values_with_vox_s13) (.seq (.arrow lifting_hex_values_with_vox_l13 lifting_hex_values_with_vox_s13 lifting_hex_values_with_vox_s14) (.seq (.arrow lifting_hex_values_with_vox_l14 lifting_hex_values_with_vox_s14 lifting_hex_values_with_vox_s15) (.seq (.arrow lifting_hex_values_with_vox_l15 lifting_hex_values_with_vox_s15 lifting_hex_values_with_vox_s16) (.seq (.arrow lifting_hex_values_with_vox_l16 lifting_hex_values_with_vox_s16 lifting_hex_values_with_vox_s17) (.arrow lifting_hex_values_with_vox_l17 lifting_hex_values_with_vox_s17 lifting_hex_values_with_vox_s18)))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def lifting_hex_values_with_vox_true_arm : IGProtocol lifting_hex_values_with_vox_s0 lifting_hex_values_with_vox_s18 :=\n  (lifting_hex_values_with_vox_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def lifting_hex_values_with_vox_false_arm : IGProtocol lifting_hex_values_with_vox_s0 lifting_hex_values_with_vox_s18 :=\n  (lifting_hex_values_with_vox_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef lifting_hex_values_with_vox_tier_ground : OuroboricityTier := TierFunctor.obj lifting_hex_values_with_vox_s0\ndef lifting_hex_values_with_vox_tier : OuroboricityTier := TierFunctor.obj lifting_hex_values_with_vox_s18\n#eval lifting_hex_values_with_vox_tier_ground  -- tier of the ground (pre-transformation)\n#eval lifting_hex_values_with_vox_tier  -- the Grammar's own verdict on the closed object\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 19,
+    "t_branch_ops": 4,
+    "f_branch_ops": 1,
+    "branch_ratio": 4.0,
+    "fork_positions": [
+      4,
+      11
+    ],
+    "fuse_positions": [
+      9,
+      14
+    ],
+    "pair_list": [
+      [
+        4,
+        9
+      ],
+      [
+        11,
+        14
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: lifting hex values with Vox",
+  "grounded_tuple": "⟨𐑨𐑰𐑽𐑿𐑐𐑧𐑚𐑜⊙𐑖𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 1
+    },
+    "surplus_total": 1,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 4,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 1 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: The operation of lifting hex values implies a hierarchical nesting where discrete data points are contained within a structured topology.\n⊢=𐑨: Lifting hex values implies propagating constraints through an extended 3D arrangement of voxels, defining a spatial operating space.\n⊞=𐑳: The asymmetric nature of lifting hex values with Vox implies unequal participation counts on each side of the stoichiometric primitive.\n⊡=𐑭: The lifting of hex values implies an integer-valued winding invariant that stabilizes the role against continuous deformation.\n⊙=⊙: The assignment of the primitive ⊙ explicitly denotes the critical phase where the system resides at the threshold with scale-free correlations.\n⊥=𐑖: Persistent chiral symmetry breaking with multiple structurally enforced axes corresponds to a memory depth of n, distinguishing it from thermally interconvertible or topological cases.\n≻=𐑽: The process of lifting hex values with Vox acts as a catalytic transition that stabilizes the recognition mode without being consumed in the transformation.\n≺=𐑿: The primitive ≺ denotes a signed directional relationship where one pole acts as a donor and the other as an acceptor, consistent with the definition of a signed direction.\n⋈=𐑐: The operation of lifting hex values with Vox implies a high-fidelity, geometry-enforcing process that ensures near-certain firing.\n⊤=𐑧: The description of being kinetically frozen and requiring external driving to rearrange directly corresponds to a high barrier to change.\n∈=𐑚: Lifting hex values with Vox implies a mesoscale propagation where interactions extend through a local motif or cluster rather than remaining strictly local or spanning the entire system.\n∋=𐑜: The context of \"lifting hex values\" implies selecting any valid partner from a set to satisfy the interaction, aligning with disjunctive logic.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 19,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 6,
+        "word": "⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 7,
+        "word": "≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 11,
+        "word": "∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 12,
+        "word": "≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 15,
+        "word": "⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 16,
+        "word": "⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 17,
+        "word": "⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 18,
+        "word": "⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 6,
+      "vacuous": 11,
+      "exposed": 2,
+      "exposed_at_k": [
+        5,
+        6
+      ]
+    }
+  },
+  "kernel_repairs": null
+}

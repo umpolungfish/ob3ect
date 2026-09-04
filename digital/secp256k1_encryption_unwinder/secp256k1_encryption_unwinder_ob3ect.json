@@ -1,0 +1,539 @@
+{
+  "name": "secp256k1 encryption unwinder",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "secp256k1 encryption unwinder",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "scalar_winding",
+        "point_multiplication",
+        "discrete_log",
+        "topological_invariant"
+      ],
+      "boundary_condition": "The secp256k1 elliptic curve group structure that contains the cyclic scalar multiplication loop, enforcing the Z2 topological invariant of the unwinding process.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "raw_public_key",
+        "justification": "The uninitialized state before the unwinding process begins; the public point Q exists without the scalar k being established.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "recovered_scalar",
+        "justification": "The terminal anchor representing the fully recovered private scalar k, the closed boundary containing the entire unwinding result.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "scalar_increment",
+        "justification": "The forward morphism of the unwinder walking the scalar space linearly, transforming the current guess into the next candidate via group addition.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "backtrack_step",
+        "justification": "The reverse/descent transformation where the search direction flips or the scalar is decremented, requiring the unwinder to resolve the inverse point.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "chain_reaction",
+        "justification": "The composition of sequential scalar multiplications, chaining the output of one point addition to the input of the next in the linear walk.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "self_consistency",
+        "justification": "The identity operation where the system reads its own curve parameters (generator G, order n), the structure taking itself as its own object.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "parity_branch",
+        "justification": "The co-multiplication where the unwinder splits the search space into two distinct arms: even-parity scalars and odd-parity scalars.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "convergence_point",
+        "justification": "The multiplication where the two parity arms rejoin at a common collision point, fusing their paths into a single resolved scalar candidate.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "match_found",
+        "justification": "The affirmative state where the computed point k*G matches the target public key Q, confirming the scalar.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "mismatch_detected",
+        "justification": "The negative state where the computed point does not match Q, causing the walk to continue or backtrack.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "dual_state_collision",
+        "justification": "The paradice state where a collision occurs that holds both the even and odd parity paths simultaneously, a contradiction kept live in the search.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "winding_record",
+        "justification": "The permanent, append-only record of the winding number and the scalar value, fixed in the cryptographic ledger.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "parity_branch",
+      "split_input": "candidate_scalar_range",
+      "split_outputs": [
+        "even_parity_path",
+        "odd_parity_path"
+      ],
+      "fuse_element": "convergence_point",
+      "fuse_result": "unified_scalar_candidate",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The raw public key buffer before any scalar unwinding or group operation has occurred.",
+      "true_description": "A scalar k that perfectly satisfies k*G = Q, with all branches rejoining and no open exits.",
+      "false_description": "An ill-typed word where a fuse occurs without a preceding split, or a mismatch halts the process.",
+      "both_description": "A collision state where the unwinder holds both the even and odd parity paths simultaneously, a contradiction kept live.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the void state with the raw public key Q."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Begin the linear forward morphism to increment the scalar guess."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊤",
+          "domain_action": "Affirm the validity of the first point multiplication, mapping it to a curve point."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⋈",
+          "domain_action": "Chain the first point to the next in the scalar sequence."
+        },
+        {
+          "step_num": 5,
+          "opcode": "∈",
+          "domain_action": "Encounter a parity decision, splitting the flow into even and odd scalar arms."
+        },
+        {
+          "step_num": 6,
+          "opcode": "≻",
+          "domain_action": "Advance the even arm through its specific addition sequence."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊤",
+          "domain_action": "Affirm the successful execution of the even path logic."
+        },
+        {
+          "step_num": 8,
+          "opcode": "≺",
+          "domain_action": "Advance the odd arm, potentially reversing direction or jumping to a target."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the negative path, checking for mismatches or invalid targets."
+        },
+        {
+          "step_num": 10,
+          "opcode": "∋",
+          "domain_action": "Rejoin the even and odd arms at the common collision point."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⋈",
+          "domain_action": "Continue the linear chain after the branch rejoin."
+        },
+        {
+          "step_num": 12,
+          "opcode": "∈",
+          "domain_action": "Encounter a second branch or a function pointer dispatch."
+        },
+        {
+          "step_num": 13,
+          "opcode": "≻",
+          "domain_action": "Traverse the primary execution path of the second branch."
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊞",
+          "domain_action": "Detect a dual-state collision in one arm, holding the open fork state."
+        },
+        {
+          "step_num": 15,
+          "opcode": "∋",
+          "domain_action": "Attempt to fuse the arms, resulting in a B state due to the dual collision."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊙",
+          "domain_action": "The system reads its own curve parameters, establishing self-reference."
+        },
+        {
+          "step_num": 17,
+          "opcode": "⋈",
+          "domain_action": "Chain the self-referential state back into the main audit flow."
+        },
+        {
+          "step_num": 18,
+          "opcode": "⊡",
+          "domain_action": "Fix the winding record, permanently storing the scalar and verdict."
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊣",
+          "domain_action": "Anchor the final state as the completed recovered scalar."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The secp256k1 unwinder that translates public key points into scalar sequences.",
+      "ipc_mechanism": "The point addition mechanism that routes control flow between split and fuse points.",
+      "memory_mechanism": "The IMASM register file and curve memory that holds state during execution.",
+      "scheduler_mechanism": "The linear walk of the unwinder that determines the order of scalar lifting.",
+      "alfs_store": "The secp256k1 curve parameters and generator point that serve as the canonical reference for scalar assignment.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One step of the IMASM machine per scalar increment executed.",
+      "pre_cycle_state": "The public key is a disordered sequence of bytes with no semantic scalar structure.",
+      "post_cycle_state": "The IMASM module is a structured word with defined control flow and recovered scalar.",
+      "delta_s_verdict": "ΔS ≈ 0 — The unwinding process is a lossless translation of structure, conserving the information content of the original key.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⊤   EVALT    EVALT         T →     T\n    4   ⋈   CLINK    CLINK         T →     T\n    5   ∈   FSPLIT   FSPLIT3       T →     T\n    6   ≻   AFWD     AFWD          T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   ≺   AREV     AREV          T →     N\n    9   ⊥   EVALF    EVALF         N →     F\n   10   ∋   FFUSE    FFUSE3        F →    TF\n   11   ⋈   CLINK    CLINK        TF →    TF\n   12   ∈   FSPLIT   FSPLIT3      TF →    TF\n   13   ≻   AFWD     AFWD         TF →    TF\n   14   ⊞   ENGAGR   EVALI        TF →     A\n   15   ∋   FFUSE    FFUSE3        A →     A\n   16   ⊙   IMSCRIB  IMSCRIB       A →     A\n   17   ⋈   CLINK    CLINK         A →     A\n   18   ⊡   IFIX     IFIX          A →     A\n   19   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⊤ → ⋈ → ∈ → ≻ → ⊤ → ≺ → ⊥ → ∋ → ⋈ → ∈ → ≻ → ⊞ → ∋ → ⊙ → ⋈ → ⊡ → ⊣\n-- Class: secp256k1 encryption unwinder\n-- Fingerprint: sig=(10,4,4,1)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=19\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(4, 9), (11, 14)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → ⊙  | forward morphism — bidirectional arrow\n--   [2] ⊤     crit   := ⊙               𐑾 → 𐑱  | evaluate-true — criticality gate open\n--   [3] ⋈     fid    := 𐑱               ⊙ → 𐑚  | composition — regime coherence\n--   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [8] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑱  | fuse μ — assembly mode\n--   [10] ⋈     fid    := 𐑱               𐑙 → 𐑚  | composition — regime coherence\n--   [11] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [12] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [13] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [14] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode\n--   [15] ⊙   gram   := 𐑠               𐑙 → 𐑱  | identity — self-imscription\n--   [16] ⋈     fid    := 𐑱               𐑠 → 𐑭  | composition — regime coherence\n--   [17] ⊡      prot   := 𐑭               𐑱 → 𐑡  | irreversible fixation — winding number\n--   [18] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def secp256k1_encryption_unwinder_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def secp256k1_encryption_unwinder_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def secp256k1_encryption_unwinder_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def secp256k1_encryption_unwinder_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def secp256k1_encryption_unwinder_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def secp256k1_encryption_unwinder_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def secp256k1_encryption_unwinder_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def secp256k1_encryption_unwinder_protocol : IGProtocol secp256k1_encryption_unwinder_s0 secp256k1_encryption_unwinder_s18 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct secp256k1_encryption_unwinder_s9 secp256k1_encryption_unwinder_s9 = secp256k1_encryption_unwinder_s9 (idempotent)\n  (.seq (.arrow secp256k1_encryption_unwinder_l0 secp256k1_encryption_unwinder_s0 secp256k1_encryption_unwinder_s1) (.seq (.arrow secp256k1_encryption_unwinder_l1 secp256k1_encryption_unwinder_s1 secp256k1_encryption_unwinder_s2) (.seq (.arrow secp256k1_encryption_unwinder_l2 secp256k1_encryption_unwinder_s2 secp256k1_encryption_unwinder_s3) (.seq (.arrow secp256k1_encryption_unwinder_l3 secp256k1_encryption_unwinder_s3 secp256k1_encryption_unwinder_s4) (.seq (.prod (.arrow secp256k1_encryption_unwinder_l4 secp256k1_encryption_unwinder_s4 secp256k1_encryption_unwinder_s9) (.arrow secp256k1_encryption_unwinder_l4 secp256k1_encryption_unwinder_s4 secp256k1_encryption_unwinder_s9)) (.seq (.arrow secp256k1_encryption_unwinder_l9 secp256k1_encryption_unwinder_s9 secp256k1_encryption_unwinder_s9) (.seq (.arrow secp256k1_encryption_unwinder_l9 secp256k1_encryption_unwinder_s9 secp256k1_encryption_unwinder_s10) (.seq (.arrow secp256k1_encryption_unwinder_l10 secp256k1_encryption_unwinder_s10 secp256k1_encryption_unwinder_s11) (.seq (.arrow secp256k1_encryption_unwinder_l11 secp256k1_encryption_unwinder_s11 secp256k1_encryption_unwinder_s12) (.seq (.arrow secp256k1_encryption_unwinder_l12 secp256k1_encryption_unwinder_s12 secp256k1_encryption_unwinder_s13) (.seq (.arrow secp256k1_encryption_unwinder_l13 secp256k1_encryption_unwinder_s13 secp256k1_encryption_unwinder_s14) (.seq (.arrow secp256k1_encryption_unwinder_l14 secp256k1_encryption_unwinder_s14 secp256k1_encryption_unwinder_s15) (.seq (.arrow secp256k1_encryption_unwinder_l15 secp256k1_encryption_unwinder_s15 secp256k1_encryption_unwinder_s16) (.seq (.arrow secp256k1_encryption_unwinder_l16 secp256k1_encryption_unwinder_s16 secp256k1_encryption_unwinder_s17) (.arrow secp256k1_encryption_unwinder_l17 secp256k1_encryption_unwinder_s17 secp256k1_encryption_unwinder_s18)))))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def secp256k1_encryption_unwinder_true_arm : IGProtocol secp256k1_encryption_unwinder_s0 secp256k1_encryption_unwinder_s18 :=\n  (secp256k1_encryption_unwinder_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def secp256k1_encryption_unwinder_false_arm : IGProtocol secp256k1_encryption_unwinder_s0 secp256k1_encryption_unwinder_s18 :=\n  (secp256k1_encryption_unwinder_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef secp256k1_encryption_unwinder_tier_ground : OuroboricityTier := TierFunctor.obj secp256k1_encryption_unwinder_s0\ndef secp256k1_encryption_unwinder_tier : OuroboricityTier := TierFunctor.obj secp256k1_encryption_unwinder_s18\n#eval secp256k1_encryption_unwinder_tier_ground  -- tier of the ground (pre-transformation)\n#eval secp256k1_encryption_unwinder_tier  -- the Grammar's own verdict on the closed object\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 19,
+    "t_branch_ops": 4,
+    "f_branch_ops": 1,
+    "branch_ratio": 4.0,
+    "fork_positions": [
+      4,
+      11
+    ],
+    "fuse_positions": [
+      9,
+      14
+    ],
+    "pair_list": [
+      [
+        4,
+        9
+      ],
+      [
+        11,
+        14
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "notes": "Auto-designed from: secp256k1 encryption unwinder",
+  "grounded_tuple": "⟨𐑛𐑥𐑽𐑿𐑐𐑪𐑔𐑝𐑢𐑫𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {
+      "T": 1
+    },
+    "surplus_total": 1,
+    "live_clears": 1,
+    "restored": 1,
+    "deposits": 4,
+    "inert": 1,
+    "verdict": "1 unit(s) survived a clear by being banked in a frame (1 live clear(s)); 1 further unit(s) flattened by a fold between sibling regions and not restored",
+    "surplus_note": "a split between two deposits of the same value puts them in sibling regions; the fold keeps the larger rather than the sum. Put them in one region to keep both.",
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑥: The secp256k1 curve relies on a cyclic group structure where scalar multiplication wraps around the order of the generator, creating a closed loop of influence.\n⊢=𐑛: The secp256k1 encryption unwinder operates through iterative scalar multiplication cycles on an elliptic curve group, where constraint propagation occurs via repeated application of the group operation until a reset or termination condition is met.\n⊞=𐑳: The secp256k1 curve relies on an asymmetric relationship between the private scalar and the public point, where one input generates a unique output without symmetric pairing.\n⊡=𐑭: The \"unwinder\" mechanism implies a system governed by an integer winding number that remains stable against continuous deformations preserving this topological invariant.\n⊙=𐑢: The input describes a standard cryptographic algorithm operating in a stable, deterministic regime without evidence of scale-free correlations or phase transitions.\n⊥=𐑫: The cryptographic state relies on topological invariants of the elliptic curve group that cannot be reversed without global restructuring of the private key space.\n≻=𐑽: The unwinding of secp256k1 encryption acts as a catalytic transition-state stabilization that lowers the computational barrier for decryption without being consumed in the process.\n≺=𐑿: The secp256k1 curve relies on a signed group operation where the scalar multiplication direction is determined by the sign of the key, creating a distinct accepting or donating pole for the unwinding process.\n⋈=𐑐: The deterministic nature of secp256k1 cryptographic operations ensures near-certain execution with high information fidelity, exceeding 9 bits per interaction.\n⊤=𐑪: Cryptographic primitives like secp256k1 are designed to be computationally irreversible, locking the system in a metastable state where reversing the operation requires extraordinary perturbation (breaking the discrete logarithm problem).\n∈=𐑔: In secp256k1, a single bit flip in the input propagates globally across the entire 256-bit state due to the avalanche effect inherent in its cryptographic design.\n∋=𐑝: The secp256k1 encryption unwinder requires the simultaneous presence of the private key and the corresponding public key parameters to successfully reverse the cryptographic operation.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 19,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 6,
+        "word": "⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 7,
+        "word": "≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊥∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "∋⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⋈∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 11,
+        "word": "∈≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 12,
+        "word": "≻⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "⊞∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "∋⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 15,
+        "word": "⊙⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 16,
+        "word": "⋈⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 17,
+        "word": "⊡⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 18,
+        "word": "⊣⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⊤⋈∈≻⊤≺⊥∋⋈∈≻⊞∋⊙⋈⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 6,
+      "vacuous": 11,
+      "exposed": 2,
+      "exposed_at_k": [
+        5,
+        6
+      ]
+    }
+  },
+  "kernel_repairs": null
+}
