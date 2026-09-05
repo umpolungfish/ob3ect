@@ -163,6 +163,23 @@ def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
     except Exception as e:
         return f"Phase 11: SIXTEEN_3 Trilattice Breakdown — computation failed: {e}"
 
+def _carriers_16_3(ops_12: List[str]) -> Optional[List[str]]:
+    """One SIXTEEN_3 carrier name per opcode (the register AFTER that op),
+    aligned to ops_12, from the trilattice register machine. This is the
+    full-lattice edge weight for the ASCII circuit: it shows ENGAGR depositing
+    t+f (TF→A) where the FOUR-valued register only reads ·. None if the
+    trilattice machine is unavailable or the walk fails."""
+    if not _IMASM16_3_AVAILABLE:
+        return None
+    try:
+        ops_16 = [_IMASM12_TO_16_3.get(op, "IMSCRIB") for op in ops_12]
+        trace = Sequence16_3Trace(ops_16, machine=IMASM16_3_Machine())
+        trace.run()
+        return [_16reg_name(ra) for ra in trace.register_after]
+    except Exception:
+        return None
+
+
 def _lattice_flow_tokens(ops: List[str]) -> List[str]:
     """Translate this pipeline's opcode names to lattice_flow's own: FSPLIT ->
     FSPLIT3, FFUSE -> FFUSE3, ENGAGR -> EVALI, everything else unchanged."""
@@ -1299,7 +1316,8 @@ def _generate_ascii_circuit(artifact) -> Optional[str]:
             except KeyError:
                 return None
         graph = imscr_wiring(tuple(token_list))
-        return render_wiring_ascii(graph, artifact.name)
+        carriers = _carriers_16_3(ops)
+        return render_wiring_ascii(graph, artifact.name, carriers=carriers)
     except Exception:
         return None
 

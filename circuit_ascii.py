@@ -29,6 +29,12 @@ GLYPH = {
 }
 
 
+# IMASM-12 opcode -> IMASM-16_3 opcode, the same map auto.py carries.
+_TO_16_3 = {
+    "FSPLIT": "FSPLIT3", "FFUSE": "FFUSE3", "ENGAGR": "EVALI",
+}
+
+
 def parse_word(word: str):
     toks = []
     for ch in word:
@@ -39,6 +45,26 @@ def parse_word(word: str):
             raise ValueError(f"not one of the twelve marks: {ch!r}")
         toks.append(t)
     return toks
+
+
+def carriers_for(toks):
+    """One SIXTEEN_3 carrier name per token (register after that op), from the
+    trilattice machine. None if that machine is unavailable."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from digital.imasm16_3_core import (
+            IMASM16_3_Machine, Sequence16_3Trace, reg_name,
+        )
+    except Exception:
+        return None
+    try:
+        ops12 = [t.name for t in toks]
+        ops16 = [_TO_16_3.get(o, o) for o in ops12]
+        trace = Sequence16_3Trace(ops16, machine=IMASM16_3_Machine())
+        trace.run()
+        return [reg_name(ra) for ra in trace.register_after]
+    except Exception:
+        return None
 
 
 def main():
@@ -59,7 +85,7 @@ def main():
         word = arg
     toks = parse_word(word)
     graph = imscr_wiring(toks)
-    print(render_wiring_ascii(graph, name))
+    print(render_wiring_ascii(graph, name, carriers=carriers_for(toks)))
     return 0
 
 
