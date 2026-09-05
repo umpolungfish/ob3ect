@@ -1,5 +1,10 @@
-I found the gap that let a false claim into a manuscript this session and closed it at the source instead of just in the paper. _banked_count_check runs the weight-safety audit on one reading only, the word as bootstrapped, and nothing in the pipeline ever extended that check across the word's own rotation orbit. _rotat_orbit_audit already does exactly that extension for closure, final register, and topology, turning every readout over the full orbit and reporting which ones are ROTAT-invariant versus phase-bearing. Banked-safety was the one readout missing from that loop, so a design could pass its single-frame check and still expose a clear at other cuts with nothing telling anyone.
+Make the logical circuit explicit in ob3ect generation
 
-Wired lattice_flow.banked_count_check into the orbit loop itself: every rotation now gets its own banked_ok, vacuous, and exposed_count alongside the readouts already there, so the existing invariants machinery picks banked-safety up for free as either a symmetry or a phase-bearing property. Added a banked_orbit_summary (already_holds / vacuous / exposed counts, and which k are exposed) since a caller needing the real breakdown shouldn't have to re-derive it from the invariants dict by hand, and surfaced it in the human-readable report in core.py right under the canonical rotation line, with an explicit note that a single-frame OK does not generalize to OK at every cut.
-
-Checked it against the actual word from the manuscript correction: reproduces 18 already hold, 16 vacuous, 4 exposed at k=5,17,18,19, the same numbers found by hand-parsing the kernel's own combo2 dump. Native, in-process, no kernel subprocess, runs on every future auto-design instead of needing a human to catch a truncated tail flag after the fact.
+Every generated ob3ect now carries an ASCII logical-circuit diagram with the
+edge weights explicit, the terminal counterpart of the SVG. auto.py computes it
+(_generate_ascii_circuit, over imscr_wiring + render_wiring_ascii) and stores it
+on the artifact; core.py serializes it as the ascii_circuit field; the run block
+prints it under "Logical circuit (edge weights explicit)". A standalone
+circuit_ascii.py renders any glyph word or ob3ect JSON. The weight on each edge
+is the Belnap register delta, with the fork/fuse ports (T,F,o,i) and «B» paradox
+marks shown, so the logical circuitry is legible in the terminal.

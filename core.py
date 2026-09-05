@@ -275,6 +275,7 @@ class Ob3ectArtifact:
     lean_scaffold: Optional[str] = None
     topology_report: Optional[Any] = None  # TopologyReport if topology module available
     glyph_word: Optional[str] = None  # the bootstrap sequence as one glued IMASM word
+    ascii_circuit: Optional[str] = None  # terminal logical-circuit diagram, edge weights explicit
     # ── Gated grounding (imscribe_generator_agent) ──────────────────────────
     # auto_design() now runs the description through the GATED imscriber
     # (imscribing_grammar/agents/imscribe_generator_agent.py) BEFORE its own
@@ -475,6 +476,7 @@ class Ob3ectArtifact:
             "sixteen_3_breakdown":getattr(self,"sixteen_3_breakdown",None),
             "lean_scaffold":self.lean_scaffold,
             "topology_report":(self.topology_report.to_dict() if self.topology_report else None),
+            "ascii_circuit":getattr(self,"ascii_circuit",None),
             "notes":self.instantiation_notes,
             "grounded_tuple":self.grounded_tuple,
             "grounding_status":self.grounding_status,

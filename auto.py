@@ -1268,7 +1268,40 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
     except Exception:
         artifact.rotat_audit = None
 
+    # ASCII logical-circuit diagram: the port-level wire graph with the edge
+    # weights (Belnap register deltas) made explicit, the terminal counterpart
+    # of the SVG diagram.
+    try:
+        artifact.ascii_circuit = _generate_ascii_circuit(artifact)
+    except Exception:
+        artifact.ascii_circuit = None
+
     return artifact
+
+
+def _generate_ascii_circuit(artifact) -> Optional[str]:
+    """Render the artifact's bootstrap opcodes as a terminal logical-circuit
+    diagram, edge weights explicit. Mirrors _generate_diagram (the SVG path)."""
+    try:
+        imscibr_path = str(Path(__file__).resolve().parents[1] / "IMSCRIBr")
+        if imscibr_path not in sys.path:
+            sys.path.insert(0, imscibr_path)
+        from tokens import Token
+        from wiring import imscr_wiring
+        from symbolic_diagram import render_wiring_ascii
+        ops = [step["opcode"] for step in artifact.bootstrap_sequence.steps]
+        if not ops:
+            return None
+        token_list = []
+        for op in ops:
+            try:
+                token_list.append(Token[op])
+            except KeyError:
+                return None
+        graph = imscr_wiring(tuple(token_list))
+        return render_wiring_ascii(graph, artifact.name)
+    except Exception:
+        return None
 
 def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False, trilattice_data: dict = None) -> Optional[Any]:
     """Generate a v3 symbolic wiring diagram from the artifact's bootstrap opcodes.
@@ -1356,6 +1389,9 @@ def _print_artifact_block(art: "Ob3ectArtifact", no_scaffold: bool = False) -> N
                    f"{counts.get('tried', 0)} one-glyph insertions hold")
         out += [f"  {h['glyph']} at {h['position']:>2}   {h['word']}"
                 for h in rep.get("holds", [])[:6]]
+    circuit = getattr(art, "ascii_circuit", None)
+    if circuit:
+        out += ["\n" + "=" * 70, "Logical circuit (edge weights explicit)", "=" * 70, circuit]
     if art.lean_scaffold and not no_scaffold:
         out += ["\n" + "=" * 70, "Lean Scaffold", "=" * 70, art.lean_scaffold]
     print("\n".join(out))
