@@ -1,10 +1,9 @@
-Make the logical circuit explicit in ob3ect generation
+Feed SIXTEEN_3 carriers to the ASCII circuit
 
-Every generated ob3ect now carries an ASCII logical-circuit diagram with the
-edge weights explicit, the terminal counterpart of the SVG. auto.py computes it
-(_generate_ascii_circuit, over imscr_wiring + render_wiring_ascii) and stores it
-on the artifact; core.py serializes it as the ascii_circuit field; the run block
-prints it under "Logical circuit (edge weights explicit)". A standalone
-circuit_ascii.py renders any glyph word or ob3ect JSON. The weight on each edge
-is the Belnap register delta, with the fork/fuse ports (T,F,o,i) and «B» paradox
-marks shown, so the logical circuitry is legible in the terminal.
+_carriers_16_3 runs the bootstrap through the trilattice register machine and
+returns one carrier name per opcode (the register after each op). Both the
+ob3ect generation path (_generate_ascii_circuit) and the standalone
+circuit_ascii.py now pass these to render_wiring_ascii, so the logical circuit
+in the terminal shows the full-lattice edge weight -- ENGAGR's t+f deposit and
+the A paradox -- instead of a bare dot. Falls back to the FOUR-valued reading
+when the trilattice machine is unavailable.

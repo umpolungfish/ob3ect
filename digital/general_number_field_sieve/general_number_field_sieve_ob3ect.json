@@ -1,0 +1,473 @@
+{
+  "name": "general number field sieve",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "general number field sieve",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "polynomial_selection",
+        "lattice_sieving",
+        "linear_algebra",
+        "factor_base",
+        "smoothness",
+        "dependency"
+      ],
+      "boundary_condition": "The integer N to be factored and the algebraic number fields defining the sieve space",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "Integer N",
+        "justification": "The void state before factorization begins; the target integer exists but no relations or structure have been established.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "Factorization Complete",
+        "justification": "The terminal anchor where the product of found factors equals N, closing the system.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "Polynomial Selection",
+        "justification": "Forward morphism selecting polynomials f and g to map N into algebraic number fields, driving the system toward relation generation.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "GCD Computation",
+        "justification": "Reverse morphism descending from the algebraic relation back to the integer domain to extract a non-trivial factor via GCD.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "Relation Aggregation",
+        "justification": "Composition chaining individual smooth relations into the large sparse matrix required for linear algebra.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "Factor Base",
+        "justification": "Identity self-reference; the set of primes defining the smoothness threshold remains invariant throughout the sieving process.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "Sieving Branch",
+        "justification": "Co-multiplication splitting the search space into the rational side (f) and algebraic side (g) of the number field.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "Matrix Kernel",
+        "justification": "Multiplication rejoining the rational and algebraic dependencies into a single linear dependency vector over GF(2).",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "Smoothness Verified",
+        "justification": "Affirmative state where a candidate number factors completely over the factor base.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "Smoothness Failed",
+        "justification": "Negative state where a candidate contains a prime factor outside the factor base.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "Paradice Relation",
+        "justification": "Holding both the rational and algebraic smoothness simultaneously without immediate reduction, maintaining the tension required for the square.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "Relation Log",
+        "justification": "Permanent, append-only record of a valid relation (a, b) added to the matrix.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "Sieving Branch",
+      "split_input": "Candidate integer pair (a, b)",
+      "split_outputs": [
+        "Rational smoothness check",
+        "Algebraic smoothness check"
+      ],
+      "fuse_element": "Matrix Kernel",
+      "fuse_result": "Linear dependency vector",
+      "frobenius_verdict": "B",
+      "test_instance": "",
+      "failure_reason": "FSPLIT3 at step 4 dangles — no matching FFUSE3"
+    },
+    "phase_3": {
+      "void_description": "No relations collected; the matrix is empty.",
+      "true_description": "A valid relation is found and added to the matrix.",
+      "false_description": "A candidate fails smoothness; no relation is recorded.",
+      "both_description": "A candidate is smooth on both sides simultaneously, creating a valid relation that holds both algebraic and rational properties.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the system with the target integer N to be factored."
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "Define the Factor Base, the set of small primes for smoothness testing."
+        },
+        {
+          "step_num": 3,
+          "opcode": "≻",
+          "domain_action": "Select polynomials f and g to map N into two distinct algebraic number fields."
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "Branch the sieving process into rational and algebraic domains."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Check if the rational side of a candidate is smooth over the factor base."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊥",
+          "domain_action": "Check if the algebraic side of a candidate is smooth over the factor base."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊞",
+          "domain_action": "Hold the candidate in a paradice state where both rational and algebraic smoothness are simultaneously verified."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊡",
+          "domain_action": "Record the valid relation (a, b) into the permanent relation log."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⋈",
+          "domain_action": "Aggregate the recorded relations into a large sparse matrix over GF(2)."
+        },
+        {
+          "step_num": 10,
+          "opcode": "∈",
+          "domain_action": "Branch the linear algebra phase into finding the kernel of the matrix."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊤",
+          "domain_action": "Identify a subset of relations whose product forms a square on the rational side."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊥",
+          "domain_action": "Identify a subset of relations whose product forms a square on the algebraic side."
+        },
+        {
+          "step_num": 13,
+          "opcode": "∋",
+          "domain_action": "Rejoin the rational and algebraic square roots into a single dependency vector."
+        },
+        {
+          "step_num": 14,
+          "opcode": "≺",
+          "domain_action": "Compute the GCD of the difference between the square roots and N to extract a factor."
+        },
+        {
+          "step_num": 15,
+          "opcode": "⊣",
+          "domain_action": "Verify the factor divides N, closing the factorization process."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Polynomial selection algorithm translating N into algebraic structures",
+      "ipc_mechanism": "Relation vectors passed between sieving workers and the central matrix builder",
+      "memory_mechanism": "Sparse matrix storing exponents of prime factors modulo 2",
+      "scheduler_mechanism": "Lattice sieving grid determining the order of candidate evaluation",
+      "alfs_store": "The set of all smooth numbers over the factor base within the sieving range",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Computational work to test smoothness and solve the linear system",
+      "pre_cycle_state": "Integer N with no known factors",
+      "post_cycle_state": "Integer N decomposed into factors p and q",
+      "delta_s_verdict": "ΔS ≈ 0 — The information content of N is conserved; the factorization reveals hidden structure without creating or destroying the integer's value.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ≻   AFWD     AFWD          T →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ⊥   EVALF    EVALF         T →    TF\n    7   ⊞   ENGAGR   EVALI        TF →     A\n    8   ⊡   IFIX     IFIX          A →     A\n    9   ⋈   CLINK    CLINK         A →     A\n   10   ∈   FSPLIT   FSPLIT3       A →     A\n   11   ⊤   EVALT    EVALT         A →     A\n   12   ⊥   EVALF    EVALF         A →     A\n   13   ∋   FFUSE    FFUSE3        A →     A\n   14   ≺   AREV     AREV          A →     A\n   15   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: B — FSPLIT3 at step 4 dangles — no matching FFUSE3\n  ⚠ Walk open, verdict B",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ⊡ → ⋈ → ∈ → ⊤ → ⊥ → ∋ → ≺ → ⊣\n-- Class: general number field sieve\n-- Fingerprint: sig=(6,3,5,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=15\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(9, 12)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑼 → 𐑾  | identity — self-imscription\n--   [2] ≻      rel    := 𐑾               𐑠 → 𐑚  | forward morphism — bidirectional arrow\n--   [3] ∈    gran   := 𐑚               𐑾 → ⊙  | split δ — range decomposition\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑖  | evaluate-true — criticality gate open\n--   [5] ⊥     chir   := 𐑖               ⊙ → 𐑳  | evaluate-false — chirality check\n--   [6] ⊞    stoi   := 𐑳               𐑖 → 𐑭  | engage paradox — B-state, both arms\n--   [7] ⊡      prot   := 𐑭               𐑳 → 𐑱  | irreversible fixation — winding number\n--   [8] ⋈     fid    := 𐑱               𐑭 → 𐑚  | composition — regime coherence\n--   [9] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [10] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [11] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [12] ∋     stoi   := 𐑙               𐑙 → 𐑗  | fuse μ — assembly mode\n--   [13] ≺      pol    := 𐑗               𐑙 → 𐑡  | reverse morphism — parity flip\n--   [14] ⊣     top    := 𐑡               𐑗 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def general_number_field_sieve_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def general_number_field_sieve_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def general_number_field_sieve_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def general_number_field_sieve_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def general_number_field_sieve_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def general_number_field_sieve_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def general_number_field_sieve_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def general_number_field_sieve_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def general_number_field_sieve_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def general_number_field_sieve_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def general_number_field_sieve_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def general_number_field_sieve_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def general_number_field_sieve_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def general_number_field_sieve_protocol : IGProtocol general_number_field_sieve_s0 general_number_field_sieve_s14 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct general_number_field_sieve_s12 general_number_field_sieve_s12 = general_number_field_sieve_s12 (idempotent)\n  (.seq (.arrow general_number_field_sieve_l0 general_number_field_sieve_s0 general_number_field_sieve_s1) (.seq (.arrow general_number_field_sieve_l1 general_number_field_sieve_s1 general_number_field_sieve_s2) (.seq (.arrow general_number_field_sieve_l2 general_number_field_sieve_s2 general_number_field_sieve_s3) (.seq (.arrow general_number_field_sieve_l3 general_number_field_sieve_s3 general_number_field_sieve_s4) (.seq (.arrow general_number_field_sieve_l4 general_number_field_sieve_s4 general_number_field_sieve_s5) (.seq (.arrow general_number_field_sieve_l5 general_number_field_sieve_s5 general_number_field_sieve_s6) (.seq (.arrow general_number_field_sieve_l6 general_number_field_sieve_s6 general_number_field_sieve_s7) (.seq (.arrow general_number_field_sieve_l7 general_number_field_sieve_s7 general_number_field_sieve_s8) (.seq (.arrow general_number_field_sieve_l8 general_number_field_sieve_s8 general_number_field_sieve_s9) (.seq (.prod (.arrow general_number_field_sieve_l9 general_number_field_sieve_s9 general_number_field_sieve_s12) (.arrow general_number_field_sieve_l9 general_number_field_sieve_s9 general_number_field_sieve_s12)) (.seq (.arrow general_number_field_sieve_l12 general_number_field_sieve_s12 general_number_field_sieve_s12) (.seq (.arrow general_number_field_sieve_l12 general_number_field_sieve_s12 general_number_field_sieve_s13) (.arrow general_number_field_sieve_l13 general_number_field_sieve_s13 general_number_field_sieve_s14)))))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def general_number_field_sieve_true_arm : IGProtocol general_number_field_sieve_s0 general_number_field_sieve_s14 :=\n  (general_number_field_sieve_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def general_number_field_sieve_false_arm : IGProtocol general_number_field_sieve_s0 general_number_field_sieve_s14 :=\n  (general_number_field_sieve_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef general_number_field_sieve_tier_ground : OuroboricityTier := TierFunctor.obj general_number_field_sieve_s0\ndef general_number_field_sieve_tier : OuroboricityTier := TierFunctor.obj general_number_field_sieve_s14\n#eval general_number_field_sieve_tier_ground  -- tier of the ground (pre-transformation)\n#eval general_number_field_sieve_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem general_number_field_sieve_frobenius :\n    igFrobeniusAlg.mul general_number_field_sieve_s0 general_number_field_sieve_s0 = general_number_field_sieve_s0 :=\n  igFrobAlg_self_fusion general_number_field_sieve_s0\n",
+  "topology_report": {
+    "topology_class": "mixed",
+    "nesting_depth": 1,
+    "total_pairs": 1,
+    "open_forks": 1,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 15,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3,
+      9
+    ],
+    "fuse_positions": [
+      12
+    ],
+    "pair_list": [
+      [
+        9,
+        12
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  general number field sieve   15 nodes, 15 wires   open forks 1\n  weight = SIXTEEN_3 carrier on the wire (src→dst): N T F TF Ttf … A=top (all four)   «A» paradox held   ⚡ truth flip   ═▶ cross-branch\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ⊙   [o→i]  N→T\n  1 ⊙ IMSCRIB  T   \n     └─▶  2 ≻   [o→i]  T→T\n  2 ≻ AFWD     T   \n     └─▶  3 ∈   [o→i]  T→T\n  3 ∈ FSPLIT   T     ┐ fork\n     └─▶  4 ⊤   [o→i]  T→T\n  4 ⊤ EVALT    T   \n     └─▶  5 ⊥   [o→i]  T→TF «A»\n  5 ⊥ EVALF    TF  \n     └─▶  6 ⊞   [o→i]  TF→A «A»\n  6 ⊞ ENGAGR   A   \n     └─▶  7 ⊡   [o→i]  A→A «A»\n  7 ⊡ IFIX     A   \n     └─▶  8 ⋈   [o→i]  A→A «A»\n  8 ⋈ CLINK    A   \n     └─▶  9 ∈   [o→i]  A→A «A»\n  9 ∈ FSPLIT   A     ┐ fork\n     ├─▶ 10 ⊤   [T→i]  A→A «A»\n     └─▶ 11 ⊥   [F→i]  A→A «A»\n 10 ⊤ EVALT    A   \n     └─▶ 12 ∋   [o→T]  A→A «A»\n 11 ⊥ EVALF    A   \n     └─▶ 12 ∋   [o→F]  A→A «A»\n 12 ∋ FFUSE    A     ┘ join\n     └─▶ 13 ≺   [o→i]  A→A «A»\n 13 ≺ AREV     A   \n     └─▶ 14 ⊣   [o→i]  A→A «A»\n 14 ⊣ TANCH    A   \n\n  walk: OPEN   final register A",
+  "notes": "Auto-designed from: general number field sieve",
+  "grounded_tuple": "⟨𐑛𐑡𐑽𐑿𐑐𐑧𐑔𐑵𐑢𐑫𐑳𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 7,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (7 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The General Number Field Sieve relies on a distributed, hub-and-spoke network where independent workers generate relations that are aggregated into a central matrix for linear algebra processing.\n⊢=𐑛: The General Number Field Sieve relies on an iterative process of collecting relations and performing linear algebra to find dependencies, which aligns with a temporal/iterative constraint propagation through cycles of sieving and matrix reduction.\n⊞=𐑳: The general number field sieve relies on an asymmetric relationship between two distinct polynomial rings to factor integers.\n⊡=𐑭: The General Number Field Sieve relies on algebraic structures with integer invariants (such as the degree of polynomials and ideal class group properties) that prevent continuous deformation to a trivial state without breaking the underlying arithmetic constraints.\n⊙=𐑢: The general number field sieve is a deterministic algorithm operating in a stable, subcritical regime without exhibiting scale-free correlations or critical phase transitions.\n⊥=𐑫: The General Number Field Sieve relies on the topological structure of algebraic number fields and the global consistency of polynomial relations, which cannot be undone without a complete restructuring of the underlying algebraic framework.\n≻=𐑽: The general number field sieve functions as a catalytic algorithm that stabilizes the transition state of integer factorization by lowering the computational barrier through polynomial selection and lattice sieving without being consumed.\n≺=𐑿: The General Number Field Sieve relies on a directed flow of information from polynomial selection to lattice sieving, establishing a signed direction where one side generates relations (donating) and the other processes them (accepting).\n⋈=𐑐: The General Number Field Sieve relies on the deterministic algebraic geometry of number fields to enforce relations with near-certainty once the smoothness threshold is met.\n⊤=𐑧: The General Number Field Sieve involves complex, high-energy computational steps that are kinetically frozen without the external driving force of algorithmic execution to rearrange the factorization state.\n∈=𐑔: The General Number Field Sieve relies on global algebraic dependencies where relations across the entire factor base must be combined to find a square, making the interaction scale-free and system-wide.\n∋=𐑵: The General Number Field Sieve requires the cooperative assembly of many distinct components (polynomial selection, sieving, linear algebra) to function, fitting the broad conjunctive logic.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 15,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣⊢",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣⊢⊙",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣⊢⊙≻",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣⊢⊙≻∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⊥⊞⊡⋈∈⊤⊥∋≺⊣⊢⊙≻∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "open_fork_dag",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "⊞⊡⋈∈⊤⊥∋≺⊣⊢⊙≻∈⊤⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "open_fork_dag",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "⊡⋈∈⊤⊥∋≺⊣⊢⊙≻∈⊤⊥⊞",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "open_fork_dag",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⋈∈⊤⊥∋≺⊣⊢⊙≻∈⊤⊥⊞⊡",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 9,
+        "word": "∈⊤⊥∋≺⊣⊢⊙≻∈⊤⊥⊞⊡⋈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "open_fork_dag",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 10,
+        "word": "⊤⊥∋≺⊣⊢⊙≻∈⊤⊥⊞⊡⋈∈",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 11,
+        "word": "⊥∋≺⊣⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 12,
+        "word": "∋≺⊣⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "≺⊣⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "⊣⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺",
+        "tri_ancestral_verdict": "B",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "mixed",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": false,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙≻∈⊤⊥⊞⊡⋈∈⊤⊥∋≺⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, topology_class, banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 11,
+      "exposed": 4,
+      "exposed_at_k": [
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  "kernel_repairs": null
+}
