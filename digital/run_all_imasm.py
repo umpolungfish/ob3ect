@@ -32,6 +32,7 @@ from digital.chiral_pairs.chiral_pairs_ob3ect import ChiralForward, ChiralRevers
 from digital.truth_machine.truth_machine_ob3ect import TruthMachine
 from digital.eternal_return.eternal_return_ob3ect import EternalReturn
 from digital.rom_burn.rom_burn_ob3ect import ROMBurn
+from digital.native_imasm_numeral_mapping.native_imasm_numeral_mapping import NativeIMASMSequence
 
 ALL_CLASSES = [
     DialetheicBootstrap(),
@@ -45,6 +46,7 @@ ALL_CLASSES = [
     TruthMachine(),
     EternalReturn(),
     ROMBurn(),
+    NativeIMASMSequence(),
 ]
 
 CHIRAL_PAIRS = [
