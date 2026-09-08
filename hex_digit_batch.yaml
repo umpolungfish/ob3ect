@@ -1,0 +1,35 @@
+# Ground each of the 16 HEX_WORDS digit-words to its own designed tuple.
+# First attempt shared one template across all sixteen descriptions
+# ("The IMASM structural type of hex digit 0xN: an IMASM numeral packet
+# with...") and it collapsed digits whose bit differences sat inside that
+# shared frame: 1/3/4, 8/9, A/E, and 5/F all came back identical. Each
+# description below is its own sentence, built from what T/F/I/fork
+# actually mean for a numeral packet (T = parity of the value read at
+# this position, F = the sign of the fork this position closes, I =
+# whether an increment carried through, fork = whether this position
+# opened a new branch) rather than a fill-in-the-blank of a shared
+# opening line.
+name: hex_digit_grounding
+out_dir: digital/hex_digits
+
+design:
+  domain: computational
+  scope: local
+
+entities:
+  - "A numeral packet at rest: no parity bit, no fork sign, no carried increment, no open branch (word ⊢≻⋈≺⊙⊡⊣)."
+  - "A numeral packet holding an odd-parity bit alone, sign clear, no increment, no branch open (word ⊢⊤≻⋈≺⊙⊡⊣)."
+  - "A numeral packet holding a fork-sign bit alone, parity clear, no increment, no branch open (word ⊢≻⋈⊥≺⊙⊡⊣)."
+  - "A numeral packet where both the odd-parity bit and the fork-sign bit are set together, with no increment and no branch open (word ⊢⊤≻⋈⊥≺⊙⊡⊣)."
+  - "A numeral packet that carried an increment through, with parity and fork-sign both clear and no branch open (word ⊢≻⋈≺⊞⊙⊡⊣)."
+  - "A numeral packet carrying both an odd-parity bit and a carried increment, fork-sign clear, no branch open (word ⊢⊤≻⋈≺⊞⊙⊡⊣)."
+  - "A numeral packet carrying both a fork-sign bit and a carried increment, parity clear, no branch open (word ⊢≻⋈⊥≺⊞⊙⊡⊣)."
+  - "A numeral packet where parity, fork-sign, and the carried increment are all set together, with no branch open (word ⊢⊤≻⋈⊥≺⊞⊙⊡⊣)."
+  - "A numeral packet that opens a new branch, with parity, fork-sign, and increment all clear (word ⊢∈≻⋈≺⋈∋⊙⊡⊣)."
+  - "A numeral packet opening a new branch while also carrying an odd-parity bit, fork-sign and increment clear (word ⊢∈⊤≻⋈≺⋈∋⊙⊡⊣)."
+  - "A numeral packet opening a new branch while also carrying a fork-sign bit, parity and increment clear (word ⊢∈≻⋈⊥≺⋈∋⊙⊡⊣)."
+  - "A numeral packet opening a new branch with both parity and fork-sign set, increment clear (word ⊢∈⊤≻⋈⊥≺⋈∋⊙⊡⊣)."
+  - "A numeral packet opening a new branch while carrying an increment, parity and fork-sign clear (word ⊢∈≻⋈≺⋈⊞∋⊙⊡⊣)."
+  - "A numeral packet opening a new branch with parity and a carried increment together, fork-sign clear (word ⊢∈⊤≻⋈≺⋈⊞∋⊙⊡⊣)."
+  - "A numeral packet opening a new branch with fork-sign and a carried increment together, parity clear (word ⊢∈≻⋈⊥≺⋈⊞∋⊙⊡⊣)."
+  - "A numeral packet where every bit is set at once: parity, fork-sign, the carried increment, and a newly opened branch (word ⊢∈⊤≻⋈⊥≺⋈⊞∋⊙⊡⊣)."
