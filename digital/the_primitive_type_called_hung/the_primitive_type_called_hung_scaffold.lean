@@ -1,10 +1,10 @@
--- IGProtocol scaffold: VINIT → IMSCRIB → AFWD → FSPLIT → EVALT → CLINK → EVALT → FFUSE → IFIX → TANCH
--- Class: the primitive type called hung
--- Fingerprint: sig=(5,2,2,1)
+-- IGProtocol scaffold: ⊢ → ≻ → ≺ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ⊡ → ⊣
+-- Class: the_primitive_type_called_hung
+-- Fingerprint: sig=(6,2,3,1)
 --   self_ref=False | frobenius_order=1
---   dialetheia_complete=False | period=10
--- Expected tier: O₁
--- FSPLIT/FFUSE pairs: [(3, 7)]
+--   dialetheia_complete=True | period=12
+-- Expected tier: O₂dag
+-- ∈/∋ pairs: [(4, 8)]
 
 import Imscribing.IGMorphism
 import Imscribing.IGFunctor
@@ -15,78 +15,94 @@ open Dimensionality Topology Relational Polarity Grammar
      Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality
 
 -- ── Token → IG field mapping ──────────────────────────────────────────────
---   [0] VINIT     dim    := 𐑼               𐑼 → 𐑠  | initial object — ground of distinction
---   [1] IMSCRIB   gram   := 𐑠               𐑼 → 𐑾  | identity — self-imscription
---   [2] AFWD      rel    := 𐑾               𐑠 → 𐑚  | forward morphism — bidirectional arrow
---   [3] FSPLIT    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
---   [4] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [5] CLINK     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence
---   [6] EVALT     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
---   [7] FFUSE     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode
---   [8] IFIX      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number
---   [9] TANCH     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
+--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction
+--   [1] ≻      rel    := 𐑾               𐑼 → 𐑗  | forward morphism — bidirectional arrow
+--   [2] ≺      pol    := 𐑗               𐑾 → 𐑱  | reverse morphism — parity flip
+--   [3] ⋈     fid    := 𐑱               𐑗 → 𐑚  | composition — regime coherence
+--   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition
+--   [5] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open
+--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check
+--   [7] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms
+--   [8] ∋     stoi   := 𐑙               𐑙 → 𐑠  | fuse μ — assembly mode
+--   [9] ⊙   gram   := 𐑠               𐑙 → 𐑭  | identity — self-imscription
+--   [10] ⊡      prot   := 𐑭               𐑠 → 𐑡  | irreversible fixation — winding number
+--   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary
 
 -- ── Stage Imscriptions (per-node cumulative) ────────────────
 private def the_primitive_type_called_hung_s0 : Imscription :=
   { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s1 : Imscription :=
-  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s2 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s3 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s4 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s5 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s6 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s7 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }
 private def the_primitive_type_called_hung_s8 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_s9 : Imscription :=
-  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := ah }
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }
+private def the_primitive_type_called_hung_s10 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
+private def the_primitive_type_called_hung_s11 : Imscription :=
+  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }
 
 -- ── Label Imscriptions (per-node delta) ─────────────────────
 private def the_primitive_type_called_hung_l0 : Imscription :=
   { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_l1 : Imscription :=
-  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_primitive_type_called_hung_l2 : Imscription :=
   { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_primitive_type_called_hung_l2 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_l3 : Imscription :=
-  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_l4 : Imscription :=
-  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_l5 : Imscription :=
-  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
-private def the_primitive_type_called_hung_l6 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }
+private def the_primitive_type_called_hung_l6 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_l7 : Imscription :=
-  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }
 private def the_primitive_type_called_hung_l8 : Imscription :=
-  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 private def the_primitive_type_called_hung_l9 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }
+private def the_primitive_type_called_hung_l10 : Imscription :=
+  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }
+private def the_primitive_type_called_hung_l11 : Imscription :=
   { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }
 
 -- ── Main IGProtocol term ────────────────────────────────────
-noncomputable def the_primitive_type_called_hung_protocol : IGProtocol the_primitive_type_called_hung_s0 the_primitive_type_called_hung_s9 :=
+noncomputable def the_primitive_type_called_hung_protocol : IGProtocol the_primitive_type_called_hung_s0 the_primitive_type_called_hung_s11 :=
   .withGram Grammar.measure <|
-  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_primitive_type_called_hung_s7 the_primitive_type_called_hung_s7 = the_primitive_type_called_hung_s7 (idempotent)
-  (.seq (.arrow the_primitive_type_called_hung_l0 the_primitive_type_called_hung_s0 the_primitive_type_called_hung_s1) (.seq (.arrow the_primitive_type_called_hung_l1 the_primitive_type_called_hung_s1 the_primitive_type_called_hung_s2) (.seq (.arrow the_primitive_type_called_hung_l2 the_primitive_type_called_hung_s2 the_primitive_type_called_hung_s3) (.seq (.prod (.arrow the_primitive_type_called_hung_l3 the_primitive_type_called_hung_s3 the_primitive_type_called_hung_s7) (.arrow the_primitive_type_called_hung_l3 the_primitive_type_called_hung_s3 the_primitive_type_called_hung_s7)) (.seq (.arrow the_primitive_type_called_hung_l7 the_primitive_type_called_hung_s7 the_primitive_type_called_hung_s7) (.seq (.arrow the_primitive_type_called_hung_l7 the_primitive_type_called_hung_s7 the_primitive_type_called_hung_s8) (.arrow the_primitive_type_called_hung_l8 the_primitive_type_called_hung_s8 the_primitive_type_called_hung_s9)))))))
+  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_primitive_type_called_hung_s8 the_primitive_type_called_hung_s8 = the_primitive_type_called_hung_s8 (idempotent)
+  (.seq (.arrow the_primitive_type_called_hung_l0 the_primitive_type_called_hung_s0 the_primitive_type_called_hung_s1) (.seq (.arrow the_primitive_type_called_hung_l1 the_primitive_type_called_hung_s1 the_primitive_type_called_hung_s2) (.seq (.arrow the_primitive_type_called_hung_l2 the_primitive_type_called_hung_s2 the_primitive_type_called_hung_s3) (.seq (.arrow the_primitive_type_called_hung_l3 the_primitive_type_called_hung_s3 the_primitive_type_called_hung_s4) (.seq (.prod (.arrow the_primitive_type_called_hung_l4 the_primitive_type_called_hung_s4 the_primitive_type_called_hung_s8) (.arrow the_primitive_type_called_hung_l4 the_primitive_type_called_hung_s4 the_primitive_type_called_hung_s8)) (.seq (.arrow the_primitive_type_called_hung_l8 the_primitive_type_called_hung_s8 the_primitive_type_called_hung_s8) (.seq (.arrow the_primitive_type_called_hung_l8 the_primitive_type_called_hung_s8 the_primitive_type_called_hung_s9) (.seq (.arrow the_primitive_type_called_hung_l9 the_primitive_type_called_hung_s9 the_primitive_type_called_hung_s10) (.arrow the_primitive_type_called_hung_l10 the_primitive_type_called_hung_s10 the_primitive_type_called_hung_s11)))))))))
 
 -- ── Evaluation arm sub-defs ───────────────────────────────────
 
 -- truth arm
-noncomputable def the_primitive_type_called_hung_true_arm : IGProtocol the_primitive_type_called_hung_s0 the_primitive_type_called_hung_s9 :=
+noncomputable def the_primitive_type_called_hung_true_arm : IGProtocol the_primitive_type_called_hung_s0 the_primitive_type_called_hung_s11 :=
   (the_primitive_type_called_hung_protocol).restrictToEVALT
+
+-- false arm
+noncomputable def the_primitive_type_called_hung_false_arm : IGProtocol the_primitive_type_called_hung_s0 the_primitive_type_called_hung_s11 :=
+  (the_primitive_type_called_hung_protocol).restrictToEVALF
 
 -- ── Verification theorems ─────────────────────────────────────
 
--- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.
-def the_primitive_type_called_hung_tier : OuroboricityTier := TierFunctor.obj the_primitive_type_called_hung_s0
-#eval the_primitive_type_called_hung_tier  -- the Grammar's own verdict on its tier
+-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.
+def the_primitive_type_called_hung_tier_ground : OuroboricityTier := TierFunctor.obj the_primitive_type_called_hung_s0
+def the_primitive_type_called_hung_tier : OuroboricityTier := TierFunctor.obj the_primitive_type_called_hung_s11
+#eval the_primitive_type_called_hung_tier_ground  -- tier of the ground (pre-transformation)
+#eval the_primitive_type_called_hung_tier  -- the Grammar's own verdict on the closed object
 
 -- Frobenius (split → fuse): μ∘δ = id on the ground imscription
 theorem the_primitive_type_called_hung_frobenius :
