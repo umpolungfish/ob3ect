@@ -1,0 +1,325 @@
+{
+  "name": "The quotient q is NOT composite, q is itself prime. The inner F-arm is established on the F-arm of the inner FSPLIT.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "The quotient q is NOT composite, q is itself prime. The inner F-arm is established on the F-arm of the inner FSPLIT.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "quotient q",
+        "compositeness test",
+        "primality witness"
+      ],
+      "boundary_condition": "the inner FFUSE that rejoins the T-arm and F-arm, closing the inner factorization and containing the resolved factor list of q",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized quotient state",
+        "justification": "represents the void before any information about q is known; the register is empty (00).",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "resolved factor list of q",
+        "justification": "marks the terminal boundary where the inner factorization tree is closed and the product of leaves equals q.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "directed transformation toward factorization of q",
+        "justification": "forward morphism that proceeds to decompose the quotient q = n/d, directing computation toward its factors.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "reverse descent to self-inverse winding",
+        "justification": "though not used in the inner primality test, AREV would represent the parity flip that descends a prime to its self-inverse winding at 1/2.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "linking of discovered factor d with q's factor list",
+        "justification": "composition that chains the inner factorization of q into the outer factorization of n, sequentially combining discovered factors.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "q recognizes itself as prime",
+        "justification": "identity self-reference where the quotient, being prime, is its own complete factorization.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "compositeness test on q",
+        "justification": "splits the computation into two arms: one where q admits a non-trivial divisor (composite) and one where it does not (prime).",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "reconstitution of q's complete factor list",
+        "justification": "multiplication that joins the T-arm and F-arm results; conflicting arms (composite vs prime) rejoin to a Belnap B state.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "constructive proof that q has a non-trivial divisor",
+        "justification": "affirmative state establishing constructive truth of q's compositeness on the T-arm.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "constructive refutation that q has no non-trivial divisor",
+        "justification": "negative state establishing constructive falsity of q's compositeness (i.e., primality) on the F-arm.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "q simultaneously composite and prime (contradiction held)",
+        "justification": "paradice state where both T and F readings are held without resolution, representing the inner factorization's paradoxical outcome.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "irreversible recording of a discovered sub-factor",
+        "justification": "permanent, append-only record that fixes a factor as a conserved topological charge once found.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "compositeness test on q",
+      "split_input": "the quotient q to be tested for further decomposition",
+      "split_outputs": [
+        "q is composite (has a non-trivial divisor)",
+        "q is prime (no further decomposition)"
+      ],
+      "fuse_element": "reconstitution of q's complete factor list",
+      "fuse_result": "B state (both held) representing q's factor list as both composite and prime",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "uninitialized state where no information about q's compositeness is established (register 00).",
+      "true_description": "affirmative state where q is constructively proven composite (register 01).",
+      "false_description": "negative state where q is constructively refuted as composite, i.e., proven prime (register 10).",
+      "both_description": "paradice state where q is simultaneously considered composite and prime, holding both T and F (register 11).",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "initial void state - no information about q yet, register 00."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "forward morphism - proceed to decompose the quotient q = n/d, directing computation toward its factors."
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "decision - splits into T-arm (q composite) and F-arm (q prime)."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊤",
+          "domain_action": "affirmative - constructively proves q has a non-trivial divisor (composite) on the T-arm."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊥",
+          "domain_action": "negative - constructively refutes q's compositeness, establishing q as prime on the F-arm."
+        },
+        {
+          "step_num": 6,
+          "opcode": "∋",
+          "domain_action": "multiplication - rejoins T-arm and F-arm results; conflicting arms rejoin to Belnap B state."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the IMASM kernel that translates token sequences into Belnap verdicts over SIXTEEN_3",
+      "ipc_mechanism": "token passing along directed edges, with FSPLIT/FFUSE arms routing T and F signals",
+      "memory_mechanism": "the four-valued register (B4) holding the current state, updated by each token",
+      "scheduler_mechanism": "depth-first left-to-right evaluation of the token sequence",
+      "alfs_store": "the canonical IMASM word for inner primality test: VINIT AFWD FSPLIT EVALT EVALF FFUSE",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "no net entropy change; each logical token is reversible, IFIX absent",
+      "pre_cycle_state": "void state (00) before any token",
+      "post_cycle_state": "B state (11) after FFUSE, representing q's factor list as both composite and prime",
+      "delta_s_verdict": "ΔS ≈ 0 — the circuit rank beta = E - V + C is unchanged; tokens only add nodes and edges preserving topology",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻∈⊤⊥∋",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻∈⊤⊥∋\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ⊤   EVALT    EVALT         T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   ∋   FFUSE    FFUSE3       TF →    TF\n\n  Final register: TF\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊥ → ∋\n-- Class: The quotient q is NOT composite, q is itself prime. The inner F-arm is established on the F-arm of the inner ∈.\n-- Fingerprint: sig=(2,2,2,0)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=False | period=6\n-- Expected tier: O₁\n-- ∈/∋ pairs: [(2, 5)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑚  | forward morphism — bidirectional arrow\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [4] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [5] ∋     stoi   := 𐑙               𐑙 → 𐑼  | fuse μ — assembly mode\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def the_quotient_q_is_not_composite_q_is_b91cf2_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def the_quotient_q_is_not_composite_q_is_b91cf2_protocol : IGProtocol the_quotient_q_is_not_composite_q_is_b91cf2_s0 the_quotient_q_is_not_composite_q_is_b91cf2_s5 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct the_quotient_q_is_not_composite_q_is_b91cf2_s5 the_quotient_q_is_not_composite_q_is_b91cf2_s5 = the_quotient_q_is_not_composite_q_is_b91cf2_s5 (idempotent)\n  (.seq (.arrow the_quotient_q_is_not_composite_q_is_b91cf2_l0 the_quotient_q_is_not_composite_q_is_b91cf2_s0 the_quotient_q_is_not_composite_q_is_b91cf2_s1) (.seq (.arrow the_quotient_q_is_not_composite_q_is_b91cf2_l1 the_quotient_q_is_not_composite_q_is_b91cf2_s1 the_quotient_q_is_not_composite_q_is_b91cf2_s2) (.seq (.prod (.arrow the_quotient_q_is_not_composite_q_is_b91cf2_l2 the_quotient_q_is_not_composite_q_is_b91cf2_s2 the_quotient_q_is_not_composite_q_is_b91cf2_s5) (.arrow the_quotient_q_is_not_composite_q_is_b91cf2_l2 the_quotient_q_is_not_composite_q_is_b91cf2_s2 the_quotient_q_is_not_composite_q_is_b91cf2_s5)) (.arrow the_quotient_q_is_not_composite_q_is_b91cf2_l5 the_quotient_q_is_not_composite_q_is_b91cf2_s5 the_quotient_q_is_not_composite_q_is_b91cf2_s5))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def the_quotient_q_is_not_composite_q_is_b91cf2_true_arm : IGProtocol the_quotient_q_is_not_composite_q_is_b91cf2_s0 the_quotient_q_is_not_composite_q_is_b91cf2_s5 :=\n  (the_quotient_q_is_not_composite_q_is_b91cf2_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def the_quotient_q_is_not_composite_q_is_b91cf2_false_arm : IGProtocol the_quotient_q_is_not_composite_q_is_b91cf2_s0 the_quotient_q_is_not_composite_q_is_b91cf2_s5 :=\n  (the_quotient_q_is_not_composite_q_is_b91cf2_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₁.\ndef the_quotient_q_is_not_composite_q_is_b91cf2_tier_ground : OuroboricityTier := TierFunctor.obj the_quotient_q_is_not_composite_q_is_b91cf2_s0\ndef the_quotient_q_is_not_composite_q_is_b91cf2_tier : OuroboricityTier := TierFunctor.obj the_quotient_q_is_not_composite_q_is_b91cf2_s5\n#eval the_quotient_q_is_not_composite_q_is_b91cf2_tier_ground  -- tier of the ground (pre-transformation)\n#eval the_quotient_q_is_not_composite_q_is_b91cf2_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem the_quotient_q_is_not_composite_q_is_b91cf2_frobenius :\n    igFrobeniusAlg.mul the_quotient_q_is_not_composite_q_is_b91cf2_s0 the_quotient_q_is_not_composite_q_is_b91cf2_s0 = the_quotient_q_is_not_composite_q_is_b91cf2_s0 :=\n  igFrobAlg_self_fusion the_quotient_q_is_not_composite_q_is_b91cf2_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 6,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      5
+    ],
+    "pair_list": [
+      [
+        2,
+        5
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 0,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  The quotient q is NOT composite, q is itself prime. The inner F-arm is established on the F-arm of the inner FSPLIT.   6 nodes, 6 wires   open forks 0\n  weight = SIXTEEN_3 carrier on the wire (src→dst): N T F TF Ttf … A=top (all four)   «A» paradox held   ⚡ truth flip   ═▶ cross-branch\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  N→T\n  1 ≻ AFWD     T   \n     └─▶  2 ∈   [o→i]  T→T\n  2 ∈ FSPLIT   T     ┐ fork\n     ├─▶  3 ⊤   [T→i]  T→T\n     └─▶  4 ⊥   [F→i]  T→TF «A»\n  3 ⊤ EVALT    T   \n     └─▶  5 ∋   [o→T]  T→TF «A»\n  4 ⊥ EVALF    TF  \n     └─▶  5 ∋   [o→F]  TF→TF «A»\n  5 ∋ FFUSE    TF    ┘ join\n\n  walk: CLOSED   final register TF",
+  "notes": "Auto-designed from: The quotient q is NOT composite, q is itself prime. The inner F-arm is established on the F-arm of the inner FSPLIT.",
+  "grounded_tuple": "⟨𐑼𐑰𐑑𐑗𐑐𐑧𐑚𐑝⊙𐑖𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻∈⊤⊥∋",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 2,
+    "inert": 0,
+    "verdict": "nothing was at risk: no clear ever fired against a live register, 2 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: The input explicitly assigns primitive ⊣ with an inner arm established on an inner split, indicating nested containment rather than a generic, cyclic, fully enclosed, or scale-collapse pattern.\n⊢=𐑼: A point-like primitive ⊢ assigns dimensionality locally to a single unit, with no extended, iterative, or scale-collapsed structure.\n⊞=𐑳: The inner F-arm and outer F-arm have different roles/counts, so the pairing is asymmetric.\n⊡=𐑷: Since the quotient q is prime (not composite) and no nontrivial topological structure is indicated, the role lacks protected features and can be continuously deformed to trivial.\n⊙=⊙: The inner F-arm is established on the inner FSPLIT, indicating the system is at the critical threshold with scale-free sensitivity.\n⊥=𐑖: The inner F-arm’s primitive assignment enforces a multi‑axis, structurally locked chiral configuration, giving it a persistent memory depth of n.\n≻=𐑑: The quotient q being prime (not composite) indicates a fundamental, indivisible structural unit, and establishing the inner F-arm on the F-arm of the inner FSPLIT implies a bond formation or structural transformation that irreversibly or semi-reversibly reconfigures the system's architecture.\n≺=𐑗: The quotient being prime and the F-arm established on the inner FSPLIT's F-arm yields no preferred direction and no self-complementarity at the interface.\n⋈=𐑐: The inner F-arm is established on the inner FSPLIT, and the prime quotient q makes the match geometry-enforcing rather than probabilistic, so it fires with near-certainty.\n⊤=𐑧: The system is kinetically frozen, requiring external driving to rearrange.\n∈=𐑚: The interaction propagates through a motif or cluster, spanning mesoscopic distances rather than remaining strictly local or globally pervasive.\n∋=𐑝: The ∋ primitive denotes a conjunctive membership relation, so partner selection requires all specified partners to be present simultaneously.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₁",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 6,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻∈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻∈⊤⊥∋⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": true,
+        "final_register": "N",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 2,
+        "word": "∈⊤⊥∋⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 3,
+        "word": "⊤⊥∋⊢≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 4,
+        "word": "⊥∋⊢≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 5,
+        "word": "∋⊢≻∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": false,
+      "final_register": false,
+      "topology_class": true,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 2,
+    "canonical_word": "∈⊤⊥∋⊢≻",
+    "verdict": "PHASE-BEARING — moves under ROTAT: closed_walk, final_register, banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 2,
+      "exposed": 4,
+      "exposed_at_k": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "kernel_repairs": null
+}

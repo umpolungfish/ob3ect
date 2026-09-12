@@ -1,0 +1,175 @@
+{
+  "seed": "oneshot IMASM nested prime factorization",
+  "windings": 2,
+  "root": {
+    "winding": 0,
+    "opcode": null,
+    "step_num": null,
+    "description": "oneshot IMASM nested prime factorization",
+    "frobenius": "T",
+    "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+    "banked_ok": true,
+    "children": [
+      {
+        "winding": 1,
+        "opcode": "VINIT",
+        "step_num": 1,
+        "description": "Integer n is presented for factorization. Void state, the number exists but no factors are known, the register is empty at 00.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "FSPLIT",
+        "step_num": 2,
+        "description": "Decision, does n admit a non-trivial divisor? The state forks into two arms. T-arm: n is composite, a factor d exists. F-arm: n is prime, no divisor exists.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈≻⊤≺⊥⋈⊙⊞∋⊡⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "EVALT",
+        "step_num": 3,
+        "description": "Affirmative, n IS composite. A non-trivial divisor d has been found. The T-arm of the outer FSPLIT is established with constructive truth.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "IFIX",
+        "step_num": 4,
+        "description": "The factor d is permanently recorded as a discovered prime. Append-only, irreversible, oneshot commitment. The integer-winding invariant protects this record as a conserved topological charge.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤≻⊡≺⊙∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "AFWD",
+        "step_num": 5,
+        "description": "Forward morphism, proceed to decompose the quotient q = n/d. Directed transformation toward further factorization of the quotient on the T-arm.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "FSPLIT",
+        "step_num": 6,
+        "description": "Nested decision, does the quotient q admit further decomposition? Forks again. T-arm: q is composite, has sub-factors. F-arm: q is prime, no further decomposition.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤⊥∋⊞⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "EVALT",
+        "step_num": 7,
+        "description": "The quotient q IS composite, another factor exists within q. The inner T-arm is established.",
+        "frobenius": "T",
+        "glyph_word": "∈⊤≻∈⊤∋⊞⋈⊥⊙≺∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "EVALF",
+        "step_num": 8,
+        "description": "The quotient q is NOT composite, q is itself prime. The inner F-arm is established on the F-arm of the inner FSPLIT.",
+        "frobenius": "T",
+        "glyph_word": "⊢≻∈⊤⊥∋",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "FFUSE",
+        "step_num": 9,
+        "description": "Inner factorization reconstitutes, both arms of the inner FSPLIT converge. q's complete factor list is resolved, conflicting arms rejoin to B.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤≻⊡⊥∋⊞⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "ENGAGR",
+        "step_num": 10,
+        "description": "Paradice state, the quotient simultaneously holds both readings: composite (it was decomposed into sub-factors) and prime (each sub-factor is self-inverse). Both states held without resolution.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤⊥∋⊞⊡≻⋈⊙≺⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "CLINK",
+        "step_num": 11,
+        "description": "Compose, chain the inner factorization of q into the outer factorization of n. Sequential linking of discovered factor d with q's factor list on the T-arm.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "EVALF",
+        "step_num": 12,
+        "description": "The outer F-arm, n does not admit a non-trivial divisor on this path. n is prime, the negative arm of the outer FSPLIT is established.",
+        "frobenius": "T",
+        "glyph_word": "∈⊥⊙≺∋",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "IMSCRIB",
+        "step_num": 13,
+        "description": "n recognizes itself as prime, self-reference. Its own complete factorization is itself. The element is itself, the stone that knows itself.",
+        "frobenius": "T",
+        "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "AREV",
+        "step_num": 14,
+        "description": "Reverse morphism on the F-arm, the prime n descends to its self-inverse winding at 1/2. Parity flip, register cleared, outer FSPLIT frame preserved.",
+        "frobenius": "T",
+        "glyph_word": "⊢≺⊡∈⊤⊥⊞∋⊣",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "FFUSE",
+        "step_num": 15,
+        "description": "Outer factorization reconstitutes, both arms of the outer FSPLIT converge. The T-arm provides the factor list [d, q_factors], the F-arm provides the trivial factorization [n]. Conflicting arms rejoin to B.",
+        "frobenius": "T",
+        "glyph_word": "∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋",
+        "banked_ok": true,
+        "children": []
+      },
+      {
+        "winding": 1,
+        "opcode": "TANCH",
+        "step_num": 16,
+        "description": "Terminal anchor, the complete factorization tree of n is closed. Every leaf is prime, the product of all leaves equals n. The system is contained.",
+        "frobenius": "N",
+        "glyph_word": "⊣",
+        "banked_ok": true,
+        "children": []
+      }
+    ]
+  }
+}

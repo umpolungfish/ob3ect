@@ -1,0 +1,495 @@
+{
+  "name": "Compose, chain the inner factorization of q into the outer factorization of n. Sequential linking of discovered factor d with q's factor list on the T-arm.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Compose, chain the inner factorization of q into the outer factorization of n. Sequential linking of discovered factor d with q's factor list on the T-arm.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "integer",
+        "factor",
+        "quotient"
+      ],
+      "boundary_condition": "final factorization closure",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "integer n",
+        "justification": "void state before factorization, n presented but no factors known, register empty at 00",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "prime factorization tree",
+        "justification": "terminal anchor that contains the whole system, every leaf prime, product equals n",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "forward morphism toward quotient decomposition",
+        "justification": "directed transformation toward further factorization of the quotient on the T-arm",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "reverse morphism on F-arm",
+        "justification": "parity flip, register cleared, outer FSPLIT frame preserved, descent to self-inverse winding",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "composition of factor lists",
+        "justification": "sequential linking of discovered factor d with q's factor list on the T-arm",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "self-referential prime recognition",
+        "justification": "n recognizes itself as prime, its own complete factorization is itself",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "decision fork on compositeness",
+        "justification": "splits into T-arm (n composite, factor d exists) and F-arm (n prime, no divisor exists)",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "factorization reconstitution",
+        "justification": "reunites T-arm and F-arm, conflicting arms rejoin to B, resolves factor list",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "affirmative composite detection",
+        "justification": "n IS composite, a non-trivial divisor d has been found, establishes T-arm with constructive truth",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "negative prime detection",
+        "justification": "n does not admit a non-trivial divisor on this path, n is prime, establishes F-arm",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "paradice state",
+        "justification": "quotient simultaneously holds both readings: composite (decomposed into sub-factors) and prime (each sub-factor self-inverse), both held without resolution",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "permanent record of discovered factor",
+        "justification": "append-only irreversible commitment, protects integer-winding invariant as conserved topological charge",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "decision fork on compositeness",
+      "split_input": "integer n",
+      "split_outputs": [
+        "composite branch with factor d",
+        "prime branch with no divisor"
+      ],
+      "fuse_element": "∋",
+      "fuse_result": "conflicting arms rejoin to B, yielding resolved factorization structure",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "uninitialized state before any factor is known, register empty at 00",
+      "true_description": "constructive truth: a non-trivial divisor has been found, n is composite",
+      "false_description": "constructive falsity: n has no non-trivial divisor on this path, n is prime",
+      "both_description": "paradice state: quotient simultaneously holds composite and prime readings, both held without resolution",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Integer n presented for factorization, void state, register empty at 00"
+        },
+        {
+          "step_num": 2,
+          "opcode": "∈",
+          "domain_action": "Decision fork on compositeness, T-arm n composite with factor d, F-arm n prime with no divisor"
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊤",
+          "domain_action": "Affirmative composite detection, n IS composite, non-trivial divisor d found, T-arm established with constructive truth"
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊡",
+          "domain_action": "Permanent record of discovered factor d, append-only irreversible commitment, integer-winding invariant protects as topological charge"
+        },
+        {
+          "step_num": 5,
+          "opcode": "≻",
+          "domain_action": "Forward morphism toward quotient decomposition, proceed to decompose q = n/d on T-arm"
+        },
+        {
+          "step_num": 6,
+          "opcode": "∈",
+          "domain_action": "Nested decision fork on quotient q, T-arm q composite with sub-factors, F-arm q prime with no further decomposition"
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊤",
+          "domain_action": "Inner composite detection, q IS composite, another factor exists within q, inner T-arm established"
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊥",
+          "domain_action": "Inner prime detection, q is NOT composite, q is itself prime, inner F-arm established on F-arm of inner FSPLIT"
+        },
+        {
+          "step_num": 9,
+          "opcode": "∋",
+          "domain_action": "Inner factorization reconstitutes, both arms of inner FSPLIT converge, q's complete factor list resolved, conflicting arms rejoin to B"
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊞",
+          "domain_action": "Paradice state, quotient simultaneously holds composite and prime readings, both held without resolution"
+        },
+        {
+          "step_num": 11,
+          "opcode": "⋈",
+          "domain_action": "Compose and chain inner factorization of q into outer factorization of n, sequential linking of discovered factor d with q's factor list on T-arm"
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊥",
+          "domain_action": "Outer F-arm, n does not admit a non-trivial divisor on this path, n is prime, negative arm of outer FSPLIT established"
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊙",
+          "domain_action": "n recognizes itself as prime, self-reference, its own complete factorization is itself, the element is itself"
+        },
+        {
+          "step_num": 14,
+          "opcode": "≺",
+          "domain_action": "Reverse morphism on F-arm, prime n descends to self-inverse winding at 1/2, parity flip, register cleared, outer FSPLIT frame preserved"
+        },
+        {
+          "step_num": 15,
+          "opcode": "∋",
+          "domain_action": "Outer factorization reconstitutes, both arms of outer FSPLIT converge, T-arm provides factor list [d, q_factors], F-arm provides trivial factorization [n], conflicting arms rejoin to B"
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊣",
+          "domain_action": "Terminal anchor, complete factorization tree of n closed, every leaf prime, product of all leaves equals n, system contained"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "translates integer factorization intentions into IMASM token operations",
+      "ipc_mechanism": "components communicate via token edges and register hand-offs",
+      "memory_mechanism": "state stored in Belnap four-valued register, retrieved by token sequence",
+      "scheduler_mechanism": "determines order of token execution based on FSPLIT/FFUSE nesting and arm routing",
+      "alfs_store": "the integer factorization IMASM word sequence",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one integer presentation per operation cycle",
+      "pre_cycle_state": "system state before the cycle: integer n presented, register empty at 00",
+      "post_cycle_state": "system state after the cycle: complete prime factorization tree closed, factor list recorded",
+      "delta_s_verdict": "ΔS ≈ 0 — the process is a closed imscription with reversible register transitions under Belnap four-valued logic",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   ⊡   IFIX     IFIX          T →     T\n    5   ≻   AFWD     AFWD          T →     T\n    6   ∈   FSPLIT   FSPLIT3       T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   ⊥   EVALF    EVALF         T →     T\n    9   ∋   FFUSE    FFUSE3        T →     T\n   10   ⊞   ENGAGR   EVALI         T →     T\n   11   ⋈   CLINK    CLINK         T →     T\n   12   ⊥   EVALF    EVALF         T →     T\n   13   ⊙   IMSCRIB  IMSCRIB       T →     T\n   14   ≺   AREV     AREV          T →     T\n   15   ∋   FFUSE    FFUSE3        T →     T\n   16   ⊣   TANCH    TANCH         T →     T\n\n  Final register: T\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ⊡ → ≻ → ∈ → ⊤ → ⊥ → ∋ → ⊞ → ⋈ → ⊥ → ⊙ → ≺ → ∋ → ⊣\n-- Class: Compose, chain the inner factorization of q into the outer factorization of n. Sequential linking of discovered factor d with q's factor list on the T-arm.\n-- Fingerprint: sig=(6,4,5,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=16\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(5, 8), (1, 14)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [4] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [8] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [10] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [11] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [12] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [13] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [14] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [15] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def compose_chain_the_inner_factorization_8d8572_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def compose_chain_the_inner_factorization_8d8572_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def compose_chain_the_inner_factorization_8d8572_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def compose_chain_the_inner_factorization_8d8572_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def compose_chain_the_inner_factorization_8d8572_protocol : IGProtocol compose_chain_the_inner_factorization_8d8572_s0 compose_chain_the_inner_factorization_8d8572_s15 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct compose_chain_the_inner_factorization_8d8572_s8 compose_chain_the_inner_factorization_8d8572_s8 = compose_chain_the_inner_factorization_8d8572_s8 (idempotent)\n  (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l0 compose_chain_the_inner_factorization_8d8572_s0 compose_chain_the_inner_factorization_8d8572_s1) (.seq (.prod (.arrow compose_chain_the_inner_factorization_8d8572_l1 compose_chain_the_inner_factorization_8d8572_s1 compose_chain_the_inner_factorization_8d8572_s8) (.arrow compose_chain_the_inner_factorization_8d8572_l1 compose_chain_the_inner_factorization_8d8572_s1 compose_chain_the_inner_factorization_8d8572_s8)) (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l8 compose_chain_the_inner_factorization_8d8572_s8 compose_chain_the_inner_factorization_8d8572_s8) (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l8 compose_chain_the_inner_factorization_8d8572_s8 compose_chain_the_inner_factorization_8d8572_s9) (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l9 compose_chain_the_inner_factorization_8d8572_s9 compose_chain_the_inner_factorization_8d8572_s10) (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l10 compose_chain_the_inner_factorization_8d8572_s10 compose_chain_the_inner_factorization_8d8572_s11) (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l11 compose_chain_the_inner_factorization_8d8572_s11 compose_chain_the_inner_factorization_8d8572_s12) (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l12 compose_chain_the_inner_factorization_8d8572_s12 compose_chain_the_inner_factorization_8d8572_s13) (.seq (.arrow compose_chain_the_inner_factorization_8d8572_l13 compose_chain_the_inner_factorization_8d8572_s13 compose_chain_the_inner_factorization_8d8572_s14) (.arrow compose_chain_the_inner_factorization_8d8572_l14 compose_chain_the_inner_factorization_8d8572_s14 compose_chain_the_inner_factorization_8d8572_s15))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def compose_chain_the_inner_factorization_8d8572_true_arm : IGProtocol compose_chain_the_inner_factorization_8d8572_s0 compose_chain_the_inner_factorization_8d8572_s15 :=\n  (compose_chain_the_inner_factorization_8d8572_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def compose_chain_the_inner_factorization_8d8572_false_arm : IGProtocol compose_chain_the_inner_factorization_8d8572_s0 compose_chain_the_inner_factorization_8d8572_s15 :=\n  (compose_chain_the_inner_factorization_8d8572_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef compose_chain_the_inner_factorization_8d8572_tier_ground : OuroboricityTier := TierFunctor.obj compose_chain_the_inner_factorization_8d8572_s0\ndef compose_chain_the_inner_factorization_8d8572_tier : OuroboricityTier := TierFunctor.obj compose_chain_the_inner_factorization_8d8572_s15\n#eval compose_chain_the_inner_factorization_8d8572_tier_ground  -- tier of the ground (pre-transformation)\n#eval compose_chain_the_inner_factorization_8d8572_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem compose_chain_the_inner_factorization_8d8572_frobenius :\n    igFrobeniusAlg.mul compose_chain_the_inner_factorization_8d8572_s0 compose_chain_the_inner_factorization_8d8572_s0 = compose_chain_the_inner_factorization_8d8572_s0 :=\n  igFrobAlg_self_fusion compose_chain_the_inner_factorization_8d8572_s0\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 16,
+    "t_branch_ops": 6,
+    "f_branch_ops": 4,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      1,
+      5
+    ],
+    "fuse_positions": [
+      8,
+      14
+    ],
+    "pair_list": [
+      [
+        5,
+        8
+      ],
+      [
+        1,
+        14
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  Compose, chain the inner factorization of q into the outer factorization of n. Sequential linking of discovered factor d with q's factor list on the T-arm.   16 nodes, 17 wires   open forks 0\n  weight = SIXTEEN_3 carrier on the wire (src→dst): N T F TF Ttf … A=top (all four)   «A» paradox held   ⚡ truth flip   ═▶ cross-branch\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ∈   [o→i]  N→N\n  1 ∈ FSPLIT   N     ┐ fork\n     ├─▶  2 ⊤   [T→i]  N→T\n     └─▶ 11 ⊥   [F→i]  N→T\n  2 ⊤ EVALT    T   \n     └─▶  3 ⊡   [o→i]  T→T\n  3 ⊡ IFIX     T   \n     └─▶  4 ≻   [o→i]  T→T\n  4 ≻ AFWD     T   \n     └─▶  9 ⊞   [o→i]  T→T\n  5 ∈ FSPLIT   T     ┐ fork\n     ├─▶  6 ⊤   [T→i]  T→T\n     └─▶  7 ⊥   [F→i]  T→T\n  6 ⊤ EVALT    T   \n     └─▶  8 ∋   [o→T]  T→T\n  7 ⊥ EVALF    T   \n     └─▶  8 ∋   [o→F]  T→T\n  8 ∋ FFUSE    T     ┘ join\n     └─▶ 14 ∋   [o→T]  T→T\n  9 ⊞ ENGAGR   T   \n     └─▶ 10 ⋈   [o→i]  T→T\n 10 ⋈ CLINK    T   \n     └─▶ 14 ∋   [o→T]  T→T\n 11 ⊥ EVALF    T   \n     └─▶ 12 ⊙   [o→i]  T→T\n 12 ⊙ IMSCRIB  T   \n     └─▶ 13 ≺   [o→i]  T→T\n 13 ≺ AREV     T   \n     └─▶ 14 ∋   [o→F]  T→T\n 14 ∋ FFUSE    T     ┘ join\n     └─▶ 15 ⊣   [o→i]  T→T\n 15 ⊣ TANCH    T   \n\n  walk: CLOSED   final register T",
+  "notes": "Auto-designed from: Compose, chain the inner factorization of q into the outer factorization of n. Sequential linking of discovered factor d with q's factor list on the T-arm.",
+  "grounded_tuple": "⟨𐑛𐑡𐑑𐑹𐑞𐑧𐑚𐑠⊙𐑖𐑳𐑟⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 1,
+    "inert": 11,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (11 step(s) inert after a fixation), 1 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑡: The system organizes spatially across an extended lattice.\n⊢=𐑛: The system recurs through a closed cycle with a reset step, as the sequential linking of discovered factors and their propagation along the T-arm enforces iterative constraint resolution before returning to the start.\n⊞=𐑳: The chain links different factorizations with unequal roles on each side.\n⊡=𐑟: The primitive ⊡ (protection) implies a non-Abelian structure, which requires higher-dimensional encoding (𐑦) for stability against local perturbations, making it the most robust form of protection.\n⊙=⊙: The chained factorization indicates a scale-free threshold state with maximal sensitivity.\n⊥=𐑖: The inner factorization of q embeds a multi‑axis structural constraint into n’s outer factorization, enforcing a persistent chiral configuration that cannot be thermally erased without global restructuring.\n≻=𐑑: The inner factorization of q is being chained into the outer factorization of n, producing a linked structural composition rather than a merely reversible association.\n≺=𐑹: The sequential linking of discovered factors on the T-arm, combined with the assignment of primitive polarity ≺, establishes an exact Z₂ symmetry at criticality where the composition of the outer and inner factorizations yields μ∘δ=id provably exact, characteristic of a Special Frobenius structure.\n⋈=𐑞: The chained factorization is reliable in the right arithmetic context but remains probabilistic across arbitrary inputs.\n⊤=𐑧: The high barrier prevents spontaneous rearrangement, locking the system in its current configuration and requiring external driving to overcome the kinetic hindrance.\n∈=𐑚: The interaction propagates through a motif or cluster rather than just one bond or the entire system.\n∋=𐑠: The description specifies sequential linking of factor d with q's factor list, indicating ordered steps.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 16,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 5,
+        "word": "∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 6,
+        "word": "⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 7,
+        "word": "⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 8,
+        "word": "∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 9,
+        "word": "⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 10,
+        "word": "⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 11,
+        "word": "⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 12,
+        "word": "⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 15,
+        "word": "⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": true,
+      "topology_class": true,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 8,
+      "exposed": 8,
+      "exposed_at_k": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  "kernel_repairs": null
+}

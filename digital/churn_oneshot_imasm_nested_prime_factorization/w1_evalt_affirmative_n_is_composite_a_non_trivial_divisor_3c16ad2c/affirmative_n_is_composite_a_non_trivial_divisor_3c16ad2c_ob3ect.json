@@ -1,0 +1,497 @@
+{
+  "name": "Affirmative, n IS composite. A non-trivial divisor d has been found. The T-arm of the outer FSPLIT is established with constructive truth.",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Affirmative, n IS composite. A non-trivial divisor d has been found. The T-arm of the outer FSPLIT is established with constructive truth.",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "composite",
+        "divisor",
+        "factorization",
+        "winding",
+        "primality"
+      ],
+      "boundary_condition": "The integer n under factorization, bounded by the condition that every leaf in its factor tree is prime and the product of all leaves equals n.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "Integer n in void state",
+        "justification": "The number exists as input but no factors are known; the register holds 00, the empty factorization state before any divisor search begins.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "Complete factorization tree of n",
+        "justification": "Terminal anchor ⊣: every leaf is prime, the product of all leaves equals n, the system is fully contained and closed.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "Decomposition of quotient q = n/d",
+        "justification": "Forward morphism ≻: directed transformation toward further factorization of the quotient after a divisor d has been established.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "Descent to self-inverse winding at 1/2",
+        "justification": "Reverse morphism <: on the F-arm, prime n descends to its self-inverse winding; register cleared, outer FSPLIT frame preserved.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "Sequential chaining of factor d with q's factor list",
+        "justification": "Composition ⋈: the inner factorization of q is linked into the outer factorization of n, joining discovered factor d with q's complete factor list.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "n recognizes itself as prime",
+        "justification": "Identity ⊙: n is its own complete factorization; the element is itself, the stone that knows itself.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "Decision: does n admit a non-trivial divisor?",
+        "justification": "Fork ∈: the state opens into T-arm (n is composite, factor d exists) and F-arm (n is prime, no divisor exists).",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "Factorization reconstitutes",
+        "justification": "Join ∋: both arms of the FSPLIT converge; T-arm provides the factor list [d, q_factors], F-arm provides [n]; conflicting arms rejoin to B.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "n IS composite, non-trivial divisor d found",
+        "justification": "Affirmative ⊤: the T-arm of the FSPLIT is established with constructive truth; a non-trivial divisor d has been found, confirming n is composite.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "n is NOT composite, n is prime",
+        "justification": "Negative ⊥: the F-arm of the FSPLIT is established; n admits no non-trivial divisor, the negative arm of the fork is confirmed.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "q simultaneously composite and prime",
+        "justification": "Paradice ⊞: the quotient holds both readings at once — composite (decomposed into sub-factors) and prime (each sub-factor is self-inverse) — both held without resolution.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "Factor d permanently recorded as discovered prime",
+        "justification": "Fixation ⊡: append-only, irreversible commitment; the integer-winding invariant protects this record as a conserved topological charge.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "∈: does n admit a non-trivial divisor?",
+      "split_input": "Integer n in void state (VINIT output)",
+      "split_outputs": [
+        "T-arm: n is composite, divisor d exists",
+        "F-arm: n is prime, no divisor exists"
+      ],
+      "fuse_element": "∋: factorization reconstitutes",
+      "fuse_result": "B-state: the T-arm factor list [d, q_factors] and F-arm trivial factorization [n] conflict and rejoin as both simultaneously held",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "Integer n presented, no factors known, register at 00 — the uninitialized factorization state before any divisor search begins",
+      "true_description": "Constructive truth established: n IS composite, a non-trivial divisor d has been found, register at 01",
+      "false_description": "Constructive falsity established: n does NOT admit a non-trivial divisor, n is prime, register at 10",
+      "both_description": "Paradice state: n simultaneously holds composite (has factor d) and prime (self-inverse winding at 1/2), register at 11",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Integer n is presented for factorization. Void state, the number exists but no factors are known, the register is empty at 00."
+        },
+        {
+          "step_num": 2,
+          "opcode": "∈",
+          "domain_action": "Decision, does n admit a non-trivial divisor? The state forks into two arms. T-arm: n is composite, a factor d exists. F-arm: n is prime, no divisor exists."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊤",
+          "domain_action": "Affirmative, n IS composite. A non-trivial divisor d has been found. The T-arm of the outer FSPLIT is established with constructive truth."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊡",
+          "domain_action": "The factor d is permanently recorded as a discovered prime. Append-only, irreversible, oneshot commitment. The integer-winding invariant protects this record as a conserved topological charge."
+        },
+        {
+          "step_num": 5,
+          "opcode": "≻",
+          "domain_action": "Forward morphism, proceed to decompose the quotient q = n/d. Directed transformation toward further factorization of the quotient on the T-arm."
+        },
+        {
+          "step_num": 6,
+          "opcode": "∈",
+          "domain_action": "Nested decision, does the quotient q admit further decomposition? Forks again. T-arm: q is composite, has sub-factors. F-arm: q is prime, no further decomposition."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊤",
+          "domain_action": "The quotient q IS composite, another factor exists within q. The inner T-arm is established."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊥",
+          "domain_action": "The quotient q is NOT composite, q is itself prime. The inner F-arm is established on the F-arm of the inner FSPLIT."
+        },
+        {
+          "step_num": 9,
+          "opcode": "∋",
+          "domain_action": "Inner factorization reconstitutes, both arms of the inner FSPLIT converge. q's complete factor list is resolved, conflicting arms rejoin to B."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊞",
+          "domain_action": "Paradice state, the quotient simultaneously holds both readings: composite (it was decomposed into sub-factors) and prime (each sub-factor is self-inverse). Both states held without resolution."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⋈",
+          "domain_action": "Compose, chain the inner factorization of q into the outer factorization of n. Sequential linking of discovered factor d with q's factor list on the T-arm."
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊥",
+          "domain_action": "The outer F-arm, n does not admit a non-trivial divisor on this path. n is prime, the negative arm of the outer FSPLIT is established."
+        },
+        {
+          "step_num": 13,
+          "opcode": "⊙",
+          "domain_action": "n recognizes itself as prime, self-reference. Its own complete factorization is itself. The element is itself, the stone that knows itself."
+        },
+        {
+          "step_num": 14,
+          "opcode": "≺",
+          "domain_action": "Reverse morphism on the F-arm, the prime n descends to its self-inverse winding at 1/2. Parity flip, register cleared, outer FSPLIT frame preserved."
+        },
+        {
+          "step_num": 15,
+          "opcode": "∋",
+          "domain_action": "Outer factorization reconstitutes, both arms of the outer FSPLIT converge. The T-arm provides the factor list [d, q_factors], the F-arm provides the trivial factorization [n]. Conflicting arms rejoin to B."
+        },
+        {
+          "step_num": 16,
+          "opcode": "⊣",
+          "domain_action": "Terminal anchor, the complete factorization tree of n is closed. Every leaf is prime, the product of all leaves equals n. The system is contained."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Constraint propagation engine that iteratively cycles through candidate divisors, evaluating each against the winding self-inverse condition at 0 or 1/2",
+      "ipc_mechanism": "Factor propagation through the winding number interface: each discovered divisor d transmits its quotient q = n/d to the next decomposition stage via the CLINK chain",
+      "memory_mechanism": "Append-only IFIX records: each discovered prime factor is permanently fixed in order of discovery, forming an immutable factorization registry",
+      "scheduler_mechanism": "Iterative constraint propagation cycling through the factorization tree depth-first, with the FSPLIT/FFUSE pairs governing branch resolution order",
+      "alfs_store": "The IMASM word ⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣ as the canonical factorization specification, grounded in the winding retraction framework",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One divisibility check or winding evaluation per candidate divisor, consuming the register state at each FSPLIT decision point",
+      "pre_cycle_state": "Register at 00 (void) before the first divisor candidate is evaluated; no factorization structure exists",
+      "post_cycle_state": "Register at 01 (true) on the T-arm after EVALT: divisor d is established, IFIX records it permanently, AFWD advances to quotient decomposition",
+      "delta_s_verdict": "ΔS ≈ 0 — each EVALT step establishes constructive truth without dissipating information; the IFIX fixation preserves the result irreversibly, and the FFUSE reconstitutes all branch information into a single resolved state",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ∈   FSPLIT   FSPLIT3       N →     N\n    3   ⊤   EVALT    EVALT         N →     T\n    4   ⊡   IFIX     IFIX          T →     T\n    5   ≻   AFWD     AFWD          T →     T\n    6   ∈   FSPLIT   FSPLIT3       T →     T\n    7   ⊤   EVALT    EVALT         T →     T\n    8   ⊥   EVALF    EVALF         T →     T\n    9   ∋   FFUSE    FFUSE3        T →     T\n   10   ⊞   ENGAGR   EVALI         T →     T\n   11   ⋈   CLINK    CLINK         T →     T\n   12   ⊥   EVALF    EVALF         T →     T\n   13   ⊙   IMSCRIB  IMSCRIB       T →     T\n   14   ≺   AREV     AREV          T →     T\n   15   ∋   FFUSE    FFUSE3        T →     T\n   16   ⊣   TANCH    TANCH         T →     T\n\n  Final register: T\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ∈ → ⊤ → ⊡ → ≻ → ∈ → ⊤ → ⊥ → ∋ → ⊞ → ⋈ → ⊥ → ⊙ → ≺ → ∋ → ⊣\n-- Class: Affirmative, n IS composite. A non-trivial divisor d has been found. The T-arm of the outer ∈ is established with constructive truth.\n-- Fingerprint: sig=(6,4,5,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=16\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(5, 8), (1, 14)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑚  | initial object — ground of distinction\n--   [1] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [2] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [3] ⊡      prot   := 𐑭               𐑚 → 𐑙  | irreversible fixation — winding number\n--   [4] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [6] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [7] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [8] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [9] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [10] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [11] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [12] ⊙   gram   := 𐑠               𐑚 → 𐑙  | identity — self-imscription\n--   [13] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [14] ∋     stoi   := 𐑙               𐑙 → 𐑡  | fuse μ — assembly mode\n--   [15] ⊣     top    := 𐑡               𐑙 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def affirmative_n_is_composite_a_non_81a502_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def affirmative_n_is_composite_a_non_81a502_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def affirmative_n_is_composite_a_non_81a502_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def affirmative_n_is_composite_a_non_81a502_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def affirmative_n_is_composite_a_non_81a502_protocol : IGProtocol affirmative_n_is_composite_a_non_81a502_s0 affirmative_n_is_composite_a_non_81a502_s15 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct affirmative_n_is_composite_a_non_81a502_s8 affirmative_n_is_composite_a_non_81a502_s8 = affirmative_n_is_composite_a_non_81a502_s8 (idempotent)\n  (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l0 affirmative_n_is_composite_a_non_81a502_s0 affirmative_n_is_composite_a_non_81a502_s1) (.seq (.prod (.arrow affirmative_n_is_composite_a_non_81a502_l1 affirmative_n_is_composite_a_non_81a502_s1 affirmative_n_is_composite_a_non_81a502_s8) (.arrow affirmative_n_is_composite_a_non_81a502_l1 affirmative_n_is_composite_a_non_81a502_s1 affirmative_n_is_composite_a_non_81a502_s8)) (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l8 affirmative_n_is_composite_a_non_81a502_s8 affirmative_n_is_composite_a_non_81a502_s8) (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l8 affirmative_n_is_composite_a_non_81a502_s8 affirmative_n_is_composite_a_non_81a502_s9) (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l9 affirmative_n_is_composite_a_non_81a502_s9 affirmative_n_is_composite_a_non_81a502_s10) (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l10 affirmative_n_is_composite_a_non_81a502_s10 affirmative_n_is_composite_a_non_81a502_s11) (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l11 affirmative_n_is_composite_a_non_81a502_s11 affirmative_n_is_composite_a_non_81a502_s12) (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l12 affirmative_n_is_composite_a_non_81a502_s12 affirmative_n_is_composite_a_non_81a502_s13) (.seq (.arrow affirmative_n_is_composite_a_non_81a502_l13 affirmative_n_is_composite_a_non_81a502_s13 affirmative_n_is_composite_a_non_81a502_s14) (.arrow affirmative_n_is_composite_a_non_81a502_l14 affirmative_n_is_composite_a_non_81a502_s14 affirmative_n_is_composite_a_non_81a502_s15))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def affirmative_n_is_composite_a_non_81a502_true_arm : IGProtocol affirmative_n_is_composite_a_non_81a502_s0 affirmative_n_is_composite_a_non_81a502_s15 :=\n  (affirmative_n_is_composite_a_non_81a502_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def affirmative_n_is_composite_a_non_81a502_false_arm : IGProtocol affirmative_n_is_composite_a_non_81a502_s0 affirmative_n_is_composite_a_non_81a502_s15 :=\n  (affirmative_n_is_composite_a_non_81a502_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef affirmative_n_is_composite_a_non_81a502_tier_ground : OuroboricityTier := TierFunctor.obj affirmative_n_is_composite_a_non_81a502_s0\ndef affirmative_n_is_composite_a_non_81a502_tier : OuroboricityTier := TierFunctor.obj affirmative_n_is_composite_a_non_81a502_s15\n#eval affirmative_n_is_composite_a_non_81a502_tier_ground  -- tier of the ground (pre-transformation)\n#eval affirmative_n_is_composite_a_non_81a502_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem affirmative_n_is_composite_a_non_81a502_frobenius :\n    igFrobeniusAlg.mul affirmative_n_is_composite_a_non_81a502_s0 affirmative_n_is_composite_a_non_81a502_s0 = affirmative_n_is_composite_a_non_81a502_s0 :=\n  igFrobAlg_self_fusion affirmative_n_is_composite_a_non_81a502_s0\n",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 2,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 16,
+    "t_branch_ops": 6,
+    "f_branch_ops": 4,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      1,
+      5
+    ],
+    "fuse_positions": [
+      8,
+      14
+    ],
+    "pair_list": [
+      [
+        5,
+        8
+      ],
+      [
+        1,
+        14
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  Affirmative, n IS composite. A non-trivial divisor d has been found. The T-arm of the outer FSPLIT is established with constructive truth.   16 nodes, 17 wires   open forks 0\n  weight = SIXTEEN_3 carrier on the wire (src→dst): N T F TF Ttf … A=top (all four)   «A» paradox held   ⚡ truth flip   ═▶ cross-branch\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ∈   [o→i]  N→N\n  1 ∈ FSPLIT   N     ┐ fork\n     ├─▶  2 ⊤   [T→i]  N→T\n     └─▶ 11 ⊥   [F→i]  N→T\n  2 ⊤ EVALT    T   \n     └─▶  3 ⊡   [o→i]  T→T\n  3 ⊡ IFIX     T   \n     └─▶  4 ≻   [o→i]  T→T\n  4 ≻ AFWD     T   \n     └─▶  9 ⊞   [o→i]  T→T\n  5 ∈ FSPLIT   T     ┐ fork\n     ├─▶  6 ⊤   [T→i]  T→T\n     └─▶  7 ⊥   [F→i]  T→T\n  6 ⊤ EVALT    T   \n     └─▶  8 ∋   [o→T]  T→T\n  7 ⊥ EVALF    T   \n     └─▶  8 ∋   [o→F]  T→T\n  8 ∋ FFUSE    T     ┘ join\n     └─▶ 14 ∋   [o→T]  T→T\n  9 ⊞ ENGAGR   T   \n     └─▶ 10 ⋈   [o→i]  T→T\n 10 ⋈ CLINK    T   \n     └─▶ 14 ∋   [o→T]  T→T\n 11 ⊥ EVALF    T   \n     └─▶ 12 ⊙   [o→i]  T→T\n 12 ⊙ IMSCRIB  T   \n     └─▶ 13 ≺   [o→i]  T→T\n 13 ≺ AREV     T   \n     └─▶ 14 ∋   [o→F]  T→T\n 14 ∋ FFUSE    T     ┘ join\n     └─▶ 15 ⊣   [o→i]  T→T\n 15 ⊣ TANCH    T   \n\n  walk: CLOSED   final register T",
+  "notes": "Auto-designed from: Affirmative, n IS composite. A non-trivial divisor d has been found. The T-arm of the outer FSPLIT is established with constructive truth.",
+  "grounded_tuple": "⟨𐑛𐑰𐑑𐑬𐑐𐑧𐑚𐑝⊙𐑖𐑙𐑭⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 1,
+    "inert": 11,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (11 step(s) inert after a fixation), 1 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: A non-trivial divisor separates the composite number into nested factor partners contained within the outer factor-split structure.\n⊢=𐑛: Constraint propagation is iterative, cycling through the closed loop and resetting at each step.\n⊞=𐑙: The constructive truth of the T-arm and the established non-trivial divisor d imply a balanced, symmetric decomposition of the composite structure.\n⊡=𐑭: The integer-winding-protected role remains stable under continuous deformations that preserve its winding number, preventing it from being trivially deformed away.\n⊙=⊙: The assignment of primitive ⊙ (criticality_phase) indicates the system is at the critical threshold, where scale-free correlations and maximal sensitivity emerge.\n⊥=𐑖: The constructive truth of the outer FSPLIT and the non-trivial divisor d establish multiple structurally enforced axes of chirality, yielding persistent symmetry breaking with memory depth n.\n≻=𐑑: The system undergoes a bond formation or structural transformation, establishing a stable, irreversible link between the components.\n≺=𐑬: The presence of a non-trivial divisor and constructive truth in FSPLIT indicates simultaneous donor and acceptor roles, characteristic of self-complementarity.\n⋈=𐑐: The T-arm's constructive truth and primitive assignment suggest deterministic, high-fidelity transmission.\n⊤=𐑧: The established constructive truth fixes the configuration, implying a high barrier to rearrangement.\n∈=𐑚: The T-arm's established constructive truth suggests propagation through structured clusters rather than isolated events or system-wide effects.\n∋=𐑝: The constructive truth of the T-arm demands all required partners be simultaneously present to validate the composite structure.",
+  "lean_verified": true,
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 16,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 5,
+        "word": "∈⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 6,
+        "word": "⊤⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 7,
+        "word": "⊥∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 8,
+        "word": "∋⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 9,
+        "word": "⊞⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 10,
+        "word": "⋈⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 11,
+        "word": "⊥⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 12,
+        "word": "⊙≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "≺∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "∋⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 15,
+        "word": "⊣⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": true,
+      "topology_class": true,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢∈⊤⊡≻∈⊤⊥∋⊞⋈⊥⊙≺∋⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 8,
+      "exposed": 8,
+      "exposed_at_k": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  "kernel_repairs": null
+}

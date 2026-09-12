@@ -1,0 +1,429 @@
+{
+  "name": "frobenius_factorization_circuit",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "frobenius_factorization_circuit",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "modulus",
+        "prime_pole",
+        "complement_pole",
+        "multiplicative_winding",
+        "leaper_crossing",
+        "carry",
+        "asymmetric_factorization",
+        "winding_reconstitution",
+        "kinetic_freeze",
+        "polarity_interface",
+        "both_poles_held",
+        "cluster_propagation"
+      ],
+      "boundary_condition": "the integer N as a closed divisor-boundary: every factor is a divisor in [2, N-1], and the boundary closes exactly when p·q = N.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "the empty register before N is named",
+        "justification": "initial object — void before scale-collapse",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "the divisor-boundary of N, closed",
+        "justification": "terminal anchor — the closed boundary containing all divisors",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "scale_ascent: a forward step of the winding leaper up the number line",
+        "justification": "forward morphism toward the factor",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "chiral_descent: the reverse that clears the open register",
+        "justification": "reverse/descent morphism",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "the carry, column to column",
+        "justification": "composition — sequential chaining of the multiplication",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "the winding's internal model of its own orbit",
+        "justification": "identity/self-reference — the ⊙ self-model",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "asymmetric_factorization: N forks into two unequal poles p and q",
+        "justification": "splits N into its two factors",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "winding_reconstitution: the two poles rejoin by exact multiplication",
+        "justification": "reconstitutes p·q = N, matching the FSPLIT input",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "the divisor p frozen on the T-arm",
+        "justification": "affirmative/success state",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "the cofactor q held on the F-arm",
+        "justification": "negative/complementary state",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "both factors held at once — the B state of the semiprime",
+        "justification": "a paradice: p and q held together without resolution until the latch",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "cluster_propagation: the single committed winding-commit at ⊡",
+        "justification": "permanent irreversible latch",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "asymmetric_factorization (∈)",
+      "split_input": "22112825529529666435281085255026230927612089502470015394413748319128822941402001986512729726569746599085900330031400051170742204560859276357953757185954298838958709229238491006703034124620545784566413664540684214361293017694020846391065875914794251435144458199",
+      "split_outputs": [
+        "4397328654844826923795068102505872571721883526553349659561256924505973939597593482272505698004801207988043088656411102133523080581",
+        "5028695206842569864686141618253083416610081090075366674776775706538324961364412200138116378509733307971876652984898985905923678379"
+      ],
+      "fuse_element": "winding_reconstitution (∋)",
+      "fuse_result": "22112825529529666435281085255026230927612089502470015394413748319128822941402001986512729726569746599085900330031400051170742204560859276357953757185954298838958709229238491006703034124620545784566413664540684214361293017694020846391065875914794251435144458199",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "00 — N unnamed, no divisor established",
+      "true_description": "01 — a factor is constructively found (p | N)",
+      "false_description": "10 — the complementary cofactor held",
+      "both_description": "11 — both factors held at once; the semiprime is B until the latch",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "the register is empty — N not yet named"
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "ascend one step — the winding leaper takes its first jump"
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊙",
+          "domain_action": "the winding records its own orbit (the self-model of the map)"
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "∈ forks N into two unequal poles p and q — asymmetric_factorization"
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "the T-arm freezes the divisor p"
+        },
+        {
+          "step_num": 6,
+          "opcode": "⋈",
+          "domain_action": "the carry chains the multiplication column by column"
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "the F-arm holds the cofactor q"
+        },
+        {
+          "step_num": 8,
+          "opcode": "≺",
+          "domain_action": "the chiral descent clears the open register (the count was banked in the frame)"
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊞",
+          "domain_action": "hold both poles at once — the B state of the semiprime"
+        },
+        {
+          "step_num": 10,
+          "opcode": "∋",
+          "domain_action": "∋ fuses the two poles back by exact multiplication"
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊡",
+          "domain_action": "⊡ commits the factor — the cluster_propagation latch"
+        },
+        {
+          "step_num": 12,
+          "opcode": "⊣",
+          "domain_action": "the divisor-boundary closes; p·q = N exactly"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "the ∈/∋ dyad compiling a split into fork/fuse",
+      "ipc_mechanism": "the CLINK carry chain",
+      "memory_mechanism": "the FSPLIT frames (banked counts survive AREV)",
+      "scheduler_mechanism": "the ROTAT orbit — the winding's period",
+      "alfs_store": "the artifact word ⊢≻⊙∈⊤⋈⊥≺⊞⊡∋⋈⋣",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one winding step per leaper jump",
+      "pre_cycle_state": "N unnamed, register void",
+      "post_cycle_state": "N factored, p·q committed",
+      "delta_s_verdict": "ΔS ≈ 0 — the cycle is entropy-conservative: μ∘δ returns the split input exactly",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⊙∈⊤⋈⊥≺⊞∋⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⊙∈⊤⋈⊥≺⊞∋⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⊙   IMSCRIB  IMSCRIB       T →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ⋈   CLINK    CLINK         T →     T\n    7   ⊥   EVALF    EVALF         T →    TF\n    8   ≺   AREV     AREV         TF →     N\n    9   ⊞   ENGAGR   EVALI         N →    tf\n   10   ∋   FFUSE    FFUSE3       tf →     A\n   11   ⊡   IFIX     IFIX          A →     A\n   12   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⊙ → ∈ → ⊤ → ⋈ → ⊥ → ≺ → ⊞ → ∋ → ⊡ → ⊣\n-- Class: frobenius_factorization_circuit\n-- Fingerprint: sig=(6,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=12\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(3, 9)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑠  | forward morphism — bidirectional arrow\n--   [2] ⊙   gram   := 𐑠               𐑾 → 𐑚  | identity — self-imscription\n--   [3] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [4] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [5] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ≺      pol    := 𐑗               𐑚 → 𐑙  | reverse morphism — parity flip\n--   [8] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [9] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [10] ⊡      prot   := 𐑭               𐑙 → 𐑡  | irreversible fixation — winding number\n--   [11] ⊣     top    := 𐑡               𐑭 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def frobenius_factorization_circuit_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def frobenius_factorization_circuit_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def frobenius_factorization_circuit_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def frobenius_factorization_circuit_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def frobenius_factorization_circuit_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def frobenius_factorization_circuit_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def frobenius_factorization_circuit_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def frobenius_factorization_circuit_protocol : IGProtocol frobenius_factorization_circuit_s0 frobenius_factorization_circuit_s11 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct frobenius_factorization_circuit_s9 frobenius_factorization_circuit_s9 = frobenius_factorization_circuit_s9 (idempotent)\n  (.seq (.arrow frobenius_factorization_circuit_l0 frobenius_factorization_circuit_s0 frobenius_factorization_circuit_s1) (.seq (.arrow frobenius_factorization_circuit_l1 frobenius_factorization_circuit_s1 frobenius_factorization_circuit_s2) (.seq (.arrow frobenius_factorization_circuit_l2 frobenius_factorization_circuit_s2 frobenius_factorization_circuit_s3) (.seq (.prod (.arrow frobenius_factorization_circuit_l3 frobenius_factorization_circuit_s3 frobenius_factorization_circuit_s9) (.arrow frobenius_factorization_circuit_l3 frobenius_factorization_circuit_s3 frobenius_factorization_circuit_s9)) (.seq (.arrow frobenius_factorization_circuit_l9 frobenius_factorization_circuit_s9 frobenius_factorization_circuit_s9) (.seq (.arrow frobenius_factorization_circuit_l9 frobenius_factorization_circuit_s9 frobenius_factorization_circuit_s10) (.arrow frobenius_factorization_circuit_l10 frobenius_factorization_circuit_s10 frobenius_factorization_circuit_s11)))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def frobenius_factorization_circuit_true_arm : IGProtocol frobenius_factorization_circuit_s0 frobenius_factorization_circuit_s11 :=\n  (frobenius_factorization_circuit_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def frobenius_factorization_circuit_false_arm : IGProtocol frobenius_factorization_circuit_s0 frobenius_factorization_circuit_s11 :=\n  (frobenius_factorization_circuit_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef frobenius_factorization_circuit_tier_ground : OuroboricityTier := TierFunctor.obj frobenius_factorization_circuit_s0\ndef frobenius_factorization_circuit_tier : OuroboricityTier := TierFunctor.obj frobenius_factorization_circuit_s11\n#eval frobenius_factorization_circuit_tier_ground  -- tier of the ground (pre-transformation)\n#eval frobenius_factorization_circuit_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem frobenius_factorization_circuit_frobenius :\n    igFrobeniusAlg.mul frobenius_factorization_circuit_s0 frobenius_factorization_circuit_s0 = frobenius_factorization_circuit_s0 :=\n  igFrobAlg_self_fusion frobenius_factorization_circuit_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 12,
+    "t_branch_ops": 2,
+    "f_branch_ops": 3,
+    "branch_ratio": 1.5,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "pair_list": [
+      [
+        3,
+        9
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  frobenius_factorization_circuit   12 nodes, 12 wires   open forks 0\n  weight = SIXTEEN_3 carrier on the wire (src→dst): N T F TF Ttf … A=top (all four)   «A» paradox held   ⚡ truth flip   ═▶ cross-branch\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  N→T\n  1 ≻ AFWD     T   \n     └─▶  2 ⊙   [o→i]  T→T\n  2 ⊙ IMSCRIB  T   \n     └─▶  3 ∈   [o→i]  T→T\n  3 ∈ FSPLIT   T     ┐ fork\n     ├─▶  4 ⊤   [T→i]  T→T\n     └─▶  6 ⊥   [F→i]  T→TF «A»\n  4 ⊤ EVALT    T   \n     └─▶  5 ⋈   [o→i]  T→T\n  5 ⋈ CLINK    T   \n     └─▶  9 ∋   [o→T]  T→A «A»\n  6 ⊥ EVALF    TF  \n     └─▶  7 ≺   [o→i]  TF→N «A»\n  7 ≺ AREV     N   \n     └─▶  8 ⊞   [o→i]  N→tf «A»\n  8 ⊞ ENGAGR   tf  \n     └─▶  9 ∋   [o→F]  tf→A «A»\n  9 ∋ FFUSE    A     ┘ join\n     └─▶ 10 ⊡   [o→i]  A→A «A»\n 10 ⊡ IFIX     A   \n     └─▶ 11 ⊣   [o→i]  A→A «A»\n 11 ⊣ TANCH    A   \n\n  walk: CLOSED   final register A",
+  "notes": "Auto-designed from: frobenius_factorization_circuit",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⊙∈⊤⋈⊥≺⊞∋⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": false,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 1,
+    "restored": 2,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "2 unit(s) survived a clear by being banked in a frame (1 live clear(s))",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 12,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⊙∈⊤⋈⊥≺⊞∋⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⊙∈⊤⋈⊥≺⊞∋⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⊙∈⊤⋈⊥≺⊞∋⊡⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "∈⊤⋈⊥≺⊞∋⊡⊣⊢≻⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "⊤⋈⊥≺⊞∋⊡⊣⊢≻⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 5,
+        "word": "⋈⊥≺⊞∋⊡⊣⊢≻⊙∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 6,
+        "word": "⊥≺⊞∋⊡⊣⊢≻⊙∈⊤⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 7,
+        "word": "≺⊞∋⊡⊣⊢≻⊙∈⊤⋈⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊞∋⊡⊣⊢≻⊙∈⊤⋈⊥≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "∋⊡⊣⊢≻⊙∈⊤⋈⊥≺⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⊡⊣⊢≻⊙∈⊤⋈⊥≺⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 11,
+        "word": "⊣⊢≻⊙∈⊤⋈⊥≺⊞∋⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": false,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true,
+      "banked_ok": false,
+      "vacuous": false,
+      "exposed_count": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⊙∈⊤⋈⊥≺⊞∋⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register, banked_ok, vacuous, exposed_count",
+    "banked_orbit_summary": {
+      "already_holds": 5,
+      "vacuous": 4,
+      "exposed": 3,
+      "exposed_at_k": [
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "kernel_repairs": null
+}
