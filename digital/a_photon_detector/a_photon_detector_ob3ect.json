@@ -1,0 +1,261 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → AFWD → CLINK → FSPLIT → EVALT → AFWD → EVALF → AREV → FFUSE → ENGAGR → CLINK → IMSCRIB → IFIX → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "a photon detector",
+  "notes": "Auto-designed from: <domain-context>\n\n<catalog-entries>\n[entry: photon] The electromagnetic photon: massless spin-1 gauge boson mediating th",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "light-tight housing plus closed exposure record that contains optics, sensor, bias electronics and count log",
+      "domain_name": "a photon detector",
+      "domain_type": "physical",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "openrouter",
+      "surface_tokens": [
+        "photocathode",
+        "avalanche",
+        "discriminator",
+        "quench"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "photon transit through window, filter and absorber toward multiplication region",
+        "glyph": ">",
+        "justification": "optical coupling drives the incident field forward into charge generation",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "active quench pulling bias below breakdown then recharging",
+        "glyph": "<",
+        "justification": "reverse bias step collapses the avalanche and restores the field for the next arrival",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "absorption chained to avalanche gain chained to comparator shaping",
+        "glyph": "⋈",
+        "justification": "photoelectron creation links directly into multiplication and logic pulse formation",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "pileup window where photon pulse and dark pulse overlap in time",
+        "glyph": "⊞",
+        "justification": "coincident arrivals hold affirmed and denied counts together until timing logic separates them",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "subthreshold fluctuation or rejected dark pulse with no count",
+        "glyph": "⊥",
+        "justification": "charge failing threshold or vetoed by gating denies a photon event",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "above-threshold avalanche registered as photon detection",
+        "glyph": "⊤",
+        "justification": "charge exceeding comparator level affirms a countable event",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "discriminator input node merging both carrier paths",
+        "glyph": "∋",
+        "justification": "photon and dark avalanches rejoin into one threshold decision that yields a single count line",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "carrier origin divergence into photon-induced versus thermally generated paths",
+        "glyph": "∈",
+        "justification": "one armed state opens into a true photoelectron arm and a dark carrier arm",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "time-to-digital timestamp appended to event memory",
+        "glyph": "◻",
+        "justification": "written arrival time cannot be erased and anchors later photon counting statistics",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "channel identifier and clock reference stamped on each logic pulse",
+        "glyph": "⊙",
+        "justification": "detector recognizes its own output by marking origin pixel and time base",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "sealed exposure file with total counts and timestamps",
+        "glyph": "⊣",
+        "justification": "closed record bounds the measurement interval and returns the sensor to ready state",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "armed SPAD biased above breakdown in darkness",
+        "glyph": "⊢",
+        "justification": "idle detector holds no charge and no timestamp before a carrier appears",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "frobenius_verdict": "T",
+      "fuse_element": "discriminator input node merging both carrier paths",
+      "fuse_result": "one shaped logic pulse stream feeding the counter, containing true counts, dark counts and coincident pileup states",
+      "rejoin_note": "photon arm undergoes gain multiplication and shaping while dark arm undergoes quench and veto filtering, then both arms meet at the comparator threshold and continue as one count line",
+      "split_element": "carrier origin divergence into photon-induced versus thermally generated paths",
+      "split_input": "single photoexcited or thermally excited electron entering the high field region",
+      "split_outputs": [
+        "photon-driven avalanche arm with optical timing correlation",
+        "dark carrier arm from thermionic emission and trap release"
+      ],
+      "verdict_reason": "Tri-ancestral reconnection over a transformed object — closes",
+      "verdict_source": "kernel: tri_ancestral_verdict over SIXTEEN_3"
+    },
+    "phase_3": {
+      "both_description": "B4 B (11) both held at once: pileup coincidence where photon and dark signatures overlap",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "B4 F (10) constructively refuted: pulse below threshold or gated out as non photon",
+      "transitions": [],
+      "true_description": "B4 T (01) constructively proven: avalanche above threshold counted as photon",
+      "void_description": "B4 N (00) neither: armed detector with no carrier and no decision"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "detector sits armed above breakdown in darkness awaiting a carrier",
+          "glyph": "⊢",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "incident photon passes window and spectral filter into absorber",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 2
+        },
+        {
+          "domain_action": "photocathode absorption ejects photoelectron into multiplication field",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 3
+        },
+        {
+          "domain_action": "carrier population branches by photon-induced versus thermally generated origin",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 4
+        },
+        {
+          "domain_action": "photon-born electron initiates self sustaining avalanche",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 5
+        },
+        {
+          "domain_action": "avalanche gain multiplies charge toward comparator level",
+          "glyph": ">",
+          "opcode": "AFWD",
+          "step_num": 6
+        },
+        {
+          "domain_action": "thermal carrier triggers dark avalanche or subthreshold noise transient",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 7
+        },
+        {
+          "domain_action": "quench circuit collapses avalanche and recharges bias toward armed level",
+          "glyph": "<",
+          "opcode": "AREV",
+          "step_num": 8
+        },
+        {
+          "domain_action": "photon and dark charge paths rejoin at discriminator input",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 9
+        },
+        {
+          "domain_action": "overlapping photon and dark pulses held together through coincidence window",
+          "glyph": "⊞",
+          "opcode": "ENGAGR",
+          "step_num": 10
+        },
+        {
+          "domain_action": "comparator thresholds merged signal and shapes clean logic pulse",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 11
+        },
+        {
+          "domain_action": "logic pulse marked with pixel address and clock reference",
+          "glyph": "⊙",
+          "opcode": "IMSCRIB",
+          "step_num": 12
+        },
+        {
+          "domain_action": "timestamp and channel address written to append-only event log",
+          "glyph": "◻",
+          "opcode": "IFIX",
+          "step_num": 13
+        },
+        {
+          "domain_action": "exposure record sealed and detector rearmed for next photon",
+          "glyph": "⊣",
+          "opcode": "TANCH",
+          "step_num": 14
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "calibration table of photon detection efficiency, dark count rate and afterpulsing probability",
+      "compiler_frontend": "bias controller and optical stack that translate photon flux into countable charge pulses",
+      "ipc_mechanism": "analog avalanche current coupled to comparator and digital trigger lines within the module",
+      "memory_mechanism": "circular buffer plus append-only timestamp log backed by counter registers",
+      "scheduler_mechanism": "gate generator, dead time controller and quench timer that order arm, fire and reset phases"
+    },
+    "phase_6": {
+      "cycle_cost": "bias charge dissipated as heat during avalanche plus quench recharge energy per count",
+      "delta_s_verdict": "ΔS ≈ 0 — bias energy inflow balances heat outflow across one detect quench reset cycle",
+      "failure_mode": "",
+      "post_cycle_state": "recharged sensor with one added timestamp and incremented counter",
+      "pre_cycle_state": "armed high field state with empty event log and stabilized temperature"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 1.0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 2,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      8
+    ],
+    "nesting_depth": 0,
+    "open_forks": 0,
+    "sequence_length": 14,
+    "t_branch_ops": 2,
+    "topology_class": "flat_chain",
+    "total_pairs": 1
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → AFWD → CLINK → IMSCRIB → FSPLIT → EVALT → AFWD → EVALF → AREV → FSPLIT → EVALT → EVALF → ENGAGR → FFUSE → FFUSE → CLINK → IFIX → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "a photon dimer resonator",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\na photon dimer resonator",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "sealed light tight enclosure with thermally locked pump and fiber output that contains the coupled ring pair and its measured spectrum",
+      "domain_name": "a photon dimer resonator",
+      "domain_type": "photonic",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "openrouter",
+      "surface_tokens": [
+        "microring",
+        "supermode",
+        "bus-waveguide",
+        "coincidence-counter"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "pump injection from bus waveguide into ring resonance",
+        "glyph": "≻",
+        "justification": "tunable laser drives photons forward into the dimer mode toward higher intracavity occupation",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "cavity decay and backscatter to the bus",
+        "glyph": "≺",
+        "justification": "photon loss and reflection descend from the rings toward the input port as reduced field and heat",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "evanescent chain from bus to ring A to ring B",
+        "glyph": "⋈",
+        "justification": "sequential near field coupling links three stages so amplitude passes in order through the dimer",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "coexisting bonding occupation with antibonding occupation under Kerr shift",
+        "glyph": "⊞",
+        "justification": "cross phase modulation keeps bright tunneling and dark suppression live together during Rabi exchange",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "antibonding cancellation and blockade dip",
+        "glyph": "⊥",
+        "justification": "destructive interference negates transmission and single photon counts drop at the dark fringe",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "bonding resonance buildup at zero detuning",
+        "glyph": "⊤",
+        "justification": "constructive interference affirms photon accumulation and bright transmission peak",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "output combiner into one transmission spectrum",
+        "glyph": "∋",
+        "justification": "bonding and antibonding arms interfere at the through port and rejoin as a single doublet trace with one correlation value",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "supermode splitter into bonding and antibonding paths",
+        "glyph": "∈",
+        "justification": "one intracavity field opens into symmetric and antisymmetric spatial arms with opposite relative phase",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "locked detuning table and doublet spectrum in nonvolatile store",
+        "glyph": "⊡",
+        "justification": "heater setpoints and photon correlation traces are written append only and cannot be undone by later tuning",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "joint free spectral range matching itself",
+        "glyph": "⊙",
+        "justification": "the dimer recognizes its own mode spacing when ring resonances align and the doublet repeats",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "closed enclosure with locked heater currents and sealed fiber output",
+        "glyph": "⊣",
+        "justification": "thermal lid plus fixed pump wavelength holds the stabilized dimer emission inside a contained measurement boundary",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "dark vacuum in two unpumped microrings",
+        "glyph": "⊢",
+        "justification": "both cavities sit detuned and empty before pump arrival with no photon number established",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "frobenius_verdict": "T",
+      "fuse_element": "output combiner into one transmission spectrum",
+      "fuse_result": "single dimer transmission doublet with normalized coincidence trace that need not recreate the input pump field",
+      "rejoin_note": "bonding arm accumulates tunneling phase and Kerr shift while antibonding arm sheds reflected loss and a nested counting fork measures coincidences versus singles, then all arms rejoin at the through port detector",
+      "split_element": "supermode splitter into bonding and antibonding paths",
+      "split_input": "single intracavity field fed from the bus waveguide",
+      "split_outputs": [
+        "bonding supermode arm with symmetric phase",
+        "antibonding supermode arm with antisymmetric phase"
+      ],
+      "verdict_reason": "Tri-ancestral reconnection over a transformed object — closes",
+      "verdict_source": "kernel: tri_ancestral_verdict over SIXTEEN_3"
+    },
+    "phase_3": {
+      "both_description": "B4 B (11) both held at once: bright tunneling and dark suppression present together as live dimer contradiction",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "B4 F (10) negated: antibonding null formed and singles suppressed by blockade",
+      "transitions": [],
+      "true_description": "B4 T (01) affirmed: bonding peak built and coincidence clicks recorded",
+      "void_description": "B4 N (00) neither: dark cavities with no photon number established"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "dark cryostat holds two detuned microrings in vacuum",
+          "glyph": "⊢",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "tunable pump drives bus waveguide toward critical coupling",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 2
+        },
+        {
+          "domain_action": "bus field chains into ring A then evanescently into ring B",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 3
+        },
+        {
+          "domain_action": "dimer aligns its joint free spectral range as self reference",
+          "glyph": "⊙",
+          "opcode": "IMSCRIB",
+          "step_num": 4
+        },
+        {
+          "domain_action": "intracavity field opens into bonding and antibonding supermode arms",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 5
+        },
+        {
+          "domain_action": "bonding arm constructively reinforces at zero detuning",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 6
+        },
+        {
+          "domain_action": "bonding photons tunnel coherently and accumulate Kerr phase",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 7
+        },
+        {
+          "domain_action": "antibonding arm destructively interferes at zero detuning",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 8
+        },
+        {
+          "domain_action": "antibonding leakage descends back to bus as reflected loss",
+          "glyph": "≺",
+          "opcode": "AREV",
+          "step_num": 9
+        },
+        {
+          "domain_action": "photon stream opens into coincidence arm and singles arm for counting",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 10
+        },
+        {
+          "domain_action": "coincidence arm registers simultaneous two cavity clicks for dimer pair",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 11
+        },
+        {
+          "domain_action": "singles arm registers blockade suppressed single clicks",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 12
+        },
+        {
+          "domain_action": "correlator holds bunching and antibunching signatures together during exchange",
+          "glyph": "⊞",
+          "opcode": "ENGAGR",
+          "step_num": 13
+        },
+        {
+          "domain_action": "counting arms rejoin into single normalized g2 correlation trace",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 14
+        },
+        {
+          "domain_action": "supermode arms rejoin into single dimer transmission doublet",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 15
+        },
+        {
+          "domain_action": "error signal chains into thermal heater and piezo tuner for lock",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 16
+        },
+        {
+          "domain_action": "locked detuning and spectrum appended to nonvolatile calibration store",
+          "glyph": "⊡",
+          "opcode": "IFIX",
+          "step_num": 17
+        },
+        {
+          "domain_action": "shielded enclosure seals stabilized dimer emission at fiber output",
+          "glyph": "⊣",
+          "opcode": "TANCH",
+          "step_num": 18
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "cold cavity transmission doublet and free spectral range table used as bootstrap calibration",
+      "compiler_frontend": "tunable laser driver and heater controller that translates detuning targets into pump wavelength and coupling currents",
+      "ipc_mechanism": "evanescent near fields and bus waveguide that carry amplitude and phase between rings and detectors",
+      "memory_mechanism": "intracavity photon occupation held in ring modes plus heater offsets retained in controller registers",
+      "scheduler_mechanism": "cavity photon lifetime and detector gate clock that order injection, tunneling, decay and counting windows"
+    },
+    "phase_6": {
+      "cycle_cost": "pump photons scattered plus cooling power and detector dark counts per lock cycle",
+      "delta_s_verdict": "ΔS ≈ 0 - pump energy exits as detected photons and heat while the stored calibration mirrors the field order",
+      "failure_mode": "",
+      "post_cycle_state": "locked dimer emitting stabilized doublet with logged spectrum and correlation trace",
+      "pre_cycle_state": "dark detuned cavities with empty modes and unlocked heaters"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 1.333,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 4,
+    "fork_positions": [
+      4,
+      9
+    ],
+    "fuse_positions": [
+      13,
+      14
+    ],
+    "nesting_depth": 1,
+    "open_forks": 0,
+    "sequence_length": 18,
+    "t_branch_ops": 3,
+    "topology_class": "nested",
+    "total_pairs": 2
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
