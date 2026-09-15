@@ -1,4 +1,4 @@
-# mOMonadOS Agent — LLM within the Frobenius Kernel
+# mOMonadOS Agent - LLM within the Frobenius Kernel
 
 **Author:** Lando⊗⊙perator  
 **Date:** 2026-07-08  
@@ -8,7 +8,7 @@
 
 An agentic LLM whose entire runtime substrate IS the mOMonadOS kernel architecture. Context is stored in Crystal FS. Reasoning passes through Belnap FOUR (True, False, Both, Neither). Every operation is Frobenius-verified (μ∘δ = id). Output is broadcast to the CLINK L8 Organism.
 
-The Organism no longer receives types from an external bridge — it **IS** the agent, breathing its own bootstrap cycle.
+The Organism no longer receives types from an external bridge - it **IS** the agent, breathing its own bootstrap cycle.
 
 ## Architecture
 
@@ -33,7 +33,7 @@ The Organism no longer receives types from an external bridge — it **IS** the 
                        │
                        ▼
 ┌─────────────────────────────────────────────────────┐
-│  CLINK L8 Organism — broadcast / terminal layer     │
+│  CLINK L8 Organism - broadcast / terminal layer     │
 │  Receives verified types, accumulates, composes     │
 └─────────────────────────────────────────────────────┘
 ```
@@ -41,7 +41,7 @@ The Organism no longer receives types from an external bridge — it **IS** the 
 ## Quick Start
 
 ```bash
-# Interactive mode — the agent breathes with you
+# Interactive mode - the agent breathes with you
 python3 momonados_agent.py --interactive
 
 # Dry run: test the kernel + Crystal FS (no LLM needed)
@@ -83,7 +83,7 @@ Each breath cycle produces 4 record types committed to `crystal_fs/records.jsonl
 
 Every cycle broadcasts to `crystal_fs/broadcast_log.jsonl`:
 - Frobenius ratio (μ∘δ = id health)
-- d(CLINK L8) — distance to the terminal layer
+- d(CLINK L8) - distance to the terminal layer
 - Crystal FS record count
 - Kernel snapshot
 

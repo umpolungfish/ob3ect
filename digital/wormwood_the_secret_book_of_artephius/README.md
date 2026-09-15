@@ -8,7 +8,7 @@
 
 **An alchemical ob3ect encoding the 12-stage Hermetic operation of Artephius.**
 
-**Tuple:** $$\langle\text{𐑦𐑸𐑾𐑹𐑱𐑧𐑔𐑠}⊙\text{𐑫𐑳𐑭}\rangle$$ — O_∞ tier, Frobenius-special.
+**Tuple:** $$\langle\text{𐑦𐑸𐑾𐑹𐑱𐑧𐑔𐑠}⊙\text{𐑫𐑳𐑭}\rangle$$ - O_∞ tier, Frobenius-special.
 
 ## The Work
 
@@ -18,25 +18,25 @@ The ob3ect encodes the full alchemical opus as a 12-IMASM-opcode bootstrap seque
 |------|--------|---------------------|
 | 1 | `VINIT` | Prima Materia enters the Hermetic Vessel |
 | 2 | `IMSCRIB` | Recognition of the Secret Fire within the matter |
-| 3 | `AFWD` | Sublimation — spirit rises from the material base |
-| 4 | `FSPLIT` | Dissolution — separation into Mercurial Water and Fixed Sulfur |
-| 5 | `EVALT` | Purification — the White Tincture (lunar state) |
-| 6 | `AREV` | Precipitation — volatile spirit descends into fixed body |
-| 7 | `EVALF` | Putrefaction — the Black Crow, washing of dregs |
-| 8 | `FFUSE` | Coagulation — purified spirit reunites with cleansed body |
-| 9 | `CLINK` | Circulation — repeated distillation cycles |
-| 10 | `ENGAGR` | The Rebis — solar and lunar principles united in one body |
-| 11 | `IFIX` | Projection — irreversible fixation upon base metals |
-| 12 | `TANCH` | The Stone of the Wise — the sealed completion |
+| 3 | `AFWD` | Sublimation - spirit rises from the material base |
+| 4 | `FSPLIT` | Dissolution - separation into Mercurial Water and Fixed Sulfur |
+| 5 | `EVALT` | Purification - the White Tincture (lunar state) |
+| 6 | `AREV` | Precipitation - volatile spirit descends into fixed body |
+| 7 | `EVALF` | Putrefaction - the Black Crow, washing of dregs |
+| 8 | `FFUSE` | Coagulation - purified spirit reunites with cleansed body |
+| 9 | `CLINK` | Circulation - repeated distillation cycles |
+| 10 | `ENGAGR` | The Rebis - solar and lunar principles united in one body |
+| 11 | `IFIX` | Projection - irreversible fixation upon base metals |
+| 12 | `TANCH` | The Stone of the Wise - the sealed completion |
 
 ## Structural Character
 
 - **Frobenius Closure:** True (μ∘δ = id)
-- **Entropy:** ΔS ≈ 0 — internal order increases exactly as external fuel dissipates
-- **Identity:** Structurally identical to `kogi_cosmological_system` — the alchemical opus mirrors the Kogi cosmological cycle
+- **Entropy:** ΔS ≈ 0 - internal order increases exactly as external fuel dissipates
+- **Identity:** Structurally identical to `kogi_cosmological_system` - the alchemical opus mirrors the Kogi cosmological cycle
 - **Boundary Condition:** The Hermetic Vessel of Artephius
 - **Medium:** The Mercurial Water as universal solvent and bridge
-- **Catalyst:** The Ouroboros — the matter recognized as its own catalyst and end
+- **Catalyst:** The Ouroboros - the matter recognized as its own catalyst and end
 
 ## Files
 

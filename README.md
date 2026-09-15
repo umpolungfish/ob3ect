@@ -14,7 +14,7 @@ python digital/run_all_imasm.py  # 12 IMASM arrangement classes + chiral pairs
 
 ## Tower (28 layers + 12 arrangements)
 
-Category → Frobenius → Fixed-Point → Hopf → Monad → Entropy (H=3.6636 b/c) → Topos → CCC → Quantum → Linear Logic → IVM → Traced (yanking) → HoTT (univalence) → Imscription OS (10 procs) → ProofBridge → String Diagrams → IMASM Self-Imscription → Auto-Imscriber → Yoneda → Operad → Sheaf → Dagger Compact → Galois → Stone → Presheaf → Kan → Adjoint → Initial/Terminal — every layer Closure: True. Plus 12 Novel Arrangements (I Dialetheic Bootstrap O₂ … XII Chiral Pairs) on the dialetheic register machine (2-bit VO⌀/T/F/B⬡).
+Category → Frobenius → Fixed-Point → Hopf → Monad → Entropy (H=3.6636 b/c) → Topos → CCC → Quantum → Linear Logic → IVM → Traced (yanking) → HoTT (univalence) → Imscription OS (10 procs) → ProofBridge → String Diagrams → IMASM Self-Imscription → Auto-Imscriber → Yoneda → Operad → Sheaf → Dagger Compact → Galois → Stone → Presheaf → Kan → Adjoint → Initial/Terminal - every layer Closure: True. Plus 12 Novel Arrangements (I Dialetheic Bootstrap O₂ … XII Chiral Pairs) on the dialetheic register machine (2-bit VO⌀/T/F/B⬡).
 
 ## Key results
 
