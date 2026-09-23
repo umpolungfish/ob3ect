@@ -1,0 +1,581 @@
+{
+  "name": "unbounded_imasm_factorization_membrane_v5",
+  "is_valid_ob3ect": false,
+  "validations": {
+    "phase_0": [
+      "bad scope"
+    ],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "unbounded_imasm_factorization_membrane_v5",
+      "domain_type": "computational",
+      "scope": "global",
+      "surface_tokens": [
+        "N (target integer as IMASM numeral tape)",
+        "trace state at step k",
+        "candidate residue (pl,ql)",
+        "candidate interval (ph,qh)",
+        "bridge extendability verdict",
+        "factor pair (p,q)"
+      ],
+      "boundary_condition": "The membrane closes when the coupled trace reaches k=m and W_t equals the number of verified factor pairs",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "empty trace state",
+        "justification": "Initial void before N and trace are initialized",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "trace complete",
+        "justification": "Terminal anchor when k=m and all factors enumerated",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "advance k by 1",
+        "justification": "Forward progression through trace steps k=0 to k=m",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "backtrack k on failed branch",
+        "justification": "Reverse when W_t exceeds solution bound",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "compose trace steps",
+        "justification": "Chain step k to step k+1 in the coupled trace",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "trace state self-referential",
+        "justification": "The trace state at step k is its own canonical representation",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "fork trace into residue and interval lanes",
+        "justification": "Trace state splits into two parallel computation lanes: low-k-bit residue enumeration and high-l-bit interval enumeration",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "join lanes back to trace state",
+        "justification": "Both lanes return to the same trace state; FFUSE rejoins them — the trace state enters and exits unchanged, only W_t is updated",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "extendable pair found",
+        "justification": "Deposit T when (pl,ql,ph,qh) passes bridge_extendability",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "non-extendable pair",
+        "justification": "Deposit F when tuple fails bridge",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "contradictory extendability",
+        "justification": "Hold both T and F when one lane extends and the other doesn't",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "factor pair fixed in record",
+        "justification": "Permanent record of (p,q) where p*q=N verified by tape multiplication",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "∈: fork trace state into lanes",
+      "split_input": "trace state at step k",
+      "split_outputs": [
+        "trace state (residue lane)",
+        "trace state (interval lane)"
+      ],
+      "fuse_element": "∋: join lanes to trace state",
+      "fuse_result": "trace state at step k",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "No trace initialized",
+      "true_description": "Trace state with W_t > 0 (extendable pairs exist)",
+      "false_description": "Trace state with W_t = 0 (no extendable pairs)",
+      "both_description": "Trace state with partial extension (one lane has pairs, other doesn't)",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "initialize empty trace"
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "load N as IMASM numeral tape"
+        },
+        {
+          "step_num": 3,
+          "opcode": "⊙",
+          "domain_action": "trace state is self-referential"
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "fork trace into residue and interval lanes"
+        },
+        {
+          "step_num": 5,
+          "opcode": "≻",
+          "domain_action": "residue lane enumerates k-bit odd tapes (pl,ql)"
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊤",
+          "domain_action": "deposit T for each congruent pair"
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "deposit F for non-congruent pairs"
+        },
+        {
+          "step_num": 8,
+          "opcode": "≻",
+          "domain_action": "interval lane enumerates l-bit top tapes (ph,qh)"
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊤",
+          "domain_action": "deposit T for each overlapping pair"
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊥",
+          "domain_action": "deposit F for non-overlapping pairs"
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊞",
+          "domain_action": "hold contradictory deposits"
+        },
+        {
+          "step_num": 12,
+          "opcode": "⋈",
+          "domain_action": "compose lanes for bridge evaluation"
+        },
+        {
+          "step_num": 13,
+          "opcode": "≻",
+          "domain_action": "evaluate bridge_extendability on (pl,ql,ph,qh)"
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊤",
+          "domain_action": "deposit T for extendable tuples"
+        },
+        {
+          "step_num": 15,
+          "opcode": "⊥",
+          "domain_action": "deposit F for non-extendable tuples"
+        },
+        {
+          "step_num": 16,
+          "opcode": "∋",
+          "domain_action": "join lanes, update W_t count"
+        },
+        {
+          "step_num": 17,
+          "opcode": "⊡",
+          "domain_action": "record verified factor pairs from W_t"
+        },
+        {
+          "step_num": 18,
+          "opcode": "≻",
+          "domain_action": "advance k to k+1"
+        },
+        {
+          "step_num": 19,
+          "opcode": "≺",
+          "domain_action": "backtrack if W_t exceeds bound"
+        },
+        {
+          "step_num": 20,
+          "opcode": "⋈",
+          "domain_action": "compose to next trace step"
+        },
+        {
+          "step_num": 21,
+          "opcode": "≻",
+          "domain_action": "repeat until k=m"
+        },
+        {
+          "step_num": 22,
+          "opcode": "⊣",
+          "domain_action": "trace complete, factors enumerated"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "morphism_factor: decimal→IMASM tape conversion",
+      "ipc_mechanism": "operator words (LOW/HIGH/BRIDGE/JOIN/FIX) dispatch predicates",
+      "memory_mechanism": "PhaseObservationFrame banks deposits across AREV clears",
+      "scheduler_mechanism": "coupled trace iterates k=0 to m, parallel lane enumeration",
+      "alfs_store": "divisor_membrane.rs implements membrane; morphism_factor.rs provides tape arithmetic",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "tape enumeration O(2^(2k+2l)) per step, bridge evaluation O(W_t)",
+      "pre_cycle_state": "trace state at step k with W_k pairs",
+      "post_cycle_state": "trace state at step k+1 with W_{k+1} pairs",
+      "delta_s_verdict": "ΔS≈0 — trace state preserved through FSPLIT/FFUSE; AREV backtracks reversibly; deposits are information, not entropy",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⊙   IMSCRIB  IMSCRIB       T →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ≻   AFWD     AFWD          T →     T\n    6   ⊤   EVALT    EVALT         T →     T\n    7   ⊥   EVALF    EVALF         T →    TF\n    8   ≻   AFWD     AFWD         TF →    TF\n    9   ⊤   EVALT    EVALT        TF →    TF\n   10   ⊥   EVALF    EVALF        TF →    TF\n   11   ⊞   ENGAGR   EVALI        TF →     A\n   12   ⋈   CLINK    CLINK         A →     A\n   13   ≻   AFWD     AFWD          A →     A\n   14   ⊤   EVALT    EVALT         A →     A\n   15   ⊥   EVALF    EVALF         A →     A\n   16   ∋   FFUSE    FFUSE3        A →     A\n   17   ⊡   IFIX     IFIX          A →     A\n   18   ≻   AFWD     AFWD          A →     A\n   19   ≺   AREV     AREV          A →     A\n   20   ⋈   CLINK    CLINK         A →     A\n   21   ≻   AFWD     AFWD          A →     A\n   22   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⊙ → ∈ → ≻ → ⊤ → ⊥ → ≻ → ⊤ → ⊥ → ⊞ → ⋈ → ≻ → ⊤ → ⊥ → ∋ → ⊡ → ≻ → ≺ → ⋈ → ≻ → ⊣\n-- Class: unbounded_imasm_factorization_membrane_v5\n-- Fingerprint: sig=(12,2,7,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=22\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(3, 15)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑾  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑼 → 𐑠  | forward morphism — bidirectional arrow\n--   [2] ⊙   gram   := 𐑠               𐑾 → 𐑚  | identity — self-imscription\n--   [3] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [4] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [5] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [6] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [7] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [8] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [9] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [10] ⊞    stoi   := 𐑳               𐑚 → 𐑙  | engage paradox — B-state, both arms\n--   [11] ⋈     fid    := 𐑱               𐑚 → 𐑙  | composition — regime coherence\n--   [12] ≻      rel    := 𐑾               𐑚 → 𐑙  | forward morphism — bidirectional arrow\n--   [13] ⊤     crit   := ⊙               𐑚 → 𐑙  | evaluate-true — criticality gate open\n--   [14] ⊥     chir   := 𐑖               𐑚 → 𐑙  | evaluate-false — chirality check\n--   [15] ∋     stoi   := 𐑙               𐑙 → 𐑭  | fuse μ — assembly mode\n--   [16] ⊡      prot   := 𐑭               𐑙 → 𐑾  | irreversible fixation — winding number\n--   [17] ≻      rel    := 𐑾               𐑭 → 𐑗  | forward morphism — bidirectional arrow\n--   [18] ≺      pol    := 𐑗               𐑾 → 𐑱  | reverse morphism — parity flip\n--   [19] ⋈     fid    := 𐑱               𐑗 → 𐑾  | composition — regime coherence\n--   [20] ≻      rel    := 𐑾               𐑱 → 𐑡  | forward morphism — bidirectional arrow\n--   [21] ⊣     top    := 𐑡               𐑾 → 𐑼  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def unbounded_imasm_factorization_membrane_1fd390_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def unbounded_imasm_factorization_membrane_1fd390_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def unbounded_imasm_factorization_membrane_1fd390_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def unbounded_imasm_factorization_membrane_1fd390_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def unbounded_imasm_factorization_membrane_1fd390_protocol : IGProtocol unbounded_imasm_factorization_membrane_1fd390_s0 unbounded_imasm_factorization_membrane_1fd390_s21 :=\n  .withGram Grammar.measure <|\n  -- Dual-Link self-pairing: .prod arms fuse via tensorProduct unbounded_imasm_factorization_membrane_1fd390_s15 unbounded_imasm_factorization_membrane_1fd390_s15 = unbounded_imasm_factorization_membrane_1fd390_s15 (idempotent)\n  (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l0 unbounded_imasm_factorization_membrane_1fd390_s0 unbounded_imasm_factorization_membrane_1fd390_s1) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l1 unbounded_imasm_factorization_membrane_1fd390_s1 unbounded_imasm_factorization_membrane_1fd390_s2) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l2 unbounded_imasm_factorization_membrane_1fd390_s2 unbounded_imasm_factorization_membrane_1fd390_s3) (.seq (.prod (.arrow unbounded_imasm_factorization_membrane_1fd390_l3 unbounded_imasm_factorization_membrane_1fd390_s3 unbounded_imasm_factorization_membrane_1fd390_s15) (.arrow unbounded_imasm_factorization_membrane_1fd390_l3 unbounded_imasm_factorization_membrane_1fd390_s3 unbounded_imasm_factorization_membrane_1fd390_s15)) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l15 unbounded_imasm_factorization_membrane_1fd390_s15 unbounded_imasm_factorization_membrane_1fd390_s15) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l15 unbounded_imasm_factorization_membrane_1fd390_s15 unbounded_imasm_factorization_membrane_1fd390_s16) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l16 unbounded_imasm_factorization_membrane_1fd390_s16 unbounded_imasm_factorization_membrane_1fd390_s17) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l17 unbounded_imasm_factorization_membrane_1fd390_s17 unbounded_imasm_factorization_membrane_1fd390_s18) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l18 unbounded_imasm_factorization_membrane_1fd390_s18 unbounded_imasm_factorization_membrane_1fd390_s19) (.seq (.arrow unbounded_imasm_factorization_membrane_1fd390_l19 unbounded_imasm_factorization_membrane_1fd390_s19 unbounded_imasm_factorization_membrane_1fd390_s20) (.arrow unbounded_imasm_factorization_membrane_1fd390_l20 unbounded_imasm_factorization_membrane_1fd390_s20 unbounded_imasm_factorization_membrane_1fd390_s21)))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def unbounded_imasm_factorization_membrane_1fd390_true_arm : IGProtocol unbounded_imasm_factorization_membrane_1fd390_s0 unbounded_imasm_factorization_membrane_1fd390_s21 :=\n  (unbounded_imasm_factorization_membrane_1fd390_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def unbounded_imasm_factorization_membrane_1fd390_false_arm : IGProtocol unbounded_imasm_factorization_membrane_1fd390_s0 unbounded_imasm_factorization_membrane_1fd390_s21 :=\n  (unbounded_imasm_factorization_membrane_1fd390_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef unbounded_imasm_factorization_membrane_1fd390_tier_ground : OuroboricityTier := TierFunctor.obj unbounded_imasm_factorization_membrane_1fd390_s0\ndef unbounded_imasm_factorization_membrane_1fd390_tier : OuroboricityTier := TierFunctor.obj unbounded_imasm_factorization_membrane_1fd390_s21\n#eval unbounded_imasm_factorization_membrane_1fd390_tier_ground  -- tier of the ground (pre-transformation)\n#eval unbounded_imasm_factorization_membrane_1fd390_tier  -- the Grammar's own verdict on the closed object\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem unbounded_imasm_factorization_membrane_1fd390_frobenius :\n    igFrobeniusAlg.mul unbounded_imasm_factorization_membrane_1fd390_s0 unbounded_imasm_factorization_membrane_1fd390_s0 = unbounded_imasm_factorization_membrane_1fd390_s0 :=\n  igFrobAlg_self_fusion unbounded_imasm_factorization_membrane_1fd390_s0\n",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 22,
+    "t_branch_ops": 1,
+    "f_branch_ops": 9,
+    "branch_ratio": 9.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      15
+    ],
+    "pair_list": [
+      [
+        3,
+        15
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  unbounded_imasm_factorization_membrane_v5   22 nodes, 22 wires   open forks 0\n  weight = SIXTEEN_3 carrier on the wire (src→dst): N T F TF Ttf … A=top (all four)   «A» paradox held   ⚡ truth flip   ═▶ cross-branch\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  N→T\n  1 ≻ AFWD     T   \n     └─▶  2 ⊙   [o→i]  T→T\n  2 ⊙ IMSCRIB  T   \n     └─▶  3 ∈   [o→i]  T→T\n  3 ∈ FSPLIT   T     ┐ fork\n     ├─▶  4 ≻   [T→i]  T→T\n     └─▶  6 ⊥   [F→i]  T→TF «A»\n  4 ≻ AFWD     T   \n     └─▶  5 ⊤   [o→i]  T→T\n  5 ⊤ EVALT    T   \n     └─▶ 15 ∋   [o→T]  T→A «A»\n  6 ⊥ EVALF    TF  \n     └─▶  7 ≻   [o→i]  TF→TF «A»\n  7 ≻ AFWD     TF  \n     └─▶  8 ⊤   [o→i]  TF→TF «A»\n  8 ⊤ EVALT    TF  \n     └─▶  9 ⊥   [o→i]  TF→TF «A»\n  9 ⊥ EVALF    TF  \n     └─▶ 10 ⊞   [o→i]  TF→A «A»\n 10 ⊞ ENGAGR   A   \n     └─▶ 11 ⋈   [o→i]  A→A «A»\n 11 ⋈ CLINK    A   \n     └─▶ 12 ≻   [o→i]  A→A «A»\n 12 ≻ AFWD     A   \n     └─▶ 13 ⊤   [o→i]  A→A «A»\n 13 ⊤ EVALT    A   \n     └─▶ 14 ⊥   [o→i]  A→A «A»\n 14 ⊥ EVALF    A   \n     └─▶ 15 ∋   [o→F]  A→A «A»\n 15 ∋ FFUSE    A     ┘ join\n     └─▶ 16 ⊡   [o→i]  A→A «A»\n 16 ⊡ IFIX     A   \n     └─▶ 17 ≻   [o→i]  A→A «A»\n 17 ≻ AFWD     A   \n     └─▶ 18 ≺   [o→i]  A→A «A»\n 18 ≺ AREV     A   \n     └─▶ 19 ⋈   [o→i]  A→A «A»\n 19 ⋈ CLINK    A   \n     └─▶ 20 ≻   [o→i]  A→A «A»\n 20 ≻ AFWD     A   \n     └─▶ 21 ⊣   [o→i]  A→A «A»\n 21 ⊣ TANCH    A   \n\n  walk: CLOSED   final register A",
+  "notes": "Auto-designed from: unbounded_imasm_factorization_membrane_v5",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 7,
+    "inert": 5,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (5 step(s) inert after a fixation), 7 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 22,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 11,
+        "word": "⋈≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 12,
+        "word": "≻⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "⊤⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "TF",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "⊥∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "F",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 15,
+        "word": "∋⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 16,
+        "word": "⊡≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 17,
+        "word": "≻≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 18,
+        "word": "≺⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 19,
+        "word": "⋈≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 20,
+        "word": "≻⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 21,
+        "word": "⊣⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "tri_ancestral_verdict": true,
+      "closed_walk": true,
+      "final_register": false,
+      "topology_class": true,
+      "banked_ok": true,
+      "vacuous": true,
+      "exposed_count": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⊙∈≻⊤⊥≻⊤⊥⊞⋈≻⊤⊥∋⊡≻≺⋈≻⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 22,
+      "exposed": 0,
+      "exposed_at_k": []
+    }
+  },
+  "kernel_repairs": null
+}
