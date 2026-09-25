@@ -1,4 +1,3 @@
-from core import as_opcode
 #!/usr/bin/env python3
 """Lattice cycler — walk a word around its ROTAT orbit and report what moves.
 
@@ -26,6 +25,8 @@ Deterministic. No model, no network, no kernel.
     python lattice_cycler.py --entry <ob3ect.json>
 """
 from __future__ import annotations
+
+from core import as_opcode
 
 import argparse
 import json
