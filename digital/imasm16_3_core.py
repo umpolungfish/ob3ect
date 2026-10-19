@@ -150,6 +150,11 @@ IFIX    = "IFIX"     # ⊡  1→1  irreversible commit, WORK
 OPCODES = [VINIT, TANCH, AFWD, AREV, CLINK, EVALT, FSPLIT3, FFUSE3,
            IMSCRIB, EVALF, EVALI, IFIX]
 
+# The classic token vocabulary and the sequential trilattice vocabulary share
+# the same operations. Consumers use this table rather than copying aliases.
+IMASM12_TO_16_3 = {name: name for name in OPCODES}
+IMASM12_TO_16_3.update(FSPLIT=FSPLIT3, FFUSE=FFUSE3, ENGAGR=EVALI)
+
 GLYPH = {
     VINIT: "⊢", TANCH: "⊣", AFWD: "≻", AREV: "≺", CLINK: "⋈", EVALT: "⊤",
     FSPLIT3: "∈", FFUSE3: "∋", IMSCRIB: "⊙", EVALF: "⊥", EVALI: "⊞",
@@ -337,6 +342,8 @@ class Sequence16_3Trace:
         mach = self._machine
         mach.reset()
         self.register_before = [mach.reg]
+        self.register_after = []
+        self.timestamps = []
         for token in self.steps:
             t0 = time.time()
             mach.transition(token)
@@ -350,7 +357,7 @@ class Sequence16_3Trace:
         return [reg_name(r) for r in self.register_before]
 
     def is_closed(self) -> bool:
-        return self.register_before[0] == self.register_after[-1]
+        return bool(self.register_after) and self.register_before[0] == self.register_after[-1]
 
     def tri_ancestral_verdict(self) -> Tuple[str, str]:
         """
@@ -379,6 +386,19 @@ class Sequence16_3Trace:
             if any(t in WORK_OPS for t in _cyclic_interior(self.steps, si, fj)):
                 return ("T", "Tri-ancestral reconnection over a transformed object — closes")
         return ("N", "Split/fused with no work on any arm — μ∘δ=id verifies nothing")
+
+    def has_transformed_reconnection(self) -> bool:
+        """Structural closure of this cyclic sequence, independent of its B4 label.
+
+        Register return (is_closed), bank safety and Lean scaffold elaboration
+        answer separate questions. An unmatched fork cannot certify closure.
+        """
+        pairs, unmatched_splits, unmatched_fuses = _cyclic_pairs(self.steps)
+        return bool(pairs) and not unmatched_splits and not unmatched_fuses and any(
+            token in WORK_OPS
+            for split, fuse in pairs
+            for token in _cyclic_interior(self.steps, split, fuse)
+        )
 
     def summary(self) -> str:
         lines = []

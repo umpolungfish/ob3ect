@@ -59,6 +59,7 @@ try:
         CLINK as _16CLINK, IMSCRIB as _16IMSCRIB,
         FSPLIT3, FFUSE3, EVALT as _16EVALT, EVALF as _16EVALF, EVALI, IFIX as _16IFIX,
         reg_name as _16reg_name, GLYPH as _16GLYPH,
+        IMASM12_TO_16_3 as _IMASM12_TO_16_3,
     )
     _IMASM16_3_AVAILABLE = True
 except Exception:
@@ -98,22 +99,6 @@ else:
 
 
 # ── IMASM-12 → IMASM-16_3 mapping ──────────────────────────────────────────
-
-_IMASM12_TO_16_3: Dict[str, str] = {
-    "VINIT": "VINIT",
-    "TANCH": "TANCH",
-    "AFWD": "AFWD",
-    "AREV": "AREV",
-    "CLINK": "CLINK",
-    "IMSCRIB": "IMSCRIB",
-    "FSPLIT": "FSPLIT3",
-    "FFUSE": "FFUSE3",
-    "EVALT": "EVALT",
-    "EVALF": "EVALF",
-    "ENGAGR": "EVALI",
-    "IFIX": "IFIX",
-}
-
 
 def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
     """Run the bootstrap sequence through the SIXTEEN_3 trilattice register
@@ -437,11 +422,17 @@ BACK-PROPAGATION (self-referential loops)
   IMSCRIB.o -> IFIX.i     [LinFix  -- self-reference record]
 
 REGISTER STATE TRANSITIONS
-  VINIT -> void(00)    TANCH -> T(01)     AFWD -> T(01)     AREV -> T(01)
-  IMSCRIB -> T(01)     CLINK -> T(01)     IFIX -> T(01, fixed, append-only)
-  EVALT -> T(01)       EVALF -> F(10)     ENGAGR -> B(11, paradice: both held)
-  FSPLIT T-arm -> T(01), F-arm -> F(10), both-arms -> B(11)
-  FFUSE: T-only -> T(01), F-only -> F(10), mixed/B -> B(11)
+  Sequential banked evaluator, carrier P({T,F,t,f}):
+  VINIT clears register and frames. TANCH and CLINK preserve state.
+  AFWD and IMSCRIB seed T only when the register is empty.
+  AREV clears the register and retains open frames.
+  EVALT deposits T; EVALF deposits F; ENGAGR deposits both t and f.
+  FSPLIT opens an empty frame; FFUSE unions its deposits into the register
+  and enclosing frame. IFIX freezes subsequent operations except IMSCRIB
+  and repeated IFIX. Repeated IFIX does not create another mutable state.
+  The graph-flow interpreter is a separate interpretation of explicit edges:
+  AREV is the Lean involution, EVALT/EVALF are projections and IFIX carries.
+  Diagram node observations of the sequential walk are not graph edge flow.
 
 TOKEN FAMILIES
   LOGICAL:    VINIT TANCH AFWD AREV CLINK IMSCRIB
@@ -474,7 +465,7 @@ FREE COMPOSITION RULES
 
 SINGLE-GLYPH CODES (the alphabet is fully SYMBOLIC -- no Latin initials, so no token
 can be confused with a verdict letter T/N/B/F)
-  VINIT  ⊢     TANCH  ⊣     AFWD   >     AREV   <     CLINK   ⋈     IMSCRIB ⊙
+  VINIT  ⊢     TANCH  ⊣     AFWD   ≻     AREV   ≺     CLINK   ⋈     IMSCRIB ⊙
   FSPLIT ∈     FFUSE  ∋     EVALT  ⊤     EVALF  ⊥     ENGAGR  ⊞     IFIX    ⊡
   A sequence may be written glued as a word: ⊢⊙⋈∈>⊤<⊞⊥∋⊡⊡⊣ is the same program as the
   13 spelled-out tokens. The retired codes V/T/B and ← (the old IMSCRIB) no longer parse anywhere.
@@ -787,10 +778,11 @@ def _load_context(path: str) -> str:
         except Exception:
             return
         remaining = _CONTEXT_MAX_BYTES - total
-        if len(text) > remaining:
-            text = text[:remaining] + f"\n[... truncated at {_CONTEXT_MAX_BYTES} bytes total]"
+        if len(text.encode("utf-8")) > remaining:
+            text = text.encode("utf-8")[:remaining].decode("utf-8", errors="ignore")
+            text += f"\n[... truncated at {_CONTEXT_MAX_BYTES} bytes total]"
         chunks.append(f"=== {fp.name} ===\n{text}")
-        total += len(text)
+        total += min(len(text.encode("utf-8")), remaining)
 
     if p.is_file():
         _read(p)
@@ -922,7 +914,10 @@ def _fit_context(provider: Any, description: str, domain_type: Optional[str],
 def _extract_json(text: str) -> Dict[str, Any]:
     # 1. Direct parse
     try:
-        return json.loads(text.strip())
+        data = json.loads(text.strip())
+        if not isinstance(data, dict):
+            raise ValueError("Expected a JSON object")
+        return data
     except json.JSONDecodeError:
         pass
     # 2. Strip markdown fence
@@ -1029,17 +1024,19 @@ def _validate_sequence(data: Dict[str, Any]) -> None:
 def _parse_opcode(step_str: str) -> str:
     """Extract the opcode from a bootstrap step. Handles 'OPCODE: desc',
     glyph-prefixed 'GLYPH: OPCODE: desc', and opcode-name-anywhere formats.
-    Only falls back to IMSCRIB when nothing parseable is present."""
-    s = str(step_str).strip()
-    m = re.match(r'^\s*([A-Z]+)', s)
+    An unrecognised step must not silently become an identity operation."""
+    if not isinstance(step_str, str):
+        raise ValueError("A sequence step must be a string")
+    s = step_str.strip()
+    m = re.match(r'^\s*([A-Z][A-Z0-9_]*)\b', s)
     if m and m.group(1) in _KNOWN_OPCODES:
         return m.group(1)
     if s and s[0] in _GLYPH_TO_OP:
         return _GLYPH_TO_OP[s[0]]
-    for tok in re.findall(r'[A-Z]+', s):
+    for tok in re.findall(r'\b[A-Z][A-Z0-9_]*\b', s):
         if tok in _KNOWN_OPCODES:
             return tok
-    return "IMSCRIB"
+    raise ValueError(f"No recognised opcode in sequence step: {step_str!r}")
 
 
 
@@ -1190,7 +1187,7 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
             }
             for i, act in enumerate(bs_actions)
         ],
-        closure_verified=True,
+        closure_verified=False,
     )
 
     # The kernel decides the verdict, not the model. Run the emitted opcode word
@@ -1205,9 +1202,10 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
             _vd, _msg = _tr.tri_ancestral_verdict()
             split_fuse.frobenius_verdict = _vd            # one of N / T / F / B
             split_fuse.failure_reason = _msg
-            bootstrap.closure_verified = _vd in ("T", "B")
-        except Exception:
-            pass
+            bootstrap.closure_verified = _tr.has_transformed_reconnection()
+        except Exception as exc:
+            split_fuse.frobenius_verdict = "UNCHECKED"
+            split_fuse.failure_reason = f"Sequence check failed: {type(exc).__name__}: {exc}"
 
     # Phase 5 is m⊙², the kernel spec. It was keyed "exos" everywhere — in the
     # prompt the model answers, in the artifact, in the templates — which is the
@@ -1429,7 +1427,6 @@ def _write_diagrams(artifact: Ob3ectArtifact, dir_path: Path, slug: str) -> Opti
             try:
                 from digital.imasm16_3_core import (
                     IMASM16_3_Machine, Sequence16_3Trace,
-                    _IMASM12_TO_16_3 as _M12TO16,
                 )
                 ops_12 = [step["opcode"] for step in artifact.bootstrap_sequence.steps]
                 ops_16 = [_IMASM12_TO_16_3.get(op, "IMSCRIB") for op in ops_12]
@@ -1497,9 +1494,8 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
     generate_from_description's reasoning-text keyword grounding — both are
     wet-lab checks on an LLM's self-consistency, not a proof). Writes the
     artifact's own Lean scaffold to a real file under p4ramill and elaborates
-    it for real with `lake env lean` — the same mechanism MoDoT's `TOOL: lean`
-    uses. Sets artifact.grounding_status from the KERNEL's verdict, not the
-    gate LLM's.
+    it for real with `lake env lean`. The result certifies tuple-scaffold
+    elaboration. Grounding and the executing interpreters have separate fields.
 
     No scaffold, no p4ramill checkout, or `lake` not on PATH → grounding_status
     stays whatever the gate step set it to, with lean_verified=None (not
@@ -1514,7 +1510,10 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
         return
 
     _GATE_CHECK_DIR.mkdir(parents=True, exist_ok=True)
-    target = _GATE_CHECK_DIR / f"{slug}_gate_check.lean"
+    # Concurrent churn children may share a name. Each kernel invocation must
+    # elaborate its own immutable text rather than a sibling's replacement.
+    from uuid import uuid4
+    target = _GATE_CHECK_DIR / f"{slug}_{uuid4().hex}_gate_check.lean"
     target.write_text(artifact.lean_scaffold, encoding="utf-8")
 
     try:
@@ -1543,13 +1542,13 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
 
     text = (stdout.decode("utf-8", "replace") + stderr.decode("utf-8", "replace"))
     body = "\n".join(l for l in text.splitlines() if "has local changes" not in l)
-    n_err = body.count("error")
     artifact.lean_verification_output = body.strip()
     # The kernel's verdict is lean_verified, and ONLY lean_verified. grounding_status
     # belongs to the gated imscriber: overwriting it here let a scaffold that happened to
     # elaborate stamp "full" over a tuple the gate had (or would have) failed — the two
     # verdicts answer different questions and must not share a field.
-    artifact.lean_verified = proc.returncode == 0 and n_err == 0
+    artifact.lean_verified = proc.returncode == 0 and not re.search(
+        r"warning: declaration uses ['‘]sorry['’]", body)
 
 
 async def _run_gated_imscription(description: str, provider_name: Optional[str], model: Optional[str]):
@@ -1897,7 +1896,7 @@ async def auto_design(
             # T/B-only gate would never have asked the kernel about.
             bcc = artifact.banked_count_check or {}
             needs_repair_check = (
-                artifact.split_fuse_report.frobenius_verdict not in ("T", "B")
+                not artifact.bootstrap_sequence.closure_verified
                 or bcc.get("banked_ok") is False
             )
             if needs_repair_check:
@@ -2048,8 +2047,8 @@ class ZoomChain:
                 lines.append(f"  ↕ CLINK  : {self.clink_morphisms[lvl.gamma]}")
         lines.append(f"\n{sep}")
         lines.append(f"Levels: {len(self.levels)}  |  CLINK morphisms: {len(self.clink_morphisms)}")
-        all_closed = all(lvl.artifact.split_fuse_report.frobenius_verdict in ("T", "B") for lvl in self.levels)
-        lines.append(f"Chain Frobenius: {'CLOSED' if all_closed else 'PARTIAL'} (every level T or B)")
+        all_closed = bool(self.levels) and all(lvl.artifact.bootstrap_sequence.closure_verified for lvl in self.levels)
+        lines.append(f"Chain Frobenius: {'CLOSED' if all_closed else 'PARTIAL'} (transformed reconnection at every level)")
         # Frobenius closed is the graph question; banked_ok is a separate one
         # (t2_efl_affirm closed T and still cleared 2 units with nothing banked
         # ahead of the reversal) — check it too rather than let "CLOSED" imply it.
@@ -2075,6 +2074,7 @@ class ZoomChain:
                         "TANCH", type("", (), {"chosen_element": "?"})()
                     ).chosen_element,
                     "frobenius": lvl.artifact.split_fuse_report.frobenius_verdict,
+                    "closure_verified": lvl.artifact.bootstrap_sequence.closure_verified,
                     "banked_ok": (lvl.artifact.banked_count_check or {}).get("banked_ok"),
                 }
                 for lvl in self.levels
@@ -2183,13 +2183,13 @@ class ChurnTree:
         lines.append(f"\n{sep}")
         all_nodes = self.nodes()
         closed = sum(1 for n in all_nodes
-                     if n.artifact.split_fuse_report.frobenius_verdict in ("T", "B"))
-        lines.append(f"ob3ects: {len(all_nodes)}   Frobenius closed (T/B): {closed}")
+                     if n.artifact.bootstrap_sequence.closure_verified)
+        lines.append(f"ob3ects: {len(all_nodes)}   Frobenius closed: {closed}")
         # A churn is coherent when winding inward does not break closure. A step
         # that does not close (verdict N or F) only when imscribed on its own is the
         # interesting case: the parent closes over something that does not by itself.
         broke = [n for n in all_nodes
-                 if n.winding > 0 and n.artifact.split_fuse_report.frobenius_verdict not in ("T", "B")]
+                 if n.winding > 0 and not n.artifact.bootstrap_sequence.closure_verified]
         if broke:
             lines.append("steps that do not close when imscribed alone:")
             for n in broke:
@@ -2217,6 +2217,7 @@ class ChurnTree:
                 "step_num": n.step_num,
                 "description": n.description,
                 "frobenius": n.artifact.split_fuse_report.frobenius_verdict,
+                "closure_verified": n.artifact.bootstrap_sequence.closure_verified,
                 "glyph_word": getattr(n.artifact, "glyph_word", ""),
                 "banked_ok": (n.artifact.banked_count_check or {}).get("banked_ok"),
                 "children": [node_json(c) for c in n.children],

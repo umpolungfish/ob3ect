@@ -305,6 +305,7 @@ class Ob3ectArtifact:
     # never checked (no p4ramill, no lake, no scaffold) — never conflated with
     # a pass.
     lean_verified: Optional[bool] = None
+    lean_verification_scope: str = "IGProtocol tuple scaffold elaboration"
     lean_verification_output: str = ""
     sixteen_3_breakdown: Optional[str] = None
     # ── ROTAT orbit audit (the op-opcode turned on the word) ────────────────
@@ -484,6 +485,7 @@ class Ob3ectArtifact:
             "banked_count_check":self.banked_count_check,
             "grounding_reasoning":self.grounding_reasoning,
             "lean_verified":self.lean_verified,
+            "lean_verification_scope":self.lean_verification_scope,
             "lean_verification_output":self.lean_verification_output,
             "rotat_audit":self.rotat_audit,
             "kernel_repairs":self.kernel_repairs}

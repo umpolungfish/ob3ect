@@ -200,8 +200,7 @@ def analyze_topology(opcodes: List[str]) -> TopologyReport:
     for oc in opcodes:
         t = _token_from_str(oc)
         if t is None:
-            # Unknown opcode — skip this position
-            continue
+            raise ValueError(f"Unknown opcode in topology input: {oc!r}")
         tokens.append(t)
 
     if not tokens:
@@ -259,82 +258,35 @@ def analyze_topology(opcodes: List[str]) -> TopologyReport:
             nesting[i] = d
 
     # ── Fork nodes set (positions that are FSPLIT or FFUSE) ──────────────────
-    fork_nodes = set(report.fork_positions) | set(report.fuse_positions)
+    fork_nodes = {i for i, t in enumerate(tokens) if t in (Token.FSPLIT, Token.FFUSE)}
 
-    # ── Empty branches: FSPLIT immediately followed by FFUSE (or trivial gap) ─
-    empty_count = 0
+    # Read arm ownership from the actual wiring, including secondary anchors
+    # and operations before the first evaluator. A second text partition used
+    # to disagree with the diagram's graph.
+    graph = imscr_wiring(tuple(tokens))
+    arms = {}
     for fs, ff in pairs:
-        # Check if T or F branch is empty
-        own_d = nesting[fs]
-        block = [i for i in range(fs + 1, ff)
-                 if i not in fork_nodes and nesting[i] == own_d]
-        if len(block) == 0:
-            empty_count += 1  # both branches empty
-        else:
-            # Check if one branch is empty (no EVALT or no EVALF)
-            block_tokens = [tokens[i] for i in block]
-            has_evalt = Token.EVALT in block_tokens
-            has_evalf = Token.EVALF in block_tokens
-            # An empty branch = no anchor in that branch
-            # But this is approximate — a branch could have ops without an anchor
-            # We count a branch as empty if there are zero ops assigned to it
-            # For now, count pair as having empty branch if block has < 2 tokens
-            if len(block) < 2:
-                empty_count += 1
-    report.empty_branches = empty_count
-
-    # ── Branch weight: T-branch vs F-branch ops ──────────────────────────────
-    # For each pair, assign tokens to T or F branch based on anchor position
-    t_total = 0
-    f_total = 0
-    for fs, ff in pairs:
-        own_d = nesting[fs]
-        block = [i for i in range(fs + 1, ff)
-                 if i not in fork_nodes and nesting[i] == own_d]
-        blk = [tokens[i] for i in block]
-
-        # Find anchor positions
-        t_anchor = None
-        f_anchor = None
-        for j, t in enumerate(blk):
-            if t == Token.EVALT and t_anchor is None:
-                t_anchor = j
-            elif t == Token.EVALF and f_anchor is None:
-                f_anchor = j
-
-        # Assign tokens to branches
-        if t_anchor is not None and f_anchor is not None:
-            if t_anchor < f_anchor:
-                # EVALT before EVALF: T-branch = [t_anchor..f_anchor-1], F-branch = [f_anchor..]
-                t_total += f_anchor - t_anchor
-                f_total += len(blk) - f_anchor
-            else:
-                # EVALF before EVALF: negation-first
-                f_total += t_anchor - f_anchor
-                t_total += len(blk) - t_anchor
-        elif t_anchor is not None:
-            t_total += len(blk)
-        elif f_anchor is not None:
-            f_total += len(blk)
-        else:
-            # No anchors — assign to T by default (polarity rule fallback)
-            t_total += len(blk)
-
-    report.t_branch_ops = t_total
-    report.f_branch_ops = f_total
-    if t_total > 0 and f_total > 0:
+        for port in ("T", "F"):
+            pending = [w.dst_node for w in graph.out_wires(fs) if w.src_port == port]
+            reached = set()
+            while pending:
+                node = pending.pop()
+                if node == ff or node in reached:
+                    continue
+                reached.add(node)
+                pending.extend(graph.successors(node))
+            arms[fs, port] = [i for i in reached
+                               if i not in fork_nodes and nesting[i] == nesting[fs]]
+    report.empty_branches = sum(
+        any(w.src_node == fs and w.dst_node == ff for w in graph.wires)
+        for fs, ff in pairs)
+    report.t_branch_ops = t_total = sum(len(arms[fs, "T"]) for fs, _ in pairs)
+    report.f_branch_ops = f_total = sum(len(arms[fs, "F"]) for fs, _ in pairs)
+    if t_total and f_total:
         report.branch_ratio = max(t_total, f_total) / min(t_total, f_total)
-    elif t_total == 0 and f_total == 0:
-        report.branch_ratio = 1.0
     else:
-        report.branch_ratio = float(max(t_total, f_total))
-
-    # ── Cross-branch routing ───────────────────────────────────────────────
-    try:
-        graph = imscr_wiring(tuple(tokens))
-        report.cross_branches = len(graph.cross_branch_wires())
-    except Exception:
-        pass
+        report.branch_ratio = float(max(t_total, f_total, 1))
+    report.cross_branches = len(graph.cross_branch_wires())
 
     # ── Cascading IFIX ───────────────────────────────────────────────────────
     max_cascade = 0
@@ -367,37 +319,10 @@ def analyze_topology(opcodes: List[str]) -> TopologyReport:
             report.has_negation_first = True
             break
 
-    # ── Dual fixation: IFIX in both T and F branches of same pair ────────────
-    for fs, ff in pairs:
-        own_d = nesting[fs]
-        blk = [tokens[i] for i in range(fs + 1, ff)
-               if i not in fork_nodes and nesting[i] == own_d]
-
-        t_anchor = None
-        f_anchor = None
-        for j, t in enumerate(blk):
-            if t == Token.EVALT and t_anchor is None:
-                t_anchor = j
-            elif t == Token.EVALF and f_anchor is None:
-                f_anchor = j
-
-        t_has_ifix = False
-        f_has_ifix = False
-        if t_anchor is not None and f_anchor is not None:
-            if t_anchor < f_anchor:
-                t_has_ifix = Token.IFIX in blk[t_anchor:f_anchor]
-                f_has_ifix = Token.IFIX in blk[f_anchor:]
-            else:
-                f_has_ifix = Token.IFIX in blk[f_anchor:t_anchor]
-                t_has_ifix = Token.IFIX in blk[t_anchor:]
-        elif t_anchor is not None:
-            t_has_ifix = Token.IFIX in blk[t_anchor:]
-        elif f_anchor is not None:
-            f_has_ifix = Token.IFIX in blk[f_anchor:]
-
-        if t_has_ifix and f_has_ifix:
-            report.has_dual_fixation = True
-            break
+    # ── Dual fixation: read the same graph arms used for the counts ────────
+    report.has_dual_fixation = any(
+        all(any(tokens[i] == Token.IFIX for i in arms[fs, port])
+            for port in ("T", "F")) for fs, _ in pairs)
 
     # ── Topology classification ─────────────────────────────────────────────
     has_nesting = report.nesting_depth > 0
