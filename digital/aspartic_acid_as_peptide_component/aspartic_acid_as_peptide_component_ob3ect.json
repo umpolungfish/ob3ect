@@ -1,0 +1,529 @@
+{
+  "name": "aspartic_acid as peptide component",
+  "artifact_id": "4b48493089eb486aa183a6956868283c",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "aspartic_acid as peptide component",
+      "domain_type": "chemical",
+      "scope": "local",
+      "surface_tokens": [
+        "peptide_bond",
+        "chiral_center",
+        "side_chain_carboxyl"
+      ],
+      "boundary_condition": "The covalent backbone of the polypeptide chain, which constrains the conformational space of the aspartic acid residue and defines the limits of its local chemical interactions.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "free_aspartic_acid",
+        "justification": "The isolated amino acid monomer before incorporation into the peptide chain, representing the void state prior to structural integration.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "polypeptide_chain",
+        "justification": "The complete protein structure that contains the residue, acting as the terminal anchor that bounds the system's spatial and chemical extent.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "peptide_bond_formation",
+        "justification": "The forward morphism of covalent linkage, transforming the free monomer into a bound residue via condensation reaction.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "hydrolysis",
+        "justification": "The reverse transformation where the peptide bond is cleaved, returning the residue to its free state and reversing the structural integration.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "backbone_composition",
+        "justification": "The sequential chaining of residues, where the carboxyl of one links to the amino of the next, forming the linear polypeptide sequence.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "residue_identity",
+        "justification": "The self-reference of the aspartic acid residue, maintaining its specific chemical identity and side-chain properties within the larger structure.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "conformational_state",
+        "justification": "The branching of the residue's possible states into the backbone conformation (phi/psi angles) and the side-chain orientation (chi angles).",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "tertiary_structure",
+        "justification": "The rejoining of backbone and side-chain constraints into the stable tertiary structure, where local interactions determine global folding.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "stable_conformation",
+        "justification": "The affirmative state where the residue adopts a low-energy conformation that satisfies steric and electrostatic constraints.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "steric_clash",
+        "justification": "The negative state where the residue's side chain or backbone angles result in unfavorable steric or electrostatic interactions.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "chiral_asymmetry",
+        "justification": "The paradice of the chiral center, where the L-configuration is held simultaneously with the potential for D-configuration in a paraconsistent view of stereochemical possibility.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "crystal_structure",
+        "justification": "The permanent record of the residue's position and orientation as determined by X-ray crystallography, an irreversible fixation of the structural state.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "conformational_state",
+      "split_input": "free_aspartic_acid",
+      "split_outputs": [
+        "backbone_conformation",
+        "side_chain_orientation"
+      ],
+      "fuse_element": "tertiary_structure",
+      "fuse_result": "folded_protein",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The free amino acid in solution, unbound and unconstrained by the peptide backbone.",
+      "true_description": "The residue is incorporated into the peptide chain and adopts a stable, low-energy conformation.",
+      "false_description": "The residue is excluded from the chain or adopts a high-energy, unstable conformation due to steric clashes.",
+      "both_description": "The residue exists in a state of conformational exchange, simultaneously sampling multiple low-energy states or holding a strained conformation that is both stable and unstable.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the system with the free aspartic acid monomer in solution."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Form the peptide bond, transforming the free monomer into a bound residue."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⋈",
+          "domain_action": "Chain the residue with adjacent amino acids to form the polypeptide backbone."
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "Branch the conformational state into backbone and side-chain degrees of freedom."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the backbone conformation for steric and electrostatic stability."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the side-chain orientation for unfavorable interactions."
+        },
+        {
+          "step_num": 7,
+          "opcode": "∋",
+          "domain_action": "Rejoin the backbone and side-chain constraints into the tertiary structure."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "Hold the chiral asymmetry of the residue, acknowledging the L-configuration and its stereochemical potential."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊙",
+          "domain_action": "Assert the identity of the aspartic acid residue within the protein structure."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊡",
+          "domain_action": "Record the final structural state of the residue in the crystal structure."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊣",
+          "domain_action": "Anchor the system in the complete polypeptide chain, closing the boundary."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The biochemical environment (pH, temperature, solvent) that translates the chemical properties of aspartic acid into specific conformational and bonding operations.",
+      "ipc_mechanism": "Hydrogen bonding and electrostatic interactions between the side-chain carboxyl group and the backbone or other residues, facilitating communication of structural constraints.",
+      "memory_mechanism": "The covalent backbone of the peptide chain, which stores the sequence and conformational history of the residue.",
+      "scheduler_mechanism": "The thermodynamic landscape of the protein, which determines the order and timing of conformational changes and folding events.",
+      "alfs_store": "The X-ray crystallographic data, which serves as the canonical reference for the residue's position and orientation.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "The free energy required to overcome the kinetic barrier to conformational change and peptide bond formation.",
+      "pre_cycle_state": "The free aspartic acid monomer in a high-entropy, unconstrained state.",
+      "post_cycle_state": "The bound residue in a lower-entropy, constrained state within the polypeptide chain.",
+      "delta_s_verdict": "ΔS ≈ 0 — The decrease in conformational entropy of the residue is compensated by the increase in entropy of the solvent and the release of water during peptide bond formation.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⋈∈⊤⊥∋⊞⊙⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⋈∈⊤⊥∋⊞⊙⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⋈   CLINK    CLINK         T →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ⊥   EVALF    EVALF         T →    TF\n    7   ∋   FFUSE    FFUSE3       TF →    TF\n    8   ⊞   ENGAGR   EVALI        TF →     A\n    9   ⊙   IMSCRIB  IMSCRIB       A →     A\n   10   ⊡   IFIX     IFIX          A →     A\n   11   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ∋ → ⊞ → ⊙ → ⊡ → ⊣\n-- Class: aspartic_acid as peptide component\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(3, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑼  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [2] ⋈     fid    := 𐑱               𐑱 → 𐑱  | composition — regime coherence\n--   [3] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [4] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [5] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [6] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [7] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [8] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [9] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n--   [10] ⊣     top    := 𐑡               𐑡 → 𐑡  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def aspartic_acid_as_peptide_component_initial : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def aspartic_acid_as_peptide_component_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def aspartic_acid_as_peptide_component_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def aspartic_acid_as_peptide_component_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def aspartic_acid_as_peptide_component_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def aspartic_acid_as_peptide_component_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def aspartic_acid_as_peptide_component_protocol : IGProtocol aspartic_acid_as_peptide_component_initial aspartic_acid_as_peptide_component_s10 :=\n  .withGram Grammar.measure <|\n  (.seq (.arrow aspartic_acid_as_peptide_component_l0 aspartic_acid_as_peptide_component_initial aspartic_acid_as_peptide_component_s0) (.seq (.arrow aspartic_acid_as_peptide_component_l1 aspartic_acid_as_peptide_component_s0 aspartic_acid_as_peptide_component_s1) (.seq (.arrow aspartic_acid_as_peptide_component_l2 aspartic_acid_as_peptide_component_s1 aspartic_acid_as_peptide_component_s2) (.seq (.arrow aspartic_acid_as_peptide_component_l3 aspartic_acid_as_peptide_component_s2 aspartic_acid_as_peptide_component_s3) (.seq (.prod (.arrow aspartic_acid_as_peptide_component_l4 aspartic_acid_as_peptide_component_s3 aspartic_acid_as_peptide_component_s4) (.arrow aspartic_acid_as_peptide_component_l5 aspartic_acid_as_peptide_component_s3 aspartic_acid_as_peptide_component_s5)) (.seq (.arrow aspartic_acid_as_peptide_component_l6 (tensorProduct aspartic_acid_as_peptide_component_s4 aspartic_acid_as_peptide_component_s5) aspartic_acid_as_peptide_component_s6) (.seq (.arrow aspartic_acid_as_peptide_component_l7 aspartic_acid_as_peptide_component_s6 aspartic_acid_as_peptide_component_s7) (.seq (.arrow aspartic_acid_as_peptide_component_l8 aspartic_acid_as_peptide_component_s7 aspartic_acid_as_peptide_component_s8) (.seq (.arrow aspartic_acid_as_peptide_component_l9 aspartic_acid_as_peptide_component_s8 aspartic_acid_as_peptide_component_s9) (.arrow aspartic_acid_as_peptide_component_l10 aspartic_acid_as_peptide_component_s9 aspartic_acid_as_peptide_component_s10))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def aspartic_acid_as_peptide_component_true_arm : IGProtocol aspartic_acid_as_peptide_component_initial aspartic_acid_as_peptide_component_s10 :=\n  (aspartic_acid_as_peptide_component_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def aspartic_acid_as_peptide_component_false_arm : IGProtocol aspartic_acid_as_peptide_component_initial aspartic_acid_as_peptide_component_s10 :=\n  (aspartic_acid_as_peptide_component_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef aspartic_acid_as_peptide_component_tier_ground : OuroboricityTier := TierFunctor.obj aspartic_acid_as_peptide_component_initial\ndef aspartic_acid_as_peptide_component_tier : OuroboricityTier := TierFunctor.obj aspartic_acid_as_peptide_component_s10\n#eval aspartic_acid_as_peptide_component_tier_ground  -- tier of the ground (pre-transformation)\n#eval aspartic_acid_as_peptide_component_tier  -- the Grammar's tuple-tier verdict\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem aspartic_acid_as_peptide_component_frobenius :\n    igFrobeniusAlg.mul aspartic_acid_as_peptide_component_initial aspartic_acid_as_peptide_component_initial = aspartic_acid_as_peptide_component_initial :=\n  igFrobAlg_self_fusion aspartic_acid_as_peptide_component_initial\n\ntheorem aspartic_acid_as_peptide_component_protocol_depth :\n    aspartic_acid_as_peptide_component_protocol.depth = 10 := by rfl\n\nend Imscribing",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        3,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  aspartic_acid as peptide component   11 nodes, 11 wires\n  Native graph flow: node inputs and actual wire carriers; seed A\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  A\n  1 ≻ AFWD     A   \n     └─▶  2 ⋈   [o→i]  A\n  2 ⋈ CLINK    A   \n     └─▶  3 ∈   [o→i]  A\n  3 ∈ FSPLIT   A     ┐ fork\n     ├─▶  4 ⊤   [T→i]  Tt\n     └─▶  5 ⊥   [F→i]  Ff\n  4 ⊤ EVALT    Tt  \n     └─▶  6 ∋   [o→T]  Tt\n  5 ⊥ EVALF    Ff  \n     └─▶  6 ∋   [o→F]  Ff\n  6 ∋ FFUSE    A     ┘ join\n     └─▶  7 ⊞   [o→i]  A\n  7 ⊞ ENGAGR   A   \n     └─▶  8 ⊙   [o→i]  A\n  8 ⊙ IMSCRIB  A   \n     └─▶  9 ⊡   [o→i]  A\n  9 ⊡ IFIX     A   \n     └─▶ 10 ⊣   [o→i]  A\n 10 ⊣ TANCH    A   \n\n  Native ancestry: CLOSED   pairs [[3, 6]]\n  Final node input A",
+  "wiring_check": {
+    "closure": "closed",
+    "closure_verified": true,
+    "fully_reconnected": true,
+    "pairs": [
+      [
+        3,
+        6
+      ]
+    ],
+    "node_inputs": [
+      0,
+      15,
+      15,
+      15,
+      5,
+      10,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "edge_values": [
+      5,
+      5,
+      10,
+      10,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "pair_recovers_input": [
+      true
+    ],
+    "status": "checked",
+    "instrument": "imasm_core::check + imasm_core::flow",
+    "source_sha256": "bc8077cdf3826459902785e7c9877dd73ae57ff92bf4b38c8be9049e85aad18f",
+    "seed": 15,
+    "port_observations": [],
+    "nodes": [
+      "VINIT",
+      "AFWD",
+      "CLINK",
+      "FSPLIT",
+      "EVALT",
+      "EVALF",
+      "FFUSE",
+      "ENGAGR",
+      "IMSCRIB",
+      "IFIX",
+      "TANCH"
+    ],
+    "wires": [
+      [
+        3,
+        "T",
+        4,
+        "i"
+      ],
+      [
+        4,
+        "o",
+        6,
+        "T"
+      ],
+      [
+        3,
+        "F",
+        5,
+        "i"
+      ],
+      [
+        5,
+        "o",
+        6,
+        "F"
+      ],
+      [
+        0,
+        "o",
+        1,
+        "i"
+      ],
+      [
+        1,
+        "o",
+        2,
+        "i"
+      ],
+      [
+        2,
+        "o",
+        3,
+        "i"
+      ],
+      [
+        6,
+        "o",
+        7,
+        "i"
+      ],
+      [
+        7,
+        "o",
+        8,
+        "i"
+      ],
+      [
+        8,
+        "o",
+        9,
+        "i"
+      ],
+      [
+        9,
+        "o",
+        10,
+        "i"
+      ]
+    ]
+  },
+  "notes": "Auto-designed from: aspartic_acid as peptide component",
+  "grounded_tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑤𐑲𐑜𐑢𐑖𐑳𐑴⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⋈∈⊤⊥∋⊞⊙⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (1 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: Aspartic acid functions as a discrete monomer that is covalently linked into a linear or branched polypeptide chain, representing a hierarchical containment of the residue within the larger peptide structure.\n⊢=𐑨: Aspartic acid is a peptide component that contributes to the extended three-dimensional spatial arrangement of the protein structure, where constraints propagate through this spatial lattice.\n⊞=𐑳: Aspartic acid is a single monomer unit, implying an asymmetric stoichiometric relationship where the count on one side (the component) differs from the other (the whole peptide).\n⊡=𐑴: Aspartic acid is a standard, achiral amino acid with no topological invariants (such as chirality or winding) that would prevent its continuous deformation into a trivial state, implying no non-trivial topological protection.\n⊙=𐑢: Aspartic acid is a standard, stable amino acid component in peptides that operates within a normal, subcritical biochemical regime without exhibiting scale-free critical behavior.\n⊥=𐑖: Aspartic acid is a stable, structurally enforced chiral amino acid with a fixed stereocenter that maintains its configuration in peptide bonds, representing persistent chirality with significant memory depth.\n≻=𐑑: Aspartic acid acts as a peptide component by forming covalent peptide bonds, which constitutes a structural transformation.\n≺=𐑬: Aspartic acid possesses both a carboxyl group (acceptor) and an amino group (donor), creating a self-complementary interface with simultaneous donor and acceptor roles.\n⋈=𐑞: Aspartic acid's role in peptide bonds and side-chain interactions is context-dependent, relying on specific pH and structural environments to achieve reliable signaling rather than absolute geometric certainty.\n⊤=𐑤: Aspartic acid is a standard, flexible amino acid that readily participates in peptide bond formation and conformational changes under physiological conditions, indicating a moderate kinetic barrier to rearrangement.\n∈=𐑲: As a single amino acid residue, its direct chemical interactions are confined to its immediate local environment (backbone and side chain neighbors) without propagating across the entire peptide structure.\n∋=𐑜: Aspartic acid is a standard amino acid that can be incorporated into a peptide chain at any position, meaning any single instance of the residue satisfies the requirement for its presence as a component.",
+  "lean_verified": true,
+  "lean_verification_scope": "IGProtocol tuple scaffold elaboration",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⋈∈⊤⊥∋⊞⊙⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⋈∈⊤⊥∋⊞⊙⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⋈∈⊤⊥∋⊞⊙⊡⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "∈⊤⊥∋⊞⊙⊡⊣⊢≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "⊤⊥∋⊞⊙⊡⊣⊢≻⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⊥∋⊞⊙⊡⊣⊢≻⋈∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "∋⊞⊙⊡⊣⊢≻⋈∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "⊞⊙⊡⊣⊢≻⋈∈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊙⊡⊣⊢≻⋈∈⊤⊥∋⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "⊡⊣⊢≻⋈∈⊤⊥∋⊞⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⊣⊢≻⋈∈⊤⊥∋⊞⊙⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "banked_ok": true,
+      "closed_walk": true,
+      "exposed_count": true,
+      "final_register": false,
+      "topology_class": true,
+      "tri_ancestral_verdict": true,
+      "vacuous": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⋈∈⊤⊥∋⊞⊙⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 11,
+      "exposed": 0,
+      "exposed_at_k": [],
+      "unchecked": 0
+    }
+  },
+  "kernel_repairs": null
+}

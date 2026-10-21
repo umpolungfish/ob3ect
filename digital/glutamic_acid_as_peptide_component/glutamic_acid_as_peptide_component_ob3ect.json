@@ -1,0 +1,531 @@
+{
+  "name": "glutamic_acid as peptide component",
+  "artifact_id": "9c3014ad0fe34578bc57792e40640865",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "glutamic_acid as peptide component",
+      "domain_type": "chemical",
+      "scope": "local",
+      "surface_tokens": [
+        "peptide_bond",
+        "side_chain",
+        "stereocenter",
+        "rotamer",
+        "backbone"
+      ],
+      "boundary_condition": "The covalent peptide bond and the rigid planar amide geometry that constrain the local conformational space of the glutamic acid residue within the polypeptide chain.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "free_amino_acid",
+        "justification": "The isolated glutamic acid molecule before incorporation into the peptide chain, representing the void state where no backbone constraints or side-chain interactions are yet established.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "polypeptide_chain",
+        "justification": "The complete, closed polypeptide structure that contains the glutamic acid residue, acting as the terminal anchor that bounds the system and defines the global context for local interactions.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "peptide_bond_formation",
+        "justification": "The forward morphism of covalent bond formation, transforming the free amino acid into a linked residue and propagating structural constraints along the backbone.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "hydrolysis",
+        "justification": "The reverse transformation of bond cleavage, representing the descent from the linked residue back to the free amino acid, undoing the forward morphism.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "backbone_propagation",
+        "justification": "The sequential chaining of residues, where the geometry of one peptide bond influences the next, composing the linear structure of the polypeptide.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "stereocenter",
+        "justification": "The self-referential identity of the L-chiral center, which remains invariant under thermal perturbation and defines the residue's persistent chirality.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "side_chain_rotamer",
+        "justification": "The branching of the side chain into distinct rotameric states, where the gamma and delta carbons can adopt different orientations relative to the backbone.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "conformational_ensemble",
+        "justification": "The rejoining of rotameric states into a statistical ensemble, where the side chain occupies a superposition of orientations determined by the local electrostatic environment.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "hydrogen_bond",
+        "justification": "The affirmative state of a stable hydrogen bond or ionic interaction, where the side chain carboxyl group successfully engages with a complementary partner.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "steric_clash",
+        "justification": "The negative state of steric hindrance or unfavorable electrostatic repulsion, where the side chain orientation is energetically disfavored.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "peptide_bond_resonance",
+        "justification": "The paradice of the amide bond, which is simultaneously single and double in character due to resonance, holding both planar rigidity and partial rotational freedom.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "crystal_structure",
+        "justification": "The permanent record of the residue's position and orientation in a crystallographic structure, fixing the conformational state for analysis.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "side_chain_rotamer",
+      "split_input": "glutamic_acid_residue",
+      "split_outputs": [
+        "rotamer_state_A",
+        "rotamer_state_B"
+      ],
+      "fuse_element": "conformational_ensemble",
+      "fuse_result": "statistical_superposition",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The free amino acid in solution, with no defined backbone context or side-chain interactions.",
+      "true_description": "The residue is incorporated into the peptide chain with a stable, low-energy side-chain conformation.",
+      "false_description": "The residue is misfolded or the side chain is in a high-energy, sterically hindered state.",
+      "both_description": "The peptide bond is in a resonant state, exhibiting both single and double bond character simultaneously.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the free glutamic acid molecule in solution."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Form the peptide bond, linking the amino acid to the growing polypeptide chain."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⋈",
+          "domain_action": "Propagate the backbone geometry to the next residue, establishing the linear structure."
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊙",
+          "domain_action": "Assert the identity of the L-chiral center, fixing the stereocenter."
+        },
+        {
+          "step_num": 5,
+          "opcode": "∈",
+          "domain_action": "Branch the side chain into distinct rotameric states based on gamma and delta carbon orientations."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the rotamer state for stable hydrogen bonding or ionic interactions."
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the rotamer state for steric clashes or unfavorable electrostatics."
+        },
+        {
+          "step_num": 8,
+          "opcode": "∋",
+          "domain_action": "Rejoin the rotameric states into a conformational ensemble."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊞",
+          "domain_action": "Hold the peptide bond in a resonant state, maintaining both single and double bond character."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊡",
+          "domain_action": "Record the residue's position and orientation in a crystallographic structure."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊣",
+          "domain_action": "Anchor the complete polypeptide chain, closing the system and defining the global context."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The biochemical reaction network that translates genetic code into peptide bond formation and side-chain folding.",
+      "ipc_mechanism": "Hydrogen bonding and ionic interactions between side chains and the backbone, mediating local conformational changes.",
+      "memory_mechanism": "The covalent backbone structure and the persistent chirality of the stereocenter, storing the sequence and stereochemical information.",
+      "scheduler_mechanism": "Thermal perturbation and electrostatic environment, determining the timing and probability of rotamer transitions.",
+      "alfs_store": "The standard amino acid reference, defining the canonical structure and properties of glutamic acid.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Thermal energy consumed in overcoming rotamer transition barriers.",
+      "pre_cycle_state": "The residue is in a specific rotameric state with defined backbone geometry.",
+      "post_cycle_state": "The residue has transitioned to a new rotameric state, with the backbone geometry adjusted accordingly.",
+      "delta_s_verdict": "ΔS ≈ 0 — The cycle is entropy-conservative as the system remains in a subcritical biochemical regime without exhibiting scale-free critical behavior.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⋈⊙∈⊤⊥∋⊞⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⋈⊙∈⊤⊥∋⊞⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⋈   CLINK    CLINK         T →     T\n    4   ⊙   IMSCRIB  IMSCRIB       T →     T\n    5   ∈   FSPLIT   FSPLIT3       T →     T\n    6   ⊤   EVALT    EVALT         T →     T\n    7   ⊥   EVALF    EVALF         T →    TF\n    8   ∋   FFUSE    FFUSE3       TF →    TF\n    9   ⊞   ENGAGR   EVALI        TF →     A\n   10   ⊡   IFIX     IFIX          A →     A\n   11   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ⊙ → ∈ → ⊤ → ⊥ → ∋ → ⊞ → ⊡ → ⊣\n-- Class: glutamic_acid as peptide component\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(4, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑼  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [2] ⋈     fid    := 𐑱               𐑱 → 𐑱  | composition — regime coherence\n--   [3] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [4] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [5] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [6] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [8] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [9] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n--   [10] ⊣     top    := 𐑡               𐑡 → 𐑡  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def glutamic_acid_as_peptide_component_initial : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def glutamic_acid_as_peptide_component_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def glutamic_acid_as_peptide_component_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def glutamic_acid_as_peptide_component_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def glutamic_acid_as_peptide_component_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def glutamic_acid_as_peptide_component_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def glutamic_acid_as_peptide_component_protocol : IGProtocol glutamic_acid_as_peptide_component_initial glutamic_acid_as_peptide_component_s10 :=\n  .withGram Grammar.measure <|\n  (.seq (.arrow glutamic_acid_as_peptide_component_l0 glutamic_acid_as_peptide_component_initial glutamic_acid_as_peptide_component_s0) (.seq (.arrow glutamic_acid_as_peptide_component_l1 glutamic_acid_as_peptide_component_s0 glutamic_acid_as_peptide_component_s1) (.seq (.arrow glutamic_acid_as_peptide_component_l2 glutamic_acid_as_peptide_component_s1 glutamic_acid_as_peptide_component_s2) (.seq (.arrow glutamic_acid_as_peptide_component_l3 glutamic_acid_as_peptide_component_s2 glutamic_acid_as_peptide_component_s3) (.seq (.arrow glutamic_acid_as_peptide_component_l4 glutamic_acid_as_peptide_component_s3 glutamic_acid_as_peptide_component_s4) (.seq (.prod (.arrow glutamic_acid_as_peptide_component_l5 glutamic_acid_as_peptide_component_s4 glutamic_acid_as_peptide_component_s5) (.arrow glutamic_acid_as_peptide_component_l6 glutamic_acid_as_peptide_component_s4 glutamic_acid_as_peptide_component_s6)) (.seq (.arrow glutamic_acid_as_peptide_component_l7 (tensorProduct glutamic_acid_as_peptide_component_s5 glutamic_acid_as_peptide_component_s6) glutamic_acid_as_peptide_component_s7) (.seq (.arrow glutamic_acid_as_peptide_component_l8 glutamic_acid_as_peptide_component_s7 glutamic_acid_as_peptide_component_s8) (.seq (.arrow glutamic_acid_as_peptide_component_l9 glutamic_acid_as_peptide_component_s8 glutamic_acid_as_peptide_component_s9) (.arrow glutamic_acid_as_peptide_component_l10 glutamic_acid_as_peptide_component_s9 glutamic_acid_as_peptide_component_s10))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def glutamic_acid_as_peptide_component_true_arm : IGProtocol glutamic_acid_as_peptide_component_initial glutamic_acid_as_peptide_component_s10 :=\n  (glutamic_acid_as_peptide_component_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def glutamic_acid_as_peptide_component_false_arm : IGProtocol glutamic_acid_as_peptide_component_initial glutamic_acid_as_peptide_component_s10 :=\n  (glutamic_acid_as_peptide_component_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef glutamic_acid_as_peptide_component_tier_ground : OuroboricityTier := TierFunctor.obj glutamic_acid_as_peptide_component_initial\ndef glutamic_acid_as_peptide_component_tier : OuroboricityTier := TierFunctor.obj glutamic_acid_as_peptide_component_s10\n#eval glutamic_acid_as_peptide_component_tier_ground  -- tier of the ground (pre-transformation)\n#eval glutamic_acid_as_peptide_component_tier  -- the Grammar's tuple-tier verdict\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem glutamic_acid_as_peptide_component_frobenius :\n    igFrobeniusAlg.mul glutamic_acid_as_peptide_component_initial glutamic_acid_as_peptide_component_initial = glutamic_acid_as_peptide_component_initial :=\n  igFrobAlg_self_fusion glutamic_acid_as_peptide_component_initial\n\ntheorem glutamic_acid_as_peptide_component_protocol_depth :\n    glutamic_acid_as_peptide_component_protocol.depth = 10 := by rfl\n\nend Imscribing",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      4
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        4,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  glutamic_acid as peptide component   11 nodes, 11 wires\n  Native graph flow: node inputs and actual wire carriers; seed A\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  A\n  1 ≻ AFWD     A   \n     └─▶  2 ⋈   [o→i]  A\n  2 ⋈ CLINK    A   \n     └─▶  3 ⊙   [o→i]  A\n  3 ⊙ IMSCRIB  A   \n     └─▶  4 ∈   [o→i]  A\n  4 ∈ FSPLIT   A     ┐ fork\n     ├─▶  5 ⊤   [T→i]  Tt\n     └─▶  6 ⊥   [F→i]  Ff\n  5 ⊤ EVALT    Tt  \n     └─▶  7 ∋   [o→T]  Tt\n  6 ⊥ EVALF    Ff  \n     └─▶  7 ∋   [o→F]  Ff\n  7 ∋ FFUSE    A     ┘ join\n     └─▶  8 ⊞   [o→i]  A\n  8 ⊞ ENGAGR   A   \n     └─▶  9 ⊡   [o→i]  A\n  9 ⊡ IFIX     A   \n     └─▶ 10 ⊣   [o→i]  A\n 10 ⊣ TANCH    A   \n\n  Native ancestry: CLOSED   pairs [[4, 7]]\n  Final node input A",
+  "wiring_check": {
+    "closure": "closed",
+    "closure_verified": true,
+    "fully_reconnected": true,
+    "pairs": [
+      [
+        4,
+        7
+      ]
+    ],
+    "node_inputs": [
+      0,
+      15,
+      15,
+      15,
+      15,
+      5,
+      10,
+      15,
+      15,
+      15,
+      15
+    ],
+    "edge_values": [
+      5,
+      5,
+      10,
+      10,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "pair_recovers_input": [
+      true
+    ],
+    "status": "checked",
+    "instrument": "imasm_core::check + imasm_core::flow",
+    "source_sha256": "bc8077cdf3826459902785e7c9877dd73ae57ff92bf4b38c8be9049e85aad18f",
+    "seed": 15,
+    "port_observations": [],
+    "nodes": [
+      "VINIT",
+      "AFWD",
+      "CLINK",
+      "IMSCRIB",
+      "FSPLIT",
+      "EVALT",
+      "EVALF",
+      "FFUSE",
+      "ENGAGR",
+      "IFIX",
+      "TANCH"
+    ],
+    "wires": [
+      [
+        4,
+        "T",
+        5,
+        "i"
+      ],
+      [
+        5,
+        "o",
+        7,
+        "T"
+      ],
+      [
+        4,
+        "F",
+        6,
+        "i"
+      ],
+      [
+        6,
+        "o",
+        7,
+        "F"
+      ],
+      [
+        0,
+        "o",
+        1,
+        "i"
+      ],
+      [
+        1,
+        "o",
+        2,
+        "i"
+      ],
+      [
+        2,
+        "o",
+        3,
+        "i"
+      ],
+      [
+        3,
+        "o",
+        4,
+        "i"
+      ],
+      [
+        7,
+        "o",
+        8,
+        "i"
+      ],
+      [
+        8,
+        "o",
+        9,
+        "i"
+      ],
+      [
+        9,
+        "o",
+        10,
+        "i"
+      ]
+    ]
+  },
+  "notes": "Auto-designed from: glutamic_acid as peptide component",
+  "grounded_tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑤𐑲𐑜𐑢𐑖𐑳𐑴⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⋈⊙∈⊤⊥∋⊞⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (1 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: Glutamic acid acts as a side-chain residue that branches off the linear peptide backbone, forming a hierarchical containment structure where the functional group is nested within the amino acid unit.\n⊢=𐑨: Glutamic acid as a peptide component participates in an extended 3D spatial arrangement where side-chain interactions and backbone geometry propagate constraints through the molecular structure.\n⊞=𐑳: In a peptide bond, glutamic acid contributes one carboxyl group and one amino group, resulting in an asymmetric stoichiometric participation where the counts of functional groups differ between the two sides of the linkage.\n⊡=𐑴: The peptide bond possesses a rigid planar geometry and restricted rotation that creates a topological barrier, preventing the continuous deformation of the amide group's configuration without breaking the bond.\n⊙=𐑢: Glutamic acid is a standard, stable amino acid component in peptides that operates within a normal, subcritical biochemical regime without exhibiting scale-free critical behavior.\n⊥=𐑖: Glutamic acid is a stable L-amino acid with a fixed stereocenter that is structurally enforced and does not thermally racemize under physiological conditions, representing persistent chirality.\n≻=𐑑: Glutamic acid acts as a peptide component by forming a covalent peptide bond, which is a structural transformation that links amino acids into a polypeptide chain.\n≺=𐑬: Glutamic acid possesses both a carboxyl group (acceptor) and an amine group (donor) within its side chain and backbone, creating a self-complementary interface with simultaneous donor and acceptor roles.\n⋈=𐑞: Glutamic acid interactions are context-dependent, relying on specific pH and local electrostatic environments to achieve reliable signaling rather than absolute geometric certainty.\n⊤=𐑤: Glutamic acid side chains in peptides are conformationally flexible and accessible to rotamer transitions under thermal perturbation, representing a moderate kinetic barrier rather than a frozen or localized state.\n∈=𐑲: As a single amino acid residue, glutamic acid's primary chemical interactions (such as hydrogen bonding or ionic interactions via its side chain) are localized to its immediate neighbors within the peptide chain, representing a single bond or local event without propagating through a larger motif or the entire system.\n∋=𐑜: Glutamic acid is a standard amino acid that can be incorporated into a peptide chain at any position, meaning any single instance of the residue satisfies the requirement for its presence as a component.",
+  "lean_verified": true,
+  "lean_verification_scope": "IGProtocol tuple scaffold elaboration",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⋈⊙∈⊤⊥∋⊞⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⋈⊙∈⊤⊥∋⊞⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⋈⊙∈⊤⊥∋⊞⊡⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "⊙∈⊤⊥∋⊞⊡⊣⊢≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "∈⊤⊥∋⊞⊡⊣⊢≻⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⊤⊥∋⊞⊡⊣⊢≻⋈⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "⊥∋⊞⊡⊣⊢≻⋈⊙∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "∋⊞⊡⊣⊢≻⋈⊙∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊞⊡⊣⊢≻⋈⊙∈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "⊡⊣⊢≻⋈⊙∈⊤⊥∋⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⊣⊢≻⋈⊙∈⊤⊥∋⊞⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "banked_ok": true,
+      "closed_walk": true,
+      "exposed_count": true,
+      "final_register": false,
+      "topology_class": true,
+      "tri_ancestral_verdict": true,
+      "vacuous": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⋈⊙∈⊤⊥∋⊞⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 11,
+      "exposed": 0,
+      "exposed_at_k": [],
+      "unchecked": 0
+    }
+  },
+  "kernel_repairs": null
+}

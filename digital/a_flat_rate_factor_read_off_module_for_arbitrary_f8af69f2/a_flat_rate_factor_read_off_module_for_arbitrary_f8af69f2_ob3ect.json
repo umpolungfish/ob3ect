@@ -1,0 +1,535 @@
+{
+  "name": "A flat-rate factor read-off module for arbitrary N that reads factors directly from the numeral word's structural invariants (period, winding-commit cuts, dialect register, crystal identity, type hash) via the tfactor read interface. The module uses the BCReentry bridge (B-atomic vs C-atomic, 8/13 reversal) and PrimeWells WellAddress as the type-level specification, but the actual factorization is a CONSTANT-TIME LOOKUP of pre-computed structural invariants — no Pollard's rho, no Miller-Rabin, no computation that scales with bit-length. The numeral word's tfactor read output (hex-digit encoding, native parity-graded encoding, period, winding-commit cuts, dialect register U[9,25,32,35,40,43,52,54,66,72,76,83], crystal identity, type hash) IS the factorization; reading these invariants reads the factors at flat rate.",
+  "artifact_id": "e46095e5a79b4a5ba776756e774f9bd4",
+  "is_valid_ob3ect": false,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [
+      "VINIT: justification required",
+      "TANCH: justification required",
+      "AFWD: justification required",
+      "AREV: justification required",
+      "CLINK: justification required",
+      "IMSCRIB: justification required",
+      "FSPLIT: justification required",
+      "FFUSE: justification required",
+      "EVALT: justification required",
+      "EVALF: justification required",
+      "ENGAGR: justification required",
+      "IFIX: justification required"
+    ],
+    "phase_2": [],
+    "phase_3": [
+      "void required",
+      "both required"
+    ],
+    "phase_4": [],
+    "phase_5": [
+      "compiler_frontend required",
+      "ipc_mechanism required",
+      "memory_mechanism required",
+      "scheduler_mechanism required",
+      "alfs_store required"
+    ],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "A flat-rate factor read-off module for arbitrary N that reads factors directly from the numeral word's structural invariants (period, winding-commit cuts, dialect register, crystal identity, type hash) via the tfactor read interface. The module uses the BCReentry bridge (B-atomic vs C-atomic, 8/13 reversal) and PrimeWells WellAddress as the type-level specification, but the actual factorization is a CONSTANT-TIME LOOKUP of pre-computed structural invariants — no Pollard's rho, no Miller-Rabin, no computation that scales with bit-length. The numeral word's tfactor read output (hex-digit encoding, native parity-graded encoding, period, winding-commit cuts, dialect register U[9,25,32,35,40,43,52,54,66,72,76,83], crystal identity, type hash) IS the factorization; reading these invariants reads the factors at flat rate.",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "numeral_word",
+        "tfactor_read",
+        "period",
+        "winding_commit_cuts",
+        "dialect_register",
+        "crystal_identity",
+        "type_hash",
+        "well_address",
+        "binary_support",
+        "b_atomic",
+        "c_atomic",
+        "eight_thirteen_reversal"
+      ],
+      "boundary_condition": "Input: arbitrary natural number N via tfactor read (constant-time structural invariant lookup). Output: WellAddress (prime→exponent map) and binarySupport (Finset ℕ) read directly from N's numeral word invariants. The BCReentry bridge governs the atomicity decision at the 8/13 reversal where B-atomic ≠ C-atomic.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "VINIT",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "TANCH",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "AFWD",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "AREV",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "CLINK",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "IMSCRIB",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "FSPLIT",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "FFUSE",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "EVALT",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "EVALF",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "ENGAGR",
+        "justification": "",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "IFIX",
+        "justification": "",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "dual_reading_fork (FSPLIT at tfactor read)",
+      "split_input": "N's numeral word",
+      "split_outputs": [
+        "arithmetic_arm (EVALT) — reads WellAddress from period/cuts/dialect register",
+        "binary_arm (EVALF) — reads binarySupport from crystal identity/type hash"
+      ],
+      "fuse_element": "dual_reading_rejoin (FFUSE at self-recognition)",
+      "fuse_result": "N's numeral word",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "",
+      "true_description": "",
+      "false_description": "",
+      "both_description": "",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "⊢"
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "≻"
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "∈"
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊤",
+          "domain_action": "⊤"
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊥",
+          "domain_action": "⊥"
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊞",
+          "domain_action": "⊞"
+        },
+        {
+          "step_num": 7,
+          "opcode": "∋",
+          "domain_action": "∋"
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊙",
+          "domain_action": "⊙"
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊡",
+          "domain_action": "⊡"
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊣",
+          "domain_action": "⊣"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "",
+      "ipc_mechanism": "",
+      "memory_mechanism": "",
+      "scheduler_mechanism": "",
+      "alfs_store": "",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "",
+      "pre_cycle_state": "",
+      "post_cycle_state": "",
+      "delta_s_verdict": "ΔS ≈ 0",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻∈⊤⊥⊞∋⊙⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻∈⊤⊥⊞∋⊙⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ⊤   EVALT    EVALT         T →     T\n    5   ⊥   EVALF    EVALF         T →    TF\n    6   ⊞   ENGAGR   EVALI        TF →     A\n    7   ∋   FFUSE    FFUSE3        A →     A\n    8   ⊙   IMSCRIB  IMSCRIB       A →     A\n    9   ⊡   IFIX     IFIX          A →     A\n   10   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ⊡ → ⊣\n-- Class: A flat-rate factor read-off module for arbitrary N that reads factors directly from the numeral word's structural invariants (period, winding-commit cuts, dialect register, crystal identity, type hash) via the tfactor read interface. The module uses the BCReentry bridge (B-atomic vs C-atomic, 8/13 reversal) and PrimeWells WellAddress as the type-level specification, but the actual factorization is a CONSTANT-TIME LOOKUP of pre-computed structural invariants — no Pollard's rho, no Miller-Rabin, no computation that scales with bit-length. The numeral word's tfactor read output (hex-digit encoding, native parity-graded encoding, period, winding-commit cuts, dialect register U[9,25,32,35,40,43,52,54,66,72,76,83], crystal identity, type hash) IS the factorization; reading these invariants reads the factors at flat rate.\n-- Fingerprint: sig=(4,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=10\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(2, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑼  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [4] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [5] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [6] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [7] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [8] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n--   [9] ⊣     top    := 𐑡               𐑡 → 𐑡  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_initial : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def a_flat_rate_factor_read_off_module_for_de5ff3_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def a_flat_rate_factor_read_off_module_for_de5ff3_protocol : IGProtocol a_flat_rate_factor_read_off_module_for_de5ff3_initial a_flat_rate_factor_read_off_module_for_de5ff3_s9 :=\n  .withGram Grammar.measure <|\n  (.seq (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l0 a_flat_rate_factor_read_off_module_for_de5ff3_initial a_flat_rate_factor_read_off_module_for_de5ff3_s0) (.seq (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l1 a_flat_rate_factor_read_off_module_for_de5ff3_s0 a_flat_rate_factor_read_off_module_for_de5ff3_s1) (.seq (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l2 a_flat_rate_factor_read_off_module_for_de5ff3_s1 a_flat_rate_factor_read_off_module_for_de5ff3_s2) (.seq (.prod (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l3 a_flat_rate_factor_read_off_module_for_de5ff3_s2 a_flat_rate_factor_read_off_module_for_de5ff3_s3) (.seq (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l4 a_flat_rate_factor_read_off_module_for_de5ff3_s2 a_flat_rate_factor_read_off_module_for_de5ff3_s4) (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l5 a_flat_rate_factor_read_off_module_for_de5ff3_s4 a_flat_rate_factor_read_off_module_for_de5ff3_s5))) (.seq (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l6 (tensorProduct a_flat_rate_factor_read_off_module_for_de5ff3_s3 a_flat_rate_factor_read_off_module_for_de5ff3_s5) a_flat_rate_factor_read_off_module_for_de5ff3_s6) (.seq (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l7 a_flat_rate_factor_read_off_module_for_de5ff3_s6 a_flat_rate_factor_read_off_module_for_de5ff3_s7) (.seq (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l8 a_flat_rate_factor_read_off_module_for_de5ff3_s7 a_flat_rate_factor_read_off_module_for_de5ff3_s8) (.arrow a_flat_rate_factor_read_off_module_for_de5ff3_l9 a_flat_rate_factor_read_off_module_for_de5ff3_s8 a_flat_rate_factor_read_off_module_for_de5ff3_s9))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def a_flat_rate_factor_read_off_module_for_de5ff3_true_arm : IGProtocol a_flat_rate_factor_read_off_module_for_de5ff3_initial a_flat_rate_factor_read_off_module_for_de5ff3_s9 :=\n  (a_flat_rate_factor_read_off_module_for_de5ff3_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def a_flat_rate_factor_read_off_module_for_de5ff3_false_arm : IGProtocol a_flat_rate_factor_read_off_module_for_de5ff3_initial a_flat_rate_factor_read_off_module_for_de5ff3_s9 :=\n  (a_flat_rate_factor_read_off_module_for_de5ff3_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef a_flat_rate_factor_read_off_module_for_de5ff3_tier_ground : OuroboricityTier := TierFunctor.obj a_flat_rate_factor_read_off_module_for_de5ff3_initial\ndef a_flat_rate_factor_read_off_module_for_de5ff3_tier : OuroboricityTier := TierFunctor.obj a_flat_rate_factor_read_off_module_for_de5ff3_s9\n#eval a_flat_rate_factor_read_off_module_for_de5ff3_tier_ground  -- tier of the ground (pre-transformation)\n#eval a_flat_rate_factor_read_off_module_for_de5ff3_tier  -- the Grammar's tuple-tier verdict\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem a_flat_rate_factor_read_off_module_for_de5ff3_frobenius :\n    igFrobeniusAlg.mul a_flat_rate_factor_read_off_module_for_de5ff3_initial a_flat_rate_factor_read_off_module_for_de5ff3_initial = a_flat_rate_factor_read_off_module_for_de5ff3_initial :=\n  igFrobAlg_self_fusion a_flat_rate_factor_read_off_module_for_de5ff3_initial\n\ntheorem a_flat_rate_factor_read_off_module_for_de5ff3_protocol_depth :\n    a_flat_rate_factor_read_off_module_for_de5ff3_protocol.depth = 9 := by rfl\n\nend Imscribing",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 10,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        2,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  A flat-rate factor read-off module for arbitrary N that reads factors directly from the numeral word's structural invariants (period, winding-commit cuts, dialect register, crystal identity, type hash) via the tfactor read interface. The module uses the BCReentry bridge (B-atomic vs C-atomic, 8/13 reversal) and PrimeWells WellAddress as the type-level specification, but the actual factorization is a CONSTANT-TIME LOOKUP of pre-computed structural invariants — no Pollard's rho, no Miller-Rabin, no computation that scales with bit-length. The numeral word's tfactor read output (hex-digit encoding, native parity-graded encoding, period, winding-commit cuts, dialect register U[9,25,32,35,40,43,52,54,66,72,76,83], crystal identity, type hash) IS the factorization; reading these invariants reads the factors at flat rate.   10 nodes, 10 wires\n  Native graph flow: node inputs and actual wire carriers; seed A\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  A\n  1 ≻ AFWD     A   \n     └─▶  2 ∈   [o→i]  A\n  2 ∈ FSPLIT   A     ┐ fork\n     ├─▶  3 ⊤   [T→i]  Tt\n     └─▶  4 ⊥   [F→i]  Ff\n  3 ⊤ EVALT    Tt  \n     └─▶  6 ∋   [o→T]  Tt\n  4 ⊥ EVALF    Ff  \n     └─▶  5 ⊞   [o→i]  Ff\n  5 ⊞ ENGAGR   Ff  \n     └─▶  6 ∋   [o→F]  Ftf\n  6 ∋ FFUSE    A     ┘ join\n     └─▶  7 ⊙   [o→i]  A\n  7 ⊙ IMSCRIB  A   \n     └─▶  8 ⊡   [o→i]  A\n  8 ⊡ IFIX     A   \n     └─▶  9 ⊣   [o→i]  A\n  9 ⊣ TANCH    A   \n\n  Native ancestry: CLOSED   pairs [[2, 6]]\n  Final node input A",
+  "wiring_check": {
+    "closure": "closed",
+    "closure_verified": true,
+    "fully_reconnected": true,
+    "pairs": [
+      [
+        2,
+        6
+      ]
+    ],
+    "node_inputs": [
+      0,
+      15,
+      15,
+      5,
+      10,
+      10,
+      15,
+      15,
+      15,
+      15
+    ],
+    "edge_values": [
+      5,
+      5,
+      10,
+      10,
+      14,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "pair_recovers_input": [
+      true
+    ],
+    "status": "checked",
+    "instrument": "imasm_core::check + imasm_core::flow",
+    "source_sha256": "bc8077cdf3826459902785e7c9877dd73ae57ff92bf4b38c8be9049e85aad18f",
+    "seed": 15,
+    "port_observations": [],
+    "nodes": [
+      "VINIT",
+      "AFWD",
+      "FSPLIT",
+      "EVALT",
+      "EVALF",
+      "ENGAGR",
+      "FFUSE",
+      "IMSCRIB",
+      "IFIX",
+      "TANCH"
+    ],
+    "wires": [
+      [
+        2,
+        "T",
+        3,
+        "i"
+      ],
+      [
+        3,
+        "o",
+        6,
+        "T"
+      ],
+      [
+        4,
+        "o",
+        5,
+        "i"
+      ],
+      [
+        2,
+        "F",
+        4,
+        "i"
+      ],
+      [
+        5,
+        "o",
+        6,
+        "F"
+      ],
+      [
+        0,
+        "o",
+        1,
+        "i"
+      ],
+      [
+        1,
+        "o",
+        2,
+        "i"
+      ],
+      [
+        6,
+        "o",
+        7,
+        "i"
+      ],
+      [
+        7,
+        "o",
+        8,
+        "i"
+      ],
+      [
+        8,
+        "o",
+        9,
+        "i"
+      ]
+    ]
+  },
+  "notes": "Auto-designed from: A flat-rate factor read-off module for arbitrary N that reads factors directly from the numeral word's structural invariants (period, winding-commit cuts, dialect register, crystal identity, type hash) via the tfactor read interface. The module uses the BCReentry bridge (B-atomic vs C-atomic, 8/13 reversal) and PrimeWells WellAddress as the type-level specification, but the actual factorization is a CONSTANT-TIME LOOKUP of pre-computed structural invariants — no Pollard's rho, no Miller-Rabin, no computation that scales with bit-length. The numeral word's tfactor read output (hex-digit encoding, native parity-graded encoding, period, winding-commit cuts, dialect register U[9,25,32,35,40,43,52,54,66,72,76,83], crystal identity, type hash) IS the factorization; reading these invariants reads the factors at flat rate.",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻∈⊤⊥⊞∋⊙⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (1 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_scope": "IGProtocol tuple scaffold elaboration",
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 10,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻∈⊤⊥⊞∋⊙⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻∈⊤⊥⊞∋⊙⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "∈⊤⊥⊞∋⊙⊡⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "⊤⊥⊞∋⊙⊡⊣⊢≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "⊥⊞∋⊙⊡⊣⊢≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⊞∋⊙⊡⊣⊢≻∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "∋⊙⊡⊣⊢≻∈⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "⊙⊡⊣⊢≻∈⊤⊥⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊡⊣⊢≻∈⊤⊥⊞∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "⊣⊢≻∈⊤⊥⊞∋⊙⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "banked_ok": true,
+      "closed_walk": true,
+      "exposed_count": true,
+      "final_register": false,
+      "topology_class": true,
+      "tri_ancestral_verdict": true,
+      "vacuous": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻∈⊤⊥⊞∋⊙⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 10,
+      "exposed": 0,
+      "exposed_at_k": [],
+      "unchecked": 0
+    }
+  },
+  "kernel_repairs": null
+}

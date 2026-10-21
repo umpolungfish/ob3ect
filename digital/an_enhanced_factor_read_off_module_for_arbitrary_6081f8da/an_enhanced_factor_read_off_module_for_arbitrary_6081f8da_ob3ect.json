@@ -1,0 +1,536 @@
+{
+  "name": "An enhanced factor read-off module for arbitrary N that uses the actual encoded IMASM tapes from tfactor read (both hex-digit and native parity-graded encodings), integrates the BCReentry bridge (B-atomic vs C-atomic distinction, 8/13 reversal), PrimeWells prime-exponent address system, and native numeral bit-level arithmetic. The module operates on the actual IMASM word structures emitted by tfactor read, using their period, winding-commit cuts, dialect register, crystal identity, and type hash as structural invariants for factorization.",
+  "artifact_id": "3cb50d842ce242db97530669b77d8bad",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "An enhanced factor read-off module for arbitrary N that uses the actual encoded IMASM tapes from tfactor read (both hex-digit and native parity-graded encodings), integrates the BCReentry bridge (B-atomic vs C-atomic distinction, 8/13 reversal), PrimeWells prime-exponent address system, and native numeral bit-level arithmetic. The module operates on the actual IMASM word structures emitted by tfactor read, using their period, winding-commit cuts, dialect register, crystal identity, and type hash as structural invariants for factorization.",
+      "domain_type": "mathematical",
+      "scope": "local",
+      "surface_tokens": [
+        "numeral",
+        "parity_branch",
+        "unbraid",
+        "well_address",
+        "binary_support",
+        "hex_digit_tape",
+        "native_tape",
+        "crystal_identity",
+        "winding_commit",
+        "dialect_register"
+      ],
+      "boundary_condition": "Input: arbitrary natural number N as decimal string. Process: encode N to both hex-digit IMASM word (tfactor read hex-digit) and native parity-graded word (tfactor read native word), run factorization on both word structures using their structural invariants (period, winding-commit cuts, dialect register U[9,25,32,35,40,43,52,54,66,72,76,83], crystal identity, type hash 16389838). The BCReentry bridge governs the atomicity decision: B-atomic (support4 cardinality 1) vs C-atomic (Nat.Prime), with the 8/13 reversal as the critical test case. Output: WellAddress (finite map prime→exponent) and binarySupport (Finset ℕ of occupied bit positions) for both encodings, with Γ/Λ interlace/deinterlace verification.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "void_numeral",
+        "justification": "the uninitialized value before any magnitude is recognized",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "topological_boundary",
+        "justification": "the closed numeral system that contains the complete factorization for both encodings",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "increment_magnitude",
+        "justification": "one step up in magnitude per bit-block, advancing the numeral",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "decrement_magnitude",
+        "justification": "one step down in magnitude, used when halving via word structure",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "digit_composition",
+        "justification": "chain a digit onto the numeral; composes bit-blocks sequentially",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "critical_state",
+        "justification": "the value recognizes itself at ⊙ after all bits are laid down",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "dual_atomicity_fork",
+        "justification": "split the number N into its two atomicity readings: B-atomic (binary support cardinality) and C-atomic (Nat.Prime)",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "dual_atomicity_rejoin",
+        "justification": "the two readings rejoin at the original number N; both are properties of the same N",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "B_atomic_reading",
+        "justification": "the affirmative arm: computes B-atomicity via binarySupport cardinality (support4)",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "C_atomic_reading",
+        "justification": "the negative arm: computes C-atomicity via Nat.Prime on the value",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "chiral_superposition",
+        "justification": "holds BOTH atomicity judgments simultaneously at the 8/13 reversal where they disagree",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "immutable_record",
+        "justification": "the WellAddress and binarySupport for both encodings are fixed permanently",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "dual_atomicity_fork (FSPLIT at the module level)",
+      "split_input": "N",
+      "split_outputs": [
+        "B_atomic_reading (EVALT) — computes binarySupport cardinality and B-atomicity",
+        "C_atomic_reading (EVALF) — computes Nat.Prime and C-atomicity"
+      ],
+      "fuse_element": "dual_atomicity_rejoin (FFUSE at the module level)",
+      "fuse_result": "N",
+      "frobenius_verdict": "PASS",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "00 (N — neither, void numeral before encoding, no magnitude established)",
+      "true_description": "01 (T — both atomicity readings computed, WellAddress and binarySupport verified to reconstruct N)",
+      "false_description": "10 (F — prime certificate: C-atomic true, WellAddress = {N: 1}, binarySupport is power of two)",
+      "both_description": "11 (B — chiral superposition at the 8/13 reversal: 8 is B-atomic but C-composite, 13 is C-atomic but B-composite; ENGAGR holds both atomicity judgments simultaneously)",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "void_numeral — the uninitialized value before any magnitude is recognized"
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "increment_magnitude — advance to first bit position"
+        },
+        {
+          "step_num": 3,
+          "opcode": "⋈",
+          "domain_action": "digit_composition — chain the first bit-block onto the numeral"
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "dual_atomicity_fork — split N into B-atomic and C-atomic readings"
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "B_atomic_reading — compute binarySupport and B-atomicity via support4 cardinality"
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊥",
+          "domain_action": "C_atomic_reading — compute Nat.Prime and C-atomicity via value"
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊞",
+          "domain_action": "chiral_superposition — hold both atomicity judgments simultaneously; critical at 8/13 reversal"
+        },
+        {
+          "step_num": 8,
+          "opcode": "∋",
+          "domain_action": "dual_atomicity_rejoin — rejoin at N; both readings are properties of the same N"
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊙",
+          "domain_action": "critical_state — the value recognizes itself with both readings fixed"
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊡",
+          "domain_action": "immutable_record — the WellAddress and binarySupport for both encodings are fixed permanently"
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊣",
+          "domain_action": "topological_boundary — the closed numeral system containing the complete factorization"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "tfactor read emits both hex-digit and native words; native_numeral encode/decode translates decimal ↔ parity-graded word; native_numeral factor/unbraid/gcd runs arithmetic on the word's own bits",
+      "ipc_mechanism": "bit-blocks communicate via the native numeral's limb vectors (64-bit words); unbraid runs two concurrent arms on the same word; hex-digit tape carries nibble-level structure",
+      "memory_mechanism": "limbs_trim keeps minimal limb representation; word_bits reads bits directly from the glyph word; bits_to_value reads final limbs straight to bytes; crystal identity and type hash are structural invariants stored in the dialect register",
+      "scheduler_mechanism": "encode writes bits LSB-first; factor peel runs small-prime trial division, then Fermat, then GPU rho, then CPU rho; unbraid runs two arms concurrently with Miller-Rabin on exhaustion; tfactor read provides period and winding-commit cuts as scheduling hints",
+      "alfs_store": "the ob3ect's own mapping word ⊢⊣≻⋈∈⊤⊥⊞∋⊙≺⊡⋈⊣ (period 14) is the canonical reference; BCReentryBounded.lean provides the B-atomic/C-atomic bridge; PrimeWells.lean provides the WellAddress type; tfactor read provides the dual encoding schemas with dialect register U[9,25,32,35,40,43,52,54,66,72,76,83] and type hash 16389838",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "one bit-block per bit of N (5 glyphs per bit for native, 4 glyphs per nibble for hex-digit); unbraid/gcd/modpow run on limb vectors, O(limbs) per operation",
+      "pre_cycle_state": "decimal string N, unstructured magnitude",
+      "post_cycle_state": "WellAddress (prime→exponent map) + binarySupport (Finset ℕ) for both encodings; Γ/Λ interlace/deinterlace verified; period, winding-commit cuts, crystal identity, type hash as structural invariants",
+      "delta_s_verdict": "ΔS ≈ 0 — encoding is reversible (decode(encode(N)) = N); all arithmetic runs on the word's own limbs without BigUint intermediates; factorization reads the structure already present in both IMASM readings",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⋈∈⊤⊥⊞∋⊙⊡⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⋈∈⊤⊥⊞∋⊙⊡⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⋈   CLINK    CLINK         T →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ⊥   EVALF    EVALF         T →    TF\n    7   ⊞   ENGAGR   EVALI        TF →     A\n    8   ∋   FFUSE    FFUSE3        A →     A\n    9   ⊙   IMSCRIB  IMSCRIB       A →     A\n   10   ⊡   IFIX     IFIX          A →     A\n   11   ⊣   TANCH    TANCH         A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ⊞ → ∋ → ⊙ → ⊡ → ⊣\n-- Class: An enhanced factor read-off module for arbitrary N that uses the actual encoded IMASM tapes from tfactor read (both hex-digit and native parity-graded encodings), integrates the BCReentry bridge (B-atomic vs C-atomic distinction, 8/13 reversal), PrimeWells prime-exponent address system, and native numeral bit-level arithmetic. The module operates on the actual IMASM word structures emitted by tfactor read, using their period, winding-commit cuts, dialect register, crystal identity, and type hash as structural invariants for factorization.\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(3, 7)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑼  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [2] ⋈     fid    := 𐑱               𐑱 → 𐑱  | composition — regime coherence\n--   [3] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [4] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [5] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [6] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [7] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [8] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [9] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n--   [10] ⊣     top    := 𐑡               𐑡 → 𐑡  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_initial : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def an_enhanced_factor_read_off_module_for_e7fafd_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def an_enhanced_factor_read_off_module_for_e7fafd_protocol : IGProtocol an_enhanced_factor_read_off_module_for_e7fafd_initial an_enhanced_factor_read_off_module_for_e7fafd_s10 :=\n  .withGram Grammar.measure <|\n  (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l0 an_enhanced_factor_read_off_module_for_e7fafd_initial an_enhanced_factor_read_off_module_for_e7fafd_s0) (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l1 an_enhanced_factor_read_off_module_for_e7fafd_s0 an_enhanced_factor_read_off_module_for_e7fafd_s1) (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l2 an_enhanced_factor_read_off_module_for_e7fafd_s1 an_enhanced_factor_read_off_module_for_e7fafd_s2) (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l3 an_enhanced_factor_read_off_module_for_e7fafd_s2 an_enhanced_factor_read_off_module_for_e7fafd_s3) (.seq (.prod (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l4 an_enhanced_factor_read_off_module_for_e7fafd_s3 an_enhanced_factor_read_off_module_for_e7fafd_s4) (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l5 an_enhanced_factor_read_off_module_for_e7fafd_s3 an_enhanced_factor_read_off_module_for_e7fafd_s5) (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l6 an_enhanced_factor_read_off_module_for_e7fafd_s5 an_enhanced_factor_read_off_module_for_e7fafd_s6))) (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l7 (tensorProduct an_enhanced_factor_read_off_module_for_e7fafd_s4 an_enhanced_factor_read_off_module_for_e7fafd_s6) an_enhanced_factor_read_off_module_for_e7fafd_s7) (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l8 an_enhanced_factor_read_off_module_for_e7fafd_s7 an_enhanced_factor_read_off_module_for_e7fafd_s8) (.seq (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l9 an_enhanced_factor_read_off_module_for_e7fafd_s8 an_enhanced_factor_read_off_module_for_e7fafd_s9) (.arrow an_enhanced_factor_read_off_module_for_e7fafd_l10 an_enhanced_factor_read_off_module_for_e7fafd_s9 an_enhanced_factor_read_off_module_for_e7fafd_s10)))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def an_enhanced_factor_read_off_module_for_e7fafd_true_arm : IGProtocol an_enhanced_factor_read_off_module_for_e7fafd_initial an_enhanced_factor_read_off_module_for_e7fafd_s10 :=\n  (an_enhanced_factor_read_off_module_for_e7fafd_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def an_enhanced_factor_read_off_module_for_e7fafd_false_arm : IGProtocol an_enhanced_factor_read_off_module_for_e7fafd_initial an_enhanced_factor_read_off_module_for_e7fafd_s10 :=\n  (an_enhanced_factor_read_off_module_for_e7fafd_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef an_enhanced_factor_read_off_module_for_e7fafd_tier_ground : OuroboricityTier := TierFunctor.obj an_enhanced_factor_read_off_module_for_e7fafd_initial\ndef an_enhanced_factor_read_off_module_for_e7fafd_tier : OuroboricityTier := TierFunctor.obj an_enhanced_factor_read_off_module_for_e7fafd_s10\n#eval an_enhanced_factor_read_off_module_for_e7fafd_tier_ground  -- tier of the ground (pre-transformation)\n#eval an_enhanced_factor_read_off_module_for_e7fafd_tier  -- the Grammar's tuple-tier verdict\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem an_enhanced_factor_read_off_module_for_e7fafd_frobenius :\n    igFrobeniusAlg.mul an_enhanced_factor_read_off_module_for_e7fafd_initial an_enhanced_factor_read_off_module_for_e7fafd_initial = an_enhanced_factor_read_off_module_for_e7fafd_initial :=\n  igFrobAlg_self_fusion an_enhanced_factor_read_off_module_for_e7fafd_initial\n\ntheorem an_enhanced_factor_read_off_module_for_e7fafd_protocol_depth :\n    an_enhanced_factor_read_off_module_for_e7fafd_protocol.depth = 10 := by rfl\n\nend Imscribing",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 2,
+    "branch_ratio": 2.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      7
+    ],
+    "pair_list": [
+      [
+        3,
+        7
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  An enhanced factor read-off module for arbitrary N that uses the actual encoded IMASM tapes from tfactor read (both hex-digit and native parity-graded encodings), integrates the BCReentry bridge (B-atomic vs C-atomic distinction, 8/13 reversal), PrimeWells prime-exponent address system, and native numeral bit-level arithmetic. The module operates on the actual IMASM word structures emitted by tfactor read, using their period, winding-commit cuts, dialect register, crystal identity, and type hash as structural invariants for factorization.   11 nodes, 11 wires\n  Native graph flow: node inputs and actual wire carriers; seed A\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  A\n  1 ≻ AFWD     A   \n     └─▶  2 ⋈   [o→i]  A\n  2 ⋈ CLINK    A   \n     └─▶  3 ∈   [o→i]  A\n  3 ∈ FSPLIT   A     ┐ fork\n     ├─▶  4 ⊤   [T→i]  Tt\n     └─▶  5 ⊥   [F→i]  Ff\n  4 ⊤ EVALT    Tt  \n     └─▶  7 ∋   [o→T]  Tt\n  5 ⊥ EVALF    Ff  \n     └─▶  6 ⊞   [o→i]  Ff\n  6 ⊞ ENGAGR   Ff  \n     └─▶  7 ∋   [o→F]  Ftf\n  7 ∋ FFUSE    A     ┘ join\n     └─▶  8 ⊙   [o→i]  A\n  8 ⊙ IMSCRIB  A   \n     └─▶  9 ⊡   [o→i]  A\n  9 ⊡ IFIX     A   \n     └─▶ 10 ⊣   [o→i]  A\n 10 ⊣ TANCH    A   \n\n  Native ancestry: CLOSED   pairs [[3, 7]]\n  Final node input A",
+  "wiring_check": {
+    "closure": "closed",
+    "closure_verified": true,
+    "fully_reconnected": true,
+    "pairs": [
+      [
+        3,
+        7
+      ]
+    ],
+    "node_inputs": [
+      0,
+      15,
+      15,
+      15,
+      5,
+      10,
+      10,
+      15,
+      15,
+      15,
+      15
+    ],
+    "edge_values": [
+      5,
+      5,
+      10,
+      10,
+      14,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "pair_recovers_input": [
+      true
+    ],
+    "status": "checked",
+    "instrument": "imasm_core::check + imasm_core::flow",
+    "source_sha256": "bc8077cdf3826459902785e7c9877dd73ae57ff92bf4b38c8be9049e85aad18f",
+    "seed": 15,
+    "port_observations": [],
+    "nodes": [
+      "VINIT",
+      "AFWD",
+      "CLINK",
+      "FSPLIT",
+      "EVALT",
+      "EVALF",
+      "ENGAGR",
+      "FFUSE",
+      "IMSCRIB",
+      "IFIX",
+      "TANCH"
+    ],
+    "wires": [
+      [
+        3,
+        "T",
+        4,
+        "i"
+      ],
+      [
+        4,
+        "o",
+        7,
+        "T"
+      ],
+      [
+        5,
+        "o",
+        6,
+        "i"
+      ],
+      [
+        3,
+        "F",
+        5,
+        "i"
+      ],
+      [
+        6,
+        "o",
+        7,
+        "F"
+      ],
+      [
+        0,
+        "o",
+        1,
+        "i"
+      ],
+      [
+        1,
+        "o",
+        2,
+        "i"
+      ],
+      [
+        2,
+        "o",
+        3,
+        "i"
+      ],
+      [
+        7,
+        "o",
+        8,
+        "i"
+      ],
+      [
+        8,
+        "o",
+        9,
+        "i"
+      ],
+      [
+        9,
+        "o",
+        10,
+        "i"
+      ]
+    ]
+  },
+  "notes": "Auto-designed from: An enhanced factor read-off module for arbitrary N that uses the actual encoded IMASM tapes from tfactor read (both hex-digit and native parity-graded encodings), integrates the BCReentry bridge (B-atomic vs C-atomic distinction, 8/13 reversal), PrimeWells prime-exponent address system, and native numeral bit-level arithmetic. The module operates on the actual IMASM word structures emitted by tfactor read, using their period, winding-commit cuts, dialect register, crystal identity, and type hash as structural invariants for factorization.",
+  "grounded_tuple": null,
+  "grounding_status": "ungated",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⋈∈⊤⊥⊞∋⊙⊡⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 1,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (1 step(s) inert after a fixation), 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "",
+  "lean_verified": null,
+  "lean_verification_scope": "IGProtocol tuple scaffold elaboration",
+  "lean_verification_output": "",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⋈∈⊤⊥⊞∋⊙⊡⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⋈∈⊤⊥⊞∋⊙⊡⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⋈∈⊤⊥⊞∋⊙⊡⊣⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "∈⊤⊥⊞∋⊙⊡⊣⊢≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "⊤⊥⊞∋⊙⊡⊣⊢≻⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⊥⊞∋⊙⊡⊣⊢≻⋈∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "⊞∋⊙⊡⊣⊢≻⋈∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "∋⊙⊡⊣⊢≻⋈∈⊤⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊙⊡⊣⊢≻⋈∈⊤⊥⊞∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "⊡⊣⊢≻⋈∈⊤⊥⊞∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⊣⊢≻⋈∈⊤⊥⊞∋⊙⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "banked_ok": true,
+      "closed_walk": true,
+      "exposed_count": true,
+      "final_register": false,
+      "topology_class": true,
+      "tri_ancestral_verdict": true,
+      "vacuous": true
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢≻⋈∈⊤⊥⊞∋⊙⊡⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 11,
+      "exposed": 0,
+      "exposed_at_k": [],
+      "unchecked": 0
+    }
+  },
+  "kernel_repairs": null
+}

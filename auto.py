@@ -5,7 +5,8 @@ Author: Lando⊗⊙-boundary Operator
 
 Given a natural-language description, produces a complete Ob3ectArtifact by
 driving an LLM through all 8 IMASM phases in a single structured call.
-Retries on JSON parse failure or Frobenius FAIL (up to max_retries).
+Retries malformed responses and provider failures within the request budget.
+Structural verdicts remain recorded outcomes.
 """
 from __future__ import annotations
 import json
@@ -35,6 +36,7 @@ from ob3ect.core import (
     MOMonadOSSpec, EntropyAudit, BOOTSTRAP_STEPS, Opcode, glyph_word,
     GLYPH as _CORE_GLYPH,
     OpOpcode, rotat,
+    atomic_write_text,
 )
 try:
     from ob3ect.topology import analyze_topology, TOPOLOGY_PROMPT_FRAGMENT
@@ -150,8 +152,8 @@ def _compute_16_3_breakdown(steps: List[Dict[str, Any]]) -> Optional[str]:
 
 def _carriers_16_3(ops_12: List[str]) -> Optional[List[str]]:
     """One SIXTEEN_3 carrier name per opcode (the register AFTER that op),
-    aligned to ops_12, from the trilattice register machine. This is the
-    full-lattice edge weight for the ASCII circuit: it shows ENGAGR depositing
+    aligned to ops_12, from the trilattice register machine. This is a sequential
+    position observation used by the ASCII fallback: it shows ENGAGR depositing
     t+f (TF→A) where the FOUR-valued register only reads ·. None if the
     trilattice machine is unavailable or the walk fails."""
     if not _IMASM16_3_AVAILABLE:
@@ -267,9 +269,11 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
             except Exception:
                 pass
         orbit.append(entry)
-    readouts = [k for k in orbit[0] if k not in ("k", "word")]
+    readouts = sorted(set().union(*(e.keys() for e in orbit)) - {"k", "word"})
     invariants = {
-        r: all(e.get(r) == orbit[0].get(r) for e in orbit) for r in readouts
+        r: (all(e[r] == orbit[0][r] for e in orbit)
+            if all(r in e and e[r] is not None for e in orbit) else None)
+        for r in readouts
     }
     # Lexicographic minimum alone picked by CODEPOINT — ∈ (U+2208) sorts below
     # ⊢ (U+22A2) — so it landed on a cut that opens mid-word and buries both
@@ -278,7 +282,8 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     bounded = [e for e in orbit
                if e["word"].startswith(GLYPH_VINIT) and e["word"].endswith(GLYPH_TANCH)]
     canonical = min(bounded or orbit, key=lambda e: e["word"])
-    variant = [r for r, holds in invariants.items() if not holds]
+    variant = [r for r, holds in invariants.items() if holds is False]
+    incomplete = [r for r, holds in invariants.items() if holds is None]
     result = {
         "op_opcode": OpOpcode.ROTAT.value,
         "period": n,
@@ -286,7 +291,9 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
         "invariants": invariants,
         "canonical_k": canonical["k"],
         "canonical_word": canonical["word"],
-        "verdict": ("SYMMETRY — every readout is ROTAT-invariant (spectral)"
+        "verdict": ("INCOMPLETE — missing rotation observations"
+                     if incomplete or not readouts else
+                     "SYMMETRY — every readout is ROTAT-invariant (spectral)"
                      if not variant else
                      "PHASE-BEARING — moves under ROTAT: " + ", ".join(variant)),
     }
@@ -295,7 +302,7 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     # banked_ok check cannot distinguish from "holds at every cut" — see the
     # docstring on _banked_count_check. Present only when the per-rotation
     # check above actually ran (entries carry "banked_ok").
-    if orbit and "banked_ok" in orbit[0]:
+    if any("banked_ok" in e for e in orbit):
         already = sum(1 for e in orbit if e.get("banked_ok") and not e.get("vacuous"))
         vacuous_n = sum(1 for e in orbit if e.get("vacuous"))
         exposed_n = sum(1 for e in orbit if e.get("banked_ok") is False)
@@ -304,6 +311,7 @@ def _rotat_orbit_audit(steps: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
             "vacuous": vacuous_n,
             "exposed": exposed_n,
             "exposed_at_k": [e["k"] for e in orbit if e.get("banked_ok") is False],
+            "unchecked": sum(e.get("banked_ok") is None for e in orbit),
         }
     return result
 
@@ -323,11 +331,12 @@ Two arms that conflict FUSE to B, not to an error. Forward and backward, success
 failure, thesis and antithesis: when they meet they fuse to a definite verdict, often B,
 and that is correct. Never try to make a fork "cancel back to the input".
 
-STATE SPACE — the verdict is computed over SIXTEEN_3 = P({T,F,t,f}), the sixteen subsets
+STATE SPACE — the register ranges over SIXTEEN_3 = P({T,F,t,f}), the sixteen subsets
 of four base values (T proven, F refuted, t acceptable, f rejectable) under three orderings
 (information, truth, constructivity — the trilattice). You do NOT compute the verdict and
-you NEVER assert PASS/FAIL — you describe the STRUCTURE; the kernel runs the token word over
-SIXTEEN_3 and returns the B4 value.
+you NEVER assert PASS/FAIL — describe the STRUCTURE. The word checker returns a
+structural B4 verdict. Sequential registers and native graph-flow recovery are
+computed and recorded separately.
 
 LOGICAL (6) — categorical skeleton:
   VINIT  (0x0) — Initial object ∅. Void/uninitialized state before anything is named.
@@ -347,12 +356,11 @@ FROBENIUS (2) — the fork/fuse pair, μ∘δ:
   FSPLIT (0x6) — Co-multiplication δ. One state opens into two or more arms.
                  Examples: Hebrew Doubles (hard/soft), Sanskrit aspirate pairs,
                  Egyptian trilateral roots, separatio, Raft log append to all peers.
-  FFUSE  (0x7) — Multiplication μ. The arms rejoin (Belnap join) into ONE B4 verdict.
+  FFUSE  (0x7) — Multiplication μ. Rejoin the carried alternatives by union.
                  Examples: Conjunctio, trilateral roots recovering base form, Raft commit.
-                 μ∘δ=id is a STRUCTURAL identity the kernel checks over SIXTEEN_3 — it means
-                 the arms rejoin to a single resolved verdict (conflicting arms rejoin to B),
-                 NOT that the domain's contents come back unchanged. A fork that never rejoins
-                 is an OPEN fork (verdict B or N), which is legitimate, not a failure.
+                 A bare split/rejoin is the partition identity. Transformed reconnection
+                 and recovery of the original input are separate observations.
+                 A fork that never rejoins remains OPEN; the structural checker reports B.
 
 DIALETHEIA (3) — the paraconsistent evaluators:
   EVALT  (0x8) — touches constructive truth T (the affirmative arm).
@@ -382,10 +390,10 @@ EDGE ROUTING INSIDE A FSPLIT/FFUSE PAIR
   FSPLIT.F -> [tokens, anchored by EVALF (primary) or AREV (secondary)] -> FFUSE.F
   If T-arm empty: FSPLIT.T connects directly to FFUSE.T (empty arc, T-state)
   If F-arm empty: FSPLIT.F connects directly to FFUSE.F (empty arc, F-state)
-  EVALT MUST precede FFUSE inside the T-arm
-  EVALF MUST precede FFUSE inside the F-arm
-  Branch polarity rule: AREV (parity flip) always belongs on the F-arm;
-    AFWD (forward morphism) always belongs on the T-arm.
+  The first immediate EVALT/EVALF anchors select arm segments. Later operations
+  in a selected segment remain on that arm, including repeated evaluators.
+  Without a primary anchor, AREV selects the F-arm and AFWD the T-arm.
+    With primary anchors, intervening operations stay in their selected arm.
     Secondary anchors activate only when the primary (EVALT/EVALF) anchor is absent.
   Nesting: FSPLIT/FFUSE pairs may nest; innermost pairs matched first
 
@@ -414,12 +422,15 @@ BANKING A RESULT BEFORE REVERSING IT
   deposit carefully into one region and lose everything because its FFUSE ran
   before the reversal. Neither rule implies the other; both are proved in
   p4ramill Imscribing/IMASM/BankedWeight.lean.
-  Cross-branch: FSPLIT.F may route to a non-matched FFUSE (paradice / entangled topology)
+  Explicit graph tools support cross-branch routing. This JSON schema carries
+  a sequence only; imscr_wiring supplies its standard edges. It does not
+  accept arbitrary cross-branch overrides.
 
-BACK-PROPAGATION (self-referential loops)
-  CLINK.o   -> IMSCRIB.i  [weighted -- loop continuation, B state]
-  CLINK.o   -> IFIX.i     [empty   -- compositional witness, T state]
-  IMSCRIB.o -> IFIX.i     [LinFix  -- self-reference record]
+EXPLICIT GRAPH COMPOSITION
+  CLINK.o, IMSCRIB.o and IFIX.o may connect to compatible free inputs.
+  A connection does not assign a register value by itself. The graph-flow
+  evaluator computes that value from source seeds and the executed gates.
+  This sequence-only schema cannot request arbitrary loop edges.
 
 REGISTER STATE TRANSITIONS
   Sequential banked evaluator, carrier P({T,F,t,f}):
@@ -563,11 +574,12 @@ NESTING: FSPLIT/FFUSE pairs may nest. A branch can itself contain a sub-fork:
 Use when the domain has hierarchical sub-decisions within a branch.
 
 OPEN FORKS: A FSPLIT without a matching FFUSE creates a permanently divergent path.
-The F-branch starts an independent sub-genesis (often beginning with VINIT).
+Its unmatched output ports remain open; a later VINIT is a separate source.
 Use when the domain has independent parallel processes that never recombine.
 
-CROSS-BRANCH: FSPLIT.F can route to a non-matched FFUSE (entangled/paradice topology).
-Use when failure in one branch affects resolution in another (quantum, paradox, dialetheia).
+CROSS-BRANCH: arbitrary cross-branch edges require the explicit graph tools.
+This sequence-only output schema uses imscr_wiring standard routing; do not claim
+that prose descriptions add or override its edges.
 
 EMPTY BRANCHES: FSPLIT immediately followed by FFUSE is valid (vacuous evaluation).
 Use when the structural form matters more than a particular branch's content.
@@ -577,11 +589,9 @@ taken because the domain actually forks on a choice. Building n similar items in
 sequence (n cliques, n rounds of one process, n members of a family) is not a decision
 and takes a CLINK chain, one CLINK per item, never an FSPLIT, even when n is a variable
 and even when there are many of them. A fork earns its FFUSE by putting genuinely
-different content on each arm. If nothing distinguishes what happens on the two arms, or
-nothing happens on one of them, it is not a fork, it is decoration: the kernel's own
-insert-repair reads such a fork as vacuous (no clear ever fired, nothing was at risk) or
-reports the word already holds with nothing to add. Do not write a fork you would not
-want read back that way.
+different content on each arm. An empty arm is permitted. Structural closure needs a transformed reconnection.
+The insert-repair banked-clear observation asks whether a clear had protected
+weight; its vacuity result does not decide graph reconnection or arm work.
 
 Choose the topology that best fits the domain. Flat chains are ONE option, not the default.
 
@@ -646,7 +656,7 @@ _NAVIGATOR_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "navigat
 _PRIM_ORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
 _CONTEXT_EXTENSIONS = {".md", ".txt", ".lean", ".py", ".tex", ".rst", ".json"}
-_CONTEXT_MAX_BYTES = 500_000  # 50 KB total
+_CONTEXT_MAX_BYTES = 500_000  # source-content byte budget
 
 # ── Catalog search ────────────────────────────────────────────────────────────
 
@@ -846,7 +856,7 @@ def _server_context_limit(provider: Any) -> Optional[int]:
         r.raise_for_status()
         d = r.json()
         n = d.get("default_generation_settings", {}).get("n_ctx")
-        return int(n) if n else None
+        return int(n) if n and int(n) > 0 else None
     except Exception:
         return None
 
@@ -863,14 +873,15 @@ def _count_tokens(provider: Any, text: str) -> Optional[int]:
         import httpx as _httpx
         r = _httpx.post(f"{root}/tokenize", json={"content": text}, timeout=60)
         r.raise_for_status()
-        return len(r.json().get("tokens", []))
+        tokens = r.json().get("tokens")
+        return len(tokens) if isinstance(tokens, list) else None
     except Exception:
         return None
 
 
 def _fit_context(provider: Any, description: str, domain_type: Optional[str],
                  retry_info: Optional[str], context: Optional[str],
-                 reserve: int = 8192) -> Optional[str]:
+                 reserve: int = 8192, required_context: Optional[str] = None) -> Optional[str]:
     """Trim the CONTEXT until the prompt fits the server's window, and say so.
 
     Only the context is cut. The description and the system prompt are the
@@ -878,36 +889,44 @@ def _fit_context(provider: Any, description: str, domain_type: Optional[str],
     reported in tokens, because a context silently truncated to fit is
     indistinguishable, from the output alone, from a context that never arrived.
     """
-    if not context:
-        return context
+    def prompt(optional):
+        combined = "\n\n".join(c for c in (required_context, optional) if c) or None
+        return _SYSTEM_PROMPT + "\n" + _build_prompt(
+            description, domain_type, retry_info, context=combined)
+
     limit = _server_context_limit(provider)
     if not limit:
         return context
     budget = limit - reserve
-    full = _build_prompt(description, domain_type, retry_info, context=context)
+    full = prompt(context)
     have = _count_tokens(provider, full)
     if have is None or have <= budget:
         return context
     # The overhead is everything that is not context, measured rather than assumed.
-    bare = _build_prompt(description, domain_type, retry_info, context=None)
-    overhead = _count_tokens(provider, bare) or 0
+    bare = prompt(None)
+    overhead = _count_tokens(provider, bare)
+    if overhead is None:
+        raise ValueError("Could not measure required prompt after detecting context overflow")
     ctx_tokens = have - overhead
     room = budget - overhead
-    if room <= 0:
-        print(f"  [context dropped entirely: the question alone is {overhead} tokens "
-              f"against a {limit}-token window]")
+    if room < 0:
+        raise ValueError(f"Required prompt is {overhead} tokens against a {budget}-token input budget")
+    if room == 0 or not context:
         return None
     keep = max(1, int(len(context) * (room / max(ctx_tokens, 1)) * 0.97))
     trimmed = context[:keep]
     # Verify against the server rather than trusting the ratio.
     for _ in range(6):
-        check = _count_tokens(provider, _build_prompt(description, domain_type,
-                                                      retry_info, context=trimmed))
-        if check is None or check <= budget:
+        check = _count_tokens(provider, prompt(trimmed))
+        if check is not None and check <= budget:
             break
         trimmed = trimmed[:int(len(trimmed) * 0.9)]
+    else:
+        # Required content fits; optional content can be omitted safely when
+        # tokenizer counts do not follow the initial proportional estimate.
+        trimmed = None
     print(f"  [context {have} tokens exceeds the {limit}-token window; "
-          f"sent {len(trimmed):,} of {len(context):,} chars]")
+          f"sent {len(trimmed or ''):,} of {len(context):,} chars]")
     return trimmed
 
 
@@ -921,9 +940,12 @@ def _extract_json(text: str) -> Dict[str, Any]:
     except json.JSONDecodeError:
         pass
     # 2. Strip markdown fence
-    m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    m = re.search(r"```(?:json)?\s*(.*?)\s*```", text, re.DOTALL)
     if m:
-        return json.loads(m.group(1))
+        data = json.loads(m.group(1))
+        if not isinstance(data, dict):
+            raise ValueError("Expected a JSON object")
+        return data
     # 3. Outermost braces
     start = text.find("{")
     end = text.rfind("}") + 1
@@ -936,8 +958,8 @@ def _make_unique_slug(raw: str, max_base_len: int = 48) -> str:
     """
     Slugify `raw` for use as a directory/file name. If the normalized slug is
     within max_base_len, it's returned as-is (stable: the same short
-    description always gets the same directory, which is the point — an
-    intentional re-run overwrites its own prior output on purpose).
+    description has a stable base name. Output reservation keeps reruns in
+    separate bundles).
 
     If it would be TRUNCATED, append an 8-hex-char hash of the FULL,
     untruncated string. Two different long descriptions that happen to share
@@ -963,6 +985,19 @@ def _make_unique_slug(raw: str, max_base_len: int = 48) -> str:
         return slug
     h = hashlib.sha1(raw.encode("utf-8")).hexdigest()[:8]
     return f"{slug[:max_base_len].rstrip('_')}_{h}"
+
+
+def _reserve_output_directory(parent: Path, slug: str) -> Path:
+    """Claim a complete run bundle without replacing a previous run."""
+    from uuid import uuid4
+    parent.mkdir(parents=True, exist_ok=True)
+    candidate = parent / slug
+    while True:
+        try:
+            candidate.mkdir()
+            return candidate
+        except FileExistsError:
+            candidate = parent / f"{slug}_{uuid4().hex}"
 
 
 _KNOWN_OPCODES = {oc.value for oc in Opcode}
@@ -995,6 +1030,38 @@ def _validate_sequence(data: Dict[str, Any]) -> None:
     branches raising out of the middle of a scan. One scan, one decision, one
     raise at the end.
     """
+    # Malformed field types belong to the response retry, before artifact
+    # construction or serialization can fail in an unrelated provider branch.
+    for key in ("domain_type", "boundary"):
+        if key in data and not isinstance(data[key], str):
+            raise ValueError(f"{key} must be a string")
+    for key in ("tokens",):
+        if key in data and (not isinstance(data[key], list) or
+                            not all(isinstance(v, str) for v in data[key])):
+            raise ValueError(f"{key} must be a list of strings")
+    fields = {
+        "frobenius": ("split_element", "split_input", "fuse_element", "fuse_result"),
+        "registers": ("void", "true", "false", "both"),
+        "m⊙²": ("compiler", "ipc", "memory", "scheduler", "alfs"),
+        "entropy": ("cost", "pre", "post", "verdict"),
+    }
+    for key, names in fields.items():
+        section = data.get(key, {})
+        if not isinstance(section, dict):
+            raise ValueError(f"{key} must be an object")
+        if any(name in section and not isinstance(section[name], str) for name in names):
+            raise ValueError(f"{key} text fields must be strings")
+    outputs = data.get("frobenius", {}).get("split_outputs", [])
+    if not isinstance(outputs, list) or not all(isinstance(v, str) for v in outputs):
+        raise ValueError("frobenius.split_outputs must be a list of strings")
+    opcodes = data.get("opcodes", {})
+    if not isinstance(opcodes, dict):
+        raise ValueError("opcodes must be an object")
+    for name, entry in opcodes.items():
+        if not isinstance(entry, dict) or any(
+                field in entry and not isinstance(entry[field], str)
+                for field in ("element", "justification")):
+            raise ValueError(f"opcodes.{name} must contain string descriptions")
     seq = data.get("sequence", data.get("bootstrap"))
     fault = ""
     if not isinstance(seq, list) or not seq:
@@ -1031,6 +1098,8 @@ def _parse_opcode(step_str: str) -> str:
     m = re.match(r'^\s*([A-Z][A-Z0-9_]*)\b', s)
     if m and m.group(1) in _KNOWN_OPCODES:
         return m.group(1)
+    if m and re.match(r"\s*:", s[m.end():]):
+        raise ValueError(f"Unknown opcode prefix: {m.group(1)}")
     if s and s[0] in _GLYPH_TO_OP:
         return _GLYPH_TO_OP[s[0]]
     for tok in re.findall(r'\b[A-Z][A-Z0-9_]*\b', s):
@@ -1279,9 +1348,11 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
     # readouts are spectral (ROTAT-invariant) and which are phase.
     try:
         artifact.rotat_audit = _rotat_orbit_audit(bootstrap.steps)
-        artifact.banked_count_check = _banked_count_check(bootstrap.steps)
     except Exception:
         artifact.rotat_audit = None
+    artifact.banked_count_check = _banked_count_check(bootstrap.steps)
+
+    artifact.wiring_check = _inspect_artifact_wiring(artifact)
 
     # ASCII logical-circuit diagram: the port-level wire graph with the edge
     # weights (Belnap register deltas) made explicit, the terminal counterpart
@@ -1292,6 +1363,21 @@ def _build_artifact(name: str, scope: str, data: Dict[str, Any]) -> Ob3ectArtifa
         artifact.ascii_circuit = None
 
     return artifact
+
+
+def _inspect_artifact_wiring(artifact) -> dict:
+    """Keep native graph results separate from the sequential banked reading."""
+    try:
+        imscribr_path = str(Path(__file__).resolve().parents[1] / "IMSCRIBr")
+        if imscribr_path not in sys.path:
+            sys.path.insert(0, imscribr_path)
+        from tokens import Token
+        from wiring import imscr_wiring
+        from native_wiring import inspect_wiring
+        graph = imscr_wiring(tuple(Token[s["opcode"]] for s in artifact.bootstrap_sequence.steps))
+        return inspect_wiring(graph)
+    except Exception as exc:
+        return {"status": "unchecked", "error": f"{type(exc).__name__}: {exc}"}
 
 
 def _generate_ascii_circuit(artifact) -> Optional[str]:
@@ -1315,7 +1401,8 @@ def _generate_ascii_circuit(artifact) -> Optional[str]:
                 return None
         graph = imscr_wiring(tuple(token_list))
         carriers = _carriers_16_3(ops)
-        return render_wiring_ascii(graph, artifact.name, carriers=carriers)
+        return render_wiring_ascii(graph, artifact.name, carriers=carriers,
+                                   graph_report=getattr(artifact, "wiring_check", None))
     except Exception:
         return None
 
@@ -1367,7 +1454,8 @@ def _generate_diagram(artifact: Ob3ectArtifact, pen_mode: bool = False, trilatti
             topo_dict = artifact.topology_report if isinstance(artifact.topology_report, dict)                 else getattr(artifact.topology_report, 'to_dict', lambda: None)()
 
         return render_wiring_svg_v3(graph, graph.name, tier, graph.description, "",
-                                    pen_mode=pen_mode, topology_report=topo_dict, trilattice_data=trilattice_data)
+                                    pen_mode=pen_mode, topology_report=topo_dict, trilattice_data=trilattice_data,
+                                    graph_report=getattr(artifact, "wiring_check", None))
     except ImportError as e:
         print(f"  Diagram: IMSCRIBr not available ({e}) — skipping")
         return None
@@ -1469,16 +1557,33 @@ if _IG_PROVIDER and _IG_PROVIDER in (
     _PROVIDER_CHAIN = [_IG_PROVIDER] + [p for p in _PROVIDER_CHAIN if p != _IG_PROVIDER]
 
 
-def _build_provider_chain() -> List[Any]:
+def _provider_model_kwargs(provider: str, model: Optional[str]) -> dict:
+    if not model:
+        return {}
+    looks_local = model.startswith(("/", "~", ".")) or Path(model).expanduser().exists()
+    if looks_local and provider not in (("local",) + _LOCAL_HTTP_PROVIDERS):
+        return {}
+    if not looks_local and provider in _LOCAL_HTTP_PROVIDERS:
+        return {}
+    return {"model": model}
+
+
+def _build_provider_chain(provider_name=None, model=None) -> List[Any]:
     """Return ordered list of live LLMProvider instances, skipping unavailable ones."""
     chain = []
-    for name in _PROVIDER_CHAIN:
+    provider_name = provider_name or os.environ.get("IG_PROVIDER", "").strip().lower() or None
+    model = model or os.environ.get("IG_MODEL", "").strip() or None
+    for name in ([provider_name] if provider_name else _PROVIDER_CHAIN):
         try:
-            p = get_llm_provider(name)
+            p = get_llm_provider(name, **(_provider_model_kwargs(name, model) if not chain else {}))
             if hasattr(p, "model_path") and not Path(p.model_path).exists():
+                if provider_name:
+                    raise FileNotFoundError(p.model_path)
                 continue
             chain.append(p)
-        except (ValueError, Exception):
+        except Exception:
+            if provider_name:
+                raise
             continue
     return chain
 
@@ -1516,6 +1621,7 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
     target = _GATE_CHECK_DIR / f"{slug}_{uuid4().hex}_gate_check.lean"
     target.write_text(artifact.lean_scaffold, encoding="utf-8")
 
+    proc = None
     try:
         proc = await asyncio.create_subprocess_exec(
             "lake", "env", "lean", str(target),
@@ -1524,6 +1630,11 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
             stderr=asyncio.subprocess.PIPE,
         )
         stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=180)
+    except asyncio.CancelledError:
+        if proc is not None and proc.returncode is None:
+            proc.kill()
+            await proc.wait()
+        raise
     except FileNotFoundError:
         artifact.lean_verification_output = "`lake` not found on PATH — could not elaborate."
         return
@@ -1587,9 +1698,7 @@ async def _run_gated_imscription(description: str, provider_name: Optional[str],
     # model produced the artifact. None as the model lets a local server report
     # its own id rather than being handed somebody else's slug.
     gate_provider = provider_name or _PROVIDER_CHAIN[0]
-    gate_model = model
-    if gate_model is None and gate_provider not in (("local",) + _LOCAL_HTTP_PROVIDERS):
-        gate_model = "google/gemini-3-flash-preview"
+    gate_model = _provider_model_kwargs(gate_provider, model).get("model")
     config = _build_gate_agent_config(provider=gate_provider, model=gate_model, max_tokens=4000)
     agent = _ImscriptionGeneratorAgent(config)
     return await agent.generate_guided(description)
@@ -1662,6 +1771,8 @@ async def auto_design(
     Returns:
         Validated Ob3ectArtifact
     """
+    if max_retries <= 0:
+        raise ValueError("max_retries must be positive")
     artifact_name = name or description.strip()
 
     # IG_MODEL / IG_PROVIDER env var → override defaults when not explicitly passed
@@ -1675,6 +1786,7 @@ async def auto_design(
     grounding_status = "ungated"
     grounding_reasoning = ""
     grounding_failed = []
+    gate_context = None
     if not skip_gate:
         gate_result = await _run_gated_imscription(description, provider_name, model)
         grounded_tuple = gate_result.imscription.to_notation()
@@ -1684,44 +1796,18 @@ async def auto_design(
         # left "failed" with no cause attached anywhere in the artifact.
         grounding_failed = list(getattr(gate_result, "failed_primitives", []) or [])
         gate_context = (
-            f"A gated imscription of this description has ALREADY been validated "
+            f"The gated imscriber returned this assignment for the description "
             f"(grounding: {grounding_status}):\n"
             f"  Tuple: {grounded_tuple}\n"
             + (f"  Ungrounded primitives: {', '.join(grounding_failed)}\n"
                if grounding_failed else "")
             + f"  Reasoning: {grounding_reasoning}\n"
-            f"Your opcode map, register mapping, and bootstrap sequence MUST be built "
-            f"consistent with this tuple — it is not a suggestion, it is the already-"
-            f"grounded type. Do not invent a different primitive assignment."
+            f"Build the opcode map, register mapping, and bootstrap sequence "
+            f"consistent with this assignment and retain its reported grounding status."
         )
-        context = f"{gate_context}\n\n{context}" if context else gate_context
 
     def _model_for(provider: str) -> dict:
-        """A model id belongs to the provider it names.
-
-        A local checkpoint is a filesystem PATH, and handing that to a cloud
-        endpoint produces "/home/…/.modelz/ADULTBB is not a valid model ID" —
-        the fallback chain turning a local model into a bad request against
-        somebody else's API. A path goes only to a provider that loads paths.
-        """
-        if not model:
-            return {}
-        looks_local = model.startswith(("/", "~", ".")) or Path(model).expanduser().exists()
-        # llama-server and vLLM identify their model BY PATH, so a path is a
-        # valid id for them too; the rule is "a path goes only to a provider
-        # that loads paths", not "only to the provider named local".
-        if looks_local and provider not in (("local",) + _LOCAL_HTTP_PROVIDERS):
-            return {}
-        # A local OpenAI-compatible server serves exactly one thing and rejects
-        # every other id, so ITS answer outranks a nickname from the
-        # environment. IG_MODEL=Q3p527b names a model DIRECTORY, not the id
-        # llama-server reports (the full .gguf path); forwarding it here as an
-        # explicit argument overrode the factory's server probe and turned the
-        # pinned local provider into an instant 400, which then cascaded the
-        # same bad id down the cloud chain. Let the probe answer instead.
-        if not looks_local and provider in _LOCAL_HTTP_PROVIDERS:
-            return {}
-        return {"model": model}
+        return _provider_model_kwargs(provider, model)
 
     if provider_name:
         # A NAMED provider is the only lane. This used to move it to the front
@@ -1733,13 +1819,11 @@ async def auto_design(
         chain = [provider_name]
         providers = []
         for n in chain:
-            if n in _UNREACHABLE:
-                continue
             try:
                 kwargs = _model_for(n) if n == provider_name else {}
                 p = get_llm_provider(n, **kwargs)
                 if hasattr(p, "model_path") and not Path(p.model_path).exists():
-                    continue
+                    raise FileNotFoundError(p.model_path)
                 p._ig_chain_name = n
                 providers.append(p)
             except Exception as e:
@@ -1801,7 +1885,7 @@ async def auto_design(
     tried: List[str] = []
 
     def _next_provider(err: Exception) -> None:
-        nonlocal provider_idx, provider
+        nonlocal provider_idx, provider, parse_failures, transient_retries
         tried.append(f"{provider.__class__.__name__}: {type(err).__name__}: {str(err)[:160]}")
         provider_idx += 1
         if provider_idx >= len(providers):
@@ -1820,6 +1904,8 @@ async def auto_design(
                 _UNREACHABLE.add(dead)
                 print(f"  [{dead} is unreachable — not dialled again this run]")
         provider = providers[provider_idx]
+        parse_failures = 0
+        transient_retries = 0
         # The reason belongs AT the switch, not only in the aggregate raised
         # after the last provider dies: a chain that announces three switches
         # and no causes leaves the one fault that mattered — the pinned local
@@ -1828,13 +1914,14 @@ async def auto_design(
 
     attempt = 0
     parse_failures = 0
-    fitted_for: Any = None
+    transient_retries = 0
     while attempt < max_retries:
-        # Fit to whatever provider is answering NOW, since a switch changes the window.
-        if fitted_for is not provider:
-            context = _fit_context(provider, description, domain_type, retry_info, context)
-            fitted_for = provider
-        prompt = _build_prompt(description, domain_type, retry_info, context=context)
+        # Refit the original optional context on every request, including
+        # retries. Grounding and the question are required and cannot be cut.
+        fitted_context = _fit_context(provider, description, domain_type, retry_info,
+                                      context, required_context=gate_context)
+        combined_context = "\n\n".join(c for c in (gate_context, fitted_context) if c) or None
+        prompt = _build_prompt(description, domain_type, retry_info, context=combined_context)
         try:
             # Streaming is a VIEW of the same call: the deltas go to stderr as
             # they arrive and the whole text still comes back, so the JSON
@@ -1907,11 +1994,18 @@ async def auto_design(
             if e.response.status_code == 429:
                 retry_info = "Rate limited — retry."
                 attempt += 1
-            elif e.response.status_code in (400, 502, 503, 504):
+                if attempt < max_retries:
+                    try:
+                        delay = max(0.0, float(e.response.headers.get("Retry-After", "1")))
+                    except ValueError:
+                        delay = 1.0
+                    await asyncio.sleep(delay)
+            elif e.response.status_code in (502, 503, 504):
                 # Transient provider issues — retry once before switching
-                if attempt < 1:
+                if transient_retries < 1:
                     retry_info = f"HTTP {e.response.status_code} (transient) — retry."
                     attempt += 1
+                    transient_retries += 1
                 else:
                     _next_provider(e)
             else:
@@ -1982,12 +2076,15 @@ _ZOOM_LEVEL_SCHEMA = """\
 
 
 async def _discover_zoom_levels(
-    seed: str, target: str, n_levels: int, temperature: float = 0.3
+    seed: str, target: str, n_levels: int, temperature: float = 0.3,
+    provider_name: Optional[str] = None, model: Optional[str] = None,
 ) -> tuple:
     """Use LLM to discover N zoom levels between seed (∈=0) and target (∈=N-1)."""
-    providers = _build_provider_chain()
+    if type(n_levels) is not int or n_levels < 2:
+        raise ValueError("A zoom chain requires at least two levels")
+    providers = _build_provider_chain(provider_name, model)
     if not providers:
-        return [seed, target], [f"{seed} composes into {target}"]
+        raise RuntimeError("No provider available for zoom discovery")
     provider = providers[0]
     prompt = (
         f"Seed (∈=0, finest grain): {seed}\n"
@@ -2004,18 +2101,17 @@ async def _discover_zoom_levels(
         data = _extract_json(raw)
         levels = data.get("levels", [])
         morphisms = data.get("clink_morphisms", [])
-        if len(levels) < 2:
-            levels = [seed, target]
-        if len(morphisms) < len(levels) - 1:
-            morphisms += [f"composes into {levels[i+1]}" for i in range(len(morphisms), len(levels) - 1)]
+        if (not isinstance(levels, list) or len(levels) != n_levels or
+                not all(isinstance(s, str) and s.strip() for s in levels)):
+            raise ValueError("Zoom discovery must return the requested number of nonempty level descriptions")
+        if levels[0] != seed or levels[-1] != target:
+            raise ValueError("Zoom discovery changed the requested endpoints")
+        if (not isinstance(morphisms, list) or len(morphisms) != n_levels - 1 or
+                not all(isinstance(s, str) and s.strip() for s in morphisms)):
+            raise ValueError("Zoom discovery must return one nonempty morphism per adjacent level")
         return levels, morphisms
     except Exception as e:
-        print(f"  [zoom discovery fallback: {e}]")
-        # fallback: evenly interpolate
-        if n_levels == 2:
-            return [seed, target], [f"{seed} composes into {target}"]
-        mid = f"intermediate scale between {seed} and {target}"
-        return [seed, mid, target], [f"{seed} → {mid}", f"{mid} → {target}"]
+        raise RuntimeError(f"Zoom discovery failed: {e}") from e
 
 
 class ZoomLevel:
@@ -2055,7 +2151,7 @@ class ZoomChain:
         leaked = [lvl for lvl in self.levels
                   if (lvl.artifact.banked_count_check or {}).get("banked_ok") is False]
         if leaked:
-            lines.append(f"{len(leaked)} level(s) closed but leaked weight on their own bank check:")
+            lines.append(f"{len(leaked)} level(s) exposed weight on their bank check:")
             for lvl in leaked:
                 lines.append(f"  ∈={lvl.gamma} {lvl.description[:70]}")
         lines.append(sep)
@@ -2069,6 +2165,9 @@ class ZoomChain:
             "levels": [
                 {
                     "gamma": lvl.gamma,
+                    "artifact_id": getattr(lvl.artifact, "artifact_id", None),
+                    "artifact_directory": getattr(lvl.artifact, "output_directory", None),
+                    "glyph_word": getattr(lvl.artifact, "glyph_word", None),
                     "description": lvl.description,
                     "tanch": lvl.artifact.opcode_map.entries.get(
                         "TANCH", type("", (), {"chosen_element": "?"})()
@@ -2081,7 +2180,7 @@ class ZoomChain:
             ],
         }
         path = out_dir / "zoom_manifest.json"
-        path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
+        atomic_write_text(path, json.dumps(manifest, indent=2, ensure_ascii=False))
         return path
 
 
@@ -2103,7 +2202,8 @@ async def zoom_design(
     Reverse zoom (coarse→fine) is just seed=target, target=seed.
     """
     print(f"Discovering {n_levels}-level ∈ hierarchy: {seed!r} → {target!r}")
-    level_descs, morphisms = await _discover_zoom_levels(seed, target, n_levels, temperature)
+    level_descs, morphisms = await _discover_zoom_levels(
+        seed, target, n_levels, temperature, provider_name=provider_name, model=model)
     print(f"Levels: {level_descs}")
 
     zoom_levels = []
@@ -2194,8 +2294,12 @@ class ChurnTree:
             lines.append("steps that do not close when imscribed alone:")
             for n in broke:
                 lines.append(f"  w={n.winding} {n.opcode}: {n.description[:70]}")
-        else:
+        elif not any(n.winding > 0 for n in all_nodes):
+            lines.append("no child steps were imscribed")
+        elif closed == len(all_nodes):
             lines.append("every step closes on its own as well as in place")
+        else:
+            lines.append("child steps close individually; root closure is unverified")
         # Frobenius closed and banked ok are different questions (t2_efl_affirm
         # closed T while its own AREV cleared 2 units with nothing banked ahead of
         # it) — a churn report that only ever says T/B would carry that same blind
@@ -2203,7 +2307,7 @@ class ChurnTree:
         leaked = [n for n in all_nodes
                   if (n.artifact.banked_count_check or {}).get("banked_ok") is False]
         if leaked:
-            lines.append(f"\n{len(leaked)} node(s) closed but leaked weight on their own bank check:")
+            lines.append(f"\n{len(leaked)} node(s) exposed weight on their bank check:")
             for n in leaked:
                 lines.append(f"  w={n.winding} {n.opcode}: {n.description[:70]}")
         lines.append(sep)
@@ -2213,6 +2317,8 @@ class ChurnTree:
         def node_json(n: ChurnNode) -> Dict[str, Any]:
             return {
                 "winding": n.winding,
+                "artifact_id": getattr(n.artifact, "artifact_id", None),
+                "artifact_directory": getattr(n.artifact, "output_directory", None),
                 "opcode": n.opcode,
                 "step_num": n.step_num,
                 "description": n.description,
@@ -2225,7 +2331,7 @@ class ChurnTree:
         manifest = {"seed": self.seed, "windings": self.windings,
                     "root": node_json(self.root)}
         path = out_dir / "churn_manifest.json"
-        path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
+        atomic_write_text(path, json.dumps(manifest, indent=2, ensure_ascii=False))
         return path
 
 
@@ -2289,6 +2395,8 @@ async def churn_design(
     ITS parent's, down to the original description. Siblings are independent and
     run together, `concurrency` at a time.
     """
+    if windings < 1 or max_ob3ects < 1 or concurrency < 1:
+        raise ValueError("windings, max_ob3ects and concurrency must be positive")
     print(f"Churning {description!r} to {windings} winding(s)")
 
     root_art = await auto_design(
@@ -2459,7 +2567,7 @@ def _install_interrupt_handler() -> None:
         # signal handler is how the same deadlock gets re-entered from the handler
         # meant to avoid it. A raw fd write needs no lock.
         os.write(2, b"\ninterrupted\n")
-        os._exit(130)
+        os._exit(128 + signum)
 
     _signal.signal(_signal.SIGINT, _handler)
     _signal.signal(_signal.SIGTERM, _handler)
@@ -2535,14 +2643,18 @@ if __name__ == "__main__":
     if args.yaml_config:
         import yaml as _yaml
         _cfg = _yaml.safe_load(open(args.yaml_config, encoding="utf-8")) or {}
+        if not isinstance(_cfg, dict):
+            ap.error("batch configuration must be a mapping")
         _d = _cfg.get("design", {}) or {}
+        if not isinstance(_d, dict):
+            ap.error("batch design must be a mapping")
         # context (--context) + catalog entries (--entry), merged like single mode
         _ctx = None
         if _d.get("context"):
             try:
                 _ctx = _load_context(_d["context"])
             except Exception as _e:
-                print(f"Warning: {_e} — proceeding without context")
+                ap.error(f"could not load batch context: {_e}")
         if _d.get("entry"):
             _names = [n.strip() for n in str(_d["entry"]).split(",") if n.strip()]
             _ectx = _load_catalog_entries(_names)
@@ -2552,8 +2664,13 @@ if __name__ == "__main__":
             _ep.enable_thinking = True
         _no_scaffold = bool(_d.get("no_scaffold", False))         # --no-scaffold
         _no_diagram = bool(_d.get("no_diagram", False))           # --no-diagram
-        _ents = list(_cfg.get("entities") or [])
+        _ents = _cfg.get("entities") or []
+        if not isinstance(_ents, list) or not all(isinstance(e, str) and e.strip() for e in _ents):
+            ap.error("batch entities must be a list of nonempty strings")
+        _ents = list(_ents)
         _ef = _cfg.get("entities_from") or {}
+        if not isinstance(_ef, dict):
+            ap.error("entities_from must be a mapping")
         if _ef.get("file"):
             _ents += [ln.strip() for ln in open(_ef["file"], encoding="utf-8")
                       if ln.strip() and not ln.lstrip().startswith("#")]
@@ -2579,11 +2696,10 @@ if __name__ == "__main__":
                 context=_ctx,
             )
             _slug = _make_unique_slug(_ent) if _ent.strip() else f"ob3ect_{_i}"
-            _sub = _out / _slug
-            _sub.mkdir(parents=True, exist_ok=True)
+            _sub = _reserve_output_directory(_out, _slug)
             _art.save(_sub / f"{_slug}_ob3ect.json")
             if _art.lean_scaffold and not _no_scaffold:
-                (_sub / f"{_slug}_scaffold.lean").write_text(_art.lean_scaffold, encoding="utf-8")
+                atomic_write_text(_sub / f"{_slug}_scaffold.lean", _art.lean_scaffold)
             if not _no_diagram:
                 _write_diagrams(_art, _sub, _slug)
             print(f"      -> {_sub}/{_slug}_ob3ect.json")
@@ -2620,8 +2736,8 @@ if __name__ == "__main__":
             ctx = _load_context(args.context_path)
             n_files = ctx.count("=== ")
             print(f"Context loaded: {args.context_path} ({len(ctx):,} chars, {n_files} file(s))\n")
-        except FileNotFoundError as e:
-            print(f"Warning: {e} — proceeding without context")
+        except (OSError, ValueError) as e:
+            ap.error(f"could not load context: {e}")
 
     if args.catalog_entries:
         names = [n.strip() for n in args.catalog_entries.split(",") if n.strip()]
@@ -2662,14 +2778,16 @@ if __name__ == "__main__":
         print("\n" + tree.report())
 
         slug = "churn_" + _make_unique_slug(desc, max_base_len=40)
-        out_dir = Path(__file__).parent / "digital" / slug
-        out_dir.mkdir(parents=True, exist_ok=True)
+        out_dir = _reserve_output_directory(Path(__file__).parent / "digital", slug)
 
         for node in tree.nodes():
             n_slug = _make_unique_slug(node.description)
             tag = f"w{node.winding}" + (f"_{node.opcode.lower()}" if node.opcode else "_root")
-            n_dir = out_dir / f"{tag}_{n_slug}"
+            # Repeated operations and equal descriptions can occur under
+            # different parents. Preserve each artifact's own output bundle.
+            n_dir = out_dir / f"{tag}_{n_slug}_{node.artifact.artifact_id}"
             n_dir.mkdir(parents=True, exist_ok=True)
+            node.artifact.output_directory = n_dir.relative_to(out_dir).as_posix()
             print("\n" + "=" * 70)
             print(f"[w={node.winding}]" + (f" {node.opcode}" if node.opcode else " root")
                   + f"  {node.description[:70]}")
@@ -2677,7 +2795,7 @@ if __name__ == "__main__":
             _print_artifact_block(node.artifact, no_scaffold=args.no_scaffold)
             node.artifact.save(n_dir / f"{n_slug}_ob3ect.json")
             if node.artifact.lean_scaffold and not args.no_scaffold:
-                (n_dir / f"{n_slug}_scaffold.lean").write_text(node.artifact.lean_scaffold)
+                atomic_write_text(n_dir / f"{n_slug}_scaffold.lean", node.artifact.lean_scaffold)
             if not args.no_diagram:
                 _write_diagrams(node.artifact, n_dir, n_slug)
 
@@ -2704,16 +2822,16 @@ if __name__ == "__main__":
         print("\n" + chain.report())
 
         slug = "zoom_" + _make_unique_slug(f"{desc}_{args.zoom_target}", max_base_len=40)
-        out_dir = Path(__file__).parent / "digital" / slug
-        out_dir.mkdir(parents=True, exist_ok=True)
+        out_dir = _reserve_output_directory(Path(__file__).parent / "digital", slug)
 
         for lvl in chain.levels:
             lvl_slug = _make_unique_slug(lvl.description)
             lvl_dir = out_dir / f"gamma_{lvl.gamma}_{lvl_slug}"
             lvl_dir.mkdir(parents=True, exist_ok=True)
+            lvl.artifact.output_directory = lvl_dir.relative_to(out_dir).as_posix()
             lvl.artifact.save(lvl_dir / f"{lvl_slug}_ob3ect.json")
             if lvl.artifact.lean_scaffold and not args.no_scaffold:
-                (lvl_dir / f"{lvl_slug}_scaffold.lean").write_text(lvl.artifact.lean_scaffold)
+                atomic_write_text(lvl_dir / f"{lvl_slug}_scaffold.lean", lvl.artifact.lean_scaffold)
             if not args.no_diagram:
                 diagram_path = _write_diagrams(lvl.artifact, lvl_dir, lvl_slug)
                 if diagram_path:
@@ -2756,14 +2874,13 @@ if __name__ == "__main__":
 
     # ── Persist to disk ──────────────────────────────────────────────────
     slug = _make_unique_slug(ob3ect_name)
-    out_dir = Path(__file__).parent / "digital" / slug
-    out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = _reserve_output_directory(Path(__file__).parent / "digital", slug)
     json_path = art.save(out_dir / f"{slug}_ob3ect.json")
     print(f"\nSaved to: {json_path}")
     # Also save Lean scaffold if generated
     if art.lean_scaffold:
         lean_path = out_dir / f"{slug}_scaffold.lean"
-        lean_path.write_text(art.lean_scaffold)
+        atomic_write_text(lean_path, art.lean_scaffold)
         print(f"Scaffold:   {lean_path}")
     # Also generate symbolic wiring diagram
     if not args.no_diagram:

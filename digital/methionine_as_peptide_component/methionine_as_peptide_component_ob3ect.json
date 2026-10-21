@@ -1,0 +1,529 @@
+{
+  "name": "methionine as peptide component",
+  "artifact_id": "0d05aedb8d8141e09adfe49425dda47f",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "methionine as peptide component",
+      "domain_type": "chemical",
+      "scope": "local",
+      "surface_tokens": [
+        "thioether",
+        "peptide_bond",
+        "stereochemical_memory"
+      ],
+      "boundary_condition": "The covalent backbone of the polypeptide chain, which constrains the conformational space of the methionine residue while permitting local side-chain rotation.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "free_methionine",
+        "justification": "The isolated amino acid before incorporation into the chain, representing the void state prior to structural commitment.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "folded_protein",
+        "justification": "The complete tertiary structure that contains the residue, acting as the terminal anchor for the system's stability.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "peptide_bond_formation",
+        "justification": "The forward morphism of condensation reaction that links the amino acid to the growing chain.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "hydrolysis",
+        "justification": "The reverse transformation that breaks the peptide bond, returning the residue to its free state.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "backbone_propagation",
+        "justification": "The sequential chaining of residues that defines the linear hierarchy of the polypeptide.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "residue_identity",
+        "justification": "The self-reference of the methionine residue maintaining its specific chemical identity within the chain.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "conformational_search",
+        "justification": "The branching of the side-chain into multiple possible rotameric states due to its flexible thioether group.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "conformational_equilibrium",
+        "justification": "The rejoining of rotameric states into a statistical distribution of conformations.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "stable_conformation",
+        "justification": "The affirmative state where the residue adopts a low-energy conformation compatible with the fold.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "steric_clash",
+        "justification": "The negative state where the residue encounters steric hindrance or unfavorable electronic interactions.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "dynamic_disorder",
+        "justification": "The paradice where the residue simultaneously samples multiple conformations, holding both order and disorder.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "crystal_structure",
+        "justification": "The permanent record of the residue's position in a high-resolution structural determination.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "conformational_search",
+      "split_input": "free_methionine",
+      "split_outputs": [
+        "rotamer_A",
+        "rotamer_B"
+      ],
+      "fuse_element": "conformational_equilibrium",
+      "fuse_result": "dynamic_disorder",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "The isolated amino acid in solution, unbound and unconstrained by the peptide backbone.",
+      "true_description": "The residue is incorporated into the chain and adopts a stable, low-energy conformation.",
+      "false_description": "The residue is excluded from the chain or adopts a high-energy, unstable conformation.",
+      "both_description": "The residue is dynamically disordered, simultaneously occupying multiple conformations in the ensemble.",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize the system with free methionine in solution."
+        },
+        {
+          "step_num": 2,
+          "opcode": "≻",
+          "domain_action": "Form the peptide bond, incorporating methionine into the growing chain."
+        },
+        {
+          "step_num": 3,
+          "opcode": "⋈",
+          "domain_action": "Propagate the backbone, linking methionine to adjacent residues."
+        },
+        {
+          "step_num": 4,
+          "opcode": "∈",
+          "domain_action": "Branch the side-chain into multiple rotameric states."
+        },
+        {
+          "step_num": 5,
+          "opcode": "⊤",
+          "domain_action": "Evaluate the stable conformation arm, affirming low-energy states."
+        },
+        {
+          "step_num": 6,
+          "opcode": "⊥",
+          "domain_action": "Evaluate the steric clash arm, negating high-energy states."
+        },
+        {
+          "step_num": 7,
+          "opcode": "∋",
+          "domain_action": "Rejoin the rotameric states into a conformational equilibrium."
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "Hold the dynamic disorder, maintaining both order and disorder."
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊙",
+          "domain_action": "Assert the identity of the methionine residue within the chain."
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊣",
+          "domain_action": "Anchor the system in the folded protein structure."
+        },
+        {
+          "step_num": 11,
+          "opcode": "⊡",
+          "domain_action": "Record the residue's position in the crystal structure."
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "The biochemical machinery that translates genetic code into peptide sequences.",
+      "ipc_mechanism": "Hydrogen bonding and van der Waals interactions between residues.",
+      "memory_mechanism": "The covalent backbone and tertiary structure store the conformational history.",
+      "scheduler_mechanism": "Thermodynamic equilibrium determines the order and timing of conformational changes.",
+      "alfs_store": "The genetic code and the standard amino acid properties.",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "Thermal energy is consumed to overcome conformational barriers.",
+      "pre_cycle_state": "The residue is in a single, defined conformation.",
+      "post_cycle_state": "The residue is in a statistical ensemble of conformations.",
+      "delta_s_verdict": "ΔS ≈ 0 — The system is entropy-conservative as it reaches thermodynamic equilibrium.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢≻⋈∈⊤⊥∋⊞⊙⊣⊡",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢≻⋈∈⊤⊥∋⊞⊙⊣⊡\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ≻   AFWD     AFWD          N →     T\n    3   ⋈   CLINK    CLINK         T →     T\n    4   ∈   FSPLIT   FSPLIT3       T →     T\n    5   ⊤   EVALT    EVALT         T →     T\n    6   ⊥   EVALF    EVALF         T →    TF\n    7   ∋   FFUSE    FFUSE3       TF →    TF\n    8   ⊞   ENGAGR   EVALI        TF →     A\n    9   ⊙   IMSCRIB  IMSCRIB       A →     A\n   10   ⊣   TANCH    TANCH         A →     A\n   11   ⊡   IFIX     IFIX          A →     A\n\n  Final register: A\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ≻ → ⋈ → ∈ → ⊤ → ⊥ → ∋ → ⊞ → ⊙ → ⊣ → ⊡\n-- Class: methionine as peptide component\n-- Fingerprint: sig=(5,2,3,1)\n--   self_ref=False | frobenius_order=1\n--   dialetheia_complete=True | period=11\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(3, 6)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑼  | initial object — ground of distinction\n--   [1] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [2] ⋈     fid    := 𐑱               𐑱 → 𐑱  | composition — regime coherence\n--   [3] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [4] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [5] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [6] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [7] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [8] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [9] ⊣     top    := 𐑡               𐑡 → 𐑡  | terminal object — connectivity boundary\n--   [10] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def methionine_as_peptide_component_initial : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s1 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s2 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s3 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def methionine_as_peptide_component_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def methionine_as_peptide_component_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := awe }\nprivate def methionine_as_peptide_component_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def methionine_as_peptide_component_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def methionine_as_peptide_component_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def methionine_as_peptide_component_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def methionine_as_peptide_component_protocol : IGProtocol methionine_as_peptide_component_initial methionine_as_peptide_component_s10 :=\n  .withGram Grammar.measure <|\n  (.seq (.arrow methionine_as_peptide_component_l0 methionine_as_peptide_component_initial methionine_as_peptide_component_s0) (.seq (.arrow methionine_as_peptide_component_l1 methionine_as_peptide_component_s0 methionine_as_peptide_component_s1) (.seq (.arrow methionine_as_peptide_component_l2 methionine_as_peptide_component_s1 methionine_as_peptide_component_s2) (.seq (.arrow methionine_as_peptide_component_l3 methionine_as_peptide_component_s2 methionine_as_peptide_component_s3) (.seq (.prod (.arrow methionine_as_peptide_component_l4 methionine_as_peptide_component_s3 methionine_as_peptide_component_s4) (.arrow methionine_as_peptide_component_l5 methionine_as_peptide_component_s3 methionine_as_peptide_component_s5)) (.seq (.arrow methionine_as_peptide_component_l6 (tensorProduct methionine_as_peptide_component_s4 methionine_as_peptide_component_s5) methionine_as_peptide_component_s6) (.seq (.arrow methionine_as_peptide_component_l7 methionine_as_peptide_component_s6 methionine_as_peptide_component_s7) (.seq (.arrow methionine_as_peptide_component_l8 methionine_as_peptide_component_s7 methionine_as_peptide_component_s8) (.seq (.arrow methionine_as_peptide_component_l9 methionine_as_peptide_component_s8 methionine_as_peptide_component_s9) (.arrow methionine_as_peptide_component_l10 methionine_as_peptide_component_s9 methionine_as_peptide_component_s10))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def methionine_as_peptide_component_true_arm : IGProtocol methionine_as_peptide_component_initial methionine_as_peptide_component_s10 :=\n  (methionine_as_peptide_component_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def methionine_as_peptide_component_false_arm : IGProtocol methionine_as_peptide_component_initial methionine_as_peptide_component_s10 :=\n  (methionine_as_peptide_component_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef methionine_as_peptide_component_tier_ground : OuroboricityTier := TierFunctor.obj methionine_as_peptide_component_initial\ndef methionine_as_peptide_component_tier : OuroboricityTier := TierFunctor.obj methionine_as_peptide_component_s10\n#eval methionine_as_peptide_component_tier_ground  -- tier of the ground (pre-transformation)\n#eval methionine_as_peptide_component_tier  -- the Grammar's tuple-tier verdict\n\n-- Frobenius (split → fuse): μ∘δ = id on the ground imscription\ntheorem methionine_as_peptide_component_frobenius :\n    igFrobeniusAlg.mul methionine_as_peptide_component_initial methionine_as_peptide_component_initial = methionine_as_peptide_component_initial :=\n  igFrobAlg_self_fusion methionine_as_peptide_component_initial\n\ntheorem methionine_as_peptide_component_protocol_depth :\n    methionine_as_peptide_component_protocol.depth = 10 := by rfl\n\nend Imscribing",
+  "topology_report": {
+    "topology_class": "flat_chain",
+    "nesting_depth": 0,
+    "total_pairs": 1,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "sequence_length": 11,
+    "t_branch_ops": 1,
+    "f_branch_ops": 1,
+    "branch_ratio": 1.0,
+    "fork_positions": [
+      3
+    ],
+    "fuse_positions": [
+      6
+    ],
+    "pair_list": [
+      [
+        3,
+        6
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  methionine as peptide component   11 nodes, 11 wires\n  Native graph flow: node inputs and actual wire carriers; seed A\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ≻   [o→i]  A\n  1 ≻ AFWD     A   \n     └─▶  2 ⋈   [o→i]  A\n  2 ⋈ CLINK    A   \n     └─▶  3 ∈   [o→i]  A\n  3 ∈ FSPLIT   A     ┐ fork\n     ├─▶  4 ⊤   [T→i]  Tt\n     └─▶  5 ⊥   [F→i]  Ff\n  4 ⊤ EVALT    Tt  \n     └─▶  6 ∋   [o→T]  Tt\n  5 ⊥ EVALF    Ff  \n     └─▶  6 ∋   [o→F]  Ff\n  6 ∋ FFUSE    A     ┘ join\n     └─▶  7 ⊞   [o→i]  A\n  7 ⊞ ENGAGR   A   \n     └─▶  8 ⊙   [o→i]  A\n  8 ⊙ IMSCRIB  A   \n     └─▶  9 ⊣   [o→i]  A\n  9 ⊣ TANCH    A   \n     └─▶ 10 ⊡   [o→i]  A\n 10 ⊡ IFIX     A   \n\n  Native ancestry: CLOSED   pairs [[3, 6]]\n  Final node input A",
+  "wiring_check": {
+    "closure": "closed",
+    "closure_verified": true,
+    "fully_reconnected": true,
+    "pairs": [
+      [
+        3,
+        6
+      ]
+    ],
+    "node_inputs": [
+      0,
+      15,
+      15,
+      15,
+      5,
+      10,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "edge_values": [
+      5,
+      5,
+      10,
+      10,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "pair_recovers_input": [
+      true
+    ],
+    "status": "checked",
+    "instrument": "imasm_core::check + imasm_core::flow",
+    "source_sha256": "bc8077cdf3826459902785e7c9877dd73ae57ff92bf4b38c8be9049e85aad18f",
+    "seed": 15,
+    "port_observations": [],
+    "nodes": [
+      "VINIT",
+      "AFWD",
+      "CLINK",
+      "FSPLIT",
+      "EVALT",
+      "EVALF",
+      "FFUSE",
+      "ENGAGR",
+      "IMSCRIB",
+      "TANCH",
+      "IFIX"
+    ],
+    "wires": [
+      [
+        3,
+        "T",
+        4,
+        "i"
+      ],
+      [
+        4,
+        "o",
+        6,
+        "T"
+      ],
+      [
+        3,
+        "F",
+        5,
+        "i"
+      ],
+      [
+        5,
+        "o",
+        6,
+        "F"
+      ],
+      [
+        0,
+        "o",
+        1,
+        "i"
+      ],
+      [
+        1,
+        "o",
+        2,
+        "i"
+      ],
+      [
+        2,
+        "o",
+        3,
+        "i"
+      ],
+      [
+        6,
+        "o",
+        7,
+        "i"
+      ],
+      [
+        7,
+        "o",
+        8,
+        "i"
+      ],
+      [
+        8,
+        "o",
+        9,
+        "i"
+      ],
+      [
+        9,
+        "o",
+        10,
+        "i"
+      ]
+    ]
+  },
+  "notes": "Auto-designed from: methionine as peptide component",
+  "grounded_tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢≻⋈∈⊤⊥∋⊞⊙⊣⊡",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 3,
+    "inert": 0,
+    "verdict": "nothing was at risk: no clear ever fired against a live register, 3 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑰: Methionine acts as a specific residue within the linear, hierarchical structure of a polypeptide chain, fitting the branched tree topology of containment where components are nested within the larger molecular assembly.\n⊢=𐑨: Methionine as a peptide component participates in the extended three-dimensional spatial arrangement of the polypeptide chain, where steric and electronic constraints propagate through the folded structure.\n⊞=𐑳: Methionine is a single amino acid residue, representing an asymmetric participation where one specific unit is involved rather than a symmetric pair or higher-order oligomer.\n⊡=𐑷: Methionine is a standard, achiral amino acid with no topological invariants or symmetry constraints that prevent its continuous deformation to a trivial state in the context of peptide components.\n⊙=𐑢: Methionine is a standard, stable amino acid component in peptides that operates within a normal, subcritical biochemical regime without exhibiting scale-free critical behavior.\n⊥=𐑖: Methionine is a stable, non-racemizing amino acid whose chirality is structurally enforced by its tetrahedral carbon center, providing persistent stereochemical memory within the peptide backbone.\n≻=𐑑: Methionine participates in peptide bond formation, a covalent structural transformation that links amino acids into a polypeptide chain.\n≺=𐑬: Methionine's thioether side chain is chemically inert and non-polar, lacking the hydrogen-bonding donor or acceptor groups required to establish a signed directional interface, resulting in a self-complementary or neutral character where no distinct pole is assigned.\n⋈=𐑞: Methionine's role as a peptide component relies on specific steric and electronic contexts within the protein fold, making its functional fidelity medium and context-dependent rather than absolute.\n⊤=𐑧: Methionine's thioether side chain is conformationally flexible and lacks the steric bulk or specific directional constraints that would create a high kinetic barrier, allowing it to explore configuration space freely within a peptide chain.\n∈=𐑲: Methionine acts as a local structural element within a peptide chain, where its specific interactions (such as steric effects or local hydrogen bonding) are confined to its immediate neighbors without propagating globally across the entire system.\n∋=𐑜: Methionine is a specific amino acid that can be substituted by other residues in many contexts, implying a disjunctive selection where any compatible partner from a set suffices.",
+  "lean_verified": true,
+  "lean_verification_scope": "IGProtocol tuple scaffold elaboration",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 11,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢≻⋈∈⊤⊥∋⊞⊙⊣⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "≻⋈∈⊤⊥∋⊞⊙⊣⊡⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "⋈∈⊤⊥∋⊞⊙⊣⊡⊢≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "∈⊤⊥∋⊞⊙⊣⊡⊢≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "⊤⊥∋⊞⊙⊣⊡⊢≻⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⊥∋⊞⊙⊣⊡⊢≻⋈∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "∋⊞⊙⊣⊡⊢≻⋈∈⊤⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "⊞⊙⊣⊡⊢≻⋈∈⊤⊥∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊙⊣⊡⊢≻⋈∈⊤⊥∋⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "⊣⊡⊢≻⋈∈⊤⊥∋⊞⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 10,
+        "word": "⊡⊢≻⋈∈⊤⊥∋⊞⊙⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "flat_chain",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "banked_ok": true,
+      "closed_walk": true,
+      "exposed_count": true,
+      "final_register": false,
+      "topology_class": true,
+      "tri_ancestral_verdict": true,
+      "vacuous": true
+    },
+    "canonical_k": 3,
+    "canonical_word": "∈⊤⊥∋⊞⊙⊣⊡⊢≻⋈",
+    "verdict": "PHASE-BEARING — moves under ROTAT: final_register",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 11,
+      "exposed": 0,
+      "exposed_at_k": [],
+      "unchecked": 0
+    }
+  },
+  "kernel_repairs": null
+}

@@ -3,10 +3,31 @@ Author: Lando⊗⊙-boundary Operator"""
 from __future__ import annotations
 import json
 import re
+import os
+import tempfile
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 from pathlib import Path
+from uuid import uuid4
 from typing import Any, Dict, List, Optional, Tuple
+
+
+def atomic_write_text(path, text):
+    """Publish a complete UTF-8 file using a sibling temporary file."""
+    path = Path(path)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
+                                         prefix="." + path.name + ".", delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(text)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+        return path
+    finally:
+        if temporary is not None and temporary.exists():
+            temporary.unlink()
 
 try:
     from ob3ect.topology import TopologyReport, analyze_topology
@@ -272,10 +293,12 @@ class Ob3ectArtifact:
     split_fuse_report: SplitFuseReport; register_mapping: RegisterMapping
     bootstrap_sequence: BootstrapSequence; momonados_spec: MOMonadOSSpec
     entropy_audit: EntropyAudit; instantiation_notes: str = ""
+    artifact_id: str = field(default_factory=lambda: uuid4().hex)
     lean_scaffold: Optional[str] = None
     topology_report: Optional[Any] = None  # TopologyReport if topology module available
     glyph_word: Optional[str] = None  # the bootstrap sequence as one glued IMASM word
     ascii_circuit: Optional[str] = None  # terminal logical-circuit diagram, edge weights explicit
+    wiring_check: Optional[dict] = None  # native ancestry/flow on the serialized port graph
     # ── Gated grounding (imscribe_generator_agent) ──────────────────────────
     # auto_design() now runs the description through the GATED imscriber
     # (imscribing_grammar/agents/imscribe_generator_agent.py) BEFORE its own
@@ -439,7 +462,8 @@ class Ob3ectArtifact:
             parts.append("  Period: %s rotations" % r.get("period"))
             inv = r.get("invariants", {})
             for key, holds in inv.items():
-                parts.append("  %s %s — %s" % ("⊙" if holds else "∈", key,
+                parts.append("  %s %s — %s" % ("?" if holds is None else "⊙" if holds else "∈", key,
+                    "unchecked rotations" if holds is None else
                     "ROTAT-invariant (spectral)" if holds else "phase-dependent"))
             parts.append("  Canonical rotation: k=%s  word: %s" %
                           (r.get("canonical_k"), r.get("canonical_word")))
@@ -453,13 +477,15 @@ class Ob3ectArtifact:
                 if bos["exposed"]:
                     parts.append("    a single-frame \"OK\" does not generalize to "
                                   "\"OK at every cut\" -- this is the full orbit read")
+                if bos.get("unchecked"):
+                    parts.append("    %s rotation(s) unchecked" % bos["unchecked"])
             parts.append("  Verdict: " + str(r.get("verdict")))
         parts.append("="*70)
         parts.append("mu o delta = id -> "+a.split_fuse_report.frobenius_verdict)
         return nl.join(parts)
 
     def to_dict(self):
-        return {"name":self.name,"is_valid_ob3ect":self.is_valid_ob3ect,
+        return {"name":self.name,"artifact_id":self.artifact_id,"is_valid_ob3ect":self.is_valid_ob3ect,
             "validations":self.validate_all(),
             "phases":{"phase_0":asdict(self.domain_charter),
                 "phase_1":{as_mark(k):_mark_entry(asdict(v))
@@ -478,6 +504,7 @@ class Ob3ectArtifact:
             "lean_scaffold":self.lean_scaffold,
             "topology_report":(self.topology_report.to_dict() if self.topology_report else None),
             "ascii_circuit":getattr(self,"ascii_circuit",None),
+            "wiring_check":self.wiring_check,
             "notes":self.instantiation_notes,
             "grounded_tuple":self.grounded_tuple,
             "grounding_status":self.grounding_status,
@@ -498,7 +525,7 @@ class Ob3ectArtifact:
         return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)
 
     def save(self, path):
-        p=Path(path); p.write_text(self.to_json(), encoding="utf-8"); return p
+        return atomic_write_text(path, self.to_json())
 class DomainTemplate:
     """Wraps a domain config dict and provides auto-fill for all phases."""
     def __init__(self, config: Dict[str,Any]):
