@@ -1,0 +1,291 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → AFWD → IMSCRIB → AFWD → ENGAGR → FSPLIT → AFWD → AFWD → CLINK → EVALF → AFWD → EVALT → IFIX → TANCH → EVALF → AREV → AFWD → FFUSE → IFIX\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "Pollard's rho factor extraction: initialize tortoise and hare walkers",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\nPollard's rho factor extraction: initialize tortoise and hare walkers at seed x0, iterate f(x) = ",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "the composite integer N whose non-trivial factor is extracted",
+      "domain_name": "Pollard's rho factor extraction: initialize tortoise and hare walkers",
+      "domain_type": "computational",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "openrouter",
+      "surface_tokens": [
+        "tortoise",
+        "hare",
+        "modulus"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "iteration of f(x) = x^2 + c mod N advancing a walker",
+        "glyph": "≻",
+        "justification": "each application moves the state forward along the pseudo-random sequence",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "retry with new parameters c and x0 after trivial gcd",
+        "glyph": "≺",
+        "justification": "a failed cycle descends back to re-initialization with fresh constants",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "chaining tortoise step then hare double-step per loop",
+        "glyph": "⋈",
+        "justification": "the two advances compose sequentially to form one Floyd cycle-detection round",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "dialetheia x ≡ y (mod p) ∧ x ≢ y (mod N) held during walk",
+        "glyph": "⊞",
+        "justification": "the congruence modulo the unknown factor p and non-congruence modulo N coexist as the engine of detection",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "gcd(|x-y|, N) = 1 indicating no factor yet",
+        "glyph": "⊥",
+        "justification": "constructive refutation that the current cycle yields a divisor",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "non-trivial factor d = gcd(|x-y|, N) with 1 < d < N",
+        "glyph": "⊤",
+        "justification": "constructive proof that a proper divisor of N has been found",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "rejoin after parameter retry or factor acceptance",
+        "glyph": "∋",
+        "justification": "arms converge: trivial gcd triggers retry, non-trivial factor terminates, failure restarts",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "branch on gcd(|x-y|, N) after each hare advance",
+        "glyph": "∈",
+        "justification": "splits into trivial factor (1), non-trivial factor (1<d<N), and failure (N)",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "append discovered factor d to the factorization log",
+        "glyph": "⊡",
+        "justification": "permanent, append-only record of the extracted divisor for downstream use",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "the polynomial f(x) = x^2 + c mod N as a fixed object",
+        "glyph": "⊙",
+        "justification": "the function is self-identical across all iterations; it does not transform",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "extracted factor d where 1 < d < N",
+        "glyph": "⊣",
+        "justification": "the computation halts with a non-trivial divisor of N in hand",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "uninitialized state before seed selection",
+        "glyph": "⊢",
+        "justification": "no walkers, no function parameters, no modulus bound",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "frobenius_verdict": "T",
+      "fuse_element": "rejoin after parameter retry or factor acceptance",
+      "fuse_result": "either a verified factor d or a fresh parameter set (c, x0) for restart",
+      "rejoin_note": "trivial gcd continues the walk; non-trivial factor terminates; gcd=N triggers AREV retry with new c, x0 then re-enters the walk loop",
+      "split_element": "branch on gcd(|x-y|, N) after each hare advance",
+      "split_input": "current pair (x, y) and modulus N",
+      "split_outputs": [
+        "gcd = 1 (continue walk)",
+        "1 < gcd < N (factor found)",
+        "gcd = N (cycle failure)"
+      ],
+      "verdict_reason": "Tri-ancestral reconnection over a transformed object — closes",
+      "verdict_source": "kernel: tri_ancestral_verdict over SIXTEEN_3"
+    },
+    "phase_3": {
+      "both_description": "B4 B (11) — both held at once: a live contradiction, the paraconsistent resolution",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "B4 F (10) — constructively refuted / negated",
+      "transitions": [],
+      "true_description": "B4 T (01) — constructively proven / affirmed",
+      "void_description": "B4 N (00) — neither: uninitialized, nothing established"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "request arrives with composite N and no parameters",
+          "glyph": "⊢",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "select seed x0 and constant c, bind f(x) = x^2 + c mod N",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 2
+        },
+        {
+          "domain_action": "fix polynomial f as the iteration function",
+          "glyph": "⊙",
+          "opcode": "IMSCRIB",
+          "step_num": 3
+        },
+        {
+          "domain_action": "initialize tortoise = x0, hare = x0",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 4
+        },
+        {
+          "domain_action": "hold dialetheia x ≡ y (mod p) ∧ x ≢ y (mod N) as loop invariant",
+          "glyph": "⊞",
+          "opcode": "ENGAGR",
+          "step_num": 5
+        },
+        {
+          "domain_action": "branch on cycle detection step",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 6
+        },
+        {
+          "domain_action": "tortoise advances one step f(tortoise)",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 7
+        },
+        {
+          "domain_action": "hare advances two steps f(f(hare))",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 8
+        },
+        {
+          "domain_action": "compose tortoise step and hare double-step into one round",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 9
+        },
+        {
+          "domain_action": "compute g = gcd(|tortoise - hare|, N), g = 1",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 10
+        },
+        {
+          "domain_action": "continue next round with updated walkers",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 11
+        },
+        {
+          "domain_action": "compute g = gcd(|tortoise - hare|, N), 1 < g < N",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 12
+        },
+        {
+          "domain_action": "append factor g to factorization log",
+          "glyph": "⊡",
+          "opcode": "IFIX",
+          "step_num": 13
+        },
+        {
+          "domain_action": "factor extracted, computation sealed",
+          "glyph": "⊣",
+          "opcode": "TANCH",
+          "step_num": 14
+        },
+        {
+          "domain_action": "compute g = gcd(|tortoise - hare|, N), g = N",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 15
+        },
+        {
+          "domain_action": "discard walkers, select new c and x0",
+          "glyph": "≺",
+          "opcode": "AREV",
+          "step_num": 16
+        },
+        {
+          "domain_action": "reinitialize tortoise = x0, hare = x0 with new parameters",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 17
+        },
+        {
+          "domain_action": "rejoin into walk loop with fresh constants",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 18
+        },
+        {
+          "domain_action": "record retry event in audit log",
+          "glyph": "⊡",
+          "opcode": "IFIX",
+          "step_num": 19
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "Pollard's original 1975 paper and standard computational number theory texts",
+      "compiler_frontend": "the number-theoretic specification mapping N to polynomial parameters",
+      "ipc_mechanism": "shared integer registers for tortoise, hare, and gcd values",
+      "memory_mechanism": "modular arithmetic unit holding N, c, x0, and intermediate residues",
+      "scheduler_mechanism": "Floyd cycle-detection loop driving tortoise/hare advances"
+    },
+    "phase_6": {
+      "cycle_cost": "O(√p) modular multiplications where p is the smallest prime factor of N",
+      "delta_s_verdict": "ΔS ≈ 0 — each iteration conserves state size; entropy cost is the expected number of steps to collision modulo p",
+      "failure_mode": "",
+      "post_cycle_state": "non-trivial factor d recorded, N reduced to cofactor N/d",
+      "pre_cycle_state": "composite N with unknown factorization, no walkers initialized"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 3.0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 2,
+    "fork_positions": [
+      5
+    ],
+    "fuse_positions": [
+      17
+    ],
+    "nesting_depth": 0,
+    "open_forks": 0,
+    "sequence_length": 19,
+    "t_branch_ops": 6,
+    "topology_class": "flat_chain",
+    "total_pairs": 1
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
