@@ -299,6 +299,7 @@ class Ob3ectArtifact:
     glyph_word: Optional[str] = None  # the bootstrap sequence as one glued IMASM word
     ascii_circuit: Optional[str] = None  # terminal logical-circuit diagram, edge weights explicit
     wiring_check: Optional[dict] = None  # native ancestry/flow on the serialized port graph
+    reentry: Optional[dict] = None  # shared Type/IMASM return state and continuation
     # ── Gated grounding (imscribe_generator_agent) ──────────────────────────
     # auto_design() now runs the description through the GATED imscriber
     # (imscribing_grammar/agents/imscribe_generator_agent.py) BEFORE its own
@@ -515,7 +516,8 @@ class Ob3ectArtifact:
             "lean_verification_scope":self.lean_verification_scope,
             "lean_verification_output":self.lean_verification_output,
             "rotat_audit":self.rotat_audit,
-            "kernel_repairs":self.kernel_repairs}
+            "kernel_repairs":self.kernel_repairs,
+            "reentry":self.reentry}
 
     def to_json(self, indent=2):
         # ensure_ascii escaped every mark and every accented name: the artifact for

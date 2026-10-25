@@ -1,0 +1,3851 @@
+{
+  "name": "Semiprime_Single_Factor_Extraction",
+  "artifact_id": "2a95eb5a4987453788e28d5f74522bb0",
+  "is_valid_ob3ect": true,
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  },
+  "phases": {
+    "phase_0": {
+      "domain_name": "Semiprime_Single_Factor_Extraction",
+      "domain_type": "computational",
+      "scope": "local",
+      "surface_tokens": [
+        "semiprime",
+        "factor",
+        "helix"
+      ],
+      "boundary_condition": "The horn torus with logarithmic encoding (R=r=1.8, φ=log₂n/7, θ=k/7) that contains the complete factorization space up to N=128, where multiplication becomes translation and every semiprime's factor pair lies on the k=1 reference ring as a chord triangle.",
+      "justification": "Auto-designed by Ob3ect Auto-Designer"
+    },
+    "phase_1": {
+      "⊢": {
+        "opcode": "⊢",
+        "chosen_element": "uninitialized semiprime N awaiting factor extraction",
+        "justification": "The void state before any prime candidate engages the divisibility test; N exists on the k=1 ring at φ=log₂N/7 but its factors are unknown.",
+        "rejected_candidates": []
+      },
+      "⊣": {
+        "opcode": "⊣",
+        "chosen_element": "verified factor pair (p, q) with p·q=N and zero remainder",
+        "justification": "The closed boundary where extraction completes: both factors are fixed, the product reconstructs N exactly, and the chord triangle p-q-N on the k=1 ring is fully resolved.",
+        "rejected_candidates": []
+      },
+      "≻": {
+        "opcode": "≻",
+        "chosen_element": "advance to next prime candidate along its helix",
+        "justification": "Forward morphism moving along the prime helix (φ advances by log₂p/7 per step, θ by 1/7) to test successive powers or the next prime in the well list.",
+        "rejected_candidates": []
+      },
+      "≺": {
+        "opcode": "≺",
+        "chosen_element": "backtrack from failed divisibility test",
+        "justification": "Contravariant descent when a candidate fails: the register clears, the helix position reverses, and the search continues with the next candidate without losing the semiprime anchor.",
+        "rejected_candidates": []
+      },
+      "⋈": {
+        "opcode": "⋈",
+        "chosen_element": "compose division test with cofactor computation and verification",
+        "justification": "Sequential chaining: candidate p divides N → compute q=N/p → verify p·q=N → confirm zero remainder → each step feeds the next.",
+        "rejected_candidates": []
+      },
+      "⊙": {
+        "opcode": "⊙",
+        "chosen_element": "self-referential product check p·q ≡ N",
+        "justification": "Identity operation where the extracted pair recognizes itself as the exact factorization: the semiprime knows its own factors through the multiplicative closure on the torus.",
+        "rejected_candidates": []
+      },
+      "∈": {
+        "opcode": "∈",
+        "chosen_element": "divisibility test: does candidate p divide N?",
+        "justification": "The fork that opens two arms: T-arm where p|N (factor found) and F-arm where p∤N (continue search). This is the fundamental decision point in factor extraction.",
+        "rejected_candidates": []
+      },
+      "∋": {
+        "opcode": "∋",
+        "chosen_element": "rejoin after divisibility test with result",
+        "justification": "The arms rejoin carrying either the extracted factor pair (T-arm) or the continued search state (F-arm). Conflicting results (multiple candidates) fuse to B, holding both factor and cofactor simultaneously during verification.",
+        "rejected_candidates": []
+      },
+      "⊤": {
+        "opcode": "⊤",
+        "chosen_element": "candidate p divides N exactly (remainder=0)",
+        "justification": "Affirmative arm: the division succeeds, p is a true factor, q=N/p is computed, and the factor pair is established.",
+        "rejected_candidates": []
+      },
+      "⊥": {
+        "opcode": "⊥",
+        "chosen_element": "candidate p does not divide N (remainder≠0)",
+        "justification": "Negative arm: the division fails, p is rejected, the helix advances to the next candidate, and the search continues.",
+        "rejected_candidates": []
+      },
+      "⊞": {
+        "opcode": "⊞",
+        "chosen_element": "hold factor p and cofactor q simultaneously during verification",
+        "justification": "Paradice state: both the extracted factor and its implicit complement are held live (B-state) while the product p·q is checked against N, before fixation commits the pair.",
+        "rejected_candidates": []
+      },
+      "⊡": {
+        "opcode": "⊡",
+        "chosen_element": "permanent record of the extracted factor pair in the factorization log",
+        "justification": "Irreversible ROM fixation: once verified, the factor pair (p,q) is appended to the immutable record; the semiprime is resolved and cannot return to unfactored state without exponential recomposition.",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "split_element": "divisibility test (FSPLIT)",
+      "split_input": "semiprime N on k=1 ring and candidate prime p from helix well",
+      "split_outputs": [
+        "T-arm: p divides N → factor found",
+        "F-arm: p does not divide N → advance helix"
+      ],
+      "fuse_element": "result recombination (FFUSE)",
+      "fuse_result": "either verified factor pair (p,q) held in B-state during verification, or updated search state with next candidate queued",
+      "frobenius_verdict": "T",
+      "test_instance": "",
+      "failure_reason": "Tri-ancestral reconnection over a transformed object — closes"
+    },
+    "phase_3": {
+      "void_description": "Semiprime N placed on k=1 ring at φ=log₂N/7; no candidates tested; helix position at first prime well",
+      "true_description": "Factor p extracted, cofactor q=N/p computed, product verified p·q=N, zero remainder confirmed, chord triangle p-q-N resolved on k=1 ring",
+      "false_description": "Candidate p rejected (remainder≠0); helix advanced to next prime; N unchanged on k=1 ring; search continues",
+      "both_description": "Factor p and cofactor q held simultaneously in verification: p·q≡N checked, both arms live, B-state persists until IFIX commits the pair or AREV clears for next candidate",
+      "transitions": [],
+      "entropy_assertion": "ΔS ≈ 0"
+    },
+    "phase_4": {
+      "steps": [
+        {
+          "step_num": 1,
+          "opcode": "⊢",
+          "domain_action": "Initialize void semiprime N on k=1 ring at φ=log₂N/7, θ=2π/7; prime well list loaded (primes ≤128); helix positions zeroed"
+        },
+        {
+          "step_num": 2,
+          "opcode": "⊙",
+          "domain_action": "Self-reference N as the target semiprime; establish holographic state V=L(x)∧selfmodel(x)∧x∈V"
+        },
+        {
+          "step_num": 3,
+          "opcode": "∈",
+          "domain_action": "Open divisibility test fork — candidate prime p from first helix well enters"
+        },
+        {
+          "step_num": 4,
+          "opcode": "⊤",
+          "domain_action": "T-arm anchor — test if p divides N (remainder=0)"
+        },
+        {
+          "step_num": 5,
+          "opcode": "≻",
+          "domain_action": "On T-arm — advance to cofactor computation q=N/p"
+        },
+        {
+          "step_num": 6,
+          "opcode": "⋈",
+          "domain_action": "Compose division result with cofactor derivation"
+        },
+        {
+          "step_num": 7,
+          "opcode": "⊙",
+          "domain_action": "Self-check p·q ≡ N on torus (multiplication as rotation by φ₀=log₂p/7)"
+        },
+        {
+          "step_num": 8,
+          "opcode": "⊞",
+          "domain_action": "Enter B-state — hold both p and q simultaneously during verification"
+        },
+        {
+          "step_num": 9,
+          "opcode": "⊡",
+          "domain_action": "Fix verified factor pair (p,q) in permanent record"
+        },
+        {
+          "step_num": 10,
+          "opcode": "⊥",
+          "domain_action": "F-arm anchor — p does not divide N (remainder≠0)"
+        },
+        {
+          "step_num": 11,
+          "opcode": "≺",
+          "domain_action": "On F-arm — backtrack: clear register, retain open fork frame"
+        },
+        {
+          "step_num": 12,
+          "opcode": "≻",
+          "domain_action": "Advance helix to next prime candidate (φ advances by log₂p_next/7)"
+        },
+        {
+          "step_num": 13,
+          "opcode": "∈",
+          "domain_action": "Nested fork — test next candidate (inner split for each prime)"
+        },
+        {
+          "step_num": 14,
+          "opcode": "⊤",
+          "domain_action": "Inner T-arm — candidate divides N"
+        },
+        {
+          "step_num": 15,
+          "opcode": "≻",
+          "domain_action": "Compute cofactor"
+        },
+        {
+          "step_num": 16,
+          "opcode": "⋈",
+          "domain_action": "Chain verification"
+        },
+        {
+          "step_num": 17,
+          "opcode": "⊙",
+          "domain_action": "Product self-check"
+        },
+        {
+          "step_num": 18,
+          "opcode": "⊞",
+          "domain_action": "Hold both factors"
+        },
+        {
+          "step_num": 19,
+          "opcode": "⊡",
+          "domain_action": "Fix pair"
+        },
+        {
+          "step_num": 20,
+          "opcode": "∋",
+          "domain_action": "Close inner fork — rejoin with factor pair or continue"
+        },
+        {
+          "step_num": 21,
+          "opcode": "⊥",
+          "domain_action": "Inner F-arm — candidate fails"
+        },
+        {
+          "step_num": 22,
+          "opcode": "≺",
+          "domain_action": "Clear register, retain outer fork"
+        },
+        {
+          "step_num": 23,
+          "opcode": "≻",
+          "domain_action": "Advance helix"
+        },
+        {
+          "step_num": 24,
+          "opcode": "∋",
+          "domain_action": "Close outer fork — rejoin search state"
+        },
+        {
+          "step_num": 25,
+          "opcode": "⋈",
+          "domain_action": "Compose sequential test results across all candidates"
+        },
+        {
+          "step_num": 26,
+          "opcode": "∈",
+          "domain_action": "Top-level fork — factor found vs. search exhausted"
+        },
+        {
+          "step_num": 27,
+          "opcode": "⊤",
+          "domain_action": "Factor found arm — verified pair ready"
+        },
+        {
+          "step_num": 28,
+          "opcode": "⊣",
+          "domain_action": "Terminal anchor — close boundary with resolved semiprime"
+        },
+        {
+          "step_num": 29,
+          "opcode": "⊥",
+          "domain_action": "Search exhausted arm — no factor found (N is prime, contradiction for semiprime)"
+        },
+        {
+          "step_num": 30,
+          "opcode": "⊞",
+          "domain_action": "Hold contradiction B-state (semiprime with no factors)"
+        },
+        {
+          "step_num": 31,
+          "opcode": "⊡",
+          "domain_action": "Record impossibility (should not occur for valid semiprime)"
+        },
+        {
+          "step_num": 32,
+          "opcode": "∋",
+          "domain_action": "Close top-level fork"
+        },
+        {
+          "step_num": 33,
+          "opcode": "⊙",
+          "domain_action": "Final self-reference — extraction complete, N knows its factors"
+        },
+        {
+          "step_num": 34,
+          "opcode": "⊣",
+          "domain_action": "System boundary sealed — factor pair (p,q) fixed in log"
+        }
+      ],
+      "closure_verified": true,
+      "failure_modes": []
+    },
+    "phase_5": {
+      "compiler_frontend": "Logarithmic torus encoder mapping integers n to helix coordinates (φ=log₂n/7, θ=k/7); translates factorization intent into geometric traversal",
+      "ipc_mechanism": "Prime helix traversal passes candidate factors to division test; division test returns remainder to helix controller; verified pair passes to fixation log",
+      "memory_mechanism": "Toroidal coordinate register stores current (φ, θ) on helix; factorization log (append-only) stores fixed (p,q) pairs; search state stack retains open fork frames",
+      "scheduler_mechanism": "Cinematic timeline phases (11 chapters, t∈[0,99]) control layer revelation: semiprime triangles (stage≥4), negative sheet (stage≥5), power-set residues (stage≥6), binary connections (stage≥7), cardioid sweep (stage≥8), multiplier rotation (stage=9)",
+      "alfs_store": "Prime well catalog up to 128 (primes 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127) with helix parameters ℓₚ=log₂p",
+      "alfs_bootstrap_program": ""
+    },
+    "phase_6": {
+      "cycle_cost": "One division test per candidate prime (modular arithmetic); helix advancement (coordinate update); verification (multiplication check)",
+      "pre_cycle_state": "Semiprime N on k=1 ring; prime helix at candidate p; search state open; factorization log unchanged",
+      "post_cycle_state": "Either factor pair (p,q) fixed in log (IFIX) with N resolved, or helix advanced to next candidate with fork frame retained",
+      "delta_s_verdict": "ΔS ≈ 0 — The torus rotation is reversible (multiplication by 2^e is rigid rotation); each divisibility test is deterministic with no information loss; the search explores a finite, fixed set of candidates; fixation is append-only but the total state space (all semiprimes ≤128) is bounded and pre-determined.",
+      "failure_mode": ""
+    }
+  },
+  "glyph_word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+  "sixteen_3_breakdown": "Phase 11: SIXTEEN_3 Trilattice Breakdown\n  Carrier: P({T,F,t,f}) = 16 generalized truth values\n  Three orderings: ≤_i (information), ≤_t (truth), ≤_c (constructivity)\n  Word: ⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣\n\n  Step Glyph 12-op    16_3-op    Reg↓ →  Reg↑\n  ─── ───── ──────── ───────── ─────   ─────\n    1   ⊢   VINIT    VINIT         N →     N\n    2   ⊙   IMSCRIB  IMSCRIB       N →     T\n    3   ∈   FSPLIT   FSPLIT3       T →     T\n    4   ⊤   EVALT    EVALT         T →     T\n    5   ≻   AFWD     AFWD          T →     T\n    6   ⋈   CLINK    CLINK         T →     T\n    7   ⊙   IMSCRIB  IMSCRIB       T →     T\n    8   ⊞   ENGAGR   EVALI         T →   Ttf\n    9   ⊡   IFIX     IFIX        Ttf →   Ttf\n   10   ⊥   EVALF    EVALF       Ttf →   Ttf\n   11   ≺   AREV     AREV        Ttf →   Ttf\n   12   ≻   AFWD     AFWD        Ttf →   Ttf\n   13   ∈   FSPLIT   FSPLIT3     Ttf →   Ttf\n   14   ⊤   EVALT    EVALT       Ttf →   Ttf\n   15   ≻   AFWD     AFWD        Ttf →   Ttf\n   16   ⋈   CLINK    CLINK       Ttf →   Ttf\n   17   ⊙   IMSCRIB  IMSCRIB     Ttf →   Ttf\n   18   ⊞   ENGAGR   EVALI       Ttf →   Ttf\n   19   ⊡   IFIX     IFIX        Ttf →   Ttf\n   20   ∋   FFUSE    FFUSE3      Ttf →   Ttf\n   21   ⊥   EVALF    EVALF       Ttf →   Ttf\n   22   ≺   AREV     AREV        Ttf →   Ttf\n   23   ≻   AFWD     AFWD        Ttf →   Ttf\n   24   ∋   FFUSE    FFUSE3      Ttf →   Ttf\n   25   ⋈   CLINK    CLINK       Ttf →   Ttf\n   26   ∈   FSPLIT   FSPLIT3     Ttf →   Ttf\n   27   ⊤   EVALT    EVALT       Ttf →   Ttf\n   28   ⊣   TANCH    TANCH       Ttf →   Ttf\n   29   ⊥   EVALF    EVALF       Ttf →   Ttf\n   30   ⊞   ENGAGR   EVALI       Ttf →   Ttf\n   31   ⊡   IFIX     IFIX        Ttf →   Ttf\n   32   ∋   FFUSE    FFUSE3      Ttf →   Ttf\n   33   ⊙   IMSCRIB  IMSCRIB     Ttf →   Ttf\n   34   ⊣   TANCH    TANCH       Ttf →   Ttf\n\n  Final register: Ttf\n  Closed walk: False\n  Tri-ancestral verdict: T — Tri-ancestral reconnection over a transformed object — closes\n  ◐ Verdict T over an OPEN walk — reconnection without return",
+  "lean_scaffold": "-- IGProtocol scaffold: ⊢ → ⊙ → ∈ → ⊤ → ≻ → ⋈ → ⊙ → ⊞ → ⊡ → ⊥ → ≺ → ≻ → ∈ → ⊤ → ≻ → ⋈ → ⊙ → ⊞ → ⊡ → ∋ → ⊥ → ≺ → ≻ → ∋ → ⋈ → ∈ → ⊤ → ⊣ → ⊥ → ⊞ → ⊡ → ∋ → ⊙ → ⊣\n-- Class: Semiprime_Single_Factor_Extraction\n-- Fingerprint: sig=(16,6,9,3)\n--   self_ref=False | frobenius_order=3\n--   dialetheia_complete=True | period=34\n-- Expected tier: O₂dag\n-- ∈/∋ pairs: [(12, 19), (2, 23), (25, 31)]\n\nimport Imscribing.IGMorphism\nimport Imscribing.IGFunctor\n\nnamespace Imscribing\nopen Primitives Frobenius IGProtocol\nopen Dimensionality Topology Relational Polarity Grammar\n     Fidelity KineticChar Granularity Criticality Protection Stoichiometry Chirality\n\n-- ── Token → IG field mapping ──────────────────────────────────────────────\n--   [0] ⊢     dim    := 𐑼               𐑼 → 𐑼  | initial object — ground of distinction\n--   [1] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [2] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [3] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [4] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [5] ⋈     fid    := 𐑱               𐑱 → 𐑱  | composition — regime coherence\n--   [6] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [7] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [8] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n--   [9] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [10] ≺      pol    := 𐑗               𐑗 → 𐑗  | reverse morphism — parity flip\n--   [11] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [12] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [13] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [14] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [15] ⋈     fid    := 𐑱               𐑱 → 𐑱  | composition — regime coherence\n--   [16] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [17] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [18] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n--   [19] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [20] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [21] ≺      pol    := 𐑗               𐑗 → 𐑗  | reverse morphism — parity flip\n--   [22] ≻      rel    := 𐑾               𐑾 → 𐑾  | forward morphism — bidirectional arrow\n--   [23] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [24] ⋈     fid    := 𐑱               𐑱 → 𐑱  | composition — regime coherence\n--   [25] ∈    gran   := 𐑚               𐑚 → 𐑚  | split δ — range decomposition\n--   [26] ⊤     crit   := ⊙               ⊙ → ⊙  | evaluate-true — criticality gate open\n--   [27] ⊣     top    := 𐑡               𐑡 → 𐑡  | terminal object — connectivity boundary\n--   [28] ⊥     chir   := 𐑖               𐑖 → 𐑖  | evaluate-false — chirality check\n--   [29] ⊞    stoi   := 𐑳               𐑳 → 𐑳  | engage paradox — B-state, both arms\n--   [30] ⊡      prot   := 𐑭               𐑭 → 𐑭  | irreversible fixation — winding number\n--   [31] ∋     stoi   := 𐑙               𐑙 → 𐑙  | fuse μ — assembly mode\n--   [32] ⊙   gram   := 𐑠               𐑠 → 𐑠  | identity — self-imscription\n--   [33] ⊣     top    := 𐑡               𐑡 → 𐑡  | terminal object — connectivity boundary\n\n-- ── Stage Imscriptions (per-node cumulative) ────────────────\nprivate def semiprime_single_factor_extraction_initial : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s1 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s2 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s3 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s4 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s5 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s6 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_s7 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := awe }\nprivate def semiprime_single_factor_extraction_s8 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := fee, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s9 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s10 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s11 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s12 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s13 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s14 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s15 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s16 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s17 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s18 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s19 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s20 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s21 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s22 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s23 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s24 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s25 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s26 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s27 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s28 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s29 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s30 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := up, prot := ah }\nprivate def semiprime_single_factor_extraction_s31 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s32 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_s33 : Imscription :=\n  { dim := array, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := thigh, gram := measure, crit := monad, chir := sure, stoi := hung, prot := ah }\n\n-- ── Label Imscriptions (per-node delta) ─────────────────────\nprivate def semiprime_single_factor_extraction_l0 : Imscription :=\n  { dim := array, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l1 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l2 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l3 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l4 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l5 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l6 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l7 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def semiprime_single_factor_extraction_l8 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_l9 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l10 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l11 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l12 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l13 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l14 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l15 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l16 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l17 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def semiprime_single_factor_extraction_l18 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_l19 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l20 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l21 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l22 : Imscription :=\n  { dim := dead, top := judge, rel := ian, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l23 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l24 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l25 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := thigh, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l26 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := monad, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l27 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l28 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := sure, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l29 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := up, prot := awe }\nprivate def semiprime_single_factor_extraction_l30 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := ah }\nprivate def semiprime_single_factor_extraction_l31 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l32 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := measure, crit := woe, chir := fee, stoi := hung, prot := awe }\nprivate def semiprime_single_factor_extraction_l33 : Imscription :=\n  { dim := dead, top := judge, rel := ado, pol := church, fid := age, kin := yea, gran := bib, gram := vow, crit := woe, chir := fee, stoi := hung, prot := awe }\n\n-- ── Main IGProtocol term ────────────────────────────────────\nnoncomputable def semiprime_single_factor_extraction_protocol : IGProtocol semiprime_single_factor_extraction_initial semiprime_single_factor_extraction_s33 :=\n  .withGram Grammar.measure <|\n  (.seq (.arrow semiprime_single_factor_extraction_l0 semiprime_single_factor_extraction_initial semiprime_single_factor_extraction_s0) (.seq (.arrow semiprime_single_factor_extraction_l1 semiprime_single_factor_extraction_s0 semiprime_single_factor_extraction_s1) (.seq (.arrow semiprime_single_factor_extraction_l2 semiprime_single_factor_extraction_s1 semiprime_single_factor_extraction_s2) (.seq (.prod (.seq (.arrow semiprime_single_factor_extraction_l3 semiprime_single_factor_extraction_s2 semiprime_single_factor_extraction_s3) (.seq (.arrow semiprime_single_factor_extraction_l4 semiprime_single_factor_extraction_s3 semiprime_single_factor_extraction_s4) (.seq (.arrow semiprime_single_factor_extraction_l5 semiprime_single_factor_extraction_s4 semiprime_single_factor_extraction_s5) (.seq (.arrow semiprime_single_factor_extraction_l6 semiprime_single_factor_extraction_s5 semiprime_single_factor_extraction_s6) (.seq (.arrow semiprime_single_factor_extraction_l7 semiprime_single_factor_extraction_s6 semiprime_single_factor_extraction_s7) (.arrow semiprime_single_factor_extraction_l8 semiprime_single_factor_extraction_s7 semiprime_single_factor_extraction_s8)))))) (.seq (.arrow semiprime_single_factor_extraction_l9 semiprime_single_factor_extraction_s2 semiprime_single_factor_extraction_s9) (.seq (.arrow semiprime_single_factor_extraction_l10 semiprime_single_factor_extraction_s9 semiprime_single_factor_extraction_s10) (.seq (.arrow semiprime_single_factor_extraction_l11 semiprime_single_factor_extraction_s10 semiprime_single_factor_extraction_s11) (.seq (.arrow semiprime_single_factor_extraction_l12 semiprime_single_factor_extraction_s11 semiprime_single_factor_extraction_s12) (.seq (.prod (.seq (.arrow semiprime_single_factor_extraction_l13 semiprime_single_factor_extraction_s12 semiprime_single_factor_extraction_s13) (.seq (.arrow semiprime_single_factor_extraction_l14 semiprime_single_factor_extraction_s13 semiprime_single_factor_extraction_s14) (.seq (.arrow semiprime_single_factor_extraction_l15 semiprime_single_factor_extraction_s14 semiprime_single_factor_extraction_s15) (.seq (.arrow semiprime_single_factor_extraction_l16 semiprime_single_factor_extraction_s15 semiprime_single_factor_extraction_s16) (.seq (.arrow semiprime_single_factor_extraction_l17 semiprime_single_factor_extraction_s16 semiprime_single_factor_extraction_s17) (.arrow semiprime_single_factor_extraction_l18 semiprime_single_factor_extraction_s17 semiprime_single_factor_extraction_s18)))))) (.refl semiprime_single_factor_extraction_s12)) (.seq (.arrow semiprime_single_factor_extraction_l19 (tensorProduct semiprime_single_factor_extraction_s18 semiprime_single_factor_extraction_s12) semiprime_single_factor_extraction_s19) (.seq (.arrow semiprime_single_factor_extraction_l20 semiprime_single_factor_extraction_s19 semiprime_single_factor_extraction_s20) (.seq (.arrow semiprime_single_factor_extraction_l21 semiprime_single_factor_extraction_s20 semiprime_single_factor_extraction_s21) (.arrow semiprime_single_factor_extraction_l22 semiprime_single_factor_extraction_s21 semiprime_single_factor_extraction_s22)))))))))) (.seq (.arrow semiprime_single_factor_extraction_l23 (tensorProduct semiprime_single_factor_extraction_s8 semiprime_single_factor_extraction_s22) semiprime_single_factor_extraction_s23) (.seq (.arrow semiprime_single_factor_extraction_l24 semiprime_single_factor_extraction_s23 semiprime_single_factor_extraction_s24) (.seq (.arrow semiprime_single_factor_extraction_l25 semiprime_single_factor_extraction_s24 semiprime_single_factor_extraction_s25) (.seq (.prod (.seq (.arrow semiprime_single_factor_extraction_l26 semiprime_single_factor_extraction_s25 semiprime_single_factor_extraction_s26) (.arrow semiprime_single_factor_extraction_l27 semiprime_single_factor_extraction_s26 semiprime_single_factor_extraction_s27)) (.seq (.arrow semiprime_single_factor_extraction_l28 semiprime_single_factor_extraction_s25 semiprime_single_factor_extraction_s28) (.seq (.arrow semiprime_single_factor_extraction_l29 semiprime_single_factor_extraction_s28 semiprime_single_factor_extraction_s29) (.arrow semiprime_single_factor_extraction_l30 semiprime_single_factor_extraction_s29 semiprime_single_factor_extraction_s30)))) (.seq (.arrow semiprime_single_factor_extraction_l31 (tensorProduct semiprime_single_factor_extraction_s27 semiprime_single_factor_extraction_s30) semiprime_single_factor_extraction_s31) (.seq (.arrow semiprime_single_factor_extraction_l32 semiprime_single_factor_extraction_s31 semiprime_single_factor_extraction_s32) (.arrow semiprime_single_factor_extraction_l33 semiprime_single_factor_extraction_s32 semiprime_single_factor_extraction_s33)))))))))))\n\n-- ── Evaluation arm sub-defs ───────────────────────────────────\n\n-- truth arm\nnoncomputable def semiprime_single_factor_extraction_true_arm : IGProtocol semiprime_single_factor_extraction_initial semiprime_single_factor_extraction_s33 :=\n  (semiprime_single_factor_extraction_protocol).restrictToEVALT\n\n-- false arm\nnoncomputable def semiprime_single_factor_extraction_false_arm : IGProtocol semiprime_single_factor_extraction_initial semiprime_single_factor_extraction_s33 :=\n  (semiprime_single_factor_extraction_protocol).restrictToEVALF\n\n-- ── Verification theorems ─────────────────────────────────────\n\n-- Tier: apply the Grammar to the object (self-application). assess_tier verdict on the imscribed tuple: .O₂dag.\ndef semiprime_single_factor_extraction_tier_ground : OuroboricityTier := TierFunctor.obj semiprime_single_factor_extraction_initial\ndef semiprime_single_factor_extraction_tier : OuroboricityTier := TierFunctor.obj semiprime_single_factor_extraction_s33\n#eval semiprime_single_factor_extraction_tier_ground  -- tier of the ground (pre-transformation)\n#eval semiprime_single_factor_extraction_tier  -- the Grammar's tuple-tier verdict\n\ntheorem semiprime_single_factor_extraction_protocol_depth :\n    semiprime_single_factor_extraction_protocol.depth = 26 := by rfl\n\nend Imscribing",
+  "topology_report": {
+    "topology_class": "nested",
+    "nesting_depth": 1,
+    "total_pairs": 3,
+    "open_forks": 0,
+    "cross_branches": 0,
+    "empty_branches": 1,
+    "sequence_length": 34,
+    "t_branch_ops": 14,
+    "f_branch_ops": 9,
+    "branch_ratio": 1.556,
+    "fork_positions": [
+      2,
+      12,
+      25
+    ],
+    "fuse_positions": [
+      19,
+      23,
+      31
+    ],
+    "pair_list": [
+      [
+        12,
+        19
+      ],
+      [
+        2,
+        23
+      ],
+      [
+        25,
+        31
+      ]
+    ],
+    "has_cascading_ifix": false,
+    "max_ifix_cascade": 1,
+    "has_negation_first": false,
+    "has_dual_fixation": false
+  },
+  "ascii_circuit": "◇ CIRCUIT  Semiprime_Single_Factor_Extraction   34 nodes, 36 wires\n  Native graph flow: node inputs and actual wire carriers; seed A\n\n  0 ⊢ VINIT    N   \n     └─▶  1 ⊙   [o→i]  A\n  1 ⊙ IMSCRIB  A   \n     └─▶  2 ∈   [o→i]  A\n  2 ∈ FSPLIT   A     ┐ fork\n     ├─▶  3 ⊤   [T→i]  Tt\n     └─▶  9 ⊥   [F→i]  Ff\n  3 ⊤ EVALT    Tt  \n     └─▶  4 ≻   [o→i]  Tt\n  4 ≻ AFWD     Tt  \n     └─▶  5 ⋈   [o→i]  Tt\n  5 ⋈ CLINK    Tt  \n     └─▶  6 ⊙   [o→i]  Tt\n  6 ⊙ IMSCRIB  Tt  \n     └─▶  7 ⊞   [o→i]  Tt\n  7 ⊞ ENGAGR   Tt  \n     └─▶  8 ⊡   [o→i]  Ttf\n  8 ⊡ IFIX     Ttf \n     └─▶ 23 ∋   [o→T]  Ttf\n  9 ⊥ EVALF    Ff  \n     └─▶ 10 ≺   [o→i]  Ff\n 10 ≺ AREV     Ff  \n     └─▶ 11 ≻   [o→i]  Tt\n 11 ≻ AFWD     Tt  \n     └─▶ 12 ∈   [o→i]  Tt\n 12 ∈ FSPLIT   Tt    ┐ fork\n     ├─▶ 13 ⊤   [T→i]  Tt\n     └─▶ 19 ∋   [F→F]  N\n 13 ⊤ EVALT    Tt  \n     └─▶ 14 ≻   [o→i]  Tt\n 14 ≻ AFWD     Tt  \n     └─▶ 15 ⋈   [o→i]  Tt\n 15 ⋈ CLINK    Tt  \n     └─▶ 16 ⊙   [o→i]  Tt\n 16 ⊙ IMSCRIB  Tt  \n     └─▶ 17 ⊞   [o→i]  Tt\n 17 ⊞ ENGAGR   Tt  \n     └─▶ 18 ⊡   [o→i]  Ttf\n 18 ⊡ IFIX     Ttf \n     └─▶ 19 ∋   [o→T]  Ttf\n 19 ∋ FFUSE    Ttf   ┘ join\n     └─▶ 20 ⊥   [o→i]  Ttf\n 20 ⊥ EVALF    Ttf \n     └─▶ 21 ≺   [o→i]  f\n 21 ≺ AREV     f   \n     └─▶ 22 ≻   [o→i]  t\n 22 ≻ AFWD     t   \n     └─▶ 23 ∋   [o→F]  t\n 23 ∋ FFUSE    Ttf   ┘ join\n     └─▶ 24 ⋈   [o→i]  Ttf\n 24 ⋈ CLINK    Ttf \n     └─▶ 25 ∈   [o→i]  Ttf\n 25 ∈ FSPLIT   Ttf   ┐ fork\n     ├─▶ 26 ⊤   [T→i]  Tt\n     └─▶ 28 ⊥   [F→i]  f\n 26 ⊤ EVALT    Tt  \n     └─▶ 27 ⊣   [o→i]  Tt\n 27 ⊣ TANCH    Tt  \n     └─▶ 31 ∋   [o→T]  Tt\n 28 ⊥ EVALF    f   \n     └─▶ 29 ⊞   [o→i]  f\n 29 ⊞ ENGAGR   f   \n     └─▶ 30 ⊡   [o→i]  tf\n 30 ⊡ IFIX     tf  \n     └─▶ 31 ∋   [o→F]  tf\n 31 ∋ FFUSE    Ttf   ┘ join\n     └─▶ 32 ⊙   [o→i]  Ttf\n 32 ⊙ IMSCRIB  Ttf \n     └─▶ 33 ⊣   [o→i]  Ttf\n 33 ⊣ TANCH    Ttf \n\n  Native ancestry: CLOSED   pairs [[12, 19], [2, 23], [25, 31]]\n  Final node input Ttf",
+  "wiring_check": {
+    "closure": "closed",
+    "closure_verified": true,
+    "fully_reconnected": true,
+    "pairs": [
+      [
+        12,
+        19
+      ],
+      [
+        2,
+        23
+      ],
+      [
+        25,
+        31
+      ]
+    ],
+    "node_inputs": [
+      0,
+      15,
+      15,
+      5,
+      5,
+      5,
+      5,
+      5,
+      13,
+      10,
+      10,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      13,
+      13,
+      13,
+      8,
+      4,
+      13,
+      13,
+      13,
+      5,
+      5,
+      8,
+      8,
+      12,
+      13,
+      13,
+      13
+    ],
+    "edge_values": [
+      5,
+      5,
+      5,
+      5,
+      13,
+      5,
+      13,
+      5,
+      5,
+      5,
+      5,
+      13,
+      5,
+      13,
+      0,
+      10,
+      5,
+      5,
+      13,
+      8,
+      4,
+      10,
+      4,
+      5,
+      5,
+      5,
+      8,
+      12,
+      8,
+      12,
+      15,
+      15,
+      13,
+      13,
+      13,
+      13
+    ],
+    "pair_recovers_input": [
+      false,
+      false,
+      true
+    ],
+    "status": "checked",
+    "instrument": "imasm_core::check + imasm_core::flow",
+    "source_sha256": "bc8077cdf3826459902785e7c9877dd73ae57ff92bf4b38c8be9049e85aad18f",
+    "seed": 15,
+    "port_observations": [],
+    "nodes": [
+      "VINIT",
+      "IMSCRIB",
+      "FSPLIT",
+      "EVALT",
+      "AFWD",
+      "CLINK",
+      "IMSCRIB",
+      "ENGAGR",
+      "IFIX",
+      "EVALF",
+      "AREV",
+      "AFWD",
+      "FSPLIT",
+      "EVALT",
+      "AFWD",
+      "CLINK",
+      "IMSCRIB",
+      "ENGAGR",
+      "IFIX",
+      "FFUSE",
+      "EVALF",
+      "AREV",
+      "AFWD",
+      "FFUSE",
+      "CLINK",
+      "FSPLIT",
+      "EVALT",
+      "TANCH",
+      "EVALF",
+      "ENGAGR",
+      "IFIX",
+      "FFUSE",
+      "IMSCRIB",
+      "TANCH"
+    ],
+    "wires": [
+      [
+        3,
+        "o",
+        4,
+        "i"
+      ],
+      [
+        4,
+        "o",
+        5,
+        "i"
+      ],
+      [
+        5,
+        "o",
+        6,
+        "i"
+      ],
+      [
+        6,
+        "o",
+        7,
+        "i"
+      ],
+      [
+        7,
+        "o",
+        8,
+        "i"
+      ],
+      [
+        2,
+        "T",
+        3,
+        "i"
+      ],
+      [
+        8,
+        "o",
+        23,
+        "T"
+      ],
+      [
+        13,
+        "o",
+        14,
+        "i"
+      ],
+      [
+        14,
+        "o",
+        15,
+        "i"
+      ],
+      [
+        15,
+        "o",
+        16,
+        "i"
+      ],
+      [
+        16,
+        "o",
+        17,
+        "i"
+      ],
+      [
+        17,
+        "o",
+        18,
+        "i"
+      ],
+      [
+        12,
+        "T",
+        13,
+        "i"
+      ],
+      [
+        18,
+        "o",
+        19,
+        "T"
+      ],
+      [
+        12,
+        "F",
+        19,
+        "F"
+      ],
+      [
+        9,
+        "o",
+        10,
+        "i"
+      ],
+      [
+        10,
+        "o",
+        11,
+        "i"
+      ],
+      [
+        11,
+        "o",
+        12,
+        "i"
+      ],
+      [
+        19,
+        "o",
+        20,
+        "i"
+      ],
+      [
+        20,
+        "o",
+        21,
+        "i"
+      ],
+      [
+        21,
+        "o",
+        22,
+        "i"
+      ],
+      [
+        2,
+        "F",
+        9,
+        "i"
+      ],
+      [
+        22,
+        "o",
+        23,
+        "F"
+      ],
+      [
+        26,
+        "o",
+        27,
+        "i"
+      ],
+      [
+        25,
+        "T",
+        26,
+        "i"
+      ],
+      [
+        27,
+        "o",
+        31,
+        "T"
+      ],
+      [
+        28,
+        "o",
+        29,
+        "i"
+      ],
+      [
+        29,
+        "o",
+        30,
+        "i"
+      ],
+      [
+        25,
+        "F",
+        28,
+        "i"
+      ],
+      [
+        30,
+        "o",
+        31,
+        "F"
+      ],
+      [
+        0,
+        "o",
+        1,
+        "i"
+      ],
+      [
+        1,
+        "o",
+        2,
+        "i"
+      ],
+      [
+        23,
+        "o",
+        24,
+        "i"
+      ],
+      [
+        24,
+        "o",
+        25,
+        "i"
+      ],
+      [
+        31,
+        "o",
+        32,
+        "i"
+      ],
+      [
+        32,
+        "o",
+        33,
+        "i"
+      ]
+    ]
+  },
+  "notes": "Auto-designed from: Semiprime_Single_Factor_Extraction",
+  "grounded_tuple": "⟨𐑦𐑥𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
+  "grounding_status": "full",
+  "grounding_failed_primitives": [],
+  "banked_count_check": {
+    "status": "ok",
+    "word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+    "exposed_clears": [],
+    "weight_lost_in_the_open": 0,
+    "banked_ok": true,
+    "vacuous": true,
+    "surplus_discarded": {},
+    "surplus_total": 0,
+    "live_clears": 0,
+    "restored": 0,
+    "deposits": 2,
+    "inert": 21,
+    "verdict": "nothing was at risk: no clear ever fired against a live register (21 step(s) inert after a fixation), 2 deposit(s) made",
+    "surplus_note": null,
+    "remedy": null
+  },
+  "grounding_reasoning": "⊣=𐑥: Semiprime factorization reveals a deterministic cyclic structure where the two prime factors form a closed multiplicative loop with no branching or hierarchical containment.\n⊢=𐑦: The extraction process operates on the integer's bit-length as a scale-collapsed register where the semiprime's boundary (its magnitude) encodes the full factorization structure without spatial or temporal extension.\n⊞=𐑳: The semiprime and its single extracted factor participate in an asymmetric 1-to-2 ratio where one composite entity yields one specific divisor and its implicit complement.\n⊡=𐑴: The factor's role is Z2-protected because extracting one prime factor from a semiprime forces a binary, topologically distinct partition (factor vs. cofactor) that cannot be continuously deformed into a trivial factorization without crossing a discrete algebraic boundary.\n⊙=⊙: The extraction of a single factor from a semiprime operates at a sharp algebraic threshold where the composite structure becomes scale-free and maximally sensitive to the precise divisor, with no subcritical or supercritical regime.\n⊥=𐑖: The ordered pair of extracted factor and its implicit cofactor establishes a persistent chiral asymmetry with structurally enforced orientation (smaller vs. larger prime) that cannot be mirrored without changing the factorization identity.\n≻=𐑑: The extraction irreversibly transforms the semiprime's composite structure into a resolved factor pair, constituting a structural transformation that cannot be reversed without recomposing the original integer.\n≺=𐑿: The extraction interface has a signed direction from the composite semiprime (donor) toward the extracted factor (acceptor), with no simultaneous reverse role or self-complementarity.\n⋈=𐑐: The factor extraction is deterministic and exact: a correct factor divides the semiprime with zero remainder, transmitting the full factorization information with near-certainty and no probabilistic ambiguity.\n⊤=𐑧: The factorization state is kinetically frozen with a high barrier: once a semiprime is factored, the result is mathematically irreversible and requires exponential computational effort to \"rearrange\" back to an unfactored state.\n∈=𐑔: The extraction of a single factor instantly resolves the entire semiprime structure, propagating the correlation across the full integer (the cofactor is determined globally) with scale-free algebraic reach.\n∋=𐑠: The extraction follows a strict sequential logic: the semiprime is engaged first, then a candidate factor is tested, and only upon successful division is the cofactor resolved as the final partner.",
+  "lean_verified": true,
+  "lean_verification_scope": "IGProtocol tuple scaffold elaboration",
+  "lean_verification_output": "Imscribing.Primitives.OuroboricityTier.O₀\nImscribing.Primitives.OuroboricityTier.O₂dag",
+  "rotat_audit": {
+    "op_opcode": "ROTAT",
+    "period": 34,
+    "orbit": [
+      {
+        "k": 0,
+        "word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 1,
+        "word": "⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 2,
+        "word": "∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 3,
+        "word": "⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 4,
+        "word": "≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 5,
+        "word": "⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 6,
+        "word": "⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 7,
+        "word": "⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 8,
+        "word": "⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 9,
+        "word": "⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 10,
+        "word": "≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 11,
+        "word": "≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 12,
+        "word": "∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 13,
+        "word": "⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 14,
+        "word": "≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 15,
+        "word": "⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 16,
+        "word": "⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 17,
+        "word": "⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 18,
+        "word": "⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 19,
+        "word": "∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 20,
+        "word": "⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": false,
+        "vacuous": false,
+        "exposed_count": 1
+      },
+      {
+        "k": 21,
+        "word": "≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 22,
+        "word": "≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 23,
+        "word": "∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 24,
+        "word": "⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 25,
+        "word": "∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 26,
+        "word": "⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "A",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 27,
+        "word": "⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 28,
+        "word": "⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ftf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 29,
+        "word": "⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "tf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 30,
+        "word": "⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "T",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 31,
+        "word": "∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 32,
+        "word": "⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      },
+      {
+        "k": 33,
+        "word": "⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙",
+        "tri_ancestral_verdict": "T",
+        "closed_walk": false,
+        "final_register": "Ttf",
+        "topology_class": "nested",
+        "banked_ok": true,
+        "vacuous": true,
+        "exposed_count": 0
+      }
+    ],
+    "invariants": {
+      "banked_ok": false,
+      "closed_walk": true,
+      "exposed_count": false,
+      "final_register": false,
+      "topology_class": true,
+      "tri_ancestral_verdict": true,
+      "vacuous": false
+    },
+    "canonical_k": 0,
+    "canonical_word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+    "verdict": "PHASE-BEARING — moves under ROTAT: banked_ok, exposed_count, final_register, vacuous",
+    "banked_orbit_summary": {
+      "already_holds": 0,
+      "vacuous": 31,
+      "exposed": 3,
+      "exposed_at_k": [
+        9,
+        19,
+        20
+      ],
+      "unchecked": 0
+    }
+  },
+  "kernel_repairs": null,
+  "reentry": {
+    "session_id": "56ce48dd61ea449c868563d7f1d89af9",
+    "subject": "Semiprime Single Factor Extraction",
+    "initial_tuple": "⟨𐑦𐑥𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
+    "rounds": [
+      {
+        "round": 1,
+        "input_tuple": "⟨𐑦𐑥𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
+        "type_word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣",
+        "type_observation": {
+          "word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣",
+          "period": 98,
+          "canonical_k": 0,
+          "canonical_word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣",
+          "verdict": "T",
+          "invariants": {
+            "final_register": false,
+            "verdict": true
+          },
+          "orbit": [
+            {
+              "k": 0,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣"
+            },
+            {
+              "k": 1,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢"
+            },
+            {
+              "k": 2,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙"
+            },
+            {
+              "k": 3,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈"
+            },
+            {
+              "k": 4,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤"
+            },
+            {
+              "k": 5,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻"
+            },
+            {
+              "k": 6,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈"
+            },
+            {
+              "k": 7,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡"
+            },
+            {
+              "k": 8,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺"
+            },
+            {
+              "k": 9,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥"
+            },
+            {
+              "k": 10,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙"
+            },
+            {
+              "k": 11,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙"
+            },
+            {
+              "k": 12,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤"
+            },
+            {
+              "k": 13,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻"
+            },
+            {
+              "k": 14,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥"
+            },
+            {
+              "k": 15,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺"
+            },
+            {
+              "k": 16,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞"
+            },
+            {
+              "k": 17,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈"
+            },
+            {
+              "k": 18,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡"
+            },
+            {
+              "k": 19,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙"
+            },
+            {
+              "k": 20,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻"
+            },
+            {
+              "k": 21,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤"
+            },
+            {
+              "k": 22,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺"
+            },
+            {
+              "k": 23,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥"
+            },
+            {
+              "k": 24,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈"
+            },
+            {
+              "k": 25,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞"
+            },
+            {
+              "k": 26,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡"
+            },
+            {
+              "k": 27,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙"
+            },
+            {
+              "k": 28,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻"
+            },
+            {
+              "k": 29,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 30,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈"
+            },
+            {
+              "k": 31,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺"
+            },
+            {
+              "k": 32,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥"
+            },
+            {
+              "k": 33,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞"
+            },
+            {
+              "k": 34,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡"
+            },
+            {
+              "k": 35,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙"
+            },
+            {
+              "k": 36,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻"
+            },
+            {
+              "k": 37,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 38,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈"
+            },
+            {
+              "k": 39,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺"
+            },
+            {
+              "k": 40,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞"
+            },
+            {
+              "k": 41,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡"
+            },
+            {
+              "k": 42,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙"
+            },
+            {
+              "k": 43,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻"
+            },
+            {
+              "k": 44,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 45,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡"
+            },
+            {
+              "k": 46,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥"
+            },
+            {
+              "k": 47,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺"
+            },
+            {
+              "k": 48,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈"
+            },
+            {
+              "k": 49,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞"
+            },
+            {
+              "k": 50,
+              "final_register": "TF",
+              "verdict": "T",
+              "word": "⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡"
+            },
+            {
+              "k": 51,
+              "final_register": "TF",
+              "verdict": "T",
+              "word": "≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙"
+            },
+            {
+              "k": 52,
+              "final_register": "TF",
+              "verdict": "T",
+              "word": "⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻"
+            },
+            {
+              "k": 53,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 54,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥"
+            },
+            {
+              "k": 55,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈"
+            },
+            {
+              "k": 56,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙"
+            },
+            {
+              "k": 57,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡"
+            },
+            {
+              "k": 58,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙"
+            },
+            {
+              "k": 59,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡"
+            },
+            {
+              "k": 60,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈"
+            },
+            {
+              "k": 61,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻"
+            },
+            {
+              "k": 62,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤"
+            },
+            {
+              "k": 63,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻"
+            },
+            {
+              "k": 64,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥"
+            },
+            {
+              "k": 65,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺"
+            },
+            {
+              "k": 66,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙"
+            },
+            {
+              "k": 67,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈"
+            },
+            {
+              "k": 68,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡"
+            },
+            {
+              "k": 69,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻"
+            },
+            {
+              "k": 70,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤"
+            },
+            {
+              "k": 71,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙"
+            },
+            {
+              "k": 72,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈"
+            },
+            {
+              "k": 73,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡"
+            },
+            {
+              "k": 74,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙"
+            },
+            {
+              "k": 75,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻"
+            },
+            {
+              "k": 76,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤"
+            },
+            {
+              "k": 77,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺"
+            },
+            {
+              "k": 78,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥"
+            },
+            {
+              "k": 79,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈"
+            },
+            {
+              "k": 80,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙"
+            },
+            {
+              "k": 81,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡"
+            },
+            {
+              "k": 82,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙"
+            },
+            {
+              "k": 83,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤"
+            },
+            {
+              "k": 84,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻"
+            },
+            {
+              "k": 85,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺"
+            },
+            {
+              "k": 86,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥"
+            },
+            {
+              "k": 87,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈"
+            },
+            {
+              "k": 88,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡"
+            },
+            {
+              "k": 89,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙"
+            },
+            {
+              "k": 90,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻"
+            },
+            {
+              "k": 91,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤"
+            },
+            {
+              "k": 92,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈"
+            },
+            {
+              "k": 93,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡"
+            },
+            {
+              "k": 94,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺"
+            },
+            {
+              "k": 95,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥"
+            },
+            {
+              "k": 96,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡"
+            },
+            {
+              "k": 97,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋"
+            }
+          ],
+          "canonical_readouts": [
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "TF",
+              "T"
+            ],
+            [
+              "TF",
+              "T"
+            ],
+            [
+              "TF",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ]
+          ]
+        },
+        "imasm_word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+        "imasm_observation": {
+          "word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+          "period": 34,
+          "canonical_k": 0,
+          "canonical_word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+          "verdict": "T",
+          "invariants": {
+            "final_register": false,
+            "verdict": true
+          },
+          "orbit": [
+            {
+              "k": 0,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣"
+            },
+            {
+              "k": 1,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢"
+            },
+            {
+              "k": 2,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙"
+            },
+            {
+              "k": 3,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈"
+            },
+            {
+              "k": 4,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤"
+            },
+            {
+              "k": 5,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻"
+            },
+            {
+              "k": 6,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈"
+            },
+            {
+              "k": 7,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙"
+            },
+            {
+              "k": 8,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞"
+            },
+            {
+              "k": 9,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡"
+            },
+            {
+              "k": 10,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥"
+            },
+            {
+              "k": 11,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺"
+            },
+            {
+              "k": 12,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻"
+            },
+            {
+              "k": 13,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈"
+            },
+            {
+              "k": 14,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤"
+            },
+            {
+              "k": 15,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻"
+            },
+            {
+              "k": 16,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈"
+            },
+            {
+              "k": 17,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙"
+            },
+            {
+              "k": 18,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞"
+            },
+            {
+              "k": 19,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡"
+            },
+            {
+              "k": 20,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋"
+            },
+            {
+              "k": 21,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥"
+            },
+            {
+              "k": 22,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺"
+            },
+            {
+              "k": 23,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻"
+            },
+            {
+              "k": 24,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "⋈∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋"
+            },
+            {
+              "k": 25,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "∈⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈"
+            },
+            {
+              "k": 26,
+              "final_register": "A",
+              "verdict": "T",
+              "word": "⊤⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈"
+            },
+            {
+              "k": 27,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊣⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤"
+            },
+            {
+              "k": 28,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊥⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣"
+            },
+            {
+              "k": 29,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥"
+            },
+            {
+              "k": 30,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞"
+            },
+            {
+              "k": 31,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "∋⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡"
+            },
+            {
+              "k": 32,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊙⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋"
+            },
+            {
+              "k": 33,
+              "final_register": "Ttf",
+              "verdict": "T",
+              "word": "⊣⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙"
+            }
+          ],
+          "canonical_readouts": [
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "A",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ],
+            [
+              "Ttf",
+              "T"
+            ]
+          ]
+        },
+        "returned_tuple": "⟨𐑦𐑥𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
+        "returned_type_word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣",
+        "returned_type_observation": {
+          "word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣",
+          "period": 98,
+          "canonical_k": 0,
+          "canonical_word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣",
+          "verdict": "T",
+          "invariants": {
+            "final_register": false,
+            "verdict": true
+          },
+          "orbit": [
+            {
+              "k": 0,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣"
+            },
+            {
+              "k": 1,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢"
+            },
+            {
+              "k": 2,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙"
+            },
+            {
+              "k": 3,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈"
+            },
+            {
+              "k": 4,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤"
+            },
+            {
+              "k": 5,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻"
+            },
+            {
+              "k": 6,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈"
+            },
+            {
+              "k": 7,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡"
+            },
+            {
+              "k": 8,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺"
+            },
+            {
+              "k": 9,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥"
+            },
+            {
+              "k": 10,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙"
+            },
+            {
+              "k": 11,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙"
+            },
+            {
+              "k": 12,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤"
+            },
+            {
+              "k": 13,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻"
+            },
+            {
+              "k": 14,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥"
+            },
+            {
+              "k": 15,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺"
+            },
+            {
+              "k": 16,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞"
+            },
+            {
+              "k": 17,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈"
+            },
+            {
+              "k": 18,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡"
+            },
+            {
+              "k": 19,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙"
+            },
+            {
+              "k": 20,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻"
+            },
+            {
+              "k": 21,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤"
+            },
+            {
+              "k": 22,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺"
+            },
+            {
+              "k": 23,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥"
+            },
+            {
+              "k": 24,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈"
+            },
+            {
+              "k": 25,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞"
+            },
+            {
+              "k": 26,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡"
+            },
+            {
+              "k": 27,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙"
+            },
+            {
+              "k": 28,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻"
+            },
+            {
+              "k": 29,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 30,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈"
+            },
+            {
+              "k": 31,
+              "final_register": "Ftf",
+              "verdict": "T",
+              "word": "⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺"
+            },
+            {
+              "k": 32,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥"
+            },
+            {
+              "k": 33,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞"
+            },
+            {
+              "k": 34,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡"
+            },
+            {
+              "k": 35,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙"
+            },
+            {
+              "k": 36,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻"
+            },
+            {
+              "k": 37,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 38,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈"
+            },
+            {
+              "k": 39,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺"
+            },
+            {
+              "k": 40,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞"
+            },
+            {
+              "k": 41,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡"
+            },
+            {
+              "k": 42,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙"
+            },
+            {
+              "k": 43,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻"
+            },
+            {
+              "k": 44,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 45,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡"
+            },
+            {
+              "k": 46,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥"
+            },
+            {
+              "k": 47,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺"
+            },
+            {
+              "k": 48,
+              "final_register": "tf",
+              "verdict": "T",
+              "word": "⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈"
+            },
+            {
+              "k": 49,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞"
+            },
+            {
+              "k": 50,
+              "final_register": "TF",
+              "verdict": "T",
+              "word": "⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡"
+            },
+            {
+              "k": 51,
+              "final_register": "TF",
+              "verdict": "T",
+              "word": "≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙"
+            },
+            {
+              "k": 52,
+              "final_register": "TF",
+              "verdict": "T",
+              "word": "⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻"
+            },
+            {
+              "k": 53,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤"
+            },
+            {
+              "k": 54,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥"
+            },
+            {
+              "k": 55,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈"
+            },
+            {
+              "k": 56,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙"
+            },
+            {
+              "k": 57,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡"
+            },
+            {
+              "k": 58,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙"
+            },
+            {
+              "k": 59,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡"
+            },
+            {
+              "k": 60,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈"
+            },
+            {
+              "k": 61,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻"
+            },
+            {
+              "k": 62,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤"
+            },
+            {
+              "k": 63,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻"
+            },
+            {
+              "k": 64,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥"
+            },
+            {
+              "k": 65,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺"
+            },
+            {
+              "k": 66,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙"
+            },
+            {
+              "k": 67,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈"
+            },
+            {
+              "k": 68,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡"
+            },
+            {
+              "k": 69,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻"
+            },
+            {
+              "k": 70,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤"
+            },
+            {
+              "k": 71,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙"
+            },
+            {
+              "k": 72,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈"
+            },
+            {
+              "k": 73,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡"
+            },
+            {
+              "k": 74,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙"
+            },
+            {
+              "k": 75,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻"
+            },
+            {
+              "k": 76,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤"
+            },
+            {
+              "k": 77,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺"
+            },
+            {
+              "k": 78,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥"
+            },
+            {
+              "k": 79,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈"
+            },
+            {
+              "k": 80,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙"
+            },
+            {
+              "k": 81,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡"
+            },
+            {
+              "k": 82,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙"
+            },
+            {
+              "k": 83,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤"
+            },
+            {
+              "k": 84,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻"
+            },
+            {
+              "k": 85,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺"
+            },
+            {
+              "k": 86,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥"
+            },
+            {
+              "k": 87,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈"
+            },
+            {
+              "k": 88,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊙≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡"
+            },
+            {
+              "k": 89,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "≻⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙"
+            },
+            {
+              "k": 90,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊤⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻"
+            },
+            {
+              "k": 91,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⋈⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤"
+            },
+            {
+              "k": 92,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈"
+            },
+            {
+              "k": 93,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "≺⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡"
+            },
+            {
+              "k": 94,
+              "final_register": "F",
+              "verdict": "T",
+              "word": "⊥⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺"
+            },
+            {
+              "k": 95,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊡∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥"
+            },
+            {
+              "k": 96,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "∋⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡"
+            },
+            {
+              "k": 97,
+              "final_register": "T",
+              "verdict": "T",
+              "word": "⊣⊢⊙∈⊤≻⋈⊡≺⊥⊙⊙⊤≻⊥≺⊞⋈⊡⊙≻⊤≺⊥⋈⊞⊡⊙≻⊤⋈≺⊥⊞⊡⊙≻⊤⋈≺⊞⊡⊙≻⊤⊡⊥≺⋈⊞⊡⊙≻⊤⊥⋈⊙⊡⊙⊡⋈≻⊤≻⊥≺⊙⋈⊡≻⊤⊙⋈⊡⊙≻⊤≺⊥⋈⊙⊡⊙⊤≻≺⊥⋈⊡⊙≻⊤⋈⊡≺⊥⊡∋"
+            }
+          ],
+          "canonical_readouts": [
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "Ftf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "tf",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "TF",
+              "T"
+            ],
+            [
+              "TF",
+              "T"
+            ],
+            [
+              "TF",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "F",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ],
+            [
+              "T",
+              "T"
+            ]
+          ]
+        },
+        "input_grounding": "full",
+        "returned_grounding": "full",
+        "returned_reasoning": "⊣=𐑥: The divisibility test fork (FSPLIT) creates a cyclic closure where the T-arm (factor found) and F-arm (advance helix) rejoin at FFUSE, forming a figure-8 loop that iterates across prime candidates until the factor pair closes the boundary at TANCH.\n⊢=𐑦: The extraction operates on the semiprime's bit-length as a scale-collapsed register where the horn torus boundary (φ=log₂N/7, θ=k/7) encodes the full factorization space losslessly, with multiplication as rigid rotation and the k=1 ring containing all candidate factors.\n⊞=𐑳: The semiprime N (one composite) engages a sequence of single prime candidates (many) but resolves to exactly one factor p and its implicit cofactor q, an asymmetric 1-to-2 participation where one entity yields a specific pair.\n⊡=𐑴: The factor's role is Z2-protected because the divisibility test fork creates a binary topological boundary (T-arm/F-arm) where extracting a factor forces a discrete partition (p|N vs p∤N) that cannot be continuously deformed without crossing the zero-remainder threshold.\n⊙=⊙: The extraction operates at a sharp algebraic threshold where the divisibility test (remainder=0) creates scale-free correlations across the full factorization space, with maximal sensitivity to the precise divisor and no subcritical or supercritical regime.\n⊥=𐑖: The ordered factor pair (p,q) with p<q establishes a persistent chiral asymmetry on the k=1 ring where the chord triangle orientation (smaller vs. larger prime) is structurally enforced by the logarithmic encoding and cannot be mirrored without changing the factorization identity.\n≻=𐑑: The extraction irreversibly transforms the semiprime's composite structure into a resolved factor pair through the divisibility test, constituting a structural transformation that cannot be reversed without exponential recomposition of the original integer.\n≺=𐑿: The extraction interface has a signed direction from the composite semiprime (donor) toward the extracted factor (acceptor) along the helix traversal, with no simultaneous reverse role or self-complementarity.\n⋈=𐑐: The divisibility test is deterministic and exact: a correct factor divides the semiprime with zero remainder, transmitting the full factorization information with near-certainty and no probabilistic ambiguity.\n⊤=𐑧: The factorization state is kinetically frozen with a high barrier: once a semiprime is factored, the result is mathematically irreversible and requires exponential computational effort to rearrange back to an unfactored state.\n∈=𐑔: The extraction of a single factor instantly resolves the entire semiprime structure, propagating the correlation across the full integer (the cofactor is determined globally) with scale-free algebraic reach on the horn torus.\n∋=𐑠: The extraction follows a strict sequential logic: the semiprime is engaged first, then candidate primes are tested in order along their helices, and only upon successful division is the cofactor resolved as the final partner.",
+        "type_stable": true,
+        "imasm_stable": false,
+        "logical_expressions": {
+          "tuple": "⟨𐑦𐑥𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
+          "catalog": "/home/mrnob0dy666/.imscrbgrmr/catalog.json",
+          "navigators": {
+            "CL8NK": {
+              "system": "Semiprime_Single_Factor_Extraction",
+              "tuple": {
+                "⊢": "𐑦",
+                "⊣": "𐑥",
+                "≻": "𐑑",
+                "≺": "𐑿",
+                "⋈": "𐑐",
+                "⊤": "𐑧",
+                "∈": "𐑔",
+                "∋": "𐑠",
+                "⊙": "⊙",
+                "⊥": "𐑖",
+                "⊞": "𐑳",
+                "⊡": "𐑴"
+              },
+              "reference": "CLINK L8 (Organism) — ⟨𐑦⋅𐑸⋅𐑾⋅𐑹⋅𐑐⋅𐑧⋅𐑲⋅𐑵⋅⊙⋅𐑫⋅𐑳⋅𐑟⟩ (from catalog)",
+              "formula_decomposition": {
+                "per_primitive_fragments": [
+                  {
+                    "primitive": "⊢",
+                    "value": "𐑦",
+                    "clink_fragment": "V = L(x) ∧ selfmodel(x) ∧ x ∈ V",
+                    "proximity": "match",
+                    "promoted_atom": "HOLOGRAPHIC_STATE"
+                  },
+                  {
+                    "primitive": "⊣",
+                    "value": "𐑥",
+                    "clink_fragment": "cross(x, y) ∧ ¬ meet(x, y)",
+                    "proximity": "close",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "≻",
+                    "value": "𐑑",
+                    "clink_fragment": "Fun(x, y) ∧ Nat(y, z) → Fun(x, z)",
+                    "proximity": "distant",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "≺",
+                    "value": "𐑿",
+                    "clink_fragment": "|ψ⟩ = Σ c_i |e_i⟩",
+                    "proximity": "close",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "⋈",
+                    "value": "𐑐",
+                    "clink_fragment": "ℏ(x) ∧ [x, p] = iℏ",
+                    "proximity": "match",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "⊤",
+                    "value": "𐑧",
+                    "clink_fragment": "τ ≫ T ∧ eq(x) ∧ gate_open(x)",
+                    "proximity": "match",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "∈",
+                    "value": "𐑔",
+                    "clink_fragment": "∃y∈x( |y| ∼ |x| )",
+                    "proximity": "close",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "∋",
+                    "value": "𐑠",
+                    "clink_fragment": "seq!(f, g) ∧ ⟨→⟩(f, g, τ) ∧ ¬ ⟨→⟩(g, f, τ)",
+                    "proximity": "close",
+                    "promoted_atom": "SEQAX"
+                  },
+                  {
+                    "primitive": "⊙",
+                    "value": "⊙",
+                    "clink_fragment": "ξ → ∞ ∧ μ∘δ = id",
+                    "proximity": "match",
+                    "promoted_atom": "PHI_C"
+                  },
+                  {
+                    "primitive": "⊥",
+                    "value": "𐑖",
+                    "clink_fragment": "∃y∃z( y ∈ x ∧ z ∈ y ∧ ¬ z ∈ x ∧ rank(z) < rank(y) )",
+                    "proximity": "close",
+                    "promoted_atom": "TEMPD2"
+                  },
+                  {
+                    "primitive": "⊞",
+                    "value": "𐑳",
+                    "clink_fragment": "∃a∈A∃b∈B( type(a) ≠ type(b) )",
+                    "proximity": "match",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "⊡",
+                    "value": "𐑴",
+                    "clink_fragment": "∮_γ A = nπ ∧ n ∈ ℤ₂",
+                    "proximity": "distant",
+                    "promoted_atom": null
+                  }
+                ],
+                "full_clink_formula": "V = L(x) ∧ selfmodel(x) ∧ x ∈ V ∧\n    cross(x, y) ∧ ¬ meet(x, y) ∧\n    Fun(x, y) ∧ Nat(y, z) → Fun(x, z) ∧\n    |ψ⟩ = Σ c_i |e_i⟩ ∧\n    ℏ(x) ∧ [x, p] = iℏ ∧\n    τ ≫ T ∧ eq(x) ∧ gate_open(x) ∧\n    ∃y∈x( |y| ∼ |x| ) ∧\n    seq!(f, g) ∧ ⟨→⟩(f, g, τ) ∧ ¬ ⟨→⟩(g, f, τ) ∧\n    ξ → ∞ ∧ μ∘δ = id ∧\n    ∃y∃z( y ∈ x ∧ z ∈ y ∧ ¬ z ∈ x ∧ rank(z) < rank(y) ) ∧\n    ∃a∈A∃b∈B( type(a) ≠ type(b) ) ∧\n    ∮_γ A = nπ ∧ n ∈ ℤ₂",
+                "promoted_atom_count": 4,
+                "promoted_atoms": [
+                  "HOLOGRAPHIC_STATE",
+                  "SEQAX",
+                  "PHI_C",
+                  "TEMPD2"
+                ],
+                "promoted_atom_details": [
+                  {
+                    "atom": "HOLOGRAPHIC_STATE",
+                    "primitive": "⊢",
+                    "value": "𐑦",
+                    "clink_fragment": "V = L(x) ∧ selfmodel(x) ∧ x ∈ V",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "SEQAX",
+                    "primitive": "∋",
+                    "value": "𐑠",
+                    "clink_fragment": "seq!(f, g) ∧ ⟨→⟩(f, g, τ) ∧ ¬ ⟨→⟩(g, f, τ)",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "PHI_C",
+                    "primitive": "⊙",
+                    "value": "⊙",
+                    "clink_fragment": "ξ → ∞ ∧ μ∘δ = id",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "TEMPD2",
+                    "primitive": "⊥",
+                    "value": "𐑖",
+                    "clink_fragment": "∃y∃z( y ∈ x ∧ z ∈ y ∧ ¬ z ∈ x ∧ rank(z) < rank(y) )",
+                    "transcendence": false
+                  }
+                ]
+              }
+            },
+            "CL9NK": {
+              "system": "Semiprime_Single_Factor_Extraction",
+              "tuple": {
+                "⊢": "𐑦",
+                "⊣": "𐑥",
+                "≻": "𐑑",
+                "≺": "𐑿",
+                "⋈": "𐑐",
+                "⊤": "𐑧",
+                "∈": "𐑔",
+                "∋": "𐑠",
+                "⊙": "⊙",
+                "⊥": "𐑖",
+                "⊞": "𐑳",
+                "⊡": "𐑴"
+              },
+              "reference": "CLINK L9 (Gaussian Moat Resolution) — ⟨𐑛𐑥𐑑𐑬𐑐𐑪𐑔𐑝⊙𐑫𐑳𐑭⟩ (from design)",
+              "formula_decomposition": {
+                "per_primitive_fragments": [
+                  {
+                    "primitive": "⊢",
+                    "value": "𐑦",
+                    "clink_fragment": "V = L(x) ∧ selfmodel(x) ∧ x ∈ V",
+                    "proximity": "distant",
+                    "promoted_atom": "HOLOGRAPHIC_STATE"
+                  },
+                  {
+                    "primitive": "⊣",
+                    "value": "𐑥",
+                    "clink_fragment": "cross(x, y) ∧ ¬ meet(x, y) — moat crossing",
+                    "proximity": "match",
+                    "promoted_atom": "MOAT_CROSS"
+                  },
+                  {
+                    "primitive": "≻",
+                    "value": "𐑑",
+                    "clink_fragment": "Fun(x, y) ∧ Nat(y, z) → Fun(x, z) — bridge composition",
+                    "proximity": "match",
+                    "promoted_atom": "BRIDGE_COMP"
+                  },
+                  {
+                    "primitive": "≺",
+                    "value": "𐑿",
+                    "clink_fragment": "|ψ⟩ = Σ c_i |e_i⟩",
+                    "proximity": "close",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "⋈",
+                    "value": "𐑐",
+                    "clink_fragment": "ℏ(x) ∧ [x, p] = iℏ — commutator of bridge",
+                    "proximity": "match",
+                    "promoted_atom": "BRIDGE_COMM"
+                  },
+                  {
+                    "primitive": "⊤",
+                    "value": "𐑧",
+                    "clink_fragment": "τ ≫ T ∧ eq(x) ∧ gate_open(x)",
+                    "proximity": "distant",
+                    "promoted_atom": null
+                  },
+                  {
+                    "primitive": "∈",
+                    "value": "𐑔",
+                    "clink_fragment": "∃y∈x( |y| ∼ |x| ) — bridge existence",
+                    "proximity": "match",
+                    "promoted_atom": "BRIDGE_EXIST"
+                  },
+                  {
+                    "primitive": "∋",
+                    "value": "𐑠",
+                    "clink_fragment": "seq!(f, g) ∧ ⟨→⟩(f, g, τ) ∧ ¬ ⟨→⟩(g, f, τ)",
+                    "proximity": "distant",
+                    "promoted_atom": "SEQAX"
+                  },
+                  {
+                    "primitive": "⊙",
+                    "value": "⊙",
+                    "clink_fragment": "ξ → ∞ ∧ μ∘δ = id — criticality",
+                    "proximity": "match",
+                    "promoted_atom": "PHI_C"
+                  },
+                  {
+                    "primitive": "⊥",
+                    "value": "𐑖",
+                    "clink_fragment": "∃y∃z( y ∈ x ∧ z ∈ y ∧ ¬ z ∈ x ∧ rank(z) < rank(y) )",
+                    "proximity": "close",
+                    "promoted_atom": "TEMPD2"
+                  },
+                  {
+                    "primitive": "⊞",
+                    "value": "𐑳",
+                    "clink_fragment": "∃a∈A∃b∈B( type(a) ≠ type(b) ) — moat vs bridge",
+                    "proximity": "match",
+                    "promoted_atom": "MOAT_BRIDGE_TYPE"
+                  },
+                  {
+                    "primitive": "⊡",
+                    "value": "𐑴",
+                    "clink_fragment": "∮_γ A = nπ ∧ n ∈ ℤ₂",
+                    "proximity": "close",
+                    "promoted_atom": null
+                  }
+                ],
+                "full_clink_formula": "V = L(x) ∧ selfmodel(x) ∧ x ∈ V ∧\n    cross(x, y) ∧ ¬ meet(x, y) — moat crossing ∧\n    Fun(x, y) ∧ Nat(y, z) → Fun(x, z) — bridge composition ∧\n    |ψ⟩ = Σ c_i |e_i⟩ ∧\n    ℏ(x) ∧ [x, p] = iℏ — commutator of bridge ∧\n    τ ≫ T ∧ eq(x) ∧ gate_open(x) ∧\n    ∃y∈x( |y| ∼ |x| ) — bridge existence ∧\n    seq!(f, g) ∧ ⟨→⟩(f, g, τ) ∧ ¬ ⟨→⟩(g, f, τ) ∧\n    ξ → ∞ ∧ μ∘δ = id — criticality ∧\n    ∃y∃z( y ∈ x ∧ z ∈ y ∧ ¬ z ∈ x ∧ rank(z) < rank(y) ) ∧\n    ∃a∈A∃b∈B( type(a) ≠ type(b) ) — moat vs bridge ∧\n    ∮_γ A = nπ ∧ n ∈ ℤ₂",
+                "promoted_atom_count": 9,
+                "promoted_atoms": [
+                  "HOLOGRAPHIC_STATE",
+                  "MOAT_CROSS",
+                  "BRIDGE_COMP",
+                  "BRIDGE_COMM",
+                  "BRIDGE_EXIST",
+                  "SEQAX",
+                  "PHI_C",
+                  "TEMPD2",
+                  "MOAT_BRIDGE_TYPE"
+                ],
+                "promoted_atom_details": [
+                  {
+                    "atom": "HOLOGRAPHIC_STATE",
+                    "primitive": "⊢",
+                    "value": "𐑦",
+                    "clink_fragment": "V = L(x) ∧ selfmodel(x) ∧ x ∈ V",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "MOAT_CROSS",
+                    "primitive": "⊣",
+                    "value": "𐑥",
+                    "clink_fragment": "cross(x, y) ∧ ¬ meet(x, y) — moat crossing",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "BRIDGE_COMP",
+                    "primitive": "≻",
+                    "value": "𐑑",
+                    "clink_fragment": "Fun(x, y) ∧ Nat(y, z) → Fun(x, z) — bridge composition",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "BRIDGE_COMM",
+                    "primitive": "⋈",
+                    "value": "𐑐",
+                    "clink_fragment": "ℏ(x) ∧ [x, p] = iℏ — commutator of bridge",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "BRIDGE_EXIST",
+                    "primitive": "∈",
+                    "value": "𐑔",
+                    "clink_fragment": "∃y∈x( |y| ∼ |x| ) — bridge existence",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "SEQAX",
+                    "primitive": "∋",
+                    "value": "𐑠",
+                    "clink_fragment": "seq!(f, g) ∧ ⟨→⟩(f, g, τ) ∧ ¬ ⟨→⟩(g, f, τ)",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "PHI_C",
+                    "primitive": "⊙",
+                    "value": "⊙",
+                    "clink_fragment": "ξ → ∞ ∧ μ∘δ = id — criticality",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "TEMPD2",
+                    "primitive": "⊥",
+                    "value": "𐑖",
+                    "clink_fragment": "∃y∃z( y ∈ x ∧ z ∈ y ∧ ¬ z ∈ x ∧ rank(z) < rank(y) )",
+                    "transcendence": false
+                  },
+                  {
+                    "atom": "MOAT_BRIDGE_TYPE",
+                    "primitive": "⊞",
+                    "value": "𐑳",
+                    "clink_fragment": "∃a∈A∃b∈B( type(a) ≠ type(b) ) — moat vs bridge",
+                    "transcendence": false
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "observations_stable": false
+      }
+    ],
+    "status": "held",
+    "current_tuple": "⟨𐑦𐑥𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
+    "continuation": {
+      "next_tuple": "⟨𐑦𐑥𐑑𐑿𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
+      "previous_imasm_word": "⊢⊙∈⊤≻⋈⊙⊞⊡⊥≺≻∈⊤≻⋈⊙⊞⊡∋⊥≺≻∋⋈∈⊤⊣⊥⊞⊡∋⊙⊣",
+      "next_round": 2
+    }
+  }
+}

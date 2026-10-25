@@ -651,7 +651,7 @@ The IMASM opcode sequence goes ONLY in the "sequence" field."""
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
-_CATALOG_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "IG_catalog.json"
+_CATALOG_PATH = Path.home() / ".imscrbgrmr" / "catalog.json"
 _NAVIGATOR_PATH = Path(__file__).parent.parent / "imscribing_grammar" / "navigators"
 _PRIM_ORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
@@ -666,7 +666,8 @@ def _load_raw_catalog() -> List[Dict]:
     global _catalog_cache
     if _catalog_cache is None:
         try:
-            _catalog_cache = json.loads(_CATALOG_PATH.read_text(encoding="utf-8"))
+            catalog = json.loads(_CATALOG_PATH.read_text(encoding="utf-8"))
+            _catalog_cache = catalog.get("imscriptions", []) if isinstance(catalog, dict) else catalog
         except Exception:
             _catalog_cache = []
     return _catalog_cache
@@ -1015,6 +1016,26 @@ _GLYPH_TO_OP = {g: name for name, g in _CORE_GLYPH.items()}
 # than composing anything with it.
 _PROMPT_ALPHABET_ORDER = ["VINIT", "TANCH", "AFWD", "AREV", "CLINK", "IMSCRIB",
                           "FSPLIT", "FFUSE", "EVALT", "EVALF", "ENGAGR", "IFIX"]
+
+
+def _bind_bootstrap_word(data: Dict[str, Any], word: str) -> Dict[str, Any]:
+    """Instantiate the agent's domain bindings on the retained native positions."""
+    if not word or any(glyph not in _GLYPH_TO_OP for glyph in word):
+        raise ValueError("The retained bootstrap word must contain only native opcode glyphs")
+    bindings = data.get("opcodes")
+    if not isinstance(bindings, dict):
+        raise ValueError("Retained-word design requires domain opcode bindings")
+    sequence = []
+    for glyph in word:
+        opcode = _GLYPH_TO_OP[glyph]
+        entry = bindings.get(opcode, {})
+        if not isinstance(entry, dict) or any(
+            not isinstance(entry.get(key), str) or not entry[key].strip()
+            for key in ("element", "justification")
+        ):
+            raise ValueError(f"Retained-word design requires element and justification for {opcode}")
+        sequence.append(f"{opcode}: {entry['element']}. {entry['justification']}")
+    return {**data, "sequence": sequence}
 
 
 def _validate_sequence(data: Dict[str, Any]) -> None:
@@ -1742,6 +1763,12 @@ async def auto_design(
     context: Optional[str] = None,
     skip_gate: bool = False,
     stream: bool = False,
+    provider_instance: Optional[Any] = None,
+    gate_result: Optional[Any] = None,
+    bootstrap_word: Optional[str] = None,
+    progress_callback: Optional[Any] = None,
+    sequence_transform: Optional[Any] = None,
+    required_context: Optional[str] = None,
 ) -> Ob3ectArtifact:
     """
     Auto-design an Ob3ect from a natural-language description.
@@ -1767,6 +1794,9 @@ async def auto_design(
         max_retries:   Retry attempts on JSON parse or Frobenius failure
         temperature:   LLM temperature
         skip_gate:     Explicit opt-out of the gated imscription pre-step
+        bootstrap_word: Retained native word; instantiate domain opcode bindings
+                        at these positions instead of generating a new sequence
+        progress_callback: Optional synchronous display callback for local checks
 
     Returns:
         Validated Ob3ectArtifact
@@ -1788,7 +1818,8 @@ async def auto_design(
     grounding_failed = []
     gate_context = None
     if not skip_gate:
-        gate_result = await _run_gated_imscription(description, provider_name, model)
+        if gate_result is None:
+            gate_result = await _run_gated_imscription(description, provider_name, model)
         grounded_tuple = gate_result.imscription.to_notation()
         grounding_status = gate_result.grounding_status
         grounding_reasoning = gate_result.reasoning
@@ -1806,10 +1837,16 @@ async def auto_design(
             f"consistent with this assignment and retain its reported grounding status."
         )
 
+    gate_context = "\n\n".join(c for c in (gate_context, required_context) if c) or None
+
     def _model_for(provider: str) -> dict:
         return _provider_model_kwargs(provider, model)
 
-    if provider_name:
+    if provider_instance is not None:
+        # A resident caller owns inference and its continuation. Reuse that
+        # exact instance, including its history and endpoint; construct no lane.
+        providers = [provider_instance]
+    elif provider_name:
         # A NAMED provider is the only lane. This used to move it to the front
         # of the full chain and keep the rest behind it, so `--provider llamacpp`
         # with IG_PROVIDER=llamacpp still walked to OpenRouter and DeepSeek and
@@ -1865,7 +1902,7 @@ async def auto_design(
         # and printed this line for each of them, so the one fact it exists to state
         # arrived as a wall of identical lines.
         global _PROVIDER_ANNOUNCED
-        if _line != _PROVIDER_ANNOUNCED:
+        if _line != _PROVIDER_ANNOUNCED and provider_instance is None:
             print(_line)
             _PROVIDER_ANNOUNCED = _line
 
@@ -1922,13 +1959,28 @@ async def auto_design(
                                       context, required_context=gate_context)
         combined_context = "\n\n".join(c for c in (gate_context, fitted_context) if c) or None
         prompt = _build_prompt(description, domain_type, retry_info, context=combined_context)
+        system_prompt = _SYSTEM_PROMPT
+        if bootstrap_word is not None:
+            # The native construction owns the positions. The model describes
+            # their domain bindings rather than reconstructing the node list.
+            contract = (
+                "\nRETAINED NATIVE CONSTRUCTION\n"
+                f"The complete bootstrap word is already prepared: {bootstrap_word}\n"
+                "Describe this retained construction using the opcodes map, supplying a domain "
+                "element and justification for every opcode used. The compiler instantiates "
+                "those bindings at every native position, preserving repeated components, "
+                "source boundaries and their order. Omit the sequence field; the supplied "
+                "word determines it. All other artifact fields remain required.\n"
+            )
+            prompt += contract
+            system_prompt += contract
         try:
             # Streaming is a VIEW of the same call: the deltas go to stderr as
             # they arrive and the whole text still comes back, so the JSON
             # extraction and everything downstream is unchanged. stderr, not
             # stdout, because stdout carries the artifact.
             query_kwargs: Dict[str, Any] = {
-                "system": _SYSTEM_PROMPT,
+                "system": system_prompt,
                 "temperature": temperature,
                 # Uncapped: the artifact is eight phases of JSON and a cap
                 # truncates it into a parse failure that reports as an empty
@@ -1956,8 +2008,19 @@ async def auto_design(
                     f"(model={getattr(provider, 'model', None) or getattr(provider, 'model_path', '?')})"
                 )
             data = _extract_json(raw)
+            if bootstrap_word is not None:
+                data = _bind_bootstrap_word(data, bootstrap_word)
             _validate_sequence(data)
+            if sequence_transform is not None:
+                data = dict(data, sequence=sequence_transform(data["sequence"]))
+                _validate_sequence(data)
+            if progress_callback:
+                progress_callback("Build retained artifact" if bootstrap_word is not None else "Build artifact")
             artifact = _build_artifact(artifact_name, scope, data)
+            if bootstrap_word is not None:
+                if artifact.glyph_word != bootstrap_word:
+                    raise ValueError("Artifact construction changed the retained native word")
+                artifact.instantiation_notes += "\nBootstrap positions retained from the native tuple cycle; domain actions instantiated from resident opcode bindings."
             artifact.grounded_tuple = grounded_tuple
             artifact.grounding_status = grounding_status
             artifact.grounding_reasoning = grounding_reasoning
@@ -1968,6 +2031,8 @@ async def auto_design(
             # force a classical "PASS" — that demand was what drove the designer to reason
             # toward domain invertibility instead of describing the fork's structure.
             slug = _make_unique_slug(artifact_name)
+            if progress_callback:
+                progress_callback("Check Lean tuple scaffold")
             await _verify_lean_scaffold(artifact, slug)
             # What the kernel says would close it, when it does not close. One
             # await, only for a word that needs it, so a clean design pays
@@ -1987,6 +2052,8 @@ async def auto_design(
                 or bcc.get("banked_ok") is False
             )
             if needs_repair_check:
+                if progress_callback:
+                    progress_callback("Read banked-clear repair evidence")
                 artifact.kernel_repairs = await _kernel_repairs(artifact.glyph_word)
             return artifact
 
@@ -2046,6 +2113,133 @@ async def auto_design(
 def design(description: str, **kwargs) -> Ob3ectArtifact:
     """Synchronous wrapper around auto_design."""
     return asyncio.run(auto_design(description, **kwargs))
+
+
+async def auto_design_reentrant(
+    description, *, resident, gate_result, expand_types, observe_word,
+    return_to_types, name=None, domain_type=None, context=None, max_rounds=3,
+    on_artifact=None,
+    sequence_transform=None,
+    logical_expressions=None,
+):
+    """Run the ordinary design procedure with mutual Type/IMASM feedback.
+
+    The Type expansion and designed IMASM are separately observed facets of the
+    same retained object. Their words need not be identical. Each artifact and
+    its observations return through the resident imscriber; the returned Type
+    assignment supplies the next design's gate and expanded program. Closure
+    records stability of both carried facets across successive rounds.
+    """
+    if max_rounds < 1:
+        raise ValueError("max_rounds must be positive")
+    current_gate = gate_result
+    initial_tuple = gate_result.imscription.to_notation()
+    state = {"session_id": resident.session_id, "subject": description,
+             "initial_tuple": initial_tuple, "rounds": [], "status": "held"}
+    resident.reentry_state = state
+    previous_word = None
+    artifact = None
+    for number in range(1, max_rounds + 1):
+        current_tuple = current_gate.imscription.to_notation()
+        type_word = expand_types(current_tuple)
+        type_observation = observe_word(type_word)
+        resident.tool_return("ROTAT Type facet", json.dumps(type_observation, ensure_ascii=False))
+        expressions = logical_expressions(current_tuple) if logical_expressions else None
+        expression_context = None
+        if expressions is not None:
+            encoded_expressions = json.dumps(expressions, ensure_ascii=False)
+            resident.tool_return("CL8NK/CL9NK logical expressions", encoded_expressions)
+            expression_context = (
+                "Logical expressions for the current Type assignment, returned by CL8NK and CL9NK.\n"
+                "Use both full conjunctions, per-primitive relations and promoted atoms to "
+                "construct the subsequent IMASM process and its domain actions. Keep each "
+                "navigator's reading attached to its source tuple.\n" + encoded_expressions
+            )
+        facet_context = (
+            f"The subject remains: {description}\n"
+            f"Resident re-entry round: {number}\n"
+            f"Current Type assignment: {current_tuple}\n"
+            f"Its Lean-expanded Type program: {type_word}\n"
+            "Design the complete domain process using the ordinary artifact schema, "
+            "including your own full sequence and per-position domain actions. "
+            "The Type program and the designed process are coupled facets; retain "
+            "their distinctions and use the measured returns in this conversation.\n"
+        )
+        resident.progress(f"Design IMASM facet · re-entry {number}")
+        artifact = await auto_design(
+            description, name=name, domain_type=domain_type,
+            context=(context or "") + "\n" + facet_context,
+            provider_instance=resident, gate_result=current_gate, max_retries=3,
+            progress_callback=resident.progress,
+            sequence_transform=sequence_transform,
+            required_context=expression_context,
+        )
+        if not artifact.glyph_word:
+            raise ValueError("The designed artifact has no executable IMASM word")
+        native_observation = observe_word(artifact.glyph_word)
+        resident.tool_return("ROTAT IMASM facet", json.dumps(native_observation, ensure_ascii=False))
+        # Re-enter the actual eight-phase construction, rather than asking the
+        # original description again with no knowledge of what was produced.
+        phases = artifact.to_dict()["phases"]
+        return_description = (
+            f"The subject remains {description}. Re-enter its Type assignment using "
+            "the following constructed IMASM facet and measured execution as new "
+            "evidence about this same subject. Preserve contradictory observations "
+            "in the returned assignment and its grounding reasoning.\n"
+            f"Prior assignment: {current_tuple}\n"
+            f"Constructed word: {artifact.glyph_word}\n"
+            f"Artifact phases: {json.dumps(phases, ensure_ascii=False)}\n"
+            f"Native readouts: {json.dumps({k: v for k, v in native_observation.items() if k != 'orbit'}, ensure_ascii=False)}"
+        )
+        resident.tool_return("IMASM to Types", return_description)
+        resident.progress(f"Return IMASM observations through Types · re-entry {number}")
+        returned_gate = await return_to_types(
+            f"{description}\nRe-enter this same subject's Type assignment using the latest "
+            "IMASM to Types return in the retained conversation, including its artifact "
+            "phases and native observations.")
+        returned_tuple = returned_gate.imscription.to_notation()
+        returned_word = expand_types(returned_tuple)
+        returned_observation = observe_word(returned_word)
+        resident.tool_return("ROTAT returned Type facet", json.dumps(returned_observation, ensure_ascii=False))
+        round_state = {
+            "round": number, "input_tuple": current_tuple, "type_word": type_word,
+            "type_observation": type_observation, "imasm_word": artifact.glyph_word,
+            "imasm_observation": native_observation, "returned_tuple": returned_tuple,
+            "returned_type_word": returned_word, "returned_type_observation": returned_observation,
+            "input_grounding": current_gate.grounding_status,
+            "returned_grounding": returned_gate.grounding_status,
+            "returned_reasoning": returned_gate.reasoning,
+            "type_stable": returned_tuple == current_tuple,
+            "imasm_stable": previous_word == artifact.glyph_word,
+        }
+        if expressions is not None:
+            round_state["logical_expressions"] = expressions
+        state["rounds"].append(round_state)
+        state["current_tuple"] = returned_tuple
+        state["continuation"] = {"next_tuple": returned_tuple,
+                                 "previous_imasm_word": artifact.glyph_word,
+                                 "next_round": number + 1}
+        prior = state["rounds"][-2] if len(state["rounds"]) > 1 else None
+        round_state["observations_stable"] = bool(prior and
+            prior["imasm_observation"] == native_observation and
+            prior["returned_type_observation"] == returned_observation)
+        stable = (round_state["type_stable"] and round_state["imasm_stable"]
+                  and round_state["observations_stable"])
+        state["status"] = "stable" if stable else "held"
+        artifact.reentry = state
+        resident.tool_return("Type/IMASM re-entry", json.dumps({
+            "round": number, "input_tuple": current_tuple, "returned_tuple": returned_tuple,
+            "type_stable": round_state["type_stable"], "imasm_stable": round_state["imasm_stable"],
+            "observations_stable": round_state["observations_stable"],
+            "status": state["status"],
+        }, ensure_ascii=False))
+        if on_artifact:
+            on_artifact(artifact)
+        if stable:
+            break
+        previous_word = artifact.glyph_word
+        current_gate = returned_gate
+    return artifact
 
 
 # ── ZoomChain ─────────────────────────────────────────────────────────────────
