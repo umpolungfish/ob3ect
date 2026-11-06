@@ -9,12 +9,12 @@ MAP = {
     "AREV": "<",
     "CLINK": "=",
     "IMSCRIB": "←",
-    "FSPLIT": "◇",
-    "FFUSE": "●",
+    "FSPLIT": "∈",
+    "FFUSE": "∋",
     "EVALT": "+",
     "EVALF": "×",
     "ENGAGR": "B",
-    "IFIX": "¬",
+    "IFIX": "⊡",
 }
 
 def translate_scaffold(line):

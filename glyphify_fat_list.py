@@ -42,9 +42,9 @@ import collections
 import json
 import re
 
-CODE = {"VINIT": "⊢", "TANCH": "⊣", "AFWD": "≻", "AREV": "≺", "CLINK": "=",
-        "IMSCRIB": "⊙", "FSPLIT": "◇", "FFUSE": "●", "EVALT": "+", "EVALF": "×",
-        "ENGAGR": "⊞", "IFIX": "¬"}
+CODE = {"VINIT": "⊢", "TANCH": "⊣", "AFWD": "≻", "AREV": "≺", "CLINK": "⋈",
+        "IMSCRIB": "⊙", "FSPLIT": "∈", "FFUSE": "∋", "EVALT": "⊤", "EVALF": "⊥",
+        "ENGAGR": "⊞", "IFIX": "⊡"}
 
 
 def bracket(code, pairs):
@@ -66,18 +66,18 @@ def bracket(code, pairs):
 
 
 def derive_pairs(code):
-    """Pair each ● with the most recent unfused ◇.
+    """Pair each ∋ with the most recent unfused ∈.
 
-    Only ◇ branches and only ● fuses, so this stack discipline is forced by the
+    Only ∈ branches and only ∋ fuses, so this stack discipline is forced by the
     grammar: the pairing is always determined by the word alone. Verified to
     reproduce content.topology_report.pair_list on every record that carries one.
     Returns (pairs, open_forks).
     """
     stack, pairs = [], []
     for i, ch in enumerate(code):
-        if ch == "◇":
+        if ch == "∈":
             stack.append(i)
-        elif ch == "●" and stack:
+        elif ch == "∋" and stack:
             pairs.append([stack.pop(), i])
     return sorted(pairs), len(stack)
 

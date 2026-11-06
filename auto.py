@@ -1572,7 +1572,7 @@ _LOCAL_HTTP_PROVIDERS = ("vllm", "llama-server", "llamacpp", "ollama",
                          "lm-studio", "lmstudio", "local-http")
 _IG_PROVIDER = os.environ.get("IG_PROVIDER", "").strip().lower()
 if _IG_PROVIDER and _IG_PROVIDER in (
-    ("anthropic", "google", "gemini", "deepseek", "qwen", "openrouter",
+    ("anthropic", "google", "gemini", "deepseek", "qwen", "openrouter", "mulerouter", "mulrouter",
      "mistral", "aider", "local") + _LOCAL_HTTP_PROVIDERS
 ):
     _PROVIDER_CHAIN = [_IG_PROVIDER] + [p for p in _PROVIDER_CHAIN if p != _IG_PROVIDER]
@@ -1642,6 +1642,7 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
     target = _GATE_CHECK_DIR / f"{slug}_{uuid4().hex}_gate_check.lean"
     target.write_text(artifact.lean_scaffold, encoding="utf-8")
 
+    lean_timeout = min(55.0, max(1.0, float(os.environ.get("OB3ECT_LEAN_TIMEOUT_SECONDS", "55"))))
     proc = None
     try:
         proc = await asyncio.create_subprocess_exec(
@@ -1650,7 +1651,7 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
-        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=180)
+        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=lean_timeout)
     except asyncio.CancelledError:
         if proc is not None and proc.returncode is None:
             proc.kill()
@@ -1669,7 +1670,7 @@ async def _verify_lean_scaffold(artifact: "Ob3ectArtifact", slug: str) -> None:
             await proc.wait()
         except Exception:
             pass
-        artifact.lean_verification_output = "lake env lean timed out after 180s."
+        artifact.lean_verification_output = f"lake env lean timed out after {lean_timeout:g}s."
         return
 
     text = (stdout.decode("utf-8", "replace") + stderr.decode("utf-8", "replace"))
@@ -2121,6 +2122,7 @@ async def auto_design_reentrant(
     on_artifact=None,
     sequence_transform=None,
     logical_expressions=None,
+    resume_state=None,
 ):
     """Run the ordinary design procedure with mutual Type/IMASM feedback.
 
@@ -2134,12 +2136,25 @@ async def auto_design_reentrant(
         raise ValueError("max_rounds must be positive")
     current_gate = gate_result
     initial_tuple = gate_result.imscription.to_notation()
-    state = {"session_id": resident.session_id, "subject": description,
-             "initial_tuple": initial_tuple, "rounds": [], "status": "held"}
+    if resume_state is not None:
+        import copy
+        state = copy.deepcopy(resume_state)
+        if state["session_id"] != resident.session_id or state["subject"] != description:
+            raise ValueError("Re-entry continuation belongs to another resident or subject")
+        if state["current_tuple"] != initial_tuple:
+            raise ValueError("Restored gate differs from the retained returned Type")
+        first_round = state["continuation"]["next_round"]
+        previous_word = state["continuation"]["previous_imasm_word"]
+        if first_round > max_rounds:
+            raise ValueError("Re-entry continuation requires a larger total round bound")
+    else:
+        state = {"session_id": resident.session_id, "subject": description,
+                 "initial_tuple": initial_tuple, "rounds": [], "status": "held"}
+        first_round = 1
+        previous_word = None
     resident.reentry_state = state
-    previous_word = None
     artifact = None
-    for number in range(1, max_rounds + 1):
+    for number in range(first_round, max_rounds + 1):
         current_tuple = current_gate.imscription.to_notation()
         type_word = expand_types(current_tuple)
         type_observation = observe_word(type_word)

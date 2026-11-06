@@ -3,8 +3,8 @@ import sys
 
 MAP = {
     "VINIT": "V", "TANCH": "T", "AFWD": ">", "AREV": "<",
-    "CLINK": "=", "IMSCRIB": "←", "FSPLIT": "◇", "FFUSE": "●",
-    "EVALT": "+", "EVALF": "×", "ENGAGR": "B", "IFIX": "¬",
+    "CLINK": "=", "IMSCRIB": "←", "FSPLIT": "∈", "FFUSE": "∋",
+    "EVALT": "+", "EVALF": "×", "ENGAGR": "B", "IFIX": "⊡",
 }
 
 def translate(tokens):

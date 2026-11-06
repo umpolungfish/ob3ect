@@ -93,6 +93,7 @@ class Spinner:
 
 _OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 _DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
+_MULEROUTER_URL = "https://api.mulerouter.ai/vendors/openai/v1/chat/completions"
 _DEFAULT_OPENROUTER_MODEL = "deepseek/deepseek-chat"
 _DEFAULT_DEEPSEEK_MODEL = "deepseek-v4-pro"
 
@@ -313,6 +314,15 @@ def _build_providers(provider_override: str = None, model_override: str = None,
                 _llm_call(p, _OPENROUTER_URL, k, m, t, th),
         ))
 
+    mr_key = os.environ.get("MULEROUTER_API_KEY", "") or os.environ.get("MULROUTER_API_KEY", "")
+    if mr_key:
+        model = model_override or os.environ.get("IG_MODEL", "qwen3-max")
+        all_providers.append((
+            "mulerouter",
+            lambda p, k=mr_key, m=model, t=temperature, th=thinking:
+                _llm_call(p, _MULEROUTER_URL, k, m, t, th),
+        ))
+
     ds_key = os.environ.get("DEEPSEEK_API_KEY", "")
     if ds_key:
         model = model_override or os.environ.get("DEEPSEEK_MODEL", _DEFAULT_DEEPSEEK_MODEL)
@@ -323,6 +333,8 @@ def _build_providers(provider_override: str = None, model_override: str = None,
         ))
 
     if primary:
+        if primary == "mulrouter":
+            primary = "mulerouter"
         head = [p for p in all_providers if p[0] == primary]
         tail = [p for p in all_providers if p[0] != primary]
         return head + tail
@@ -1000,7 +1012,7 @@ def _cli_single(argv):
     parser.add_argument("--critique", action="store_true", help="Run AREV critique pass")
     parser.add_argument("--passes", type=int, default=2, help="Max CLINK composition passes")
     parser.add_argument("--provider", default=None,
-                        help="Override provider (openrouter|deepseek); also reads IG_PROVIDER env")
+                        help="Override provider (mulerouter|openrouter|deepseek); also reads IG_PROVIDER env")
     parser.add_argument("--model", default=None,
                         help="Override model (e.g. deepseek/deepseek-chat, deepseek-v4-pro)")
     parser.add_argument("--parse-only", action="store_true", help="Run IMSCRIB parse only")

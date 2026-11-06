@@ -1,0 +1,254 @@
+{
+  "is_valid_ob3ect": true,
+  "lean_scaffold": "-- IGProtocol scaffold: VINIT → IMSCRIB → FSPLIT → EVALT → AFWD → IFIX → EVALF → AREV → ENGAGR → FFUSE → CLINK → AREV → TANCH\n-- (native ob3ect designer; elaborate against the kernel to verify)",
+  "name": "braid-based protein-folding operator as a braid group B_n acting",
+  "notes": "Auto-designed from: Design an Ob3ect for:\n\nbraid-based protein-folding operator as a braid group B_n acting on a conformation space of n res",
+  "phases": {
+    "phase_0": {
+      "boundary_condition": "the braid closure isotopic to the native protein fold",
+      "domain_name": "braid-based protein-folding operator as a braid group B_n acting",
+      "domain_type": "computational",
+      "justification": "Auto-designed by the native Ob3ect Auto-Designer (in-process candle, no Python)",
+      "scope": "openrouter",
+      "surface_tokens": [
+        "crossing",
+        "winding",
+        "closure"
+      ]
+    },
+    "phase_1": {
+      "AFWD": {
+        "chosen_element": "crossing operator τ_i moving residue i past residue i+1 along the chain",
+        "glyph": "≻",
+        "justification": "the forward morphism applies a directed braid transformation that advances the folding word",
+        "opcode": "AFWD",
+        "rejected_candidates": []
+      },
+      "AREV": {
+        "chosen_element": "inverse crossing operator τ_i^{-1} undoing a residue exchange",
+        "glyph": "≺",
+        "justification": "the contravariant morphism descends the word by reversing a crossing and restoring the prior order",
+        "opcode": "AREV",
+        "rejected_candidates": []
+      },
+      "CLINK": {
+        "chosen_element": "sequential product τ_i τ_j composing adjacent crossing operators into a braid word",
+        "glyph": "⋈",
+        "justification": "composition chains morphisms so each crossing acts on the conformation produced by the previous one",
+        "opcode": "CLINK",
+        "rejected_candidates": []
+      },
+      "ENGAGR": {
+        "chosen_element": "residue simultaneously graded over- and under-crossing at an ambiguous crossing",
+        "glyph": "⊞",
+        "justification": "the B state holds both truth and falsity live at once when the crossing admits two incompatible windings",
+        "opcode": "ENGAGR",
+        "rejected_candidates": []
+      },
+      "EVALF": {
+        "chosen_element": "under-crossing arm graded as topologically rejected",
+        "glyph": "⊥",
+        "justification": "the negative evaluator touches constructive falsity F when the crossing creates a non-native knot",
+        "opcode": "EVALF",
+        "rejected_candidates": []
+      },
+      "EVALT": {
+        "chosen_element": "over-crossing arm graded as topologically acceptable",
+        "glyph": "⊤",
+        "justification": "the affirmative evaluator touches constructive truth T when the crossing preserves native contact order",
+        "opcode": "EVALT",
+        "rejected_candidates": []
+      },
+      "FFUSE": {
+        "chosen_element": "rejoined conformation after the over- and under-crossing arms resolve",
+        "glyph": "∋",
+        "justification": "the multiplication μ rejoins the arms into one resolved state; conflicting crossing grades fuse to B rather than collapsing",
+        "opcode": "FFUSE",
+        "rejected_candidates": []
+      },
+      "FSPLIT": {
+        "chosen_element": "residue pair at a crossing opening into over-crossing and under-crossing arms",
+        "glyph": "∈",
+        "justification": "the co-multiplication δ opens one residue state into two mutually exclusive crossing configurations",
+        "opcode": "FSPLIT",
+        "rejected_candidates": []
+      },
+      "IFIX": {
+        "chosen_element": "winding grade ⊡ written permanently into the residue's topological record",
+        "glyph": "⊡",
+        "justification": "the ROM fixation appends an irreversible winding number that cannot be undone by later crossings",
+        "opcode": "IFIX",
+        "rejected_candidates": []
+      },
+      "IMSCRIB": {
+        "chosen_element": "identity braid e leaving every residue in place",
+        "glyph": "⊙",
+        "justification": "the neutral self-reference acts on the conformation space without changing any residue position",
+        "opcode": "IMSCRIB",
+        "rejected_candidates": []
+      },
+      "TANCH": {
+        "chosen_element": "native-state loop boundary that contains the completed folded protein",
+        "glyph": "⊣",
+        "justification": "the terminal anchor closes the braid word and fixes the system boundary at the native conformation",
+        "opcode": "TANCH",
+        "rejected_candidates": []
+      },
+      "VINIT": {
+        "chosen_element": "uninitialized residue chain before any crossing operator acts",
+        "glyph": "⊢",
+        "justification": "the void state contains no crossings, no winding grades, and no conformation assignments",
+        "opcode": "VINIT",
+        "rejected_candidates": []
+      }
+    },
+    "phase_2": {
+      "frobenius_verdict": "T",
+      "fuse_element": "rejoined residue pair after μ∘δ closure",
+      "fuse_result": "one conformation state carrying the joined winding grade, or B when the arms carry conflicting grades",
+      "rejoin_note": "each arm applies its crossing operator and IFIX records its winding; the arms rejoin into a single state unless the fork remains open for a permanently divergent braid word",
+      "split_element": "residue pair at crossing τ_i",
+      "split_input": "single ungraded residue conformation before the crossing decision",
+      "split_outputs": [
+        "over-crossing arm with forward winding grade",
+        "under-crossing arm with reverse winding grade"
+      ],
+      "verdict_reason": "Tri-ancestral reconnection over a transformed object — closes",
+      "verdict_source": "kernel: tri_ancestral_verdict over SIXTEEN_3"
+    },
+    "phase_3": {
+      "both_description": "B4 B (11) — both held at once: a live contradiction where a residue carries both over- and under-crossing grades",
+      "entropy_assertion": "ΔS ≈ 0",
+      "false_description": "B4 F (10) — constructively refuted / negated: under-crossing rejected as non-native",
+      "transitions": [],
+      "true_description": "B4 T (01) — constructively proven / affirmed: over-crossing accepted as native-compatible",
+      "void_description": "B4 N (00) — neither: uninitialized residue chain, no crossing or winding established"
+    },
+    "phase_4": {
+      "closure_verified": true,
+      "failure_modes": [],
+      "steps": [
+        {
+          "domain_action": "residue chain enters the operator with no crossings applied",
+          "glyph": "⊢",
+          "opcode": "VINIT",
+          "step_num": 1
+        },
+        {
+          "domain_action": "identity braid e confirms the initial conformation is unchanged",
+          "glyph": "⊙",
+          "opcode": "IMSCRIB",
+          "step_num": 2
+        },
+        {
+          "domain_action": "residue pair at crossing τ_i opens into over- and under-crossing arms",
+          "glyph": "∈",
+          "opcode": "FSPLIT",
+          "step_num": 3
+        },
+        {
+          "domain_action": "over-crossing arm is affirmed as topologically acceptable",
+          "glyph": "⊤",
+          "opcode": "EVALT",
+          "step_num": 4
+        },
+        {
+          "domain_action": "crossing operator τ_i advances residue i past residue i+1 on the over arm",
+          "glyph": "≻",
+          "opcode": "AFWD",
+          "step_num": 5
+        },
+        {
+          "domain_action": "winding grade ⊡ is permanently recorded for the over-crossing residue",
+          "glyph": "⊡",
+          "opcode": "IFIX",
+          "step_num": 6
+        },
+        {
+          "domain_action": "under-crossing arm is refuted as topologically rejected",
+          "glyph": "⊥",
+          "opcode": "EVALF",
+          "step_num": 7
+        },
+        {
+          "domain_action": "inverse crossing τ_i^{-1} descends the under arm to restore residue order",
+          "glyph": "≺",
+          "opcode": "AREV",
+          "step_num": 8
+        },
+        {
+          "domain_action": "ambiguous crossing holds both over- and under-crossing grades simultaneously as B",
+          "glyph": "⊞",
+          "opcode": "ENGAGR",
+          "step_num": 9
+        },
+        {
+          "domain_action": "over- and under-crossing arms rejoin into one resolved conformation state",
+          "glyph": "∋",
+          "opcode": "FFUSE",
+          "step_num": 10
+        },
+        {
+          "domain_action": "resolved conformation composes with the next crossing operator in the braid word",
+          "glyph": "⋈",
+          "opcode": "CLINK",
+          "step_num": 11
+        },
+        {
+          "domain_action": "reverse traversal descends the completed word to verify isotopy",
+          "glyph": "≺",
+          "opcode": "AREV",
+          "step_num": 12
+        },
+        {
+          "domain_action": "braid closure closes into a loop isotopic to the native state and anchors the system",
+          "glyph": "⊣",
+          "opcode": "TANCH",
+          "step_num": 13
+        }
+      ]
+    },
+    "phase_5": {
+      "alfs_bootstrap_program": "",
+      "alfs_store": "native-state braid closure word stored as the canonical reference fold",
+      "compiler_frontend": "translates braid words into sequences of crossing operators τ_i and winding grades",
+      "ipc_mechanism": "residue states pass between adjacent crossing operators through shared conformation registers",
+      "memory_mechanism": "winding grades are stored in append-only ROM fixation per residue",
+      "scheduler_mechanism": "orders crossing operators left to right along the braid word and schedules closure last"
+    },
+    "phase_6": {
+      "cycle_cost": "one winding grade fixation per crossing operation",
+      "delta_s_verdict": "ΔS ≈ 0 — each forward crossing is balanced by its reverse descent and the Frobenius closure μ∘δ=id conserves the state count",
+      "failure_mode": "",
+      "post_cycle_state": "closed loop conformation with permanent winding record",
+      "pre_cycle_state": "ungraded residue chain with open braid word"
+    }
+  },
+  "topology_report": {
+    "branch_ratio": 1.0,
+    "cross_branches": 0,
+    "empty_branches": 0,
+    "f_branch_ops": 3,
+    "fork_positions": [
+      2
+    ],
+    "fuse_positions": [
+      9
+    ],
+    "nesting_depth": 0,
+    "open_forks": 0,
+    "sequence_length": 13,
+    "t_branch_ops": 3,
+    "topology_class": "flat_chain",
+    "total_pairs": 1
+  },
+  "validations": {
+    "phase_0": [],
+    "phase_1": [],
+    "phase_2": [],
+    "phase_3": [],
+    "phase_4": [],
+    "phase_5": [],
+    "phase_6": []
+  }
+}
